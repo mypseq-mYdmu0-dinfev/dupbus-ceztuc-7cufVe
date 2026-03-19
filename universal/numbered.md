@@ -12,7 +12,7 @@ Strictly ensure to number every single item (nothing unnumbered) as instructed b
 ```
 
 - Each level must have more than one item (if a sub-item would be alone, don't build that level —— include it in the parent instead)
-  - e.g. In above example, if 1.2.2 is not necessary (which leaves 1.2.1 alone), don't build the 3rd level but just include 1.2.1 in 1.2
+  - e.g. In above example, if 1.2.2 is not necessary (leaving 1.2.1 alone), don't build the 3rd level and just include 1.2.1 in 1.2
   - If a sub-item level (e.g. 3rd level: 1.2.1 & 1.2.2) is established, ensure its parent (e.g. 2nd level: 1.2) exists
 - Each number must have a dot `.` between it and the text e.g. `1.1. xxx` instead of `1.1 xxx`
 - The dot is not needed when referring to it in text or discussion e.g. "Section 1.1 detailed xxx..."
