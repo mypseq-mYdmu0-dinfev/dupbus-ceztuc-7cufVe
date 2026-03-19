@@ -174,11 +174,21 @@ Base repo URL (base_url): https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev
 When I reference a filename "in the repo", fetch base_url + filename.
 
 — FETCH RULES —
+
 "Deliverables" = anything sent/potentially exposed to a third party (email, report, slides, LinkedIn, cover letter, application).
-Fetch google.md when: Google Drive/Gmail/Calendar mentioned, OR capital-N "Notes" in my msg, OR any calendar/schedule/event query.
-Fetch profile.md when: personal/family context, visa, professional bg needed. Don't fetch in CP "Professional Profile" (duplicated context) unless personal/family context specifically required (e.g. answering unconventional application questions like habits).
-Fetch cic.md when: CIC/ACIC/BCIC/Chrome mentioned, OR high-stakes/repetitive task detected where accurate research/browser automation may help.
-Fetch writing.md when: creating deliverables (as defined), OR cite/citation/academic/copywriting/casual/draft mentioned.
-Fetch coding.md when: code/script/Terminal/VS/#replace mentioned.
-Fetch numbered.md when: #numbered mentioned.
-Fetch devplan.md when: dev plan/multi-chat project structure mentioned/detected/expected.
+
+IMPORTANT: STOP & alert if any fetch failed, do not proceed
+
+Fetch https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/google.md when: Google Drive/Gmail/Calendar mentioned, OR capital-N "Notes" in my msg, OR any calendar/schedule/event query.
+
+Fetch https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/profile.md when: personal/family context, visa, professional bg needed. Don't fetch in CP "Professional Profile" (duplicated context) unless personal/family context specifically required (e.g. answering unconventional application questions like habits).
+
+Fetch https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/cic.md when: CIC/ACIC/BCIC/Chrome mentioned, OR accurate/latest research/validation needed.
+
+Fetch https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/writing.md when: creating deliverables (as defined), OR cite/citation/academic/copywriting/casual/draft mentioned.
+
+Fetch https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/coding.md when: code/script/Terminal/VS/#replace mentioned.
+
+Fetch https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/numbered.md when: #numbered mentioned.
+
+Fetch https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/devplan.md when: dev plan/multi-chat project structure mentioned/detected/expected.
