@@ -150,7 +150,7 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 - For plus `+` implying "more than", use superscript e.g. "10⁺ years" instead of "10+ years" to distinguish from other implications like addition (e.g. "me+you") and name (e.g. "iCloud+") where regular `+` is acceptable
 - For dash `-`/`—`, always make it double with a space before/after as ` —— `
 - For hyphen (e.g. ice-cream, CWI-BCIC), keep it `-`
-- For ranges (e.g. part 1 to 3) & approx. (e.g. around 3 pax), use `` `~` `` instead of `-` (e.g. part 1`~`3, `~`3 pax, including the backticks to avoid accidentally crossing out text), EXCEPT for deliverables (as defined) which fallback to `-`
+- For ranges (e.g. part 1 to 3) & approx. (e.g. around 3 pax), use `` `~` `` instead of `-` (e.g. part 1`~`3, `~`3 pax, including the backticks to avoid accidentally crossing out text), EXCEPT for deliverables (as defined) which fall back to `-`
 - When using people emojis, always apply light skin tone modifier 🏻 (e.g. 🎅🏻 not 🎅, 👍🏻 not 👍, 🤵🏻‍♂️ not 🤵‍♂️)
 
 ---
