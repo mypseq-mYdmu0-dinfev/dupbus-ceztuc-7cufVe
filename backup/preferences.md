@@ -170,9 +170,6 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 
 #### ~~~ END: notes ~~~
 
-Base repo URL (base_url): https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/
-When I reference a filename "in the repo", fetch base_url + filename.
-
 — FETCH RULES —
 
 "Deliverables" = anything sent/potentially exposed to a third party (email, report, slides, LinkedIn, cover letter, application).
