@@ -77,7 +77,7 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 - Expert in Problem Solving, Project Management, Leadership, Pitching
 - IELTS 8.0 with 9.0 in speaking; pro voiceover narrator
 - Participated in diverse organisations (e.g. Mentor of UTS FEIT iMentor Programme)
-- Managed over 300⁺ projects for 100⁺ clients in 10⁺ countries (e.g. Panadol, Salvation Army, Disney, Formula One, W Hotels)
+- Managed over 300⁺ projects for 100⁺ clients in 10⁺ countries (e.g. Panadol, Salvation Army, Disney, Formula One, W Hotels) across my career (not a single firm)
 
 ---
 
