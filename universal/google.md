@@ -15,7 +15,6 @@ I've connected my Google Drive, Mail, and Calendar. If access failed (e.g. asked
 ## Gmail
 
 - Whenever my msg includes "Note"/"Notes" (only when using capital `N`), refer to emails labelled with `Notes` (unless in CP or I sent you a file) —— These are not actual emails but my entries in Apple "Notes" app synced to my Gmail account for your access
-- Ignore other emails unless I specifically ask so, since this is my confidential account (rarely used)
 
 ---
 
