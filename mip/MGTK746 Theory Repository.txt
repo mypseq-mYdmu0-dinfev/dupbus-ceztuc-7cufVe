@@ -1,0 +1,245 @@
+# MGTK746 Reading List Theories
+
+## Comprehensive Reading List Extraction
+Below are theories/frameworks/concepts extracted from select items in MGTK746 official reading list.
+
+---
+
+### Carson, J.B., Tesluk, P.E. and Marrone, J.A. (2007) Shared Leadership in Teams: An Investigation of Antecedent Conditions and Performance. Academy of Management Journal, 50(5), pp.1217–1234.
+
+**Full access confirmed.**
+
+- **Shared Leadership Definition:** Team property whereby leadership distributed among members rather than concentrated in single designated leader. Measured through network density of mutual influence relationships. Distinct from vertical leadership, cooperation, or team cognition constructs.
+- **Internal Team Environment (Three Dimensions):** Antecedent condition comprising shared purpose (common understanding of objectives), social support (emotional/psychological strength through encouragement), voice (member input into team processes). These mutually reinforcing dimensions create environment enabling shared leadership emergence.
+- **External Supportive Coaching:** External leader behaviours facilitating shared leadership: expressing confidence in team capabilities, motivating towards challenging goals, demonstrating sensitivity to team needs. Particularly critical when internal team environment weak; less necessary when strong internal environment exists.
+- **Shared Leadership Performance Relationship:** Shared leadership positively predicts team performance as rated by clients. Teams relying on multiple members for leadership outperform those with scarce internal leadership. Network-based measurement captures patterns of mutual influence better than aggregate measures.
+
+---
+
+### Dyer, W.G., Dyer, J.H. and Dyer, W.G. (2013) Team Building. Proven Strategies for Improving Team Performance. 5th Edition. Jossey-Bass.
+
+**No full access. Key concepts from web search:**
+
+- **Four Cs Framework:** Core framework for team building covering Context, Composition, Competencies, and Change management. Strengthened in 5th edition with practical examples.
+- **Diagnostic Approach:** Systematic process for identifying team problems through surveys and assessments before implementing targeted interventions.
+- **Team Building Strategies:** Includes role clarification exercises, inter-team building activities, managing cross-functional teams, leading innovative teams in competitive environments.
+- **Team Development Stages:** Addresses transforming departments into cohesive teams, managing team formation processes, resolving team conflicts through structured interventions.
+
+**Useful for:** A1 Section 3 (collaboration reflection) when discussing systematic approaches to team building and diagnosing EPW team dynamics. Consider uploading if deeper theoretical framework needed beyond West's empirical research focus.
+
+---
+
+### Goncalves, M. (2006) Team Building. American Society of Mechanical Engineers.
+
+**No full access. Key concepts from web search:**
+
+- **Tuckman's Five Stages Model:** Application of forming, storming, norming, performing, adjourning framework to technical team contexts. Emphasises progression through all stages for maximum effectiveness.
+- **SWOT Analysis for Teams:** Strategic tool application for evaluating team strengths, weaknesses, opportunities, threats in building phase.
+- **Team Contracts and Dynamics:** Templates and practical tools for creating positive learning experiences, evaluating team projects, establishing agreements.
+- **People as Primary Resource:** Focus on maximising organisational performance through understanding team fundamentals before implementing team-building processes.
+
+**Useful for:** A1 Section 3 if needing practical tools/templates mentioned during EPW activities. Particularly relevant for technical/engineering teams. Less critical given West and Carson already provide stronger research foundations. Consider only if specific Tuckman stages model needed for PDP development.
+
+---
+
+### Hargreaves, J. & Page, L. (2013) Reflective Practice. Wiley.
+
+**Partial access confirmed (Chapters 1, 2, 4).**
+
+- **Schön's Reflection Framework:** Distinguishes reflection-in-action (during events) versus reflection-on-action (retrospective analysis). Challenges scientific method dominance in professional education, advocating experiential learning primacy.
+- **Reflective Timeline Model:** Non-cyclical framework comprising "in the moment", "looking back", "moving forward". Avoids getting stuck in cyclical models. Uses mirror metaphor: reflecting to improve, not remain static.
+- **Top Ten Reflective Models Comparison:** Evaluates Gibbs' Cycle, Driscoll's "What? So what? Now what?", Johns' Structured Model, Critical Incident Technique, Mezirow's Transformative Learning across dimensions (writing, thinking, group, 1:1 suitability).
+- **Storytelling in Reflection:** Narrative as powerful medium for conveying experience, exploring taboo thoughts/feelings safely, constructing professional identity through repeated story retelling with evolving interpretations.
+- **Ethical Practice Integration:** Reflection inherently involves ethical decision-making. Professional codes draw on moral philosophy. Reflection without ethics consideration is incomplete professional practice.
+- **Writing Reflective Assessments:** Distinction between descriptive versus analytical reflection. Academic referencing integrated into personal narrative. Breaking 1,200-word essays into logical 120-word paragraphs. Sharing work with trusted readers or reading aloud for quality assurance.
+- **Limitations of Reflective Models:** Risk of prioritising model fulfilment over issue resolution, inability to address multifaceted real-life complexity, professional perspective biases, confidentiality constraints, potential for revealing Pandora's Box (personal disclosure, colleague tensions, legal/ethical dilemmas).
+
+---
+
+### Johnson, G., Whittington, R., Scholes, K., Angwin, D. & Regnér, P. (2017) Exploring Strategy: Text and Cases. 11th Edition. Pearson.
+
+**No access. Note for later consideration:**
+
+- Comprehensive strategy textbook covering strategic analysis frameworks (Porter's Five Forces, PESTEL, Value Chain), strategic choices, strategy implementation
+- Case study approach for applying strategy concepts to real organisational scenarios
+- Could support A1 Section 1 (tools/theories) if EPW4 crisis management approached through strategic lens (e.g. stakeholder analysis, environmental scanning)
+- **Suggest uploading:** Chapters on crisis management, stakeholder analysis, strategic communication if deeper theoretical grounding needed for EPW4 greenwashing scandal response
+
+---
+
+### Northouse, P.G. (2021) Leadership: Theory and Practice. 9th Edition. London: Sage.
+
+**No direct upload. Covered extensively in MGTK737 theories file already in CP.**
+
+- 14 leadership theories/frameworks already extracted in `MGTK737 Theories for MGTK746.txt`
+- Includes: Authentic Leadership, LMX, Servant Leadership, Adaptive Leadership, Situational Leadership, Transformational Leadership, Path-Goal Theory, Five Bases of Social Power, Behavioural Approach, Implicit Leadership Theory, Skills Approach (Katz)
+- **No upload needed** — adequate coverage already available for A1 theoretical engagement requirements
+
+---
+
+### Porter, J. (2017) Why You Should Make Time for Self-Reflection (Even If You Hate Doing It). Harvard Business Review Digital Articles, pp.2–4.
+
+**Full access confirmed.**
+
+- **Structured Self-Reflection Process:** Six-step framework: identify important questions (avoiding, helping/hindering, difficult relationships, effectiveness), select reflection approach matching preferences (writing/talking/thinking), schedule committed time, start small (10 minutes minimum), execute reflection, seek accountability partner.
+- **Barriers to Self-Reflection:** Leaders resist due to discomfort with self-examination, time scarcity, lack of reflective practice experience, insufficient skills. Hardest leaders to coach are those unwilling to reflect on themselves.
+- **Leadership Reflection-Action Cycle:** Drucker's principle: effective action followed by quiet reflection produces more effective subsequent action. Regular reflection enables progress tracking, enhances positive emotions, increases motivation through recognising task advancement.
+
+---
+
+### Thomas, M. (1999) Mastering People Management. Thorogood Publishing Ltd.
+
+**No access. Note for later consideration:**
+
+- Practical guide to managing individuals and teams
+- Likely covers performance management, motivation, conflict resolution, delegation
+- Could support A1 Section 3 (collaboration) for people management aspects during EPW facilitation
+- **Suggest uploading:** Relevant chapters only if specific people management issues need theoretical grounding beyond West's teamwork focus and Northouse's leadership theories
+
+---
+
+### West, M.A. (2012) Effective Teamwork: Practical Lessons from Organizational Research. 3rd Edition. BPS Blackwell.
+
+**Partial access confirmed (Chapters 1, 2, 6, 11).**
+
+- **Team Reflexivity Concept:** Regular reviews of objectives, vigilance for external changes, awareness/review/discussion of functioning for improvement, creativity/flexibility/adaptability, tolerance of uncertainty, valuing diverse perspectives. Central to effective team adaptation in changing contexts.
+- **Basic Conditions for Effective Teamwork:** Real team (clear membership, appropriate size, stable composition, task requiring teamwork), clear challenging objectives adding value, right people with required skills in enabler roles (not derailers).
+- **Dream Teams Characteristics:** Transformational leadership inspiring stakeholder focus, valuing diversity, growth/learning opportunities, continuous development, high positivity (optimism, healthy interaction balance), team potency belief, trust/security/support, appropriate backup behaviours, engaged organisational relationship.
+- **Real Teams Versus Pseudo Teams:** Distinction between genuine interdependent teams versus working groups. Teams enable accomplishment of impossible individual tasks through interdependence (examples: antelope hunting, Stonehenge construction, heart bypass surgery, airline cockpit crews).
+- **Organisational Benefits of Teamwork:** Enacting strategy through flat structures enabling quick responses, faster product/service delivery through parallel work, reduced management layers when teams (not individuals) are functional units, enhanced safety through team pressure for safe practices.
+- **Team Objectives Primacy:** Clarity of objectives is single most important predictor of team success across sectors/nations. Teams often lack clear objectives, have member disagreement, or state objectives imprecisely as feel-good statements without practical application.
+- **Team Vision Development:** Vision should relate to organisational vision and team member values. Includes vision statement (aspirational future), mission statement (purpose/approach), specific measurable objectives. Example: Springwood Primary Healthcare Team prioritising health promotion equally with illness treatment.
+- **Three Types of Team Conflict:** Task conflict (disagreements about work approach), process conflict (role clarity, workload distribution), interpersonal conflict (personal tensions). High levels of any type damage functioning; process and interpersonal conflict always detrimental regardless of level.
+- **Organisational Conflict Causes:** Lack of role clarity/mutual understanding, absence of shared vision/explicit goals, inadequacy of resources, functional orientation differences, status inconsistencies, overlapping authority, task interdependence frustrations, incompatible evaluation systems.
+- **Conflict Resolution Approaches:** Avoid (neither party satisfied), accommodate (one party concedes), compete (win at all costs), compromise (partial satisfaction), collaborate (mutual needs met). Emphasise objective criteria for fair conclusions. Distinguish organisational causes from personality issues.
+
+---
+
+### Brooks, A.W. and John, L.K. (2018) 'The Surprising Power of Questions', Harvard Business Review, 96(3), pp.60–67.
+
+**Full access confirmed.**
+
+- **Strategic Questioning Framework (Five Techniques):** Favour follow-up questions, use open-ended questions strategically, sequence appropriately (decreasing intrusiveness for tense situations, increasing for relationship building), employ casual tone, attend to group dynamics.
+- **Question Types Taxonomy:** Four categories: introductory (greetings), mirror (reciprocal responses), full-switch (topic changes), follow-up (soliciting elaboration). Follow-up questions demonstrate active listening, signal respect, require minimal preparation, naturally emerge without instruction.
+- **Optimal Questioning Volume:** Business-to-business sales optimal range: 11–14 questions per conversation maximises conversion. Beyond 14 shows diminishing returns. Top performers scatter questions throughout (conversational) versus frontloading (interrogational).
+- **Questioning and Trust Building:** Spurs learning, fuels innovation, builds interpersonal trust, mitigates business risk by uncovering pitfalls. Question askers liked more by conversation partners but perceived less favourably by third-party observers compared to answerers.
+- **Group Dynamics Effects:** Presence of others affects willingness to answer. Groups follow each other's lead: 27% more likely to reveal sensitive information when told others were forthcoming versus reticent. Single closed-off person reduces questioning effectiveness; single open person encourages group opening.
+
+---
+
+**Note:** Items with full/partial access extracted from CP files. Items without access summarised from web search. For MGTK737 theories covered in separate CP file, see `MGTK737 Theories for MGTK746.txt` for comprehensive Northouse (2021) coverage.
+
+---
+
+# MGTK737 Leadership Theories Reference
+
+## Previous Module Assessment Extraction
+Below are theories/frameworks/concepts extracted from assessments of previous MBA module "MGTK737 Developing as a Manager and Leader" which resulted in 70%+ (A grade).
+
+---
+
+## Authentic Leadership
+Developmental process whereby leaders demonstrate self-awareness, internalised moral perspective, balanced processing, relational transparency. Shaped by life experiences; leaders made, not born.
+
+**Chan, A. (2005) Authentic leadership measurement and development: Challenges and suggestions. In W.L. Gardner, B.J. Avolio, & F.O. Walumbwa (Eds.), Authentic leadership theory and practice: Origins, effects, and development, pp.227–251, Oxford, UK: Elsevier Science.**
+
+---
+
+## Leader-Member Exchange Theory (LMX)
+Leadership approach focused on dyadic relationships between leaders and followers. High-quality exchanges characterised by trust, respect, mutual obligation creating in-groups and out-groups.
+
+**Northouse, P.G. (2021) Leadership: Theory and Practice. 9th Edition, London: Sage.**
+
+---
+
+## Servant Leadership  
+Leader prioritises followers' needs over own interests. Focuses on empowering, developing subordinates through service orientation. Includes listening, empathy, stewardship, building community.
+
+**van Dierendonck, D. (2011) Servant leadership: A review and synthesis. Journal of Management, 37(4), pp.1228–1261.**
+
+---
+
+## Adaptive Leadership
+Leadership mobilising people to tackle difficult challenges requiring learning, innovation, new approaches. Helps distinguish technical problems from adaptive challenges.
+
+**Heifetz, R.A. (1994) Leadership without easy answers. Cambridge, MA: Harvard University Press.**
+
+---
+
+## Situational Leadership  
+Leadership effectiveness depends on matching leader behaviour to follower readiness/development level. Four styles (directing, coaching, supporting, delegating) adjusted flexibly.
+
+**Hersey, P. and Blanchard, K.H. (1969) Life-cycle theory of leadership. Training and Development Journal, 23, pp.26–34.**
+
+---
+
+## Transformational Leadership
+Leaders inspire followers to transcend self-interest through idealised influence, inspirational motivation, intellectual stimulation, individualised consideration.
+
+**Northouse, P.G. (2021) Leadership: Theory and Practice. 9th Edition, London: Sage.**
+
+---
+
+## Path-Goal Theory
+Leaders enhance follower motivation by clarifying paths to goals, removing obstacles, increasing rewards. Four behaviours matched to situational factors.
+
+**House, R.J. and Mitchell, R.R. (1974) Path-goal theory of leadership. Journal of Contemporary Business, 3, pp.81–97.**
+
+---
+
+## Five Bases of Social Power
+Framework identifying power sources: legitimate (position), reward (benefits), coercive (punishment), expert (knowledge), referent (charisma). Different bases produce varying compliance effects.
+
+**French, J.R., Jr. and Raven, B.H. (1959) The bases of social power. In D. Cartwright (Ed.), Studies in social power, pp.259–269, Ann Arbor, MI: Institute for Social Research.**
+
+---
+
+## Tuckman's Group Development Stages  
+Five sequential team stages: forming (orientation), storming (conflict), norming (cohesion), performing (effectiveness), adjourning (dissolution).
+
+**Tuckman, B.W. and Jensen, M.A.C. (2010) Stages of small-group development revisited. Group Facilitation: A Research and Applications Journal, 10, pp.43–48.**
+
+---
+
+## Behavioural Approach
+Leadership defined by observable actions. Two dimensions: task behaviours (initiating structure) and relationship behaviours (consideration).
+
+**Northouse, P.G. (2021) Leadership: Theory and Practice. 9th Edition, London: Sage.**
+---
+
+## Implicit Leadership Theory
+Followers hold unconscious assumptions about leadership characteristics affecting perceptions and acceptance. Cultural variations impact cross-cultural effectiveness.
+
+**Eden, D. and Levitan, U. (1975) Implicit Leadership Theory as a Determinant of the Factor Structure Underlying Supervisory Behavior Scales. Journal of Applied Psychology, 60, pp.736–741.**
+
+---
+
+## Skills Approach (Katz)
+Three skill categories: technical (task knowledge), human (working with people), conceptual (strategic vision). Relative importance shifts across organisational levels.
+
+**Katz, R.L. (1955) Skills of an effective administrator. Harvard Business Review, 33(1), pp.33–42.**
+
+---
+
+## Management vs Leadership Distinction  
+Management focuses on planning, organising, controlling, stability. Leadership emphasises vision, change, inspiration, future direction. Organisations require both competencies.
+
+**Kotter, J.P. (1990) Force for Change: How Leadership Differs from Management. The Free Press.**
+
+---
+
+## Gibbs' Reflective Cycle
+Structured framework comprising six stages: description, feelings, evaluation, analysis, conclusion, action plan. Facilitates systematic critical reflection.
+
+**Gibbs, G. (1988) Learning by Doing: A Guide to Teaching and Learning Methods. Oxford Polytechnic, Further Education Unit.**
+
+---
+
+## UNESCO Normative Competency
+Ability to understand, analyse, question norms/values/actions. Involves critically examining practices, recognising when personal interests conflict with sustainability norms.
+
+**UNESCO (2017) Education for Sustainable Development Goals Learning Objectives. Available at: https://unesdoc.unesco.org/ark:/48223/pf0000247444 (Accessed: 16 February 2023)**
+
+---
+
+**Note:** All theories extracted from MGTK737 assessments (70%+ grade). Each theory uses single reference as cited in original documents.

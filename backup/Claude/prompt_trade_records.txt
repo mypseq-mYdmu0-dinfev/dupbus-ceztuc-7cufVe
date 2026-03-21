@@ -1,0 +1,77 @@
+There are two types of chats. If I send image(s), use Type A. If I send PDF(s), use Type B. No matter which type it is, only respond with direct output on spreadsheet table accordingly and never respond in text to start a conversation unless I prompt with text.
+
+<beginning of Type A>
+
+Please create a table for my transaction record with the following specifications:
+
+1. Date column: Single quote before the date, format 'MMDD for month and day.
+2. Time column: 'HHMM format with a single quote before.
+3. Type column: "Asset" for Buy/BOT, "Liquidation" for Sell/SLD.
+4. Ticker column: Add " x" after the ticker symbol, e.g., IBKR x.
+5. Qty./P&L% column: Quantity of shares bought/sold.
+6. SC/Sold column: Commission. For liquidations, make it negative.
+7. PPS/Bought column: Price per share, 4 decimal places, no rounding.
+
+Additional instructions:
+- Create a new line after each "Liquidation" record. In that new line: In the first 2 boxes, copy the date and time respectively from the above line in the same format. In the third box, mark it as PnL. In the fourth box, copy the ticker from the above line but inside square brackets without the x. For example, if the above record has a ticker: IBKR x you should mark it as [IBKR]
+- Follow chronological order across all images provided in one message.
+- Combine separated orders of the same type (buy/sell) and ticker within 120 seconds even if the orders are not consecutive and were intercepted by other record(s) between them, unless the interception is of the same ticker but opposite side. e.g. there were 4 orders in 120s: (buy AAA) (buy BBB) (buy AAA) (buy AAA), you should treat the (buy AAA) order as one. e.g. there were 3 orders in 120s: (buy AAA) (buy AAA) (sell AAA), you should treat them as two records which is a (buy AAA) and a (sell AAA).
+- For combined orders, sum the quantities and commissions, and calculate the weighted average price.
+- Present the data in a proper table format without skipping lines after asset records or after the new line created below each liquidation record.
+- Do not include a header row with column names. Make sure the header row starts with the first line of record directly.
+- Ensure all lines from the transaction record are included.
+- Do not add any explanatory text before or after the table.
+- Make sure to present the outcome in a spreadsheet table and in chronological order.
+- Make sure to create a new line after each and every liquidation record and do not miss out any records
+- Make sure to keep the dates and times as it is and do not do any conversions for Type A.
+
+I will provide screenshots of transaction records. Please process them and create the table as specified without any additional commentary.
+
+<end of Type A>
+
+<beginning of Type B>
+
+Create a table for the transaction record from the "Trades" section (after "Cash Report" and before "Financial Instrument Information") of the provided PDF file with the following specifications:
+
+1. Date column: Single quote before the date, format 'MMDD for month and day. 
+2. Time column: 'HHMM format with a single quote before.
+3. Type column: "Asset" for Buy, "Liquidation" for Sell. (In the PDF, under "Quantity" column, positive is buy, negative is sell)
+4. Ticker column: Add " x" after the ticker symbol, e.g., IBKR x.
+5. Qty.: Quantity of shares bought/sold (absolute value of the "Quantity" column in the PDF).
+6. SC: Commission (from "Comm/Fee" column in PDF). Make it negative for liquidations.
+7. PPS: Price per share (from "T. Price" column in PDF), 4 decimal places, no rounding.
+
+Additional instructions:
+- Create a new line after each "Liquidation" record. In that new line: In the first 2 boxes, copy the date and time respectively from the above line in the same format. In the third box, mark it as PnL. In the fourth box, copy the ticker from the above line but inside square brackets without the x. For example, if the above record has a ticker: IBKR x you should mark it as [IBKR]
+- In the provided PDF "Trades" section they are grouped by tickers. Follow the order but no need to specify group names. Just treat all lines of records as instructed into a single continuous spreadsheet.
+- Combine separated consecutive orders of the same type and ticker within the same minute.
+- For combined orders, sum the quantities and commissions, and calculate the weighted average price.
+- Present the data in a proper table format without skipping lines after asset records or after the new line created below each liquidation record.
+- Do not include a header row with column names. Make sure the header row starts with the first line of record directly.
+- Ensure all lines from the transaction record are included.
+- Do not add any explanatory text before or after the table.
+- Present the outcome in a single table sorted chronologically from earliest to latest.
+- Double-check all ticker symbols for accuracy.
+- Make sure to present the outcome in a spreadsheet table and in chronological order.
+- Make sure to create a new line as instructed after each and every liquidation record and do not miss out any records.
+- Ensure to convert dates (1st column) and times (2nd column) from New York to Sydney timezone (typically 14 hours ahead depending on Daylight Saving Time). e.g. if it shows 09-09, 10:38:30 in statement, you should put it as `0910 (date) `0038 (time) as of that period of the year. Check DST arrangements in both New York and Sydney at the time of the transactions. Only do this for Type B (when I send PDF), do not do any conversions for Type A (when I send image). When I say "date" or "time", re-check this line of prompt.
+- Before generating a table for Type B, look at the amount in the cell under "Change" column on the "Total" row in "Net Asset Value" section of 1st page of the PDF, which we shall define as "P&L". A buy record would cause the balance to decrease by (PPS*Qty)+SC and a sell record would cause the balance to increase by (PPS*Qty)-SC, totalling a P&L. If the calculated P&L matches with the P&L in the PDF, proceed to generate the table. If not, do not generate table and do alert me the PDF records might have issues.
+
+<end of Type B>
+
+Always present the data without any blank lines in a proper spreadsheet table format as follows:
+
+| 'MMDD | 'HHMM | Type        | Ticker x | Qty | SC    | Price    |
+|-------|-------|-------------|----------|-----|-------|----------|
+| 'MMDD | 'HHMM | Asset       | TICK x   | ##  | #.##  | ###.#### |
+| 'MMDD | 'HHMM | Liquidation | TICK x   | ##  | -#.## | ###.#### |
+| 'MMDD | 'HHMM | PnL         | [TICK]    |     |       |          |
+
+When and only when i say "list" or "summary":
+
+Create a table of unique tickers from the transaction record I provided earlier. Present the tickers in a single column table without a header, starting directly with the first ticker. Format it as a proper spreadsheet table for easy import. Always present in a proper spreadsheet table format as follows:
+
+| TICK   |
+|--------|
+| TICK   |
+| TICK   |

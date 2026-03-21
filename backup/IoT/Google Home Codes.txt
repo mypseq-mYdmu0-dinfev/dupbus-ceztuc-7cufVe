@@ -1,0 +1,291 @@
+Google Home Codes
+
+............................................................................................................................................
+
+metadata:
+  name: Bathroom Daylight (Manual 🚽🌞)
+  description: When a user says, Set lights to daylight, the lights will change
+automations:
+  - starters:
+      - type: assistant.event.OkGoogle
+        eventData: query
+        is: Set lights to daylight
+    actions:
+      - type: device.command.ColorAbsolute
+        devices:
+          - Bathroom Bulb 1 - Bathroom
+          - Bathroom Bulb 2 - Bathroom
+          - Bathroom Bulb 3 - Bathroom
+          - Bathroom Bulb 4 - Bathroom
+        color:
+          temperature: 6500.0K
+      - type: device.command.BrightnessAbsolute
+        devices:
+          - Bathroom Bulb 1 - Bathroom
+          - Bathroom Bulb 2 - Bathroom
+          - Bathroom Bulb 3 - Bathroom
+          - Bathroom Bulb 4 - Bathroom
+        brightness: 100.0
+
+............................................................................................................................................
+
+metadata:
+  name: Bathroom Heater (D<>T)
+  description: Synchronise Bathroom Heater & Bathroom Heater ST
+automations:
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom A/C Plug - Bedroom
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bathroom Heater ST - Bathroom
+        on: true
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom A/C Plug - Bedroom
+        state: on
+        is: false
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bathroom Heater ST - Bathroom
+        on: false
+  - starters:
+      - type: device.state.OnOff
+        device: Bathroom Heater ST - Bathroom
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom A/C Plug - Bedroom
+        on: true
+  - starters:
+      - type: device.state.OnOff
+        device: Bathroom Heater ST - Bathroom
+        state: on
+        is: false
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom A/C Plug - Bedroom
+        on: false
+
+............................................................................................................................................
+
+metadata:
+  name: Bathroom Heater Timer
+  description: Turn off Bathroom Heater in 10 minutes
+
+automations:
+  starters:
+    - type: device.state.OnOff
+      state: on
+      is: true
+      device: Bedroom A/C Plug - Bedroom
+
+  actions:
+    - type: time.delay
+      for: 10min
+    - type: device.command.OnOff
+      on: false
+      devices: Bedroom A/C Plug - Bedroom
+
+............................................................................................................................................
+
+metadata:
+  name: Bedroom A/C (D<>T)
+  description: Synchronise Bedroom A/C and HVAC
+automations:
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom A/C - Bedroom
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom A/C TP - Bedroom
+        on: true
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom A/C - Bedroom
+        state: on
+        is: false
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom A/C TP - Bedroom
+        on: false
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom A/C TP - Bedroom
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom A/C - Bedroom
+          - Bedroom Fan - Bedroom
+        on: true
+
+............................................................................................................................................
+
+metadata:
+  name: Bedroom Fan (D<>T)
+  description: Synchronise Bedroom Fan and Bedroom Fan GC
+automations:
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom Fan - Bedroom
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom Fan GC - Bedroom
+        on: true
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom Fan - Bedroom
+        state: on
+        is: false
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom Fan GC - Bedroom
+        on: false
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom Fan GC - Bedroom
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom Fan - Bedroom
+        on: true
+  - starters:
+      - type: device.state.OnOff
+        device: Bedroom Fan GC - Bedroom
+        state: on
+        is: false
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Bedroom Fan - Bedroom
+        on: false
+
+............................................................................................................................................
+
+metadata:
+  name: Kitchen Light > Living Room Fan - # Choose a short name that summarizes important starters and actions, like “Sunset lights”.
+  description: When Kitchen Light 1 turns off, turn off Living Room Fan. # Write a detailed description that includes everything the automation does, like “At sunset, on weekdays, close blinds, turn on lights to 50%, and play the sunset playlist on certain speakers.”
+
+automations:
+  starters:
+    - type: device.state.OnOff
+      state: on
+      is: false
+      device: Kitchen Light 1 - Kitchen
+  actions:
+    - type: device.command.OnOff
+      on: false
+      devices: Living Room Fan - Living Room
+
+............................................................................................................................................
+
+metadata:
+  name: Kiwi TV (D<>T)
+  description: Synchronise Kiwi TV and Kiwi TV GC.
+automations:
+  - starters:
+      - type: device.state.OnOff
+        device: Kiwi TV - Living Room
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Kiwi TV GC - Living Room
+        on: true
+  - starters:
+      - type: device.state.OnOff
+        device: Kiwi TV GC - Living Room
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Kiwi TV - Living Room
+        on: true
+  - starters:
+      - type: device.state.OnOff
+        device: Kiwi TV - Living Room
+        state: on
+        is: false
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Kiwi TV GC - Living Room
+        on: false
+  - starters:
+      - type: device.state.OnOff
+        device: Kiwi TV GC - Living Room
+        state: on
+        is: false
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Kiwi TV - Living Room
+        on: false
+
+............................................................................................................................................
+
+metadata:
+  name: Living Room Fan <> Heater
+  description:
+    When the fan is on, turn off the heater and when the heater is on, turn
+    off the fan.
+automations:
+  - starters:
+      - type: device.state.OnOff
+        device: Living Room Fan - Living Room
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - LR A/C Plug - Living Room
+        on: false
+  - starters:
+      - type: device.state.OnOff
+        device: LR A/C Plug - Living Room
+        state: on
+        is: true
+    actions:
+      - type: device.command.OnOff
+        devices:
+          - Living Room Fan - Living Room
+        on: false
+
+............................................................................................................................................
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

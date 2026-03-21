@@ -1,0 +1,31 @@
+metadata:
+  name: Winter IoT Setup
+  description: Notes for setting up Bathroom Heater & Living Room Heater.
+
+# Renamed Devices & Moved Room
+Grid Connect: 'Bedroom A/C Plug' → 'Bathroom Heater'
+Grid Connect: 'LR A/C Plug' → 'LR Heater'
+Tapo: 'Bedroom A/C TP' → 'Bathroom Heater TP'
+Tapo: 'LR A/C TP' → 'LR Heater TP'
+SmartThings: 'Bedroom A/C TP' → 'Bathroom Heater TP' (Bedroom → Bathroom)
+SmartThings: 'LR A/C TP' → 'LR Heater TP'
+Google Home: Refreshed 'Grid Connect'
+Google Home: 'Bedroom A/C TP' → 'Bathroom Heater TP' (Bedroom → Bathroom)
+Google Home: 'LR A/C TP' → 'LR Heater TP'
+
+# Disabled Automations
+Google Home: 'Bedroom A/C (D<>T)', 'Bedroom A/C (T>D-)', 'Living Room A/C (D<>T)', 'Living Room A/C (T>D-)'
+SmartThings: 'A/C is ON', 'Sleeping A/C ON', 'Sleeping A/C OFF', 'Both AC ON', 'Bedroom A/C is ON', 'LR A/C On', 'LR A/C OFF', 'Extreme Heat'
+
+# Enabled Automations
+Google Home: 'Bathroom Heater (D<>T)', 'Bathroom Bulb > Bathroom Heater -', 'LR Heater (D<>T)', 'Kitchen Light > LR Heater -'
+SmartThings: 'Bathroom Heater ON', 'Bathroom Heater Timer', 'LR Heater ON (TV & 20-)', 'LR Heater OFF (24+)'
+
+# Edited Automations
+Google Home: 'Master Off' added 'Bathroom Heater TP', 'Bathroom Heater'
+Google Home: 'Master On' removed 'Bathroom Heater', 'LR Heater'
+SmartThings: 'Bedtime Routines' added 'Bathroom Heater TP'
+SmartThings: 'Away / Night Alert' added 'Bathroom Heater TP'
+
+# Edited Favourites
+Google Home: 'LR A/C' → 'LR Heater'
