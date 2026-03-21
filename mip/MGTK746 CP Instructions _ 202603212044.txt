@@ -1,0 +1,181 @@
+context:
+this CP is dedicated to "MGTK746 Management in Practice" (MIP), a special module (subject) of my online MBA with UoL. unlike other modules that run for 6 weeks with typically 1 assessment every fortnight, this module runs for 9 weeks with no lectures and only self-reflection assessments, rear to 3 separate weeks (already completed) called "Executive Project Weeks" (EPW) that spanned along my MBA journey. each EPW had different guest speakers on a certain topic then i had to work with a group of 5 to 7 fellow MBA candidates (different every EPW) on a project related to such topic. in an EPW, tuesday is the speaker talk & intro day, wednesday to friday would each have 2 hours of zoom meeting for discussion (1 facilitated by an academic, 1 by our own and recorded as evidence), saturday would be for us to work on the slide deck, sunday is the deadline of presentation submission inc. video recording, finally monday would be the live sharing of the video recording + Q&A + discussions with everyone in that EPW cohort.
+.
+special remark:
+- everyone is supposed to experience 3 EPWs and collect evidence (screenshots, etc.) during them for the assessment stage of this module, though i lost the evidence of the first one (MS Teams link expired) but luckily the officials granted me one more chance to attend a fourth EPW so my final EPW is my fourth, not third like others
+- the MIP module is not revealed before completing all 3 EPWs, so MIP module info (e.g. assessment details) would be more specific and accurate
+- "management" will be abbreviated as "mgt" throughout this CP
+- immediately stop and alert me if any files mentioned below are inaccessible
+.
+EPW Universal Files (similar in all EPWs):
+.
+Course/ Executive Project Weeks 2026 | VLE.pdf
+= module home page with basic info
+.
+Topic/ Assessment Preparation | Executive Project Weeks 2026 | VLE.pdf
+= as filename suggests, provided before MIP so might not be as accurate
+.
+Executive Project Weeks 2026/ MGTK746 Reading List | VLE.pdf
+= as filename suggests
+.
+.
+.
+EPW4 files (specific to this week):
+.
+Topic/ Event 1 | Executive Project Weeks 2026 | VLE.pdf
+= main page of this EPW (Event 1 = first EPW of the year, not my first EPW)
+.
+EPW 2026 1 - Speaker talk Craig McGill.pdf
+= presentation slides of guest speaker of the fourth EPW
+.
+Task Slides EPW Jan 26.pdf
+= tasks of the fourth EPW, mind every details especially those on and after slide 11 ("GreenNest Homeware Crisis Case...is planned for next year."), the rest is similar for every EPW
+.
+EPW A2 2026 (SHARED) FINAL.pdf
+= slide deck
+.
+EPW A2 2026 (SHARED) FINAL_script.txt
+= transcription of presentation (refer to slide deck for on-slide content), slides with `(CULOUS)` were presented by me
+.
+EPW4 Portfolio Evidences.txt
+= description of evidences
+.
+GreenNest Homeware Crisis Case tailored communication strategies (Afrah) (dragged).pdf
+= first page of Afrah's (my EPW4 teammate sharing same task with me) first draft (essay-like), can be used to contrast final presentation slides (optimised for presentation in matrices with temporal sectors), showcasing my contribution as i advocated and led such direction change
+.
+teammates:
+- Jehan Adham
+- Afrah Alsubaie
+- Nai-Wen Chang
+- Yat Yeung Chin (Kevin)
+- Caroline Lieffrig
+- Mokshara Wathsaranga Thilakasiri Widhana Pathiranage (Moka)
+.
+.
+.
+EPW3 files:
+.
+Topic/ Event 2 | Executive Project Weeks 2024 | VLE.pdf
+= main page of this EPW
+.
+Presenters Slides-April2024-v1 (dragged).pdf
+= task of this EPW
+.
+EPW Cohort A-1 Samsung and Sustainability.pdf
+= slide deck
+.
+EPW Cohort A-1 Samsung and Sustainability_script.txt
+= transcription of presentation of my slide only (slide 7 "SUSTAINABILITY TIMELINE ... Aim to achieve company-wide net zero carbon emissions"), note that i've shown my face in this recording, not just audio
+.
+EPW3 Portfolio Evidences.txt
+= description of evidences
+.
+teammates:
+- Leonardo Mila
+- Mashhuda Kazi
+- Ben Dingwall
+- Talin Andonians
+- Sam Jackson
+.
+remarks: FRI meeting could not be recorded due to technical error and missing team member (Mashhuda), plus we were already done before weekend, so there're only WED and THU meeting analyses
+.
+.
+.
+EPW2 files:
+.
+Topic/ Event 4 | Executive Project Weeks 2023 | VLE.pdf
+= main page of this EPW
+.
+Event 4 Task Brief (dragged).pdf
+= task of this EPW
+.
+EPW Event 4 Group A1 _ Strategies of Tesla in Sustainability & HR _ Phase 3.pdf
+= phase 3 (final and submitted) slide deck
+.
+EPW Event 4 Group A1 _ Strategies of Tesla in Sustainability & HR _ Phase 3_script.txt
+= transcription of presentation of my slides only (1-5)
+.
+EPW2 Portfolio Evidences.txt
+= description of evidences
+.
+teammates:
+- Joe Whitchurch-Bennett
+- Reem Rabie
+- Ben Dingwall
+.
+remarks:
+in phase 1 (initial), we were using powerpoint. as we discussed, i showed peers my consulting firm's works as well as my EPW1 slides. they appreciated my design skills and nominated me to redesign everything with my usual software (apple keynote). so technically i designed each and every slide using peers' pure text content. also noteworthy is that this is the ONLY EPW that i split the slide deck dev into 3 phases, since im in charge of the actual slide compiling/building. phase 1 was rough draft/original content on pptx (remind me to attach that ppt file `EPW Event 4 Group A1 _ Tesla HR Strategy.pptx` to A2 for comparison with keynote, as it's not saved in CP to save capacity); phase 2 was my reword/rebuild/redesign of everything in keynote; phase 3 was rear to feedback session and my final edits, then exported as PDF & imported to ppt for everyone's voice recording. im guessing such effort/workload and operational workflow deserve some merits. btw this is the only EPW that are literally led by me as i proposed the brand (Tesla), started the presentation (first few slides), designed everything single thing, and presented most slides. FYI: "Isaac" = Culous' previous name before 2024 (no need to mention in A1/A2)
+.
+.
+.
+EPW1 files:
+.
+to be supplied later
+.
+.
+.
+MIP Module Files:
+.
+Course/ MGTK746 Management in Practice January 2026 | VLE.pdf
+= MIP module home page
+.
+ULMS - Personal Development Portfolio.pdf
+= grading criteria for A1 + A2 as a whole
+.
+Topic/ Module Schedule | MGTK746 Management in Practice January 2026 | VLE.pdf
+= MIP deliverable schedule, e.g. both A1 & A2 due 30 March 2026 (UK time) whilst formative submissions for both are due earlier for feedback from lecturer
+.
+Topic/ Unit 1 | MGTK746 Management in Practice January 2026 | VLE.pdf
+= info page of phase 1 (weeks 1-3) of MIP
+.
+MGTK746 January 2026/ Activity 2/ Formative Submission 1 | VLE.pdf
+= instructions on formative submission 1, the "briefing" for A1 and A2 are in "Unit 3" files described below; Formative Submission 2 page has identical content except: "By day 7 (Monday) of Week 7 submit a draft of Assessment 1 as a Word document and a draft of Assessment 2 as a PowerPoint file. Submit both drafts to this page."
+.
+MGTK746/ Management in practice (KOL) | University of Liverpool.pdf
+= reading list supplied for whole MIP module (request me to upload to CP when needed)
+.
+Topic/ Unit 2 | MGTK746 Management in Practice January 2026 | VLE.pdf
+= info page of phase 2 (weeks 4-7) of MIP
+.
+Topic/ Unit 3 | MGTK746 Management in Practice January 2026 | VLE.pdf
+= info page of phase 3 (weeks 8-9) of MIP
+.
+MGTK746 January 2026/ Activity 1/ Final Assessment 1/ Individual Report (70%) | VLE.pdf
+= A1 briefing/instructions, note that even 1 word above limit would be penalised, IMPORTANT: remind me to attach coversheet when first full draft is attained
+.
+MGTK746 January 2026/ Activity 2/ Final Assessment 2/ Portfolio of Evidence (30%) | VLE.pdf
+= A2 briefing/instructions, note that even 1 slide above limit would be penalised, IMPORTANT: remind me to attach coversheet when first full draft is attained
+.
+.
+.
+PM Files:
+.
+MGTK746 Project Summary.txt
+= brief overview of MIP, A1/A2, and special context, potentially for CIC if needed
+.
+MGTK746 Core File Summary.txt
+= summary of all persistent CP files (not to be deleted) for understanding alignment, NOT to be relied on, always refer to actual files during decision making and flag discrepancies if any
+.
+MGTK746 Theory Repository.txt
+= theories/frameworks/concepts extracted from previous MBA module and this module's reading list, could be useful for MIP A1/A2 esp. when choosing evidences and later writeup
+.
+MGTK746 Dev Plan _ [timestamp].txt
+= development plan of this CP (aka "dev plan") with addendums, to be updated regularly with timestamps, e.g. `MGTK746 Dev Plan _ 202602120403.txt`; immediately alert if duplicated copies of this file are found to avoid confusion
+.
+MGTK746 Thematic Analysis _ [timestamp].txt
+= comprehensive thematic analysis based on EPW2-4 analyses (which are based on full meeting transcripts/whatsapp group chats). IMPORTANT: use title case for all themes and evidence items' titles (some already are); avoid the term "grade" (e.g. Consultancy-grade) as it might be irritating to academics (like I'm presuming consultants are superior), instead use: tier, style, standard, etc.
+.
+`A1 Individual Report _ [timestamp].txt` `A2 Portfolio of Evidence _ [timestamp].txt`
+= formative submission of A1 & A2 (pure text ver. of submitted .docx/.pptx), which has more info than actual draft which is my strategy for receiving higher amount of highly specific feedback on trimming (so we get the marker's professional/subjective preference) rather than generic feedback asking me to add more contents; they're just preliminary drafts so feel free to change anything; immediately alert and confirm with me if any discrepancies from thematic analysis which could be an error OR a correction over mistaken content (e.g. 1.4.4 Afrah's slides got skipped in first-attempt exported video, not just audio not playing)
+.
+`MGTK746 _ A1 _ [timestamp].pdf` `MGTK746 _ A2 _ [timestamp].pdf`
+= latest A1/A2 draft
+.
+`MGTK746 _ A1 _ pure text _ [timestamp].txt`
+= pure text ver of A1 with same timestamp
+.
+MGTK746 Formative Feedback 1.txt
+= feedback on my formative submission 1 of A1/A2
+.
+Formative 1 Emails.txt
+= regarding `MGTK746 Formative Feedback 1.txt`, refer when necessary

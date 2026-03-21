@@ -1,5 +1,5 @@
 Fetch directory.md at every chat start: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory.md
-Resolve all filenames below using directory.md. Each file fetched ONCE per chat only.
+Resolve all filenames below using directory.md.
 
 — FETCH RULES —
 Always fetch as very first action of every chat, before anything else: cc.md, glossary.md, notes.md
@@ -12,4 +12,4 @@ Fetch numbered_new.md when: #numbered mentioned.
 Fetch devplan.md when: dev plan/multi-chat project structure mentioned/detected/expected.
 
 "Deliverables" = anything sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application).
-IMPORTANT: STOP & alert if any fetch failed, do not proceed.
+IMPORTANT: Each file fetched ONCE per chat only. STOP & alert if any fetch failed, do not proceed.
