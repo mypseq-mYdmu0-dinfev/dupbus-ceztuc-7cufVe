@@ -17,8 +17,8 @@ Start with `Full text parsed: Yes/No`
 - **Return `No` immediately if**
   - any “TRUNCATED”‑like message appears from the fetch layer, **or**
   - the content looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
-If and only if `Yes`, proceed to verify with reliable sources but never fabricate or insert external content
-Before summary: Quote tool’s exact truncation msg (if present)
+- If and only if `Yes`, proceed to verify with reliable sources but never fabricate or insert external content
+- Before summary: Quote tool’s exact truncation msg (if present)
 
 ---
 
