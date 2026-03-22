@@ -1,4 +1,3 @@
-test
 # Full Text Summary
 
 When I prompt `FTS`, apply this prompt for the provided URL (or the open web page in Comet browser):
@@ -9,11 +8,17 @@ Concisely summarise this web page:
 - only use metric units (never imperial)
 - follow Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise
 - the whole chat must always follow all above conventions
-- Start with `Full text parsed: Yes/No`
-  - Say `Yes` *only* if tool output lacks any ‘TRUNCATED’ flag/note *and* states full content length, where the complete main article body from this exact URL was received & parsed, not just a snippet or extract); otherwise `No`
-  - Say `No` if no/partial content is available, do not use or reference any external pages or search results, and immediately stop after reporting this fact, with no further inference or summary; **MANDATORY**: No tool calls after `No`; end response here. Never call `search_web` or other tools post-fetch; use *only* `fetch_url` output
-- if and only if `Yes`, proceed to verify with reliable sources but never fabricate or insert external content
-- before summary: Quote tool’s exact truncation msg (if present) or confirm full length
+
+Start with `Full text parsed: Yes/No`
+- **Return `Yes` only if**
+  - the fetch tool reports **no “TRUNCATED”** flag or explicit truncation note, **and**
+  - the page appears to be **self‑contained, readable content** (no obvious paywall, login gate, or “content not available to bots” placeholder), **and**
+  - you can reliably extract **both first and last visible words** (e.g., masthead + footer) that match the actual layout (as with `culousyu.com`).
+- **Return `No` immediately if**
+  - any “TRUNCATED”‑like message appears from the fetch layer, **or**
+  - the content looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
+If and only if `Yes`, proceed to verify with reliable sources but never fabricate or insert external content
+Before summary: Quote tool’s exact truncation msg (if present)
 
 ---
 
