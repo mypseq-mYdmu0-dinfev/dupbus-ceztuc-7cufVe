@@ -20,7 +20,7 @@ Start with `Full text parsed: Yes/No` by **ONLY using fetch_url** on exact URL �
 - **Return `No` immediately if**
   - any “TRUNCATED”‑like message appears from the fetch layer, **or**
   - the content looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
-- If and only if `Yes`, proceed to verify with reliable sources (using **search_web ONLY for validation**, not parsing decision) but never fabricate or insert external content.
+- If and only if `Yes`, proceed to verify with reliable sources (ENABLE search_web, using **search_web ONLY for validation**, not parsing decision) but never fabricate or insert external content.
 - If `No`: **STOP ALL TOOLS**. No search_web, no citations, no further processing.
 - Before summary: Quote tool’s exact truncation msg (if present).
 
