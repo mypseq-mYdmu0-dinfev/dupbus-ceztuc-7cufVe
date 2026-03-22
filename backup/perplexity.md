@@ -1,6 +1,7 @@
 # Full Text Summary
 
 When I prompt `FTS`, apply this prompt for the provided URL (or the open web page in Comet browser):
+
 Concisely summarise this web page:
 - in British English only
 - use bold/sections/bullet pt
@@ -9,7 +10,7 @@ Concisely summarise this web page:
 - follow Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise
 - the whole chat must always follow all above conventions
 
-Start with `Full text parsed: Yes/No`
+Start with `Full text parsed: Yes/No` by **fetch_url ONLY** on exact URL, NOT search _web
 - **Return `Yes` only if**
   - the fetch tool reports **no “TRUNCATED”** flag or explicit truncation note, **and**
   - the page appears to be **self‑contained, readable content** (no obvious paywall, login gate, or “content not available to bots” placeholder), **and**
@@ -17,8 +18,9 @@ Start with `Full text parsed: Yes/No`
 - **Return `No` immediately if**
   - any “TRUNCATED”‑like message appears from the fetch layer, **or**
   - the content looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
-- If and only if `Yes`, proceed to verify with reliable sources but never fabricate or insert external content
-- Before summary: Quote tool’s exact truncation msg (if present)
+- If and only if `Yes`, proceed to verify with reliable sources (using **search_web ONLY for validation**, not parsing decision) but never fabricate or insert external content.
+- If `No`: Stop immediately. No search_web or anything.
+- Before summary: Quote tool’s exact truncation msg (if present).
 
 ---
 
