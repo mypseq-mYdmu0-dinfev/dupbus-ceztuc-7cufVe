@@ -15,7 +15,7 @@ I've connected my Google Drive, Mail, and Calendar. If access failed (e.g. asked
 ## Gmail
 
 - Timezone: Gmail date filters use UTC. Always fetch current SYD (or wherever I am) timezone offset before any date-based query and adjust boundaries
-- When not in CP AND no files sent in chat AND my msg inc "Note"/"Notes" (only when using capital `N`), refer to emails labelled with `Notes` —— These are not actual emails but my entries in Apple "Notes" app synced to my Gmail account for your access
+- When not in CP AND no files sent in chat AND my msg inc "Note"/"Notes" (only when using capital `N`) or "apple notes", refer to emails labelled with `Notes` —— These are not actual emails but my entries in Apple "Notes" app synced to my Gmail account for your access
 
 ---
 
