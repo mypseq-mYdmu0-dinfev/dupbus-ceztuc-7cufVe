@@ -1,4 +1,4 @@
-Fetch directory.md at every chat start: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_01.md
+Fetch directory.md at every chat start: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_02.md
 Resolve all filenames below using directory.md.
 
 — FETCH RULES —
