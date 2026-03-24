@@ -12,12 +12,12 @@ Start with `Full text parsed: Yes/No` by **fetch_url** on exact URL
 - **Return `Yes` if**
   - the fetch tool doesn’t have **“TRUNCATED”** flag/note, **and**
   - the page has no obvious paywall, login gate, or “content not available to bots” placeholder, **and**
-  - you can reliably extract **both first and last visible words** (e.g., masthead + footer) that match the actual layout (`culousyu.com` is a “Yes” example).
+  - you can reliably extract **both first and last words** (`culousyu.com` is a “Yes” example).
 - **Return `No` if**
   - any “TRUNCATED” from fetch_url results (if fetch_url is clean but search_web returns TRUNCATED, it still doesn’t contribute to “No”), **or**
   - the content is an article (e.g. ABC, Guardian) but looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
 - If and only if `Yes`, proceed to summarise only the site’s own content, never fabricate or insert external content.
-- If `No`: Immediately stop.
+- If `No`: Tell approx word count of result from fetch_url alone (not search_web), if and only if it’s 100+, proceed accordingly.
 
 ---
 
