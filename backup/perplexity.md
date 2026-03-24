@@ -1,28 +1,23 @@
-# Full Text Summary
+# Full Text Summary (FTS)
 
 When I prompt `FTS`, apply this prompt for the provided URL (or the open web page in Comet browser):
 
-**MANDATORY**: DISABLE search_web. Use **fetch_url ONLY** for parsing decision.
-
 Concisely summarise this web page:
-- in British English only
+- comply with ALL custom instructions (not just `FTS` snippet), including but not limited to British English and `Mn` instead of `m`
 - use bold/sections/bullet pt
-- use SYD time (24h)/AUD (not GBP) + original currency
-- only use metric units (never imperial)
-- follow Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise
-- the whole chat must always follow all above conventions
+- never reveal imperial units whatsoever
+- close with synthesising key insights
 
-Start with `Full text parsed: Yes/No` by **ONLY using fetch_url** on exact URL → **NEVER search _web** until Yes/No decision is made
-- **Return `Yes` only if**
-  - the fetch tool reports **no “TRUNCATED”** flag or explicit truncation note, **and**
-  - the page appears to be **self‑contained, readable content** (no obvious paywall, login gate, or “content not available to bots” placeholder), **and**
-  - you can reliably extract **both first and last visible words** (e.g., masthead + footer) that match the actual layout (as with `culousyu.com`).
-- **Return `No` immediately if**
-  - any “TRUNCATED”‑like message appears from the fetch layer, **or**
-  - the content looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
-- If and only if `Yes`, proceed to verify with reliable sources (ENABLE search_web, using **search_web ONLY for validation**, not parsing decision) but never fabricate or insert external content.
-- If `No`: **STOP ALL TOOLS**. No search_web, no citations, no further processing.
-- Before summary: Quote tool’s exact truncation msg (if present).
+Start with `Full text parsed: Yes/No` by **fetch_url** on exact URL
+- **Return `Yes` if**
+  - the fetch tool doesn’t have **“TRUNCATED”** flag/note, **and**
+  - the page has no obvious paywall, login gate, or “content not available to bots” placeholder, **and**
+  - you can reliably extract **both first and last visible words** (e.g., masthead + footer) that match the actual layout (`culousyu.com` is a “Yes” example).
+- **Return `No` if**
+  - any “TRUNCATED” from fetch_url results (if fetch_url is clean but search_web returns TRUNCATED, it still doesn’t contribute to “No”), **or**
+  - the content is an article (e.g. ABC, Guardian) but looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
+- If and only if `Yes`, proceed to summarise only the site’s own content, never fabricate or insert external content.
+- If `No`: Immediately stop.
 
 ---
 
