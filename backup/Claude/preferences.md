@@ -1,5 +1,5 @@
 — PREREQUISITES —
-Fetch directory.md at every chat start: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_03.md
+Fetch directory.md at every chat start: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_05.md
 Resolve all filenames below using directory.md
 
 Before producing any output, scan full incoming msg for all conditional fetch keywords, both explicitly and implicitly (e.g. "draft/create/proceed to..." on deliverables all trigger writing.md)
