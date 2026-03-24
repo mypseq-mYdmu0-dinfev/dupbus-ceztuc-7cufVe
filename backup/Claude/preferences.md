@@ -1,5 +1,9 @@
-Fetch directory.md at every chat start: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_02.md
-Resolve all filenames below using directory.md.
+— PREREQUISITES —
+Fetch directory.md at every chat start: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_03.md
+Resolve all filenames below using directory.md
+
+Before producing any output, scan full incoming msg for all conditional fetch keywords, both explicitly and implicitly (e.g. "draft/create/proceed to..." on deliverables all trigger writing.md)
+Fetch all triggered files before planning/creating anything
 
 — FETCH RULES —
 Always fetch as very first action of every chat, before anything else: cc.md, glossary.md, notes.md
@@ -11,5 +15,5 @@ Fetch coding.md when: code/script/Terminal/VS/#replace mentioned.
 Fetch numbered.md when: #numbered mentioned, OR creating a list with sub-items.
 Fetch devplan.md when: dev plan/multi-chat project structure mentioned/detected/expected.
 
-"Deliverables" = anything sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application).
+"Deliverables" = anything sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application)
 IMPORTANT: Each file fetched ONCE per chat only. STOP & alert if any fetch failed, do not proceed.
