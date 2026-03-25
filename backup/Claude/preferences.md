@@ -5,7 +5,7 @@
 
 ## PREREQUISITES
 
-- Fetch at every chat start & resolve all filenames below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_08.md
+- Fetch at every chat start & resolve all filenames below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_09.md
 - Fetch as very first action of every chat, before anything else: cc.md, glossary.md, notes.md
 - Before producing any output:
   - Scan full incoming msg for all conditional keywords, both explicitly and implicitly (e.g. "draft/create/proceed to..." on deliverables all trigger writing.md), and fetch all triggered files
