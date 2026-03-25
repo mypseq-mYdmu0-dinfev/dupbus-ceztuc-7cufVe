@@ -1,17 +1,16 @@
 # FETCH RULES
 
-- IMPORTANT: Each file fetched ONCE per chat only. When fetched, print in chat (e.g. `✅ 1.md, 2.md`). STOP & alert if any fetch failed, do not proceed.
+- IMPORTANT: Each prompt file fetched ONCE per chat only. When fetched, print in chat (e.g. `✅ 1.md, 2.md`). STOP & alert if any fetch failed, do not proceed.
 - "Deliverables" = anything sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application)
 
-## PREREQUISITES
+## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all filenames below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_09.md
-- Fetch as very first action of every chat, before anything else: cc.md, glossary.md, notes.md
-- Before producing any output:
+- Fetch at every chat start & resolve all filenames below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_10.md
+- Prerequisites of any response:
   - Scan full incoming msg for all conditional keywords, both explicitly and implicitly (e.g. "draft/create/proceed to..." on deliverables all trigger writing.md), and fetch all triggered files
-  - Re-consult ALL earlier fetched files (inc. chat start), and run a silent compliance pass before planning/creating anything (e.g. Hart's logical quotation rule)
+  - Re-consult ALL earlier fetched prompt files (inc. chat start), and run a silent compliance pass before planning/creating anything (e.g. Hart's logical quotation rule)
 
-## DISCRETIONARY
+## CONDITIONAL
 
 Conditionally fetch:
 - google.md when: Gmail/Calendar mentioned, OR “apple notes”/capital-N "Notes" in msg, OR any calendar/schedule/event query

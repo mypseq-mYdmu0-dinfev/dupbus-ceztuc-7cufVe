@@ -1,4 +1,5 @@
-Each item: `[alias]` `[URL]` —— always fetch via URL, reference by alias.
+- Fetch as very first action of every chat, before anything else: glossary.md, cc.md, notes.md
+- Format: `[alias]` `[URL]` —— always fetch via URL, reference by alias.
 
 glossary.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/glossary.md
