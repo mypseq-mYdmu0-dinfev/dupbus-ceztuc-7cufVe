@@ -1,0 +1,926 @@
+# MGTK746 Development Plan
+## MIP Module Assessments A1 & A2
+
+---
+
+## Phase 1. File Preparation & Context Building
+1.1. Package all MIP & EPW4 files with descriptions for full context understanding
+1.2. Describe each file's purpose, content type, and relevance to assessments
+1.3. Note: EPW3/2/1 files supplied later after EPW4 meeting transcript (5hr+) processing to conserve CP capacity
+
+## Phase 2. Development Planning
+2.1. Create preliminary development plan
+2.2. Review and finalise preliminary plan
+2.3. Upload finalised plan to CP as reference document
+
+## Phase 3. Parsing Validation
+3.1. Claude articulates key insights from all CP files
+3.2. Culous validates parsing accuracy
+3.3. Identify any parsing errors or missing elements
+
+## Phase 4. Parsing Error Resolution
+4.1. Convert problematic files to pure text format
+4.2. Summarise lengthy/complex content as needed
+4.3. Re-upload (and replace) corrected/optimised versions to CP
+
+## Phase 5. EPW4 Evidence Processing
+5.1. Upload EPW4 meeting transcripts (5+ hours total) to CP
+5.2. Parse through all transcripts systematically
+5.3. Conduct thematic analysis: identify patterns, themes, learnings
+5.4. Discuss findings and select evidence items
+5.5. Document EPW4 themes/patterns before transcript removal
+5.6. Confirm satisfaction with EPW4 materials readiness
+
+## Phase 6. EPW3/2/1 Sequential Processing
+6.1. Remove EPW4 transcripts, retain synthesised findings/evidence
+6.2. Upload EPW3 files + meeting transcripts
+6.3. Parse, analyse themes, discuss, select evidence for EPW3
+6.4. Document EPW3 themes/patterns before transcript removal
+6.5. Remove EPW3 transcripts, upload EPW2 files + transcripts
+6.6. Parse, analyse themes, discuss, select evidence for EPW2
+6.7. Document EPW2 themes/patterns before transcript removal
+6.8. Remove EPW2 transcripts, upload EPW1 files (no transcripts)
+6.9. Analyse EPW1 deliverable, gauge usefulness, selective inclusion if exceptionally valuable
+
+## Phase 7. Evidence-to-Assessment Mapping
+7.1. Map collected evidence against A1 & A2 requirements (tools/theories, data sources, collaboration)
+7.2. Map collected evidence against A2 slide allocation (3-4 slides per EPW, 10 slides total)
+7.3. Cross-reference evidence with grading criteria (ULMS rubric)
+7.4. Identify gaps or imbalances across EPWs
+
+## Phase 8. Outline Development
+8.1. Draft A2 outline (10 slides + 1,000-word notes structure)
+8.2. Allocate evidence items to specific slides with labelling scheme
+8.3. Plan slide notes word count distribution (~100 words per slide)
+8.4. Draft A1 outline (2,000 words structure: intro 100, reflections 3×500, PDP 200-400)
+8.5. Plan cross-references from A1 to A2 evidence items
+8.6. Cross-check both outlines against grading criteria
+8.7. Finalise detailed development plan with content outline
+
+## Phase 9. Writeup & Quality Assurance
+9.1. Write A2 (slides + notes) with evidence items clearly labelled
+9.2. Review A2 against ULMS rubric before proceeding
+9.3. Write A1 introduction (~100 words)
+9.4. Write A1 critical reflection section 1: tools/theories (~500 words) with A2 cross-references
+   - Must include per-EPW gap discussion: alternative tools/theories not applied (e.g. EPW4: Lewin's Change Model; EPW3: Balanced Scorecard; EPW2: Kotter's 8-Step) — verify against thematic analysis before writing
+   - S1.2 and S1.4 must be framed theory-as-driver, not outcome-driven (confirmed by Melissa, MGTK746 lecturer/marker)
+9.5. Mini-review after section 1
+9.6. Write A1 critical reflection section 2: data sources (~500 words) with A2 cross-references
+   - Must include per-EPW alternative data types gap (e.g. EPW4: real crisis case studies; EPW3: GRI/CDP reports; EPW2: ESG ratings) — verify against EPW case materials before writing
+   - Plenary session feedback excluded (post-submission; confirmed by Melissa)
+9.7. Mini-review after section 2
+9.8. Write A1 critical reflection section 3: collaboration (~500 words) with A2 cross-references
+   - Must explicitly address personal strengths and weaknesses in collaborative contexts (confirmed by Melissa)
+9.9. Mini-review after section 3
+9.10. Write A1 Personal Development Plan (200-400 words) with SMART actions
+   - Two goals only: PDP.1 (Socratic coaching, Sydney consulting) and PDP.2 (Shared Leadership, HK board advisory)
+   - PDP.3 (reflective journaling) dropped
+9.11. Compile A1 references (Harvard style)
+9.12. Comprehensive final review:
+   - Grading criteria alignment (ULMS rubric)
+   - A1-A2 cross-reference accuracy
+   - Word count: A1 ≤2,000 words (excluding references)
+   - Slide count: A2 ≤10 slides + 1 cover slide
+   - Notes count: A2 ≤1,000 words
+   - Harvard referencing format
+   - Narrative coherence across A1 & A2
+   - PDP uses SMART criteria
+9.13. Attach coversheets to both assessments
+9.14. Final submission check
+
+---
+
+## Key Principles
+- EPW2-4 hold equal weight in analysis and word/slide allocation
+- EPW1 included selectively only if exceptionally valuable
+- Evidence before narrative: A2 completed before A1
+- Theory balance (S1 vs S2/S3): Melissa deferred judgement to full draft; independently ensure S2/S3 reach comparable theoretical depth to S1 (Chat 09 outstanding objective)
+- Iterative validation at section level
+- Rubric-driven quality control throughout
+- Always use British English in academic, business tone
+
+---
+
+# Phase 1-3 Addendum (Chat 01)
+
+## Phase 1.2 Enhancement
+
+Created standalone file summary documents as cross-chat reference materials:
+- EPW Universal Files Summary (3 files)
+- EPW4 Files Summary (6 files)
+- MIP Module Files Summary (10 files)
+- Combined into `MGTK746 Core File Summary.txt` in CP
+
+These summaries serve as quick reference for Claude across chats to confirm file understanding without re-parsing entire documents.
+
+## Project Management Approach
+
+Progress tracking via synthesised addendums at chat end rather than item-by-item checkoffs within dev plan file. Addendums appended to dev plan file to preserve core plan integrity whilst documenting progress and discrepancies.
+
+---
+
+# Phase 3-4 Addendum (Chat 02)
+
+## Deviations from Original Plan
+
+**Additional Scope Work (Not in Original Plan):**
+
+### 1. MGTK737 Module Integration
+Culous identified opportunity to leverage theories from earlier MBA module (MGTK737 Developing as a Manager and Leader, Grade A 70%+) for A1 theoretical engagement depth.
+
+**Actions Completed:**
+- Temporarily uploaded 3 MGTK737 assessment files to CP
+- Summarised each file (30 words)
+- Extracted 14 theories/frameworks with concise definitions
+- Compiled proper single-citation references matching original usage
+- Created `MGTK737 Theories for MGTK746.txt` in CP
+- MGTK737 files removed from CP to conserve capacity
+
+### 2. Reading List Gap Analysis
+Created assessment of conceptual understanding vs detailed knowledge for 9 MIP reading list items. Identified high-priority uploads (Carson, West, Hargreaves) needed before evidence selection to strengthen theoretical engagement for 90-100% band.
+
+**Output:** Upload priority recommendations and strategic timing guidance
+
+## Impact on Subsequent Phases
+
+**Phase 4 onwards:**
+- Can proceed with enriched theoretical foundation
+- Consider Carson/West/Hargreaves uploads before Phase 5 (EPW4 Evidence Processing)
+- Theory reference file available for Phase 8 (Outline Development) and Phase 9 (Writeup)
+
+**Phase 3:**
+- May revisit if parsing issues arise during later phases
+- Current file access confidence level: High
+
+---
+
+# Phase 4 Addendum (Chat 03)
+
+## Deviations from Original Plan
+
+**Phase 4 Scope Modification:**
+
+Original Phase 4 Plan:
+- 4.1. Convert problematic files to pure text format
+- 4.2. Summarise lengthy/complex content as needed  
+- 4.3. Re-upload (and replace) corrected/optimised versions to CP
+
+**Actual Phase 4 Work (No Parsing Errors Encountered):**
+
+No parsing errors identified during Phase 3 validation. Instead of error resolution, executed comprehensive reading list enhancement:
+
+### 1. MIP Reading List Theory Extraction (Additional Scope)
+
+**Objective:** Establish robust theoretical foundation for A1 assessment before evidence processing begins.
+
+**Actions Completed:**
+- Analysed 10 MIP reading list items for relevance to A1 requirements
+- Uploaded priority readings: Brooks & John (2018), Porter (2017), Carson et al. (2007)
+- Uploaded book chapters: Hargreaves & Page (2013) Chapters 1, 2, 4; West (2012) Chapters 1, 2, 6, 11
+- Conducted web search for items without full access: Dyer et al. (2013), Goncalves (2006), Johnson et al. (2017), Thomas (1999)
+- Extracted 30+ theories/frameworks/concepts with concise definitions and proper references
+- Created `MGTK746 Theory Repository.txt` in CP
+- Removed bulky reading files post-extraction to conserve capacity
+
+**Rationale:** Proactive theoretical groundwork strengthens A1 "extensive reading" criterion for 90-100% band. Combined with MGTK737 theories (14 frameworks), total toolkit now comprises 44+ theories/frameworks for critical engagement.
+
+### 2. Book Chapter Recommendations
+
+Created strategic chapter selection guidance for remaining reading list items with priority ratings (HIGH/MEDIUM/LOW) and specific rationale for when full text retrieval warranted during later phases.
+
+## Impact on Subsequent Phases
+
+**Phase 5 onwards:**
+- Enhanced theoretical lens for EPW evidence analysis
+- Stronger foundation for A1 Section 1 (tools/theories reflection)
+- Reduced risk of insufficient theoretical engagement
+- Theory reference files available during Phase 8 (Outline Development) and Phase 9 (Writeup)
+
+**Phase 4 Completion Status:**
+- Original scope (parsing error resolution): Not applicable — no errors detected
+- Modified scope (theory extraction): Complete
+- Net effect: Ahead of schedule with enriched theoretical foundation
+
+---
+
+# Phase 5 Addendum (Chat 04)
+
+## Phase 5.2 Execution Strategy Modification
+
+**Original Plan (Phase 5.2):**
+"Parse through all transcripts systematically"
+
+**Actual Execution:**
+
+Phase 5.2 subdivided across 4 separate chats due to context consumption when accessing meeting transcripts:
+
+- **Chat 04:** EPW4 meetings analysis (5 meetings: WED-SUN)
+- **Chat 05:** EPW3 meetings analysis  
+- **Chat 06:** EPW2 meetings analysis  
+- **Chat 07:** EPW1 analysis
+
+**Rationale:** Each meeting transcript access consumes significant context. Analysing all transcripts within single chat proved unsustainable. Solution: process one EPW per chat, removing transcripts post-analysis whilst retaining synthesised evidence files (e.g. `MGTK746 EPW4 Meetings Analysis.txt`).
+
+---
+
+## Format Standardisation Through EPW4 Template
+
+**Process Established (Chat 04):**
+
+1. **Meeting-by-Meeting Analysis:** Each EPW4 meeting (WED-SUN) analysed individually within same chat through iterative prompt reversion, preserving context for subsequent meetings.
+
+2. **Evidence Extraction Methodology:**
+   - Prioritised HIGH/MID/LOW based on management learning value
+   - Removed invalid contributions (basic etiquette, overly technical/non-communication tasks)
+   - Retained generous evidence options for Phase 5.4 discussion post-all-EPWs completion
+   - Linked evidences to Theory Repository frameworks
+
+3. **Standardised Format Structure (Applied to All Meetings):**
+   - Meeting header (file/date/duration/context)
+   - Evidence items with timeframe, leadership type, strategic value
+   - Direct quotes: `> **Speaker (timestamp):** "quote"`
+   - **Meeting Themes** section
+   - **Thematic Patterns** section
+   - **Theoretical Connections** section  
+   - **Key Learnings for A1** section
+
+4. **Post-Analysis Format Alignment:**
+   - Initial analyses varied in ending sections due to iterative processing without cross-meeting visibility
+   - Comprehensive format alignment executed post-all-meetings completion
+   - EPW4 standardised analysis file serves as template for EPW3/2/1
+
+---
+
+## Evidence Selection Guidance Integration
+
+**Created:** `MGTK746 EPW4 Meetings Analysis NOTES.txt`
+
+Documents Culous' evidence selection preferences across meetings:
+- Emphasis on servant leadership (extended coaching sessions)
+- Priority on consultancy methodology application (matrix thinking, temporal framework)
+- SMART framework alignment where applicable
+- Terminology preferences (avoid academic-sensitive words like "tutor")
+- Strategic differentiation highlights (matrix showcase as top EPW4 evidence)
+
+**Purpose:** Informs evidence extraction approach for EPW3/2/1 whilst maintaining generous options until Phase 5.4 final selection.
+
+---
+
+## Transcript Management Protocol
+
+**Post-Analysis Procedure:**
+1. Complete evidence extraction for all meetings within EPW
+2. Apply standardised format across all meetings
+3. Create comprehensive `MGTK746 EPW[no.] Meetings Analysis.txt` file
+4. Remove all meeting transcripts from CP to conserve capacity
+5. Retain analysis file permanently with timestamp-referenced evidences
+
+**Benefit:** Analysis files contain complete extracted evidence; transcript re-access unnecessary.
+
+---
+
+## Impact on Subsequent Phases
+
+**Phase 5.3 onwards (Deferred until all EPWs complete):**
+- No thematic analysis conducted during individual EPW processing
+- Phase 5.3-5.6 will execute holistically across EPW4/3/2/1 analyses
+- Cross-EPW pattern identification enabled by standardised format
+
+**Phase 6 (EPW3/2/1 Processing):**
+- Follows identical workflow established in Chat 04
+- EPW4 analysis serves as format template
+- Evidence selection informed by NOTES file preferences
+
+---
+
+## Critical Success Factors Identified
+
+1. **Context Preservation:** Meeting-by-meeting processing within single EPW chat maintains analytical depth
+2. **Format Consistency:** Standardisation through template replication ensures cross-EPW comparability  
+3. **Generous Evidence Retention:** Deferring selection to Phase 5.4 enables informed choices across all EPWs
+4. **Theoretical Integration:** Continuous framework linking strengthens A1 critical engagement depth
+5. **Systematic Documentation:** Analysis files with timestamp precision eliminate transcript dependency
+
+---
+
+# Phase 5 Addendum (Chat 05)
+
+## EPW3 Analysis Methodology Deviation
+
+### WhatsApp Group Analysis via External Tool
+
+**Issue Encountered:**
+EPW3 WhatsApp group transcript file size exceeded Claude's context capacity limits.
+
+**Solution Implemented:**
+- WhatsApp group communications analysed via Gemini (Google's AI tool)
+- Gemini operated without full project context; analysis conducted in isolation
+- Output integrated into `MGTK746 EPW3 Meetings Analysis.txt` alongside Wednesday/Thursday meeting analyses
+- `MGTK746 EPW4 Meetings Analysis.txt` also updated in the same way with WhatsApp group chat analysis on that EPW
+
+**Quality Control Measures:**
+- User flagged content source during handover: "due to extreme file size, i did that with gemini who doesn't have context so be cautious with such content"
+- WhatsApp analysis marked for verification caution during Phase 5.4 (Evidence Selection)
+- Content treated as supplementary rather than primary evidence source
+
+**Documentation:**
+- Added explicit caution note in Chat 06 Progress Summary
+- Critical Reminders section updated: "WhatsApp Content Caution: EPW4&3 WhatsApp analysis conducted via Gemini (not Claude); treat with appropriate verification caution during evidence selection"
+
+---
+
+## Impact on Subsequent Phases
+
+**Phase 5.4 (Evidence Selection):**
+- EPW4&3 WhatsApp evidences require higher scrutiny during selection
+- Cross-reference against Wednesday/Thursday meeting evidences for consistency
+- Prioritise Zoom meeting evidences where context-informed analysis available
+
+**Phase 8-9 (Outline Development & Writeup):**
+- If WhatsApp evidences selected, verify alignment with broader EPW4/3 narrative
+- Consider supplementing with additional context from peer-written Progress Reports
+
+**Impact on EPW2/EPW1 Processing:**
+- Same approach expected for EPW2/1 WhatsApp group chat
+
+---
+
+# Phase 5 Addendum (Chat 06)
+
+**Zero deviations identified.** Chat 06 executed Phase 5.2 for EPW2 precisely as planned, replicating Chat 04 and Chat 05 methodology without modification.
+
+**Existing Phase 5 Addendum (Chat 04 & 05) comprehensively documents all workflow elements applied in Chat 06.**
+
+---
+
+# Phase 5 Addendum (Chat 07)
+
+## Phase 5.3 Execution Methodology Deviation
+
+**Original Plan (Phase 5.3):**
+"Conduct thematic analysis: identify patterns, themes, learnings"
+
+**Actual Execution:**
+
+Phase 5.3 conducted through iterative refinement across 3 versions due to structural optimisation requirements and evidence location precision needs.
+
+---
+
+## Iterative Refinement Process
+
+**Version 1 (`202602140236`):**
+- Initial thematic clustering with 8 themes
+- Evidence referenced by day/# format (e.g., "Saturday #1", "Thursday #3")
+- Generated from analysis files without user validation
+
+**Version 2 (`202602141924`):**
+- User-led refinement with manual edits
+- Evidence location changed to dialogue quotes (first/last 5 exact words)
+- Symbols added: ⭐ (top evidence), ❗ (manual edits), 🗑️ (removable), ❌ (delete)
+- Progress Report references integrated for EPW2/3
+- Theme deletion proposals marked
+
+**Version 3 (`202602142100`):**
+- Final consolidated structure: 8 themes → 4 themes + miscellaneous
+- All duplicate evidence removed (critical for preventing A2 slide duplication)
+- Symbol refinements (❗ removed post-agreement)
+- User's minor post-completion edits incorporated
+
+**Rationale:** Direct thematic A2 structure (decided Chat 05) required precise evidence deduplication and quote-based location system. Iterative validation ensured each evidence item appears exactly once across all themes.
+
+---
+
+## Theme Consolidation Strategy
+
+**Deleted Themes:**
+- Theme 4: Integrative Leadership (repetitive content absorbed into Themes 1-3)
+- Theme 6: Professional Identity Transfer (concept preserved in Theme 2 theory links)
+- Theme 7: Psychological Safety (absorbed into Theme 1)
+- Theme 8: Forward-Looking Leadership (absorbed into Theme 1)
+
+**Renumbered:**
+- Original Theme 5 (Strategic Questioning) → Theme 4
+
+**Final Structure:**
+- 4 themes + miscellaneous
+- 24 evidence items total (target: 2-3 per A2 slide for 10 slides)
+
+**Impact:** Eliminates redundancy, prevents A2 slide duplication, concentrates evidence strength into fewer high-impact themes.
+
+---
+
+## Evidence Location Methodology Change
+
+**Original Approach (Version 1):** Day/# format (e.g., "Wednesday #2")
+**Revised Approach (Version 2-3):** Dialogue quote format (first/last 5 exact words)
+
+**Example:**
+- Original: "Extended coaching (Saturday #1)"
+- Revised: "No, no, no. Uh, again... still the slide"
+
+**Rationale:** Quote-based system enables precise evidence location in analysis files when drafting A2 captions. User must capture exact dialogue moments as screenshots, requiring unambiguous reference points beyond section headings.
+
+---
+
+## Impact on Subsequent Phases
+
+**Phase 5.4 onwards:**
+- PART 1 (thematic clusters) complete
+- PART 2 onwards requires update from original Artefact #06 to reflect:
+  - Item number changes (e.g., original 1.4.3 → 3.4.1)
+  - Theme consolidation (8 → 4)
+  - Evidence quality redistribution
+- Evidence selection discussion must verify zero duplicates across themes
+
+**Phase 6 (EPW3/2/1 Processing):**
+- EPW1 excluded from final A2 per "up to three EPWs" requirement
+- EPW3/2 already integrated into thematic analysis
+- Chat 07 effectively executed Phase 5.3 + partial Phase 6 work in parallel
+
+---
+
+**Phase 5.3 Completion Status:**
+- PART 1 (Thematic Clusters): Complete
+- PART 2 onwards (Comparison Matrix, A1 Mapping, Theory Inventory, Recommendations): Deferred to Chat 08
+
+**Critical Success Factor:**
+Iterative validation prevented downstream A2 duplication issues. Three-version refinement process ensured structural integrity before proceeding to evidence selection.
+
+---
+
+# Phase 5 Addendum (Chat 08)
+
+## Phase 5.3 Execution Methodology: Option B Rebuild
+
+**Original Plan (Phase 5.3):**
+"Conduct thematic analysis: identify patterns, themes, learnings"
+
+**Actual Execution:**
+
+Phase 5.3 PART 2 onwards completed via "Option B" rebuild methodology rather than direct version updates.
+
+---
+
+### Methodology Selection
+
+**Option A (Initially Considered):** Trace all changes from Version 1→2→3, update PART 2-5 item-by-item
+
+**Option B (User-Recommended, Adopted):**
+- Extract PART 2-5 framework/structure from Version 1 (`202602140236`)
+- Map all 26 finalised items from latest Version 3 (`202602142100`) into framework
+- Ignore intermediate Version 2 (`202602141924`) entirely
+- Rebuild fresh rather than forensic change-tracking
+
+**Rationale:** Accuracy guarantee, efficiency, reliability, user preference
+
+---
+
+## Evidence Count Corrections
+
+**Original Understanding (Version 3 Change Log):** 24 items total
+- Theme 1: 9 items
+- Theme 2: 8 items
+- Theme 3: 3 items
+- Theme 4: 2 items
+- Miscellaneous: 2 items
+
+**Actual Count (User Verification):** 26 items total
+- Theme 1: 9 items ✓
+- Theme 2: 9 items (not 8)
+- Theme 3: 3 items ✓
+- Theme 4: 3 items (not 2, includes 4.2.1 added post-Change Log)
+- Miscellaneous: 2 items ✓
+
+**Missing Items Recovered:**
+- 2.4.2 (Stakeholder differentiation) — absent from PART 5 allocation in initial #06 draft
+- 4.2.1 (Brand specificity coaching) — added to Theme 4 post-Change Log
+- 3.4.1 (Quality over quantity mindset) — missing from PART 2 entirely in initial draft
+
+---
+
+## Theme Naming Refinements
+
+**User-Initiated Enhancement:**
+
+**Theme 2:**
+- Original: "Strategic Contribution & Consultancy Methodology"
+- Refined: "Consultancy Methodology & Strategic Contribution"
+- **Rationale:** Emphasise consultancy over generic "strategic"
+
+**Theme 4:**
+- Original: "Strategic Questioning & Socratic Coaching"
+- Refined: "Socratic Coaching & Strategic Questioning"
+- **Rationale:** Emphasise Socratic methodology over generic "strategic"
+
+**Internal Abbreviations (Claude↔User only):**
+1. Servant, 2. Consultancy, 3. Quality, 4. Socratic
+
+**A2/A1 Usage:** Full theme names mandatory in A2; abbreviated as "Theme [no.]" in A1 for word count savings
+
+---
+
+## Slide Structure Corrections
+
+### Allowance Clarification
+
+**Original Understanding:** "10 slides" = 10 content slides + cover
+**Corrected Understanding:** "10 slides + cover" = 11 content slides + cover permitted
+
+**User's Final Structure:**
+- Slide 1: Cover/Briefing
+- Slides 2-11: Content (10 slides)
+- Slide 12: References (optional, only when necessary)
+- **Total:** 12 slides compliant with "10 slides + cover + references" requirement
+
+### Cover Slide Enhancement
+
+**Added Content (User Refinement):**
+- Item numbering convention: X.Y.Z format with example
+- Glossary: EPW, MIP definitions
+- EPW1 context note: Concise explanation for starting from EPW2
+- Precise EPW event details: Event 3 (EPW2 Nov 2023), Event 4 (EPW3 Apr 2024), Event 2 (EPW4 Jan 2026)
+
+**Terminology Correction:**
+- "Introduction" → "Briefing" (per A2 instruction: "do not include an introduction or conclusion")
+
+### Theme Slide Distribution
+
+**Theme 1 (9 items):** Slides 2-4 (3 slides, not 2)
+**Theme 2 (9 items):** Slides 5-8 (4 slides, not 2)
+**Theme 3 (3 items):** Slide 9 (1 slide)
+**Theme 4 (3 items):** Slide 10 (1 slide)
+**Miscellaneous (2 items):** Slide 11 (1 slide, not 2)
+
+**Rationale:** Thematic integrity restored (1.4.3, 1.3.2 returned to Theme 1 from miscellaneous), synthesis slide removed (analysis belongs in A1, not A2)
+
+---
+
+## Evidence Priority Redistribution
+
+**User Modification:**
+
+**Items Moved from HIGH to MID:**
+- 3.3.1 (PR vs marketing clarification)
+- 3.3.2 (Samsung Group vs Electronics distinction)
+
+**Rationale:** Perception concern — may be perceived as nitpicking rather than strategic contribution
+
+**Final Distribution:**
+- HIGH: 11 items (8 ⭐ + 3 high-impact normal)
+- MID: 15 items (4 🗑️ + 11 normal)
+- **Total:** 26 items
+
+**Impact:** More MID than HIGH = logical priority balance
+
+---
+
+## Phase 6 Sequential Processing Deviation
+
+**Original Plan (Phase 6.1-6.9):**
+Sequential EPW processing with transcript removal between EPWs:
+1. Remove EPW4 transcripts, retain analysis
+2. Upload EPW3 files + transcripts
+3. Analyse EPW3, remove transcripts
+4. Upload EPW2 files + transcripts
+5. Analyse EPW2, remove transcripts
+6. Upload EPW1 files (no transcripts)
+
+**Actual Execution:**
+
+All EPWs (2/3/4) processed together in Phase 5. Sequential removal unnecessary as analysis files permanently retained, transcripts already removed post-analysis.
+
+**Impact:** Phase 6.1-6.9 effectively completed during Phase 5 chats (04-07). Phase 6 work collapsed into Phase 5 execution.
+
+---
+
+## Phase 7 Preliminary Completion
+
+**Original Plan (Phase 7.1-7.4):**
+"Map collected evidence against A1 & A2 requirements"
+
+**Actual Status:**
+
+PART 3 (Evidence-to-A1 Section Mapping) constitutes preliminary Phase 7 work:
+- Section 1: Tools/Theories mapping complete
+- Section 2: Data Sources mapping complete
+- Section 3: Collaboration mapping complete
+- PDP guidance documented
+
+**Remaining Phase 7 Work:**
+- Finalise A1-A2 cross-reference codes
+- Verify ULMS rubric alignment
+- Identify gaps/imbalances (pending Chat 09)
+
+---
+
+## Impact on Subsequent Phases
+
+**Phase 5.4-5.6 (Chat 09 Planned Work):**
+- Draft slide notes structure (~80-100 words per slide)
+- Create detailed A2 outline with item codes for formative submission
+- Identify A1-A2 cross-reference strategy
+- Verify grading criteria alignment
+
+**Phase 8-9:** Outline development and writeup (no changes anticipated)
+
+---
+
+**Critical Success Factors:**
+
+1. **Option B Rebuild:** Prevented compounding errors from version-tracking approach
+2. **User Verification:** 26-item count correction caught missing evidence
+3. **Theme Naming:** Consultancy/Socratic emphasis aligns with competitive differentiation strategy
+4. **Slide Structure:** Cover briefing eliminates need for introductory content slides
+5. **Parallel Processing:** All EPWs together maximised cross-theme pattern identification
+
+---
+
+# Phase 7-8 Addendum (Chat 09)
+
+## Deviations from Original Plan
+
+**Additional Strategic Clarifications (Not in Original Plan):**
+
+### 1. Formative Submission Strategy Refinement
+**Original Plan (Phase 8.7):** "Finalise detailed development plan with content outline"
+
+**Actual Execution:** Formative outlines deliberately exceed final word limits to show full content arsenal.
+
+**Strategy:** Submit comprehensive outlines (A1 potentially 3,500-4,000 words worth of structure) to receive specific trimming feedback from marker rather than generic "add more content" feedback. Probes marker's subjective preferences through abundance approach.
+
+**Rationale (User-Specified):**
+- MBA assessments involve subjective marker preferences beyond rubric objectivity
+- Formative as probe: reveals what marker prioritises through trimming suggestions
+- De-risks final submission: better to trim than scramble adding content
+- Demonstrates research depth and theoretical engagement capability
+
+**Impact:** A1/A2 outlines deliberately comprehensive rather than word-limit-compliant.
+
+---
+
+### 2. Evidence Distribution Logic Correction
+**Original Understanding:** Evidence clustered per A2 slide groupings
+
+**Corrected Understanding:** Evidence clustered based on analytical synergy for A1 narrative, regardless of A2 thematic groupings. Items from different A2 themes/slides can pair in A1 subsections where they strengthen analytical arguments.
+
+**Example:** Item 1.4.1 (Theme 1 in A2) analysed deeply in Section 1.2, briefly cross-referenced in Section 3.1.
+
+**Impact:** A1 structure independent of A2 organisation, maximising analytical coherence.
+
+---
+
+### 3. Theoretical Foundation Principle Established
+**Critical Rule:** 100% of A2 references (for items discussed in A1) should exist in A1 outline, but NOT vice versa.
+
+**Rationale:**
+- A1 constitutes 70% of MIP grade, A2 only 30%
+- A1 expects comprehensive theoretical foundation, A2 references not required
+- A2 slide notes need theory only for items absent from A1 or when exceptionally beneficial (e.g., theory perfectly aligns with action)
+- Word count/slide space preservation in A2
+
+**Implementation Error Identified:** A1 Section 1 has 12+ theories, Sections 2-3 undertreated. Violates principle requiring theoretical depth across all sections.
+
+**Correction Required (Chat 10):** Rebuild Sections 2-3 with equivalent theoretical integration.
+
+---
+
+### 4. Developmental Framing Approach
+**Strategic Framework:** Every A1 subsection follows structure:
+1. What I brought (consulting/professional background)
+2. How EPWs challenged it (limitations discovered)
+3. What I learned/grew (evolution across EPWs)
+
+**Rationale:** Satisfies competitive differentiation (consultancy expertise visible) whilst emphasising academic values (growth through critical reflection, not just application).
+
+**Impact:** Bidirectional learning narrative rather than unidirectional transfer demonstration.
+
+---
+
+## Critical Corrections from Latest Files
+
+**EPW Event Numbers (All Wrong in Chat 08 #14):**
+- EPW1: Event 3 (25 July 2023, not included)
+- EPW2: Event 4 (31 Oct 2023, Tesla)
+- EPW3: Event 2 (16 Apr 2024, Samsung)
+- EPW4: Event 1 (20 Jan 2026, GreenNest)
+
+**Student ID Added:** 200051046
+
+**Item 1.4.4 Description Correction:**
+- Incorrect (Chat 08): Audio desynchronisation crisis
+- Correct: Presentation video export issue where Afrah's slides were skipped. Root cause: PowerPoint believed her audio did not exist, only exported slides with audio. Solution: extracted her audio, edited video in DaVinci Resolve to include her slides and audio properly (technical "hacking" to make things work as intended).
+
+**Item 1.4.2 Timeline Correction:**
+- Incorrect (Chat 08): Saturday afternoon
+- Correct: Thursday (after completing section supposedly shared with Afrah)
+
+---
+
+## Phase 8 Execution Notes
+
+**Phase 8.1-8.2 (A2 Outline):**
+Completed per plan with structural enhancements:
+- EPW basic info localisation (Slides 2, 3, 4 only)
+- Item numbers prioritised over titles for word efficiency
+- Slide notes outline: why items support themes (not caption repetition)
+- Long/short caption strategy developed for final compilation flexibility
+
+**Phase 8.4-8.7 (A1 Outline):**
+Completed with strategic clustering decisions:
+- Section 1: 11 items across 4 subsections (consultancy methodology as analytical thread)
+- Section 2: 9 items across 3 subsections (data synthesis capabilities)
+- Section 3: 9 items across 4 subsections (collaboration dynamics, leadership evolution)
+- PDP: 3 SMART actions integrated with dissertation timeline (April-September 2026)
+
+**Phase 8 Constraints Clarified:**
+- Section titles fixed by A1 briefing (Management Tools & Theories, Data Sources, Collaboration)
+- Cannot modify to "Professional Development Through Management Practice" despite developmental framing preference
+- PDP timeline constrained: MBA Project period (MGTK751, 40 weeks April 2026 to January 2027), must accommodate full-time employment, online/remote delivery required (except Australia-based activities up to few days, or Sydney-based any duration)
+
+---
+
+## Outstanding Issues Identified
+
+**1. Theoretical Foundation Imbalance**
+Section 1 deeply theorised (12+ theories), Sections 2-3 undertreated. Requires correction in Chat 10 before formative submission.
+
+**2. Phase Completion Validation Needed**
+Critically assess whether Phases 1-8 fully complete, any gaps before Phase 9 (writeup post-formative feedback).
+
+---
+
+## Impact on Subsequent Phases
+
+**Phase 9 (Writeup & Quality Assurance):**
+- Awaits formative feedback for targeted refinement
+- Theoretical foundation correction (Sections 2-3) precedes Phase 9 execution
+- Phase 1-8 validation ensures readiness for Phase 9 commencement
+
+**Critical Success Factors:**
+- Formative strategy leverages marker feedback for precision targeting
+- Theoretical depth across all sections ensures 90-100% band readiness
+- Developmental framing positions consulting expertise within academic growth narrative
+- Evidence cross-utilisation maximises analytical coherence beyond A2 thematic constraints
+
+---
+
+# Phase 8–9 Addendum (Chat 10)
+
+## A2 First Draft Compilation
+
+A2 visual slides compiled independently by Culous. Multiple deviations made from the `A2 Portfolio of Evidence [timestamp]` outline. That outline is now OUTDATED —— the compiled A2 PDF is the authoritative source for all subsequent chats until Formative 2 is submitted.
+
+**Net item changes (26 → 24):**
+- Removed: 2.2.1, 2.2.2, 3.3.2, standalone former 3.3.1 (absorbed)
+- Added: new 2.3.3 "Industry Intelligence Injection" (EPW2), new 3.2.1 "Submission Readiness & Compliance" (EPW2), new 4.4.2 "Perspective Reframing" (EPW4)
+- Merged: former 4.4.1 + 4.4.2 → single item retaining latter's title
+- Relocated/renumbered: former 2.3.3 → 3.3.1 "Proactive Team Deliverable Auditing"
+- Theme 2 reduced from 4 slides to 3; Theme 3 expanded from 1 slide to 2
+- Always refer to latest A2 draft sent directly in chat for most accurate content
+
+**Arrow parsing note:** Until post-Formative 2 audit, note only existence and approximate location of arrows in A2 slides, never their exact start/end points (high parsing error risk).
+
+**A1 impact:** Item code references in `A1 Individual Report [timestamp]` may be affected by renumbering/removals. Must cross-check when rebuilding A1 outline and during Phase 9 writeup.
+
+## Formative Feedback 1 Processing & Email Exchange
+
+### 1. Melissa's Formative Feedback 1 —— Key Directives
+Feedback (`MGTK746 Formative Feedback 1.txt`) received and analysed. The following represent confirmed additions or corrections to the A1 outline:
+
+**New mandatory content (Section 1):** Per-EPW gap discussion required —— for each EPW, identify alternative tools or theories that could have been considered but were not applied, and articulate their relevance.
+
+**New mandatory content (Section 2):** Alternative data types gap required —— identify data sources (case studies, industry reports, etc.) that could have strengthened the EPW analyses but were not utilised. Plenary session feedback explicitly excluded (occurred post-submission).
+
+**New mandatory content (Section 3):** Personal strengths and weaknesses must be explicitly addressed alongside progression narrative.
+
+**PDP confirmed:** Two goals only. PDP.3 (reflective journaling) dropped. PDP.1 (Socratic coaching, Sydney consulting) and PDP.2 (Shared Leadership, HK board) retained.
+
+---
+
+### 2. Follow-Up Email Strategy
+Additional email (in `MGTK746 Formative 1 Emails.txt`) sent to Melissa between Formative 1 feedback and Formative 2 submission —— constitutes a third feedback round beyond the standard two. A potential fourth round planned after Formative 2.
+
+**Email framing used:** Example-driven, semi-closed questions citing specific item numbers and theories, designed to elicit confirmatory or corrective responses rather than generic guidance.
+
+---
+
+### 3. Melissa's Reply —— Structural Confirmations
+
+**S1.2 (Developmental Leadership Evolution) —— Confirmed to Stay in Section 1**
+Melissa (in `MGTK746 Formative 1 Emails.txt`) endorsed the framing of Servant Leadership (van Dierendonck, 2011), Greenleaf's "leader as teacher," and the Socratic method as management theories guiding tool/approach selection. Write-up must foreground theory as driver, not collaborative outcome.
+
+**S1.4 (Administrative Stewardship) —— Stays in Section 1**
+Not explicitly flagged by Melissa. Same theory-first defence applies (Stewardship Theory, OCB). Write-up must position frameworks as the lens, not the behaviour.
+
+**A2 Labelling Convention —— Confirmed**
+X.Y.Z item numbering system confirmed acceptable. Key already present on Briefing Slide (Slide 1). No changes required.
+
+**Theory balance across S1 vs S2/S3 —— Deferred**
+Melissa declined to comment until full draft reviewed. Independent judgement required: proceed with Chat 09 objective to rebuild S2/S3 theoretical depth to match S1.
+
+---
+
+### 4. File Housekeeping
+- Duplicate dev plan resolved: `202602150522` deleted by user; `202603031950` is the only version
+- Memory rule updated: always proceed with latest timestamp file whilst alerting on duplicates; handoffs reference "xxx [timestamp]" not specific version
+
+---
+
+# Phase 9 Addendum (Chat 11)
+
+## A2 Cross-Reference Rule
+A2 evidence items must always be cited by item code (X.Y.Z format) in A1. Never use slide numbers as they may change. This rule applies to all subsequent writeup work.
+
+## A1 Outline Superseded
+The consolidated final A1 outline (artefact #16, Chat 11) supersedes `A1 Individual Report _ 202602170213.txt`. The new outline incorporates all Chat 11 changes and should be used as the sole reference for Phase 9 writeup. Key structural changes from Formative 1 outline:
+- S2 expanded to 4 subsections (was 3); S2.3 is a new standalone subsection for EPW2 market intelligence (2.2.1)
+- Per-EPW gap discussions added to S1 subsections (mandatory per Melissa)
+- Per-EPW alternative data type gaps added to S2 subsections (mandatory per Melissa)
+- Explicit Strengths and Weaknesses labels added to S3.1–S3.3 (mandatory per Melissa)
+- S3.4 flagged as optional trim (absorb into S3.3 Critical Reflection and S3 Summary to recover ~80 words)
+- PDP.3 removed; PDP.1 and PDP.2 retained; PDP SMART plans condensed to 3 bullets each
+
+## Brown Citation Correction
+Brown (2010) corrected to Brown (2012) *Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead*. New York: Gotham Books. All prior references to "Brown (2010)" are superseded. Maor et al. (2024) McKinsey article retained alongside as practitioner corroboration.
+
+## BCIC Theory Validation Completed
+Six theories validated via BCIC (Chat 11). Full confirmed references:
+- Coombs, W.T. (2007) 'Protecting Organization Reputations During a Crisis', *Corporate Reputation Review*, 10, pp.163–176
+- Kaplan, R.S. and Norton, D.P. (1992) 'The Balanced Scorecard: Measures that Drive Performance', *Harvard Business Review*, 70(1), pp.71–79
+- Porter, M.E. (1985) *Competitive Advantage: Creating and Sustaining Superior Performance*. New York: The Free Press
+- Lewin, K. (1947) 'Frontiers in Group Dynamics', *Human Relations*, 1(1), pp.5–41
+- Kotter, J.P. (1996) *Leading Change*. Boston, MA: Harvard Business School Press
+
+## OCB Citation Unconfirmed
+OCB cited throughout outline as "Organ (1988)" — flagged as unverified placeholder. Must confirm full reference (Organ, D.W., 1988, *Organizational Citizenship Behavior: The Good Soldier Syndrome*, Lexington Books) before final submission. Low risk — widely standard citation.
+
+## Evidence Exclusions from A1
+- 4.2.1 (Brand Specificity Coaching): deliberately excluded from A1 (weak relative to word cost)
+- M.4.1 (Presentation Timekeeping): deliberately excluded from A1
+- Both items remain in A2
+
+## Word Count Risk
+~300 words of mandatory new content (gaps + S&W) require offsetting trims. Priority trim candidates documented in Chat 11 evaluation (#09): S3.4 standalone subsection (~80w), PDP SMART condensing (~80w), Introduction held to 100w strict (~50w), S2.3 writeup kept to 2–3 sentences (~40w), 3.2.1 mention in S2.4 kept to one sentence (~30w).
+
+---
+
+# Phase 9 Addendum (Chat 12)
+
+## Reference Corrections
+
+**Deming (1986) replaced:**
+*Out of the Crisis* does not use the term "Total Quality Management" — TQM as a named framework emerged later. Replaced throughout A1 with:
+Feigenbaum, A.V. (1991) *Total Quality Control*. 3rd edn. New York: McGraw-Hill.
+Two in-text citations updated accordingly (S1.3 and S2.4).
+
+**Maor et al. (2024) author correction:**
+Dev plan previously listed incorrect authors (Park, Zucker). Correct citation confirmed via web search (16/03/2026):
+Maor, D., Kaas, H.-W., Strovink, K., and Srinivasan, R. (2024) 'How Leaders Can Tap the Power of Vulnerability', *McKinsey and Company*, 4 November.
+
+**Design Thinking citation added:**
+Brown, T. (2008) 'Design Thinking', *Harvard Business Review*, 86(6), pp.84–92.
+Added to A1 S1.3 in-text and reference list. Note: two Brown sources now in reference list (Brown, B. 2012; Brown, T. 2008) — no initials required in-text as years differ.
+
+**J&J and BP empirical precedents cited (S2.1):**
+- Greyser, S.A. (1982) 'Johnson & Johnson: The Tylenol Tragedy', Harvard Business School Case 583-043. (Revised May 1992.)
+- De Wolf, D., and Mejri, M. (2013) 'Crisis Communication Failures: The BP Case Study', *International Journal of Advances in Management and Economics*, 2(2), pp.48–56.
+
+## Evidence Weighting Correction
+
+A1 Introduction originally stated EPW4 46%, EPW3 31%, EPW2 23% — derived from the outdated 26-item thematic analysis count pre-Chat 10 A2 compilation. Corrected to **EPW4 50%, EPW3 25%, EPW2 25%** based on actual compiled A2 item distribution. Note: user counts 23 total items (yielding 52%/26%/22%); this chat counted 24 — discrepancy unresolved, 50/25/25 adopted in submitted draft as cleaner figures.
+
+## Formative 2 Submission Status
+
+A1 and A2 (including slide notes) submitted as Formative 2. Awaiting Melissa's feedback before Phase 9.12 final review and 9.13 coversheet attachment.
+
+---
+
+# Phase 9 Addendum (Chat 13)
+
+## Formative 2 Feedback Processing
+
+Melissa's written feedback (MGTK746 Formative Feedback 2.txt), follow-up email reply (MGTK746 Formative 2 Emails.txt), and zoom session transcript (GMT20260323-173602_Recording.transcript.vtt) all received and fully processed. The following represent confirmed deviations from or additions to the Chat 12 plan:
+
+### 1. S1 Group Theory Layer —— New Mandatory Content
+Not anticipated at Chat 12 submission. Per Melissa's feedback and email Q1: each S1 subsection must open with the group's analytical engagement at brief level (what was considered) + one gap per EPW + the theory that would have addressed it. Group dimension applies to sub-prompt 1 only (Melissa Q2 confirmed Interpretation A). This requires targeted insertions at S1.1, S1.3, and S1.4 openings, offset by PM-narrative trims in S1.1 and S1.4.
+
+### 2. S2 Personal Learning Arc —— Reframe Required
+Professional practice framing explicitly excluded by Melissa (Q4). Any forward-looking "informed my professional practice" language must be removed. Cross-EPW learning carry-forward is welcomed and should be added per subsection.
+
+### 3. PDP Table Format —— Adopted
+Melissa's suggestion accepted. SMART content retained; format reconstructed as table. Footnotes permitted for professional context. Estimated word recovery: ~40–60 words.
+
+### 4. S3.4 —— Confirmed Already Absent
+Flagged as optional trim candidate in Chat 11 addendum. Confirmed absent from submitted Formative 2 draft (`MGTK746 _ A1 _ pure text _ 202603170048.txt`). No further action required.
+
+### 5. Organ (1988) —— Verified
+Full reference manually verified by user: Organ, D.W. (1988) *Organizational Citizenship Behavior: The Good Soldier Syndrome*. Lexington, MA: Lexington Books. No longer flagged as unconfirmed.
+
+### 6. Belbin Team Roles —— Rejected
+Melissa named Belbin explicitly in zoom session as applicable for non-leadership roles. Considered for EPW2 S3 passage. Rejected: word count constraint outweighs marginal gain; Carson et al. (2007) already anchors the distributed coordination narrative.
+
+### 7. A2 —— Facilitator Feedback Addition Only
+Melissa confirmed miniature thumbnail format acceptable (email Q7 + zoom). Three EPW facilitator feedback images to be added below M.4.1 on Misc. slide (content slide 10). This is the sole A2 amendment required for final submission.
+
+### 8. Theory Limitations —— Mandatory Retention Flag
+Zoom transcript confirmed theory limitations as an explicit marks differentiator for high band. No limitation sentences to be trimmed during any word count reduction pass.
