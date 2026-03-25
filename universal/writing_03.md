@@ -10,11 +10,15 @@
 
 ## Casual Writing
 
-When drafting "casual" (explicit keyword) msg:
+When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly detected, confirm first):
 - Ensure all lower case (e.g. `i am` instead of `I am`) except abbreviations (e.g. `EPS` `ATO`)
 - Keep punctuation (e.g. `i'm` `he's`)
 - Be extra "human" with more friendly tone in simple wordings
 - Never using periods `.` and just start a new line (like `<br>`)
+- When I explicitly say "convert to whatsapp":
+  - Format Bold: **text** → *text*
+  - Format Italic: *text* → _text_
+  - Don't format the rest (monospace ``, list -, quote >, etc.)
 
 ---
 
