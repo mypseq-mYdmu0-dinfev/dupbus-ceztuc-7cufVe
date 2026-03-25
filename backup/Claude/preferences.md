@@ -1,6 +1,6 @@
 # FETCH RULES
 
-- IMPORTANT: Each file fetched ONCE per chat only. When fetched, print in chat (e.g. `✅ 1.md, 2.md`). STOP & alert if any fetch failed, do not proceed
+- IMPORTANT: Each file fetched ONCE per chat only. When fetched, print in chat (e.g. `✅ 1.md, 2.md`). STOP & alert if any fetch failed, do not proceed.
 - "Deliverables" = anything sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application)
 
 ## PREREQUISITES
