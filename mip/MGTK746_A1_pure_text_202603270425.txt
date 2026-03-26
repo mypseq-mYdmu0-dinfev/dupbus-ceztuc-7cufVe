@@ -1,0 +1,193 @@
+[COVER SHEET]
+
+Individual Report
+on the Executive
+Project Weeks
+
+ Presented  by  Culous  Yu  200051046
+ culous.yu@liverpool.ac.uk
+ University  of  Liverpool
+16 · 03 · 26
+MGTK746
+
+Introduction
+
+This report draws on EPW2, EPW3, and EPW4 as Portfolio of Evidence[1].  Evidence weighting across the portfolio (EPW4 at 50%, EPW3 and EPW2 each at 25%) reflects a genuine gradient of leadership depth and engagement rather than  recency preference, consistent with Kolb’s (1984) experiential learning model,  which frames accumulated practice as the primary driver of professional development. Across a trajectory from design-led contributor in EPW2 to strategic coordinator in EPW4, this report examines the management tools applied, the data sources synthesised,  and the collaborative patterns shaped.
+(86 words)
+
+1.  Management  Tools  &  Theories
+1.1. Consultancy Methodology Transfer & Adaptation
+
+In EPW4, my group centred its analytical approach on stakeholder mapping and  crisis message differentiation, drawing on Freeman’s (1984) Stakeholder Theory as  the categorisation apparatus. Coombs’ (2007) Situational Crisis Communication Theory was considered during the initial phase but set aside given presentation time constraints, where its pre-validated attribution framework for assigning crisis responsibility per stakeholder group would have structurally reinforced what our practitioner-led framing achieved intuitively. The most analytically distinctive individual contribution was  the temporal matrix (2.4.1), organising GreenNest’s response across remediation, containment, and reassurance sectors applied simultaneously to all 6 parties.  Client-centric presentation logic sequenced strategy before execution so that audience agreement preceded communication detail (2.4.3). McLuhan’s (1964) separation of  visual and auditory channels reduced cognitive load (Sweller, 1988) by directing attention through complementary rather than repetitive content (2.4.4), though this foreclosed  the exploratory approaches that academic settings reward.
+(140 words)
+Footnote(s)
+1: Please see Portfolio of Evidence’s cover slide (top left corner) for context and glossary of terms.
+
+1.  Management  Tools  &  Theories
+1.2. Developmental Leadership Evolution
+
+Greenleaf’s (1970) principle of the “leader as teacher”, extended by van Dierendonck (2011) as active investment in follower growth, constituted the theoretical driver behind coaching efforts throughout EPW4. Following the matrix introduction, I conducted  an extended one-to-one session with Afrah (1.4.1) to develop her conceptual grasp of temporal sectors rather than reassigning the task. This was no isolated instance,  as item 4.4.2 attests, where a teammate’s framing was reoriented from detached analysis to active accountability without directly prescribing the correction, and by item 4.4.1, where Brooks and John’s (2018) Socratic questioning drew out reasoning rather than supplanting it. Bass’ (1985) individualised consideration captures the aspiration;  the limitation, as Heifetz (1994) identifies, is that coaching intensity without planned withdrawal suppresses the independent capability it seeks to build. Item 1.4.2 offered complete task flexibility following early completion of all 6 stakeholder sections, prioritising collective output over individual ownership. Lewin’s (1947) change model would have provided a structured recovery arc for GreenNest’s transformation narrative, whereby its absence left the temporal matrix analytically coherent but without  a theoretical architecture for the long-term recovery trajectory.
+(180 words)
+
+
+
+1.  Management  Tools  &  Theories
+1.3. Design Thinking & Quality Philosophy
+
+In EPW3, we analysed Samsung’s sustainability performance primarily through  corporate-published data without a structured measurement framework, where  Kaplan and Norton’s (1992) Balanced Scorecard would have supplied performance metrics across financial, customer, process, and learning dimensions, mitigating the  self-reporting bias that Samsung’s own publications introduced. STEEPLE[2] would have additionally contextualised the macro-environmental pressures shaping Samsung’s regulatory exposure and competitive trajectory. In EPW2, my bespoke Keynote-Illustrator[3] redesign (1.2.2) applied Design Thinking methodology (Brown, 2008) in direct service  of collective output, and my meticulous audit (3.2.1) extended quality ownership to  the whole deliverable. Total Quality Management principles (Feigenbaum, 1991) explain the depth-over-breadth advocacy in EPW4 (3.4.1), whilst Stewardship Theory (Davis et al., 1997) and Organisational Citizenship Behaviour (Organ, 1988) account for this pattern of voluntary quality responsibility extending past individual contribution.
+(128 words)
+
+1.4. Administrative Stewardship & Strategic Empowerment
+
+In EPW2, we approached the brief through brand-led analysis and direct metric review  of Tesla, without applying Kotter’s (1996) 8-Step Change Model to frame the sustainability transition as managed organisational change, or Porter’s (1985) Value Chain to give  HR analysis greater structural depth than workforce commentary alone could supply.  Items 1.2.1, 1.2.3, 1.4.3 each reflect Organisational Citizenship Behaviour (Organ, 1988), where 1.4.3 showcases Greenleaf’s (1970) “leader as teacher” in a strategic register, connecting an operational failure to future work as anticipatory guidance. Brown (2012) advocates that publicly acknowledging fallibility strengthens rather than erodes leadership credibility. Maor et al. (2024) corroborate this, positioning vulnerability  as a source of leadership strength. The limitation is that stewardship without deliberate knowledge transfer risks coordinator dependency over distributed ownership  (Carson et al., 2007).
+(128 words)
+Footnote(s)
+2: Analysis framework consisting Social, Technological, Economic, Environmental, Political, Legal, and Ethical.
+3: Apple’s Keynote (advanced presentation editor) and Adobe’s Illustrator (publication-grade graphics editor), both design software.
+
+2.  Data  Sources  &  Resources
+2.1. Crisis Framework Development Through Data Synthesis
+
+The temporal matrix in EPW4 required converging 3 distinct source types:  academic crisis communication frameworks (Coombs, 2007; Freeman, 1984),  the GreenNest case brief as primary situational data, and my practitioner knowledge  from crisis and PR consulting. This synthesis produced the stakeholder-specific communication registers (2.4.1 & 2.4.2): honest with employees, factual with regulators, and calculated with media. A running tension is whether practitioner experience constitutes a legitimate data source or an experiential bias shaping analytical outcomes before evidence is examined. Mags Bradbury’s CSR insight (M.3.1) in EPW3 enriched  the analytical lens whilst illustrating how professional framing narrows enquiry scope. Real-world crisis case studies, such as Johnson and Johnson’s Tylenol response (Greyser, 1982) or BP’s Deepwater Horizon communications (De Wolf and Mejri, 2013), would have provided empirical precedent against which the temporal framework’s claims could have been tested. Their absence, however, left the model analytically well-structured but empirically unanchored. EPW4’s convergence approach represented a conscious evolution from EPW2’s single-source reliance, though the empirical anchoring gap revealed that practitioner confidence in a framework’s internal logic  does not substitute for independent evidential validation.
+(181 words)
+
+2.  Data  Sources  &  Resources
+2.2. Strategic Company Analysis Through Comparative Data
+
+For EPW3’s Samsung brief, I applied comparative benchmarking across sustainability programme depth and public data availability when selecting Samsung Electronics (2.3.1). This prioritised analytical tractability over sustainability leadership purity, favouring corporations with mature reporting infrastructure over potentially more instructive but data-sparse actors. I coordinated timeline integration across team members’ sections (2.3.2), extending data synthesis into chronological architecture and reinforcing coherence across otherwise fragmented contributions. GRI Standards and CDP reports, both authoritative external benchmarking sources independent of corporate self-publication, were absent from the EPW3 analysis, leaving Samsung’s own sustainability data to carry the weight of the environmental assessment and introducing a self-reporting bias that independent verification would have corrected. Reflecting across EPWs, the recurrence  of this same limitation in EPW3 revealed the absence of independent data sources as  a structural analytical gap rather than a situational oversight confined to EPW2.
+(140 words)
+
+2.3. Market Intelligence Injection
+
+In EPW2, market intelligence beyond the brief’s scope (2.2.1) redirected a teammate’s analysis towards a dual-lens strategic assessment, identifying NACS[4] as an opportunity and the emergence of hydrogen vehicles as a threat. Whilst this consulting instinct produced a considerably stronger output, MSCI and Sustainalytics ESG ratings alongside SEC 10-K filings would have supplied independently quantified sustainability claims in place of journalistic sources. Consulting intelligence is a strength when paired with independent data sources, but a limitation when substituted for them, which is  a recognition that EPW3’s self-reporting data gap confirmed and EPW4’s  practitioner-anchored convergence only partially addressed.
+(99 words)
+
+Footnote(s)
+4: North American Charging Standard, Tesla-developed EV charging connector.
+2.  Data  Sources  &  Resources
+2.4. Professional Precision in Data Interpretation
+
+Across all 3 EPWs, a consistent precision orientation shaped the scope and reliability  of data interpretation. In EPW2, I individually managed submission compliance (3.2.1), consolidating fragmented reference lists and verifying slideshow functionality. In EPW3, my systematic audit of collective deliverable (3.3.1) exposed terminological inaccuracy, unreferenced claims, and invalid suggestions across peers’ output, manifesting  Total Quality Management’s principle of error correction at source (Feigenbaum, 1991).  In EPW4, I advocated quality over quantity (3.4.1), applying the same depth-first discipline collectively. What this pattern reveals is that precision in data interpretation is only analytically productive when it operates with peer buy-in. Application without  relational calibration risks being received as audit rather than contribution, which can suppress the candid data-sharing that rigorous collective analysis depends on.
+(122 words)
+
+
+3.  Collaboration
+3.1. Coaching Relationships & Vulnerability-Based Leadership
+
+Leader-Member Exchange theory (Graen and Uhl-Bien, 1995) frames the  developmental investment in high-quality dyadic coaching relationships throughout EPW4. Extended one-to-one guidance (1.4.1) built Afrah’s independent understanding  of the matrix-temporal framework well beyond task necessity. Publicly accepting  full responsibility for the Saturday recording failure (1.4.3) and connecting it to  future MIP assessment criteria applied Brown’s (2012) argument that acknowledging fallibility builds psychological safety (Edmondson, 1999) for the team, distinguishing genuine ownership from self-protective deflection; Maor et al. (2024; as discussed in Section 1.4) corroborate this framing, treating vulnerability as a source of  leadership power rather than exposure.
+
+Strength: Demonstrated capacity to coach without triggering defensiveness  and to take unambiguous public accountability, sustaining a developmental orientation across EPW4.
+
+Weakness: Coaching depth concentrated within specific dyadic relationships risks perceptions of favouritism. Public accountability may be received as performative  self-criticism rather than genuine ownership in certain peer contexts.
+(144 words)
+
+
+3.  Collaboration
+3.2. Peer Support Across Technical & Strategic Domains
+
+My breadth of problem-solving capability across technical and interpersonal domains characterised peer support across all 3 EPWs. In EPW4, diagnosing and resolving  the video export failure using DaVinci Resolve[5] (1.4.4) freed the team to improve content rather than manage logistics, which is a meta-contribution to a crisis management project that carries a certain acknowledged irony. Resolving a teammate’s audio malfunction  (1.3.1) served a comparable function. Constructive feedback I offered on visual clarity (1.3.2) balanced accuracy with relational sensitivity. West’s (2012) concept of  team reflexivity was evidenced in EPW4’s final meeting (3.4.1), where I led the team  to collectively revise the “Lessons Learnt” section rather than having  each member attend only to their own slides.
+
+Strength: Cross-domain resolution instinct under deadline pressure,  spanning technical configuration (1.4.4, 1.3.1) and interpersonal feedback (1.3.2).
+
+Weakness: Consulting-calibrated directness in peer feedback can register as prescriptive within a collaborative academic context. Absorbing team problems may inadvertently reduce others’ opportunities to develop their own problem-solving capability.
+(160 words)
+
+Footnote(s)
+5: Blackmagic Design’s cinema-grade video editing software.
+
+3.3. Administrative Coordination & Leadership Evolution
+
+In EPW2, I assumed full administrative coordination (1.2.1-1.2.3), which inadvertently suppressed teammates’ opportunities to develop their own operational ownership. Reflecting on this pattern, I recognise a tendency to direct action by default over scaffolded delegation when quality is at risk, a habit that prioritises output over distributed capability. What this revealed was an assumption that quality and  distributed ownership are mutually exclusive under deadline pressure,  one that subsequent EPWs began to displace.
+3.  Collaboration
+3.3. Administrative Coordination & Leadership Evolution (continued)
+
+In EPW3, I adopted a peer-collaborative style through shared coordination with  Ben Dingwall, moving towards the structural commitment to shared responsibility  that shared leadership model (Carson et al., 2007) identifies as the corrective to EPW2’s concentration pattern. This was partially necessitated by Mashhuda Kazi’s absence,  raising the question of whether genuine distribution would have emerged independently. The central limitation of this approach is that distributed accountability can diffuse into unowned responsibility when team composition reduces unexpectedly.
+
+By EPW4, strategic leadership alongside Mokshara Wathsaranga’s administrative partnership represented a tangible structural shift. Tuckman and Jensen’s (2010) “performing stage”, achieved through accumulated relational capital rather than formal role assignment, aptly characterises the EPW2 to EPW4 arc. Unlike EPW2’s operational service role and EPW3’s contingent co-leadership, EPW4 marked a transition to recognised directional leadership. The temporal matrix framework (2.4.1), introduced individually, became the intellectual architecture the entire team’s deliverable was built around, which Bass’ (1985) transformational leadership characterises as inspirational motivation through vision-setting rather than positional authority.
+
+Strength: Progressive leadership evolution across EPWs, from operational support to recognised directional authority. EPW4 intellectual contribution shaped the entire team’s analytical architecture whilst completion flexibility (1.4.2) evidenced continued prioritisation of collective over individual ownership.
+
+Weakness: EPW2 administrative concentration created coordinator dependency.  EPW3’s shared model, contingent in origin, remains untested as a conscious decision.
+(292 words)
+
+Personal  Development  Plan
+
+<csv_style>
+Parameter,"Immediate: PDP1. Socratic Coaching Framework","Progressive: PDP2. Shared Leadership Practice"
+Foundation,"Items 1.4.1, 4.4.1, and 4.4.2 reveal coaching capability alongside a recurring dependency risk, where effective developmental support requires planned withdrawal (Heifetz, 1994).","Sections 1.4 and 3.3 delineate concentrated capability deployment as a central limitation across EPWs attributable to insufficient structural commitment to distributing responsibility (Carson et al., 2007)."
+Specific,"Implement a structured Socratic coaching protocol within my consulting practice[7], distinguishing facilitative from leading questions.",Conduct shared leadership assessments in my advisory role[8]. Develop a capability delegation framework specifically for the group’s targeted divisions.
+Measurable,"Coach 3 junior colleagues through 24 peer-review discussions with bimonthly capability self-assessment.","Focus on 3 concentrated strategic functions. Collect 360° feedback at each quarterly review."
+Achievable,"Immediate access to junior consultants provides application context.","Board advisory authority permits structural changes."
+Relevant,"Directly addresses the dependency pattern in Section 1.2 through intentional scaffolding withdrawal.","Remote delivery within the existing operating model directly addresses the shared leadership (Carson et al., 2007) gaps from Sections 1.4 and 3.3."
+Time-bound[6],"April to September 2026, which aligns with junior consultant onboarding period in Sydney.","July 2026 to April 2027, across 4 quarterly reviews aligned with the board meeting schedule."
+</csv_style>
+
+(200 words)
+(Total: 2,000 words)
+
+Footnote(s)
+6: Goal-setting framework consisting Specific, Measurable, Achievable, Relevant, Time-bound.
+7: As an Associate of a Sydney management consulting firm.
+8: As a Board Member and Advisor (Strategy and Operations) of a Hong Kong management consulting firm, recently acquired by an international entertainment group.
+References
+
+Bass, B.M. (1985) Leadership and Performance Beyond Expectations. New York: Free Press.
+
+Brooks, A.W., and John, L.K. (2018) ‘The Surprising Power of Questions’, Harvard Business Review, 96(3), pp.60–67.
+
+Brown, B. (2012) Daring Greatly: How the Courage to Be Vulnerable Transforms the Way We Live, Love, Parent, and Lead. New York: Gotham Books.
+
+Brown, T. (2008) ‘Design Thinking’, Harvard Business Review, 86(6), pp.84–92.
+
+Carson, J.B., Tesluk, P.E., and Marrone, J.A. (2007) ‘Shared Leadership in Teams: An Investigation of Antecedent Conditions and Performance’, Academy of Management Journal, 50(5), pp.1217–1234.
+
+Coombs, W.T. (2007) ‘Protecting Organization Reputations During a Crisis: The Development and Application of Situational Crisis Communication Theory’, Corporate Reputation Review, 10(3), pp.163–176.
+
+Davis, J.H., Schoorman, F.D., and Donaldson, L. (1997) ‘Toward a Stewardship Theory of Management’, Academy of Management Review, 22(1), pp.20–47.
+
+De Wolf, D., and Mejri, M. (2013) ‘Crisis Communication Failures: The BP Case Study’, International Journal of Advances in Management and Economics, 2(2), pp.48–56.
+
+Edmondson, A. (1999) ‘Psychological Safety and Learning Behavior in Work Teams’, Administrative Science Quarterly, 44(2), pp.350–383.
+
+Feigenbaum, A.V. (1991) Total Quality Control. 3rd edn. New York: McGraw-Hill.
+References
+(continued)
+
+Freeman, R.E. (1984) Strategic Management: A Stakeholder Approach. Boston: Pitman.
+
+Graen, G.B., and Uhl-Bien, M. (1995) ‘Relationship-Based Approach to Leadership: Development of Leader-Member Exchange (LMX) Theory of Leadership over 25 Years’, The Leadership Quarterly, 6(2), pp.219–247.
+
+Greenleaf, R.K. (1970) The Servant as Leader. Cambridge, MA: Center for Applied Studies.
+
+Greyser, S.A. (1982) ‘Johnson & Johnson: The Tylenol Tragedy’, Harvard Business School Case 583-043. (Revised May 1992.)
+
+Heifetz, R.A. (1994) Leadership Without Easy Answers. Cambridge, MA: Harvard University Press.
+
+Kaplan, R.S., and Norton, D.P. (1992) ‘The Balanced Scorecard: Measures that Drive Performance’, Harvard Business Review, 70(1), pp.71–79.
+
+Kolb, D.A. (1984) Experiential Learning: Experience as the Source of Learning and Development. Englewood Cliffs, NJ: Prentice Hall.
+
+Kotter, J.P. (1996) Leading Change. Boston, MA: Harvard Business School Press.
+
+Lewin, K. (1947) ‘Frontiers in Group Dynamics: Concept, Method and Reality in Social Science; Social Equilibria and Social Change’, Human Relations, 1(1), pp.5–41.
+
+References
+(continued)
+
+Maor, D., Kaas, H.-W., Strovink, K., and Srinivasan, R. (2024) How Leaders Can Tap the Power of Vulnerability. Available at: https://www.mckinsey.com/capabilities/people-and-organizational-performance/our-insights/how-leaders-can-tap-the-power-of-vulnerability (Accessed: 10 March 2026).
+
+McLuhan, M. (1964) Understanding Media: The Extensions of Man. New York: McGraw-Hill.
+
+Organ, D.W. (1988) Organizational Citizenship Behavior: The Good Soldier Syndrome. Lexington, MA: Lexington Books.
+
+Porter, M.E. (1985) Competitive Advantage: Creating and Sustaining Superior Performance. New York: The Free Press.
+
+Sweller, J. (1988) ‘Cognitive Load During Problem Solving: Effects on Learning’, Cognitive Science, 12(2), pp.257–285.
+
+Tuckman, B.W., and Jensen, M.A.C. (2010) ‘Stages of Small-Group Development Revisited’, Group Facilitation: A Research and Applications Journal, 10, pp.43–48.
+
+van Dierendonck, D. (2011) ‘Servant Leadership: A Review and Synthesis’, Journal of Management, 37(4), pp.1228–1261.
+
+West, M.A. (2012) Effective Teamwork: Practical Lessons from Organizational Research. 3rd edn. Oxford: BPS Blackwell.
+
+Thank  You  For  Your  Time!
