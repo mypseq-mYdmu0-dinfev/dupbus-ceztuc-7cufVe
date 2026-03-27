@@ -8,12 +8,16 @@
 
 ProjectSummary.md
 [URL]
-[descr]
+[descr].
 
 DevPlan.md
 [URL]
-[descr]
+[descr].
 
 MGTK751 Official Files _ full.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751%20Official%20Files%20_%20full%20_%20[timestamp].md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751%20Official%20Files%20_%20full%20_%2001.md
 Full original text of Moodle pages and linked files, inc. module home, schedule, etc.
+
+MGTK751 Potential Advisors.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751%20Potential%20Advisors%20_%2001.md
+All advisors w/ biography, methodology, etc.

@@ -19,4 +19,4 @@ this CP is dedicated to "MGTK751 MBA Project" (MP/dissertation), the ultimate mo
 * Below=excerpt; re-consult MP_directory.md if needed
 
 Conditionally fetch:
-- `MGTK751 TBC File.md`
+- `MGTK751 Potential Advisors.md` when MP supervisor/advisor info needed
