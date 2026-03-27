@@ -6,7 +6,7 @@ this CP is dedicated to "MGTK751 MBA Project" (MP/dissertation), the ultimate mo
 
 # FETCH RULES
 
-* Each prompt file ... do not proceed. (same as userPref) For anything in MP_directory.md, declare actual filename, not alias.
+* Each file ... not proceed. (same as userPref)
 
 ## UNCONDITIONAL
 

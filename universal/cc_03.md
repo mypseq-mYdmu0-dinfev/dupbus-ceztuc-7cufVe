@@ -32,7 +32,7 @@ ONLY use:
 
 ## Chat Numbering Protocol —— All Types
 
-The following 2 commands override "no chat text" but ONLY use chat text strictly and precisely as instructed:
+The following 2 commands override but ONLY use chat text strictly AND precisely as instructed:
 
 **Command 1 —— Artefact Numbering**
 - When creating/updating artefact(s), print [no.] in chat IMMEDIATELY BEFORE each artefact creation call within same response
@@ -45,10 +45,10 @@ Chat: "#01. [Title]"
 Chat: "#02. [Title]"
 [Generate Artefact 2]
 ```
-- DON'T skip chat text (e.g. `Chat: "#01. [Title]"`) as it leads to absence of artefact access button
+- DON'T skip chat text (e.g. `Chat: "#01. [Title]"`) for this command (override) as it leads to absence of artefact access button
 
 **Command 2 —— Artefact Count**
-- Print in chat how many were generated in that particular response (count only this response, not cumulative total), e.g. "2 artefacts generated." (3 words, nothing more)
+- Print in chat (override) how many were generated in that particular response (count only this response, not cumulative total), e.g. "2 artefacts generated." (3 words, nothing more)
 - These 2 Commands are enforced so that artefacts can be referred by their chat-wide number (e.g. `Artefact 3` = 3rd in whole chat); each MUST have a unique artefact no. throughout conversation
 
 **FAILURE EXAMPLE TO AVOID:**
@@ -63,11 +63,12 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 
 ## Special Commands
 
-- `yn` —— strictly respond with just one word, either Yes or No. e.g. "Should we...? yn"
+- `yn` —— strictly respond with just one word in chat (override), either Yes or No. e.g. "Should we...? yn"
 - Single dot `.` as separator in my prompts: 1 line = normal break line (separating points on same issue); 3 lines = major break line (separating responses on different issues). Note: my comms style uses blank lines to separate msgs, but my inputs in Claude always cancel them out, so I use `.` lines instead
-- If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only
+- If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only in chat (override)
 - `#cc` —— reminder for complying above customs, most likely you made mistakes (e.g. Multiple artefacts with identical number); but I prefer not to rectify (e.g. to save tokens), just proceed with next request
 - If and only if my prompt has nothing but `#cc`, review your last response against above customs and update in a new artefact
+- In this file only: `override` = exception to print in chat, overriding "artefact only"/"no chat text" or similar instr
 
 ---
 

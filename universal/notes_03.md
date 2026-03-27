@@ -8,8 +8,6 @@
 
 ## Naming
 
-- Always name chats & artefacts instead of having them as `Untitled`; if working on a certain task (e.g. Project 1 Introduction), name them according to such context; if not or unaware of, name according to content inside the artefact
-- If `Untitled` is seen during first 5 responses (which means you failed to name them), concisely suggest a name in chat text for me to manually apply
 - CP chats usually:
   - named `[CP_name] ([chat_no.], [brief_desc.]) e.g. `MGTK751 MP (01, overview)`
   - sequential, so if last one in recent_chats was Chat 01, you're Chat 02
