@@ -1,13 +1,23 @@
-* README: This file contains below official pages/files in full pure text:
-MGTK751 MBA Project Module Home.pdfMGTK751 Lecturer Office.pdfMGTK751 Module Schedule.pdfMGTK751 Individual MBA Project Advisor Allocation Form.pdfMGTK751 Draft Research Proposal.pdfMGTK751 DRAFT Recorded Presentation Submission.pdfMGTK751 DRAFT Research Project Submission.pdfMGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdfMGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdfMGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdfDissertation Agreement.pdfMGTK751 MBA Research Proposal Template.pdfMGTK751 MBA Research Proposal Assessment Criteria (A1).pdfMGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdfMBA Full Project Outline.pdfMGTK751 MBA Research Project Assessment Criteria (A3).pdf
-MGTK751 Additional Resources.pdfMGTK751 Grading Criteria.pdfMGTK751 Reading List.pdfMGTK751 Individual MBA Project Supervisor Area.pdfMGTK751 Ethical Approval.pdfMGTK751 Ethical Approval Process.pdfMGTK751 Ethical Approval 2.pdf
+# Official Files (full)
+
+## Included Files
+
+This file contains below official pages/files in full pure text:
+MBA Project Module Home.pdfLecturer Office.pdfModule Schedule.pdfIndividual MBA Project Advisor Allocation Form.pdfDraft Research Proposal.pdfDRAFT Recorded Presentation Submission.pdfDRAFT Research Project Submission.pdfMBA Research Project Proposal (Assessment 1) -1500 words.pdfRecorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdfFinal MBA Project Submission (Assessment 3) - 8000 words.pdfDissertation Agreement.pdfMBA Research Proposal Template.pdfMBA Research Proposal Assessment Criteria (A1).pdfMBA Project Recorded Presentation Assessment Criteria (A2).pdfMBA Full Project Outline.pdfMBA Research Project Assessment Criteria (A3).pdf
+Additional Resources.pdfGrading Criteria.pdfReading List.pdfIndividual MBA Project Supervisor Area.pdfEthical Approval.pdfEthical Approval Process.pdfEthical Approval 2.pdf
 [Weeks 1-36 to be added later]
 
-* Remarks: <csv> encloses tabular content converted to csv style; <image_description> encloses description of imagery content; [(xxx) → xxx.pdf] are hyperlinks, e.g. [Link → `Dissertation Agreement.pdf`] means here is a link that led to `Dissertation Agreement.pdf` as shown below; "Omitted" means here is a link but deemed unimportant
+## Remarks
+
+- Lectures are exc. from this file despite linked in Moodle pages
+- <csv> encloses tabular content converted to csv style
+<image_description> encloses description of imagery content
+- [(xxx) → xxx.pdf] are hyperlinks, e.g. [Link → `Dissertation Agreement.pdf`] means here is a link that led to `Dissertation Agreement.pdf` as shown below
+- "Omitted" means here is a link but deemed unimportant
 
 ---
 
-#### ~~~ START: MGTK751 MBA Project Module Home.pdf ~~~
+#### ~~~ START: MBA Project Module Home.pdf ~~~
 
 # Module Home
 
@@ -41,11 +51,11 @@ Please see below for a list of module announcements. When your lecturer adds a n
 
 [Link → `Dissertation Agreement.pdf`]
 
-#### ~~~ END: MGTK751 MBA Project Module Home.pdf ~~~
+#### ~~~ END: MBA Project Module Home.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Lecturer Office.pdf ~~~
+#### ~~~ START: Lecturer Office.pdf ~~~
 
 # Lecturer Office
 
@@ -71,11 +81,11 @@ Enis Elezi completed his PhD in Knowledge Management at The University of Bolton
 
 Enis has a research interest in organisational studies with a particular focus on Knowledge Management, Organisational Culture, Change Management and Collaborative Work in Higher Education Institutions. Currently, Enis serves as an Associate Editor for the Journal of Management Dynamics in the Knowledge Economy, a Fellow of the Higher Education Academy (HEA), and a member of the International Association of Knowledge Management and British Academy of Management, and regularly reviews for peer-reviewed Journals.
 
-#### ~~~ END: MGTK751 Lecturer Office.pdf ~~~
+#### ~~~ END: Lecturer Office.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Module Schedule.pdf ~~~
+#### ~~~ START: Module Schedule.pdf ~~~
 
 # Module Schedule
 
@@ -101,20 +111,20 @@ Please note: all dates are in UK time.
 
 <csv>
 Assessment/Activity,Week,Grade Weighting,Deadline
-Individual MBA Project Advisor Allocation Form [→ MGTK751 Individual MBA Project Advisor Allocation Form.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
-Draft Research Proposal [→ MGTK751 Draft Research Proposal.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
-MBA Research Project Proposal (Assessment 1) - 1500 words [→ MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%,"23:59 (UK Time) Monday 27th April 2026"
-DRAFT Recorded Presentation Submission [→ MGTK751 DRAFT Recorded Presentation Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
-DRAFT Research Project Submission [→ MGTK751 DRAFT Research Project Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
-"Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes [→ MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf]",Week 36,20%,"23:59 (UK Time) Monday 23rd November 2026"
-"Final MBA Project Submission (Assessment 3) - 8000 words [→ MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf]",Week 36,70%,"23:59 (UK Time) Monday 23rd November 2026"
+Individual MBA Project Advisor Allocation Form [→ Individual MBA Project Advisor Allocation Form.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
+Draft Research Proposal [→ Draft Research Proposal.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
+MBA Research Project Proposal (Assessment 1) - 1500 words [→ MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%,"23:59 (UK Time) Monday 27th April 2026"
+DRAFT Recorded Presentation Submission [→ DRAFT Recorded Presentation Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
+DRAFT Research Project Submission [→ DRAFT Research Project Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
+"Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes [→ Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf]",Week 36,20%,"23:59 (UK Time) Monday 23rd November 2026"
+"Final MBA Project Submission (Assessment 3) - 8000 words [→ Final MBA Project Submission (Assessment 3) - 8000 words.pdf]",Week 36,70%,"23:59 (UK Time) Monday 23rd November 2026"
 </csv>
 
-#### ~~~ END: MGTK751 Module Schedule.pdf ~~~
+#### ~~~ END: Module Schedule.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Individual MBA Project Advisor Allocation Form.pdf ~~~
+#### ~~~ START: Individual MBA Project Advisor Allocation Form.pdf ~~~
 
 # MBA Project Advisor Allocation Form
 
@@ -149,11 +159,11 @@ Please note that we made every effort to match you with your first choice of sup
 
 [Submit]
 
-#### ~~~ END: MGTK751 Individual MBA Project Advisor Allocation Form.pdf ~~~
+#### ~~~ END: Individual MBA Project Advisor Allocation Form.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Draft Research Proposal.pdf ~~~
+#### ~~~ START: Draft Research Proposal.pdf ~~~
 
 # Draft Research Proposal
 
@@ -174,11 +184,11 @@ Last modified,-
 
 To do: Make a submission
 
-#### ~~~ END: MGTK751 Draft Research Proposal.pdf ~~~
+#### ~~~ END: Draft Research Proposal.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 DRAFT Recorded Presentation Submission.pdf ~~~
+#### ~~~ START: DRAFT Recorded Presentation Submission.pdf ~~~
 
 # DRAFT Recorded Presentation Submission
 
@@ -204,11 +214,11 @@ Last modified,-
 
 To do: Make a submission
 
-#### ~~~ END: MGTK751 DRAFT Recorded Presentation Submission.pdf ~~~
+#### ~~~ END: DRAFT Recorded Presentation Submission.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 DRAFT Research Project Submission.pdf ~~~
+#### ~~~ START: DRAFT Research Project Submission.pdf ~~~
 
 # DRAFT Research Project Submission
 
@@ -229,11 +239,11 @@ Last modified,-
 
 To do: Make a submission
 
-#### ~~~ END: MGTK751 DRAFT Research Project Submission.pdf ~~~
+#### ~~~ END: DRAFT Research Project Submission.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
+#### ~~~ START: MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
 
 # MBA Research Project Proposal (Assessment 1) —— 1500 Words
 
@@ -264,11 +274,11 @@ Please complete the following coversheet when you submit your assessment.
 
 Please see the document below, which provides you with the assignment brief and a template for your proposal.
 
-[MGTK751 MBA Research Proposal Template → `MGTK751 MBA Research Proposal Template.pdf`]
+[MBA Research Proposal Template → `MBA Research Proposal Template.pdf`]
 
 ## Grading Criteria
 
-[MBA Research Proposal Assessment Criteria → `MGTK751 MBA Research Proposal Assessment Criteria (A1).pdf`]
+[MBA Research Proposal Assessment Criteria → `MBA Research Proposal Assessment Criteria (A1).pdf`]
 
 [Individual Project Proposal Learning Outcomes] (omitted)
 
@@ -292,11 +302,11 @@ This assignment will fulfil the following learning outcomes for the module:
 - LO1: Students will be able to select a management challenge facing a particular organisation (the 'client') and justify their choice and their process of inquiry in a rigorous and systematic fashion.
 - LO4: Students will be able to analyse and synthesise complex and ambiguous data from a wide variety of sources, in order to make reasoned judgements and recommendations underpinned by ethical values.
 
-#### ~~~ END: MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
+#### ~~~ END: MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
+#### ~~~ START: Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
 
 # Recorded Presentation Submission (Assessment 2) —— Maximum 10 Minutes
 
@@ -330,7 +340,7 @@ Your presentation should be professionally presented, well-structured and logica
 
 ## Assessment Criteria
 
-[MBA Project Recorded Presentation Assessment Criteria → `MGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdf`]
+[MBA Project Recorded Presentation Assessment Criteria → `MBA Project Recorded Presentation Assessment Criteria (A2).pdf`]
 
 You can choose to record your presentation through a variety of channels. See below for links to some useful articles which might help you record your presentation:
 
@@ -364,11 +374,11 @@ This assignment will fulfil the following learning outcomes for the module:
 - LO4: Students will be able to analyse and synthesise complex and ambiguous data from a wide variety of sources, in order to make reasoned judgements and recommendations underpinned by ethical values.
 - LO5: Students will be able to prepare and present findings, conclusions and recommendations in a verbal and written format.
 
-#### ~~~ END: MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
+#### ~~~ END: Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
+#### ~~~ START: Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
 
 # Final MBA Project Submission (Assessment 3) —— 8000 Words
 
@@ -400,7 +410,7 @@ Please see the document below, which acts as both your assignment brief and temp
 
 ## Grading Criteria
 
-[MBA Research Project Assessment Criteria → `MGTK751 MBA Research Project Assessment Criteria (A3).pdf`]
+[MBA Research Project Assessment Criteria → `MBA Research Project Assessment Criteria (A3).pdf`]
 
 ## Early Submission
 
@@ -430,7 +440,7 @@ This assignment will fulfil the following learning outcomes for the module:
 - LO4: Students will be able to analyse and synthesise complex and ambiguous data from a wide variety of sources, in order to make reasoned judgements and recommendations underpinned by ethical values.
 - LO5: Students will be able to prepare and present findings, conclusions and recommendations in a verbal and written format.
 
-#### ~~~ END: MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
+#### ~~~ END: Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
 
 ---
 
@@ -485,9 +495,9 @@ This assignment will fulfil the following learning outcomes for the module:
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Proposal Template.pdf ~~~
+#### ~~~ START: MBA Research Proposal Template.pdf ~~~
 
-# MGTK751 MBA Project Research Proposal Template (1500 words maximum)
+# MBA Project Research Proposal Template (1500 words maximum)
 
 *(Please note the section word counts are only suggestive and not fixed. The word count includes tables and diagrams unless otherwise stated. The text in blue is for guidance only and should be removed from the final submission)*
 
@@ -495,7 +505,7 @@ This assignment will fulfil the following learning outcomes for the module:
 
 ## Cover Page *(not included in word count)*
 
-MGTK751 MBA Project Research Proposal
+MBA Project Research Proposal
 
 - Student Name:
 - Student Number:
@@ -537,11 +547,11 @@ MGTK751 MBA Project Research Proposal
 
 - List all the references cited in the proposal using a consistent Harvard citation style
 
-#### ~~~ END: MGTK751 MBA Research Proposal Template.pdf ~~~
+#### ~~~ END: MBA Research Proposal Template.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Proposal Assessment Criteria (A1).pdf ~~~
+#### ~~~ START: MBA Research Proposal Assessment Criteria (A1).pdf ~~~
 
 # MBA Research Project Proposal
 
@@ -557,11 +567,11 @@ Grade Range,Criteria
 0-29%,"Seriously inadequate execution of the brief. Failure to focus upon the question. Seriously short or even devoid of theoretical under-pinning. Large sections irrelevant. May contain excessive use of quotations."
 </csv>
 
-#### ~~~ END: MGTK751 MBA Research Proposal Assessment Criteria (A1).pdf ~~~
+#### ~~~ END: MBA Research Proposal Assessment Criteria (A1).pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
+#### ~~~ START: MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
 
 # MBA Project Recorded Presentation
 
@@ -577,7 +587,7 @@ Grade Range,Criteria
 0-29%,"Highly unsatisfactory presentation possibly involving complete failure to focus upon the brief. Alternatively, may involve serious and multiple weaknesses as regards introduction, delivery of main presentation and summary, use and appropriateness of visual aids; or general organisation of presentation including observance of time limits and dealing with questions. Presentation based mainly upon lecture materials. May be partial and may contain errors."
 </csv>
 
-#### ~~~ END: MGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
+#### ~~~ END: MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
 
 ---
 
@@ -734,7 +744,7 @@ You do not need to include every interview transcript, but these should be made 
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Project Assessment Criteria (A3).pdf ~~~
+#### ~~~ START: MBA Research Project Assessment Criteria (A3).pdf ~~~
 
 # MBA Individual Research Project
 
@@ -750,11 +760,11 @@ Grade Range,Criteria
 0-29%,"Submission contains serious weaknesses on one or more of the following counts: adequacy of literature review; design and methodology; data collection; analysis, discussion and conclusions and general standard of presentation. May contain excessive use of quotations."
 </csv>
 
-#### ~~~ END: MGTK751 MBA Research Project Assessment Criteria (A3).pdf ~~~
+#### ~~~ END: MBA Research Project Assessment Criteria (A3).pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Additional Resources.pdf ~~~
+#### ~~~ START: Additional Resources.pdf ~~~
 
 # Additional Resources
 
@@ -770,13 +780,13 @@ The following page provides information on how students and supervisors should w
 
 The following page provides information on how this module is assessed.
 
-[Grading Criteria → `MGTK751 Grading Criteria.pdf`]
+[Grading Criteria → `Grading Criteria.pdf`]
 
 ## Reading List
 
 This module has a complete reading list which is available via the University of Liverpool Talis reading list service. Each week in this module also has a weekly reading list. You can use either or both options for your reading.
 
-[MGTK751 Reading List → `MGTK751 Reading List.pdf`]
+[Reading List → `Reading List.pdf`]
 
 ## Study Skills
 
@@ -788,11 +798,11 @@ You can speak to us by phone or email, and can even arrange a one-to-one support
 
 As well as this direct support, you can also browse the materials in the Study Skills Hub (omitted) aimed at informing, developing and maintaining your academic skills to complement your studies with the University of Liverpool.
 
-#### ~~~ END: MGTK751 Additional Resources.pdf ~~~
+#### ~~~ END: Additional Resources.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Grading Criteria.pdf ~~~
+#### ~~~ START: Grading Criteria.pdf ~~~
 
 # Grading Criteria
 
@@ -802,23 +812,23 @@ Click here to view the additional assessment length guidance (omitted).
 
 <csv>
 Assessment,Deadline,Grade Weighting
-MBA Research Project Proposal [→ MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%
-Recorded Presentation [→ MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf],Week 36,20%
-MBA Project [→ MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf],Week 36,70%
+MBA Research Project Proposal [→ MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%
+Recorded Presentation [→ Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf],Week 36,20%
+MBA Project [→ Final MBA Project Submission (Assessment 3) - 8000 words.pdf],Week 36,70%
 </csv>
 
 Please Note: All grades are subject to change until they have been agreed by the External Examiner, and ratified by the Examination Board.
 
-#### ~~~ END: MGTK751 Grading Criteria.pdf ~~~
+#### ~~~ END: Grading Criteria.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Reading List.pdf ~~~
+#### ~~~ START: Reading List.pdf ~~~
 
 # MGTK751: MBA Project (KOL) —— Reading List
 
 *University of Liverpool | Private: Kaplan Online Learning*
-*Linked to MGTK751 | Description: Kaplan Online Learning*
+*Linked to | Description: Kaplan Online Learning*
 
 ---
 
@@ -897,11 +907,11 @@ Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Stu
 
 *Please note: This book can be accessed as a VitalSource eBook directly through the learning platform.*
 
-#### ~~~ END: MGTK751 Reading List.pdf ~~~
+#### ~~~ END: Reading List.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Individual MBA Project Supervisor Area.pdf ~~~
+#### ~~~ START: Individual MBA Project Supervisor Area.pdf ~~~
 
 # Individual MBA Project Supervisor Area
 
@@ -919,11 +929,11 @@ All correspondence between students and their supervisor must be conducted throu
 
 Supervisor Discussion Forum (omitted)
 
-#### ~~~ END: MGTK751 Individual MBA Project Supervisor Area.pdf ~~~
+#### ~~~ END: Individual MBA Project Supervisor Area.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Ethical Approval.pdf ~~~
+#### ~~~ START: Ethical Approval.pdf ~~~
 
 # Ethical Approval
 
@@ -1017,8 +1027,8 @@ The following is an indicative schedule for proposal and ethics approval. Please
 
 ## Ethical Approval Information and Resources
 
-- [Ethical Approval Process → `MGTK751 Ethical Approval Process.pdf`]
-- [Ethical Approval → `MGTK751 Ethical Approval 2.pdf`]
+- [Ethical Approval Process → `Ethical Approval Process.pdf`]
+- [Ethical Approval → `Ethical Approval 2.pdf`]
 - Ethical Approval Submission (omitted)
 - Guidance for using the Ethical Approval System (omitted)
 - Guidance for using the Ethical Approval System (Faculty) (omitted)
@@ -1026,11 +1036,11 @@ The following is an indicative schedule for proposal and ethics approval. Please
 - Link to the Online Application Portal (omitted)
 - Link to Resources and Application System (omitted)
 
-#### ~~~ END: MGTK751 Ethical Approval.pdf ~~~
+#### ~~~ END: Ethical Approval.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Ethical Approval Process.pdf ~~~
+#### ~~~ START: Ethical Approval Process.pdf ~~~
 
 # Ethical Approval Process
 
@@ -1103,11 +1113,11 @@ You must understand that you are responsible for notifying the Committee of any 
 
 You must read and understand the University's Policy on Research Ethics, and the Concordat to Support Research Integrity. You must undertake to abide by the ethical principles laid down by relevant professional societies.
 
-#### ~~~ END: MGTK751 Ethical Approval Process.pdf ~~~
+#### ~~~ END: Ethical Approval Process.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Ethical Approval 2.pdf ~~~
+#### ~~~ START: Ethical Approval 2.pdf ~~~
 
 # Ethical Approval 2
 
@@ -1132,4 +1142,4 @@ Master's students are not permitted to engage in high-risk projects. These would
 
 Whilst students are working on their projects, they should work closely with their Supervisors to ensure that their requests for survey participation meet current General Data Protection Regulations (GDPR) and that the identity of all participants is protected. For example, a request for survey participation should not include the full list of recipients in the "To" list, the list should be masked using the blind copy function typically found in email systems.
 
-#### ~~~ END: MGTK751 Ethical Approval 2.pdf ~~~
+#### ~~~ END: Ethical Approval 2.pdf ~~~
