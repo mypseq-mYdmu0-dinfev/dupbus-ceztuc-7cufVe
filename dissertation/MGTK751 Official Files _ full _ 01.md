@@ -1,13 +1,23 @@
-* README: This file contains below official pages/files in full pure text:
-MGTK751 MBA Project Module Home.pdfMGTK751 Lecturer Office.pdfMGTK751 Module Schedule.pdfMGTK751 Individual MBA Project Advisor Allocation Form.pdfMGTK751 Draft Research Proposal.pdfMGTK751 DRAFT Recorded Presentation Submission.pdfMGTK751 DRAFT Research Project Submission.pdfMGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdfMGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdfMGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdfDissertation Agreement.pdfMGTK751 MBA Research Proposal Template.pdfMGTK751 MBA Research Proposal Assessment Criteria (A1).pdfMGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdfMBA Full Project Outline.pdfMGTK751 MBA Research Project Assessment Criteria (A3).pdf
-MGTK751 Additional Resources.pdfMGTK751 Grading Criteria.pdfMGTK751 Reading List.pdfMGTK751 Individual MBA Project Supervisor Area.pdfMGTK751 Ethical Approval.pdfMGTK751 Ethical Approval Process.pdfMGTK751 Ethical Approval 2.pdf
-[Weeks 1-36 to be added later]
+# Official Files (full)
 
-* Remarks: <csv> encloses tabular content converted to csv style; <image_description> encloses description of imagery content; [(xxx) → xxx.pdf] are hyperlinks, e.g. [Link → `Dissertation Agreement.pdf`] means here is a link that led to `Dissertation Agreement.pdf` as shown below; "Omitted" means here is a link but deemed unimportant
+## Included Files
+
+This file contains below official pages/files in full pure text:
+MBA Project Module Home.pdfLecturer Office.pdfModule Schedule.pdfIndividual MBA Project Advisor Allocation Form.pdfDraft Research Proposal.pdfDRAFT Recorded Presentation Submission.pdfDRAFT Research Project Submission.pdfMBA Research Project Proposal (Assessment 1) -1500 words.pdfRecorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdfFinal MBA Project Submission (Assessment 3) - 8000 words.pdfDissertation Agreement.pdfMBA Research Proposal Template.pdfMBA Research Proposal Assessment Criteria (A1).pdfMBA Project Recorded Presentation Assessment Criteria (A2).pdfMBA Full Project Outline.pdfMBA Research Project Assessment Criteria (A3).pdf
+Additional Resources.pdfGrading Criteria.pdfModule Reading List.pdfIndividual MBA Project Supervisor Area.pdfEthical Approval.pdfEthical Approval Process.pdfEthical Approval 2.pdf
+Week 01.pdfAction Learning Set (ALS) Guidance.pdfWeek 01 ALS Activity.pdfWeek 01 Reading.pdfWeek 02.pdfWeek 02 ALS Activity.pdfWeek 02 Reading.pdfWeek 03.pdfWeek 03 ALS Activity.pdfWeek 03 Reading.pdfWeek 04.pdfWeek 04 ALS Activity.pdfWeek 04 Individual MBA Project Advisor Allocation Form.pdfWeek 04 Reading.pdfWeek 05.pdfWeek 05 ALS Activity.pdfWeek 05 Reading.pdfWeek 06.pdfWeek 06 Seminar Elevator Pitch.pdfWeek 06 ALS Activity.pdfWeek 06 Reading.pdfWeek 07-11.pdfMBA Research Project Advisor Agreement.pdfWeek 12-31.pdfWeek 32.pdfWeek 36.pdf
+
+## Remarks
+
+- Lectures are exc. from this file despite linked in Moodle pages
+- <csv> encloses tabular content converted to csv style
+<image_description> encloses description of imagery content
+- [(xxx) → xxx.pdf] are hyperlinks, e.g. [Link → `Dissertation Agreement.pdf`] means here is a link that led to `Dissertation Agreement.pdf` as shown below
+- "Omitted" means here is a link but deemed unimportant
 
 ---
 
-#### ~~~ START: MGTK751 MBA Project Module Home.pdf ~~~
+#### ~~~ START: MBA Project Module Home.pdf ~~~
 
 # Module Home
 
@@ -41,11 +51,11 @@ Please see below for a list of module announcements. When your lecturer adds a n
 
 [Link → `Dissertation Agreement.pdf`]
 
-#### ~~~ END: MGTK751 MBA Project Module Home.pdf ~~~
+#### ~~~ END: MBA Project Module Home.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Lecturer Office.pdf ~~~
+#### ~~~ START: Lecturer Office.pdf ~~~
 
 # Lecturer Office
 
@@ -71,11 +81,11 @@ Enis Elezi completed his PhD in Knowledge Management at The University of Bolton
 
 Enis has a research interest in organisational studies with a particular focus on Knowledge Management, Organisational Culture, Change Management and Collaborative Work in Higher Education Institutions. Currently, Enis serves as an Associate Editor for the Journal of Management Dynamics in the Knowledge Economy, a Fellow of the Higher Education Academy (HEA), and a member of the International Association of Knowledge Management and British Academy of Management, and regularly reviews for peer-reviewed Journals.
 
-#### ~~~ END: MGTK751 Lecturer Office.pdf ~~~
+#### ~~~ END: Lecturer Office.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Module Schedule.pdf ~~~
+#### ~~~ START: Module Schedule.pdf ~~~
 
 # Module Schedule
 
@@ -101,20 +111,20 @@ Please note: all dates are in UK time.
 
 <csv>
 Assessment/Activity,Week,Grade Weighting,Deadline
-Individual MBA Project Advisor Allocation Form [→ MGTK751 Individual MBA Project Advisor Allocation Form.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
-Draft Research Proposal [→ MGTK751 Draft Research Proposal.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
-MBA Research Project Proposal (Assessment 1) - 1500 words [→ MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%,"23:59 (UK Time) Monday 27th April 2026"
-DRAFT Recorded Presentation Submission [→ MGTK751 DRAFT Recorded Presentation Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
-DRAFT Research Project Submission [→ MGTK751 DRAFT Research Project Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
-"Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes [→ MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf]",Week 36,20%,"23:59 (UK Time) Monday 23rd November 2026"
-"Final MBA Project Submission (Assessment 3) - 8000 words [→ MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf]",Week 36,70%,"23:59 (UK Time) Monday 23rd November 2026"
+Individual MBA Project Advisor Allocation Form [→ Individual MBA Project Advisor Allocation Form.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
+Draft Research Proposal [→ Draft Research Proposal.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
+MBA Research Project Proposal (Assessment 1) - 1500 words [→ MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%,"23:59 (UK Time) Monday 27th April 2026"
+DRAFT Recorded Presentation Submission [→ DRAFT Recorded Presentation Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
+DRAFT Research Project Submission [→ DRAFT Research Project Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
+"Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes [→ Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf]",Week 36,20%,"23:59 (UK Time) Monday 23rd November 2026"
+"Final MBA Project Submission (Assessment 3) - 8000 words [→ Final MBA Project Submission (Assessment 3) - 8000 words.pdf]",Week 36,70%,"23:59 (UK Time) Monday 23rd November 2026"
 </csv>
 
-#### ~~~ END: MGTK751 Module Schedule.pdf ~~~
+#### ~~~ END: Module Schedule.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Individual MBA Project Advisor Allocation Form.pdf ~~~
+#### ~~~ START: Individual MBA Project Advisor Allocation Form.pdf ~~~
 
 # MBA Project Advisor Allocation Form
 
@@ -149,11 +159,11 @@ Please note that we made every effort to match you with your first choice of sup
 
 [Submit]
 
-#### ~~~ END: MGTK751 Individual MBA Project Advisor Allocation Form.pdf ~~~
+#### ~~~ END: Individual MBA Project Advisor Allocation Form.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Draft Research Proposal.pdf ~~~
+#### ~~~ START: Draft Research Proposal.pdf ~~~
 
 # Draft Research Proposal
 
@@ -174,11 +184,11 @@ Last modified,-
 
 To do: Make a submission
 
-#### ~~~ END: MGTK751 Draft Research Proposal.pdf ~~~
+#### ~~~ END: Draft Research Proposal.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 DRAFT Recorded Presentation Submission.pdf ~~~
+#### ~~~ START: DRAFT Recorded Presentation Submission.pdf ~~~
 
 # DRAFT Recorded Presentation Submission
 
@@ -204,11 +214,11 @@ Last modified,-
 
 To do: Make a submission
 
-#### ~~~ END: MGTK751 DRAFT Recorded Presentation Submission.pdf ~~~
+#### ~~~ END: DRAFT Recorded Presentation Submission.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 DRAFT Research Project Submission.pdf ~~~
+#### ~~~ START: DRAFT Research Project Submission.pdf ~~~
 
 # DRAFT Research Project Submission
 
@@ -229,11 +239,11 @@ Last modified,-
 
 To do: Make a submission
 
-#### ~~~ END: MGTK751 DRAFT Research Project Submission.pdf ~~~
+#### ~~~ END: DRAFT Research Project Submission.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
+#### ~~~ START: MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
 
 # MBA Research Project Proposal (Assessment 1) —— 1500 Words
 
@@ -264,11 +274,11 @@ Please complete the following coversheet when you submit your assessment.
 
 Please see the document below, which provides you with the assignment brief and a template for your proposal.
 
-[MGTK751 MBA Research Proposal Template → `MGTK751 MBA Research Proposal Template.pdf`]
+[MBA Research Proposal Template → `MBA Research Proposal Template.pdf`]
 
 ## Grading Criteria
 
-[MBA Research Proposal Assessment Criteria → `MGTK751 MBA Research Proposal Assessment Criteria (A1).pdf`]
+[MBA Research Proposal Assessment Criteria → `MBA Research Proposal Assessment Criteria (A1).pdf`]
 
 [Individual Project Proposal Learning Outcomes] (omitted)
 
@@ -292,11 +302,11 @@ This assignment will fulfil the following learning outcomes for the module:
 - LO1: Students will be able to select a management challenge facing a particular organisation (the 'client') and justify their choice and their process of inquiry in a rigorous and systematic fashion.
 - LO4: Students will be able to analyse and synthesise complex and ambiguous data from a wide variety of sources, in order to make reasoned judgements and recommendations underpinned by ethical values.
 
-#### ~~~ END: MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
+#### ~~~ END: MBA Research Project Proposal (Assessment 1) -1500 words.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
+#### ~~~ START: Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
 
 # Recorded Presentation Submission (Assessment 2) —— Maximum 10 Minutes
 
@@ -330,7 +340,7 @@ Your presentation should be professionally presented, well-structured and logica
 
 ## Assessment Criteria
 
-[MBA Project Recorded Presentation Assessment Criteria → `MGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdf`]
+[MBA Project Recorded Presentation Assessment Criteria → `MBA Project Recorded Presentation Assessment Criteria (A2).pdf`]
 
 You can choose to record your presentation through a variety of channels. See below for links to some useful articles which might help you record your presentation:
 
@@ -364,11 +374,11 @@ This assignment will fulfil the following learning outcomes for the module:
 - LO4: Students will be able to analyse and synthesise complex and ambiguous data from a wide variety of sources, in order to make reasoned judgements and recommendations underpinned by ethical values.
 - LO5: Students will be able to prepare and present findings, conclusions and recommendations in a verbal and written format.
 
-#### ~~~ END: MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
+#### ~~~ END: Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
+#### ~~~ START: Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
 
 # Final MBA Project Submission (Assessment 3) —— 8000 Words
 
@@ -400,7 +410,7 @@ Please see the document below, which acts as both your assignment brief and temp
 
 ## Grading Criteria
 
-[MBA Research Project Assessment Criteria → `MGTK751 MBA Research Project Assessment Criteria (A3).pdf`]
+[MBA Research Project Assessment Criteria → `MBA Research Project Assessment Criteria (A3).pdf`]
 
 ## Early Submission
 
@@ -430,7 +440,7 @@ This assignment will fulfil the following learning outcomes for the module:
 - LO4: Students will be able to analyse and synthesise complex and ambiguous data from a wide variety of sources, in order to make reasoned judgements and recommendations underpinned by ethical values.
 - LO5: Students will be able to prepare and present findings, conclusions and recommendations in a verbal and written format.
 
-#### ~~~ END: MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
+#### ~~~ END: Final MBA Project Submission (Assessment 3) - 8000 words.pdf ~~~
 
 ---
 
@@ -485,9 +495,9 @@ This assignment will fulfil the following learning outcomes for the module:
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Proposal Template.pdf ~~~
+#### ~~~ START: MBA Research Proposal Template.pdf ~~~
 
-# MGTK751 MBA Project Research Proposal Template (1500 words maximum)
+# MBA Project Research Proposal Template (1500 words maximum)
 
 *(Please note the section word counts are only suggestive and not fixed. The word count includes tables and diagrams unless otherwise stated. The text in blue is for guidance only and should be removed from the final submission)*
 
@@ -495,7 +505,7 @@ This assignment will fulfil the following learning outcomes for the module:
 
 ## Cover Page *(not included in word count)*
 
-MGTK751 MBA Project Research Proposal
+MBA Project Research Proposal
 
 - Student Name:
 - Student Number:
@@ -537,11 +547,11 @@ MGTK751 MBA Project Research Proposal
 
 - List all the references cited in the proposal using a consistent Harvard citation style
 
-#### ~~~ END: MGTK751 MBA Research Proposal Template.pdf ~~~
+#### ~~~ END: MBA Research Proposal Template.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Proposal Assessment Criteria (A1).pdf ~~~
+#### ~~~ START: MBA Research Proposal Assessment Criteria (A1).pdf ~~~
 
 # MBA Research Project Proposal
 
@@ -557,11 +567,11 @@ Grade Range,Criteria
 0-29%,"Seriously inadequate execution of the brief. Failure to focus upon the question. Seriously short or even devoid of theoretical under-pinning. Large sections irrelevant. May contain excessive use of quotations."
 </csv>
 
-#### ~~~ END: MGTK751 MBA Research Proposal Assessment Criteria (A1).pdf ~~~
+#### ~~~ END: MBA Research Proposal Assessment Criteria (A1).pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
+#### ~~~ START: MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
 
 # MBA Project Recorded Presentation
 
@@ -577,7 +587,7 @@ Grade Range,Criteria
 0-29%,"Highly unsatisfactory presentation possibly involving complete failure to focus upon the brief. Alternatively, may involve serious and multiple weaknesses as regards introduction, delivery of main presentation and summary, use and appropriateness of visual aids; or general organisation of presentation including observance of time limits and dealing with questions. Presentation based mainly upon lecture materials. May be partial and may contain errors."
 </csv>
 
-#### ~~~ END: MGTK751 MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
+#### ~~~ END: MBA Project Recorded Presentation Assessment Criteria (A2).pdf ~~~
 
 ---
 
@@ -734,7 +744,7 @@ You do not need to include every interview transcript, but these should be made 
 
 ---
 
-#### ~~~ START: MGTK751 MBA Research Project Assessment Criteria (A3).pdf ~~~
+#### ~~~ START: MBA Research Project Assessment Criteria (A3).pdf ~~~
 
 # MBA Individual Research Project
 
@@ -750,11 +760,11 @@ Grade Range,Criteria
 0-29%,"Submission contains serious weaknesses on one or more of the following counts: adequacy of literature review; design and methodology; data collection; analysis, discussion and conclusions and general standard of presentation. May contain excessive use of quotations."
 </csv>
 
-#### ~~~ END: MGTK751 MBA Research Project Assessment Criteria (A3).pdf ~~~
+#### ~~~ END: MBA Research Project Assessment Criteria (A3).pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Additional Resources.pdf ~~~
+#### ~~~ START: Additional Resources.pdf ~~~
 
 # Additional Resources
 
@@ -770,13 +780,13 @@ The following page provides information on how students and supervisors should w
 
 The following page provides information on how this module is assessed.
 
-[Grading Criteria → `MGTK751 Grading Criteria.pdf`]
+[Grading Criteria → `Grading Criteria.pdf`]
 
 ## Reading List
 
 This module has a complete reading list which is available via the University of Liverpool Talis reading list service. Each week in this module also has a weekly reading list. You can use either or both options for your reading.
 
-[MGTK751 Reading List → `MGTK751 Reading List.pdf`]
+[Reading List → `Module Reading List.pdf`]
 
 ## Study Skills
 
@@ -788,11 +798,11 @@ You can speak to us by phone or email, and can even arrange a one-to-one support
 
 As well as this direct support, you can also browse the materials in the Study Skills Hub (omitted) aimed at informing, developing and maintaining your academic skills to complement your studies with the University of Liverpool.
 
-#### ~~~ END: MGTK751 Additional Resources.pdf ~~~
+#### ~~~ END: Additional Resources.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Grading Criteria.pdf ~~~
+#### ~~~ START: Grading Criteria.pdf ~~~
 
 # Grading Criteria
 
@@ -802,23 +812,23 @@ Click here to view the additional assessment length guidance (omitted).
 
 <csv>
 Assessment,Deadline,Grade Weighting
-MBA Research Project Proposal [→ MGTK751 MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%
-Recorded Presentation [→ MGTK751 Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf],Week 36,20%
-MBA Project [→ MGTK751 Final MBA Project Submission (Assessment 3) - 8000 words.pdf],Week 36,70%
+MBA Research Project Proposal [→ MBA Research Project Proposal (Assessment 1) -1500 words.pdf],Week 6,10%
+Recorded Presentation [→ Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf],Week 36,20%
+MBA Project [→ Final MBA Project Submission (Assessment 3) - 8000 words.pdf],Week 36,70%
 </csv>
 
 Please Note: All grades are subject to change until they have been agreed by the External Examiner, and ratified by the Examination Board.
 
-#### ~~~ END: MGTK751 Grading Criteria.pdf ~~~
+#### ~~~ END: Grading Criteria.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Reading List.pdf ~~~
+#### ~~~ START: Reading List.pdf ~~~
 
 # MGTK751: MBA Project (KOL) —— Reading List
 
 *University of Liverpool | Private: Kaplan Online Learning*
-*Linked to MGTK751 | Description: Kaplan Online Learning*
+*Linked to | Description: Kaplan Online Learning*
 
 ---
 
@@ -897,11 +907,11 @@ Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Stu
 
 *Please note: This book can be accessed as a VitalSource eBook directly through the learning platform.*
 
-#### ~~~ END: MGTK751 Reading List.pdf ~~~
+#### ~~~ END: Reading List.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Individual MBA Project Supervisor Area.pdf ~~~
+#### ~~~ START: Individual MBA Project Supervisor Area.pdf ~~~
 
 # Individual MBA Project Supervisor Area
 
@@ -919,11 +929,11 @@ All correspondence between students and their supervisor must be conducted throu
 
 Supervisor Discussion Forum (omitted)
 
-#### ~~~ END: MGTK751 Individual MBA Project Supervisor Area.pdf ~~~
+#### ~~~ END: Individual MBA Project Supervisor Area.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Ethical Approval.pdf ~~~
+#### ~~~ START: Ethical Approval.pdf ~~~
 
 # Ethical Approval
 
@@ -1017,8 +1027,8 @@ The following is an indicative schedule for proposal and ethics approval. Please
 
 ## Ethical Approval Information and Resources
 
-- [Ethical Approval Process → `MGTK751 Ethical Approval Process.pdf`]
-- [Ethical Approval → `MGTK751 Ethical Approval 2.pdf`]
+- [Ethical Approval Process → `Ethical Approval Process.pdf`]
+- [Ethical Approval → `Ethical Approval 2.pdf`]
 - Ethical Approval Submission (omitted)
 - Guidance for using the Ethical Approval System (omitted)
 - Guidance for using the Ethical Approval System (Faculty) (omitted)
@@ -1026,11 +1036,11 @@ The following is an indicative schedule for proposal and ethics approval. Please
 - Link to the Online Application Portal (omitted)
 - Link to Resources and Application System (omitted)
 
-#### ~~~ END: MGTK751 Ethical Approval.pdf ~~~
+#### ~~~ END: Ethical Approval.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Ethical Approval Process.pdf ~~~
+#### ~~~ START: Ethical Approval Process.pdf ~~~
 
 # Ethical Approval Process
 
@@ -1103,11 +1113,11 @@ You must understand that you are responsible for notifying the Committee of any 
 
 You must read and understand the University's Policy on Research Ethics, and the Concordat to Support Research Integrity. You must undertake to abide by the ethical principles laid down by relevant professional societies.
 
-#### ~~~ END: MGTK751 Ethical Approval Process.pdf ~~~
+#### ~~~ END: Ethical Approval Process.pdf ~~~
 
 ---
 
-#### ~~~ START: MGTK751 Ethical Approval 2.pdf ~~~
+#### ~~~ START: Ethical Approval 2.pdf ~~~
 
 # Ethical Approval 2
 
@@ -1132,4 +1142,757 @@ Master's students are not permitted to engage in high-risk projects. These would
 
 Whilst students are working on their projects, they should work closely with their Supervisors to ensure that their requests for survey participation meet current General Data Protection Regulations (GDPR) and that the identity of all participants is protected. For example, a request for survey participation should not include the full list of recipients in the "To" list, the list should be masked using the blind copy function typically found in email systems.
 
-#### ~~~ END: MGTK751 Ethical Approval 2.pdf ~~~
+#### ~~~ END: Ethical Approval 2.pdf ~~~
+
+---
+
+#### ~~~ START: Week 01.pdf ~~~
+
+# Week 1: Overview and Introduction to Business Research
+
+Hi Culous! Welcome to Week 1 of the MBA Project.
+
+This is the final module of the programme and many congratulations for completing the taught modules. This week we shall be providing an introduction to the MBA project.
+
+## In this week we shall
+
+- Outline what is the MBA project
+- Explore what is management research
+- Examine how to identify a topic
+- Consider what makes effective research aims and objectives
+
+## On completion of this week you will be able to
+
+- Understand the nature of a MBA project in the context of management research
+- Identify an appropriate topic for your MBA project
+- Develop research aims and objectives
+- Understand the importance of a theoretical framework for your project
+- Understand research philosophy and the associated ontological, epistemological and methodological assumptions and how this relates to management research
+- Critically reflect on positivist and interpretative research philosophies and how they relate to management research
+
+## Week 1 Activities
+
+### Lecturecasts
+
+Please see this week's lecturecasts below:
+
+- Overview and Outline (Duration: 25min) —— Mark as done (omitted)
+- Business Research and Ethics (Duration: 45min) —— Mark as done (omitted)
+- Forming a Research Aim and Objectives (Duration: 50min) —— Mark as done (omitted)
+
+### Action Learning Set Group Allocation
+
+For the first 6 weeks of this module you will be working in action learning sets of 4 to 6 people. Please read the guidance on action learning sets. Before Friday of Week 1, you should organise into groups. Please be mindful of time zone differences as you will be working synchronously (live meetings) as well as asynchronously (discussion boards). Your lecturer has the final say over group membership and may need to make adjustments based on module needs and individual needs.
+
+To create/join a group:
+
+- Use the 'Introduce Yourself' discussion forum below (omitted) to introduce yourself and make connections with your peers.
+- Once you have agreed on a group, use the Group Choice Form (omitted) to allocate yourself into a group. You must complete the Group Choice Form before proceeding to Week 2. Completing the form will allow you to communicate with your fellow group members each week.
+- If you have any questions about group allocation please contact your lecturer directly.
+
+Introduce Yourself (Duration: 2 hours) —— Mark as done (omitted)
+
+Group Choice Form ✓ Done
+
+[Action Learning Set Guidance → `Action Learning Set (ALS) Guidance.pdf`]
+
+### Activities
+
+- Synchronous Seminar (Duration: 1hr) —— Mark as done (omitted)
+- [First Action Learning Set Activity → `Week 01 ALS Activity.pdf`] (Duration: 3 hrs preparation + 1.5hr live meeting) —— Mark as done
+
+### Reading
+
+Choosing a research topic can be exciting, but it is also important to choose something that will sustain your interest and be feasible to research.
+
+[Week 1 Reading → `Week 01 Reading.pdf`] —— Mark as done
+
+#### ~~~ END: Week 01.pdf ~~~
+
+---
+
+#### ~~~ START: Action Learning Set (ALS) Guidance.pdf ~~~
+
+# Action Learning Set (ALS) Guidance
+
+Action learning sets are a powerful tool for professional and personal development, and can be used to support individuals or groups in addressing real-life challenges and issues. Here are some steps to set up an action learning set:
+
+1. **Identify the Participants:** Identify group members participating in an action learning set. It is recommended to have 4`~`6 participants in a set, but this can vary depending on the cohort size.
+2. **Establish the Purpose:** Clarify the purpose of the action learning set and identify the challenges or issues that the participants would like to address. Each week the focus of the action learning set should be on the ongoing progress of the MBA project proposal.
+3. **Set the Ground Rules:** Establish ground rules for the action learning set, including confidentiality, respect for other participants, commitment to attendance, and willingness to share personal experiences and insights. Each group should set these from the start and have them documented.
+4. **Assign Roles:** Assign roles to the participants, including the facilitator, timekeeper, and note-taker. The facilitator is responsible for guiding the group through the process, while the timekeeper ensures that each participant has equal time to share and ask questions. The note-taker is responsible for capturing key insights and learning from each session. Roles can change in each meeting so everyone can develop their skills and build their experience.
+5. **Conduct the Sessions:** Conduct regular action learning sessions, following the agreed-upon structure and process. Participants should take turns presenting their challenges or issues, and the group should work together to explore and understand the problem, generate potential solutions, and identify actions to be taken.
+6. **Evaluate and Refine:** Evaluate the effectiveness of the action learning set and refine the process as necessary. Solicit feedback from the participants on what worked well and what could be improved, and make adjustments accordingly.
+
+By following these steps, you can set up an effective action learning set that supports individual and group learning, fosters collaboration, and enables the resolution of real-life challenges and issues.
+
+## Week Synchronous Sessions
+
+<csv>
+Week,Synchronous Sessions
+1,"Action Learning Sets to be established. Guided Group discussion with set questions about their backgrounds, ideas for projects and peer feedback."
+2,"Action Learning Sets. What literature have you found? What is it saying? What are the gaps? How is your project developing?"
+3,"Action Learning Sets. Using the MECE framework on your organisational problem. What questions has this raised about the organisational problem?"
+4,"Action Learning Sets. What methods are most appropriate for your project? Outline your research design."
+5,"Action Learning Set. Discussion of Proposals. Refining ideas."
+6,"Full Class elevator pitches. Students trios: 2 reviewers to one presenter. Feedback given in break out rooms."
+</csv>
+
+#### ~~~ END: Action Learning Set (ALS) Guidance.pdf ~~~
+
+---
+
+#### ~~~ START: Week 01 ALS Activity.pdf ~~~
+
+# Week 1: Action Learning Set Activity
+
+This week you are asked to form yourself into an action learning set using the Group Allocation choice form (omitted) and to read the guidance on action learning sets. Once you have completed the form you should undertake an initial live meeting of up to 1.5 hours. Record your synchronous meeting to the Zoom cloud and post a short meeting summary (300 words max) and a link to the recording in the small discussion group. This will be visible to members of your small group and to your lecturer. Post your individual preparation work to your small discussion group. During the meeting you should:
+
+- Discuss your current context / background including your hopes and fears about the MBA Project
+- Discuss your understanding of action learning sets (ALS) and how you want to work together
+- Take it in turns to share your initial ideas for your project —— give each person in the group time to speak without interruption and allow time to provide peer feedback
+
+Note: for many people, the MBA Project is the most rewarding part of the programme but it can also be the loneliest and most challenging. You may feel nervous sharing your ideas or think that you do not have sufficient expertise to provide peer feedback. However, you will be surprised at how useful it can be to articulate your own ideas to others and how much you will come to value feedback and support from your peers.
+
+To hold synchronous sessions you can use Zoom. Each student has their own Zoom account. Please use the discussion forum to decide who is going to host each session and then post a link to the meeting room and/or the meeting ID into a discussion post for your group members to follow. Some instructions on how to access and use Zoom are below:
+
+- How do I log in to Zoom? (omitted)
+- How do I find and share my Zoom meeting code? (omitted)
+- Using host controls in Zoom (inc recording) (omitted)
+
+Action Learning Group D (Shared) —— There are no discussion topics yet in this forum (omitted)
+
+#### ~~~ END: Week 01 ALS Activity.pdf ~~~
+
+---
+
+#### ~~~ START: Week 01 Reading.pdf ~~~
+
+# Week 1 Reading
+
+**Key Reading**
+
+Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Students.* Harlow: Pearson Education. —— Chapter 4: Understanding research philosophies and approaches to theory development
+
+**Additional Reading**
+
+Wickham, P. (2020). *Business and Management Consulting: Delivering an Effective Project.* London: Kogan. —— Chapter 9: Creative Approaches for Developing Solutions.
+
+[Reading Lists @ Liverpool → `Module Reading List.pdf`]
+
+#### ~~~ END: Week 01 Reading.pdf ~~~
+
+---
+
+#### ~~~ START: Week 02.pdf ~~~
+
+# Week 2: Diagnosing Organisational Problems
+
+Hi Culous! Welcome to Week 2.
+
+This week we shall be examining how we can use the MECE framework to diagnose and scope our organisational problem, a critical step in developing your MBA project.
+
+## In this week we shall
+
+- Examine an organisational problem
+- Introduce the MECE Framework for diagnosing and scoping the breadth of the problem
+- Provide a tool for structuring the client presentation
+
+## On completion of this week you will be able to
+
+- Apply the MECE framework to your organisational problem and create a problem tree
+- Scope and evaluate the scale of the project
+- Refine your research aim and objectives
+- Complete the introduction of the project proposal
+
+## Week 2 Activities
+
+### Lecturecast
+
+This lecturecast will discuss how to effectively structure and present a problem. We will introduce the MECE framework, which is a powerful tool for organising complex information. We will also provide examples of how the MECE framework can be used to structure and present problems.
+
+- Diagnosing Organisational Problems (Duration: 1hr) —— Mark as done (omitted)
+
+### Activities
+
+- Synchronous Seminar (Duration: 1 hr) —— Mark as done (omitted)
+- [Action Learning Set Activity → `Week 02 ALS Activity.pdf`] (Duration: 3 hrs preparation + 1.5hr live meeting) —— Mark as done
+- [Review the Ethical Approval Resources → `Ethical Approval.pdf`] —— Mark as done
+
+### Reading
+
+This reading provides more detailed information on diagnosing problems.
+
+[Week 2 Reading → `Week 02 Reading.pdf`] —— Mark as done
+
+#### ~~~ END: Week 02.pdf ~~~
+
+---
+
+#### ~~~ START: Week 02 ALS Activity.pdf ~~~
+
+# Week 2: Action Learning Set Activity
+
+To prepare for your action learning set this week you should conduct a short literature search in relation to your organisational problem.
+
+You should source at least 5 papers and be prepared to discuss:
+
+- What literature have you found?
+- What is it saying?
+- What are the gaps?
+- How does your project fit or not?
+
+You should undertake a 1.5hr live meeting to present your work to your peers and engage in discussion and feedback. You can split the time and have two shorter meetings if preferred but you should manage your time such that every group member is given time to present their work and receive feedback.
+
+Record your synchronous meeting(s) to the Zoom cloud and post a short meeting summary (300 words max per meeting) and a link to the recording in the small discussion group. This will be visible to members of your small group and to your lecturer. Post your individual preparation work to your small discussion group.
+
+Action Learning Group D (Shared) —— There are no discussion topics yet in this forum (omitted)
+
+#### ~~~ END: Week 02 ALS Activity.pdf ~~~
+
+---
+
+#### ~~~ START: Week 02 Reading.pdf ~~~
+
+# Week 2 Reading
+
+**Key Reading**
+
+Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Students.* Harlow: Pearson Education. —— Chapter 5: Formulating the Research Design
+
+**Additional Reading**
+
+Wickham, P. (2020). *Business and Management Consulting: Delivering an Effective Project.* London: Kogan. —— Chapter 5: Defining the destination and developing a strategy.
+
+[Reading Lists @ Liverpool → `Module Reading List.pdf`]
+
+#### ~~~ END: Week 02 Reading.pdf ~~~
+
+---
+
+#### ~~~ START: Week 03.pdf ~~~
+
+# Week 3: Literature Reviews and Reading Papers Effectively
+
+Hi Culous! Welcome to Week 3.
+
+This week we shall be examining two interlinked topics, reviewing the literature and reading effectively for MBA projects. Both of which are critical to developing your MBA project.
+
+## In this week we shall
+
+- Outline the importance of reviewing the literature for the MBA projects.
+- Explain how to conduct a literature review
+- Outline research on effective reading in academia for MBA projects
+
+## On completion of this week you will be able to
+
+- Appreciate the importance of reviewing the literature for MBA projects
+- Be able to conduct a literature review
+- Be able to source and read more effectively for the MBA project
+
+## Week 3 Activities
+
+### Lecturecasts
+
+In this week's lecturecasts you will learn the basics of literature reviews, including what they are, how to find sources, and how to analyse and write them.
+
+- Literature Reviews (Duration: 1hr) —— Mark as done (omitted)
+- Reading Academic Papers Workshop (Duration: 45min) —— Mark as done (omitted)
+
+### Activities
+
+- Synchronous Seminar (Duration: 1hr) —— Mark as done (omitted)
+- [Action Learning Set Activity → `Week 03 ALS Activity.pdf`] (Duration: 3hrs preparation + 1.5hr live meeting) —— Mark as done
+
+### Reading
+
+This reading provides more detailed information on literature reviews.
+
+[Week 3 Reading → `Week 03 Reading.pdf`] —— Mark as done
+
+#### ~~~ END: Week 03.pdf ~~~
+
+---
+
+#### ~~~ START: Week 03 ALS Activity.pdf ~~~
+
+# Week 3: Action Learning Set Activity
+
+To prepare for your action learning set this week you should:
+
+- Apply the MECE framework on your own organisational problem (this will help craft the introduction and purpose of your research project)
+- Be prepared to present and discuss your project with peers and to provide feedback to peers
+
+You should undertake a 1.5hr live meeting to present your work to your peers and engage in discussion and feedback. You can split the time and have two shorter meetings if preferred but you should manage your time such that every group member is given time to present their work and receive feedback.
+
+Record your synchronous meeting(s) to the Zoom cloud and post a short meeting summary (300 words max per meeting) and a link to the recording in the small discussion group. This will be visible to members of your small group and to your lecturer. Post your individual preparation work to your small discussion group.
+
+Action Learning Group D (Shared) —— There are no discussion topics yet in this forum (omitted)
+
+#### ~~~ END: Week 03 ALS Activity.pdf ~~~
+
+---
+
+#### ~~~ START: Week 03 Reading.pdf ~~~
+
+# Week 3 Reading
+
+**Key Reading**
+
+This reading provides more detailed information on literature reviews:
+
+Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Students.* Harlow: Pearson Education. —— Chapter 3: Critically reviewing the literature
+
+Smallbone, T & Quinton, S (2011) A three stage framework for teaching literature reviews: A new approach. *International Journal of Management Education,* 9 (4)
+
+[Reading Lists @ Liverpool → `Module Reading List.pdf`]
+
+#### ~~~ END: Week 03 Reading.pdf ~~~
+
+---
+
+#### ~~~ START: Week 04.pdf ~~~
+
+# Week 4: Quantitative Methods and Analysis
+
+Hi Culous! Welcome to Week 4.
+
+This week we shall be overviewing the quantitative research process and how we design research to collect quantitative data; we will particularly focus on survey methods as this is a popular and common method for research in business and management.
+
+## In this week we shall
+
+- Outline the quantitative research process
+- Examine how research aims are operationalised in quantitative research
+- Consider the importance of sampling and the range of sampling methods
+- Overview quantitative research design
+- Explain and evaluate the survey approach to research
+
+## On completion of this week you will be able to
+
+- Critically discuss the nature and process of quantitative research
+- Evaluate the effectiveness of quantitative research
+- Evaluate the validity and reliability of quantitative research methods
+- Understand sampling theory and the methods available
+- Critically analyse quantitative research designs
+- Undertake a survey-based research project
+
+## Week 4 Activities
+
+### Lecturecasts
+
+In this week's lecturecasts you will learn how to conduct quantitative research, including formulating hypotheses, designing surveys, and analysing data using statistical packages.
+
+- Quantitative Research Methods (Duration: 1hr 20mins) —— Mark as done (omitted)
+- Quantitative Analysis (Duration: 40 mins) —— Mark as done (omitted)
+
+### Activities
+
+- Synchronous Seminar (Duration: 1hr) —— Mark as done (omitted)
+- [Action Learning Set Activity → `Week 04 ALS Activity.pdf`] (Duration: 3hrs preparation + 1.5hr live meeting) —— Mark as done
+- [Individual MBA Project Advisor Allocation Form → `Week 04 Individual MBA Project Advisor Allocation Form.pdf`] —— Please complete the form by the end of week 4 —— Mark as done
+- [Potential Advisors → `MGTK751 Potential Advisors.md`]
+- [Submit Draft Proposal for Formative Feedback → `Draft Research Proposal.pdf`] —— To do
+
+### Reading
+
+This reading provides more detailed information on quantitative analysis techniques and an overview of quantitative methods in management.
+
+[Week 4 Reading → `Week 04 Reading.pdf`] —— Mark as done
+
+#### ~~~ END: Week 04.pdf ~~~
+
+---
+
+#### ~~~ START: Week 04 ALS Activity.pdf ~~~
+
+# Week 4: Action Learning Set Activity
+
+To prepare for your action learning set this week you should:
+
+- Use the research aims and objectives you devised and revised from week 1 (restate these in your answer)
+- Consider how you might use quantitative methods to achieve them
+- Explain your reasons for either using quantitative methods or for why they are not appropriate
+- What methods are most appropriate for your project?
+
+You should undertake a 1.5hr live meeting to present your work to your peers and engage in discussion and feedback. You can split the time and have two shorter meetings if preferred but you should manage your time such that every group member is given time to present their work and receive feedback.
+
+Record your synchronous meeting(s) to the Zoom cloud and post a short meeting summary (300 words max per meeting) and a link to the recording in the small discussion group. This will be visible to members of your small group and to your lecturer. Post your individual preparation work to your small discussion group.
+
+Action Learning Group D (Shared) —— There are no discussion topics yet in this forum (omitted)
+
+#### ~~~ END: Week 04 ALS Activity.pdf ~~~
+
+---
+
+#### ~~~ START: Week 04 Individual MBA Project Advisor Allocation Form.pdf ~~~
+
+# Week 4: Individual MBA Project Advisor Allocation Form
+
+Please see the list of potential advisors for your Final MBA Project and Recorded Presentation which you will work on in weeks 7`~`36. Please look at their profiles and identify whom might be a good match for your project. By day 7 (Monday) please complete the [MBA Project Advisor Allocation Form → `Individual MBA Project Advisor Allocation Form.pdf`].
+
+## What happens next?
+
+Once you submit the form above, the Programme Support Team will contact the advisors you indicated in your form. The chosen advisor will then contact you by email (please check your Liverpool email account!).
+
+You and the advisor can use the private discussion forum in the [Individual MBA Project Advisor area → `Individual MBA Project Supervisor Area.pdf`] to discuss your project. All correspondence with your advisor must take place within the discussion board rather than via email or WhatsApp so there is a record. If you have any problems, please reach out to the module lecturer or the Study Support Team.
+
+#### ~~~ END: Week 04 Individual MBA Project Advisor Allocation Form.pdf ~~~
+
+---
+
+#### ~~~ START: Week 04 Reading.pdf ~~~
+
+# Week 4 Reading
+
+This reading provides more detailed information on quantitative analysis techniques and an overview of quantitative methods in management.
+
+**Key Reading**
+
+Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Students.* Harlow: Pearson Education. —— Chapter 12: Analysing data quantitatively
+
+[Reading Lists @ Liverpool → `Module Reading List.pdf`]
+
+#### ~~~ END: Week 04 Reading.pdf ~~~
+
+---
+
+#### ~~~ START: Week 05.pdf ~~~
+
+# Week 5: Qualitative Methods and Analysis
+
+Hi Culous! Welcome to Week 5.
+
+This week we will be overviewing the qualitative research process, both in terms of design and also analysis; we will also be looking at methods used by practitioners such as investigative workshops.
+
+## In this week we shall
+
+- Provide an overview of the qualitative research process
+- Consider processes used by practitioners that generate qualitative data
+- Examine the criteria for evaluating qualitative research
+- Explain how to design and conduct interviews and focus groups
+- Outline how to analyse qualitative data
+
+## On completion of this week you will be able to
+
+- Plan a qualitative research project
+- Evaluate the quality of qualitative research
+- Design and undertake interviews and focus groups
+- Analyse qualitative data to make effective recommendations
+
+## Week 5 Activities
+
+### Lecturecasts
+
+In this week's lecturecasts we will explore qualitative methods and analysis.
+
+- Qualitative Methods (Duration: 1hr 25 mins) —— Mark as done (omitted)
+- Qualitative Analysis (Duration: 45 mins) —— Mark as done (omitted)
+
+### Reading
+
+The reading this week provides a detailed overview of qualitative research and analysis.
+
+[Week 5 Reading → `Week 05 Reading.pdf`] —— Mark as done
+
+### Activities
+
+- Synchronous Seminar (Duration: 1hr) —— Mark as done (omitted)
+- [Action Learning Set Activity → `Week 05 ALS Activity.pdf`] (Duration: 3hrs preparation + 1.5hr live meeting) —— Mark as done
+
+#### ~~~ END: Week 05.pdf ~~~
+
+---
+
+#### ~~~ START: Week 05 ALS Activity.pdf ~~~
+
+# Week 5: Action Learning Set Activity
+
+To prepare for your action learning set this week you should:
+
+- Use the research aims and objectives you devised and have revised since week 1 (restate these in your answer) to consider how you might use qualitative methods to achieve them
+- Explain your reasons for either using qualitative methods or for why they are not appropriate.
+- To what extent would qualitative methods be an appropriate research approach?
+
+You should undertake a 1.5hr live meeting to present your work to your peers and engage in discussion and feedback. You can split the time and have two shorter meetings if preferred but you should manage your time such that every group member is given time to present their work and receive feedback.
+
+Record your synchronous meeting(s) to the Zoom cloud and post a short meeting summary (300 words max per meeting) and a link to the recording in the small discussion group. This will be visible to members of your small group and to your lecturer. Post your individual preparation work to your small discussion group.
+
+Action Learning Group D (Shared) —— There are no discussion topics yet in this forum (omitted)
+
+#### ~~~ END: Week 05 ALS Activity.pdf ~~~
+
+---
+
+#### ~~~ START: Week 05 Reading.pdf ~~~
+
+# Week 5 Reading
+
+These two chapters provide more information on qualitative research and analysis.
+
+**Key Reading**
+
+Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Students.* Harlow: Pearson Education.
+- Chapter 10: Collecting primary data using interviews and diaries
+- Chapter 13: Analysing data qualitatively
+
+[Reading Lists @ Liverpool → `Module Reading List.pdf`]
+
+#### ~~~ END: Week 05 Reading.pdf ~~~
+
+---
+
+#### ~~~ START: Week 06.pdf ~~~
+
+# Week 6: MBA Project Proposal and Writing up the Final Project
+
+Hi Culous! Welcome to Week 6.
+
+This is the final taught part of the MBA project and we will be covering two key topics. The first is how to write recommendations and conclusions for your audience and the second part covers how to write up your research project.
+
+## In this week we shall
+
+- Review the complete research process
+- Provide a detailed overview of how to write a research proposal
+- Overview how you write up and present your final research project
+
+## On completion of this week you will be able to
+
+- Understand the whole research process
+- Write an appropriate MBA project proposal
+- Understand the requirements for writing up the final MBA project
+
+## Week 6 Activities
+
+### Lecturecasts
+
+In this week's lecturecasts you will learn how to write effective recommendations and communicate your findings through research, storytelling, and the Minto Pyramid.
+
+- Crafting Recommendations and Conclusions (Duration: 15 mins) —— Mark as done (omitted)
+- The Final Report, Presentation and Storytelling (Duration: 30 mins) —— Mark as done (omitted)
+
+### Activities
+
+- [Week 6 Synchronous Seminar —— Elevator Pitch → `Week 06 Seminar Elevator Pitch.pdf`] —— Mark as done
+- [Action Learning Set Activity → `Week 06 ALS Activity.pdf`] (Duration: 3hrs preparation + 1.5hr live meeting) —— Mark as done
+- Career Catalyst (duration: 30 minutes) —— Mark as done (omitted)
+- [MBA Research Project Proposal → `MBA Research Project Proposal (Assessment 1) -1500 words.pdf`] —— To do
+- End of Research Proposal Stage Survey (omitted) —— To do
+
+### Reading
+
+The reading this week provides really useful advice on writing your proposal and writing up your final report.
+
+[Week 6 Reading → `Week 06 Reading.pdf`] —— Mark as done
+
+#### ~~~ END: Week 06.pdf ~~~
+
+---
+
+#### ~~~ START: Week 06 Seminar Elevator Pitch.pdf ~~~
+
+# Week 6 Synchronous Seminar: Elevator Pitch
+
+The Module Schedule page will show when this session takes place. If you are in any doubt please ask your lecturer. Please make every effort to attend. If for some reason you are unable to attend or need to arrive late or leave early, please let your lecturer know in advance.
+
+In this session each student will share an 'elevator pitch' (60 second oral presentation without slides) of their research proposal with the lecturer and other students covering the aim, objectives, research method and why the research is important for your organisational context.
+
+*[video thumbnail image —— text reads "ELEVATOR PITCH FOR YOUR RESEARCH"]*
+
+#### ~~~ END: Week 06 Seminar Elevator Pitch.pdf ~~~
+
+---
+
+#### ~~~ START: Week 06 ALS Activity.pdf ~~~
+
+# Week 6: Action Learning Set Activity
+
+To prepare for your action learning set this week you should:
+
+- Prepare to present a summary [2`~`3 minute oral presentation with or without slides] of your research proposal covering the aim, objectives, research method and why the research is important for your organisational context.
+
+You should undertake a 1.5hr live meeting to present your work to your peers and engage in discussion and feedback. This session is similar to this week's synchronous session but will provide time to go into greater detail and to give and receive feedback. You can split the time and have two shorter meetings if preferred but you should manage your time such that every group member is given time to present their work and receive feedback. Record your synchronous meeting(s) to the Zoom cloud and post a short meeting summary (300 words max per meeting) and a link to the recording in the small discussion group. This will be visible to members of your small group and to your lecturer. Post your individual preparation work to your small discussion group.
+
+Action Learning Group D (Shared) —— There are no discussion topics yet in this forum (omitted)
+
+#### ~~~ END: Week 06 ALS Activity.pdf ~~~
+
+---
+
+#### ~~~ START: Week 06 Reading.pdf ~~~
+
+# Week 6 Reading
+
+This chapter provides really useful advice on writing your proposal and writing up your final report.
+
+**Key Reading**
+
+Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Students.* Harlow: Pearson Education. —— Chapter 14: Writing and Presenting the Project Report
+
+[Reading Lists @ Liverpool → `Module Reading List.pdf`]
+
+#### ~~~ END: Week 06 Reading.pdf ~~~
+
+---
+
+#### ~~~ START: Week 07-11.pdf ~~~
+
+# Weeks 7`~`11
+
+Hi Culous! Welcome to Weeks 7`~`11.
+
+During weeks 7`~`11 you will be working independently and will be allocated an MBA Research Project Advisor. During this time, you should revise or refine your research proposal and complete your ethics application in preparation for the approval process. Liaise closely with your supervisor using the discussion board.
+
+Ethical Approval information can be found in the [Ethical Approval section → `Ethical Approval.pdf`], please make sure you follow the guidance in MGTK751 Master: Guidance for using the Ethical Approval System (omitted). And refer to the Key Ethics Information document (omitted) when you complete the application.
+
+**YOUR DATA COLLECTION MUST NOT BEGIN UNTIL YOU HAVE RECEIVED WRITTEN ETHICAL APPROVAL.**
+
+You will communicate directly with your MBA Project Advisor within the [Individual MBA Project Advisor Area → `Individual MBA Project Supervisor Area.pdf`] section.
+
+**PLEASE ENSURE THAT ALL CORRESPONDENCE WITH YOUR ADVISOR TAKES PLACE WITHIN THE DISCUSSION BOARD.**
+
+## Weeks 7`~`11 Activities
+
+- [Research Project Advisor Agreement → `MBA Research Project Advisor Agreement.pdf`] —— Mark as done
+- Look Ahead (omitted) —— Mark as done
+
+#### ~~~ END: Week 07-11.pdf ~~~
+
+---
+
+#### ~~~ START: MBA Research Project Advisor Agreement.pdf ~~~
+
+# MBA Research Project Advisor Agreement and Guidelines for Students and Advisors
+
+*University of Liverpool*
+
+## Responsibilities of the Research Project Advisor
+
+- a. It is the responsibility of the advisor to establish a professional relationship with their student(s), advisors should be aware of and act in accordance with University of Liverpool's Dignity at Work and Study Policy.
+- b. Advisors should ensure that all communications with their students relating to the research project, are recorded within the virtual learning environment. For example, if conversations or messages do occur outside the learning environment, the advisor will ensure that a summary is made of their content and posted into the classroom.
+- c. Advisors should ensure that students are aware of current research related to their research project and that their choice of research method is appropriate for the subject of their research project.
+- d. Advisors should encourage students to question critically the existing literature around the specific subject area, the assumptions of the research project and the results they obtain.
+- e. In their professional supervisory relationship with students, advisors should endeavour to encourage students' engagement with their research project and should remain critical and realistic about students' progress. They are required to record any concerns they have, particularly during any formal process for evaluating a student's academic progress.
+- f. Advisors should advise students to familiarise themselves with matters of academic integrity and signpost them to comply with the University of Liverpool's Academic Integrity Policy. However, it is not the responsibility of the advisor to specifically assist students in avoiding poor academic practice or unfair and/or dishonest practice.
+- g. Advisors should reinforce at an early stage to students that their research project is the students' own responsibility and that it is the examiners who will ultimately determine the final mark for the submitted research project.
+- h. It is the responsibility of advisors to remind students of information regarding required timescales for completion of progress reports, completed chapters, and their final research project.
+- i. An Advisor should normally reply to a student's query within 4 days and provide feedback on each submitted draft complete chapter within 10 days.
+- j. The Advisor will provide feedback in the form of comments on the student's draft. They will NOT provide feedback in the form of tracked changes on the student's draft. In addition, advisors may summarise their comments or add further indications in a post uploaded to the corresponding thread in the Advisor/Student discussion. The advisor will provide a review once only for each submitted draft complete chapter and the final research project.
+
+**It is *NOT* the responsibility of an advisor to:**
+
+- k. Undertake grammar, formatting referencing, data presentation and spell checks for students. An advisor might point out if a section is particularly unclear or problematic structuring of the work, but it is the student's responsibility to act on this advice.
+- l. Provide reviews of incomplete chapters. A student must provide a complete draft of each chapter for the advisor to review. See 1j) above for the format of the advisor's review that will be provided to the student.
+- m. Provide feedback on more than one version of either a complete individual chapter or of the final research project. See 1j) above.
+
+## Responsibilities of Students Regarding Supervision of the Research Project by their Project Advisors
+
+- a. Students are required to take responsibility for the planning of their project with their advisor and to engage with their programme as per the terms and conditions outlined in the student agreement prior to and during their formal registration period.
+- b. Students should work independently on their research and writing up their project, taking advice when necessary. The research project is the students' own responsibility and it is the examiners who will ultimately determine the final mark for the submitted project.
+- c. Students should take ownership and responsibility for meeting agreed objectives (e.g. regarding sequential stages of their project such as obtaining ethical approval) and deadlines and ultimately should take responsibility for the submission of their project and recorded presentation for examination within the programme deadline. This will include complying with any requirements set out in the individual programme guidelines regarding deadlines, for example regarding submitting draft complete chapters.
+- d. Students should maintain a professional and courteous relationship with their advisor and should be prepared to receive critical feedback of their work. They are entitled to expect, however, that any feedback will be provided by their advisor in a constructive way.
+- e. Students should maintain regular contact with their advisor during the period of research until submission of the completed project via Turnitin. In particular they must comply with the requirements of the programme regarding submission of complete chapters for their advisor to review before the final research project is submitted for assessment.
+- f. Students must inform their advisor of any changes in personal circumstances, which might affect the progress of their work, and must also inform the student support team.
+- g. Students must uphold and maintain academic integrity in accordance with the University of Liverpool's Academic Integrity Policy: [https://www.liverpool.ac.uk/aqsd/academic-codes-of-practice/code-of-practice-on-assessment/](https://www.liverpool.ac.uk/aqsd/academic-codes-of-practice/code-of-practice-on-assessment/) (Section 9 and Appendix L), and take responsibility for the quality of the work submitted as their formal project and recorded presentation.
+- h. Students must submit their full draft project to the advisor at least four weeks before the final submission deadline. Submitting after this deadline may result in the advisor not being able to provide feedback on the full draft project.
+- i. It is the responsibility of the student to check the final version of their work for grammar, formatting, referencing, data presentation and spell checks before they submit it through Turnitin for assessment.
+- j. It is not permitted under any circumstances for a student to write the project in another language and have it translated into English. It is also unacceptable for a student to give the text to a professional editor for corrections. The University of Liverpool will treat the use of a professional editor as unauthorised 'collusion'.
+
+## Student Declaration
+
+- I confirm that I have read and understood the University's Academic Integrity Policy.
+- I confirm that I will act honestly, ethically and professionally in conduct leading to the collection of data for research and to the submission of assignments, papers and other assessed work for the programme of study.
+- I confirm that I will not present for assessment work which has previously been used for another University of Liverpool module for which I have received a pass grade or higher, and thus received credit, unless that work was produced specifically as a constituent part of a subsequent assessment.
+- I confirm that I will not incorporate into assessments for this module any work that has been used by me or any other person to gain a degree from this or any other University or degree awarding body unless it is correctly cited and referenced.
+- I understand that all work produced for assessment is subject not only to the rules on academic Integrity but must conform to all guidelines and regulations regarding assessment which can be found in the University of Liverpool Code of Practice on Assessment.
+- I confirm that I have read and agree with the responsibilities of students outlined in the MBA Research Project Advisor Agreement.
+
+#### ~~~ END: MBA Research Project Advisor Agreement.pdf ~~~
+
+---
+
+#### ~~~ START: Week 12-31.pdf ~~~
+
+# Weeks 12`~`31
+
+Hi Culous! Welcome to Weeks 12`~`31.
+
+You should continue to work on your research project and maintain regular contact with your advisor. It may seem like you have lots of time but your research project is a significant undertaking and the time will pass very quickly.
+
+Remember, it is your role to take ownership and responsibility for meeting agreed objectives and deadlines and ultimately to take responsibility for submission of your project and recorded presentation for examination within the programme deadline.
+
+**YOUR DATA COLLECTION MUST NOT BEGIN UNTIL YOU HAVE RECEIVED WRITTEN ETHICAL APPROVAL.**
+
+#### ~~~ END: Week 12-31.pdf ~~~
+
+---
+
+#### ~~~ START: Week 32.pdf ~~~
+
+# Week 32
+
+Hi Culous! Welcome to Week 32.
+
+## Week 32 Activities
+
+By Day 7 (Monday) Week 32 please submit your draft recorded presentation for formative feedback. To access the submission portal, please click on the link above.
+
+You can choose to record your presentation through a variety of channels. See below for links to some useful articles which might help you record your presentation:
+
+- How to record a PowerPoint presentation (omitted)
+- How to record Audio and Video (omitted)
+
+[Draft Recorded Presentation Submission → `DRAFT Recorded Presentation Submission.pdf`] —— To do
+
+By Day 7 (Monday) Week 32 please submit your draft research project for formative feedback. To access the submission portal, please click on the link above.
+
+[Draft Research Project Submission → `DRAFT Research Project Submission.pdf`] —— To do
+
+#### ~~~ END: Week 32.pdf ~~~
+
+---
+
+#### ~~~ START: Week 36.pdf ~~~
+
+# Week 36: Final Submission of Presentation and Project
+
+Hi Culous! Welcome to Week 36!
+
+## Week 36 Activities
+
+### Submissions
+
+Please enter your final dissertation title. This will appear on the Higher Education Achievement Report (HEAR) so please ensure it is accurate and complete.
+
+Final Dissertation Title (omitted) —— Mark as done
+
+### Dissertation Publishing Guidance
+
+If you wish to publish any aspect of your Dissertation/Research Project, whether in full or in part, this must be co-authored with your Dissertation Adviser/Supervisor.
+
+Your Dissertation Adviser/Supervisor should be included as a named author to ensure appropriate academic oversight, adherence to discipline-specific standards, and compliance with expectations of responsible research practice.
+
+If your Dissertation/Research Project involves data collection from human participants then your intention to publish must be declared during the ethical review process. This requirement ensures that participants are fully informed about how their data may be used and that the research complies with institutional and sector-wide ethical standards:
+
+- **Declaration in Ethics Application:** You must clearly indicate in your ethics application that you plan to pursue publication. This includes journal articles, book chapters, conference papers, or any other form of dissemination beyond your dissertation/research project.
+- **Participant Information and Consent:** The intention to publish must be explicitly communicated in both the Participant Information Sheet and the Consent Form. Participants must be informed of the potential for publication prior to taking part and must agree to the conditions under which their data may be used.
+- **Protection of Participants:** Any published work must safeguard participant anonymity and confidentiality. You are responsible for ensuring that published material respects the terms under which participants consented to be involved, including any limitations on the use, disclosure, or presentation of their data.
+
+By Monday (Day 7) you must submit your recorded presentation (20% of the module mark).
+
+[Recorded Presentation Submission → `Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf`] —— To do
+
+By Monday (Day 7) you must submit your final MBA Project (70% of the module mark).
+
+[Research Project Submission → `Final MBA Project Submission (Assessment 3) - 8000 words.pdf`] —— To do
+
+### Activities
+
+- Career Catalyst (duration: 30 minutes) —— Mark as done (omitted)
+
+### Feedback
+
+Please take a moment to complete the End of Module Survey below.
+
+End of Module Survey (omitted) —— To do
+
+#### ~~~ END: Week 36.pdf ~~~
