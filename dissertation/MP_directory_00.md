@@ -20,7 +20,7 @@ DevPlan.md
 ## Official Files
 
 MGTK751 Official Files _ distilled.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751%20Official%20Files%20_%20distilled%20_%2001.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751%20Official%20Files%20_%20distilled%20_%2002.md
 Distilled ver of `MGTK751 Official Files _ full.md` for quick access
 
 MGTK751 Official Files _ full.md

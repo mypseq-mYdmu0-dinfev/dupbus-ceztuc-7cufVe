@@ -78,6 +78,17 @@ Must comply with GDPR; anonymise all participant data; survey invites must use B
 
 ---
 
+## Action Learning Sets (ALS) —— Wks 1~6 Only
+
+- Groups of 4`~`6 students; roles rotate each session (facilitator / timekeeper / note-taker)
+- Weekly cadence: 3hr async prep → 1.5hr live Zoom meeting → post ≤300w summary + recording link to group forum (visible to group + lecturer)
+- Wk 6 seminar: full-class **elevator pitch** (60-sec oral, no slides) covering aim, objectives, method, importance
+- ALS focus per week mirrors lecturecast theme (see Wks 1`~`6 table below)
+
+> *For full ALS guidance, weekly activity briefs, and group setup instructions, refer to `MGTK751 Official Files _ full.md`*
+
+---
+
 ## Weeks 1`~`6 —— Lecturecast & Seminar Themes
 
 | Wk | Topic | Key tool/concept | ALS focus | Reading (Saunders ch.) |
