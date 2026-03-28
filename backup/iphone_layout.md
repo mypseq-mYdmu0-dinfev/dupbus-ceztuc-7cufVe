@@ -10,7 +10,7 @@
 
 ## Notes
 
-- Usually arranged from right to left (most to least used) for right-hand use
+- Usually ordered from right to left (most to least used) for right-hand use
 
 ---
 
