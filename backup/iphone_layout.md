@@ -4,8 +4,8 @@
 
 - `Col` —— column
 - `[Name]` —— folder; named screen documented separately below
-- `{Name}` —— Shortcut (execution only, not live status)
-- `⇅` —— Stack (up/down swipeable)
+- `{Name}` —— Shortcut item (execution only, not live status)
+- `⇅` —— widget in Stack (up/down swipeable)
 - `→`/`↓`/`↘` —— widget spans multiple slots
 
 ## Notes
