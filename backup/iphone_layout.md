@@ -6,9 +6,9 @@
 - `[Name]` —— folder; named screen documented separately below
 - `{Name}` —— Shortcut (execution only, not live status)
 - `⇅` —— Stack (up/down swipeable)
-- `→` —— widget continues right
-- `↓` —— widget continues down
-- `↘` —— widget bottom-right corner
+- `→` —— widget continues
+- `↓` —— widget continues
+- `↘` —— widget continues
 
 ## Notes
 
