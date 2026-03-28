@@ -35,7 +35,7 @@
 | AccuWeather (hourly forecast, current+4hr) | → |
 | Calendar (2-day view) | → |
 | ↓ | ↘ |
-| SwitchBot (LR Monitor) | SwitchBot (Bedroom Monitor) |
+| SwitchBot (LR Meter) | SwitchBot (Bedroom Meter) |
 | Google Home (fav*8) | → |
 
 ---
