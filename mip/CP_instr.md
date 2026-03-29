@@ -1,4 +1,4 @@
-# ACCESS/FETCH RULES
+FETCH RULES
 
 IMPORTANT: Each file fetched ONCE per chat only. STOP & alert if any access/fetch failed, do not proceed.
 
@@ -11,7 +11,7 @@ Access/fetch at every chat start:
 
 ## CONDITIONAL
 
-Conditionally access/fetch:
+Conditionally fetch:
 - `MGTK746 Core File Summary.txt` in CP when files needed but not commented here
 - `https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/mip/MGTK746%20CP%20Instructions%20_%20202603212044.txt` if still in doubt AFTER accessing `MGTK746 Core File Summary.txt`; all files referred in this file are in CP; it's the previous CP instr but moved to GH for efficiency, preceded by current (this instr) if conflicted
 - `ULMS - Personal Development Portfolio.pdf` in CP when A1/A2 grading criteria needed
