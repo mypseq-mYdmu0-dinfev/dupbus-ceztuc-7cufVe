@@ -1,6 +1,6 @@
 FETCH RULES
 
-IMPORTANT: Each file fetched ONCE per chat only. STOP & alert if any access/fetch failed, do not proceed.
+* Each file ... not proceed. (same as userPref)
 
 ## UNCONDITIONAL
 
