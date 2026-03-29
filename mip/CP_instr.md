@@ -1,4 +1,4 @@
-FETCH RULES
+# FETCH RULES
 
 * Each file ... not proceed. (same as userPref)
 
