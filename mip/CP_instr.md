@@ -4,7 +4,7 @@ FETCH RULES
 
 ## UNCONDITIONAL
 
-Access/fetch at every chat start:
+Fetch at every chat start:
 - `MGTK746 Project Summary.txt` in CP
 - Dev Plan: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/mip/MGTK746%20Dev%20Plan%20_%20202603260158.txt
 
