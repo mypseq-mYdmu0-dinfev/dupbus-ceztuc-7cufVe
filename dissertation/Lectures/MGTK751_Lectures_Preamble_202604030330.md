@@ -49,13 +49,19 @@ Associated with radical new ideas [sub-bullet point 1]
 ## Fetch Links
 
 Week 1:
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Lectures/MGTK751_Lectures_W1_202604030322.md
 
 Week 2:
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Lectures/MGTK751_Lectures_W2_202604030323.md
 
 Week 3:
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Lectures/MGTK751_Lectures_W3_202604030325.md
 
 Week 4:
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Lectures/MGTK751_Lectures_W4_202604030326.md
 
 Week 5:
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Lectures/MGTK751_Lectures_W5_202604030327.md
 
 Week 6:
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Lectures/MGTK751_Lectures_W6_202604030328.md
