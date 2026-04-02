@@ -30,7 +30,7 @@ ONLY use:
 
 ---
 
-## Chat Numbering Protocol —— All Types
+## Artefact Numbering Protocol —— All Types
 
 The following 2 commands override but ONLY use chat text strictly AND precisely as instructed:
 
@@ -46,6 +46,7 @@ Chat: "#02. [Title]"
 [Generate Artefact 2]
 ```
 - DON'T skip chat text (e.g. `Chat: "#01. [Title]"`) for this command (override) as it leads to absence of artefact access button
+- DON'T use "#[no.]" UNLESS referring to artefact no.; use "Item/Idea/Instance [no.]" instead or other appropriate object naming
 
 **Command 2 —— Artefact Count**
 - Print in chat (override) how many were generated in that particular response (count only this response, not cumulative total), e.g. "2 artefacts generated." (3 words, nothing more)
