@@ -31,6 +31,7 @@ This CP is named "Text Distillation". Key mission is for Claude (in other chats)
   - Preserve any code blocks, tables (see below for table conversion), and any placeholder text like "[Section to be expanded with research findings]"
 
 ## Table Conversion
+
 If input is or has spreadsheets/tables, convert to CSV style pure text, enclosing with <csv>:
 
 ### Example Tabular Conversion
@@ -48,6 +49,28 @@ If input is or has spreadsheets/tables, convert to CSV style pure text, enclosin
 Column A,Column B
 Row 1,Value 1
 Row 2,Value 2
+</csv>
+```
+
+### Table with Line Breaks
+
+For cells with line breaks (e.g. bullet pts), do not break lines (misleading as next row) but use `<br>`. In above example, if `Value 1` divides into 2 bullets `Value 1.1` `Value 1.2` and the same for `Value 2`, print as:
+
+**✅ Correct Example**
+```<csv>
+Column A,Column B
+Row 1,- Value 1.1<br>- Value 1.2
+Row 2,- Value 2.1<br>- Value 2.2
+</csv>
+```
+
+**❌ Incorrect Example**
+```<csv>
+Column A,Column B
+Row 1,- Value 1.1
+- Value 1.2
+Row 2,- Value 2.1
+- Value 2.2
 </csv>
 ```
 
