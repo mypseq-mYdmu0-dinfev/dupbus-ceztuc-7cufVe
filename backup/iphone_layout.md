@@ -4,15 +4,13 @@
 
 - `Col` —— column
 - `[Name]` —— folder; named screen documented separately below
-- `{Name}` —— Shortcut (execution only, not live status)
-- `⇅` —— Stack (up/down swipeable)
-- `→` —— widget continues right
-- `↓` —— widget continues down
-- `↘` —— widget bottom-right corner
+- `{Name}` —— Shortcut item (execution only, not live status)
+- `⇅` —— widgets in Stack (up/down swipeable)
+- `→`/`↓`/`↘` —— widget spans multiple slots
 
 ## Notes
 
-- Usually arranged from right to left (most to least used) for right-hand use
+- Usually ordered from right to left (most to least used) for right-hand use
 
 ---
 
@@ -35,7 +33,7 @@
 | AccuWeather (hourly forecast, current+4hr) | → |
 | Calendar (2-day view) | → |
 | ↓ | ↘ |
-| SwitchBot (LR Monitor) | SwitchBot (Bedroom Monitor) |
+| SwitchBot (LR Meter) | SwitchBot (Bedroom Meter) |
 | Google Home (fav*8) | → |
 
 ---
