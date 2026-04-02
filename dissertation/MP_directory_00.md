@@ -29,7 +29,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Full original text of Moodle pages and linked files, inc. module home, schedule, research proposal template, etc. but exc. lectures, A1-3 instr/criteria, and potential advisors (request)
 
 A1-3 Instr Criteria.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751%20A1-3%20Instr%20Criteria%20_%2001.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751%20A1-3%20Instr%20Criteria%20_%2002.md
 Full original text of Moodle pages on A1-3 (Assessments 1-3) and criteria
 
 Potential Advisors.md

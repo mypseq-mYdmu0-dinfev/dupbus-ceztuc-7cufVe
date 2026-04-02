@@ -4,7 +4,7 @@
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all filenames below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_13.md
+- Fetch at every chat start & resolve all filenames below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_14.md
 - Prerequisites of any response:
   - Scan full incoming msg for all conditional keywords, both explicitly and implicitly (e.g. "draft/create/proceed to..." on deliverables all trigger writing.md), and fetch all triggered files then declare
   - Re-consult ALL earlier fetched prompt files (.md) inc. chat start, and run a silent compliance pass before planning/creating anything (e.g. Hart's logical quotation rule)
@@ -18,4 +18,4 @@ Conditionally fetch:
 - writing.md when: creating deliverables (as defined in glossary.md), OR cite/citation/academic/copywriting/casual/whatsapp/draft mentioned
 - coding.md when: #replace mentioned (even not coding), OR code/script mentioned/detected
 - numbered.md when: #numbered mentioned, OR creating a list with sub-items
-- devplan.md when: dev plan/multi-chat mentioned/detected/expected
+- plan.md when: no "DevPlan.md" in CP but "dev plan"/"next chat"/"chat handoff"/"addendum" explicitly mentioned

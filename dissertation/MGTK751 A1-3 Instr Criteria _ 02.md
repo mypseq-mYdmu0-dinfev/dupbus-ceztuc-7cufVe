@@ -41,7 +41,7 @@ Please complete the following coversheet when you submit your assessment.
 
 Please see the document below, which provides you with the assignment brief and a template for your proposal.
 
-[MBA Research Proposal Template → `MBA Research Proposal Template.pdf`]
+[MBA Research Proposal Template → `MBA Research Proposal Template.pdf` in `MGTK751 Official Files _ full.md`]
 
 ## Grading Criteria
 
@@ -171,7 +171,7 @@ As well as the main body of the assignment, the following elements are included 
 
 Please see the document below, which acts as both your assignment brief and template for your final research project submission.
 
-[MBA Full Project Outline → `MBA Full Project Outline.pdf`]
+[MBA Full Project Outline → `MBA Full Project Outline.pdf` in `MGTK751 Official Files _ full.md`]
 
 ## Grading Criteria
 
