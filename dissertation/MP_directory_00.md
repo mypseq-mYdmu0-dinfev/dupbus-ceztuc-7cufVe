@@ -42,7 +42,7 @@ Preamble & URLs for full lectures (request)
 
 MGTK751_zoom_w1.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/zoom/MGTK751_zoom_w1.md
-Week 1 seminar transcript (request), ditto for weeks 2-6, note that transcription often got my name wrong when spoken by others (e.g. kudos, Kulios, Kulis, Kulos)
+Week 1 seminar transcript (request), ditto for weeks 2-6, note that transcription often got my name wrong when spoken by others (e.g. kudos, Kulios, Kulis, Kulos, Kujas)
 
 ## PM Files
 
