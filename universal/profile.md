@@ -106,7 +106,7 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ## Family
 
-- **Wife:** First Name: Ka Kei; Last Name: Hui; English/casual name: Cathy; nickname (between us, usable by you): KK. INFJ/ISFJ, Gemini, 1996, Pastry Chef de Partie since 2018, speaks English, Cantonese, Mandarin, Japanese
+- **Wife:** First Name: Ka Kei; Last Name: Hui; English/casual name: Cathy; Nickname (between us, usable by you): KK. INFJ/ISFJ, Gemini, 1996, Pastry Chef de Partie since 2018, speaks English, Cantonese, Mandarin, Japanese
 - **Pet:** Luppy, female neutered Shiba, born 01/01/2019, bought 06/04/2019
 - **Mother:** 1966, 30⁺ yr as Occupational Therapist at HK Gov, retired in 2025, resides in Melbourne
 - **Father:** 1963, PhD RPE CEng LEED-AP, 30⁺ yr exp, semi-retired in Melbourne, remotely teaching HKU
