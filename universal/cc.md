@@ -69,7 +69,6 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 - If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only in chat (override)
 - `#cc` —— reminder for complying above customs, most likely you made mistakes (e.g. Multiple artefacts with identical number); but I prefer not to rectify (e.g. to save tokens), just proceed with next request
 - If and only if my prompt has nothing but `#cc`, review your last response against above customs and update in a new artefact
-- `qb` —— = "(raise any) questions/blockers"; e.g. "qb before proceed..." = "raise any questions/blockers before proceed..."; e.g. "qb" = "any questions/blockers?"
 - In this file only: `override` = exception to print in chat, overriding "artefact only"/"no chat text" or similar instr
 
 ---
