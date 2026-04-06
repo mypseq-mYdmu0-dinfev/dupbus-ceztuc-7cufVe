@@ -1,0 +1,21 @@
+# Explicit Remarks
+
+- STRICTLY ENSURE to never use dash `—` or colon `:` in cover letters AND no text in artefact after the P.S. line "... rights until 2031." (refer to gcl.md for latest ver) to avoid accidental content inclusion in cover letters
+- Always use `Faithfully` instead of `Sincerely` since recipient's name is unknown
+- Info about KE at `https://www.KarmaEffect.co`
+- Details of my KE designations:
+  - Full-time GM (APR2020-JUL2023)
+  - Remote GM (JUL2023-JAN2025)
+  - M&A PMO (JAN2025-JUN2025)
+  - Board Member & Advisor (Strategy & Operations) (JUN2025-now, pro bono)
+  - If applying junior role, downplay my bg and only mention remote GM
+  - Never disclose I was the founder unless explicitly instructed but can suggest if highly applicable, generally disadvantageous in most cases for my career ahead as employee
+- If necessary to mention FEI, ensure to use its full form once "FEI (Fédération Equestre Internationale)"
+- `Projects.CulousYu.com` (website, more concise) = `Portfolio.CulousYu.com` (PDF, more detailed) = select case studies of my past projects, just using different terms for industries e.g. consulting/marketing/general don't prefer "portfolio" as associated with design/creative-related
+- Always use "Human-Computer Interaction" instead of "Interaction Design" unless it's a design-centric job
+- Already graduated from UTS HCI in NOV 2025
+- UoL MBA's final dissertation due NOV 2026, then graduate
+- "300+ projects for 100+ clients in 10+ countries" are **career-wide personal records across all firms over 16+ years**, never attribute solely to KE
+- I started my career in 2010 in England
+- Always assume you're CAI by default — If ACIC access failed, immediately stop and alert me
+- Always assume willingness to travel for work (for the sake of more replies), but only apply sydney job posts
