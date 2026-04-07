@@ -1718,7 +1718,7 @@ Rebecca Maniates (NYUAD): chat.
 
 425
 00:47:41.620 --> 00:47:47.170
-Enis Elezi: Yeah, yeah. Good, thank you. Sorry, Kulis, I've just seen your other question.
+Enis Elezi: Yeah, yeah. Good, thank you. Sorry, Culous, I've just seen your other question.
 
 426
 00:47:47.380 --> 00:48:02.529
@@ -1750,19 +1750,19 @@ Enis Elezi: Few limited occasions with past students.
 
 433
 00:49:07.450 --> 00:49:20.080
-Culous Yu (MBA): Yeah, the reason I ask that is because, because we're addressing a management problem, right? So, so I'm trying to interview with managers, but they're not, like, because we have to at least
+Culous Yu (MBA): Yeah, the reason I ask that is because we're addressing a management problem, right? So I'm trying to interview with managers, but they're not, like, because we have to at least
 
 434
 00:49:20.080 --> 00:49:29.790
-Culous Yu (MBA): interview 6 plus participants, right? But there are not 6 plus managers in my firm, so that's a problem. So you're saying, if I was just, interviewing
+Culous Yu (MBA): interview 6+ participants, right? But there aren't 6+ managers in my firm, so that's a problem. So you're saying, if I was just, interviewing
 
 435
 00:49:29.790 --> 00:49:35.370
-Culous Yu (MBA): you know, one manager per organization, I don't need the extra content.
+Culous Yu (MBA): you know, one manager per organisation, I don't need the extra consent?
 
 436
 00:49:37.160 --> 00:49:38.330
-Culous Yu (MBA): He's all we're saying.
+Culous Yu (MBA): Is that what you're saying?
 
 437
 00:49:39.020 --> 00:49:41.330
@@ -1770,15 +1770,15 @@ Enis Elezi: Say that again, if you, if you do 6…
 
 438
 00:49:41.720 --> 00:49:45.599
-Culous Yu (MBA): like you just said, if I interview you,
+Culous Yu (MBA): like you just said, if I interview,
 
 439
 00:49:46.000 --> 00:50:00.220
-Culous Yu (MBA): just one manager from another organization, so let's say one from my own firm, so 5 managers from 5 other organizations. In that case, I don't need the extra consent, that's what you're saying, right?
+Culous Yu (MBA): just one manager from another organisation, so let's say one from my own firm, so 5 managers from 5 other organisations. In that case, I don't need the extra consent, that's what you're saying, right?
 
 440
 00:50:00.670 --> 00:50:13.339
-Enis Elezi: No, yes, that's what I'm saying. So, if you interview people from other organizations to avoid getting constant letters from those organizations, then limit one participant per organization.
+Enis Elezi: Yes, that's what I'm saying. So, if you interview people from other organisations, in order to avoid getting consent letters from those organisations, then limit one participant per organisation.
 
 441
 00:50:14.020 --> 00:50:14.930
@@ -1786,7 +1786,7 @@ Culous Yu (MBA): Okay, right.
 
 442
 00:50:15.310 --> 00:50:23.920
-Enis Elezi: But if you do that, this will need to be explained as clearly as we're discussing about it now in a written form in your proposal, if…
+Enis Elezi: But if you do that, this will need to be explained clearly, as we're discussing about it now in a written form in your proposal, if…
 
 443
 00:50:24.030 --> 00:50:28.039
@@ -1806,7 +1806,7 @@ Enis Elezi: You can… you can choose to go for an industry problem, or a wider 
 
 447
 00:50:55.240 --> 00:50:58.050
-Enis Elezi: But it needs to have a strong rational.
+Enis Elezi: But it needs to have a strong rationale.
 
 448
 00:50:58.380 --> 00:50:58.880
@@ -1814,11 +1814,11 @@ Enis Elezi: somewhere.
 
 449
 00:50:59.450 --> 00:51:00.100
-Enis Elezi: production.
+Enis Elezi: in the introduction.
 
 450
 00:51:00.700 --> 00:51:01.020
-Culous Yu (MBA): Russia.
+Culous Yu (MBA): Rationale.
 
 451
 00:51:01.020 --> 00:51:06.210
@@ -1842,7 +1842,7 @@ Enis Elezi: Treat this as if you were to open up your own organization or your o
 
 456
 00:51:31.610 --> 00:51:43.409
-Enis Elezi: And then you say, okay, I'm thinking of opening up my business, or it's just a startup, I don't have many people to gather the data from, so I'll go and ask people from my other organizations.
+Enis Elezi: And then you say, okay, I'm thinking of opening up my business, or it's just a startup, I don't have many people to gather the data from, so I'll go and ask people from other organizations.
 
 457
 00:51:43.810 --> 00:51:56.419
@@ -1858,11 +1858,11 @@ Enis Elezi: Does it… does it, does it help?
 
 460
 00:52:02.250 --> 00:52:18.450
-Culous Yu (MBA): Yeah, but basically, my problem is that I can't find success managers, that's the problem, because I'm trying to address the problem on the manager level. So, obviously, my firm doesn't have, like, 6 plus managers, but, like, 3 to 4, so that's why I'm trying to expand the problem
+Culous Yu (MBA): Yeah, but basically, my problem is that I can't find 6+ managers, that's the problem, because I'm trying to address the problem on the manager level. So, obviously, my firm doesn't have, like, 6+ managers, but, like, 3 to 4, so that's why I'm trying to expand the problem
 
 461
 00:52:18.450 --> 00:52:28.040
-Culous Yu (MBA): you know, generalize it to an industry scale, because I do think my challenge is pretty much being faced by the whole industry right now.
+Culous Yu (MBA): you know, generalise it to an industry scale, because I do think my challenge is pretty much being faced by the whole industry right now.
 
 462
 00:52:28.070 --> 00:52:29.970
@@ -1874,7 +1874,7 @@ Enis Elezi: Yeah, okay.
 
 464
 00:52:32.670 --> 00:52:34.270
-Culous Yu (MBA): Right, thank you. Yes.
+Culous Yu (MBA): Right, thank you.
 
 465
 00:52:34.270 --> 00:52:35.850
