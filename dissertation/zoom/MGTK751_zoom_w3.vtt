@@ -1,0 +1,2226 @@
+# Seminar 3 of 6 (GMT202604031503)
+
+## Chat
+
+00:32:21	Culous Yu (MBA):	Hello, I have a question: You mentioned qualitative focuses on exploratory. Can the project be exploring the challenge faced by stakeholders behind a phenomenon, instead of directly addressing it?
+00:42:16	Rebecca Maniates (NYUAD):	Here's an example of integrating interview text . . .
+00:44:02	Kobir Ahmed:	Reacted to "{CA3B91A6-A8E4-4A05-9F21-9BBA180A76BA}.png" with 👍
+00:44:11	Dimitris Nonas:	Reacted to "{CA3B91A6-A8E4-4A05-9F21-9BBA180A76BA}.png" with 👍
+00:46:16	Enis Elezi:	Reacted to "{CA3B91A6-A8E4-4A05-9F21-9BBA180A76BA}.png" with 👍
+00:49:40	Culous Yu (MBA):	I have another question if that's ok: If I can't find enough participants (e.g. 6+ managers), is it acceptable to sample them across multiple similar organisations (e.g. 1~2 interviews per firm) as long as the management challenge is similar in all of them?
+00:50:14	Rebecca Maniates (NYUAD):	NVivo is a qualitative analysis program
+00:51:21	Rebecca Maniates (NYUAD):	https://www.liverpool.ac.uk/it/software/software-downloads/
+00:51:39	Dimitris Nonas:	Reacted to "NVivo is a qualitative analysis program" with 👍
+01:01:08	Wilson Lee:	One thing to clarify please. If I am going to interview let say 6 staff members in my organization, do I need to get consent from my management, or just from those 6 people individually?
+01:03:32	Wilson Lee:	Thank you.
+01:03:53	Rebecca Maniates (NYUAD):	Thank you for the discussion
+01:04:04	Culous Yu (MBA):	Thank you so much for today, really helpful
+
+## Transcript
+
+WEBVTT
+
+1
+00:00:03.050 --> 00:00:04.230
+Enis Elezi: Right, okay.
+
+2
+00:00:04.650 --> 00:00:23.940
+Enis Elezi: Good afternoon again. I won't be able to switch on the camera, because I've got stuck in a car, and trying to… the connection is not amazing, I think so far it's okay. I had a meeting, another meeting before this, so it worked kind of okay. I'm trying to, again, save as much battery as possible, so camera's gonna be off, I can…
+
+3
+00:00:24.210 --> 00:00:27.449
+Enis Elezi: Switch it on just for a second to say hi.
+
+4
+00:00:28.250 --> 00:00:30.440
+Enis Elezi: And then I'm gonna try to…
+
+5
+00:00:31.970 --> 00:00:38.139
+Enis Elezi: save some batteries, so… but happy to meet you all again, and I've had some interesting…
+
+6
+00:00:38.290 --> 00:00:40.739
+Enis Elezi: Emails from some of you during the week.
+
+7
+00:00:40.960 --> 00:00:46.679
+Enis Elezi: Asking questions about your… Research ideas and plans.
+
+8
+00:00:47.960 --> 00:00:51.740
+Enis Elezi: I hope my replies to you have been…
+
+9
+00:00:52.660 --> 00:01:00.330
+Enis Elezi: helpful, somewhat. If they haven't been, please, let's bring the questions up again and continue the discussion.
+
+10
+00:01:01.710 --> 00:01:13.289
+Enis Elezi: And if you have anything to report on the past week, how it's been for you, what you're struggling with, or the progress that you have made, and you just want to double-check if the direction of travel
+
+11
+00:01:13.450 --> 00:01:18.249
+Enis Elezi: is, along the lines of what is expected. Please feel free to…
+
+12
+00:01:19.090 --> 00:01:21.180
+Enis Elezi: Unmute your mic, and let's have a chat.
+
+13
+00:01:26.370 --> 00:01:30.620
+Enis Elezi: This week, we're going to be talking about… well, the focus, as we've seen, is literature review.
+
+14
+00:01:30.900 --> 00:01:36.370
+Enis Elezi: I have mentioned in the first couple of weeks, and I did say I'll mention it again.
+
+15
+00:01:36.590 --> 00:01:43.409
+Enis Elezi: The reason being, because I think it's one of the most fundamental steps to offer…
+
+16
+00:01:43.630 --> 00:01:50.099
+Enis Elezi: Clarity and cohesiveness along the entire research project, which we will develop later.
+
+17
+00:01:50.740 --> 00:01:58.689
+Enis Elezi: When we talk about the literature review, it's, it's very important… of course, every chapter is important in their own respective ways.
+
+18
+00:02:00.130 --> 00:02:17.420
+Enis Elezi: But I think the literature review, the importance of literature review, relies on establishing the theoretical link between your management challenge, which then later on is used to establish your aim, your objectives, and research question.
+
+19
+00:02:18.310 --> 00:02:26.469
+Enis Elezi: with what is to come later on in your discussion and analysis, and I'll… and I'll explain that, again, this…
+
+20
+00:02:26.660 --> 00:02:28.920
+Enis Elezi: this… During this webinar.
+
+21
+00:02:29.020 --> 00:02:33.530
+Enis Elezi: But before I do that, is there any questions that you'd like to clarify?
+
+22
+00:02:36.510 --> 00:02:38.650
+Kobir Ahmed: Just a quick question here.
+
+23
+00:02:38.650 --> 00:02:39.350
+Enis Elezi: Yes.
+
+24
+00:02:39.850 --> 00:02:44.729
+Kobir Ahmed: On the, on the literature VV side, are there any…
+
+25
+00:02:45.150 --> 00:02:55.270
+Kobir Ahmed: like a best practice, like a template that goes through, especially for the University of Liverpool library search, like, you've got the…
+
+26
+00:02:55.470 --> 00:03:01.310
+Kobir Ahmed: for example, the way in which the way…
+
+27
+00:03:01.580 --> 00:03:05.359
+Kobir Ahmed: to source those papers, for example, whatever you put in a search bar.
+
+28
+00:03:05.490 --> 00:03:10.020
+Kobir Ahmed: Or how to hone in on a particular… Subject matter.
+
+29
+00:03:10.540 --> 00:03:17.829
+Kobir Ahmed: Are there, like, a document that the university provides for research students, or have you come across anything like that?
+
+30
+00:03:18.260 --> 00:03:19.860
+Enis Elezi: I, I have not come across…
+
+31
+00:03:20.220 --> 00:03:26.859
+Enis Elezi: I haven't come across any particular document in terms of the instructions as to how you should research.
+
+32
+00:03:26.860 --> 00:03:27.360
+Kobir Ahmed: Yeah.
+
+33
+00:03:27.360 --> 00:03:36.089
+Enis Elezi: Most of the time, the advice is to, use a number of Keywords, or key phrases.
+
+34
+00:03:36.480 --> 00:03:39.260
+Enis Elezi: Related to your objectives.
+
+35
+00:03:39.370 --> 00:03:41.380
+Enis Elezi: And or your aim.
+
+36
+00:03:42.540 --> 00:03:49.789
+Enis Elezi: And I think at the start of doing the literature review search, We should be very…
+
+37
+00:03:50.250 --> 00:03:53.929
+Enis Elezi: I think maybe the best way of saying it is…
+
+38
+00:03:54.140 --> 00:04:00.510
+Enis Elezi: Broad enough to start understanding what is going to be our direction of travel.
+
+39
+00:04:01.700 --> 00:04:08.389
+Enis Elezi: And narrow enough, as we develop our understanding, to then specify and reach
+
+40
+00:04:08.780 --> 00:04:11.569
+Enis Elezi: That path that we're gonna focus on.
+
+41
+00:04:11.970 --> 00:04:14.019
+Enis Elezi: And I know that this might sound abstract.
+
+42
+00:04:14.540 --> 00:04:20.229
+Enis Elezi: But at the beginning, we're gonna read literature to understand more about what's going on.
+
+43
+00:04:20.480 --> 00:04:25.460
+Enis Elezi: It doesn't have to be a strong… Set of academic sources.
+
+44
+00:04:25.940 --> 00:04:32.870
+Enis Elezi: Which, of course, you can do, 100%. But at the beginning, we started to browse what's going around in…
+
+45
+00:04:32.960 --> 00:04:52.189
+Enis Elezi: News portals, industry reports, industry-related background, to try to understand the management challenge, and how that appears, or how that emerges, across different industries, maybe, or within your industry, but across different type of businesses.
+
+46
+00:04:52.530 --> 00:04:55.949
+Enis Elezi: And then once we start to understand more about the
+
+47
+00:04:56.300 --> 00:05:13.739
+Enis Elezi: the problem or the challenge that we want to investigate, then we start to narrow it down. I don't know, maybe it could be… I'm gonna make it up now, just as an illustrative example. If my focus is on employee engagement, and, X type of leadership style.
+
+48
+00:05:13.960 --> 00:05:16.239
+Enis Elezi: In pharmaceutical sector.
+
+49
+00:05:16.550 --> 00:05:25.119
+Enis Elezi: I'm going to read papers that are… will… will have this one, or a combination of these three keywords.
+
+50
+00:05:25.530 --> 00:05:25.960
+Kobir Ahmed: Cheers.
+
+51
+00:05:25.960 --> 00:05:40.339
+Enis Elezi: And sometimes it's not gonna be a very explicit combination of these words. Could be other similar terms, maybe not employee engagement, could be employee productivity, or it could be employee organizational performance, or…
+
+52
+00:05:40.470 --> 00:05:46.420
+Enis Elezi: Resource allocation and, employee…
+
+53
+00:05:47.170 --> 00:05:50.999
+Enis Elezi: Performance metrics, something along those keywords.
+
+54
+00:05:51.160 --> 00:05:57.919
+Enis Elezi: And I think as you go through, you do the narrowing down of those key elements that are…
+
+55
+00:05:58.160 --> 00:06:01.319
+Enis Elezi: Most relevant with your overall scope?
+
+56
+00:06:02.400 --> 00:06:10.689
+Enis Elezi: then the importance of what I mentioned earlier about AIM objectives, and questions comes very relevant at this stage.
+
+57
+00:06:10.800 --> 00:06:18.359
+Enis Elezi: So once we've identified the challenge, we establish the aim. You break the research aim down into research objectives.
+
+58
+00:06:18.680 --> 00:06:21.440
+Enis Elezi: And then you use the research objectives.
+
+59
+00:06:21.640 --> 00:06:25.570
+Enis Elezi: To guide the development of the literature review chapter… sections.
+
+60
+00:06:26.420 --> 00:06:33.370
+Enis Elezi: And in there, you use a combination of those keywords that you are… that you have in the research objectives.
+
+61
+00:06:35.360 --> 00:06:36.080
+Kobir Ahmed: Okay.
+
+62
+00:06:36.700 --> 00:06:37.839
+Enis Elezi: Does it make sense?
+
+63
+00:06:38.020 --> 00:06:38.630
+Kobir Ahmed: Yep.
+
+64
+00:06:39.240 --> 00:06:39.850
+Enis Elezi: Okay.
+
+65
+00:06:44.050 --> 00:06:45.760
+Enis Elezi: Good, now…
+
+66
+00:06:46.500 --> 00:06:57.499
+Enis Elezi: In the literature review, it's worth remembering that we are not just reporting on what is going on around our area of research.
+
+67
+00:06:58.450 --> 00:07:05.250
+Enis Elezi: But we're also incorporating our… interpretative lens on…
+
+68
+00:07:05.370 --> 00:07:07.890
+Enis Elezi: The research that we're bringing in.
+
+69
+00:07:08.880 --> 00:07:15.390
+Enis Elezi: And when we look at inter… when we look at incorporating our own interpretation to the research.
+
+70
+00:07:15.540 --> 00:07:22.600
+Enis Elezi: We want to… we wanna link that with the research aim and or research objectives, as and when relevant.
+
+71
+00:07:23.210 --> 00:07:27.810
+Enis Elezi: So, for the research proposal, this…
+
+72
+00:07:28.890 --> 00:07:33.129
+Enis Elezi: doesn't have to be the best. I mean, if it is, it's great.
+
+73
+00:07:33.570 --> 00:07:45.839
+Enis Elezi: But I am looking… the advice that I'm sharing is more to look at the holistic journey of producing the research project. So I'm not just talking about the proposal.
+
+74
+00:07:46.090 --> 00:07:53.859
+Enis Elezi: It's for the entire research project, which will, of course, come after the research proposal, but this is the set… the time when we set the foundations.
+
+75
+00:07:54.460 --> 00:08:04.379
+Enis Elezi: So, in the research proposal, in the literature review, we would expect to see some… relevant theoretical underpinning.
+
+76
+00:08:05.180 --> 00:08:07.880
+Enis Elezi: Of your managerial challenge.
+
+77
+00:08:09.660 --> 00:08:19.090
+Enis Elezi: In other words, you would expect to maybe use one or two theories that… You communicate your…
+
+78
+00:08:19.280 --> 00:08:21.600
+Enis Elezi: Positioning as a researcher.
+
+79
+00:08:21.760 --> 00:08:23.889
+Enis Elezi: The angle that you were coming from.
+
+80
+00:08:24.870 --> 00:08:32.880
+Enis Elezi: When you do that, don't spend too much time describing or explaining what the theory is.
+
+81
+00:08:33.340 --> 00:08:36.150
+Enis Elezi: Because there is a little risk that you might end up
+
+82
+00:08:36.250 --> 00:08:41.360
+Enis Elezi: Writing a summary of how good or bad or limited a theory may be.
+
+83
+00:08:42.039 --> 00:08:46.870
+Enis Elezi: So the explanation need to be very succinct, I would say.
+
+84
+00:08:47.190 --> 00:08:54.079
+Enis Elezi: And then try to link that with a research problem or research phenomena that you're investigating.
+
+85
+00:08:55.290 --> 00:09:06.910
+Enis Elezi: For example, if I want to understand more about knowledge co-creation or innovative practices in a small and medium enterprise company in X type of industry,
+
+86
+00:09:07.340 --> 00:09:11.720
+Enis Elezi: maybe I would like to look at it from a social exchange theory perspective.
+
+87
+00:09:12.190 --> 00:09:16.849
+Enis Elezi: And maybe I could link that with knowledge management-related practices.
+
+88
+00:09:17.310 --> 00:09:18.750
+Enis Elezi: or frameworks.
+
+89
+00:09:19.340 --> 00:09:25.299
+Enis Elezi: So, the social exchange theory, Would be, in this instance.
+
+90
+00:09:25.540 --> 00:09:39.890
+Enis Elezi: the theoretical underpinning for maybe Objective 1 and Objective 2, which focus more about understanding dynamics of innovation, co-creation of knowledge through social interaction in the workplace, and so on.
+
+91
+00:09:41.620 --> 00:09:46.079
+Enis Elezi: Does that… sound reasonable? Does it… Make sense?
+
+92
+00:09:49.940 --> 00:09:51.280
+Kobir Ahmed: Yep.
+
+93
+00:09:53.860 --> 00:10:01.089
+Enis Elezi: Okay, okay, and then… Your literature review section.
+
+94
+00:10:02.030 --> 00:10:09.490
+Enis Elezi: Should end with… proposition, off… A framework, or a model.
+
+95
+00:10:10.810 --> 00:10:21.240
+Enis Elezi: Where you visually represent a synthesis of your… Main understanding from the literature.
+
+96
+00:10:22.160 --> 00:10:23.650
+Enis Elezi: And this framework.
+
+97
+00:10:23.790 --> 00:10:30.520
+Enis Elezi: Will then be used to guide the development of your work in the following stages, in the following chapters.
+
+98
+00:10:31.410 --> 00:10:32.629
+Enis Elezi: So, for example.
+
+99
+00:10:32.770 --> 00:10:39.309
+Enis Elezi: Again, I do apologize, I'm gonna be repetitive, because I think this is very important that we… we get it right.
+
+100
+00:10:40.520 --> 00:10:47.050
+Enis Elezi: Once I've established my aim, I'll break that down to objectives. I will then use the objectives.
+
+101
+00:10:47.210 --> 00:10:49.339
+Enis Elezi: To go and develop the literature review.
+
+102
+00:10:50.530 --> 00:10:56.150
+Enis Elezi: when I… go through the development of the literature review. I will check and see.
+
+103
+00:10:56.980 --> 00:11:02.179
+Enis Elezi: If there are any disagreements, any consolidated understanding.
+
+104
+00:11:02.480 --> 00:11:07.119
+Enis Elezi: Any different perspectives, or any complementary perspectives, or any ambiguities?
+
+105
+00:11:07.920 --> 00:11:10.790
+Enis Elezi: And I will use this understanding
+
+106
+00:11:11.610 --> 00:11:18.690
+Enis Elezi: For two reasons. One, to go back and re-articulate my research questions.
+
+107
+00:11:19.440 --> 00:11:22.639
+Enis Elezi: That they are now informed from the literature review.
+
+108
+00:11:24.250 --> 00:11:27.549
+Enis Elezi: Which is informed from research objectives.
+
+109
+00:11:27.860 --> 00:11:30.659
+Enis Elezi: Which are a derivative of research aim.
+
+110
+00:11:31.410 --> 00:11:37.250
+Enis Elezi: So, that helps to establish the logical link between these three sections.
+
+111
+00:11:38.130 --> 00:11:39.290
+Enis Elezi: two sections.
+
+112
+00:11:39.490 --> 00:11:41.609
+Enis Elezi: Research aim, research objectives.
+
+113
+00:11:41.810 --> 00:11:44.060
+Enis Elezi: Research questions and literature review.
+
+114
+00:11:44.230 --> 00:11:47.830
+Enis Elezi: So that's the first purpose why we use the literature review.
+
+115
+00:11:48.770 --> 00:11:54.579
+Enis Elezi: or that's the first thing that we do with the literature review. The second thing that we do with the literature review is…
+
+116
+00:11:54.900 --> 00:11:58.439
+Enis Elezi: We want to synthesize our understanding from this literature.
+
+117
+00:11:58.610 --> 00:12:04.460
+Enis Elezi: And produce something that is visually communicative enough
+
+118
+00:12:05.000 --> 00:12:13.500
+Enis Elezi: To explain to the reader our sense-making, Of what we have Delivered in the literature.
+
+119
+00:12:14.270 --> 00:12:22.040
+Enis Elezi: And that will consist on… that will consist of a framework or a model. Both terms are used interchangeably.
+
+120
+00:12:22.140 --> 00:12:24.549
+Enis Elezi: Conceptual framework, or conceptual model.
+
+121
+00:12:25.410 --> 00:12:30.769
+Enis Elezi: Now, what is the importance or the relevance of having this conceptual model?
+
+122
+00:12:31.380 --> 00:12:40.949
+Enis Elezi: The first is to offer the… visually, to offer a synthesis of… of, to capture visually your… your understanding of the literature review.
+
+123
+00:12:41.210 --> 00:12:44.459
+Enis Elezi: And then the second is to use this framework
+
+124
+00:12:44.610 --> 00:12:47.849
+Enis Elezi: To develop your data collection instrument.
+
+125
+00:12:49.750 --> 00:12:52.499
+Enis Elezi: It could be a set of questions.
+
+126
+00:12:52.820 --> 00:12:55.229
+Enis Elezi: That you could ask via an interview.
+
+127
+00:12:55.760 --> 00:12:57.389
+Enis Elezi: Data collection instrument.
+
+128
+00:12:57.520 --> 00:13:00.619
+Enis Elezi: Or through a focus group, or through a questionnaire.
+
+129
+00:13:02.340 --> 00:13:03.950
+Enis Elezi: What makes it important?
+
+130
+00:13:04.960 --> 00:13:11.740
+Enis Elezi: When you conclude your, when you communicate your conclusions?
+
+131
+00:13:12.030 --> 00:13:14.210
+Enis Elezi: When you articulate your key findings.
+
+132
+00:13:14.410 --> 00:13:17.710
+Enis Elezi: If someone was to challenge you and say, why do you say this?
+
+133
+00:13:17.970 --> 00:13:19.450
+Enis Elezi: How do you know?
+
+134
+00:13:19.760 --> 00:13:23.550
+Enis Elezi: Where's the… Logical thinking behind this argument.
+
+135
+00:13:23.790 --> 00:13:32.399
+Enis Elezi: You can walk… the… Reader, or the person that's questioning you this, backwards.
+
+136
+00:13:32.670 --> 00:13:38.240
+Enis Elezi: So, you're saying this, you're making this statement, or this argument, because it comes from your data.
+
+137
+00:13:38.480 --> 00:13:39.400
+Enis Elezi: Okay?
+
+138
+00:13:39.760 --> 00:13:41.750
+Enis Elezi: Where is your data coming from?
+
+139
+00:13:42.070 --> 00:13:43.909
+Enis Elezi: And you show them where the data is coming from.
+
+140
+00:13:44.100 --> 00:13:49.659
+Enis Elezi: Okay, so how did we get the data? Well, we get the data because we asked this question.
+
+141
+00:13:50.170 --> 00:13:53.730
+Enis Elezi: 1, 2, 3 questions that you've asked in the interview or in the questionnaire.
+
+142
+00:13:54.170 --> 00:14:02.849
+Enis Elezi: And then they might say, okay, why have you asked these questions? Well, I asked these questions because I identified this and this and these other issues from the literature review.
+
+143
+00:14:03.660 --> 00:14:08.189
+Enis Elezi: And hence, this is communicated in my conceptual framework.
+
+144
+00:14:10.040 --> 00:14:13.279
+Enis Elezi: And then you use the understanding from the conceptual framework.
+
+145
+00:14:14.050 --> 00:14:19.029
+Enis Elezi: to develop the data collection instruments. And then when you do your analysis later on.
+
+146
+00:14:19.240 --> 00:14:22.379
+Enis Elezi: You offer an updated conceptual framework.
+
+147
+00:14:23.560 --> 00:14:29.230
+Enis Elezi: And then, the logic is, okay, I did my literature review, I developed a conceptual model.
+
+148
+00:14:29.520 --> 00:14:32.440
+Enis Elezi: Which influenced my data collection instrument.
+
+149
+00:14:32.680 --> 00:14:35.499
+Enis Elezi: I gather the data, I analyze the data.
+
+150
+00:14:36.630 --> 00:14:43.149
+Enis Elezi: And when I analyzed the data, I compared what I found, compared and contrast that with what literature review is discussing.
+
+151
+00:14:43.530 --> 00:14:48.640
+Enis Elezi: And now I have updated the conceptual framework initially developed from the literature review.
+
+152
+00:14:49.520 --> 00:14:52.140
+Enis Elezi: And this is the logical pattern.
+
+153
+00:14:52.460 --> 00:14:54.329
+Enis Elezi: That it should communicate.
+
+154
+00:14:54.450 --> 00:14:57.310
+Enis Elezi: In the entire research project.
+
+155
+00:14:59.970 --> 00:15:02.800
+Enis Elezi: Is that easy to follow, or is it…
+
+156
+00:15:03.340 --> 00:15:07.770
+Enis Elezi: Is there any element of that that you want me to… Explain again.
+
+157
+00:15:07.770 --> 00:15:15.929
+Kobir Ahmed: Yeah, that's really, really clear and comprehensive, actually, and it's a quick question I have. So, here's what I'm struggling with at the moment, is that, okay.
+
+158
+00:15:16.380 --> 00:15:21.260
+Kobir Ahmed: We, by virtue of synthesizing the literature review, get to a framework or a model.
+
+159
+00:15:21.490 --> 00:15:32.799
+Kobir Ahmed: We then devise a methodology to collect the data, right, and then to, presumably, by virtue of collecting that data, whatever analysis you do on that data.
+
+160
+00:15:33.040 --> 00:15:38.089
+Kobir Ahmed: what if… I know you're going to update that model, so what if the data analysis
+
+161
+00:15:38.290 --> 00:15:47.490
+Kobir Ahmed: does the opposing view of that model, which is… it completely refutes it, so whatever the synthesis is actually in the real world is completely different. It just doesn't marry up.
+
+162
+00:15:47.660 --> 00:15:56.739
+Kobir Ahmed: then what do you do? Are you stuck at that, or are you going to revise your model and say, here's what the data is showing, actually the initial hypothetical model.
+
+163
+00:15:56.950 --> 00:16:02.370
+Kobir Ahmed: doesn't actually match the reality of what we collected. So therefore, I'm updating my model based on the data.
+
+164
+00:16:03.380 --> 00:16:05.339
+Enis Elezi: Correct, you… right.
+
+165
+00:16:05.570 --> 00:16:06.919
+Enis Elezi: Very good point.
+
+166
+00:16:07.170 --> 00:16:26.599
+Enis Elezi: you… you don't… if the data contradicts… which, again, we need to be mindful what we mean by what words, and I know that this is not something that you have done often before, and… and I don't want to get caught up on the language, but the data should not be
+
+167
+00:16:26.750 --> 00:16:39.460
+Enis Elezi: 100% end up contradicting the framework, because if it does, then there is something that probably we've gone wrong in the methodology, particularly if we're doing quantitative research.
+
+168
+00:16:39.520 --> 00:16:55.719
+Enis Elezi: You'll have some… if you're doing quantitative research, of course, you will have some variables that are more influential than some others, or some variables that have no impact, although the literature said they could have, and that's a good finding to have. It doesn't have to be communicated always in a complementary tone.
+
+169
+00:16:55.720 --> 00:17:03.439
+Enis Elezi: Finding, contradicting… having… ending up with contradicting findings is equally important, if not more important, if discussed and critiqued…
+
+170
+00:17:03.740 --> 00:17:05.619
+Enis Elezi: Criticized carefully.
+
+171
+00:17:05.750 --> 00:17:09.519
+Enis Elezi: But then, if you end up in that situation, you update the model.
+
+172
+00:17:09.670 --> 00:17:11.729
+Enis Elezi: On the basis of your findings.
+
+173
+00:17:12.040 --> 00:17:24.590
+Enis Elezi: And you just critically discuss why you got there. And that's the value. The value is on critically understanding and explaining the reasoning why did you not get what you were expecting.
+
+174
+00:17:25.119 --> 00:17:29.230
+Enis Elezi: Rather than just saying, okay, so he… I got what I was expecting, if that makes sense.
+
+175
+00:17:29.490 --> 00:17:33.180
+Kobir Ahmed: Yeah, because that… that was my original…
+
+176
+00:17:33.520 --> 00:17:38.060
+Kobir Ahmed: Fear was that it becomes a circular argument, which means that, actually.
+
+177
+00:17:38.230 --> 00:17:49.599
+Kobir Ahmed: I'm already presupposing my conclusion based on the conceptual framework that I developed. All I need is the data to prove it. I think it's… that's circular, because you've already presupposed the outcome of it.
+
+178
+00:17:49.600 --> 00:17:56.070
+Enis Elezi: Yeah, yeah, I know what you mean, so you… there is a risk of starting with a predetermined mindset that… yeah.
+
+179
+00:17:56.720 --> 00:18:07.579
+Enis Elezi: No, no, it's… I mean, like I was saying earlier, yes, if the data does not prove what you're aiming to communicate, then, of course, you acknowledge and you discuss it and elaborate on why that was the case.
+
+180
+00:18:10.050 --> 00:18:14.470
+Kobir Ahmed: Alright, apologies, I'm, I'm… I'm trying to wrap my head around this, so…
+
+181
+00:18:14.470 --> 00:18:21.889
+Enis Elezi: No, no, no, no, very good, very good questions. Thank you, Kabir. No need to apologize at all. Rebecca?
+
+182
+00:18:24.260 --> 00:18:43.850
+Rebecca Maniates (NYUAD): Hello. I have a question about, your… the… what you said about making something visual to convey our understanding in the literature review. I… I don't think that's something I've seen before, and so I guess I was wondering if you could explain more, and do you have examples that we could look at?
+
+183
+00:18:45.420 --> 00:18:46.489
+Enis Elezi: Right, okay.
+
+184
+00:18:47.750 --> 00:18:54.940
+Enis Elezi: I can… there are many research papers, that… Have conceptual frameworks.
+
+185
+00:18:55.430 --> 00:19:00.080
+Enis Elezi: And there are two terms, conceptual frameworks and theoretical frameworks.
+
+186
+00:19:00.740 --> 00:19:05.289
+Enis Elezi: So… I don't want to get caught up in, in, in the…
+
+187
+00:19:06.410 --> 00:19:10.500
+Enis Elezi: In the… in the methodological perspectives, but…
+
+188
+00:19:11.360 --> 00:19:18.519
+Enis Elezi: One tends to be, and again, it depends what school of thought you follow, but these are visual…
+
+189
+00:19:19.550 --> 00:19:23.910
+Enis Elezi: representations of… How you put together
+
+190
+00:19:24.070 --> 00:19:27.660
+Enis Elezi: The key themes or concepts being discussed
+
+191
+00:19:27.780 --> 00:19:31.210
+Enis Elezi: Or, or classified as important, in your view?
+
+192
+00:19:32.170 --> 00:19:37.339
+Enis Elezi: And… Most of the time, we would see this…
+
+193
+00:19:37.740 --> 00:19:49.870
+Enis Elezi: The… if it's… if it's a quantitative research, and you highlight the key concepts, and you bring in the key variables in the… from the literature review, and then you start to draw some…
+
+194
+00:19:50.420 --> 00:19:58.260
+Enis Elezi: arrows, where… Concept A, for example, might have an impact on concept B, which leads to concept C.
+
+195
+00:19:58.420 --> 00:20:06.020
+Enis Elezi: And then, maybe you want to bring in a moderator or a mediator to assess how strongly this influence is, and da-da-da. Then.
+
+196
+00:20:06.220 --> 00:20:13.289
+Enis Elezi: there are loads of conceptual frameworks that could be identified from different papers. At the moment, I don't have one.
+
+197
+00:20:13.690 --> 00:20:20.929
+Enis Elezi: but I can… I can… I have a paper, I just need to…
+
+198
+00:20:21.110 --> 00:20:27.969
+Enis Elezi: a paper that I wrote with a couple of colleagues, I just need to check if you can bear with me. But there are many papers similar to mine.
+
+199
+00:20:28.270 --> 00:20:35.160
+Enis Elezi: Hundreds, not to say… well, thousands, not to say millions, depending on what, research,
+
+200
+00:20:35.480 --> 00:20:38.609
+Enis Elezi: area of focus that you can find online, but I'll show you
+
+201
+00:20:38.880 --> 00:20:41.750
+Enis Elezi: Just give me a couple of minutes to see if I can find it.
+
+202
+00:20:42.130 --> 00:20:46.729
+Enis Elezi: But if I cannot find it now, I can get back… I can share that later.
+
+203
+00:20:49.960 --> 00:21:08.770
+Rebecca Maniates (NYUAD): That would be helpful, thanks. And, thank you for your reply to my email. I'm still digesting it, and I'll get back to you. So, for everybody else on the call, I have an idea, but I'm trying not to have it be too library or academic focused. I really need to sort of
+
+204
+00:21:08.800 --> 00:21:16.510
+Rebecca Maniates (NYUAD): re, re… rethink the topic so it is much more management-focused. So thank you for that.
+
+205
+00:21:18.100 --> 00:21:25.889
+Enis Elezi: No problem at all, pleasure. And I think I had a meeting with another student earlier today, and I was saying to them that this is probably the most…
+
+206
+00:21:26.070 --> 00:21:39.020
+Enis Elezi: Challenging. The first 6 weeks to 8 weeks are probably the most challenging to your, to your research, conceptualization, and idea development. Now…
+
+207
+00:21:39.380 --> 00:21:42.510
+Enis Elezi: I found the paper, I'm just downloading it now.
+
+208
+00:21:43.160 --> 00:21:48.889
+Enis Elezi: Can I just share the screen, maybe?
+
+209
+00:21:52.590 --> 00:21:54.489
+Enis Elezi: Where is that share?
+
+210
+00:21:58.220 --> 00:21:59.429
+Enis Elezi: Can you see my screen?
+
+211
+00:22:02.240 --> 00:22:03.310
+Rebecca Maniates (NYUAD): Yes.
+
+212
+00:22:03.310 --> 00:22:04.350
+Dimitris Nonas: Yeah, okay.
+
+213
+00:22:04.350 --> 00:22:12.729
+Enis Elezi: Now, this is a paper that I wrote with a couple of colleagues, oh, sorry, a few years ago?
+
+214
+00:22:12.890 --> 00:22:14.249
+Enis Elezi: Yeah, 3 years ago.
+
+215
+00:22:14.540 --> 00:22:22.430
+Enis Elezi: And it's commitment-based HRM and inbound open innovation in SMEs and the role of organizational trust and development culture.
+
+216
+00:22:22.540 --> 00:22:36.559
+Enis Elezi: it might be 100% irrelevant to what your research intentions are, but just a topic, and then you don't… you don't need to worry about that. So, I'll very quickly talk you through the structure, because in a way, it would be very similar to what your research
+
+217
+00:22:36.670 --> 00:22:47.929
+Enis Elezi: project will end up communicating, but in a very… in a different style, because writing for a journal article and writing for… for a research project is different. Of course, we start with an introduction.
+
+218
+00:22:47.980 --> 00:22:56.979
+Enis Elezi: Where we explain why is this topic relevant, why is it important, what is the issue, why is it important to discuss about the issue that we are focusing on.
+
+219
+00:22:56.980 --> 00:23:09.099
+Enis Elezi: And of course, we're bringing in some sources to support our rationality behind the scope of the work. We have established our three research questions in here.
+
+220
+00:23:09.140 --> 00:23:17.900
+Enis Elezi: And these research questions have emerged from literature review, but of course, we've presented them in the introduction because we want to communicate our
+
+221
+00:23:17.900 --> 00:23:30.190
+Enis Elezi: scope of research as soon as possible to the reader. But then later on, we say where these questions come from, and then we start off with theoretical background and hypothesis, which is another
+
+222
+00:23:30.260 --> 00:23:32.610
+Enis Elezi: Way of saying literature review.
+
+223
+00:23:32.790 --> 00:23:33.600
+Enis Elezi: Okay.
+
+224
+00:23:34.100 --> 00:23:39.700
+Enis Elezi: Now, we talk about whatever topics we talk. I'm gonna scroll through.
+
+225
+00:23:39.850 --> 00:23:43.789
+Enis Elezi: And then we come to the proposition of the first hypothesis.
+
+226
+00:23:44.110 --> 00:23:50.530
+Enis Elezi: Based on what we read from the literature, we believe that this is,
+
+227
+00:23:50.740 --> 00:23:57.780
+Enis Elezi: that HRM, has a positive, impact on, OT.
+
+228
+00:23:58.260 --> 00:24:05.950
+Enis Elezi: So, then we go with H2. Again, we discuss, we present the literature around hypotheses, then we present the hypothesis.
+
+229
+00:24:06.190 --> 00:24:09.210
+Enis Elezi: And then, hypothesis 3 and 4, and so on.
+
+230
+00:24:09.210 --> 00:24:17.449
+Kobir Ahmed: Quick, quick, quick question on that. Yeah. So, these hypotheses that you are highlighting here is based on the literature review. Now, are those
+
+231
+00:24:17.820 --> 00:24:21.100
+Kobir Ahmed: Offices a synthesis of the literature review.
+
+232
+00:24:21.480 --> 00:24:22.160
+Enis Elezi: Yes.
+
+233
+00:24:22.160 --> 00:24:25.230
+Kobir Ahmed: or conclusive outcome of those.
+
+234
+00:24:26.040 --> 00:24:29.259
+Enis Elezi: It's our… it's our… it's our… it's our conclusive…
+
+235
+00:24:29.550 --> 00:24:45.990
+Enis Elezi: outcome as a result of the synthesis, so that's our… that's our… that's our understanding extracted from the literature that we've read, and then we understand that, okay, X is positive towards Y, or negative towards Y, and then we go out and test it.
+
+236
+00:24:46.280 --> 00:24:46.740
+Kobir Ahmed: Gotcha.
+
+237
+00:24:47.140 --> 00:24:49.689
+Enis Elezi: So, we present, we highlight the…
+
+238
+00:24:50.180 --> 00:24:53.290
+Enis Elezi: Hypothesis, and then we present this model.
+
+239
+00:24:54.630 --> 00:25:00.280
+Enis Elezi: And we say, okay, we have 5 hypotheses, and you can see H1, H2,
+
+240
+00:25:00.580 --> 00:25:04.900
+Enis Elezi: So, H1, commitment-based HRM having an impact on organizational trust.
+
+241
+00:25:05.070 --> 00:25:09.140
+Enis Elezi: And then we say commitment-based HRM has an impact on inbound opening innovation.
+
+242
+00:25:09.580 --> 00:25:15.429
+Enis Elezi: And then we also say that organizational trust has an impact on inbound and open innovation.
+
+243
+00:25:15.540 --> 00:25:19.680
+Enis Elezi: And then we say, development culture H5 has an impact on H2.
+
+244
+00:25:19.830 --> 00:25:23.720
+Enis Elezi: commitment-based HRM that has an impact on inbound open innovation.
+
+245
+00:25:24.050 --> 00:25:33.830
+Enis Elezi: So, this is irrelevant to you, I don't want you to worry about this, I don't want you to… this is the visual representation of how a quantitative
+
+246
+00:25:34.000 --> 00:25:36.470
+Enis Elezi: Conceptual framework can look.
+
+247
+00:25:37.590 --> 00:25:43.229
+Enis Elezi: It is… it is a very similar look in the research, in a qualitative research.
+
+248
+00:25:43.430 --> 00:25:52.750
+Enis Elezi: The only difference that I would suggest everyone to bear in mind is if you are doing a qualitative research, then do not use arrows.
+
+249
+00:25:52.930 --> 00:26:03.499
+Enis Elezi: You can use lines, you can use other shapes or forms, but do not use arrows, because the moment you use arrows, it implies that this has an impact on that. And…
+
+250
+00:26:03.930 --> 00:26:13.210
+Enis Elezi: In qualitative research, we don't measure impact. We cannot measure impact. Qualitative research is not designed to measure. Qualitative research is designed to explore.
+
+251
+00:26:13.400 --> 00:26:18.730
+Enis Elezi: Whereas the quantitative research is explanatory in nature. You're trying to explain.
+
+252
+00:26:19.110 --> 00:26:28.499
+Enis Elezi: So, measuring, impact, or assessing. These are words that are associated… terms that are associated with quantitative research. Exploring.
+
+253
+00:26:29.350 --> 00:26:31.310
+Enis Elezi: investigating.
+
+254
+00:26:31.840 --> 00:26:43.179
+Enis Elezi: These are more terms that are used in qualitative research. But I don't know if, Rebecca, this answers your question, but this is an example of how a conceptual framework looks like.
+
+255
+00:26:44.020 --> 00:26:48.830
+Enis Elezi: And then… I have another one, just…
+
+256
+00:26:48.830 --> 00:26:58.749
+Kobir Ahmed: So, so a quick question on that. Yeah. So, based on those hypotheses, and the interlinking of that to give you a framework and a model.
+
+257
+00:26:59.040 --> 00:27:06.060
+Kobir Ahmed: what… what does it amount to? What… what… what is actually… is the… Outcome of that.
+
+258
+00:27:06.510 --> 00:27:14.150
+Enis Elezi: The outcome of this is that we want to test if this mediating and moderating effects where…
+
+259
+00:27:14.360 --> 00:27:31.340
+Enis Elezi: were existent? If they were, were they strong? Were they insignificant? So this… then we talk about the research methodology. So this was developed from the literature review, the conceptual framework. And then we explain, methodologically speaking, how this was done.
+
+260
+00:27:31.580 --> 00:27:32.239
+Kobir Ahmed: Huh.
+
+261
+00:27:32.430 --> 00:27:42.039
+Enis Elezi: And then the data and the sample, where the data has come from, the characteristics of the sample, the type of sample. We talk about the variables that were measured.
+
+262
+00:27:42.360 --> 00:27:49.580
+Enis Elezi: And obviously, it was done through a questioner, and we explained details that, for you, are unnecessary at this stage.
+
+263
+00:27:50.140 --> 00:27:56.509
+Enis Elezi: We then bring a list of variables, the category, and the number, and the percentage.
+
+264
+00:27:56.790 --> 00:27:59.479
+Enis Elezi: That… that was attributed to the sample.
+
+265
+00:27:59.750 --> 00:28:00.420
+Kobir Ahmed: Okay.
+
+266
+00:28:00.420 --> 00:28:05.340
+Enis Elezi: And then we carry on again with some statistical analysis.
+
+267
+00:28:05.640 --> 00:28:11.430
+Enis Elezi: Some more, and now we come to present our updated conceptual framework.
+
+268
+00:28:11.820 --> 00:28:12.490
+Kobir Ahmed: Huh.
+
+269
+00:28:13.130 --> 00:28:19.660
+Enis Elezi: And we explained that which one of them is statistically important or significant.
+
+270
+00:28:19.890 --> 00:28:27.920
+Enis Elezi: And if they are, to what degree, and if they're not, we go into discussion and analysis, why they're not, or why are they strong?
+
+271
+00:28:28.100 --> 00:28:36.400
+Enis Elezi: And what do this mean for the organization in relation to the objectives and the questions that we had raised in the introduction?
+
+272
+00:28:36.910 --> 00:28:37.510
+Kobir Ahmed: Yep.
+
+273
+00:28:38.520 --> 00:28:40.780
+Enis Elezi: So, that was the logic I was…
+
+274
+00:28:42.030 --> 00:28:58.180
+Enis Elezi: I was trying to communicate earlier. So we do the literature review, we identify what's going on from the literature review, we use the literature review to finalize the research questions we seek to address, and also how the literature review can influence the development of the data collection instrument.
+
+275
+00:28:58.230 --> 00:29:03.090
+Enis Elezi: Then go and collect the data instrument… and sorry, and we use the literature review to…
+
+276
+00:29:03.350 --> 00:29:05.440
+Enis Elezi: To design a conceptual framework.
+
+277
+00:29:05.710 --> 00:29:06.540
+Kobir Ahmed: Yep.
+
+278
+00:29:06.540 --> 00:29:13.679
+Enis Elezi: We then go and collect the data, analyze the data, and then say, okay, given now what I have from the data.
+
+279
+00:29:13.880 --> 00:29:22.999
+Enis Elezi: How does that compare? How does my data compare with the data that comes from the… I mean, the discussions that appear in the literature review?
+
+280
+00:29:23.000 --> 00:29:23.770
+Kobir Ahmed: Yep.
+
+281
+00:29:23.920 --> 00:29:27.439
+Enis Elezi: And then you update what you initially developed, and that's it.
+
+282
+00:29:29.090 --> 00:29:29.760
+Kobir Ahmed: Okay.
+
+283
+00:29:31.250 --> 00:29:34.709
+Kobir Ahmed: Got you. And then your conclusion is what from this? So, if you go down…
+
+284
+00:29:35.180 --> 00:29:40.989
+Enis Elezi: And then there is a more… a further breakdown of, of,
+
+285
+00:29:41.280 --> 00:29:57.570
+Enis Elezi: of the findings. There's discussion and theoretical implications in what that means for us as researchers, what does it mean for academics, what does it mean for other stakeholders involved, particularly management and policy makers.
+
+286
+00:29:57.960 --> 00:29:58.390
+Kobir Ahmed: Yep.
+
+287
+00:29:58.390 --> 00:30:01.790
+Enis Elezi: And then we'll talk about practical implications, what does it mean for practitioners?
+
+288
+00:30:02.190 --> 00:30:13.100
+Enis Elezi: And then conclusions and future research. Now, and of course, references. Now, this part will be… can be slightly different, in different journal articles.
+
+289
+00:30:14.020 --> 00:30:19.749
+Enis Elezi: You might see slightly different structure… different alterations of structures.
+
+290
+00:30:19.920 --> 00:30:24.640
+Enis Elezi: So… someone might call this conclusions and recommendations.
+
+291
+00:30:25.000 --> 00:30:35.079
+Enis Elezi: Or conclusions and further research, as I have, or future research. And then you can have a subheading of research limitations. So, it's not…
+
+292
+00:30:35.080 --> 00:30:45.499
+Enis Elezi: It's not like it should have definitely this sort of structure, but most likely, you'll see, you'll do your own independent research, you'll see that the structure is very similar.
+
+293
+00:30:47.180 --> 00:30:48.400
+Kobir Ahmed: Yeah, okay.
+
+294
+00:30:49.250 --> 00:30:54.109
+Enis Elezi: Shall I stop the sharing, or do you have any… do you want me to go back to any point?
+
+295
+00:30:54.630 --> 00:31:00.689
+Kobir Ahmed: Yeah, I think the challenge for me, I don't know about my colleagues here, is that the…
+
+296
+00:31:00.890 --> 00:31:06.239
+Kobir Ahmed: The results and the… sort of the analysis and the results of the qualitative
+
+297
+00:31:06.360 --> 00:31:14.710
+Kobir Ahmed: data gathering that we're going to do. I'm a bit concerned about The presentation of the results.
+
+298
+00:31:15.140 --> 00:31:15.460
+Enis Elezi: Okay.
+
+299
+00:31:15.760 --> 00:31:21.450
+Kobir Ahmed: And, and then… bringing that back into the original, conceptual framework.
+
+300
+00:31:21.450 --> 00:31:30.139
+Enis Elezi: That's easier. That's easier. Okay. I wouldn't worry about that now, because…
+
+301
+00:31:30.390 --> 00:31:45.059
+Enis Elezi: what I'm trying to explain is I'm trying to give you the full picture of from now to the end of week 36, or 37, whenever that is. Whereas for now, you're only going to prepare a proposal.
+
+302
+00:31:45.100 --> 00:31:51.330
+Enis Elezi: But the reason I'm doing it is to give you a full picture of your journey, and understand how…
+
+303
+00:31:52.720 --> 00:31:54.340
+Enis Elezi: the scaffolding
+
+304
+00:31:54.840 --> 00:32:08.740
+Enis Elezi: process, if I'm… if I'm using the right terms to explain it, so it's the step-by-step development of your research journey. So, for the first 6 weeks, at the end of the 6 weeks, you're going to produce a research proposal, which later on will transform into this research project.
+
+305
+00:32:08.900 --> 00:32:13.230
+Enis Elezi: Now, can you see the… can you see my screen?
+
+306
+00:32:13.550 --> 00:32:16.350
+Enis Elezi: Is it the… do you see the Google screen or the document?
+
+307
+00:32:16.350 --> 00:32:17.080
+Rebecca Maniates (NYUAD): Yes.
+
+308
+00:32:17.080 --> 00:32:17.750
+Kobir Ahmed: Google screen.
+
+309
+00:32:18.820 --> 00:32:19.500
+Enis Elezi: Okay.
+
+310
+00:32:28.570 --> 00:32:29.480
+Enis Elezi: No.
+
+311
+00:32:31.470 --> 00:32:45.190
+Enis Elezi: I'm just picking up on some of my research papers. You don't have to limit, of course. There are loads of research out there, but I'm just gonna try and have something illustrative to show to you as I…
+
+312
+00:32:45.660 --> 00:32:54.790
+Enis Elezi: as I explain this, and hopefully that will… it will help to make, more sense. This is another paper that I wrote a few years ago, when I was a PhD student, on…
+
+313
+00:32:54.940 --> 00:32:58.900
+Enis Elezi: A conceptual framework, which was… my work was qualitative.
+
+314
+00:32:59.280 --> 00:33:06.980
+Enis Elezi: My PhD. So… This was… Again, introduction.
+
+315
+00:33:08.360 --> 00:33:22.039
+Enis Elezi: I explain my… in a way, forming the foundations of later on, the synthesis of my literature review, trying to understand, to show what I've read, and what sources address what concepts that I'm interested in my work.
+
+316
+00:33:23.660 --> 00:33:25.870
+Enis Elezi: I explained the research methodology.
+
+317
+00:33:26.460 --> 00:33:36.269
+Enis Elezi: literature review. I was looking at higher education landscape and partnerships in higher education, and knowledge management, and knowledge management activities.
+
+318
+00:33:36.440 --> 00:33:37.540
+Enis Elezi: And…
+
+319
+00:33:38.490 --> 00:33:47.040
+Enis Elezi: I talk about the… one of the sections of my res… of my conceptual framework, which is qualitative in this occasion, not quantitative.
+
+320
+00:33:47.890 --> 00:34:03.339
+Enis Elezi: And I talk about each of the… each of these headings, 525… 515253545 to follow, 5-4. These are all, it's not number 6, institutional partnership factors, these are all components of my conceptual framework.
+
+321
+00:34:03.530 --> 00:34:12.680
+Enis Elezi: Which looks, again, apologies for my, creative, artistic side, which is not amazing, obviously, but this is the conceptual framework.
+
+322
+00:34:13.020 --> 00:34:21.150
+Enis Elezi: Now, what's different, besides the fact that it's not very attractive, but what's different in terms of the links? So, I've used…
+
+323
+00:34:21.780 --> 00:34:23.489
+Enis Elezi: The tree analogy.
+
+324
+00:34:23.800 --> 00:34:43.559
+Enis Elezi: And in the tree analogy, I say, okay, so in my view, based on the literature, I see this as if higher education institutions, universities, were to work together while they continue to compete against each other, to do that effectively, they need to have partnership factors in mind, institutional factors, partnership KM activities.
+
+325
+00:34:43.560 --> 00:34:53.810
+Enis Elezi: and behavioral KM constructs. And I've… above this, I explained and supported this from the literature perspective, tried to bring in the literature to support this.
+
+326
+00:34:54.690 --> 00:34:59.530
+Enis Elezi: And then, this is the conceptual framework that I developed from the literature.
+
+327
+00:35:00.100 --> 00:35:09.970
+Enis Elezi: Later on, I think it's in another paper, I updated this framework on the basis of findings, which came at a later stage of my PhD.
+
+328
+00:35:11.030 --> 00:35:17.970
+Enis Elezi: But this was a presentation of a conceptual framework of a qualitative methodology.
+
+329
+00:35:18.790 --> 00:35:25.849
+Enis Elezi: Where there are no arrows to show, or to imply, impact of X over Y.
+
+330
+00:35:27.000 --> 00:35:42.660
+Enis Elezi: And again, I realize it's not the best-looking conceptual framework, but it's a framework, and the reason I had an analogy and reason to communicate in the form of a tree, because of, obviously, growing together through different branches and different
+
+331
+00:35:42.780 --> 00:35:46.229
+Enis Elezi: Part of the same, same of the same roofs.
+
+332
+00:35:47.550 --> 00:35:51.759
+Enis Elezi: But that came from… there came a synth… there was a synthesis of literature.
+
+333
+00:35:54.260 --> 00:35:54.710
+Kobir Ahmed: Yep.
+
+334
+00:35:56.390 --> 00:35:57.340
+Enis Elezi: And then…
+
+335
+00:35:57.550 --> 00:36:08.730
+Enis Elezi: The other point, because I think, Kabir made an interesting point and question in the earlier comment. How do you present qualitative date… qualitative
+
+336
+00:36:09.440 --> 00:36:15.089
+Enis Elezi: findings. Your qualitative findings will be presented in quotes.
+
+337
+00:36:15.670 --> 00:36:30.639
+Enis Elezi: So, but again, you don't need to worry about this for your proposal. You'll have plenty of time to learn about it, talk about it, engage with your supervisor, get the instructions and the guidance, any clarification from the supervisor.
+
+338
+00:36:30.830 --> 00:36:38.980
+Enis Elezi: I'm thinking of… Trying to think of any papers now, but… My head is not thinking.
+
+339
+00:36:39.180 --> 00:36:45.249
+Enis Elezi: I have some of them, but I'm just not thinking one at the moment. So you, of course, you will bring in quotes.
+
+340
+00:36:46.500 --> 00:36:49.270
+Enis Elezi: In Chapter 4, you'll have your research findings.
+
+341
+00:36:49.620 --> 00:36:51.860
+Enis Elezi: Again, this is for the research project.
+
+342
+00:36:52.110 --> 00:37:09.550
+Enis Elezi: For now, you just need to know that you're gonna have some findings, and how we're going to get there? We're not going to have any findings, because obviously it's just a proposal. But when you get to the findings, when you get to the research proposal stage, you'll have to present some findings. If these are qualitatively done, meaning that you've gathered the data via interviews or
+
+343
+00:37:09.720 --> 00:37:11.050
+Enis Elezi: focus groups.
+
+344
+00:37:11.230 --> 00:37:13.060
+Enis Elezi: Or maybe a combination.
+
+345
+00:37:13.650 --> 00:37:30.339
+Enis Elezi: Based on your coding and themes that you're gonna do, you find… you come up with one theme, or a combination of two themes in one section, or subsection, and then you bring two or three quotes from your interviewees.
+
+346
+00:37:31.160 --> 00:37:37.620
+Enis Elezi: You put them in italics, you put them in a quotation mark, and you say…
+
+347
+00:37:38.200 --> 00:37:42.750
+Enis Elezi: You give a very brief description of what that quote means?
+
+348
+00:37:43.160 --> 00:37:49.500
+Enis Elezi: And highlight the conceptual… sorry, the concept or the theme that you're trying to communicate.
+
+349
+00:37:49.620 --> 00:37:55.630
+Enis Elezi: For example, interviewee 5, when asked about this and this question.
+
+350
+00:37:55.900 --> 00:38:01.499
+Enis Elezi: Suggested something contradictory to the previous ones, or something interesting, or something that was rather vague.
+
+351
+00:38:01.620 --> 00:38:02.740
+Enis Elezi: Such as?
+
+352
+00:38:02.910 --> 00:38:04.649
+Enis Elezi: Or they stated the following.
+
+353
+00:38:04.930 --> 00:38:06.290
+Enis Elezi: quotation mark.
+
+354
+00:38:06.530 --> 00:38:14.520
+Enis Elezi: And you put what they said, word for word, maybe 2 or 3 sentences, or maybe 4 sentences max, if it's…
+
+355
+00:38:14.740 --> 00:38:20.159
+Enis Elezi: something very powerful. It could also be a short sentence, or half of a sentence.
+
+356
+00:38:20.540 --> 00:38:24.840
+Enis Elezi: If that's what is necessary to illustrate the point that you're trying to make.
+
+357
+00:38:25.450 --> 00:38:28.830
+Enis Elezi: After you've presented the… their quotes.
+
+358
+00:38:28.950 --> 00:38:38.730
+Enis Elezi: In quotation marks, in italic font. Underneath, you make a comment of what that quote means in relation to your argument or to your point.
+
+359
+00:38:39.380 --> 00:38:49.540
+Enis Elezi: And then you highlight the concept that you're trying to address. Maybe that could be… maybe that could be related with, decision making, maybe with…
+
+360
+00:38:49.650 --> 00:38:57.950
+Enis Elezi: conflict management, maybe with crisis management, and so on.
+
+361
+00:39:02.410 --> 00:39:02.970
+Kobir Ahmed: Thanks.
+
+362
+00:39:03.710 --> 00:39:04.910
+Enis Elezi: Does it help?
+
+363
+00:39:06.790 --> 00:39:07.390
+Kobir Ahmed: Yep.
+
+364
+00:39:26.600 --> 00:39:29.009
+Enis Elezi: Any, any thoughts, any, any comments?
+
+365
+00:39:29.830 --> 00:39:35.610
+Enis Elezi: Rebecca, was that… was that something you were looking for? I mean, does it answer your question?
+
+366
+00:39:35.950 --> 00:39:50.079
+Rebecca Maniates (NYUAD): Yeah, no, definitely. I mean, I am… I am, of course, pretty familiar with a lot of academic literature. I think that idea of having to have a visual, that is not something that…
+
+367
+00:39:50.210 --> 00:39:51.180
+Rebecca Maniates (NYUAD): Is…
+
+368
+00:39:51.350 --> 00:40:01.499
+Rebecca Maniates (NYUAD): particularly common in my discipline. At least now I'm wondering, I'm like, have I overlooked that for 20 years? But.
+
+369
+00:40:01.500 --> 00:40:06.110
+Enis Elezi: Like I said, it depends on… different disciplines have slightly different approaches.
+
+370
+00:40:06.470 --> 00:40:16.489
+Rebecca Maniates (NYUAD): Yeah, yeah, so, I mean, I'll keep an eye out for that, and, you know, as I go through my own literature review, I'll see if something makes sense.
+
+371
+00:40:16.650 --> 00:40:22.429
+Rebecca Maniates (NYUAD): I just… I put an example of what it looks like to incorporate, interviews
+
+372
+00:40:22.880 --> 00:40:30.170
+Rebecca Maniates (NYUAD): into text, in the chat, but also I wanted to point out there is a question in the chat for you from somebody else.
+
+373
+00:40:30.170 --> 00:40:32.609
+Enis Elezi: Oh, sorry, I missed that. Yes, I'll look at that now.
+
+374
+00:40:33.210 --> 00:40:37.619
+Enis Elezi: Thank you, Rebecca. Now, okay, Mohammed, transcribe this call.
+
+375
+00:40:39.410 --> 00:40:56.059
+Enis Elezi: Hello, I have a question. You mentioned Quality focuses on exploratory. Can the project be exploring the challenge faced by stakeholders beyond a phenomenon instead of directly addressing it? I think Kulios, without getting mixed up with the terminology and with the word.
+
+376
+00:40:56.060 --> 00:41:06.349
+Enis Elezi: When we're saying exploring, the intention is to address it. Now, how addressable that will be in real world, in practice.
+
+377
+00:41:06.580 --> 00:41:15.710
+Enis Elezi: I don't know, for a number of reasons, because the management might not consider or might not deem it appropriate, might not deem it to be a priority, might be too costly.
+
+378
+00:41:15.870 --> 00:41:33.479
+Enis Elezi: But if we say it's exploring, we… in a way, we're expecting it to address the problem, at least research-wise, meaning on the basis of the methodology you choose and how you use that, your literature understanding, the findings, how…
+
+379
+00:41:33.480 --> 00:41:46.749
+Enis Elezi: research-informed those findings are, and so on. So, let's not close any confusion with that. By exploring, we don't necessarily mean that you bypass the addressing of the management challenge, at least research-wise.
+
+380
+00:41:51.240 --> 00:41:56.110
+Enis Elezi: I hope that answers your question, but your question, but if you're not clear, please let me know. Okay.
+
+381
+00:41:56.570 --> 00:41:58.870
+Enis Elezi: I note the thumbs up.
+
+382
+00:41:59.040 --> 00:42:04.020
+Enis Elezi: And, let me have a look at what… Rebecca shared…
+
+383
+00:42:08.150 --> 00:42:11.260
+Enis Elezi: Yes, Rebecca, that's… that's how you…
+
+384
+00:42:11.420 --> 00:42:18.490
+Enis Elezi: You'd go about writing your, qualitative, findings, chapter.
+
+385
+00:42:31.850 --> 00:42:33.170
+Enis Elezi: Good, good.
+
+386
+00:42:36.420 --> 00:42:41.830
+Enis Elezi: How are you, ladies and gents, feeling so far, halfway through?
+
+387
+00:42:42.700 --> 00:42:46.929
+Enis Elezi: How is the development of, research ideas progressing?
+
+388
+00:42:49.190 --> 00:42:58.959
+Enis Elezi: Any, any preferred methodologies? Any… Any more clarity around the research scope you intend to focus on?
+
+389
+00:43:01.670 --> 00:43:05.250
+Enis Elezi: Anything that scares you, maybe, or excites you?
+
+390
+00:43:13.040 --> 00:43:13.750
+Michael Purvis: Hiya.
+
+391
+00:43:15.080 --> 00:43:15.830
+Enis Elezi: Hi, Michael.
+
+392
+00:43:16.370 --> 00:43:29.980
+Michael Purvis: Yeah, no, I'm… yeah, I'm looking forward to getting started. I'm still refining my research, or my proposal, you know, following the email that he's… well, your reply to my email I sent early in the week.
+
+393
+00:43:30.300 --> 00:43:40.729
+Michael Purvis: But yeah, it's definitely gonna be, more qualitative in nature, and yeah, there's still, you know, they're just refining it and just making it
+
+394
+00:43:41.530 --> 00:43:44.609
+Michael Purvis: It's more specific than what I had it initially.
+
+395
+00:43:45.640 --> 00:43:46.130
+Enis Elezi: Good.
+
+396
+00:43:46.130 --> 00:43:47.280
+Michael Purvis: Bye.
+
+397
+00:43:48.220 --> 00:43:55.630
+Enis Elezi: Yeah, and don't forget, you will continue, as I mentioned, I think I mentioned a few times today, that you will continue to receive
+
+398
+00:43:55.770 --> 00:44:12.920
+Enis Elezi: instructions and feedback and comments from your, supervisor once the, once the supervisor is addressed. Now, some of you might be very… might be ready, so what happens is…
+
+399
+00:44:14.490 --> 00:44:24.050
+Enis Elezi: you'll get… you'll submit your work, it will get marked, you will receive the mark, you will receive the feedback, and then you're assigned a supervisor. What happens is you email…
+
+400
+00:44:24.230 --> 00:44:32.299
+Enis Elezi: Your work to your supervisor, if you wish, or sometimes a supervisor may ask for the feedback that you've received on the research proposal.
+
+401
+00:44:32.880 --> 00:44:35.579
+Enis Elezi: If your research proposal is strong.
+
+402
+00:44:36.170 --> 00:44:40.900
+Enis Elezi: They might straight away pass it to the second reviewer for their approval.
+
+403
+00:44:41.310 --> 00:44:50.019
+Enis Elezi: If they feel that your proposal is strong, but requires further minor clarifications, they'll ask you to do that.
+
+404
+00:44:50.080 --> 00:44:59.490
+Enis Elezi: You'll make the changes, you'll pass it over to your supervisor. If they're happy, they pass it over to the second reviewer. And if the second reviewer is happy, they'll approve it.
+
+405
+00:44:59.510 --> 00:45:18.459
+Enis Elezi: And you'll move on with the research ethics. Either second… either the second independent reviewer, shall we say, wants some more clarity around elements of your work, they'll do that. And they'll make those comments, and you make the changes and resubmit again. So, you will have the opportunity to continue to further refine your
+
+406
+00:45:18.460 --> 00:45:24.910
+Enis Elezi: Aim, objectives, questions after your, after this first 6 weeks.
+
+407
+00:45:25.370 --> 00:45:26.439
+Enis Elezi: Yes, Rebecca?
+
+408
+00:45:28.500 --> 00:45:33.749
+Rebecca Maniates (NYUAD): Something Michael just said sort of reminded me, so I was just looking it up,
+
+409
+00:45:33.930 --> 00:45:49.269
+Rebecca Maniates (NYUAD): I remember that one, mention that we had to use, sort of, approved, like, approved programs for any human studies work that we were doing, like, we have to use Teams, not Zoom, that sort of thing.
+
+410
+00:45:49.270 --> 00:45:55.589
+Rebecca Maniates (NYUAD): And I just looked it up for anybody who is doing qualitative work
+
+411
+00:45:55.620 --> 00:46:02.130
+Rebecca Maniates (NYUAD): It looks like the University of Liverpool uses in vivo for, coding, is that right?
+
+412
+00:46:02.220 --> 00:46:03.120
+Rebecca Maniates (NYUAD): Enus…
+
+413
+00:46:03.120 --> 00:46:09.020
+Enis Elezi: Yes, you need to check with student support how to get access to it.
+
+414
+00:46:09.160 --> 00:46:19.560
+Enis Elezi: If you want, of course, you can use, digital platforms, shall we say, or software, or you can do it manually. So…
+
+415
+00:46:19.810 --> 00:46:28.209
+Enis Elezi: it will depend on the volume, and of course, any assisting technology, I think, would be appreciated by many of us to speed up the process.
+
+416
+00:46:28.320 --> 00:46:41.610
+Enis Elezi: But you are equally fine. Methodologically speaking, you will not be penalized if you don't use Envivo, but you do that… you do the coding and the thematic template through
+
+417
+00:46:42.320 --> 00:46:43.550
+Enis Elezi: manual…
+
+418
+00:46:43.570 --> 00:46:55.849
+Enis Elezi: Yeah, manually, so it's… you won't be penalized if you don't use a technological software. That's what I'm trying to say, you'll be absolutely fine. Then in how you access it, I think in the past, I've had a couple of cases that…
+
+419
+00:46:55.850 --> 00:47:05.800
+Enis Elezi: One was perfectly fine to use it, and another one was struggling, but I think with some student support can help clarify accessibility-related issues.
+
+420
+00:47:06.670 --> 00:47:26.000
+Rebecca Maniates (NYUAD): But, so, the reason I wanted to bring this up is because I've used other, like, I've used Atlas TI, and I've also used sort of an open source product called Deduce before, which I really like, but it sounds like if we want to use a program, it has to be sort of a Liverpool-sanctioned one, is that correct?
+
+421
+00:47:26.340 --> 00:47:32.689
+Enis Elezi: Yes, that is my understanding too, unless you want to double-check that with the program leader.
+
+422
+00:47:33.490 --> 00:47:39.999
+Rebecca Maniates (NYUAD): Okay, I will. I just put those links in case anybody wanted to see what the software is available for download.
+
+423
+00:47:40.000 --> 00:47:40.560
+Enis Elezi: Yep.
+
+424
+00:47:40.560 --> 00:47:41.100
+Rebecca Maniates (NYUAD): chat.
+
+425
+00:47:41.620 --> 00:47:47.170
+Enis Elezi: Yeah, yeah. Good, thank you. Sorry, Kulis, I've just seen your other question.
+
+426
+00:47:47.380 --> 00:48:02.529
+Enis Elezi: I have another question, if that's okay. If I can… if I cannot find enough participants, example 6 plus managers, is it acceptable to sample them across multiple similar organizations? Example one or two interviews per firm, as long as the management challenge is similar in all of them.
+
+427
+00:48:02.910 --> 00:48:18.099
+Enis Elezi: You can, but then that raises a couple of, or maybe a major challenge, shall we say, around ethics. Now, if you were to interview more than one person from a different organization.
+
+428
+00:48:18.100 --> 00:48:29.659
+Enis Elezi: You need a constant letter from their management to allow you to access your… to have two or more interviewees from the same organization.
+
+429
+00:48:29.830 --> 00:48:38.439
+Enis Elezi: To avoid, which again, if you don't have connections or network, it might prove difficult to get an approval from management that doesn't know us.
+
+430
+00:48:38.590 --> 00:48:52.670
+Enis Elezi: But, if you know people, that's great. But to avoid it altogether, and again, it will depend how many people you know, you can just limit to one person per organization, and that way, you will not need…
+
+431
+00:48:52.990 --> 00:49:01.279
+Enis Elezi: a constant letter from their management. At least, this has been the instruction that we've been given, and this is something that has happened in…
+
+432
+00:49:01.890 --> 00:49:05.080
+Enis Elezi: Few limited occasions with past students.
+
+433
+00:49:07.450 --> 00:49:20.080
+Culous Yu (MBA): Yeah, the reason I ask that is because, because we're addressing a management problem, right? So, so I'm trying to interview with managers, but they're not, like, because we have to at least
+
+434
+00:49:20.080 --> 00:49:29.790
+Culous Yu (MBA): interview 6 plus participants, right? But there are not 6 plus managers in my firm, so that's a problem. So you're saying, if I was just, interviewing
+
+435
+00:49:29.790 --> 00:49:35.370
+Culous Yu (MBA): you know, one manager per organization, I don't need the extra content.
+
+436
+00:49:37.160 --> 00:49:38.330
+Culous Yu (MBA): He's all we're saying.
+
+437
+00:49:39.020 --> 00:49:41.330
+Enis Elezi: Say that again, if you, if you do 6…
+
+438
+00:49:41.720 --> 00:49:45.599
+Culous Yu (MBA): like you just said, if I interview you,
+
+439
+00:49:46.000 --> 00:50:00.220
+Culous Yu (MBA): just one manager from another organization, so let's say one from my own firm, so 5 managers from 5 other organizations. In that case, I don't need the extra consent, that's what you're saying, right?
+
+440
+00:50:00.670 --> 00:50:13.339
+Enis Elezi: No, yes, that's what I'm saying. So, if you interview people from other organizations to avoid getting constant letters from those organizations, then limit one participant per organization.
+
+441
+00:50:14.020 --> 00:50:14.930
+Culous Yu (MBA): Okay, right.
+
+442
+00:50:15.310 --> 00:50:23.920
+Enis Elezi: But if you do that, this will need to be explained as clearly as we're discussing about it now in a written form in your proposal, if…
+
+443
+00:50:24.030 --> 00:50:28.039
+Enis Elezi: if… if you… Know clearly from now.
+
+444
+00:50:28.390 --> 00:50:34.179
+Enis Elezi: And yeah, so that needs to be expanded in your proposal.
+
+445
+00:50:35.220 --> 00:50:45.800
+Culous Yu (MBA): Yeah, there is another question that I'm just trying to clarify. Are we… like, are we addressing a problem for a particular firm, or can we do it for, like, an industry-wide problem?
+
+446
+00:50:48.920 --> 00:50:55.090
+Enis Elezi: You can… you can choose to go for an industry problem, or a wider industry.
+
+447
+00:50:55.240 --> 00:50:58.050
+Enis Elezi: But it needs to have a strong rational.
+
+448
+00:50:58.380 --> 00:50:58.880
+Enis Elezi: somewhere.
+
+449
+00:50:59.450 --> 00:51:00.100
+Enis Elezi: production.
+
+450
+00:51:00.700 --> 00:51:01.020
+Culous Yu (MBA): Russia.
+
+451
+00:51:01.020 --> 00:51:06.210
+Enis Elezi: Yes, somewhere in the introduction, you need to… you need to strengthen that clarification.
+
+452
+00:51:06.500 --> 00:51:07.440
+Enis Elezi: that…
+
+453
+00:51:07.440 --> 00:51:07.790
+Culous Yu (MBA): Right.
+
+454
+00:51:07.790 --> 00:51:21.659
+Enis Elezi: So, when we have issues, when we have issues that students cannot be supported by their management for the data collection, what we advise students is assume that you were to open up your… or…
+
+455
+00:51:21.910 --> 00:51:30.829
+Enis Elezi: Treat this as if you were to open up your own organization or your own startup around this management challenge.
+
+456
+00:51:31.610 --> 00:51:43.409
+Enis Elezi: And then you say, okay, I'm thinking of opening up my business, or it's just a startup, I don't have many people to gather the data from, so I'll go and ask people from my other organizations.
+
+457
+00:51:43.810 --> 00:51:56.419
+Enis Elezi: And in a way, that can be used to justify or strengthen the justification as to why you're not looking at your organization and you're taking more of an industry or a holistic industry-related approach.
+
+458
+00:51:59.360 --> 00:51:59.870
+Culous Yu (MBA): Alright.
+
+459
+00:51:59.870 --> 00:52:01.529
+Enis Elezi: Does it… does it, does it help?
+
+460
+00:52:02.250 --> 00:52:18.450
+Culous Yu (MBA): Yeah, but basically, my problem is that I can't find success managers, that's the problem, because I'm trying to address the problem on the manager level. So, obviously, my firm doesn't have, like, 6 plus managers, but, like, 3 to 4, so that's why I'm trying to expand the problem
+
+461
+00:52:18.450 --> 00:52:28.040
+Culous Yu (MBA): you know, generalize it to an industry scale, because I do think my challenge is pretty much being faced by the whole industry right now.
+
+462
+00:52:28.070 --> 00:52:29.970
+Culous Yu (MBA): So, that's what I'm trying to do.
+
+463
+00:52:31.380 --> 00:52:32.390
+Enis Elezi: Yeah, okay.
+
+464
+00:52:32.670 --> 00:52:34.270
+Culous Yu (MBA): Right, thank you. Yes.
+
+465
+00:52:34.270 --> 00:52:35.850
+Enis Elezi: Good, good, no problem.
+
+466
+00:52:45.440 --> 00:52:49.290
+Enis Elezi: Good, I think it's been an interesting, productive discussion.
+
+467
+00:52:49.700 --> 00:52:52.109
+Enis Elezi: Or at least I would like to think so. It's been good.
+
+468
+00:52:54.890 --> 00:52:55.620
+Kobir Ahmed: Yup.
+
+469
+00:52:58.710 --> 00:53:02.630
+Enis Elezi: But once you get… what… I think that the…
+
+470
+00:53:02.810 --> 00:53:06.720
+Enis Elezi: The key is to get more clarity around
+
+471
+00:53:06.820 --> 00:53:15.069
+Enis Elezi: aim, objectives, and research questions. Once you get this, the rest will… will follow. I'm not saying it's gonna be…
+
+472
+00:53:15.280 --> 00:53:16.760
+Enis Elezi: Super easy.
+
+473
+00:53:16.920 --> 00:53:26.769
+Enis Elezi: But will be way more clearer, because that's the… that's the kind of destination where you're heading. And of course, the rest is, how do I get there?
+
+474
+00:53:27.230 --> 00:53:32.890
+Enis Elezi: And it will help you to navigate your way through the literature review and all other parts.
+
+475
+00:53:34.420 --> 00:53:37.859
+Enis Elezi: Every time you think of defining a management challenge.
+
+476
+00:53:38.160 --> 00:53:41.450
+Enis Elezi: Think of the data that you need, and think how…
+
+477
+00:53:41.580 --> 00:53:44.810
+Enis Elezi: Easily or accessible the data can be.
+
+478
+00:53:47.100 --> 00:54:00.100
+Enis Elezi: So you're not setting up yourself for a difficult situation, where the management challenge is great, amazing, the plan is ideal, wonderful, but then, when it comes to collecting the data, you cannot.
+
+479
+00:54:00.690 --> 00:54:03.650
+Kobir Ahmed: But the question… I have another question related to that, is that…
+
+480
+00:54:03.650 --> 00:54:04.300
+Enis Elezi: Yep.
+
+481
+00:54:04.300 --> 00:54:10.480
+Kobir Ahmed: What, what if, if, if this management Challenge for this particular company.
+
+482
+00:54:11.020 --> 00:54:13.600
+Kobir Ahmed: It's so universally applicable
+
+483
+00:54:14.170 --> 00:54:19.190
+Kobir Ahmed: for the moment in time that we're living through at the moment. What… what happened if this…
+
+484
+00:54:19.460 --> 00:54:33.279
+Kobir Ahmed: particular issue is so groundbreaking that, okay, there might not be a lot of research on it, but it is one of the fundamental 21st century management issues that managers are facing. How… how is that report going to be…
+
+485
+00:54:33.460 --> 00:54:35.930
+Kobir Ahmed: Portrayed on a single company.
+
+486
+00:54:36.190 --> 00:54:39.129
+Kobir Ahmed: Based on a management research project.
+
+487
+00:54:41.610 --> 00:54:44.889
+Enis Elezi: I think we… The intention is not to…
+
+488
+00:54:45.320 --> 00:54:51.819
+Enis Elezi: If I understood the question correctly, because I might have not understood the question correctly, the intention is not to…
+
+489
+00:54:52.060 --> 00:54:58.399
+Enis Elezi: Focus on the issues of, or in respect to general disability yet.
+
+490
+00:55:00.370 --> 00:55:04.749
+Enis Elezi: We're trying to understand how to carry out a research that is…
+
+491
+00:55:05.370 --> 00:55:09.750
+Enis Elezi: Based on, that's based on… strong…
+
+492
+00:55:09.890 --> 00:55:20.259
+Enis Elezi: foundations of research, methodological choices, is research-informed, is consulted with the literature, and is trying to offer, unbiased
+
+493
+00:55:20.700 --> 00:55:25.250
+Enis Elezi: set of… Findings and conclusions.
+
+494
+00:55:25.640 --> 00:55:30.680
+Enis Elezi: On a research phenomena, or a research problem, or research challenge.
+
+495
+00:55:31.210 --> 00:55:32.840
+Enis Elezi: Sorry, managerial challenge.
+
+496
+00:55:33.010 --> 00:55:41.770
+Enis Elezi: I think getting to the stage of generalizing that will be, of course, part of your discussion towards your…
+
+497
+00:55:41.910 --> 00:55:44.449
+Enis Elezi: Towards the end of your, of your research project.
+
+498
+00:55:44.670 --> 00:55:47.390
+Enis Elezi: But that should not be the main focus.
+
+499
+00:55:48.350 --> 00:55:49.000
+Kobir Ahmed: Yep.
+
+500
+00:55:49.140 --> 00:55:54.390
+Kobir Ahmed: Yep, I agree. The only thing… the other thing that concerns me as well is that…
+
+501
+00:55:54.500 --> 00:55:57.479
+Kobir Ahmed: Just by focusing on an individual company.
+
+502
+00:55:58.200 --> 00:56:02.109
+Kobir Ahmed: You know, with a particular… that's an area, for example.
+
+503
+00:56:02.440 --> 00:56:08.499
+Kobir Ahmed: I mean, even if you have, you know, a very small sample of people that you… either you interview or do questionnaires.
+
+504
+00:56:08.800 --> 00:56:17.490
+Kobir Ahmed: That in itself… Doesn't necessarily provide
+
+505
+00:56:17.900 --> 00:56:28.989
+Kobir Ahmed: a conclusion based on a theoretical basis. What I'm trying to say is that in such a small organization, such a small company, with limited sets of data, and the limited sets of sample.
+
+506
+00:56:29.420 --> 00:56:34.029
+Kobir Ahmed: It just feels like it's not… it's not comprehensively conclusive enough.
+
+507
+00:56:34.380 --> 00:56:39.879
+Kobir Ahmed: To come away with something, because you haven't actually… Looked at it, you know.
+
+508
+00:56:40.600 --> 00:56:41.880
+Enis Elezi: In a larger scale.
+
+509
+00:56:41.880 --> 00:56:44.899
+Kobir Ahmed: Yeah, it just feels really kind of like, yeah.
+
+510
+00:56:45.600 --> 00:56:48.740
+Enis Elezi: But like I said, yeah, I mean, you're right, it's not that…
+
+511
+00:56:48.930 --> 00:56:52.120
+Enis Elezi: The conclusions are… are gonna be…
+
+512
+00:56:52.270 --> 00:57:11.290
+Enis Elezi: not questionable, or very, very strong or consolidated, no. But equally, it doesn't stop you, or anyone else, communicating research-based outcomes. And of course, that can be part of acknowledging limitations. You have a small sample, and it comes with its own limitations.
+
+513
+00:57:11.520 --> 00:57:21.090
+Enis Elezi: But it could be something that is very niche, or it's starting to emerge now, and there's not enough research, and that has its own merits and contributions.
+
+514
+00:57:21.090 --> 00:57:32.709
+Enis Elezi: And you'd say that, well, in 5 years' time, of course, we'll have more research around that… around that area, and now, having looked at just one organization, or two organizations, or maybe just one organization with 10 people is not enough.
+
+515
+00:57:32.710 --> 00:57:40.189
+Enis Elezi: Of course, it will not be enough in 10 years, because we'll know more about it, but for now, it has its own merits, with its own limitations, yeah?
+
+516
+00:57:40.190 --> 00:57:40.690
+Kobir Ahmed: I see.
+
+517
+00:57:40.690 --> 00:57:52.650
+Enis Elezi: So, and that's part of… that's how, like, research is designed to be, by default, is that it's a continuation. It never stops. It's like building bridges and leading to further areas of research.
+
+518
+00:57:52.960 --> 00:57:56.849
+Kobir Ahmed: Yes. Yes, I get it, I get it. Thanks for that clarification, Annis, really appreciate it.
+
+519
+00:57:56.850 --> 00:57:57.960
+Enis Elezi: No problem, no problem.
+
+520
+00:58:02.030 --> 00:58:06.030
+Enis Elezi: Good. Well, thank you very much for the interesting discussion and the questions you've asked.
+
+521
+00:58:08.550 --> 00:58:10.279
+Enis Elezi: Wilson?
+
+522
+00:58:10.830 --> 00:58:19.500
+Enis Elezi: If I'm going to interview, let's say, 6 staff members in my organization, do I need to get content from my management, or just those 6 people individually? Well, both.
+
+523
+00:58:19.650 --> 00:58:36.640
+Enis Elezi: First of all, you need a constant letter, or an email would be sufficient if… an email would be sufficient from your line manager, or someone of a senior role than you, or your line manager, saying that they're happy to support Wilson in undertaking their research.
+
+524
+00:58:37.050 --> 00:58:44.540
+Enis Elezi: So that's the first const… and you need this constant letter or slash email, and this will go in your research ethics application.
+
+525
+00:58:45.340 --> 00:59:04.849
+Enis Elezi: And then second is when you prepare your research ethics application, you will have two forms that… well, you'll have a few forms, but two forms related to your questions, to your question, and they're called Participant Information Sheet, and that's where you explain what the research is about.
+
+526
+00:59:05.140 --> 00:59:10.430
+Enis Elezi: And there are a number of 14 questions, I think. There's a number of 14 questions that…
+
+527
+00:59:10.550 --> 00:59:12.119
+Enis Elezi: are clarified, and…
+
+528
+00:59:12.350 --> 00:59:23.939
+Enis Elezi: helping the participant understand what they're about, what they're signing up for, signing up to. And then you have a participant consent letter, and you give this letter to the participants.
+
+529
+00:59:24.100 --> 00:59:36.829
+Enis Elezi: To express their consent, if they want to take part in your research, and not… and what happens with their data if they, all of a sudden, they decide they want to withdraw, they don't want to take… they don't want to continue to take part in your work.
+
+530
+00:59:37.590 --> 00:59:39.450
+Enis Elezi: So, yes, you'll need them both.
+
+531
+00:59:48.360 --> 00:59:50.440
+Enis Elezi: No problem. No problem, Wilson.
+
+532
+01:00:06.540 --> 01:00:07.960
+Enis Elezi: Anymore for anymore?
+
+533
+01:00:14.960 --> 01:00:17.890
+Enis Elezi: Thank you, Rebecca. Thank you. Thank you for the questions.
+
+534
+01:00:20.400 --> 01:00:21.560
+Enis Elezi: Thank you, Kudos.
+
+535
+01:00:24.830 --> 01:00:27.420
+Enis Elezi: Happy Easter, anyone that celebrates Easter.
+
+536
+01:00:28.500 --> 01:00:30.090
+Enis Elezi: Yeah, thanks, Eddie.
+
+537
+01:00:30.090 --> 01:00:30.639
+Kobir Ahmed: Yeah, thanks.
+
+538
+01:00:30.640 --> 01:00:31.609
+Enis Elezi: Ruby, take care.
+
+539
+01:00:31.610 --> 01:00:32.470
+Kobir Ahmed: Have a good Easter.
+
+540
+01:00:32.910 --> 01:00:33.750
+Michael Purvis: Thank you. Thank you.
+
+541
+01:00:34.120 --> 01:00:34.890
+Enis Elezi: Everyone?
+
+542
+01:00:35.200 --> 01:00:40.929
+Enis Elezi: I'll make sure I'll share the recording either later tonight or earlier tomorrow. Early in the morning.
+
+543
+01:00:42.090 --> 01:00:42.740
+Kobir Ahmed: No problem.
+
+544
+01:00:42.740 --> 01:00:45.729
+Enis Elezi: Pleasure to meet you all again. Take care, enjoy the weekend.
+
+545
+01:00:46.130 --> 01:00:47.000
+Kobir Ahmed: You too, take it, bye.
+
+546
+01:00:47.000 --> 01:00:48.270
+Michael Purvis: You too. Thank you.
+
+547
+01:00:48.270 --> 01:00:48.730
+Enis Elezi: Bye-bye, bud.
+
+548
+01:00:48.730 --> 01:00:49.620
+Dimitris Nonas: Bye now.
+
+549
+01:00:49.620 --> 01:00:50.400
+Lucas Fung (Kit Ki): Bye-bye.
+
+550
+01:00:50.400 --> 01:00:52.030
+Enis Elezi: Thank you, bye. Bye, everyone.
+
+551
+01:00:58.590 --> 01:01:00.179
+Enis Elezi: I'm gonna stop recording now.
+

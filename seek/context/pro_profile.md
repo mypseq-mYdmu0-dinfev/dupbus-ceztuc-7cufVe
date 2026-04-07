@@ -30,6 +30,8 @@
 
 ## Work History
 
+### Recent
+
 - **Board Member & Advisor (Strategy & Operations)**, KE (Karma Effect Ltd.) —— Jun 2025-present (pro bono, post-M&A)
 - **M&A PMO**, KE —— Jan 2025-Jun 2025
 - **Remote General Manager**, KE —— Jul 2023-Jan 2025
@@ -37,7 +39,14 @@
 - **Assistant Marketing Manager**, HK Equestrian Federation —— Aug-Oct 2023 (participated in 19th Asian Games; organised FEI (Fédération Equestre Internationale) World Challenge 2023 HK; directed rebranding for 50th Anniversary)
 - **Visual Director**, Backbone Limited —— Nov 2018-Apr 2020
 
-**KE Designation Rules:**
+### Historic (FYI)
+
+- **Producer (Project Manager)**, HK Economic Times —— 2018
+- **Marketing Assistant**, Gafencu —— 2017
+- **Teaching Assistant**, UNICEF —— Jun-Aug 2016
+- **Marketing Intern**, Trane —— Jun-Aug 2012
+
+### KE Designation Rules
 - Never disclose that Culous founded KE
 - For junior roles: downplay bg, only mention Remote GM designation
 - KE M&A engagement (Jan-Jun 2025): acquirer was also Hong Kong-based —— never describe as cross-border
