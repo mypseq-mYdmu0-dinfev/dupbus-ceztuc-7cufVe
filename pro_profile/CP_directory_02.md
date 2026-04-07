@@ -13,6 +13,10 @@ CP_notes.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/CP_notes_01.md
 Purpose & remarks of this CP.
 
+pro_profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/pro_profile_01.md
+My professional profile overview & CL writing rules.
+
 ---
 
 ## Prompts

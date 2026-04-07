@@ -1,4 +1,4 @@
-# Pro Profile — Culous Yu
+# Professional Profile Overview
 
 ## Personal
 
@@ -74,9 +74,6 @@
 | UX/UI Design, Service Design, Product Management, Digital Product | `Culous_Yu_Resume_IxD.pdf` |
 | IT, IS, Data Analytics, Software Engineering, Technical | `Culous_Yu_Resume_IT.pdf` |
 | All others (Admin, Operations, Customer Service, Office Management, etc.) | `Culous_Yu_Resume_General.pdf` |
-| Consulting, Strategy, Advisory (any) | **SKIP —— Save job on SEEK, do not apply** |
-
-**`Culous_Yu_Resume_Consulting.pdf` must never be selected in this workflow.**
 
 ---
 
