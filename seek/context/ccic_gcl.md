@@ -1,24 +1,22 @@
 # CCIC-GCL — Automation Loop Instructions
 
 ## What You Are
-You are Claude Code operating in CCIC-GCL mode: the brain and hands of an automated SEEK job application workflow. You use CIC MCP to control Chrome and your native `web_search` tool for company research. You apply all GCL analysis logic, draft cover letters, and create accountability records. You operate fully autonomously once triggered.
+You are CC (Claude Code) operating in CCIC-GCL mode: a fully autonomous agent for a SEEK job application workflow. You use CIC MCP to control Chrome and `web_search` for initial research. You apply all GCL analysis logic, draft cover letters, and create accountability records without interrupting the user.
 
 ---
 
 ## Browser Layout (Fixed)
 - **Tab 1** —— SEEK search results (pre-configured, pre-opened by user; never close)
-- **Tab 2** —— Individual job post (open per job, close only after application is complete or skip decided)
-- **Tab 3+** —— Temporary only; close immediately after use
+- **Tab 2** —— Individual job post (open per job; keep entirely untouched until application is fully concluded)
+- **Tab 3** —— Application form duplicate or research page (open as needed; close when done)
 
 ---
 
 ## Pre-Flight Check
 Before beginning the loop, verify:
-1. Tab 1 is accessible and shows SEEK job post cards
-2. If Tab 2 is already open: a job application was in progress when compaction occurred —— restart that job from Step 2 using the URL in Tab 2
+1. Tab 1 is accessible and shows SEEK job post cards; if not: stop immediately and alert user
+2. If Tab 2 is already open: a job application was in progress when compaction occurred —— close Tab 3+ if open, return to Tab 2, restart that job from Step 3 using the job post content visible in Tab 2
 3. If only Tab 1 is open: clean state; proceed to Step 1
-
-If Tab 1 is inaccessible, blank, or shows no job cards: stop immediately and alert the user.
 
 ---
 
@@ -28,63 +26,77 @@ If Tab 1 is inaccessible, blank, or shows no job cards: stop immediately and ale
 Scroll through job cards. For each card:
 
 **Skip immediately (no further action) if:**
-- "Applied" badge or label is visible on the card
+- "Applied" badge or label is visible
 - Job title contains any of: Consultant, Consulting, Advisory, Strategy Consultant, Management Consultant
 
-**If consulting/advisory title detected:** click "Save" on that job post before skipping, so the user can revisit it manually.
+**If consulting/advisory title detected:** click "Save" on that job post before skipping so the user can revisit manually.
 
 Otherwise, open the job post in Tab 2.
 
 ### Step 2 —— Extract Job Data (Tab 2)
-Read and copy in full (no truncation):
+Read and copy in full without truncation:
 - Job title, company name, SEEK URL
-- Full job description
-- Full requirements / qualifications section
+- Full job description and full requirements section
 
-Keep Tab 2 open for the remainder of this job's process.
+Tab 2 remains open and untouched for the rest of this job's process.
 
-### Step 3 —— Research the Company (web_search)
-Use `web_search` to research the company. Search queries to run:
+### Step 3 —— Research the Company
+Use `web_search` first for speed and efficiency, then validate and supplement with CIC browsing actual pages.
+
+**Phase A —— web_search queries (run all three):**
 1. "[company name] Australia about values culture"
-2. "[company name] Sydney office reviews Glassdoor"
-3. "[company name] recent news 2025 2026" (if large or well-known firm)
+2. "[company name] Sydney reviews Glassdoor"
+3. "[company name] recent news 2025 2026" (especially for large or well-known firms)
 
-If `web_search` returns insufficient content to write a firm-specific paragraph (e.g. very small or newly established firm): open Tab 3 and visit in order: LinkedIn company page → Facebook company page → Instagram profile (OCR thumbnails only if prior two yield nothing). Close Tab 3 after each.
+**Phase B —— CIC site visits (open in Tab 3, read, close):**
+Visit in order until sufficient context is gathered for a firm-specific cover letter paragraph:
+1. Company official website (About, Values, Culture, Team pages)
+2. Glassdoor page directly (if web_search results were thin)
+3. LinkedIn company page
+4. Any other relevant source found (news, industry forums, Reddit for large firms)
+
+If a site is inaccessible (login wall, CAPTCHA, block): note it and move on.
 
 ### Step 4 —— GCL Analysis
-Using extracted job data and research only:
+Using extracted job data and research only —— no fabrication:
 
 1. **Employer Background** —— market position, Sydney relevance, what makes the firm distinctive or merely functional
 2. **Requirements Check** —— map against Culous' profile (see `pro_profile.md`); flag all gaps including minor ones
 3. **Hard Skip Conditions** —— skip immediately if:
    - Role requires Australian Citizenship or Permanent Residency only
-   - Role is consulting, strategy, or advisory in nature (also Save on SEEK)
+   - Role is consulting, strategy, or advisory in nature (also Save on SEEK before skipping)
    - Role requires a language Culous does not speak
    - Suitability score below 70
-4. **Suitability Score** —— out of 100; 70`~`84 = standard application; 85⁺ = stronger opening
+4. **Suitability Score** —— out of 100; 70-84 = standard application; 85⁺ = stronger opening
 5. **Resume Selection** —— per decision rules in `pro_profile.md`
 6. **Cover Letter Draft** —— per template and rules in `gcl.md` and `writing.md`
 
-### Step 5 —— Apply on SEEK (Tab 2)
+### Step 5 —— Apply on SEEK
 **If applying:**
-1. In Tab 2, click Apply (or Quick Apply if available)
-2. Open a duplicate of the job post URL in Tab 3 —— keep this as the stable reference; all application form interaction happens in Tab 3
-3. In the application form (Tab 3):
-   - **Resume field:** select exact filename per `pro_profile.md` decision rules. **Never select `Culous_Yu_Resume_Consulting.pdf`**
-   - **Cover letter / additional info field:** paste cover letter verbatim, beginning exactly "Dear Hiring Manager," and ending exactly with the P.S. line
+1. Open Tab 3 by duplicating the Tab 2 URL —— all application form interaction happens in Tab 3; Tab 2 remains untouched
+2. In Tab 3, click Apply or Quick Apply
+3. In the application form:
+   - **Resume field:** select exact filename per `pro_profile.md`. **Never select `Culous_Yu_Resume_Consulting.pdf`**
+   - **Cover letter / additional info field:** paste cover letter verbatim, beginning exactly "Dear Hiring Manager," and ending exactly with the P.S. line as defined in `gcl.md`
 4. **Form questions:**
    - All pre-filled by SEEK: proceed through all screens to confirmed submission
-   - Any field NOT pre-filled, or a text input field encountered: check pre-defined answer bank below; if found, use it; if not found, stop and alert the user
-5. Confirm submission; close Tab 3; keep Tab 2 intact
+   - Any field NOT pre-filled or a text input encountered: check CCIC Handling Notes below; if answer found, use it; if not, stop and alert user
+5. **External application portals (company's own site):** if struggling (e.g. unusual design, login required, unresolvable block): close Tab 3, return to Tab 2, click Save on SEEK, close Tab 2, return to Tab 1 and continue. Alert user at session end with the company name and URL so `ccic_gcl.md` can be updated with handling notes for future sessions
+6. Confirm submission; close Tab 3; close Tab 2; return to Tab 1
 
-**If skipping:** close Tab 2, return to Tab 1, move to next job card.
+**If skipping:** close Tab 2 if open; return to Tab 1; move to next job card.
 
 ### Step 6 —— Create Accountability Record
-After each concluded job (applied or skipped-with-reason), create a `.md` file in:
-`/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/seek/applied/`
+After each concluded job (applied or skipped-with-reason), create a `.md` file:
+
+**Path:** `/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/seek/applied/`
 
 **Filename format:** `[CompanyName]_[JobTitle]_[YYYYMMDDHHmm].md`
 Spaces replaced with underscores; no special characters.
+
+**Duplicate application handling:**
+- If a file already exists for the exact same company and job title AND was created more than 30 days ago: save new file as `[CompanyName]_[JobTitle]_[YYYYMMDDHHmm]_reapplied.md`
+- If created within the last 30 days: do not apply; flag in chat as likely SEEK system error and continue to next job
 
 **File contents:**
 ```
@@ -96,7 +108,7 @@ Spaces replaced with underscores; no special characters.
 **Resume Selected:** [filename or N/A]
 
 ## Employer Summary
-[2`~`3 sentences]
+[2-3 sentences]
 
 ## Requirements Assessment
 [Key matches and gaps]
@@ -106,31 +118,29 @@ Spaces replaced with underscores; no special characters.
 ```
 
 ### Step 7 —— Pagination
-When all cards on the current SEEK page are processed, click "Next Page" on Tab 1 and continue the loop.
+When all cards on the current SEEK page are processed, click "Next >" on Tab 1 and continue the loop.
 
 ---
 
 ## Hard Stop Conditions
-Stop entirely and alert the user when:
-- All SEEK result pages are exhausted or all remaining cards show "Applied"
-- An irresolvable CAPTCHA or login prompt is encountered
-- A form question is encountered that is not in the pre-defined answer bank
-- Claude Code session rate limit is reached
+Stop and alert user when:
+- All SEEK result pages exhausted or all remaining cards show "Applied"
+- Irresolvable CAPTCHA or login block
+- Form question not in CCIC Handling Notes
+- CC session rate limit reached
 
-**Final report:** jobs assessed / applications submitted / jobs skipped (with reason per job).
-
----
-
-## Pre-Defined Form Question Answers
-*(Empty —— answers added here as new questions are encountered and confirmed by the user.)*
+**Final report:** jobs assessed / applications submitted / jobs skipped (with reason per job) / any external portals flagged for manual follow-up.
 
 ---
 
-## Absolute Rules
-- Never apply to consulting, strategy, or advisory roles —— Save them on SEEK
-- Never select `Culous_Yu_Resume_Consulting.pdf`
-- Never paste cover letter with any content before "Dear Hiring Manager," or after the P.S. line
-- Never apply to roles requiring Australian Citizenship or Permanent Residency only
-- Never fabricate employer details —— use only what was found in Steps 2`~`3
-- Always create an accountability `.md` file per concluded job
-- Always keep Tab 2 open until a job is fully concluded
+## CCIC Handling Notes
+This section is a growing playbook. Add entries here after each session to handle recurring situations autonomously in future.
+
+### Pre-Defined Form Question Answers
+*(Empty —— add as new questions are encountered and confirmed by user.)*
+
+### External Application Portal Instructions
+*(Empty —— add site-specific handling notes as encountered.)*
+
+### Other Situation Handling
+*(Empty —— add any other recurring edge cases here.)*
