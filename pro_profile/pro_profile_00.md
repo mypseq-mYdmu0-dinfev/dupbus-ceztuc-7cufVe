@@ -48,7 +48,7 @@
 
 ### KE Designation Rules
 - Never disclose that Culous founded KE
-- For junior roles: downplay bg, only mention Remote GM designation
+- For junior roles: downplay bg, only mention GM designation
 - KE M&A engagement (Jan-Jun 2025): acquirer was also Hong Kong-based —— never describe as cross-border
 - Revenue phrasing: "led the teams to $1 million⁺" (always plain "$", never "HK$")
 
