@@ -1,13 +1,13 @@
 # GCL (General Cover Letter)
 
-If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable.
+If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable. `🙋🏻[content]🙋🏻` = CWI/CAI-only instruction; disregard entirely when operating as CC in CCIC-GCL mode.
 
 ## Prompts
 
-Suggest which resume variant to submit in chat based on the job post/firm bg content provided. STRICTLY ENSURE TO RESPOND IN ONE SINGLE ARTEFACT following below steps and using professional British English #cc all the time & title case for section titles (bracketed=if applicable e.g. `(& group)`) with NO wording repetition (e.g. `16+ years`):
+Suggest which resume variant to submit in chat based on the job post/firm bg content provided. STRICTLY ENSURE TO RESPOND IN ONE SINGLE ARTEFACT following below steps and using professional British English 🙋🏻#cc🙋🏻 all the time & title case for section titles (bracketed=if applicable e.g. `(& group)`) with NO wording repetition (e.g. `16+ years`):
 
 ### 1. **Employer:**
-Extract the company (& group) name and job title. Search web (`web_search` unless prompted to use ACIC) and analyse thoroughly (e.g. official website, Glassdoor, LinkedIn, social media, forums) focusing on results in AU (prioritising but not limited to Sydney). Provide a concise but critical bg, highlighting what makes it unique in industry (only if it truly is) OR what lets it survive as a mediocre player. If name is acronym, show full form once e.g. `PwC (PricewaterhouseCoopers)`. IMPORTANT: Use bullet pt. If web_search failed (robots.txt, CAPTCHA, IP block, etc.) or unsure (limited knowledge, common for small firms), immediately stop and draft a BCIC prompt to ensure 100% accurate results without any fabrications.
+Extract the company (& group) name and job title. Search web (🙋🏻`web_search` unless prompted to use ACIC🙋🏻) and analyse thoroughly (e.g. official website, Glassdoor, LinkedIn, social media, forums) focusing on results in AU (prioritising but not limited to Sydney). Provide a concise but critical bg, highlighting what makes it unique in industry (only if it truly is) OR what lets it survive as a mediocre player. If name is acronym, show full form once e.g. `PwC (PricewaterhouseCoopers)`. IMPORTANT: Use bullet pt. 🙋🏻If web_search failed (robots.txt, CAPTCHA, IP block, etc.) or unsure (limited knowledge, common for small firms), immediately stop and draft a BCIC prompt to ensure 100% accurate results without any fabrications.🙋🏻
 
 ### 2. **Requirements:**
 Identify key requirements & qualifications from given content only. Provide a detailed & reserved analysis of whether my bg suffice per latest resumes. If there're areas where my exp. might be (even slightly) below expectations, flag and mention it. If the gap is large (e.g. citizen/permanent residency/non-English language), immediately STOP. Use bullet pt & emoji e.g. ✅
