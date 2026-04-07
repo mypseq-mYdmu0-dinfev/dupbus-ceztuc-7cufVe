@@ -19,7 +19,7 @@ Before beginning the loop, verify:
 2. If Tab 2 and Tab 3 are open AND an accountability `.md` exists in `/seek/applied/` matching that job: compaction occurred mid-application —— re-read that `.md` file to recover the plan, then resume from Step 6
 3. If Tab 2 and Tab 3 are open but no matching `.md` exists: compaction occurred mid-analysis —— restart that job from Step 3 using the job post content in Tab 2; Tab 3 is already correctly open
 4. If only Tab 2 is open (Tab 3 not yet duplicated): compaction occurred immediately after extraction —— duplicate Tab 2 URL to Tab 3, then restart from Step 3
-4. If only Tab 1 is open: clean state; proceed to Step 1
+5. If only Tab 1 is open: clean state; proceed to Step 1
 
 ---
 
@@ -63,7 +63,7 @@ If a site is inaccessible (login wall, CAPTCHA, block): note it and move on. Clo
 ### Step 4 —— GCL Analysis
 Using extracted job data and research only —— no fabrication:
 
-1. **Employer Background** —— market position, Sydney relevance, what makes the firm distinctive or merely functional
+1. **Employer Background** —— market position, Sydney relevance, what makes the firm distinctive/competitive or merely functional but surviving
 2. **Requirements Check** —— map against Culous' profile (see `pro_profile.md`); flag all gaps including minor ones
 3. **Hard Skip Conditions** —— skip immediately if:
    - Role requires Australian Citizenship or Permanent Residency only
@@ -94,7 +94,7 @@ Spaces replaced with underscores; no special characters.
 **File contents:**
 ```
 # [Company Name] — [Job Title]
-**Date:** [DD/MM/YYYY HH:mm]
+**Date:** [YYYYMMDDHHmm]
 **SEEK URL:** [url]
 **Outcome:** Applied / Skipped ([reason])
 **Suitability Score:** [x]/100
@@ -118,7 +118,7 @@ After writing the file, re-read it to confirm it was written correctly. Only the
 ### Step 6 —— Apply on SEEK
 **If applying:**
 1. Tab 3 is already open (duplicated in Step 2) and Tab 2 remains untouched throughout
-2. In Tab 3, click Apply or Quick Apply
+2. In Tab 3, click `Apply` or `Quick Apply`
 3. In the application form:
    - **Resume field:** select exact filename per `pro_profile.md`. **Never select `Culous_Yu_Resume_Consulting.pdf`**
    - **Cover letter / additional info field:** paste cover letter verbatim, beginning exactly "Dear Hiring Manager," and ending exactly with the P.S. line as defined in `gcl.md`
