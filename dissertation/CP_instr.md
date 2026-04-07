@@ -10,13 +10,13 @@ this CP is dedicated to "MGTK751 MBA Project" (MP/dissertation), the ultimate mo
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all filenames below using MP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_directory_01.md
+- Fetch at every chat start & resolve all filenames below using MP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_01.md
 - Prerequisites of any response: Scan full incoming msg ... Hart's logical quotation rule (same as userPref)
 - Notify when fetched file count = 10/20/30
 
 ## CONDITIONAL
 
-* Below=excerpt; re-consult MP_directory.md if needed
+* Below=excerpt; re-consult CP_directory.md if needed
 
 Conditionally fetch:
 - `Potential Advisors.md` when MP supervisor/advisor info needed

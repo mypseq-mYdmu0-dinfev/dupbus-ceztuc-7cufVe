@@ -2,7 +2,7 @@
 - Format: `[alias]` `[URL]` `[description]`
   - always fetch via URL, reference by alias
   - if no URL, search CP
-  - description's end indicated by next alias (always .md)
+  - description's end indicated by period `.`
 - When declaring/referring to files, DON'T USE FULL FILENAME (too long), USE ALIAS+(v[no.]), e.g. ✅ `Official Files _ distilled.md (v02)`; ❌ `MGTK751%20Official..._%2002.md`
 - In this file only: `request` = MUST request my approval before fetch
 

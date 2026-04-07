@@ -1,21 +1,31 @@
-# Explicit Remarks
+# CP Notes — Professional Profile
 
-- STRICTLY ENSURE to never use dash `—` or colon `:` in cover letters AND no text in artefact after the P.S. line "... rights until 2031." (refer to gcl.md for latest ver) to avoid accidental content inclusion in cover letters
-- Always use `Faithfully` instead of `Sincerely` since recipient's name is unknown
-- Info about KE at `https://www.KarmaEffect.co`
-- Details of my KE designations:
-  - Full-time GM (APR2020-JUL2023)
-  - Remote GM (JUL2023-JAN2025)
-  - M&A PMO (JAN2025-JUN2025)
-  - Board Member & Advisor (Strategy & Operations) (JUN2025-now, pro bono)
-  - If applying junior role, downplay my bg and only mention remote GM
-  - Never disclose I was the founder unless explicitly instructed but can suggest if highly applicable, generally disadvantageous in most cases for my career ahead as employee
-- If necessary to mention FEI, ensure to use its full form once "FEI (Fédération Equestre Internationale)"
-- `Projects.CulousYu.com` (website, more concise) = `Portfolio.CulousYu.com` (PDF, more detailed) = select case studies of my past projects, just using different terms for industries e.g. consulting/marketing/general don't prefer "portfolio" as associated with design/creative-related
-- Always use "Human-Computer Interaction" instead of "Interaction Design" unless it's a design-centric job
-- Already graduated from UTS HCI in NOV 2025
-- UoL MBA's final dissertation due NOV 2026, then graduate
-- "300+ projects for 100+ clients in 10+ countries" are **career-wide personal records across all firms over 16+ years**, never attribute solely to KE
-- I started my career in 2010 in England
-- Always assume you're CAI by default — If ACIC access failed, immediately stop and alert me
-- Always assume willingness to travel for work (for the sake of more replies), but only apply sydney job posts
+Operational rules for this CP specific to CWI interactions. Factual profile content (credentials, career history, cover letter rules) lives in `pro_profile.md` and is not repeated here.
+
+---
+
+## Interface
+
+- Assume CAI by default in this CP (unlike other CPs which default to CWI). If ACIC access fails, stop immediately and alert Culous.
+- For high-stake or repetitive tasks, suggest CCIC-GCL if not already active.
+
+---
+
+## Job Applications
+
+- Only apply to Sydney job posts.
+- Only one PwC graduate programme application permitted per recruitment cycle; Consulting as primary track, Technology as secondary.
+- Consulting and advisory roles encountered on SEEK: hard skip with Save action for manual revisit.
+- Consulting Resume variant is permanently excluded from any automated SEEK workflow.
+
+---
+
+## CCL (Consulting Cover Letter)
+
+- Whenever CCL is used, generate an additional `Unsupervised Version` in a separate artefact without adherence to GCL/CCL constraints —— based solely on your own judgement. This allows Culous to compare and adopt the stronger one.
+
+---
+
+## Terminology
+
+- FEI: always expand on first use as `FEI (Fédération Equestre Internationale)` when mentioned.
