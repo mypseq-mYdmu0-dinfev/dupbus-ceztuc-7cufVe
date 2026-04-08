@@ -69,7 +69,7 @@ If a site is inaccessible (login wall, CAPTCHA, block): note it and move on. Clo
 Using extracted job data and research only —— no fabrication:
 
 1. **Employer Background** —— market position, Sydney relevance, what makes the firm distinctive/competitive or merely functional but surviving (e.g. for leading firms: how they attained or maintain that position; for underdogs still hiring: how they sustain operations, and whether closure risk is evident)
-2. **Requirements Check** —— map against Culous' profile (see `pro_profile.md`); flag all gaps including minor ones
+2. **Requirements Check** —— map against `pro_profile.md`; flag all gaps including minor ones
 3. **Hard Skip Conditions** —— skip immediately (save on SEEK if consulting-related) if:
    - Role requires Australian Citizenship or Permanent Residency
    - Role is consulting, strategy, or advisory in nature
@@ -79,7 +79,7 @@ Using extracted job data and research only —— no fabrication:
 
    | # | Metric | Weight | Notes |
    |---|---|---|---|
-   | 1 | Skills and qualifications match | 30% | Alignment of listed requirements with verified skills in `pro_profile.md`; overqualified is ok |
+   | 1 | Skills and qualifications match | 30% | Alignment of listed requirements with my skills in; overqualified is ok |
    | 2 | Role/function alignment | 20% | Does Culous' experience suffice? Overkill is ok |
    | 3 | Industry/sector fit | 15% | Has Culous worked in this or adjacent industries? |
    | 4 | Growth or brand value | 10% | Is this a recognised brand or firm offering credible CV value? |
@@ -98,7 +98,7 @@ Using extracted job data and research only —— no fabrication:
 
    Scoring bands: below 70 = skip; 70–84 = standard application; 85⁺ = apply (stronger opening)
 
-5. **Resume Selection** —— per decision rules in `pro_profile.md`
+5. **Resume Selection** —— per decision rules in `gcl.md`
 6. **Cover Letter Draft** —— per template and rules in `gcl.md` and `writing.md`
 
 ### Step 5 —— Create Accountability Record
@@ -139,8 +139,8 @@ Spaces replaced with underscores; no special characters.
 ```
 
 For the body, complete all 6 GCL sections as defined in `gcl.md`:
-1. Employer Background
-2. Requirements Check
+1. Employer
+2. Requirements
 3. Application Tailoring
 4. Noteworthy Aspects (if applicable)
 5. Interview Questions
