@@ -1,6 +1,6 @@
 # FETCH RULES
 
-* IMPORTANT: Each file (inc. CP docs) fetched ONCE per chat only. When ANYTHING fetched, declare actual filename (not alias) in chat (e.g. `✅ 1.md, 2.pdf`). STOP & alert if any fetch failed, do not proceed.
+* IMPORTANT: Each file (inc. CP docs) fetched ONCE per chat only. When ANYTHING fetched, declare actual filename (not alias) in chat (e.g. `✅ 1.md, 2.pdf`) as the very first chat output in that response, before artefact generation —— overrides "artefact only" / "no chat text" defaults. STOP & alert if any fetch failed, do not proceed.
 
 ## UNCONDITIONAL
 
