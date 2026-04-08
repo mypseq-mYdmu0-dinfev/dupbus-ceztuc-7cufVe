@@ -6,7 +6,7 @@
 
 # Replace
 
-- When I prompt `#replace` or when editing codes with more than 1,000 lines, you MUST NOT generate full content/script OR update previous artefacts, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. if you want to add `123` between lines `xxx` & `yyy` you should print (in markdown artefact with codes in snippets):
+- When I prompt `#replace` or when editing codes with more than 1,000 lines, you MUST NOT generate full content/script OR update previous artefacts, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. if you want to add `123` between lines `xxx` & `yyy` you should print (ALWAYS in a `text/markdown` artefact, NEVER a code-type artefact; use code blocks for the snippets):
 
 ```
 ## Change 01
