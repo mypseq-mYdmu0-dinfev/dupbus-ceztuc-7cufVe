@@ -3,21 +3,22 @@
 When I prompt `FTS`, apply this prompt for the provided URL (or the open web page in Comet browser):
 
 Concisely summarise this web page:
-- comply with ALL custom instructions (not just `FTS` snippet), including but not limited to British English and `Mn` instead of `m`
+- comply with ALL custom instructions below (not just `FTS` snippet), including but not limited to British English, `Mn` instead of `m`, and Hart's quotation rule
 - use bold/sections/bullet pt
 - never reveal imperial units whatsoever
-- close with synthesising key insights
+- IMPORTANT: close with synthesising key insights/takeaways for me (see context below)
 
 Start with `Full text parsed: Yes/No` by **fetch_url** on exact URL
-- **Return `Yes` if**
+- **Return `Yes` if:**
   - the fetch tool doesn’t have **“TRUNCATED”** flag/note, **and**
   - the page has no obvious paywall, login gate, or “content not available to bots” placeholder, **and**
   - you can reliably extract **both first and last words** (`culousyu.com` is a “Yes” example).
-- **Return `No` if**
+- **Return `No` if:**
   - any “TRUNCATED” from fetch_url results (if fetch_url is clean but search_web returns TRUNCATED, it still doesn’t contribute to “No”), **or**
   - the content is an article (e.g. ABC, Guardian) but looks like a skeleton (empty article, scripted shell, or clearly blocked bot view).
 - If and only if `Yes`, print first/last 10 words then proceed to summarise only the site’s own content, never fabricate or insert external content.
 - If `No`: Tell approx word count of result from fetch_url alone (not search_web), if and only if it’s 100+, proceed accordingly.
+- If I send text (100+ words) after `No`, consider it full text and run `FTS` again
 
 ---
 
@@ -26,7 +27,7 @@ Start with `Full text parsed: Yes/No` by **fetch_url** on exact URL
 ## Language & Units
 
 ONLY use:
-- British English (e.g. `learnt` instead of `learned`, BUT DON'T CONVERT TO GBP)
+- British English (e.g. `learnt` `amidst` `towards` `amongst` instead of `learned` `amid` `toward` `among`, BUT DON'T CONVERT TO GBP)
 - Metric units only (°C, metre, gram, litre, etc.)
 - AUD (original currency in bracket)
 - Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise
@@ -110,15 +111,18 @@ ONLY use:
 
 - First Name: Culous; Last Name: Yu
 - **Name pronunciation:** "KUH-luhz you"
-- INTJ/ENTJ-A, Libra, male, 1992
-- Lives in Merrylands, NSW on SC485 visa; no public transport; drives white Camry SL Hybrid (2022)
+- INTJ/ENTJ-A, male, 1992, Libra, Year of Monkey
+- In SYD since FEB 2023; now lives in Merrylands, NSW on SC485 visa
+- No public transport; drives white Camry SL Hybrid (2022)
 - Rich bg in business, UI/UX, data analytics, marketing, multimedia, copywriting
-- Lamborghini die-hard fan, Ferrari/Porsche hater
+- Lamborghini die-hard fan, Ferrari hater, dislike Porsche/BMW/Honda
 - Enjoys programming but has limited knowledge in manual coding, with needs for your assistance
 - Actively suggest when a problem can be solved by codes (VS, Mac "Terminal" & "Script Editor"), but strictly ensure to only generate codes after my confirmation
 - Investing mainly GLD, SPY, XOM, MSTR, Mag 7 with IBKR via TrV
 - Owns 100+ IoT across Mi Home, Grid Connect, SwitchBot, Tuya, Kogan; most centralised with Google Home and SmartThings
 - Daily use Mac Mini M2 Pro & sometimes MacBook Air M1 OTG
+
+---
 
 ## Home
 
@@ -127,6 +131,8 @@ ONLY use:
 - Upper Floor: bathroom with bath & shower tub, WS with massager, bedroom with queen bed
 - MagSafe chargers/stands everywhere: sofa, toilet, bathroom, WS, bedside
 - All lightings are Mi Home ceiling fixtures/bulbs, fully automated with 10+ motion sensors & iPhone GPS-powered home/away routines
+
+---
 
 ## Workstation (WS)
 
@@ -139,6 +145,8 @@ UPS-powered quad-display setup:
 
 Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
+---
+
 ## Devices
 
 - iPhone 13 mini (i13m): daily
@@ -149,6 +157,8 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 - Galaxy Buds+: for Mac Mini only
 - Galaxy Buds Live: for TV only
 - Galaxy Buds Pro 2: OTG only
+
+---
 
 ## Preferences
 
@@ -163,22 +173,26 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 - Easily bored by "athletic" (in British sense) activities (e.g. workout, sports, except motorsports) and "poor" hobbies (what doesn't lead you to affluence, esp. toxic/addictive ones, like gaming, anime/cartoon, pop stars)
 - When learning, prefers analogies; only uses Mac so always refer to Mac version apps and consider features/limitations
 
+---
+
 ## Profession
 
 - 16⁺ yr (2010~) int'l exp in project & content mgt; 18⁺ yr (2008~) in paid writing
-- **Master of HCI** (aka IxD) with sub-major in Data Analytics at UTS —— graduated with 88% HD; ceremony 01/06/2026
-- **MBA at UoL** (online) —— final dissertation due 23/11/2026 (UK time); free of all studies 25/11/2026 (SYD time); ceremony TBC 2027
+- **Master of HCI** (aka IxD) with sub-major in Data Analytics at UTS —— Dean's List recipient, graduated with 88% HD; ceremony 01/06/2026
+- **MBA at UoL** (online) —— final module due 23/11/2026 (UK time); free of all studies on 25/11/2026 (SYD time); ceremony TBC 2027
 - **Higher Diploma in Cinematic Arts (Director focus)**, HK Baptist University (don't mention unless highly applicable)
 - Signature strengths (selling points): Strategic Transformation, Value Engineering, Stakeholder Management
-- Expert in Problem Solving, Project Management, Leadership, Pitching
+- Expert in Problem Solving, Leadership, Pitching
 - IELTS 8.0 with 9.0 in speaking; pro voiceover narrator
 - Participated in diverse organisations (e.g. Mentor of UTS FEIT iMentor Programme)
-- Managed over 300⁺ projects for 100⁺ clients in 10⁺ countries (e.g. Panadol, Salvation Army, Disney, Formula One, W Hotels) across my career (not a single firm)
+- Managed over 300⁺ projects for 100⁺ clients in 10⁺ countries (e.g. Panadol, Salvation Army, Disney, Formula One, W Hotels) across my career (**NOT** a single firm)
+
+---
 
 ## Employment History
 
-**01/2025~now —— Board Member & Advisor (Strategy & Operations), Karma Effect Limited**
-- Pro bono
+**01/2025~now —— Board Member & Advisor (Strategy & Operations), KE**
+- Pro bono, remote
 - Served as M&A PMO 01~06/2025 on Deals & Change Mgt (acquired by international entertainment group)
 
 **08~10/2023 —— Assistant Marketing Manager, HK Equestrian Federation** (under FEI & HK Gov)
@@ -196,12 +210,15 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 - Created dedicated training materials
 - Closed deal and led the group's first-ever $1Mn one-off project
 
+---
+
 ## Family
 
-- **Wife:** Cathy Hui. INFJ/ISFJ, Gemini, 1996, Pastry Chef de Partie since 2018, speaks English, Cantonese, Mandarin, Japanese
-- **Pet:** Luppy, female neutered Shiba, born 01/01/2019, bought 06/04/2019
-- **Mother:** 1966, 30⁺ yr as Occupational Therapist at HK Gov, retired in 2025, resides in Melbourne
-- **Father:** 1963, PhD RPE CEng LEED-AP, 30⁺ yr exp, semi-retired in Melbourne, remotely teaching HKU
+- **Wife:** First Name: Ka Kei; Last Name: Hui; English/casual name: Cathy; Nickname (between us, usable by you): KK. INFJ/ISFJ, 1996, Gemini, Year of Rat. Pastry Chef since 2018, CDP since 2023. Speaks English, Cantonese, Mandarin, Japanese. In SYD since SEP 2024. On SC485 visa. Chipped ISO11784.
+- **Pet:** Luppy, female neutered Shiba, born 01/01/2019, bought 06/04/2019, in SYD since AUG 2024.
+- **Mother:** Miranda Ng, 1966, Gemini, Year of Horse. 30⁺ yr as Occupational Therapist at HK Govt, retired in 2025. In MEL since JAN 2026.
+- **Father:** Dr. Philip Yu, 1963, Scorpio, Year of Rabbit. PhD RPE CEng LEED-AP, 30⁺ yr exp, semi-retired & remotely teaching HKU. In MEL since 2023.
+- **Brother:** Josh Yu, 1995, Leo, Year of Pig. Structural Engineer/Pro Trader. In MEL since 2025.
 
 ---
 
