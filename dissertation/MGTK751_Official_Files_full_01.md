@@ -112,11 +112,11 @@ Please note: all dates are in UK time.
 Assessment/Activity,Week,Grade Weighting,Deadline
 Individual MBA Project Advisor Allocation Form [→ Individual MBA Project Advisor Allocation Form.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
 Draft Research Proposal [→ Draft Research Proposal.pdf],Week 4,N/A,"23:59 (UK Time) Monday 13th April 2026"
-MBA Research Project Proposal (Assessment 1) - 1500 words [→ `MBA Research Project Proposal (Assessment 1) -1500 words.pdf` in `MGTK751 A1-3 Instr Criteria.md`],Week 6,10%,"23:59 (UK Time) Monday 27th April 2026"
+MBA Research Project Proposal (Assessment 1) - 1500 words [→ `MBA Research Project Proposal (Assessment 1) -1500 words.pdf` in `A1-3.md`],Week 6,10%,"23:59 (UK Time) Monday 27th April 2026"
 DRAFT Recorded Presentation Submission [→ DRAFT Recorded Presentation Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
 DRAFT Research Project Submission [→ DRAFT Research Project Submission.pdf],Week 32,N/A,"23:59 (UK Time) Monday 26th October 2026"
-"Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes [→ `Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf` in `MGTK751 A1-3 Instr Criteria.md`]",Week 36,20%,"23:59 (UK Time) Monday 23rd November 2026"
-"Final MBA Project Submission (Assessment 3) - 8000 words [→ `Final MBA Project Submission (Assessment 3) - 8000 words.pdf` in `MGTK751 A1-3 Instr Criteria.md`]",Week 36,70%,"23:59 (UK Time) Monday 23rd November 2026"
+"Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes [→ `Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf` in `A1-3.md`]",Week 36,20%,"23:59 (UK Time) Monday 23rd November 2026"
+"Final MBA Project Submission (Assessment 3) - 8000 words [→ `Final MBA Project Submission (Assessment 3) - 8000 words.pdf` in `A1-3.md`]",Week 36,70%,"23:59 (UK Time) Monday 23rd November 2026"
 </csv>
 
 #### ~~~ END: Module Schedule.pdf ~~~
@@ -550,9 +550,9 @@ Click here to view the additional assessment length guidance (omitted).
 
 <csv>
 Assessment,Deadline,Grade Weighting
-MBA Research Project Proposal [→ `MBA Research Project Proposal (Assessment 1) -1500 words.pdf` in `MGTK751 A1-3 Instr Criteria.md`],Week 6,10%
-Recorded Presentation [→ `Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf` in `MGTK751 A1-3 Instr Criteria.md`],Week 36,20%
-MBA Project [→ `Final MBA Project Submission (Assessment 3) - 8000 words.pdf` in `MGTK751 A1-3 Instr Criteria.md`],Week 36,70%
+MBA Research Project Proposal [→ `MBA Research Project Proposal (Assessment 1) -1500 words.pdf` in `A1-3.md`],Week 6,10%
+Recorded Presentation [→ `Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf` in `A1-3.md`],Week 36,20%
+MBA Project [→ `Final MBA Project Submission (Assessment 3) - 8000 words.pdf` in `A1-3.md`],Week 36,70%
 </csv>
 
 Please Note: All grades are subject to change until they have been agreed by the External Examiner, and ratified by the Examination Board.
@@ -1228,7 +1228,7 @@ In this week's lecturecasts you will learn how to conduct quantitative research,
 - Synchronous Seminar (Duration: 1hr) —— Mark as done (omitted)
 - [Action Learning Set Activity → `Week 04 ALS Activity.pdf`] (Duration: 3hrs preparation + 1.5hr live meeting) —— Mark as done
 - [Individual MBA Project Advisor Allocation Form → `Week 04 Individual MBA Project Advisor Allocation Form.pdf`] —— Please complete the form by the end of week 4 —— Mark as done
-- [Potential Advisors → `MGTK751 Potential Advisors.md`]
+- [Potential Advisors → `Potential Advisors.md`]
 - [Submit Draft Proposal for Formative Feedback → `Draft Research Proposal.pdf`] —— To do
 
 ### Reading
@@ -1413,7 +1413,7 @@ In this week's lecturecasts you will learn how to write effective recommendation
 - [Week 6 Synchronous Seminar —— Elevator Pitch → `Week 06 Seminar Elevator Pitch.pdf`] —— Mark as done
 - [Action Learning Set Activity → `Week 06 ALS Activity.pdf`] (Duration: 3hrs preparation + 1.5hr live meeting) —— Mark as done
 - Career Catalyst (duration: 30 minutes) —— Mark as done (omitted)
-- [MBA Research Project Proposal → ``MBA Research Project Proposal (Assessment 1) -1500 words.pdf` in `MGTK751 A1-3 Instr Criteria.md``] —— To do
+- [MBA Research Project Proposal → ``MBA Research Project Proposal (Assessment 1) -1500 words.pdf` in `A1-3.md``] —— To do
 - End of Research Proposal Stage Survey (omitted) —— To do
 
 ### Reading
@@ -1617,11 +1617,11 @@ If your Dissertation/Research Project involves data collection from human partic
 
 By Monday (Day 7) you must submit your recorded presentation (20% of the module mark).
 
-[Recorded Presentation Submission → ``Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf` in `MGTK751 A1-3 Instr Criteria.md``] —— To do
+[Recorded Presentation Submission → ``Recorded Presentation Submission (Assessment 2) - Maximum 10 minutes.pdf` in `A1-3.md``] —— To do
 
 By Monday (Day 7) you must submit your final MBA Project (70% of the module mark).
 
-[Research Project Submission → ``Final MBA Project Submission (Assessment 3) - 8000 words.pdf` in `MGTK751 A1-3 Instr Criteria.md``] —— To do
+[Research Project Submission → ``Final MBA Project Submission (Assessment 3) - 8000 words.pdf` in `A1-3.md``] —— To do
 
 ### Activities
 

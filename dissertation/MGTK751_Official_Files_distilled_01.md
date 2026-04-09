@@ -1,5 +1,5 @@
 # MGTK751 —— Distilled Official Files
-*Source: `MGTK751 Official Files _ full _ 01.md` | Distilled: 28/03/2026*
+*Source: `Official Files (full).md` | Distilled: 28/03/2026*
 
 ---
 
@@ -31,7 +31,7 @@ Seminars (Wk 1`~`6): Fridays 16:00 UK | Ethics process: Wks 7`~`11
 
 - Must choose 3 ranked preferences from Potential Advisors list
 - **Topic must fall within DA's stated research interests** —— check bios before choosing
-- Potential Advisors page: `MGTK751 Potential Advisors.md` —— **NOT included in this distilled file; fetch separately**
+- Potential Advisors page: `Potential Advisors.md` —— **NOT included in this distilled file; fetch separately**
 - Match is best-effort, not guaranteed
 - All DA comms must be via VLE discussion board (not email/WhatsApp)
 - DA replies within 4 days; chapter feedback within 10 days
@@ -85,7 +85,7 @@ Must comply with GDPR; anonymise all participant data; survey invites must use B
 - Wk 6 seminar: full-class **elevator pitch** (60-sec oral, no slides) covering aim, objectives, method, importance
 - ALS focus per week mirrors lecturecast theme (see Wks 1`~`6 table below)
 
-> *For full ALS guidance, weekly activity briefs, and group setup instructions, refer to `MGTK751 Official Files _ full.md`*
+> *For full ALS guidance, weekly activity briefs, and group setup instructions, refer to `Official Files (full).md`*
 
 ---
 

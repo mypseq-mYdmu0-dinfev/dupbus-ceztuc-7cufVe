@@ -214,7 +214,7 @@
   - Industry-wide rationale in intro (Section 6 argument)
   - Participant design: 6 TPPs default; triangulation mentioned as enrichment possibility
   - Sample questions NOT required in A1 but ethics framing of data collection must be described
-  - Adapted from `MGTK751 Concept Brief (concise) _ [timestamp].md` + this file; deliverable quality required (writing.md)
+  - Adapted from `Concept Brief (concise).md` + this file; deliverable quality required (writing.md)
 - 15.2. **Wks 7–11 (ethics + DA)**
   - Refine proposal w/ DA; submit to second reviewer
   - Complete ethics application: question guides (Guides A, B, C) must pass safe framing test
