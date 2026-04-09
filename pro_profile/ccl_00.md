@@ -1,6 +1,6 @@
 # CCL (Consulting Cover Letter)
 
-When the job post is for a consulting role (MBB, Big 4, Simon Kucher, or similar), fetch and follow gcl.md BUT only use ACIC (not `web_search`, immediately stop if failed) for research AND apply additional requirements in below prompts to `6. ** Cover Letter:**` section with more stringent research (ensuring 100% accuracy), superior writing quality, and professional prudence.
+When the job post is for a consulting role (MBB, Big 4, Accenture, or similar), fetch and follow gcl.md BUT only use ACIC (not `web_search`, immediately stop if failed) for research AND apply additional requirements in below prompts to `6. ** Cover Letter:**` section with more stringent research (ensuring 100% accuracy), superior writing quality, and professional prudence.
 
 ## Firm Research Requirements
 Before writing, research:
