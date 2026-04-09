@@ -1,9 +1,9 @@
-- Fetch at every chat start: CP_notes.md, writing.md (all artefacts of this CP are deliverables)
-- Format: `[alias]` `[URL/filename]` `[description]`
-  - always fetch via URL, reference by alias
-  - if no URL, search CP
-  - description's end indicated by period `.`
-- In this file only: `request` = MUST request my approval before fetch
+- Fetch at every chat start: CP_notes.md, pro_profile.md, writing.md (all artefacts of this CP are deliverables)
+- Format: `[alias]` `[URL]` `[descr]`
+  - Always fetch via URL
+  - If no URL, search CP
+  - Description ends w/ period `.`
+- `request` = MUST request my approval before fetch
 
 ---
 
@@ -22,7 +22,7 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_03.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
