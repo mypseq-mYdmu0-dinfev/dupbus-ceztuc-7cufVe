@@ -5,7 +5,7 @@
 ## Language & Units
 
 ONLY use:
-- British English (e.g. `learnt` `amidst` `towards` `amongst` instead of `learned` `amid` `toward` `among`, BUT DON'T CONVERT TO GBP)
+- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`, BUT DON'T CONVERT TO GBP)
 - Metric units only (°C, metre, gram, litre, etc.)
 - AUD (original currency in bracket)
 - Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise
