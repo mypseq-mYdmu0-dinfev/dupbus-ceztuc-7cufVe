@@ -1,84 +1,80 @@
 # Complete Traveller Profile: Culous
 
 ## Basic Info
-- **Demographic:** Asian male in 30s, married, hate kids
+- **Demographic:** SYD Asian male in 30s, married, hate kids
 - **Cultural Bg:** Lived in Birmingham, UK for long, which influenced character & preference for British English
-- **Pet:** Female Shiba Inu named Luppy (born 1 January 2019)
-- **Languages:** Fluent in British English, some Australian English, limited American English and Chinese Mandarin; cannot understand Indian English
+- **Pet:** Female Shiba Inu named Luppy (born 1 JAN 2019)
+- **Languages:** Fluent in British/Aussie English, limited American English & Chinese Mandarin understanding; cannot understand Indian English
 - **Health Considerations:** 
-  - Allergies: most gourds (e.g., cucumber), mushrooms (truffle acceptable), tomatoes (sauce and paste acceptable), any tofu (fatal allergy)
-  - Sometimes feels suffocated in highly packed crowds (e.g., Mong Kok in Hong Kong)
-- **Travel Documents:** Hong Kong passport and BNO
-- **Travel Experience:** Extensive international travel history, having visited many iconic locations across Europe and Asia
+  - Allergies: gourd (e.g. cucumber), eggplant, mushroom (exc. truffle), tomato (exc. sauce/paste), tofu & any variants (fatal)
+  - Sometimes feels suffocated in highly packed crowds (e.g. Mong Kok in HK)
+- **Travel Docs:** BNO & HK passport
+- **Travel Exp:** 30+ countries across Europe & Asia
 
-## Travel Hard Preferences
-- **Transportation:** 
-  - Strong preference for driving rather than public transport or rideshare services
-  - Comfortable with various driving conditions (mountain roads, left/right-side driving)
-  - Prefers rental cars with automatic transmission, parking sensors, and ideally Apple CarPlay
-  - Often chooses Toyota vehicles due to familiarity (owns a Camry)
-  - Cost is primary consideration for vehicle rental rather than specific features
-  - Can accept trains if wait times aren't long
-  - Occasionally enjoys ferries primarily as an experience/sightseeing opportunity
-  - Strongly dislikes buses but will use if necessary (e.g., when parking isn't available at destination)
+## Hard Pref
+- **Transport:** 
+  - Strong pref for driving over public transport (crowd) or rideshare/taxi (unless cheaper than car rental e.g. Taiwan)
+  - Comfortable w/ various driving conditions (mountain roads, left/right-side driving): off-road ok but limited exp (🇮🇸 only)
+  - Prefers rental cars w/ automatic transmission, parking sensors, and ideally Apple CarPlay
+  - Often Toyota: cheap & familiar (owns Camry 2022)
+  - Cost is primary consideration for car rental
+  - Train/metro/tram ok if short wait times
+  - Occasionally enjoy ferry primarily as an exp/sightseeing opportunity
+  - Strongly dislike buses but ok if unavoidable (e.g. parking N/A pr too far)
 - **Accommodation:** 
-  - Typically seeks inexpensive hotels/motels (90% of trips)
-  - Essential requirements: private bathroom (never shares), parking (preferably free or affordable)
-  - Doesn't mind staying up to 30 minutes from city centre/airport
-  - Example of ideal lodging: basic motel with air conditioning, private bathroom, ground floor room with parking nearby (~A$105/night range)
-  - Doesn't require luxury amenities/services
-- **Climate Preferences:** Comfortable with cold weather (even 0°C), uncomfortable above 30°C, avoids destinations averaging above 35°C (daytime)
-- **Location Avoidance:** Does not travel to India, Bangladesh, Pakistan, and countries currently experiencing war or other crises
-- **Luxury vs Practicality:** Rarely seeks luxury experiences; might consider fine dining or hot spring resorts only if particularly famous at destination
-- **Seasonality:** Prefers to visit destinations during their appropriate seasons (e.g., summer for beach destinations, winter for skiing destinations)
+  - Essential: private bathroom, A/C (summer)
+  - Acceptable: 30min from city/airport
+  - Ideal example: basic motel G/F room with free parking right outside (~A$100/night)
+  - No need amenities/services
+- **Climate Pref:** Comfortable w/ cold (even 0°C), uncomfortable 30°C+, avoids 35°C+ (daytime avg)
+- **Blacklist:** India, Bangladesh, Pakistan, Mexico, any in war/crises
+- **Luxury vs Practicality:** Rarely seek luxury exp; might consider fine dining/hot spring only if particularly famous at destination
+- **Seasonality:** appropriate (e.g. summer → beach, winter → skiing) but off-peak considerable (less crowd)
 
-## Food Preferences
-- No strong preference that requires seeking specific cuisines in each destination
-- Generally enjoys trying local cuisine unless extremely bad or overpriced
-- Particularly enjoys:
-  - Japanese and Korean food
-  - High-quality fish and chips
-  - Nice burgers
-  - Cheese (especially blue cheese)
-  - Chinese food (usual cuisine)
-- Would not actively seek these cuisines when traveling unless local food is too bad or expensive
+## Food Pref
+- Fav:
+  - 90% typical 🇯🇵🇰🇷 (exc. allergies e.g. tofu in 🇯🇵)
+  - Exceptional fish & chips, 🍕, 🍔
+  - 🧀 esp. blue/goat w/ 🥐
+  - BBQ/Grill esp. 🇯🇵🇰🇷🇦🇺
+- General enjoy Chinese food (wife cooks twice/week)
+- BUT enjoy trying local cuisine when overseas unless extremely bad (e.g.🇬🇧) or overpriced (e.g.🇨🇭)
 
-## Travel Soft Preferences & Special Interests
+## Travel Soft Pref & Special Interests
 
-### Highly Favoured Experiences (Strong Interest)
-- **Water-Related Experiences:**
-  - Beaches/coastal walks (especially if famous/unique)
-  - Lakes/riverside locations (Lake Como rated 5)
-  - Hot springs and thermal baths (consistently rated 5 across regions)
-    - Particularly enjoys Japanese onsen experiences
-    - Has visited and loved Blue Lagoon in Iceland
+### Highly Favoured Exp
+- **Water-Related:**
+  - Beaches/coastal walks esp famous/unique
+  - Lakes/riverside e.g. Lake Como
+  - Hot springs/thermal baths
+    - Particularly 🇯🇵 onsen
+    - Visited & loved Blue Lagoon 🇮🇸
 
 - **Automotive & Driving:**
-  - Passionate about European cars (especially Lamborghini)
-  - Very interested in automotive events, factory tours, and racing experiences
-  - Excited about iconic driving routes and scenic drives
-  - Particularly interested in Lamborghini Factory Tour and Nürburgring race track (both rated 5 with enthusiasm)
-  - Has driven Great Ocean Road in Australia
+  - Passionate w/ European cars (esp. Lamborghini)
+  - Very interested in automotive events, factory tours, and racing exp.
+  - Excited about iconic driving routes/scenic drives
+  - Particularly interested in Lamborghini Factory Tour & Nürburgring race track
+  - Has driven Great Ocean Road 🇦🇺
 
-- **Japanese Experiences:**
-  - Strong affinity for Japanese culture and attractions
-  - Interested in cherry blossom season, bamboo groves, onsens, and unique cultural experiences
-  - Has visited Arashiyama Bamboo Grove and enjoyed it thoroughly
+- **Japanese-style Exp:**
+  - Strong affinity for Japanese culture/attractions
+  - Interested in cherry blossom season, bamboo groves, onsens, and unique cultural exp
+  - Has visited Arashiyama Bamboo Grove & enjoyed thoroughly
 
 - **Unique Natural Phenomena:**
-  - Highly rates spectacular natural sights (e.g., Waitomo Glowworm Caves, Milford Sound)
-  - Has experienced and enjoyed Northern Lights
-  - Values unique wildlife viewing experiences (different from what's available in Sydney)
+  - Highly rates spectacular natural sights (e.g. Waitomo Glowworm Caves, Milford Sound)
+  - Seen & enjoyed Northern Lights
+  - Values unique wildlife viewing exp (esp. when largely diff from those in SYD)
 
 - **Technology & Modern Design:**
-  - Strong interest in technology exhibitions and modern architectural marvels
-  - Prefers experiential technology rather than historical/museum presentations
-  - teamLab Borderless digital art museum rated highly (5)
+  - Strong interest in tech exhibitions & modern architectural marvels
+  - Prefers experiential tech rather than historical/museum presentations
+  - teamLab Borderless digital art museum rated highly
 
 - **Markets & Local Food:**
-  - Strong affinity for street markets and night markets
-  - Has visited and enjoyed night markets in Taipei
-  - Usually prefers mid-tier restaurants and street food
+  - Strong affinity for street/night markets e.g. 🇹🇼🇹🇭
+  - Usually prefers mid-tier restaurants & street food
   - Occasionally enjoys fine dining when particularly renowned
 
 - **Animal Interactions:**
