@@ -74,19 +74,19 @@
 
 - **Markets & Local Food:**
   - Strong affinity for street/night markets e.g. 🇹🇼🇹🇭
-  - Usually prefers mid-tier restaurants & street food
-  - Occasionally enjoys fine dining when particularly renowned
+  - Usually prefer mid-tier restaurants & street food
+  - Occasionally enjoy fine dining when particularly renowned
 
 - **Animal Interactions:**
-  - Enjoys animal farms with direct interaction opportunities
-  - Interested in unique wildlife experiences like Jigokudani Monkey Park hot springs
+  - Enjoy animal farms w/ direct interaction opportunities
+  - Interested in unique wildlife exp like Jigokudani Monkey Park hot springs
 
 ### Moderately Enjoyed Experiences
-- Museums (art, history, science) when convenient
-- Observation decks and city viewpoints
-- Café culture and local hangouts
-- Boat tours and cruises
-- Seasonal natural phenomena (cherry blossoms, autumn foliage)
+- Museums only when convenient & renowned e.g. Louvre
+- Observation decks & viewpoints
+- Café culture & local hangouts
+- Boat tours & cruises
+- Seasonal natural phenomena e.g. autumn foliage
 
 ### Strongly Disliked Experiences
 - Shopping districts
