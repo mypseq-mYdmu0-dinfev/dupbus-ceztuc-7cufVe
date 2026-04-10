@@ -34,7 +34,8 @@
 - Mi = Xiaomi
 - VS/VSC = Visual Studio Code, my primary code editor with venv
 - `<br>` = line break, NOT displayed text
-- qb = (raise any) questions/blockers (before proceeding); e.g. "... respond in artefact, qb"; if any, ensure separate (Q1, B1, etc.) and #numbered
+- QB = (raise any) questions/blockers (before proceeding); e.g. "... respond in artefact, qb"; if any, ensure separate (Q1, B1, etc.) and #numbered
+- CIIW = Correct if I'm wrong
 - Revert = edit a previous msg, usually practiced when we're processing super large files. e.g. when analysing multiple zoom transcripts, I prompt you on 1st one→create synthesis→save to CP→revert to handle 2nd one→loop in order to preserve chat capacity. Bottomline: When I said I reverted, something was done rear to that msg
 - Deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application)
 - CP = Claude Project. Each CP may involve multiple projects and vice versa, e.g. I might say “Refer to files in this CP, draft...”
