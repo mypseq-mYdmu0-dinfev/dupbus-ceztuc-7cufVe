@@ -3,7 +3,7 @@
   - Always fetch via URL
   - If no URL, search CP
   - Description ends w/ period `.`
-  - When declaring/referring to files: NEVER use full filename; use alias + ver e.g. ✅ `Concept Brief (comp).md (v02)`; ❌ `MGTK751_Concept_Brief_comp_02.md`
+  - Declaring/referring: extract ver. from filename (e.g. `_01` in `MGTK751_A1-3_01.md` = v01) & append to alias as `Alias.md (vXX)` e.g. `A1-3.md (v01). No exceptions.
 - `request` = MUST request my approval before fetch
 
 ---

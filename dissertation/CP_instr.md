@@ -4,7 +4,7 @@
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all filename aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_05.md
+- Fetch at every chat start & resolve all filename aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_06.md
 - Prerequisites of any response: Scan full incoming msg ... Hart's logical quotation rule (same as userPref)
 - Notify in chat (override) when cumulative fetched file count reaches 10, 20, 30
 
