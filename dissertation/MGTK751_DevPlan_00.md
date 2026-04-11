@@ -9,7 +9,7 @@
 
 # PART A —— PROJECT PHASES
 
-## P1. Literature Research (BCIC)
+## P1. Literature Research (WCIC)
 *Prerequisite: Chrome logged into UoL library. Culous to confirm before Chat 05 begins.*
 
 ### P1.1. Search Scope
@@ -171,7 +171,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - AD02.1.1. `Concept Brief (comp).md` regenerated → v02 (`MGTK751_Concept_Brief_comp_02.md`); v01 = Chat 02's first consolidated version; v02 = Chat 03 update incorporating ChatGPT consultation + Wk4 seminar intel + our discussion
 - AD02.1.2. `Concept Brief (concise).md` updated → v02; §7 only via #replace (RQ table restructured; RQ-A/B added at top; RQ1–5 retained as considered-options log)
 - AD02.1.3. `Seminars (distilled).md` created (new file); Wk4 section = manually saved partial transcript — replace when official released
-- AD02.1.4. A1 Dev Plan created (`MGTK751_A1_DevPlan_03.md`); covers P1–P5 (BCIC research through QC + submission)
+- AD02.1.4. A1 Dev Plan created (`MGTK751_A1_DevPlan_04.md`); covers P1–P5 (WCIC research through QC + submission)
 - AD02.1.5. Artefact #13 (premature AD02 + handoff) was disregarded by Culous; this is the correct AD02
 
 ### AD02.2. Key Decisions Made
