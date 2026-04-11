@@ -1,4 +1,4 @@
-# TPS in KBFs — Concept Brief (Private/Concise)
+# TPS in KBFs — Concept Brief (Concise/Private)
 
 ---
 
