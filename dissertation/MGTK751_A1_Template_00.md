@@ -11,15 +11,10 @@ Please note the section word counts are only suggestive and not fixed. The word 
 **MGTK751 MBA Project Research Proposal**
 
 Student Name:
-
 Student Number:
-
 Student Country of Residence:
-
 Student Liverpool Email Address:
-
 Proposed Project Title:
-
 Word count:
 
 ---
