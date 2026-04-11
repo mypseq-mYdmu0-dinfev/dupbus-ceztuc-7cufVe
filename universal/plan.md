@@ -63,8 +63,8 @@
 - Focus on constant info remaining unchanged throughout (e.g. deadline, budget)
 - Above M1-3 are examples only, not necessarily applicable
 - No max. item limit like "PART A"; be most efficient by all means; intended for Claude only
-- If academic: build `[project_alias]_Theory_Repo.md` instead of including here
-- DON'T repeat other synthesised files (e.g. `Project Summary.md` `Core File Summary.md`)
+- If academic: build `[project_code/alias]_TheoryRepo.md` instead of including here
+- DON'T repeat other synthesised files (e.g. `ProjectSummary.md` `Core_File_Summary.md`)
 ```
 
 ---
