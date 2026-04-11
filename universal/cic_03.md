@@ -21,6 +21,19 @@ When we're on high-stake but lengthy tasks and all A/B/WCIC don't suffice, consi
 
 ---
 
+## Pre-CIC Protocol
+
+Before drafting any A/B/WCIC prompt, always run `web_search` first:
+- Surface as many candidate sources as possible; pass **valid candidates only** (inc. URLs) into the CIC prompt as a starting point —— narrows CIC's scope and speeds up execution
+- **Valid** = directly relevant to the task + from an authoritative source, regardless of whether it confirms or contradicts the hypothesis
+- **Invalid** = irrelevant, low-quality, or adds no substantive value
+- web_search output is triage only, never confirmation; CIC must validate every passed source by actually visiting (web_search can misrepresent, surface outdated content, or miss paywalls)
+- If valid+invalid candidates are fewer than 5, CIC may also give a quick pass on invalid sources, prioritising borderline ones over clearly off-topic ones
+- CIC should also search for additional sources beyond the list as needed
+- web_search returning no results ≠ CIC will also find nothing —— worth CIC trying regardless
+
+---
+
 ## Drafting for BCIC
 
 When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same for BCIC's response), just enough for BCIC (and you) to understand each other. For CWI-BCIC exchange, neglect all language/glossary conventions (e.g. mentioning `CIC`, using ` `~` ` instead of `-`) since BCIC has no context at all.
