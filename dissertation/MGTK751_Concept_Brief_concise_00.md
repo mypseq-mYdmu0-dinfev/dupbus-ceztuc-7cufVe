@@ -13,7 +13,6 @@
 - RQ — Research Question
 - DA — Dissertation Advisor
 - Q — Qualitative | N — Quantitative
-- A, B, C, D — Challenge angles (see Section 2)
 - RQ1`~`RQ5 — RQ options (see Section 7)
 - ppt — participant | mgr — manager | org — organisation | bg — background
 
