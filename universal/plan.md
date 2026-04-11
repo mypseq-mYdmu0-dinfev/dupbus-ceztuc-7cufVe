@@ -1,9 +1,9 @@
 # [title] Dev Plan (Template for Development/Project Plan)
 **Goal/Output:** [one_line_descr]
 **Organisation:** [name]
-**Due:** [timestamp]
+**Due:** [YYYYMMDDHHmm]
 **Target Result:** [value/descr]
-**Created:** [timestamp] (Chat [no.])
+**Created:** [YYYYMMDDHHmm] (Chat [no.])
 
 ```
 **Internal Rules (delete when creating):**

@@ -20,7 +20,7 @@
 - HCI = Human-Computer Interaction
 - IxD = Interaction Design
 - UoL = University of Liverpool (UK)
-- 12-digit no. starting with "20" = [timestamp], e.g. 202602172117 = 21:17 on 17 Feb 2026
+- 12-digit no. starting with "20" = [timestamp] in [YYYYMMDDHHmm] format
 - $ = default A$, unless specified `US$`
 - min = minimum/minute
 - m = metre/minute
