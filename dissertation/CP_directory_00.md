@@ -51,9 +51,9 @@ Distilled seminar transcripts.
 ## Created Files
 
 Concept Brief (comp).md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_03.md
 Comprehensive internal info; covers all topic decisions, research design, risks, and future phase notes.
 
 Concept Brief (concise).md (request)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_03.md
 Concise ver for my reading only; never fetch unless explicitly instructed.
