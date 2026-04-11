@@ -13,7 +13,6 @@
 - RQ — Research Question
 - DA — Dissertation Advisor
 - Q — Qualitative | N — Quantitative
-- RQ1`~`RQ5 — RQ options (see Section 7)
 - ppt — participant | mgr — manager | org — organisation | bg — background
 
 ---
@@ -73,17 +72,23 @@
 - 6.3. Anonymisation — org name anonymised; industry stated (per Enis Wk 2); cross-firm design further protects identity
 - 6.4. Dual question guide = standard in qual research; ethics-safe if framed at professional dynamics level (not personal emotional disclosure)
 
-7. **RQ Options**
+7. **Research Questions**
+
+**Chosen (working; final wording post-lit-review and DA input):**
+- **RQ-A** —— "What conditions within KBFs exacerbate or alleviate TPS?"
+- **RQ-B** —— "How do team members in KBFs experience TPS-related team dynamics?"
+
+*Split from RQ4 (Chat 02); sub-RQs to be derived from lit review (per Enis' golden thread rule).*
+
+**Considered options (Chat 02) —— for reference only:**
 
 | Label | RQ | Stars | Note |
 |---|---|---|---|
 | RQ1 | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews; feasibility risk |
 | RQ2 | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); risky conclusion |
 | RQ3 | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth for A-grade |
-| RQ4 | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Best direction; phenomenon-level; peer-centric; evaluative/explanatory; prescriptive endpoint natural |
+| RQ4 | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ-A/B above |
 | RQ5 | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychology-heavy; ethics risk |
-- 7.1. Working direction — RQ4-style; final wording TBD after DA input
-- 7.2. Sub-RQs to be derived from lit review (per Enis' golden thread rule)
 
 8. **DA Ranking**
 

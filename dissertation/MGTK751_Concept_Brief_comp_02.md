@@ -1,6 +1,6 @@
 # TPS in KBFs — Concept Brief (Comprehensive/Internal)
 
-*For future Claude instances in this CP. Read alongside: distilled official files, seminar transcripts, A1-3 criteria, Potential Advisors file. This file covers topic-specific knowledge, decisions, and reasoning only — not general module rules.*
+*For future Claude instances in this CP. Read alongside: distilled official files, distilled seminar transcripts, A1-3 criteria, Potential Advisors file. This file covers topic-specific knowledge, decisions, and reasoning only — not general module rules.*
 
 ---
 
@@ -15,7 +15,6 @@
 - RQ — Research Question
 - DA — Dissertation Advisor
 - Q — Qualitative | N — Quantitative
-- RQ1–RQ5 — RQ options (Section 9)
 - ppt — participant | mgr — manager | org — organisation
 
 ---
@@ -30,6 +29,7 @@
   - Type: evaluative/explanatory preferred over purely exploratory (per module guidance)
   - Method: Q semi-structured interviews (primary); N survey (alternative)
 - 1.5. Researcher positionality — Culous is a TP (self-identified, career trajectory confirms); provides reflexivity material for methodology chapter; acknowledged via interpretivism's reflexivity convention; NOT a disqualifier
+  - Placement rule: primary disclosure in methodology section (researcher positionality subsection); intro mention is optional and minimal only (1–2 lines, motivation framing, no identity claim such as "I am a TP")
 - 1.6. Industry-wide scope — TPS is supra-organisational by nature; studying it within one firm risks conflating findings w/ that firm's idiosyncratic culture/leadership; cross-firm sampling isolates TPS as the explanatory phenomenon; this is methodological necessity, not workaround; rationale must appear prominently in intro (see Section 6)
 
 2. **Strategic Framing Decisions**
@@ -37,13 +37,16 @@
   - TP marginalisation → logically withdraws from KM → individual vs. collective success conflict → boardroom-level KM governance problem
   - This framing elevates the topic from "people not getting along" to org knowledge risk
   - Must be stated explicitly early in proposal intro to set tone for DA/marker
+  - Supplementary framing note: TPS can also be characterised as misalignment between individual incentives and collective outcomes — useful as a discussion-layer or intro-level lens (consulting-grade, links to incentive design, culture, governance); must NOT drive RQ wording or expand lit review structure beyond current scope; treat as rhetorical upgrade only
 - 2.2. "Fuelling vs. competing" insight
   - Interviewing mgrs = competing with practitioners who have lived experience; academic loses edge
   - Interviewing TPPs = uncovering what mgrs cannot see (below-surface dynamics, hierarchy prevents upward disclosure) → fuels practitioners with new insights
   - TPPs are proximal experiencers; mgrs manage TPS but don't directly experience it
   - This is the academic justification for peer-primary design; must appear in methodology section
+  - Peer-level design stated as intentional lens: "TPS dynamics are most visible and experienced laterally within teams; peer perspectives reveal behavioural patterns not fully visible to management" — use this framing; removes "limitation" tone
 - 2.3. Timelessness as A-grade signal — TPS is unresolvable in full (by design); findings won't expire unlike AI/technology topics; examiners can evaluate quality without dating the work
 - 2.4. Key framing rule — do NOT frame as "help TPs feel better" (counselling) or "help colleagues cope" (soft HR); frame as "equip mgrs with insight derived from peer accounts to address a KM and team cohesion governance problem"
+- 2.5. Boundary condition framing — cases where TPs continue or increase sharing despite marginalisation (e.g. Culous' own trajectory) are not exceptions to be dismissed; frame as boundary conditions: "TPS does not always lead to withdrawal — under certain conditions, alternative behaviours emerge"; this enables richer discussion, more sophisticated recommendations, and stronger theoretical contribution without expanding scope
 
 3. **Management Challenge Angles**
 
@@ -53,7 +56,11 @@
   - KM loss angle: converts interpersonal friction into boardroom-relevant knowledge governance failure
   - Mgr dilemma: penalising excellence vs. permitting mediocrity; no clean solution → research value
   - Leadership/management-driven → most actionable recommendations; best DA fit
-  - ⚠️ Note: KM withdrawal is NOT confirmed by data yet — it's the hypothesis to investigate
+  - ⚠️ Note: KM withdrawal is NOT confirmed by data yet — it's the hypothesis to investigate; always frame as "TPS may reshape knowledge-sharing behaviour in ways that create latent KM risks"
+  - Observable indicators (for interview and coding use):
+    - Peer-observable KM behaviour signals (TPP perspective; Guide A): reduced participation in team knowledge exchanges, perceived disengagement from collaborative work, decreased responsiveness to peer knowledge requests, withdrawal from knowledge-sharing activities such as team briefings or documentation
+    - Peer-observable cohesion signals (TPP perspective; Guide A): reduced cross-team collaboration, informal exclusion patterns, breakdown in communication, tension or avoidance dynamics
+    - Internal-state KM signals (TP perspective only; Guide B): deliberate selectivity in what knowledge is volunteered, internal sense of reciprocity breakdown, conscious deprioritisation of collective over individual contribution — only a TP can reliably report these; TPPs observe downstream behavioural manifestations only
 - 3.2. **Challenge B — Secondary (TP attrition cost)**
   - Sustained exclusion → TP disengages → leaves → measurable HR/financial cost (recruitment, institutional memory loss, competitive disadvantage)
   - Quantifiable; can be introduced in A2/A3 discussion even if A is primary RQ driver
@@ -110,8 +117,8 @@
   - If secured: frame as triangulation / member-checking (standard qual rigour; Guba & Lincoln credibility criterion) — NOT presented as "we couldn't find 6 TPs alone"
   - Default proposal language: 6 TPPs; triangulation noted as possible enrichment
 - 7.3. Question guides
-  - Guide A: TPP (primary) — professional observation of team dynamics, collaboration patterns, knowledge sharing behaviour around TP
-  - Guide B: TP (supplementary) — experience of team dynamics from TP perspective, professional not emotional framing
+  - Guide A: TPP (primary) — professional observation of team dynamics, collaboration patterns, knowledge sharing behaviour around TP; questions focus on peer-observable behavioural signals only (see Section 3.1); do NOT ask TPPs to infer TP's internal motivation
+  - Guide B: TP (supplementary) — experience of team dynamics from TP perspective, professional not emotional framing; includes internal-state indicators (e.g. deliberate selectivity in sharing, sense of reciprocity breakdown) which only TPs can reliably report; posed when a participant self-identifies or reveals as TP during interview
   - Guide C: mgr (supplementary) — managerial awareness, strategies employed, gaps perceived
   - All guides: safe framing only (see Section 11); no cause-and-effect language (per W3 seminar/W1.3 lecture)
 - 7.4. Multi-org consent design — 1 ppt per org = no org-level consent letter needed; all ppts give individual consent; must be explained in methodology section per Enis (Wk1&3)
@@ -129,6 +136,7 @@
   - Data saturation: begin coding after interview 2–3; stop when no new themes emerge; must be justified per literature
   - NVivo: optional (UoL-licensed); manual coding equally accepted; Culous comfortable either way
   - Transcription: MS Teams / MS Office / MS Copilot ONLY — not Zoom (breach of research integrity per official files)
+  - Disconfirming evidence coding discipline (standing rule): during thematic analysis, actively create a theme node for "continued or increased sharing" and treat it with equal analytical weight as withdrawal; guards against asymmetric coding; strengthens main claim if withdrawal still dominates; pre-empts bias challenge from DA/markers
 - 8.2. Alternative — N; survey; positivist; deductive; 30+ ppts minimum (50+ preferred for inferential analysis)
   - Variables to operationalise: TPS conditions, KM sharing behaviour, team cohesion, managerial response
   - Requires hypothesis formulation post-lit-review
@@ -138,17 +146,23 @@
   - N: positivist → hypotheses, arrows, statistical analysis
   - Cannot mix without strong justification and DA approval (module discourages mixed methods)
 
-9. **RQ Options**
+9. **Research Questions**
+
+**Chosen RQs (working; final wording post-lit-review and DA input):**
+- **RQ-A** —— "What conditions within KBFs exacerbate or alleviate TPS?"
+- **RQ-B** —— "How do team members in KBFs experience TPS-related team dynamics?"
+
+*Split from RQ4 direction (Chat 02 ideation); see historical options below. Sub-RQs (2–3) to be derived from lit review under RQ-A and RQ-B (per Enis' golden thread rule); must not duplicate objectives in wording or scope.*
+
+**Considered options (Chat 02) —— for reference only:**
 
 | Label | RQ | Stars | Issue |
 |---|---|---|---|
 | RQ1 | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews → feasibility risk; bypasses peer-primary design |
 | RQ2 | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); sets up impossible conclusion; implies we know what balance means |
 | RQ3 | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth; risks reading like a news article rather than dissertation |
-| RQ4 | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Recommended direction; phenomenon-level; peer-centric; evaluative/explanatory; prescriptive endpoint natural; flexible to Q or N |
+| RQ4 | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ-A/B above |
 | RQ5 | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychological framing; ethics risk; TP-centric rather than mgmt-centric |
-- 9.1. Working direction — RQ4-style; final wording after lit review (RQs derived from lit review per golden thread; provisional RQ in proposal is expected to evolve)
-- 9.2. Sub-RQs — 2–3 max; derived from lit review; should not duplicate objectives in wording/scope
 
 10. **Research Aim & Objectives (Draft Direction)**
 - 10.1. Aim draft — "To investigate how TP dynamics in KBFs generate team cohesion and knowledge governance challenges, and to identify management implications for practitioners"
@@ -204,7 +218,7 @@
 | 8k word limit + multi-angle scope | High | Challenge A primary; B&C in discussion layer only; tight RQ scope |
 | Marker questions why not single firm | Medium | Section 6 industry-wide rationale; supra-organisational phenomenon argument |
 | TPP recruits turn out to be TPs themselves | Low | Enriches not contaminates; 2 question guides handle both voices |
-| Culous' TP status introduces researcher bias | Medium | Addressed via reflexivity convention in methodology chapter; interpretivist framework expects and manages this |
+| Culous' TP status introduces researcher bias | Medium | Addressed via reflexivity convention in methodology chapter; interpretivist framework expects and manages this; disconfirming evidence coding discipline (Section 8.1) as additional safeguard |
 
 15. **Future Phase Notes**
 
