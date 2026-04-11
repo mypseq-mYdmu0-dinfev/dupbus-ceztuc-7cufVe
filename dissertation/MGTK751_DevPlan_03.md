@@ -109,7 +109,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - Module rules and hard constraints: `Official Files (distilled).md`
 - Assessment criteria: `A1-3.md`
 - Literature sources: `TheoryRepo.md` (created in P2; not yet available)
-- Seminar rules and design confirmations: `Seminars (distilled) Wk1–4.md`
+- Seminar rules and design confirmations: `Seminars (distilled).md`
 
 ## M3. Key Standing Rules for A1
 - No arrows in conceptual framework (qual = no causal implication)
@@ -170,8 +170,8 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 ### AD02.1. What Was Done
 - AD02.1.1. `Concept Brief (comp).md` regenerated → v02 (`MGTK751_Concept_Brief_comp_02.md`); v01 = Chat 02's first consolidated version; v02 = Chat 03 update incorporating ChatGPT consultation + Wk4 seminar intel + our discussion
 - AD02.1.2. `Concept Brief (concise).md` updated → v02; §7 only via #replace (RQ table restructured; RQ-A/B added at top; RQ1–5 retained as considered-options log)
-- AD02.1.3. `Seminars (distilled) Wk1–4.md` created (new file); Wk4 section = manually saved partial transcript — replace when official released
-- AD02.1.4. A1 Dev Plan created (`MGTK751_A1_DevPlan_01.md`); covers P1–P5 (BCIC research through QC + submission)
+- AD02.1.3. `Seminars (distilled).md` created (new file); Wk4 section = manually saved partial transcript — replace when official released
+- AD02.1.4. A1 Dev Plan created (`MGTK751_A1_DevPlan_03.md`); covers P1–P5 (BCIC research through QC + submission)
 - AD02.1.5. Artefact #13 (premature AD02 + handoff) was disregarded by Culous; this is the correct AD02
 
 ### AD02.2. Key Decisions Made
@@ -194,5 +194,5 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 
 ### AD02.5. Items to Verify in Future Chats
 - AD02.5.1. **NVivo / coding software restriction:** Enis said "unless you want to double-check with the program leader" — not a hard confirmed restriction; verify with DA or student support before committing to NVivo in A1 methodology section
-- AD02.5.2. **Wk4 seminar:** partial/manually saved; replace `Seminars (distilled) Wk1–4.md` Wk4 section when official transcript released
+- AD02.5.2. **Wk4 seminar:** partial/manually saved; replace `Seminars (distilled).md` Wk4 section when official transcript released
 - AD02.5.3. **Startup framing:** Enis mentioned this as a fallback for students with data access problems; our industry-wide rationale is independent (TPS supra-organisational argument) — ensure A1 intro does NOT adopt startup framing; use Section 6 of Concept Brief (comp) instead
