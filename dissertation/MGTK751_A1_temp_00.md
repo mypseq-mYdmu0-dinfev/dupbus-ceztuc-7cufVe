@@ -7,19 +7,19 @@
 | Field | Detail |
 |---|---|
 | Student Name | Culous Yu |
-| Student Number | [TO COMPLETE] |
+| Student Number | 200051046 |
 | Country of Residence | Australia |
-| Liverpool Email | [TO COMPLETE] |
+| Liverpool Email | Culous.Yu@liverpool.ac.uk |
 | Proposed Title | Tall Poppy Syndrome as a Management Challenge in Knowledge-Based Firms |
 | Word Count | [TO COMPLETE BEFORE SUBMISSION] |
 
 ---
 
-## S01: Introduction
+## S1: Introduction
 
-In knowledge-based firms (KBFs), professional services organisations including consulting, technology, advisory, creative, and research and development firms, individual expertise constitutes the primary source of competitive advantage (Grant, 1996). Unlike product-focused organisations where value resides in tangible output, KBFs derive strategic worth from the intellectual capital, professional judgement, and collaborative knowledge exchange of their people. This structural dependence on individual excellence creates an inherent paradox: the very environments that require outstanding performance can generate significant social friction when that performance becomes conspicuous.
+In knowledge‑based firms (KBFs), including legal, accounting, consulting, IT, and R&D organisations, individual expertise constitutes the primary source of competitive advantage (Grant, 1996). Unlike traditional manufacturers relying primarily on physical assets, KBFs derive strategic value from the intellectual capital, professional judgement, and collaborative knowledge exchange of people. This structural dependence on individual excellence creates an inherent paradox: the very environments that require outstanding performance can generate significant social friction when that performance becomes conspicuous.
 
-Tall Poppy Syndrome (TPS), the social phenomenon whereby high-performing individuals face peer marginalisation in response to their standout performance (Feather, 1989), represents precisely this paradox made manifest. In KBFs, where collaboration and knowledge sharing are operational necessities rather than cultural preferences, TPS-driven dynamics carry compounding organisational consequences. When marginalised, a high-performing individual (Tall Poppy) may logically respond by prioritising individual output over collective knowledge contribution, creating latent knowledge management (KM) governance risks that convert interpersonal friction into a board-level strategic concern. Concurrently, team cohesion erodes as collaborative norms break down under performance disparity tensions that management rarely observes from above.
+Tall Poppy Syndrome (TPS), the social phenomenon whereby high-performing individuals face peer marginalisation in response to their standout performance (Feather, 1989), represents precisely this paradox made manifest. In KBFs, where collaboration and knowledge sharing are operational necessities rather than cultural preferences, TPS-driven dynamics carry compounding organisational consequences. When marginalised, a high-performing individual (Tall Poppy/TP) may logically respond by prioritising individual output over collective knowledge contribution, creating latent knowledge management (KM) governance risks that convert interpersonal friction into a board-level strategic concern. Concurrently, team cohesion erodes as collaborative norms break down under performance disparity tensions that management rarely observes from above.
 
 Despite extensive cultural and social psychology scholarship on TPS (Feather, 1989, 1994), its application as a management challenge within KBF contexts remains largely absent from the literature. This research investigates TPS dynamics across multiple KBF organisations, examining the phenomenon from the perspective of Tall Poppies' Peers (TPPs), colleagues who directly observe and experience TP-related team dynamics. Because TPS is a supra-organisational phenomenon, driven by human psychology and group dynamics that transcend individual firm boundaries, an industry-wide, cross-firm study design is both methodologically appropriate and empirically necessary: confining inquiry to a single organisation risks conflating findings with that firm's idiosyncratic leadership culture, obscuring the phenomenon itself.
 
@@ -37,7 +37,7 @@ This study contributes academically by extending TPS scholarship beyond cultural
 
 ---
 
-## S02: Literature Review
+## S2: Literature Review
 
 **Tall Poppy Syndrome: Origins and Professional Manifestation**
 
@@ -67,7 +67,7 @@ The provisional conceptual framework synthesises four thematic domains: TPS cond
 
 ---
 
-## S03: Research Methodology
+## S3: Research Methodology
 
 **Research Philosophy and Approach**
 
@@ -105,7 +105,7 @@ Standard University of Liverpool ethics approval will be sought prior to any dat
 
 ---
 
-## S04: Milestone Plan
+## S4: Milestone Plan
 
 *(Excluded from word count)*
 
@@ -125,6 +125,6 @@ Standard University of Liverpool ethics approval will be sought prior to any dat
 
 ---
 
-## S05: References
+## S5: References
 
 *[Omitted from provisional draft. Full Harvard reference list to be compiled following P1 (WCIC literature research). Foundational sources to include: Blau (1964), Braun and Clarke (2006), Cabrera and Cabrera (2002), Feather (1989, 1994), Festinger (1954), Grant (1996), Kogut and Zander (1992), Lincoln and Guba (1985).]*
