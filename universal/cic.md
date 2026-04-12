@@ -47,7 +47,7 @@ When drafting a WCIC prompt, follow the same approach as BCIC, plus:
   - (1) get the current timestamp via terminal (`date +"%Y%m%d%H%M"`)
   - (2) immediately create `/Users/culous/Downloads/cowork_[timestamp].md` at task start
   - (3) write all requested responses (e.g. findings/analysis) to that file (mimicking an artefact), preventing filename confusion after context loss
-- When task involves UoL Library, explicitly instruct WCIC to first read & follow `/Users/culous/Downloads/cic_uol.md` before any library actions, which provides the Library's URL and guides Cowork on accessing full text
+- When task involves UoL Library, explicitly instruct WCIC to first read & follow `/Users/culous/Downloads/wcic_uol.md` before any library actions, which provides the Library's URL and guides Cowork on accessing full text
 - Concisely remind me in chat (override):
   - Open `Chrome>Settings>Downloads>Location` & change from `Fury Downloads` to `Downloads`
   - Open `CAI>Cowork>Work in a project` & select `Downloads`
