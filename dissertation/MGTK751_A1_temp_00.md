@@ -12,14 +12,15 @@
 | Liverpool Email | Culous.Yu@liverpool.ac.uk |
 | Proposed Title | Tall Poppy Syndrome as a Management Challenge in Knowledge-Based Firms |
 | Word Count | [TO COMPLETE BEFORE SUBMISSION] |
+| Note | This is Draft Research Proposal, where the final Research Proposal (Assessment 1) is expected to have more references if applicable. |
 
 ---
 
-## S1: Introduction
+## 1. Introduction
 
 In knowledge‑based firms (KBFs), including legal, accounting, consulting, IT, and R&D organisations, individual expertise constitutes the primary source of competitive advantage (Grant, 1996). Unlike traditional manufacturers relying primarily on physical assets, KBFs derive strategic value from the intellectual capital, professional judgement, and collaborative knowledge exchange of people. This structural dependence on individual excellence creates an inherent paradox: the very environments that require outstanding performance can generate significant social friction when that performance becomes conspicuous.
 
-Tall Poppy Syndrome (TPS), the social phenomenon whereby high-performing individuals face peer marginalisation in response to their standout performance (Feather, 1989), represents precisely this paradox made manifest. In KBFs, where collaboration and knowledge sharing are operational necessities rather than cultural preferences, TPS-driven dynamics carry compounding organisational consequences. When marginalised, a high-performing individual (Tall Poppy/TP) may logically respond by prioritising individual output over collective knowledge contribution, creating latent knowledge management (KM) governance risks that convert interpersonal friction into a board-level strategic concern. Concurrently, team cohesion erodes as collaborative norms break down under performance disparity tensions that management rarely observes from above.
+Tall Poppy Syndrome (TPS), the social phenomenon whereby high-performing individuals face peer marginalisation in response to their standout performance (Feather, 1989), represents precisely this paradox. In KBFs, where collaboration and knowledge sharing are operational necessities rather than cultural preferences, TPS-driven dynamics carry compounding organisational consequences. When marginalised, a high-performing individual (Tall Poppy/TP) may logically respond by prioritising individual output over collective knowledge contribution, creating latent knowledge management (KM) governance risks that convert interpersonal friction into a board-level strategic concern. Concurrently, team cohesion erodes as collaborative norms break down under performance disparity tensions that management rarely observes from above.
 
 Despite extensive cultural and social psychology scholarship on TPS (Feather, 1989, 1994), its application as a management challenge within KBF contexts remains largely a literature gap. This research explores TPS dynamics across multiple KBF organisations, examining the phenomenon from the perspective of Tall Poppies' Peers (TPPs), colleagues who directly observed TPS-related team dynamics. Because TPS is a supra-organisational phenomenon, driven by human psychology and group dynamics that transcend individual firm boundaries, a cross-firm study design is both methodologically appropriate and empirically necessary: confining to a single organisation risks conflating findings with that firm's idiosyncratic leadership culture, obscuring the phenomenon itself.
 
@@ -41,7 +42,7 @@ This study contributes **academically** by extending TPS studies beyond cultural
 
 ---
 
-## S2: Literature Review
+## 2. Literature Review
 
 **2.1. Tall Poppy Syndrome: Origins and Professional Manifestation**
 
@@ -67,21 +68,19 @@ The provisional conceptual framework synthesises four thematic domains: TPS cond
 
 *(539 words)*
 
-*[Note for final submission: replace preceding paragraph with embedded conceptual framework figure and brief caption.]*
-
 ---
 
-## S3: Research Methodology
+## 3. Research Methodology
 
-**Research Philosophy and Approach**
+**3.1. Research Philosophy and Approach**
 
 This study adopts an interpretivist philosophy, grounded in a constructivist ontology and subjectivist epistemology. TPS dynamics, characterised by perception, social attribution, relational interpretation, and lived professional experience, cannot be meaningfully reduced to objective measurement alone. An inductive, qualitative approach is therefore most appropriate, enabling investigation of peer experience within team environments without imposing predetermined hypotheses on a phenomenon that is inherently socially constructed and context-dependent.
 
-**Data Collection: Semi-Structured Interviews**
+**3.2. Data Collection: Semi-Structured Interviews**
 
 Semi-structured interviews constitute the primary data collection method. This approach affords the flexibility to probe emergent themes whilst maintaining sufficient structure for cross-participant comparability. Given that TPS dynamics are embedded in interpersonal and contextual experience, semi-structured interviews allow respondents to articulate observations within their own professional frames of reference, a critical advantage when the phenomenon under investigation is socially constructed and contextually variable. All interviews will be conducted via Microsoft Teams; transcription will be performed using Microsoft Teams, Microsoft Office, or Microsoft Copilot exclusively, in accordance with UoL research integrity requirements.
 
-**Sampling**
+**3.3. Sampling**
 
 Participants will be recruited through purposive sampling, targeting TPPs: non-managerial professionals in KBFs who have worked alongside a standout performer and observed team-level friction or dynamic shifts in that context. The eligibility criterion asks whether participants have worked alongside someone their team recognised as a standout performer, and whether they observed tension or changes in team dynamics in that context. A minimum of six participants will be recruited, consistent with qualitative sample size conventions for thematic analysis (Braun and Clarke, 2006).
 
@@ -89,19 +88,19 @@ Sampling will follow a cross-organisational design, with one participant recruit
 
 The peer-primary participant design is deliberate rather than a constraint of access. TPS dynamics are most visible and experienced laterally within teams; peer perspectives reveal behavioural patterns not fully observable from management vantage points, where hierarchical distance limits disclosure. TPPs are therefore proximal experiencers of the phenomenon, and their accounts constitute the most direct empirical window into the research questions.
 
-**Data Analysis**
+**3.4. Data Analysis**
 
 Thematic analysis following Braun and Clarke's (2006) six-phase framework will be applied. Coding will commence after the second or third interview and continue iteratively until theoretical saturation is reached. A dedicated coding node for disconfirming evidence, including instances of continued or increased knowledge sharing despite TPS conditions, will be maintained throughout analysis, ensuring analytical balance and guarding against asymmetric interpretation and confirmation bias.
 
-**Trustworthiness**
+**3.5. Trustworthiness**
 
 Qualitative rigour will be addressed across four criteria (Lincoln and Guba, 1985). Credibility will be maintained through systematic coding and, where achievable, member checking. Dependability will be supported through a maintained audit trail of analytical decisions. Transferability is addressed through cross-firm sampling and rich contextual description. Confirmability is addressed through researcher reflexivity: the researcher's professional background, including sustained exposure to high-performer team environments, is acknowledged as an interpretive lens and disclosed in this section.
 
-**Feasibility and Limitations**
+**3.6. Feasibility and Limitations**
 
 The researcher's (Culous Yu) professional network spans legal, accounting, consulting, technology, entertainment, and public sector organisations across more than ten countries, providing realistic access to a geographically diverse KBF sample. The one-per-organisation design removes institutional consent barriers and supports recruitment at scale. The primary limitation is the small qualitative sample, which restricts statistical generalisation. This is an accepted constraint within interpretivist research design, where analytical generalisation to theory, rather than to populations, constitutes the relevant standard (Lincoln and Guba, 1985).
 
-**Ethics**
+**3.7. Ethics**
 
 Standard University of Liverpool ethics approval will be sought prior to any data collection. Interview questions will operate at the professional observation level, examining team behaviour and collaboration patterns rather than personal emotional disclosure. Individual participant consent forms will be signed by all participants in advance, and all data stored exclusively on University of Liverpool OneDrive. Data collection will not commence until written ethical approval has been received.
 
@@ -109,7 +108,7 @@ Standard University of Liverpool ethics approval will be sought prior to any dat
 
 ---
 
-## S4: Milestone Plan
+## 4. Milestone Plan
 
 *(Excluded from word count)*
 
@@ -129,6 +128,22 @@ Standard University of Liverpool ethics approval will be sought prior to any dat
 
 ---
 
-## S5: References
+## 5. References
 
-*[Omitted from provisional draft. Full Harvard reference list to be compiled following P1 (WCIC literature research). Foundational sources to include: Blau (1964), Braun and Clarke (2006), Cabrera and Cabrera (2002), Feather (1989, 1994), Festinger (1954), Grant (1996), Kogut and Zander (1992), Lincoln and Guba (1985).]*
+Blau, P.M. (1964) *Exchange and Power in Social Life*. New York: Wiley.
+
+Braun, V. and Clarke, V. (2006) 'Using thematic analysis in psychology', *Qualitative Research in Psychology*, 3(2), pp. 77–101. DOI: 10.1191/1478088706qp063oa.
+
+Cabrera, A. and Cabrera, E.F. (2002) 'Knowledge-sharing dilemmas', *Organization Studies*, 23(5), pp. 687–710. DOI: 10.1177/0170840602235001.
+
+Feather, N.T. (1989) 'Attitudes towards the high achiever: The fall of the tall poppy', *Australian Journal of Psychology*, 41(3), pp. 239–267. DOI: 10.1080/00049538908260088.
+
+Feather, N.T. (1994) 'Attitudes toward high achievers and reactions to their fall: Theory and research concerning tall poppies', in Zanna, M.P. (ed.) *Advances in Experimental Social Psychology*, vol. 26. San Diego: Academic Press, pp. 1–73. DOI: 10.1016/S0065-2601(08)60151-3
+
+Festinger, L. (1954) 'A theory of social comparison processes', *Human Relations*, 7(2), pp. 117–140. DOI: 10.1177/001872675400700202.
+
+Grant, R.M. (1996) 'Toward a knowledge-based theory of the firm', *Strategic Management Journal*, 17(Special Issue), pp. 109–122. DOI: 10.1002/smj.4250171110.
+
+Kogut, B. and Zander, U. (1992) 'Knowledge of the firm, combinative capabilities, and the replication of technology', *Organization Science*, 3(3), pp. 383–397. DOI: 10.1287/orsc.3.3.383.
+
+Lincoln, Y.S. and Guba, E.G. (1985) *Naturalistic Inquiry*. Beverly Hills, CA: SAGE Publications.
