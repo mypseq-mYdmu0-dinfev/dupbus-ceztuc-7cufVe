@@ -1,8 +1,8 @@
 # MGTK751 A1 Dev Plan
 **Goal/Output:** A1 Research Proposal (1,500w) submitted to VLE
-**Organisation:** University of Liverpool (UoL) —— MGTK751
-**Due:** 202704270000 (Mon 27 Apr 2026, 23:59 UK)
-**Target Result:** Strong A1 submission securing preferred DA (Enis Elezi) and setting clean foundation for A3
+**Organisation:** University of Liverpool (UoL)
+**Due:** 202604270000 (UK Time)
+**Target Result:** Full marks A1 submission attracting preferred DA (Enis Elezi) and setting clean foundation for A2/A3
 **Created:** 202504120000 (Chat 03)
 
 ---
@@ -10,7 +10,6 @@
 # PART A —— PROJECT PHASES
 
 ## P1. Literature Research (WCIC)
-*Prerequisite: Chrome logged into UoL library. Culous to confirm before Chat 05 begins.*
 
 ### P1.1. Search Scope
 Run targeted searches across UoL library databases (e.g. Business Source Complete, Scopus) for each theory/literature cluster below. For each cluster, retrieve `~`3–5 high-quality sources (peer-reviewed; prefer post-2000 unless foundational):
@@ -46,7 +45,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P4.1.1. Populate all fields: student name, number, country of residence, Liverpool email, proposed title, word count
 - P4.1.2. Title = working title from Concept Brief (comp) §1.1 unless refined with DA
 
-### P4.2. Introduction (S01, ~300w)
+### P4.2. Introduction (S1, ~300w)
 - P4.2.1. Opening: management challenge overview — TPS as a KM governance and team cohesion risk in KBFs; why it matters
 - P4.2.2. Brief contextual background: KBFs' dependence on individual excellence; structural tension between individual and collective
 - P4.2.3. Industry-wide scope rationale (supra-organisational argument, Section 6 of Concept Brief)
@@ -55,7 +54,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P4.2.6. Contribution: academic (management application of TPS in KBFs — identified gap) + practical (mgr-facing implications)
 - P4.2.7. Tone check: MBA framing, not psychological/HR; no "help TPs feel better" language
 
-### P4.3. Literature Review (S02, ~600w)
+### P4.3. Literature Review (S2, ~600w)
 - P4.3.1. Theme 1 (brief): TPS — definition, cultural origins (Feather), manifestation in professional contexts
 - P4.3.2. Theme 2 (brief): KBFs — KBV grounding, KM as strategic asset, individual excellence as core product
 - P4.3.3. Theme 3 (brief): team dynamics around high performers — Social Comparison Theory, peer reactions, cohesion erosion
@@ -64,7 +63,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P4.3.6. Conceptual framework: non-directional visual (no arrows); themes linked by lines/shapes; label: TPS conditions → peer experience → KM behaviour + team cohesion outcomes; note it will be updated post-analysis
 - P4.3.7. Word constraint discipline: each theme = 1 concise paragraph; framework visual occupies minimal word-count space; avoid theory description padding
 
-### P4.4. Research Methodology (S03, ~600w)
+### P4.4. Research Methodology (S3, ~600w)
 - P4.4.1. Research philosophy: interpretivist; ontology = constructivist (reality is socially constructed, especially for phenomenon like TPS); epistemology = subjectivist; justification tied to nature of RQs (experience, perception, peer dynamics)
 - P4.4.2. Approach: inductive; qualitative primary; semi-structured interviews
 - P4.4.3. Data collection: justify semi-structured interviews (flexible, allows probing, appropriate for subjective experience data); note MS Teams/Office/Copilot for transcription (only approved tools)
@@ -74,12 +73,12 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P4.4.7. Feasibility and limitations: Culous' professional network across 10⁺ countries; 1-per-org avoids consent bottleneck; limitation = small Q sample; acknowledged per qualitative norms
 - P4.4.8. Ethics: standard UoL ethics approval process (not LOREC); safe framing at professional observation level; individual consent forms; data stored on UoL OneDrive only; data collection cannot begin before written approval
 
-### P4.5. Milestone Plan (S04, not in word count)
+### P4.5. Milestone Plan (S4, not in word count)
 - P4.5.1. Table format; rows = key milestones; columns = week no., date, activity
 - P4.5.2. Key entries (minimum): ethics application submitted (Wk7), ethics approved (Wk11), data collection begins post-approval, data collection complete, analysis complete, draft A2+A3 to DA (Wk32, Mon 26 Oct 2026), final A2+A3 submission (Wk36, Mon 23 Nov 2026)
 - P4.5.3. Include explicit note: "Data collection will not commence until written ethical approval has been received" — required per template
 
-### P4.6. References (S05, not in word count)
+### P4.6. References (S5, not in word count)
 - P4.6.1. Harvard referencing style; consistent throughout
 - P4.6.2. All in-text citations must have corresponding entry; all entries must be cited in-text
 - P4.6.3. Only peer-reviewed or authoritative sources; no web-only sources without academic grounding
@@ -90,7 +89,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P5.3. Hart's quotation rule check; British English check; academic register check (writing.md)
 - P5.4. Confirm word count (excluding milestone plan + references); adjust if over/under
 - P5.5. Submit via VLE by 23:59 UK Mon 27 Apr 2026
-- P5.6. DA Allocation Form also due Mon 13 Apr 2026 (tomorrow from Chat 03's date) —— submit separately via VLE
+- P5.6. DA Allocation Form also due Mon 13 Apr 2026
 
 ---
 
@@ -98,14 +97,14 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 
 ## M1. Scope and Constraints
 - Assessment: A1 Research Proposal, 10%, 1,500w max
-- Hard word budget: S01 ~300w, S02 ~600w, S03 ~600w (suggestive, not fixed per template)
+- Hard word budget: S1 ~300w, S2 ~600w, S3 ~600w (suggestive, not fixed per template)
 - Milestone Plan + References excluded from word count
 - Submission: VLE only; deadline 23:59 UK Mon 27 Apr 2026
 - DA Allocation Form (separate): due Mon 13 Apr 2026 (earlier deadline); attach draft proposal
 - ⚠️ This DevPlan covers A1 only; A2/A3 plan created separately post-A1 submission
 
 ## M2. Source Files (always consult)
-- Primary reference for all content decisions: `Concept Brief (comp).md (v02)`
+- Primary reference for all content decisions: `Concept Brief (comp).md`
 - Module rules and hard constraints: `Official Files (distilled).md`
 - Assessment criteria: `A1-3.md`
 - Literature sources: `TheoryRepo.md` (created in P2; not yet available)
@@ -190,7 +189,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 ### AD02.4. Addendum-Only Items (not in Concept Brief; time-limited / DA-specific)
 - AD02.4.1. **DA selection criteria (Enis, Wk4):** looks for clarity of problem communication, research design understanding, academic rigour, passion visible in writing, topic-supervisor alignment; factor into every line of A1 prose; no longer relevant after DA match confirmed
 - AD02.4.2. **DA capacity:** Enis typically 3`~`4 students per cohort; allocation form allows up to 4 preferences
-- AD02.4.3. **DA Allocation Form:** due Mon 13 Apr 2026 (same day as Chat 03); separate from A1; confirm submitted at Chat 05 start
+- AD02.4.3. **DA Allocation Form:** due Mon 13 Apr 2026; separate from A1; confirm submitted at Chat 05 start
 
 ### AD02.5. Items to Verify in Future Chats
 - AD02.5.1. **NVivo / coding software restriction:** Enis said "unless you want to double-check with the program leader" — not a hard confirmed restriction; verify with DA or student support before committing to NVivo in A1 methodology section

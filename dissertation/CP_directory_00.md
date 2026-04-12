@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Key context.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_04.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_05.md
 Always follow.
 
 ---
