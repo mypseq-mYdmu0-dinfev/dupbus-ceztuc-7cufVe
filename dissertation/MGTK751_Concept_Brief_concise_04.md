@@ -75,8 +75,8 @@
 7. **Research Questions**
 
 **Chosen (working; final wording post-lit-review and DA input):**
-- **RQ-A** —— "What conditions within KBFs exacerbate or alleviate TPS?"
-- **RQ-B** —— "How do team members in KBFs experience TPS-related team dynamics?"
+- **RQ1** —— "What conditions within KBFs exacerbate or alleviate TPS?"
+- **RQ2** —— "How do team members in KBFs experience TPS-related team dynamics?"
 
 *Split from RQ4 (Chat 02); sub-RQs to be derived from lit review (per Enis' golden thread rule).*
 
@@ -84,11 +84,11 @@
 
 | Label | RQ | Stars | Note |
 |---|---|---|---|
-| RQ1 | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews; feasibility risk |
-| RQ2 | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); risky conclusion |
-| RQ3 | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth for A-grade |
-| RQ4 | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ-A/B above |
-| RQ5 | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychology-heavy; ethics risk |
+| RQ-i | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews; feasibility risk |
+| RQ-ii | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); risky conclusion |
+| RQ-iii | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth for A-grade |
+| RQ-iv | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ1/2 above |
+| RQ-v | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychology-heavy; ethics risk |
 
 8. **DA Ranking**
 

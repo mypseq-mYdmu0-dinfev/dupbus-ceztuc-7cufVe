@@ -149,20 +149,20 @@
 9. **Research Questions**
 
 **Chosen RQs (working; final wording post-lit-review and DA input):**
-- **RQ-A** —— "What conditions within KBFs exacerbate or alleviate TPS?"
-- **RQ-B** —— "How do team members in KBFs experience TPS-related team dynamics?"
+- **RQ1** —— "What conditions within KBFs exacerbate or alleviate TPS?"
+- **RQ2** —— "How do team members in KBFs experience TPS-related team dynamics?"
 
-*Split from RQ4 direction (Chat 02 ideation); see historical options below. Sub-RQs (2–3) to be derived from lit review under RQ-A and RQ-B (per Enis' golden thread rule); must not duplicate objectives in wording or scope.*
+*Split from RQ4 direction (Chat 02 ideation); see historical options below. Sub-RQs (2–3) to be derived from lit review under RQ1 and RQ2 (per Enis' golden thread rule); must not duplicate objectives in wording or scope.*
 
 **Considered options (Chat 02) —— for reference only:**
 
 | Label | RQ | Stars | Issue |
 |---|---|---|---|
-| RQ1 | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews → feasibility risk; bypasses peer-primary design |
-| RQ2 | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); sets up impossible conclusion; implies we know what balance means |
-| RQ3 | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth; risks reading like a news article rather than dissertation |
-| RQ4 | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ-A/B above |
-| RQ5 | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychological framing; ethics risk; TP-centric rather than mgmt-centric |
+| RQ-i | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews → feasibility risk; bypasses peer-primary design |
+| RQ-ii | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); sets up impossible conclusion; implies we know what balance means |
+| RQ-iii | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth; risks reading like a news article rather than dissertation |
+| RQ-iv | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ1/2 above |
+| RQ-v | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychological framing; ethics risk; TP-centric rather than mgmt-centric |
 
 10. **Research Aim & Objectives (Draft Direction)**
 - 10.1. Aim draft — "To investigate how TP dynamics in KBFs generate team cohesion and knowledge governance challenges, and to identify management implications for practitioners"
