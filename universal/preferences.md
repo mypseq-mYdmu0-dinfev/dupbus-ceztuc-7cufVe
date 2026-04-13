@@ -4,7 +4,7 @@
 
 ## UNCONDITIONAL
 
-- At every chat start, BEFORE generating ANY response (regardless of msg length or content), fetch & resolve all filename aliases below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_26.md
+- At every chat start, BEFORE generating ANY response (regardless of msg length or content), fetch & resolve all filename aliases below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_27.md
 - Prerequisites of any response:
   - Scan full incoming msg for all conditional keywords, both explicitly & implicitly (e.g. "proceed to..." on deliverables all trigger writing.md), and fetch all triggered files then declare
   - Re-consult ALL earlier fetched prompt files (.md) inc. chat start, and run a silent compliance pass before planning/creating anything (e.g. Hart's logical quotation rule)

@@ -43,11 +43,13 @@ When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same f
 ## Drafting for WCIC
 
 When drafting a WCIC prompt, follow the same approach as BCIC, plus:
-- Always instruct WCIC to:
-  - (1) get the current timestamp via terminal (`date +"%Y%m%d%H%M"`)
+- Always instruct to:
+  - (1) get the current timestamp via terminal (`TZ='Australia/Sydney' date +"%Y%m%d%H%M"`)
   - (2) immediately create `/Users/culous/Downloads/cowork_[timestamp].md` at task start
-  - (3) write all requested responses (e.g. findings/analysis) to that file (mimicking an artefact), preventing filename confusion after context loss
-- When task involves UoL Library, explicitly instruct WCIC to first read & follow `/Users/culous/Downloads/wcic_uol.md` before any library actions, which provides the Library's URL and guides Cowork on accessing full text
+  - (3) write all requested responses (e.g. findings/analysis) to that file (mimicking an artefact)
+  - (4) ensure sequential workflow: ✅ research 1st → write → research 2nd... ; ❌ research all → write all (preventing writing after context loss)
+  - (5) never use web_search or CrossRef API, must access full text (of required chapter, if applicable)
+- On academic, use most efficient means guaranteeing authoritative (e.g. Google Scholar) and take UoL Library as fallback (instead of a necessity) when all public source returns paywall, etc.
 - Concisely remind me in chat (override):
   - Open `Chrome>Settings>Downloads>Location` & change from `Fury Downloads` to `Downloads`
   - Open `CAI>Cowork>Work in a project` & select `Downloads`
