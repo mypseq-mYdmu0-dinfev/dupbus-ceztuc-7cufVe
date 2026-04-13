@@ -35,7 +35,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Full text of A1-3 official briefs & marking criteria.
 
 Potential Advisors.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Potential_Advisors_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Potential_Advisors_02.md
 All available DAs w/ biography, research interests, and methodology pref.
 
 Lectures (index).md
@@ -51,9 +51,17 @@ Distilled seminar transcripts.
 ## Created Files
 
 Concept Brief (comp).md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_03.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_04.md
 Comprehensive internal info; covers all topic decisions, research design, risks, and future phase notes.
 
 Concept Brief (concise).md (request)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_03.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_04.md
 Concise ver for my reading only; never fetch unless explicitly instructed.
+
+A1 (temp).md (request)
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_03.md
+Formative "Draft Research Proposal" submitted Wk4; created before A1 DevPlan.
+
+A1 (overview).md (request)
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_overview_01.md
+Submitted alongside `A1 (temp).md` in DA Allocation Form; created before A1 DevPlan.

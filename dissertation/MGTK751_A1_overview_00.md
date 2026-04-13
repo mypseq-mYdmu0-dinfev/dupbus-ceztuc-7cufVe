@@ -1,4 +1,4 @@
-*INTERNAL: For "Research proposal Overview" pure text field, DA Allocation Form (web).*
+*INTERNAL: For "Research Proposal Overview" pure text field, DA Allocation Form (web).*
 
 This research investigates Tall Poppy Syndrome (TPS) as a management challenge in knowledge-based firms (KBFs), including legal, accounting, consulting, IT, and R&D organisations. TPS, the social phenomenon whereby high-performing individuals face peer marginalisation in response to their standout performance, has been extensively studied in cultural and social psychology but remains a largely underexplored management problem. This gap is particularly prominent in KBFs, where individual intellectual excellence constitutes the primary source of competitive advantage: when a marginalised high performer (Tall Poppy/TP) reactively withdraws from collective knowledge exchange, the organisation faces both team cohesion erosion and a governance-level knowledge management (KM) risk.
 

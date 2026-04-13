@@ -51,7 +51,7 @@ I have extensive experience of supervising dissertations across different manage
 
 ---
 
-## Enis Elezi
+## Enis Elezi (REMOVED)
 
 Epigeum Ref: 1607920090
 eelezi@liverpool.ac.uk
@@ -179,6 +179,27 @@ I particularly like supervising “new” issues or cross disciplinary issues wh
 
 ---
 
+## Ron Fisher (NEW)
+
+Epigeum Ref: 1601690383
+ron.fisher@liverpool.ac.uk
+
+### Biography
+
+Professor Fisher has extensive work experience at senior levels in the global, private and public business sectors. He has been a university academic for the past 23 years. During this time, he has taught over 10,000 students, published 150 peer-reviewed research articles and papers, and successfully supervised more than 40 Doctoral and Masters students in their research. Professor Fisher has extensive experienced in quantitative, qualitative and mixed methods studies. His past student reviews are excellent, and he is an effective communicator. Professor Fisher is a Fellow of the Higher Education Academy.
+
+### Research Interests (Topics)
+
+Professor Fisher has wide ranging research interests in business and management. His main research interests (topics) include: Logistics and Supply Chain Management, Operations Management, Oil and Gas Industry Research, Business Strategy and Administration, HRM and International HRM, Organisational Behaviour (stress, commitment, job satisfaction), Health Management and Corporate Finance (including FDI). He has successfully supervised and advised research students in all of the above areas.
+
+### Methodology
+
+- Quantitative
+- Qualitative
+- Systematic Review
+
+---
+
 ## Rory McLaughlin
 
 Epigeum Ref: 1608020090
@@ -257,7 +278,7 @@ Solomon has over 5 years’ experience of teaching/research in accounting and fi
 
 ---
 
-## Dr Nasir Salari
+## Dr Nasir Salari (REMOVED)
 
 Epigeum number: Prog3034570064
 n.salari@liverpool.ac.uk
