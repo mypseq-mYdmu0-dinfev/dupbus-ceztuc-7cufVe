@@ -23,4 +23,4 @@ yyy
 ` ` `
 ```
 
-In actual practice, `xxx` `yyy` are immediate THREE LINES above/below the line(s) being changed, i.e. in each snippet, between the first/last 3 lines MUST be the codes being changed.
+In actual practice, `xxx` `yyy` are immediate THREE LINES above/below the line(s) being changed, i.e. in each snippet, between the first/last 3 lines MUST be the codes being changed. Strictly ensure ENTIRE text blocks before/after must be inside respective snippet; i.e. from `xxx` all the way to `yyy` in above example, don't have any working lines outside snippet (e.g. `yyy`).
