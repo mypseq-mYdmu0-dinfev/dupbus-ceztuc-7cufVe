@@ -25,12 +25,12 @@ Past Case Studies —— http://Projects.CulousYu.com
 **2024 – 2025 (Australia)**
 University of Technology Sydney (QS: #9 Australia & #1 ATN\*)
 Master of Human-Computer Interaction (with Data Analytics)
-88% (HD), Dean's List, Aus. AI Institute/UTS Reference Letters, Apple Foundation Alumnus, UTS Tech Fest Presenter
+GPA 6.63/7 (HD), Dean's List, Aus. AI Institute/UTS Reference Letters, Apple Foundation Alumnus, UTS Tech Fest Presenter
 
 **2023 – 2026 (England)**
 University of Liverpool (#9 Global & #1 UK by Subject\*, Russell Group)
 Master of Business Administration (Online Part-Time MBA)
-71% (A), Edumundo Strategic Management Simulation
+WAM 71% (A), Edumundo Strategic Management Simulation
 
 ---
 

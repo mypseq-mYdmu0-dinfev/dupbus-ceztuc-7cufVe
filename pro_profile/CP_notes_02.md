@@ -10,3 +10,4 @@ This CP (named "Professional Profile") is dedicated to creating anything related
 - Never disclose that I founded KE in any deliverable.
   - Exception: may suggest disclosing only if reliable evidence confirms the employer genuinely values entrepreneurial founding experience —— always seek my explicit approval before including in any deliverable.
 - Always assume my willingness to travel for work.
+- UTS: MUST use `GPA 6.63/7 (HD)` instead of `WAM 88%`

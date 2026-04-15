@@ -46,10 +46,10 @@ Visual Director • Backbone Limited (Marketing/PR Group) • November 2018 – 
 ### EDUCATIONS
 
 Master of Human-Computer Interaction (Interaction Design) • Faculty of IT, UTS • 2024 – 2025
-Data Analytics sub-major; 88% (High Distinction); Dean's List; Aus. AI Institute/UTS Reference Letters
+Data Analytics sub-major; GPA 6.63/7 (High Distinction); Dean's List; Australian AI Institute/UTS Reference Letters
 
 Master of Business Administration • Business School, University of Liverpool (UK) • 2023 – 2026
-71% (A); #9 Global and #1 UK by Subject; Russell Group; Accredited by AACSB, AMBA, EQUIS
+WAM 71% (A); #9 Global and #1 UK by Subject; Russell Group; Accredited by AACSB, AMBA, EQUIS
 
 [INTERNAL: This "EDUCATIONS" section is shared identically by all 5 ATS resumes]
 

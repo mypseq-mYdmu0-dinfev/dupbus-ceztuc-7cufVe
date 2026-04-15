@@ -10,7 +10,7 @@
 ## Core Files
 
 CP_notes.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/CP_notes_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/CP_notes_02.md
 Purpose & remarks of this CP.
 
 pro_profile.md
@@ -34,7 +34,7 @@ CCL requirements for consulting job applications; built upon GCL.
 ## ATS Resumes
 
 "ATS Resumes"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_ats_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_ats_02.md
 Combines all 5 variants below.
 
 "Consulting Resume"
@@ -62,7 +62,7 @@ For all other roles e.g. Office Manager, Admin Clerk; downplay bg to avoid over-
 ## Career Docs
 
 "Full Resume"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_full_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_full_02.md
 Full career history/details; not directly submitted in applications but linked in ATS resumes as `Full Resume Available` hyperlink exc. General to downplay.
 
 "Portfolio"
