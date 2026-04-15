@@ -112,3 +112,4 @@ Essence of "Developing as a Manager and Leader" module (Grade A).
 Filenames starting with "Cover Letter"; filename has `(C)` = sent to consulting firm; also in filename: company, specific division (if applicable), timestamp:
 - e.g. `Cover Letter of Culous Yu (C) _ Bain _ General Consulting _ 202602282235.txt` = sent to Bain, specifically "General Consulting" division; benchmark for CCL quality.
 - e.g. `Cover Letter of Culous Yu (C) _ BCG _ 202603031831.txt` = sent to BCG (after Bain), no specific division; more assertive but might not be always applicable.
+- Note: these two still use WAMs & old P.S. — MUST use GPA for UTS ("ATS Resumes"), WAM for MBA (if applicable), and new P.S. (gcl.md)
