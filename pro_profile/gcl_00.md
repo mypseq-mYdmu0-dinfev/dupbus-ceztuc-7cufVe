@@ -52,7 +52,7 @@ Thank you for considering my application. I look forward to discussing how my sk
 Yours Faithfully,
 Culous Yu
 
-P.S. I would never require visa sponsorship and hold full work rights until 2031.
+P.S. I hold full work rights until 2031 and would never require visa sponsorship.
 
 ---
 

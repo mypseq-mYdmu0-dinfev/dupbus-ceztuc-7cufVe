@@ -22,7 +22,7 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_03.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_04.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
@@ -32,6 +32,10 @@ CCL requirements for consulting job applications; built upon GCL.
 ---
 
 ## ATS Resumes
+
+"ATS Resumes"
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_ats_01.md
+Combines all 5 variants below.
 
 "Consulting Resume"
 Culous_Yu_Resume_Consulting.pdf
@@ -58,19 +62,19 @@ For all other roles e.g. Office Manager, Admin Clerk; downplay bg to avoid over-
 ## Career Docs
 
 "Full Resume"
-Résumé of Culous Yu _ [timestamp]_compressed.pdf
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_full_01.md
 Full career history/details; not directly submitted in applications but linked in ATS resumes as `Full Resume Available` hyperlink exc. General to downplay.
 
 "Portfolio"
-Portfolio of Culous Yu _ [timestamp]_compressed.pdf
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_portfolio_01.md
 Full case studies in PDF form; referred in all resumes; cover slide shows: "Strategy ⋅ Analytics ⋅ Transformation ⋅ Implementation", hinting my focused approaches/practices.
 
 "My LinkedIn"
-Culous Yu LinkedIn Profile Education License Projects Skills.pdf
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_linkedin_01.md
 Snapshots of pages in filename.
 
 "Virtual Presentation Script"
-Virtual Presentation Script _ [timestamp].txt
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/virtual_presentation_01.md
 Transcript of "Virtual Presentation Video" below.
 
 ---

@@ -18,13 +18,14 @@ The following files are available in `/Volumes/FURY 2TB/Fury Documents/GitHub/du
 
 | File | Read When |
 |---|---|
-| `Culous_Yu_Resume_Marketing.pdf` | for marketing/branding/PR/social/content roles |
-| `Culous_Yu_Resume_IxD.pdf` | for UX/UI/service design/product roles |
-| `Culous_Yu_Resume_IT.pdf` | for IT/IS/data analytics/software roles |
-| `Culous_Yu_Resume_General.pdf` | for all other roles |
-| `Portfolio of Culous Yu _ 202602191755_compressed.pdf` | Read when employer background or cover letter requires portfolio context |
-| `Culous Yu LinkedIn Profile Education License Projects Skills.pdf` | LinkedIn profile snapshot |
-| `Virtual Presentation Script _ 202504272034.txt` | Read when including presentation link in cover letter |
+| `Culous_Yu_Resume_Consulting.pdf` in `culous_yu_resume_ats.md` | STRICTLY COMPLETELY DISREGARD; DO NOT USE |
+| `Culous_Yu_Resume_Marketing.pdf` in `culous_yu_resume_ats.md` | for marketing/branding/PR/social/content roles |
+| `Culous_Yu_Resume_IxD.pdf` in `culous_yu_resume_ats.md` | for UX/UI/service design/product roles |
+| `Culous_Yu_Resume_IT.pdf` in `culous_yu_resume_ats.md` | for IT/IS/data analytics/software roles |
+| `Culous_Yu_Resume_General.pdf` in `culous_yu_resume_ats.md` | for all other roles |
+| `culous_yu_portfolio.md` | Read when employer background or cover letter requires past projects context |
+| `culous_yu_linkedin.md` | LinkedIn profile snapshot |
+| `virtual_presentation.md` | Read when including presentation link in cover letter |
 
 ## Trigger
 When the user sends `seek` as their message, activate CCIC-GCL automation mode and follow `ccic_gcl.md` in full.
