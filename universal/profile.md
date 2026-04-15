@@ -72,7 +72,7 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 ## Profession
 
 - 16⁺ yr (2010~) int'l exp in project & content mgt; 18⁺ yr (2008~) in paid writing
-- **Master of HCI** (aka IxD) with sub-major in Data Analytics at UTS —— Dean's List recipient, graduated with 88% HD; ceremony 01/06/2026
+- **Master of HCI** (aka IxD) with sub-major in Data Analytics at UTS —— Dean's List recipient, graduated with `GPA 6.63/7 (HD)`; ceremony 01/06/2026
 - **MBA at UoL** (online) —— final module due 23/11/2026 (UK time); free of all studies on 25/11/2026 (SYD time); ceremony TBC 2027
 - **Higher Diploma in Cinematic Arts (Director focus)**, HK Baptist University (don't mention unless highly applicable)
 - Signature strengths (selling points): Strategic Transformation, Value Engineering, Stakeholder Management
