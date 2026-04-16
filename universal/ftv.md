@@ -1,4 +1,4 @@
-# FTV Profile —— Culous
+# Film & TV Series Watching Profile
 
 ## Purpose & Usage
 
