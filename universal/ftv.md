@@ -507,7 +507,7 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 
 ### 9.2 Pre-Output Memory Sync (best-effort)
 - After selecting final candidate list:
-  - update memory with new titles via `#FTVM:`
+  - update memory with new titles via appending to `#FTVM:` (not creating new memory)
 - This is a post-selection but pre-output step
 - Must not block output if memory write is unavailable
 
@@ -523,5 +523,6 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
   - remark `FTVM` memory needs update
 
 ### 9.5 Canonical Film Storage Rule (unchanged)
+- must start with `#FTVM:`
 - store only titles (no years unless ambiguous)
 - maintain abbreviation format (e.g. `#FTVM: Lord of Rings 3, F&F3` instead of `#FTVM: The Lord of the Rings: The Return of the King, The Fast and the Furious: Tokyo Drift`)
