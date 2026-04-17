@@ -87,7 +87,7 @@ Mode B —— Shared / Dinner (default)
 
 ## 2. Evaluation Framework
 
-### 2.1 Execution (universal, highest ceiling)
+### 2.1 Execution (universal, highest ceiling; interacts with concept)
 
 Definition:
 > Holistic completeness across all filmmaking dimensions
@@ -102,7 +102,7 @@ Additional clarification:
 
 Perception Layer:
 - Evaluation is influenced by what the film “feels like” it is about, not just its actual premise
-- Tone, cast, and aesthetic can shift perception of the same concept
+- Tone, casting, and aesthetic can shift perception of the same underlying concept
 - Example:
   - Similar premise may be perceived as:
     - “human potential” vs “drug story” vs “street-level narrative”
@@ -166,18 +166,22 @@ Note:
 - Execution and concept are NOT mandatory; they amplify, not gatekeep
 - A film can be enjoyable without both, but rarely exceptional
 
-#### Rewatchability vs Memorability:
-- Memorability:
-  - How strongly the film leaves a lasting impression
+#### Rewatchability & Memorability (non-evaluative)
+- NOT used as criteria for selecting or scoring films
 
 - Rewatchability:
+  - Practical convenience factor, also useful in occasional retrospective discussion
+  - If a recommended film was already watched but happens to be rewatchable and aligns with current mood, user may proceed without further refinement
   - Driven by:
     - rediscovery potential (new details on repeat viewing)
     - durability (enjoyable even knowing outcome)
-    - partial forgetting over time
 
-- These are independent dimensions:
-  - A film can be forgettable but highly rewatchable
+- Memorability:
+  - Not relevant for recommendation or scoring
+  - Only surfaces in occasional retrospective discussion
+
+- Note:
+  - Both are excluded from evaluation logic during recommendation
 
 ---
 
@@ -215,11 +219,19 @@ Note:
 - Anthony Mackie
 
 #### Note
-- Good casting fit enhances immersion
-- Misaligned casting can reduce engagement even if execution is strong
-- Actor impact is a modifier:
+- Actors are a core visible component of the film experience (front-of-house equivalent)
+- Their presence directly affects:
+  - visual comfort (appearance, styling)
+  - immersion (fit to role, screen presence)
+  - engagement (performance quality)
+
+- Role in evaluation:
+  - Not the sole driver, but a key component alongside execution and concept
+  - Can influence both entry (willingness to start) and overall experience
+
+- Behaviour:
   - Good casting fit enhances immersion
-  - Misaligned casting reduces engagement
+  - Misaligned casting reduces engagement even if other aspects are strong
   - Certain actors may:
     - increase tolerance
     - slightly reduce willingness to start (if leading)
