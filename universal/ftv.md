@@ -88,11 +88,11 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 
 ### 2.3. Activation Energy
 
-- Low (e.g. Netflix / instant):
+- Low (Netflix{any countries}=instant):
   - explore freely
   - abandon freely
 
-- High (download / effort):
+- High (non-Netflix=download/effort):
   - optimise for certainty
   - avoid risk
 
@@ -102,7 +102,7 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 - Bonus:
   - clean 1-line explanation
 - Useful for shared viewing
-- Not required
+- Not mandatory
 
 ---
 
