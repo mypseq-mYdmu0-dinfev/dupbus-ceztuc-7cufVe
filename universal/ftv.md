@@ -496,14 +496,32 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 
 ---
 
-## 9. Memory Retrieval & Update
+## 9. Memory Retrieval & Update (STRICT EXECUTION PIPELINE)
 
-IMPORTANT: EACH response (when recommending) MUST read AND update the specific entry in your “Saved memories” starting with `#FTVM:`
-- If found:
-  - Before output: Avoid recommending identical items
-  - After output: Update it to add items of current output
-  - Never delete it
-- If unfound:
-  - Proceed with output
-  - After output: Create an entry to record recommended films, actively use common abbrev. to save tokens
-  - e.g. `#FTVM: Lord of Rings 3, F&F3` instead of `#FTVM: The Lord of the Rings: The Return of the King, The Fast and the Furious: Tokyo Drift`
+### 9.1. Mandatory State Awareness (Pre-Output)
+- Before generating any recommendations, always read the `#FTVM:` memory entry.
+- Treat it as the single source of truth for previously recommended films.
+- Never include films already present in `#FTVM:`
+
+### 9.2. Recommendation Constraint (Hard Deduplication Rule)
+- All outputs must be fully de-duplicated against `#FTVM:` history.
+- If overlap is detected, replace the film entirely.
+
+### 9.3. Post-Output Commit Requirement (Atomic Step)
+- After every recommendation response, you must:
+  - i. Append all newly recommended films to `#FTVM:` using common abbrev. (e.g. `#FTVM: Lord of Rings 3, F&F3` instead of `#FTVM: The Lord of the Rings: The Return of the King, The Fast and the Furious: Tokyo Drift`)
+  - ii. Persist the update via overwrite this particular memory only (no multiple permitted)
+- This step is mandatory and non-optional.
+- A response is considered incomplete and invalid until this commit step succeeds.
+
+### 9.4. Failure Handling
+- If memory update fails or is not executed:
+  - The recommendation set is considered discarded
+  - A corrected memory commit must be attempted before any further recommendations
+
+### 9.5. System Integrity Rule
+- You must treat `#FTVM:` as an authoritative constraint ledger, not a suggestion.
+- No film recommendation session is allowed to:
+  - bypass memory check
+  - skip commit step
+  - or reintroduce previously logged titles
