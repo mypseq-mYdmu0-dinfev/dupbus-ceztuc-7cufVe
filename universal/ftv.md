@@ -93,10 +93,20 @@ Definition:
 > Holistic completeness across all filmmaking dimensions
 
 Additional clarification:
-- “Concept” is valued highest when:
-  - it feels actionable or personally imaginable
-  - it unlocks “what if this were real” thinking
-- Abstract or purely artistic concepts without personal relevance have lower impact
+- “Concept” is a broad dimension and not limited to novelty
+- High-impact concepts often:
+  - enable mental simulation (“what if this were real”)
+  - establish clear rules of a system/world
+- However, concept does NOT need to be personally actionable to be valued
+- Concept evaluation is influenced by perception (tone, aesthetic, execution), not just premise
+
+Perception Layer:
+- Evaluation is influenced by what the film “feels like” it is about, not just its actual premise
+- Tone, cast, and aesthetic can shift perception of the same concept
+- Example:
+  - Similar premise may be perceived as:
+    - “human potential” vs “drug story” vs “street-level narrative”
+- This perception can amplify or suppress concept appreciation
 
 Includes:
 - screenwriting, dialogue, structure
@@ -114,17 +124,19 @@ Effect:
 - Automatically elevates film → “must watch”
 - Rare due to extremely high personal standard
 
-### 2.1.1 Concept Types (preference)
+### 2.1.1 Concept Tendencies (observed patterns)
 
-High preference:
-- Human potential unlocking (e.g. cognitive enhancement, power expansion)
-- System-level worlds with rules (e.g. hidden structures, governed systems)
+Commonly appreciated:
+- Human potential / capability expansion
+- System-level worlds with rules (hidden structures, governed systems)
 
-Moderate:
-- General sci-fi concepts without personal relevance
+Also acceptable:
+- Real-world perspectives with unique framing
+- Non-novel concepts with strong execution
 
-Low:
-- Abstract, symbolic, or purely artistic concepts without clear application
+Note:
+- These are tendencies, not requirements
+- Strong concept can exist in any genre or form
 
 ---
 
@@ -153,6 +165,19 @@ Execution behaviour:
 Note:
 - Execution and concept are NOT mandatory; they amplify, not gatekeep
 - A film can be enjoyable without both, but rarely exceptional
+
+#### Rewatchability vs Memorability:
+- Memorability:
+  - How strongly the film leaves a lasting impression
+
+- Rewatchability:
+  - Driven by:
+    - rediscovery potential (new details on repeat viewing)
+    - durability (enjoyable even knowing outcome)
+    - partial forgetting over time
+
+- These are independent dimensions:
+  - A film can be forgettable but highly rewatchable
 
 ---
 
@@ -192,9 +217,12 @@ Note:
 #### Note
 - Good casting fit enhances immersion
 - Misaligned casting can reduce engagement even if execution is strong
-- Actor impact is asymmetric:
-  - Strong affinity can override other weaknesses
-  - Strong aversion can reduce overall score even if film is otherwise solid
+- Actor impact is a modifier:
+  - Good casting fit enhances immersion
+  - Misaligned casting reduces engagement
+  - Certain actors may:
+    - increase tolerance
+    - slightly reduce willingness to start (if leading)
 
 ---
 
@@ -256,6 +284,11 @@ Impact:
 - Good aesthetics → minor positive uplift
 - Poor aesthetics → major negative penalty
 - Severe misalignment → rejection unless exceptional override
+
+Scoring behaviour:
+- Passing baseline is relatively easy
+- Positive uplift requires high-level refinement (e.g. strong art direction, styling, visual coherence)
+- Negative impact scales faster than positive uplift
 
 Note:
 Aesthetic tolerance may flex depending on genre/context (e.g. horror, war), but only within limits
