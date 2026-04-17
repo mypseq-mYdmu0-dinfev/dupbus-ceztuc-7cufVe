@@ -112,11 +112,12 @@ Effect:
 
 ### 2.2 Priority Stack (in practice)
 
-1. Tightness / efficiency (no wasted time)
-2. Strategic / controlled characters
-3. Emotional control (low sentimentality)
-4. Ideas > spectacle (but flexible)
-5. Conceptual depth (nice-to-have, not required)
+1. Execution (holistic completeness; gatekeeper)
+2. Tightness / efficiency (no wasted time)
+3. Strategic / controlled characters
+4. Emotional control (low sentimentality; low kids presence)
+5. Aesthetic alignment (cast, tone, visual taste)
+6. Conceptual strength (value-add, not sufficient alone)
 
 ---
 
@@ -127,9 +128,13 @@ Effect:
 - Realism vs stylisation: neutral (5/10)
 - Emotional intensity: low tolerance for sentimentality; dislike kids
 - Humour: neutral but sensitive to “stupid/goofy”
-- Ideas vs spectacle: leans ideas (≈7–9/10)
 - Structure complexity: neutral
 - Tightness: max (10/10)
+
+Additional factor:
+- Actor affinity:
+  - Strong performances or preferred actors can elevate overall rating
+  - Misaligned casting can reduce engagement even if other aspects are strong
 
 ---
 
@@ -170,12 +175,18 @@ Effect:
 
 ---
 
-### 3.5 Aesthetic Filter (important)
+### 3.5 Aesthetic Filter (structural)
+
 - Strong sensitivity to:
-  - cast appearance
-  - styling
-  - overall “visual taste”
+  - cast appearance / facial compatibility
+  - styling and visual tone
+  - overall “taste level” of the film
+
 - Poor aesthetics → major downgrade
+- Severe misalignment → rejection regardless of other strengths
+
+Note:
+Aesthetic judgement is subjective but consistent; certain “looks” or character vibes can strongly reduce engagement even if execution is objectively good
 
 ---
 
@@ -201,6 +212,20 @@ Effect:
 - Film aligns with life narrative → extreme value
 - Example:
   - The Secret Life of Walter Mitty = identity-level resonance
+
+---
+
+### 4.4 Wasted Potential Penalty (critical)
+
+- Films with strong concepts but poor execution are penalised heavily
+- Often rated lower than objectively worse films with aligned execution
+
+Rationale:
+- High awareness of “what it could have been”
+- Perceived as missed opportunity rather than neutral output
+
+Example:
+- Strong concept + wrong direction → severe negative reaction
 
 ---
 
