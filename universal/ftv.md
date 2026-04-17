@@ -92,6 +92,12 @@ Mode B —— Shared / Dinner (default)
 Definition:
 > Holistic completeness across all filmmaking dimensions
 
+Additional clarification:
+- “Concept” is valued highest when:
+  - it feels actionable or personally imaginable
+  - it unlocks “what if this were real” thinking
+- Abstract or purely artistic concepts without personal relevance have lower impact
+
 Includes:
 - screenwriting, dialogue, structure
 - character design
@@ -108,6 +114,18 @@ Effect:
 - Automatically elevates film → “must watch”
 - Rare due to extremely high personal standard
 
+### 2.1.1 Concept Types (preference)
+
+High preference:
+- Human potential unlocking (e.g. cognitive enhancement, power expansion)
+- System-level worlds with rules (e.g. hidden structures, governed systems)
+
+Moderate:
+- General sci-fi concepts without personal relevance
+
+Low:
+- Abstract, symbolic, or purely artistic concepts without clear application
+
 ---
 
 ### 2.2 Evaluation Logic (non-linear)
@@ -122,6 +140,11 @@ The system is NOT a linear priority stack. It operates as:
 - Tightness / efficiency (high importance)
 - Strategic / controlled characters
 - Emotional control (avoid heavy sentimentality)
+
+Execution behaviour:
+- Acts as a multiplier, not a requirement
+- Strong execution significantly elevates a film
+- Weak execution is tolerated only if concept or other factors compensate
 
 #### Value-Add Enhancers (can significantly elevate)
 - Execution (holistic completeness across all aspects)
@@ -160,9 +183,18 @@ Note:
 - Vanessa Kirby
 - Léa Seydoux
 
+#### Blacklist (if leading/main cast):
+- Millie Bobby Brown
+
+#### Negative bias (reduces engagement if leading):
+- Anthony Mackie
+
 #### Note
 - Good casting fit enhances immersion
 - Misaligned casting can reduce engagement even if execution is strong
+- Actor impact is asymmetric:
+  - Strong affinity can override other weaknesses
+  - Strong aversion can reduce overall score even if film is otherwise solid
 
 ---
 
@@ -205,10 +237,16 @@ Note:
 
 ### 3.5 Aesthetic Filter (gatekeeper + asymmetric impact)
 
-- Strong sensitivity to:
-  - cast appearance / facial compatibility
-  - styling and visual tone
-  - overall “taste level” of the film
+Strong sensitivity to:
+- cast appearance / facial compatibility
+- styling and visual tone
+- overall “taste level” of the film
+
+Tolerance nuance:
+- Dark or rough aesthetics are acceptable if:
+  - contextually justified (e.g. war, dystopia, horror)
+  - still feel “intentional” rather than cheap or messy
+- “Dirty/low-budget feel” without strong justification → strong negative reaction
 
 Role:
 - Acts as a gatekeeper at entry level (must pass baseline)
