@@ -110,14 +110,26 @@ Effect:
 
 ---
 
-### 2.2 Priority Stack (in practice)
+### 2.2 Evaluation Logic (non-linear)
 
-1. Execution (holistic completeness; gatekeeper)
-2. Tightness / efficiency (no wasted time)
-3. Strategic / controlled characters
-4. Emotional control (low sentimentality; low kids presence)
-5. Aesthetic alignment (cast, tone, visual taste)
-6. Conceptual strength (value-add, not sufficient alone)
+The system is NOT a linear priority stack. It operates as:
+
+#### Gatekeepers (must pass to be considered)
+- Aesthetic baseline (no strong visual/character aversion)
+- No dominant kid/teen-centric dynamics (unless exceptional case)
+
+#### Core Drivers (determine liking)
+- Tightness / efficiency (high importance)
+- Strategic / controlled characters
+- Emotional control (avoid heavy sentimentality)
+
+#### Value-Add Enhancers (can significantly elevate)
+- Execution (holistic completeness across all aspects)
+- Concept (world-building, rules, perspective)
+
+Note:
+- Execution and concept are NOT mandatory; they amplify, not gatekeep
+- A film can be enjoyable without both, but rarely exceptional
 
 ---
 
@@ -130,11 +142,27 @@ Effect:
 - Humour: neutral but sensitive to “stupid/goofy”
 - Structure complexity: neutral
 - Tightness: max (10/10)
+- Additional factor — Actor affinity:
 
-Additional factor:
-- Actor affinity:
-  - Strong performances or preferred actors can elevate overall rating
-  - Misaligned casting can reduce engagement even if other aspects are strong
+#### Strong override group (can trigger watch regardless)
+- Dwayne Johnson
+- Jason Statham
+- Ryan Reynolds
+
+#### Positive influence group (adds score / increases tolerance)
+- Morgan Freeman
+- Samuel L. Jackson
+- Robert Downey Jr.
+- Benedict Cumberbatch
+- Brad Pitt
+- Cillian Murphy
+- Rebecca Ferguson
+- Vanessa Kirby
+- Léa Seydoux
+
+#### Note
+- Good casting fit enhances immersion
+- Misaligned casting can reduce engagement even if execution is strong
 
 ---
 
@@ -175,18 +203,24 @@ Additional factor:
 
 ---
 
-### 3.5 Aesthetic Filter (structural)
+### 3.5 Aesthetic Filter (gatekeeper + asymmetric impact)
 
 - Strong sensitivity to:
   - cast appearance / facial compatibility
   - styling and visual tone
   - overall “taste level” of the film
 
-- Poor aesthetics → major downgrade
-- Severe misalignment → rejection regardless of other strengths
+Role:
+- Acts as a gatekeeper at entry level (must pass baseline)
+- Continues to influence scoring afterwards
+
+Impact:
+- Good aesthetics → minor positive uplift
+- Poor aesthetics → major negative penalty
+- Severe misalignment → rejection unless exceptional override
 
 Note:
-Aesthetic judgement is subjective but consistent; certain “looks” or character vibes can strongly reduce engagement even if execution is objectively good
+Aesthetic tolerance may flex depending on genre/context (e.g. horror, war), but only within limits
 
 ---
 
@@ -209,23 +243,36 @@ Aesthetic judgement is subjective but consistent; certain “looks” or charact
 ---
 
 ### 4.3 Personal Resonance (rare, highest impact)
+
 - Film aligns with life narrative → extreme value
-- Example:
-  - The Secret Life of Walter Mitty = identity-level resonance
+- Highest form of impact (beyond execution or concept)
+
+Examples (descending intensity):
+1. The Secret Life of Walter Mitty —— identity-level, life-changing
+2. Up in the Air —— strong current-life resonance
+3. The Company Men —— similar resonance domain
+4. The Big Short —— domain relevance (consulting/markets)
+5. Inception —— philosophical impact (reality questioning)
+
+Note:
+- Extremely rare
+- Not required for enjoyment, but creates lasting attachment
 
 ---
 
-### 4.4 Wasted Potential Penalty (critical)
+### 4.4 Wasted Potential Penalty (conditional)
 
-- Films with strong concepts but poor execution are penalised heavily
-- Often rated lower than objectively worse films with aligned execution
+- Applies strongly when:
+  - director is experienced / expected to deliver
+- Reduced when:
+  - director is new or early-stage (more leniency)
+
+Effect:
+- Strong concept + poor execution → heavy penalty (mature director)
+- Same scenario → moderated judgement (new director)
 
 Rationale:
-- High awareness of “what it could have been”
-- Perceived as missed opportunity rather than neutral output
-
-Example:
-- Strong concept + wrong direction → severe negative reaction
+- Penalises avoidable failure, not learning-stage imperfection
 
 ---
 
