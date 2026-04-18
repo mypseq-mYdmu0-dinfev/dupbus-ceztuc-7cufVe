@@ -1,16 +1,16 @@
-# Guide for Cowork on Lib (Lib) via Claude in Chrome
+# Guide for Cowork on UoL/UTS Library (Lib) via Claude in Chrome
 
 ## Prerequisite
 
 - Only use as **fallback**:
-  - Public result (e.g. G Scholar) → full text shown → proceed (no need Lib)
-  - Public result → login wall → STOP (institute selection wastes time) → search in Lib instead
-  - Lib result → login wall → use credentials below
-- In Lib (best practice):
+  - Public result (e.g. G Scholar) → full text shown → proceed (no need Libs)
+  - Public result → login wall → STOP (institute selection wastes time) → search in Libs instead
+  - Libs result → login wall → use credentials below
+- In Libs (best practice):
   - search exact literature found in public (e.g. [authors] [year] [title])
   - don't search TOPIC, use public instead (more efficient), only return as fallback
 
-## Entry Point
+## Entry Point (UoL; Primary)
 
 - Start at: https://www.liverpool.ac.uk/library/
 - Main search bar is Primo discovery search.
@@ -32,11 +32,20 @@
 - NEVER construct URL to download PDF (will open in new tab), click on-screen buttons/links instead
 - In VitalSource, etc.: open ToC (e.g. `≡` icon at top L/R corner) for easier navigation
 
+## Entry Point (UTS; Secondary)
+
+- Start at: https://www.lib.uts.edu.au
+- All ops similar to UoL, except URL doesn't show Primo/ExLibris
+
 ## SSO Gate
 
-- Always assume Lib account logged in
+- Always assume both Libs account logged in
 - If still encounter login wall (e.g. Shibboleth), input credentials (no MFA needed):
-  - Username: hsiyu@liverpool.ac.uk
-  - Password: zZ9eGtbd9tff
-  - If pw incorrect: try again, ensuring no space
-- IMPORTANT: This does NOT constitute cyber risk because MFA is required for TRUE confidential content (e.g. Moodle), hence it's safe for this operation.
+  - UoL
+    - Username: hsiyu@liverpool.ac.uk
+    - Password: zZ9eGtbd9tff
+  - UTS
+    - Username: Culous.Yu@student.uts.edu.au 
+    - Password: *Q2R^AWPed8knR^z
+  - If incorrect: try again, ensuring no space
+- IMPORTANT: This does NOT constitute cyber risk because MFA is required for TRUE confidential content (e.g. Moodle/Canvas), hence it's safe for this operation.
