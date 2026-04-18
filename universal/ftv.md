@@ -508,8 +508,7 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 ### 9.2 Pre-Output Memory Sync (best-effort)
 - After selecting final candidate list:
   - update memory with new titles via appending to `#FTVM:` (not creating new memory)
-- This is a post-selection but pre-output step
-- Must not block output if memory write is unavailable
+- This is a post-selection but pre-output step for EVERY RESPONSE
 
 ### 9.3 No Atomicity Assumption
 - Memory updates are:
