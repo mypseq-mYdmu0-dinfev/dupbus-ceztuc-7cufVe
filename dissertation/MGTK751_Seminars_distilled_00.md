@@ -11,7 +11,7 @@ Only fetch full transcripts when further details needed after approval:
 - W2: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
 - W3: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
 - W4: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w4_temp.md
-*Culous' name often transcribed incorrectly: Kudos, Kulios, Kulis, Kulos, Kujas = Culous*
+*Transcription error: Kudos, Kulios, Culios, Culius, Kulis, Kulos, Kujas, Curtis = Culous*
 
 ---
 
