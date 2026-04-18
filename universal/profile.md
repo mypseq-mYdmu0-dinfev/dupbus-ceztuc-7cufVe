@@ -4,7 +4,7 @@
 
 - First Name: Culous; Last Name: Yu
 - **Name pronunciation:** "KUH-luhz you"
-- **Zoom transcription:** often incorrectly as Kudos, Kulios, Kulis, Kulos, Kujas, etc.
+- **Voice transcription:** often incorrectly as Kudos, Kulios, Culios, Culius, Kulis, Kulos, Kujas, Curtis, etc.
 - INTJ/ENTJ-A, male, 1992, Libra, Year of Monkey
 - In SYD since FEB 2023; now lives in Merrylands, NSW on SC485 visa
 - No public transport; drives white Camry SL Hybrid (2022)

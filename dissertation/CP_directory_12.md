@@ -43,7 +43,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Index of all lecture content with URLs to distilled & full lecture files.
 
 Seminars (distilled).md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Seminars_distilled_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Seminars_distilled_02.md
 Distilled seminar transcripts.
 
 ---
@@ -58,10 +58,14 @@ Concept Brief (concise).md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_04.md
 Concise ver for my reading only; never fetch unless explicitly instructed.
 
-A1 (temp).md (request)
+A1 (temp).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_03.md
 Formative "Draft Research Proposal" submitted Wk4; created before A1 DevPlan.
 
-A1 (overview).md (request)
+A1 (overview).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_overview_01.md
 Submitted alongside `A1 (temp).md` in DA Allocation Form; created before A1 DevPlan.
+
+A1 (temp) feedback.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_feedback_01.md
+Formative feedback on `A1 (temp).md`.

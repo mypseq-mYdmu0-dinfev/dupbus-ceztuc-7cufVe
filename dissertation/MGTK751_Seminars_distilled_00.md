@@ -1,7 +1,8 @@
-# MGTK751 —— Seminars Distilled (Wk1–4)
-*Source: Zoom transcripts Wk1–3 (official), Wk4 (manually saved, partial — replace when official released if necessary)*
+# MGTK751 —— Seminars Distilled (Wk1–5)
+*Source: Zoom transcripts Wk1–5 (official)
 *Focus: project-relevant content for A1–3; general module admin omitted*
 *Dates: converted from GMT to SYD*
+*Voice transcription error: Kudos, Kulios, Culios, Culius, Kulis, Kulos, Kujas, Curtis = Culous*
 
 ---
 
@@ -10,8 +11,8 @@ Only fetch full transcripts when further details needed after approval:
 - W1: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
 - W2: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
 - W3: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
-- W4: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w4_temp.md
-*Transcription error: Kudos, Kulios, Culios, Culius, Kulis, Kulos, Kujas, Curtis = Culous*
+- W4: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w4.md
+- W5: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w5.md
 
 ---
 
@@ -153,7 +154,21 @@ Full exchange between Culous and Enis — most detailed confirmation of our desi
 ---
 
 ## Wk4 (11/04/2026) —— DA Allocation, RQs, Admin
-*⚠️ Partial transcript (manually saved, late join); replace section when official transcript released*
+
+### Formative Feedback Criteria (Enis, Wk4)
+Enis stated he reviews draft proposals against three dimensions:
+- Clarity and alignment between research title/scope (aim, objectives, RQ) — are they clear, relevant, and internally consistent?
+- Alignment between aim/objectives/RQ and methodological decisions
+- Clarity of methodological choices, and how well they are explained in relation to the research problem
+- ⚠️ Directly validates our golden thread discipline; markers are explicitly looking for this chain
+
+### Post-A1 Revision Process (Enis, Wk4)
+- A1 aim, objectives, and RQ can still be tweaked with the DA after a good A1 mark
+- DA shares the amended proposal with a second independent reviewer (also the second marker for A3)
+- Second reviewer either approves or requests further changes
+- Only after second reviewer approval are aim/objectives/RQ effectively locked (minor changes thereafter still possible)
+- Ethics application submitted after second reviewer approval
+- ⚠️ Relevant for Wks 7+: do not treat A1 submission as final lock on research scope
 
 ### Demographic Screening ≠ Mixed Methods
 - Collecting demographic/eligibility info from interview participants (e.g. role, org type) does not constitute mixed methods if not used for quantitative analysis
@@ -187,3 +202,50 @@ Full exchange between Culous and Enis — most detailed confirmation of our desi
 ### Org Consent (Wk4, Partial Context)
 - Enis confirmed: institutional consent (letter/email) required if collecting data from participants within an organisation
 - Applies to single-org designs; our 1-per-org cross-firm design (participants recruited individually via personal network) falls under the established Wk1–3 ruling: individual consent only, no org letter
+
+---
+
+## Wk5 (18/04/2026) —— Draft Feedback, Sources, DA Admin
+
+### Enis N/A as DA (Wk5 — Critical)
+- Enis explicitly confirmed mid-session: he will not be available as DA for this cohort due to a clerical error (his photo appeared in the DA list by mistake)
+- ⚠️ Culous must update DA preferences: Enis removed; next preferred DA takes #1 position
+
+### General Feedback on Draft Proposals (Enis, Wk5)
+Enis shared observations across submissions (not directed at any one student):
+- Some very interesting submissions; some need to work on clarity of topic or tighter alignment of aim/objectives/RQ
+- **Literature review** — common weakness: mostly descriptive; must go beyond reporting what studies say and instead interpret findings in relation to your own aim/objectives/RQ; ask "what does this mean for my research?"
+- **Methodology** — generally decent; areas for improvement: more justification of methodological choices, more detail on sampling strategy and eligibility criteria for participants
+- **Mixed methods** — Enis again strongly discouraged; reiterated that supervisor will say the same in Wk7; choose one methodology now to save time
+- ⚠️ Directly relevant: our A1 lit review must be explicitly analytical and interpretive, not descriptive; each theme must be linked to aim/objectives/RQ
+
+### Academic vs. Practitioner Sources — 80/20 Rule (Enis, Wk5)
+In response to Dimitris' question about whether a 50/50 split of academic and non-academic literature is acceptable:
+- Enis: "I would try and keep it no more than 20% from industry" — i.e., 80% academic, ≤20% practitioner/industry sources
+- Acknowledged this is his personal guidance, not an official module criterion
+- Rationale: it is an academic piece of work; practitioner literature is valuable (faster-moving than academic research) but must not dominate
+- "Industry": includes independent industry/institutional reports; does NOT include peer-reviewed journals
+- Culous asked explicitly "Industry as in MBB/Big4 reports?" — Enis confirmed yes, and added "non-governmental, or industry-related, reports from independent organisations or institutions"
+- ⚠️ This is a ceiling, not a floor — 0% practitioner sources is fully acceptable
+
+### Research Scope — Focus on Phenomena, Not Keywords (Enis, Wk5)
+- Enis advised: do not limit searches to the exact wording of your research title; search by the phenomenon, the research problem, the concept
+- Literature from adjacent fields, other countries, or slightly different contexts is valid if it informs the research problem — synthesise and channel it toward your own aim/objectives
+- ⚠️ Already applied in our WCIC P1 research (searching phenomena across clusters)
+
+### Supervisor Assignment Timeline (Enis, Wk5)
+- Supervisor announcement expected early Wk7, possibly end of Wk6
+- Process: admin contacts supervisors; supervisors accept/decline based on topic, methodology, and capacity
+- ⚠️ If Culous' preferred DA declines, student is assigned one regardless; update DA form with new preferences given Enis' removal
+
+### Wilson's Q — 1-Per-Org Ethics Confirmed Again (Wk5)
+Wilson asked: 7 participants from 7 different orgs → 7 consent letters + 7 participant forms?
+- Enis: "you wouldn't need to submit 7 constant letters from organisations" — one participant per org = no org-level consent letter required (confirms Wk1–3 ruling)
+- For ethics application: submit ONE participant information sheet template + ONE participant consent form template (blank) — not 7 sets
+- "You do not need to submit their signed forms… as part of your process of data collection. But they need to know what kind of template will be handed over to participants"
+- ⚠️ Confirms our 1-per-org design; blank templates only submitted to ethics committee; signed originals stored by researcher on UoL OneDrive
+
+### Ethics Changes Mid-Research (Enis, Wk5)
+- If methodology changes substantially (e.g. shift from interviews to focus groups) → must re-submit ethics application after getting revised research proposal approved
+- If change is wording-only and doesn't alter the type of data collected → no re-application needed
+- ⚠️ Relevant reminder: any scope changes post-ethics approval must be assessed against this threshold
