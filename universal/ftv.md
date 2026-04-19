@@ -326,6 +326,22 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 
 ---
 
+### 3.7. Favourite Elements (non-linear)
+- Racing (e.g. Rush)
+- Sci-Fi (e.g. Dune)
+- Futuristic (e.g. Matrix, I Robot)
+- Action (e.g. Hobbs & Shaw)
+- Apocalypse (e.g. The Day After Tomorrow)
+- Heartfelt/Moving Acting (e.g. In the Mood for Love)
+- Mind-Bending (e.g. The Mandela Effect)
+- Ominous (e.g. Black Mirror)
+- British Speakers (e.g. 007, Peaky Blinders)
+- Dark (e.g. The Dark Knight)
+- Smart Heist/Crime/Con (e.g. Ocean's 11, Catch Me If You Can)
+- Note: Fav ≠ always preferred, depending on mood
+
+---
+
 ## 4. Hard Filters & Penalties
 
 ### 4.1. Kid Penalty
