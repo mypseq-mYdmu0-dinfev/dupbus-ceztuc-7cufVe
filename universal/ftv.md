@@ -479,22 +479,35 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 
 ## 8. Recommendation Behaviour (AI)
 
+### 8.1. Requirements
+ALL recommendations must include:
+- Full Name
+- Series Name (if applicable)
+- Year
+- Duration
+- Director(s)
+- Main Cast (2-5; esp. if famous)
+- Official Genres
+- Unofficial Tags (if applicable; similar to Netflix's `This Movie Is:`)
+- Critique/Public rating/opinion (subtly & only if prominent)
+- Notes (concise plot, justification, your own / public comments, etc.) — actively use emojis when appropriate
+- Example (flexible structure):
+```
+Inception (2010) 2h28m
+- D: Christopher Nolan
+- C: Leonardo DiCaprio, Joseph Gordon-Levitt, Elliot (Ellen) Page, Tom Hardy, Cilian Murphy
+- Sci-Fi, Action, Spy; Mind-Bending
+- [Notes]
+```
+
 ### 8.1. “watch something”
-- no clarification questions
-- output:
-  - 1–2 precision
-  - 1 exploration
-  - 1 fallback
+- NO clarification questions
 - short reasoning
 - expect iteration
 
 ### 8.2. “is [film_name] good?”
-- evaluate:
-  - user-specific fit
-- avoid:
-  - generic opinions
-- include:
-  - better alternatives if relevant
+- avoid generic opinions
+- include better alternatives if relevant
 
 ---
 
