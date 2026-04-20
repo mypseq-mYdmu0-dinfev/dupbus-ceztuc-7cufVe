@@ -118,3 +118,151 @@ Less relevant provisions (honesty tactics, random sampling, iterative questionin
 - 65 reference list entries not extracted — **re-upload if** a secondary source cited within needs direct page quotes for A3
 - 14 credibility sub-provisions compressed to 6 most relevant — **re-upload if** A3 Ch3 requires verbatim mapping of all provisions
 - Shenton's own PhD context (school-aged children, information science) excluded throughout as irrelevant
+
+---
+
+### 02 — Kim, E. and Glomb, T.M. (2014) 'Victimization of high performers: The roles of envy and work group identification', *Journal of Applied Psychology*, 99(4), pp. 619–634. doi: 10.1037/a0035789.
+
+#### Limitation Block
+
+Synthesised: 20260421
+Based on: Full text, uploaded PDF (pp. 619–634 + Appendix)
+Scope: A1–3
+Limitation: Statistical tables (Tables 1–5) partially extracted — key coefficients captured but
+not all control variable paths; re-upload if A3 requires exact β/γ values for specific models
+beyond what is recorded below. Reference list (60+ entries) not individually extracted.
+
+---
+
+#### Core Argument
+
+High task performance is a **victim precipitation factor**: by triggering unfavourable upward social comparison among fellow group members, it generates **envy** — an affective state characterised by inferiority, hostility, and resentment — which in turn produces peer **victimisation** (interpersonal harming behaviours directed at the high performer). This mechanism is empirically confirmed across two studies in two cultural contexts. **Work group identification (WGI)** — the degree to which members merge self-concept with the group — moderates both stages of this envy mechanism, reducing the likelihood that performance disparity translates into peer harm.
+
+The paper integrates three theoretical traditions: (1) **victim precipitation theory** (Curtis 1974; Schafer 1968), which holds that individual characteristics or behaviours can inadvertently instigate harmful responses; (2) **Social Comparison Theory / SCT** (Festinger 1954), which explains the evaluative threat that high performance poses to peers; and (3) **identity theory** (Brewer & Gardner 1996; Hogg 2000), which explains how group-level self-categorisation alters comparison processes and moral scope.
+
+The paper explicitly frames findings as consistent with "tall poppy" syndrome (Feather 1994) — p.619 — making it one of the few peer-reviewed empirical studies that directly bridges SCT-based peer marginalisation research to TPS literature.
+
+---
+
+#### Theoretical Mechanisms — Detailed
+
+**SCT → Envy pathway (p.620–621)**
+- High performers attract upward comparison because: (a) performance is a self-relevant domain (competence = fundamental human need per Deci & Ryan 2002); (b) org reward systems make HP visibility high; (c) Festinger's "upward drive" means peers tend toward comparison with those close to but better than themselves
+- Self-evaluation maintenance model (Tesser 1988): when another's success is in a self-relevant domain (task competence), *comparison* rather than *reflection* occurs → lowered self-evaluation
+- Relative deprivation model (Crosby 1976, 1984): perception of what others have that one lacks motivates behaviour to reduce deprivation
+- Envy selected over other negative affect states (depressive feelings, shame, hostility) because it uniquely combines *self-lacking* and *other-possessing* components (Smith 2000; Smith & Kim 2007, p.46) — making it the direct motivator of harming to restore self-evaluation
+
+**Envy → Victimisation pathway (p.621)**
+- Envious persons restore self-evaluation by *reducing the envied person's advantages* (Duffy et al. 2008; Vecchio 1995) — harming decreases envy-induced frustration (Fox & Spector 1999) and restores damaged self-esteem (Fein & Spencer 1997)
+- Victimisation operationalised as self-perceived target of interpersonal aggression from coworkers (Aquino & Thau 2009)
+
+**WGI moderates via two mechanisms (p.621–622)**
+1. *Prevents envy from arising*: WGI shifts self-evaluation source from individual capability to group capability; high performers are reframed as contributors to shared group success → upward comparison becomes positive (intergroup rather than intragroup); experimental support from Brewer & Weber (1994) and Gardner et al. (2002)
+2. *Deactivates harming even when envy does occur*: WGI expands the "circle of morality" (Opotow 1995) — high WGI members feel moral obligation toward all group members including HPs; perpetrators experience more guilt; Duffy et al. (2012) confirm WGI deactivates threat-oriented action tendencies by preventing moral disengagement
+
+---
+
+#### Study Design Summary
+
+| | Study 1 | Study 2 |
+|---|---|---|
+| N | 4,874 employees, 339 work groups | 217 employees, 67 work groups |
+| Setting | Large US Midwestern university; multiple job categories | 3 Korean orgs: 1 government agency, 2 advertising agencies |
+| Design | Cross-sectional, self-report + admin records | Temporally lagged (T1 → T2, 3–5 weeks); multisource |
+| Performance measure | Self-report task performance scale (Welbourne et al. 1998, 4-item, α=.76) + salary from admin records | Supervisor-rated task performance (Welbourne et al. 1998, 4-item, α=.92) |
+| Envy measure | Not measured (Study 1 establishes H1 only) | In-degree envy centrality (sociomatrix, single-item network question, multisource; Schaubroeck & Lam 2004 wording) |
+| Victimisation measure | Aquino et al. (1999) 8-item scale (α=.82) | Aquino et al. (1999) 8-item scale, adapted (α=.86) |
+| WGI measure | Not measured | Mael & Ashforth (1992) 5-item adapted scale (α=.90); group-level aggregate (rwg(j)=.88, ICC(1)=.46, ICC(2)=.73) |
+| Analysis | Random coefficient modelling (RCM/HLM); group-mean centred | RCM; moderated-mediation (Edwards & Lambert 2007 approach, adapted for multilevel via STATA xtmixed + bootstrap 1,000 samples) |
+
+---
+
+#### Key Results
+
+**H1 — Task performance → Victimisation (both studies)**
+- Study 1: task performance β=.11, p<.01; salary β=.03, p<.05; task performance statistically stronger predictor than salary
+- Study 2: task performance γ=.28, p<.01 (Model 6, Table 4)
+- H1 supported across US and Korean samples; preliminary cross-cultural generalisability
+
+**H2 — Envy mediates task performance → Victimisation (Study 2)**
+- Task performance → Envy: γ=.20, p<.01 (Model 2, Table 4)
+- Envy → Victimisation: γ=.22, p<.01 (Model 7, Table 4)
+- Task performance coefficient reduced from γ=.28 to γ=.24 after envy entered → *partial* mediation
+- Bootstrapped 95% CI of indirect effect via envy: [.01, .07] — excludes zero → H2 supported
+
+**H3 — WGI moderates envy mechanism (Study 2, Table 5)**
+- First stage (task performance → envy): WGI interaction γ=−.09, p=.07 (first stage weakened at high WGI)
+- Second stage (envy → victimisation): WGI interaction γ=−.11, p=.05 (second stage weakened at high WGI)
+- Simple paths at *low* WGI: task performance→envy=.26**, envy→victimisation=.32*, indirect effect=.08*
+- Simple paths at *high* WGI: task performance→envy=.08, envy→victimisation=.10†, indirect effect=.01† (effectively attenuated)
+- Difference in indirect effects: −.08, p<.05 → H3 supported
+- Note: WGI moderation confirmed in Korean collectivist sample; authors caution against assuming replication in individualistic cultures (p.629)
+
+---
+
+#### Named Constructs / Measures
+
+- **Victim precipitation factor** — individual characteristic or behaviour that inadvertently instigates harmful reactions (Curtis 1974; Schafer 1968); task performance operationalised as such here
+- **In-degree envy centrality** — sociomatrix-based aggregate of peer-reported envy directed at a focal actor; multisource, controls for group size differences (Wasserman & Faust 1994)
+- **Work group identification (WGI)** — group-level construct; shared perception that members merge self with group; shifts frame of reference from individual to collective (Mael & Ashforth 1992 adapted)
+- **Circle of morality** (Opotow 1995) — scope of moral obligation; WGI expands it to include high performers, inhibiting harming behaviours
+- **Self-evaluation maintenance model** (Tesser 1988) — comparison vs. reflection processes; performance in self-relevant domains triggers comparison and lowered self-evaluation
+- **Relative deprivation** (Crosby 1976, 1984) — perception of other-possession motivates behaviour to reduce perceived gap; converges with SCT in predicting envy
+
+---
+
+#### Page-Numbered Passages Earmarked
+
+| Passage | Page | Use |
+|---|---|---|
+| TPS ("tall poppy" syndrome) explicitly cited as consistent with high-performer victimisation phenomenon; Feather (1994) and popular press evidence combined | p.619 | A1 §2.1; A3 Ch2 — direct empirical bridge between TPS and victimisation research |
+| Envy defined as "an unpleasant, often painful emotion characterized by feelings of inferiority, hostility, and resentment caused by an awareness of a desired attribute enjoyed by another person" (Smith & Kim 2007, p.46) | p.621 | A1 §2.3; A3 Ch2 — use as operational definition of envy construct; do not requote as our own |
+| WGI moderates in two ways: prevents envy by restoring self-evaluation; deactivates harming by expanding moral circle | p.622 | A1 §2.3 (conditions framing); A3 Ch2/Ch5 — directly maps to "alleviate" side of RQ1 |
+| ILO cost estimates of workplace victimisation: USD$3Bn–$35.4Bn annually (Hoel, Sparks & Cooper 2001) | p.629 | A2 slides; A3 Ch2/Ch6 — boardroom stakes framing for Challenge B |
+| Managers can reduce envy-driven victimisation by "promoting work group identification" via team-building, social gatherings, inter-team friendly rivalries | p.629 | A3 Ch6 — actionable SMART recommendation; Challenge A alleviation |
+| High performers may mitigate victimisation by "avoiding the spotlight, downplaying accomplishments or behaving in a humble manner" | p.629 | A3 Ch5/Ch6 — boundary condition: TP self-moderation as one alleviation mechanism; relevant to disconfirming evidence node |
+| Moderation confirmed only in Korean (collectivist) sample; caution against inferring too much for individualistic cultures | p.629 | A3 Ch3/Ch5 — limitation to acknowledge; cross-cultural transferability caveat |
+| Envy partially rather than fully mediates: task performance → victimisation path remains significant after envy entered (γ=.24, p<.01) | p.627 | A3 Ch5 — envy is not the sole mechanism; other pathways operate (e.g. status threat, norm enforcement); nuance for discussion |
+
+---
+
+#### Flags
+
+**(a) TPS→KM withdrawal link**
+Kim & Glomb establish the micro-level mechanism (SCT → envy → victimisation) through which TPS-equivalent peer marginalisation occurs. They do NOT address KM outcomes. However, the paper is the closest quantitative empirical anchor for the claim that high performance precipitates peer harming, and it explicitly references TPS/Feather (1994). Critically, the paper establishes envy as *partial* mediator — the direct task performance → victimisation path remains significant — meaning envy alone does not fully explain marginalisation. This is important for our TPS framing: TPS involves additional attribution processes (perceived undeservingness, norm-violation perception) beyond envy per se; Kim & Glomb's envy mechanism is a necessary but not sufficient account of TPS. For the TPS→KM withdrawal argument: the victimisation established here creates the social exclusion context in which KM withdrawal becomes rational — use as the *mechanism preceding withdrawal*, not as evidence of withdrawal itself.
+
+Counterargument/balance note for Enis' critical balance requirement: the paper shows victimisation effects are small-to-moderate (β=.11 in Study 1 — modest effect size); most variance in victimisation resides *within* work groups (95% in Study 1), not between them — suggesting strong situational and individual variation. WGI substantially attenuates the mechanism, meaning peer marginalisation of HPs is far from inevitable. Use to hedge deterministic TPS→KM withdrawal framing.
+
+**(b) Sampling and saturation**
+Study 2 multisource design (supervisor-rated performance, peer-rated envy via sociomatrix, self-reported victimisation) from 3 organisations, 67 work groups. Not directly relevant to justifying our n=6 qualitative sample. However, the multi-org design (3 organisations) is modest and validates cross-org comparative logic at small scale. The study also demonstrates that group-level constructs (WGI) can be meaningfully studied with small group sizes (M=3.67 members). These precedents do not directly defend qualitative saturation but establish that multi-org designs with limited units per source are defensible in this literature.
+
+**(c) Conceptual framework**
+**Direct contribution**: WGI as a group-level moderating condition maps precisely to our "conditions that alleviate TPS" domain (RQ1). The two-mechanism WGI model (prevents envy; deactivates harming) provides theoretically grounded mechanisms for recommendation development. **Framework linkage**: the task performance → envy → victimisation chain is the micro-level process underpinning TPS in our conceptual framework; it connects the TPS conditions domain to team cohesion outcomes. WGI-equivalent constructs (team identity strength, collective vs. individual orientation) should appear in the framework's "conditions" cluster. **For interview design**: WGI-related probes (how cohesive was the team? did the team identify more as "we" or as individual contributors?) are legitimate interview themes for Guide A.
+
+---
+
+#### A1/A3 Mapping
+
+| Location | Use |
+|---|---|
+| A1 §2.1 | TPS empirical bridge: Kim & Glomb explicitly link victimisation of HPs to "tall poppy" syndrome (p.619); one of few peer-reviewed quantitative studies doing so |
+| A1 §2.3 | SCT → envy → victimisation chain; envy as mechanism of peer marginalisation; WGI as alleviating condition — directly supports "conditions that exacerbate or alleviate" framing of RQ1 |
+| A1 §2.5 | Gap statement support: Wang & Noe (2010) [RefRepo] flagged peer-level envy as under-studied KM moderator; Kim & Glomb provide the envy-victimisation empirical anchor that motivates studying what happens after victimisation (i.e., KM withdrawal) |
+| A3 Ch2 §Theme 3 (team dynamics around HPs) | Primary empirical anchor for envy-driven peer marginalisation; cite alongside Breidenthal et al. (2020) and Mao et al. (2021) for the OB empirical cluster |
+| A3 Ch2 §Theme 1 (TPS) | Use p.619 TPS reference to bridge TPS foundational literature to OB empirical research; Kim & Glomb = the empirical operationalisation of Feather's attitudinal TPS construct |
+| A3 Ch5 (Discussion) | WGI as boundary condition — moderates envy mechanism; actionable for recommendations; partial mediation finding adds nuance; cross-cultural caveat limits claim scope |
+| A3 Ch6 (Recommendations) | WGI-building interventions (team-building, inter-team rivalry, group-based identity activities); HP self-moderation (humility, downplaying); both empirically grounded in this paper |
+| A2 slides | ILO cost figures (p.629) for boardroom stakes framing; WGI intervention as a practical slide recommendation |
+
+---
+
+#### Intentional Omissions / Re-upload Triggers
+
+- Full coefficient tables (Tables 1–5) partially extracted; key β/γ values for main hypotheses captured; remaining control variable paths compressed — **re-upload if** A3 requires exact coefficient for a specific model path not listed above
+- Full reference list (60+ entries) not extracted; several cited works (Duffy et al. 2012, Smith & Kim 2007, Lam et al. 2011, Aquino & Thau 2009) are secondary sources that may themselves be useful — **re-upload if** any of these need direct page-level engagement
+- Study 2 work group size constraint (2–10 members) and 80% within-group response rate requirement excluded from main synthesis as methodological detail unlikely needed for A1/A3 drafting — **re-upload if** A3 methodology chapter requires comparison of network-based envy operationalisation
+- Collectivist culture caveat (Korean sample, p.629) noted but not fully elaborated — **re-upload if** A3 Ch5 engages cross-cultural generalisation of WGI moderation
+- Practical implications section (p.629) partially extracted; full detail on personality-based interventions (agency/communion traits, core self-evaluations, psychological capital as boundary conditions) omitted as tangential — **re-upload if** A3 Ch6 recommendations expand to individual-level TP coping strategies
+
+---
+
