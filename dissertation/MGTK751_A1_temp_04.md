@@ -17,7 +17,7 @@
 ---
 
 ### Glossary of Terms
-- KBF: Knowledge-Based Firms (legal, accounting, consulting, IT, R&D, etc.)
+- KBF: Knowledge-Based Firms (legal, accounting, consulting, engineering, IT, R&D, etc.)
 - KBV: Knowledge-Based View (extends Barney's RBV)
 - KM: Knowledge Management
 - TP: Tall Poppy (high performer who stands out and faces social friction/marginalisation)

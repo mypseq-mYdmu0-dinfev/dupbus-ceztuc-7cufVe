@@ -11,7 +11,7 @@ MGTK751 "MBA Project" (aka MP/dissertation) is the capstone module of Culous Yu'
 
 ## Research Topic: **Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)**
 
-TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. consulting, law, A&F, IT, R&D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
+TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
 
 - **Primary mgmt challenge (A):** team cohesion erosion + KM governance failure
 - **Contingency/Discussion angles:** attrition cost (B), systemic cultural conditions (C)

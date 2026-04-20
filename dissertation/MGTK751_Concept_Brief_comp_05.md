@@ -9,7 +9,7 @@
 - TPS — Tall Poppy Syndrome
 - TP — Tall Poppy (= HP; high performer who stands out and faces social friction/marginalisation)
 - TPP — TP's Peers (colleagues who witness/experience TPS dynamics; primary ppts)
-- KBF — Knowledge-Based Firms (law, accounting, consulting, IT, R&D; grounded in KBV literature)
+- KBF — Knowledge-Based Firms (e.g. legal, accounting, consulting, engineering, IT, R&D; grounded in KBV literature)
 - KBV — Knowledge-Based View (extends Barney's RBV; Grant 1996, Kogut & Zander 1992)
 - KM — Knowledge Management
 - RQ — Research Question
