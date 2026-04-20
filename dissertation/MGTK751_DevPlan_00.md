@@ -236,5 +236,5 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 
 ### AD03.5. Standing Verification Items (Carried Forward)
 
-- AD03.5.1. **NVivo restriction (from AD02.5.1):** unverified officially; raise with new DA (Lu Liu) at first meeting
+- AD03.5.1. **NVivo restriction (from AD02.5.1):** unverified officially; raise with new DA (Lu Liu) at first meeting; Culous has zero knowledge in NVivo, only use it if exceptionally helpful/transcends Claude's power/more efficient
 - AD03.5.2. **Marquez, M. (La Trobe):** cited secondhand in Garland (2025) for warmth/competence/deservingness framing of TPS; worth locating peer-reviewed publication if exists; not actioned this chat
