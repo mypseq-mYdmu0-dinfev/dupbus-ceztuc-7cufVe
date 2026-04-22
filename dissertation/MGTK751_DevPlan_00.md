@@ -2,14 +2,14 @@
 **Goal/Output:** A1 Research Proposal (1,500w) submitted to VLE
 **Organisation:** University of Liverpool (UoL)
 **Due:** 202604270000 (UK Time)
-**Target Result:** Full marks A1 submission attracting preferred DA (Enis Elezi) and setting clean foundation for A2/A3
+**Target Result:** Full marks A1 submission attracting preferred DA (Lu Liu #1; see AD04.2) and setting clean foundation for A2/A3
 **Created:** 202504120000 (Chat 03)
 
 ---
 
 # PART A —— PROJECT PHASES
 
-## P1. Literature Research (WCIC)
+## P1. Literature Research (WCIC) *(completed by Chat 05)*
 
 ### P1.1. Search Scope
 Run targeted searches across UoL library databases (e.g. Business Source Complete, Scopus) for each theory/literature cluster below. For each cluster, retrieve `~`3–5 high-quality sources (peer-reviewed; prefer post-2000 unless foundational):
@@ -24,18 +24,18 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 ### P1.2. Source Capture Rules
 - P1.2.1. For each source: author(s), year, title, journal, DOI (for Harvard refs); 2–4-sentence summary of relevance; which A1 section it serves (intro / lit theme 1–5 / methodology justification)
 - P1.2.2. Flag any source that contradicts our framing (e.g. TPS not observed in professional contexts) — these become "gap/tension" material in lit review
-- P1.2.3. Request sample `TheoryRepo.md` from Culous before beginning capture (for structural reference)
+- P1.2.3. Request sample `RefRepo.md` from Culous before beginning capture (for structural reference)
 
-## P2. TheoryRepo.md Creation
-- P2.1. Ask Culous for a sample TheoryRepo.md immediately before starting this phase
+## P2. RefRepo.md Creation *(renamed from TheoryRepo.md; see AD03.2.5; completed by Chat 06)*
+- P2.1. Ask Culous for a sample RefRepo.md immediately before starting this phase
 - P2.2. Structure by lit cluster (matching P1.1.1–7); within each cluster, order sources by relevance to our RQs
 - P2.3. Include: full Harvard citation, relevance summary, which A1 section it informs, any key quotes earmarked for lit review use
 - P2.4. Flag sources applicable to A3 lit review (full chapter) but out of scope for A1 (1,500w constraint) — to be enriched after A1 and before A3
-- P2.5. Save to CP GitHub (Culous to upload); filename: `MGTK751_TheoryRepo_01.md`
+- P2.5. Save to CP GitHub (Culous to upload); filename: `MGTK751_RefRepo_01.md`
 
-## P3. DevPlan.md Update
+## P3. DevPlan.md Update *(completed by Chat 06)*
 - P3.1. Based on literature found in P1, update Concept Brief (comp) if any theoretical framing requires adjustment (e.g. a stronger or more current grounding theory identified)
-- P3.2. Create AD02 addendum (Chat 05) capturing key decisions and any deviations from this plan
+- P3.2. Update PART A and PART B of DevPlan.md if needed based on context changes; create addendum for this phase (done: AD04, Chat 06)
 
 ## P4. A1 Drafting
 *All sections follow the official A1 template. writing.md applies throughout — deliverable quality.*
@@ -50,7 +50,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P4.2.2. Brief contextual background: KBFs' dependence on individual excellence; structural tension between individual and collective
 - P4.2.3. Industry-wide scope rationale (supra-organisational argument, Section 6 of Concept Brief)
 - P4.2.4. State research aim (from §10.1) + objectives (from §10.2, condensed)
-- P4.2.5. State RQ-A and RQ-B
+- P4.2.5. State RQ1 and RQ2
 - P4.2.6. Contribution: academic (management application of TPS in KBFs — identified gap) + practical (mgr-facing implications)
 - P4.2.7. Tone check: MBA framing, not psychological/HR; no "help TPs feel better" language
 
@@ -67,9 +67,9 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P4.4.1. Research philosophy: interpretivist; ontology = constructivist (reality is socially constructed, especially for phenomenon like TPS); epistemology = subjectivist; justification tied to nature of RQs (experience, perception, peer dynamics)
 - P4.4.2. Approach: inductive; qualitative primary; semi-structured interviews
 - P4.4.3. Data collection: justify semi-structured interviews (flexible, allows probing, appropriate for subjective experience data); note MS Teams/Office/Copilot for transcription (only approved tools)
-- P4.4.4. Sampling strategy: purposive sampling; TPPs in KBFs; 1-per-org design (no org consent needed — explain per Enis Wk1–3 confirmation); 6 participants minimum; cross-firm design justification (supra-organisational phenomenon); screening criterion
+- P4.4.4. Sampling strategy: purposive sampling; TPPs in KBFs; 1-per-org design (no org consent needed — explain per Enis Wk1–3 confirmation); 6 participants minimum; cross-firm design justification (supra-organisational phenomenon); screening criterion; ⚠️ Enis' formative feedback: "minimum of six participants feels slightly limited" — explicitly defend depth and saturation in this section; defence may be informed by Enis' reply email (fetch after P3 and before P4 begins)
 - P4.4.5. Data analysis: thematic analysis (Braun & Clarke 2006); begin coding after interview 2–3; stop at saturation; NVivo optional
-- P4.4.6. Reliability and validity: credibility (member checking if triangulation secured), dependability (audit trail), transferability (cross-firm design, rich description), confirmability (reflexivity — Culous' positionality disclosed in methodology)
+- P4.4.6. Trustworthiness (not "reliability and validity" — positivist terms, incompatible with interpretivist design): credibility (member checking if triangulation secured), dependability (audit trail), transferability (cross-firm design, rich description), confirmability (reflexivity — Culous' positionality disclosed in methodology); cite Shenton (2004) as primary source for four criteria — Lincoln & Guba (1985) replaced per AD03.2.3
 - P4.4.7. Feasibility and limitations: Culous' professional network across 10⁺ countries; 1-per-org avoids consent bottleneck; limitation = small Q sample; acknowledged per qualitative norms
 - P4.4.8. Ethics: standard UoL ethics approval process (not LOREC); safe framing at professional observation level; individual consent forms; data stored on UoL OneDrive only; data collection cannot begin before written approval
 
@@ -81,7 +81,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 ### P4.6. References (S5, not in word count)
 - P4.6.1. Harvard referencing style; consistent throughout
 - P4.6.2. All in-text citations must have corresponding entry; all entries must be cited in-text
-- P4.6.3. Only peer-reviewed or authoritative sources; no web-only sources without academic grounding
+- P4.6.3. Only peer-reviewed or authoritative sources; no web-only sources without academic grounding (exception: 3 approved practitioner sources — Billan 2023, Banerjee et al. 2023 [McKinsey internal shorthand], Gallup 2026; see AD03.2.4)
 
 ## P5. QC and Submission
 - P5.1. Compliance pass against A1 template (all required sections present, word counts within range)
@@ -89,7 +89,6 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - P5.3. Hart's quotation rule check; British English check; academic register check (writing.md)
 - P5.4. Confirm word count (excluding milestone plan + references); adjust if over/under
 - P5.5. Submit via VLE by 23:59 UK Mon 27 Apr 2026
-- P5.6. DA Allocation Form also due Mon 13 Apr 2026
 
 ---
 
@@ -106,8 +105,8 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 ## M2. Source Files (always consult)
 - Primary reference for all content decisions: `Concept Brief (comp).md`
 - Module rules and hard constraints: `Official Files (distilled).md`
-- Assessment criteria: `A1-3.md`
-- Literature sources: `TheoryRepo.md` (created in P2; not yet available)
+- Assessment criteria: `A1-3.md` *(fetch only immediately before P4 begins — not at chat start)*
+- Literature sources: `RefRepo.md` (renamed from TheoryRepo.md per AD03.2.5; created and available; see CP_directory.md)
 - Seminar rules and design confirmations: `Seminars (distilled).md`
 
 ## M3. Key Standing Rules for A1
@@ -118,10 +117,11 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - Researcher positionality = methodology section only (minimal intro mention acceptable)
 - KM withdrawal = hypothesis to investigate, NOT assumed finding; frame as "TPS may reshape knowledge-sharing behaviour"
 - 1-per-org design must be explicitly explained in methodology
-- Industry-wide rationale must appear in introduction
+- Cross-firm rationale must appear in introduction ("industry-wide" removed from A1 framing per AD03.2.6)
 - Transcription: MS Teams/Office/Copilot only
 - Data collection: NOT before written ethics approval (must appear in milestone plan)
 - All comms with DA: VLE only (not email/WhatsApp)
+- ⚠️ Alert protocol (per AD01.4.12): flag immediately if any content conflicts with `Lectures (index).md`, `Official Files (distilled).md`, `A1-3.md`, `Potential Advisors.md`, DevPlan.md, or confirmed DA guidance — do not proceed without consulting Culous
 
 ---
 
@@ -238,3 +238,44 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 
 - AD03.5.1. **NVivo restriction (from AD02.5.1):** unverified officially; raise with new DA (Lu Liu) at first meeting; Culous has zero knowledge in NVivo, only use it if exceptionally helpful/transcends Claude's power/more efficient
 - AD03.5.2. **Marquez, M. (La Trobe):** cited secondhand in Garland (2025) for warmth/competence/deservingness framing of TPS; worth locating peer-reviewed publication if exists; not actioned this chat
+
+## AD04. Special Tasks + P3 (Chat 06) —— CoreRef Creation, RefRepo Completion, Concept Brief/DevPlan updates
+
+### AD04.1. What Was Done
+
+- AD04.1.1. **CoreRef.md**: created, audited, and split into Part A (entries 01–07) & Part B (entries 08–13)
+- AD04.1.2. **RefRepo.md**: 13 core ref stubs added; Nonaka (1994) pre-existing entry verified/enriched by web_search; Saunders et al. (2023) official readings section added
+- AD04.1.3. **Concept Brief (comp & concise) updated to v06**: see AD04.5
+- AD04.1.4. **CP_directory.md**: added CoreRef.md (both parts) & RefRepo.md; DevPlan.md restored to mandatory auto-fetch
+- AD04.1.5. **P3 Completed**: DevPlan.md (v06); TheoryRepo → RefRepo throughout; P3.2 corrected; RQ-A/B → RQ1/RQ2; P4.4.4 saturation defence note added; P4.4.6 "Reliability and validity" → "Trustworthiness" + Shenton (2004); P4.6.3 practitioner sources exception noted; M2 A1-3.md fetch timing added; M3 "industry-wide" → "cross-firm"; M3 alert protocol added from AD01.4.12 (previously omitted)
+
+### AD04.2. Key Decisions Made
+
+- AD04.2.1. **Nonaka (1994):** designated RefRepo-only pairing source (not CoreRef entry 14); upgrade to CoreRef deferred to A3 drafting stage if SECI page-level quotes become necessary
+- AD04.2.2. **CoreRef.md standardisation plan** (Gemini pure-text extraction for all 13 sources → GitHub upload): agreed in principle; deferred to post-A1 submission; entries 07 and 08 retain unreliable page numbers until then
+- AD04.2.3. **Full fetch hierarchy:** RefRepo → CoreRef → full pure text, no re-upload
+- AD04.2.4. **DA ranking updated:** Enis removed (module lecturer; unavailable as DA). Lu Liu #1 (PhD in KM; closest match to KBV/KM core), Ron Fisher #2 (OB, HRM; strongest OB match), Hoang #3, Adebanjo #4
+- AD04.2.5. **CoreRef.md access:** consult RefRepo first, unless instructed otherwise
+- AD04.2.6. **"TP dynamics" → "TPS dynamics":** global replacement confirmed, flag if missed out; all future drafting must use "TPS dynamics" without exception
+
+### AD04.3. Deviation from Dev Plan
+
+- AD04.3.1. **CoreRef.md split into two parts** due to file size
+
+### AD04.4. Notes for Future Chats
+
+- AD04.4.1. **6-participant sample size defence:** Enis' formative feedback stated "minimum of six participants feels slightly limited and could be better defended in terms of depth and saturation". This must be addressed in the real A1 draft (P4). Response may be informed by Enis' reply to the strategic steer email sent in Chat 05
+- AD04.4.2. **Gallup (entry 12) unread sections:** pp. 25–78 (all regional sections except AU/NZ) not extracted; re-upload required before A3 Ch5/6 if regional comparative data needed.
+- AD04.4.3. **Saunders et al. (2023) residual value:** low at current stage; primary cite compliance need is §13.6 (thematic analysis) alongside Braun & Clarke in A3 Ch3; §14.10 (reflective writing) needed for A3 Ch6 personal reflection; Ch4 and Ch5 only if DA challenges interpretivist/design choices. Full chapter sub-headings are in Chat 06's context window if ever needed.
+- AD04.4.4. **Concept Brief (comp) §12 DA ranking:** marked as "minor update only — full refresh when official DA matching confirmed." Once official DA is assigned, re-fetch Potential Advisors.md and run a full §12 update at that time.
+
+### AD04.5. Concept Brief (comp) v06 — Changes Applied
+
+For reference (do not re-apply):
+
+| Change | Section | Description |
+|---|---|---|
+| 01 | §3.1 | Added Kim & Glomb (2014) WGI as empirically confirmed alleviation condition; WGI-related Guide A probes noted |
+| 02 | §4 | Added §4.7: Foss et al. (2010) as citable KM governance literature gap |
+| 03 | §5.1 | Added Sung et al. (2024) malicious/benign envy nuance to SCT entry; KM withdrawal framed as conditional not deterministic |
+| 04 + 05 | §12 | DA ranking updated (AD04.2.4) |
