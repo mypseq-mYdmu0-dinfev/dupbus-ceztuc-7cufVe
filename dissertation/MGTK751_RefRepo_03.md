@@ -493,6 +493,31 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
+### Guest, G., Bunce, A. and Johnson, L. (2006) 'How many interviews are enough? An experiment with data saturation and variability', *Field Methods*, 18(1), pp. 59–82. doi: 10.1177/1525822X05279903.
+
+**Full text confirmed**
+
+- Empirical saturation experiment (60 purposive in-depth interviews, two West African countries); operationalises saturation as the point at which new information produces little or no change to the codebook (p. 65); 73% of all codes identified within the first 6 interviews; 92% by interview 12; formal saturation confirmed by interview 12
+- Core applicable finding: "saturation occurred within the first twelve interviews, although basic elements for metathemes were present as early as six interviews" (p. 59); for overarching themes, six interviews may suffice — "enough data existed after six interviews to support these four themes. The basic elements were there." (p. 78)
+- Condition for small-n adequacy: purposive selection criteria + relative participant homogeneity with respect to research domain (pp. 76–77); "if the goal is to describe a shared perception, belief, or behaviour among a relatively homogeneous group, then a sample of twelve will likely be sufficient" (p. 76); consistent with Morse's (1994) ≥6 recommendation for phenomenological studies
+- Saturation framed as "the gold standard by which purposive sample sizes are determined in health science research" (p. 60)
+- Caution: not a blank cheque for small-n — samples must be carefully selected; heterogeneous groups or diffuse domains require more (p. 79)
+- A1 §3.3: primary empirical anchor for n=6 saturation adequacy defence; cite for purposive criteria + homogeneity + small-n combination; A3 Ch3: full methodological saturation citation
+
+---
+
+### Fusch, P.I. and Ness, L.R. (2015) 'Are we there yet? Data saturation in qualitative research', *The Qualitative Report*, 20(9), pp. 1408–1416. doi: 10.46743/2160-3715/2015.2281.
+
+**Full text confirmed** | **Open access** | *The Qualitative Report* — open-access peer-reviewed journal; lower prestige than ABS-ranked outlets; use as supporting definitional cite, not primary anchor
+
+- Definitional synthesis of saturation literature; operationalises: "Data saturation is reached when there is enough information to replicate the study, when the ability to obtain additional new information has been attained, and when further coding is no longer feasible" (pp. 1408, 1413); agreed cross-design principles: "no new data, no new themes, no new coding, and ability to replicate the study" (p. 1409)
+- Key reframe for depth-over-headcount argument: "Data saturation is not about the numbers per se, but about the depth of the data" (p. 1409); "A large sample size does not guarantee one will reach data saturation, nor does a small sample size; rather, it is what constitutes the sample size" (p. 1409); "there is no one-size-fits-all method to reach data saturation" (p. 1409)
+- Cites Guest et al. (2006) finding that saturation "may be attained by as little as six interviews depending on the sample size of the population" (p. 1409)
+- Cross-site triangulation "goes a long way towards ensuring" data richness (p. 1412) — cross-firm design reframeable as a saturation-enabling multi-site strategy
+- A1 §3.3: secondary definitional cite; deploy "not about numbers, about depth" reframe alongside Guest et al.; A3 Ch3: supporting methodology cite
+
+---
+
 ## Official Module Readings
 
 ---

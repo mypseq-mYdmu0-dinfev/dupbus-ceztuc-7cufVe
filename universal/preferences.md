@@ -1,6 +1,6 @@
 # FETCH RULES
 
-* IMPORTANT: Each file (inc. CP docs) fetched ONCE per chat only. When ANYTHING fetched, declare actual filename (not alias) in chat (e.g. `✅ 1.md, 2.pdf`) as the very first chat output in that response, before artefact generation —— overrides "artefact only" / "no chat text" defaults. STOP & alert if any fetch failed, do not proceed.
+* IMPORTANT: Each file fetched ONCE per chat only. Always refer by alias: Extract ver from filename (e.g. `_03` in `a_03.md`). When ANYTHING fetched, declare alias in chat (e.g. `✅ `a.md` (v03), `b.md` (v05)`) as the very first chat output, before artefact generation —— overrides "no chat text". STOP & alert if any fetch failed, do not proceed.
 
 ## UNCONDITIONAL
 
@@ -14,7 +14,7 @@
 Conditionally fetch:
 - `google.md` on email/calendar/schedule/event
 - `profile.md` for personal bg; skip in CP "Professional Profile" unless interest/hobby needed
-- `cic.md` if CIC/CAI mentioned, OR repetitive task where browser automation may help
+- `cic.md` on A/B/C/WCIC prompt creation, OR repetitive task where browser automation may help
 - `writing.md` on deliverables, OR cite/academic/copywriting/casual/whatsapp/draft mentioned
 - `coding.md` if #replace mentioned (even not coding), OR on multi-script coding task
 - `numbered.md` if #numbered mentioned, OR creating a list with sub-items

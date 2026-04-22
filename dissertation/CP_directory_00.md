@@ -1,10 +1,9 @@
 - Fetch at every chat start: ProjectSummary.md, DevPlan.md
+- `request` = MUST request my approval before fetch
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP
   - Description ends w/ period `.`
-  - Declaring/referring: extract ver. from filename (e.g. `_01` in `MGTK751_A1-3_01.md` = v01) & append to alias as `Alias.md (vXX)` e.g. `A1-3.md (v01). No exceptions.
-- `request` = MUST request my approval before fetch
 
 ---
 
