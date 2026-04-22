@@ -27,7 +27,7 @@ RefRepo.md = standard-depth entries + strategic angle, suitable for citation pla
 
 ---
 
-### 08 — Grant, R.M. (1996) 'Toward a knowledge-based theory of the firm', *Strategic Management Journal*, 17, pp. 109–122. DOI: 10.1002/smj.4250171110.
+### 08 — Grant, R.M. (1996) 'Toward a knowledge-based theory of the firm', *Strategic Management Journal*, 17, pp. 109–122. doi: 10.1002/smj.4250171110.
 
 #### Limitation Block
 
@@ -178,7 +178,7 @@ All refs use format: (p.NNN, "[first 10 words of that page in extracted text]")
 
 ---
 
-### 09 — Festinger, L. (1954) 'A theory of social comparison processes', *Human Relations*, 7(2), pp. 117–140. DOI: 10.1177/001872675400700202.
+### 09 — Festinger, L. (1954) 'A theory of social comparison processes', *Human Relations*, 7(2), pp. 117–140. doi: 10.1177/001872675400700202.
 
 #### Limitation Block
 
@@ -308,7 +308,7 @@ Two amplifier factors increase all comparison pressures: group attractiveness (C
 
 ---
 
-### 10 — Cabrera, A. and Cabrera, E.F. (2002) 'Knowledge-sharing dilemmas', *Organization Studies*, 23(5), pp. 687–710. DOI: 10.1177/0170840602235001.
+### 10 — Cabrera, A. and Cabrera, E.F. (2002) 'Knowledge-sharing dilemmas', *Organization Studies*, 23(5), pp. 687–710. doi: 10.1177/0170840602235001.
 
 #### Limitation Block
 
@@ -805,7 +805,7 @@ Best-practice organisations: **79%** manager engagement vs 22% global average.
 
 ---
 
-### 13 — Blau, P.M. (1964) *Exchange and Power in Social Life*. New York: Wiley. DOI: 10.4324/9780203792643.
+### 13 — Blau, P.M. (1964) *Exchange and Power in Social Life*. New York: Wiley. doi: 10.4324/9780203792643.
 
 #### Limitation Block
 

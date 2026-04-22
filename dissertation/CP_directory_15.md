@@ -1,4 +1,4 @@
-- Fetch at every chat start: ProjectSummary.md
+- Fetch at every chat start: ProjectSummary.md, DevPlan.md
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP
@@ -27,7 +27,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Distilled ver of `Official Files (full).md` for quick access.
 
 Official Files (full).md (request)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Official_Files_full_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Official_Files_full_02.md
 Full raw text of all Moodle pages and linked files, inc. module schedule, research proposal template, etc. but exc. lectures, A1-3, and potential advisors.; only needed when distilled ver is insufficient.
 
 A1-3.md
@@ -51,11 +51,11 @@ Distilled seminar transcripts.
 ## Created Files
 
 Concept Brief (comp).md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_05.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_06.md
 Comprehensive internal info; covers all topic decisions, research design, risks, and future phase notes.
 
 Concept Brief (concise).md (request)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_05.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_06.md
 Concise ver for my reading only; never fetch unless explicitly instructed.
 
 A1 (temp).md
@@ -69,3 +69,12 @@ Submitted alongside `A1 (temp).md` in DA Allocation Form; created before A1 DevP
 A1 (temp) feedback.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_feedback_01.md
 Formative feedback on `A1 (temp).md`.
+
+RefRepo.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_02.md
+All usable ref w/ brief notes.
+
+CoreRef.md (request)
+Part A: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_CoreRef_A_03.md
+Part B: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_CoreRef_B_03.md
+In-depth synthesises of 13 core ref.

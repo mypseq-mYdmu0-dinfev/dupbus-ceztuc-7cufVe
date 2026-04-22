@@ -12,6 +12,7 @@
 - KBF — Knowledge-Based Firms (e.g. legal, accounting, consulting, engineering, IT, R&D; grounded in KBV literature)
 - KBV — Knowledge-Based View (extends Barney's RBV; Grant 1996, Kogut & Zander 1992)
 - KM — Knowledge Management
+- KM — Knowledge Sharing
 - RQ — Research Question
 - DA — Dissertation Advisor
 - Q — Qualitative | N — Quantitative
@@ -61,6 +62,7 @@
     - Peer-observable KM behaviour signals (TPP perspective; Guide A): reduced participation in team knowledge exchanges, perceived disengagement from collaborative work, decreased responsiveness to peer knowledge requests, withdrawal from knowledge-sharing activities such as team briefings or documentation
     - Peer-observable cohesion signals (TPP perspective; Guide A): reduced cross-team collaboration, informal exclusion patterns, breakdown in communication, tension or avoidance dynamics
     - Internal-state KM signals (TP perspective only; Guide B): deliberate selectivity in what knowledge is volunteered, internal sense of reciprocity breakdown, conscious deprioritisation of collective over individual contribution — only a TP can reliably report these; TPPs observe downstream behavioural manifestations only
+  - ⚠️ Alleviation condition (Kim & Glomb 2014, JAP): work group identification (WGI) empirically confirmed as a moderator — high WGI attenuates the performance → envy → victimisation chain via two mechanisms: (1) reframes TP performance as group success, preventing envy; (2) expands moral circle, inhibiting harming even when envy occurs; WGI-related probes (e.g. team identity strength; collective vs. individual orientation) are appropriate in Guide A
 - 3.2. **Challenge B — Secondary (TP attrition cost)**
   - Sustained exclusion → TP disengages → leaves → measurable HR/financial cost (recruitment, institutional memory loss, competitive disadvantage)
   - Quantifiable; can be introduced in A2/A3 discussion even if A is primary RQ driver
@@ -82,11 +84,12 @@
 - 4.4. KBF-specific gap: most team dynamics research in tech/corporate; consulting/creative/advisory under-studied
 - 4.5. TPS in professional services = where individual excellence is the core product; tension between individual and collective is structurally inherent → higher stakes than in product firms
 - 4.6. G Scholar search "tall poppy" → 4,800+ results; TPS is not obscure; management application in KBFs IS the gap → no shortage of foundational literature to build from
+- 4.7. KM governance literature gap (Foss, Husted & Michailova 2010, JMS): most KS research focuses on macro-level formal governance; individual-level antecedents and informal peer dynamics as KS drivers are explicitly identified as under-theorised — our study fills precisely this gap; provides a citable articulation from within the KM literature itself of why peer-level TPS dynamics constitute a knowledge governance problem, not merely an interpersonal one
 
 5. **Theoretical Framework Direction**
 - 5.1. Grounding theories (starting points for lit review; final selection after lit review per golden thread rule)
   - KBV (Grant 1996; Kogut & Zander 1992) — why KM loss in KBFs is strategically critical
-  - Social Comparison Theory (Festinger 1954) — explains peer reactions to TP (downward comparison threat)
+  - Social Comparison Theory (Festinger 1954) — explains peer reactions to TP (downward comparison threat); ⚠️ critical nuance (Sung et al. 2024, JBR): upward SCT mostly promotes KS via benign envy; TPS-specific hostile marginalisation more likely to activate malicious envy pathway → KM withdrawal plausible but conditional, not deterministic; feeds Enis' critical balance requirement (A1 formative feedback) — do not frame withdrawal as inevitable
   - Social Exchange Theory — explains KM withdrawal dynamics (reciprocity breakdown)
   - TPS foundational literature (Feather 1989, 1994) — defines phenomenon; provides cultural baseline to contrast w/ KBF management context
   - Organisational Citizenship Behaviour (OCB) literature — relates to voluntary KM sharing behaviour
@@ -158,18 +161,18 @@
 
 | Label | RQ | Stars | Issue |
 |---|---|---|---|
-| RQ-i | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews → feasibility risk; bypasses peer-primary design |
+| RQ-i | How do mgrs in KBFs recognise and respond to team-level tensions arising from TPS dynamics? | ★★★★ | Locks into mgr interviews → feasibility risk; bypasses peer-primary design |
 | RQ-ii | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); sets up impossible conclusion; implies we know what balance means |
-| RQ-iii | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth; risks reading like a news article rather than dissertation |
+| RQ-iii | How do KBF team members and mgrs perceive TPS dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth; risks reading like a news article rather than dissertation |
 | RQ-iv | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ1/2 above |
 | RQ-v | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychological framing; ethics risk; TP-centric rather than mgmt-centric |
 
 10. **Research Aim & Objectives (Draft Direction)**
-- 10.1. Aim draft — "To investigate how TP dynamics in KBFs generate team cohesion and knowledge governance challenges, and to identify management implications for practitioners"
+- 10.1. Aim draft — "To investigate how TPS dynamics in KBFs generate team cohesion and knowledge governance challenges, and to identify management implications for practitioners"
   - Note: final aim must follow lit review; this is a directional placeholder
 - 10.2. Objectives draft (3–4; each must be SMART-ish; all traceable to aim)
   - Obj 1 — To critically review existing literature on TPS, team dynamics, and KM in KBFs to identify theoretical gaps and managerial implications
-  - Obj 2 — To explore how TPPs in KBFs perceive and experience TP dynamics in their professional environment
+  - Obj 2 — To explore how TPPs in KBFs perceive and experience TPS dynamics in their professional environment
   - Obj 3 — To identify the organisational and interpersonal conditions that exacerbate or alleviate TPS in KBF teams
   - Obj 4 — To develop management recommendations that address TPS-related team cohesion and KM governance risks in KBFs
 - 10.3. Golden thread check — Aim → Obj 1–4 → Lit review structured by Obj 1–4 → RQ derived from lit review gaps → interview questions derived from RQ → findings respond to RQ → recommendations address Obj 4 → conclusions return to aim
@@ -193,12 +196,15 @@
 
 | Rank | DA | Key fit | Caveat |
 |---|---|---|---|
-| #1 | Enis Elezi | KM (PhD), org behaviour, teamwork, HRM/HRD, change mgt; knows Culous from seminars | May be overloaded as module lecturer; check availability |
-| #2 | Hoang Thi Phuong Tra | Org behaviour, HRM, sense of responsibility; qual+quant | Less KM-specific |
-| #3 | Dotun Adebanjo | HRM, broad coverage, all methods; 250+ supervisions | More generic; less KM/TPS-specific |
-- 12.1. If N route taken — Adebanjo still #3; Salari less relevant here (his strengths are marketing analytics/consumer behaviour, not KBF/KM dynamics)
-- 12.2. DA role — calibrate RQ wording, scope, methodology nuances; may shift challenge angle slightly per their interest; does NOT redirect topic fundamentals
-- 12.3. Final challenge angle (A vs B vs C) and final RQ wording should be agreed w/ DA before ethics application; proposal can present A as primary w/ B&C noted
+| #1 | Lu Liu | PhD in KM; KM governance, knowledge transfer, sharing conditions; qual methods; supervised since 2010 in UoL online environment — knows platform and constraints | KM research skews toward SMEs and non-profits — context gap only, not a theory gap; closest remaining match to KBV/KM governance core |
+| #2 | Ron Fisher | OB (stress, commitment, disengagement), HRM, business strategy; 150⁺ publications; 40⁺ doctoral/masters supervisions; qual/quant/mixed methods | No KM depth; strongest OB match on list; strong first choice if Liu unavailable |
+| #3 | Hoang Thi Phuong Tra | OB + HRM; qual+quant; recent PhD (2022) — current literature awareness; methodologically safe | No KM or TPS depth; competent but will not add subject-level challenge that elevates from good to excellent |
+| #4 | Dotun Adebanjo | HRM, broad coverage, all methods; 250⁺ supervisions; reliable generalist backstop | Most generic; least KM/TPS-specific |
+
+- 12.1. If N route taken — Adebanjo still #4; Salari excluded (marketing analytics/consumer behaviour; no KBF/KM fit)
+- 12.2. Wildcard #5 if #1–4 all unavailable: Niki Hynes — explicitly enjoys novel/cross-disciplinary topics; project qualifies on both counts; no OB, KM, or HRM depth; not inside top four
+- 12.3. DA role — calibrate RQ wording, scope, methodology nuances; may shift challenge angle slightly per their interest; does NOT redirect topic fundamentals
+- 12.4. Final challenge angle (A vs B vs C) and final RQ wording should be agreed w/ DA before ethics application; proposal can present A as primary w/ B&C noted
 
 13. **Feasibility**
 - 13.1. Participant access — Culous' network: consulting, entertainment (F1, Disney), FMCG (Panadol), hospitality (W Hotels), NGOs, govt bodies across 10⁺ countries; LinkedIn professional network for additional reach
@@ -236,7 +242,7 @@
   - Data collection: NOT before written ethics approval
 - 15.3. **A2 presentation (Wk36)**
   - Audience = senior management of "client" (KBFs industry); mgmt tone
-  - Strong narrative potential: TP dynamics as invisible KM risk; recommendations framed as actionable governance improvements
+  - Strong narrative potential: TPS dynamics as invisible KM risk; recommendations framed as actionable governance improvements
   - Challenge B (attrition cost) is quantifiable for slides; Challenge C (systemic) elevates boardroom relevance
   - Minto Pyramid structure recommended (per W2 + W6 lectures)
 - 15.4. **A3 final project (8k words, Wk36)**

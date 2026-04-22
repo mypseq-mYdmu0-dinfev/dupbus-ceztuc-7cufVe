@@ -7,7 +7,7 @@
 - TPS — Tall Poppy Syndrome
 - TP — Tall Poppy (high performer who stands out and faces social friction; = HP)
 - TPP — TP's Peers (colleagues who experience/witness TPS dynamics; primary ppts)
-- KBF — Knowledge-Based Firms (e.g. legal, accounting, consulting, engineering, IT, R&D; see KBV)
+- KBF — Knowledge-Based Firms (e.g. legal, accounting, consulting, engineering, IT, R&D)
 - KBV — Knowledge-Based View (extends Barney's RBV)
 - KM — Knowledge Management
 - RQ — Research Question
@@ -19,7 +19,7 @@
 
 1. **Topic**
 - 1.1. Title — "Tall Poppy Syndrome as a Management Challenge in Knowledge-Based Firms"
-- 1.2. One-liner — How TP dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
+- 1.2. One-liner — How TPS dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
 - 1.3. Industry-wide scope — TPS is supra-organisational by nature; studying it in one firm risks conflating findings w/ that firm's specific culture/leadership idiosyncrasies, making it impossible to isolate TPS itself; cross-firm sampling = methodological necessity, not a workaround
 - 1.4. Researcher positionality — Culous is a TP; first-hand experience provides reflexivity material for methodology chapter (strength, not conflict)
 
@@ -84,9 +84,9 @@
 
 | Label | RQ | Stars | Note |
 |---|---|---|---|
-| RQ-i | How do mgrs in KBFs recognise and respond to team-level tensions arising from TP dynamics? | ★★★★ | Locks into mgr interviews; feasibility risk |
+| RQ-i | How do mgrs in KBFs recognise and respond to team-level tensions arising from TPS dynamics? | ★★★★ | Locks into mgr interviews; feasibility risk |
 | RQ-ii | What managerial strategies in KBF teams most effectively balance individual TP excellence w/ collective cohesion? | ★★★ | Predetermines answer ("balance"); risky conclusion |
-| RQ-iii | How do KBF team members and mgrs perceive TP dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth for A-grade |
+| RQ-iii | How do KBF team members and mgrs perceive TPS dynamics, and what responses do they employ? | ★★★ | Too descriptive; lacks prescriptive depth for A-grade |
 | RQ-iv | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ1/2 above |
 | RQ-v | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychology-heavy; ethics risk |
 
@@ -94,10 +94,11 @@
 
 | Rank | DA | Key fit | Note |
 |---|---|---|---|
-| #1 | Enis Elezi | KM, org behaviour, teamwork, HRM/HRD, change mgt | Tight fit across all challenge angles; knows Culous |
-| #2 | Hoang Thi Phuong Tra | Org behaviour, HRM, sense of responsibility | Solid alt if Enis overloaded |
-| #3 | Dotun Adebanjo | HRM, broad coverage, all methods | Safe experienced pair of hands |
-- 8.1. If quant angle taken — Nasir Salari may outperform above (marketing analytics/consumer behaviour fit less relevant here; Adebanjo still better)
+| #1 | Lu Liu | PhD in KM; KM governance, knowledge transfer; qual methods | Closest remaining match to KBV/KM core; context gap (SMEs/non-profits) not a theory gap |
+| #2 | Ron Fisher | OB (stress, commitment, disengagement), HRM; 150⁺ publications | Strongest OB match; strong first choice if Liu unavailable |
+| #3 | Hoang Thi Phuong Tra | OB + HRM; qual+quant; recent PhD (2022) | Methodologically safe; no KM/TPS depth |
+| #4 | Dotun Adebanjo | HRM, broad coverage, all methods; 250⁺ supervisions | Reliable generalist backstop |
+- 8.1. If N route taken — Adebanjo still #4; Salari excluded (marketing analytics; no KBF/KM fit)
 - 8.2. DA role — calibrate nuances (RQ wording, scope, methodology); not expected to redirect topic fundamentals; final challenge angle and RQ may shift slightly per DA preference
 
 9. **Risk Register**

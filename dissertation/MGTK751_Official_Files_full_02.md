@@ -561,7 +561,7 @@ Please Note: All grades are subject to change until they have been agreed by the
 
 ---
 
-#### ~~~ START: Reading List.pdf ~~~
+#### ~~~ START: Module Reading List.pdf ~~~
 
 # MGTK751: MBA Project (KOL) —— Reading List
 
@@ -645,7 +645,7 @@ Saunders, M, Lewis, P, & Thornhill, A. (2023) *Research Methods for Business Stu
 
 *Please note: This book can be accessed as a VitalSource eBook directly through the learning platform.*
 
-#### ~~~ END: Reading List.pdf ~~~
+#### ~~~ END: Module Reading List.pdf ~~~
 
 ---
 

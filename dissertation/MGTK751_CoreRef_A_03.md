@@ -27,7 +27,7 @@ RefRepo.md = standard-depth entries + strategic angle, suitable for citation pla
 
 ---
 
-### 01 — Shenton, A.K. (2004) 'Strategies for ensuring trustworthiness in qualitative research projects', *Education for Information*, 22(2004), pp. 63–75. DOI: 10.3233/EFI-2004-22201.
+### 01 — Shenton, A.K. (2004) 'Strategies for ensuring trustworthiness in qualitative research projects', *Education for Information*, 22(2004), pp. 63–75. doi: 10.3233/EFI-2004-22201.
 
 #### Limitation Block
 
@@ -121,7 +121,7 @@ Less relevant provisions (honesty tactics, random sampling, iterative questionin
 
 ---
 
-### 02 — Kim, E. and Glomb, T.M. (2014) 'Victimization of high performers: The roles of envy and work group identification', *Journal of Applied Psychology*, 99(4), pp. 619–634. DOI: 10.1037/a0035789.
+### 02 — Kim, E. and Glomb, T.M. (2014) 'Victimization of high performers: The roles of envy and work group identification', *Journal of Applied Psychology*, 99(4), pp. 619–634. doi: 10.1037/a0035789.
 
 #### Limitation Block
 
@@ -266,7 +266,7 @@ Study 2 multisource design (supervisor-rated performance, peer-rated envy via so
 
 ---
 
-### 03 — Braun, V. and Clarke, V. (2006) 'Using thematic analysis in psychology', *Qualitative Research in Psychology*, 3(2), pp. 77–101. DOI: 10.1191/1478088706qp063oa.
+### 03 — Braun, V. and Clarke, V. (2006) 'Using thematic analysis in psychology', *Qualitative Research in Psychology*, 3(2), pp. 77–101. doi: 10.1191/1478088706qp063oa.
 
 #### Limitation Block
 
@@ -435,7 +435,7 @@ Five named pitfalls; three are relevant operational risks for our study:
 
 ---
 
-### 04 — Kogut, B. and Zander, U. (1992) 'Knowledge of the firm, combinative capabilities, and the replication of technology', *Organization Science*, 3(3), pp. 383–397. DOI: 10.1287/orsc.3.3.383.
+### 04 — Kogut, B. and Zander, U. (1992) 'Knowledge of the firm, combinative capabilities, and the replication of technology', *Organization Science*, 3(3), pp. 383–397. doi: 10.1287/orsc.3.3.383.
 
 #### Limitation Block
 
@@ -651,7 +651,7 @@ The required manager role shift (from monitoring → coaching/counselling/cultur
 
 ---
 
-### 06 — Feather, N.T. (1994) 'Values, national identification and favouritism towards the in-group', *British Journal of Social Psychology*, 33(4), pp. 467–476. DOI: 10.1111/j.2044-8309.1994.tb01042.x.
+### 06 — Feather, N.T. (1994a) 'Values, national identification and favouritism towards the in-group', *British Journal of Social Psychology*, 33(4), pp. 467–476. doi: 10.1111/j.2044-8309.1994.tb01042.x.
 
 #### Limitation Block
 
@@ -660,7 +660,7 @@ Based on: Full text, uploaded PDF (pp. 467–476)
 Scope: A1–3
 Limitation: Student sample (Flinders University undergraduates, 1991); in-group = Australian national identity, not workplace peer group — all moderator findings are in a national-identity context; Cultural Cringe Scale measures product/achievement evaluation bias, not peer marginalisation behaviour; cross-sectional single study; conformity reliability acceptable (α = .70) but security low (α = .60) and tradition very low (α = .57); sample homogeneity likely attenuates correlations. Re-upload not required for A1/A3 purposes; full content extracted.
 
-**Context note:** This is "Feather (1994) BJSP" — the value/conformity basis CoreRef entry. Distinct from: Feather (1994) Zanna chapter = full 73-page TPS synthesis; Feather (1989) [entry 07] = original three-study empirical TPS design.
+**Context note:** This is "Feather (1994a) BJSP" — the value/conformity basis CoreRef entry. Distinct from: Feather (1994b) [RefRepo] Zanna chapter = full 73-page TPS synthesis; Feather (1989) [entry 07] = original three-study empirical TPS design.
 
 ---
 
@@ -748,7 +748,7 @@ Feather attributes attenuation vs. Brown et al.'s higher correlations to homogen
 
 ---
 
-### 07 Feather, N.T. (1989) 'Attitudes towards the high achiever: The fall of the Tall Poppy', *Australian Journal of Psychology*, 41(3), pp. 239–267. DOI: 10.1080/00049538908260088.
+### 07 Feather, N.T. (1989) 'Attitudes towards the high achiever: The fall of the Tall Poppy', *Australian Journal of Psychology*, 41(3), pp. 239–267. doi: 10.1080/00049538908260088.
 
 #### Limitation Block
 

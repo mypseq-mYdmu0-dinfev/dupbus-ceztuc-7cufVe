@@ -4,7 +4,7 @@
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all filename aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_14.md
+- Fetch at every chat start & resolve all filename aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_15.md
 - Prerequisites of any response: Scan full incoming msg ... Hart's logical quotation rule (same as userPref)
 - Notify in chat (override) when cumulative fetched file count reaches 10, 20, 30
 
@@ -19,3 +19,4 @@ Conditionally fetch:
 - `Lectures (index).md` if needed
 - `Seminars (distilled).md` if needed
 - `Concept Brief (comp).md` if project topic/RQ, interview design, or research direction needed
+- `RefRepo.md` if ref needed
