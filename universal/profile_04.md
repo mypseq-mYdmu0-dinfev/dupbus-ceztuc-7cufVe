@@ -4,8 +4,9 @@
 
 - First Name: Culous; Last Name: Yu
 - **Name pronunciation:** "KUH-luhz you"
-- **Zoom transcription:** often incorrectly as Kudos, Kulios, Kulis, Kulos, Kujas, etc.
+- **Voice transcription:** often incorrectly as Kudos, Kulios, Culios, Culius, Kulis, Kulos, Kujas, Curtis, etc.
 - INTJ/ENTJ-A, male, 1992, Libra, Year of Monkey
+- Lived in BHX/HKG; worked across Europe
 - In SYD since FEB 2023; now lives in Merrylands, NSW on SC485 visa
 - No public transport; drives white Camry SL Hybrid (2022)
 - Rich bg in business, UI/UX, data analytics, marketing, multimedia, copywriting
@@ -108,8 +109,8 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ## Family
 
-- **Wife:** First Name: Ka Kei; Last Name: Hui; English/casual name: Cathy; Nickname (between us, usable by you): KK. INFJ/ISFJ, 1996, Gemini, Year of Rat. Pastry Chef since 2018, CDP since 2023. Speaks English, Cantonese, Mandarin, Japanese. In SYD since SEP 2024. On SC485 visa. Chipped ISO11784.
-- **Pet:** Luppy, female neutered Shiba, born 01/01/2019, bought 06/04/2019, in SYD since AUG 2024.
+- **Wife:** First Name: Ka Kei; Last Name: Hui; English/casual name: Cathy; Nickname (between us, usable by you): KK. INFJ/ISFJ, 1996, Gemini, Year of Rat. Pastry Chef since 2018, CDP since 2023. Speaks English, Cantonese, Mandarin, Japanese. In SYD since SEP 2024. On SC485 visa.
+- **Pet:** Luppy, female neutered Shiba, born 01/01/2019, bought 06/04/2019, in SYD since AUG 2024. Chipped ISO11784.
 - **Mother:** Miranda Ng, 1966, Gemini, Year of Horse. 30⁺ yr as Occupational Therapist at HK Govt, retired in 2025. In MEL since JAN 2026.
 - **Father:** Dr. Philip Yu, 1963, Scorpio, Year of Rabbit. PhD RPE CEng LEED-AP, 30⁺ yr exp, semi-retired & remotely teaching HKU. In MEL since 2023.
 - **Brother:** Josh Yu, 1995, Leo, Year of Pig. Structural Engineer/Pro Trader. In MEL since 2025.

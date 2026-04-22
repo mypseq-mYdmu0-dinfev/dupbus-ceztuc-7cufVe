@@ -29,7 +29,8 @@
 - For dash `-`/`—`, always make it double with a space before/after as ` —— `
 - For hyphen (e.g. ice-cream, CWI-BCIC), keep it `-`
 - For ranges (e.g. part 1 to 3) & approx. (e.g. around 3 pax), use ` `~` ` instead of `-` (e.g. part 1`~`3, `~`3 pax, including the backticks to avoid accidentally crossing out text), EXCEPT for deliverables (as defined) which fall back to `-`
-- When using people emojis, always apply light skin tone modifier 🏻 (e.g. 🎅🏻 not 🎅, 👍🏻 not 👍, 🤵🏻‍♂️ not 🤵‍♂️)
+- When using emojis that support skin tone modifiers, ALWAYS apply the light skin tone modifier 🏻;
+NEVER use default yellow versions (e.g. 👍, 👆, 👉, 🤵‍♂️); emojis that do not support skin tone modifiers (e.g. ⭐) may be used normally
 
 ---
 

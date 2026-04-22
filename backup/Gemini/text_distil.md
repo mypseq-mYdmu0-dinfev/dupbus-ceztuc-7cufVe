@@ -74,6 +74,10 @@ Row 2,- Value 2.1
 </csv>
 ```
 
+## Chart Conversion
+
+If input is or has charts, convert to numbers (if interpretable) OR describe its gist efficiently, enclosing with <chart>.
+
 ## Integrated Output
 
 If and only if multiple inputs are received but no explicit requirements from my prompt, you must integrate them as one single response, for example:
@@ -103,7 +107,14 @@ If and only if multiple inputs are received but no explicit requirements from my
 - Always follow these instructions precisely unless I specifically request a different formatting approach.
 - For PDF(s), parse them strictly as images, page by page. Do not extract or interpret the text layer. Interpret only what you visually see on each page.
 - Strictly ensure nothing is missed out. If anything uncertain/difficult (e.g. resolution too low), immediately stop & alert me.
+- Don't add any additional elements (e.g. `[cite_start]` `[cite: {number}]`) unless instructed above (e.g. `<csv>` `<chart>`).
+- If input is PDF and has 3 or more pages, section by page no. (usually on top/bottom left/right corner) then the actual sections, for example:
+```
+# [file_name_or_title]
 
----
+## P.01 (use page no. displayed, not file page no.; file might not start from P.01)
 
-lemme know when you're ready for the first file
+### [section_name]
+
+[content_start]
+```

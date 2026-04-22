@@ -19,7 +19,7 @@
 
 1. **Topic**
 - 1.1. Title — "Tall Poppy Syndrome as a Management Challenge in Knowledge-Based Firms"
-- 1.2. One-liner — How TP dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
+- 1.2. One-liner — How TPS dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
 - 1.3. Industry-wide scope — TPS is supra-organisational by nature; studying it in one firm risks conflating findings w/ that firm's specific culture/leadership idiosyncrasies, making it impossible to isolate TPS itself; cross-firm sampling = methodological necessity, not a workaround
 - 1.4. Researcher positionality — Culous is a TP; first-hand experience provides reflexivity material for methodology chapter (strength, not conflict)
 

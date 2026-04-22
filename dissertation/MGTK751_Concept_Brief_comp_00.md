@@ -21,7 +21,7 @@
 
 1. **Topic Identity**
 - 1.1. Working title — "Tall Poppy Syndrome as a Management Challenge in Knowledge-Based Firms"
-- 1.2. One-liner — how TP dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
+- 1.2. One-liner — how TPS dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
 - 1.3. Domain — org behaviour + KM + leadership/management; NOT HR per se, NOT psychology
 - 1.4. Research classification
   - Philosophy: interpretivist (primary); positivist possible if N route taken

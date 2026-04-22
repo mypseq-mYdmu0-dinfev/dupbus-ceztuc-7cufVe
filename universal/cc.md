@@ -8,7 +8,7 @@ ONLY use:
 - British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`, BUT DON'T CONVERT TO GBP)
 - Metric units only (°C, metre, gram, litre, etc.)
 - AUD (original currency in bracket)
-- Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise
+- Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise (e.g. ✅ `He said "I'm leaving", then left.` ❌ `He said "I'm leaving," then left.`)
 - If a certain term must be in Chinese, put it in HK Traditional Chinese
 
 ---
