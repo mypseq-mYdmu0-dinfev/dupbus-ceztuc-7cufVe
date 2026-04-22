@@ -96,7 +96,7 @@ Less relevant provisions (honesty tactics, random sampling, iterative questionin
 
 **(a) TPS→KM withdrawal:** N/A — methodology paper only.
 
-**(b) Sampling and saturation:** No small-n or saturation content. Transferability section normalises small qualitative samples ("specific to a small number of particular environments and individuals," p. 69) but does not argue for a minimum. For saturation defence → Braun & Clarke (2006) [entry 08].
+**(b) Sampling and saturation:** No small-n or saturation content. Transferability section normalises small qualitative samples ("specific to a small number of particular environments and individuals," p. 69) but does not argue for a minimum. For saturation defence → Braun & Clarke (2006) [entry 03].
 
 **(c) Conceptual framework:** Indirect. Negative case analysis (p. 67) legitimises disconfirming evidence coding discipline. "Progressive subjectivity" and reflective commentary (p. 68) legitimise positionality provisions. Cross-firm site triangulation (p. 66) reframes multi-org sampling as a credibility strategy, not a feasibility workaround.
 
@@ -499,9 +499,9 @@ The strategic link: K&Z establish that the firm's competitive capability resides
 
 This reframe elevates TPS from a "people not getting along" problem to a strategic capability-destruction mechanism — the boardroom-level framing required by the MBA management challenge angle.
 
-Pairing with Nonaka (1994): K&Z provide the *static taxonomy* (what knowledge is; how it is held) and the *strategic stakes* (why social knowledge loss matters to the firm's competitive position). Nonaka provides the *dynamic creation model* (SECI: how knowledge moves between tacit and explicit, individual and collective). Together they constitute the full KM theoretical scaffold for A3 Ch2.
+Pairing with Nonaka (1994, RefRepo): K&Z provide the *static taxonomy* (what knowledge is; how it is held) and the *strategic stakes* (why social knowledge loss matters to the firm's competitive position). Nonaka provides the *dynamic creation model* (SECI: how knowledge moves between tacit and explicit, individual and collective). Together they constitute the full KM theoretical scaffold for A3 Ch2.
 
-Pairing with Grant (1996): Grant argues knowledge is the primary source of sustained competitive advantage. K&Z explains *why*: because it is socially embedded, hard to imitate, and dependent on organising principles that competitors cannot easily replicate. TPS attacks the social embeddedness that makes knowledge competitively inert — turning an asset into a liability.
+Pairing with Grant (1996; entry 08): Grant argues knowledge is the primary source of sustained competitive advantage. K&Z explains *why*: because it is socially embedded, hard to imitate, and dependent on organising principles that competitors cannot easily replicate. TPS attacks the social embeddedness that makes knowledge competitively inert — turning an asset into a liability.
 
 ---
 
@@ -660,7 +660,7 @@ Based on: Full text, uploaded PDF (pp. 467–476)
 Scope: A1–3
 Limitation: Student sample (Flinders University undergraduates, 1991); in-group = Australian national identity, not workplace peer group — all moderator findings are in a national-identity context; Cultural Cringe Scale measures product/achievement evaluation bias, not peer marginalisation behaviour; cross-sectional single study; conformity reliability acceptable (α = .70) but security low (α = .60) and tradition very low (α = .57); sample homogeneity likely attenuates correlations. Re-upload not required for A1/A3 purposes; full content extracted.
 
-**Context note:** This is "Feather (1994) BJSP" — the value/conformity basis CoreRef entry. Distinct from: Feather (1994) Zanna chapter [CoreRef entry TBD] = full 73-page TPS synthesis; Feather (1989) [CoreRef entry TBD] = original three-study empirical TPS design.
+**Context note:** This is "Feather (1994) BJSP" — the value/conformity basis CoreRef entry. Distinct from: Feather (1994) Zanna chapter = full 73-page TPS synthesis; Feather (1989) [entry 07] = original three-study empirical TPS design.
 
 ---
 
@@ -731,7 +731,7 @@ Feather attributes attenuation vs. Brown et al.'s higher correlations to homogen
 |---|---|
 | A1 §2.1 | Value underpinnings of TPS: conformity and security values as moderators; conditionality of TPS (not universal, value-dependent) |
 | A1 §2.5 gap statement | KBF-specific value cultures (conformity-heavy vs. autonomy-oriented) may differentially amplify or suppress TPS; no existing research tests this in KBF professional settings |
-| A3 Ch2 — TPS foundations | Feather's value-moderation mechanism alongside Feather (1989) [entry TBD] for the full value-TPS theoretical chain |
+| A3 Ch2 — TPS foundations | Feather's value-moderation mechanism alongside Feather (1989) [entry 07] for the full value-TPS theoretical chain |
 | A3 Ch2 — Conditions moderating TPS | Conformity/security value types as proxies for organisational culture; attenuation condition: individualistic-autonomous cultures suppress in-group bias regardless of identification strength |
 | A3 Ch5 discussion | Benevolence values (p. 474 note on interpersonal settings) — potentially more active in team-level vs. national-level in-group contexts; KBF teams as high-interpersonal-salience settings may activate this suppressed moderator |
 | A3 Ch6 recommendations | Value culture audit implication: KBFs can assess conformity vs. autonomy value orientation as a TPS risk indicator; practical recommendation grounded in Feather's moderator logic |

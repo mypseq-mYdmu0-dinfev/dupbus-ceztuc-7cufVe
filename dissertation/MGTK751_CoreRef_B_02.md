@@ -107,7 +107,7 @@ For KBFs specifically: the knowledge being integrated is expert tacit knowledge 
 | Limitation | Grant's framing | Implication for our use |
 |---|---|---|
 | KBV "is not, as yet, a theory" | "Insufficient consensus as to its precepts or purpose... for it to be recognised as a 'theory'" (P.110, "The emerging 'knowledge-based view' is not, as yet,") | Cite as a view/approach, not a theory; "KBV framework" or "knowledge-based perspective" in A1/A3 |
-| Knowledge application emphasis at expense of knowledge creation | "The focus upon knowledge application and disregard for knowledge creation is a more serious limitation. Clearly, a more comprehensive knowledge-based theory of the firm will embrace knowledge creation and application." (pre-P.120 conclusion) | Pair with Nonaka (1994) [entry 02] to cover creation; Grant covers application — the two complement |
+| Knowledge application emphasis at expense of knowledge creation | "The focus upon knowledge application and disregard for knowledge creation is a more serious limitation. Clearly, a more comprehensive knowledge-based theory of the firm will embrace knowledge creation and application." (pre-P.120 conclusion) | Pair with Nonaka (1994) [RefRepo] to cover creation; Grant covers application — the two complement |
 | Theoretical/conceptual paper | No empirical data; framework derived from logic and existing literature synthesis | Treat as theoretical foundation only; do not cite as empirical evidence |
 | Minimal attention to knowledge creation processes | Grant explicitly notes this as the primary gap he does not fill | Relevant when citing for KM creation mechanisms — supplement with Nonaka; Grant = application/integration; Nonaka = creation/SECI |
 
@@ -149,7 +149,7 @@ All refs use format: (p.NNN, "[first 10 words of that page in extracted text]")
 
 **(b) Sampling and saturation:** N/A — theoretical/conceptual paper; no empirical design.
 
-**(c) Conceptual framework:** Grant = primary KBV anchor. The framework should show: KBF structural dependence on voluntary knowledge integration (Grant) → integration requires specific social conditions (common knowledge, mutual recognition, routines) → TPS disrupts these conditions (study's empirical claim) → KM governance failure results (Challenge A). Grant also provides the vocabulary for the framework: "knowledge integration," "knowledge application," "common knowledge," "mutual recognition of knowledge domains" — these should appear in the framework as named constructs, not paraphrases. Pair with Nonaka (1994) [entry 02] for the creation/SECI dimension; Grant covers the integration/application side.
+**(c) Conceptual framework:** Grant = primary KBV anchor. The framework should show: KBF structural dependence on voluntary knowledge integration (Grant) → integration requires specific social conditions (common knowledge, mutual recognition, routines) → TPS disrupts these conditions (study's empirical claim) → KM governance failure results (Challenge A). Grant also provides the vocabulary for the framework: "knowledge integration," "knowledge application," "common knowledge," "mutual recognition of knowledge domains" — these should appear in the framework as named constructs, not paraphrases. Pair with Nonaka (1994) [RefRepo] for the creation/SECI dimension; Grant covers the integration/application side.
 
 ---
 
@@ -267,7 +267,7 @@ Two amplifier factors increase all comparison pressures: group attractiveness (C
 #### Flags
 
 **(a) TPS→KM withdrawal link:** Festinger does not address KM directly. Critical bridging logic for A3 Ch2/Ch5:
-- D₃ (cessation of comparison via group redefinition) = social exclusion of TP → disrupts relational reciprocity → SET-grounded withdrawal mechanism (bridge to Blau 1964 [CoreRef entry TBC])
+- D₃ (cessation of comparison via group redefinition) = social exclusion of TP → disrupts relational reciprocity → SET-grounded withdrawal mechanism (bridge to Blau 1964 [entry 13])
 - Hypothesis VI derogation = psychological precondition for TP's recalibration of knowledge contribution (hostile reception → reduced reciprocity perception → withdrawal; bridge to Cabrera & Cabrera 2002)
 - p. 124 boundary condition (TP may improve others rather than withdraw) = SCT-grounded mechanism for continued/increased sharing despite TPS conditions — directly feeds disconfirming evidence node
 - Corollary VI A asymmetry (abilities cessation less routinely hostile than opinions) = potential moderator on TPS→derogation strength; warrants acknowledgement in A3 Ch5 critical balance section
@@ -645,78 +645,119 @@ Report identifies: leadership modelling as primary lever; zero-tolerance policy 
 
 #### Limitation Block
 
-Synthesised: 20260421
-Based on: Partial text — Gemini extraction of pp. 1–9 only (of 84 total); images/charts reconstructed as CSV by Gemini; remaining 75 pages (Global Insights, all Regional Insights, Appendices) not extracted
+Synthesised: 20260422
+Based on: Gemini pure-text extraction — pp. 1–24 (CEO, Engagement Slump, Manager Perk, Future of Jobs, Managing Emotional Workplace, Global Insights full metric tables) + pp. 79–84 (Australia and New Zealand regional section) + pp. 245–246 (Appendix 2: Methodology); all chart/table data reconstructed from CSV blocks
 Scope: A1–3
-Limitation: **Critical** — pp. 10–84 unread; sections on "Future of Jobs," "Managing the Emotional Workplace," all regional breakdowns (incl. Australia/NZ most relevant to TPS cultural context), and full methodology (Appendix 2) are absent. All statistics below sourced from pp. 1–9 only. **Re-upload full extraction if** A3 Ch5/Ch6 requires regional data, sector-specific engagement breakdowns, or any stat beyond pp. 1–9. Methodology appendix (p. 245) not reviewed — sample size and country coverage unconfirmed from this extraction; treat all figures as directionally reliable pending full read.
+Limitation: pp. 25–78 (all regional sections except AU/NZ) and Appendix 3 (pp. 247+) unread — re-upload if any non-AU/NZ regional data or Q12 item wording needed. Country-level data (Appendix 1, pp. 85–244) intentionally excluded as data tables not relevant to A1–3 argumentation. All statistics confirmed from Gemini CSV extraction; chart data directionally reliable.
+
+**Context note:** One of 3 adopted practitioner sources (alongside McKinsey (2023) and Billan (2023)). Non-peer-reviewed; cite with explicit practitioner-source caveat in A1/A3. Global-level engagement data usable for boardroom-stakes framing; AU/NZ section strategically significant given TPS's AU/NZ cultural origins.
 
 ---
 
 #### Core Argument
 
-Global employee engagement is declining — 20% globally in 2025, its lowest since 2020 and the first two-consecutive-year drop on record — costing approximately US$10 trillion in lost productivity annually (9% of global GDP). Manager engagement has fallen faster and further than non-manager engagement, dropping nine points since 2022 to 22% globally. Gallup frames this as an AI-era governance crisis: technology investments are not yielding macro-level productivity gains because the human layer — specifically, managerial quality and team engagement — remains broken. The report's central prescription is that effective people management, not technology alone, determines whether organisations realise productivity gains.
+Global employee engagement has declined for a second consecutive year to 20% — the first two-year consecutive drop in Gallup's measurement history — costing approximately US$10 trillion in lost productivity (9% of global GDP) in 2025. The decline is disproportionately driven by **manager engagement collapse**: manager engagement fell nine points since 2022 to 22%, effectively eliminating what Gallup calls the historical "engagement premium" that managers held over individual contributors. Best-practice organisations, by contrast, achieve 79% manager engagement — nearly four times the global average — demonstrating that disengagement is structurally preventable, not inevitable.
 
-For our research: Gallup's engagement data provides a macro-level empirical anchor for the boardroom-stakes framing of Challenge A (team cohesion erosion) and Challenge B (disengagement cost). The manager engagement decline specifically supports the argument that managerial failures to address peer dynamics (including TPS) have organisation-wide cost consequences that are now quantifiable at the global scale.
+The report's central framing for 2026 is the AI productivity paradox: despite ~US$40 billion in enterprise AI investment, 95% of organisations show zero measurable profit impact (MIT) and 89% of global executives report no labour productivity effect (NBER). Gallup's explanation: the bottleneck is not the technology but **manager quality**. Manager-led AI adoption is the second-strongest driver of employee AI use (after technical integration); employees whose manager actively champions AI are 8.7× more likely to report that AI transformed how work gets done. Management effectiveness is therefore the determinant of whether technological investment yields organisational returns.
+
+The emotional workplace section (pp. 13–15) surfaces a structural paradox: leaders and managers report higher engagement and life satisfaction than individual contributors, but simultaneously experience substantially more daily stress (+7 pts), anger (+12), sadness (+11), and loneliness (+10). Engaged managers partially buffer this effect — they report lower negative emotions than the average leader and are 14 points more likely to be thriving — but disengaged managers accumulate both the emotional costs of leadership and the productivity costs of disengagement simultaneously.
+
+**AU/NZ-specific pattern (pp. 79–84):** AU/NZ engagement (21%) has converged to the global average after historically sitting above it. Despite this, AU/NZ retains the world's second-highest thriving rate (55%) and second-lowest anger expression (14% vs global 22%). Combined with the second-highest stress rate (49%), the AU/NZ profile is: high life satisfaction, high workplace stress, markedly low overt anger. This pattern is analytically consistent with TPS's characteristic indirect/passive expression (social exclusion, downplaying, gossip) rather than open conflict — experienced as stress rather than expressed as anger. Job market optimism fell −12 points in AU/NZ, the steepest single-region drop globally, suggesting structural labour market anxiety beneath high wellbeing scores.
+
+For this project: Gallup provides macro-level empirical authority for Challenge A (team engagement erosion) and Challenge B (disengagement cost) boardroom-stakes framing. The manager engagement collapse specifically supports the argument that management failures — including failure to intervene on TPS dynamics — have quantifiable global-scale consequences. The AU/NZ pattern provides cultural-context texture for TPS's origins.
 
 ---
 
-#### Headline Statistics and Practitioner Claims
+#### Key Statistics Reference
 
-**Engagement levels (pp. 5–6)**
-- Global engagement 2025: **20%** (down from 23% peak in 2022; margin of error <±0.1 pct. pt.)
-- First two-consecutive-year engagement decline in Gallup's measurement history
-- Each 1 pct. pt. = approximately 21 million employees globally
-- 2025 engagement still 8 pct. pts. above 2009 baseline (12%), and 5 pts. above a decade ago
-- South Asia: largest single-region drop (−5 pts.)
-- No region of the world increased engagement in 2025
+**Global engagement (p. 6)**
 
-**Productivity and economic cost (p. 6)**
-- Low engagement cost the world economy approximately **US$10 trillion** in lost productivity in the past year = **9% of global GDP**
-- Gallup meta-analyses: consistent strong relationship between engagement and business-unit productivity, profitability, and sales
+| Metric | Value |
+|---|---|
+| Global engagement 2025 | 20% (−1 from 2024) |
+| Peak engagement (2022–2023) | 23% |
+| First two-consecutive-year drop | Yes |
+| Economic cost of low engagement | ~US$10 trillion / 9% of global GDP |
+| South Asia drop | −5 pts (largest single-region decline) |
+| Regions that increased engagement | None |
 
-**Manager engagement (pp. 7–8)**
-- Manager engagement 2022–2025: **31% → 30% → 27% → 22%** (−9 pts. total; −5 pts. in 2024→2025 alone)
-- Non-manager engagement 2022–2025: **20% → 19% → 18% → 18%** (slight rebound in 2025)
-- Managers historically enjoyed an "engagement premium"; that premium has now effectively disappeared
-- Best-practice organisations: **79% manager engagement** — nearly quadruple the global average of 22%
-- U.S. manager engagement 2025: **36%** (vs. 22% global)
+**Manager vs non-manager engagement (pp. 7–8)**
 
-**AI productivity disconnect (pp. 4, 6)**
-- MIT study cited: despite ~US$40 billion enterprise AI investment, 95% of organisations saw zero measurable profit impact
-- NBER survey (n≈6,000 global executives): 89% report no AI impact on labour productivity over past 3 years; expect 1.4% boost over next 3 years
-- Gallup own data: only **12%** of employees in AI-implementing organisations strongly agree AI has transformed how work gets done
-- U.S. workers: 65% say AI had "somewhat"/"extremely" positive personal productivity impact — but macro gains remain elusive
-- Top driver of frequent AI use (after technical integration): **manager-led AI adoption**
-- Employees whose manager actively supports AI use are 8.7× more likely to agree AI transformed their org; 7.4× more likely to agree AI enables them to do what they do best
+| Year | Manager | Non-manager |
+|---|---|---|
+| 2022 | 31% | 20% |
+| 2023 | 30% | 19% |
+| 2024 | 27% | 18% |
+| 2025 | 22% | 18% |
 
-**Manager as bottleneck (p. 9)**
-- Fewer than one-third of U.S. employees in AI-implementing orgs strongly agree their manager actively supports the technology
-- Germany: 21% of employees in AI-using orgs say their manager actively supports use
-- Gallup: few managers have natural management talent; many have not received training needed to coach teams toward high performance
+Best-practice organisations: **79%** manager engagement vs 22% global average.
+
+**Engagement by work location (p. 18)**
+
+| Work location | % Engaged |
+|---|---|
+| Exclusively remote | 30% |
+| Hybrid | 25% |
+| On-site, remote-capable | 24% |
+| On-site, non-remote-capable | 17% |
+
+**Emotional workplace — by leadership level (p. 15)**
+
+| Metric | Leaders | Managers | Project managers | ICs |
+|---|---|---|---|---|
+| % Engaged | 26% | 24% | 19% | 19% |
+| % Thriving | 43% | 40% | 39% | 32% |
+| Daily stress | 46% | 45% | 42% | 39% |
+| Daily anger | 33% | 24% | 21% | 21% |
+| Daily sadness | 34% | 23% | 22% | 17% |
+| Daily loneliness | 31% | 21% | 21% | 20% |
+
+**AU/NZ vs Global (pp. 79–84)**
+
+| Metric | AU/NZ | Global | Delta |
+|---|---|---|---|
+| Engagement | 21% | 20% | +1 |
+| Thriving | 55% | 34% | +21 |
+| Daily stress | 49% | 40% | +9 |
+| Daily anger | 14% | 22% | −8 |
+| Daily sadness | 21% | 23% | −2 |
+| Daily loneliness | 14% | 22% | −8 |
+| Job market (good time) | 60% | 52% | +8 (−12 YoY) |
+
+**Methodology (pp. 245–246)**
+
+| Parameter | Detail |
+|---|---|
+| Survey instrument | Gallup World Poll (since 2005); annually, face-to-face or telephone |
+| Countries covered | 160+ countries and areas |
+| Total respondents 2009–2025 | 5,754,327 total; 2,616,488 employed |
+| 2025 respondents | 263,810 total; 141,444 employed |
+| Sample design | Probability-based, nationally representative; exceptions noted |
+| Margin of error (global) | ±0.05–0.08 pct. pts. at 95% CI |
+| Margin of error (regional) | ±0.26–2.37 pct. pts. at 95% CI |
+| Regional data basis (from 2025) | Three-year rolling average |
+| Target population | Civilian, non-institutionalised, aged 15+, employed any hours |
 
 ---
 
 #### Page-Numbered Passages Earmarked
 
-| Stat / Claim | Page | Use |
+| Passage | Page | Use |
 |---|---|---|
-| Global engagement 20%; first two-consecutive-year drop | p. 6 | A1 §1 (intro, boardroom stakes); A3 Ch1/Ch2 background |
-| Low engagement cost world economy ~US$10 trillion / 9% of GDP | p. 6 | A1 §1; A3 Ch1 — primary boardroom-stakes quantification for Challenge B |
-| Manager engagement: 31% → 22% since 2022; "engagement premium" effectively gone | pp. 7–8 | A3 Ch5 discussion — manager-level disengagement as compounding risk; supports Challenge A via management failure angle |
-| Best-practice orgs: 79% manager engagement vs. 22% global | p. 8 | A3 Ch6 recommendations — best-practice gap as managerial intervention opportunity |
-| 89% of executives report no AI impact on labour productivity (NBER) | p. 6 | Contextual; A3 Ch1/Ch2 if AI-era relevance flagged |
-| Manager-led adoption = top driver of AI use; employees 8.7× more likely to agree AI transformed org | p. 9 | Contextual; A3 Ch2 if managerial role in knowledge environment included |
-| "Disengagement will erode [productivity] gains, and active disengagement could create serious security risks" | p. 6 | A1 §1 — practitioner framing of disengagement as strategic risk; supports boardroom elevation of Challenge A |
-
----
-
-#### Flags
-
-**(a) TPS→KM withdrawal link:** Not directly addressed in pp. 1–9. Engagement decline data is an indirect aggregate-level proxy — mass disengagement encompasses but does not isolate TPS-driven withdrawal. The $10 trillion figure encompasses all disengagement causes, not TPS specifically — do not overstate the direct link; use as macro-level context only. Pp. 10–84 (unread) may contain team-level dynamics data more directly relevant — re-upload trigger if needed.
-
-**(b) Sampling and saturation:** N/A — industry report. Gallup's own methodology in Appendix 2 (p. 245, unread) not reviewed. Do not cite Gallup's sample for our saturation defence.
-
-**(c) Conceptual framework:** Indirect. Manager engagement decline supports the "managerial failure to intervene" node that could appear in the framework's conditions layer (Challenge A). The engagement-performance relationship (Gallup meta-analyses, p. 6) reinforces the KBF-specific claim that team cohesion disruption has measurable output consequences — consistent with conceptual framework linkage between TPS conditions → cohesion erosion → performance decline.
+| "if the technology isn't the problem, what is? Gallup's data points to an answer the corporate world has largely ignored: the manager" | p. 4 | A1 §1; A3 Ch1 — management effectiveness framing; elevates managerial intervention as the bottleneck, not technology |
+| Global engagement at 20%; first two-consecutive-year drop; South Asia −5 pts; no region increased | p. 6 | A1 §1; A3 Ch1/Ch2 — engagement decline as context for Challenge A/B boardroom framing |
+| "Last year, low engagement cost the world economy approximately $10 trillion in lost productivity, or 9% of GDP" | p. 6 | A1 §1; A3 Ch1 — primary boardroom-stakes quantification for Challenge B; most citable figure |
+| "Disengagement will erode those gains, and active disengagement could create serious security risks" | p. 6 | A1 §1 — practitioner framing of disengagement as strategic risk beyond productivity |
+| Manager engagement 31% → 22% (2022–2025); non-manager 20% → 18%; "engagement premium" effectively gone | pp. 7–8 | A3 Ch5/Ch6 — manager disengagement as compounding TPS risk; managers less equipped to intervene |
+| Best-practice organisations: 79% manager engagement vs 22% global — "nearly quadruple the global average" | p. 8 | A3 Ch6 — best-practice benchmark for SMART recommendations; intervention is achievable |
+| Manager-led AI adoption: employees whose manager actively supports AI are 8.7× more likely to agree AI transformed org; 7.4× more likely to agree AI enables them to do what they do best | p. 9 | A3 Ch5 — managerial role as the multiplier of organisational returns; analogue for TPS intervention leverage |
+| Leaders report daily stress +7, anger +12, sadness +11, loneliness +10 vs individual contributors; engaged managers report lower negative emotions than average leader and are 14 pts more likely thriving | p. 15 | A3 Ch5 — emotional cost of leadership without engagement; supports managerial intervention urgency for Challenge A |
+| Engagement by work location: exclusively remote 30%, hybrid 25%, on-site non-remote-capable 17% | p. 18 | A3 Ch2/Ch5 — remote/hybrid workers more engaged; relevant if KBF sample spans work modes |
+| AU/NZ engagement 21% (−2), thriving 55% (2nd globally, −1), stress 49% (2nd highest), anger 14% (2nd lowest), loneliness 14% (2nd lowest), job market 60% (−12, largest regional drop) | pp. 79, 80, 81, 82, 84 | A3 Ch2/Ch5 — AU/NZ cultural baseline for TPS origins: high thriving, high stress, markedly low overt anger — pattern consistent with TPS's indirect/passive expression rather than open conflict |
+| AU/NZ engagement by gender: female 25%, male 18%; by level: manager 27%, IC 23% | p. 80 | A3 Ch2/Ch5 — AU/NZ engagement gender gap notable; manager vs IC gap (4 pts) smaller than global norm |
+| AU/NZ job market: 60% good time (−12 YoY); historically highest globally, now second; context note (p. 11): AU/NZ "fell to second place behind Southeast Asia" | pp. 84, 11 | A3 Ch5 — labour market anxiety in AU/NZ despite high thriving; structural precarity may amplify TPS risk (job insecurity → higher sensitivity to status threat) |
+| Methodology: 263,810 respondents (141,444 employed) in 2025; 160+ countries; probability-based nationally representative samples; ±0.05–0.08 pct. pt. margin of error (global) | pp. 245–246 | A3 Ch3 — cite if Gallup methodology challenged; confirms statistical rigour at global level |
+| Regional data from 2025 onwards based on three-year rolling average (not single-year) | p. 245 | A3 Ch3 — methodological note when citing regional figures; explains why AU/NZ figures differ from year-over-year chart readings |
 
 ---
 
@@ -724,20 +765,43 @@ For our research: Gallup's engagement data provides a macro-level empirical anch
 
 | Location | Use |
 |---|---|
-| A1 §1 (Introduction) | Boardroom-stakes framing: US$10 trillion engagement cost + global engagement at 20%; elevates TPS-driven disengagement from interpersonal to economic-governance concern |
-| A1 §2 (Literature Review) | Practitioner context for Challenge A/B; cite as industry evidence alongside McKinsey (2023) and Billan (2023) for tri-source practitioner framing |
-| A3 Ch1 (Introduction) | Macro context for team engagement crisis; manager engagement premium collapse supports urgency framing |
-| A3 Ch5 (Discussion) | Manager disengagement as compounding factor — TPS operating in managerially disengaged teams is doubly risky; no intervention capacity |
-| A3 Ch6 (Recommendations) | Best-practice gap (22% vs. 79%) as intervention benchmark; SMART recommendations for managerial training to address TPS framed against this evidence |
+| A1 §1 — Introduction | US$10 trillion / 9% GDP (p. 6); manager engagement collapse (pp. 7–8); "the problem is the manager" framing (p. 4) — boardroom-stakes elevation of Challenge A/B |
+| A1 §2 — Literature Review | Contextual practitioner evidence alongside McKinsey (2023) and Billan (2023); cite for engagement-as-strategic-concern framing only; do not use for theoretical grounding |
+| A3 Ch1 — Introduction | Same as A1 §1 with greater deployment; add disengagement-as-security-risk quote (p. 6) |
+| A3 Ch2 — KBF context | AU/NZ stress/anger pattern (pp. 79–84) as cultural baseline for TPS's home context; manager engagement data as macro-level evidence that managerial failure is a current global crisis |
+| A3 Ch5 — Discussion | Manager engagement collapse → reduced TPS intervention capacity; emotional cost of leadership data (p. 15); AU/NZ job market anxiety as structural TPS amplifier; best-practice gap (22% vs 79%) as evidence that the problem is solvable |
+| A3 Ch6 — Recommendations | Best-practice benchmark (79%, p. 8) as SMART recommendation anchor; manager coaching and development framed against the 8.7× AI multiplier analogue (p. 9); disengagement cost as ROI framing for intervention investment |
+| A2 — Boardroom presentation | US$10 trillion / 9% GDP; manager engagement collapse chart; best-practice 79% benchmark — all high-impact slide data |
 
 ---
 
 #### Intentional Omissions / Re-upload Triggers
 
-- **Pp. 10–84 entirely unread** — includes "Future of Jobs" (p. 10), "Managing the Emotional Workplace" (p. 13), Global Insights (p. 16), and all regional data; Australia/NZ section (p. 79) is especially relevant given TPS's AU/NZ cultural origins — **re-upload full extraction for A3 Ch2/Ch5 if regional or sector-specific data needed**
-- Appendix 2 (Methodology, p. 245) not read — country coverage, sample design, and weighting not confirmed — **re-upload if citing Gallup's methodology in A3 Ch3**
-- AI-section data (pp. 9) extracted but noted as peripheral to TPS focus — not mapped to A1 or A3 unless AI-era relevance is introduced as a framing layer
-- Chart data reconstructed by Gemini as CSV; treat as directionally reliable but not verbatim-verifiable without original PDF
+- All regional sections except AU/NZ (pp. 25–78): US/Canada, Latin America, Europe, Post-Soviet Eurasia, MENA, Sub-Saharan Africa, East Asia, South Asia, Southeast Asia — **re-upload if** A3 Ch5 requires cross-regional comparative engagement or wellbeing data
+- Appendix 1 (pp. 85–244): country-level data tables — **re-upload not anticipated**; country granularity not required for A1–3 argumentation
+- Appendix 3 (pp. 247+): support information including Q12 item wording — **re-upload if** A3 Ch3 requires verbatim Q12 items for comparison with our own interview guide design
+- Future of Jobs section (pp. 10–12): job market perception and AI-related job loss fear data extracted but not mapped to A1/A3 — peripheral to TPS framing; **re-upload not required** unless A3 introduces labour market insecurity as a TPS-amplifying structural condition
+- Managing the Emotional Workplace (pp. 13–15): extracted and mapped; detailed wellbeing trend charts (thriving 2009–2025) not individually extracted beyond summary values — **re-upload not required** for standard A1/A3 use
+- Global daily emotion trend charts (pp. 20–23: stress, anger, sadness, loneliness annual trends) extracted as summary values only — **re-upload if** A3 Ch2 requires precise year-by-year trend argumentation for negative emotion trajectories
+- Scope caveats to apply on every cite: non-peer-reviewed; practitioner/advocacy report; global aggregate data not KBF-specific; Gallup is a commercial research firm with commercial incentives; all regional figures based on three-year rolling average from 2025 onwards
+
+---
+
+#### Excluded Chapters — Titles and Abstracts (One-Sentence Each)
+
+| Title | Page |
+|---|---|
+| United States and Canada | 25 |
+| Latin America and the Caribbean | 31 |
+| Europe | 37 |
+| Post-Soviet Eurasia | 43 |
+| Middle East and North Africa | 49 |
+| Sub-Saharan Africa | 55 |
+| East Asia | 61 |
+| South Asia | 67 |
+| Southeast Asia | 73 |
+| Appendix 1: Country/Territory by Region Data | 85 |
+| Appendix 3: Support Information (incl. Q12 item wording) | 247 |
 
 ---
 
