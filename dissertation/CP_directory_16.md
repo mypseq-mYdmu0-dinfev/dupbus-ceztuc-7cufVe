@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Key context.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_06.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_07.md
 Always follow.
 
 ---
@@ -69,6 +69,10 @@ Submitted alongside `A1 (temp).md` in DA Allocation Form; created before A1 DevP
 A1 (temp) feedback.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_feedback_01.md
 Formative feedback on `A1 (temp).md`.
+
+A1 (temp) email.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_email_01.md
+Emails w/ marker on `A1 (temp).md`.
 
 RefRepo.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_02.md
