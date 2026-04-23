@@ -20,3 +20,4 @@ Conditionally fetch:
 - `Seminars (distilled).md` if needed
 - `Concept Brief (comp).md` if project topic/RQ, interview design, or research direction needed
 - `RefRepo.md` if ref needed
+- `A1.md` for A1 draft
