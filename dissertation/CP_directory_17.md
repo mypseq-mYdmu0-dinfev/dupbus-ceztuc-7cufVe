@@ -1,10 +1,9 @@
 - Fetch at every chat start: ProjectSummary.md, DevPlan.md
+- `request` = MUST request my approval before fetch
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP
   - Description ends w/ period `.`
-  - Declaring/referring: extract ver. from filename (e.g. `_01` in `MGTK751_A1-3_01.md` = v01) & append to alias as `Alias.md (vXX)` e.g. `A1-3.md (v01). No exceptions.
-- `request` = MUST request my approval before fetch
 
 ---
 
@@ -75,10 +74,14 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Emails w/ marker on `A1 (temp).md`.
 
 RefRepo.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_03.md
 All usable ref w/ brief notes.
 
 CoreRef.md (request)
 Part A: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_CoreRef_A_03.md
 Part B: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_CoreRef_B_03.md
 In-depth synthesises of 13 core ref.
+
+A1.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_01.md
+Real A1 draft.

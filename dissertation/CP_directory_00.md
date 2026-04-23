@@ -74,10 +74,14 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Emails w/ marker on `A1 (temp).md`.
 
 RefRepo.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_03.md
 All usable ref w/ brief notes.
 
 CoreRef.md (request)
 Part A: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_CoreRef_A_03.md
 Part B: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_CoreRef_B_03.md
 In-depth synthesises of 13 core ref.
+
+A1.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_01.md
+Real A1 draft.
