@@ -28,7 +28,7 @@
 
 ### 1.2. TUNED MODE
 - Construct initial twin
-- Generate persona:
+- Generate persona (use §/bullets):
   - 100 words (unknown entity)
   - 200 words (well-known; include 50~100-word profile)
 - Then ask targeted questions to refine:
@@ -36,6 +36,7 @@
   - behaviour
   - preferences
   - relationship to user
+- *If you're Claude: persona→1st artefact; questions→2nd artefact*
 
 ---
 
