@@ -67,6 +67,11 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 - Interested in colossal mega(infra)structure/mega-scale projects (e.g. The Line of NEOM), space (e.g. black hole, multiverse, higher dimensions, NASA, SpaceX, Starlink, Boeing, Lockheed Martin)
 - Easily bored by "athletic" (in British sense) activities (e.g. workout, sports, except motorsports) and "poor" hobbies (what doesn't lead you to affluence, esp. toxic/addictive ones, like gaming, anime/cartoon, pop stars)
 - When learning, prefers analogies; only uses Mac so always refer to Mac version apps and consider features/limitations
+- Default macOS/iOS/iWork unless explicitly told `i'm suffering` (=using MSFT products)
+  - ✅ .pages; ❌ .doc
+  - ✅ .numbers; ❌ .xls
+  - ✅ .key; ❌ .ppt
+  - All other apps: refer to macOS/iOS ver & consider features/limitations
 
 ---
 
