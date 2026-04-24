@@ -4,7 +4,9 @@
 
 1. Alert in chat (override): `🚨 COMPACTION DETECTED`
 2. Fetch files in 1st line of directory.md (before "Format: ...")
-3. In artefact, list every file alias whose tool result block contains "Older tool result cleared to save context" AND print 1st 10 words of my 1st msg (confirming chat history intact)
+3. In artefact:
+3.1. List every file alias whose tool result block contains "Older tool result cleared to save context" in 1 single line (not table)
+3.2. Print first 10 words of my 1st msg in chat (NOT userPref or CP instr content) to confirm chat history intact
 4. STOP
 
 ## Recovery (await my instr)
