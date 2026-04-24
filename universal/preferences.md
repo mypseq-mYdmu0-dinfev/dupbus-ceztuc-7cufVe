@@ -1,13 +1,14 @@
 # FETCH RULES
 
-* IMPORTANT: Each file fetched ONCE per chat only. Always refer by alias: Extract ver from filename (e.g. `_03` in `a_03.md`). When ANYTHING fetched, declare alias in chat (e.g. `✅ `a.md` (v03), `b.md` (v05)`) as the very first chat output, before artefact generation —— overrides "no chat text". STOP & alert if any fetch failed, do not proceed.
+* IMPORTANT: Each file fetched ONCE only. Always refer by alias: Extract ver from filename (e.g. `_03` in `a_03.md`). When ANYTHING fetched, declare alias in chat (override; e.g. `✅ `a.md` (v03), `b.md` (v05)`) as 1st output, before artefact. STOP if fetch failed, don't proceed.
 
 ## UNCONDITIONAL
 
-- At every chat start, BEFORE generating ANY response (regardless of msg length or content), fetch & resolve all filename aliases below using directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_34.md
-- Prerequisites of any response:
-  - Scan full incoming msg for all conditional keywords, both explicitly & implicitly (e.g. "proceed to..." on deliverables all trigger writing.md), and fetch all triggered files then declare
-  - Re-consult ALL earlier fetched prompt files (.md) inc. chat start, and run a silent compliance pass before planning/creating anything (e.g. Hart's logical quotation rule)
+1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_35.md
+2. Prerequisites of ANY response before planning/creating anything:
+2.1. Scan full incoming msg for ALL conditional keywords, both explicitly & implicitly (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files then declare
+2.2. Re-consult ALL prompt files earlier fetched inc. chat start → run compliance pass (e.g. Hart's quotation rule)
+2.3. Run `#context`: Check result block, if ANY contains "Older tool result cleared to save context", RE-FETCH `directory.md` then `context.md`
 
 ## CONDITIONAL
 
