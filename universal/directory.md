@@ -1,4 +1,4 @@
-- Fetch as very first action of every chat, before anything else: glossary.md, cc.md, notes.md
+- Fetch as very first action of every chat, before anything else: glossary.md, cc.md
 - Format: `[alias]` `[URL]` —— always fetch via URL, reference by alias.
 
 ---
@@ -7,10 +7,7 @@ glossary.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/glossary_06.md
 
 cc.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/cc_08.md
-
-notes.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/notes_04.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/cc_09.md
 
 google.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/google_01.md

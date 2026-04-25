@@ -1,14 +1,14 @@
 # FETCH RULES
 
-* IMPORTANT: Each file fetched ONCE only. Always refer by alias: Extract ver from filename (e.g. `_03` in `a_03.md`). When ANYTHING fetched, declare alias in chat (override; e.g. `✅ `a.md` (v03), `b.md` (v05)`) as 1st output, before artefact. STOP if fetch failed, don't proceed.
+* IMPORTANT: Each file fetched ONCE only. Declare (#cc). STOP if fetch failed, don't proceed.
 
 ## UNCONDITIONAL
 
-1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_37.md
+1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_38.md
 2. Prerequisites of ANY response before planning/creating anything:
-2.1. Scan full incoming msg for ALL conditional keywords, both explicitly & implicitly (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files then declare
-2.2. Re-consult ALL prompt files earlier fetched inc. chat start → run compliance pass (e.g. Hart's quotation rule)
-2.3. Run `#context`: Check result block, if ANY contains "Older tool result cleared to save context", RE-FETCH `directory.md` then `context.md`
+2.1. Run `#context`: Check result block, if ANY contains "Older tool result cleared to save context", RE-FETCH `directory.md` then `context.md`
+2.2. Scan full incoming msg for ALL conditional keywords, both explicitly & implicitly (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files then declare
+2.3. Re-consult ALL prompt files fetched earlier (inc. chat start) → run compliance pass (e.g. Hart's quotation rule)
 
 ## CONDITIONAL
 
