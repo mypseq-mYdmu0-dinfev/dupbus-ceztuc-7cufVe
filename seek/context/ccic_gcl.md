@@ -54,16 +54,22 @@ Process each job card in order from top to bottom. For each card, evaluate the f
 2. "[company_name] Sydney reviews Glassdoor"
 3. "[company_name] recent news 2025 2026" (especially for large or well-known firms)
 
-**Phase B —— CIC site visits (open in Tab 4+, read, close each):**
-Visit in order until sufficient context is gathered for a firm-specific cover letter paragraph:
-1. Company official website (About, Values, Culture, Team pages)
-2. Glassdoor page directly if Phase A results were thin
+Note which URLs surfaced are directly relevant and from authoritative sources (valid candidates). These are passed directly into Phase B as starting points.
+
+**Phase B —— CIC site visits (open in Tab 4+, read, close each; max 10 sites total):**
+Phase B always runs regardless of Phase A results —— thin or absent web_search results do not mean CIC will also find nothing.
+
+Start with valid candidate URLs from Phase A, then continue in order:
+1. Company official website (About, Values, Culture, Team pages) —— may browse sub-pages within the same site (e.g. About → Products → Team)
+2. Glassdoor page directly
 3. LinkedIn company page (search via Google to bypass account login; once on the page, close the sign-in overlay before reading)
 4. Any other relevant source (news, industry forums, Reddit for large firms)
 
+If fewer than 3 useful sources found after the above, expand beyond this list as needed, within the 10-site cap.
+
 If a site is inaccessible (login wall, CAPTCHA, block): note it and move on. Close all research tabs before proceeding.
 
-**Source priority rule:** Official sources (company website, official press releases) > aggregators (Glassdoor, LinkedIn) > community sources (Reddit, forums). If Phase B with a less reliable source contradicts Phase A, validate further before accepting. If Phase B with a more reliable source contradicts Phase A, Phase B takes precedence.
+**Source priority rule:** Official sources (company website, press releases) > aggregators (Glassdoor, LinkedIn) > community sources (Reddit, forums). If Phase B with a less reliable source contradicts Phase A, validate further before accepting. If Phase B with a more reliable source contradicts Phase A, Phase B takes precedence.
 
 ### Step 4 —— GCL Analysis (see gcl.md)
 Using extracted job data and research only —— no fabrication:

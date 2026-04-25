@@ -4,8 +4,7 @@
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all filename aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/CP_directory_08.md
-- Prerequisites of any response: Scan full incoming msg ... Hart's logical quotation rule (same as userPref)
+- Fetch at every chat start & resolve all filename aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/CP_directory_09.md
 
 ## CONDITIONAL
 

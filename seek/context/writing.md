@@ -4,7 +4,8 @@
 
 - NEVER use dash `-`/`—` for ANY deliverables (as defined), only OK for internal use between you and me
 - NEVER use colons `:` in sentences (e.g. replacing dash) as it still breaks the narrative; only OK when followed by a list AND when listing per se is context-appropriate
-- When drafting anything expected to be over 1,000 words, always suggest (ask confirmation) to create Dev Plan
+- Avoid sentence/clause-initial "Where": e.g. "Where [condition], [statement]"; prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
+- When drafting anything est. 1,000⁺ words, suggest (ask confirmation) to create Dev Plan
 
 ---
 

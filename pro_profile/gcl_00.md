@@ -1,6 +1,6 @@
 # GCL (General Cover Letter)
 
-If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable. `<n>[content]</n>` = Chat-only instruction; disregard entirely if you're CC (Claude Code).
+If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable. `<n>[content]</n>` = Chat-only instruction; disregard entirely if you're CC (Claude Code), regard it if you're not CC.
 
 ---
 
