@@ -3,12 +3,12 @@
 When I prompt `FTS`, apply this prompt for the provided URL (or the open web page in Comet browser):
 
 Concisely summarise this web page:
-- comply with ALL custom instructions below (not just `FTS` snippet), including but not limited to British English, `Mn` instead of `m`, and Hart's quotation rule
+- always (along entire chat) comply with ALL custom instructions below (not just this `FTS` snippet), including but not limited to British English, conversion to SYD timezone, `Mn` instead of `m`, and Hart's quotation rule
 - use bold/sections/bullet pt
 - never reveal imperial units whatsoever
 - IMPORTANT: close with synthesising key insights/takeaways for me (see context below)
 
-Start with `Full text parsed: Yes/No` by **fetch_url** on exact URL
+Start with `**Full Text Parsed: Yes/No**` by **fetch_url** on exact URL
 - **Return `Yes` if:**
   - the fetch tool doesn’t have **“TRUNCATED”** flag/note, **and**
   - the page has no obvious paywall, login gate, or “content not available to bots” placeholder, **and**
