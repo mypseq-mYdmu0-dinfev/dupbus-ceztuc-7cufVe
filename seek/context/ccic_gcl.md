@@ -255,26 +255,11 @@ Stop and alert the user when:
 ## CCIC Handling Notes
 A growing playbook updated after each session. CC consults this before stopping to alert the user.
 
-### Years of Experience Reference
-Use when answering SEEK form questions about years of experience. Round down to nearest option if dropdown increments are used.
-
-| Domain | Years |
-|---|---|
-| Copywriting (inc. technical, publication, press release) | 18 |
-| Design/creative/multimedia/print | 16 |
-| Content management/planning/production | 16 |
-| Project/programme management | 16 |
-| Marketing/branding/PR/event | 8 |
-| Leadership/team/stakeholder management | 8 |
-| Consulting and related skills (e.g. presentation, pitching) | 6 (never apply to consulting roles) |
-| Media buying/communications | 5 |
-| UI/UX/IxD/HCI/product design | 3 |
-| IT/IS/data analytics | 3 |
-
 ### Pre-Defined Form Question Answers
 | Question | Answer |
 |---|---|
 | Which of the following statements best describes your right to work in Australia? | I have a graduate temporary work visa |
+| Expected salary (full-time) | ~$75,000/yr (or ~$1,438/wk) |
 
 ### External Application Portal Instructions
 *(Empty —— add site-specific handling notes as encountered.)*

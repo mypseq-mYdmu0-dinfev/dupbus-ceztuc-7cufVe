@@ -72,6 +72,21 @@
 
 ---
 
+## Domain Experience
+
+| Domain | Years |
+|---|---|
+| Copywriting (inc. technical, publication, press release) | 18 |
+| Design/creative/multimedia/print | 16 |
+| Content management/planning/production | 16 |
+| Project/programme management | 16 |
+| Marketing/branding/PR/event | 8 |
+| Leadership/team/stakeholder management | 8 |
+| Consulting and related skills (e.g. presentation, pitching) | 6 (never apply to consulting roles) |
+| Media buying/communications | 5 |
+| UI/UX/IxD/HCI/product design | 3 |
+| IT/IS/data analytics | 3 |
+
 ## Creative Software Experience
 
 | Application | Notes |
