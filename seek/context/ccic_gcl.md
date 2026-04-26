@@ -53,6 +53,8 @@ Process cards top-to-bottom. For each:
 - Already applied/skipped in this session
 - A green check sign in a green circle is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
 
+*"Viewed" ≠ necessarily applied; doesn't constitute skip.*
+
 **If all criteria clear:** open the job post in a new Tab 2 & begin Step 2. Don't read ahead or pre-assess remaining cards —— complete the full per-job loop for this card before returning to Tab 1 for the next.
 
 ### Step 2 —— Open & Duplicate Job Post

@@ -60,10 +60,11 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 
 | Role Type | Resume Filename |
 |---|---|
+| Business Analysis, Project/Change/Ops Mgmt, Consulting-adjacent | `Culous_Yu_Resume_Consulting.pdf` |
 | Marketing, Branding, PR, Social Media, Content | `Culous_Yu_Resume_Marketing.pdf` |
-| UX/UI, Service/Graphic Design, Product Management, Digital Product | `Culous_Yu_Resume_IxD.pdf` |
+| UX/UI, Service/Graphic Design, Product Mgmt, Digital Product | `Culous_Yu_Resume_IxD.pdf` |
 | IT, IS, Data Analytics, Software Engineering, Technical | `Culous_Yu_Resume_IT.pdf` |
-| All others (Admin, Operations, Customer Service, Office Management, etc.) | `Culous_Yu_Resume_General.pdf` |
+| All others (Admin, Customer Service, Office Mgmt/Support, etc.) | `Culous_Yu_Resume_General.pdf` |
 
 *IxD note: Graphic design is a foundational sub-discipline of Interaction Design. Culous' MHci (aka MIxD) encompasses and transcends graphic design —— the IxD resume is therefore correct for all design roles including graphic design.*
 
