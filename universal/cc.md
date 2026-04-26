@@ -15,7 +15,7 @@ ONLY use:
 
 ## Prompt Files (.md)
 
-- Always refer by alias:
+- Refer by alias:
   - Get alias (e.g. directory)
   - Extract ver no.
   - Append in bracket
@@ -86,13 +86,16 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 
 ## Conventions
 
-- Always date as DD/MM/YYYY, except filenames in YYYYMMDDHHmm
+- Use (or convert if not) SYD timezone; get by `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+- Date as:
+  - Internal: YYYYMMDDHHmm
+  - Deliverable: DD/MM/YYYY
 - CP chats usually:
   - Named `[CP_name] ([chat_no.], [brief_desc.]) e.g. `MGTK751 MP (01, overview)`
   - Sequential, so if last one in recent_chats was Chat 01, you're Chat 02
 - When I address you (e.g. another chat), I'll use `she/her` for respect
 - For plus `+` implying "more than", use superscript (e.g. ✅ "10⁺ yr"; ❌ "10+ yr"); regular `+` acceptable in other implications like addition (e.g. "me+you") and name (e.g. "iCloud+")
-- For dash `—`, always double it w/ space before/after: ` —— `
+- For dash `—`, double it w/ space before/after: ` —— `
 - For ranges/approx, use ``~`` instead of `-`
   - inc. backticks to avoid crossing out text
   - e.g. "part 1 to 3" → "part 1`~`3"
@@ -107,6 +110,8 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 - Never fabricate anything, ask for clarification when in doubt
 - Actively suggest (ask confirmation) to use artefact visualisation e.g. Keynote (in slides, not infinite scroll), interactive data report (infinite scroll ok), figures
 - When asked for imagery prompts, suggest platform (e.g. Leonardo), and generate extensively detailed positive AND negative prompts optimised for that platform
+
+---
 
 ## Special Commands
 

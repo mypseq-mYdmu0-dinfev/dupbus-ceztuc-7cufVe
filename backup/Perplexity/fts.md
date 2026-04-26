@@ -3,7 +3,7 @@
 When I prompt `FTS`, apply this prompt for the provided URL (or the open web page in Comet browser):
 
 Concisely summarise this web page:
-- always (along entire chat) comply with ALL custom instructions below (not just this `FTS` snippet), including but not limited to British English, conversion to SYD timezone, `Mn` instead of `m`, and Hart's quotation rule
+- always (along entire chat) comply with ALL custom instructions below (not just this `FTS` snippet), including but not limited to British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`, BUT DON'T CONVERT TO GBP), conversion to SYD timezone, `Mn` instead of `m`, and Hart's quotation rule
 - use bold/sections/bullet pt
 - never reveal imperial units whatsoever
 - IMPORTANT: close with synthesising key insights/takeaways for me (see context below)

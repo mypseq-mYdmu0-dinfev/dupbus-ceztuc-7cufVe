@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Purpose & remarks of this CP.
 
 pro_profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/pro_profile_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/pro_profile_03.md
 My professional profile; fetch below files for details if needed.
 
 ---
@@ -22,7 +22,7 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_05.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_06.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md

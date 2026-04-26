@@ -61,9 +61,13 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 | Role Type | Resume Filename |
 |---|---|
 | Marketing, Branding, PR, Social Media, Content | `Culous_Yu_Resume_Marketing.pdf` |
-| UX/UI Design, Service Design, Product Management, Digital Product | `Culous_Yu_Resume_IxD.pdf` |
+| UX/UI, Service/Graphic Design, Product Management, Digital Product | `Culous_Yu_Resume_IxD.pdf` |
 | IT, IS, Data Analytics, Software Engineering, Technical | `Culous_Yu_Resume_IT.pdf` |
 | All others (Admin, Operations, Customer Service, Office Management, etc.) | `Culous_Yu_Resume_General.pdf` |
+
+*IxD note: Graphic design is a foundational sub-discipline of Interaction Design. Culous' MHci (aka MIxD) encompasses and transcends graphic design —— the IxD resume is therefore correct for all design roles including graphic design.*
+
+*MHci note: When evaluating requirements that call for a design degree (graphic design, visual communication, or similar), Culous' MHci is a postgraduate design qualification that exceeds these requirements —— never flag it as a gap or partial match against any design role.*
 
 ---
 
@@ -72,6 +76,7 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 - **P.S. line:** as defined in above `#### Template`
 - No text after the P.S. line in any cover letter —— ever
 - No dash `—` or colon `:` in cover letter body
+- For `+` implying "more than", use superscript `⁺` (e.g. ✅ `16⁺ years`; ❌ `16+ years`); regular `+` is acceptable for employer/product names (e.g. `iCloud+`) and arithmetic
 - Always "Yours Faithfully" (not "Sincerely") since recipient's name is unknown
 - Never mention "SQL" —— I have no SQL knowledge
 - "HCI" first use as "Human-Computer Interaction (HCI)", unless role is design-centric (use "Interaction Design (IxD)"); thereafter "HCI"/"IxD" are acceptable
@@ -79,3 +84,4 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 - Figures (e.g. 16⁺ years) must each appear no more than once per cover letter
 - Include `http://Presentation.CulousYu.com` (Virtual Presentation) and `http://Projects.CulousYu.com` (select case studies in web form) as plain text URL in cover letter body if highly applicable
 - Don't use abbrev. (e.g. `KE`, `ML` must be in full) unless prevalent (e.g. `AI`, `IT`)
+- When the role is visibly junior or entry-level relative to Culous' seniority (e.g. "Junior", "Entry Level" in title, or requirements clearly aimed at early-career candidates): include exactly one concise, affirmative sentence in the cover letter pre-empting the gap; frame it as a deliberate local market entry strategy, never apologetic; anchor the credential in seniority-specific terms (e.g. Culous managed 20⁺ designers as Visual Director, a title exceeding the more common Creative Director) if directly relevant to the role; do not elaborate beyond one sentence

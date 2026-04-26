@@ -1,4 +1,4 @@
-# Professional Profile Overview
+# Professional Profile
 
 ## Personal
 
@@ -71,6 +71,17 @@
 - Film: 2018 Golden Sugarcane Film Festival —— second place overall, Best Cinematography
 
 ---
+
+## Creative Software Experience
+
+| Application | Notes |
+|---|---|
+| Adobe Illustrator | Strongest; primary vector tool |
+| Adobe InDesign | Basics |
+| Adobe Photoshop | Since 2010 |
+| Adobe Lightroom | Since 2010 |
+| Adobe Audition | Basics |
+| Adobe Premiere Pro | Since 2013 |
 
 ## Key Links
 

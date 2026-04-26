@@ -72,6 +72,17 @@
 
 ---
 
+## Creative Software Experience
+
+| Application | Notes |
+|---|---|
+| Adobe Illustrator | Strongest; primary vector tool |
+| Adobe InDesign | Basics |
+| Adobe Photoshop | Since 2010 |
+| Adobe Lightroom | Since 2010 |
+| Adobe Audition | Basics |
+| Adobe Premiere Pro | Since 2013 |
+
 ## Key Links
 
 - Portfolio / Case Studies: http://Projects.CulousYu.com
