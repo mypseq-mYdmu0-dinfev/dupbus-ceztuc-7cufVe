@@ -46,7 +46,7 @@ If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immedi
 Process cards top-to-bottom. For each:
 
 **Save & skip if:**
-- Title/content includes: Consultant, Consulting, Advisory
+- Title explicitly includes: `Consultant` `Associate`
 - Click Save (bookmark icon, next to `⌄`) before skipping; flag in chat w/ `⭐❗`
 
 **Skip silently if:**
@@ -101,9 +101,8 @@ From job post & research only (no fabrication):
 
 1. **Employer Background** —— market position, Sydney relevance; what makes the firm distinctive/competitive, or how it survives as a mediocre player (leading firms: how they maintain position; underdogs: how they sustain operations and whether closure risk is evident)
 2. **Requirements Check** —— map to `pro_profile.md`; flag all gaps, even minor
-3. **Hard Skip Conditions** —— skip immediately (save on SEEK if consulting-related) if:
+3. **Hard Skip Conditions** —— skip immediately if:
    - Requires AU citizenship or PR
-   - Role is consulting/strategy/advisory
    - Requires non-English language
    - Suitability score below 35
 4. **Suitability Score** —— score out of 100 using the following weighted criteria:
@@ -198,7 +197,7 @@ Tab 3 is open. No new tabs; no interaction w/ Tab 2. Click "Quick apply"; if N/A
 The SEEK application form ("Quick apply") typically has 4 stages (indicated below header). Navigate each as follows:
 
 **Stage 1 —— Choose documents:**
-- Under "Resumé": click the dropdown, select the exact resume filename specified in the accountability record. **Never select `Culous_Yu_Resume_Consulting.pdf`**
+- Under "Resumé": click the dropdown, select the exact resume filename specified in the accountability record.
 - Under "Cover letter": click the text field, select all, delete, then paste the CL from the accountability record verbatim (from "Dear Hiring Manager," to the P.S. line)
 - Click "Continue →"
 
@@ -232,7 +231,7 @@ If user sends any msg mid-session: finish current atomic step, then pause. Read,
 ---
 
 ## CCIC Handling Notes
-Growing playbook; consult before escalation.
+Growing playbook; read before escalation.
 
 ### Pre-Defined Form Question Answers
 | Question | Answer |
