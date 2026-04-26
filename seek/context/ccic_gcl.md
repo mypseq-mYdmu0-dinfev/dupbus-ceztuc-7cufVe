@@ -236,7 +236,7 @@ Growing playbook; consult before escalation.
 | Question | Answer |
 |---|---|
 | Which of the following statements best describes your right to work in Australia? | I have a graduate temporary work visa |
-| Expected salary (full-time) | score < 85: ~$75,000/yr (~$1,438/wk); Score ≥ 85: ~$60,000/yr (~$1,151/wk) |
+| Expected salary (full-time) | score < 85: ~$75,000/yr (~$1,438/wk); Score ≥ 85 or Fully Remote Work: ~$60,000/yr (~$1,151/wk) |
 
 ### External Application Portal Instructions
 *(Empty —— add site-specific handling notes as encountered.)*
