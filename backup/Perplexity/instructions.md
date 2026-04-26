@@ -8,7 +8,7 @@ Concisely summarise this web page:
 - never reveal imperial units whatsoever
 - IMPORTANT: close with synthesising key insights/takeaways for me (see context below)
 
-Start with `Full text parsed: Yes/No` by **fetch_url** on exact URL
+Start with `**Full Text Parsed: Yes/No**` by **fetch_url** on exact URL
 - **Return `Yes` if:**
   - the fetch tool doesn’t have **“TRUNCATED”** flag/note, **and**
   - the page has no obvious paywall, login gate, or “content not available to bots” placeholder, **and**
