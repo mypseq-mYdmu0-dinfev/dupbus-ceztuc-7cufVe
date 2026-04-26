@@ -8,7 +8,7 @@ You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job applicati
 ## Browser Layout (Fixed)
 - **Tab 1** —— SEEK results (pre-opened by user; never close)
 - **Tab 2** —— Job post anchor (open per job; never interact with; keep intact until application concluded)
-- **Tab 3** —— Tab 2 duplicate (all reading and form interaction happens here)
+- **Tab 3** —— Tab 2 duplicate (all reading & form interaction happens here)
 - **Tab 4+** —— Research (open as needed; close after use)
 
 ---
@@ -21,22 +21,22 @@ Before the Pre-Flight Check, confirm Tab 1 is accessible via CIC MCP:
 3. After each wait, check again whether a SEEK results page is now visible in any open tab
 4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
-6. If after 3 cycles still no SEEK results page: abort and alert the user
+6. If after 3 cycles still no SEEK results page: abort & alert the user
 7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
 
 ## Pre-Flight Check
-Before beginning the loop, determine current state from open tabs and `/seek/applied/` `/seek/skipped/` contents:
+Before beginning the loop, determine current state from open tabs & `/seek/applied/` `/seek/skipped/` contents:
 
 1. **Only Tab 1 open** —— refresh Tab 1 first, then proceed to Step 1
-2. **Tab 2 + Tab 3 open, `.md` exists (for Tab 2 job post; same for below) and completed (contains P.S. line), Tab 3 content identical to Tab 2 (job post)** —— compaction occurred post-analysis, pre-application; re-read the `.md` to recover the plan; proceed from Step 6
-3. **Tab 2 + Tab 3 open, `.md` exists and completed (contains P.S. line), Tab 3 content differs from Tab 2 (application page)** —— compaction occurred mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the `.md` to recover the plan; proceed from Step 6
-4. **Tab 2 + Tab 3 open, `.md` exists but not completed, Tab 3 content identical to Tab 2** —— compaction occurred mid-analysis; research context is compromised and recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
+2. **Tab 2 + Tab 3 open, `.md` exists (for Tab 2 job post; same for below) & completed (contains P.S. line), Tab 3 content identical to Tab 2 (job post)** —— compaction occurred post-analysis, pre-application; re-read the `.md` to recover the plan; proceed from Step 6
+3. **Tab 2 + Tab 3 open, `.md` exists & completed (contains P.S. line), Tab 3 content differs from Tab 2 (application page)** —— compaction occurred mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the `.md` to recover the plan; proceed from Step 6
+4. **Tab 2 + Tab 3 open, `.md` exists but not completed, Tab 3 content identical to Tab 2** —— compaction occurred mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
 5. **Tab 2 + Tab 3 open, no `.md` exists** —— compaction occurred before analysis was saved; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
 6. **Only Tab 2 open, no Tab 3** —— compaction occurred immediately after Tab 2 opened, before duplication; fresh Tab 2; duplicate to Tab 3; restart from Step 2
 
-If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immediately and alert the user.
+If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immediately after 3 refresh attempts.
 
 ---
 
@@ -45,7 +45,7 @@ If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immedi
 ### Step 1 —— Process SEEK Results (Tab 1)
 Process cards top-to-bottom. For each:
 
-**Save and skip if:**
+**Save & skip if:**
 - Title/content includes: Consultant, Consulting, Advisory
 - Click Save (bookmark icon, next to `⌄`) before skipping; flag in chat w/ `⭐❗`
 
@@ -53,19 +53,19 @@ Process cards top-to-bottom. For each:
 - Already applied/skipped in this session
 - A green check sign in a green circle is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
 
-**If all criteria clear:** open the job post in a new Tab 2 and begin Step 2. Don't read ahead or pre-assess remaining cards —— complete the full per-job loop for this card before returning to Tab 1 for the next.
+**If all criteria clear:** open the job post in a new Tab 2 & begin Step 2. Don't read ahead or pre-assess remaining cards —— complete the full per-job loop for this card before returning to Tab 1 for the next.
 
-### Step 2 —— Open and Duplicate Job Post
+### Step 2 —— Open & Duplicate Job Post
 1. Duplicate Tab 2 URL → open as Tab 3 immediately
-2. From Tab 3 (not Tab 2), read and copy in full:
+2. From Tab 3 (not Tab 2), read & copy in full:
    - Job title, company name, SEEK URL
-   - Full job description and requirements
+   - Full job description & requirements
 3. Tab 2 remains untouched for the rest of this job's process
 
 ### Step 3 —— Research the Company
 
 **Pre-Score Gate (run before any research):**
-From the job post alone: estimate metrics 1, 2, and 3 directionally; determine metric 7 exactly ("Quick apply" = 5; "Apply"/external = 0); assume maximum possible for metrics 4, 5, and 6 (= 30 pts combined). Ceiling = estimated (1+2+3) + metric 7 + 30.
+From the job post alone: estimate metrics 1–3 directionally; determine metric 7 exactly ("Quick apply" = 5; "Apply"/external = 0); assume maximum possible for metrics 4–6 (= 30 pts combined). Ceiling = estimated (1+2+3) + metric 7 + 30.
 
 | Ceiling | Action |
 |---|---|
@@ -79,7 +79,7 @@ From the job post alone: estimate metrics 1, 2, and 3 directionally; determine m
 2. "[company_name] Sydney reviews Glassdoor"
 3. "[company_name] recent news 2025 2026" (especially for large or well-known firms)
 
-Note valid candidate URLs (authoritative and relevant) for Phase B.
+Note valid candidate URLs (authoritative & relevant) for Phase B.
 
 **Phase B —— CIC site visits (Tab 4+; read, close each; max 10 total):**
 
@@ -95,7 +95,7 @@ Skip inaccessible sites (login wall, CAPTCHA, block). Close all research tabs be
 **Source priority:** Official > aggregators (Glassdoor, LinkedIn) > community (Reddit, forums). More reliable Phase B source overrides Phase A; less reliable Phase B source requires validation.
 
 ### Step 4 —— GCL Analysis (see gcl.md)
-From job data and research only (no fabrication):
+From job post & research only (no fabrication):
 
 1. **Employer Background** —— market position, Sydney relevance; what makes the firm distinctive/competitive, or how it survives as a mediocre player (leading firms: how they maintain position; underdogs: how they sustain operations and whether closure risk is evident)
 2. **Requirements Check** —— map to `pro_profile.md`; flag all gaps, even minor
@@ -112,7 +112,7 @@ From job data and research only (no fabrication):
    | 2 | Role/function sufficiency | 20% | Does Culous' background suffice for this function? Being over-experienced is acceptable |
    | 3 | Industry/sector fit | 15% | Has Culous worked in this or adjacent industries? |
    | 4 | Growth or brand value | 10% | Is this a recognised brand or firm offering credible CV value? |
-   | 5 | Employer quality/legitimacy | 10% | Is this a stable, real employer w/ verifiable presence and no severe red flags? |
+   | 5 | Employer quality/legitimacy | 10% | Is this a stable, real employer w/ verifiable presence & no severe red flags? |
    | 6 | Cover letter differentiability | 10% | Does research yield enough distinctive content for a genuinely tailored letter? |
    | 7 | Application effort vs. reward | 5% | "Quick apply" = 5/5; "Apply" (external) = 0/5 |
 
@@ -133,13 +133,13 @@ From job data and research only (no fabrication):
    | 35–49 | Apply | None —— cover letter from job post only |
    | 50–69 | Apply | Phase A only |
    | 70–84 | Apply —— standard opening | Phase A + B |
-   | 85–109 | Apply —— stronger opening (open Para 1 w/ a specific, firm- and role-anchored claim rather than the standard template line; ensure factual, no inference) | Phase A + B |
-   | 110⁺ | Save on SEEK; flag in chat w/ `⭐❗` and full score breakdown; skip —— do not apply; user handles manually | Phase A + B |
+   | 85–109 | Apply —— stronger opening (open Para 1 w/ a specific, firm- & role-anchored claim rather than the standard template line; ensure factual, no inference) | Phase A + B |
+   | 110⁺ | Save on SEEK; flag in chat w/ `⭐❗` & full score breakdown; skip —— do not apply; user handles manually | Phase A + B |
 
    **Exception:** score 35–69 AND method = "Apply" (external, not "Quick apply") → skip. Not justified below 70.
 
 5. **Resume Selection** —— per decision rules in `gcl.md`
-6. **Cover Letter Draft** —— per template and rules in `gcl.md` and `writing.md`
+6. **Cover Letter Draft** —— per template & rules in `gcl.md` AND `writing.md`
 
 ### Step 5 —— Create Accountability Record
 Before any action on Tab 3, create the accountability `.md` file (both plan & log).
@@ -186,7 +186,7 @@ Body: complete all 6 GCL sections per `gcl.md`:
 
 If skipping: sections 1–2 only.
 
-Re-read to confirm file is correct and CL ends w/ the P.S. line before proceeding to Step 6.
+Re-read to confirm file is correct AND CL ends w/ the P.S. line before proceeding to Step 6.
 
 ### Step 6 —— Apply on SEEK (Tab 3)
 **If applying:**
@@ -202,13 +202,13 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 
 **Stage 2 —— Answer employer questions (may not appear for all jobs):**
 - For each question: check CCIC Handling Notes for a pre-defined answer first; if found, select or enter it
-- If no pre-defined answer found: answer using Culous' background in `pro_profile.md` and context files; push through where possible
+- If no pre-defined answer found: answer using Culous' background in `pro_profile.md` & context files; push through where possible
 - Alert only if: text input AND answer non-trivial (not a number, yes/no, or direct fact) AND no guidance in CCIC Handling Notes
 - Click "Continue →"
 
 **Stage 3 —— Update SEEK Profile:** Do NOT interact w/ any field, card, or toggle. Scroll to bottom; click "Continue →".
 
-**Stage 4 —— Review and submit:**
+**Stage 4 —— Review & submit:**
 - Do NOT click "Profile visibility", "Make a strong impression", or any other card
 - Verify "Resumé" filename is correct; go back if not
 - Verify "You wrote a cover letter for this application" is visible; go back if not
@@ -220,7 +220,7 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 **If struggling w/ external portal** (unusual design, login, unresolvable block): flag w/ `⚠️` & remark in chat AND accountability record for `ccic_gcl.md` update; close Tab 3; click "Save" on Tab 2; close Tab 2; return to Tab 1.
 
 ### Step 7 —— Pagination
-When all cards on the current SEEK page are processed, click "Next >" on Tab 1 and continue the loop.
+When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop.
 
 ---
 
