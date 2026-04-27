@@ -12,7 +12,7 @@
 
 ## Education
 
-- **Master of Human-Computer Interaction** (sub-major: Data Analytics), UTS —— graduated NOV 2025, HD (88%)
+- **Master of Human-Computer Interaction** (sub-major: Data Analytics), UTS —— graduated NOV 2025, HD (GPA: 6.63/7)
 - **MBA**, University of Liverpool —— final dissertation stage; expected graduation late 2026
 - **Higher Diploma in Cinematic Arts**, HK (Hong Kong) Baptist University (don't mention unless highly relevant)
 

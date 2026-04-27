@@ -5,10 +5,10 @@ You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job applicati
 
 ---
 
-## Browser Layout (Fixed)
-- **Tab 1** —— SEEK results (pre-opened by user; never close)
-- **Tab 2** —— Job post anchor (open per job; never interact with; keep intact until application concluded)
-- **Tab 3** —— Tab 2 duplicate (all reading & form interaction happens here)
+## Browser Layout (Fixed; strictly comply)
+- **Tab 1** —— SEEK results: pre-opened by user; never close or use its right panel
+- **Tab 2** —— Job post anchor: open per job; never read or interact w/ it except "save" (see below); keep intact until application concluded
+- **Tab 3** —— Tab 2 duplicate (necessary): all reading & form interaction happens here
 - **Tab 4+** —— Research (open as needed; close after use)
 
 ---
@@ -149,7 +149,7 @@ Before any action on Tab 3, create the accountability `.md` file (both plan & lo
 - Outcome = Applied → `/seek/applied/`
 - Outcome = Skipped → `/seek/skipped/`
 
-**Get current timestamp via terminal:**
+**Get current timestamp via my local terminal:**
 ```bash
 TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 ```
@@ -214,7 +214,10 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 - Verify "Resumé" filename is correct; go back if not
 - Verify "You wrote a cover letter for this application" is visible; go back if not
 - Click "Submit application"
-- On confirmation: note success; close Tabs 2 & 3; return to Tab 1
+- Confirm success ("Your application has been sent to ...")
+- Ignore SEEK's suggestions
+- MUST close Tabs 3 & 2
+- Return to Tab 1
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.
 
