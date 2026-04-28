@@ -47,11 +47,12 @@ Process cards top-to-bottom. For each:
 
 **Save & skip if:**
 - Title explicitly includes: `Consultant` `Associate`
-- Click Save (bookmark icon, next to `⌄`) before skipping; flag in chat w/ `⭐❗`
+- Click "Save" (bookmark icon, next to `⌄`) before skipping; flag in chat w/ `⭐❗`
 
 **Skip silently if:**
 - Already applied/skipped OR its completed .md file found in `/seek/applied/` `/seek/skipped/`
-- A green check sign in a green circle is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
+- Applied: A green check/tick icon in a green circle (#7FECC0) is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
+- Saved: The bookmark icon is filled in sharp pink (#F42B99)
 
 *"Viewed" ≠ necessarily applied; doesn't constitute skip.*
 
@@ -163,8 +164,8 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 **Filename:** `[CompanyName]_[JobTitle]_[YYYYMMDDHHmm].md` (underscores for spaces; no special chars)
 
 **Duplicate handling:**
-- Matching file exists, created more than 30 days ago: append `_reapplied` before `.md`
-- Matching file exists, created within 30 days: do not apply; flag in chat as likely SEEK system error; continue to next job
+- Matching file ≥ 30 days old: append `_reapplied` in filename & note in content
+- Matching file < 30 days old: skip & continue to next job
 
 **File contents:**
 
@@ -214,16 +215,17 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 
 **Stage 3 —— Update SEEK Profile:** Do NOT interact w/ any field, card, or toggle. Scroll to bottom; click "Continue →".
 
-**Stage 4 —— Review & submit:**
+**Stage 4 —— Review & submit (STRICTLY COMPLY):**
 - Do NOT click "Profile visibility", "Make a strong impression", or any other card
 - Verify "Resumé" filename is correct; go back if not
 - Verify "You wrote a cover letter for this application" is visible; go back if not
 - Click "Submit application"
-- Confirm success ("Your application has been sent to ...")
-- Ignore SEEK's suggestions
+- Confirm success ("Your application has been sent to...")
+- Ignore SEEK's suggestions ("You might also like...")
 - MUST close Tabs 3 & 2
 - Return to Tab 1
-- Note cumulative count (applied+skipped) in chat e.g. "✅9️⃣ jobs processed so far."
+- MUST note cumulative count (applied+skipped) in chat e.g. "✅9️⃣ jobs processed so far."
+  - If count = 5️⃣ or 🔟 → immediately re-read ccic_gcl.md in full to ensure strict compliance
 - Continue the loop
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.
