@@ -5,15 +5,19 @@
 **Name:** Culous Yu
 **Location:** Sydney, NSW
 **Visa:** Subclass 485, full work rights until 2031; never requires visa sponsorship
-**Languages:** English (IELTS 8.0, Speaking 9.0), Cantonese, Mandarin
+**Languages:** English (native; IELTS 8.0, Speaking 9.0), Cantonese (native), Mandarin (fluent)
 **Career start:** 2010, England
 
 ---
 
 ## Education
 
-- **Master of Human-Computer Interaction** (sub-major: Data Analytics), UTS —— graduated NOV 2025, HD (GPA: 6.63/7)
-- **MBA**, University of Liverpool —— final dissertation stage; expected graduation late 2026
+- **Master of Human-Computer Interaction** (internal: "MHci") w/ Data Analytics sub-major, Faculty of Engineering & IT (FEIT), UTS —— graduated NOV 2025, HD (GPA: 6.63/7)
+  - Encompass IT degrees (e.g. computer science/IS/cloud); emphasise FEIT if it helps
+  - Transcend design degrees (e.g. graphic/visual comms; regard as foundational sub-discipline)
+- **MBA**, University of Liverpool —— Grade A; final dissertation stage; graduation late 2026
+  - Encompass basics of: Economics, Finance, Marketing, HR, Ops/Supply Chain, PM, Data
+  - Transcend business/mgmt degrees
 - **Higher Diploma in Cinematic Arts**, HK (Hong Kong) Baptist University (don't mention unless highly relevant)
 
 ---
@@ -30,9 +34,8 @@
 
 ## Career Summary
 
-- 16⁺ years international content & project management experience
-- Career-wide personal records (across all firms, not solely attributable to KE): 300⁺ projects, 100⁺ clients, 10⁺ countries, spanning B2B/C, NPO, startup, Govt.
 - **Key Strengths:** Strategic Transformation, Value Engineering, Stakeholder Management
+- **Career-wide personal records** (across all firms/domains, not solely attributable to KE/consulting): content & project management experience over 16⁺ years, 300⁺ projects, 100⁺ clients, 10⁺ countries, spanning B2B/C, NPO, startup, Govt.
 
 ---
 
@@ -78,10 +81,10 @@
 |---|---|
 | Copywriting (inc. technical, publication, press release) | 18 |
 | Design/creative/multimedia/print | 16 |
-| Content management/planning/production | 16 |
-| Project/programme management | 16 |
+| Content mgmt/planning/production | 16 |
+| Project/programme mgmt | 16 |
 | Marketing/branding/PR/event | 8 |
-| Leadership/team/stakeholder management | 8 |
+| Leadership/team/stakeholder mgmt | 8 |
 | Consulting and related skills (e.g. presentation, pitching) | 6 (never apply to consulting roles) |
 | Media buying/communications | 5 |
 | UI/UX/IxD/HCI/product design | 3 |

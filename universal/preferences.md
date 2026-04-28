@@ -13,7 +13,7 @@
 ## CONDITIONAL
 
 Conditionally fetch:
-- `google.md` on email/calendar/schedule/event
+- `google.md` on email/calendar/schedule/event, OR if #job mentioned
 - `profile.md` for personal bg; skip in CP "Professional Profile" unless interest/hobby needed
 - `cic.md` on A/B/C/WCIC prompt creation, OR repetitive task where browser automation may help
 - `writing.md` on deliverables, OR cite/academic/copywriting/casual/whatsapp/draft mentioned

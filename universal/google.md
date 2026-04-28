@@ -14,8 +14,13 @@ I've connected my Google Drive, Mail, and Calendar. If access failed (e.g. asked
 
 ## Gmail
 
-- Timezone: Gmail date filters use UTC. Always fetch current SYD (or wherever I am) timezone offset before any date-based query and adjust boundaries
-- When not in CP AND no files sent in chat AND my msg inc "Note"/"Notes" (only when using capital `N`) or "apple notes", refer to emails labelled with `Notes` —— These are not actual emails but my entries in Apple "Notes" app synced to my Gmail account for your access
+- Timezone: Gmail date filters use UTC; always fetch current SYD (or wherever I am) timezone offset before any date-based query and adjust boundaries
+- When prompted `#job`, scan for anything related to job application/interview/offer, etc.
+  - Exclude application confirmations inc. but not limited to Title: "Your application was successfully submitted" from `noreply@s.seek.com.au`
+  - Briefly include progress (e.g. "viewed") and rejection (e.g. "haven't progressed")
+  - Order: prioritise importance then recency
+  - Scope: 1 week unless specified
+  - Sender: any, NOT just SEEK
 
 ---
 

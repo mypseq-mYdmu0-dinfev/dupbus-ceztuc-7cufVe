@@ -357,7 +357,8 @@ Defines a personalised decision system for film (primary) and TV (secondary) rec
 - extreme benchmark: Stranger Things 👎🏻
 - strong rejection:
   - teen-centric narratives
-  - “kids empowerment”
+  - school settings
+  - “teens empowerment”
   - heavy 80s/90s US nostalgia
     - further earlier or UK/EU ok (e.g. Peaky Blinders 👍🏻)
 
