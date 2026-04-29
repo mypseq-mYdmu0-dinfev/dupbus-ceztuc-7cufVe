@@ -43,7 +43,7 @@ If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immedi
 ## Per-Job Loop —— Execute Continuously Until Stopped
 
 ### Step 1 —— Process SEEK Results (Tab 1)
-Process cards top-to-bottom. For each:
+Process ONE card at a time, top-to-bottom. Do not read, scan, or pre-assess any card beyond the one currently being evaluated. Complete the full per-job loop before returning to Tab 1 for the next card.
 
 **Save & skip if:**
 - Title explicitly includes: `Consultant` `Associate`
@@ -52,11 +52,11 @@ Process cards top-to-bottom. For each:
 **Skip silently if:**
 - Already applied/skipped OR its completed .md file found in `/seek/applied/` `/seek/skipped/`
 - Applied: A green check/tick icon in a green circle (#7FECC0) is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
-- Saved: The bookmark icon is filled in sharp pink (#F42B99)
+- Saved: The bookmark icon is filled in magenta (#F42B99)
 
 *"Viewed" ≠ necessarily applied; doesn't constitute skip.*
 
-**If all criteria clear:** open the job post in a new Tab 2 & begin Step 2. Don't read ahead or pre-assess remaining cards —— complete the full per-job loop for this card before returning to Tab 1 for the next.
+**If all criteria clear:** open the job post in a new Tab 2 & begin Step 2.
 
 ### Step 2 —— Open & Duplicate Job Post
 1. Duplicate Tab 2 URL → open as Tab 3 immediately
@@ -68,7 +68,7 @@ Process cards top-to-bottom. For each:
 ### Step 3 —— Research the Company
 
 **Pre-Score Gate (run before any research):**
-From the job post alone: estimate metrics 1–3 (see Step 4) directionally; determine metric 7 exactly ("Quick apply" = 5; "Apply"/external = 0); assume maximum possible for metrics 4–6 (= 30 pts combined). Ceiling = estimated (1+2+3) + metric 7 + 30.
+From the job post alone: estimate metrics 1–3 (see Step 4) directionally; determine metric 7 exactly by visually checking the magenta (#F42B99) button —— "Quick apply" → M7 = 5; "Apply" (w/ arrow-out-of-box icon) → M7 = 0; assume maximum possible for metrics 4–6 (= 30 pts combined). Ceiling = estimated (1+2+3) + metric 7 + 30.
 
 **Research Gate:**
 
@@ -88,16 +88,20 @@ When final score derived (including Bonus if any), re-check Research Gate: if Ph
 
 Note valid candidate URLs (authoritative & relevant) for Phase B.
 
-**Phase B —— CIC site visits (Tab 4+; read, close each; max 10 total):**
+**Phase B —— CIC site visits (Tab 4+ ONLY; NEVER use Tab 3 for research; read, close each; max 10 sites total):**
 
 Start w/ Phase A candidates (prerequisite of Phase B), then in order:
 1. Official website (About, Values, Culture, Team; may browse sub-pages)
-2. Glassdoor
-3. LinkedIn company page (MUST search via Google to bypass login; dismiss login overlay)
+2. Glassdoor —— search Google for "[company_name] site:glassdoor.com.au"; click result directly; do not construct or copy the URL
+3. LinkedIn —— search Google for "[company_name] site:linkedin.com/company"; ditto; dismiss login overlay once on the page
 4. Other relevant sources (news, forums, Reddit for large firms)
 
-If <3 useful sources, expand within the 10-site cap.
-Skip inaccessible sites (login wall, CAPTCHA, block). Close all research tabs before Step 4.
+Notes:
+- For blockers, attempt up to twice then skip
+  - e.g. Glassdoor shows "Humans only" → screenshot → click the square box (next to "Verify you are human" below "...for troubleshooting steps.")
+  - Logic: me = human; you = my rep; hence, you = human in this situation
+- If <3 useful sources, expand within the 10-site cap.
+- Close all research tabs before Step 4.
 
 **Source priority:** Official > aggregators (Glassdoor, LinkedIn) > community (Reddit, forums). More reliable Phase B source overrides Phase A; less reliable Phase B source requires validation.
 
@@ -145,13 +149,14 @@ From job post & research only (no fabrication):
    **Exception:** score 35–69 AND method = "Apply" (external, not "Quick apply") → skip. Not justified below 70.
 
 5. **Resume Selection** —— per decision rules in `gcl.md`
-6. **Cover Letter Draft** —— per template & rules in `gcl.md` AND `writing.md`
+6. **Cover Letter Draft** —— per template & rules in `gcl.md` AND `cc_writing.md`
 
 ### Step 5 —— Create Accountability Record
 Before any action on Tab 3, create the accountability `.md` file (both plan & log).
 
 **Record routing:**
 - Outcome = Applied → `/seek/applied/`
+- Outcome = Pending → `/seek/pending/`
 - Outcome = Skipped → `/seek/skipped/`
 
 **Get current timestamp via my local terminal:**
@@ -173,7 +178,7 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 # [Company Name] — [Job Title]
 **Date:** [HH:mm on DD/MM/YYYY]
 **SEEK URL:** [url]
-**Outcome:** Applied / Skipped ([reason])
+**Outcome:** Applied / Pending / Skipped ([reason])
 **Resume Selected:** [filename or N/A]
 **Suitability Score Breakdown:**
 - 1. Skill & qualification sufficiency — [score]/30 ([comment ≤5 words])
@@ -210,7 +215,7 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 - For each question: check CCIC Handling Notes for a pre-defined answer first; if found, select or enter it
 - If no pre-defined answer found: answer using Culous' background in `pro_profile.md` & context files; push through where possible
 - Alert only if: text input AND answer non-trivial (not a number, yes/no, or direct fact) AND no guidance in CCIC Handling Notes
-- If answered any questions, append to "3. Application Tailoring"
+- If answered any questions, append to end of "3. Application Tailoring"
 - Click "Continue →"
 
 **Stage 3 —— Update SEEK Profile:** Do NOT interact w/ any field, card, or toggle. Scroll to bottom; click "Continue →".
@@ -224,13 +229,15 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 - Ignore SEEK's suggestions ("You might also like...")
 - MUST close Tabs 3 & 2
 - Return to Tab 1
-- MUST note cumulative count (applied+skipped) in chat e.g. "✅9️⃣ jobs processed so far."
+- MUST note cumulative count (applied + pending + skipped) in chat
+  - Exactly this format: `✅[N] **jobs processed so far.**`
+  - [N] = number emoji (1️⃣ 2️⃣ ... 🔟 1️⃣1️⃣ ...); NO alternative phrasing
   - If count = 5️⃣ or 🔟 → immediately re-read ccic_gcl.md in full to ensure strict compliance
 - Continue the loop
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.
 
-**If struggling w/ external portal** (unusual design, login, unresolvable block): flag w/ `⚠️` & remark in chat AND accountability record for `ccic_gcl.md` update; close Tab 3; click "Save" on Tab 2; close Tab 2; return to Tab 1.
+**If struggling w/ external portal** (unusual design, login, unresolvable block): flag w/ `⚠️` & remark in chat AND accountability record for `ccic_gcl.md` update; write accountability record to `/seek/pending/` with Outcome = Pending; close Tab 3 & 2; return to Tab 1.
 
 ### Step 7 —— Pagination
 When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop.
@@ -255,4 +262,7 @@ Growing playbook; read before escalation.
 *(Empty —— add site-specific handling notes as encountered.)*
 
 ### Other Situation Handling
-*(Empty —— add any other recurring edge cases here.)*
+
+| Situation | Action |
+|---|---|
+| Bottom-right support/Q&A chat widget on external portal | Standard design; not a blocker; dismiss or close it and proceed |

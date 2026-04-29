@@ -1,1 +1,1 @@
-Rear to writing.md changes, remember to manually mirror to `/seek/context/`
+Rear to `cc.md` or `writing.md` changes, remember to manually mirror to `/seek/context/`

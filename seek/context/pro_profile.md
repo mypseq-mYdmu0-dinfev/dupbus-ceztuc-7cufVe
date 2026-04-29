@@ -100,6 +100,8 @@
 | Adobe Lightroom | Since 2010 |
 | Adobe Audition | Basics |
 | Adobe Premiere Pro | Since 2013 |
+| DaVinci Resolve | Strongest; default video tool |
+| Figma | Since 2023 |
 
 ## Key Links
 

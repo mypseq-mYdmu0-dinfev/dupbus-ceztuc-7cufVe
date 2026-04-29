@@ -14,7 +14,7 @@ At the start of every session, before any actions, fully read the following file
 2. `/seek/context/gcl.md`
 3. `/seek/context/pro_profile.md`
 4. `/seek/context/culous_yu_resume_ats.md`
-5. `/seek/context/writing.md`
+5. `/seek/context/cc_writing.md`
 
 Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `ccic_gcl.md`, `gcl.md`, ...` and flag any that failed to load before stopping.
 
