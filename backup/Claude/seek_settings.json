@@ -1,0 +1,14 @@
+{
+  "version": "0.1",
+  "hooks": {
+    "PostCompact": [
+      {
+        "type": "command",
+        "command": "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/seek/.claude/post_compact.sh"
+      }
+    ]
+  },
+  "statusLine": {
+    "enabled": true
+  }
+}

@@ -7,7 +7,7 @@
 1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_38.md
 2. Prerequisites of ANY response before planning/creating anything:
 2.1. Run `#context`: Check result block, if ANY contains "Older tool result cleared to save context", RE-FETCH `directory.md` AND `context.md`
-2.2. Scan full incoming msg for ALL conditional keywords, both explicitly & implicitly (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files then declare
+2.2. Scan full incoming msg for ALL conditional keywords, both explicitly & **implicitly** (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files then declare
 2.3. Re-consult ALL prompt files fetched earlier (inc. chat start) → run compliance pass (e.g. Hart's quotation rule)
 
 ## CONDITIONAL
@@ -21,3 +21,4 @@ Conditionally fetch:
 - `numbered.md` if #numbered mentioned, OR creating a list with sub-items
 - `plan.md` if no "DevPlan.md" in CP but "dev plan"/"next chat"/"chat handoff"/"addendum" explicitly mentioned
 - `traveller.md` if planning trip, OR food allergy/pref needed
+- `shrink.md` if shrink/summarise/synthesise/distil/condense mentioned

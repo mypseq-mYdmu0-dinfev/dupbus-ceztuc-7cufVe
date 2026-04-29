@@ -30,6 +30,7 @@ The following files are available in `/seek/context/`. Do not read at session st
 ## Absolute Rules
 - File permissions are strictly enforced:
   - `/seek/applied/` —— including its sub-folders: create new files only; never delete files; don't edit files created before this session
+  - `/seek/pending/` —— ditto
   - `/seek/skipped/` —— ditto
   - All other paths —— read only; never edit, create, or delete any file
 - Each time a file in `/seek/context/` is read → MUST declare in chat.

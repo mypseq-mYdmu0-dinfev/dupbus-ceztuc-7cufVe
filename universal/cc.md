@@ -29,14 +29,15 @@ ALWAYS use:
   - Example:
 ```
 ✅ `cc.md` (v03), `profile.md` (v02)
-Fetched `profile.md` for Culous' bg.
+Fetched `profile.md` for KK's bg.
 ```
 
 ---
 
 ## Artefacts —— General
 
-- Respond in artefacts ALL THE TIME unless specifically instructed otherwise
+- Respond in NEW artefacts ALL THE TIME unless specifically instructed otherwise
+- NEVER update (e.g. v2) unless explicitly mentioned "update the same artefact"
 - NEVER use `message_compose_v1` under any circumstances.
 - ENSURE button visible in chat to access artefact
 - When iterated (1⁺ ver per response), concisely justify each artefact e.g. "v2 improves…"

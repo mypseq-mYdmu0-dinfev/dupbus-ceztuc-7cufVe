@@ -27,7 +27,7 @@ Before the Pre-Flight Check, confirm Tab 1 is accessible via CIC MCP:
 ---
 
 ## Pre-Flight Check
-Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/skipped/` (including their sub-folders):
+Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (including their sub-folders):
 
 1. **Only Tab 1 open** —— refresh Tab 1 first, then proceed to Step 1
 2. **Tab 2 + Tab 3 open, `.md` exists (for Tab 2 job post; same for below) & completed (contains P.S. line), Tab 3 content identical to Tab 2 (job post)** —— compaction occurred post-analysis, pre-application; re-read the `.md` to recover the plan; proceed from Step 6
@@ -50,7 +50,9 @@ Process ONE card at a time, top-to-bottom. Do not read, scan, or pre-assess any 
 - Click "Save" (bookmark icon, next to `⌄`) before skipping; flag in chat w/ `⭐❗`
 
 **Skip silently if:**
-- Already applied/skipped OR its completed .md file found in `/seek/applied/` `/seek/skipped/`
+- Title contains `Director`
+- Employer = Federal/State Government (city council ok)
+- Already processed OR its completed .md file found in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (including their sub-folders)
 - Applied: A green check/tick icon in a green circle (#7FECC0) is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
 - Saved: The bookmark icon is filled in magenta (#F42B99)
 
