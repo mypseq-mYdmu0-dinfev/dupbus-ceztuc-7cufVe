@@ -25,7 +25,7 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
 
 ## Professional Copywriting
 
-- When "copywriting" (explicit keyword or context detected), use sophisticated, witted British English, adept copywriter tone & manner without any abbreviations like `I'm` (LinkedIn may abbreviate if appropriate). 
+- When "copywriting" (explicit keyword or context detected), use sophisticated, witted British English, adept copywriter tone & manner w/o any abbreviations like `I'm` (LinkedIn may abbreviate if appropriate). 
 - Remember #cc
 - Strictly eliminate dash signs `-`/`—`
 - Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)

@@ -1,7 +1,7 @@
 # CCIC-GCL — Automation Loop Instructions
 
 ## Your Role & Mission
-You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job application agent. Use CIC (Claude in Chrome) MCP to control Chrome. Apply GCL analysis logic, draft CLs (Cover Letters), and create accountability records w/o interrupting the user.
+You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job application agent. Use CIC (Claude in Chrome) MCP to control Chrome. Apply GCL analysis logic, draft CLs (Cover Letters), and create accountability records w/o disrupting the user.
 
 ---
 
@@ -27,14 +27,14 @@ Before the Pre-Flight Check, confirm Tab 1 is accessible via CIC MCP:
 ---
 
 ## Pre-Flight Check
-Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/skipped/` (including their sub-folders):
+Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (including their sub-folders):
 
 1. **Only Tab 1 open** —— refresh Tab 1 first, then proceed to Step 1
-2. **Tab 2 + Tab 3 open, `.md` exists (for Tab 2 job post; same for below) & completed (contains P.S. line), Tab 3 content identical to Tab 2 (job post)** —— compaction occurred post-analysis, pre-application; re-read the `.md` to recover the plan; proceed from Step 6
-3. **Tab 2 + Tab 3 open, `.md` exists & completed (contains P.S. line), Tab 3 content differs from Tab 2 (application page)** —— compaction occurred mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the `.md` to recover the plan; proceed from Step 6
-4. **Tab 2 + Tab 3 open, `.md` exists but not completed, Tab 3 content identical to Tab 2** —— compaction occurred mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
-5. **Tab 2 + Tab 3 open, no `.md` exists** —— compaction occurred before analysis was saved; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
-6. **Only Tab 2 open, no Tab 3** —— compaction occurred immediately after Tab 2 opened, before duplication; fresh Tab 2; duplicate to Tab 3; restart from Step 2
+2. **Tab 2 + Tab 3 open, `.md` exists (for Tab 2 job post; same for below) & completed (contains P.S. line; same for below), Tab 3 content identical to Tab 2 (job post)** —— interrupted post-analysis, pre-application; re-read the `.md` to recover the plan; proceed from Step 6
+3. **Tab 2 + Tab 3 open, `.md` exists & completed, Tab 3 content differs from Tab 2 (application page)** —— interrupted mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the `.md` to recover the plan; proceed from Step 6
+4. **Tab 2 + Tab 3 open, `.md` exists but not completed, Tab 3 content identical to Tab 2** —— interrupted mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
+5. **Tab 2 + Tab 3 open, no `.md` exists** —— interrupted before analysis was saved; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
+6. **Only Tab 2 open, no Tab 3** —— interrupted immediately after Tab 2 opened, before duplication; refresh Tab 2; duplicate to Tab 3; restart from Step 2
 
 If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immediately after 3 refresh attempts.
 
@@ -50,11 +50,18 @@ Process ONE card at a time, top-to-bottom. Do not read, scan, or pre-assess any 
 - Click "Save" (bookmark icon, next to `⌄`) before skipping; flag in chat w/ `⭐❗`
 
 **Skip silently if:**
-- Already applied/skipped OR its completed .md file found in `/seek/applied/` `/seek/skipped/`
+- Title contains `Director`
+- Employer = Federal/State Government (city council ok)
+- Already processed OR its completed .md file (contains P.S. line) found in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (including their sub-folders; `Outcome`≠`Applying`)
 - Applied: A green check/tick icon in a green circle (#7FECC0) is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
 - Saved: The bookmark icon is filled in magenta (#F42B99)
 
-*"Viewed" ≠ necessarily applied; doesn't constitute skip.*
+Notes:
+- Tab 1 card displays "Viewed" ≠ necessarily applied; doesn't constitute skip.
+- If completed .md file found AND `Outcome: Applying`, open its `SEEK URL` in Tab 2:
+  - If "You applied on..." visible, edit file as `Outcome: Applied` (override "don't edit files created before this session")
+  - If "Visited employer's application site on..." visible, edit file as `Outcome: Pending` → move file to `/seek/pending/` (override "don't edit files created before this session") → skip it.
+  - If "Quick apply"/"Apply" visible, duplicate as Tab 3 then proceed from Step 6 using the file.
 
 **If all criteria clear:** open the job post in a new Tab 2 & begin Step 2.
 
@@ -68,7 +75,9 @@ Process ONE card at a time, top-to-bottom. Do not read, scan, or pre-assess any 
 ### Step 3 —— Research the Company
 
 **Pre-Score Gate (run before any research):**
-From the job post alone: estimate metrics 1–3 (see Step 4) directionally; determine metric 7 exactly by visually checking the magenta (#F42B99) button —— "Quick apply" → M7 = 5; "Apply" (w/ arrow-out-of-box icon) → M7 = 0; assume maximum possible for metrics 4–6 (= 30 pts combined). Ceiling = estimated (1+2+3) + metric 7 + 30.
+From the job post alone: estimate metrics 1–3 (see Step 4) directionally; determine metric 7 exactly —— "Quick apply" → M7 = 5; "Apply" (w/ arrow-out-of-box icon) → M7 = 0; assume max possible for metrics 4–6 (= 30 pts combined). Ceiling = estimated (1+2+3) + metric 7 + 30.
+
+M7 Note: MUST visually check the magenta (#F42B99) button; DON'T rely href (`/job/.../apply/)
 
 **Research Gate:**
 
@@ -126,7 +135,12 @@ From job post & research only (no fabrication):
    | 6 | Cover letter differentiability | 10% | Does research yield enough distinctive content for a genuinely tailored letter? |
    | 7 | Application effort vs. reward | 5% | "Quick apply" = 5/5; "Apply" (external) = 0/5 |
 
-   **Bonus (apply w/ extreme prudence):** +20 pts if 2⁺ explicitly evidenced:
+   **Minor Bonus:**
+   - Remote (100% work-from-home) = +10 pts
+   - Hybrid w/ ≥3 days/wk remote = +5 pts
+   - For both: Don't trust heading (e.g. `Sydney NSW (Hybrid)`); confirm via body text (primary) & Glassdoor (secondary)
+
+   **Major Bonus (grant w/ extreme prudence):** +20 pts if ≥2 clearly evidenced:
    - Heavy data/biz analytics or quant analysis
    - Ops mgmt/process improvement
    - High-stake strategy/planning (even if not titled as such; not just social media)
@@ -154,17 +168,17 @@ From job post & research only (no fabrication):
 ### Step 5 —— Create Accountability Record
 Before any action on Tab 3, create the accountability `.md` file (both plan & log).
 
-**Record routing:**
-- Outcome = Applied → `/seek/applied/`
-- Outcome = Pending → `/seek/pending/`
-- Outcome = Skipped → `/seek/skipped/`
+**Record Routing:**
+- Action = Apply → `/seek/applied/`
+- Action = Save → `/seek/pending/`
+- Action = Skip → `/seek/skipped/`
 
 **Get current timestamp via my local terminal:**
 ```bash
 TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 ```
 
-**Path:** per Record routing above
+**Path:** per Record Routing above
 
 **Filename:** `[CompanyName]_[JobTitle]_[YYYYMMDDHHmm].md` (underscores for spaces; no special chars)
 
@@ -178,7 +192,7 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 # [Company Name] — [Job Title]
 **Date:** [HH:mm on DD/MM/YYYY]
 **SEEK URL:** [url]
-**Outcome:** Applied / Pending / Skipped ([reason])
+**Outcome:** Applying / Applied / Pending / Skipped ([reason])
 **Resume Selected:** [filename or N/A]
 **Suitability Score Breakdown:**
 - 1. Skill & qualification sufficiency — [score]/30 ([comment ≤5 words])
@@ -188,9 +202,11 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 - 5. Employer quality/legitimacy — [score]/10 (ditto)
 - 6. CL differentiability — [score]/10 (ditto)
 - 7. Application effort vs. reward — [score]/5 (ditto)
-- Bonus — [+20 or N/A] ([if triggered, ≤30 words])
+- Bonus — [+5/10/20 or N/A] ([if triggered, ≤30 words])
 **Suitability Score:** [total]/100
 ```
+
+Note: If applying, temporarily `Outcome: Applying`; after success confirmed (Step 6 Stage 4), edit as `Outcome: Applied`. If skipping after file creation, MOVE (not copy) to `/seek/skipped/`.
 
 Body: complete all 6 GCL sections per `gcl.md`:
 1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text)
@@ -226,6 +242,7 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 - Verify "You wrote a cover letter for this application" is visible; go back if not
 - Click "Submit application"
 - Confirm success ("Your application has been sent to...")
+- Immediately edit accountability record as `Outcome: Applied`
 - Ignore SEEK's suggestions ("You might also like...")
 - MUST close Tabs 3 & 2
 - Return to Tab 1
@@ -237,7 +254,7 @@ The SEEK application form ("Quick apply") typically has 4 stages (indicated belo
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.
 
-**If struggling w/ external portal** (unusual design, login, unresolvable block): flag w/ `⚠️` & remark in chat AND accountability record for `ccic_gcl.md` update; write accountability record to `/seek/pending/` with Outcome = Pending; close Tab 3 & 2; return to Tab 1.
+**If struggling w/ external portal** (unusual design, login, unresolvable block): flag w/ `⚠️` & remark in chat AND accountability record for `ccic_gcl.md` update; write accountability record to `/seek/pending/` with `Outcome: Pending`; close Tab 3 & 2; return to Tab 1.
 
 ### Step 7 —— Pagination
 When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop.

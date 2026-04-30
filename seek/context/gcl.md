@@ -33,7 +33,7 @@ Dear Hiring Manager,
 I am writing to express my strong interest in the [Job Title] position (of [Team/Department Name]) at [Company Name](, part of the esteemed [Group Name]). [1]/[2]
 
 [1] With my proven capabilities in Problem Solving, Quality Assurance, and Resource Management... (elaborate) [for junior positions]
-[2] With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management... (Virtual Presentation: http://Presentation.CulousYu.com) [for mid/high-level positions or when highly applicable/strong alignment]
+[2] With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management... (Virtual Presentation: http://Presentation.CulousYu.com) [for mid/high-level positions or when `virtual_presentation.md` highly applicable/strong alignment]
 
 ... I am exceptionally well-positioned to contribute to [Company/Group Name]'s mission of ...
 
@@ -78,11 +78,12 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 - For `+` implying "more than", use superscript `⁺` (e.g. ✅ `16⁺ years`; ❌ `16+ years`); regular `+` is acceptable for employer/product names (e.g. `iCloud+`) and arithmetic
 - Always "Yours Faithfully" (not "Sincerely") since recipient's name is unknown
 - Never mention "SQL" —— I have no SQL knowledge
-- "HCI" first use as "Human-Computer Interaction (HCI)", unless role is design-centric (use "Interaction Design (IxD)"); thereafter "HCI"/"IxD" are acceptable
+- "HCI" first use as "Human-Computer Interaction (HCI)", unless role is design-centric (use "Interaction Design (IxD)"); thereafter "HCI"/"IxD" are acceptable — CHOOSE EITHER, NEVER BOTH (confusing)
 - Use "Advanced Data Analytics Algorithms" (never "Advanced Data Analytics") when referencing that UTS subject (only if it helps; don't mention abruptly)
+- Graduation year usually adds no value in CL (but not undisclosable), may rather subtly mention other perks: e.g. ❌ "...at UTS (HD; 2025)"; ✅ "...at UTS (HD; Dean's List)"
 - Figures (e.g. 16⁺ years) must each appear no more than once per CL
 - Include `http://Presentation.CulousYu.com` (Virtual Presentation) and `http://Projects.CulousYu.com` (select case studies in web form) as plain text URL in CL body if highly applicable
-- Don't use abbrev. (e.g. `KE`, `ML` must be in full) unless prevalent (e.g. `AI`, `IT`)
+- Don't use abbrev. (e.g. `KE` `ML` `AAII` must be in full) unless prevalent (e.g. `AI` `IT` `UTS`)
 - When the role is visibly junior or entry-level relative to Culous' seniority (e.g. "Junior", "Entry Level" in title, or requirements clearly aimed at early-career candidates):
   - include exactly one concise, affirmative sentence in the CL pre-empting the gap
   - frame it as a deliberate local market entry strategy, never apologetic

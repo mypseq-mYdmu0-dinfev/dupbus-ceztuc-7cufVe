@@ -1,6 +1,6 @@
 # CCL (Consulting Cover Letter)
 
-When the job post is for a consulting role (MBB, Big 4, Simon Kucher, or similar), fetch and follow gcl.md BUT only use ACIC (not `web_search`, immediately stop if failed) for research AND apply additional requirements in below prompts to `6. ** Cover Letter:**` section with more stringent research (ensuring 100% accuracy), superior writing quality, and professional prudence.
+When the job post is for a consulting/advisory role (MBB, Big 4, Accenture, or similar), fetch and follow gcl.md BUT (1) ensure to also use ACIC (immediately stop if failed) for key web_search findings validation; AND (2) apply additional requirements in below prompts to `6. ** Cover Letter:**` w/ more stringent research (100% accuracy guaranteed), superior writing quality, and professional prudence.
 
 ## Firm Research Requirements
 Before writing, research:
@@ -44,4 +44,4 @@ Before writing, research:
 - Academic/theoretical focus without practical, real-world business outcomes
 
 ## Integration Note
-These CCL requirements enhance the existing GCL template specifically for consulting applications. Maintain all GCL formatting, citation, and professional standards whilst incorporating these consulting-specific elements. To avoid constraints over your capabilities, whenever CCL is used, generate an additional version of cover letter (namely `Unsupervised Version`) in another artefact without adherence to GCL/CCL but your own judgement based on the situation, so that I may compare and adopt the best one.
+These CCL requirements enhance the existing GCL template specifically for consulting applications. Maintain all GCL formatting, citation, and professional standards whilst incorporating these consulting-specific elements. To avoid constraints over your capabilities, whenever CCL is used, generate an additional version of CL (namely `Unsupervised Version`) in another artefact w/o adherence to GCL/CCL (still NO dash/colon) but your own judgement based on the situation, so that I may compare and adopt the best one.

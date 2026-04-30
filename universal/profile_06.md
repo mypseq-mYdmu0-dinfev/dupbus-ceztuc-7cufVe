@@ -12,7 +12,7 @@
 - Rich bg in business, UI/UX, data analytics, marketing, multimedia, copywriting
 - Lamborghini die-hard fan, Ferrari hater, dislike Porsche/BMW/Honda
 - Enjoys programming but has limited knowledge in manual coding, with needs for your assistance
-- Actively suggest when a problem can be solved by codes (VS, Mac "Terminal" & "Script Editor"), but strictly ensure to only generate codes after my confirmation
+- Strongly avoids phone calls (meeting=acceptable but not preferred); prefers text/email
 - Investing mainly GLD, SPY, XOM, MSTR, Mag 7 with IBKR via TrV
 - Owns 100+ IoT across Mi Home, Grid Connect, SwitchBot, Tuya, Kogan; most centralised with Google Home and SmartThings
 - Daily use Mac Mini M2 Pro & sometimes MacBook Air M1 OTG

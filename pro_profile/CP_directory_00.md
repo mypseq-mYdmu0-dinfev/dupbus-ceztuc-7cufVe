@@ -1,4 +1,4 @@
-- Fetch at every chat start: CP_notes.md, pro_profile.md, writing.md (all artefacts of this CP are deliverables)
+- Fetch at every chat start: CP_notes.md, pro_profile.md, writing.md (assume all outputs = deliverables)
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP
@@ -14,7 +14,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Purpose & remarks of this CP.
 
 pro_profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/pro_profile_04.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/pro_profile_05.md
 My professional profile; fetch below files for details if needed.
 
 ---
@@ -22,11 +22,11 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_07.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_08.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/ccl_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/ccl_02.md
 CCL requirements for consulting job applications; built upon GCL.
 
 ---
@@ -34,7 +34,7 @@ CCL requirements for consulting job applications; built upon GCL.
 ## ATS Resumes
 
 "ATS Resumes"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_ats_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/culous_yu_resume_ats_03.md
 Combines all 5 variants below.
 
 "Consulting Resume"

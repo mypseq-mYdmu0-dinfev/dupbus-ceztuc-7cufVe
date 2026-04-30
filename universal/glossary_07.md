@@ -21,6 +21,7 @@
 - IxD = Interaction Design
 - UoL = University of Liverpool (UK)
 - 12-digit no. starting with "20" = [timestamp] in [YYYYMMDDHHmm] format
+- 1pa = 1-page artefact = `~`200 words of bullets (MAX; ≠ target to reach, can be less)
 - $ = default A$, unless specified `US$`
 - min = minimum/minute
 - m = metre/minute

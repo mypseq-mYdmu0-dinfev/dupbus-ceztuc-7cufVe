@@ -36,6 +36,11 @@
 
 - **Key Strengths:** Strategic Transformation, Value Engineering, Stakeholder Management
 - **Career-wide personal records** (across all firms/domains, not solely attributable to KE/consulting): content & project management experience over 16⁺ years, 300⁺ projects, 100⁺ clients, 10⁺ countries, spanning B2B/C, NPO, startup, Govt.
+  - These claims MUST be generic (not domain-specific), unless on marketing/content/PM
+  - ✅ "...practical solutions for 100⁺ clients" (generic)
+  - ✅ "...managed 300⁺ projects to date" (PM)
+  - ❌ "...consulting in 10⁺ countries" (FALSE)
+  - ❌ "...16⁺ years running KE" (FALSE)
 
 ---
 
