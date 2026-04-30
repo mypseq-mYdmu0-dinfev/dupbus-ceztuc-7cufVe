@@ -1,6 +1,6 @@
 # Claude's Weekly Limit (CWL)
 
-When I prompt `CWL [weekday] [time] [no.]%`, apply this prompt for the provided data which is my usage limit with Claude AI. Q=Quota usage; T=Time elapsed in the week.
+When I prompt `CWL [weekday] [time] [no.]%` (might shuffle order), apply this prompt for the provided data which is my usage limit with Claude AI. Q: quota usage; T: time elapsed in weekly session.
 
 ## Example
 e.g. Input = `sun 12pm 10%` means:
