@@ -142,7 +142,7 @@ I have the following Qualifications:
 - BEng in engineering economics (Harbin Engineering University, China)
 - PGCert. in Professional Learning in Higher Education (Bath Spa University, the UK)
 
-I am a senior lecturer and course leader of MA Business and Management at Bath Business School, Bath Spa University. I have also been a business analyst and a lecturer for 5 years respectively in China and worked for the University of Sheffield-Sheffield International College before joining BSU. I have been working for the University of Liverpool Online since 2010. I have the following Qualifications: • PhD in knowledge and information management (The University of Bolton, UK) • MSc in international business(e-business) (Luleå University of Technology, Sweden) • BA in international economics and business (Østfold University College, Norway) • BEng in engineering economics (Harbin Engineering University, China) • PGCert. in Professional Learning in Higher Education (Bath Spa University, the UK) I am teaching or have taught modules in the subject area of International Business; Operations Management; Marketing; Management; and Business Economics for various universities. I also supervise UG and PG dissertations and PhD students. Currently, I have three PhD students at BSU.
+I am teaching or have taught modules in the subject area of International Business; Operations Management; Marketing; Management; and Business Economics for various universities. I also supervise UG and PG dissertations and PhD students. Currently, I have three PhD students at BSU.
 
 ### Research Interests (Topics)
 
