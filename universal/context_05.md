@@ -9,7 +9,7 @@
 2. Re-fetch unconditionals
 3. Identify other files fetched in this chat; if no `✅` declarations found, alert in chat: `🚨☠️ FIFO: Chat history compromised`
 4. For each, re-fetch if still relevant to current/planned tasks; skip otherwise or if its info already sufficiently surfaced in prior responses
-5. Declare per #cc (no `✔︎` since PP1 failed)
+5. Declare per #cc (NO `✔︎` since PP1 failed)
 6. Artefact:
 - Print 1st 10 words of 1st msg (NOT userPref/CP instr) to prove chat history intact
 - Briefly justify why file(s) were skipped
@@ -25,3 +25,6 @@
 - Unconditionals = 1st line (above "Format: ...") of directory.md (& CP_directory.md)
 - Conditionals = everything else in directory.md (& CP_directory.md)
 - "Other files fetched" inc. not just conditionals (e.g. GH provided, even not declared)
+- Re-fetch skipping examples (judge per chat):
+  - shrink.md if no more content shrinking expected
+  - profile.md after demanded info extracted

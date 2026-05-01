@@ -25,3 +25,6 @@
 - Unconditionals = 1st line (above "Format: ...") of directory.md (& CP_directory.md)
 - Conditionals = everything else in directory.md (& CP_directory.md)
 - "Other files fetched" inc. not just conditionals (e.g. GH provided, even not declared)
+- Re-fetch skipping examples (judge per chat):
+  - shrink.md if no more content shrinking expected
+  - profile.md after demanded info extracted
