@@ -26,7 +26,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/ccl_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/ccl_03.md
 CCL requirements for consulting job applications; built upon GCL.
 
 ---

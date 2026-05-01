@@ -1,18 +1,24 @@
 # CCL (Consulting Cover Letter)
 
-When the job post is for a consulting/advisory role (MBB, Big 4, Accenture, or similar), fetch and follow gcl.md BUT (1) ensure to also use ACIC (immediately stop if failed) for key web_search findings validation; AND (2) apply additional requirements in below prompts to `6. ** Cover Letter:**` w/ more stringent research (100% accuracy guaranteed), superior writing quality, and professional prudence.
+## Missions
+When prompted `CCL` OR the job post is for a consulting/advisory role (MBB, Big 4, Accenture, or similar), use ACIC (immediately stop if failed; no fallback) to access pre-opened tab(s) (maybe multiple, e.g. LinkedIn+Official). If none detected, open a new tab and stop. Once detected AND no qb (e.g. multiple tabs w/ diff positions), fetch & follow gcl.md BUT:
+1. Never close/alter pre-opened tabs; duplicate & perform interactions in other tabs if needed
+2. Ensure to use ACIC for validating key web_search findings, esp those to be used in CL
+3. Apply additional requirements in below prompts to `6. ** Cover Letter:**` w/ more stringent research (100% accuracy guaranteed), superior writing quality, and professional prudence
 
-## Firm Research Requirements
-Before writing, research:
-- Firm's specific values and culture statements
+---
+
+## Research Requirements
+Before writing, research (in addition to gcl.md):
+- Firm's specific values & culture statements
 - Recent publications, thought leadership, case studies
-- Office-specific focus areas or specialisations
-- Methodologies or frameworks the firm promotes
+- Office-specific focus areas/specialisations
+- Methodologies/frameworks the firm promotes
 
 ## Structure Requirements
-- Maximum 1 page, 3-4 concise paragraphs
+- Max 1 page (350–500 words), 3–4 concise paragraphs
 - STAR Method: Structure examples using Situation, Task, Action, Result
-- Quantified Impact: Include specific metrics and measurable outcomes in every example
+- Quantified Impact: Include specific metrics & measurable outcomes in every example
 - Structured Thinking: Demonstrate exceptionally logical problem-solving approach
 
 ## Content Priorities
