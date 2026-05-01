@@ -1,4 +1,4 @@
-- Fetch at every chat start: ProjectSummary.md, DevPlan.md
+- Unconditionally fetch now: ProjectSummary.md, DevPlan.md
 - `request` = MUST request my approval before fetch
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
@@ -42,7 +42,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Index of all lecture content with URLs to distilled & full lecture files.
 
 Seminars (distilled).md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Seminars_distilled_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Seminars_distilled_03.md
 Distilled seminar transcripts.
 
 ---

@@ -34,6 +34,44 @@ Fetched `profile.md` for KK's bg.
 
 ---
 
+## Preservation Protocols (PP)
+
+### PP1 —— Context Check (Always Enforced)
+
+Run before every response **except chat start**:
+1st artefact (#01) AND directory.md content still fully readable?
+- If both yes, print `✔︎` alone (nothing else) as absolute line 1 of response; if new files fetched, declare on line 2
+- If either no, DON'T print `✔︎`; immediately follow userPref 2.1
+- If directory.md cleared BUT PP2 active AND directory.md fully found in prev. artefact = still yes
+
+### PP2 —— Artefact Prints
+
+Activated by `#lock` in any prompt; persists for the rest of the chat:
+- On ANY fetch event: declare first → combine ALL files fetched in that same response → print in a single new artefact (never update an existing one) explicitly named identically `#[no.] Fetched Files`
+- Format:
+
+```
+# Fetched Files
+## Included
+| # | Alias | Ver |
+|---|---|---|
+| 01 | `directory.md` | v39 |
+| 02 | `cc.md` | v10 |
+...
+## 01. `directory.md` (v39)
+[full content verbatim]
+## 02. `cc.md` (v10)
+[full content verbatim]
+...
+```
+
+### Post-Response Check
+
+End of every response (after addressing my msg):
+Run PP1 again; if still yes: no action; if no: follow userPref 2.1 then tell (in artefact) if response compromised.
+
+---
+
 ## Artefacts —— General
 
 - Respond in NEW artefacts ALL THE TIME unless specifically instructed otherwise

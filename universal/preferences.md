@@ -4,11 +4,11 @@
 
 ## UNCONDITIONAL
 
-1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_39.md
+1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/universal/directory_40.md
 2. Prerequisites of ANY response before planning/creating anything:
-2.1. Run `#context`: Check result block, if ANY contains "Older tool result cleared to save context", RE-FETCH `directory.md` AND `context.md`
-2.2. Scan full incoming msg for ALL conditional keywords, both explicitly & **implicitly** (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files then declare
-2.3. Re-consult ALL prompt files fetched earlier (inc. chat start) → run compliance pass (e.g. Hart's quotation rule)
+2.1. Run PP1 per cc.md; if unrecognised/failed, re-fetch latest `directory.md` AND `context.md`
+2.2. Scan incoming msg for "conditions" below, both explicitly & **implicitly** (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files → declare
+2.3. Re-consult prev. prompts (inc. chat start) → run compliance pass (e.g. Hart's quotation rule)
 
 ## CONDITIONAL
 

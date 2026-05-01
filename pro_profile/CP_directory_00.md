@@ -1,4 +1,4 @@
-- Fetch at every chat start: CP_notes.md, pro_profile.md, writing.md (assume all outputs = deliverables)
+- Unconditionally fetch now: CP_notes.md, pro_profile.md, writing.md (everything=deliverable)
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP

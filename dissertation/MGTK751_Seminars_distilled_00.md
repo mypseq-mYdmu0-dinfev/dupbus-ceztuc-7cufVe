@@ -13,6 +13,7 @@ Only fetch full transcripts when further details needed after approval:
 - W3: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w3.md
 - W4: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w4.md
 - W5: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w5.md
+- W6: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w6_01.md
 
 ---
 
@@ -249,3 +250,82 @@ Wilson asked: 7 participants from 7 different orgs → 7 consent letters + 7 par
 - If methodology changes substantially (e.g. shift from interviews to focus groups) → must re-submit ethics application after getting revised research proposal approved
 - If change is wording-only and doesn't alter the type of data collected → no re-application needed
 - ⚠️ Relevant reminder: any scope changes post-ethics approval must be assessed against this threshold
+
+---
+
+## Wk6 (25/04/2026) —— Instrument, Data, Supervisor Process, Wrap-Up
+
+*Note: Voice transcription error — "Clarkson, Bryman six-step model" = Braun and Clarke (2006); correct citation confirmed from prior sessions and RefRepo.*
+
+### Interview Instrument in A1 —— Optional but Recommended
+- Enis (answering Rebecca): the data collection instrument (e.g. interview guide) is NOT mandatory in the proposal
+- Including a tentative instrument = helpful; demonstrates preparedness; can go in the appendices
+- Required in A1 regardless of method: (1) identification and justification of the chosen method; (2) explanation of how data will be analysed; (3) relevance to the research problem
+- ⚠️ Our A1 v09 does not include a draft instrument — this is compliant; if Lu requests one pre-ethics, it goes in the appendices
+
+### Figure & Caption Word Count —— Culous' Direct Q (Wk6)
+Full exchange resolving A1 uncertainty:
+
+| Culous' Q | Enis' A |
+|---|---|
+| Are figures and their captions included in word count for A1, A2, A3? | Yes — captions count; the figure itself does not |
+| What about text inside boxes within a figure (e.g. conceptual framework)? | **"Yes, anything is counted in those boxes"** |
+
+- ⚠️ Directly resolved: Figure 1 in A1 v09 — text inside boxes counts; caption counts; visual connectors do not; Culous-created figure correctly managed this (32 words counted)
+- Enis added: caption word counts are minimal (6`~`9 words) — "shouldn't be too much of a concern"
+
+### Data Saturation —— Extended Elaboration (Wk6)
+- Saturation = stop conducting interviews when nothing new is emerging; justified through evidence, not instinct
+- Process: begin coding after interview 2–3; follow Braun and Clarke's six-phase thematic analysis; identify codes → primary/secondary codes → themes; saturation is demonstrable through coded data, not just a stated claim
+- "Golden nuggets" — qualitative value is not only in pattern convergence but in divergences, contradictions, and interesting outliers across lived experiences; these feed the discussion and analysis chapters
+- ⚠️ Disconfirming evidence coding (our standing rule from AD02.2.3/Concept Brief §8.1) is precisely this — actively look for what contradicts the dominant pattern
+
+### Semi-Structured Interviews —— Consistency & Probing (Wk6)
+- All participants receive the same core questions — deviating per person undermines reliability of the instrument
+- Probing questions may differ between participants: if one respondent gives an exhaustive answer to Q3, probing Qs for Q3 may not be needed; those probes may surface later in Q8 or Q9 for the same participant, or arise in Q3 for another
+- Structure remains constant; probing flexibility is the "semi" in semi-structured
+- ⚠️ Our Guide A / Guide B / Guide C design is consistent with this — core question set fixed, probing questions adaptive
+
+### Supervisor (DA) Process —— Detailed Confirmation (Wk6, Enis' own practice)
+- DA reviews each draft chapter once → provides comments → student revises → DA does NOT re-review that chapter individually
+- DA then reviews the full final dissertation draft before submission
+- In effect: each chapter reviewed twice in total (once as draft chapter, once as part of full final draft)
+- Students may share 1, 2, or 3 chapters at a time — DA's preference may vary
+- Meetings: some students never request a meeting; some have regular meetings; neither is mandatory; student-initiated
+- ⚠️ Enis' process = his personal practice; Lu Liu's process may differ — clarify at first meeting (already flagged in Meeting Prep artefact)
+
+### 1-Per-Org Rule —— Reiterated (Wk6)
+- Enis reiterated unprompted: if participants are recruited from multiple organisations and the student wants to avoid requesting consent letters from each: "please limit only one participant per organisation"
+- ⚠️ Fifth confirmation across Wk1–6 of our 1-per-org design; no further validation needed
+
+### Data Storage & Interview Platform —— Confirmed (Wk6)
+- Interviews must be conducted via UoL Teams account specifically — not a personal account, not a company account
+- All data (recordings, transcriptions, coding) stored on UoL OneDrive only
+- Not permitted: personal devices, personal cloud, company systems
+- Data retention: "until your degree is completed"
+- No one other than the student and supervisor has access to the data
+
+| Dimitris' Q | Enis' A |
+|---|---|
+| Store interviews and transcriptions in Liverpool OneDrive? | Confirmed: correct |
+| Use university Teams account or company account for interviews? | **University account only — not company** |
+
+- ⚠️ Ethics application Section 23 (sub-questions under 23.1) asks: what data collected, how collected, where stored, how long retained — all answers must reference UoL OneDrive and UoL Microsoft systems explicitly
+
+### Qualitative Data in Appendices —— Evidence Trail (Wk6)
+- Interview transcriptions → copy-paste into appendices (not word count)
+- Coding tables, theme tables, analytical workings → appendices as evidence of how findings were derived
+- Ethics-related documents that can also go in appendices: Participant Information Sheet (PIS), participant consent form, management consent letter (if applicable), ethics approval letter
+- "With qualitative research, you need to have the journey very, very clear" — appendices are how markers trace the origin of the researcher's thinking
+- ⚠️ Plan appendix structure early: A3 appendices will include at minimum: ethics approval, PIS template, consent form template, interview transcriptions, coding/theme tables
+
+### A1 Writing Style —— Bullet Points (Wk6, Enis to Michael)
+- Enis' feedback on one student's draft: over-reliance on bullet points
+- Rule: minimise bullets to items where emphasis, importance, or impact is genuinely served; always elaborate after bullet lists — connect them to what precedes or follows
+- ⚠️ Our A1 v09 uses prose throughout in body sections; bullet points only in RO/RQ lists and milestone table — fully compliant
+
+### Enis' Closing Remarks (Wk6)
+- Overall impression of cohort proposals: "some strong, and some interesting research proposals"
+- Supervisors will provide feedback and amendment opportunities in Wks 7+; "in 4 or 5 weeks' time, you will be in a different situation"
+- On research methods breadth: do not stress over methodological streams not relevant to your design; "tell the story — where do I start, how do I structure it, how do I deliver, how do I make sure people are following me, how do I conclude"
+- ⚠️ Enis' meta-message: methodological precision within a coherent narrative > exhaustive coverage of every methodological variant; applies to all future writing
