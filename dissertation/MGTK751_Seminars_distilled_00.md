@@ -9,8 +9,8 @@
 ## URLs
 Only fetch full transcripts when further details needed after approval:
 - W1: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
-- W2: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
-- W3: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w1.md
+- W2: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w2.md
+- W3: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w3.md
 - W4: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w4.md
 - W5: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/Seminars/MGTK751_zoom_w5.md
 
