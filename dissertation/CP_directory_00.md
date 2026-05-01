@@ -33,9 +33,9 @@ A1-3.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1-3_01.md
 Full text of A1-3 official briefs & marking criteria.
 
-Potential Advisors.md
+Potential Advisors.md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Potential_Advisors_04.md
-All available DAs w/ biography, research interests, and methodology pref.
+All available DAs (no longer useful).
 
 Lectures (index).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Lectures_index_01.md
@@ -85,3 +85,7 @@ In-depth synthesises of 13 core ref.
 A1.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_09.md
 Submitted real A1.
+
+Lu.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/lu_01.md
+Synthesised profile of matched DA.
