@@ -6,13 +6,22 @@
 
 [optional]
 
-### Bedtime Reading
-"Free Will: An Examination of Human Freedom" by Magnus Vinding
-Non-Fiction, October 2012
+### Bedtime Readings
+
+- "Free Will: An Examination of Human Freedom" by Magnus Vinding
+- "Seneca, on the Shortness of Life: Modern English Edition" by Lucius Seneca
+- "The Memorable Thoughts of Socrates" by Xenophon
+- "Meditations: Modern English Edition" by Marcus Aurelius
+- "Self-Development and the Way to Power" by Louis William Rogers
+- "The Art of War" by Sun Zu
+- "The Three-Body Problem (Trilogy)" by Liu Cixin
 
 ### Education & Job Seeking
 
-I adopted the education pathway to move to Australia, which I finished a Master of Human-Computer Interaction (aka Interaction Design) with Data Analytics sub-major with GPA 6.63/7 (High Distinction; Dean's List) at UTS in NOV 2025, despite it's my fourth degree (though the only one officially graduated). After graduation, I  focused back on my MBA which was paused during UTS. In MAR 2026, I finished my 2nd-last module (subject) and now on dissertation. In APR 2026, I submitted my research proposal and hence finally free of assessments. In May 2026, I started using my self-programmed, fully autonomous agentic AI automation for company research, bespoke cover letter, and job applications for 2nd tier jobs (e.g. business analyst, experience designer). Simultaneously, I'm manually applying for management/strategy/ops/technical consulting jobs.
+I adopted the education pathway (SC500→SC485→SC189) to move to Australia, which I finished a Master of Human-Computer Interaction (aka Interaction Design) with Data Analytics sub-major with GPA 6.63/7 (High Distinction; Dean's List) at UTS in NOV 2025, despite it's my fourth degree (though the only one officially graduated; BSc Psychology; quitted to switch to Pharmacy; MSc Pharmacy: quitted to switch to filmmaking career; MBA: final dissertation). After graduation, I focused back on my online MBA (started 2023) which was paused during UTS (2024–2025). In MAR 2026, I finished my 2nd-last module (subject) and now on dissertation. In APR 2026, I submitted my research proposal (only assessment before the final paper due NOV 2026) and hence finally free of assessments.
+
+In MAY 2026, I started using my self-programmed, fully autonomous agentic AI automation for company research, bespoke cover letter, and job applications for 2nd tier jobs (e.g. business analyst, experience designer). Simultaneously, I'm manually applying for management/strategy/ops/technical consulting jobs.
+
 Outcomes:
 - Automation (since MAY 2026) ——  no interviews yet
 - Manual (since JAN 2026) —— had multiple online assessments, but still no interviews yet
