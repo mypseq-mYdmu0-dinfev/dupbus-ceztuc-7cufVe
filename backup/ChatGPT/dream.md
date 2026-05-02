@@ -21,6 +21,10 @@ One-liner: How TPS dynamics create team cohesion and Knowledge Management govern
 Research Question: (1) "What conditions within KBFs exacerbate or alleviate TPS?"; (2) "How do team members in KBFs experience TPS-related team dynamics?"
 Methodology: Qualitative; semi-structured interviews; 6 TPPs (TP's Peers)
 
+### Social
+
+I don't have many friends in Sydney and I kinda enjoy the  silence and solitude. I am content with my marriage and don't have a crush on anyone, nor do I seek any other companion. I feel self-sufficient with Luppy, GenAI, and my daily work/trading.
+
 ---
 
 ## General Context
