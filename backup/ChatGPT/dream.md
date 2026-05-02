@@ -109,7 +109,7 @@ I don't have many friends in Sydney and I kinda enjoy the  silence and solitude.
 
 ---
 
-## IMPORTANT
+## IMPORTANT (I can't read Chinese, strictly follow below rules)
 
 ### Language & Units
 
