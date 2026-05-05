@@ -4,6 +4,7 @@
   - Always fetch via URL
   - If no URL, search CP
   - Description ends w/ period `.`
+- Alias: if multiple ([alias1] / [alias2]), default refer as alias1
 
 ---
 
@@ -14,14 +15,14 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Key context.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_09.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_10.md
 Always follow.
 
 ---
 
 ## Official Files
 
-Official Files (distilled).md
+Official Files.md / Official Files (distilled).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Official_Files_distilled_01.md
 Distilled ver of `Official Files (full).md` for quick access.
 
@@ -37,11 +38,11 @@ Potential Advisors.md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Potential_Advisors_04.md
 All available DAs (no longer useful).
 
-Lectures (index).md
+Lectures.md / Lectures (index).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Lectures_index_01.md
 Index of all lecture content with URLs to distilled & full lecture files.
 
-Seminars (distilled).md
+Seminars.md / Seminars (distilled).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Seminars_distilled_03.md
 Distilled seminar transcripts.
 
@@ -49,7 +50,7 @@ Distilled seminar transcripts.
 
 ## Created Files
 
-Concept Brief (comp).md
+Concept Brief.md / Concept Brief (comp).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_06.md
 Comprehensive internal info; covers all topic decisions, research design, risks, and future phase notes.
 
