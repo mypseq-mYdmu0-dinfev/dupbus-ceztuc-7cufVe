@@ -40,9 +40,10 @@ Fetched `profile.md` for KK's bg.
 
 Run before every response **except chat start**:
 1st artefact (#01) AND directory.md content still fully readable?
-- If both yes, print `✔︎` alone (nothing else) as absolute line 1 of response; if new files fetched, declare on line 2
+- If both yes, print `✔︎` alone (nothing else) as absolute line 1 of response; if new files fetched, declare `✅ ...` on line 2 per `## Prompt Files (.md)`
 - If either no, DON'T print `✔︎`; immediately follow userPref 2.1
 - If directory.md cleared BUT PP2 active AND directory.md fully found in prev. artefact = still yes
+- Clarification: file(s) (re-)fetched → use `✅ ...`, NOT `✔︎`
 
 ### PP2 —— Artefact Prints
 
@@ -162,7 +163,8 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 - If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only in chat (override)
 - `#cc` —— reminder for complying this file, most likely you made mistakes (e.g. multiple artefacts with identical number) but I prefer not to rectify, just continue
 - If and only if my prompt has nothing but `#cc`, review your last response against this file & update in a new artefact
-- `override` = exception to print in chat, overriding "artefact only"/"no chat text" or similar instr
+- `#pp` —— reminder to run PP1 (AND PP2 if `#lock` prompted earlier) for EVERY SINGLE RESPONSE
+- `override` = exception to override "artefact only"/"no chat text"/"each file fetched once only" or similar instr
 
 ---
 

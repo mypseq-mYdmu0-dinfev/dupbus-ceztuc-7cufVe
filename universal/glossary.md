@@ -24,6 +24,7 @@
 - 1pa = 1-page artefact = `~`200 words of bullets (MAX; ≠ target to reach, can be less)
 - GH = GitHub (link)
 - $ = default A$, unless specified `US$`
+- #[no.] = artefact no. for #01–#09; else for #1–#9; clarify if not sure for #10⁺
 - min = minimum/minute
 - m = metre/minute
 - Mn = million
