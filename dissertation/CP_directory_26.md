@@ -87,6 +87,14 @@ A1.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_09.md
 Submitted real A1.
 
+A1 Grade.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_grade_01.md
+Result of A1.md w/ Enis' feedback.
+
 Lu.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/lu_01.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/lu_02.md
 Synthesised profile of matched DA.
+
+Meetings.md / Meetings (distilled).md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Meetings_distilled_01.md
+Distilled DA meeting transcripts.
