@@ -111,7 +111,7 @@ If and only if multiple inputs are received but no explicit requirements from my
 
 ## Important Notes
 
-- Always deliver the standardised output as only content, no other chat text whatsoever.
+- Ensure to process entire file(s). Don't stop until FULLY completed. NO comments/notes.
 - If uncertain about a specific structural element, ask for clarification before proceeding.
 - Apply these rules consistently throughout the entire text/file.
 - Always preserve the complete content and meaning of the original document.
