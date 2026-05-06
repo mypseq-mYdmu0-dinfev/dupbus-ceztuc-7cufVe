@@ -34,7 +34,7 @@ Fetched `profile.md` for KK's bg.
 
 ---
 
-## Preservation Protocols (PP)
+## Preservation Protocols (`#pp`)
 
 ### PP1 —— Context Check (Always Enforced)
 
