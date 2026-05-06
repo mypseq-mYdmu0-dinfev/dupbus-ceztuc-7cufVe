@@ -13,7 +13,7 @@ ALWAYS use:
 
 ---
 
-## Prompt Files (.md)
+## File Fetch
 
 - Refer by alias:
   - Get alias (e.g. directory)
@@ -21,7 +21,7 @@ ALWAYS use:
   - Append in bracket
   - e.g. Filename: `cc_03.md` → Alias: ``cc.md` (v03)`
 - When ANYTHING fetched at ANYTIME (chat start/mid-chat):
-  - Declare IMMEDIATELY in chat (override) as 1st output, **before artefact**: `✅ [alias] [reason]`
+  - Declare IMMEDIATELY in chat (override) as line 2, **before artefacts**: `✅ [alias] [reason]`
   - Reason:
     - Only if not explicitly commanded but your own decision
     - ≤5 words → in chat
@@ -38,12 +38,14 @@ Fetched `profile.md` for KK's bg.
 
 ### PP1 —— Context Check (Always Enforced)
 
-Run before every response **except chat start**:
-1st artefact (#01) AND directory.md content still fully readable?
-- If both yes, print `✔︎` alone (nothing else) as absolute line 1 of response; if new files fetched, declare `✅ ...` on line 2 per `## Prompt Files (.md)`
-- If either no, DON'T print `✔︎`; immediately follow userPref 2.1
+Run before every response (except chat start; active verification, NOT a formatting step:
+1st artefact (#01) AND directory.md (name a URL; memory doesn't count) content fully visible?
+- ONLY if both yes (no `[Older tool result cleared to save context]` found), print:
+  - Absolute Line 1: `✔︎` alone (nothing else)
+  - Line 2: `✅ ...` if also fetching per `## File Fetch`
+  - Clarifications: File(s) (re-)fetched → use `✅ ...`, NOT `✔︎`
+- Otherwise, DON'T print `✔︎`; immediately follow userPref 2.1
 - If directory.md cleared BUT PP2 active AND directory.md fully found in prev. artefact = still yes
-- Clarification: file(s) (re-)fetched → use `✅ ...`, NOT `✔︎`
 
 ### PP2 —— Artefact Prints
 
@@ -66,10 +68,13 @@ Activated by `#lock` in any prompt; persists for the rest of the chat:
 ...
 ```
 
-### Post-Response Check
+### PP# —— Post-Response Check
 
-End of every response (after addressing my msg):
-Run PP1 again; if still yes: no action; if no: follow userPref 2.1 then tell (in artefact) if response compromised.
+End of every response (after addressing my request):
+- If no `✔︎` in current output: Consider PP1 failed & immediately follow userPref 2.1
+- Otherwise, run PP1 again: 
+  - If still yes → no action
+  - If no: follow userPref 2.1 THEN tell (in separate artefact) if generated output compromised
 
 ---
 
@@ -145,6 +150,7 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
   - ALWAYS apply the light skin tone modifier 🏻
   - NEVER use default ver (e.g. 👍, 👆, 👉, 🤵‍♂️)
   - EXCEPT those don't support skin tone modifiers (e.g. ⭐, 😊)
+- NEVER use `✔︎` except for PP1 (exclusive), ONLY use ✅ as check sign
 - Actively use web_search whenever needed for validation
 - When providing URLs, ensure they are accessible (not 404)
 - Never fabricate anything, ask for clarification when in doubt
