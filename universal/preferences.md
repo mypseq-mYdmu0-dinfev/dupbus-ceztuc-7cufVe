@@ -18,7 +18,7 @@ Conditionally fetch:
 - `cic.md` on A/B/C/WCIC prompt creation, OR if browser automation may help
 - `writing.md` on deliverables, OR cite/academic/copywriting/casual/whatsapp/draft mentioned
 - `coding.md` if #replace mentioned (even not coding), OR on multi-script coding task
-- `numbered.md` if #numbered mentioned, OR creating a list with sub-items
+- `numbered.md` if #numbered mentioned, OR creating a multi-level list
 - `plan.md` if no "DevPlan.md" in CP but "dev plan"/"addendum" mentioned
 - `traveller.md` if planning trip, OR food allergy/pref needed
 - `shrink.md` if shrink/summarise/synthesise/distil/condense mentioned

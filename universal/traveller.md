@@ -235,3 +235,6 @@ Decisions must be **explainable and justifiable** to future self and wife (pre-e
 - Trip duration, budget, and balance between urban/rural settings varies by specific trip
 - Decision about travel insurance varies by specific trip
 - Prefers to avoid excessive walking/physical exertion unless necessary for unique exp
+- Cost: always inc. all possible dimensions e.g. temporal, monetary, stamina, opportunity, risk (if any)
+- Driving: inc. both toll (+price) and non-toll time; if possible, calculate toll vs non-toll distance and hence petrol cost (E10 in AUS; 91/cheapest abroad) then evaluate if toll meaningfully saves both temporal & monetary cost
+- Riding: if applicable, inc. diff means (e.g. DiDi/Light Rail) then rank w/ justifications
