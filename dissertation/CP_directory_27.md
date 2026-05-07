@@ -15,24 +15,32 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Key context.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_10.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_11.md
 Always follow.
 
 ---
 
 ## Official Files
 
-Official Files.md / Official Files (distilled).md
+Official_Files.md / Official Files (distilled).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Official_Files_distilled_01.md
 Distilled ver of `Official Files (full).md` for quick access.
 
 Official Files (full).md (request)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Official_Files_full_02.md
-Full raw text of all Moodle pages and linked files, inc. module schedule, research proposal template, etc. but exc. lectures, A1-3, and potential advisors.; only needed when distilled ver is insufficient.
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Official_Files_full_03.md
+Full raw text of all Moodle pages and linked files, inc. module schedule, research proposal template, etc. but exc. lectures, A1-3 & templates; only needed when distilled ver is insufficient.
 
 A1-3.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1-3_01.md
 Full text of A1-3 official briefs & marking criteria.
+
+A1_Template.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_Template_01.md
+Must follow.
+
+A3_Template.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A3_Template_01.md
+Must follow.
 
 Potential Advisors.md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Potential_Advisors_04.md
@@ -46,11 +54,15 @@ Seminars.md / Seminars (distilled).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Seminars_distilled_03.md
 Distilled seminar transcripts.
 
+A1_Grade.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_grade_01.md
+By Enis (not DA).
+
 ---
 
 ## Created Files
 
-Concept Brief.md / Concept Brief (comp).md
+Concept_Brief.md / Concept Brief (comp).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_06.md
 Comprehensive internal info; covers all topic decisions, research design, risks, and future phase notes.
 
@@ -58,15 +70,15 @@ Concept Brief (concise).md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_06.md
 Concise ver for my reading only; never fetch unless explicitly instructed.
 
-A1 (temp).md
+A1 (temp).md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_04.md
 Formative "Draft Research Proposal" submitted Wk4; created before A1 DevPlan.
 
-A1 (overview).md
+A1 (overview).md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_overview_01.md
 Submitted alongside `A1 (temp).md` in DA Allocation Form; created before A1 DevPlan.
 
-A1 (temp) feedback.md
+A1 (temp) feedback.md (request)
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_temp_feedback_01.md
 Formative feedback on `A1 (temp).md`.
 
@@ -87,13 +99,9 @@ A1.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_09.md
 Submitted real A1.
 
-A1 Grade.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_A1_grade_01.md
-Result of A1.md w/ Enis' feedback.
-
 Lu.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/lu_02.md
-Synthesised profile of matched DA.
+Synthesised profile of matched DA (A2/A3 marker).
 
 Meetings.md / Meetings (distilled).md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Meetings_distilled_01.md

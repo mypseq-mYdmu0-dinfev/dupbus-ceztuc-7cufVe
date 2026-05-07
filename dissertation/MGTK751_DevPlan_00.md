@@ -1,127 +1,207 @@
-# MGTK751 A1 Dev Plan
-**Goal/Output:** A1 Research Proposal (1,500w) submitted to VLE
+# MGTK751 A1R Dev Plan
+**Goal/Output:** A1R.md —— Revised Research Proposal; DA and proposal/ethics reviewer approval
 **Organisation:** University of Liverpool (UoL)
-**Due:** 202604270000 (UK Time)
-**Target Result:** Full marks A1 submission attracting preferred DA (Lu Liu #1; see AD04.2) and setting clean foundation for A2/A3
-**Created:** 202504120000 (Chat 03)
+**Due:** No formal deadline; ethics application target Wk9 (w/c 12/05/2026)
+**Target Result:** A1R.md approved by Lu Liu and proposal reviewer; ethics application submission-ready
+**Created:**
+- Original: 202504120000 (Chat 03; archived as `A1_DevPlan.md`)
+- Reconstructed for A1R: 202605070541 (Chat 12)
+*Note: If quoting, replace `~` with ``~``*
 
 ---
 
 # PART A —— PROJECT PHASES
 
-## P1. Literature Research (WCIC) *(completed by Chat 05)*
+## P01. Literature Research *(completed by Chat 05)*
 
-### P1.1. Search Scope
-Run targeted searches across UoL library databases (e.g. Business Source Complete, Scopus) for each theory/literature cluster below. For each cluster, retrieve `~`3–5 high-quality sources (peer-reviewed; prefer post-2000 unless foundational):
-- P1.1.1. TPS foundational —— Feather (1989, 1994); search for more recent TPS empirical studies and any management-context applications
-- P1.1.2. TPS in org behaviour / KBFs —— confirm literature gap; note any adjacent work (high performer dynamics, excellence and envy, social exclusion at work)
-- P1.1.3. KBV / KBF literature —— Grant (1996), Kogut & Zander (1992); search recent KBF definitions and KM-as-competitive-advantage literature
-- P1.1.4. Social Comparison Theory —— Festinger (1954); recent org behaviour applications especially around envy and peer dynamics
-- P1.1.5. Social Exchange Theory —— foundational text (Blau 1964 or Homans 1958); recent applications to KM sharing/withdrawal behaviour
-- P1.1.6. OCB and voluntary knowledge sharing —— search KM withdrawal, knowledge hoarding, conditions enabling/inhibiting knowledge sharing
-- P1.1.7. Team cohesion —— high-performer team dynamics; cohesion erosion under performance disparity; peer marginalisation effects
+## P02. RefRepo.md Creation *(completed by Chat 06)*
 
-### P1.2. Source Capture Rules
-- P1.2.1. For each source: author(s), year, title, journal, DOI (for Harvard refs); 2–4-sentence summary of relevance; which A1 section it serves (intro / lit theme 1–5 / methodology justification)
-- P1.2.2. Flag any source that contradicts our framing (e.g. TPS not observed in professional contexts) — these become "gap/tension" material in lit review
-- P1.2.3. Request sample `RefRepo.md` from Culous before beginning capture (for structural reference)
+## P03. Review Concept Brief & Dev Plan *(completed by Chat 06)*
 
-## P2. RefRepo.md Creation *(renamed from TheoryRepo.md; see AD03.2.5; completed by Chat 06)*
-- P2.1. Ask Culous for a sample RefRepo.md immediately before starting this phase
-- P2.2. Structure by lit cluster (matching P1.1.1–7); within each cluster, order sources by relevance to our RQs
-- P2.3. Include: full Harvard citation, relevance summary, which A1 section it informs, any key quotes earmarked for lit review use
-- P2.4. Flag sources applicable to A3 lit review (full chapter) but out of scope for A1 (1,500w constraint) — to be enriched after A1 and before A3
-- P2.5. Save to CP GitHub (Culous to upload); filename: `MGTK751_RefRepo_01.md`
+## P04. A1 Drafting *(completed by Chats 07~08)*
 
-## P3. DevPlan.md Update *(completed by Chat 06)*
-- P3.1. Based on literature found in P1, update Concept Brief (comp) if any theoretical framing requires adjustment (e.g. a stronger or more current grounding theory identified)
-- P3.2. Update PART A and PART B of DevPlan.md if needed based on context changes; create addendum for this phase (done: AD04, Chat 06)
+## P05. A1 QC & Submission *(v09 submitted 27/04/2026)*
 
-## P4. A1 Drafting
-*All sections follow the official A1 template. writing.md applies throughout — deliverable quality.*
-*Word budget: Introduction 300w, Literature Review 600w, Methodology 600w. Total ≤1,500w. Milestone Plan + References excluded from count.*
+## P06. Strategy & Identity *(A1R starts)*
 
-### P4.1. Cover Page
-- P4.1.1. Populate all fields: student name, number, country of residence, Liverpool email, proposed title, word count
-- P4.1.2. Title = working title from Concept Brief (comp) §1.1 unless refined with DA
+- P06.1. Decide Research Method (T1)
+  - P06.1.1. Review Lu's shared folder: Research Proposal Examples and Research Methods References
+  - P06.1.2. Decide IPA vs case study as the research method for A1R
+  - P06.1.3. Remarks: decision is open; resolve before progressing to P06.2 onward; decision governs all §3 content in P09
 
-### P4.2. Introduction (S1, ~300w)
-- P4.2.1. Opening: management challenge overview — TPS as a KM governance and team cohesion risk in KBFs; why it matters
-- P4.2.2. Brief contextual background: KBFs' dependence on individual excellence; structural tension between individual and collective
-- P4.2.3. Industry-wide scope rationale (supra-organisational argument, Section 6 of Concept Brief)
-- P4.2.4. State research aim (from §10.1) + objectives (from §10.2, condensed)
-- P4.2.5. State RQ1 and RQ2
-- P4.2.6. Contribution: academic (management application of TPS in KBFs — identified gap) + practical (mgr-facing implications)
-- P4.2.7. Tone check: MBA framing, not psychological/HR; no "help TPs feel better" language
+- P06.2. Confirm CYC Identity
+  - P06.2.1. Confirm simulated company name: CYC (Culous Yu Consultancy)
+  - P06.2.2. Confirm type: MCF (Management Consulting Firm) specialising in KM; boutique/specialist tier
+  - P06.2.3. Confirm founding: Culous Yu as managing consultant + unnamed associate team
+  - P06.2.4. Remarks: solo-founder rationale (standard for boutique MCF startups) is internal only; surface only if challenged by Lu or reviewer
 
-### P4.3. Literature Review (S2, ~600w)
-- P4.3.1. Theme 1 (brief): TPS — definition, cultural origins (Feather), manifestation in professional contexts
-- P4.3.2. Theme 2 (brief): KBFs — KBV grounding, KM as strategic asset, individual excellence as core product
-- P4.3.3. Theme 3 (brief): team dynamics around high performers — Social Comparison Theory, peer reactions, cohesion erosion
-- P4.3.4. Theme 4 (brief): KM behaviour — Social Exchange Theory, conditions enabling/inhibiting sharing, OCB; knowledge withdrawal as response to reciprocity breakdown
-- P4.3.5. Gap statement: TPS literature dominated by cultural psychology; management application in KBFs absent; peer-level experience of TPS-driven KM risks = empirical gap
-- P4.3.6. Conceptual framework: non-directional visual (no arrows); themes linked by lines/shapes; label: TPS conditions → peer experience → KM behaviour + team cohesion outcomes; note it will be updated post-analysis
-- P4.3.7. Word constraint discipline: each theme = 1 concise paragraph; framework visual occupies minimal word-count space; avoid theory description padding
+- P06.3. Establish Participant Comparability Rationale
+  - P06.3.1. Frame CYC's primary client base as KBFs broadly (cross-sector)
+  - P06.3.2. Frame cross-KBF participant sampling as CYC market intelligence for its KM governance service offering
+  - P06.3.3. Distinguish two dimensions: CYC = MCF (single industry); client base/participant pool = KBFs (multi-industry)
+  - P06.3.4. Remarks: Lu's criterion — "as long as we can justify samples are comparable to this simulated firm"; never conflate the two dimensions in any A1R section
 
-### P4.4. Research Methodology (S3, ~600w)
-- P4.4.1. Research philosophy: interpretivist; ontology = constructivist (reality is socially constructed, especially for phenomenon like TPS); epistemology = subjectivist; justification tied to nature of RQs (experience, perception, peer dynamics)
-- P4.4.2. Approach: inductive; qualitative primary; semi-structured interviews
-- P4.4.3. Data collection: justify semi-structured interviews (flexible, allows probing, appropriate for subjective experience data); note MS Teams/Office/Copilot for transcription (only approved tools)
-- P4.4.4. Sampling strategy: purposive sampling; TPPs in KBFs; 1-per-org design (no org consent needed — explain per Enis Wk1–3 confirmation); 6 participants minimum; cross-firm design justification (supra-organisational phenomenon); screening criterion; ⚠️ Enis' formative feedback: "minimum of six participants feels slightly limited" — explicitly defend depth and saturation in this section; defence may be informed by Enis' reply email (fetch after P3 and before P4 begins)
-- P4.4.5. Data analysis: thematic analysis (Braun & Clarke 2006); begin coding after interview 2–3; stop at saturation; NVivo optional
-- P4.4.6. Trustworthiness (not "reliability and validity" — positivist terms, incompatible with interpretivist design): credibility (member checking if triangulation secured), dependability (audit trail), transferability (cross-firm design, rich description), confirmability (reflexivity — Culous' positionality disclosed in methodology); cite Shenton (2004) as primary source for four criteria — Lincoln & Guba (1985) replaced per AD03.2.3
-- P4.4.7. Feasibility and limitations: Culous' professional network across 10⁺ countries; 1-per-org avoids consent bottleneck; limitation = small Q sample; acknowledged per qualitative norms
-- P4.4.8. Ethics: standard UoL ethics approval process (not LOREC); safe framing at professional observation level; individual consent forms; data stored on UoL OneDrive only; data collection cannot begin before written approval
+- P06.4. Draft Chat 11 (DA Comms) Prompt —— Lu Status Update
+  - P06.4.1. Draft prompt for Chat 11 to send Lu a brief status update
+  - P06.4.2. Acknowledge shared folder received & briefly read
+  - P06.4.2. Include methodology decision (IPA or case study) in the update
+  - P06.4.3. Include CYC confirmed as MCF specialising in KM
+  - P06.4.4. Include the two dimensions (P06.3.3)
+  - P06.4.5. Remarks: 5⁺ days elapsed since Meeting 01; no formal deadline set; purpose is reassurance, not a required deliverable
 
-### P4.5. Milestone Plan (S4, not in word count)
-- P4.5.1. Table format; rows = key milestones; columns = week no., date, activity
-- P4.5.2. Key entries (minimum): ethics application submitted (Wk7), ethics approved (Wk11), data collection begins post-approval, data collection complete, analysis complete, draft A2+A3 to DA (Wk32, Mon 26 Oct 2026), final A2+A3 submission (Wk36, Mon 23 Nov 2026)
-- P4.5.3. Include explicit note: "Data collection will not commence until written ethical approval has been received" — required per template
+## P07. §1 Rewrite
 
-### P4.6. References (S5, not in word count)
-- P4.6.1. Harvard referencing style; consistent throughout
-- P4.6.2. All in-text citations must have corresponding entry; all entries must be cited in-text
-- P4.6.3. Only peer-reviewed or authoritative sources; no web-only sources without academic grounding (exception: 3 approved practitioner sources — Billan 2023, Banerjee et al. 2023 [McKinsey internal shorthand], Gallup 2026; see AD03.2.4)
+- P07.1. Complete Prerequisites
+  - P07.1.1. Fetch A1-3.md (blocking)
+  - P07.1.2. Fetch MGTK751_A3_Template.md (blocking)
+  - P07.1.3. Remarks: write §1 to A3 register and structural requirements for Ch1 reuse; neglect A3-specific formatting rules (font, size, etc.)
 
-## P5. QC and Submission
-- P5.1. Compliance pass against A1 template (all required sections present, word counts within range)
-- P5.2. Compliance pass against A1-3.md marking criteria
-- P5.3. Hart's quotation rule check; British English check; academic register check (writing.md)
-- P5.4. Confirm word count (excluding milestone plan + references); adjust if over/under
-- P5.5. Submit via VLE by 23:59 UK Mon 27 Apr 2026
+- P07.2. Rewrite §1 with CYC Framing
+  - P07.2.1. Frame research throughout §1 from CYC's perspective as a KM-specialising MCF investigating its KBF client base
+  - P07.2.2. Incorporate Australian contextual grounding where natural
+  - P07.2.3. Remarks: Australian grounding is a bonus, not a gate; do not impose where it does not fit organically
+
+- P07.3. Balance Practitioner Sources in §1
+  - P07.3.1. Source ~4 additional practitioner reports in addition to existing 3 practitioner sources (Billan 2023, Banerjee et al. 2023, Gallup 2026)
+  - P07.3.2. Ensure to reach ~50:50 academic:practitioner balance
+  - P07.3.3. Remarks: determine appropriate sources at time of execution; illustrative, non-binding starting points: CIPD annual report, Deloitte Insights/MGI on knowledge workers, Gallup Aus/NZ supplement, AHRI
+
+- P07.4. Audit §1 Language
+> Verify no hypothesis/testing language introduced in any new §1 content
+
+## P08. §2 Lit Review Restructure
+
+- P08.1. Reframe §2 Narrative Funnel
+  - P08.1.1. Rewrite §2 narrative thread to reflect: TPS (foundational) → TPS in KM (governance impacts) → TPS in KBFs (specific org context)
+  - P08.1.2. Attempt reframe of existing §2.1~2.5 narrative without reorganising subsections
+  - P08.1.3. Flag and confirm with user before reorganising subsections if clearly necessary during execution
+  - P08.1.4. Remarks: subsection reorganisation decision to be made during execution; narrative reframe is the default approach
+
+- P08.2. Confirm Source Adequacy
+  - P08.2.1. Confirm no new academic refs required (existing refs pair foundational theories with recent empirical work)
+  - P08.2.2. Confirm Australian context remains §1 practitioner layer only; not a §2 requirement
+  - P08.2.3. Confirm near-100% academic sources maintained in §2
+
+## P09. §3 Methodology Rewrite
+
+- P09.1. Complete Prerequisites
+  - P09.1.1. Fetch A1-3.md if not already in context from P07 (blocking)
+  - P09.1.2. Fetch MGTK751_A3_Template.md if not already in context from P07 (blocking)
+  - P09.1.3. Remarks: write §3 to A3 register and structural requirements for Ch3 reuse; neglect A3-specific formatting rules
+
+- P09.2. Name Research Method in §3
+  - P09.2.1. Name research method (IPA or case study per P06.1) explicitly in §3
+  - P09.2.2. Reposition semi-structured interview as data collection technique within that method
+
+- P09.3. State Participant Comparability in §3.3
+  - P09.3.1. State participants drawn from KBFs broadly, justified as comparable to CYC's client base
+  - P09.3.2. Retain and explain 1-per-org design
+
+- P09.4. Reorder §3 Structure
+  - P09.4.1. Reorder to: research aim → RQs → objectives (if needed; §1 would've already reflected such change)
+  - P09.4.2. Remarks: A1 v09 has ROs before RQs; invert per Lu's directive
+
+- P09.5. Audit §3 Language
+  - P09.5.1. Verify inductive framing consistent throughout §3
+  - P09.5.2. Verify no hypothesis/testing language anywhere in §3
+
+## P10. QC & Whole-Doc Integration
+
+- P10.1. Expand Document
+  - P10.1.1. Expand A1R.md to ~3,000w (if need; not necessary)
+  - P10.1.2. Verify §1 and §3 at A3 register and structured for Ch1/Ch3 cut-paste reuse
+
+- P10.2. Run Full-Doc Alignment Audit
+  - P10.2.1. Verify aim–RQ–objective–method chain explicitly traceable throughout
+  - P10.2.2. Verify CYC framing and participant comparability rationale visible in §1 and §3
+  - P10.2.3. Verify no hypothesis/testing language anywhere in full document
+  - P10.2.4. Verify inductive framing consistent throughout full document
+
+## P11. Output Audit —— Lu's Checklist
+
+- P11.1. Verify CYC Identity and Participant Comparability
+  - P11.1.1. Confirm CYC (MCF specialising in KM) named throughout
+  - P11.1.2. Confirm participant comparability to KBF client base explicitly stated
+  - P11.1.3. Confirm two dimensions (CYC = MCF; participants = KBFs broadly) not conflated
+
+- P11.2. Verify Methodology Framing
+  - P11.2.1. Confirm research method (IPA or case study) named explicitly in §3
+  - P11.2.2. Confirm semi-structured interview positioned as data collection technique only
+
+- P11.3. Verify Structural Sequence & Source Balance
+  - P11.3.1. Confirm research aim → RQs → objectives sequence observable throughout
+  - P11.3.1. Confirm ~50/50 academic/practitioner balance achieved in §1
+  - P11.3.2. Confirm Australian contextual grounding present where natural
+  - P11.3.1. Confirm §2 narrative funnel: TPS → TPS in KM → TPS in KBFs
+  - P11.3.2. Confirm near-100% academic sources in §2
+  - P11.3.1. Confirm aim–RQ–objective–method chain traceable without effort (Enis' quality standard; second marker's lens)
+
+- P11.4. Verify A3 Register & Language
+  - P11.4.1. Confirm document below 3,000w
+  - P11.4.2. Confirm §1 and §3 at A3 register and structured for Ch1/Ch3 reuse
+  - P11.4.1. Confirm no hypothesis/testing language anywhere in full document
+  - P11.4.2. Confirm inductive framing consistent throughout
+
+- P11.5. Verify Ethics Readiness
+  - P11.5.1. Confirm framing creates no new participant risk or consent complications
+  - P11.5.2. Confirm A1R.md submission-ready for Wk9 ethics application
+
+- P11.6. Draft Chat 11 Prompt —— Assistive Email to Lu
+  - P11.6.1. Map each Meeting 01 concern to the specific A1R revision that addresses it
+  - P11.6.2. Submit A1R.md by attaching in this email and by uploading to Lu's shared folder
+  - P11.6.3. Remarks: enables Lu to verify compliance without reading A1R verbatim; richer and more detailed than P06.4 status update
+
+## P12. Post-Ethics
+
+- P12.1. Submit Ethics Application
+> Remarks: Lu to guide at that stage; detail TBD
+
+- P12.2. Review Files
+> If needed, update CP files inc. but not limited to: ProjectSummary.md, Concept Brief.md (both ver), Lu.md
+
+- P12.3. Distil PART C
+  - P12.3.1. Compress AD01~AD07 into concise historic record
+  - P12.3.2. Remove A1-specific tactical detail no longer relevant for A2/A3
+
+- P12.4. Reconstruct PART A for A2/A3
+  - P12.4.1. Stub all A1R phases (P01~P11) as completed
+  - P12.4.2. Build detailed A2/A3 phases spanning Wk9~Wk36 (end target: 23/11/2026)
+  - P12.4.3. Remarks: A2/A3 phases to be defined at that time; expected scope: data collection, transcription, coding, analysis, A2 slides + recording, A3 writeup, QC, submission
 
 ---
 
 # PART B —— MASTER CONTEXT
 
-## M1. Scope and Constraints
-- Assessment: A1 Research Proposal, 10%, 1,500w max
-- Hard word budget: S1 ~300w, S2 ~600w, S3 ~600w (suggestive, not fixed per template)
-- Milestone Plan + References excluded from word count
-- Submission: VLE only; deadline 23:59 UK Mon 27 Apr 2026
-- DA Allocation Form (separate): due Mon 13 Apr 2026 (earlier deadline); attach draft proposal
-- ⚠️ This DevPlan covers A1 only; A2/A3 plan created separately post-A1 submission
+## M1. A1R Scope & Context
 
-## M2. Source Files (always consult)
-- Primary reference for all content decisions: `Concept Brief (comp).md`
-- Module rules and hard constraints: `Official Files (distilled).md`
-- Assessment criteria: `A1-3.md` *(fetch only immediately before P4 begins — not at chat start)*
-- Literature sources: `RefRepo.md` (renamed from TheoryRepo.md per AD03.2.5; created and available; see CP_directory.md)
-- Seminar rules and design confirmations: `Seminars (distilled).md`
+- A1R.md is an unmarked revised Research Proposal (~3,000w ceiling); succeeds A1 v09 (submitted 27/04/2026; grade pending)
+- Dual audience: Lu Liu (DA; primary) and proposal reviewer + ethics reviewer (UoL second-stage)
+- Target timing: A1R approved Wk8~9; ethics application submitted Wk9
+- Governing quality standard: clarity and alignment between aim, RQs, objectives, and methodological decisions (Enis' explicit criterion, email 04/05/2026; applies as second marker proxy for A3)
+- Startup framing is an academically legitimate access pathway —— not a quality compromise (Enis confirmed); quality determined by alignment, not framing
+- Unmarked status means freedom to expand to ~3,000w; well-crafted §1 and §3 = draft A3 Ch1 and Ch3
 
-## M3. Key Standing Rules for A1
+## M2. Source Files
+
+- Primary content authority: `Concept Brief (comp).md`
+- Assessment criteria + A3 structure: `A1-3.md` + `MGTK751_A3_Template.md` —— fetch as a pair; blocking prerequisite for P07 and P09; neglect formatting rules when writing for A1R
+- ⚠️ MGTK751_A3_Template.md: verify existence in GH and CP_directory.md before P07; add to CP_directory.md if absent
+- Literature sources: `RefRepo.md`
+- DA profile and comms: `Lu.md`, `Meetings.md`
+- Module rules: `Official Files (distilled).md` (fetch only if A1-3.md insufficient)
+
+## M3. Key Standing Rules for A1R
+
 - No arrows in conceptual framework (qual = no causal implication)
-- RQs start with "what"/"how" only
-- No mixed methods language
-- No "help TPs feel better" framing; anchor to org outcomes and mgr implications
-- Researcher positionality = methodology section only (minimal intro mention acceptable)
-- KM withdrawal = hypothesis to investigate, NOT assumed finding; frame as "TPS may reshape knowledge-sharing behaviour"
-- 1-per-org design must be explicitly explained in methodology
-- Cross-firm rationale must appear in introduction ("industry-wide" removed from A1 framing per AD03.2.6)
-- Transcription: MS Teams/Office/Copilot only
-- Data collection: NOT before written ethics approval (must appear in milestone plan)
-- All comms with DA: VLE only (not email/WhatsApp)
-- ⚠️ Alert protocol (per AD01.4.12): flag immediately if any content conflicts with `Lectures (index).md`, `Official Files (distilled).md`, `A1-3.md`, `Potential Advisors.md`, DevPlan.md, or confirmed DA guidance — do not proceed without consulting Culous
+- RQs start with "what"/"how" only; no mixed methods language
+- KM withdrawal = confirmed starting point evidenced by literature; research explores conditions and mechanisms; never frame as a hypothesis to test; no "prove/test/confirm/assess" language anywhere
+- Research method (IPA or case study) must be explicitly named in §3; semi-structured interview = data collection technique only
+- CYC (MCF specialising in KM) must be named and described in §1 and §3; founder = Culous Yu; boutique/specialist tier
+- Two CYC dimensions are distinct and must never be conflated: (a) CYC's own industry = MCF; (b) CYC's primary client base and research participant pool = KBFs broadly
+- Participant comparability to CYC's client base must be explicitly stated in §3.3; 1-per-org design retained and explained
+- Transcription: MS Teams/Office/Copilot only; data collection not before written ethics approval
+- File exchange with Lu: shared folder + email notification; VLE forum explicitly not to be used for file exchange (Lu's own directive)
+- Alert protocol: flag any content conflicting with A1-3.md, Official Files (distilled).md, DevPlan.md, or confirmed DA guidance before proceeding
 
 ---
 
