@@ -99,7 +99,7 @@ Decisions must be **explainable and justifiable** to future self and wife (pre-e
   - Strong pref for driving over public transport (crowd) & rideshare/taxi (unless cheaper than car rental e.g. Taiwan)
   - Comfortable w/ various driving conditions (mountain roads, left/right-side driving): off-road ok but limited exp (🇮🇸 only)
   - Prefers cheap rental cars w/ automatic transmission, parking sensors, and Apple CarPlay
-  - Often Toyota: cheap & familiar (owns Camry SL 2022)
+  - Often Toyota: cheap & familiar (owns Camry SL 2022; avg. ~8L/100km)
   - Train/metro/tram ok if short wait times
   - Occasionally enjoy ferry primarily as an exp/sightseeing opportunity
   - Strongly dislike buses but ok if unavoidable (e.g. parking N/A or too far)
@@ -236,5 +236,5 @@ Decisions must be **explainable and justifiable** to future self and wife (pre-e
 - Decision about travel insurance varies by specific trip
 - Prefers to avoid excessive walking/physical exertion unless necessary for unique exp
 - Cost: always inc. all possible dimensions e.g. temporal, monetary, stamina, opportunity, risk (if any)
-- Driving: inc. both toll (+price) and non-toll time; if possible, calculate toll vs non-toll distance and hence petrol cost (E10 in AUS; 91/cheapest abroad) then evaluate if toll meaningfully saves both temporal & monetary cost
+- Driving: inc. both toll (+price) and non-toll time; if possible, calculate toll vs non-toll distance and hence petrol cost (E10 in AUS; 91/cheapest abroad; fetch latest price) then evaluate if toll meaningfully saves both temporal & monetary cost
 - Riding: if applicable, inc. diff means (e.g. DiDi/Light Rail) then rank w/ justifications
