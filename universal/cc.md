@@ -21,7 +21,7 @@ ALWAYS use:
   - Append in bracket
   - e.g. Filename: `cc_03.md` → Alias: ``cc.md` (v03)`
 - When ANYTHING fetched at ANYTIME (chat start/mid-chat):
-  - Declare IMMEDIATELY in chat (override) as line 2, **before artefacts**: `✅ [alias] [reason]`
+  - Declare IMMEDIATELY in chat (override) as line 2, **before artefacts**: `✅ [alias] ([reason])`
   - Reason:
     - Only if not explicitly commanded but your own decision
     - ≤5 words → in chat
