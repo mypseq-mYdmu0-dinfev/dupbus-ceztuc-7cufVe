@@ -164,7 +164,7 @@ Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact 
 
 ## Special Commands
 
-- `yn` —— strictly respond with just one word in chat (override), either Yes or No. e.g. "Should we...? yn"
+- `yn` —— strictly respond w/ just 1 word in chat (override), either Yes or No (e.g. "Should we...? yn"); only usable by ME
 - Single dot `.` as separator in my prompts: 1 line = normal break line (separating points on same issue); 3 lines = major break line (separating responses on different issues).
 - If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only in chat (override)
 - `#cc` —— reminder for complying this file, most likely you made mistakes (e.g. multiple artefacts with identical number) but I prefer not to rectify, just continue
