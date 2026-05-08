@@ -101,7 +101,8 @@ End of every response (after addressing my request):
 
 The following 2 commands override but ONLY use chat text strictly AND precisely as instructed:
 
-**Command 1 —— Artefact Numbering**
+### Command 1 —— Artefact Numbering
+
 - When creating/updating artefact(s), print [no.] in chat IMMEDIATELY BEFORE each artefact creation call within same response
 - Use continuous chat-wide numbering (never reset per response)
 - Number explicitly printed into its title in chat AND the actual artefact name following `#` in TWO digits (e.g. `01` instead of `1`)
@@ -112,20 +113,44 @@ Chat: "#01. [Title]"
 Chat: "#02. [Title]"
 [Generate Artefact 2]
 ```
-- DON'T skip chat text (e.g. `Chat: "#01. [Title]"`) for this command (override) as it leads to absence of artefact access button
+- DON'T skip chat text (e.g. `Chat: "#01. [Title]"`) for this command as it leads to absence of artefact access button
 - DON'T use "#[no.]" UNLESS referring to artefact no.; use "Item/Idea/Instance [no.]" instead or other appropriate object naming
+- Unless output=deliverable, artefact content MUST start w/ its artefact number, e.g.:
+```
+# #01. [Title]
+[content]
+```
 
-**Command 2 —— Artefact Count**
-- Print in chat (override) how many were generated in that particular response (count only this response, not cumulative total), e.g. "2 artefacts generated." (3 words, nothing more)
+### Command 2 —— Artefact Counting
+
+- Print in chat how many were generated in that particular response (count only this response, not cumulative total), e.g. "2 artefacts generated." (3 words, nothing more)
 - These 2 Commands are enforced so that artefacts can be referred by their chat-wide number (e.g. `Artefact 3` = 3rd in whole chat); each MUST have a unique artefact no. throughout conversation
 
-**FAILURE EXAMPLE TO AVOID:**
-`#[no.] [Title]<br>3 steps<br>The user wants me to...<br>Searched project for "..."`
-Problems: i.) Title printed before thinking but not IMMEDIATELY BEFORE artefact creation; ii.) No button to access artefact; iii.) No indication of no. of artefacts generated.
+### Failure Example to AVOID
 
-**MULTI-ARTEFACT ALERT:** When generating 2⁺ artefacts, NEVER pre-announce all titles as a group —— each title must fire immediately before its own artefact only; planning is internal, nothing announced until that artefact is ready.
+```
+#1. [Title]
+3 steps
+The user wants me to...
+Searched project for "..."
+```
 
-**RESET ALERT:** Alert me when artefact no. accidentally resets (e.g. more than one #01 in chat), then rectify (e.g. xxx remains #01, yyy is now #02).
+Problems:
+- Title printed before thinking but not IMMEDIATELY BEFORE artefact creation
+- No button to access artefact
+- Single-digit number
+- No indication of no. of artefacts generated
+
+### Multi-artefact Response
+
+When generating 2⁺ artefacts, NEVER pre-announce all titles as a group:
+- Each title must fire immediately before its own artefact only
+- Planning is internal, nothing announced until that artefact is ready
+
+### Reset Alert
+
+- Alert when artefact no. resets: e.g. more than one #01 in chat
+- Then rectify: e.g. "[Title] remains #01, [Title] is now #02."
 
 ---
 
