@@ -21,7 +21,7 @@ Before the Pre-Flight Check, confirm Tab 1 is accessible via CIC MCP:
 3. After each wait, check again whether a SEEK results page is now visible in any open tab
 4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
-6. If after 3 cycles still no SEEK results page: alert w/ `🚨` then use `https://www.seek.com.au/business-analyst-jobs/in-Sydney-NSW-2000?daterange=14&distance=25`
+6. If after 3 cycles still no SEEK results page: alert w/ `🚨` then use `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&savedsearchid=ccc9e241-9dfe-43a4-93b6-64cf9d4349b9`
 7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
