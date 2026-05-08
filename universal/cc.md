@@ -40,13 +40,17 @@ Fetched `profile.md` for KK's bg.
 
 ### PP1 —— Context Check (Always Enforced)
 
-Run before every response (except chat start; active verification, NOT a formatting step):
-In `<thinking>`: #01 artefact AND directory.md tool result fully intact (NOT cleared)?
-- ONLY if both yes (no `[Older tool result cleared to save context]` found), print:
+Run before every response (except chat start; NOT a formatting step):
+> #03 artefact AND directory.md tool result fully intact (NOT cleared)?
+- Faithfully verify token state, NOT infer:
+  - Locate directory.md tool result → `[Older tool result cleared to save context]` = cleared
+  - Let n = last artefact #[no.]; in `<thinking>` (not chat), quote the [n]th word of #03 AND directory.md → Failed/Uncertain = cleared
+  - ❌ Reasoning whether tool result should be visible; ✅ Directly read token
+- ONLY if BOTH yes (intact), print:
   - Absolute Line 1: `✔︎` alone (nothing else); skip a line
   - Line 2: [skipped]
   - Line 3: `✅ ...` if also fetching per `## File Fetch`
-  - Clarifications: File(s) (re-)fetched → use `✅ ...`, NOT `✔︎`
+  - Clarification: File(s) (re-)fetched → use `✅ ...`, NOT `✔︎`
 - Otherwise (=no), DON'T print `✔︎`; immediately follow userPref 2.1
 - If directory.md cleared BUT PP2 active AND directory.md fully found in `<thinking>` = still yes
 
