@@ -481,6 +481,42 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
+### Yin, R.K. (2003) *Case Study Research: Design and Methods*. 3rd ed. Thousand Oaks: SAGE.
+
+**Full text not extracted** *(`/From Lu/yin-case study-book.pdf` is a scanned image; OCR unavailable; key arguments captured via Zainal (2007) and folder example documents which cite Yin (1994; 2nd ed) directly — confirm edition before A3 submission)*
+
+- Canonical case study authority; defines case study as investigation of a contemporary phenomenon in depth within its real-life context; key criterion distinguishing case study from other strategies
+- Six sources of evidence identified; does not require all — interview-primary designs are explicitly accommodated where other sources are structurally inaccessible; the principle is convergence, not exhaustion of source types
+- Three design types: exploratory, descriptive, explanatory; our study = explanatory multi-case (examining *conditions* underlying TPS in KBFs — identifying mechanism, not just phenomenon)
+- Multiple-case design operates on replication logic: analytical generalisation to theory, not statistical generalisation to population — directly maps to 6-org cross-firm design
+- A1R §3: primary research strategy anchor; A3 Ch3: cite for explanatory typology, replication logic, and interview-primary accommodation; where page-numbered passages required, use Zainal (2007) as proxy until full Yin text confirmed
+
+---
+
+### Zainal, Z. (2007) 'Case study as a research method', *Jurnal Kemanusiaan*, 9, pp. 1–6.
+
+**Full text confirmed** *(`/From Lu/case_study_as_a_research_method.pdf`)*
+
+- Three case study types confirmed: exploratory, descriptive, explanatory; explanatory type directly defined as examining data "closely at surface and deep level to explain phenomena" — maps onto our TPS conditions inquiry
+- Interview-primary design explicitly validated as a standard case study mode; two-condition test: method must be (i) the only viable means of eliciting implicit and explicit data from subjects, and (ii) appropriate to the research question; our design meets both for studying invisible peer dynamics
+- Management named as a primary domain for case study — directly legitimises MBA dissertation use; no genre-mismatch concern
+- Multiple-case design framed as replication logic ("numerous sources of evidence through replication rather than sampling logic") — validates cross-org design without requiring doc or observation triangulation
+- A1R §3: secondary case study anchor alongside Yin; preferred as proxy cite when Yin page-numbered passages unavailable; A3 Ch3: cite for explanatory typology and interview-primary validation
+
+---
+
+### Ayres, L., Kavanaugh, K. and Knafl, K.A. (2003) 'Within-case and across-case approaches to qualitative data analysis', *Qualitative Health Research*, 13(6), pp. 871–883. doi: 10.1177/1049732303013006008.
+
+**Full text confirmed** *(`/From Lu/within-case and across-case.pdf`)*
+
+- All three demonstration studies use interview transcripts as sole data source — zero documents or observation; directly validates our interview-only design as a recognised, published mode of qualitative case study; absence of organisational documents is not a methodological gap
+- Prescribes two-stage analytic sequence for multi-case design: within-case immersion (each case analysed individually in depth) → across-case thematic sorting (patterns, configurations, and variations identified across cases); this is the intended logic of our 6-org design, not a workaround
+- Thematic coding and sorting as the across-case mechanism — directly compatible with Braun & Clarke (2006) [CoreRef entry 03]; confirms our analysis plan is internally coherent
+- ⚠️ Design caution: warns against "garden path analysis" — listing themes without recontextualising into cross-case propositions; thematic output must produce a cross-case configuration, not a theme inventory *(flag for P10/A3 Ch4–5 drafting)*
+- A1R §3: cite for within/across analytic sequence justification; A3 Ch3: primary analytic procedure cite for two-stage multi-case analysis; A3 Ch4/Ch5: structure findings and analysis chapters per within-case → across-case logic
+
+---
+
 ### Thomas, A. (2025) 'The dynamics of knowledge behaviors: Exploring drivers, triggers and paradoxes in knowledge sharing, hiding, hoarding and sabotage', *Journal of Knowledge Management*, 29(11), pp. 117–144. doi: 10.1108/JKM-03-2025-0399.
 
 **Open access (Emerald)**

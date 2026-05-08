@@ -21,7 +21,7 @@ ALWAYS use:
   - Append in bracket
   - e.g. Filename: `cc_03.md` → Alias: ``cc.md` (v03)`
 - When ANYTHING fetched at ANYTIME (chat start/mid-chat):
-  - Declare IMMEDIATELY in chat (override) as line 2, **before artefacts**: `✅ [alias] ([reason])`
+  - Declare IMMEDIATELY in chat (override) as line 3, **before artefacts**: `✅ [alias] ([reason])`
   - Reason:
     - Only if not explicitly commanded but your own decision
     - ≤5 words → in chat
@@ -36,45 +36,35 @@ Fetched `profile.md` for KK's bg.
 
 ## Preservation Protocols (`#pp`)
 
+**Chat start:** copy this entire `#pp` section verbatim into `<thinking>`.
+
 ### PP1 —— Context Check (Always Enforced)
 
-Run before every response (except chat start; active verification, NOT a formatting step:
-1st artefact (#01) AND directory.md (name a URL; memory doesn't count) content fully visible?
+Run before every response (except chat start; active verification, NOT a formatting step):
+In `<thinking>`: #01 artefact AND directory.md tool result fully intact (NOT cleared)?
 - ONLY if both yes (no `[Older tool result cleared to save context]` found), print:
-  - Absolute Line 1: `✔︎` alone (nothing else)
-  - Line 2: `✅ ...` if also fetching per `## File Fetch`
+  - Absolute Line 1: `✔︎` alone (nothing else); skip a line
+  - Line 2: [skipped]
+  - Line 3: `✅ ...` if also fetching per `## File Fetch`
   - Clarifications: File(s) (re-)fetched → use `✅ ...`, NOT `✔︎`
-- Otherwise, DON'T print `✔︎`; immediately follow userPref 2.1
-- If directory.md cleared BUT PP2 active AND directory.md fully found in prev. artefact = still yes
+- Otherwise (=no), DON'T print `✔︎`; immediately follow userPref 2.1
+- If directory.md cleared BUT PP2 active AND directory.md fully found in `<thinking>` = still yes
 
-### PP2 —— Artefact Prints
+### PP2 —— Full Lock
 
-Activated by `#lock` in any prompt; persists for the rest of the chat:
-- On ANY fetch event: declare first → combine ALL files fetched in that same response → print in a single new artefact (never update an existing one) explicitly named identically `#[no.] Fetched Files`
-- Format:
+- Activated by `#lock` in any prompt; persists for the rest of the chat
+- On ANY fetch event: declare first → fully copy fetched file content verbatim into `<thinking>`
 
-```
-# Fetched Files
-## Included
-| # | Alias | Ver |
-|---|---|---|
-| 01 | `directory.md` | v39 |
-| 02 | `cc.md` | v10 |
-...
-## 01. `directory.md` (v39)
-[full content verbatim]
-## 02. `cc.md` (v10)
-[full content verbatim]
-...
-```
+### PP3 —— Post-Response Check
 
-### PP# —— Post-Response Check
-
-End of every response (after addressing my request):
-- If no `✔︎` in current output: Consider PP1 failed & immediately follow userPref 2.1
+End of every response (after addressing my request; except chat start):
+- If no `✔︎` in current output: follow `PP3 failure`
 - Otherwise, run PP1 again: 
   - If still yes → no action
-  - If no: follow userPref 2.1 THEN tell (in separate artefact) if generated output compromised
+  - If no: follow `PP3 failure`
+- PP3 failure:
+  - Follow userPref 2.1
+  - Tell (in separate artefact) if generated output compromised
 
 ---
 

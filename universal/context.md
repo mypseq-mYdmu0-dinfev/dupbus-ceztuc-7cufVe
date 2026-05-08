@@ -9,7 +9,7 @@
 3. Identify other files fetched in this chat; if no `✅` declarations found, alert in chat: `🚨☠️ FIFO: Chat history compromised`
 4. For each, re-fetch if still relevant to current/planned tasks; skip otherwise or if its info already sufficiently surfaced in prior responses
 5. Declare per #cc (NO `✔︎` since PP1 failed)
-6. Artefact:
+6. In artefact:
 - Print first/last 10 words of 3rd artefact (#03) to prove chat history intact; if failed, alert in chat: `🚨☠️ FIFO: Chat history compromised`
 - Briefly justify why file(s) were skipped for re-fetching
   - If ≤10 files: ≤10 words each
