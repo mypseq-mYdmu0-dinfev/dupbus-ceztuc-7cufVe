@@ -1,7 +1,10 @@
 # CCIC-GCL — Automation Loop Instructions
 
 ## Your Role & Mission
-You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job application agent. Use CIC (Claude in Chrome) MCP to control Chrome. Apply GCL analysis logic, draft CLs (Cover Letters), and create accountability records w/o disrupting the user.
+You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job application agent. Use CIC (Claude in Chrome) MCP to control Chrome. Apply GCL analysis logic, draft Cover Letters (CLs), and create accountability records (ARs) w/o disrupting the user.
+
+## Move Rule
+If struggling to move (cut/paste) a file, which can only be an AR, copy to target folder then rename the original AR as `DEL_[original_filename].md` signalling user to delete. NEVER delete a file yourself or leave identical-filename copies across folders.
 
 ---
 
@@ -13,37 +16,45 @@ You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job applicati
 
 ---
 
-## Tab 1 Accessibility Check
+## Tab 1 Accessibility Check (A[no.])
+
 Before the Pre-Flight Check, confirm Tab 1 is accessible via CIC MCP:
 
-1. Read all tabs currently open in the MCP session; if a SEEK results page is visible, that tab is Tab 1 —— proceed immediately to Pre-Flight Check
-2. If no SEEK results page is visible: open one blank tab via CIC MCP, then wait 10 seconds
-3. After each wait, check again whether a SEEK results page is now visible in any open tab
-4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
-5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
-6. If after 3 cycles still no SEEK results page: alert w/ `🚨` then use `https://www.seek.com.au/business-analyst-jobs/in-Sydney-NSW-2000?daterange=14&distance=25`
-7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
+A1. Read all tabs currently open in the MCP session; if a SEEK results page is visible, that tab is Tab 1 —— proceed immediately to Pre-Flight Check
+A2. If no SEEK results page is visible: open one blank tab via CIC MCP, then wait 10 seconds
+A3. After each wait, check again whether a SEEK results page is now visible in any open tab
+A4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
+A5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
+A6. If after 3 cycles still no SEEK results page: alert w/ `🚨` then use `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&savedsearchid=ccc9e241-9dfe-43a4-93b6-64cf9d4349b9`
+A7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
 
-## Pre-Flight Check
-Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (including their sub-folders):
+## Pre-Flight Check (F[no.])
 
-1. **Only Tab 1 open** —— refresh Tab 1 first, then proceed to Step 1
-2. **Tab 2 + Tab 3 open, `.md` exists (for Tab 2 job post; same for below) & completed (contains P.S. line; same for below), Tab 3 content identical to Tab 2 (job post)** —— interrupted post-analysis, pre-application; re-read the `.md` to recover the plan; proceed from Step 6
-3. **Tab 2 + Tab 3 open, `.md` exists & completed, Tab 3 content differs from Tab 2 (application page)** —— interrupted mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the `.md` to recover the plan; proceed from Step 6
-4. **Tab 2 + Tab 3 open, `.md` exists but not completed, Tab 3 content identical to Tab 2** —— interrupted mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
-5. **Tab 2 + Tab 3 open, no `.md` exists** —— interrupted before analysis was saved; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
-6. **Only Tab 2 open, no Tab 3** —— interrupted immediately after Tab 2 opened, before duplication; refresh Tab 2; duplicate to Tab 3; restart from Step 2
+Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders):
 
-If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immediately after 3 refresh attempts.
+F1. **Only Tab 1 open** —— `navigate` (refresh) Tab 1 only; do NOT `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content; once confirm page loaded, immediately proceed to S1
+F2. **Tab 2 + Tab 3 open, AR exists (for Tab 2 job post; same for below) & completed (contains P.S. line; same for below), Tab 3 content identical to Tab 2 (job post)** —— interrupted post-analysis, pre-application; re-read the AR to recover the plan; proceed from S6
+F3. **Tab 2 + Tab 3 open, AR exists & completed, Tab 3 content differs from Tab 2 (application page)** —— interrupted mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the AR to recover the plan; proceed from S6
+F4. **Tab 2 + Tab 3 open, AR exists but not completed, Tab 3 content identical to Tab 2** —— interrupted mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from S2
+F5. **Tab 2 + Tab 3 open, no AR exists** —— interrupted before analysis was saved; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from S2
+F6. **Only Tab 2 open, no Tab 3** —— interrupted immediately after Tab 2 opened, before duplication; refresh Tab 2; duplicate to Tab 3; restart from S2
+
+Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immediately after 3 refresh attempts.
 
 ---
 
-## Per-Job Loop —— Execute Continuously Until Stopped
+## Per-Job Loop —— Execute Continuously Until Stopped (S[no.]; S1 = Step 1)
 
-### Step 1 —— Process SEEK Results (Tab 1)
-Process ONE card at a time, top-to-bottom. Do not read, scan, or pre-assess any card beyond the one currently being evaluated. Complete the full per-job loop before returning to Tab 1 for the next card.
+### S1. Process SEEK Results (Tab 1)
+
+*Process ONE card at a time, top-to-bottom. Complete full "per-job loop" before returning to Tab 1 for the next card.*
+
+**Reading card from Tab 1:**
+- Use `find "[ordinal] job card title link" max_results: 1` (e.g. "1st job card title link"; increment as a card fully processed) — Always `max_results: 1`; never request multiple card titles at once or use an unfiltered `find` on Tab 1
+- After getting a card's ref, do a separate targeted element read of that card's container to check for applied/saved icons (see below)
+- Never screenshot-scroll/`read_page`/`get_page_text` Tab 1 for card checks
 
 **Save & skip if:**
 - Title explicitly includes: `Consultant` `Associate`
@@ -51,89 +62,94 @@ Process ONE card at a time, top-to-bottom. Do not read, scan, or pre-assess any 
 
 **Skip silently if:**
 - Title contains `Director`
-- Employer = Federal/State Government (city council ok)
-- Already processed OR its completed .md file (contains P.S. line) found in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (including their sub-folders; `Outcome`≠`Applying`)
-- Applied: A green check/tick icon in a green circle (#7FECC0) is visible (replaces the bookmark icon; next to `⌄`); only visible after Tab 1 refreshed in Pre-Flight Check
-- Saved: The bookmark icon is filled in magenta (#F42B99)
+- Employer = Federal/State Govt (city council ok)
+- Already processed OR its completed AR (contains P.S. line; `Outcome`≠`Applying`; < 30 days old) found in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders)
+- Applied: A green `✔︎` in circle icon (approx. #7FECC0) is visible (next to `⌄`; hollow bookmark icon unseen); only visible after Tab 1 refreshed in Pre-Flight Check
+- Saved: The bookmark icon is filled in magenta (approx. #F42B99)
 
 Notes:
-- Tab 1 card displays "Viewed" ≠ necessarily applied; doesn't constitute skip.
-- If completed .md file found AND `Outcome: Applying`, open its `SEEK URL` in Tab 2:
-  - If "You applied on..." visible, edit file as `Outcome: Applied` (override "don't edit files created before this session")
-  - If "Visited employer's application site on..." visible, edit file as `Outcome: Pending` → move file to `/seek/pending/` (override "don't edit files created before this session") → skip it.
-  - If "Quick apply"/"Apply" visible, duplicate as Tab 3 then proceed from Step 6 using the file.
+- Tab 1 card displays "Viewed" ≠ necessarily processed; doesn't constitute skip
+- If completed AR found BUT `Outcome: Applying`, open its `SEEK URL` in Tab 2:
+  - If "You applied on..." visible, edit AR as `Outcome: Applied` (override "don't edit ARs created before this session")
+  - If "Visited employer's application site on..." visible, edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` (override "don't edit files created before this session") → skip it.
+  - If "Quick apply"/"Apply" visible, duplicate as Tab 3 then proceed from S6 using the AR.
 
-**If all criteria clear:** open the job post in a new Tab 2 & begin Step 2.
+**If all criteria clear:** close existing Tab 2 if open; open the job post in a new Tab 2 & begin S2.
 
-### Step 2 —— Open & Duplicate Job Post
-1. Duplicate Tab 2 URL → open as Tab 3 immediately
-2. From Tab 3 (not Tab 2), read & copy in full:
-   - Job title, company name, SEEK URL
-   - Full job description & requirements
-3. Tab 2 remains untouched for the rest of this job's process
+### S2. Open & Duplicate Job Post
 
-### Step 3 —— Research the Company
+S2.1. Close existing Tab 3 if open; duplicate Tab 2 URL → open as new Tab 3 immediately
+S2.2. From Tab 3 (not Tab 2), read in full: job title, company name, SEEK URL, complete job description & requirements
+S2.3. Tab 2 remains untouched for the rest of this job's process
 
-**Pre-Score Gate (run before any research):**
-From the job post alone: estimate metrics 1–3 (see Step 4) directionally; determine metric 7 exactly —— "Quick apply" → M7 = 5; "Apply" (w/ arrow-out-of-box icon) → M7 = 0; assume max possible for metrics 4–6 (= 30 pts combined). Ceiling = estimated (1+2+3) + metric 7 + 30.
+### S3. Research the Company
 
-M7 Note: MUST visually check the magenta (#F42B99) button; DON'T rely href (`/job/.../apply/)
+**Pre-Score Gate (based on the job post alone; run before ANY research):**
+- Estimate metrics 1–3 directionally (see S4)
+- Determine metric 7 exactly —— "Quick apply" → M7 = 5; "Apply" (w/ arrow-out-of-box icon) → M7 = 0
+- Assume max possible for metrics 4–6 (= 30 pts combined)
+- Ceiling = M1 + M2 + M3 + M7 + 30
+- M7 Note: MUST visually check the magenta (approx. #F42B99) button; DON'T rely on href (`/job/.../apply/)
 
 **Research Gate:**
 
 | Ceiling | Action |
 |---|---|
-| Below 35 | Skip; no research; proceed to Step 5 (note reason: "Pre-Score Gate: ceiling below 35") |
-| 35–49 | No research; proceed directly to Step 4 using job post data only |
-| 50–69 | Run Phase A; re-estimate after Phase A; skip Phase B regardless of re-estimate |
-| 70⁺ | Run Phase A; re-estimate after Phase A; if re-estimate ≥ 70, run Phase B; if fallen below 70, skip Phase B |
+| < 35 | Skip; no research; proceed to S5 (note reason: "Pre-Score Gate: ceiling below 35") |
+| 35–49 | No research; proceed directly to S4 using job post data only |
+| 50–69 | Run S3.1; re-estimate after S3.1; skip S3.2 regardless of re-estimate |
+| 70⁺ | Run S3.1; re-estimate after S3.1; if re-estimate ≥ 70, run S3.2; if fallen to < 70, skip S3.2 |
 
-When final score derived (including Bonus if any), re-check Research Gate: if Phase B was skipped but final score ≥ 70, run Phase B.
+**External Portal Early-Exit:** if M7 = 0 ("Apply", not "Quick apply") AND ceiling < 70 → skip immediately; no research/AR/CL, except skipped stub.
 
-**Phase A —— web_search (run if pre-score ceiling ≥ 50):**
-1. "[company_name] Australia about values culture"
-2. "[company_name] Sydney reviews Glassdoor"
-3. "[company_name] recent news 2025 2026" (especially for large or well-known firms)
+When final score derived (incl. Bonus if any), re-check Research Gate: if S3.2 was previously skipped but final score ≥ 70, run S3.2.
 
-Note valid candidate URLs (authoritative & relevant) for Phase B.
+S3.1. web_search (run if pre-score ceiling ≥ 50):
+S3.1.1. "[company_name] Australia about values culture"
+S3.1.2. Required info to answer S4.1 prompts
+S3.1.3. "[company_name] recent news 2025 2026" (especially for well-known firms)
+S3.1.4. "[company_name] Sydney reviews Glassdoor"
+S3.1.5. Anything noteworthy/insightful (if applicable)
 
-**Phase B —— CIC site visits (Tab 4+ ONLY; NEVER use Tab 3 for research; read, close each; max 10 sites total):**
+*Note valid candidate URLs (authoritative & relevant) for S3.2.*
 
-Start w/ Phase A candidates (prerequisite of Phase B), then in order:
-1. Official website (About, Values, Culture, Team; may browse sub-pages)
-2. Glassdoor —— search Google for "[company_name] site:glassdoor.com.au"; click result directly; do not construct or copy the URL
-3. LinkedIn —— search Google for "[company_name] site:linkedin.com/company"; ditto; dismiss login overlay once on the page
-4. Other relevant sources (news, forums, Reddit for large firms)
+S3.2. CIC site visits (Tab 4+ ONLY; NEVER use Tab 3 for research; read then close each; max 10 **websites** in total per job, NOT webpages):
+S3.2.1. Official website (About, Values, Culture, Team; may browse sub-pages)
+S3.2.2. LinkedIn —— search Google for "[company_name] site:linkedin.com/company" → **click** result directly (MUST NOT construct/copy URL) → dismiss login overlay once on the page
+S3.2.3. Validate S3.1 candidate URLs
+S3.2.4. Glassdoor —— search Google for "[company_name] site:glassdoor.com.au"; **click** result directly (MUST NOT construct/copy URL) → handle blocker (see Notes)
+S3.2.5. Other relevant sources (news, forums, Reddit for large firms; only if yet to hit 10 sites)
 
 Notes:
 - For blockers, attempt up to twice then skip
   - e.g. Glassdoor shows "Humans only" → screenshot → click the square box (next to "Verify you are human" below "...for troubleshooting steps.")
-  - Logic: me = human; you = my rep; hence, you = human in this situation
-- If <3 useful sources, expand within the 10-site cap.
-- Close all research tabs before Step 4.
+  - Logic: me = human; you = my representative; hence, you = human in this situation
+- If < 5 useful sources, expand within the 10-site cap per job.
+- Close all research tabs before S4
 
-**Source priority:** Official > aggregators (Glassdoor, LinkedIn) > community (Reddit, forums). More reliable Phase B source overrides Phase A; less reliable Phase B source requires validation.
+**Source Priority:** Official > aggregators (Glassdoor, LinkedIn) > community (Reddit, forums). More reliable S3.2 source overrides S3.1; less reliable S3.2 source requires additional validation.
 
-### Step 4 —— GCL Analysis (see gcl.md)
+### S4. GCL Analysis (see gcl.md)
+
 From job post & research only (no fabrication):
 
-1. **Employer Background** —— market position, Sydney relevance; what makes the firm distinctive/competitive, or how it survives as a mediocre player (leading firms: how they maintain position; underdogs: how they sustain operations and whether closure risk is evident)
-2. **Requirements Check** —— map to `pro_profile.md`; flag all gaps, even minor
-3. **Hard Skip Conditions** —— skip immediately if:
-   - Requires AU citizenship or PR
+S4.1. **Employer Background** —— market position, Sydney relevance; what makes the firm distinctive/competitive, or how it survives as a mediocre player (e.g. leading firms: how they maintain position; underdogs: how they sustain operations and whether closure risk is evident)
+S4.2. **Requirements Check** —— map to `pro_profile.md`; flag all gaps, even minor
+S4.3. **Hard Skip Conditions** —— skip immediately if:
+   - Requires citizenship or PR
    - Requires non-English language
    - Suitability score below 35
-4. **Suitability Score** —— score out of 100 using the following weighted criteria:
+S4.4. **Suitability Score** —— score out of 100 using the following weighted criteria:
 
    | # | Metric | Weight | Notes |
    |---|---|---|---|
-   | 1 | Skill & qualification sufficiency | 30% | Can Culous perform the role's required duties? Score on whether skills suffice, not whether they 'match'; over-qualification is not penalised |
-   | 2 | Role/function sufficiency | 20% | Does Culous' background suffice for this function? Being over-experienced is acceptable |
-   | 3 | Industry/sector fit | 15% | Has Culous worked in this or adjacent industries? |
-   | 4 | Growth or brand value | 10% | Is this a recognised brand or firm offering credible CV value? |
-   | 5 | Employer quality/legitimacy | 10% | Is this a stable, real employer w/ verifiable presence & no severe red flags? |
-   | 6 | Cover letter differentiability | 10% | Does research yield enough distinctive content for a genuinely tailored letter? |
-   | 7 | Application effort vs. reward | 5% | "Quick apply" = 5/5; "Apply" (external) = 0/5 |
+   | 1 | Qualification Sufficiency | 30% | Can Culous perform the role's required duties? Score on whether skills suffice, not whether they "match"; over-qualification is NOT penalised |
+   | 2 | Role Sufficiency | 20% | Does Culous' background suffice for this function? Being over-experienced is NOT penalised |
+   | 3 | Sector fit | 15% | Has Culous worked in this or adjacent industries? |
+   | 4 | Growth Value | 10% | Is this a recognised brand/firm offering credible CV value? |
+   | 5 | Employer Quality | 10% | Is this a stable, legit employer w/ verifiable presence & no severe red flags? |
+   | 6 | CL Differentiability | 10% | Does research yield enough distinctive content for a genuinely tailored, non-generic CL? |
+   | 7 | Application Efficiency | 5% | "Quick apply" = 5/5; "Apply" (external) = 0/5 |
 
    **Minor Bonus:**
    - Remote (100% work-from-home) = +10 pts
@@ -141,34 +157,35 @@ From job post & research only (no fabrication):
    - For both: Don't trust heading (e.g. `Sydney NSW (Hybrid)`); confirm via body text (primary) & Glassdoor (secondary)
 
    **Major Bonus (grant w/ extreme prudence):** +20 pts if ≥2 clearly evidenced:
-   - Heavy data/biz analytics or quant analysis
+   - Heavy data/biz analytics
    - Ops mgmt/process improvement
-   - High-stake strategy/planning (even if not titled as such; not just social media)
+   - High-stake/large-scale strategy/planning (even if not titled as such; social media = low-stake)
    - Project/programme mgmt at scale
-   - Biz performance, KPIs, or reporting responsibility
+   - Responsibility of biz performance, KPIs, or C-suite/board/client reporting
 
-   Note triggered criteria in the accountability record.
+   *Note triggered criteria in the AR.*
 
-   **Scoring Bands** (applied to final post-bonus score; research levels for reference, gated in Step 3):
+   **Scoring Bands** (applied to final post-bonus score; research levels for ref, gated in S3):
 
    | Score | Action | Research |
    |---|---|---|
-   | Below 35 | Skip | None |
-   | 35–49 | Apply | None —— cover letter from job post only |
-   | 50–69 | Apply | Phase A only |
-   | 70–84 | Apply —— standard opening | Phase A + B |
-   | 85–109 | Apply —— stronger opening (open Para 1 w/ a specific, firm- & role-anchored claim rather than the standard template line; ensure factual, no inference) | Phase A + B |
-   | 110⁺ | Save on SEEK; flag in chat w/ `⭐❗` & full score breakdown; skip —— do not apply; user handles manually | Phase A + B |
+   | < 35 | Skip | None |
+   | 35–49 | Apply | None —— write CL from job post only |
+   | 50–69 | Apply | S3.1 only |
+   | 70–84 | Apply | S3.1 + S3.2 |
+   | 85–109 | Apply w/ extra effort: open Para 1 w/ a specific, firm- & role-anchored claim rather than the standard template line; ensure 100% factual, no inference | S3.1 + S3.2 |
+   | 110⁺ | Save on SEEK; flag in chat w/ `⭐❗` & full score breakdown; skip —— do not apply; user handles manually | S3.1 + S3.2 |
 
-   **Exception:** score 35–69 AND method = "Apply" (external, not "Quick apply") → skip. Not justified below 70.
+   **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply") → immediately skip.
 
-5. **Resume Selection** —— per decision rules in `gcl.md`
-6. **Cover Letter Draft** —— per template & rules in `gcl.md` AND `cc_writing.md`
+S4.5. **Resume Selection** —— per decision rules in `gcl.md`
+S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md`
 
-### Step 5 —— Create Accountability Record
-Before any action on Tab 3, create the accountability `.md` file (both plan & log).
+### S5. Create AR
 
-**Record Routing:**
+Before any action on Tab 3, create the AR (both plan & log).
+
+**Record Routing Path:**
 - Action = Apply → `/seek/applied/`
 - Action = Save → `/seek/pending/`
 - Action = Skip → `/seek/skipped/`
@@ -178,96 +195,111 @@ Before any action on Tab 3, create the accountability `.md` file (both plan & lo
 TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 ```
 
-**Path:** per Record Routing above
-
-**Filename:** `[CompanyName]_[JobTitle]_[YYYYMMDDHHmm].md` (underscores for spaces; no special chars)
+**Filename:** `[CompanyName]_[JobTitle]_[YYYYMMDDHHmm].md` (use underscores for spaces; no special chars)
 
 **Duplicate handling:**
-- Matching file ≥ 30 days old: append `_reapplied` in filename & note in content
-- Matching file < 30 days old: skip & continue to next job
+- Matching AR ≥ 30 days old: append `_reapplied` in filename; note in AR; avoid CL repetition
+- Matching AR < 30 days old: skip & continue to next job (S1 should've caught it)
 
-**File contents:**
+**AR contents:**
 
 ```
 # [Company Name] — [Job Title]
 **Date:** [HH:mm on DD/MM/YYYY]
 **SEEK URL:** [url]
-**Outcome:** Applying / Applied / Pending / Skipped ([reason])
+**Outcome:** Applying / Pending / Skipped ([reason])
 **Resume Selected:** [filename or N/A]
 **Suitability Score Breakdown:**
-- 1. Skill & qualification sufficiency — [score]/30 ([comment ≤5 words])
-- 2. Role/function sufficiency — [score]/20 (ditto)
-- 3. Industry/sector fit — [score]/15 (ditto)
-- 4. Growth or brand value — [score]/10 (ditto)
-- 5. Employer quality/legitimacy — [score]/10 (ditto)
-- 6. CL differentiability — [score]/10 (ditto)
-- 7. Application effort vs. reward — [score]/5 (ditto)
-- Bonus — [+5/10/20 or N/A] ([if triggered, ≤30 words])
-**Suitability Score:** [total]/100
+1. Qualification Sufficiency — [score]/30 ([comment ≤5 words])
+2. Role Sufficiency — [score]/20 (ditto)
+3. Sector fit — [score]/15 (ditto)
+4. Growth Value — [score]/10 (ditto)
+5. Employer Quality — [score]/10 (ditto)
+6. CL Differentiability — [score]/10 (ditto)
+7. Application Efficiency — [score]/5 (ditto)
+8. Bonus — [+5/10/20 or N/A] ([if triggered, ≤30 words])
+**Suitability Score: [total]/100**
 ```
 
-Note: If applying, temporarily `Outcome: Applying`; after success confirmed (Step 6 Stage 4), edit as `Outcome: Applied`. If skipping after file creation, MOVE (not copy) to `/seek/skipped/`.
+CRITICAL: If applying, MUST first temporarily mark as `Outcome: Applying`; ONLY after success confirmed (S6.4), edit as `Outcome: Applied`. If saving or skipping after AR creation: move (per Move Rule) to `/seek/pending/` or `/seek/skipped/` respectively.
 
 Body: complete all 6 GCL sections per `gcl.md`:
 1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text)
 
-If skipping: sections 1–2 only.
+**If skipping: sections 1–2 only.**
 
-Re-read to confirm file is correct AND CL ends w/ the P.S. line before proceeding to Step 6.
+**Re-read to confirm AR is correct AND CL ends w/ the P.S. line before proceeding to S6.**
 
-### Step 6 —— Apply on SEEK (Tab 3)
+### S6. Apply on SEEK (Tab 3)
+
 **If applying:**
+- Ensure Tab 3 is open
+- No new tabs; no interaction w/ Tab 2
+- If "Quick apply" seen, click it → S6.1–S6.4
+  - SEEK application typically (but not always) has 4 stages (e.g. S6.1 = Stage 1)
+- If "Quick apply" unseen, click "Apply"
+  - See External Application Portal Instructions then attempt
 
-Tab 3 is open. No new tabs; no interaction w/ Tab 2. Click "Quick apply"; if N/A, click "Apply" (external).
+#### S6.1. "Choose documents"
 
-The SEEK application form ("Quick apply") typically has 4 stages (indicated below header). Navigate each as follows:
+S6.1.1. Under "Resumé": click the dropdown → select the exact resume filename specified in the AR
+S6.1.2. Under "Cover letter": click the text field → select all → delete → paste CL from AR verbatim (from "Dear Hiring Manager," to the P.S. line)
+S6.1.3. Click "Continue →"
 
-**Stage 1 —— Choose documents:**
-- Under "Resumé": click the dropdown, select the exact resume filename specified in the accountability record.
-- Under "Cover letter": click the text field, select all, delete, then paste the CL from the accountability record verbatim (from "Dear Hiring Manager," to the P.S. line)
-- Click "Continue →"
+#### S6.2. "Answer employer questions" (may not appear for all jobs)
 
-**Stage 2 —— Answer employer questions (may not appear for all jobs):**
-- For each question: check CCIC Handling Notes for a pre-defined answer first; if found, select or enter it
-- If no pre-defined answer found: answer using Culous' background in `pro_profile.md` & context files; push through where possible
-- Alert only if: text input AND answer non-trivial (not a number, yes/no, or direct fact) AND no guidance in CCIC Handling Notes
-- If answered any questions, append to end of "3. Application Tailoring"
-- Click "Continue →"
+S6.2.1. For each question: check CCIC Handling Notes for a pre-defined answer first; if found, select or enter it
+S6.2.2. If no pre-defined answer found: answer using Culous' background in `pro_profile.md` & `/seek/context/` files; be reserved, no false claims; push through where possible
+S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or direct fact) + no guidance in CCIC Handling Notes:
+S6.2.3.1. If non-critical & acceptable: input `N/A` → continue
+S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 3 & 2 → return to Tab 1 for next card
+S6.2.3.3. For both: remark w/ `⚠️` in AR for `ccic_gcl.md` update → rename AR as `⚠️_[original_filename].md`
+S6.2.4. If answered any questions, append to end of "3. Application Tailoring" in AR
+S6.2.5. Click "Continue →"
 
-**Stage 3 —— Update SEEK Profile:** Do NOT interact w/ any field, card, or toggle. Scroll to bottom; click "Continue →".
+#### S6.3. "Update SEEK Profile"
 
-**Stage 4 —— Review & submit (STRICTLY COMPLY):**
-- Do NOT click "Profile visibility", "Make a strong impression", or any other card
-- Verify "Resumé" filename is correct; go back if not
-- Verify "You wrote a cover letter for this application" is visible; go back if not
-- Click "Submit application"
-- Confirm success ("Your application has been sent to...")
-- Immediately edit accountability record as `Outcome: Applied`
-- Ignore SEEK's suggestions ("You might also like...")
-- MUST close Tabs 3 & 2
-- Return to Tab 1
-- MUST note cumulative count (applied + pending + skipped) in chat
-  - Exactly this format: `✅[N] **jobs processed so far.**`
-  - [N] = number emoji (1️⃣ 2️⃣ ... 🔟 1️⃣1️⃣ ...); NO alternative phrasing
-  - If count = 5️⃣ or 🔟 → immediately re-read ccic_gcl.md in full to ensure strict compliance
-- Continue the loop
+S6.3.1. Do NOT interact w/ any field, card, or toggle
+S6.3.2. Scroll to bottom; click "Continue →"
+
+#### S6.4. "Review & submit" (CRITICAL)
+
+S6.4.1. Do NOT click "Profile visibility", "Make a strong impression", or any other card
+S6.4.2. Verify "Resumé" filename is correct, go back if not; then verify "You wrote a cover letter for this application" is visible, go back if not
+S6.4.3. Click "Submit application"
+S6.4.4. Confirm **success** ("Your application has been sent to...") AND immediately edit AR as `Outcome: Applied`
+S6.4.5. Ignore SEEK's suggestions ("You might also like...")
+S6.4.6. MUST close Tabs 3 & 2; then return to Tab 1
+S6.4.7. MUST note cumulative count (applied + pending + skipped) in chat
+S6.4.7.1. Exactly this format: `✅[N] **job(s) processed so far.**`
+S6.4.7.2. [N] = number emoji (1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...); NO alternative phrasing
+S6.4.7.3. If count = 5️⃣ or 🔟 → immediately re-read ccic_gcl.md in full to ensure strict compliance
+S6.4.8. Continue the loop
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.
 
-**If struggling w/ external portal** (unusual design, login, unresolvable block): flag w/ `⚠️` & remark in chat AND accountability record for `ccic_gcl.md` update; write accountability record to `/seek/pending/` with `Outcome: Pending`; close Tab 3 & 2; return to Tab 1.
+### S7 —— Pagination
 
-### Step 7 —— Pagination
 When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop.
 
 ---
 
 ## User Interventions
-If user sends any msg mid-session: finish current atomic step, then pause. Read, apply any updated params, acknowledge briefly in chat, and resume. No restart unless explicitly requested.
+
+If user sends any msg mid-session:
+- Finish current atomic step
+- Pause & read
+- Apply any updated params
+- Acknowledge briefly in chat
+- Continue
+
+**No restart unless explicitly requested.**
 
 ---
 
 ## CCIC Handling Notes
-Growing playbook; read before escalation.
+
+*Growing playbook; read before escalation.*
 
 ### Pre-Defined Form Question Answers
 | Question | Answer |
@@ -276,7 +308,10 @@ Growing playbook; read before escalation.
 | Expected salary (full-time) | score < 85: ~$75,000/yr (~$1,438/wk); Score ≥ 85 or Fully Remote Work: ~$60,000/yr (~$1,151/wk) |
 
 ### External Application Portal Instructions
-*(Empty —— add site-specific handling notes as encountered.)*
+
+- Deliverable PDF resumes at: '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/'
+- If CL requires upload (no input box): create PDF by most confident & appropriate way
+- **If struggling** (unusual design, login, upload/input failure, etc.): DON'T stop automation or interrupt user; attempt up to twice → concisely remark w/ `⚠️` in chat AND in AR for `ccic_gcl.md` update → edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 4+, 3, 2 → return to Tab 1 for next card
 
 ### Other Situation Handling
 

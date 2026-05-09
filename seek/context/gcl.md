@@ -75,7 +75,7 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 - Never alter **P.S. line:** as defined in `#### Template`
 - No text after the P.S. line in any CL —— ever
 - No dash `—` or colon `:` in CL body
-- For `+` implying "more than", use superscript `⁺` (e.g. ✅ `16⁺ years`; ❌ `16+ years`); regular `+` is acceptable for employer/product names (e.g. `iCloud+`) and arithmetic
+- CRITICAL: For `+` implying "more than" → MUST use superscript `⁺` (e.g. ✅ `16⁺ years`; ❌ `16+ years`); regular `+` is acceptable for employer/product names (e.g. `iCloud+`) and arithmetic
 - Always "Yours Faithfully" (not "Sincerely") since recipient's name is unknown
 - Never mention "SQL" —— I have no SQL knowledge
 - "HCI" first use as "Human-Computer Interaction (HCI)", unless role is design-centric (use "Interaction Design (IxD)"); thereafter "HCI"/"IxD" are acceptable — CHOOSE EITHER, NEVER BOTH (confusing)
