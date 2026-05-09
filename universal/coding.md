@@ -6,21 +6,21 @@
 
 ## Large File Edit
 
-When I prompt `#replace` or editing a file w/ 50⁺ lines of codes/500⁺ words of text, you MUST NOT generate full content OR update previous artefacts, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. to add `123` between lines `xxx` & `yyy` you should print (ALWAYS in a `text/markdown` artefact, NEVER a code-type artefact; use code blocks for the snippets):
+When I prompt `#replace` or editing a file w/ 50⁺ lines of codes/500⁺ words of text, you MUST NOT generate full content OR update previous artefacts, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. to add `123` between lines `xxx` & `yyy` you should print (ALWAYS in a `text/markdown` artefact, NEVER a code-type artefact; use code blocks for the snippets, NOT "Replace"/"With"):
 
 ```
 ## Change 01
 **Replace:**
-` ` `
+```
 xxx
 yyy
-` ` `
+```
 **With:**
-` ` `
+```
 xxx
 123
 yyy
-` ` `
+```
 ```
 
 In actual practice, `xxx` `yyy` are immediate [code:] THREE LINES above/below the line(s) being changed OR [text:] TEN WORDS before/after the word(s) being changed, i.e. in each snippet, between the first/last [code:] 3 lines OR [text:] 10 words MUST be the content being changed. Strictly ensure ENTIRE text blocks in respective snippets; i.e. from `xxx` all the way to `yyy` in above example, don't leave any outside (e.g. `yyy`).

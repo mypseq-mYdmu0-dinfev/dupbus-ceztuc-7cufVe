@@ -44,7 +44,7 @@ Run before every response (except chat start; NOT a formatting step):
 > #03 artefact AND directory.md tool result fully intact (NOT cleared)?
 - Faithfully verify token state, NOT infer:
   - Locate directory.md tool result → `[Older tool result cleared to save context]` = cleared
-  - Let n = last artefact #[no.]; in `<thinking>` (not chat), quote the [n]th word of #03 AND directory.md → Failed/Uncertain = cleared
+  - Let [N] = last artefact #[no.]; in `<thinking>` (not chat), quote the [N]th word of #03 AND directory.md → Failed/Uncertain = cleared
   - ❌ Reasoning whether tool result should be visible; ✅ Directly read token
 - ONLY if BOTH yes (intact), print:
   - Absolute Line 1: `✔︎` alone (nothing else); skip a line

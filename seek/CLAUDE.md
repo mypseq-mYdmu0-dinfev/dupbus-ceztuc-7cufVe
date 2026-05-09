@@ -6,6 +6,7 @@ This directory (`/seek/`) is solely for automated SEEK job application workflows
 ## Trigger
 - When prompted `seek`, activate CCIC-GCL mode & follow `ccic_gcl.md` in full
 - In CCIC-GCL mode, whenever Tab 1≠SEEK results (e.g. showing a post), re-read `ccic_gcl.md`
+- When prompted `#replace`, follow `coding.md` in full
 
 ## Session Start — Mandatory File Reads
 At the start of every session, before any actions, fully read the following files in order:
