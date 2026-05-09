@@ -29,7 +29,7 @@ Before the Pre-Flight Check, confirm Tab 1 is accessible via CIC MCP:
 ## Pre-Flight Check
 Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (including their sub-folders):
 
-1. **Only Tab 1 open** —— refresh Tab 1 first, then proceed to Step 1
+1. **Only Tab 1 open** —— `navigate` (refresh) Tab 1 only; do NOT `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content; once confirm page loaded, immediately proceed to Step 1
 2. **Tab 2 + Tab 3 open, `.md` exists (for Tab 2 job post; same for below) & completed (contains P.S. line; same for below), Tab 3 content identical to Tab 2 (job post)** —— interrupted post-analysis, pre-application; re-read the `.md` to recover the plan; proceed from Step 6
 3. **Tab 2 + Tab 3 open, `.md` exists & completed, Tab 3 content differs from Tab 2 (application page)** —— interrupted mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the `.md` to recover the plan; proceed from Step 6
 4. **Tab 2 + Tab 3 open, `.md` exists but not completed, Tab 3 content identical to Tab 2** —— interrupted mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from Step 2
