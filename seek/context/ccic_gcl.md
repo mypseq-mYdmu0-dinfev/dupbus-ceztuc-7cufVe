@@ -43,7 +43,7 @@ If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immedi
 ## Per-Job Loop —— Execute Continuously Until Stopped
 
 ### Step 1 —— Process SEEK Results (Tab 1)
-Process ONE card at a time, top-to-bottom. Do not read, scan, or pre-assess any card beyond the one currently being evaluated. Complete the full per-job loop before returning to Tab 1 for the next card.
+Process ONE card at a time, top-to-bottom. Expected result: `Only one card returned`. Do not read, scan, or pre-assess any card beyond the one currently being evaluated. Complete the full per-job loop before returning to Tab 1 for the next card.
 
 **Save & skip if:**
 - Title explicitly includes: `Consultant` `Associate`
