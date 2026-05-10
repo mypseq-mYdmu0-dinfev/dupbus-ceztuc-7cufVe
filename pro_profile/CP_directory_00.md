@@ -1,4 +1,5 @@
 - Unconditionally fetch now: CP_notes.md, pro_profile.md, writing.md (everything=deliverable)
+- DON'T fetch profile.md unless interest/hobby needed
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP

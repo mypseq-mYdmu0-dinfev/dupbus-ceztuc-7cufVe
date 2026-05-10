@@ -462,6 +462,7 @@ For reference (do not re-apply):
   - N/A
 
 - AD08.4. Participant Pool (8 candidates; all KBF-qualifying; all in AUS exc. Dingwall)
+
   - AD08.4.1. Pre-screening strategy: Google Form survey; scalable via QR code across pro network; "fill a survey?" → qualify → "upsell" to interview; NEVER disclosed to Lu or in any comms/deliverables; if ethics enquiry arises, frame as brief informal conversations (LinkedIn msg) before formal recruitment
   - AD08.4.2. Father (ex-Trane top mgmt, retired; enterprise HVAC engineering): swing —— mgr if quota reached, TPP otherwise; still advising/consulting = professionally active frame viable
   - AD08.4.3. Brother (Structural Engineering): KBF ✅
@@ -473,10 +474,12 @@ For reference (do not re-apply):
   - AD08.4.9. Yufeng (UTS PhD candidate HCI + tutor; ex-Tencent UI/UX): KBF ✅ (academic R&D + knowledge work); tutored Culous 0.5yr at UTS; TPS exposure retrospective (ex-Tencent); current UTS tutor role maintains active KBF status
 
 - AD08.5. CYC Framing & Defence (internal only)
+
   - AD08.5.1. Solo-founder rationale: boutique MCF typically start with one founding principal (McKinsey, Roland Berger precedent); surface only if challenged by Lu or reviewer
   - AD08.5.2. MCF versatility defence: "too broad?" → MBB/Big 4 deliberately industry-agnostic; "too niche?" → Amstelveen (tech risk), Oliver Wyman (financial services) = deep specialism = standard MCF model; "KM governance is CYC's first discipline" if further pressed; reviewer unlikely to have MCF operational background
 
 - AD08.6. Writing Reminders
+
   - AD08.6.1. KM withdrawal = confirmed starting point (evidenced by literature); research explores conditions and mechanisms; NEVER frame as hypothesis; no "prove/test/confirm/assess" language anywhere in A1R
   - AD08.6.2. "Specialising in KM" —— applies to all future mentions of CYC in any deliverable or comms
 
@@ -484,3 +487,4 @@ For reference (do not re-apply):
 
   - AD08.7.1. **MGTK751_A3_Template.md:** neglect formatting rules (font, size, etc.) when writing A1R
   - AD08.7.2. **Chat 11 prompts —— two separate, time-gated:** P06.4 & P11.6
+
