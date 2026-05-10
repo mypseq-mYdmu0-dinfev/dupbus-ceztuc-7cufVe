@@ -221,7 +221,7 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 6. CL Differentiability — [score]/10 (ditto)
 7. Application Efficiency — [score]/5 (ditto)
 8. Bonus — [+5/10/20 or N/A] ([if triggered, ≤30 words])
-**Suitability Score: [total]/100**
+**Suitability Score:** [total]/100
 ```
 
 CRITICAL: If applying, MUST first temporarily mark as `Outcome: Applying`; ONLY after success confirmed (S6.4), edit as `Outcome: Applied`. If saving or skipping after AR creation: move (per Move Rule) to `/seek/pending/` or `/seek/skipped/` respectively.
