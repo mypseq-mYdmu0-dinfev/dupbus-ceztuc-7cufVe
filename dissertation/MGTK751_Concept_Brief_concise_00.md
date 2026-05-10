@@ -4,24 +4,34 @@
 
 ## Glossary
 
-- TPS — Tall Poppy Syndrome
-- TP — Tall Poppy (high performer who stands out and faces social friction; = HP)
-- TPP — TP's Peers (colleagues who experience/witness TPS dynamics; primary ppts)
+- CYC — Culous Yu Consultancy
 - KBF — Knowledge-Based Firms (e.g. legal, accounting, consulting, engineering, IT, R&D)
-- KBV — Knowledge-Based View (extends Barney's RBV)
+- KBV — Knowledge-Based View (extends Barney's RBV; Grant 1996, Kogut & Zander 1992)
 - KM — Knowledge Management
+- KS — Knowledge Sharing
+- MCF — Management Consulting Firm
+- RO — Research Objective
 - RQ — Research Question
+- TP — Tall Poppy (= HP; high performer who stands out and faces social friction/marginalisation)
+- TPP — TP's Peers (colleagues who witness/experience TPS dynamics; primary ppts)
+- TPS — Tall Poppy Syndrome
+
+### Internal Only (never use in deliverables)
+- CW — Claude Cowork
 - DA — Dissertation Advisor
+- PD (Programme Director; DA's boss)
 - Q — Qualitative | N — Quantitative
-- ppt — participant | mgr — manager | org — organisation | bg — background
+- ppt — participant | mgr — manager | org — organisation
+
 
 ---
 
 1. **Topic**
 - 1.1. Title — "Tall Poppy Syndrome as a Management Challenge in Knowledge-Based Firms"
 - 1.2. One-liner — How TPS dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
-- 1.3. Industry-wide scope — TPS is supra-organisational by nature; studying it in one firm risks conflating findings w/ that firm's specific culture/leadership idiosyncrasies, making it impossible to isolate TPS itself; cross-firm sampling = methodological necessity, not a workaround
+- 1.3. Cross-firm KBF sampling — TPS is supra-organisational; studying it in one firm risks conflating findings w/ that firm's idiosyncratic culture; cross-firm sampling = methodological necessity, not a workaround
 - 1.4. Researcher positionality — Culous is a TP; first-hand experience provides reflexivity material for methodology chapter (strength, not conflict)
+- 1.5. Research vehicle — CYC; MCF specialising in KM; boutique/specialist tier; Culous as founding chief consultant; simulated status in A1R footnote only (not A2/A3)
 
 2. **Management Challenge**
 - 2.1. Primary — Challenge A: team cohesion erosion + KM governance risk
@@ -41,7 +51,7 @@
 3. **Why Original**
 - 3.1. TPS literature dominated by cultural psychology (AU, NZ focus) and sociological context; management application in KBFs largely absent
 - 3.2. Most org behaviour research on TPs assumes net-positive outcome; hidden costs to team and KM are underexplored
-- 3.3. KM angle distinguishes this from HR/psychology territory and aligns w/ KBV literature and Enis' research expertise
+- 3.3. KM angle distinguishes this from HR/psychology territory and aligns w/ KBV literature and Lu's PhD in knowledge and information management
 - 3.4. Timeless problem (unlike AI-specific topics); findings won't expire
 
 4. **Research Perspective & Participant Rationale**
@@ -60,11 +70,11 @@
 | Mgr | Triangulation | Guide C | Bonus if secured |
 
 5. **Methodology**
-- 5.1. Primary — Q; semi-structured interviews; 6 TPPs (default min.); expand if TP + mgr secured
-- 5.2. Alternative — N; survey; 30+ ppts; open if DA steers towards quant; Culous bg = comfortable w/ either
-- 5.3. Analysis — thematic analysis (Braun & Clarke 2006); NVivo optional (manual also accepted per Enis)
-- 5.4. Multi-org design — 1 ppt per org = no org-level consent letter needed (per Enis, Wk 1&3 seminars)
-- 5.5. Philosophy — interpretivist; inductive; no cause-and-effect language (RQs start w/ "what"/"how" only, per #25)
+- 5.1. Research method — explanatory multi-case study (Yin, 2009; Zainal, 2007); each org = one case; 6 orgs = 6 cases; Q confirmed
+- 5.2. Data collection — semi-structured interviews (data collection technique within case study design); 6 TPPs default; expand if TP + mgr secured
+- 5.3. Analysis — thematic analysis (Braun & Clarke, 2006); within-case first → cross-case synthesis
+- 5.4. Multi-org design — 1 ppt per org = no org-level consent needed; isolation rationale in §3.3; consent/feasibility angle in §3.6 only (not A2/A3)
+- 5.5. Philosophy — interpretivist; inductive; no cause-and-effect language; RQs start w/ "what"/"how" only
 
 6. **Feasibility**
 - 6.1. Participant access — TPP recruitment via Culous' professional network across 10⁺ countries (consulting, entertainment, FMCG, hospitality, NGOs, govt)
@@ -78,7 +88,7 @@
 - **RQ1** —— "What conditions within KBFs exacerbate or alleviate TPS?"
 - **RQ2** —— "How do team members in KBFs experience TPS-related team dynamics?"
 
-*Split from RQ4 (Chat 02); sub-RQs to be derived from lit review (per Enis' golden thread rule).*
+*Split from RQ-iv (Chat 02); Sub-RQs not required — see ROs section below.*
 
 **Considered options (Chat 02) —— for reference only:**
 
@@ -90,16 +100,19 @@
 | RQ-iv | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ1/2 above |
 | RQ-v | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychology-heavy; ethics risk |
 
-8. **DA Ranking**
+**Research Aim**
+> "To investigate how TPS dynamics in KBFs generate team cohesion and knowledge governance challenges, surfacing management implications for practitioners"
 
-| Rank | DA | Key fit | Note |
-|---|---|---|---|
-| #1 | Lu Liu | PhD in KM; KM governance, knowledge transfer; qual methods | Closest remaining match to KBV/KM core; context gap (SMEs/non-profits) not a theory gap |
-| #2 | Ron Fisher | OB (stress, commitment, disengagement), HRM; 150⁺ publications | Strongest OB match; strong first choice if Liu unavailable |
-| #3 | Hoang Thi Phuong Tra | OB + HRM; qual+quant; recent PhD (2022) | Methodologically safe; no KM/TPS depth |
-| #4 | Dotun Adebanjo | HRM, broad coverage, all methods; 250⁺ supervisions | Reliable generalist backstop |
-- 8.1. If N route taken — Adebanjo still #4; Salari excluded (marketing analytics; no KBF/KM fit)
-- 8.2. DA role — calibrate nuances (RQ wording, scope, methodology); not expected to redirect topic fundamentals; final challenge angle and RQ may shift slightly per DA preference
+**Research Objectives**
+- RO1: Critically review existing literature on TPS, team dynamics, and KM in KBFs
+- RO2: Explore how TPPs in KBFs perceive and experience TPS dynamics
+- RO3: Evaluate the organisational and interpersonal conditions that exacerbate or alleviate TPS
+- RO4: Formulate management recommendations addressing TPS-related KM and team cohesion risks
+
+8. **DA (Confirmed)**
+- **Lu Liu** — PhD in KM; confirmed Wk7, details in Lu.md
+- DA role: calibrates RQ wording, scope, methodology; does NOT redirect topic fundamentals
+- All other candidates (Elezi, Fisher, Hoang, Adebanjo, Hynes) = obsolete
 
 9. **Risk Register**
 
@@ -111,4 +124,4 @@
 | Ethics: emotional/distress disclosure | Question framing stays at professional team dynamics level throughout |
 | 8k word limit + multi-angle scope | Commit to Challenge A as primary; B&C as discussion layer only |
 | TP recruitment (hard to find) | TPP-first design bypasses this; TP as bonus |
-| Marker may question why not single firm | Industry-wide rationale via supra-organisational phenomenon argument (Section 1.3) |
+| Reviewer questions why not single firm ppt | Cross-firm KBF sampling rationale (§1.3); supra-organisational phenomenon argument; CYC client base comparability |

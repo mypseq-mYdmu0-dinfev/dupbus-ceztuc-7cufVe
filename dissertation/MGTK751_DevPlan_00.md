@@ -26,13 +26,13 @@
 
 - P06.1. Decide Research Method
   - P06.1.1. Review Lu's shared folder: Research Proposal Examples and Research Methods References
-  - P06.1.2. Decide IPA vs case study as the research method for A1R
+  - P06.1.2. Confirm case study (not IPA) as the research method for A1R
   - P06.1.3. Remarks: decision is open; resolve before progressing to P06.2 onward; decision governs all §3 content in P09
 
 - P06.2. Confirm CYC Identity
   - P06.2.1. Confirm simulated company name: CYC (Culous Yu Consultancy)
   - P06.2.2. Confirm type: MCF (Management Consulting Firm) specialising in KM; boutique/specialist tier
-  - P06.2.3. Confirm founding: Culous Yu as managing consultant + unnamed associate team
+  - P06.2.3. Confirm founding: Culous Yu as chief consultant + unnamed associate team
   - P06.2.4. Remarks: solo-founder rationale (standard for boutique MCF startups) is internal only; surface only if challenged by Lu or reviewer
 
 - P06.3. Establish Participant Comparability Rationale
@@ -44,7 +44,7 @@
 - P06.4. Draft Chat 11 (DA Comms) Prompt —— Lu Status Update
   - P06.4.1. Draft prompt for Chat 11 to send Lu a brief status update
   - P06.4.2. Acknowledge shared folder received & briefly read
-  - P06.4.3. Include methodology decision (IPA or case study) in the update
+  - P06.4.3. Include methodology decision (case study) in the update
   - P06.4.4. Include CYC confirmed as MCF specialising in KM
   - P06.4.5. Include the two dimensions (P06.3.3)
   - P06.4.6. Remarks: 5⁺ days elapsed since Meeting 01 (w/ Lu); no formal deadline set; purpose is reassurance, not a required deliverable
@@ -52,9 +52,10 @@
 ## P07. §1 Rewrite
 
 - P07.1. Complete Prerequisites
-  - P07.1.1. Fetch A1-3.md (blocking)
-  - P07.1.2. Fetch MGTK751_A3_Template.md (blocking)
-  - P07.1.3. Remarks: write §1 to A3 register and structural requirements for Ch1 reuse; neglect A3-specific formatting rules (font, size, etc.)
+  - P07.1.1. Fetch Concept_Brief.md (blocking)
+  - P07.1.2. Fetch A1-3.md (blocking)
+  - P07.1.3. Fetch MGTK751_A3_Template.md (blocking)
+  - P07.1.4. Remarks: write §1 to A3 register and structural requirements for Ch1 reuse; neglect A3-specific formatting rules (font, size, etc.)
 
 - P07.2. Rewrite §1 with CYC Framing
   - P07.2.1. Frame research throughout §1 from CYC's perspective as a KM-specialising MCF investigating its KBF client base
@@ -72,10 +73,11 @@
 ## P08. §2 Lit Review Restructure
 
 - P08.1. Reframe §2 Narrative Funnel
-  - P08.1.1. Rewrite §2 narrative thread to reflect: TPS (foundational) → TPS in KM (governance impacts) → TPS in KBFs (specific org context)
-  - P08.1.2. Attempt reframe of existing §2.1~2.5 narrative without reorganising subsections
-  - P08.1.3. Flag and confirm with user before reorganising subsections if clearly necessary during execution
-  - P08.1.4. Remarks: subsection reorganisation decision to be made during execution; narrative reframe is the default approach
+  - P08.1.1. Fetch Concept_Brief.md (blocking)
+  - P08.1.2. Rewrite §2 narrative thread to reflect: TPS (foundational) → TPS in KM (governance impacts) → TPS in KBFs (specific org context)
+  - P08.1.3. Attempt reframe of existing §2.1~2.5 narrative without reorganising subsections
+  - P08.1.4. Flag and confirm with user before reorganising subsections if clearly necessary during execution
+  - P08.1.5. Remarks: subsection reorganisation decision to be made during execution; narrative reframe is the default approach
 
 - P08.2. Confirm Source Adequacy
   - P08.2.1. Confirm no new academic refs required (existing refs pair foundational theories with recent empirical work)
@@ -85,12 +87,13 @@
 ## P09. §3 Methodology Rewrite
 
 - P09.1. Complete Prerequisites
-  - P09.1.1. Fetch A1-3.md if not already in context from P07 (blocking)
-  - P09.1.2. Fetch MGTK751_A3_Template.md if not already in context from P07 (blocking)
-  - P09.1.3. Remarks: write §3 to A3 register and structural requirements for Ch3 reuse; neglect A3-specific formatting rules
+  - P09.1.1. Fetch Concept_Brief.md (blocking)
+  - P09.1.2. Fetch A1-3.md (blocking)
+  - P09.1.3. Fetch MGTK751_A3_Template.md if not already in context from P07 (blocking)
+  - P09.1.4. Remarks: write §3 to A3 register and structural requirements for Ch3 reuse; neglect A3-specific formatting rules
 
 - P09.2. Name Research Method in §3
-  - P09.2.1. Name research method (IPA or case study per P06.1) explicitly in §3
+  - P09.2.1. Name research method (case study per P06.1) explicitly in §3
   - P09.2.2. Reposition semi-structured interview as data collection technique within that method
 
 - P09.3. State Participant Comparability in §3.3
@@ -108,8 +111,9 @@
 ## P10. QC & Whole-Doc Integration
 
 - P10.1. Expand Document
-  - P10.1.1. Expand A1R.md to ~3,000w (if need; not necessary)
-  - P10.1.2. Verify §1 and §3 at A3 register and structured for Ch1/Ch3 cut-paste reuse
+  - P10.1.1. Fetch Concept_Brief.md (blocking)
+  - P10.1.2. Expand A1R.md to ~3,000w (if need; not necessary)
+  - P10.1.3. Verify §1 and §3 at A3 register and structured for Ch1/Ch3 cut-paste reuse
 
 - P10.2. Run Full-Doc Alignment Audit
   - P10.2.1. Verify aim–RQ–objective–method chain explicitly traceable throughout
@@ -117,7 +121,7 @@
   - P10.2.3. Verify no hypothesis/testing language anywhere in full document
   - P10.2.4. Verify inductive framing consistent throughout full document
 
-## P11. Output Audit —— Lu's Checklist
+## P11. Output Audit —— Lu's Checklist (every response: ensure Concept_Brief.md intact, otherwise re-fetch)
 
 - P11.1. Verify CYC Identity and Participant Comparability
   - P11.1.1. Confirm CYC (MCF specialising in KM) named throughout
@@ -125,7 +129,7 @@
   - P11.1.3. Confirm two dimensions (CYC = MCF; participants = KBFs broadly) not conflated
 
 - P11.2. Verify Methodology Framing
-  - P11.2.1. Confirm research method (IPA or case study) named explicitly in §3
+  - P11.2.1. Confirm research method (case study) named explicitly in §3
   - P11.2.2. Confirm semi-structured interview positioned as data collection technique only
 
 - P11.3. Verify Structural Sequence & Source Balance
@@ -194,12 +198,10 @@
 - No arrows in conceptual framework (qual = no causal implication)
 - RQs start with "what"/"how" only; no mixed methods language
 - KM withdrawal = confirmed starting point evidenced by literature (Li, Xu and Kwan, 2021; check when used); research explores conditions and mechanisms; never frame as a hypothesis to test; no "prove/test/confirm/assess" language anywhere
-- Research method (IPA or case study) must be explicitly named in §3; semi-structured interview = data collection technique only
+- Research method (case study) must be explicitly named in §3; semi-structured interview = data collection technique only
 - CYC (MCF specialising in KM) must be named and described in §1 and §3; founder = Culous Yu; boutique/specialist tier
 - Two CYC dimensions are distinct and must never be conflated: (a) CYC's own industry = MCF; (b) CYC's primary client base and research participant pool = KBFs broadly
 - Participant comparability to CYC's client base must be explicitly stated in §3.3; 1-per-org design retained and explained
-- Transcription: MS Teams/Office/Copilot only; data collection not before written ethics approval
-- File exchange with Lu: shared folder + email; VLE forum not mandatory (Lu's own directive)
 - Alert protocol: flag any content conflicting with A1-3.md, Official Files (distilled).md, DevPlan.md, or confirmed DA guidance before proceeding
 
 ---
@@ -450,7 +452,7 @@ For reference (do not re-apply):
 - AD08.2. Key Decisions Made
 
   - AD08.2.1. **Compliance confirmed:** PD (Programme Director; Lu's boss) requires single-org/simulated startup framing; Lu defers to PD; Enis independently confirms startup = legitimate, not a quality compromise; quality determined by aim-RQ-objective-method alignment; direction is final
-  - AD08.2.2. **CYC identity:** Culous Yu Consultancy; MCF (Management Consulting Firm) specialising in KM; boutique/specialist tier; Culous as founding managing consultant + unnamed associate team; founding structure internal only —— surface only if challenged
+  - AD08.2.2. **CYC identity:** Culous Yu Consultancy; MCF (Management Consulting Firm) specialising in KM; boutique/specialist tier; Culous as founding chief consultant + unnamed associate team; founding structure internal only —— surface only if challenged
   - AD08.2.3. **Two CYC dimensions —— never conflate:** CYC's own industry = MCF; CYC's client base + participant pool = KBFs broadly; Lu's criterion satisfied: "as long as we can justify samples are comparable to this simulated firm"
   - AD08.2.4. **§2 funnel revised:** TPS (foundational) → TPS in KM (governance impacts) → TPS in KBFs; Australian context = §1 practitioner bonus only; not a §2 requirement
   - AD08.2.5. **Method recommendation —— pending Culous' confirmation:** case study; reasoning: Lu's stated lean, RQ1 conditions-oriented, org-context logic of CYC, multi-case suits KBF-wide scope, management-research-native; see #14 in Chat 12 for full internal and external reasoning
