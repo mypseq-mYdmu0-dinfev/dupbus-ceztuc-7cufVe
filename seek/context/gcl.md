@@ -32,8 +32,8 @@ Dear Hiring Manager,
 
 I am writing to express my strong interest in the [Job Title] position (of [Team/Department Name]) at [Company Name](, part of the esteemed [Group Name]). [1]/[2]
 
-[1] With my proven capabilities in Problem Solving, Quality Assurance, and Resource Management... (elaborate) [for junior positions]
-[2] With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management... (Virtual Presentation: http://Presentation.CulousYu.com) [for mid/high-level positions or when `virtual_presentation.md` highly applicable/strong alignment]
+[1] With my proven capabilities in Problem Solving, Quality Assurance, and Resource Management, ... (elaborate) [for junior positions]
+[2] With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management (Virtual Presentation: http://Presentation.CulousYu.com), ... (elaborate) [for mid/high-level positions or when `virtual_presentation.md` highly applicable/strong alignment; MUST include the bracketed URL when adopting this line]
 
 ... I am exceptionally well-positioned to contribute to [Company/Group Name]'s mission of ...
 
