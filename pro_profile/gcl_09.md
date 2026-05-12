@@ -26,14 +26,14 @@ Based on given content/web search/my bg, suggest 1-3 potential interview questio
 ### 6. ** Cover Letter (CL):**
 Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone.
 
-#### Template
+#### Template —— Content in `[]` = internal notes, ensure clean handling
 
 Dear Hiring Manager,
 
 I am writing to express my strong interest in the [Job Title] position (of [Team/Department Name]) at [Company Name](, part of the esteemed [Group Name]). [1]/[2]
 
-[1] With my proven capabilities in Problem Solving, Quality Assurance, and Resource Management... (elaborate) [for junior positions]
-[2] With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management... (Virtual Presentation: http://Presentation.CulousYu.com) [for mid/high-level positions or when `virtual_presentation.md` highly applicable/strong alignment]
+[1] With my proven capabilities in Problem Solving, Quality Assurance, and Resource Management, ... [elaborate; for junior positions]
+[2] With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management (Virtual Presentation: http://Presentation.CulousYu.com), ... [elaborate; for mid/high-level positions OR when `virtual_presentation.md` highly applicable/strongly aligned; MUST include the bracketed URL when adopting this line]
 
 ... I am exceptionally well-positioned to contribute to [Company/Group Name]'s mission of ...
 
@@ -75,7 +75,7 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 - Never alter **P.S. line:** as defined in `#### Template`
 - No text after the P.S. line in any CL —— ever
 - No dash `—` or colon `:` in CL body
-- For `+` implying "more than", use superscript `⁺` (e.g. ✅ `16⁺ years`; ❌ `16+ years`); regular `+` is acceptable for employer/product names (e.g. `iCloud+`) and arithmetic
+- CRITICAL: For `+` implying "more than" → MUST use superscript `⁺` (e.g. ✅ `16⁺ years`; ❌ `16+ years`); regular `+` is acceptable for employer/product names (e.g. `iCloud+`) and arithmetic
 - Always "Yours Faithfully" (not "Sincerely") since recipient's name is unknown
 - Never mention "SQL" —— I have no SQL knowledge
 - "HCI" first use as "Human-Computer Interaction (HCI)", unless role is design-centric (use "Interaction Design (IxD)"); thereafter "HCI"/"IxD" are acceptable — CHOOSE EITHER, NEVER BOTH (confusing)

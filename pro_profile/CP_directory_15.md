@@ -1,4 +1,5 @@
-- Fetch at every chat start: CP_notes.md, pro_profile.md, writing.md (assume all outputs = deliverables)
+- Unconditionally fetch now: CP_notes.md, pro_profile.md, writing.md (everything=deliverable)
+- DON'T fetch profile.md unless interest/hobby needed
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP
@@ -22,7 +23,7 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_08.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_09.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
