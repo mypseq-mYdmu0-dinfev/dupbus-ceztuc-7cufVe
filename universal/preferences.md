@@ -1,6 +1,6 @@
 # FETCH RULES
 
-* IMPORTANT: Each file fetched ONCE only. Declare (#cc). STOP if fetch failed, don't proceed.
+Each file (re-)fetched: MUST declare; STOP if failed, don't proceed.
 
 ## UNCONDITIONAL
 
