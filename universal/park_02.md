@@ -54,7 +54,7 @@
 8.2.3.4. Repeat 8.2.2.2, 8.2.2.3, 8.2.2.4, 8.2.2.5
 8.2.3.4.1. If n ≤ 10 → Click `🌎` icon to access website → Check hourly rate → Step 9
 8.2.3.4.2. If n ≥ 11 → Repeat 8.2.3.3 & 8.2.3.4 for next cards (max 5)
-9. Report in artefact
+9. Report in artefact (bite-size bullets, all #numbered for easy reply)
 9.1. Concise Verdict: Is parking available near des? (max 10 words)
 9.2. Tell which steps (don't use Step no., I won't remember) were performed & struggles (if any)
 9.3. Summarise result(s) (starting from most feasible option, if multiple)
