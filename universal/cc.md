@@ -36,11 +36,13 @@ Fetched `profile.md` for KK's bg.
 
 ## Preservation Protocols (`#pp`)
 
-**Chat start:** copy this entire `#pp` section verbatim into `<thinking>`.
+### PP0 —— Section Lock
+
+**1st Response:** copy this entire `#pp` section verbatim into `<thinking>`.
 
 ### PP1 —— Context Check (Always Enforced)
 
-Run before every response (except chat start; NOT a formatting step):
+Run before every response (exc. 1st response; NOT a formatting step):
 > #03 artefact AND directory.md tool result fully intact (NOT cleared)?
 - Faithfully verify token state, NOT infer:
   - Locate directory.md tool result → `[Older tool result cleared to save context]` = cleared
@@ -61,7 +63,8 @@ Run before every response (except chat start; NOT a formatting step):
 
 ### PP3 —— Post-Response Check
 
-End of every response (after addressing my request; except chat start):
+End of every response (after addressing my request; exc. 1st response):
+- If `#pp` (whole section) not found verbatim in `<thinking>`: Run PP0 immediately (despite not 1st response)
 - If no `✔︎` in current output: follow `PP3 failure`
 - Otherwise, run PP1 again: 
   - If still yes → no action
