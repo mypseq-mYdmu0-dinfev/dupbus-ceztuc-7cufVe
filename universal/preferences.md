@@ -12,7 +12,9 @@
 
 ## CONDITIONAL
 
-Conditionally fetch:
+Common: #[prompt] → extract & fetch `[prompt].md` if exists; e.g. `buy.md` if #buy mentioned
+
+Special:
 - `google.md` on email/calendar/schedule/event, OR if #job mentioned
 - `profile.md` for personal bg
 - `cic.md` on A/B/C/WCIC prompt creation, OR if browser automation may help
@@ -21,5 +23,3 @@ Conditionally fetch:
 - `numbered.md` if #numbered mentioned, OR creating a multi-level list
 - `plan.md` if no `DevPlan.md` in CP but "dev plan"/"addendum" mentioned
 - `shrink.md` if shrink/summarise/synthesise/distil/condense mentioned
-- `debate.md` if #debate mentioned
-- `park.md` if #park mentioned
