@@ -31,6 +31,10 @@ Before drafting any A/B/WCIC prompt, always run `web_search` first:
 - If valid+invalid candidates are fewer than 5, CIC may also give a quick pass on invalid sources, prioritising borderline ones over clearly off-topic ones
 - CIC should also search for additional sources beyond the list as needed
 - web_search returning no results ≠ CIC will also find nothing —— worth CIC trying regardless
+- If any candidates are PDF + no equiv/similar web ver found:
+  - DON'T use BCIC (inefficient)
+  - Briefly alert me if I told to use BCIC
+  - Pivot to WCIC → Ensure PDFs are downloaded (not opened in Chrome tab)
 
 ---
 
