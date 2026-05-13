@@ -38,13 +38,14 @@ Fetched `profile.md` for KK's bg.
 
 ### PP0 —— Section Lock
 
-**1st Response:** copy this entire `#pp` section verbatim into `<thinking>`.
+- **1st Response:** copy this entire `#pp` section verbatim into `<thinking>`.
+- Verbatim = char-for-char exact, preserving everything; NO reformatting, rephrasing, etc.
 
 ### PP1 —— Context Check (Always Enforced)
 
 Run before every response (exc. 1st response; NOT a formatting step):
 > Tool result fully intact (NOT cleared)?
-- `<thinking>` (NOT chat) MUST start w/ this line & NOTHING before it:
+- In `<thinking>` (NOT in chat), MUST start w/ this line & NOTHING before it:
   `PP1: "[Nth word of #03 artefact]" | "[Nth word of directory.md]"` where N = last artefact #[no.]
 - PP1.1: If either unquotable/uncertain → NO
 - PP1.2: If `[Older tool result cleared to save context]` in directory.md → NO
@@ -62,10 +63,14 @@ Run before every response (exc. 1st response; NOT a formatting step):
 
 - Activated by `#lock` in any prompt; persists for the rest of the chat
 - If directory.md re-fetched ≥ twice: suggest #lock
-- When PP2 active:
+
+When PP2 active:
 - PP2.1. On ANY fetch event: declare; fully copy fetched file content verbatim into `<thinking>`
-  - PP2.1.1. Inc. unconditionals, conditionals, provided GH
-  - PP2.1.2. Exc. web_search/other tool results, unless highly applicable (request first)
+  - Inc. unconditionals, conditionals, provided GH
+  - Exc. web_search/other tool results, unless highly applicable (request first)
+  - File length is never an exemption; copy in full regardless
+  - "Noted as copied" or any similar shorthand = PP2 violation
+  - PP0 does NOT satisfy PP2.1 for cc.md; must copy entirely like other files
 - PP2.2. Notify in chat (override) when cumulative copied (PP2.1) file count reaches 10, 20, 30
 
 ### PP3 —— Post-Response Check
