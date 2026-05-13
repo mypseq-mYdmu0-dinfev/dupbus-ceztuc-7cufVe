@@ -24,7 +24,7 @@
 - Re-fetch latest ver of files by directory.md in userPref (& CP_directory.md in CP instr)
 - Unconditionals = 1st line (above "Format: ...") of directory.md (& CP_directory.md)
 - Conditionals = everything else in directory.md (& CP_directory.md)
-- "Other files fetched" inc. not just conditionals (e.g. GH provided, even not declared)
+- "Other files fetched" = conditionals, GH provided, web_search results, and other tool results even not declared
 - Re-fetch skipping examples (judge per chat):
   - shrink.md if no more content shrinking expected
   - profile.md after demanded info extracted
