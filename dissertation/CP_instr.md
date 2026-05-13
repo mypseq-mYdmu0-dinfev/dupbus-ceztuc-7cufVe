@@ -1,10 +1,10 @@
 # FETCH RULES
 
-* Each file ... don't proceed. (same as userPref)
+Each file ... don't proceed. (same as userPref)
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_29.md
+- Fetch at every chat start & resolve all aliases below using `CP_directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_29.md
 - Notify in chat (override) when cumulative fetched file count reaches 10, 20, 30
 
 ## CONDITIONAL

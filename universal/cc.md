@@ -61,10 +61,12 @@ Run before every response (exc. 1st response; NOT a formatting step):
 ### PP2 —— Full Lock
 
 - Activated by `#lock` in any prompt; persists for the rest of the chat
-- On ANY fetch event: declare first → fully copy fetched file content verbatim into `<thinking>`
-  - Inc. unconditionals, conditionals, provided GH
-  - Exc. web_search/other tool results, unless highly applicable (request first)
 - If directory.md re-fetched ≥ twice: suggest #lock
+- When PP2 active:
+- PP2.1. On ANY fetch event: declare; fully copy fetched file content verbatim into `<thinking>`
+  - PP2.1.1. Inc. unconditionals, conditionals, provided GH
+  - PP2.1.2. Exc. web_search/other tool results, unless highly applicable (request first)
+- PP2.2. Notify in chat (override) when cumulative copied (PP2.1) file count reaches 10, 20, 30
 
 ### PP3 —— Post-Response Check
 
