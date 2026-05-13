@@ -1,5 +1,5 @@
 # MGTK751 Reference Repository
-Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle embedded). 13 core ref and official readings: see placeholder sections.
+Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle embedded).
 
 ---
 
