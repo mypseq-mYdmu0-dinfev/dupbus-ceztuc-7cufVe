@@ -22,7 +22,7 @@
 
 ## P05. A1 QC & Submission *(v09 submitted 27/04/2026)*
 
-## P06. Strategy & Identity *(A1R starts)*
+## P06. Strategy & Identity *(A1R starts; completed by Chat 13)*
 
 - P06.1. Decide Research Method
   - P06.1.1. Review Lu's shared folder: Research Proposal Examples and Research Methods References
@@ -52,7 +52,7 @@
 ## P07. §1 Rewrite
 
 - P07.1. Complete Prerequisites
-  - P07.1.1. Fetch Concept_Brief.md (blocking)
+  - P07.1.1. Fetch CB (blocking)
   - P07.1.2. Fetch A1-3.md (blocking)
   - P07.1.3. Fetch MGTK751_A3_Template.md (blocking)
   - P07.1.4. Remarks: write §1 to A3 register and structural requirements for Ch1 reuse; neglect A3-specific formatting rules (font, size, etc.)
@@ -73,7 +73,7 @@
 ## P08. §2 Lit Review Restructure
 
 - P08.1. Reframe §2 Narrative Funnel
-  - P08.1.1. Fetch Concept_Brief.md (blocking)
+  - P08.1.1. Fetch CB (blocking)
   - P08.1.2. Rewrite §2 narrative thread to reflect: TPS (foundational) → TPS in KM (governance impacts) → TPS in KBFs (specific org context)
   - P08.1.3. Attempt reframe of existing §2.1~2.5 narrative without reorganising subsections
   - P08.1.4. Flag and confirm with user before reorganising subsections if clearly necessary during execution
@@ -87,7 +87,7 @@
 ## P09. §3 Methodology Rewrite
 
 - P09.1. Complete Prerequisites
-  - P09.1.1. Fetch Concept_Brief.md (blocking)
+  - P09.1.1. Fetch CB (blocking)
   - P09.1.2. Fetch A1-3.md (blocking)
   - P09.1.3. Fetch MGTK751_A3_Template.md if not already in context from P07 (blocking)
   - P09.1.4. Remarks: write §3 to A3 register and structural requirements for Ch3 reuse; neglect A3-specific formatting rules
@@ -111,7 +111,7 @@
 ## P10. QC & Whole-Doc Integration
 
 - P10.1. Expand Document
-  - P10.1.1. Fetch Concept_Brief.md (blocking)
+  - P10.1.1. Fetch CB (blocking)
   - P10.1.2. Expand A1R.md to ~3,000w (if need; not necessary)
   - P10.1.3. Verify §1 and §3 at A3 register and structured for Ch1/Ch3 cut-paste reuse
 
@@ -121,7 +121,7 @@
   - P10.2.3. Verify no hypothesis/testing language anywhere in full document
   - P10.2.4. Verify inductive framing consistent throughout full document
 
-## P11. Output Audit —— Lu's Checklist (every response: ensure Concept_Brief.md intact, otherwise re-fetch)
+## P11. Output Audit —— Lu's Checklist (every response: ensure CB intact, otherwise re-fetch)
 
 - P11.1. Verify CYC Identity and Participant Comparability
   - P11.1.1. Confirm CYC (MCF specialising in KM) named throughout
@@ -187,7 +187,7 @@
 
 ## M2. Source Files
 
-- Primary content authority: `Concept Brief (comp).md` (NOT yet updated post-A1 submission)
+- Primary content authority: CB (Concept_Brief.md)
 - Assessment criteria + A3 structure: `A1-3.md` + `MGTK751_A3_Template.md` —— fetch as a pair; blocking prerequisite for P07 and P09; neglect formatting rules when writing for A1R
 - Literature sources: `RefRepo.md`
 - DA profile & comms: `Lu.md`, `Meetings.md`
@@ -488,3 +488,28 @@ For reference (do not re-apply):
   - AD08.7.1. **MGTK751_A3_Template.md:** neglect formatting rules (font, size, etc.) when writing A1R
   - AD08.7.2. **Chat 11 prompts —— two separate, time-gated:** P06.4 & P11.6
 
+### AD09. P06 (Chat 13) —— Method Decision, CYC Identity & Internal Docs Update
+
+- AD09.1. What Was Done
+  - AD09.1.1. P06 completed: CW validated via cowork_202605082121.md stored in /From Lu/ — future instances may request if CB (Concept_Brief.md; comp. ver.) §8.1 summary insufficient
+  - AD09.1.2. Internal docs updated: ProjectSummary.md (#16, 5 changes); CB (#18 × 16 changes, #21 × 3 changes, sub-RQ/RO changes × 2); `Concept Brief (concise).md` (6 changes + sub-RQ/RO changes × 2)
+  - AD09.1.3. DevPlan PART A audited against CB —— no critical contradictions found; overlaps noted for P12.3 (see AD09.4.1)
+
+- AD09.2. Key Decisions Made
+  - AD09.2.1. Research method: explanatory multi-case study (Yin, 2009; Zainal, 2007); each org = one case; 6 orgs = 6 cases; within-case depth first → across-case synthesis (Ayres, Kavanaugh and Knafl, 2003)
+  - AD09.2.2. IPA eliminated on 3 grounds: (a) incompatible with cross-org comparison requiring homogeneous sample; (b) analytic method incompatible with Braun & Clarke; (c) RQ1 = comparative explanatory, not phenomenological; confirmed by CW validation of Lu's shared folder (`/From Lu/`)
+  - AD09.2.3. CYC identity confirmed (see ProjectSummary.md); simulated status in A1R footnote only; two dimensions (CYC = MCF; participant pool = KBFs broadly) never conflated; full detail in CB §1.7
+  - AD09.2.4. Multi-source handling: never mention absence; frame as "data collected across six independent organisational contexts"; cross-case comparison = functional triangulation; normalised by Ayres et al. (2003) and `/From Lu/` examples
+  - AD09.2.5. Sub-RQs: not required; 4 confirmed ROs (A1 v09) + 2 RQs = sufficient architecture; no sub-RQ language anywhere in A1R
+  - AD09.2.6. Lu's lean (always use full form): "understand phenomenon → understand how organisations deal with it → consultancy recommendations for building a learning organisation" (Meeting 01)
+  - AD09.2.7. Lit review funnel confirmed (DA Meeting 01): TPS foundational → TPS in KM governance → TPS in KBFs; CB §5.3 updated; Australian context = §1 practitioner layer only
+
+- AD09.3. Deviation from Dev Plan
+  - AD09.3.1. Internal docs review/update done at P06 rather than P12.2; rationale: CB must be current before P07 instance uses it; considered appropriate advancement
+  - AD09.3.2. DevPlan P06.1.2 updated by Culous this chat: now reads "Confirm case study (not IPA)"; all IPA mentions removed from DevPlan PART A — consistent with confirmed decision
+
+- AD09.4. Notes for Future Chats
+  - AD09.4.1. P12.3 task: remove redundant overlaps from DevPlan PART C — KM withdrawal rule duplicated in CB §3.1 and DevPlan M3; "never conflate two CYC dimensions" appears in 5 DevPlan locations; CYC identity in CB §1.7 (master) + DevPlan M3 (condensed) + AD08.2.2 (historical); participant comparability in CB §7.6 + 4 DevPlan phase locations
+  - AD09.4.2. P09 instance — §3 writing reminders (critical): (a) do not over-claim multi-source capabilities; acknowledge interview-primary design with Yin-supported justification; (b) remove IPA-sounding terms from §3: "lived experience" and "frames of reference"; (c) insert §3.3 paragraph explicitly naming explanatory multiple-case study (Yin, 2009; Zainal, 2007), within-case/across-case sequence (Ayres et al., 2003); (d) never use word "multi-source" anywhere; (e) frame cross-case comparison positively as functional validation
+  - AD09.4.3. A3 instance (Ch4/Ch5): avoid garden path analysis (Ayres et al.) — thematic analysis must produce cross-case configuration (how themes relate and vary across orgs), not just a theme inventory
+  - AD09.4.4. Methodology deliberation (historically notable): genuine documented struggle between IPA and case study occurred; final decision driven by RQ1 conditions-orientation and CYC framing; deliberation was acknowledged in Lu status update as a strength signal demonstrating methodological maturity; may be briefly surfaced in P11.6 Lu email

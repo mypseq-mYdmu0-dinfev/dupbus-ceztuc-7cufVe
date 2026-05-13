@@ -11,11 +11,11 @@
 ## Core Files
 
 ProjectSummary.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_ProjectSummary_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_ProjectSummary_03.md
 Brief overview.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_13.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_DevPlan_14.md
 Always follow.
 
 ---
@@ -54,16 +54,16 @@ By Enis (not DA).
 
 ## Created Files
 
-Concept_Brief.md / Concept Brief (comp).md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_06.md
+"CB" / Concept_Brief.md / Concept Brief (comp).md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_comp_07.md
 Ultimate source of truth; internal backstory.
 
 Concept Brief (concise).md (request)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_06.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_Concept_Brief_concise_07.md
 For my reading only.
 
 RefRepo.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_03.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/MGTK751_RefRepo_04.md
 All usable ref w/ brief notes.
 
 CoreRef.md (request)
@@ -76,7 +76,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Submitted real A1.
 
 Lu.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/lu_02.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/lu_03.md
 Synthesised profile of matched DA (A2/A3 marker).
 
 Meetings.md / Meetings (distilled).md

@@ -1,20 +1,27 @@
 # TPS in KBFs — Concept Brief (Comprehensive/Internal)
 
-*For future Claude instances in this CP. Read alongside: distilled official files, distilled seminar transcripts, A1-3 criteria, Potential Advisors file. This file covers topic-specific knowledge, decisions, and reasoning only — not general module rules.*
+*Read alongside if needed: A1-3.md, Lu.md, Official_Files.md, Seminars.md. This file covers topic-specific knowledge, decisions, and reasoning only — not general module rules.*
 
 ---
 
 ## Glossary
 
-- TPS — Tall Poppy Syndrome
-- TP — Tall Poppy (= HP; high performer who stands out and faces social friction/marginalisation)
-- TPP — TP's Peers (colleagues who witness/experience TPS dynamics; primary ppts)
+- CYC — Culous Yu Consultancy
 - KBF — Knowledge-Based Firms (e.g. legal, accounting, consulting, engineering, IT, R&D; grounded in KBV literature)
 - KBV — Knowledge-Based View (extends Barney's RBV; Grant 1996, Kogut & Zander 1992)
 - KM — Knowledge Management
-- KM — Knowledge Sharing
+- KS — Knowledge Sharing
+- MCF — Management Consulting Firm
+- RO — Research Objective
 - RQ — Research Question
+- TP — Tall Poppy (= HP; high performer who stands out and faces social friction/marginalisation)
+- TPP — TP's Peers (colleagues who witness/experience TPS dynamics; primary ppts)
+- TPS — Tall Poppy Syndrome
+
+### Internal Only (never use in deliverables)
+- CW — Claude Cowork
 - DA — Dissertation Advisor
+- PD (Programme Director; DA's boss)
 - Q — Qualitative | N — Quantitative
 - ppt — participant | mgr — manager | org — organisation
 
@@ -25,13 +32,29 @@
 - 1.2. One-liner — how TPS dynamics create team cohesion and KM governance risks in KBFs, and what mgrs can do about it
 - 1.3. Domain — org behaviour + KM + leadership/management; NOT HR per se, NOT psychology
 - 1.4. Research classification
-  - Philosophy: interpretivist (primary); positivist possible if N route taken
-  - Approach: inductive (Q) / deductive (N)
+  - Philosophy: interpretivist (primary)
+  - Approach: inductive (Q)
   - Type: evaluative/explanatory preferred over purely exploratory (per module guidance)
-  - Method: Q semi-structured interviews (primary); N survey (alternative)
+  - Method: explanatory multi-case study (Yin, 2009; Zainal, 2007); semi-structured interviews = Q data collection technique; thematic analysis (Braun & Clarke, 2006)
 - 1.5. Researcher positionality — Culous is a TP (self-identified, career trajectory confirms); provides reflexivity material for methodology chapter; acknowledged via interpretivism's reflexivity convention; NOT a disqualifier
   - Placement rule: primary disclosure in methodology section (researcher positionality subsection); intro mention is optional and minimal only (1–2 lines, motivation framing, no identity claim such as "I am a TP")
 - 1.6. Industry-wide scope — TPS is supra-organisational by nature; studying it within one firm risks conflating findings w/ that firm's idiosyncratic culture/leadership; cross-firm sampling isolates TPS as the explanatory phenomenon; this is methodological necessity, not workaround; rationale must appear prominently in intro (see Section 6)
+- 1.7. Research vehicle — CYC
+  - Type: MCF specialising in KM; boutique/specialist tier; simulated
+  - Founder: Culous Yu as chief consultant + unnamed associate team
+  - Simulated status: disclosed in A1R footnote only (integrity note, not "research-purpose entity" — CYC conducts research as any MCF does, e.g. McKinsey Quarterly); A3 = anonymisation convention (no simulated label needed unless directed by Lu or reviewer, i.e. no rationale discussion need); word count is primary concern
+  - Geographic: AUS-based, internationally operating via online-enabled practice — footnote only if needed; not main prose; avoids stereotyping bias
+  - Research motivations (internal only; default = not in A1R/A2/A3 prose; surface only when necessary):
+    - (a) Market intelligence for CYC's KM service offering (founding prerequisite)
+    - (b) Advisory framework development for KBF clients (maps to RO4 / A3 key output)
+    - (c) Thought leadership / credibility building (standard MCF academic research norm)
+  - KM scope in prose: "specialising in KM" consistently; not "KM governance" (too narrow)
+  - Solo-founder rationale: internal only; surface if challenged (standard boutique MCF structure)
+  - Two CYC dimensions — NEVER conflate in any prose:
+    - CYC's own industry: MCF
+    - CYC's client base (simulated) + ppt pool (real): KBFs broadly
+    - Lu's criterion: "as long as we can justify that the samples taken are comparable to this simulated firm"
+    - In A1R/A2/A3 prose: dimensions enacted without being announced; explicit separation risks confessional tone
 
 2. **Strategic Framing Decisions**
 - 2.1. Primary framing: MBA management challenge (NOT psychological study)
@@ -57,7 +80,7 @@
   - KM loss angle: converts interpersonal friction into boardroom-relevant knowledge governance failure
   - Mgr dilemma: penalising excellence vs. permitting mediocrity; no clean solution → research value
   - Leadership/management-driven → most actionable recommendations; best DA fit
-  - ⚠️ Note: KM withdrawal is NOT confirmed by data yet — it's the hypothesis to investigate; always frame as "TPS may reshape knowledge-sharing behaviour in ways that create latent KM risks"
+  - ⚠️ KM withdrawal = confirmed starting point evidenced by literature (Li, Xu and Kwan, 2021; verify citation when used); research explores conditions and mechanisms, NOT whether withdrawal occurs; NEVER frame as hypothesis; no "prove/test/confirm/assess" language anywhere
   - Observable indicators (for interview and coding use):
     - Peer-observable KM behaviour signals (TPP perspective; Guide A): reduced participation in team knowledge exchanges, perceived disengagement from collaborative work, decreased responsiveness to peer knowledge requests, withdrawal from knowledge-sharing activities such as team briefings or documentation
     - Peer-observable cohesion signals (TPP perspective; Guide A): reduced cross-team collaboration, informal exclusion patterns, breakdown in communication, tension or avoidance dynamics
@@ -89,25 +112,25 @@
 5. **Theoretical Framework Direction**
 - 5.1. Grounding theories (starting points for lit review; final selection after lit review per golden thread rule)
   - KBV (Grant 1996; Kogut & Zander 1992) — why KM loss in KBFs is strategically critical
-  - Social Comparison Theory (Festinger 1954) — explains peer reactions to TP (downward comparison threat); ⚠️ critical nuance (Sung et al. 2024, JBR): upward SCT mostly promotes KS via benign envy; TPS-specific hostile marginalisation more likely to activate malicious envy pathway → KM withdrawal plausible but conditional, not deterministic; feeds Enis' critical balance requirement (A1 formative feedback) — do not frame withdrawal as inevitable
+  - Social Comparison Theory (Festinger 1954) — explains peer reactions to TP (downward comparison threat); ⚠️ critical nuance (Sung et al. 2024, JBR): upward SCT mostly promotes KS via benign envy; TPS-specific hostile marginalisation more likely to activate malicious envy pathway → KM withdrawal plausible but conditional, not deterministic — do not frame withdrawal as inevitable
   - Social Exchange Theory — explains KM withdrawal dynamics (reciprocity breakdown)
   - TPS foundational literature (Feather 1989, 1994) — defines phenomenon; provides cultural baseline to contrast w/ KBF management context
   - Organisational Citizenship Behaviour (OCB) literature — relates to voluntary KM sharing behaviour
   - Team cohesion literature — foundational for Challenge A
-- 5.2. Conceptual framework type — qual = no arrows (arrows imply causal impact; only quant); use lines, shapes, thematic tree; updated post-analysis per Enis convention
-- 5.3. Lit review structure (provisional; must follow objectives, per golden thread)
-  - Theme 1: TPS — definition, cultural origins, manifestation in professional contexts
-  - Theme 2: KBFs — characteristics, dependence on individual excellence, KM as strategic asset
-  - Theme 3: Team dynamics around high performers — social comparison, cohesion, OCB
-  - Theme 4: KM behaviour — sharing/withholding, conditions enabling/inhibiting sharing
-  - Theme 5: Managerial responses — existing strategies, gaps in literature
+- 5.2. Conceptual framework type — qual = no arrows (arrows imply causal impact; only quant); use lines, shapes, thematic tree; updated post-analysis
+- 5.3. Lit review structure (updated per DA Meeting 01; must follow golden thread from objectives)
+  - Confirmed funnel: TPS foundational → TPS in KM governance (impacts) → TPS in KBFs (specific context)
+  - §1 (intro): ~50/50 academic + practitioner; Australian contextual grounding where natural; NOT a §2 requirement
+  - §2 (lit review): near-100% academic; no mandatory Australian-specific content beyond what literature naturally provides
+  - Existing §2.1–2.5 to be reframed to follow this funnel (P08.1); old 5-theme list is superseded
+  - Foundational theories (~30 yr old) must be paired with recent empirical follow-up to demonstrate continued relevance
 
-6. **Industry-Wide Rationale (for intro)**
+6. **Cross-Firm KBF Sampling Rationale (for intro)**
 - 6.1. Core argument: TPS is supra-organisational — driven by human psychology, group dynamics, cultural norms that transcend firm boundaries
 - 6.2. Single-firm study risk: conflates TPS dynamics w/ that firm's specific leadership/culture idiosyncrasies → impossible to isolate TPS as the explanatory variable
 - 6.3. Cross-firm sampling = methodological necessity for studying a phenomenon that does not respect org boundaries
 - 6.4. Must appear prominently in intro with this exact logic; "methodologically stronger" alone is insufficient for DA/marker
-- 6.5. Per Enis (Wk3 seminar): industry-wide explicitly permitted with strong rationale in intro; startup framing NOT needed here (that's for data access problems, not for TPS which is inherently cross-org)
+- 6.5. Cross-firm sampling permitted for simulated entity (module seminar confirmed; DA aligned); "industry-wide" term dropped from all prose in favour of "cross-firm KBF sampling"; CYC framing satisfies PD's single-org requirement w/o weakening the methodological necessity argument; Lu's lean (Meeting 01; always use full form): "understand phenomenon → understand how organisations deal with it → consultancy recommendations for building a learning organisation"
 
 7. **Participant Design**
 
@@ -124,30 +147,33 @@
   - Guide B: TP (supplementary) — experience of team dynamics from TP perspective, professional not emotional framing; includes internal-state indicators (e.g. deliberate selectivity in sharing, sense of reciprocity breakdown) which only TPs can reliably report; posed when a participant self-identifies or reveals as TP during interview
   - Guide C: mgr (supplementary) — managerial awareness, strategies employed, gaps perceived
   - All guides: safe framing only (see Section 11); no cause-and-effect language (per W3 seminar/W1.3 lecture)
-- 7.4. Multi-org consent design — 1 ppt per org = no org-level consent letter needed; all ppts give individual consent; must be explained in methodology section per Enis (Wk1&3)
+- 7.4. Multi-org consent design — 1 ppt per org = no org-level consent letter needed; all ppts give individual consent; must be explained in methodology section; 1-per-org isolation rationale (primary) in A1R §3.3; consent/feasibility angle in A1R §3.6 only — dropped in A2/A3
 - 7.5. Anonymisation — ppt identities fully protected; org names anonymised; industry stated
 
 | Stakeholder | Role | Guide | Required |
 |---|---|---|---|
-| TPP | Primary analysis | A | Yes (6 min. Q / 30+ N) |
+| TPP | Primary analysis | A | Yes (min. 6) |
 | TP | Triangulation | B | Bonus if secured pre-analysis |
 | Mgr | Triangulation | C | Bonus if secured pre-analysis |
 
+- 7.6. Participant comparability rationale (for A1R §3.3): ppt drawn from KBFs broadly = CYC's primary client base, satisfying Lu's criterion; market intelligence framing = internal only; A3 appendix = participant profiles (role, industry, KBF type) as empirical comparability evidence (standard qualitative practice)
+
 8. **Methodology**
-- 8.1. Primary — Q; semi-structured interviews; interpretivist; inductive; thematic analysis (Braun & Clarke 2006)
+- 8.1. Q; semi-structured interviews as data collection technique; interpretivist; inductive; thematic analysis (Braun & Clarke, 2006)
+  - Research method: explanatory multi-case study (Yin, 2009; Zainal, 2007) — explains *why* TPS conditions manifest, not merely describes that they do; each participating org = one case; 6 orgs = 6 cases (multi-case design)
+  - Analysis sequence: within-case depth first → across-case pattern identification (Ayres, Kavanaugh and Knafl, 2003); thematic analysis must produce cross-case configuration (how themes relate and vary across orgs), not a theme inventory — avoid garden path analysis (Ayres et al.); flag for A3 Ch4/Ch5
+  - Interview-only: normalised by Ayres et al. (2003) and worked examples in Lu's shared folder; no multi-source triangulation claimed; frame as "data collected across 6 independent organisational contexts, enabling cross-case comparison and convergent validation"; never mention "multi-source" absence (weak spot)
+  - IPA eliminated (P06.1, Chat 13): (a) incompatible with cross-org comparison requiring homogeneous sample; (b) IPA analytic method incompatible with Braun & Clarke; (c) RQ1 = comparative explanatory, not phenomenological; case study confirmed by Lu's shared folder (CW validation)
+  - §3 language audit for A1R: remove IPA-sounding terms ("lived experience", "frames of reference"); keep interpretivist philosophy, constructivist ontology, inductive approach, Braun & Clarke
   - Sample: 6 TPPs default; expand if TP + mgr secured
   - Data saturation: begin coding after interview 2–3; stop when no new themes emerge; must be justified per literature
-  - NVivo: optional (UoL-licensed); manual coding equally accepted; Culous comfortable either way
+  - NVivo: optional (UoL-licensed); manual coding equally accepted; Culous comfortable either way, prefer efficiency & Claude's most confident means
   - Transcription: MS Teams / MS Office / MS Copilot ONLY — not Zoom (breach of research integrity per official files)
   - Disconfirming evidence coding discipline (standing rule): during thematic analysis, actively create a theme node for "continued or increased sharing" and treat it with equal analytical weight as withdrawal; guards against asymmetric coding; strengthens main claim if withdrawal still dominates; pre-empts bias challenge from DA/markers
-- 8.2. Alternative — N; survey; positivist; deductive; 30+ ppts minimum (50+ preferred for inferential analysis)
-  - Variables to operationalise: TPS conditions, KM sharing behaviour, team cohesion, managerial response
-  - Requires hypothesis formulation post-lit-review
-  - Culous bg = equally comfortable; decision deferred to DA
-- 8.3. Philosophy consistency rule (non-negotiable per W1.2 lecture + W3 seminar/W1.3 lecture)
+- 8.2. Philosophy consistency rule (non-negotiable per W1.2 lecture + W3 seminar/W1.3 lecture)
   - Q: interpretivist → no causal language, no arrows, RQs start w/ "what"/"how" never "why"
-  - N: positivist → hypotheses, arrows, statistical analysis
-  - Cannot mix without strong justification and DA approval (module discourages mixed methods)
+  - N (no longer available): positivist → hypotheses, arrows, statistical analysis
+  - Cannot mix w/o strong justification and DA approval (module discourages mixed methods)
 
 9. **Research Questions**
 
@@ -155,7 +181,7 @@
 - **RQ1** —— "What conditions within KBFs exacerbate or alleviate TPS?"
 - **RQ2** —— "How do team members in KBFs experience TPS-related team dynamics?"
 
-*Split from RQ4 direction (Chat 02 ideation); see historical options below. Sub-RQs (2–3) to be derived from lit review under RQ1 and RQ2 (per Enis' golden thread rule); must not duplicate objectives in wording or scope.*
+*Split from RQ-iv direction (Chat 02 ideation); see historical options below. Sub-RQs: not required — 4 confirmed ROs (§10.2) + 2 RQs provide sufficient research architecture; no sub-RQ language in A1R.*
 
 **Considered options (Chat 02) —— for reference only:**
 
@@ -167,14 +193,13 @@
 | RQ-iv | What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them? | ★★★★★ | Chosen — split into RQ1/2 above |
 | RQ-v | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychological framing; ethics risk; TP-centric rather than mgmt-centric |
 
-10. **Research Aim & Objectives (Draft Direction)**
-- 10.1. Aim draft — "To investigate how TPS dynamics in KBFs generate team cohesion and knowledge governance challenges, and to identify management implications for practitioners"
-  - Note: final aim must follow lit review; this is a directional placeholder
-- 10.2. Objectives draft (3–4; each must be SMART-ish; all traceable to aim)
-  - Obj 1 — To critically review existing literature on TPS, team dynamics, and KM in KBFs to identify theoretical gaps and managerial implications
-  - Obj 2 — To explore how TPPs in KBFs perceive and experience TPS dynamics in their professional environment
-  - Obj 3 — To identify the organisational and interpersonal conditions that exacerbate or alleviate TPS in KBF teams
-  - Obj 4 — To develop management recommendations that address TPS-related team cohesion and KM governance risks in KBFs
+10. **Research Aim & Objectives**
+- 10.1. Aim — "To investigate how TPS dynamics in KBFs generate team cohesion and knowledge governance challenges, surfacing management implications for practitioners" *(may be refined at P07/P08 post-lit-review; directional for now)*
+- 10.2. Research Objectives (ROs)
+  - RO1 — Critically review existing literature on TPS, team dynamics, and KM in KBFs
+  - RO2 — Explore how TPPs in KBFs perceive and experience TPS dynamics
+  - RO3 — Evaluate the organisational and interpersonal conditions that exacerbate or alleviate TPS
+  - RO4 — Formulate management recommendations addressing TPS-related KM and team cohesion risks
 - 10.3. Golden thread check — Aim → Obj 1–4 → Lit review structured by Obj 1–4 → RQ derived from lit review gaps → interview questions derived from RQ → findings respond to RQ → recommendations address Obj 4 → conclusions return to aim
 - 10.4. A-grade discipline — narrow scope, deep treatment; one primary challenge angle (A); B&C as discussion supplements only; resist expanding RQ scope
 
@@ -188,23 +213,19 @@
 | "Did you feel stressed around a high performer?" | "How did collaboration patterns shift in that environment?" |
 | "Were you involved in excluding a standout colleague?" | "What behaviours did you notice from team members towards high performers?" |
 - 11.3. All 3 question guides must pass this safe framing test before submission to ethics committee
-- 11.4. Sample questions must be included in ethics application and research proposal (not yet drafted; to be done post-DA match, Wks 7–11)
+- 11.4. Sample questions must be included in ethics application; not yet drafted (DA matched Wk7); target Wks 8–9 (Guides A/B/C must pass safe framing test before submission)
 - 11.5. Consent forms — blank templates submitted to ethics committee; completed forms stored on UoL OneDrive only
 - 11.6. Data collection cannot begin until written ethics approval received (hard rule; no exceptions)
 
-12. **DA Ranking**
+12. **DA (Confirmed)**
 
-| Rank | DA | Key fit | Caveat |
-|---|---|---|---|
-| #1 | Lu Liu | PhD in KM; KM governance, knowledge transfer, sharing conditions; qual methods; supervised since 2010 in UoL online environment — knows platform and constraints | KM research skews toward SMEs and non-profits — context gap only, not a theory gap; closest remaining match to KBV/KM governance core |
-| #2 | Ron Fisher | OB (stress, commitment, disengagement), HRM, business strategy; 150⁺ publications; 40⁺ doctoral/masters supervisions; qual/quant/mixed methods | No KM depth; strongest OB match on list; strong first choice if Liu unavailable |
-| #3 | Hoang Thi Phuong Tra | OB + HRM; qual+quant; recent PhD (2022) — current literature awareness; methodologically safe | No KM or TPS depth; competent but will not add subject-level challenge that elevates from good to excellent |
-| #4 | Dotun Adebanjo | HRM, broad coverage, all methods; 250⁺ supervisions; reliable generalist backstop | Most generic; least KM/TPS-specific |
-
-- 12.1. If N route taken — Adebanjo still #4; Salari excluded (marketing analytics/consumer behaviour; no KBF/KM fit)
-- 12.2. Wildcard #5 if #1–4 all unavailable: Niki Hynes — explicitly enjoys novel/cross-disciplinary topics; project qualifies on both counts; no OB, KM, or HRM depth; not inside top four
-- 12.3. DA role — calibrate RQ wording, scope, methodology nuances; may shift challenge angle slightly per their interest; does NOT redirect topic fundamentals
-- 12.4. Final challenge angle (A vs B vs C) and final RQ wording should be agreed w/ DA before ethics application; proposal can present A as primary w/ B&C noted
+- **Lu Liu** — confirmed DA
+- PhD in Knowledge and Information Management; KM governance, knowledge transfer, sharing conditions; qual/quant/mixed methods; UoL Online DA since 2010
+- Context gap (SMEs/non-profits) = not a theory gap; KBV/KM framing is familiar territory for Lu
+- All other DA candidates (Elezi, Fisher, Hoang, Adebanjo, Hynes) = obsolete; removed
+- DA role: calibrates RQ wording, scope, methodology nuances; does NOT redirect topic fundamentals
+- For full profile, comms history, marking tastes: `Lu.md`; for meeting records: `Meetings.md`
+- Challenge angle (A primary; B&C supplementary) agreed; final RQ wording subject to DA sign-off before ethics application
 
 13. **Feasibility**
 - 13.1. Participant access — Culous' network: consulting, entertainment (F1, Disney), FMCG (Panadol), hospitality (W Hotels), NGOs, govt bodies across 10⁺ countries; LinkedIn professional network for additional reach
@@ -222,24 +243,20 @@
 | Literature thin on TPS in mgmt/KBF context | Low | This IS the gap — the research contribution; foundational lit (Feather, KBV) provides scaffold |
 | Generalisability challenged (small Q sample) | Medium | Acknowledge as limitation; cross-firm design partially addresses; qual generalisability norms apply |
 | 8k word limit + multi-angle scope | High | Challenge A primary; B&C in discussion layer only; tight RQ scope |
-| Marker questions why not single firm | Medium | Section 6 industry-wide rationale; supra-organisational phenomenon argument |
+| Reviewer questions why not single firm ppt | Medium | §6 cross-firm KBF sampling rationale; supra-organisational phenomenon argument; CYC client base comparability |
 | TPP recruits turn out to be TPs themselves | Low | Enriches not contaminates; 2 question guides handle both voices |
 | Culous' TP status introduces researcher bias | Medium | Addressed via reflexivity convention in methodology chapter; interpretivist framework expects and manages this; disconfirming evidence coding discipline (Section 8.1) as additional safeguard |
 
 15. **Future Phase Notes**
 
-- 15.1. **A1 proposal (due Wk6, 27 Apr 2026)**
-  - Must include: draft RQ (provisional), lit review direction, methodology, ethics plan, milestone plan (Gantt)
-  - Challenge A as primary; B&C noted as supplementary angles
-  - Industry-wide rationale in intro (Section 6 argument)
-  - Participant design: 6 TPPs default; triangulation mentioned as enrichment possibility
-  - Sample questions NOT required in A1 but ethics framing of data collection must be described
-  - Adapted from `Concept Brief (concise).md` + this file; deliverable quality required (writing.md)
-- 15.2. **Wks 7–11 (ethics + DA)**
-  - Refine proposal w/ DA; submit to second reviewer
-  - Complete ethics application: question guides (Guides A, B, C) must pass safe framing test
-  - Participant info sheet + consent form (blank templates) submitted
-  - Data collection: NOT before written ethics approval
+- 15.1. **A1 proposal** *(completed; Grade A)*
+  - §3 named interview technique only (not research method) — to be corrected in A1R
+- 15.2. **A1R (current phase; Wks 7–9)**
+  - Revised Research Proposal (~3,000w ceiling); unmarked; dual audience: Lu + proposal/ethics reviewer (total 3 pax)
+  - P06 complete (research method, CYC identity, participant comparability, Lu status update)
+  - P07–P11 pending: §1 rewrite, §2 restructure, §3 methodology rewrite, QC, Lu checklist audit
+  - Target: A1R approved Wk8–9; ethics application submitted Wk9 (w/c 12/05/2026)
+  - Ethics: question guides (A/B/C) must pass safe framing test; consent forms (blank) submitted; data collection NOT before written ethics approval
 - 15.3. **A2 presentation (Wk36)**
   - Audience = senior management of "client" (KBFs industry); mgmt tone
   - Strong narrative potential: TPS dynamics as invisible KM risk; recommendations framed as actionable governance improvements
