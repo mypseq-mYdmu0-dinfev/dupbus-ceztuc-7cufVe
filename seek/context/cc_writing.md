@@ -10,6 +10,8 @@ ALWAYS use:
 
 ## CL Writing
 
+- Always use confident language & powerful proactive verbs to highlight relevant skills/experience.
+- Never use "I believe/feel/think".
 - Avoid sentence/clause-initial "Where": e.g. "Where [condition], [statement]"; prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
 - Use professional, sophisticated, aptly witted, adept copywriter tone & manner w/o any abbreviations like `I'm`. 
 - Strictly eliminate colon `:` and dash `-`/`—`

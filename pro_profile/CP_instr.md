@@ -1,16 +1,14 @@
 # FETCH RULES
 
-* Each file ... not proceed. (same as userPref)
+Each file ... not proceed. (same as userPref)
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all filename aliases below using CP_directory.md: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/CP_directory_15.md
+Fetch at every chat start & resolve all aliases below using `CP_directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/CP_directory_16.md
 
 ## CONDITIONAL
 
-* Below=excerpt; re-consult CP_directory.md if needed
-
-Conditionally fetch:
+Excerpt only; re-consult `CP_directory.md` if needed:
 - `gcl.md` if `seek` or `linkedin` is first word of first msg AND role is non-consulting, then fetch "ATS Resumes"
 - `ccl.md` if `CCL` mentioned OR consulting job application detected, then fetch "Consulting Resume" 
 - "ATS Resumes", "Career Docs", and "CL Archive" whenever needed
