@@ -632,7 +632,7 @@ Covers academic writing process; report structures (traditional academic, altern
 
 **Full text confirmed (59 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; UK-based; September 2024; cite with scope caveat**
 
-- Internal knowledge is the single highest-rated innovation source across UK organisations with 10+ employees (39%), above clients, suppliers, and competitors combined — evidences the strategic dependency of KBFs on voluntary internal knowledge flow; any mechanism suppressing it (TPS) is a first-order competitive risk
+- Internal knowledge is the single highest-rated innovation source across UK organisations with 10+ employees (39%), outranking any single external factor, including clients (31%), suppliers (25%), and competitors (20%) — evidences the strategic dependency of KBFs on voluntary internal knowledge flow; any mechanism suppressing it (TPS) is a first-order competitive risk
 - 60% of employees make innovative suggestions to improve quality, but participation is contingent on psychological engagement and perceived managerial receptiveness; employees "sit on their hands" when disengaged or feel unheard — directly parallels TPS-driven withdrawal; translates to KBF contexts given tacit knowledge dependency
 - High-performance workplaces (HPWs) — the organisational form most associated with knowledge-intensive innovation — declined from 22% (2018) to 18% (2023); decline linked to weakening employee autonomy, direct participation, and collaborative working norms — exactly the conditions TPS erodes
 - "Organisations that actively listen and act on recommendations from frontline employees are 80% more likely than others to consistently implement new and better ways of doing things" (citing McKinsey) — supports the argument that TPP-level peer dynamics, not just management policy, drive knowledge performance
@@ -640,15 +640,14 @@ Covers academic writing process; report structures (traditional academic, altern
 
 ---
 
-### CIPD (2025) *Good Work Index 2025*. Survey report, June 2025. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2025-pdfs/8868-good-work-index-2025-report-web1.pdf (Accessed: 13 May 2026).
+### Young, J. (2025) *Good Work Index 2025*. Survey report, June 2025. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2025-pdfs/8868-good-work-index-2025-report-web1.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (37 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; UK workforce sample (n≈5,000); annual survey; June 2025; cite with scope caveat**
 
 - Only 51% of managers seek the views of employees; only 37% of employees report their manager allows them to influence final decisions — structural voice suppression across the majority of UK workplaces; for KBFs where tacit knowledge is laterally embedded, this management failure creates the precise vacuum in which TPS-type peer dynamics flourish unchecked
 - ~10 million UK employees do not believe they receive useful feedback from their manager or that their manager actively supports their performance improvement — scales the management effectiveness failure from individual behaviour to systemic workplace risk
 - 3 in 10 workers report being overqualified for their role; overqualified employees significantly more likely to intend to quit, less enthusiastic, and less likely to perceive their work positively — mirrors TPS-affected high performer profile (skills underutilised through peer suppression, not job design), yielding same disengagement and attrition outcomes
-- Data on workplace conflict frequency (30% of workers experience conflict annually), impact on exit intent, and its concentration in higher-skill professional occupations strengthens the argument that TPS-type dynamics carry quantifiable HR cost
-- A1R §1: management failure scale and workplace conflict prevalence; A3 Ch1/Ch5: voice suppression as structural TPS enabler; A3 Ch6: manager capability recommendations
+- A1R §1: management failure scale; A3 Ch1/Ch5: voice suppression as structural TPS enabler; A3 Ch6: manager capability recommendations
 
 ---
 

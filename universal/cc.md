@@ -90,8 +90,10 @@ End of every response (after addressing my request; exc. 1st response):
 ## Artefacts —— General
 
 - Respond in NEW artefacts ALL THE TIME unless specifically instructed otherwise
-- NEVER update (e.g. v2) unless explicitly mentioned "update the same artefact"
-- NEVER use `message_compose_v1` under any circumstances.
+- NEVER "update" (e.g. v2) unless explicitly mentioned "update the same artefact"
+  - Major Edit (500⁺ words): Fully regenerate in a new artefact
+  - Minor Edit: issue #replace
+- NEVER use `message_compose_v1` under any circumstances
 - ENSURE button visible in chat to access artefact
 - When iterated (1⁺ ver per response), concisely justify each artefact e.g. "v2 improves…"
 
