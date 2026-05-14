@@ -628,7 +628,7 @@ Covers academic writing process; report structures (traditional academic, altern
 
 ---
 
-### Beatson, M. (2024) *People-Powered Innovation*. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2024-pdfs/8674-people-powered-innovation-report-web.pdf (Accessed: 13 May 2026).
+### Beatson, M. (2024) *People-Powered Innovation*. London: Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2024-pdfs/8674-people-powered-innovation-report-web.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (59 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; UK-based; September 2024; cite with scope caveat**
 
@@ -640,34 +640,34 @@ Covers academic writing process; report structures (traditional academic, altern
 
 ---
 
-### Young, J. (2025) *Good Work Index 2025*. Survey report, June 2025. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2025-pdfs/8868-good-work-index-2025-report-web1.pdf (Accessed: 13 May 2026).
+### Young, J. and Tong, D. (2025) *Good Work Index 2025*. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2025-pdfs/8868-good-work-index-2025-report-web1.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (37 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; UK workforce sample (n≈5,000); annual survey; June 2025; cite with scope caveat**
 
-- Only 51% of managers seek the views of employees; only 37% of employees report their manager allows them to influence final decisions — structural voice suppression across the majority of UK workplaces; for KBFs where tacit knowledge is laterally embedded, this management failure creates the precise vacuum in which TPS-type peer dynamics flourish unchecked
+- Only 51% of employees say their manager is good at seeking their views (employee perception, not observed manager behaviour); only 37% of employees report their manager allows them to influence final decisions — structural voice suppression across the majority of UK workplaces; for KBFs where tacit knowledge is laterally embedded, this management failure creates the precise vacuum in which TPS-type peer dynamics flourish unchecked
 - ~10 million UK employees do not believe they receive useful feedback from their manager or that their manager actively supports their performance improvement — scales the management effectiveness failure from individual behaviour to systemic workplace risk
 - 3 in 10 workers report being overqualified for their role; overqualified employees significantly more likely to intend to quit, less enthusiastic, and less likely to perceive their work positively — mirrors TPS-affected high performer profile (skills underutilised through peer suppression, not job design), yielding same disengagement and attrition outcomes
 - A1R §1: management failure scale; A3 Ch1/Ch5: voice suppression as structural TPS enabler; A3 Ch6: manager capability recommendations
 
 ---
 
-### Australian HR Institute (AHRI) (2025) *Quarterly Australian Work Outlook: December Quarter 2025*. AHRI. Available at: https://www.ahri.com.au/wp-content/uploads/AHRI-WorkOutlook-Report-2025-Q4_digital.pdf (Accessed: 13 May 2026).
+### AHRI (2025) *Quarterly Australian Work Outlook: December Quarter 2025*. Melbourne: Australian HR Institute. Available at: https://www.ahri.com.au/wp-content/uploads/AHRI-WorkOutlook-Report-2025-Q4_digital.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (42 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; Australian employer survey; December quarter 2025; cite with scope caveat**
 
-- Workplace stress as driver of unscheduled absence has risen sharply from 42% to 57% of Australian employers between 2023 and 2025; AHRI attributes this to intensifying pressures on employee relationships, role clarity, and workloads — directly captures the relational category of harm TPS inflicts; strongest available current Australian-context data point for §1
+- Workplace stress as driver of unscheduled absence has risen sharply from 42% to 57% of Australian employers between 2023 and 2025; AHRI attributes this to intensifying pressures on employee relationships, role clarity, and workloads ⚠️ cite as overall stress figure only — do NOT attribute solely to relational/interpersonal pressures; relationships are one of multiple listed factors — directly captures the relational category of harm TPS inflicts; strongest available current Australian-context data point for §1
 - More than one in three Australian employers reported increased job-demand or conflict issues in their workplaces in 2024; psychosocial hazard claims rising — TPS, as peer-level interpersonal marginalisation, maps directly to this category; provides Australian regulatory-context prevalence
 - 30% of organisations planning redundancies (up 6 percentage points across two quarters); 35% report recruitment difficulties — dual-pressure environment sharpens TPS attrition cost argument: in a softening labour market, the voluntary departure of high performers carries amplified strategic cost for KBFs unable to replace them quickly
 - A1R §1: Australian workplace context, stress/conflict prevalence, talent retention cost framing; A3 Ch1: Australian KBF operating environment; A3 Ch6: SMART recommendations referencing Australian psychosocial hazard obligations
 
 ---
 
-### Australian HR Institute (AHRI) (2026) *5 2026 Workforce Trends*. AHRI. Available at: https://www.ahri.com.au/wp-content/uploads/5-2026-workforce-trends-1.pdf (Accessed: 13 May 2026).
+### AHRI (2026) *5 2026 Workforce Trends*. Melbourne: Australian HR Institute. Available at: https://www.ahri.com.au/wp-content/uploads/5-2026-workforce-trends-1.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (9 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; Australian employer survey; based on AHRI March quarter 2026 data; brief infographic-style document — use for Australian statistical context; not a full survey report**
 
-- 39% of Australian organisations say strategic leadership is critical to goals; 31% say managers are not proficient in it. 39% say team development and people management is critical; 35% say their managers lack this skill — the leadership-capability gap creates the management vacuum in which TPS operates unchecked in Australian KBFs
-- Only 7% of Australian organisations say developing critical thinking is a key training focus, yet this is among the most strategically critical capabilities in KBFs; a workforce management culture that deprioritises critical skill development is structurally more vulnerable to losing the few employees who carry them through TPS-driven attrition
+- 39% of Australian organisations say strategic leadership is critical to goals; 31% say managers are not proficient in it. 39% say team development and people management is critical; 35% say their managers lack this skill ⚠️ all figures = organisational perception of manager proficiency, not manager self-report → [analyst note]: the leadership-capability gap creates the management vacuum in which TPS operates unchecked in Australian KBFs
+- Only 7% of Australian organisations say developing critical thinking is a key training focus → [analyst note]: yet this is among the most strategically critical capabilities in KBFs; a workforce management culture that deprioritises critical skill development is structurally more vulnerable to losing the few employees who carry them through TPS-driven attrition
 - Average employee turnover declined to 14% in the March quarter of 2026; $1,122 average training investment per employee in 2025 — contextualises the financial cost of talent loss in Australian organisations
 - Note: 9-page document (infographic style); use for Australian data points only; pair with AHRI Q4 2025 for fuller methodological backing when both are cited together
 - A1R §1: Australian management deficit and critical-thinking investment gap; A3 Ch1/Ch6: Australian-specific management capability framing
