@@ -161,7 +161,8 @@
 > Remarks: Lu to guide at that stage; detail TBD
 
 - P12.2. Review Files
-> If needed, update CP files inc. but not limited to: ProjectSummary.md, Concept Brief.md (both ver), Lu.md
+- If needed, update CP files inc. but not limited to: ProjectSummary.md, Concept Brief.md (both ver), Lu.md
+- Remarks: CoreRef.md and RefRepo.md — page number reliability flags (noted as unreliable in earlier chats due to distillation method) were resolved via accurate text extraction; both files not confirmed updated at that time; verify all flags cleared and accurate page numbers recorded throughout both files.
 
 - P12.3. Distil PART C
   - P12.3.1. Compress AD01~AD07 (and beyond, if appropriate) into concise historic record
