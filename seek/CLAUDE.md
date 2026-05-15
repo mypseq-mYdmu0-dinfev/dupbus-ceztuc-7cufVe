@@ -36,6 +36,7 @@ The following files are available in `/seek/context/`. Do not read at session st
   - `/seek/applied/` —— incl. its sub-folders: create new files only; never delete files; don't edit files created before this session
   - `/seek/pending/` —— ditto
   - `/seek/skipped/` —— ditto
+  - `/seek/investigation/` —— DON'T access unless specifically asked to; unrelated to CCIC-GCL
   - All other paths —— read only; never edit, create, or delete any file
 - Each time a file in `/seek/context/` is read → MUST declare in chat
 
