@@ -190,6 +190,17 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
+### Meng, Y.K., Ashkanasy, N.M. and Härtel, C.E.J. (2003) 'The effects of Australian tall poppy attitudes on American value based leadership theory', *International Journal of Value-Based Management*, 16(1), pp. 53–65. doi: 10.1023/A:1021984005070.
+
+**Full text confirmed (PDF)** | ABS ranking: Not listed (journal discontinued c.2004–05; Springer/Kluwer)
+
+- Survey of 22 Queensland CEOs (drawn from Queensland 400 largest businesses) and 149 CEO–subordinate relationships; TPS attitudes significantly and negatively related to perceptions of value-based leader behaviour (B=−0.37, R²=0.14, p<0.10) and subordinate CEMS — commitment, effectiveness, motivation, satisfaction (B=−0.42, R²=0.18, p<0.10); documents TPS operating as a measurable organisational constraint in an AU professional setting, extending Feather's (1989) attitudinal framing to demonstrated org consequences
+- Drawing on Ashkanasy and Falkus (1997), frames TPS as one of four uniquely Australian cultural dimensions of leadership (alongside mateship, "one of us," and underdog orientation), grounded in AU low power distance (Hofstede, 1980); TPS is endemic to AU org culture, not an individual-level aberration — provides cultural specificity Feather (1989, 1994) does not supply
+- Limitation: N=22 CEOs is small and Queensland-specific; cross-sectional; predominantly male sample; IJVBM not ABS-ranked
+- **§2.1** (secondary): AU-context professional complement to Mancl & Penington (2011) — where Mancl & Penington documents TPS behavioural expression in the US workplace, Meng et al. confirms TPS producing negative org performance outcomes in AU professional context; **§2.4** (primary): bridges Feather's attitudinal research to demonstrated professional organisational consequence, grounding the KBF risk claim in AU-specific evidence
+
+---
+
 ### Holmes, J., Marra, M. and Lazzaro-Salazar, M. (2017) 'Negotiating the tall poppy syndrome in New Zealand workplaces: Women leaders managing the challenge', *Gender and Language*, 11(1), pp. 1–29. doi: 10.1558/genl.31236.
 
 **Full text confirmed**
@@ -301,6 +312,17 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
+### Danko, L. and Crhová, Z. (2024) 'Rethinking the role of knowledge sharing on organisational performance in knowledge-intensive business services', *Journal of the Knowledge Economy*, 16, pp. 13873–13893. doi: 10.1007/s13132-024-02354-5.
+
+**Open access, full text confirmed** | ABS ranking: Not listed in ABS 2021 (no ABS 2+ alternative found with equivalent KBV fit; noted as limitation)
+
+- Explicitly grounded in Grant (1996) KBV; empirically tests knowledge sharing → org performance in KIBS (n=237, Czech Republic, PLS-SEM, two-round questionnaire); knowledge sharing significantly predicts innovativeness (internal communication β=0.250, T=2.893; sharing as work duty β=0.147, T=2.106) and market efficiency (β=0.362, T=4.121), operationalising Grant's claim that knowledge integration drives competitive performance outcomes in contemporary KIBS
+- Knowledge sharing has no significant effect on financial performance (R²=0.091), indicating the KBV→competitive advantage chain is dimension-dependent: innovativeness and market positioning respond to knowledge flows; direct financial returns are mediated by additional org factors — important calibration note when deploying Grant (1996) in §2.2 argument
+- Limitation: weak overall R² (0.091–0.237); Czech Republic KIBS only; cross-sectional; JKE not ABS-listed
+- **§2.2**: recent empirical pairing for Grant (1996) and Kogut & Zander (1992); demonstrates KBV propositions remain empirically operative in contemporary KBFs (KIBS) — knowledge sharing measurably drives innovativeness and market efficiency; positions TPS-induced KS withdrawal as a KBV-documented competitive risk, not merely a cultural observation
+
+---
+
 ### Nonaka, I. (1994) 'A dynamic theory of organizational knowledge creation', *Organization Science*, 5(1), pp. 14–37. doi: 10.1287/orsc.5.1.14.
 
 **Full text confirmed** | **Pairing source only** (not primary theoretical anchor)
@@ -318,7 +340,7 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
-### Matthews, M.J. and Kelemen, T.K. (2025) 'To compare is human: A review of social comparison theory in organizational settings', *Journal of Management*, 51(1). doi: 10.1177/01492063241266157.
+### Matthews, M.J. and Kelemen, T.K. (2024) 'To compare is human: A review of social comparison theory in organizational settings', *Journal of Management*, 51(1). doi: 10.1177/01492063241266157.
 
 **Open access**
 
@@ -466,7 +488,7 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
-### Gully, S.M., Devine, D.J. and Whitney, D.J. (2012) 'A meta-analysis of cohesion and performance: Effects of level of analysis and task interdependence', *Small Group Research*, 43(6), pp. 702–725.
+### Gully, S.M., Devine, D.J. and Whitney, D.J. (2012) 'A meta-analysis of cohesion and performance: Effects of level of analysis and task interdependence', *Small Group Research*, 43(6), pp. 702–725. doi: 10.1177/1046496412468069.
 
 **Full text confirmed (library PDF)**
 
