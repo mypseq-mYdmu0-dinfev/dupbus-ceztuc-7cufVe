@@ -47,7 +47,19 @@ Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop 
 
 ---
 
-## Per-Job Loop —— Execute Continuously Until Stopped (S[no.]; S1 = Step 1)
+## Per-Job Loop —— Execute Continuously Until Stopped (S[no.]; S0 = loop-start; S1 = Step 1)
+
+### S0. Check Status & Compliance
+
+S0.1. Determine N by recalling the last `✅[N]` count from this session's chat
+S0.1.1. If no prior count is visible (1st card of session) → N = 0
+S0.1.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
+S0.1.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
+S0.2. Print in chat: `✅[N] **job(s) processed so far.**`
+S0.2.1. [N] = number emoji (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
+S0.2.2. Mandatory; NO alternative phrasing
+S0.3. If N > 0 and N is a multiple of 5 (5, 10, 15, 20...) → immediately re-read `ccic_gcl.md` in full before proceeding w/ strict compliance
+S0.4. Proceed to S1
 
 ### S1. Process SEEK Results (Tab 1)
 
@@ -182,7 +194,7 @@ S4.4. **Suitability Score** —— score out of 100 using the following weighted
    **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply") → immediately skip.
 
 S4.5. **Resume Selection** —— per decision rules in `gcl.md`
-S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md`
+S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md` (no dash sign)
 
 ### S5. Create AR
 
@@ -227,7 +239,7 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 CRITICAL: If applying, MUST first temporarily mark as `Outcome: Applying`; ONLY after success confirmed (S6.4), edit as `Outcome: Applied`. If saving or skipping after AR creation: move (per Move Rule) to `/seek/pending/` or `/seek/skipped/` respectively.
 
 Body: complete all 6 GCL sections per `gcl.md`:
-1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text)
+1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text; no dash sign)
 
 **If skipping: sections 1–2 only.**
 
@@ -257,7 +269,7 @@ S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or di
 S6.2.3.1. If non-critical & acceptable: input `N/A` → continue
 S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 3 & 2 → return to Tab 1 for next card
 S6.2.3.3. For both: remark w/ `⚠️` in AR for `ccic_gcl.md` update → rename AR as `⚠️_[original_filename].md`
-S6.2.4. If answered any questions, append to end of "3. Application Tailoring" in AR
+S6.2.4. If answered any questions, append to end of "3. Application Tailoring" in AR (DON'T replace/overwrite it)
 S6.2.5. Click "Continue →"
 
 #### S6.3. "Update SEEK Profile"

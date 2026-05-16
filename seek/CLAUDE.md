@@ -6,7 +6,7 @@
 
 - When prompted `seek`, activate CCIC-GCL mode & follow `ccic_gcl.md` in full
   - In CCIC-GCL mode, whenever Tab 1≠SEEK results (e.g. showing a post), re-read `ccic_gcl.md` & rectify Tabs
-- When prompted `#replace`, follow `cc_coding.md` in full
+- When prompted `#replace`, read & follow `cc_coding.md` in full
 
 ## Session Start — Mandatory File Reads
 

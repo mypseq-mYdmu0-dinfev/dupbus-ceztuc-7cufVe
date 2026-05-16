@@ -8,6 +8,9 @@
 - Avoid verb-object separation: Don't place long descriptive or prepositional phrases between a transitive verb (e.g. identify, state, argue) and its direct object or quotation
   - ❌ e.g. [Actor] identifies [long_descr] "[quote]".
   - ✅ e.g. [Actor] identifies "[quote]" as [long_descr].
+- On ≥3 objects:
+  - ❌ [A], [B] and [C]
+  - ✅ [A], [B], and [C]
 - When drafting anything est. 1,000⁺ words, suggest (ask confirmation) to create Dev Plan
 
 ---

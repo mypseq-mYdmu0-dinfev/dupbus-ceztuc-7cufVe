@@ -25,7 +25,9 @@ A2. If no SEEK results page is visible: open one blank tab via CIC MCP, then wai
 A3. After each wait, check again whether a SEEK results page is now visible in any open tab
 A4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 A5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
-A6. If after 3 cycles still no SEEK results page: alert w/ `🚨` then use `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&savedsearchid=ccc9e241-9dfe-43a4-93b6-64cf9d4349b9`
+A6. If after 3 cycles → still no SEEK results page → alert w/ `🚨` then use:
+A6.1. Fallback 1: `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&keywords=ui%2Fux`
+A6.2. If A6.1 failed/consumed → Fallback 2: `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25`
 A7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
@@ -45,14 +47,26 @@ Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop 
 
 ---
 
-## Per-Job Loop —— Execute Continuously Until Stopped (S[no.]; S1 = Step 1)
+## Per-Job Loop —— Execute Continuously Until Stopped (S[no.]; S0 = loop-start; S1 = Step 1)
+
+### S0. Check Status & Compliance
+
+S0.1. Determine N by recalling the last `✅[N]` count from this session's chat
+S0.1.1. If no prior count is visible (1st card of session) → N = 0
+S0.1.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
+S0.1.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
+S0.2. Print in chat: `✅[N] **job(s) processed so far.**`
+S0.2.1. [N] = number emoji (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
+S0.2.2. Mandatory; NO alternative phrasing
+S0.3. If N > 0 and N is a multiple of 5 (5, 10, 15, 20...) → immediately re-read `ccic_gcl.md` in full before proceeding w/ strict compliance
+S0.4. Proceed to S1
 
 ### S1. Process SEEK Results (Tab 1)
 
 *Process ONE card at a time, top-to-bottom. Complete full "per-job loop" before returning to Tab 1 for the next card.*
 
 **Reading card from Tab 1:**
-- Use `find "[ordinal] job card title link" max_results: 1` (e.g. "1st job card title link"; increment as a card fully processed) — Always `max_results: 1`; never request multiple card titles at once or use an unfiltered `find` on Tab 1
+- Use `find "[ordinal] job card title link" max_results: 1`. Ordinal = card's sequential position on the page (1st, 2nd, 3rd...); increment by 1 after each card is fully handled, regardless of outcome. Always `max_results: 1`; never request multiple card titles at once; never use an unfiltered `find` on Tab 1
 - After getting a card's ref, do a separate targeted element read of that card's container to check for applied/saved icons (see below)
 - Never screenshot-scroll/`read_page`/`get_page_text` Tab 1 for card checks
 
@@ -60,12 +74,13 @@ Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop 
 - Title explicitly includes: `Consultant` `Associate`
 - Click "Save" (bookmark icon, next to `⌄`) before skipping; flag in chat w/ `⭐❗`
 
-**Skip silently if:**
+**Skip silently if (check in order; stop at first match):**
 - Title contains `Director`
 - Employer = Federal/State Govt (city council ok)
-- Already processed OR its completed AR (contains P.S. line; `Outcome`≠`Applying`; < 30 days old) found in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders)
+- Already processed in this session
 - Applied: A green `✔︎` in circle icon (approx. #7FECC0) is visible (next to `⌄`; hollow bookmark icon unseen); only visible after Tab 1 refreshed in Pre-Flight Check
 - Saved: The bookmark icon is filled in magenta (approx. #F42B99)
+- Completed AR (contains P.S. line; `Outcome`≠`Applying`; < 30 days old) found in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. sub-folders) —— check only if none matched above
 
 Notes:
 - Tab 1 card displays "Viewed" ≠ necessarily processed; doesn't constitute skip
@@ -100,13 +115,13 @@ S2.3. Tab 2 remains untouched for the rest of this job's process
 | 50–69 | Run S3.1; re-estimate after S3.1; skip S3.2 regardless of re-estimate |
 | 70⁺ | Run S3.1; re-estimate after S3.1; if re-estimate ≥ 70, run S3.2; if fallen to < 70, skip S3.2 |
 
-**External Portal Early-Exit:** if M7 = 0 ("Apply", not "Quick apply") AND ceiling < 70 → skip immediately; no research/AR/CL, except skipped stub.
+**External Portal Early-Exit:** if M7 = 0 ("Apply", not "Quick apply") AND ceiling < 70 → skip immediately; no research/AR/CL.
 
-When final score derived (incl. Bonus if any), re-check Research Gate: if S3.2 was previously skipped but final score ≥ 70, run S3.2.
+When final score derived (incl. Bonus if any), re-check Research Gate: if S3.2 was previously skipped but final score ≥ 70, run S3.2 → update AR (incl. score) if needed.
 
 S3.1. web_search (run if pre-score ceiling ≥ 50):
 S3.1.1. "[company_name] Australia about values culture"
-S3.1.2. Required info to answer S4.1 prompts
+S3.1.2. Targeted searches for S4.1 gaps not covered by S3.1.1 (e.g. Sydney presence)
 S3.1.3. "[company_name] recent news 2025 2026" (especially for well-known firms)
 S3.1.4. "[company_name] Sydney reviews Glassdoor"
 S3.1.5. Anything noteworthy/insightful (if applicable)
@@ -136,7 +151,7 @@ From job post & research only (no fabrication):
 S4.1. **Employer Background** —— market position, Sydney relevance; what makes the firm distinctive/competitive, or how it survives as a mediocre player (e.g. leading firms: how they maintain position; underdogs: how they sustain operations and whether closure risk is evident)
 S4.2. **Requirements Check** —— map to `pro_profile.md`; flag all gaps, even minor
 S4.3. **Hard Skip Conditions** —— skip immediately if:
-   - Requires citizenship or PR
+   - Requires AUS citizenship or PR
    - Requires non-English language
    - Suitability score below 35
 S4.4. **Suitability Score** —— score out of 100 using the following weighted criteria:
@@ -179,7 +194,7 @@ S4.4. **Suitability Score** —— score out of 100 using the following weighted
    **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply") → immediately skip.
 
 S4.5. **Resume Selection** —— per decision rules in `gcl.md`
-S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md`
+S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md` (no dash sign)
 
 ### S5. Create AR
 
@@ -218,13 +233,13 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 6. CL Differentiability — [score]/10 (ditto)
 7. Application Efficiency — [score]/5 (ditto)
 8. Bonus — [+5/10/20 or N/A] ([if triggered, ≤30 words])
-**Suitability Score: [total]/100**
+**Suitability Score:** [total]/100
 ```
 
 CRITICAL: If applying, MUST first temporarily mark as `Outcome: Applying`; ONLY after success confirmed (S6.4), edit as `Outcome: Applied`. If saving or skipping after AR creation: move (per Move Rule) to `/seek/pending/` or `/seek/skipped/` respectively.
 
 Body: complete all 6 GCL sections per `gcl.md`:
-1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text)
+1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text; no dash sign)
 
 **If skipping: sections 1–2 only.**
 
@@ -254,7 +269,7 @@ S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or di
 S6.2.3.1. If non-critical & acceptable: input `N/A` → continue
 S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 3 & 2 → return to Tab 1 for next card
 S6.2.3.3. For both: remark w/ `⚠️` in AR for `ccic_gcl.md` update → rename AR as `⚠️_[original_filename].md`
-S6.2.4. If answered any questions, append to end of "3. Application Tailoring" in AR
+S6.2.4. If answered any questions, append to end of "3. Application Tailoring" in AR (DON'T replace/overwrite it)
 S6.2.5. Click "Continue →"
 
 #### S6.3. "Update SEEK Profile"
@@ -280,7 +295,7 @@ S6.4.8. Continue the loop
 
 ### S7 —— Pagination
 
-When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop.
+When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop. If all pages are processed, see A6.1 then A6.2.
 
 ---
 

@@ -81,6 +81,7 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 - "HCI" first use as "Human-Computer Interaction (HCI)", unless role is design-centric (use "Interaction Design (IxD)"); thereafter "HCI"/"IxD" are acceptable — CHOOSE EITHER, NEVER BOTH (confusing)
 - Use "Advanced Data Analytics Algorithms" (never "Advanced Data Analytics") when referencing that UTS subject (only if it helps; don't mention abruptly)
 - Graduation year usually adds no value in CL (but not undisclosable), may rather subtly mention other perks: e.g. ❌ "...at UTS (HD; 2025)"; ✅ "...at UTS (HD; Dean's List)"
+- Never use "First Class Honours", use "High Distinction" or "HD" for UTS and "Grade A" for MBA
 - Figures (e.g. 16⁺ years) must each appear no more than once per CL
 - Include `http://Presentation.CulousYu.com` (Virtual Presentation) and `http://Projects.CulousYu.com` (select case studies in web form) as plain text URL in CL body if highly applicable
 - Don't use abbrev. (e.g. `KE` `ML` `AAII` must be in full) unless prevalent (e.g. `AI` `IT` `UTS`)
