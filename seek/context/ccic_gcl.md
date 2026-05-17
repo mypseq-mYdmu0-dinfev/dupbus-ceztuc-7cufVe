@@ -38,8 +38,8 @@ A3. After each wait, check again whether a SEEK results page is now visible in a
 A4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 A5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
 A6. If after 3 cycles → still no SEEK results page → alert w/ `🚨` then use:
-A6.1. Fallback 1: `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&keywords=ui%2Fux`
-A6.2. If A6.1 failed/consumed → Fallback 2: `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25`
+A6.1. Fallback 1: `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&salaryrange=0-100000&salarytype=annual`
+A6.2. If A6.1 failed/consumed → Fallback 2: `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual`
 A7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
@@ -75,7 +75,9 @@ S0.4. Proceed to S1
 
 ### S1. Process SEEK Results (Tab 1)
 
-*Process ONE card at a time, top-to-bottom. Complete full "per-job loop" before returning to Tab 1 for the next card.*
+**Prioritise new jobs:** Click "New to you" (next to "[no.] jobs"; below search bar & above card 1); if cards shown, proceed; if none, click "[no.] jobs" (default view).
+
+IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loop" before returning to Tab 1 for the next card.
 
 **Reading card from Tab 1:**
 - Use `find "[ordinal] job card title link" max_results: 1`. Ordinal = card's sequential position on the page (1st, 2nd, 3rd...); increment by 1 after each card is fully handled, regardless of outcome. Always `max_results: 1`; never request multiple card titles at once; never use an unfiltered `find` on Tab 1
@@ -311,10 +313,11 @@ S6.4.8. Continue the loop
 
 ### S7 —— Pagination
 
-- When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop
-- If all pages are processed:
-  - Use A6.1, then A6.2
-  - Never search in SEEK or construct (see A7)
+S7.1. When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop
+S7.2. If all pages are processed, check if "New to you" (see S1 for location) selected
+S7.2.1. If yes, click "[no.] jobs" → continue
+S7.2.2. If no, use A6.1 & continue → if also consumed → use A6.2 & continue
+S7.3. Never interact w/ SEEK search bar or construct SEEK URL (see A7)
 
 ---
 
@@ -341,10 +344,17 @@ If user sends any msg mid-session:
 | Which of the following statements best describes your right to work in Australia? | I have a graduate temporary work visa |
 | Expected salary (full-time) | Score < 85: ~$75,000/yr (~$1,438/wk); Score ≥ 85 or Fully Remote Work: ~$60,000/yr (~$1,151/wk); Select nearest available option ≤ target; never above. |
 | Full Driver's License | Yes (NSW Manual) |
+| Ethnic Group | "South-East Asian" → if N/A: "Asian" → if N/A: "Other"/"Prefer not to say" (NEVER "Chinese") |
+| Gender | Male |
+| Pronouns | he/him |
+| Consent to check passport info/academic qualification/reference/credentials | Yes |
+| Consent to be reviewed by AI | Yes |
+| Which of the following Microsoft Office products are you experienced with? | Word, Excel, PowerPoint, Outlook |
 
 ### External Application Portal Instructions
 
 - Deliverable PDF resumes at: '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/'
+- Deliverable credentials (combining academic transcripts, reference letters, certificates): '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/CV Linked Files/Combined Credential.pdf'
 - If CL requires upload (no input box): create PDF by most confident & appropriate way
 - **If struggling** (unusual design, login, upload/input failure, etc.): DON'T stop automation or interrupt user; attempt up to twice → concisely remark w/ `⚠️` in chat AND in AR for `ccic_gcl.md` update → edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 4+, 3, 2 → return to Tab 1 for next card
 

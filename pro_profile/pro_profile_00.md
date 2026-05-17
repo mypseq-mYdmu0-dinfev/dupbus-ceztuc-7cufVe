@@ -84,7 +84,7 @@
 
 | Domain | Years |
 |---|---|
-| Copywriting (inc. technical, publication, press release) | 18 |
+| Copywriting (inc. technical, publication, press release) | 16 |
 | Design/creative/multimedia/print | 16 |
 | Content mgmt/planning/production | 16 |
 | Project/programme mgmt | 16 |
