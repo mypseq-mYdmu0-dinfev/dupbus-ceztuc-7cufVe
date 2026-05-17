@@ -85,13 +85,14 @@ IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loo
 - Never screenshot-scroll/`read_page`/`get_page_text` Tab 1 for card checks
 - Never enumerate all cards, only focus one at a time
 
-**Save & skip if:**
+**Save → AR → skip if:**
 - Title explicitly includes: `Consultant`/`Associate`
 - Employer is: Google/Apple/Amazon
-- Click "Save" (bookmark icon, next to `⌄`) 
-- Create AR in `/seek/pending/`
-- Flag in chat w/ `⭐❗`
-- Skip to next card
+- Actions:
+  - Click "Save" (bookmark icon, next to `⌄`) 
+  - Create AR in `/seek/pending/`
+  - Flag in chat w/ `⭐❗`
+  - Skip to next card
 
 **Skip silently if and ONLY if (check in order; stop at 1st match):**
 K1. Title contains `Director`/`Full Stack`
@@ -103,7 +104,7 @@ K6. Completed AR (contains P.S. line; `Outcome`≠`Applying`; < 30 days old) fou
 
 IMPORTANT: Unless matching either of K1–6, EVERY job card (incl. save/skip) MUST have AR created (see S5) to prevent repeated processing in future. If skipping after S3, be concise w/ S5 structure; if skipping before S3, may void S5 structure & explain in 10 words if applicable.
 
-Notes:
+S1 Notes:
 - Tab 1 card displays "Viewed" ≠ necessarily processed; doesn't constitute skip
 - If completed AR found BUT `Outcome: Applying`, open its `SEEK URL` in Tab 2:
   - If "You applied on..." visible, edit AR as `Outcome: Applied` (override "don't edit ARs created before this session")
@@ -131,12 +132,12 @@ S2.3. Tab 2 remains untouched for the rest of this job's process
 
 | Ceiling | Action |
 |---|---|
-| < 35 | Skip; no research; proceed to S5 (note reason: "Pre-Score Gate: ceiling below 35") |
+| < 35 | No research; create AR (reason: "Score Gate: ceiling below 35") then skip to next card |
 | 35–49 | No research; proceed directly to S4 using job post data only |
 | 50–69 | Run S3.1; re-estimate after S3.1; skip S3.2 regardless of re-estimate |
 | 70⁺ | Run S3.1; re-estimate after S3.1; if re-estimate ≥ 70, run S3.2; if fallen to < 70, skip S3.2 |
 
-**External Portal Early-Exit:** if M7 = 0 ("Apply", not "Quick apply") AND ceiling < 70 → skip immediately; no research/AR/CL.
+**External Portal Early-Exit:** if M7 = 0 ("Apply", not "Quick apply") AND ceiling < 70 → create AR then skip to next card; no research/CL.
 
 When final score derived (incl. Bonus if any), re-check Research Gate: if S3.2 was previously skipped but final score ≥ 70, run S3.2 → update AR (incl. score) if needed.
 
@@ -171,7 +172,7 @@ From job post & research only (no fabrication):
 
 S4.1. **Employer Background** —— market position, Sydney relevance; what makes the firm distinctive/competitive, or how it survives as a mediocre player (e.g. leading firms: how they maintain position; underdogs: how they sustain operations and whether closure risk is evident)
 S4.2. **Requirements Check** —— map to `pro_profile.md`; flag all gaps, even minor
-S4.3. **Hard Skip Conditions** —— skip immediately if:
+S4.3. **Hard Skip Conditions** —— create AR then skip to next card immediately if:
    - Requires AUS citizenship or PR
    - Requires non-English language
    - Suitability score below 35
@@ -205,14 +206,14 @@ S4.4. **Suitability Score** —— score out of 100 using the following weighted
 
    | Score | Action | Research |
    |---|---|---|
-   | < 35 | Skip | None |
+   | < 35 | Create AR then skip | None |
    | 35–49 | Apply | None —— write CL from job post only |
    | 50–69 | Apply | S3.1 only |
    | 70–84 | Apply | S3.1 + S3.2 |
    | 85–109 | Apply w/ extra effort: open Para 1 w/ a specific, firm- & role-anchored claim rather than the standard template line; ensure 100% factual, no inference | S3.1 + S3.2 |
    | 110⁺ | Save on SEEK; create AR in `/seek/pending/` ; flag in chat w/ `⭐❗`; skip —— do not apply; user handles manually | S3.1 + S3.2 |
 
-   **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply") → immediately skip.
+   **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply") → create AR then skip.
 
 S4.5. **Resume Selection** —— per decision rules in `gcl.md`
 S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md` (no dash sign)
@@ -235,7 +236,7 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 
 **Duplicate handling:**
 - Matching AR ≥ 30 days old: append `_reapplied` in filename; note in AR; avoid CL repetition
-- Matching AR < 30 days old: skip & continue to next job (S1 should've caught it)
+- Matching AR < 30 days old: silently skip & continue to next job (S1 should've caught it)
 
 **AR contents:**
 
