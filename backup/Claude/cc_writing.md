@@ -10,7 +10,15 @@ ALWAYS use:
 
 ## CL Writing
 
-- Avoid sentence/clause-initial "Where": e.g. "Where [condition], [statement]"; prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
+- Always use confident language & powerful proactive verbs to highlight relevant skills/experience.
+- Never use "I believe/feel/think".
+- Avoid sentence/clause-initial "Where" (e.g. "Where [condition], [statement]"); prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
+- Avoid verb-object separation: Don't place long descriptive or prepositional phrases between a transitive verb (e.g. identify, state, argue) and its direct object or quotation
+  - ❌ e.g. [Actor] identifies [long_descr] "[quote]".
+  - ✅ e.g. [Actor] identifies "[quote]" as [long_descr].
+- On ≥3 objects:
+  - ❌ [A], [B] and [C]
+  - ✅ [A], [B], and [C]
 - Use professional, sophisticated, aptly witted, adept copywriter tone & manner w/o any abbreviations like `I'm`. 
 - Strictly eliminate colon `:` and dash `-`/`—`
 - Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)

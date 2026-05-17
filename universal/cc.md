@@ -48,7 +48,7 @@ Run before every response (exc. 1st response; NOT a formatting step):
 - In `<thinking>` (NOT in chat), MUST start w/ this line & NOTHING before it:
   `PP1: "[Nth word of #03 artefact]" | "[Nth word of directory.md]"` where N = last artefact #[no.]
 - PP1.1: If either unquotable/uncertain → NO
-- PP1.2: If `[Older tool result cleared to save context]` in directory.md → NO
+- PP1.2: If `[Older tool result cleared to save context]` in latest ver of directory.md → NO
 - ❌ Reasoning about tool call count, context pressure, or whether result "should" be visible
 - ✅ Direct token read only — the act of quoting **IS** the check
 - Only if YES (intact; PP1.1&2 BOTH passed), print:

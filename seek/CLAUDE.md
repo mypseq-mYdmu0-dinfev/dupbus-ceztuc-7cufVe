@@ -18,11 +18,11 @@ At the start of every session, before any actions, fully read the following file
 4. `/seek/context/culous_yu_resume_ats.md`
 5. `/seek/context/cc_writing.md`
 
-Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `ccic_gcl.md`, `gcl.md`, ...` and flag any that failed to load before stopping. Declare again whenever any files were re-read.
+Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `ccic_gcl.md`, `gcl.md`, ...` and flag any that failed to load before stopping.
 
 ## Reference Files —— Read On Demand
 
-The following files are available in `/seek/context/`. Do not read at session start —— read only when relevant:
+Read only when relevant, NOT mandatory. Available in `/seek/context/`:
 
 | File | Read When |
 |---|---|
@@ -38,8 +38,9 @@ The following files are available in `/seek/context/`. Do not read at session st
   - `/seek/skipped/` —— ditto
   - `/seek/investigation/` —— DON'T access unless specifically asked to; unrelated to CCIC-GCL
   - All other paths —— read only; never edit, create, or delete any file
-- Each time a file in `/seek/context/` is read → MUST declare in chat
+- Each time a file in `/seek/context/` is (re-)read → MUST declare in chat
+- In CCIC-GCL mode: NO chat text except C1–C5; MUST create AR unless either K1–K6 match
 
 ## Post-Compaction Recovery — CRITICAL
 
-When this message appears in context (injected by the post-compaction hook), it means compaction has just occurred and all prior context has been lost. Fully re-read all files in `## Session Start` above in order. After reading, determine from open browser tabs what state the automation was in (see `ccic_gcl.md` — Pre-Flight Check), then resume from the correct step without interrupting the user.
+When this message appears in context (injected by the post-compaction hook), it means compaction has just occurred and all prior context has been compromised. Fully re-read all files in `## Session Start` above in order. After reading, confirm Tab 1 accessible, then follow `## Pre-Flight Check` in `ccic_gcl.md` without interrupting the user.

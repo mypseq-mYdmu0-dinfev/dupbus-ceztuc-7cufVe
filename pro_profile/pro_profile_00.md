@@ -90,7 +90,7 @@
 | Project/programme mgmt | 16 |
 | Marketing/branding/PR/event | 8 |
 | Leadership/team/stakeholder mgmt | 8 |
-| Consulting and related skills (e.g. presentation, pitching) | 6 (never apply to consulting roles) |
+| Consulting and related skills (e.g. Business Analysis, Leadership/Mgmt) | 6 |
 | Media buying/communications | 5 |
 | UI/UX/IxD/HCI/product design | 3 |
 | IT/IS/data analytics | 3 |
