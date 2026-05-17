@@ -1,7 +1,7 @@
 # Pentana Solutions Pty Ltd — Project Manager
 **Date:** 05:00 on 18/05/2026
 **SEEK URL:** https://au.seek.com/job/91994965
-**Outcome:** Applying
+**Outcome:** Applied
 **Resume Selected:** Culous_Yu_Resume_Consulting.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 20/30 (16+ years PM/consulting; cross-functional delivery; Automotive sector in profile; no automotive DMS domain)
