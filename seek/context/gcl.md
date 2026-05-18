@@ -63,7 +63,7 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 | Business Analysis, Project/Change/Ops Mgmt, Consulting-adjacent | `Culous_Yu_Resume_Consulting.pdf` |
 | Marketing, Branding, PR, Social Media, Content, Event | `Culous_Yu_Resume_Marketing.pdf` |
 | UX/UI, Service/Graphic Design, Product Mgmt, Digital Product | `Culous_Yu_Resume_IxD.pdf` |
-| IT, IS, Data Analytics, Software Engineering, Technical | `Culous_Yu_Resume_IT.pdf` |
+| IT, IS, Data, Software, System, Programming, Technical | `Culous_Yu_Resume_IT.pdf` |
 | All others (Admin, Customer Service, Office Mgmt/Support, etc.) | `Culous_Yu_Resume_General.pdf` |
 
 *Note: When using `Culous_Yu_Resume_Marketing.pdf` or `Culous_Yu_Resume_IxD.pdf`, refer as "Interaction Design", not HCI.*

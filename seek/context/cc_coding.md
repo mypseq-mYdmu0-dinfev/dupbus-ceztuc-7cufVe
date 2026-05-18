@@ -1,4 +1,4 @@
-When I prompt `#replace`, you MUST NOT generate full content OR update previous artefacts, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. to add `123` between lines `xxx` & `yyy` you should print (use code blocks for the snippets):
+When I prompt `#replace`, you MUST NOT generate full content OR directly perform edits, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. to add `123` between lines `xxx` & `yyy` you should print (use code blocks for the snippets):
 
 ```
 ## Change 01

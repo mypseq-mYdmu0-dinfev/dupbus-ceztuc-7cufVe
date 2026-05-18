@@ -351,6 +351,8 @@ If user sends any msg mid-session:
 | Consent to check passport info/academic qualification/reference/credentials | Yes |
 | Consent to be reviewed by AI | Yes |
 | Which of the following Microsoft Office products are you experienced with? | Word, Excel, PowerPoint, Outlook |
+| Which of the following programming languages are you experienced in? | JavaScript, HTML, CSS, Python, PHP, Swift |
+| How would you rate your English language skills? | Native or Bilingual proficiency |
 
 ### External Application Portal Instructions
 
