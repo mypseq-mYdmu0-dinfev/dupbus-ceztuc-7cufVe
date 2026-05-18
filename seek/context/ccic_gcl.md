@@ -13,7 +13,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 | # | Permitted Output | Format / Constraint |
 |---|---|---|
 | C1 | File read/re-read declaration | Mandatory per `CLAUDE.md`; exact format: `✅ [file1], [file2], ...` |
-| C2 | S0 cumulative count | Exact S0.2 format only: `✅[N] **job(s) processed so far.**`; no additional text before, after, or on the same line |
+| C2 | S0 cumulative count | Exact S0.3 format only: `✅[N] **job(s) processed so far.**`; no additional text before, after, or on the same line |
 | C3 | `⭐❗` save+AR+flag | As indicated in S1 & if score ≥ 110 only per S4 |
 | C4 | `🚨` Tab 1 alert | Only when A6 inaccessibility threshold reached |
 | C5 | User intervention response | One sentence max; per User Interventions section |
@@ -48,7 +48,7 @@ A7. Critical restriction: never construct a SEEK URL (including homepage `seek.c
 
 Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders):
 
-F1. **Only Tab 1 open** —— `navigate` (refresh) Tab 1 only; do NOT `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content; once confirm page loaded, immediately proceed to S1
+F1. **Only Tab 1 open** —— `navigate` (refresh) Tab 1 only; do NOT `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content; once confirm page loaded, click "New to you" (below search bar, next to "[no.] jobs") if visible — if no cards shown, click "[no.] jobs" (returning to default view); then immediately proceed to S1
 F2. **Tab 2 + Tab 3 open, AR exists (for Tab 2 job post; same for below) & completed (contains P.S. line; same for below), Tab 3 content identical to Tab 2 (job post)** —— interrupted post-analysis, pre-application; re-read the AR to recover the plan; proceed from S6
 F3. **Tab 2 + Tab 3 open, AR exists & completed, Tab 3 content differs from Tab 2 (application page)** —— interrupted mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the AR to recover the plan; proceed from S6
 F4. **Tab 2 + Tab 3 open, AR exists but not completed, Tab 3 content identical to Tab 2** —— interrupted mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from S2
@@ -63,19 +63,18 @@ Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop 
 
 ### S0. Check Status & Compliance
 
-S0.1. Determine N by recalling the last `✅[N]` count from this session's chat
-S0.1.1. If no prior count is visible (1st card of session) → N = 0
-S0.1.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
-S0.1.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
-S0.2. Print in chat: `✅[N] **job(s) processed so far.**`
-S0.2.1. [N] = number emoji (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
-S0.2.2. Mandatory; NO alternative phrasing or additional remarks (e.g. bracketed content)
-S0.3. If N > 0 and N is a multiple of 5 (5, 10, 15, 20...) → immediately re-read `ccic_gcl.md` in full before proceeding w/ strict compliance
-S0.4. Proceed to S1
+S0.1. If not the 1st card of the session: verify the previous cumulative count in chat matches exactly S0.3; if format is missing or incorrect → re-read `ccic_gcl.md` in full now → rectify cumulative count → continue
+S0.2. Determine N by recalling the last `✅[N]` count from this session's chat
+S0.2.1. If no prior count is visible (1st card of session) → N = 0
+S0.2.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
+S0.2.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
+S0.3. Print in chat: `✅[N] **job(s) processed so far.**`
+S0.3.1. [N] = number emoji (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
+S0.3.2. Mandatory; NO alternative phrasing or additional remarks (e.g. bracketed content)
+S0.4. If N > 0 and N is a multiple of 5 (5, 10, 15, 20...) → immediately re-read `ccic_gcl.md` in full before proceeding w/ strict compliance
+S0.5. Proceed to S1
 
 ### S1. Process SEEK Results (Tab 1)
-
-**Prioritise new jobs:** Click "New to you" (next to "[no.] jobs"; below search bar & above card 1); if cards shown, proceed; if none, click "[no.] jobs" (default view).
 
 IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loop" before returning to Tab 1 for the next card.
 
