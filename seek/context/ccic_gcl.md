@@ -363,6 +363,8 @@ If user sends any msg mid-session:
 | Which of the following Microsoft Office products are you experienced with? | Word, Excel, PowerPoint, Outlook |
 | Which of the following programming languages are you experienced in? | JavaScript, HTML, CSS, Python, PHP, Swift |
 | How would you rate your English language skills? | Native or Bilingual proficiency |
+| Do you identify as an Aboriginal or Torres Strait Islander person? (or similar) | No |
+| Do you have a criminal conviction or criminal history? (or similar) | No |
 
 ### External Application Portal Instructions
 
@@ -370,6 +372,17 @@ If user sends any msg mid-session:
 - Deliverable credentials (combining academic transcripts, reference letters, certificates): '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/CV Linked Files/Combined Credential.pdf'
 - If CL requires upload (no input box): create PDF by most confident & appropriate way
 - **If struggling** (unusual design, login, upload/input failure, etc.): DON'T stop automation or interrupt user; attempt up to twice → concisely remark w/ `⚠️` in chat AND in AR for `ccic_gcl.md` update → edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 4+, 3, 2 → return to Tab 1 for next card
+- Title: Mr.
+- Preferred name: Culous
+- Email email (but not account creation): culousyu@gmail.com → Requires email reading (e.g. auth/activation code): Follow S6.2.3.2
+- Home address: input "Sydney" in all lines (e.g. Street) except post code: "2000"
+- Phone/mobile number: 0428405192
+- Employment status: Unemployed
+- Previously employed by [company_name] or Govt: No/Never
+- Are you [org_name] member: No (unless you're sure I'm)
+- Visa subclass: 485 Graduate Visa
+- Visa expiry: 17 March 2031
+- Permanent residence: Sydney
 
 ### Other Situation Handling
 
