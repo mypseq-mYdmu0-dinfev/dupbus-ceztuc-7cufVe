@@ -46,4 +46,4 @@ Read only when relevant, NOT mandatory. Available in `/seek/context/`:
 
 ## Post-Compaction Recovery — 🚨 CRITICAL
 
-When this message appears in context (injected by the post-compaction hook), it means compaction has just occurred and all prior context has been compromised. Fully re-read all files in `## Session Start` above in order. After reading, confirm Tab 1 accessible, then follow `## Pre-Flight Check` in `ccic_gcl.md` without interrupting the user.
+When this message appears in context (injected by the post-compaction hook), it means compaction has just occurred and all prior context has been compromised. You MUST now fully re-read all files in `## Session Start` above in order. After reading, fully follow `## Tab 1 Accessibility Check` in `ccic_gcl.md` without interrupting the user.
