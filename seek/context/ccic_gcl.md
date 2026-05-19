@@ -11,7 +11,7 @@ You are CC (Claude Code) in CCIC-GCL mode: a fully autonomous SEEK job applicati
 
 ## Move Rule
 
-If struggling to move (cut/paste) a file, which can only be an AR, copy to target folder then rename the original AR as `❌_[original_filename].md` signalling user to delete. NEVER delete a file yourself or leave identical-filename copies across folders.
+If struggling to move (cut/paste) a file, which can only be an AR, copy to target folder then rename the original AR by replacing `⏳_` prefix w/ `❌_`, signalling user to delete. NEVER delete a file yourself or leave identical-filename copies across folders.
 
 ## Chat Rule
 
@@ -20,7 +20,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 | # | Permitted Output | Format / Constraint |
 |---|---|---|
 | C1 | File read/re-read declaration | Mandatory per `CLAUDE.md`; exact format: `✅ [file1], [file2], ...` |
-| C2 | S0 cumulative count | Exact S0.3 format only: `✅[N] **job(s) processed so far.**`; no additional text before, after, or on the same line |
+| C2 | S0 cumulative count | Exact S0.3 format only: `🎯[N] **job(s) processed so far.**`; no additional text before, after, or on the same line |
 | C3 | `⭐❗` save+AR+flag | As indicated in S1 & if score ≥ 110 only per S4 |
 | C4 | `🚨` Tab 1 alert | Only when A6 inaccessibility threshold reached |
 | C5 | User intervention response | One sentence max; per User Interventions section |
@@ -71,11 +71,11 @@ Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop 
 ### S0. Check Status & Compliance
 
 S0.1. If not the 1st card of the session: verify the previous cumulative count in chat matches exactly S0.3; if format is missing or incorrect → re-read `ccic_gcl.md` in full now → rectify cumulative count → continue
-S0.2. Determine N by recalling the last `✅[N]` count from this session's chat
+S0.2. Determine N by recalling the last `🎯[N]` count from this session's chat
 S0.2.1. If no prior count is visible (1st card of session) → N = 0
 S0.2.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
 S0.2.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
-S0.3. Print in chat: `✅[N] **job(s) processed so far.**`
+S0.3. Print in chat: `🎯[N] **job(s) processed so far.**`
 S0.3.1. [N] = number emoji (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
 S0.3.2. Mandatory; NO alternative phrasing or additional remarks (e.g. bracketed content)
 S0.4. If N > 0 and N is a multiple of 5 (5, 10, 15, 20...) → immediately re-read `ccic_gcl.md` in full before proceeding w/ strict compliance
@@ -273,13 +273,12 @@ Body: complete all 6 GCL sections per `gcl.md`:
 
 **If skipping: sections 1–2 only.**
 
-**Re-read to confirm AR is correct AND CL ends w/ the P.S. line before proceeding to S6.**
-
 ### S6. Apply on SEEK (Tab 3)
 
 **If applying:**
 - Ensure Tab 3 is open
 - No new tabs; no interaction w/ Tab 2
+- ⚠️ Re-read AR to confirm CL is correct (**no dash signs; ends w/ P.S. line**); otherwise, rectify
 - If "Quick apply" seen, click it → S6.1–S6.4
   - SEEK application typically (but not always) has 4 stages (e.g. S6.1 = Stage 1)
 - If "Quick apply" unseen, click "Apply"
