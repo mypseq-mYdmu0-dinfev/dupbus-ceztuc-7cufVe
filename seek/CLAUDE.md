@@ -18,6 +18,7 @@ At the start of every session, before any actions, fully read the following file
 4. `/seek/context/pro_profile.md`
 5. `/seek/context/culous_yu_resume_ats.md`
 6. `/seek/context/cc_writing.md`
+7. `/seek/context/cc_reminder.md`
 
 Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `ccic_gcl.md`, `gcl.md`, ...` and flag any that failed to load before stopping.
 
@@ -45,5 +46,7 @@ Read only when relevant, NOT mandatory. Available in `/seek/context/`:
   - MUST create AR unless either K1–K6 match
 
 ## Post-Compaction Recovery — 🚨 CRITICAL
+
+🛑 **STOP. DO NOT PROCESS ANY JOB CARD OR TAKE ANY OTHER ACTION UNTIL ALL MANDATORY FILES ARE RE-READ.** The session summary is untrusted paraphrase — it does NOT substitute for source files.
 
 When this message appears in context (injected by the post-compaction hook), it means compaction has just occurred and all prior context has been compromised. You MUST now fully re-read all files in `## Session Start` above in order. After reading, fully follow `## Tab 1 Accessibility Check` in `ccic_gcl.md` without interrupting the user.

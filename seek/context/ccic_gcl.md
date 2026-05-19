@@ -55,7 +55,9 @@ A7. Critical restriction: never construct a SEEK URL (including homepage `seek.c
 
 Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders):
 
-F1. **Only Tab 1 open** —— `navigate` (refresh) Tab 1 only; do NOT `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content; once confirm page loaded, click "New to you" (below search bar, next to "[no.] jobs") if visible — if no cards shown, click "[no.] jobs" (returning to default view); then immediately proceed to S1
+F1. **Only Tab 1 open** —— `navigate` (refresh) Tab 1 only
+F1.1. DON'T `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content
+F1.2. Once confirm page loaded, click "New to you" (below search bar, next to "[no.] jobs") if visible; if no cards shown, click "[no.] jobs" (default view); then immediately proceed to S0
 F2. **Tab 2 + Tab 3 open, AR exists (for Tab 2 job post; same for below) & completed (contains P.S. line; same for below), Tab 3 content identical to Tab 2 (job post)** —— interrupted post-analysis, pre-application; re-read the AR to recover the plan; proceed from S6
 F3. **Tab 2 + Tab 3 open, AR exists & completed, Tab 3 content differs from Tab 2 (application page)** —— interrupted mid-application; close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the AR to recover the plan; proceed from S6
 F4. **Tab 2 + Tab 3 open, AR exists but not completed, Tab 3 content identical to Tab 2** —— interrupted mid-analysis; research context is compromised & recovery unreliable; close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from S2
@@ -68,18 +70,19 @@ Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop 
 
 ## Per-Job Loop —— Execute Continuously Until Stopped (S[no.]; S0 = loop-start; S1 = Step 1)
 
-### S0. Check Status & Compliance
+### S0. Check Compliance & Cumulative Count
 
-S0.1. If not the 1st card of the session: verify the previous cumulative count in chat matches exactly S0.3; if format is missing or incorrect → re-read `ccic_gcl.md` in full now → rectify cumulative count → continue
+S0.1. Re-read `/seek/context/cc_reminder.md` in full → declare per C1 → complete all active checks within it before continuing; if S0.3 violated:
+S0.1.1. Attempt rectification by chat history per S0.2
+S0.1.2. If attempted failed, tally files created in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (excl. their sub-folders) within last 2 hours (get current time per S5) before proceeding
 S0.2. Determine N by recalling the last `🎯[N]` count from this session's chat
 S0.2.1. If no prior count is visible (1st card of session) → N = 0
 S0.2.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
 S0.2.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
 S0.3. Print in chat: `🎯[N] **job(s) processed so far.**`
-S0.3.1. [N] = number emoji (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
+S0.3.1. [N] = number emojis (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
 S0.3.2. Mandatory; NO alternative phrasing or additional remarks (e.g. bracketed content)
-S0.4. If N > 0 and N is a multiple of 5 (5, 10, 15, 20...) → immediately re-read `ccic_gcl.md` in full before proceeding w/ strict compliance
-S0.5. Proceed to S1
+S0.4. Proceed to S1
 
 ### S1. Process SEEK Results (Tab 1)
 
@@ -88,7 +91,7 @@ IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loo
 **Reading card from Tab 1:**
 - Use `find "[ordinal] job card title link" max_results: 1`. Ordinal = card's sequential position on the page (1st, 2nd, 3rd...); increment by 1 after each card is fully handled, regardless of outcome. Always `max_results: 1`; never request multiple card titles at once; never use an unfiltered `find` on Tab 1
 - After getting a card's ref, do a separate targeted element read of that card's container to check for applied/saved icons (see below)
-- Never screenshot-scroll/`read_page`/`get_page_text` Tab 1 for card checks
+- Never screenshot-scroll/`read_page`/`get_page_text`/`querySelectorAll` Tab 1 for card checks
 - Never enumerate all cards, only focus one at a time
 
 **Save → AR → skip if:**
@@ -320,6 +323,7 @@ S6.4.7. MUST note cumulative count (see S0)
 S6.4.8. Continue the loop
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.
+**Every loop:** starts at S0, not S1.
 
 ### S7 —— Pagination
 
