@@ -24,7 +24,7 @@ Identify anything special about this position or company (& group) that I should
 Based on given content/web search/my bg, suggest 1-3 potential interview questions.
 
 ### 6. ** Cover Letter (CL):**
-Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone.
+Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone (100% factual; no fabrication).
 
 #### Template —— Content in `[]` = internal notes, ensure clean handling
 
@@ -43,7 +43,7 @@ Throughout my 16⁺ years of career in content and project management, I have wo
 - in B2B (consultancy/agency), B2C (brand/media), NPO (non-profit), and Government entities
 - in different scales of organisations, from startup to family business and to MNC (multinational corporations)
 - in/with clients from: Britain, France, Italy, Spain, Hong Kong, Taiwan, China, Singapore, etc.
-- with diverse industries: Tech, Bank, Automotive, Jewellery, Fashion, Health, Sports, Education, FMCG (fast-moving consumer goods), etc. (http://Projects.CulousYu.com)
+- with diverse industries: Tech, Bank, Automotive, Jewellery, Fashion, Health, Sports, Education, FMCG, etc. (http://Projects.CulousYu.com)
 
 I am more than excited by the prospect of devoting my expertise to [Company Name] and contributing to ([Group Name]'s) [specific aspect of their approach/culture/philosophy]. [Express interest in a unique aspect of the position or company].
 

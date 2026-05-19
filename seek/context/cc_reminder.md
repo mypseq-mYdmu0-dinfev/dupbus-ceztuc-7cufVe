@@ -7,7 +7,7 @@ Literally re-read (not via memory) at S0.1 every card. If any item below is unfa
 ## Active Check
 
 **Re-read `ccic_gcl.md` if:**
-- Last CL contains any dash signs (`—` `–`), `:`, or `+` (use `⁺` instead)
+- Last CL contains any dash signs (`—` `–`) or `+` (use `⁺` instead)
 - Last chat output this session is not identifiable as C1–C5
 - Last card did not yield exactly `🎯[N] **job(s) processed so far.**` (S0.3 violated)
 - `[N]` was literally printed in chat instead of number emojis

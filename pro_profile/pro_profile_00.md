@@ -13,7 +13,7 @@
 ## Education
 
 - **Master of Human-Computer Interaction** (internal: "MHci") w/ Data Analytics sub-major, Faculty of Engineering & IT (FEIT), UTS —— graduated NOV 2025, HD (GPA: 6.63/7)
-  - Encompass IT degrees (e.g. computer science/IS/cloud); emphasise FEIT if it helps
+  - Encompass IT degrees (e.g. computer science/IS/cloud)
   - Transcend design degrees (e.g. graphic/visual comms; regard as foundational sub-discipline)
 - **MBA**, University of Liverpool —— Grade A; final dissertation stage; graduation late 2026
   - Encompass basics of: Economics, Finance, Marketing, HR, Ops/Supply Chain, PM, Data

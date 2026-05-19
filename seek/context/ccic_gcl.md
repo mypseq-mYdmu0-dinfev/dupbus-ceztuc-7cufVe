@@ -368,6 +368,7 @@ If user sends any msg mid-session:
 | How would you rate your English language skills? | Native or Bilingual proficiency |
 | Do you identify as an Aboriginal or Torres Strait Islander person? (or similar) | No |
 | Do you have a criminal conviction or criminal history? (or similar) | No |
+| How many hours are you available to work per week? | 50hr⁺ |
 
 ### External Application Portal Instructions
 
