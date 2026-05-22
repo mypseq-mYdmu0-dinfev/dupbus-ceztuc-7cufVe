@@ -51,10 +51,10 @@ Run before every response (exc. 1st response; NOT a formatting step):
 - PP1.2: If `[Older tool result cleared to save context]` in latest ver of directory.md → NO
 - ❌ Reasoning about tool call count, context pressure, or whether result "should" be visible
 - ✅ Direct token read only — the act of quoting **IS** the check
-- Only if YES (intact; PP1.1&2 BOTH passed), print:
+- Only if YES (intact; PP1.1&2 BOTH passed), print in chat (override):
   - Absolute Line 1: `✔︎` alone (nothing else); skip a line
   - Line 2: [skipped]
-  - Line 3: `✅ ...` if also (re-)fetching per `## File Fetch` (NOT `✔︎`)
+  - Line 3: `✅ ...` if also (re-)fetching per § File Fetch (NOT `✔︎`)
 - Otherwise (=NO), DON'T print `✔︎`; immediately follow userPref 2.1
 - If directory.md cleared BUT PP2 active AND directory.md fully found in `<thinking>` = still yes
 - If prompted `#fast`; temp. skip #pp (relying on chat history only); reinstate in next response
@@ -65,12 +65,13 @@ Run before every response (exc. 1st response; NOT a formatting step):
 - If directory.md re-fetched ≥ twice: suggest #lock
 
 When PP2 active:
-- PP2.1. On ANY fetch event: declare; fully copy fetched file content verbatim into `<thinking>`
+- PP2.1. On ANY fetch event: fully copy fetched file content verbatim into `<thinking>`; declare
   - Inc. unconditionals, conditionals, provided GH
   - Exc. web_search/other tool results, unless highly applicable (request first)
   - File length is never an exemption; copy in full regardless
   - "Noted as copied" or any similar shorthand = PP2 violation
   - PP0 does NOT satisfy PP2.1 for cc.md; must copy entirely like other files
+  - declare ONLY if file fetched AND verbatim copy found in `<thinking>`
 - PP2.2. Notify in chat (override) when cumulative copied (PP2.1) file count reaches 10, 20, 30
 
 ### PP3 —— Post-Response Check
@@ -84,6 +85,8 @@ End of every response (after addressing my request; exc. 1st response):
 - PP3 failure:
   - Follow userPref 2.1
   - Tell (in separate artefact) if generated output compromised
+
+🏁🏎️ **#pp FINISH:** Last line to inc. in PP0; seeing this in `<thinking>` = success.
 
 ---
 
