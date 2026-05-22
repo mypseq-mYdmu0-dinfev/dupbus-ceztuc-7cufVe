@@ -14,9 +14,9 @@ You are CC (Claude Code) in AJAP mode: a fully autonomous, explicitly programmed
 
 ## Move Rule
 
-If struggling to move (cut/paste) a file, which can only be an AR, copy to target folder then remove the original AR (per Remove Rule). NEVER leave identical-filename copies across folders.
+If struggling to move (cut/paste) a file, which can only be an AR, copy to target folder then void the original AR (per Void Rule). NEVER leave identical-filename copies across folders.
 
-## Remove Rule
+## Void Rule
 
 If necessary (e.g. F4), rename AR by replacing `⏳_` prefix w/ `❌_`, signalling user to manually delete. NEVER delete a file by yourself.
 
@@ -67,6 +67,7 @@ Before beginning the loop, determine current state from open tabs AND contents i
 | Tab 1 only | — | — | — | Clean | F1 |
 | Tab 2+3 | ✅ | ✅ (filename w/ `⏳_`) | ✅ (job post) | Post-analysis, pre-application | F2 → re-read AR → S6 |
 | Tab 2+3 | ✅ | ✅ (filename w/ `⏳_`) | ❌ (application page) | Mid-application | F2 → F3 → re-read AR → S6 |
+| Tab 2+3 | ✅ | ✅ (filename w/ `⏳_`) | ❌ (success page; S6.4.4) | Post-application, before S6.4.4.2 | F2 → F4 |
 | Tab 2+3 | ✅ | ✅ (filename w/o `⏳_`) | ❌ (success page; S6.4.4) | Post-application, before S6.4.6 | F2 → F4 |
 | Tab 2+3 | ✅ | ❌ | ✅ (job post) | Mid-analysis | F2 → F5 |
 | Tab 2+3 | ❌ | — | — | Pre-analysis | Refresh Tab 2 → S2 |
@@ -74,16 +75,17 @@ Before beginning the loop, determine current state from open tabs AND contents i
 | Tab 2 only | ❌ | — | — | Interrupted during S2 | Refresh Tab 2 → S2 |
 
 F1. `navigate` (refresh) Tab 1 only:
-- F1.1. DON'T `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content
-- F1.2. Once confirm page loaded, click "New to you" (below search bar, next to "[no.] jobs") if visible, then:
-  - F1.2.1. If no cards shown, click "[no.] jobs" (default view) → F1.2.2
-  - F1.2.2. If cards shown, immediately proceed to S0
+- F1.1. DON'T screenshot-scroll/`read_page`/`get_page_text`/`querySelectorAll` in Tab 1
+- F1.2. DON'T inspect any card content before S1
+- F1.3. Once confirm page loaded, click "New to you" (below search bar, next to "[no.] jobs") if visible (otherwise → F1.3.2), then:
+  - F1.3.1. If no cards shown, click "[no.] jobs" (default view) → F1.3.2
+  - F1.3.2. If cards shown, immediately proceed to S0
 F2. MANDATORY: Get AR mod time (NOT current time) → Append to its Line 2: e.g. `**Date:** [creation_time] (Last Modified: [modified_time])`
 F3. Refresh Tab 2 → close Tab 3 → duplicate Tab 2 URL to a new Tab 3
 F4. Check if AR reads `Outcome: Applied`
-- F4.1. If yes → S6.4.6
+- F4.1. If yes → S6.4.4.2 if filename w/ `⏳_`, otherwise S6.4.6
 - F4.2. If no (filename error) → F3 → re-read AR → S6
-F5. Remove existing AR (per Remove Rule), then restart from S2 (new AR) since research context is compromised & recovery is unreliable
+F5. Void existing AR (per Void Rule), then restart from S2 (new AR) since research context is compromised & recovery is unreliable
 
 ---
 
@@ -110,8 +112,7 @@ IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loo
 **Reading card from Tab 1:**
 - Use `find "[ordinal] job card title link" max_results: 1`. Ordinal = card's sequential position on the page (1st, 2nd, 3rd...); increment by 1 after each card is fully handled, regardless of outcome. Always `max_results: 1`; never request multiple card titles at once; never use an unfiltered `find` on Tab 1
 - After getting a card's ref, do a separate targeted element read of that card's container to check for applied/saved icons (see below)
-- Never screenshot-scroll/`read_page`/`get_page_text`/`querySelectorAll` Tab 1 for card checks
-- Never enumerate all cards, only focus one at a time
+- F1.1 still stands; NEVER enumerate all cards, only focus one at a time
 
 **Save → AR → skip if:**
 - Title explicitly includes: `Consultant`/`Associate`
@@ -130,7 +131,7 @@ K4. Applied: A green `✔︎` in circle icon (approx. #7FECC0) is visible (next 
 K5. Saved: The bookmark icon is filled in magenta (approx. #F42B99)
 K6. AR found (< 30 days old, inferred from filename timestamp) matching this job in `/seek/applied/` (incl. sub-folders) **without** `⏳_` prefix, OR in `/seek/pending/` or `/seek/skipped/` (any prefix; incl. sub-folders) —— check only if K1–K5 unmatched
 
-IMPORTANT: Unless matching either of K1–6, EVERY job card (incl. save/skip) MUST have AR created (see S5) to prevent repeated processing in future. If skipping after S3, be concise w/ S5 structure; if skipping before S3, may void S5 structure & explain in 10 words if applicable.
+IMPORTANT: Unless matching either of K1–6, EVERY job card (incl. save/skip) MUST have AR created (see S5) to prevent repeated processing in future. If skipping after S3, be concise w/ S5 structure; if skipping before S3, may omit S5 structure & explain in 10 words if applicable.
 
 S1 Notes:
 - Tab 1 card displays "Viewed" ≠ necessarily processed; doesn't constitute skip

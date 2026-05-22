@@ -13,7 +13,8 @@ Literally re-read (not via memory) at S0.1 every card. If any item below is unfa
 - `[N]` was literally printed in chat instead of number emojis
 - Last card had no AR created AND no K1–K6 was matched
 - Last AR in `/applied/` had no M1–M7
-- You don't understand or can't be 100% sure of above terms/items
+- Cards were inspected during Pre-Flight Check OR Tab 1 was read using screenshot-scroll/`read_page`/`get_page_text`/`querySelectorAll` (F1.1 violated)
+- You don't understand or can't be 100% sure of any above terms/items
 
 ---
 

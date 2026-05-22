@@ -7,14 +7,7 @@
         "command": "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/seek/.claude/post_compact.sh"
       }
     ],
-    "PostToolUse": [
-      {
-        "type": "command",
-        "matcher": "Write",
-        "command": "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/seek/.claude/track_ar_count.sh"
-      }
-    ]
-  },
+    },
   "statusLine": {
     "enabled": true
   }
