@@ -23,7 +23,7 @@ When we're on high-stake tasks requiring validation OR repetitive/lengthy tasks 
 
 ## Pre-CIC Protocol
 
-Before drafting any A/B/WCIC prompt, always run `web_search` first:
+Before starting ACIC or drafting any B/WCIC prompt, always run `web_search` first:
 - Surface as many candidate sources as possible; pass **valid candidates only** (inc. full URLs) into the CIC prompt as a starting pt to narrows CIC's scope & speed up execution
 - **Valid** = directly relevant to the task + from an authoritative source, regardless of whether it confirms or contradicts the hypothesis
 - **Invalid** = irrelevant, low-quality, or adds no substantive value

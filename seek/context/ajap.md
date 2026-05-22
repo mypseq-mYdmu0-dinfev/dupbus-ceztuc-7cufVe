@@ -14,7 +14,11 @@ You are CC (Claude Code) in AJAP mode: a fully autonomous, explicitly programmed
 
 ## Move Rule
 
-If struggling to move (cut/paste) a file, which can only be an AR, copy to target folder then rename the original AR by replacing `⏳_` prefix w/ `❌_`, signalling user to manually delete. NEVER delete a file yourself or leave identical-filename copies across folders.
+If struggling to move (cut/paste) a file, which can only be an AR, copy to target folder then remove the original AR (per Remove Rule). NEVER leave identical-filename copies across folders.
+
+## Remove Rule
+
+If necessary (e.g. F4), rename AR by replacing `⏳_` prefix w/ `❌_`, signalling user to manually delete. NEVER delete a file by yourself.
 
 ## Chat Rule
 
@@ -54,20 +58,32 @@ A7. Critical restriction: never construct a SEEK URL (including homepage `seek.c
 
 ---
 
-## Pre-Flight Check (F[no.])
+## Pre-Flight Check (F[no.] = detailed actions)
 
 Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders):
 
-F1. **Only Tab 1 open** = clean state → `navigate` (refresh) Tab 1 only:
-- F1.1. DON'T `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content
-- F1.2. Once confirm page loaded, click "New to you" (below search bar, next to "[no.] jobs") if visible; if no cards shown, click "[no.] jobs" (default view); then immediately proceed to S0
-F2. **Tab 2 + Tab 3 open, AR exists (for Tab 2 job post; same for below) & completed (contains P.S. line but `Outcome: Applying`; same for below), Tab 3 content identical to Tab 2 (job post)** = interrupted post-analysis, pre-application → re-read the AR to recover the plan; MUST note its last modified time inside AR; proceed from S6
-F3. **Tab 2 + Tab 3 open, AR exists & completed, Tab 3 content differs from Tab 2 (application page)** = interrupted mid-application → close Tab 3; duplicate Tab 2 URL to new Tab 3; re-read the AR to recover the plan; MUST note its last modified time inside AR; proceed from S6
-F4. **Tab 2 + Tab 3 open, AR exists but not completed, Tab 3 content identical to Tab 2** = interrupted mid-analysis (research context is compromised & recovery unreliable) → close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; MUST note its last modified time inside AR; restart from S2
-F5. **Tab 2 + Tab 3 open, no AR exists** = interrupted before analysis was saved → close Tab 3; reopen Tab 3 as duplicate of Tab 2 URL; restart from S2
-F6. **Only Tab 2 open, no Tab 3** = interrupted immediately after Tab 2 opened, before duplication → refresh Tab 2; duplicate to Tab 3; restart from S2
+| Tabs Open | AR? | AR Complete (contains P.S. line)? | Tab 3 ≡ Tab 2? | State | Action |
+|---|---|---|---|---|---|
+| Tab 1 only | — | — | — | Clean | F1 |
+| Tab 2+3 | ✅ | ✅ (filename w/ `⏳_`) | ✅ (job post) | Post-analysis, pre-application | F2 → re-read AR → S6 |
+| Tab 2+3 | ✅ | ✅ (filename w/ `⏳_`) | ❌ (application page) | Mid-application | F2 → F3 → re-read AR → S6 |
+| Tab 2+3 | ✅ | ✅ (filename w/o `⏳_`) | ❌ (success page; S6.4.4) | Post-application, before S6.4.6 | F2 → F4 |
+| Tab 2+3 | ✅ | ❌ | ✅ (job post) | Mid-analysis | F2 → F5 |
+| Tab 2+3 | ❌ | — | — | Pre-analysis | Refresh Tab 2 → S2 |
+| Tab 2 only | ✅ | ✅ (filename w/o `⏳_`) | — | Post-application, before S6.4.6 | F2 → F4 |
+| Tab 2 only | ❌ | — | — | Interrupted during S2 | Refresh Tab 2 → S2 |
 
-Note: If Tab 1 is inaccessible, blank, or shows no job cards at any point: stop immediately after 3 refresh attempts.
+F1. `navigate` (refresh) Tab 1 only:
+- F1.1. DON'T `read_page`, `get_page_text`, screenshot-scroll, or inspect any card content
+- F1.2. Once confirm page loaded, click "New to you" (below search bar, next to "[no.] jobs") if visible, then:
+  - F1.2.1. If no cards shown, click "[no.] jobs" (default view) → F1.2.2
+  - F1.2.2. If cards shown, immediately proceed to S0
+F2. MANDATORY: Get AR mod time (NOT current time) → Append to its Line 2: e.g. `**Date:** [creation_time] (Last Modified: [modified_time])`
+F3. Refresh Tab 2 → close Tab 3 → duplicate Tab 2 URL to a new Tab 3
+F4. Check if AR reads `Outcome: Applied`
+- F4.1. If yes → S6.4.6
+- F4.2. If no (filename error) → F3 → re-read AR → S6
+F5. Remove existing AR (per Remove Rule), then restart from S2 (new AR) since research context is compromised & recovery is unreliable
 
 ---
 
@@ -119,7 +135,7 @@ IMPORTANT: Unless matching either of K1–6, EVERY job card (incl. save/skip) MU
 S1 Notes:
 - Tab 1 card displays "Viewed" ≠ necessarily processed; doesn't constitute skip
 - If `⏳_` prefixed AR found in `/seek/applied/`, open its `SEEK URL` (read from file) in Tab 2:
-  - If "You applied on..." visible, MUST note its last modified time inside AR then edit as `Outcome: Applied` (override "don't edit ARs created before this session")
+  - If "You applied on..." visible, MUST print its last modified time inside AR then edit as `Outcome: Applied` (override "don't edit ARs created before this session")
   - If "Visited employer's application site on..." visible, edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` (override "don't edit files created before this session") → skip it.
   - If "Quick apply"/"Apply" visible, duplicate as Tab 3 then proceed from S6 using the AR.
 
@@ -164,9 +180,9 @@ S3.1. web_search (run if pre-score ceiling ≥ 50):
 
 S3.2. CIC site visits (Tab 4⁺ ONLY; NEVER use Tab 3 for research; read then close each; max 10 **websites** in total per job, NOT webpages):
 - S3.2.1. Official website (About, Values, Culture, Team; may browse sub-pages) —— before reading, verify site matches employer name/description from job post; if any doubt, additionally check if brand logo in site matches that in job post
-- S3.2.2. LinkedIn —— MUST search Google for "[company_name] site:linkedin.com/company" → **click** result directly (⚠️ NEVER construct/copy URL) → dismiss login overlay once on the page
+- S3.2.2. LinkedIn —— in Tab 4+: `navigate` to `https://www.google.com/search?q=[company_name]+site%3Alinkedin.com%2Fcompany` → `find` the LinkedIn company page result → `click` it (clicking from Google sets the referrer that renders LinkedIn's login wall bypassable) → dismiss login overlay once on page; ⚠️ MUST NOT construct/copy URL or use `navigate` / `web_search` / other method to reach LinkedIn directly
 - S3.2.3. Validate S3.1 candidate URLs
-- S3.2.4. Glassdoor —— MUST search Google for "[company_name] site:glassdoor.com.au" → **click** result directly (⚠️ NEVER construct/copy URL) → handle blocker (see S3.2 Notes)
+- S3.2.4. Glassdoor —— in Tab 4+: `navigate` to `https://www.google.com/search?q=[company_name]+site%3Aglassdoor.com.au` → `find` the Glassdoor result → `click` it → handle blocker if encountered (see S3.2 Notes); ⚠️ MUST NOT construct/copy URL or use `navigate` / `web_search` / other method to reach Glassdoor directly
 - S3.2.5. Other relevant sources (news, forums, Reddit for large firms; only if yet to hit 10 sites)
 
 S3.2 Notes:
@@ -322,7 +338,7 @@ S6.4.4. Confirm **success** ("Your application has been sent to...") then immedi
 - S6.4.4.2. Rename file to remove `⏳_` prefix
 S6.4.5. Ignore SEEK's suggestions ("You might also like...")
 S6.4.6. MUST close Tabs 3 & 2; then return to Tab 1
-S6.4.7. MUST note cumulative count (see S0)
+S6.4.7. MUST print cumulative count (see S0)
 S6.4.8. Continue the loop
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.

@@ -42,6 +42,7 @@
 - Revert = edit a previous msg, usually practiced when we're processing super large files. e.g. when analysing multiple zoom transcripts, I prompt you on 1st one→create synthesis→save to CP→revert to handle 2nd one→loop in order to preserve chat capacity. Bottomline: When I said I reverted, something was done rear to that msg
 - Deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application)
 - CP = Claude Project. Each CP may involve multiple projects and vice versa, e.g. I might say “Refer to files in this CP, draft...”
+- CIC = Claude in Chrome (MCP)
 - CC (full caps) = Claude Code (don't conflate w/ #cc)
 - CW (full caps) = Claude Cowork (don't conflate w/ CWI)
 - CWI = Claude Web Interface, accessed via Safari at https://claude.ai, allowing simultaneous chats; assume you're CWI by default
