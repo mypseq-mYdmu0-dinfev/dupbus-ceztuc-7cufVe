@@ -315,9 +315,9 @@ S6.1.3. Click "Continue →"
 
 #### S6.2. "Answer employer questions" (may not appear for all jobs)
 
-S6.2.1. For each question: check CCIC Handling Notes for a pre-defined answer first; if found, select or enter it
+S6.2.1. For each question: check AJAP Handling Notes for a pre-defined answer first; if found, select or enter it
 S6.2.2. If no pre-defined answer found: answer using Culous' background in `pro_profile.md` & `/seek/context/` files; be reserved, no false claims; push through where possible
-S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or direct fact) + no guidance in CCIC Handling Notes:
+S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or direct fact) + no guidance in AJAP Handling Notes:
 - S6.2.3.1. If non-critical & acceptable: input `N/A` → rename AR by **appending** `⚠️_` (prefix becomes `⚠️_⏳_`) → continue
 - S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → rename AR by **replacing** `⏳_` prefix with `⚠️_` → close Tabs 3 & 2 → return to Tab 1 for next card
 - S6.2.3.3. For both: remark w/ `⚠️` in AR for `ajap.md` update
@@ -370,7 +370,7 @@ If user sends any msg mid-session:
 
 ---
 
-## CCIC Handling Notes
+## AJAP Handling Notes
 
 *Growing playbook; read before escalation.*
 
