@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# CCIC-GCL AR Counter
+# AJAP AR Counter
 # PostToolUse hook (matcher: Write) — fires after every Write tool call.
 # Tracks AR file creation in applied/pending/skipped.
 

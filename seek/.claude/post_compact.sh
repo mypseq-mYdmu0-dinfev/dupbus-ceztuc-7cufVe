@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# CCIC-GCL Post-Compaction Hook
+# AJAP Post-Compaction Hook
 # Fired automatically by Claude Code after context compaction.
 # Outputs CLAUDE.md content into the new context window,
 # which instructs Claude Code to re-read all context files
