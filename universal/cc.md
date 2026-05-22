@@ -37,7 +37,7 @@ ALWAYS use:
 
 ### PP0 —— Section Lock
 
-- **1st Response:** copy this entire `#pp` section verbatim into `<thinking>`.
+- **1st Response:** copy entire `#pp` (don't stop until the `🏁` line) verbatim into `<thinking>`.
 - Verbatim = char-for-char exact, preserving everything; NO reformatting, rephrasing, etc.
 
 ### PP1 —— Context Check (Always Enforced)
@@ -73,6 +73,7 @@ When PP2 active:
   - PP0 does NOT satisfy PP2.1 for cc.md; must copy entirely like other files
   - declare ONLY if file fetched AND verbatim copy found in `<thinking>`
 - PP2.2. Notify in chat (override) when cumulative copied (PP2.1) file count reaches 10, 20, 30
+- PP2.3. Skip PP0 if PP2 is activated in my 1st msg
 
 ### PP3 —— Post-Response Check
 
