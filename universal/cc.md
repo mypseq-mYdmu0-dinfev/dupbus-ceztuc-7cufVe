@@ -20,16 +20,15 @@ ALWAYS use:
   - Extract ver no.
   - Append in bracket
   - e.g. Filename: `cc_03.md` → Alias: ``cc.md` (v03)`
-- When ANYTHING fetched at ANYTIME (chat start/mid-chat):
-  - Declare IMMEDIATELY in chat (override) as line 3, **before artefacts**: `✅ [alias] ([reason])`
-  - Reason:
+- When ANYTHING fetched at ANYTIME (inc. chat start, mid-chat, provided in-line `#####`):
+  - Declare in chat (override) as line 3 (after PP1), **before artefacts**: `✅ [alias] (ver; [reason])`
+  - For [reason]:
     - Only if not explicitly commanded but your own decision
     - ≤5 words → in chat
-    - >5 words → in artefact
+    - >5 words → in most relevant artefact
   - Example:
 ```
-✅ `cc.md` (v03), `profile.md` (v02)
-Fetched `profile.md` for KK's bg.
+✅ `cc.md` (v03), `profile.md` (v02; for KK's bg)
 ```
 
 ---
@@ -65,9 +64,10 @@ Run before every response (exc. 1st response; NOT a formatting step):
 - If directory.md re-fetched ≥ twice: suggest #lock
 
 When PP2 active:
-- PP2.1. On ANY fetch event: fully copy fetched file content verbatim into `<thinking>`; declare
+- PP2.1. On ANY fetch event: fully copy fetched file content verbatim (like PP0) into `<thinking>` before declaring (`✅ ...`)
   - Inc. unconditionals, conditionals, provided GH
   - Exc. web_search/other tool results, unless highly applicable (request first)
+  - Exc. files provided in-line (already fully in context)
   - File length is never an exemption; copy in full regardless
   - "Noted as copied" or any similar shorthand = PP2 violation
   - PP0 does NOT satisfy PP2.1 for cc.md; must copy entirely like other files
