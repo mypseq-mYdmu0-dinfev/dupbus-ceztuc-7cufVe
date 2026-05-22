@@ -14,5 +14,5 @@ Excerpt only; re-consult `CP_directory.md` if needed:
 - A1-3.md if assessment info needed
 - "CB" if full research design needed
 - RefRepo.md if ref needed
-- A1.md for submitted A1
 - Lu.md on DA comms/any submissions
+- A1R.md for refined A1 sent for DA/reviewers approval
