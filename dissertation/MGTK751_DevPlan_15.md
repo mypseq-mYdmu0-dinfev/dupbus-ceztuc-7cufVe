@@ -161,7 +161,8 @@
 > Remarks: Lu to guide at that stage; detail TBD
 
 - P12.2. Review Files
-> If needed, update CP files inc. but not limited to: ProjectSummary.md, Concept Brief.md (both ver), Lu.md
+- If needed, update CP files inc. but not limited to: ProjectSummary.md, Concept Brief.md (both ver), Lu.md
+- Remarks: CoreRef.md and RefRepo.md — page number reliability flags (noted as unreliable in earlier chats due to distillation method) were resolved via accurate text extraction; both files not confirmed updated at that time; verify all flags cleared and accurate page numbers recorded throughout both files.
 
 - P12.3. Distil PART C
   - P12.3.1. Compress AD01~AD07 (and beyond, if appropriate) into concise historic record
@@ -513,3 +514,63 @@ For reference (do not re-apply):
   - AD09.4.2. P09 instance — §3 writing reminders (critical): (a) do not over-claim multi-source capabilities; acknowledge interview-primary design with Yin-supported justification; (b) remove IPA-sounding terms from §3: "lived experience" and "frames of reference"; (c) insert §3.3 paragraph explicitly naming explanatory multiple-case study (Yin, 2009; Zainal, 2007), within-case/across-case sequence (Ayres et al., 2003); (d) never use word "multi-source" anywhere; (e) frame cross-case comparison positively as functional validation
   - AD09.4.3. A3 instance (Ch4/Ch5): avoid garden path analysis (Ayres et al.) — thematic analysis must produce cross-case configuration (how themes relate and vary across orgs), not just a theme inventory
   - AD09.4.4. Methodology deliberation (historically notable): genuine documented struggle between IPA and case study occurred; final decision driven by RQ1 conditions-orientation and CYC framing; deliberation was acknowledged in Lu status update as a strength signal demonstrating methodological maturity; may be briefly surfaced in P11.6 Lu email
+
+### AD10. P07–P11 (Chat 14) —— A1R Full Draft, QC & Lu's Checklist
+
+- AD10.1. What Was Done
+  - AD10.1.1. A1R.md created: §1 (837w) drafted by Branch 1 (Chat 14.1); §2 (1,192w) drafted and restructured by Branch 2 (Chat 14.2); §2 fixes applied by Branch 3 (see AD10.2.6); §3 (838w) drafted and finalised by Branch 3 (Chat 14.3) through three P09.5 language audits; §4 Milestone Plan carried from A1.md (v09) unchanged; §5 References updated with all new sources
+  - AD10.1.2. RefRepo.md updated: 4 new practitioner sources added in Branch 1 (Beatson 2024, Young & Tong 2025, AHRI 2025, AHRI 2026); 7 new academic sources added in Branch 2 (Breidenthal et al. 2020, Danko & Crhová 2024, Gully et al. 2012, Mathieu et al. 2015, Matthews & Kelemen 2024, Meng et al. 2003, Podsakoff et al. 2000); 3 new methodology sources added in Branch 3 (Yin 2003, Zainal 2007, Ayres et al. 2003)
+  - AD10.1.3. P10 & P11 completed; no changes required; Lu's response pending
+
+- AD10.2. Key Decisions Made
+  - AD10.2.1. §2.4 (TPS in AU KBF) added as a fourth lit review section between §2.3 and §2.5, using exclusively academic sources (Feather's AU-origin studies + Meng et al. 2003); authorised per Lu's Meeting 01 directive ("TPS in [specific industry in Australia]"); not in DevPlan P08.1.2 funnel — see AD10.3.2
+  - AD10.2.2. Full §2 restructure authorised in Branch 2; DevPlan P08.1.3 (attempt reframe without reorganising) and P08.1.4 (flag before reorganising) both superseded
+  - AD10.2.3. Yin (2003) confirmed throughout A1R: initial Branch 3 draft erroneously cited Yin (2009) using training knowledge (see AD10.3.5); corrected to 3rd edition per Lu's shared folder copy (`/From Lu/yin-case study-book.pdf`); all cited content verified valid in 3rd ed by Gemini (full text not directly accessed)
+  - AD10.2.4. Holmes et al. (2017) removed from §2 (NZ context, no strategic value in lit review); retained in §1 only
+  - AD10.2.5. §3.6 (Feasibility & Limitations) retained in A1R at proposal stage; A3 placement deferred — see AD10.5.1
+  - AD10.2.6. §2 fixes applied by Branch 3 (Branch 2 scope errors): "(Braun and Clarke, 2006)" → "(Saunders, Lewis and Thornhill, 2023)" in §2.5 (rationale: Braun & Clarke = methods cite; Saunders et al. = correct epistemology cite for "relational associations over directional causation")
+  - AD10.2.8. Festinger (1954, p.132): page number verified by Culous against actual text; the quote "necessary or important for the life of the group" sits near bottom of p.132 but not within Corollary VII B statement itself — Corollary VII B not named in §2.3; (1954, p.132) citation correct as-is; do not restore the Corollary reference
+  - AD10.2.9. "Structure of Chapters" subsection retained in A1R §1 with heading "(pre-drafted for Assessment 3 full paper)"; serves as forward framing for Lu and reviewers; invited Lu in P11.6 email to advise if removal preferred before proposal/ethics reviewers' read
+
+- AD10.3. Deviation from Dev Plan
+  - AD10.3.1. Chat 14 split into four parallel branches (14.1–14.4) to manage context window constraints: Branch 1 = P07; Branch 2 = P08; Branch 3 = P09; Branch 4 = P10 + P11; not in DevPlan; no impact on outputs
+  - AD10.3.2. §2.4 (TPS in AU KBF) not in DevPlan P08.1.2 funnel (specified TPS → TPS in KM → TPS in KBFs only); addition authorised per Lu's Meeting 01 directive; DevPlan funnel description now outdated for A3 Ch2 drafting — true §2 structure is §2.1–§2.5 as in A1R
+  - AD10.3.3. P08.1.3 & P08.1.4 both superseded by full restructure decision; A1R §2 is the canonical structure going forward
+  - AD10.3.4. Branch 3 initially omitted §3.6 (Feasibility & Limitations) without rationale; Culous reverted and restored using A1.md version as base; logged as Branch 3 deviation; no impact on final §3
+  - AD10.3.5. Branch 3 initially cited Yin (2009) using training knowledge (fabricated 4th edition outside approved sources); corrected to Yin (2003) per Lu's shared folder; standing rule established — see AD10.4.2
+  - AD10.3.6. Pre-doc review (internal docs update: ProjectSummary.md, CB comp & concise) done at P06 in Chat 13 rather than P12.2; pre-existing deviation logged in AD09.3.1; confirmed appropriate at time
+
+- AD10.4. Standing Rules (New & Confirmed)
+  - AD10.4.1. **1-per-org framing rule (permanent):** NEVER frame 1-per-org design as a consent advantage in any deliverable, DA comms, or methodology discussion — frame only as methodological isolation rationale ("isolate TPS dynamics from single-firm cultural idiosyncrasies"); applies to A1R, A3 Ch3, A2, all DA emails, and any reviewer discussion
+  - AD10.4.2. **Reference details — approved sources only (permanent):** never use training knowledge for reference details (author names, years, editions, page numbers, titles); RefRepo.md and CoreRef.md are the only approved sources; if a detail is absent, request the source or upload for extraction before citing; established after Branch 3's Yin (2009) fabrication error
+  - AD10.4.3. **§3 future/conditional tense:** appropriate throughout §3 while ethics gate remains uncleaned; do not revert to present tense until data collection begins
+  - AD10.4.4. **"multi-source" prohibition confirmed:** never mention absence of multi-source data; frame as "data collected across six independent organisational contexts enabling cross-case comparison and convergent validation"
+  - AD10.4.5. **"replication logic" in quotation marks:** Yin's coined term of art; quotation marks mandatory in all future uses in A1R, A3 Ch3, and any methodology discussion
+
+- AD10.5. Pre-Flagged Items for P12.2
+  - AD10.5.1. **§3.6 Feasibility & Limitations in A3:** retained for A1R (appropriate at proposal stage); A3_Template.md Ch3 does not list it as an explicit subsection; Ch6 carries a dedicated Research Limitations section — likely the correct A3 home; verify at P12.2 and A3 Ch3 drafting against A1-3.md and A3_Template.md
+  - AD10.5.2. **Danko & Crhová (2024):** JKE not ABS-listed; empirically appropriate and acceptable for A1R (unmarked); must be explicitly caveated in A3 Ch2 (e.g., noting JKE's absence from ABS rankings as a source limitation)
+  - AD10.5.3. **Meng et al. (2003):** appears in both §2.1 (AU-context TPS evidence alongside Mancl & Penington) and §2.4 (primary AU professional TPS anchor) by user approval; minor narrative redundancy; discuss at P12.2 — possible resolution: substitute §2.1 role with another source at A3 Ch2 drafting
+
+- AD10.6. §3 Style/Word Decisions — Do Not Alter in A1R or A3 Ch3
+  - AD10.6.1. `**interpretivist**` and `**explanatory multi-case study**` in bold (§3.1): deliberate emphasis for Lu; do not remove; discuss if extending to other terms
+  - AD10.6.2. "confirmation bias" (§3.1): deliberate over "predetermined conceptual structure"; signals inductive design awareness explicitly to markers
+  - AD10.6.3. "TPS experience" (§3.1): chosen over "peer experience" — supplementary participants (TPs, managers) also experience TPS; all three participant types covered
+  - AD10.6.4. "Each sample unit constitutes a single case" (§3.1): "sample unit" preferred over "participating organisation" (implies multi-participant org research) and "participant" (not yet introduced at that point); footnote [5] clarifies 1-per-org
+  - AD10.6.5. "replication logic" in quotation marks (§§3.1 and 3.4): Yin's term of art; mandatory
+  - AD10.6.6. "means" then "approach" (§3.2): Teams = communication channel/platform, not a research technique; deliberate word pairing to avoid mislabelling
+  - AD10.6.7. "data saturation" throughout §3.3: preferred over "theoretical saturation"
+  - AD10.6.8. "Primary participants are TPPs" (§3.3): "Primary" distinguishes from supplementary; do not remove
+  - AD10.6.9. "single-entity sampling" (§3.3): broader than "single-organisation"; do not revert
+  - AD10.6.10. Oxford comma in "Guest, Bunce, and Johnson" (§3.3): retained by Culous' explicit decision despite British English convention
+  - AD10.6.11. Future/conditional tense throughout §3: ethics gate not cleared; do not revert to present tense until A3
+  - AD10.6.12. Yin (2003) throughout: confirmed 3rd edition; do not change back to (2009)
+
+- AD10.7. §2 Style/Word Decisions — Do Not Alter in A1R or A3 Ch2
+  - AD10.7.1. "Tall Poppy Scale" in quotation marks (§2.1): Feather coined the term; quotation marks attribute correctly
+  - AD10.7.2. "Spontaneous" KS (§2.2): user's deliberate style choice despite OCB terminology conventions; do not change
+  - AD10.7.3. "elevates" (§2.3, Gully et al. sentence): user override of GenAI vocabulary ban for this specific instance; acceptable in A1R; may warrant reconsideration at A3 Ch2 drafting
+  - AD10.7.4. "which is exactly a call this study directly answers" (§2.5): intentional rhetorical intensification; do not revert
+  - AD10.7.5. "frontier" over "moderators" (§2.5): user's deliberate stronger gap claim; do not revert
+  - AD10.7.6. Festinger (1954, p.132) in §2.3: page number confirmed; Corollary VII B not named (per AD10.2.8); do not restore Corollary reference
+  - AD10.7.7. Meng et al. (2003) in both §2.1 and §2.4: user-approved; do not remove from either section without instruction

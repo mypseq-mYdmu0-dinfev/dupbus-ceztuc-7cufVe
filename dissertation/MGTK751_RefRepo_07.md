@@ -190,6 +190,17 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
+### Meng, Y.K., Ashkanasy, N.M. and Härtel, C.E.J. (2003) 'The effects of Australian tall poppy attitudes on American value based leadership theory', *International Journal of Value-Based Management*, 16(1), pp. 53–65. doi: 10.1023/A:1021984005070.
+
+**Full text confirmed (PDF)** | ABS ranking: Not listed (journal discontinued c.2004–05; Springer/Kluwer)
+
+- Survey of 22 Queensland CEOs (drawn from Queensland 400 largest businesses) and 149 CEO–subordinate relationships; TPS attitudes significantly and negatively related to perceptions of value-based leader behaviour (B=−0.37, R²=0.14, p<0.10) and subordinate CEMS — commitment, effectiveness, motivation, satisfaction (B=−0.42, R²=0.18, p<0.10); documents TPS operating as a measurable organisational constraint in an AU professional setting, extending Feather's (1989) attitudinal framing to demonstrated org consequences
+- Drawing on Ashkanasy and Falkus (1997), frames TPS as one of four uniquely Australian cultural dimensions of leadership (alongside mateship, "one of us," and underdog orientation), grounded in AU low power distance (Hofstede, 1980); TPS is endemic to AU org culture, not an individual-level aberration — provides cultural specificity Feather (1989, 1994) does not supply
+- Limitation: N=22 CEOs is small and Queensland-specific; cross-sectional; predominantly male sample; IJVBM not ABS-ranked
+- **§2.1** (secondary): AU-context professional complement to Mancl & Penington (2011) — where Mancl & Penington documents TPS behavioural expression in the US workplace, Meng et al. confirms TPS producing negative org performance outcomes in AU professional context; **§2.4** (primary): bridges Feather's attitudinal research to demonstrated professional organisational consequence, grounding the KBF risk claim in AU-specific evidence
+
+---
+
 ### Holmes, J., Marra, M. and Lazzaro-Salazar, M. (2017) 'Negotiating the tall poppy syndrome in New Zealand workplaces: Women leaders managing the challenge', *Gender and Language*, 11(1), pp. 1–29. doi: 10.1558/genl.31236.
 
 **Full text confirmed**
@@ -301,6 +312,17 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
+### Danko, L. and Crhová, Z. (2024) 'Rethinking the role of knowledge sharing on organisational performance in knowledge-intensive business services', *Journal of the Knowledge Economy*, 16, pp. 13873–13893. doi: 10.1007/s13132-024-02354-5.
+
+**Open access, full text confirmed** | ABS ranking: Not listed in ABS 2021 (no ABS 2+ alternative found with equivalent KBV fit; noted as limitation)
+
+- Explicitly grounded in Grant (1996) KBV; empirically tests knowledge sharing → org performance in KIBS (n=237, Czech Republic, PLS-SEM, two-round questionnaire); knowledge sharing significantly predicts innovativeness (internal communication β=0.250, T=2.893; sharing as work duty β=0.147, T=2.106) and market efficiency (β=0.362, T=4.121), operationalising Grant's claim that knowledge integration drives competitive performance outcomes in contemporary KIBS
+- Knowledge sharing has no significant effect on financial performance (R²=0.091), indicating the KBV→competitive advantage chain is dimension-dependent: innovativeness and market positioning respond to knowledge flows; direct financial returns are mediated by additional org factors — important calibration note when deploying Grant (1996) in §2.2 argument
+- Limitation: weak overall R² (0.091–0.237); Czech Republic KIBS only; cross-sectional; JKE not ABS-listed
+- **§2.2**: recent empirical pairing for Grant (1996) and Kogut & Zander (1992); demonstrates KBV propositions remain empirically operative in contemporary KBFs (KIBS) — knowledge sharing measurably drives innovativeness and market efficiency; positions TPS-induced KS withdrawal as a KBV-documented competitive risk, not merely a cultural observation
+
+---
+
 ### Nonaka, I. (1994) 'A dynamic theory of organizational knowledge creation', *Organization Science*, 5(1), pp. 14–37. doi: 10.1287/orsc.5.1.14.
 
 **Full text confirmed** | **Pairing source only** (not primary theoretical anchor)
@@ -318,7 +340,7 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
-### Matthews, M.J. and Kelemen, T.K. (2025) 'To compare is human: A review of social comparison theory in organizational settings', *Journal of Management*, 51(1). doi: 10.1177/01492063241266157.
+### Matthews, M.J. and Kelemen, T.K. (2024) 'To compare is human: A review of social comparison theory in organizational settings', *Journal of Management*, 51(1). doi: 10.1177/01492063241266157.
 
 **Open access**
 
@@ -466,7 +488,7 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
-### Gully, S.M., Devine, D.J. and Whitney, D.J. (2012) 'A meta-analysis of cohesion and performance: Effects of level of analysis and task interdependence', *Small Group Research*, 43(6), pp. 702–725.
+### Gully, S.M., Devine, D.J. and Whitney, D.J. (2012) 'A meta-analysis of cohesion and performance: Effects of level of analysis and task interdependence', *Small Group Research*, 43(6), pp. 702–725. doi: 10.1177/1046496412468069.
 
 **Full text confirmed (library PDF)**
 
@@ -628,11 +650,11 @@ Covers academic writing process; report structures (traditional academic, altern
 
 ---
 
-### Beatson, M. (2024) *People-Powered Innovation*. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2024-pdfs/8674-people-powered-innovation-report-web.pdf (Accessed: 13 May 2026).
+### Beatson, M. (2024) *People-Powered Innovation*. London: Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2024-pdfs/8674-people-powered-innovation-report-web.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (59 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; UK-based; September 2024; cite with scope caveat**
 
-- Internal knowledge is the single highest-rated innovation source across UK organisations with 10+ employees (39%), above clients, suppliers, and competitors combined — evidences the strategic dependency of KBFs on voluntary internal knowledge flow; any mechanism suppressing it (TPS) is a first-order competitive risk
+- Internal knowledge is the single highest-rated innovation source across UK organisations with 10+ employees (39%), outranking any single external factor, including clients (31%), suppliers (25%), and competitors (20%) — evidences the strategic dependency of KBFs on voluntary internal knowledge flow; any mechanism suppressing it (TPS) is a first-order competitive risk
 - 60% of employees make innovative suggestions to improve quality, but participation is contingent on psychological engagement and perceived managerial receptiveness; employees "sit on their hands" when disengaged or feel unheard — directly parallels TPS-driven withdrawal; translates to KBF contexts given tacit knowledge dependency
 - High-performance workplaces (HPWs) — the organisational form most associated with knowledge-intensive innovation — declined from 22% (2018) to 18% (2023); decline linked to weakening employee autonomy, direct participation, and collaborative working norms — exactly the conditions TPS erodes
 - "Organisations that actively listen and act on recommendations from frontline employees are 80% more likely than others to consistently implement new and better ways of doing things" (citing McKinsey) — supports the argument that TPP-level peer dynamics, not just management policy, drive knowledge performance
@@ -640,35 +662,34 @@ Covers academic writing process; report structures (traditional academic, altern
 
 ---
 
-### CIPD (2025) *Good Work Index 2025*. Survey report, June 2025. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2025-pdfs/8868-good-work-index-2025-report-web1.pdf (Accessed: 13 May 2026).
+### Young, J. and Tong, D. (2025) *Good Work Index 2025*. Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2025-pdfs/8868-good-work-index-2025-report-web1.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (37 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; UK workforce sample (n≈5,000); annual survey; June 2025; cite with scope caveat**
 
-- Only 51% of managers seek the views of employees; only 37% of employees report their manager allows them to influence final decisions — structural voice suppression across the majority of UK workplaces; for KBFs where tacit knowledge is laterally embedded, this management failure creates the precise vacuum in which TPS-type peer dynamics flourish unchecked
+- Only 51% of employees say their manager is good at seeking their views (employee perception, not observed manager behaviour); only 37% of employees report their manager allows them to influence final decisions — structural voice suppression across the majority of UK workplaces; for KBFs where tacit knowledge is laterally embedded, this management failure creates the precise vacuum in which TPS-type peer dynamics flourish unchecked
 - ~10 million UK employees do not believe they receive useful feedback from their manager or that their manager actively supports their performance improvement — scales the management effectiveness failure from individual behaviour to systemic workplace risk
 - 3 in 10 workers report being overqualified for their role; overqualified employees significantly more likely to intend to quit, less enthusiastic, and less likely to perceive their work positively — mirrors TPS-affected high performer profile (skills underutilised through peer suppression, not job design), yielding same disengagement and attrition outcomes
-- Data on workplace conflict frequency (30% of workers experience conflict annually), impact on exit intent, and its concentration in higher-skill professional occupations strengthens the argument that TPS-type dynamics carry quantifiable HR cost
-- A1R §1: management failure scale and workplace conflict prevalence; A3 Ch1/Ch5: voice suppression as structural TPS enabler; A3 Ch6: manager capability recommendations
+- A1R §1: management failure scale; A3 Ch1/Ch5: voice suppression as structural TPS enabler; A3 Ch6: manager capability recommendations
 
 ---
 
-### Australian HR Institute (AHRI) (2025) *Quarterly Australian Work Outlook: December Quarter 2025*. AHRI. Available at: https://www.ahri.com.au/wp-content/uploads/AHRI-WorkOutlook-Report-2025-Q4_digital.pdf (Accessed: 13 May 2026).
+### AHRI (2025) *Quarterly Australian Work Outlook: December Quarter 2025*. Melbourne: Australian HR Institute. Available at: https://www.ahri.com.au/wp-content/uploads/AHRI-WorkOutlook-Report-2025-Q4_digital.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (42 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; Australian employer survey; December quarter 2025; cite with scope caveat**
 
-- Workplace stress as driver of unscheduled absence has risen sharply from 42% to 57% of Australian employers between 2023 and 2025; AHRI attributes this to intensifying pressures on employee relationships, role clarity, and workloads — directly captures the relational category of harm TPS inflicts; strongest available current Australian-context data point for §1
+- Workplace stress as driver of unscheduled absence has risen sharply from 42% to 57% of Australian employers between 2023 and 2025; AHRI attributes this to intensifying pressures on employee relationships, role clarity, and workloads ⚠️ cite as overall stress figure only — do NOT attribute solely to relational/interpersonal pressures; relationships are one of multiple listed factors — directly captures the relational category of harm TPS inflicts; strongest available current Australian-context data point for §1
 - More than one in three Australian employers reported increased job-demand or conflict issues in their workplaces in 2024; psychosocial hazard claims rising — TPS, as peer-level interpersonal marginalisation, maps directly to this category; provides Australian regulatory-context prevalence
 - 30% of organisations planning redundancies (up 6 percentage points across two quarters); 35% report recruitment difficulties — dual-pressure environment sharpens TPS attrition cost argument: in a softening labour market, the voluntary departure of high performers carries amplified strategic cost for KBFs unable to replace them quickly
 - A1R §1: Australian workplace context, stress/conflict prevalence, talent retention cost framing; A3 Ch1: Australian KBF operating environment; A3 Ch6: SMART recommendations referencing Australian psychosocial hazard obligations
 
 ---
 
-### Australian HR Institute (AHRI) (2026) *5 2026 Workforce Trends*. AHRI. Available at: https://www.ahri.com.au/wp-content/uploads/5-2026-workforce-trends-1.pdf (Accessed: 13 May 2026).
+### AHRI (2026) *5 2026 Workforce Trends*. Melbourne: Australian HR Institute. Available at: https://www.ahri.com.au/wp-content/uploads/5-2026-workforce-trends-1.pdf (Accessed: 13 May 2026).
 
 **Full text confirmed (9 pp., open access PDF)** | **Practitioner source — non-peer-reviewed; Australian employer survey; based on AHRI March quarter 2026 data; brief infographic-style document — use for Australian statistical context; not a full survey report**
 
-- 39% of Australian organisations say strategic leadership is critical to goals; 31% say managers are not proficient in it. 39% say team development and people management is critical; 35% say their managers lack this skill — the leadership-capability gap creates the management vacuum in which TPS operates unchecked in Australian KBFs
-- Only 7% of Australian organisations say developing critical thinking is a key training focus, yet this is among the most strategically critical capabilities in KBFs; a workforce management culture that deprioritises critical skill development is structurally more vulnerable to losing the few employees who carry them through TPS-driven attrition
+- 39% of Australian organisations say strategic leadership is critical to goals; 31% say managers are not proficient in it. 39% say team development and people management is critical; 35% say their managers lack this skill ⚠️ all figures = organisational perception of manager proficiency, not manager self-report → [analyst note]: the leadership-capability gap creates the management vacuum in which TPS operates unchecked in Australian KBFs
+- Only 7% of Australian organisations say developing critical thinking is a key training focus → [analyst note]: yet this is among the most strategically critical capabilities in KBFs; a workforce management culture that deprioritises critical skill development is structurally more vulnerable to losing the few employees who carry them through TPS-driven attrition
 - Average employee turnover declined to 14% in the March quarter of 2026; $1,122 average training investment per employee in 2025 — contextualises the financial cost of talent loss in Australian organisations
 - Note: 9-page document (infographic style); use for Australian data points only; pair with AHRI Q4 2025 for fuller methodological backing when both are cited together
 - A1R §1: Australian management deficit and critical-thinking investment gap; A3 Ch1/Ch6: Australian-specific management capability framing
