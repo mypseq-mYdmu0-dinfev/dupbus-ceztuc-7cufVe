@@ -24,7 +24,7 @@ Identify anything special about this position or company (& group) that I should
 Based on given content/web search/my bg, suggest 1-3 potential interview questions.
 
 ### 6. ** Cover Letter (CL):**
-Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone.
+Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone (100% factual; no fabrication).
 
 #### Template —— Content in `[]` = internal notes, ensure clean handling
 
@@ -43,7 +43,7 @@ Throughout my 16⁺ years of career in content and project management, I have wo
 - in B2B (consultancy/agency), B2C (brand/media), NPO (non-profit), and Government entities
 - in different scales of organisations, from startup to family business and to MNC (multinational corporations)
 - in/with clients from: Britain, France, Italy, Spain, Hong Kong, Taiwan, China, Singapore, etc.
-- with diverse industries: Tech, Bank, Automotive, Jewellery, Fashion, Health, Sports, Education, FMCG (fast-moving consumer goods), etc. (http://Projects.CulousYu.com)
+- with diverse industries: Tech, Bank, Automotive, Jewellery, Fashion, Health, Sports, Education, FMCG, etc. (http://Projects.CulousYu.com)
 
 I am more than excited by the prospect of devoting my expertise to [Company Name] and contributing to ([Group Name]'s) [specific aspect of their approach/culture/philosophy]. [Express interest in a unique aspect of the position or company].
 
@@ -61,9 +61,9 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 | Role Type | Resume Filename |
 |---|---|
 | Business Analysis, Project/Change/Ops Mgmt, Consulting-adjacent | `Culous_Yu_Resume_Consulting.pdf` |
-| Marketing, Branding, PR, Social Media, Content | `Culous_Yu_Resume_Marketing.pdf` |
+| Marketing, Branding, PR, Social Media, Content, Event | `Culous_Yu_Resume_Marketing.pdf` |
 | UX/UI, Service/Graphic Design, Product Mgmt, Digital Product | `Culous_Yu_Resume_IxD.pdf` |
-| IT, IS, Data Analytics, Software Engineering, Technical | `Culous_Yu_Resume_IT.pdf` |
+| IT, IS, Data, Software, System, Programming, Technical | `Culous_Yu_Resume_IT.pdf` |
 | All others (Admin, Customer Service, Office Mgmt/Support, etc.) | `Culous_Yu_Resume_General.pdf` |
 
 *Note: When using `Culous_Yu_Resume_Marketing.pdf` or `Culous_Yu_Resume_IxD.pdf`, refer as "Interaction Design", not HCI.*
@@ -81,6 +81,7 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 - "HCI" first use as "Human-Computer Interaction (HCI)", unless role is design-centric (use "Interaction Design (IxD)"); thereafter "HCI"/"IxD" are acceptable — CHOOSE EITHER, NEVER BOTH (confusing)
 - Use "Advanced Data Analytics Algorithms" (never "Advanced Data Analytics") when referencing that UTS subject (only if it helps; don't mention abruptly)
 - Graduation year usually adds no value in CL (but not undisclosable), may rather subtly mention other perks: e.g. ❌ "...at UTS (HD; 2025)"; ✅ "...at UTS (HD; Dean's List)"
+- Never use "First Class Honours", use "High Distinction" or "HD" for UTS and "Grade A" for MBA
 - Figures (e.g. 16⁺ years) must each appear no more than once per CL
 - Include `http://Presentation.CulousYu.com` (Virtual Presentation) and `http://Projects.CulousYu.com` (select case studies in web form) as plain text URL in CL body if highly applicable
 - Don't use abbrev. (e.g. `KE` `ML` `AAII` must be in full) unless prevalent (e.g. `AI` `IT` `UTS`)

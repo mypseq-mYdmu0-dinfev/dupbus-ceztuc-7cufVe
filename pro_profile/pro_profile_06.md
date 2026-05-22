@@ -13,7 +13,7 @@
 ## Education
 
 - **Master of Human-Computer Interaction** (internal: "MHci") w/ Data Analytics sub-major, Faculty of Engineering & IT (FEIT), UTS —— graduated NOV 2025, HD (GPA: 6.63/7)
-  - Encompass IT degrees (e.g. computer science/IS/cloud); emphasise FEIT if it helps
+  - Encompass IT degrees (e.g. computer science/IS/cloud)
   - Transcend design degrees (e.g. graphic/visual comms; regard as foundational sub-discipline)
 - **MBA**, University of Liverpool —— Grade A; final dissertation stage; graduation late 2026
   - Encompass basics of: Economics, Finance, Marketing, HR, Ops/Supply Chain, PM, Data
@@ -84,13 +84,13 @@
 
 | Domain | Years |
 |---|---|
-| Copywriting (inc. technical, publication, press release) | 18 |
+| Copywriting (inc. technical, publication, press release) | 16 |
 | Design/creative/multimedia/print | 16 |
 | Content mgmt/planning/production | 16 |
 | Project/programme mgmt | 16 |
 | Marketing/branding/PR/event | 8 |
 | Leadership/team/stakeholder mgmt | 8 |
-| Consulting and related skills (e.g. presentation, pitching) | 6 (never apply to consulting roles) |
+| Consulting and related skills (e.g. Business Analysis, Leadership/Mgmt) | 6 |
 | Media buying/communications | 5 |
 | UI/UX/IxD/HCI/product design | 3 |
 | IT/IS/data analytics | 3 |

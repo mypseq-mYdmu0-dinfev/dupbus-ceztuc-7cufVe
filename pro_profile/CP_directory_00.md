@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Purpose & remarks of this CP.
 
 pro_profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/pro_profile_05.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/pro_profile_06.md
 My professional profile; fetch below files for details if needed.
 
 ---
@@ -23,7 +23,7 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_09.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/pro_profile/gcl_10.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
@@ -113,4 +113,4 @@ Essence of "Developing as a Manager and Leader" module (Grade A).
 Filenames starting with "Cover Letter"; filename has `(C)` = sent to consulting firm; also in filename: company, specific division (if applicable), timestamp:
 - e.g. `Cover Letter of Culous Yu (C) _ Bain _ General Consulting _ 202602282235.txt` = sent to Bain, specifically "General Consulting" division; benchmark for CCL quality.
 - e.g. `Cover Letter of Culous Yu (C) _ BCG _ 202603031831.txt` = sent to BCG (after Bain), no specific division; more assertive but might not be always applicable.
-- Note: these two still use WAMs & old P.S. — MUST use GPA for UTS ("ATS Resumes"), WAM for MBA (if applicable), and new P.S. (gcl.md)
+- Note: these two still use WAMs & old P.S. — MUST use GPA for UTS (see "ATS Resumes"), WAM for MBA (if meaningful to mention), and new P.S. (see gcl.md)
