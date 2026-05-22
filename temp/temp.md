@@ -12,7 +12,7 @@ Before beginning the loop, determine current state from open tabs AND contents i
 | Tab 2+3 | ✅ | ✅ (filename w/o `⏳_`) | ❌ (success page; S6.4.4) | Post-application, before S6.4.6 | F2 → F4 |
 | Tab 2+3 | ✅ | ❌ | ✅ (job post) | Mid-analysis, post-AR | F2 → F5 |
 | Tab 2+3 | ❌ | — | — | Pre-AR | Refresh Tab 2 → S2 |
-| Tab 2 only | ✅ | ✅ (filename w/o `⏳_`) | ❌ (success page; S6.4.4) | Post-application, before S6.4.6 | F2 → F4 |
+| Tab 2 only | ✅ | ✅ (filename w/o `⏳_`) | — | Post-application, before S6.4.6 | F2 → F4 |
 | Tab 2 only | ❌ | — | — | Interrupted during S2 | Refresh Tab 2 → S2 |
 
 F1. `navigate` (refresh) Tab 1 only:
