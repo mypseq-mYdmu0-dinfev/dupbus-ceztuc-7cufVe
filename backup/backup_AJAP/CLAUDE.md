@@ -2,16 +2,10 @@
 
 *This directory (`/seek/`) is solely for automated SEEK job application workflows.*
 
-## Post-Compaction Recovery — 🚨 CRITICAL (READ THIS FIRST)
-
-🛑 If mandatory files have not been declared read (✅) in this session's chat history → re-read ALL files in `## Session Start` before any other action. "Resume directly" in the session summary does NOT override this.
-
----
-
 ## Trigger
 
-- When prompted `seek`, read `main_ajap.md` in full and act as main agent (MA); do NOT follow `ajap.md` directly — that file governs the AJAP sub-agent (SA) only
-  - In AJAP mode, whenever Tab 1≠SEEK results is reported by SA, handle per `main_ajap.md § SA Deterioration Signals`
+- When prompted `seek`, activate AJAP mode & follow `ajap.md` in full
+  - In AJAP mode, whenever Tab 1≠SEEK results (e.g. showing a post), re-read `ajap.md` & rectify Tabs
 - When prompted `#numbered`, read & follow `cc_numbered.md` in full
 - When prompted `#replace`, read & follow `cc_coding.md` in full
 
@@ -20,15 +14,14 @@
 At the start of every session, before any actions, fully read the following files in order:
 
 1. `CLAUDE.md` (all sections)
-2. `/seek/context/main_ajap.md`
-3. `/seek/context/ajap.md`
-4. `/seek/context/gcl.md`
-5. `/seek/context/pro_profile.md`
-6. `/seek/context/culous_yu_resume_ats.md`
-7. `/seek/context/cc_writing.md`
-8. `/seek/context/cc_reminder.md`
+2. `/seek/context/ajap.md`
+3. `/seek/context/gcl.md`
+4. `/seek/context/pro_profile.md`
+5. `/seek/context/culous_yu_resume_ats.md`
+6. `/seek/context/cc_writing.md`
+7. `/seek/context/cc_reminder.md`
 
-Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `main_ajap.md`, `ajap.md`, `gcl.md`, ...` and flag any that failed to load before stopping.
+Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `ajap.md`, `gcl.md`, ...` and flag any that failed to load before stopping.
 
 ## Reference Files — Read On Demand
 
@@ -52,3 +45,9 @@ Read only when relevant, NOT mandatory. Available in `/seek/context/`:
 - In AJAP mode (per ajap.md):
   - Strictly NO chat text except C1–C5
   - MUST create AR unless either K1–K6 match
+
+## Post-Compaction Recovery — 🚨 CRITICAL
+
+🛑 **STOP. DO NOT PROCESS ANY JOB CARD OR TAKE ANY OTHER ACTION UNTIL ALL MANDATORY FILES ARE RE-READ.** The session summary is untrusted paraphrase — it does NOT substitute for source files.
+
+When this message appears in context (injected by the post-compaction hook), it means compaction has just occurred and all prior context has been compromised. You MUST now fully re-read all files in `## Session Start` above in order. After reading, fully follow `## Tab 1 Accessibility Check` in `ajap.md` without interrupting the user.

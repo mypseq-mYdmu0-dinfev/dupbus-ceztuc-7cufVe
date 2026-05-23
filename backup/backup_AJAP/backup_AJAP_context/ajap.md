@@ -34,8 +34,6 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 | C4 | `🚨` Tab 1 alert | Only when A6 inaccessibility threshold reached |
 | C5 | Response to user msg | One sentence max; per § User Interventions |
 
-**Sub-agent mode:** when running as AJAP sub-agent (spawned by main agent), outputs are received by the main agent only and are never user-visible. C1–C5 restrictions apply solely to the main agent's user-visible outputs. Sub-agent may narrate progress freely to facilitate main agent auditing. Sub-agent must NOT output C2 (S0.3) to user; include N in the structured loop report to main agent instead.
-
 ---
 
 ## Browser Layout (FIXED; STRICTLY COMPLY)
@@ -49,9 +47,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 ## Session Initialisation
 
 Execute once per AJAP runtime (not per loop), before Tab 1 Accessibility Check:
-- **Recovery gate (FIRST):** if mandatory files have not been declared read (✅) in this session's chat history → re-read ALL per `CLAUDE.md § Session Start` now; do NOT proceed past this point until done
 - Bash: `rm -f /tmp/CulousYu_CoverLetter_*.pdf` — clear temp CL files from prior sessions
-- Bash: `rm -f /tmp/ajap_last_decision.md` — clear last-decision tmp file from prior sessions
 
 ---
 
@@ -73,7 +69,7 @@ A7. Critical restriction: never construct a SEEK URL (including homepage `seek.c
 
 ## Pre-Flight Check (F[no.] = detailed actions)
 
-Before beginning the loop, run F6 first (orphaned AR cleanup), then determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders):
+Before beginning the loop, determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders):
 
 | Tabs Open | AR? | AR Complete (contains P.S. line)? | Tab 3 ≡ Tab 2? | State | Action |
 |---|---|---|---|---|---|
@@ -86,8 +82,6 @@ Before beginning the loop, run F6 first (orphaned AR cleanup), then determine cu
 | Tab 2+3 | ❌ | — | — | Pre-analysis | Refresh Tab 2 → S2 |
 | Tab 2 only | ✅ | ✅ (filename w/o `⏳_`) | — | Post-application, before S6.4.6 | F2 → F4 |
 | Tab 2 only | ❌ | — | — | Interrupted during S2 | Refresh Tab 2 → S2 |
-| Tab 2+3 | ✅ (in `/skipped/` or `/pending/`) | — | — | Already decided | Close Tab 3 & 2; silently skip (K6-equiv.) |
-| Tab 2 only | ✅ (in `/skipped/` or `/pending/`) | — | — | Already decided | Close Tab 2; silently skip (K6-equiv.) |
 
 F1. `navigate` (refresh) Tab 1 only:
 - F1.1. DON'T screenshot-scroll/`read_page`/`get_page_text`/`querySelectorAll` in Tab 1
@@ -101,7 +95,6 @@ F4. Check if AR reads `Outcome: Applied`
 - F4.1. If yes → S6.4.4.2 if filename w/ `⏳_`, otherwise S6.4.6
 - F4.2. If no (filename error) → F3 → re-read AR → S6
 F5. Void existing AR (per Void Rule), then restart from S2 (new AR) since research context is compromised & recovery is unreliable
-F6. Check if any AR matching the current open job (by employer + role in filename) exists in `/seek/applied/` WITHOUT `❌_` prefix AND WITHOUT confirmed `Outcome: Applied` — if found, void it (per Void Rule) before consulting the Pre-Flight table; prevents duplicate active ARs from compaction-interrupted prior cycles
 
 ---
 
@@ -116,7 +109,7 @@ S0.2. Determine N by recalling the last `🎯[N]` count from this session's chat
 - S0.2.1. If no prior count is visible (1st card of session) → N = 0
 - S0.2.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
 - S0.2.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
-S0.3. Print in chat: `🎯[N] **job(s) processed so far.**` — **[Sub-agent mode: do NOT print to user; include N in loop completion report to main agent instead]**
+S0.3. Print in chat: `🎯[N] **job(s) processed so far.**`
 - S0.3.1. [N] = number emojis (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
 - S0.3.2. Mandatory; NO alternative phrasing or additional remarks (e.g. bracketed content)
 S0.4. Proceed to S1
@@ -265,9 +258,6 @@ S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md`
 
 ### S5. Create AR
 
-**Immediate first action — write decision to tmp file before anything else:**
-- Bash: `printf '%s' "[CompanyName] | [JobTitle] | [Action: Apply/Skip/Pending]" > /tmp/ajap_last_decision.md` — overwrites prior content; ensures decision survives compaction even if subsequent actions are not completed
-
 Before any action on Tab 3, create the AR (both plan & log).
 
 **Record Routing Path:**
@@ -340,7 +330,7 @@ S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or di
 - S6.2.3.1. If non-critical & acceptable: input `N/A` → rename AR by **appending** `⚠️_` (prefix becomes `⚠️_⏳_`) → continue
 - S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → rename AR by **replacing** `⏳_` prefix with `⚠️_` → close Tabs 3 & 2 → return to Tab 1 for next card
 - S6.2.3.3. For both: remark w/ `⚠️` in AR for `ajap.md` update
-S6.2.4. If answered any questions, MUST **append** to end of "3. Application Tailoring" in AR (DON'T replace/overwrite entire section)
+S6.2.4. If answered any questions, APPEND to end of "3. Application Tailoring" in AR (DON'T replace/overwrite entire section)
 S6.2.5. Click "Continue →"
 
 #### S6.3. "Update SEEK Profile"
@@ -352,20 +342,17 @@ S6.3.2. Scroll to bottom; click "Continue →"
 
 S6.4.1. Do NOT click "Profile visibility", "Make a strong impression", or any other card
 S6.4.2. Verify "Resumé" filename is correct, go back if not; then verify "You wrote a cover letter for this application" is visible, go back if not
-S6.4.2.5. **[Sub-agent mode only]** Report to main agent: `[AR_PATH] | Applying | [N] | [FLAGS or "none"]` — **PAUSE** and await main agent's explicit approval; if main agent instructs stop (CL compromised), void the AR (per Void Rule: rename `⏳_` prefix to `❌_`) then close Tabs 3 & 2 and return to Tab 1; do NOT follow S6.2.3.2
 S6.4.3. Click "Submit application"
 S6.4.4. Confirm **success** ("Your application has been sent to...") then immediately:
 - S6.4.4.1. Edit AR as `Outcome: Applied` AND
 - S6.4.4.2. Rename file to remove `⏳_` prefix
 S6.4.5. Ignore SEEK's suggestions ("You might also like...")
 S6.4.6. MUST close Tabs 3 & 2; then return to Tab 1
-S6.4.7. MUST print cumulative count (see S0) — **[Sub-agent mode: include N in loop completion report to main agent instead; do NOT print to user]**
+S6.4.7. MUST print cumulative count (see S0)
 S6.4.8. Continue the loop
 
 **If skipping:** close Tabs 3 & 2; return to Tab 1.
 **Every loop:** starts at S0, not S1.
-
-**[Sub-agent mode only] Loop completion report:** after tabs are closed and before starting the next S0, output to main agent: `[AR_PATH] | [OUTCOME: Applied/Skipped/Pending] | [N] | [FLAGS or "none"]` — **PAUSE** and await main agent instruction (SendMessage to continue, or stop if main agent retires this sub-agent).
 
 ### S7 —— Pagination
 
@@ -401,7 +388,6 @@ If user sends any msg mid-session:
 | Question | Answer/Action |
 |---|---|
 | Which of the following statements best describes your right to work in Australia? | I have a graduate temporary work visa |
-| Which of the following statements best describes your right to work in Australia | I have temporary work rights with no restrictions |
 | Expected salary (full-time) | Score < 85: ~$75,000/yr (~$1,438/wk); Score ≥ 85 or Fully Remote Work: ~$60,000/yr (~$1,151/wk); Select nearest available option ≤ target; never above. |
 | Full Driver's License | Yes (NSW Manual) |
 | Ethnic Group | "South-East Asian" → if N/A: "Asian" → if N/A: "Other"/"Prefer not to say" (NEVER "Chinese") |
@@ -415,7 +401,6 @@ If user sends any msg mid-session:
 | Do you identify as an Aboriginal/Torres Strait Islander/First Nations person? (or similar) | No |
 | Do you have a criminal conviction or criminal history? (or similar) | No |
 | How many hours are you available to work per week? | 50hr⁺ |
-| How much notice are you required to give your current employer? | None, I'm ready to go now |
 | Title | Mr. |
 | Preferred name | Culous |
 | Email (not account creation) | culousyu@gmail.com (NEVER use c@CulousYu.com; exclusive as resume content; rectify if auto-inserted after resume upload) → If requires email reading (e.g. auth/activation code): Save & let user handle → Follow S6.2.3.2 |
@@ -448,7 +433,6 @@ If user sends any msg mid-session:
 
 | Situation | Action |
 |---|---|
-| T&C / consent / declaration / "I agree" checkboxes required to proceed in application flow | Tick and continue — no confirmation needed; EXCEPTION: marketing/newsletter/third-party-sharing opt-ins that are ticked by default must be actively unticked |
 | Bottom-right support/Q&A chat widget on external portal | Standard design; not a blocker; dismiss or close it and proceed |
 | CL requires upload (no input box) | Bash: `pip3 install fpdf2 -q` if not installed → Python script using `fpdf` to render CL text → output to `/tmp/CulousYu_CoverLetter_[CompanyName].pdf` → upload via shadow DOM proxy + DragEvent drop (same as resume) |
 | Multi-page portals (e.g. SmartRecruiters "Preliminary questions") | Normal — use § AJAP Handling Notes (if unfound, read `/context/` files); NOT "struggling" situation |
