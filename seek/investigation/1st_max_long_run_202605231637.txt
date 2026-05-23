@@ -1,0 +1,499 @@
+Reading all mandatory session files now.
+
+✅ `ajap.md`, `gcl.md`, `pro_profile.md`, `culous_yu_resume_ats.md`, `cc_writing.md`, `cc_reminder.md`
+
+Now running Session Initialisation, then Tab 1 Accessibility Check.
+
+🎯0️⃣ **job(s) processed so far.**
+
+Now starting the loop. Processing card 1 (i=0): Product Designer at bet365.
+
+Checking K1–K5: Title "Product Designer" — no Director/Full Stack/Master (K1 clear). Let me check K6:
+
+K6 match for bet365 → silent skip (AR in skipped archive, 2 days old).
+
+Card 2 (i=1): Graphic Designer & Marketing Coordinator at The Green Elephant — checking K6:
+
+K6 match → silent skip.
+
+Card 3 (i=2): Product Designer (second instance). Checking company:
+
+Also bet365 → K6 match, silent skip.
+
+Card 4 (i=3): Senior Product Designer - Super — checking employer and K6:
+
+Batch-checking K6 across remaining candidates before starting the loop:
+
+K6 map complete. All cards 1–9 silent skips (K4/K5/K6). Now re-reading cc_reminder.md at S0.1:
+
+✅ `cc_reminder.md`
+
+Active checks: last chat output not C1–C5; `read_page` used on Tab 1 → re-reading `ajap.md`:
+
+✅ `ajap.md`
+
+🎯0️⃣ **job(s) processed so far.**
+
+Tab 2 opened. Now S2 — duplicate to Tab 3:
+
+Tab 2 & 3 ready. S2.2 — reading job post from Tab 3:
+
+Checking apply button type:
+
+M7 = 0 (external Apply). Ceiling estimate: M1~24 + M2~14 + M3~8 + M7=0 + 30 = 76 → S3.1 required. Running S3.1:
+
+Re-estimate after S3.1: M1~24 + M2~14 + M3~8 + M4~3 + M5~6 + M6~2 + M7~0 = 57 < 70, M7=0 → Exception → skip. S5: creating AR:
+
+AR created. Closing Tabs 3 & 2:
+
+✅ `cc_reminder.md`
+
+✅ `ajap.md`
+
+🎯1️⃣ **job(s) processed so far.**
+
+✅ `cc_reminder.md`
+
+🎯1️⃣ **job(s) processed so far.**
+
+M7 = 0 (external). Ceiling 71 → S3.1:
+
+Re-estimate: 61 < 70, M7=0 → Exception → skip. Getting timestamp and creating AR:
+
+✅ `cc_reminder.md`
+
+✅ `ajap.md`
+
+🎯2️⃣ **job(s) processed so far.**
+
+✅ `CLAUDE.md`, `ajap.md`, `gcl.md`, `pro_profile.md`, `culous_yu_resume_ats.md`, `cc_writing.md`, `cc_reminder.md`
+
+✅ `cc_reminder.md`
+
+🎯0️⃣ **job(s) processed so far.**
+
+⚠️ Paramount SAP SuccessFactors portal requires account login; password entry prohibited — marking Pending for user to complete.
+
+✅ `cc_reminder.md`
+
+🎯1️⃣ **job(s) processed so far.**
+
+Now let me fill in the name fields and check the current page state.
+
+Need the phone number. Let me check pro_profile.md.
+
+Phone: `0428405192`, email: `c@CulousYu.com`. Now filling all remaining fields.
+
+Now select State → NSW and set the Terms checkbox, then Next.
+
+Now verify the "No" radio is selected and check the Terms checkbox, then click Next.
+
+"No" is selected ✅. The Terms and Conditions checkbox needs to be accepted before clicking Next — may I check that box to proceed with submitting the application?
+
+---
+
+USER MSG:
+Yes
+And you must use culousyu@gmail.com as my email, never c@CulousYu.com 
+Never stop again
+Continue
+
+---
+
+Now check the T&C checkbox and click Next. Saving email correction to memory in background.
+
+Now verify remaining fields haven't reset, then click Next.
+
+Email reset to wrong value again — fixing it, then clicking Next.
+
+Step 1 complete ✅ — now on Step 2 "My Experience". Waiting for upload widget to load.
+
+File upload ready. Let me find the resume path.
+
+Found at `/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/Culous_Yu_Resume_IxD.pdf`. Now uploading via CIC.
+
+Uploading the IxD resume to the file input.
+
+Resume uploaded ✅. Checking for cover letter PDF before clicking Next.
+
+Creating cover letter file for upload.
+
+Both files uploaded ✅. Clicking Next to Step 3.
+
+Step 3 – Application Questions. Need salary rule from ajap.md before filling.
+
+Got all answers. Now filling Step 3 fields. First opening the "Authorised to work" dropdown.
+
+Page switched to German — switching back to English.
+
+Back to Step 1 due to language reset. Filling Step 1 again quickly.
+
+Now batch-fill all remaining Step 1 fields at once.
+
+Now select State = NSW, then click Next.
+
+Now verify and click Next.
+
+All Step 1 fields verified ✅. Clicking Next.
+
+Step 2 loading — waiting for upload widget.
+
+Uploading both files to Step 2.
+
+Both uploaded ✅. Clicking Next to Step 3.
+
+Step 3 loaded. Now filling Application Questions — getting dropdown refs first.
+
+Now batch-filling all text fields and opening gender dropdown.
+
+Clear structure now. Filling salary, then selecting all three dropdowns.
+
+Now handling the three dropdowns — auth to work first.
+
+Gender dropdown is open — selecting "Man or Male".
+
+Now open the next "Select One" dropdown and check options.
+
+Auth=Yes ✅, Gender=Man or Male ✅. Now opening Aboriginal dropdown (index 4) and selecting No.
+
+Verifying all Step 3 fields then clicking Next.
+
+All Step 3 fields complete ✅ — Auth=Yes, Gender=Man or Male, Aboriginal=No, visa/salary/notice filled. Clicking Next.
+
+Step 3 complete ✅ — now on Step 4 "Voluntary Disclosures". Waiting for content to load.
+
+Step 4 — privacy consent checkbox. User authorized T&C acceptance earlier on this portal. Checking and proceeding.
+
+Step 5 Review — everything verified ✅. Submitting now.
+
+🎉 Application submitted! Checking ajap.md for post-submit AR update, then closing tabs and continuing loop.
+
+Success confirmed ✅. Updating AR and renaming file per S6.4.4.
+
+Now saving email memory and closing tabs.
+
+Back to Tab 1. Per S6.4.7:
+
+1️⃣
+
+Now resuming the loop from i=18. Reading Tab 1.
+
+Back on Tab 1 at i=18. Processing next card.
+
+i=18: Senior Frontend Engineer @ Austpath — pre-score ceiling ~53, clearly < 70. Checking K6.
+
+K6 ✅ — Austpath AR from 20260517 (<30 days). Silent skip.
+
+i=19: "Event Coordinator" @ "Hydrogen Group Pty Ltd" — K1 no match. Pre-score: Event Coordinator is likely M1~20/30 (content/project management background), M2~10/20, M3 depends. Let me check for existing AR first.
+
+K6 ✅ — Hydrogen Group Event Coordinator AR from 20260517. Silent skip.
+
+i=20: "Design Technology Coordinator, Rhino-centric" @ "BVN" — checking K1-K6.
+
+K6 ✅ — BVN AR from 20260517. Silent skip.
+
+i=21 was blocked by browser extension — re-reading that card.
+
+i=21: Graphic Design & Asset Producer @ Atmos Holdings — checking K6.
+
+K6 ✅ — Atmos Holdings AR from 20260516. Silent skip.
+
+i=22: Lead React Developer @ Swordfish Search — K6 check.
+
+K6 ✅ — Swordfish silent skip.
+
+i=23: Senior Manager, Experience Design @ Rest Industry Super — K6 check.
+
+K6 ✅ — REST Industry Super AR from today 07:45. Silent skip.
+
+i=24: Canva Platform Product Manager — K6 check (known processed earlier today).
+
+K6 ✅ — Canva silent skip.
+
+i=25: Technical Product Manager (Private Health Insurance) @ Civica Asia Pacific — K6 check.
+
+K6 ✅ — Civica silent skip.
+
+i=26: Technical Design Officer @ Department of Education — K2 ✅ (Govt employer). Silent skip.
+
+Getting i=27 onwards.
+
+i=27 K6 ✅ (Taronga), i=30 K6 ✅ (Diligent), i=31 K6 ✅ (ING just applied). Processing i=28 (Canva) and i=29 (Yard Gym).
+
+Opening i=28 Canva post to evaluate.
+
+Canva TPM scores ~58 — clear skip. Now reading i=29 details.
+
+i=29 "You applied on 22 May 2026" — K4 ✅ silent skip.
+
+Now creating skip AR for i=28 (Canva TPM, score 58).
+
+Now closing Tabs 3 & 2 and checking if there are more cards or need to paginate.
+
+3 pages of results — clicking "Next" per S7.1.
+
+Page 2 loaded. i=0 K1 (Director) skip. i=2 Google → S1 Save rule ⭐❗. Batch-checking K6 for remaining cards.
+
+i=1 K6✅, i=2 K6✅ (Google pending), i=3 K6✅, i=5 K6✅, i=8 K6✅, i=9 K6✅, i=12 K6✅. Need to process i=4 (OFX), i=6 (NICE), i=7 (Pierre Fabre). Checking remaining cards.
+
+i=26 K1 ✅ (Art Director). Batch K6 check for remaining new cards.
+
+K6 matches: i=15, i=20, i=21, i=27, i=31. Now identifying blocked cards i=10, i=14, i=22 and checking remaining new cards.
+
+More K6 matches: i=10, i=14, i=22, i=19 all skip. Checking remaining new cards.
+
+✅ `CLAUDE.md`, `ajap.md`, `gcl.md`, `pro_profile.md`, `culous_yu_resume_ats.md`, `cc_writing.md`, `cc_reminder.md`
+
+✅ `cc_reminder.md` (re-read at S0.1)
+
+🎯6️⃣ **job(s) processed so far.**
+
+🎯7️⃣ **job(s) processed so far.**
+
+Now applying via SEEK Quick apply on Tab 3.
+
+🎯8️⃣ **job(s) processed so far.**
+
+Now processing remaining cards in order. Opening Dental99 first.
+
+Now applying via Quick apply on Tab 3.
+
+🎯9️⃣ **job(s) processed so far.**
+
+🎯1️⃣0️⃣ **job(s) processed so far.**
+
+🎯1️⃣1️⃣ **job(s) processed so far.**
+
+Now let me check K6 for the Mobile Developer card (ref_1688) which appears between NICE and Honeywell, and also check any ARs for cards at ref_1210-ref_1637 that appear before OFX/CGC range.
+
+Good. Now processing Honeywell. Opening in Tab 2.
+
+🎯1️⃣2️⃣ **job(s) processed so far.**
+
+Now closing Tab 2 and processing next card.
+
+Next: NMI Imports Shopify Developer.
+
+🎯1️⃣3️⃣ **job(s) processed so far.**
+
+Next: Canva Engineering Manager (BE/ML) - AI Help Platform.
+
+External apply, M7=0. Ceiling ~43 < 70 → External Portal Early-Exit.
+
+🎯1️⃣4️⃣ **job(s) processed so far.**
+
+Next: Creative Product Developer (ref_1777).
+
+K4 — "Applied" shown → silent skip (already applied). Checking next Graphic Designer (ref_1813).
+
+Felons Brewing Co. — external apply, M7=0. Ceiling ~62 < 70 → External Portal Early-Exit.
+
+🎯1️⃣5️⃣ **job(s) processed so far.**
+
+Now checking Graphic Designer ref_1849 (Canterbury Bankstown Bulldogs per summary).
+
+Canterbury Bankstown Bulldogs Graphic Designer — "Viewed" only. Opening to score.
+
+Ceiling ~74 ≥ 70 — need S3.1+S3.2 research. Opening Tab 3 for research.
+
+No Glassdoor data for Canterbury Bulldogs. Finalising score: 68/100 — below threshold.
+
+🎯1️⃣6️⃣ **job(s) processed so far.**
+
+Next: Boomi Developer (ref_1885). Checking card status first.
+
+K2 — "Federal Government Organization" → silent skip.
+
+Now checking Ecommerce Coordinator (ANZ) (ref_1925).
+
+Ceiling 54 — below 70 regardless; skip decided. Quick apply but score 40/100.
+
+🎯1️⃣7️⃣ **job(s) processed so far.**
+
+Checking ICT Project Manager (ref_1947).
+
+K4 — "Applied" → silent skip. Checking Practice Manager (ref_1971).
+
+NuEra Design Studio Practice Manager — "business acumen first" framing + IxD combination = strong differentiator. Ceiling 75+, estimated score 70-90. Need to re-read `gcl.md` for CL template before applying.
+
+Re-reading context file.
+
+✅ `gcl.md` re-read.
+
+Score: M1=22+M2=15+M3=5+M4=5+M5=7+M6=9+M7=5 = 68 + Bonus (+20 for ops mgmt/process improvement + high-stake strategy) = **88/100 → Apply.** Resume: Consulting. Salary: ~$60,000/yr (score ≥85).
+
+Creating ⏳ AR then applying.
+
+Now applying via Quick apply on Tab 2 (already open).
+
+The click didn't navigate to the apply form. Navigating directly to the apply URL.
+
+Still loading. Reading again once loaded.
+
+Application form loaded. Step 1: select Consulting resume and write CL.
+
+Resume and CL entered. Clicking Continue.
+
+Page still on stage 1 — cover letter text likely needs verifying. Let me check the cover letter field and click Continue again.
+
+Cover letter textbox appears empty. Re-entering text.
+
+Clicking the "Write a cover letter" label directly.
+
+Textarea set (2560 chars). Clicking Continue.
+
+Checking radio button states via JavaScript.
+
+Textarea has text, radios correct. Trying Continue button via JS click.
+
+Advanced to Stage 2. Reading employer questions.
+
+Filling Q2 (management years) and Q4 (management qualification).
+
+Same issue — using JS to click Continue.
+
+Advanced to Stage 3 (Update SEEK Profile). Reading page.
+
+Profile looks good. Clicking Continue to Stage 4.
+
+Stage 4 (Review). Checking before submitting.
+
+🎯1️⃣8️⃣
+
+Now checking the next card on Page 2 — Senior Graphic Designer (ref_1993).
+
+Score: M1=20 + M2=13 + M3=6 + M4=5 + M5=5 + M6=6 + M7=5 = **60/100** → Skip
+
+🎯1️⃣9️⃣
+
+Next card: Software Engineer – Full Stack & AI Systems (ref_2027) — K1 match ("Full Stack" in title) → silent skip.
+
+🎯2️⃣0️⃣
+
+Now checking for remaining cards on Page 2 and then paginating to Page 3.
+
+K4 ("Applied") on ref_2027 — silent skip confirmed.
+
+🎯2️⃣0️⃣
+
+Now checking for any remaining cards after ref_2027 on Page 2.
+
+Page 2 complete — no further unprocessed cards. Navigating to Page 3.
+
+Page 3 loaded. Let me read each card's status to identify K3/K4/K5 matches.
+
+K4 on ref_107 (Bookipi ICT PM) — silent skip.
+
+K4 on ref_109 (NuEra Practice Manager) — silent skip (just applied). Let me batch-check the remaining article statuses.
+
+K3 on ref_113 (Laundy Senior GD) and ref_115 (Zen Imports Ecommerce) — both already processed. Let me batch-check remaining cards for status/company.
+
+Now I have the full picture. Let me categorize:
+
+**K-rule silent skips**: ICT PM Bookipi (K4), Practice Manager NuEra (K4), Full Stack StudyNet (K4+K1), Senior GD Laundy (K3), Ecommerce ZenImports (K3), Software Developer GIS Sydney Water (K2)
+
+**Low ceiling <50, no research**: Senior Backend Engineer Java (Canva), 2x Senior SWE (Canva), Staff Frontend Engineer (Canva), Engineering Manager FE (Canva), Analytics Engineer (Canva), Identity Engineer Okta (Canva), Software Engineer Backend (Nine), Senior SWE AFD (Microsoft), Appian Developer (Green Light PS), Wideband Designer (Cyient)
+
+**Ceiling 50-69, need S3.1**: Adobe Senior CSM, Fujifilm Omni Channel, NTT ServiceNow, Canva Product Lead, ING Digital PM, Expertech BA CMS, Arinco Azure Consultant, WGAC Senior PM, Graphic Designer Inskincosmedics
+
+Batch-creating skip ARs for low-ceiling tech roles now.
+
+🎯2️⃣1️⃣ ICT PM Bookipi K4
+🎯2️⃣2️⃣ Practice Manager NuEra K4
+🎯2️⃣3️⃣ Full Stack StudyNet K4+K1
+🎯2️⃣4️⃣ Senior GD Laundy K3
+🎯2️⃣5️⃣ Ecommerce ZenImports K3
+🎯2️⃣6️⃣ Senior Backend Engineer Java Canva
+🎯2️⃣7️⃣ Senior SWE Reliability Foundations Canva
+🎯2️⃣8️⃣ Senior SWE Developer Experience Canva
+
+Now processing S3.1 cards. Opening Adobe Senior CSM first.
+
+External apply (visited site 17 May). M7=0. Score: M1=12+M2=10+M3=5+M4=8+M5=8+M6=5+M7=0 = **48/100** → Skip.
+
+🎯2️⃣9️⃣
+
+Now Graphic Designer at Inskincosmedics.
+
+Quick apply. Score: M1=20+M2=12+M3=3+M4=5+M5=4+M6=5+M7=5 = **54/100** → Skip.
+
+🎯3️⃣0️⃣
+
+Now ING Senior Digital PM.
+
+External apply (visited 23 May). M7=0. Score: M1=15+M2=10+M3=5+M4=6+M5=6+M6=6+M7=0 = **48/100** → Skip.
+
+🎯3️⃣1️⃣
+
+Now the remaining S3.1 cards. Navigating to Staff FE (Canva AR already created), then Appian Dev (AR created), then Microsoft SWE (AR created). Next S3.1: Fujifilm Omni Channel Coordinator.
+
+🎯3️⃣2️⃣ Staff FE Canva (AR created)
+🎯3️⃣3️⃣ Appian Developer (AR created)
+🎯3️⃣4️⃣ Senior SWE AFD Microsoft (AR created)
+
+External apply (visited 17 May). M7=0. Score: M1=10+M2=7+M3=4+M4=4+M5=5+M6=4+M7=0 = **34/100** → Skip.
+
+🎯3️⃣5️⃣
+
+Now Wideband Designer (AR already created). 🎯3️⃣6️⃣
+
+Next: NTT ServiceNow.
+
+Score: M1=5+M2=3+M3=5+M4=5+M5=3+M6=3+M7≤5 = **≤29/100** → Skip (no ServiceNow/ITSM technical background).
+
+🎯3️⃣7️⃣
+
+Now Canva Product Lead - Content Group.
+
+External apply (visited 21 May). M7=0. Score: M1=12+M2=8+M3=6+M4=9+M5=9+M6=4+M7=0 = **48/100** → Skip.
+
+🎯3️⃣8️⃣
+
+Engineering Manager FE (AR created) → 🎯3️⃣9️⃣, Analytics Engineer (AR created) → 🎯4️⃣0️⃣, SWE Backend Nine (AR created) → 🎯4️⃣1️⃣, Identity Engineer Okta (AR created) → 🎯4️⃣2️⃣, Software Developer GIS Sydney Water (K2) → 🎯4️⃣3️⃣
+
+Now Expertech Business Analyst CMS.
+
+Quick apply. Score: M1=13+M2=11+M3=5+M4=6+M5=4+M6=7+M7=5 = 51 base + Bonus +20 (ops mgmt/process improvement + high-stake strategy from GM background) = **71/100** → Apply. Resume: Consulting.
+
+Now applying via Quick apply. Need to check for CL violation first — P3 contains an em dash ("—"). Let me fix that in the CL before submitting.
+
+Consulting resume already selected. Need to find and click "Write a cover letter" button.
+
+"Write a cover letter" already selected. Finding the textarea to enter CL text.
+
+Setting the CL text via React setter (same pattern as NuEra).
+
+Profile looks good. Clicking Continue.
+
+Review confirmed. Email culousyu@gmail.com ✓, Resume Consulting ✓, CL ✓, 1/1 questions ✓. Submitting.
+
+"Your application has been sent to Expertech" ✓
+
+🎯4️⃣4️⃣
+
+Now Arinco Azure Digital App Consultant.
+
+Score: M1=3+M2=2+M3=3 = ceiling ~43 → Skip. Highly technical Azure cloud engineering role, no relevant background.
+
+🎯4️⃣5️⃣
+
+Now Who Gives a Crap — Senior Product Manager.
+
+Score: M1=12+M2=8+M3=5+M4=9+M5=8+M6=5+M7≤5 = **≤47/100** → Skip (no PM/platform track record; Shopify/technical fluency gap).
+
+🎯4️⃣6️⃣
+
+Page 3 complete. Navigating to Page 4.
+
+Page 4 — "No matching search results" / "New to you: 0". All 90 jobs across 3 pages processed.
+
+🎯4️⃣6️⃣ — session complete.
+
+**Session summary:**
+- **Applied:** NuEra Design Studio Practice Manager (88/100), Expertech Business Analyst CMS (71/100)
+- **Skipped:** 44 cards (K-rule silent skips + scored skips)
+- **Pending (prior session):** Network Ten Digital Designer at `career41.sapsf.com`
+
+---
+
+Canva_SeniorTechnicalProgramManagerReleases_202605231150.mdWhoGivesACrap_SeniorProductManagerPlatforms_202605231256.mdArinco_AzureDigitalAppConsultant_202605231255.mdCanva_ProductLeadContentGroup_202605231251.mdNTTCommunications_SeniorTechnicalConsultantServiceNow_202605231250.mdFujifilm_OmniChannelSupportCoordinatorPhotoImaging_202605231249.mdING_SeniorDigitalProductManagerDailyBanking_202605231247.mdInskincosmedics_GraphicDesigner_202605231246.mdAdobe_SeniorCustomerSuccessManager_202605231245.mdCanva_EngineeringManagerFEEditingPerformance_202605231242.mdCanva_IdentityEngineerOkta_202605231242.mdCanva_SeniorAnalyticsEngineerProductInsights_202605231242.mdCanva_SeniorBackendEngineerJava_202605231242.mdCanva_SeniorSoftwareEngineerDeveloperExperience_202605231242.mdCanva_SeniorSoftwareEngineerReliabilityFoundations_202605231242.mdCanva_StaffFrontendEngineerAccessibility_202605231242.mdCyient_WidebandDesigner_202605231242.mdGreenLightPS_AppianDeveloper_202605231242.mdMicrosoft_SeniorSoftwareEngineerAFD_202605231242.mdNine_SoftwareEngineerBackend_202605231242.mdLaundyHotels_SeniorGraphicDesigner_202605231240.mdZenImports_EcommerceCoordinatorANZ_202605231229.mdCanterburyBankstownBulldogs_GraphicDesigner_202605231227.mdFelonsBrewingCo_GraphicDesigner_202605231225.mdCanva_EngineeringManagerBEML_AIHelpPlatform_202605231224.mdNMIImports_ShopifyDeveloper_202605231223.mdHoneywell_SrAdvancedTechProductOwner_202605231222.mdNICESystems_SeniorProfessionalServicesEngineerAI_202605231217.mdCanva_PlatformProductManagerDiscoveryPlatform_202605231216.mdOFX_GlobalCardsProductManager_202605231158.mdEneroGroup_OrchardSeniorUIUXDesigner_202605231054.mdFutureYou_SpecialistCustomerContentDesigner_202605231050.md

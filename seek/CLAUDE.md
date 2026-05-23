@@ -6,6 +6,7 @@
 
 - When prompted `seek`, activate AJAP mode & follow `ajap.md` in full
   - In AJAP mode, whenever Tab 1≠SEEK results (e.g. showing a post), re-read `ajap.md` & rectify Tabs
+- When prompted `#numbered`, read & follow `cc_numbered.md` in full
 - When prompted `#replace`, read & follow `cc_coding.md` in full
 
 ## Session Start — Mandatory File Reads

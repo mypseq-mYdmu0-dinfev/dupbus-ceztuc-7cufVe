@@ -46,7 +46,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 
 ## Session Initialisation
 
-Run once per AJAP session (not per loop), before Tab 1 Accessibility Check:
+Execute once per AJAP runtime (not per loop), before Tab 1 Accessibility Check:
 - Bash: `rm -f /tmp/CulousYu_CoverLetter_*.pdf` — clear temp CL files from prior sessions
 
 ---
