@@ -61,8 +61,8 @@ A3. After each wait, check again whether a SEEK results page is now visible in a
 A4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 A5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
 A6. If after 3 cycles → still no SEEK results page → concise alert in chat w/ `🚨` then use:
-- A6.1. Fallback 1: `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual`
-- A6.2. If A6.1 failed/consumed → Fallback 2: `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&daterange=14&distance=25&salaryrange=0-100000&salarytype=annual`
+- A6.1. Fallback 1: `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual`
+- A6.2. If A6.1 failed/consumed → Fallback 2: `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual`
 A7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
