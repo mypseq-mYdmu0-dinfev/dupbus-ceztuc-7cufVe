@@ -46,7 +46,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 
 ## Session Initialisation
 
-Run once per AJAP session (not per loop), before Tab 1 Accessibility Check:
+Execute once per AJAP runtime (not per loop), before Tab 1 Accessibility Check:
 - Bash: `rm -f /tmp/CulousYu_CoverLetter_*.pdf` — clear temp CL files from prior sessions
 
 ---
@@ -398,19 +398,20 @@ If user sends any msg mid-session:
 | Which of the following Microsoft Office products are you experienced with? | Word, Excel, PowerPoint, Outlook |
 | Which of the following programming languages are you experienced in? | JavaScript, HTML, CSS, Python, PHP, Swift |
 | How would you rate your English language skills? | Native or Bilingual proficiency |
-| Do you identify as an Aboriginal or Torres Strait Islander person? (or similar) | No |
+| Do you identify as an Aboriginal/Torres Strait Islander/First Nations person? (or similar) | No |
 | Do you have a criminal conviction or criminal history? (or similar) | No |
 | How many hours are you available to work per week? | 50hr⁺ |
 | Title | Mr. |
 | Preferred name | Culous |
-| Email (not account creation) | culousyu@gmail.com (NEVER use c@CulousYu.com; exclusive as resume content) → If requires email reading (e.g. auth/activation code): Save & let user handle → Follow S6.2.3.2 |
+| Email (not account creation) | culousyu@gmail.com (NEVER use c@CulousYu.com; exclusive as resume content; rectify if auto-inserted after resume upload) → If requires email reading (e.g. auth/activation code): Save & let user handle → Follow S6.2.3.2 |
 | Home address | Input "Sydney" in all lines (e.g. Street) except post code: "2000" |
-| Phone/mobile number | 0428405192; if country code needed: +61-428405192 |
+| Phone/mobile number | 0428405192 |
 | Employment status | Unemployed |
 | Previously employed by [company_name] or Govt | No/Never |
 | Are you [org_name] member | No (unless you're sure I'm) |
 | Visa subclass | 485 Graduate Visa |
 | Visa expiry | 17 March 2031 |
+| Visa details (if applicable) | I would never require employer sponsorship as I hold a special visa SC485 granting me full work rights until 2031, with Permanent Residency expected in 2030 via a self-managed pathway. |
 | Permanent residence | Sydney |
 | LinkedIn | https://www.linkedin.com/in/culousyu/ |
 | Website | https://www.CulousYu.com |
@@ -420,7 +421,7 @@ If user sends any msg mid-session:
 
 - Deliverable PDF resumes at: '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/'
 - Deliverable credentials (combining academic transcripts, reference letters, certificates): '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/CV Linked Files/Combined Credential.pdf'
-- **Time limits (start timer upon entering portal):** ≤2 min per page; ≤5 min total for entire external application; if either limit is hit → treat as "struggling" immediately regardless of attempt count
+- **Time limits (start timer upon entering portal):** ≤3 min per page; ≤10 min total for entire external portal ops regardless of page amount; if either limit is hit → treat as "struggling" immediately regardless of attempt count
 - **If struggling** (unusual design, login, upload/input failure, etc.) OR time limit exceeded: DON'T stop automation or interrupt user; attempt up to twice (each attempt = a distinct method, not repeated identical tries) on each task → concisely remark w/ `⚠️` in chat AND in AR for `ajap.md` update → edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 4⁺, 3, 2 → return to Tab 1 for next card
 
 ### External Portal Technical Workarounds

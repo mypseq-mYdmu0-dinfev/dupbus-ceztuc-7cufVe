@@ -1,0 +1,23 @@
+# Compliance Reminder
+
+Literally re-read (not via memory) at S0.1 every card. If any item below is unfamiliar or uncertain, re-read `ajap.md` in full immediately before continuing.
+
+---
+
+## Active Check
+
+**Re-read `ajap.md` if:**
+- Last CL contains any dash signs (`—` `–`) or `+` (use `⁺` instead)
+- Last chat output this session is not identifiable as C1–C5
+- Last card did not yield exactly `🎯[N] **job(s) processed so far.**` (S0.3 violated)
+- `[N]` was literally printed in chat instead of number emojis
+- Last card had no AR created AND no K1–K6 was matched
+- Last AR in `/applied/` had no M1–M7
+- Cards were inspected during Pre-Flight Check OR Tab 1 was read using screenshot-scroll/`read_page`/`get_page_text`/`querySelectorAll` (F1.1 violated)
+- You don't understand or can't be 100% sure of any above terms/items
+
+---
+
+## Post-Compaction Recovery
+
+If session resumed from a summary: 🛑 STOP — re-read ALL mandatory files in `CLAUDE.md § Session Start` before any action. The summary is untrusted paraphrase.
