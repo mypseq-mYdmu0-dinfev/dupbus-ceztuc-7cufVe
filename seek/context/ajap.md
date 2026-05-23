@@ -421,7 +421,7 @@ If user sends any msg mid-session:
 
 - Deliverable PDF resumes at: '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/'
 - Deliverable credentials (combining academic transcripts, reference letters, certificates): '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/CV Linked Files/Combined Credential.pdf'
-- **Time limits (start timer upon entering portal):** ≤2 min per page; ≤5 min total for entire external application; if either limit is hit → treat as "struggling" immediately regardless of attempt count
+- **Time limits (start timer upon entering portal):** ≤3 min per page; ≤10 min total for entire external portal ops regardless of page amount; if either limit is hit → treat as "struggling" immediately regardless of attempt count
 - **If struggling** (unusual design, login, upload/input failure, etc.) OR time limit exceeded: DON'T stop automation or interrupt user; attempt up to twice (each attempt = a distinct method, not repeated identical tries) on each task → concisely remark w/ `⚠️` in chat AND in AR for `ajap.md` update → edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 4⁺, 3, 2 → return to Tab 1 for next card
 
 ### External Portal Technical Workarounds
