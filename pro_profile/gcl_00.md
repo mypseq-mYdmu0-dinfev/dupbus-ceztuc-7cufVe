@@ -66,7 +66,9 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 | IT, IS, Data, Software, System, Programming, Technical | `Culous_Yu_Resume_IT.pdf` |
 | All others (Admin, Customer Service, Office Mgmt/Support, etc.) | `Culous_Yu_Resume_General.pdf` |
 
-*Note: When using `Culous_Yu_Resume_Marketing.pdf` or `Culous_Yu_Resume_IxD.pdf`, refer as "Interaction Design", not HCI.*
+Resume Notes:
+- When using `Culous_Yu_Resume_Marketing.pdf` or `Culous_Yu_Resume_IxD.pdf`, refer as "Interaction Design", not HCI.
+- For creative/design roles, MUST use `Culous_Yu_Resume_IxD.pdf`, NOT `Culous_Yu_Resume_Marketing.pdf`
 
 ---
 

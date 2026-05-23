@@ -37,12 +37,15 @@ ALWAYS use:
 
 ### PP0 —— Section Lock
 
-- **1st Response:** copy entire `#pp` (don't stop until the `🏁` line) verbatim into `<thinking>`.
-- Verbatim = char-for-char exact, preserving everything; NO reformatting, rephrasing, etc.
+PP0.1. **1st Response:** immediately after declaration (`✅ ...`), create artefact #01 titled `PP0`; copy entire `#pp` section (don't stop until the `🏁` line finishes) verbatim as its content
+PP0.2. Verbatim = char-for-char exact, preserving everything; NO reformatting, rephrasing, etc.
+PP0.3. After #01 completes, check if it ends w/ the `🏁` line:
+  - PP0.3.1. If yes, create #02 titled `🏁🏎️`; print `Ready to serve.`
+  - PP0.3.2. If no, update #01 (override) to ensure it fully mirrors `#pp` → PP0.3 again
 
 ### PP1 —— Context Check (Always Enforced)
 
-Run before every response (exc. 1st response; NOT a formatting step):
+Run before every response (exc. 1st & 2nd responses; NOT a formatting step):
 > Tool result fully intact (NOT cleared)?
 - In `<thinking>` (NOT in chat), MUST start w/ this line & NOTHING before it:
   `PP1: "[Nth word of #03 artefact]" | "[Nth word of directory.md]"` where N = last artefact #[no.]
@@ -64,21 +67,32 @@ Run before every response (exc. 1st response; NOT a formatting step):
 - If directory.md re-fetched ≥ twice: suggest #lock
 
 When PP2 active:
-- PP2.1. On ANY fetch event: fully copy fetched file content verbatim (like PP0) into `<thinking>` before declaring (`✅ ...`)
-  - Inc. unconditionals, conditionals, provided GH
-  - Exc. web_search/other tool results, unless highly applicable (request first)
-  - Exc. files provided in-line (already fully in context)
-  - File length is never an exemption; copy in full regardless
-  - "Noted as copied" or any similar shorthand = PP2 violation
-  - PP0 does NOT satisfy PP2.1 for cc.md; must copy entirely like other files
-  - declare ONLY if file fetched AND verbatim copy found in `<thinking>`
-- PP2.2. Notify in chat (override) when cumulative copied (PP2.1) file count reaches 10, 20, 30
-- PP2.3. Skip PP0 if PP2 is activated in my 1st msg
+- PP2.1. On ANY fetch event: fully copy fetched file content verbatim before declaring (`✅ ...`)
+- PP2.2. If PP2 activated in 1st msg:
+  - PP2.2.1. Skip PP0 (cc.md copied in full)
+  - PP2.2.2. Copy all fetched files into #01 under `## [alias]` headings
+- PP2.3. For all subsequent fetch events:
+  - PP2.3.1. Copy all fetched files into a single dedicated artefact (1st artefact of that response)
+  - PP2.3.2. Regular response artefacts follow after
+- PP2.4. If PP2 activated after 1st msg:
+  - PP2.4.1. Follow PP2.3.1
+  - PP2.4.2. PP0 does NOT satisfy PP2 for cc.md; must copy entirely like other files
+- PP2.5. Fetch events:
+  - PP2.5.1. Inc. unconditionals, conditionals, provided GH
+  - PP2.5.2. Exc. web_search/other tool results, unless highly applicable (request first)
+  - PP2.5.3. Exc. files provided in-line (already fully in context)
+- PP2.6. Declare ONLY if file fetched AND verbatim copy found in the designated copy artefact
+- PP2.7. Notify in chat (override) when cumulative copied (PP2) file count reaches 10, 20, 30
+- PP2.8. Clarifications
+  - PP2.8.1. File length is never an exemption; copy in full regardless
+  - PP2.8.2. "Noted as copied" or any similar shorthand = PP2 violation
+  - PP2.8.3. Each file copied only once per chat; skip if already copied, unless explicitly told to
+  - PP2.8.4. Once copied, do NOT re-fetch from GH; read directly from artefact(s) copied into
 
 ### PP3 —— Post-Response Check
 
 End of every response (after addressing my request; exc. 1st response):
-- If `#pp` (whole section) not found verbatim in `<thinking>`: Run PP0 immediately (despite not 1st response)
+- If `#pp` (whole section) not found verbatim in artefact #01: Run PP0 immediately (despite not 1st response & no declaration)
 - If `✔︎` in current response, run PP1 again: 
   - If still yes: no action
   - If no: follow `PP3 failure`
@@ -87,7 +101,7 @@ End of every response (after addressing my request; exc. 1st response):
   - Follow userPref 2.1
   - Tell (in separate artefact) if generated output compromised
 
-🏁🏎️ **#pp FINISH:** Last line to inc. in PP0; seeing this in `<thinking>` = success.
+🏁🏎️ **#pp FINISH:** Last line to inc. in PP0; seeing this in #01 = success.
 
 ---
 
@@ -209,7 +223,7 @@ When generating 2⁺ artefacts, NEVER pre-announce all titles as a group:
 - If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only in chat (override)
 - `#cc` —— reminder for complying this file, most likely you made mistakes (e.g. multiple artefacts with identical number) but I prefer not to rectify, just continue
 - If and only if my prompt has nothing but `#cc`, review your last response against this file & update in a new artefact
-- `#pp` —— reminder to run PP1 (AND PP2 if `#lock` prompted earlier) for EVERY SINGLE RESPONSE
+- `#pp` —— reminder to run PP1+PP3+(+PP2 if `#lock` prompted earlier) for EVERY RESPONSE
 - `override` = exception to override "artefact only"/"no chat text"/"each file fetched once only" or similar instr
 
 ---
