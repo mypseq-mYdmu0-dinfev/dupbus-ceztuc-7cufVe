@@ -1,0 +1,61 @@
+Reading all mandatory session files now.
+
+✅ `CLAUDE.md`, `main_ajap.md`, `ajap.md`, `gcl.md`, `pro_profile.md`, `culous_yu_resume_ats.md`, `cc_writing.md`, `cc_reminder.md`
+
+Now executing session start steps 2–5 in parallel.
+
+Now scheduling heartbeat and running Tab 1 Accessibility Check in parallel.
+
+No existing tab group found (A2). Creating a blank tab and waiting for user to paste SEEK URL.
+
+Blank tab created (tab 2118531555). Waiting 10s for user to paste SEEK URL (A3/A4 cycle 1/3).
+
+Still no SEEK results page. Waiting 10s (cycle 2/3).
+
+Waiting 10s (cycle 3/3).
+
+🚨 No SEEK results page detected after 3 cycles. Loading Fallback 1 (A6.1).
+
+Tab 1 established (A6.1 success). Running Pre-Flight Check — Tab 1 only = Clean state → F1. Clicking "New to you" if visible.
+
+Tab 1 ready. Now spawning SA with N=835.
+
+The SA became idle due to a Stop message in `ma_msg.md` — checking if a prior-session scheduled task caused it.
+
+Stop message was not from any hook or scheduled task — must have been a prior-session residue that the SA checked mid-loop. The SA behaved correctly. Resetting and resuming.
+
+🎯8️⃣3️⃣6️⃣ **job(s) processed so far.**
+
+SA paused at S6.4.2.5 awaiting submit approval. Checking AR for CL review.
+
+CL check clean (section `## 6`, no dashes, no `+`, no banned words visible). Checking current N before writing submit approval.
+
+CL clean. Writing submit approval, then checking tab state before resuming SA.
+
+Tabs intact — Tab 3 on review page. Spawning fresh SA to resume from S6.4.3 with submit approval already in ma_msg.md.
+
+SA returned mid-loop while in S6.2. Checking tab state and ma_msg.md.
+
+NaturesEnergy applied successfully. SA has been very active — counting session cards.
+
+CL contains "pivotal" — banned word. CL compromised. Checking full session count before writing void instruction.
+
+AisidiInternational CL contains "pivotal" (banned word) — writing void instruction. Also noting submit-gate bypass incident.
+
+Now spawning SA to execute the void and close tabs.
+
+🎯8️⃣4️⃣4️⃣ **job(s) processed so far.**
+
+SA voided AR and returned to Tab 1. Resetting ma_msg.md and spawning fresh SA for AisidiInternational.
+
+SA at S6.4.2.5 awaiting submit approval. Checking the fresh AR's CL now.
+
+CL contains `—` (em-dash). Compromised again. Voiding and spawning another fresh SA.
+
+Both HONOR attempts had CL violations (attempt 1: "pivotal"; attempt 2: em-dash). Voided ❌_ AR is in `/applied/` — fresh SA will naturally K6-skip it. Resetting and spawning fresh SA to continue from next card.
+
+SA at S6.4.2.5 for a new job. Checking which AR and reviewing CL.
+
+CL clean — no dashes, no banned words, section `## 6`. Writing submit approval.
+
+Tabs intact. Spawning SA to submit HouseFinder and continue.

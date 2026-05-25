@@ -1,0 +1,39 @@
+Reading all mandatory session files now.
+
+✅ `main_ajap.md`, `ajap.md`, `gcl.md`, `pro_profile.md`, `culous_yu_resume_ats.md`, `cc_writing.md`, `cc_reminder.md`
+
+Running session initialisation steps.
+
+Now running Tab 1 Accessibility Check.
+
+Tab 1 confirmed (A1 ✅). Running Pre-Flight Check — Tab 2 + Tab 3 open, Tab 3 is an application page (mid-application state). Checking for matching AR.
+
+Found AR: `⏳_SalesHQ_JuniorProjectManager_202605251631.md`. Reading it to determine exact state.
+
+State determined: **Mid-application** — AR is complete (has P.S. line), Tab 3 is at application page. F6 clear (one active AR, no orphans). Now spawning SA.
+
+SA spawned and running. Session is live at **N = 819**, resuming mid-application on SalesHQ — Junior Project Manager. Monitoring SA loop reports and will approve/reject submissions as they come in.
+
+SA went idle at S6.4.2.5 waiting for Submit approval — MA didn't respond in time. CL was already verified clean in the pre-flight read. Checking current tab state, then spawning fresh SA.
+
+Tab 3 is already at `/apply/review` — SA got all the way to the Review & Submit page before going idle. CL audit (already read): `## 6. Cover Letter` heading ✅, no `—`/`–` ✅, no bare `+` ✅, ends with P.S. line ✅. Writing Submit approval and spawning fresh SA.
+
+Fresh SA running. Waiting for loop reports.
+
+SA went idle again — it followed "Submit then proceed to next card" but then waited for "Continue" to reset before continuing. Need to check if submission actually completed.
+
+AR shows `SalesHQ_JuniorProjectManager_202605251631.md` — ⏳_ prefix removed (17:26), and only Tab 1 remains. Application submitted successfully. Confirming outcome and resetting.
+
+Confirmed `Outcome: Applied` ✅. ma_msg.md reset to "Continue".
+
+🎯8️⃣2️⃣0️⃣ **job(s) processed so far.**
+
+SalesHQ — Junior Project Manager applied ✅. Fresh SA running on next card.
+
+SA paused at S6.4.2.5 for a new Applying job. Checking state.
+
+Zeekr Australia — Head of Product. Reading CL section for audit.
+
+CL audit: `## 6. Cover Letter` ✅, no `—`/`–` ✅, no bare `+` ✅, P.S. line ✅. Score 41 / Quick Apply / IxD resume — all valid. Writing approval and spawning fresh SA.
+
+Fresh SA spawned for Zeekr — Head of Product submission. Monitoring for next loop report.

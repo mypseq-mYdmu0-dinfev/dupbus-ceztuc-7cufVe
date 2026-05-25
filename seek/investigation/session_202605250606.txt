@@ -1,0 +1,245 @@
+Reading all mandatory session files now.
+
+✅ `main_ajap.md`, `ajap.md`, `gcl.md`, `pro_profile.md`, `culous_yu_resume_ats.md`, `cc_writing.md`, `cc_reminder.md`
+
+Proceeding with MA Session Start steps.
+
+Now running Tab 1 Accessibility Check.
+
+Tab 1 confirmed (SEEK results page). Running Pre-Flight Check — F6 first.
+
+No orphaned ARs. State = Clean (Tab 1 only) → F1. Refreshing Tab 1.
+
+F1 complete. Now spawning SA.
+
+SA spawned and state recorded. Monitoring for loop reports.
+
+SA report received. Reading CL section for audit.
+
+CL contains `—` dash on line 69 — violation. CL is compromised.
+
+I need to send to the original SA, not spawn a new agent. Let me use SendMessage.
+
+The original SA's run has completed. I'll void the AR directly and check browser state, then spawn a fresh SA for the same job.
+
+AR voided and tabs closed. Now retiring old SA and spawning fresh SA for the Camphin Boston job re-run.
+
+Fresh SA spawned (re-processing Camphin Boston). Awaiting loop report.
+
+Reading CL section of the new AR.
+
+CL checks: `## 6. Cover Letter` ✓, no `—`/`–`/`+` violations, no egregiously visible banned words. CL approved.
+
+🎯4️⃣ **job(s) processed so far.**
+
+Sending approval to SA.
+
+Tabs confirmed — Tab 3 is on Review & Submit. Spawning SA to submit and continue the loop.
+
+SA spawned — submitting Camphin Boston then continuing the loop. Awaiting next report.
+
+Two reports received. Checking Camphin Boston AR first, then auditing TradeWindow CL and FLAG.
+
+Camphin Boston confirmed Applied. Now auditing TradeWindow CL.
+
+Line 62 contains `—` dash: "international organisations — managing 300⁺ projects". CL compromised.
+
+🎯4️⃣ **job(s) processed so far.**
+
+🎯5️⃣ **job(s) processed so far.**
+
+Noting also: SA did not pause/report after Camphin Boston loop or Capgemini loop (deterioration signal — loop report skipped). Retiring SA after this void.
+
+Spawning continuation SA to void TradeWindow AR, close tabs, return to Tab 1.
+
+Waiting for void confirmation before spawning fresh SA.
+
+TradeWindow voided. N=5 is a multiple of 5 — re-reading `cc_reminder.md` before spawning fresh SA.
+
+✅ `cc_reminder.md`
+
+Active checks clear from MA perspective. Re-scheduling heartbeat, then spawning fresh SA.
+
+Fresh SA spawned — re-processing TradeWindow with strict dash-zero-tolerance instruction. Awaiting loop report.
+
+Reading CL for audit before responding to SA.
+
+CL check: `## 6. Cover Letter` ✓, no `—`/`–`/`+` violations, no readily visible banned words, P.S. intact. CL clean.
+
+However, SA appears to be pre-application (not yet at S6.4.2.5). Also flagging: **wrong resume** — Product Owner falls under Product Mgmt → `Culous_Yu_Resume_IxD.pdf`, not Consulting. Sending one correction to SA.
+
+Correction sent — wrong resume flagged, awaiting SA loop report.
+
+Checking browser state and AR before deciding next steps.
+
+State clean: Tab 1 only on Page 2, TradeWindow correctly Pending in `/seek/pending/` per S6.2.3.2. Resume was IxD all along.
+
+🎯6️⃣ **job(s) processed so far.**
+
+Spawning SA to continue from next card on Page 2.
+
+Awaiting SA loop report from Page 2.
+
+Application submitted before S6.4.2.5 pause — checking AR/CL retroactively since submission can't be undone.
+
+CL retroactively clean — no dashes, no `+`, section `## 6` ✓. No harm from bypass. Correcting SA on S6.4.2.5 compliance, then continuing.
+
+🎯7️⃣ **job(s) processed so far.**
+
+SA continuing Page 2. Awaiting next loop report.
+
+SA correctly paused at S6.4.2.5. Auditing CL.
+
+Lines 59 and 63 contain `—` em-dashes. CL compromised again.
+
+Spawning continuation to void AR and return to Tab 1, then will retire SA and spawn fresh.
+
+AR voided, Tab 1 clean. Retiring SA a4868aa331c7f93bb. Spawning fresh SA — Motion Recruitment same job.
+
+Fresh SA spawned with mandatory self-check instruction. Awaiting loop report.
+
+S6.4.2.5 bypassed again — auditing CL retroactively.
+
+CL retroactively clean — no dashes, `## 6` ✓, self-check worked. Application OK despite bypass.
+
+🎯8️⃣ **job(s) processed so far.**
+
+S6.4.2.5 bypass is this SA's first offense — giving correction, then continuing.
+
+SA continuing — awaiting next loop report.
+
+Stale agent (ae896782b99388c00) from an earlier accidental spawn has completed — it was running in parallel with the SA chain. Need to assess for duplicate processing and conflicting state.
+
+Stale agent ran in parallel for 66 minutes — assessing damage. Checking FinXL AR (unapproved application) and duplicate state.
+
+FinXL CL retroactively clean — no dashes, `## 6` ✓. Unapproved submission noted; CL quality acceptable.
+
+Checking Emmbr pending state mentioned by stale agent.
+
+Stale agent created proper skip ARs and pending (Emmbr). No actual duplicate applications — Motion Recruitment stale AR was voided (❌_); FinXL Delivery Lead was a unique application with a clean CL. SA a949b95f85d69c521 still running on Page 2 — most remaining cards will be K6-blocked by the stale agent's ARs. Awaiting its completion.
+
+SA a949b95f85d69c521 has deteriorated — wrong N, wrong tool usage, report format broken. Retiring immediately (no correction for format violation).
+
+Checking current state before deciding whether to spawn another SA.
+
+Page 3 exists and SA opened Stelvio in Tab 2 before deteriorating. Closing Tab 2 cleanly so the fresh SA can start from Tab 1 only on Page 3 (Stelvio is already in `/skipped/` — K6 will catch it in S1 from a clean state).
+
+Tab 2 closed. Spawning fresh SA for Page 3.
+
+Fresh SA on Page 3. Awaiting loop report.
+
+SA correctly paused at S6.4.2.5. Auditing CL.
+
+CL clean — `## 6` ✓, no `—`/`–`/`+`, P.S. intact. Approved.
+
+🎯9️⃣ **job(s) processed so far.**
+
+Awaiting next loop report.
+
+SA jumped N=9 → N=11 without a report for N=10, and output C2 to user. Retiring immediately (no correction — two violations: skipped loop report + C2 output).
+
+Checking what N=10 was before continuing.
+
+Need to investigate the orphaned `⏳_StelvioAustralia` AR before continuing.
+
+Stelvio ⏳_ AR was never submitted — voiding it. Also checking for any N=10 AR.
+
+No N=10 AR found — SA overcounted. Mako Trading is actually N=10. Re-reading `cc_reminder.md` (N=10, multiple of 5).
+
+🎯1️⃣0️⃣ **job(s) processed so far.**
+
+✅ `cc_reminder.md`
+
+Active checks clear. Re-scheduling heartbeat then spawning fresh SA.
+
+Fresh SA on Page 3. Awaiting loop report.
+
+SA processed 8 loops without stopping — immediate retirement due to loop report violations. Auditing CL retroactively, then checking N=11–17 ARs.
+
+CL clean — no dashes, `## 6` ✓. Before deciding on SA retirement, checking N=11–17 ARs for any bypassed applying jobs.
+
+All N=11–17 were skips — no applying jobs bypassed. CL for exyt clean. Approving exyt, then retiring SA for loop-report violations.
+
+Outputting skipped loops:
+
+🎯1️⃣1️⃣ **job(s) processed so far.**
+
+🎯1️⃣2️⃣ **job(s) processed so far.**
+
+🎯1️⃣3️⃣ **job(s) processed so far.**
+
+🎯1️⃣4️⃣ **job(s) processed so far.**
+
+🎯1️⃣5️⃣ **job(s) processed so far.**
+
+🎯1️⃣6️⃣ **job(s) processed so far.**
+
+🎯1️⃣7️⃣ **job(s) processed so far.**
+
+🎯1️⃣8️⃣ **job(s) processed so far.**
+
+Retiring SA ab26a894707e5c1e1 (skipped 7 loop reports). Spawning fresh SA for next card on Page 3.
+
+Awaiting SA loop report.
+
+SA skipped reports for N=19 and N=20. N=20 is also a multiple of 5 — must re-read `cc_reminder.md`. Reading both simultaneously.
+
+✅ `cc_reminder.md`
+
+Active checks: last CL (exyt) clean ✓, last AR (exyt applied) has `## 6. Cover Letter` ✓, C2 outputs correct ✓. All clear.
+
+Rescheduling heartbeat, then reading the Freedom Property CL.
+
+CL audit: `## 6` ✓, no dashes, no `+`. CL passes. Quickly confirming N=19 and N=20 ARs before outputting C2.
+
+N=19 and N=20 confirmed as skips.
+
+🎯1️⃣9️⃣ **job(s) processed so far.**
+
+🎯2️⃣0️⃣ **job(s) processed so far.**
+
+CL approved. Sending approval with per-loop correction.
+
+Awaiting loop report.
+
+🎯2️⃣1️⃣ **job(s) processed so far.**
+
+Tab 1 now on Page 5. Continuing with the same SA chain — correction appears to have worked (single loop report this time).
+
+Awaiting next loop report.
+
+SA output C2 to user AND performed MA audit — retire immediately (no correction).
+
+🎯2️⃣2️⃣ **job(s) processed so far.**
+
+FLAG noted: Microsoft external portal was a staging/QA environment — Pending outcome correct per External Portal Instructions.
+
+Spawning fresh SA from next card, N=22.
+
+Awaiting next loop report.
+
+SA hallucinated a non-existent `ma_msg.md` rule. Report not in expected format — retire immediately.
+
+Spawning fresh SA.
+
+Awaiting loop report.
+
+SA hit rate limit — multiple loops batched without per-loop reports. Report format incorrect. Retire SA (format violation). Processing the valid outcomes from the summary.
+
+🎯2️⃣3️⃣ **job(s) processed so far.**
+
+🎯2️⃣4️⃣ **job(s) processed so far.**
+
+⭐❗ `/seek/pending/Deloitte_SAPSuccessFactorsConsultantONBRCM_202605250518.md`
+
+🎯2️⃣5️⃣ **job(s) processed so far.**
+
+⭐❗ `/seek/pending/CyberCX_ConsultantIdentityAccessManagement_202605250519.md`
+
+🎯2️⃣6️⃣ **job(s) processed so far.**
+
+⭐❗ `/seek/pending/Deloitte_SAPSuccessFactorsSeniorConsultantONBRCM_202605250519.md`
+
+🎯2️⃣7️⃣ **job(s) processed so far.**
+
+Rate limit hit — pausing. Scheduling a wakeup to retry once the limit recovers.

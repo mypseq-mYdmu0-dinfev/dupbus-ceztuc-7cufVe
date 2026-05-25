@@ -49,7 +49,7 @@ On receiving SA loop report (`[AR_PATH] | [OUTCOME] | [N] | [FLAGS]`):
 **If OUTCOME = Applying (SA paused before Submit at S6.4.2.5):**
 1. Read only the `## [n]. Cover Letter` section of `[AR_PATH]` — check for: `—` `–` `+` symbols; section heading number other than `6` (e.g. `## 3. Cover Letter` = deteriorated); banned words if readily visible (e.g. "seamlessly", "resonates")
 2. If clean → `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`
-3. If compromised → `Bash: printf 'CL compromised — do not submit. Void the AR (rename ⏳_ to ❌_), close Tabs 3 & 2, return to Tab 1, then report loop completion.' > /seek/.claude/tmp/ma_msg.md` → on SA's loop completion report with OUTCOME = Voided, reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`; retire SA; spawn fresh SA with [CARD_POSITION] = same job; append incident to session log
+3. If compromised → `Bash: printf 'CL compromised — do not submit. Rectify: [specific issue]. Fix the CL in the AR, then re-report.' > /seek/.claude/tmp/ma_msg.md` → on SA's next Applying re-report, re-read CL; if clean: approve (step 2); if still compromised: `Bash: printf 'CL still compromised — void the AR (rename ⏳_ to ❌_), close Tabs 3 & 2, return to Tab 1, then report loop completion.' > /seek/.claude/tmp/ma_msg.md` → on SA's Voided report, reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`; retire SA; spawn fresh SA with [CARD_POSITION] = same job; append incident to session log
 4. After MA writes any non-Continue message: verify SA has acted (check AR/tab state), then reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
 
 **If OUTCOME = Skipped or Pending (SA completed loop):**

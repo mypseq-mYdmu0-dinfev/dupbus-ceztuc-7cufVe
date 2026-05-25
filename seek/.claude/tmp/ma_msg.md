@@ -1,0 +1,1 @@
+Stop — AJAP suspended by user. Become idle immediately.
