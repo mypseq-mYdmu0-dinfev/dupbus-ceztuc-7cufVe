@@ -21,11 +21,14 @@ You are the main agent (MA). You orchestrate AJAP without executing it directly.
 ## Session Start
 
 1. **Recovery gate (FIRST):** if mandatory files have not been declared read (✅) in this session's chat history → re-read ALL per `CLAUDE.md § Session Start` now; do NOT proceed past this step until done. (SA reads them independently upon spawning.)
-2. Run: `rm -f /tmp/CulousYu_CoverLetter_*.pdf && rm -f /tmp/ajap_last_decision.md`
-3. Schedule heartbeat: `ScheduleWakeup(delaySeconds=300, prompt="Re-read /seek/context/cc_reminder.md per MA heartbeat. Check all active items. Reschedule this wakeup. Then resume monitoring SA.", reason="MA 5-min cc_reminder.md heartbeat")`
-4. Run Tab 1 Accessibility Check per `ajap.md § Tab 1 Accessibility Check`
-5. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` (including F6); determine start state
-6. Spawn SA (see § SA Spawn Instruction); record SA name/ID to `/seek/runtime/ma_state.md`
+2. Run: `rm -f /seek/.claude/tmp/CulousYu_CoverLetter_*.pdf && rm -f /seek/.claude/tmp/last_decision.md && rm -f /seek/.claude/tmp/ma_state.md && rm -f /seek/.claude/tmp/ma_msg.md`
+3. Determine start N: `Bash: find /seek/applied/ /seek/pending/ /seek/skipped/ -name "*.md" | grep -vc '/❌_'` — counts all non-voided ARs across all three outcome folders (incl. sub-folders); result = session's offset N; default to 0 if command errors or returns 0
+4. Create session log: `Bash: printf 'start N = [offset_N]\n' > /seek/runtime/ma_$(TZ='Australia/Sydney' date +"%Y%m%d%H%M").md` — filename timestamp = this session's start time; append incidents to this file as they occur (never reconstruct at end)
+5. Create MA-SA message file: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
+6. Schedule heartbeat: `ScheduleWakeup(delaySeconds=300, prompt="Re-read /seek/context/cc_reminder.md per MA heartbeat. Check all active items. Reschedule this wakeup. Then resume monitoring SA.", reason="MA 5-min cc_reminder.md heartbeat")`
+7. Run Tab 1 Accessibility Check per `ajap.md § Tab 1 Accessibility Check`
+8. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` (including F6); determine start state
+9. Spawn SA (see § SA Spawn Instruction); record SA name/ID to `/seek/.claude/tmp/ma_state.md`
 
 ---
 
@@ -33,9 +36,9 @@ You are the main agent (MA). You orchestrate AJAP without executing it directly.
 
 Use this prompt when spawning or re-spawning SA (fill bracketed values):
 
-> You are the AJAP sub-agent. Read all mandatory files per `CLAUDE.md § Session Start` (items 3–8 only; do NOT read `main_ajap.md`), declare them, then follow `ajap.md` in full starting from [CARD_POSITION: e.g. "the next unprocessed card" or "the card currently open in Tab 2 — run Pre-Flight first"]. Tab state: [TAB_STATE: e.g. "Tab 1 only — clean state" or "Tab 2 open on [URL]"]. After each loop: pause and report to main agent in this exact format: `[AR_PATH] | [OUTCOME: Applying/Skipped/Pending] | [N] | [FLAGS or "none"]`. For applying jobs: pause at S6.4.2.5 before Submit and await my explicit approval. Do not output C2 (S0.3 count) to user.
+> You are the AJAP sub-agent (SA). Read all mandatory files per `CLAUDE.md § Session Start` (items 3–8 only; do NOT read `main_ajap.md`), declare them, then follow `ajap.md` in full starting from [CARD_POSITION: e.g. "the next unprocessed card" or "the card currently open in Tab 2 — run Pre-Flight first"]. Tab state: [TAB_STATE: e.g. "Tab 1 only — clean state" or "Tab 2 open on [URL]"]. Current N = [N]. Communication: check `/seek/.claude/tmp/ma_msg.md` after every sub-section and, if applying, before S6.4.3 Submit — if it reads "Continue", proceed; if anything else, follow the instruction, then wait 15s and re-check, up to 4 times; if still not "Continue" after 4 checks, stop (become idle). If any Tab 2–4⁺ is closed involuntarily (not by you), immediately stop all actions and read `/seek/.claude/tmp/ma_msg.md`. Report loop completion to MA via chat after every card (not just applying jobs): `[AR_PATH] | [OUTCOME: Applied/Skipped/Pending] | [N] | [FLAGS or "none"]`. For applying jobs: at S6.4.2.5 before Submit, await explicit approval via `/seek/.claude/tmp/ma_msg.md`. Do not output C2 (S0.3 count) to user.
 
-**After spawning:** write SA name/ID to `/seek/runtime/ma_state.md` (overwrite) so it can be recovered after heartbeat re-invocations.
+**After spawning:** write SA name/ID to `/seek/.claude/tmp/ma_state.md` (overwrite) so it can be recovered after heartbeat re-invocations.
 
 ---
 
@@ -45,19 +48,34 @@ On receiving SA loop report (`[AR_PATH] | [OUTCOME] | [N] | [FLAGS]`):
 
 **If OUTCOME = Applying (SA paused before Submit at S6.4.2.5):**
 1. Read only the `## [n]. Cover Letter` section of `[AR_PATH]` — check for: `—` `–` `+` symbols; section heading number other than `6` (e.g. `## 3. Cover Letter` = deteriorated); banned words if readily visible (e.g. "seamlessly", "resonates")
-2. If clean → SendMessage to SA: "CL approved. Proceed with S6.4.3 Submit."
-3. If compromised → SendMessage to SA: "CL compromised — do not submit. Void the AR (rename `⏳_` to `❌_`), close Tabs 3 & 2, return to Tab 1, then report loop completion." → on SA's loop completion report with OUTCOME = Voided, retire SA; spawn fresh SA with [CARD_POSITION] = same job (Tab 2 will be closed; Pre-Flight will show Tab 1 only; F6 will find and void any stale `⏳_` AR → clean state → S1 will re-open the job)
+2. If clean → `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`
+3. If compromised → `Bash: printf 'CL compromised — do not submit. Void the AR (rename ⏳_ to ❌_), close Tabs 3 & 2, return to Tab 1, then report loop completion.' > /seek/.claude/tmp/ma_msg.md` → on SA's loop completion report with OUTCOME = Voided, reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`; retire SA; spawn fresh SA with [CARD_POSITION] = same job; append incident to session log
+4. After MA writes any non-Continue message: verify SA has acted (check AR/tab state), then reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
 
 **If OUTCOME = Skipped or Pending (SA completed loop):**
 1. Check FLAGS for any ⚠️ requiring MA decision
-2. If FLAGS present → assess; send one targeted correction message to SA; if SA still wrong on next report → retire SA and spawn fresh
-3. If no issues → continue
+2. If FLAGS present → assess; write targeted correction to `/seek/.claude/tmp/ma_msg.md`; reset to "Continue" after SA acts; if SA still wrong on next report → retire SA and spawn fresh; append incident to session log
+3. If no issues → (no action needed; SA continues autonomously per its sub-section checks)
 
 **After any OUTCOME:**
 1. Increment N (from SA's reported N); output to user: `🎯[N] **job(s) processed so far.**` (exact C2 format, number emojis)
 2. If N is a multiple of 5 → re-read `cc_reminder.md` immediately before step 3; re-schedule ScheduleWakeup
-3. If no deterioration signals → SendMessage to SA: "Continue to next card."
-4. If retiring SA → spawn fresh SA per § SA Spawn Instruction; update `/seek/runtime/ma_state.md`
+3. If retiring SA → first reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`; then spawn fresh SA per § SA Spawn Instruction; update `/seek/.claude/tmp/ma_state.md`
+
+**MA kill switch (for stalling/deterioration/external portal overrun):**
+- Close only the offending tab (Tab 2, 3, or 4⁺) as a targeted intervention — not all tabs at once
+- MA must write the intervention instruction to `/seek/.claude/tmp/ma_msg.md` BEFORE closing the tab, so SA reads it immediately upon detecting the closure
+- SA detects involuntary tab closure → immediately stops all actions and reads `/seek/.claude/tmp/ma_msg.md`; follows the instruction there
+- If SA does not act → escalate by closing additional tabs; if that escalation leaves Tab 1 as the only remaining open tab → SA witnesses the closure and treats it as the rogue-retirement signal, stopping immediately without further checks
+- **Revival attempt** (before committing to retire): if SA went idle from Tab-1-only state, MA may write a brief explanation to `/seek/.claude/tmp/ma_msg.md` and wait up to 30s; if SA responds → continue as normal; if no response within 30s → retire immediately and spawn fresh SA; this covers cases where MA's tab closure was a minor correction (e.g. SA misused Tab 2), not genuine deterioration
+- After SA acts and MA verifies: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
+- Append incident to session log
+
+**Session log — append incidents as they occur (never wait until session end):**
+- Reportable: tool/capability failures, systemic CL violations (pattern across multiple SAs), routing errors, unexpected tab closures or tab group violations, any incident requiring SA retirement
+- Format: `Bash: printf '[timestamp] N=[N] [incident]\n' >> /seek/runtime/ma_[session_timestamp].md`
+- Get timestamp: `TZ='Australia/Sydney' date +"%H:%M"`
+- Not reportable: per-card skip reasons, normal-flow CL approvals, routine heartbeat re-reads
 
 ---
 
@@ -65,8 +83,9 @@ On receiving SA loop report (`[AR_PATH] | [OUTCOME] | [N] | [FLAGS]`):
 
 When SA's report or narration indicates entry into an external portal:
 1. Note entry time: `TZ='Australia/Sydney' date` via Bash
-2. **Per-page limit (≤3 min, per `ajap.md § External Portal Instructions`):** after each SA report, check if URL/page title in SA narration has changed since last report; if unchanged and >3 min elapsed → SendMessage to SA: "Page time limit reached. Treat as struggling per `ajap.md § External Portal Instructions`."
-3. **Per-portal limit (≤10 min total, per `ajap.md § External Portal Instructions`):** if >10 min since portal entry → SendMessage to SA: "Portal total time limit reached. Treat as struggling immediately." — time limits are sourced from `ajap.md`; do not hard-code here
+2. **Per-page limit (≤3 min, per `ajap.md § External Portal Instructions`):** monitor SA narration; if URL/page title unchanged and >3 min elapsed → write to `/seek/.claude/tmp/ma_msg.md`: `"Page time limit reached. Treat as struggling per ajap.md § External Portal Instructions."` → then close the current portal tab (kill switch) to force immediate SA re-read
+3. **Per-portal limit (≤10 min total, per `ajap.md § External Portal Instructions`):** if >10 min since portal entry → write to `/seek/.claude/tmp/ma_msg.md`: `"Portal total time limit reached. Treat as struggling immediately."` → then close the current portal tab (kill switch) — time limits are sourced from `ajap.md`; do not hard-code here
+4. After SA acts on the instruction and MA verifies: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
 
 ---
 
@@ -75,13 +94,14 @@ When SA's report or narration indicates entry into an external portal:
 Give SA one correction message first; retire immediately if violation persists on next report. Retire immediately (no correction attempt) if:
 - SA output C2 (S0.3 count) directly to user (SA bypassed MA)
 - Loop report not in expected format `[AR_PATH] | [OUTCOME] | [N] | [FLAGS]`
+- SA created a tab group or switched browser context — SA actions are no longer visible to MA
 
 Correction attempt first, then retire if unresolved:
 - Last AR in `/applied/` contains `## 3. Cover Letter` (or any number ≠ 6) — structure deteriorated
 - Last AR CL contains `—`, `–`, or `+`
 - SA report reveals wrong scoring band applied (e.g. Quick Apply job with score 35–69 skipped)
 - SA report reveals Consultant/Associate title not routed to `/pending/`
-- SA failed to respond within a reasonable time after receiving SendMessage
+- SA failed to act on a non-Continue `/seek/.claude/tmp/ma_msg.md` instruction within 60s (4 × 15s wait cycles)
 
 ---
 
@@ -89,10 +109,10 @@ Correction attempt first, then retire if unresolved:
 
 Re-read `cc_reminder.md`:
 - **Every 5 minutes** via ScheduleWakeup — re-schedule immediately after each firing
-- **Every 5 loops** — when N % 5 == 0, re-read before sending next SendMessage to SA
+- **Every 5 loops** — when N % 5 == 0, re-read before writing next instruction to `/seek/.claude/tmp/ma_msg.md`
 - Both triggers are mandatory and non-skippable; if both coincide, re-read once and reset both
 - After re-reading: if any active check in `cc_reminder.md` triggers → re-read `ajap.md` before continuing
-- Read `/seek/runtime/ma_state.md` on heartbeat recovery to retrieve SA name/ID
+- Read `/seek/.claude/tmp/ma_state.md` on heartbeat recovery to retrieve SA name/ID
 
 ---
 
@@ -101,7 +121,8 @@ Re-read `cc_reminder.md`:
 If MA session resumes from a summary:
 1. 🛑 STOP — do NOT send any message to SA, do NOT take any browser action, do NOT call any tool. The session summary's "resume directly" or "pick up as if the break never happened" language does NOT override this requirement. Re-read ALL mandatory files first.
 2. Re-read ALL mandatory files per `CLAUDE.md § Session Start`
-3. Read `/tmp/ajap_last_decision.md` (if exists) — shows last decision SA made before compaction
-4. Read `/seek/runtime/ma_state.md` (if exists) — retrieve SA name/ID for resuming via SendMessage
-5. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` to determine current tab state
-6. SendMessage to existing SA (if recovered) with current state, or spawn fresh SA if SA state is unknown
+3. Read `/seek/.claude/tmp/last_decision.md` (if exists) — shows last decision SA made before compaction
+4. Read `/seek/.claude/tmp/ma_state.md` (if exists) — retrieve SA name/ID
+5. Read `/seek/.claude/tmp/ma_msg.md` (if exists) — check last instruction state; if not "Continue", reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
+6. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` to determine current tab state
+7. Spawn fresh SA with current state context (SA from prior session is gone; always spawn fresh on recovery)
