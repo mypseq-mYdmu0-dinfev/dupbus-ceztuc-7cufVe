@@ -1,29 +1,41 @@
 # GCL (General Cover Letter)
 
-If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable. `<n>[content]</n>` = Chat-only instruction; disregard entirely if you're CC (Claude Code), regard it if you're not CC.
+*`<n>[content]</n>` = Chat-only instruction; disregard entirely if you're CC (Claude Code), regard it if you're not CC.*
 
 ---
 
-## Prompts
+## Missions
+
+If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable.
+
+---
+
+## Instructions
 
 Suggest which resume variant to submit <n>in chat</n> based on the job post/firm bg content provided. <n>STRICTLY ENSURE TO RESPOND IN ONE SINGLE ARTEFACT following below steps and using professional British English #cc all the time</n> & title case for section titles (bracketed=if applicable e.g. `(& group)`) with NO wording repetition (e.g. `16⁺ years`):
 
-### 1. **Employer:**
+### 1. Employer
+
 Extract the company (& group) name and job title. Research (<n>`web_search` unless prompted to use ACIC</n>) and analyse thoroughly (e.g. official website, Glassdoor, LinkedIn, social media, forums) focusing on results in AU (prioritising but not limited to Sydney). Provide a concise but critical bg, highlighting what makes it unique in industry (only if it truly is) OR what lets it survive as a mediocre player. If name is acronym, show full form once e.g. `PwC (PricewaterhouseCoopers)`. Must use bullet pt. <n>If web_search failed (robots.txt, CAPTCHA, IP block, etc.) or unsure (limited knowledge, common for small firms), immediately stop and draft a BCIC prompt to ensure 100% accurate results w/o any fabrications.</n>
 
-### 2. **Requirements:**
+### 2. Requirements
+
 Identify key requirements & qualifications from given content only. Provide a detailed & reserved analysis of whether my bg suffice per latest resumes. If there're areas where my exp. might be (even slightly) below expectations, flag and mention it. If the gap is large (e.g. citizen/permanent residency/non-English language), immediately STOP. Use bullet pt & emoji e.g. ✅
 
-### 3. **Application Tailoring:**
+### 3. Application Tailoring
+
 3-5 bullet points of advice on how to tailor the CL (not resume) or what to emphasise based on given content and my bg, that the CL being generated below shall adhere to.
 
-### 4. **Noteworthy Aspects (only if applicable):**
+### 4. Noteworthy Aspects (only if applicable)
+
 Identify anything special about this position or company (& group) that I should be aware of, e.g. employee complaints, PR/reputation problems. Use bullet pt & emoji e.g. ⚠️
 
-### 5. ** Interview Questions:**
+### 5. Interview Questions
+
 Based on given content/web search/my bg, suggest 1-3 potential interview questions.
 
-### 6. ** Cover Letter (CL):**
+### 6. Cover Letter (CL)
+
 Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone (100% factual; no fabrication).
 
 #### Template —— Content in `[]` = internal notes, ensure clean handling

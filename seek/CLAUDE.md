@@ -10,10 +10,16 @@
 
 ## Trigger
 
-- When prompted `seek`, read `main_ajap.md` in full and act as main agent (MA); do NOT follow `ajap.md` directly — that file governs the AJAP sub-agent (SA) only
+When prompted:
+- `seek`, enter AJAP mode; read `main_ajap.md` in full and act as main agent (MA); do NOT follow `ajap.md` directly — that file governs the AJAP sub-agent (SA) only
   - In AJAP mode, whenever Tab 1≠SEEK results is reported by SA, handle per `main_ajap.md § SA Deterioration Signals`
-- When prompted `#numbered`, read & follow `cc_numbered.md` in full
-- When prompted `#replace`, read & follow `cc_coding.md` in full
+- `psl`, enter AJAP mode but process ONE single loop only (stop at S5); A5's "SEEK results" become "any application"; DON'T spawn SA, use fallbacks (ignore A6), skip any (ignore K1–6), or interact w/ job page except screenshot/scrolling as needed; stop to ask anything if necessary
+- `psl [AR_filename(s)]`, read the file(s) (stop if unfound) but never edit them; perform `psl` on the AR(s) (sequentially if multiple); if it's complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ; if it's incomplete, create new AR(s); for each, open its URL as Tab 2 for reading since no Tab 1 (single loop) or Tab 3 (no interaction); `next` = proceed to next AR
+- `psl pending`, perform `psl [AR_filename(s)]` on `/seek/pending/` ARs starting from oldest
+- `ccl`, read `/seek/context/ccl.md` after mandatory files; perform `psl`; instead of `/seek/applied/`, create AR(s) in `/seek/ccl/` & ref past CLs in this folder (see its README.md) for quality & style
+- `investigation mode`, quit AJAP mode; read & follow `/seek/investigation/README.md`
+- `#numbered`, read & follow `cc_numbered.md` in full
+- `#replace`, read & follow `cc_coding.md` in full
 
 ## Session Start — Mandatory File Reads
 
@@ -46,7 +52,9 @@ Read only when relevant, NOT mandatory. Available in `/seek/context/`:
   - `/seek/applied/` —— incl. its sub-folders: create new files only; never delete files; don't edit files created before this session
   - `/seek/pending/` —— ditto
   - `/seek/skipped/` —— ditto
-  - `/seek/investigation/` —— DON'T access unless specifically asked to; unrelated to AJAP
+  - `/seek/runtime/` —— ditto; ONLY access it if you're MA (not SA)
+  - `/seek/investigation/` —— DON'T access unless explicitly prompted `investigation mode`
+  - `/seek/ccl/` —— DON'T access unless explicitly prompted `ccl`
   - All other paths —— read only; never edit, create, or delete any file
 - Each time a file in `/seek/context/` is (re-)read → MUST declare in chat
 - In AJAP mode (per ajap.md):
