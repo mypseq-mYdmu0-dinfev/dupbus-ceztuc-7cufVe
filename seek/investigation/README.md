@@ -14,17 +14,17 @@
 
 ## Files Description
 
-- `prompt_[timestamp].md` = my previous prompts to you
-- `response_[timestamp].md` = your previous responses to the identical timestamp `prompt` file
+- `query_[timestamp].md` = my previous queries to you
+- `response_[timestamp].md` = your previous responses to the identical timestamp `query_` file
 - `changes_[timestamp].md` = #replace changes created by you w/ optional explainers
-- `chat_handoff_[timestamp].md` = summary of chat session created by you
+- `close_[timestamp].md` = summary of chat session created by you
 - `audit_[timestamp].md` = audit report created by you
 - `session_[timestamp].md` = chat history of AJAP mode session
 
 ## Critical Notes
 
 - Get timestamp via my local terminal: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
-- If necessary, read `chat_handoff_[timestamp].md` for context and/or `changes_[timestamp].md` for what changes were applied; if they don't suffice or if i explicitly instruct, read other files
+- If necessary, read `close_[timestamp].md` for context and/or `changes_[timestamp].md` for what changes were applied; if they don't suffice or if i explicitly instruct, read other files
 - Generate your responses in a single .md file in `/seek/investigation/`, which must be optimised for my easy reading & replying using #numbered bite-size bullets
 - IMPORTANT: Your chat response will NOT be read by me; I'll only read the .md file(s) created
 - (Re-)Read cc_numbered.md when investigation mode starts and if it's cleared from context

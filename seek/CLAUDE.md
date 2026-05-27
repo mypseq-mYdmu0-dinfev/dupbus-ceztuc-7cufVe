@@ -34,7 +34,7 @@ At the start of every session, before any actions, fully read the following file
 7. `/seek/context/cc_writing.md`
 8. `/seek/context/cc_reminder.md`
 
-Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `main_ajap.md`, `ajap.md`, `gcl.md`, ...` and flag any that failed to load before stopping.
+Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `main_ajap.md`, `ajap.md`, ...` and flag any that failed to load before stopping.
 
 ## Reference Files — Read On Demand
 
