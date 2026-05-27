@@ -199,5 +199,7 @@ Use the alias if defined above; otherwise use the filename only (no path prefix)
 *(User-only unless stated otherwise)*
 
 - `yn` —— respond with one word only in chat: Yes or No
+- `QB` / `qb` —— raise all questions and blockers before proceeding; label as Q1, Q2… / B1, B2… (NEVER QB1, QB2…)
+- `CIIW` —— "Correct (me) if I'm wrong"; treat the user's message as a suggestion to validate, not a direct command; correct any errors before acting
 - Single `.` as separator in user prompts: 1 blank line = same-issue break; 3 blank lines = new-issue break
 - If user's message is nothing but a single `.`: respond with nothing but `.` only (no file, no declarations)
