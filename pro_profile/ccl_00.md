@@ -64,4 +64,4 @@ Before writing, research (in addition to gcl.md):
 
 These CCL requirements enhance the existing GCL template specifically for consulting applications. Maintain all GCL formatting, citation, and professional standards whilst incorporating these consulting-specific elements. To avoid constraints over your capabilities, whenever CCL is used, generate an additional version of CL (namely `Unsupervised Version`) <n>in another artefact</n> w/o adherence to GCL/CCL (still NO dash/colon) but your own judgement based on the situation, so that I may compare and adopt the best one.
 
-**If you're CC, the additional CL will be in `7. Unsupervised Cover Letter`.**ddd
+**If you're CC, the additional CL will be in `7. Unsupervised Cover Letter`.**
