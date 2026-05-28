@@ -1,4 +1,4 @@
-Rear to below changes, remember to manually mirror to `/seek/context/`
+Rear to below changes, remind me to manually mirror to `/seek/context/`
 - gcl.md
 - ccl.md
 - pro_profile.md

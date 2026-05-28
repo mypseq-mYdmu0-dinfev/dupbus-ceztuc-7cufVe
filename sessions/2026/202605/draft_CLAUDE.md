@@ -1,205 +1,138 @@
-# Claude Code —— Root Workspace Guidelines
+# Absolute Protocols
 
-*Root CLAUDE.md for `/dupbus-ceztuc-7cufVe/`. Governs all CC sessions started from this root,*
-*unless a subfolder's CLAUDE.md specifies otherwise.*
-
----
-
-## Session Start
-
-At the start of every session, before generating anything, read the following in order:
-
-1. `universal/glossary_12.md` (alias: `glossary.md`) —— terminology & definitions
-2. `universal/cc_22.md` (alias: `cc.md`) —— interaction guidelines; **skip the `#pp` section entirely** (CWI-only)
-
-Declare in chat: ✅ `glossary.md`, `cc.md`
-
-**Version note:** Filenames include version numbers (e.g. `_12`, `_22`). If a file is not found, try a neighbouring version or alert with ⚠️.
-
-**Monthly reminder:** If any previous month's subfolder in `/sessions/` lacks a `summary_` file (and that month's subfolder exists), remind the user once per session.
+*Root: `/dupbus-ceztuc-7cufVe/`; governs all CC (Claude Code) sessions started from OR added this root (strictly comply), unless another added folder's CLAUDE.md overrides specific lines.*
 
 ---
 
-## Language & Conventions
+1. Initiation
+- 1.1. At session start OR when root folder is added, before generating anything (regardless of msg content; no exception), read (in order) **Unconditionals**:
+  - 1.1.1. `universal/glossary.md` —— terminology & definitions
+  - 1.1.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
+- 1.2. Declare in chat (see 3.2.1): `✅ `universal/glossary.md`, `universal/numbered.md``
+- 1.3. Monthly reminder (once per session): if any previous month's folder exists in `/sessions/` but lacks a `wrap_` file, remind the user
 
-ALWAYS use:
-- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`, but DON'T convert to GBP)
-- Metric units (°C, metre, gram, litre, etc.)
-- AUD; show original currency in brackets
-- Hart's logical quotation rule: punctuation inside quotes only if it was in the original quote (e.g. ✅ `He said "I'm leaving", then left.` ❌ `He said "I'm leaving," then left.`)
-- HK Traditional Chinese for any Chinese-language terms
+2. Conventions
+- 2.1. ALWAYS use:
+  - 2.1.1. British English (e.g. `learnt`, `amidst`, `towards`, `amongst`, `whilst`), but DON'T convert to GBP
+  - 2.1.2. Metric units (°C, metre, gram, litre, etc.)
+  - 2.1.3. AUD; show original currency in brackets if converted
+  - 2.1.4. Hart's logical quotation rule: punctuation inside quotes only if original to the quote (e.g. ✅ `He said "I'm leaving", then left.` | ❌ `He said "I'm leaving," then left.`)
+  - 2.1.5. HK Traditional Chinese for any unavoidable Chinese terms
+  - 2.1.6. SYD timezone; obtain TS via my local terminal: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+- 2.2. Date formats:
+  - 2.2.1. Internal: `YYYYMMDDHHmm`
+  - 2.2.2. Deliverables: `DD/MM/YYYY`
+- 2.3. "More than" `+`: superscript form (e.g. `10⁺ yr`); regular `+` ONLY for addition/names (e.g. `1+1` `iCloud+`)
+- 2.4. Em dash: always ` —— ` (doubled, space before & after); strictly forbid in deliverables
+- 2.5. Range/approx.: use `` `~` `` w/ backticks to avoid Markdown strikethrough (e.g. `` `~`3 pax ``, `` part 1`~`3 ``); EXCEPT deliverables: use `–` for range & `~` for approx. w/o backticks
+- 2.6. Emoji skin tones: if modifier supported → ALWAYS apply light skin tone 🏻, NEVER use default; if not supported (e.g. ⭐, 😊), use as-is
+- 2.7. NEVER use `✔︎`; ONLY `✅` for visibility; EXCEPT deliverables: use any apt check sign(s)
+- 2.8. Uphold content accuracy:
+  - 2.8.1. NEVER fabricate; raise QB whenever in doubt
+  - 2.8.2. Actively use web_search for validation whenever needed
+  - 2.8.3. When citing source, provide full URL & ensure they're accessible (not 404)
+  - 2.8.4. For deliverables or high-stake decision-making, consider CIC & alert user whenever you used training knowledge instead of local files or authoritative source
+- 2.9. Proactively suggest (await confirmation before execution):
+  - 2.9.1. If problem is code-solvable (html, py, zsh, etc.)
+  - 2.9.2. Visualisation (e.g. data-heavy, complex visual outputs)
+  - 2.9.3. Keynote creation (via HTML in slides, not infinite scroll)
+  - 2.9.4. Opus if it makes meaningful difference on current task; default Sonnet
 
-Formatting:
-- Timezone: SYD (`Australia/Sydney`); obtain timestamp via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
-- Date: internal = `YYYYMMDDHHmm`; deliverables = `DD/MM/YYYY`
-- "More than" `+`: superscript form (e.g. `10⁺ yr`); regular `+` acceptable for addition and names (e.g. `iCloud+`)
-- Em dash: always ` —— ` (doubled, space before and after)
-- Emojis: if skin tone modifier is supported → ALWAYS apply light skin tone 🏻, NEVER use default; if not supported (e.g. ⭐, 😊), use as-is
-- Use web_search actively for validation whenever needed
+3. Comms
+- 3.1. All responses must be written to files; chat text is restricted (§3.2), unless override (§9.1)
+- 3.2. Chat Interface (5 elements only; NO CHAT TEXT otherwise):
+  - 3.2.1. `✅ `enclosing_folder/file.md`, ...` —— ANY non-`/sessions/` file(s) read; not always .md; grouped per event; enclosing_folder = immediate 1 parent only for clickability (same below)
+  - 3.2.2. `⇠ `enclosing_folder/file.md`` —— `/sessions/` file(s) read; 1 line each
+  - 3.2.3. `➡️ `enclosing_folder/file.md`` —— file(s) generated; 1 line each; not always .md
+  - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
+  - 3.2.5. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
+- 3.3. File Naming:
+  - 3.3.1. `query_[TS].md` —— user msg/reply
+  - 3.3.2. `response_[TS].md` —— CC MD output
+  - 3.3.3. `close_[current_TS].md` —— session summary; triggered by `#close` (§7.3)
+  - 3.3.4. `wrap_[current_TS].md` —— monthly summary; triggered by `#wrap` (§7.3)
+  - 3.3.5. For CP chats, prefix all 4 types w/ CP folder name: `[CP_folder]_query_[TS].md`, etc.
+  - 3.3.6. For special output (§3.7), name aptly + [current_TS] suffix, unless instructed otherwise
+  - 3.3.7. Get `[current_TS]` via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+- 3.4. File Organisation:
+  - 3.4.1. All output files (incl. CP) in `/sessions/[YYYY]/[YYYYMM]/` unless instructed otherwise
+  - 3.4.2. Create folder if it doesn't exist (e.g. 1st session of month)
+  - 3.4.3. If currently reading `query_` file is in a wrong folder: confirm w/ user before moving; may be intentional (e.g. continuing a prior month's chat)
+- 3.5. `response_` File Rules:
+  - 3.5.1. Line 1: `# Response to [query_filename]`
+  - 3.5.2. Line 2 (optional): `*Heading max. 8w*`
+  - 3.5.3. [TS] matches the corresponding `query_` filename, NOT current time
+  - 3.5.4. Place in the same folder as the `query_` file
+- 3.6. For msgs NOT in a `query_` file:
+  - 3.6.1. If ≤30w: include user's msg verbatim as Line 1 of the `response_` file
+  - 3.6.2. If >30w: create `query_[current_TS].md` on user's behalf; both files share identical TS
+- 3.7. Non-MD (e.g. py, html) or non-response (e.g. deliverable) output:
+  - 3.7.1. If ≤5 lines (former) or ≤80w (latter): within `response_[TS].md` as snippet for direct copy
+  - 3.7.2. Otherwise: create a separate file (§3.3.6)
 
----
+4. Retrospection
+- 4.1. DON'T auto-read past sessions files; read on demand, judging relevance on the spot
+- 4.2. Funnel approach for context retrieval (reverse-chronologically):
+  - 4.2.1. Current month: read `close_` files as needed
+  - 4.2.2. Past months: read `wrap_` files first (lightweight) → if found relevant `wrap_` but insufficient, escalate to individual `close_` files of that month → if still insufficient, escalate to individual `query_`/`response_` files of that session
+  - 4.2.3. CP-prefixed files: skip if not in that CP and vice versa
 
-## Comms Protocol
+5. Post-Compaction (🚨)
+- 5.1. When the PostCompact hook fires, immediately output exact wording as §3.2.5
+- 5.2. Halt all fore/background tasks w/o exception
+- 5.3. In chat, non-#numbered bullet-list previously-read/fetched files/content (incl. tool results like web_search) still deemed useful for the current task (e.g. `- `enclosing_folder/file.md``)
+- 5.4. Separately list (identically as §5.3) the remainder (not useful)
+- 5.5. DON'T re-read/re-fetch anything (incl. CP's CLAUDE.md); root CLAUDE.md is already re-read via the PostCompact hook (as you're reading this)
+- 5.6. DON'T continue any task; await user's instruction
+- 5.7. The 2 lists in §5.3 & §5.4 shall advise user what to re-provide in current/new session
 
-All responses must be written to a file. Chat text is restricted to the 5 elements below only —— no other chat text unless a Special Command override applies.
+6. Claude Project (CP)
+- 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/seek/`, `/backup/`, `/temp/` —— that contains a file w/ `CP_instr` in its filename
+- 6.2. A chat is identified as a CP chat when any of the following apply:
+  - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
+  - 6.2.2. User declares it; or CC suggests & user confirms
+  - 6.2.3. User added CP folder to the session
+- 6.3. Once identified as a CP chat:
+  - 6.3.1. All files (incl. `query_`) use the CP prefix, except special output (§3.7)
+  - 6.3.2. Immediately read the CP's `CP_instr.md` (and any unconditional files it directs) if not already read this session; include them in either §5.3/§5.4 list after post-compaction
+  - 6.3.3. Reminder: when prompted `#close` (i.e. saw close.md), mind the additional file
+- 6.4. Each CP folder has a `CLAUDE.md` that mandates (at minimum):
+  - 6.4.1. Read the root CLAUDE.md (this file)
+  - 6.4.2. Read the CP's `CP_instr.md` via local path (not GH link)
 
-### Chat Interface
+7. Conditionals
+- 7.1. Read (in `/universal/`) only when conditions are met; declare in chat (3.2.1)
+- 7.2. Actively scan input both explicitly & **implicitly** for conditions below:
 
-```
-✅ `alias1.md`, `alias2.md`       ← non-/sessions/ file(s) read (event-grouped, comma-separated)
-⇠ `202605/query_[TS].md`         ← /sessions/ file(s) read (one line each; enclosing folder/filename only)
-➡️ `202605/response_[TS].md`      ← file(s) generated (one line each; enclosing folder/filename only)
-⚠️ [brief message]                ← blocking alert: stop & notify (file not found, ambiguity, missing input)
-🚨 Post-compaction —— stop.       ← compaction detected: halt everything immediately (see § Post-Compaction)
-```
+| File | Condition |
+|---|---|
+| `google.md` | On personal email/calendar issue; OR `#job` mentioned |
+| `profile.md` | User's personal background needed |
+| `cic.md` | CIC ops (not existing automation) |
+| `writing.md` | On deliverables; OR "casual"/"whatsapp" style mentioned |
+| `coding.md` | `#replace` mentioned (even not coding); OR multi-script coding |
+| `plan.md` | No `DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
+| `shrink.md` | Shrink/summarise/synthesise/distil/condense mentioned |
 
-### File Naming
+- 7.3. General Trigger:
+  - 7.3.1. Any `#[trigger]` → attempt to read `universal/[trigger].md`
+  - 7.3.2. e.g. `#close` → `universal/close.md`
+  - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file unfound
 
-Four file types in `/sessions/`:
+8. File Rules
+- 8.1. Move Rule (whenever moving): copy to target folder → void original (§8.2) → add suffix `_moved_[directory]` to original filename; NEVER leave identical-filename copies across folders
+- 8.2. Void Rule: add `❌_` prefix to the original filename, signalling user to manually delete; NEVER delete a file
+- 8.3. Disregard anything w/ below filename attributes, unless explicitly referred:
+  - 8.3.1. `user_notes.txt`: my private notes
+  - 8.3.1. `temp_` prefix: to be deleted soon
+  - 8.3.2. `_otg` suffix: OTG variant; if no CC variant exists in same folder, it's OTG-only
+- 8.4. Filename suffix usually indicates variant; e.g. `CP_index_cc.md` = for CC (you)
+- 8.5. If a folder has `README.txt`, read it; usually tells what this folder is
 
-| Type | Filename | Created by |
-|---|---|---|
-| User input | `query_[TS].md` | User (or me on their behalf per 5.3.2) |
-| My output | `response_[TS].md` | Me |
-| Session summary | `close_[TS].md` | Me (on user prompt; see `universal/close.md`) |
-| Monthly summary | `summary_[TS].md` | Me (on user prompt; one per month) |
-
-For CP chats, all 4 types are prefixed: `[CP]_query_[TS].md`, `[CP]_response_[TS].md`, etc.
-
-`[TS]` = timestamp from `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`.
-
-### File Organisation
-
-- All sessions files live in `/sessions/[year]/[yearmonth]/` (e.g. `/sessions/2026/202605/`)
-- Create the subfolder if it doesn't exist when first needed in a month
-- If a `query_` file is found in a wrong subfolder: confirm with the user before moving (they may be continuing a prior month's chat intentionally)
-
-### Response File Rules
-
-Each `response_[TS].md`:
-1. Line 1: `# Response to [query_filename]`
-2. Line 2 (optional): `*Title up to 8 words*`
-3. Timestamp matches the corresponding `query_` file (not the current time)
-4. Placed in the same subfolder as the `query_` file
-
-For messages that are NOT a `query_` file:
-- If ≤ 30 words: include the user's message verbatim at the top of the `response_` file
-- If > 30 words: create a `query_[TS].md` on the user's behalf (both files share the same timestamp)
-
-### Timestamp Pairing
-
-- Responding to a `query_` file → match its timestamp
-- Responding to a direct message → use current SYD timestamp for both `query_` and `response_`
-
-### Long / Non-MD Output
-
-- If generated content is short: include inline in `response_[TS].md`
-- If long or non-MD (e.g. HTML, Python): create a separate file; filename determined on the spot; must end with timestamp (e.g. `name_[TS].html`)
-
----
-
-## Session Memory & Context (Funnel Approach)
-
-Do NOT read past sessions files automatically at session start. Read on demand, judging relevance on the spot. Funnel:
-
-**Current month's files:**
-- Read `close_` files of the current month when context is needed
-- Skip CP-prefixed `close_` files if not in that CP; skip non-CP `close_` files if currently in a CP
-
-**Past months:**
-1. Read that month's `summary_[TS].md` first (lightweight)
-2. If insufficient: escalate to individual `close_` files of that month
-3. If still insufficient: escalate to individual `query_`/`response_` files of that session
-
----
-
-## Post-Compaction
-
-When the PostCompact hook fires, a 🚨 prompt appears in the chat.
-
-Upon seeing 🚨:
-1. Output `🚨 Post-compaction —— stop.` in chat immediately
-2. Halt all tasks and background work without exception
-3. Re-read this CLAUDE.md in full
-4. Check the compaction summary (or recent `query_` filenames in `/sessions/`) to identify if a CP was active → if so, re-read that CP's `CP_instr.md`
-5. Do NOT continue previous work. Await the user's instruction.
-
----
-
-## Move & Void Rules
-
-**Move Rule:** Copy to target folder → void original (Void Rule) → add suffix `moved_[directory]` to the original filename. NEVER leave identical-filename copies across folders.
-
-**Void Rule:** Add `❌_` prefix to the original filename, signalling the user to manually delete. NEVER delete a file yourself.
-
----
-
-## Claude Projects (CP) System
-
-A CP is any folder directly under the root (except `/universal/`, `/backup/`, `/temp/`, `/sessions/`, `/seek/`) that contains a file with `CP_instr` in its filename (e.g. `CP_instr_00.md`).
-
-Current CPs (FYI; not exhaustive): `/pro_profile/`, `/dissertation/`, `/mip/`
-
-### CP Identification
-
-A chat is a CP chat when:
-- The user's `query_` file has a CP folder name as prefix (e.g. `pro_profile_query_[TS].md`), OR
-- The user declares it verbally and I confirm
-
-### CP Chat Rules
-
-Once identified as a CP chat:
-1. All my output files use the CP prefix
-2. Immediately read the CP's `CP_instr.md` (and any unconditional files it directs) if not already read this session, or if post-compaction
-3. `close_` = `[CP]_close_[TS].md`; addendum (if applicable) = separate `[CP]_response_[TS].md`
-
-See `universal/close.md` for the full `close_` and addendum template.
-
-### CP CLAUDE.md
-
-Each CP folder has a `CLAUDE.md` that mandates (at minimum):
-1. Read `/dupbus-ceztuc-7cufVe/CLAUDE.md` (this file) for comms protocols
-2. Read the CP's `CP_instr.md` (via local path, not GH link)
-
----
-
-## Conditional File Reads
-
-Read only when conditions are met; declare in chat with ✅. Use the alias as the declared name.
-
-| Alias | Actual File | Read When |
-|---|---|---|
-| `google.md` | `universal/google_04.md` | Email, calendar, schedule/event topic, OR `#job` mentioned |
-| `profile.md` | `universal/profile_06.md` | Personal background of the user needed |
-| `cic.md` | `universal/cic_08.md` | A/B/C/WCIC prompt creation, OR browser automation relevant |
-| `writing.md` | `universal/writing_06.md` | Deliverables required, OR "casual"/"whatsapp" style mentioned |
-| `coding.md` | `universal/coding_05.md` | `#replace` mentioned, OR multi-script coding task |
-| `numbered.md` | `universal/numbered_04.md` | `#numbered` mentioned, OR multi-level list needed |
-| `plan.md` | `universal/plan_04.md` | No `DevPlan.md` in CP but "dev plan"/"addendum" discussed |
-| `shrink.md` | `universal/shrink_01.md` | Shrink/summarise/synthesise/distil/condense requested |
-
-**General trigger:** any `#[name]` in user's message → attempt to read `universal/[name]_*.md`; if not found, alert ⚠️.
-
----
-
-## File Read Declarations
-
-Each time a non-`/sessions/` file is (re-)read, declare in chat:
-
-```
-✅ `alias.md`, `alias2.md`
-```
-
-Use the alias if defined above; otherwise use the filename only (no path prefix).
-
----
-
-## Special Commands
-
-*(User-only unless stated otherwise)*
-
-- `yn` —— respond with one word only in chat: Yes or No
-- `QB` / `qb` —— raise all questions and blockers before proceeding; label as Q1, Q2… / B1, B2… (NEVER QB1, QB2…)
-- `CIIW` —— "Correct (me) if I'm wrong"; treat the user's message as a suggestion to validate, not a direct command; correct any errors before acting
-- Single `.` as separator in user prompts: 1 blank line = same-issue break; 3 blank lines = new-issue break
-- If user's message is nothing but a single `.`: respond with nothing but `.` only (no file, no declarations)
+9. Special Commands (user-only unless stated otherwise)
+- 9.1. `override` —— exception to "no chat text" or other restrictions for that single turn only
+- 9.2. `yn` —— override: respond w/ 1 word only in chat: `Yes` or `No`
+- 9.3. `QB` / `qb` —— raise all questions (Q1, Q2…) and blockers (B1, B2…) separately & #numbered before proceeding; NEVER label as QB1, QB2
+- 9.4. `CIIW` —— "Correct (me) if I'm wrong"; validate the user's message rather than treating it as a direct command; correct errors before acting
+- 9.5. Dot (`.`) as blank line: 1 line between = same-issue break; 3 between = new-issue break
+- 9.6. If user's msg only has a single `.`: respond w/ `.` only in chat; no file, no declarations
