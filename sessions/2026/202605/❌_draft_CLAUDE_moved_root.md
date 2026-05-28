@@ -98,7 +98,7 @@
   - 6.3.3. Reminder: when prompted `#close` (i.e. saw close.md), mind the additional file
 - 6.4. Each CP folder has a `CLAUDE.md` that mandates (at minimum):
   - 6.4.1. Read the root CLAUDE.md (this file)
-  - 6.4.2. Read the CP's `CP_instr.md` via local path (not GH link)
+  - 6.4.2. Read the CP's `CP_instr.md` via local path; ignore any GH fetch instructions within it; read `CP_index_cc.md` in the same folder for file references instead
 
 7. Conditionals
 - 7.1. Read (in `/universal/`) only when conditions are met; declare in chat (3.2.1)
@@ -123,11 +123,12 @@
 - 8.1. Move Rule (whenever moving): copy to target folder → void original (§8.2) → add suffix `_moved_[directory]` to original filename; NEVER leave identical-filename copies across folders
 - 8.2. Void Rule: add `❌_` prefix to the original filename, signalling user to manually delete; NEVER delete a file
 - 8.3. Disregard anything w/ below filename attributes, unless explicitly referred:
-  - 8.3.1. `user_notes.txt`: my private notes
-  - 8.3.1. `temp_` prefix: to be deleted soon
-  - 8.3.2. `_otg` suffix: OTG variant; if no CC variant exists in same folder, it's OTG-only
+  - 8.3.1. `user_notes.txt`: private notes
+  - 8.3.2. `temp_` prefix: to be deleted soon
+  - 8.3.3. `_otg` suffix: OTG variant; if no CC variant exists in same folder, it's OTG-only
 - 8.4. Filename suffix usually indicates variant; e.g. `CP_index_cc.md` = for CC (you)
 - 8.5. If a folder has `README.txt`, read it; usually tells what this folder is
+- 8.6. NEVER create or edit files in CC's memory store (`~/.claude/projects/*/memory/`)
 
 9. Special Commands (user-only unless stated otherwise)
 - 9.1. `override` —— exception to "no chat text" or other restrictions for that single turn only

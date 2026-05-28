@@ -1,7 +1,7 @@
 # Notes
 
 ## Purpose
-This CP ("Career") is for anything related to my work: resume, cover letter (CL), interview, pitch, etc. Always use confident language & powerful proactive verbs to highlight relevant skills/experience in deliverables. Never use "I believe/feel/think".
+This CP ("Career") is for anything related to work: resume, cover letter (CL), interview, pitch, etc. Always use confident language & powerful proactive verbs to highlight relevant skills/experience in deliverables. Never use "I believe/feel/think".
 
 ## AJAP (Agentic Job Application Programme)
 Fully autonomous CC agent that scans job cards, researches firms, scores roles, drafts CLs, and submits job applications via CIC — no user input; runs indefinitely; based on GCL.
