@@ -77,3 +77,24 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+---
+
+## 7. Screening Questions (Pre-filled 202605300240 SYD)
+
+Pre-filled via CIC. **NOT yet submitted — pending user review before clicking Submit.**
+
+URL: `https://jobs.employmenthero.com/prescreen_questions/answer/iCX7Lg_ccL6o2MepTgT6fg` (expires ~30 Jul 2026)
+
+| Question | Answer |
+|---|---|
+| Working rights status (optional) | Blank (Subclass 485 not among listed options) |
+| Largest monthly ad budget | 0 (no dedicated paid media budget managed) |
+| DTC ecommerce experience | No |
+| Growth metrics (150-char limit) | MER, nCPA, CLTV, contribution margin. MER and nCPA diagnose acquisition efficiency; CLTV anchors long-term profitability decisions. |
+| Team leadership (150-char limit) | Led a consulting team across strategy, creative, and client services as General Manager. Technical Lead at Apple Foundation Programme (5 members). |
+| Based in Australia, AEST | Yes |
+| Notice period | None. Available to commence immediately. |
+| Salary expectations | AUD $110,000 |
+
+Scale a brand (long-form): see `career_response_202605300226.md` § Ecom Republic — Screening Questions Pre-filled

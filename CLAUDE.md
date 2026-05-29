@@ -101,8 +101,9 @@
   - 6.2.3. User added CP folder to the session
 - 6.3. Once identified as a CP chat:
   - 6.3.1. All files (incl. `query_`) use the CP prefix, except special output (§3.7)
-  - 6.3.2. Immediately read the CP's `CP_index_cc.md` (and any unconditional files it directs) if not already read this session; include them in either §5.3/§5.4 list after post-compaction
-  - 6.3.3. Reminder: when prompted `#close` (i.e. saw close.md), mind the additional file
+  - 6.3.2. If any files since (not after) the `query_` triggering CP not prefixed: rename → declare
+  - 6.3.3. Immediately read the CP's `CP_index_cc.md` (and any unconditional files it directs) if not already read this session; include them in either §5.3/§5.4 list after post-compaction
+  - 6.3.4. Reminder: when prompted `#close` (i.e. saw close.md), mind the additional file
 - 6.4. Each CP folder has a `CLAUDE.md` that mandates (at minimum):
   - 6.4.1. Read the root CLAUDE.md (this file)
   - 6.4.2. Read the CP's `CP_index_cc.md` via local path (never via GH)

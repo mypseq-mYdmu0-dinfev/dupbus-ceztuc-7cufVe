@@ -1,7 +1,7 @@
 # Star X Technology Solutions — Hardware IT Support (Assistant)
 **Date:** 18:55 on 25/05/2026
 **SEEK URL:** https://au.seek.com/job/91857343
-**Outcome:** Applied
+**Outcome:** Applied; phone interview being scheduled
 **Resume Selected:** Culous_Yu_Resume_IT.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 10/30 (MHci IT degree, Apple Foundation; no hardware/networking/MS365 admin)
@@ -76,3 +76,34 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+---
+
+## 7. Engagements
+
+### Employer Reply
+
+On 28 May 2026, at 17:03, recruitment <recruitment@starx.com.au> wrote:
+
+Hi Culous,
+I hope you are well.
+Thank you for your application via SEEK. We have received your resume and would like to arrange a brief phone interview with you. Could you please let us know your availability?
+We look forward to hearing from you.
+
+Human Resources
+
+Star X Technology Solutions Pty Ltd
+
+E: recruitment@starx.com.au
+W: www.starx.com.au
+
+### User Reply 
+
+Dear Hiring Manager,
+
+Thank you for considering my application for the Hardware IT Support (Assistant) position and for the kind invitation to interview.
+
+My next availability would be around 3pm on 4 June 2026. Please advise if this works for you. I look forward to speaking with you. Thank you for your time.
+
+Yours faithfully,
+Culous Yu

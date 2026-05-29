@@ -79,3 +79,27 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+---
+
+## 7. SEEK Message & Reply
+
+**Received:** 202605261812 SYD (via SEEK relay from KOSEC Human Resources)
+**Deadline:** 72hr from receipt (passed; reply drafted at 202605300240 SYD, ~96hr later)
+
+### Key Email Content
+- First stage interview invitation; framed as "rare and exciting opportunity" in a "highly competitive" process
+- 3 screening questions to answer within 72hr via email reply; failure to reply = opportunity passed to next candidate
+- Role reiterated: Marketing Assistant/Brand Ambassador, Sydney NSW, $35–$50/hr, casual
+
+**Questions asked:**
+1. What sets you apart from other candidates, and how can you contribute uniquely to KOSEC?
+2. What inspires your interest in KOSEC and fuels your passion for Private Wealth/Stockbroking?
+3. From your perspective, what distinguishes KOSEC from other financial institutions?
+
+### Reply Drafted
+*(see `career_response_202605300226.md` § Email Draft — KOSEC)*
+
+Delay reason given: SEEK relay message was not surfaced as a direct email and was inadvertently deprioritised.
+
+
