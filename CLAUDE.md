@@ -57,6 +57,13 @@
 - 3.4. File Organisation:
   - 3.4.1. All output files (incl. CP) in `/sessions/[YYYY]/[YYYYMM]/` unless instructed otherwise
   - 3.4.2. If user msg contains `query_` w/o folder specified: construct path by using last `query_`
+
+  - 3.4.2. If user msg contains .md w/ [TS] in filename but w/o folder specified, attempt in order:
+    - 3.4.2.1. path = \`/sessions/[YYYY]/[YYYYMM]/[file].md\` (YYYY = TS[1:4], YYYYMM = TS[1:6])
+    - 3.4.2.2. try immediate last month (MM - 1)
+    - 3.4.2.3. `find` as usual
+
+
   - 3.4.3. If currently reading `query_` file is in a wrong folder: confirm w/ user before moving; may be intentional (e.g. continuing a prior month's chat)
   - 3.4.4. Create folder if it doesn't exist (e.g. 1st session of month)
 - 3.5. `response_` File Rules:
