@@ -41,7 +41,8 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 **MA-SA communication (`/seek/.claude/tmp/ma_msg.md`) — SA rules:**
 - Read after completing every sub-section (e.g. S0.1, S0.2, S0.3, S1, S2, S3.1, S3.2, S4.1–S4.6, S5, S6.1, S6.2, S6.3, S6.4.1, S6.4.2, S6.4.2.5, S6.4.3–S6.4.8, S7.1–S7.3) AND immediately before S6.4.3 Submit
 - If reads "Continue" → proceed immediately (no delay)
-- If reads anything else → follow the instruction exactly; then wait 15s and re-read; repeat up to 4 times (60s total); if still not "Continue" after 4 re-reads → stop all actions and become idle (do not take any further action)
+- If reads "STOP" (exact word, case-sensitive; may be followed by " — [reason]") → immediately stop all actions and become idle; do NOT wait; do NOT re-check
+- If reads anything else → follow the instruction exactly; then wait 15s and re-read; repeat up to 20 times (300s total); if still not "Continue" after 20 re-reads → stop all actions and become idle (do not take any further action)
 - SA NEVER writes to `/seek/.claude/tmp/ma_msg.md` — read only
 - **Tab-kill trigger:** if any Tab 2–4⁺ is closed involuntarily (i.e. not by SA's own action) → immediately stop all current actions and read `/seek/.claude/tmp/ma_msg.md`; follow any instruction found there; this takes priority over any in-progress section. If that involuntary closure leaves Tab 1 as the only remaining open tab → treat as MA rogue-retirement signal; stop immediately and become idle without reading or waiting. Note: SA starting with Tab 1 only (clean state) does NOT trigger this — the signal requires witnessing a closure
 
@@ -61,7 +62,11 @@ Execute once per AJAP runtime (not per loop), before Tab 1 Accessibility Check:
 - **Recovery gate (FIRST):** if mandatory files have not been declared read (✅) in this session's chat history → re-read ALL per `CLAUDE.md § Session Start` now; do NOT proceed past this point until done
 - Bash: `rm -f /seek/.claude/tmp/CulousYu_CoverLetter_*.pdf` — clear temp CL files from prior sessions
 - Bash: `rm -f /seek/.claude/tmp/last_decision.md` — clear last-decision tmp file from prior sessions
-- Read `/seek/.claude/tmp/ma_msg.md` — confirm it reads "Continue" before proceeding; if absent or non-Continue, STOP and wait (MA has not yet initialised the session or has a pending instruction)
+- Read `/seek/.claude/tmp/ma_msg.md`:
+  - If reads "Continue" → proceed normally
+  - If reads "Submit then proceed to next card" → proceed normally; this is a deferred submit approval pre-written by MA; do NOT act on it here; it will be consumed at S6.4.2.5 when Pre-Flight routes to the in-progress application
+  - If reads "STOP" (or "STOP — [reason]") → stop all actions and become idle immediately
+  - If absent or reads anything else → STOP and wait (MA has not yet initialised the session or has a pending instruction)
 
 ---
 
@@ -273,6 +278,14 @@ S4.4. **Suitability Score** —— score out of 100 using the following weighted
 
 S4.5. **Resume Selection** —— per decision rules in `gcl.md`
 S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md` (no dash sign)
+S4.7. **SA CL Self-Review** — re-read the drafted CL in full before writing to AR; check ALL of the following and rectify in-context if any fail:
+- No `—` `–` dash signs anywhere in the CL body
+- No bare `+` (must use `⁺` for "more than")
+- `16⁺ years` appears no more than once
+- Template selection correct per `gcl.md § 6. Cover Letter` template rules (Template [2] for mid/high-level or high-score — re-read gcl.md section if uncertain)
+- No banned GenAI words — spot-check top 10: "seamlessly", "resonates", "pivotal", "leverage", "spearhead", "transformative", "holistic", "robust", "passionate", "proactive"
+- CL ends with P.S. line
+- Do NOT proceed to S5 until all checks pass
 
 ### S5. Create AR
 
