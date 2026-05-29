@@ -23,7 +23,7 @@ Location: same folder as the session's query_/response_ files
 [skip 1 line]
 
 ## 2. Decisions
-- 2.1. [Key decisions made; include reasoning if non-obvious]
+- 2.1. [Key decisions made in this session; include reasoning if non-obvious]
 - 2.2. ...
 [skip 1 line]
 
@@ -40,7 +40,7 @@ Location: same folder as the session's query_/response_ files
 
 ## 5. Other Files ([file_count])
 - 5.1. Created:
-  - 5.1.1. `enclosing_folder/file.py` [one line each; same for below]
+  - 5.1.1. `enclosing_folder/file.py` [1 line each; same for below]
   - 5.1.2. `enclosing_folder/file.html`
   - 5.1.3. ...
 - 5.2. Modified:

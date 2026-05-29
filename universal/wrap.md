@@ -18,25 +18,42 @@ Format: all #numbered; reference last month's `wrap_` (if exists)
 # Monthly Wrap: [YYYYMM]
 *[Heading max 15w]*
 
-## Sessions
-- `[YYYYMM]/close_[TS].md` —— [max. 15w descr]
-- `[YYYYMM]/[CP_folder]_close_[TS].md` —— [ditto]
-[... all `close_` files of the month, in chronological order]
 
-## Key Themes
-[e.g. Cross-session issues/patterns, user preferences, recurring decisions, ongoing work threads]
+## 1. Themes
+- 1.1. [Key themes only; e.g. cross-session issues/patterns, user preferences, recurring decisions, ongoing work threads; all #numbered (same for all below sections)]
+- 1.2. ...
+[skip 1 line]
 
-## Key Decisions
-[Noteworthy decisions made in this month]
+## 2. Decisions
+- 2.1. [Key decisions made in this month; include reasoning if non-obvious]
+- 2.2. ...
+[skip 1 line]
 
-## Carried Forward
-[Open items from `close_` files not yet resolved; tagged 🔴/🟡/🟢]
+## Issues
+- 3.1. [Todos or unresolved items with priority tag: 🔴 blocking / 🟡 important / 🟢 nice-to-have]
+- 3.2. ...
+[skip 1 line]
 
-## Notable Files
-[Non-sessions files created or meaningfully modified this month; enclosing_folder/filename]
 
-## Remarks
-[Standing context that next month's sessions should know; ONLY what's not in sections above; optional]
+## 4. Sessions ([close_file_count])
+- 4.1. `[YYYYMM]/close_[TS].md` —— [max. 15w descr]
+- 4.2. `[YYYYMM]/[CP_folder]_close_[TS].md` —— [ditto]
+- 4.3. ... [all `close_` files of the month, in chronological order]
+[skip 1 line]
+
+## 5. Notable Files ([file_count]) [only meaningful/major]
+- 5.1. Created:
+  - 5.1.1. `enclosing_folder/file.py` [1 line each; same for below]
+  - 5.1.2. `enclosing_folder/file.html`
+  - 5.1.3. ...
+- 5.2. Modified:
+  - 5.2.1. ...
+[If none, input `N/A`]
+[skip 1 line]
+
+## 6. Remarks
+- 6.1. [Standing context that next month's sessions should know; ONLY what's not in sections above; optional]
+- 6.2. ...
 ```
 
 ---

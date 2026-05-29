@@ -71,7 +71,7 @@
   - 3.5.3. [TS] matches the corresponding `query_` filename, NOT current time
   - 3.5.4. Place in the same folder as the `query_` file
 - 3.6. For msgs NOT in a `query_` file:
-  - 3.6.1. If ≤30w: include user's msg verbatim as Line 1 of the `response_` file
+  - 3.6.1. If ≤30w: incl. user's msg verbatim in quote after `# Response to ` (Line 1) of `response_`
   - 3.6.2. If >30w: create `query_[current_TS].md` on user's behalf; both files share identical TS
 - 3.7. Non-MD (e.g. py, html) or non-response (e.g. deliverable) output:
   - 3.7.1. If ≤5 lines (former) or ≤80w (latter): within `response_[TS].md` as snippet for direct copy
