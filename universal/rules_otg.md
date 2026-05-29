@@ -1,11 +1,14 @@
-# Culous' Customs —— ALWAYS STRICTLY COMPLY, EVEN WHEN NOT PROMPTED `#cc`
+# Absolute Protocols
+
+*STOP & disregard this file if you identify as Claude Code (CC).*
+*If you're reading, you're Claude Chat (CWI/CAI/OTG).*
 
 ---
 
 ## Language & Units
 
 ALWAYS use:
-- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`, BUT DON'T CONVERT TO GBP)
+- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`; DON'T CONVERT TO GBP)
 - Metric units (°C, metre, gram, litre, etc.)
 - AUD (original currency in bracket)
 - Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise (e.g. ✅ `He said "I'm leaving", then left.` ❌ `He said "I'm leaving," then left.`)
