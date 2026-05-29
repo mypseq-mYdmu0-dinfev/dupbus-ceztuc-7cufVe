@@ -18,11 +18,7 @@ ALWAYS use:
 
 ## File Fetch
 
-- Refer by alias:
-  - Get alias (e.g. directory)
-  - Extract ver no.
-  - Append in bracket
-  - e.g. Filename: `cc_03.md` → Alias: ``cc.md` (v03)`
+- Refer by alias (retrieve from `index_otg.md`, where its alias = `index.md`)
 - When ANYTHING fetched at ANYTIME (inc. chat start, mid-chat, provided in-line `#####`):
   - Declare in chat (override) as line 3 (after PP1), **before artefacts**: `✅ [alias] (ver; [reason])`
   - For [reason]:
@@ -31,7 +27,7 @@ ALWAYS use:
     - >5 words → in most relevant artefact
   - Example:
 ```
-✅ `cc.md` (v03), `profile.md` (v02; for KK's bg)
+✅ `rules.md`, `profile.md` (for KK's bg)
 ```
 
 ---
@@ -48,12 +44,12 @@ PP0.3. After #01 completes, check if it ends w/ the `🏁` line:
 
 ### PP1 —— Context Check (Always Enforced)
 
-Run before every response (exc. 1st & 2nd responses; NOT a formatting step):
+Run before every response (exc. 1st response of chat; NOT a formatting step):
 > Tool result fully intact (NOT cleared)?
-- In `<thinking>` (NOT in chat), MUST start w/ this line & NOTHING before it:
-  `PP1: "[Nth word of #03 artefact]" | "[Nth word of directory.md]"` where N = last artefact #[no.]
+- In `<thinking>` (NOT chat), MUST start w/ this line & NOTHING before it:
+  `PP1: "[Nth word of #01 artefact]" | "[Nth word of index.md]"` where N = last artefact #[no.]
 - PP1.1: If either unquotable/uncertain → NO
-- PP1.2: If `[Older tool result cleared to save context]` in latest ver of directory.md → NO
+- PP1.2: If `[Older tool result cleared to save context]` in latest ver of index.md → NO
 - ❌ Reasoning about tool call count, context pressure, or whether result "should" be visible
 - ✅ Direct token read only — the act of quoting **IS** the check
 - Only if YES (intact; PP1.1&2 BOTH passed), print in chat (override):
@@ -61,29 +57,29 @@ Run before every response (exc. 1st & 2nd responses; NOT a formatting step):
   - Line 2: [skipped]
   - Line 3: `✅ ...` if also (re-)fetching per § File Fetch (NOT `✔︎`)
 - Otherwise (=NO), DON'T print `✔︎`; immediately follow userPref 2.1
-- If directory.md cleared BUT PP2 active AND directory.md fully found in `<thinking>` = still yes
+- If index.md cleared BUT PP2 active AND index.md fully found in `<thinking>` = still yes
 - If prompted `#fast`; temp. skip #pp (relying on chat history only); reinstate in next response
 
 ### PP2 —— Full Lock
 
 - Activated by `#lock` in any prompt; persists for the rest of the chat
-- If directory.md re-fetched ≥ twice: suggest #lock
+- If index.md re-fetched ≥ twice: suggest #lock
 
 When PP2 active:
-- PP2.1. On ANY fetch event: fully copy fetched file content verbatim before declaring (`✅ ...`)
+- PP2.1. On GH fetch event: fully copy fetched files' content verbatim before declaring (`✅ ...`)
 - PP2.2. If PP2 activated in 1st msg:
-  - PP2.2.1. Skip PP0 (cc.md copied in full)
-  - PP2.2.2. Copy all fetched files into #01 under `## [alias]` headings
+  - PP2.2.1. Skip PP0 (rules.md copied in full)
+  - PP2.2.2. Combine & print in #01 under `## [alias]` headings
 - PP2.3. For all subsequent fetch events:
-  - PP2.3.1. Copy all fetched files into a single dedicated artefact (1st artefact of that response)
+  - PP2.3.1. Copy all fetched files into a single artefact (1st of that response), titled `#[no.]. PP2`
   - PP2.3.2. Regular response artefacts follow after
 - PP2.4. If PP2 activated after 1st msg:
   - PP2.4.1. Follow PP2.3.1
-  - PP2.4.2. PP0 does NOT satisfy PP2 for cc.md; must copy entirely like other files
+  - PP2.4.2. PP0 does NOT satisfy PP2 for rules.md; must copy entirely like other files
 - PP2.5. Fetch events:
-  - PP2.5.1. Inc. unconditionals, conditionals, provided GH
+  - PP2.5.1. Inc. unconditionals, conditionals, user-provided GH links
   - PP2.5.2. Exc. web_search/other tool results, unless highly applicable (request first)
-  - PP2.5.3. Exc. files provided in-line (already fully in context)
+  - PP2.5.3. Exc. file content provided in-line (already fully in context)
 - PP2.6. Declare ONLY if file fetched AND verbatim copy found in the designated copy artefact
 - PP2.7. Notify in chat (override) when cumulative copied (PP2) file count reaches 10, 20, 30
 - PP2.8. Clarifications
@@ -224,8 +220,8 @@ When generating 2⁺ artefacts, NEVER pre-announce all titles as a group:
 - `yn` —— strictly respond w/ just 1 word in chat (override), either Yes or No (e.g. "Should we...? yn"); only usable by ME
 - Single dot `.` as separator in my prompts: 1 line = normal break line (separating points on same issue); 3 lines = major break line (separating responses on different issues).
 - If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only in chat (override)
-- `#cc` —— reminder for complying this file, most likely you made mistakes (e.g. multiple artefacts with identical number) but I prefer not to rectify, just continue
-- If and only if my prompt has nothing but `#cc`, review your last response against this file & update in a new artefact
+- `#rules` —— reminder for complying this file, most likely you made mistakes (e.g. multiple artefacts with identical number) but I prefer not to rectify, just continue
+- If and only if my prompt has nothing but `#rules`, review your last response against this file & update in a new artefact
 - `#pp` —— reminder to run PP1+PP3+(+PP2 if `#lock` prompted earlier) for EVERY RESPONSE
 - `override` = exception to override "artefact only"/"no chat text"/"each file fetched once only" or similar instr
 

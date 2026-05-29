@@ -122,7 +122,7 @@
 - 7.3. General Trigger:
   - 7.3.1. Any `#[trigger]` → attempt to read `universal/[trigger].md`
   - 7.3.2. e.g. `#close` → `universal/close.md`
-  - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file unfound
+  - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file not found
 
 8. File Rules
 - 8.1. Move Rule:

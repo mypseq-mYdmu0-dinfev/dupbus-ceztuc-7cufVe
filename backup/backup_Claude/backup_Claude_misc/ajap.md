@@ -435,4 +435,4 @@ If user sends any msg mid-session:
 |---|---|
 | Bottom-right support/Q&A chat widget on external portal | Standard design; not a blocker; dismiss or close it and proceed |
 | CL requires upload (no input box) | Bash: `pip3 install fpdf2 -q` if not installed → Python script using `fpdf` to render CL text → output to `/tmp/CulousYu_CoverLetter_[CompanyName].pdf` → upload via shadow DOM proxy + DragEvent drop (same as resume) |
-| Multi-page portals (e.g. SmartRecruiters "Preliminary questions") | Normal — use § AJAP Handling Notes (if unfound, read `/context/` files); NOT "struggling" situation |
+| Multi-page portals (e.g. SmartRecruiters "Preliminary questions") | Normal — use § AJAP Handling Notes (if not found, read `/context/` files); NOT "struggling" situation |
