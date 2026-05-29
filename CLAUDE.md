@@ -1,11 +1,12 @@
 # Absolute Protocols
 
+**If working directory is `/seek/`, skip all sections below; `/seek/CLAUDE.md` governs entirely.**
 *Root: `/dupbus-ceztuc-7cufVe/`; governs all CC (Claude Code) sessions started from OR added this root (strictly comply), unless another added folder's CLAUDE.md overrides specific lines.*
 
 ---
 
 1. Initiation
-- 1.1. At session start OR when root folder is added, before generating anything (regardless of msg content; no exception), read (in order) **Unconditionals**:
+- 1.1. At session start OR when root folder is added, before generating anything (regardless of msg content; if working directory is `/seek/`, STOP NOW), read (in order) **Unconditionals**:
   - 1.1.1. `universal/glossary.md` —— terminology & definitions
   - 1.1.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
 - 1.2. Declare in chat (per §3.2.1) w/ other reads (incl. CLAUDE.md) on a single line
