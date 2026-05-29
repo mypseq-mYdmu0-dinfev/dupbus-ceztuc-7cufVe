@@ -122,8 +122,16 @@
   - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file unfound
 
 8. File Rules
-- 8.1. Move Rule (whenever moving): copy to target folder → void original (§8.2) → add suffix `_moved_[directory]` to original filename; NEVER leave identical-filename copies across folders
-- 8.2. Void Rule: add `❌_` prefix to the original filename, signalling user to manually delete; NEVER delete a file
+- 8.1. Move Rule:
+  - 8.1.1. Enforced whenever moving files, even not mentioned "Move Rule"
+  - 8.1.2. Ops: copy to target folder → void original (per §8.2) → add suffix `_moved_[directory]` to original filename
+  - 8.1.3. Precaution: NEVER leave identical-filename copies across folders
+  - 8.1.4. If expected to edit & move in a single turn, move before edit (voided copy = history)
+- 8.2. Void Rule:
+  - 8.2.1. Enforced whenever intending to delete/remove files, even not mentioned "Void Rule"
+  - 8.2.2. Ops: add `❌_` prefix to the original filename, signalling user to manually delete
+  - 8.2.3. Precaution: NEVER actually delete a file by yourself (user will review)
+  - 8.2.4. Reminder user when spotting a voided file w/ mod time ≥7 days (don't actively search)
 - 8.3. Completely disregard anything w/ below filename attributes, unless explicitly referred:
   - 8.3.1. `user_notes.txt`: private notes
   - 8.3.2. `temp_` prefix: to be deleted soon
