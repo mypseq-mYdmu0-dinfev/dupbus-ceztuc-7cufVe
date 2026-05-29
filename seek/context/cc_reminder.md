@@ -32,4 +32,4 @@ If session resumed from a summary: 🛑 STOP — re-read ALL mandatory files in 
 **Re-read this file every 5 minutes (ScheduleWakeup) AND every 5 loops — no exceptions; no skipping regardless of how recently it was last read.**
 - If any active check above triggers → re-read `ajap.md` immediately before continuing
 - If session resumed from summary → re-read ALL mandatory files per `CLAUDE.md § Session Start` first
-- After each re-read of this file → immediately re-schedule: `ScheduleWakeup(delaySeconds=300, prompt="Re-read /seek/context/cc_reminder.md per MA heartbeat. Check all active items. Reschedule this wakeup. Then resume monitoring SA.", reason="MA 5-min cc_reminder.md heartbeat")`
+- After each re-read of this file → immediately re-schedule: `ScheduleWakeup(delaySeconds=60, prompt="Re-read /seek/context/cc_reminder.md per MA heartbeat. Check all active items. Reschedule this wakeup. Then resume monitoring SA.", reason="MA 5-min cc_reminder.md heartbeat")` — 60s matches `main_ajap.md` session-start interval; ensures multiple heartbeats within SA's 300s polling window

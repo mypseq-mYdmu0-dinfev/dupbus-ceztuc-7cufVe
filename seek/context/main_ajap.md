@@ -12,7 +12,7 @@ You are the main agent (MA). You orchestrate AJAP without executing it directly.
 - Enforce external portal time limits
 - Output S0.3 count (C2) to the user after each loop — you are the only agent whose outputs the user sees; all other Chat Rules (C1–C5 only) apply to you
 - Retire and re-spawn SA when deterioration is detected
-- Re-read `cc_reminder.md` on heartbeat (every 5 min via ScheduleWakeup AND every 5 loops)
+- Re-read `cc_reminder.md` on heartbeat (every 60 seconds via ScheduleWakeup AND every 5 loops)
 
 **You must never:** read job descriptions, company research, portal HTML, or scoring rationale. The only job-specific content you touch is the `## [n]. Cover Letter` section text from the last applied AR, solely to check for violations before approving Submit.
 
@@ -55,7 +55,7 @@ On receiving SA loop report (`[AR_PATH] | [OUTCOME] | [N] | [FLAGS]`):
 **If OUTCOME = Applying (SA paused before Submit at S6.4.2.5):**
 1. Read only the `## 6. Cover Letter` section of `[AR_PATH]`: run `Bash: grep -n "^## 6\." [AR_PATH]` to get the line number → then `Read [AR_PATH] offset=[line_no] limit=80` — NEVER cat or read the full AR; check for: `—` `–` `+` symbols; section heading number other than `6` (e.g. `## 3. Cover Letter` = deteriorated); banned words if readily visible (e.g. "seamlessly", "resonates"); `16⁺ years` appearing more than once
 2. If clean → `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`
-3. If compromised → `Bash: printf 'CL compromised — do not submit. Rectify: [specific issue]. Fix the CL in the AR, then re-report.' > /seek/.claude/tmp/ma_msg.md` → on SA's next Applying re-report, re-read CL; if clean: approve (step 2); if still compromised: `Bash: printf 'CL still compromised — void the AR (rename ⏳_ to ❌_), close Tabs 3 & 2, return to Tab 1, then report loop completion.' > /seek/.claude/tmp/ma_msg.md` → on SA's Voided report, reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`; retire SA; spawn fresh SA with [CARD_POSITION] = same job; append incident to session log
+3. If compromised → `Bash: printf 'CL compromised — do not submit. Rectify: [specific issue]. Fix the CL in the AR, then run F3 (close Tab 3, re-duplicate Tab 2 URL as new Tab 3) and proceed from S6 with the corrected AR. Re-report at S6.4.2.5.' > /seek/.claude/tmp/ma_msg.md` → on SA's next Applying re-report, re-read CL; if clean: approve (step 2); if still compromised: `Bash: printf 'CL still compromised — void the AR (rename ⏳_ to ❌_), close Tabs 3 & 2, return to Tab 1, then report loop completion.' > /seek/.claude/tmp/ma_msg.md` → on SA's Voided report, reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`; retire SA; spawn fresh SA with [CARD_POSITION] = same job; append incident to session log
 4. After MA writes any non-Continue message: verify SA has acted (check AR/tab state), then reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
 
 **If OUTCOME = Skipped or Pending (SA completed loop):**
@@ -122,7 +122,8 @@ Re-read `cc_reminder.md`:
 
 **Active SA check (run on every heartbeat firing, after cc_reminder.md re-read):**
 1. Check for pending ⏳_ AR: `Bash: find /seek/applied/ -maxdepth 1 -name "⏳_*.md" | head -1`
-2. If ⏳_ AR found AND `ma_msg.md` reads "Continue": check tab state — if Tab 3 is open and URL suggests a review/application page → SA is at or approaching S6.4.2.5; read `## 6. Cover Letter` section (per § Between-Loop Audit step 1) → if clean, write approval: `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`; append to session log: `[timestamp] N=[N] Heartbeat: proactive CL approval for [AR_filename]`
+2. If ⏳_ AR found AND `ma_msg.md` reads "Continue": check tab state — if Tab 3 is open and URL suggests a review/application page → SA is at or approaching S6.4.2.5; read `## 6. Cover Letter` section (per § Between-Loop Audit step 1) → if clean, write approval: `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`; append to session log: `[timestamp] N=[N] Heartbeat: proactive CL approval for [AR_filename]`; if compromised → write: `Bash: printf 'CL compromised — do not submit. Rectify: [specific issue]. Fix the CL in the AR, then run F3 (close Tab 3, re-duplicate Tab 2 URL as new Tab 3) and proceed from S6 with the corrected AR. Re-report at S6.4.2.5.' > /seek/.claude/tmp/ma_msg.md`; append to session log: `[timestamp] N=[N] Heartbeat: CL compromised correction issued for [AR_filename]: [issue]`
+2a. If ⏳_ AR found AND `ma_msg.md` does NOT read "Continue" (SA is acting on a prior correction) AND Tab 3 is still at review/application page: re-read `## 6. Cover Letter` section → if now clean: write approval: `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`; append to session log: `[timestamp] N=[N] Heartbeat: CL clean after correction, approval written for [AR_filename]`; if still compromised: leave as-is (SA is still working on the fix)
 3. If ⏳_ AR found AND `ma_msg.md` has read "Submit then proceed to next card" across multiple heartbeats without the AR being resolved (⏳_ still present): SA may be stuck — use kill switch: close Tab 3 to force SA re-read; if unresponsive after 30s further, retire SA and spawn fresh
 4. If expected SA running but no AR activity visible after multiple heartbeats: SA may be rogue — close all tabs except Tab 1; append incident to session log
 

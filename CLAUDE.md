@@ -48,6 +48,7 @@
     - 3.2.1.3. `enclosing_folder` = immediate ONE parent only for clickability, except in `.claude/`
     - 3.2.1.4. Declaration NEVER contains `/sessions/` or `/[YYYY]/`
     - 3.2.1.5. §3.2.1 (`✅`) NEVER incl. comms files (the 4 types in §3.3; belong to §3.2.2)
+    - 3.2.1.6. §3.2.2 (`⇠`) NEVER incl. non-comms files (e.g. CLAUDE.md)
   - 3.2.2. `⇠ `enclosing_folder/file.md`` —— comms file(s) read; 1 line each
   - 3.2.3. `➡️ `enclosing_folder/file.md`` —— file(s) generated; 1 line each; not always .md; e.g.:
 

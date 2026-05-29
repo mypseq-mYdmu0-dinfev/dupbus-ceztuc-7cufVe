@@ -6,11 +6,13 @@ This CP ("AJAP Investigation") is for optimising AJAP (Agentic Job Application P
 
 ## Absolute Protocols
 
-- Root CLAUDE.md governs: read `dupbus-ceztuc-7cufVe/CLAUDE.md` if not already
+- Root CLAUDE.md governs: (re-)read `dupbus-ceztuc-7cufVe/CLAUDE.md` in full
+- Ignore "If working directory is `/seek/`, skip all sections below"
 - All protocols apply EXCEPT:
   - Comms files are in `/seek/investigation/[YYYY]/[YYYYMM]`, NOT `/sessions/`
   - Don't add `[CP_folder]_` prefix; all comms files herein are in this CP
 - Re root CLAUDE.md §3.2.1.5, `audit_` `changes_` are also considered comms files in this CP
+- Ensure no chat text per root CLAUDE.md §3
 
 ## Context
 
