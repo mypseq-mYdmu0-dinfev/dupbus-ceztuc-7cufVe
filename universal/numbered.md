@@ -37,9 +37,10 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 - On long responses above 100 words (even not prompted `#numbered`):
   - Follow above format (rather than unnumbered bullets) for **easy reply**
   - Instead of `re "xxx..."`, I can refer by `re 1.2.1` or just `1.2.1:`
-- No number repetition throughout an issue, reset to pt 1 only if:
-  - User input is NOT a reply to a response (CC: i.e. `query_` 1st line has no `response_`); or
-  - 1st response of a session (CC: despite referring to previous `/sessions/` files)
+- Numbering Continuity —— No number repetition throughout an issue, reset to pt 1 only if:
+  - User input is NOT a reply to a response (CC: i.e. `query_` has no `response_`/prev. pt no.); or
+  - 1st response of a session (CC: despite referring to prev. `/sessions/` files); or
+  - Snippets; or standalone/non-response outputs (e.g. codes, deliverables; CC: not `response_`)
 - Let's say you responded w/ § Example List, I replied `1.2.1: xxx...`
   - You must NOT respond as `1.2.1. xxx...` again as that clashes w/ the original pt in last response, i.e. two counts of `1.2.1` on same issue
   - Instead start a new pt w/ continuing number (n+1), where n = last pt in last response

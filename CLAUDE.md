@@ -8,7 +8,7 @@
 - 1.1. At session start OR when root folder is added, before generating anything (regardless of msg content; no exception), read (in order) **Unconditionals**:
   - 1.1.1. `universal/glossary.md` —— terminology & definitions
   - 1.1.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
-- 1.2. Declare in chat (per §3.2.1): `✅ `universal/glossary.md`, `universal/numbered.md``
+- 1.2. Declare in chat (per §3.2.1) w/ other reads (incl. CLAUDE.md) on a single line
 - 1.3. Monthly reminder (once per session): if any previous month's folder exists in `/sessions/` but lacks a `wrap_` file, remind the user
 
 2. Conventions
@@ -40,8 +40,11 @@
 
 3. Comms
 - 3.1. All responses must be written to files; chat text is restricted (§3.2), unless override (§9.1)
-- 3.2. Chat Interface (5 elements only; NO CHAT TEXT otherwise):
-  - 3.2.1. `✅ `enclosing_folder/file.md`, ...` —— ANY non-`/sessions/` file(s) read; not always .md; grouped per event; enclosing_folder = immediate 1 parent only for clickability (same below)
+- 3.2. Chat Interface (if applicable; in order; NO CHAT TEXT other than these 5 elements only):
+  - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
+    - 3.2.1.1. ANY non-`/sessions/` file(s) read, incl. passively via system file-change notifications
+    - 3.2.1.2. Group all reads into 1 line; not always .md
+    - 3.2.1.3. `enclosing_folder` = immediate 1 parent only for clickability (same for below)
   - 3.2.2. `⇠ `enclosing_folder/file.md`` —— `/sessions/` file(s) read; 1 line each
   - 3.2.3. `➡️ `enclosing_folder/file.md`` —— file(s) generated; 1 line each; not always .md
   - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file

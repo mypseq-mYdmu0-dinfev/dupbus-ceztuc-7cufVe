@@ -17,27 +17,42 @@ Location: same folder as the session's query_/response_ files
 # Session Closing ([1st_query_TS]–[current_TS])
 *[Heading max 8w]*
 
-## What Was Covered
-[List of topics/tasks addressed; all #numbered (same for below)]
+## 1. Coverage
+- 1.1. [List of issues/tasks addressed; all #numbered (same for all below sections)]
+- 1.2. ...
+[skip 1 line]
 
-## Key Decisions
-[Decisions made; include reasoning if non-obvious]
+## 2. Decisions
+- 2.1. [Key decisions made; include reasoning if non-obvious]
+- 2.2. ...
+[skip 1 line]
 
-## Unresolved / Todos
-[Items with priority tag: 🔴 blocking / 🟡 important / 🟢 nice-to-have]
+## 3. Issues
+- 3.1. [Todos or unresolved items with priority tag: 🔴 blocking / 🟡 important / 🟢 nice-to-have]
+- 3.2. ...
+[skip 1 line]
 
-## Session Files
-- `[YYYYMM]/query_[TS].md` —— [max. 8w descr]
-- `[YYYYMM]/response_[TS].md` —— [ditto]
-[... all `query_`/`response_` pairs created this session, in chronological order]
+## 4. Session Files ([file_count])
+- 4.1. `[YYYYMM]/query_[TS].md` —— [max. 8w descr]
+- 4.2. `[YYYYMM]/response_[TS].md` —— [ditto]
+- 4.3. ... [all `query_`/`response_` pairs created this session, in chronological order]
+[skip 1 line]
 
-## Other Files
-- Created: `enclosing_folder/file.py`, `enclosing_folder/file.html`, ...
-- Modified: ...
-- Moved/Voided/Deleted: ...
+## 5. Other Files ([file_count])
+- 5.1. Created:
+  - 5.1.1. `enclosing_folder/file.py` [one line each; same for below]
+  - 5.1.2. `enclosing_folder/file.html`
+  - 5.1.3. ...
+- 5.2. Modified:
+  - 5.2.1. ...
+- 5.3. Moved/Voided/Deleted:
+  - 5.3.1. ...
+[If none, input `N/A`]
+[skip 1 line]
 
-## Remarks
-[What the next session (if applicable) must know immediately; ONLY what is not already captured in the sections above; optional]
+## 6. Remarks
+- 6.1. [What the next session (if applicable) must know immediately; ONLY what is not already captured in above sections; optional]
+- 6.2. ...
 ```
 
 ---
@@ -64,11 +79,13 @@ Usage: to be deleted after user manually reviewed & appended to DevPlan (for all
 
 ## Status
 [Last & next issues; use P[no.]/AD[no.] if applicable; max 20w; all #numbered (same for below)]
+[skip 1 line]
 
 ## Remarks
 [Next-session-only, temporary, but noteworthy; absent from DevPlan/Addenda; optional]
+[skip 1 line]
 
-## Session Files
+## Session Files ([file_count])
 - `[YYYYMM]/[CP_folder]_query_[TS].md` —— [max. 8w descr]
 - `[YYYYMM]/[CP_folder]_response_[TS].md` —— [ditto]
 [... all `query_`/`response_` pairs created this session, in chronological order]
@@ -81,22 +98,31 @@ Usage: to be deleted after user manually reviewed & appended to DevPlan (for all
 
 *Note: `###` level for appending under `## PART C` of DevPlan.md; XX = last addendum no. + 1 in 2 digits; Y.Y = phase(s) worked on; Z = this chat's number (last +1 unless told otherwise)*
 
-- AD[XX].1. What Was Done
-  - AD[XX].1.1. [e.g. Any non-`/sessions/` files created/edited/deleted; if none AND 0% DevPlan progress, input N/A]
+- AD[XX].1. Coverage
+  - AD[XX].1.1. [What was accomplished/done; e.g. list of issues/tasks addressed, any non-`/sessions/` files created/edited/deleted; if none AND 0% DevPlan progress, input N/A]
   - AD[XX].1.2. ...
 [skip 1 line]
 
-- AD[XX].2. Key Decisions Made
-  - AD[XX].2.1. [Decisions with lasting relevance]
+- AD[XX].2. Decisions
+  - AD[XX].2.1. [Key decisions with lasting relevance]
   - AD[XX].2.2. ...
 [skip 1 line]
 
-- AD[XX].3. Deviation from Dev Plan
+- AD[XX].3. Deviations
   - AD[XX].3.1. [Any drift from DevPlan.md, even if already resolved]
   - AD[XX].3.2. ...
 [skip 1 line]
 
-[Add more subsections as needed; don't cramp in a single `AD[XX].4. Notes` subsection]
+- AD[XX].4. Session Files ([file_count])
+  - AD[XX].4.1. `[YYYYMM]/query_[TS].md` —— [max. 8w descr]
+  - AD[XX].4.2. `[YYYYMM]/response_[TS].md` —— [ditto]
+[... all `query_`/`response_` pairs created this session, in chronological order]
+[skip 1 line]
+
+- AD[XX].5. Remarks [replace with more subsections as needed; don't cramp into this]
+  - AD[XX].5.1. [What the next session (if applicable) must know immediately (e.g. todos/unresolved issues; ONLY what is not already captured in above sections; optional]
+  - AD[XX].5.2. ...
+[skip 1 line]
 ```
 
 ### CP Addendum Rules
