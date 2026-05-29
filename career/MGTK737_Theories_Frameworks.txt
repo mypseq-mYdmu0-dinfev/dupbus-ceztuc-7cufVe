@@ -1,0 +1,22 @@
+[INTERNAL CLAUDE CONTEXT — theories/frameworks/models applied in MGTK737 "Developing as a Manager and Leader" (UoL MBA), Grade A (70%). For incident specifics, refer to `Historic Context _ 202603101932.txt` Incidents A/B/C.]
+
+## LEADERSHIP THEORIES
+- **Leader-Member Exchange (LMX)** | Graen (1976); Dansereau, Graen & Haga (1975); Northouse (2021) | In-group/out-group dyadic relations; quality of leader-member relationship drives performance & loyalty | Applied: Incident A (crew walkout), B (production dept), C (mgmt team)
+- **Transformational Leadership** | Northouse (2021); Bass (1990) | Shared vision over task commands; inspirational motivation | Applied: Incidents B, C
+- **Servant Leadership** | van Dierendonck (2011) | Leader adopts support/service role to empower team | Applied: Incident A (AD1), noted as Culous' ongoing PDP goal
+- **Adaptive Leadership** | Heifetz (1994) | Flexing leadership style to shifting conditions | Applied: Incident A
+- **Authentic Leadership** | Shamir & Eilam (2005) | Life-story approach; self-awareness as foundation of leadership development | Referenced in broader PDP context
+- **Behavioural Approach** | Northouse (2021) | Task vs relationship behaviours; leader flexibility between dimensions | Applied: Incidents A, B; PDP goal for Culous
+- **Situational Approach** | Hersey & Blanchard (1969) | Directive vs supportive roles calibrated to follower readiness | Applied: Incidents A, B
+- **Team Leadership** | Barge (1966) | Collective goal-orientation; applied in production team context | Applied: Incident B
+
+## MANAGEMENT THEORIES
+- **Managers vs Leaders Distinction** | Kotter (1990); Zaleznik (2004) | Managers maintain order/stability; leaders set direction/inspire; MD in Incident B exemplified good manager, poor leader — "leadership is in the mind of the followers" (Eden & Levitan, 1975)
+- **Path-Goal Theory** | House & Mitchell (1974) | Define goal, clarify path, remove obstacles, provide support | Applied: Incidents B (partially), C (fully)
+- **Three-Skill Approach** | Katz (1955) | Conceptual / human / technical skills; all three deployed in Incident B negotiation with MD
+- **Five Bases of Social Power** | French & Raven (1959) | Rewarding power used in Incident A (beach trip post-crisis to stabilise remaining crew)
+- **Group Development Stages** | Tuckman & Jensen (2010) | Forming → Storming → Norming → Performing; crew reached performing stage in <48hrs (Incident A); mgmt team advanced through storming in <1 week (Incident C)
+- **Kotterman (2006)** | Manager defined by effective regulation, issue resolution, order maintenance | Applied to assess MD in Incident B
+
+## REFLECTIVE FRAMEWORK
+- **Gibbs Reflective Learning Cycle** | Gibbs (1988) | Description → Feelings → Evaluation → Analysis → Conclusion → Action Plan | Applied in Incident C analysis

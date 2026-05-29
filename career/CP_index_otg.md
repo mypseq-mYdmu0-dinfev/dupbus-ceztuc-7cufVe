@@ -39,24 +39,24 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main
 Combines all 5 variants below.
 
 "Consulting Resume"
-Culous_Yu_Resume_Consulting.pdf
-For Consulting roles e.g. McKinsey (MBB), Deloitte (Big 4), Accenture, or similar; my primary focus.
+in "ATS Resumes"
+For Consulting & adjacent (e.g. Business Analysis, Project/Change/Ops Mgmt); primary focus.
 
 "Marketing Resume"
-Culous_Yu_Resume_Marketing.pdf
-For Marketing, Branding, PR, Social Media, and Content Mgt roles; my longest career.
+in "ATS Resumes"
+For Marketing, Branding, PR, Social Media, Content, Event.
 
 "IxD Resume"
-Culous_Yu_Resume_IxD.pdf
-For Experience/Service Design, UI/UX Design/Research, Digital Product Dev/Mgt roles; my UTS major.
+in "ATS Resumes"
+For UX/UI, Service/Graphic Design, Product Mgmt, Digital Product.
 
 "IT Resume"
-Culous_Yu_Resume_IT.pdf
-For Technical, IT/IS, Data Analytics, Software Engineering roles; my UTS sub-major.
+in "ATS Resumes"
+For IT, IS, Data, Software, System, Programming, Technical.
 
 "General Resume"
-Culous_Yu_Resume_General.pdf
-For all other roles e.g. Office Manager, Admin Clerk; downplay bg to avoid over-qualification for entry-level jobs.
+in "ATS Resumes"
+For all other roles; downplay bg to avoid over-qualification for entry-level jobs.
 
 ---
 
@@ -92,17 +92,17 @@ Concise/accessible ver. of "Portfolio" above; select case studies in web form sp
 
 ---
 
-## Deep Context Ref
+## Deep Context Ref (request)
 
-"AFP Application" (2 files, request)
+"AFP Application" (2 files)
 Apple Foundation Programme _ Reflection of Critical Mistake [timestamp].pdf
 Critical mistake reflection submitted to apply for Apple Foundation Programme; 2nd one succeeded.
 
-"Historic Context" (request)
+"Historic Context"
 Historic Context _ [timestamp].txt
 Pre-AU career narrative, personal profile, and 3 key STAR incidents (Golden Sugarcane Film Festival, Global Pandemic, AI Strike).
 
-"MBA Theories & Frameworks" (request)
+"MBA Theories & Frameworks"
 MGTK737 Theories & Frameworks _ [timestamp].txt
 Essence of "Developing as a Manager and Leader" module (Grade A).
 

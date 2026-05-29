@@ -1,8 +1,18 @@
 # Dissertation CP Index (CC)
 
-*Read local files directly; no GH fetch. Unconditionals: `dissertation/MGTK751_ProjectSummary.md`, `dissertation/MGTK751_DevPlan.md`.*
+## Preamble
 
-*`request` = MUST request approval before reading.*
+1. Unconditionals (READ NOW):
+- 1.1. `dissertation/MGTK751_ProjectSummary.md`
+- 1.2. `dissertation/MGTK751_DevPlan.md`
+- 1.3. `universal/writing.md`
+2. Format: `[alias]` `[path]` `[descr]`
+- 2.1. Read local files directly (no GH fetch)
+- 2.2. If not found, stop & alert
+- 2.3. Description closes w/ `.` & denotes end of item
+3. Remarks:
+- 3.1. `request` = MUST request my approval before fetch
+- 3.2. Most outputs in this CP are deliverables
 
 ---
 
@@ -66,7 +76,7 @@ All usable ref w/ brief notes.
 
 CoreRef.md (request)
 `dissertation/MGTK751_CoreRef.md`
-In-depth synthesises of core references.
+In-depth synthesises of core references; stop & alert if failed to read full file.
 
 A1.md
 `dissertation/MGTK751_A1.md`

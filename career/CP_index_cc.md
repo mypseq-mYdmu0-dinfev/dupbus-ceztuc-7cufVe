@@ -1,8 +1,19 @@
 # Career CP Index (CC)
 
-*Read local files directly; no GH fetch. Unconditionals: `career/CP_notes.md`, `seek/context/pro_profile.md`, `universal/writing.md` (everything = deliverable).*
+## Preamble
 
-*DON'T read `universal/profile.md` unless interest/hobby needed.*
+1. Unconditionals (READ NOW):
+- 1.1. `career/CP_notes.md`
+- 1.2. `seek/context/pro_profile.md`
+- 1.3. `universal/writing.md`
+2. Format: `[alias]` `[path]` `[descr]`
+- 2.1. Read local files directly (no GH fetch)
+- 2.2. If not found, stop & alert
+- 2.3. Description closes w/ `.` & denotes end of item
+3. Remarks:
+- 3.1. `request` = MUST request my approval before fetch
+- 3.2. Most outputs in this CP are deliverables
+- 3.3. DON'T read `universal/profile.md` unless interest/hobby needed
 
 ---
 
@@ -37,23 +48,23 @@ CCL requirements for consulting job applications; built upon GCL.
 Combines all 5 variants below.
 
 "Consulting Resume"
-`career/Resumes/Culous_Yu_Resume_Consulting.pdf`
-For Consulting roles e.g. McKinsey (MBB), Deloitte (Big 4), Accenture, or similar; primary focus.
+in "ATS Resumes"
+For Consulting & adjacent (e.g. Business Analysis, Project/Change/Ops Mgmt); primary focus.
 
 "Marketing Resume"
-`career/Resumes/Culous_Yu_Resume_Marketing.pdf`
-For Marketing, Branding, PR, Social Media, and Content Mgt roles.
+in "ATS Resumes"
+For Marketing, Branding, PR, Social Media, Content, Event.
 
 "IxD Resume"
-`career/Resumes/Culous_Yu_Resume_IxD.pdf`
-For Experience/Service Design, UI/UX Design/Research, Digital Product Dev/Mgt roles.
+in "ATS Resumes"
+For UX/UI, Service/Graphic Design, Product Mgmt, Digital Product.
 
 "IT Resume"
-`career/Resumes/Culous_Yu_Resume_IT.pdf`
-For Technical, IT/IS, Data Analytics, Software Engineering roles.
+in "ATS Resumes"
+For IT, IS, Data, Software, System, Programming, Technical.
 
 "General Resume"
-`career/Resumes/Culous_Yu_Resume_General.pdf`
+in "ATS Resumes"
 For all other roles; downplay bg to avoid over-qualification for entry-level jobs.
 
 ---
@@ -82,32 +93,33 @@ Transcript of "Virtual Presentation Video" below.
 
 "Virtual Presentation Video"
 http://Presentation.CulousYu.com
-Self-intro/showcase video attached to all resumes; attach to application if highly applicable.
+My self-intro/showcase vimeo video attached to all resumes, incl. rationale of key strengths; can attach to application response/CL if and only if highly applicable to context.
 
 "My Projects"
 http://Projects.CulousYu.com
-Concise/accessible ver. of "Portfolio"; select case studies in web form.
+Concise/accessible ver. of "Portfolio" above; select case studies in web form spanning `Consulting` `Software` `Analytics` `EventMgt` `Commercials` `SocialMedia` pages; can attach to application response/CL if and only if highly applicable to context.
 
 ---
 
-## Deep Context Ref (request before reading)
+## Deep Context Ref (request)
 
 "AFP Application" (2 files)
-`career/` — filename contains `Apple Foundation Programme _ Reflection`
+1st attempt; failed: '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/Past General Applications/Apple Foundation Programme/Apple Foundation Programme _ Reflection of Critical Mistake _ 20241025.pdf'
+2nd attempt; succeeded: '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/Past General Applications/Apple Foundation Programme/Apple Foundation Programme _ Reflection of Critical Mistake _ 20250404.pdf'
 Critical mistake reflection submitted to apply for Apple Foundation Programme.
 
 "Historic Context"
-`career/` — filename contains `Historic Context`
+`career/Historic_Context.txt`
 Pre-AU career narrative, personal profile, and 3 key STAR incidents.
 
-"MBA Theories & Frameworks"
-`career/` — filename contains `MGTK737 Theories`
+"MBA Learnings"
+`career/MGTK737_Theories_Frameworks.txt`
 Essence of "Developing as a Manager and Leader" module (Grade A).
 
 ---
 
-## CL Archive
+## CCL Archive
 
-`career/` — filenames starting with "Cover Letter"; `(C)` in filename = consulting firm
-- e.g. `Cover Letter of Culous Yu (C) _ Bain _ General Consulting _ 202602282235.txt`
-- Note: some older CLs use WAMs & old P.S. —— MUST use GPA for UTS, WAM for MBA (if meaningful), and new P.S. (see gcl.md)
+- Everything in `career/CCL_Archive`
+- Filename format: `CL_[CompanyName]_[TS].txt`
+- Note: reference tone/style/facts if applicable; see gcl.md/ccl.md for latest instr
