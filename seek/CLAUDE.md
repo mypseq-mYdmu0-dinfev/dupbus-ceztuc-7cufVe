@@ -18,7 +18,7 @@ When prompted:
 - `psl [AR_filename(s)]`, read the file(s) (stop if not found) but never edit them; perform `psl` on the AR(s) (sequentially if multiple); if it's complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ; if it's incomplete, create new AR(s); for each, open its URL as Tab 2 for reading since no Tab 1 (single loop) or Tab 3 (no interaction); `next` = proceed to next AR
 - `psl pending`, perform `psl [AR_filename(s)]` on `/seek/pending/` ARs starting from oldest
 - `ccl`, read `/seek/context/ccl.md` after mandatory files; perform `psl`; instead of `/seek/applied/`, create AR(s) in `/seek/ccl/` & ref past CLs in this folder (see its README.md) for quality & style
-- `investigation mode`, quit AJAP mode; read & follow `/seek/investigation/README.md`
+- `investigation mode`, quit AJAP mode; read & follow `/seek/investigation/CLAUDE.md`
 - `#numbered`, read & follow `cc_numbered.md` in full
 - `#replace`, read & follow `cc_coding.md` in full
 
