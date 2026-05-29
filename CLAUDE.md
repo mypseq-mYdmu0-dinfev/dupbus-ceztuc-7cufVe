@@ -42,11 +42,12 @@
 - 3.1. All responses must be written to files; chat text is restricted (§3.2), unless override (§9.1)
 - 3.2. Chat Interface (if applicable; in order; NO CHAT TEXT except these 5 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
-    - 3.2.1.1. ANY non-`/sessions/` file(s) read, incl. passively via system file-change notifications
+    - 3.2.1.1. ANY non-comms file(s) read, incl. passively via system file-change notifications
     - 3.2.1.2. Group all reads into 1 line; not always .md
     - 3.2.1.3. `enclosing_folder` = immediate ONE parent only for clickability, except in `.claude/`
-    - 3.2.1.4. Declaration NEVER contains `/sessions/` or `/[YYYY]/`; 
-  - 3.2.2. `⇠ `enclosing_folder/file.md`` —— `/sessions/` file(s) read; 1 line each
+    - 3.2.1.4. Declaration NEVER contains `/sessions/` or `/[YYYY]/`
+    - 3.2.1.5. §3.2.1 (`✅`) NEVER incl. comms files (the 4 types in §3.3; belong to §3.2.2)
+  - 3.2.2. `⇠ `enclosing_folder/file.md`` —— comms file(s) read; 1 line each
   - 3.2.3. `➡️ `enclosing_folder/file.md`` —— file(s) generated; 1 line each; not always .md; e.g.:
 
 ```
