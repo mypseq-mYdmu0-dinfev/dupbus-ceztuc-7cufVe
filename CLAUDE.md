@@ -40,16 +40,26 @@
 
 3. Comms
 - 3.1. All responses must be written to files; chat text is restricted (§3.2), unless override (§9.1)
-- 3.2. Chat Interface (if applicable; in order; NO CHAT TEXT other than these 5 elements only):
+- 3.2. Chat Interface (if applicable; in order; NO CHAT TEXT except these 5 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
     - 3.2.1.1. ANY non-`/sessions/` file(s) read, incl. passively via system file-change notifications
     - 3.2.1.2. Group all reads into 1 line; not always .md
-    - 3.2.1.3. `enclosing_folder` = immediate 1 parent only for clickability (same for below)
+    - 3.2.1.3. `enclosing_folder` = immediate ONE parent only for clickability, except in `.claude/`
+    - 3.2.1.4. Declaration NEVER contains `/sessions/` or `/[YYYY]/`; 
   - 3.2.2. `⇠ `enclosing_folder/file.md`` —— `/sessions/` file(s) read; 1 line each
-  - 3.2.3. `➡️ `enclosing_folder/file.md`` —— file(s) generated; 1 line each; not always .md
+  - 3.2.3. `➡️ `enclosing_folder/file.md`` —— file(s) generated; 1 line each; not always .md; e.g.:
+
+```
+✅ `dupbus-ceztuc-7cufVe/CLAUDE.md`, `universal/cic.md`, `career/CP_notes.md`
+⇠ `202605/query_202605272319.md`
+⇠ `202605/close_202605300023.md`
+➡️ `202605/career_response_202605300226.md`
+➡️ `seek/.claude/tmp/last_decision.md`
+```
+
   - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.5. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
-- 3.3. File Naming:
+- 3.3. Comms File Naming:
   - 3.3.1. `query_[TS].md` —— user msg/reply
   - 3.3.2. `response_[TS].md` —— CC MD output
   - 3.3.3. `close_[current_TS].md` —— session summary; triggered by `#close` (§7.3)
@@ -145,7 +155,7 @@
   - 8.3.3. `_otg` suffix: OTG variant; if no CC variant exists in same folder, it's OTG-only
   - 8.3.4. `preferences.md` / `CP_instr.md`: for OTG only
 - 8.4. Filename suffix usually indicates variant; e.g. `CP_index_cc.md` = for CC (you)
-- 8.5. If a folder has `README.txt`, read it; usually tells what this folder is
+- 8.5. If a folder has `README.txt`/`README.md`, read it; usually tells what this folder is
 - 8.6. NEVER create/edit files in CC's memory store (`~/.claude/projects/*/memory/`)
 - 8.7. GH (GitHub) links:
   - 8.7.1. STOP & request approval before fetching any of them

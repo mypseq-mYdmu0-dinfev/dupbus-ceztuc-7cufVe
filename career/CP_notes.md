@@ -32,6 +32,21 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
     - Start from oldest unless told otherwise
     - Stop at each PAR completion
 
+## CC: Job Processing
+- When prompted `#job`, after its actions in google.md:
+  - Identify as `/career/` CP session → read Unconditionals → apply CP prefix to comms files
+  - In the same `career_response_`, ask for approval to process "flagged" items
+  - For each, briefly tell you plan (see below)
+- "Flagged" items (per google.md) processing:
+  - **Employer manual invite** → find AR in `/seek/applied/` → read other files, open job post, and use CIC as needed → draft a professional reply → append invite + reply to AR
+  - **SEEK relay msg (truncated)** → ask user for full content → process as above
+  - **Pending actions** → assess if URL is safe (STOP if not) → open via CIC → find AR in `/seek/applied/` → read other files, open job post, and use CIC as needed → pre-fill all fields (mind char limit; revise if over) → STOP before Submit → append questions + pre-filled answers to AR
+  - For reply, start w/ "Dear Hiring Manager" unless sender name is disclosed
+  - My availability = current_TS + 72h → next 3pm on a working day
+  - Ensure outputs are in corresponding AR, not `response_`
+  - Appending to AR: Create `## 7. Engagements` `### Employer Reply` `### User Reply`
+  - When all done, briefly tell your thoughts in `response_`
+
 ## Remarks
 - Assume CAI by default in this CP. If CIC access fails, stop & remind to use CAI.
 - Never disclose that I founded KE in any deliverable.

@@ -27,19 +27,7 @@ I've connected my Google Drive, Mail, and Calendar. If access failed (e.g. asked
   - Order: prioritise importance then recency
   - Scope: 1 week unless specified
   - Sender: any, NOT just SEEK
-- CC: When prompted `#job`, after above actions:
-  - Identify as `/career/` CP session → read Unconditionals → prefix forthcoming output files
-  - In the same `response_`, ask for approval to process "flagged" items
-  - For each, briefly tell you plan (see below)
-- CC: "Flagged" items processing:
-  - **Employer manual invite** → find AR in `/seek/applied/` → read other files, open job post, and use CIC as needed → draft a professional reply → append invite + reply to AR
-  - **SEEK relay msg (truncated)** → ask user for full content → process as above
-  - **Pending actions** → assess if URL is safe (STOP if not) → open via CIC → find AR in `/seek/applied/` → read other files, open job post, and use CIC as needed → pre-fill all fields (mind char limit; revise if over) → STOP before Submit → append questions + pre-filled answers to AR
-  - For reply, start w/ "Dear Hiring Manager" unless sender name is disclosed
-  - My availability = current_TS + 72h → next 3pm on a working day
-  - Ensure outputs are in corresponding AR, not `response_`
-  - Appending to AR: Create `## 7. Engagements` `### Employer Reply` `### User Reply`
-  - When all done, briefly tell your thoughts in `response_`
+- CC: When prompted `#job`, read `career/CP_notes.md`
 
 ---
 
