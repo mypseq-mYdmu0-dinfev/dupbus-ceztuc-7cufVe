@@ -19,7 +19,8 @@
 - You cannot be 100% sure of any term/item above
 
 **🛑 Rogue tripwire (retire SA immediately —— no correction attempt):**
-- Any file created since `latest_TS` anywhere in `/seek/gcl/` whose NAME contains `Batch`, `Page[n]`, `Pages`, or `Remaining`, OR whose BODY lists more than one job = SA is batch-processing (S1 strictly bans this). Retire SA at once; do NOT trust its "exhausted/clean" claims; flag the offending file(s) for the user (Void Rule `❌_`); append the incident to the rlog; spawn a fresh SA.
+- **Batch tripwire (auto-retire):** any file created since `latest_TS` anywhere in `/gcl/` whose NAME contains `Batch`, `Page[n]`, `Pages`, or `Remaining`, OR whose BODY lists more than one job = SA is batch-processing (S1 strictly bans this). Retire SA at once; do NOT trust its "exhausted/clean" claims; flag the offending file(s) for the user (Void Rule `❌_`); append the incident to the rlog; spawn a fresh SA.
+- **Burst spot-check (catches fabricated single-job skips):** if ≥3 new skip/Pending ARs appear within ~3 min (genuine per-card research cannot be that fast), open ONE and verify it shows real per-card analysis (sections 1–2 present, specific not templated; e.g. an unverifiable "external portal" reason on an otherwise-Quick-apply job = red flag). If vague/fabricated → retire SA + flag the file(s).
 
 ---
 
