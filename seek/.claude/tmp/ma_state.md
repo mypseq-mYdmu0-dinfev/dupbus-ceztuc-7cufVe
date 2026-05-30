@@ -1,4 +1,3 @@
-SA_ID: ad03b080a13b5098f
-Spawned: 202605300851
-offset_N: 865
-session_N: 0
+Monitor task ID: bh25mx3wl
+Session start: 202605302302
+offset_N: 919
