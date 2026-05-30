@@ -1,8 +1,8 @@
 # Zembl — Enterprise Growth Marketing Executive
 **Date:** 03:37 on 31/05/2026
 **SEEK URL:** https://au.seek.com/job/91997140
-**Outcome:** Applying
-**Resume Selected:** Culous_Yu_Resume_Consulting.pdf
+**Outcome:** Applied
+**Resume Selected:** Culous_Yu_Resume_Marketing.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 22/30 (B2B marketing, campaign execution, stakeholder comms — strong)
 2. Role Sufficiency — 17/20 (enterprise marketing executive; consulting background encompasses this)
