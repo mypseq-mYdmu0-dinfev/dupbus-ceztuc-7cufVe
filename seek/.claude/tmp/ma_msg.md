@@ -1,1 +1,1 @@
-Continue
+STOP — session ended by user.
