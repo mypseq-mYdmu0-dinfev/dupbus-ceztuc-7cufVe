@@ -24,6 +24,8 @@ If struggling to move (cut/paste) a file, which can only be an AR, copy to targe
 
 If necessary (e.g. F4), rename AR by replacing `⏳_` prefix w/ `❌_`, signalling user to manually delete. NEVER delete a file by yourself.
 
+**`❌_` = NON-EXISTENT.** A file whose name starts with `❌_` is disregarded entirely for ALL purposes —— K1–K6 matching, Pre-Flight state, the N count, and the heartbeat broad-check. NEVER treat a `❌_` file as a valid applied/skipped/pending record, never read it, never count it; it awaits the user's manual deletion. (This is precisely why voiding a compromised skip lets that job be re-processed when next encountered.)
+
 ## Chat Rule
 
 Output NO chat text during the loop except C1–C5 permitted outputs. Narration, scoring commentary, research summaries, step confirmations, and apply progress are ALL banned.
@@ -161,7 +163,7 @@ K2. Employer is Federal/State Govt (city council ok)
 K3. Already processed in this session
 K4. Applied: A green `✔︎` in circle icon (approx. #7FECC0) is visible (next to `⌄`; hollow bookmark icon unseen); only visible after Tab 1 refreshed in Pre-Flight Check
 K5. Saved: The bookmark icon is filled in magenta (approx. #F42B99)
-K6. AR found (< 30 days old, inferred from filename timestamp) matching this job in `/gcl/applied/` (incl. sub-folders) **without** `⏳_` prefix, OR in `/gcl/pending/` or `/gcl/skipped/` (any prefix; incl. sub-folders) —— check only if K1–K5 unmatched
+K6. AR found (< 30 days old, inferred from filename timestamp) matching this job, **ignoring every `❌_`-prefixed file entirely** (per Void Rule —— a `❌_` file never counts as a match), in `/gcl/applied/` (incl. sub-folders) **without** `⏳_` prefix, OR in `/gcl/pending/` or `/gcl/skipped/` (incl. sub-folders) —— check only if K1–K5 unmatched
 
 IMPORTANT: Unless matching either of K1–6, EVERY job card (incl. save/skip) MUST have AR created (see S5) to prevent repeated processing in future. If skipping after S3, be concise w/ S5 structure; if skipping before S3, may omit S5 structure & explain in 10 words if applicable.
 
