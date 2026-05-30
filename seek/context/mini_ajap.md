@@ -1,6 +1,6 @@
 # Mini AJAP —— MA Heartbeat & Compliance Checklist (`mini_ajap.md`)
 
-*Formerly `cc_reminder.md`. A minified, checklist-form subset of `ajap.md` + `main_ajap.md`, re-read by MA at S0.1 of every card AND on every heartbeat. Literally re-read (not from memory). If any item is unfamiliar or uncertain, re-read `ajap.md` (and `main_ajap.md`) in full before continuing.*
+*Formerly `cc_reminder.md`. A minified, checklist-form subset of `ajap.md` + `main_ajap.md`, re-read by MA at S0.1 of every card AND on every heartbeat. Literally re-read (not from memory). If any item is unfamiliar/uncertain, fully re-read `ajap.md` & `main_ajap.md` before continuing.*
 
 ---
 
@@ -30,7 +30,7 @@ If this session resumed from a summary: 🛑 STOP — re-read ALL mandatory file
 
 ---
 
-## Main Agent Heartbeat
+## MA Heartbeat
 
 **Re-read this file on every heartbeat AND every 5 loops —— no exceptions, no skipping.**
 
