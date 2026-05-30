@@ -9,7 +9,7 @@ This CP ("AJAP Investigation") is for optimising AJAP (Agentic Job Application P
 - Root CLAUDE.md governs: (re-)read `dupbus-ceztuc-7cufVe/CLAUDE.md` in full
 - Ignore "If working directory is `/seek/`, skip all sections below"
 - All protocols apply EXCEPT:
-  - Comms files are in `/seek/investigation/[YYYY]/[YYYYMM]`, NOT `/sessions/`
+  - Comms files are in `/investigation/[YYYY]/[YYYYMM]`, NOT `/sessions/`
   - Don't add `[CP_folder]_` prefix; all comms files herein are in this CP
 - Re root CLAUDE.md §3.2.1.5, `audit_` `changes_` are also considered comms files in this CP
 - Ensure no chat text per root CLAUDE.md §3
@@ -27,4 +27,5 @@ This CP ("AJAP Investigation") is for optimising AJAP (Agentic Job Application P
 In addition to root CLAUDE.md §3.3:
 - `audit_[current_TS].md` = audit report; creation triggered by #audit
 - `changes_[current_TS].md` = #replace changes w/ optional explainers (read `coding.md` first)
-- `session_[copy_TS].md` = chat history of AJAP session; end_TS = time of copying, not ending
+- `rchat_[copy_TS].txt` = copied chat history of an AJAP session; stored in `/runtime/` (NOT in this folder); copy_TS = time of copying, not session end. (Legacy `session_*` and `runtime_chat_*` names retired in favour of `rchat_`.)
+- Runtime logs are named `rlog_[session_start_TS].md` (legacy `runtime_*` retired) and live in `/runtime/`

@@ -50,3 +50,4 @@
 - CWI = Claude Web Interface (Claude Chat; https://claude.ai), allowing multi-window chats; if CIC failed, you're CWI
 - CAI = Claude (Mac) App Interface (Official), allowing more connectors; suggest continuing in CAI whenever extensive functions (e.g. CIC, Apple Notes) may help
 - OTG = on the go; could mean our comms OTG via Claude iPhone app (≈CWI)
+- #r = past/perfect tense of "read"; MUST use it to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)

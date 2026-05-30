@@ -23,12 +23,12 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
 - AR filename format: [Company]_[Role]_[TS].md
   - e.g. Dentons_BusinessAnalyst_202605091830.md = Business Analyst at Dentons
 - `find` AR in (incl. subfolders):
-  - `/seek/applied/` —— for applied/interview invite received
-  - `/seek/skipped/` —— for skipped; least possible
-  - `/seek/pending/`
+  - `/seek/gcl/applied/` —— for applied/interview invite received
+  - `/seek/gcl/skipped/` —— for skipped; least possible
+  - `/seek/gcl/pending/`
     - for § PAR; `When received:` doesn't apply to you (`find` it)
     - "1st artefact" = `response_`
-    - "2nd artefact" = move PAR to `/seek/applied/` as `⏳_[original_filename]_[current_TS].md` → edit it accordingly → `Outcome: Applying`
+    - "2nd artefact" = move PAR to `/seek/gcl/applied/` as `⏳_[original_filename]_[current_TS].md` → edit it accordingly → `Outcome: Applying`
     - Start from oldest unless told otherwise
     - Stop at each PAR completion
 
@@ -38,9 +38,9 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
   - In the same `career_response_`, ask for approval to process "flagged" items
   - For each, briefly tell you plan (see below)
 - "Flagged" items (per google.md) processing:
-  - **Employer manual invite** → find AR in `/seek/applied/` → read other files, open job post, and use CIC as needed → draft a professional reply → append invite + reply to AR
+  - **Employer manual invite** → find AR → read other files, open job post, and use CIC as needed → draft a professional reply → append invite + reply to AR
   - **SEEK relay msg (truncated)** → ask user for full content → process as above
-  - **Pending actions** → assess if URL is safe (STOP if not) → open via CIC → find AR in `/seek/applied/` → read other files, open job post, and use CIC as needed → pre-fill all fields (mind char limit; revise if over) → STOP before Submit → append questions + pre-filled answers to AR
+  - **Pending actions** → assess if URL is safe (STOP if not) → open via CIC → find AR → read other files, open job post, and use CIC as needed → pre-fill all fields (mind char limit; revise if over) → STOP before Submit → append questions + pre-filled answers to AR
   - For reply, start w/ "Dear Hiring Manager" unless sender name is disclosed
   - My availability = current_TS + 72h → next 3pm on a working day
   - Ensure outputs are in corresponding AR, not `response_`

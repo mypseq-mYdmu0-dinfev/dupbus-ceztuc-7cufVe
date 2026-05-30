@@ -31,7 +31,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 | # | Permitted Output | Format / Constraint |
 |---|---|---|
 | C1 | File read/re-read declaration | Mandatory per `CLAUDE.md`; exact format: `✅ [file1], [file2], ...` |
-| C2 | S0 cumulative count | Exact S0.3 format only: `🎯[N] **job(s) processed so far.**`; no additional text before, after, or on the same line |
+| C2 | S0.3 count | Exact format only: `[current_TS] 🎯[N] **job(s) processed so far.**`; N = THIS session only (ARs since `session_start_TS`), NEVER cumulative across sections; number emojis; no other text on the line |
 | C3 | `⭐❗` save+AR+flag | Only as indicated in S1 & if score ≥ 110 per S4 |
 | C4 | `🚨` Tab 1 alert | Only when A6 inaccessibility threshold reached |
 | C5 | Response to user msg | One sentence max; per § User Interventions |
@@ -79,17 +79,17 @@ A2. If no SEEK results page is visible: open one blank tab via CIC MCP, then wai
 A3. After each wait, check again whether a SEEK results page is now visible in any open tab
 A4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 A5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
-A6. If after 3 cycles → still no SEEK results page → concise alert in chat w/ `🚨` then use:
-- A6.1. Fallback 1: `https://au.seek.com/business-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual`
-- A6.2. If A6.1 failed/consumed → Fallback 2: `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual`
-- A6.3. If A6.2 failed/consumed → Fallback 3: `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual`
+A6. If after 3 cycles → still no SEEK results page → concise alert in chat w/ `🚨` then consume the fallback queue in `/seek/queue.md`:
+- A6.1. Read `/seek/queue.md`; process each `Qi` strictly in its `order:` line sequence, per that file's Processing Rules (each Qi = `[Qi]n` New-to-you pass first using the table URL unchanged, then `[Qi]p` plain pass with `&tags=new` stripped).
+- A6.2. Enforce the New-to-you check on every navigation per `queue.md` rule 2 (report `newtoyou=[n]`; if URL lacks `&tags=new` AND n>0, click "New to you" first).
+- A6.3. If every Qi (n+p) is exhausted → run `queue.md § All-Qi-Exhausted Edge Case`.
 A7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
 
 ## Pre-Flight Check (F[no.] = detailed actions)
 
-Before beginning the loop, run F6 first (orphaned AR cleanup), then determine current state from open tabs AND contents in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (incl. their sub-folders):
+Before beginning the loop, run F6 first (orphaned AR cleanup), then determine current state from open tabs AND contents in `/gcl/` (incl. all sub-folders):
 
 | Tabs Open | AR? | AR Complete (contains P.S. line)? | Tab 3 ≡ Tab 2? | State | Action |
 |---|---|---|---|---|---|
@@ -102,8 +102,8 @@ Before beginning the loop, run F6 first (orphaned AR cleanup), then determine cu
 | Tab 2+3 | ❌ | — | — | Pre-analysis | Refresh Tab 2 → S2 |
 | Tab 2 only | ✅ | ✅ (filename w/o `⏳_`) | — | Post-application, before S6.4.6 | F2 → F4 |
 | Tab 2 only | ❌ | — | — | Interrupted during S2 | Refresh Tab 2 → S2 |
-| Tab 2+3 | ✅ (in `/skipped/` or `/pending/`) | — | — | Already decided | Close Tab 3 & 2; silently skip (K6-equiv.) |
-| Tab 2 only | ✅ (in `/skipped/` or `/pending/`) | — | — | Already decided | Close Tab 2; silently skip (K6-equiv.) |
+| Tab 2+3 | ✅ (in `/gcl/skipped/` or `/gcl/pending/`) | — | — | Already decided | Close Tab 3 & 2; silently skip (K6-equiv.) |
+| Tab 2 only | ✅ (in `/gcl/skipped/` or `/gcl/pending/`) | — | — | Already decided | Close Tab 2; silently skip (K6-equiv.) |
 
 F1. `navigate` (refresh) Tab 1 only:
 - F1.1. DON'T screenshot-scroll/`read_page`/`get_page_text`/`querySelectorAll` in Tab 1
@@ -117,7 +117,7 @@ F4. Check if AR reads `Outcome: Applied`
 - F4.1. If yes → S6.4.4.2 if filename w/ `⏳_`, otherwise S6.4.6
 - F4.2. If no (filename error) → F3 → re-read AR → S6
 F5. Void existing AR (per Void Rule), then restart from S2 (new AR) since research context is compromised & recovery is unreliable
-F6. Check if any AR matching the current open job (by employer + role in filename) exists in `/seek/applied/` WITHOUT `❌_` prefix AND WITHOUT confirmed `Outcome: Applied` — if found, void it (per Void Rule) before consulting the Pre-Flight table; prevents duplicate active ARs from compaction-interrupted prior cycles
+F6. Check if any AR matching the current open job (by employer + role in filename) exists in `/gcl/applied/` WITHOUT `❌_` prefix AND WITHOUT confirmed `Outcome: Applied` — if found, void it (per Void Rule) before consulting the Pre-Flight table; prevents duplicate active ARs from compaction-interrupted prior cycles
 
 ---
 
@@ -125,14 +125,14 @@ F6. Check if any AR matching the current open job (by employer + role in filenam
 
 ### S0. Check Compliance & Cumulative Count
 
-S0.1. Re-read `/seek/context/cc_reminder.md` in full → declare (only if succeeded; not from memory) per C1 → complete all active checks within it before continuing; if S0.3 violated:
+S0.1. Re-read `/context/mini_ajap.md` in full → declare (only if succeeded; not from memory) per C1 → complete all active checks within it before continuing; if S0.3 violated:
 - S0.1.1. Attempt rectification by chat history per S0.2
-- S0.1.2. If attempted failed, tally files created in `/seek/applied/` `/seek/pending/` `/seek/skipped/` (excl. their sub-folders) within last 2 hours (get current time per S5) before proceeding
+- S0.1.2. If attempted failed, tally files created in `/gcl/` (excl. `_archive` sub-folders) within last 2 hours (get current time per S5) before proceeding
 S0.2. Determine N by recalling the last `🎯[N]` count from this session's chat
 - S0.2.1. If no prior count is visible (1st card of session) → N = 0
 - S0.2.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
 - S0.2.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
-S0.3. Print in chat: `🎯[N] **job(s) processed so far.**` — **[SA mode: do NOT print to user; include N in loop completion report to MA instead]**
+S0.3. C2 line format: `[current_TS] 🎯[N] **job(s) processed so far.**` (N = this-session count only) — **[SA mode: do NOT print to user; include N in loop completion report to MA instead]**
 - S0.3.1. [N] = number emojis (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
 - S0.3.2. Mandatory; NO alternative phrasing or additional remarks (e.g. bracketed content)
 S0.4. Proceed to S1
@@ -151,7 +151,7 @@ IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loo
 - Employer is: Google/Apple/Amazon
 - Actions:
   - Click "Save" (bookmark icon, next to `⌄`) 
-  - Create AR in `/seek/pending/`
+  - Create AR in `/gcl/pending/`
   - Flag in chat w/ `⭐❗`
   - Skip to next card
 
@@ -161,15 +161,15 @@ K2. Employer is Federal/State Govt (city council ok)
 K3. Already processed in this session
 K4. Applied: A green `✔︎` in circle icon (approx. #7FECC0) is visible (next to `⌄`; hollow bookmark icon unseen); only visible after Tab 1 refreshed in Pre-Flight Check
 K5. Saved: The bookmark icon is filled in magenta (approx. #F42B99)
-K6. AR found (< 30 days old, inferred from filename timestamp) matching this job in `/seek/applied/` (incl. sub-folders) **without** `⏳_` prefix, OR in `/seek/pending/` or `/seek/skipped/` (any prefix; incl. sub-folders) —— check only if K1–K5 unmatched
+K6. AR found (< 30 days old, inferred from filename timestamp) matching this job in `/gcl/applied/` (incl. sub-folders) **without** `⏳_` prefix, OR in `/gcl/pending/` or `/gcl/skipped/` (any prefix; incl. sub-folders) —— check only if K1–K5 unmatched
 
 IMPORTANT: Unless matching either of K1–6, EVERY job card (incl. save/skip) MUST have AR created (see S5) to prevent repeated processing in future. If skipping after S3, be concise w/ S5 structure; if skipping before S3, may omit S5 structure & explain in 10 words if applicable.
 
 S1 Notes:
 - Tab 1 card displays "Viewed" ≠ necessarily processed; doesn't constitute skip
-- If `⏳_` prefixed AR found in `/seek/applied/`, open its `SEEK URL` (read from file) in Tab 2:
+- If `⏳_` prefixed AR found in `/gcl/applied/`, open its `SEEK URL` (read from file) in Tab 2:
   - If "You applied on..." visible, MUST print its last modified time inside AR then edit as `Outcome: Applied` (override "don't edit ARs created before this session")
-  - If "Visited employer's application site on..." visible, edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` (override "don't edit files created before this session") → skip it.
+  - If "Visited employer's application site on..." visible, edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/gcl/pending/` (override "don't edit files created before this session") → skip it.
   - If "Quick apply"/"Apply" visible, duplicate as Tab 3 then proceed from S6 using the AR.
 
 **If all criteria clear:** close existing Tab 2 if open; open the job post in a new Tab 2 & begin S2.
@@ -272,7 +272,7 @@ S4.4. **Suitability Score** —— score out of 100 using the following weighted
    | 50–69 | Apply | S3.1 only |
    | 70–84 | Apply | S3.1 + S3.2 |
    | 85–109 | Apply w/ extra effort: open Para 1 w/ a specific, firm- & role-anchored claim rather than the standard template line; ensure 100% factual, no inference | S3.1 + S3.2 |
-   | 110⁺ | Save on SEEK; create AR in `/seek/pending/` ; flag in chat w/ `⭐❗`; skip —— do not apply; user handles manually | S3.1 + S3.2 |
+   | 110⁺ | Save on SEEK; create AR in `/gcl/pending/` ; flag in chat w/ `⭐❗`; skip —— do not apply; user handles manually | S3.1 + S3.2 |
 
    **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply") → create AR then skip.
 
@@ -295,9 +295,9 @@ S4.7. **SA CL Self-Review** — re-read the drafted CL in full before writing to
 Before any action on Tab 3, create the AR (both plan & log).
 
 **Record Routing Path:**
-- Action = Apply → `/seek/applied/`
-- Action = Save → `/seek/pending/`
-- Action = Skip → `/seek/skipped/`
+- Action = Apply → `/gcl/applied/`
+- Action = Save → `/gcl/pending/`
+- Action = Skip → `/gcl/skipped/`
 
 **Get current timestamp via my local terminal — run the Bash command every AR; NEVER guess, estimate, or fabricate:**
 ```bash
@@ -332,7 +332,7 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 **Suitability Score:** [total]/100
 ```
 
-CRITICAL: If applying, MUST first temporarily have filename beginning with `⏳_` and mark as `Outcome: Applying`; ONLY after success confirmed (S6.4.4), edit as `Outcome: Applied` AND rename file to remove `⏳_` prefix. If saving or skipping after AR creation: move (per Move Rule) to `/seek/pending/` or `/seek/skipped/` respectively (no `⏳_` prefix in these two folders).
+CRITICAL: If applying, MUST first temporarily have filename beginning with `⏳_` and mark as `Outcome: Applying`; ONLY after success confirmed (S6.4.4), edit as `Outcome: Applied` AND rename file to remove `⏳_` prefix. If saving or skipping after AR creation: move (per Move Rule) to `/gcl/pending/` or `/gcl/skipped/` respectively (no `⏳_` prefix in these two folders).
 
 Body: complete all 6 GCL sections per `gcl.md`:
 1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text; no dash sign)
@@ -359,10 +359,10 @@ S6.1.3. Click "Continue →"
 #### S6.2. "Answer employer questions" (may not appear for all jobs)
 
 S6.2.1. For each question: check § AJAP Handling Notes for a pre-defined answer first; if found, select or enter it
-S6.2.2. If no pre-defined answer found: answer using Culous' background in `pro_profile.md` & `/seek/context/` files; be reserved, no false claims; push through where possible
+S6.2.2. If no pre-defined answer found: answer using Culous' background in `pro_profile.md` & `/context/` files; be reserved, no false claims; push through where possible
 S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or direct fact) + no guidance in AJAP Handling Notes:
 - S6.2.3.1. If non-critical & acceptable: input `N/A` → rename AR by **appending** `⚠️_` (prefix becomes `⚠️_⏳_`) → continue
-- S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → rename AR by **replacing** `⏳_` prefix with `⚠️_` → close Tabs 3 & 2 → return to Tab 1 for next card
+- S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/gcl/pending/` → rename AR by **replacing** `⏳_` prefix with `⚠️_` → close Tabs 3 & 2 → return to Tab 1 for next card
 - S6.2.3.3. For both: remark w/ `⚠️` in AR for `ajap.md` update
 S6.2.4. If answered any questions, MUST **append** to end of "3. Application Tailoring" in AR (DON'T replace/overwrite entire section)
 S6.2.5. Click "Continue →"
@@ -396,7 +396,7 @@ S6.4.8. Continue the loop
 S7.1. When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop
 S7.2. If all pages are processed, check if "New to you" (see S1 for location) selected
 - S7.2.1. If yes, click "[no.] jobs" → continue
-- S7.2.2. If no, use A6.1 & continue → if also consumed → use A6.2 & continue
+- S7.2.2. If no, consume the `/seek/queue.md` fallback queue per A6 (in `order:` sequence, `n` then `p` per Qi) & continue
 S7.3. Never interact w/ SEEK search bar or construct SEEK URL (see A7)
 
 ---
@@ -461,7 +461,7 @@ If user sends any msg mid-session:
 - Deliverable PDF resumes at: '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/'
 - Deliverable credentials (combining academic transcripts, reference letters, certificates): '/Volumes/FURY 2TB/IYM/Private/Profession/Resumes/CV Linked Files/Combined Credential.pdf'
 - **Time limits (start timer upon entering portal):** ≤3 min per page; ≤10 min total for entire external portal ops regardless of page amount; if either limit is hit → treat as "struggling" immediately regardless of attempt count
-- **If struggling** (unusual design, login, upload/input failure, etc.) OR time limit exceeded: DON'T stop automation or interrupt user; attempt up to twice (each attempt = a distinct method, not repeated identical tries) on each task → concisely remark w/ `⚠️` in chat AND in AR for `ajap.md` update → edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/seek/pending/` → close Tabs 4⁺, 3, 2 → return to Tab 1 for next card
+- **If struggling** (unusual design, login, upload/input failure, etc.) OR time limit exceeded: DON'T stop automation or interrupt user; attempt up to twice (each attempt = a distinct method, not repeated identical tries) on each task → concisely remark w/ `⚠️` in chat AND in AR for `ajap.md` update → edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/gcl/pending/` → close Tabs 4⁺, 3, 2 → return to Tab 1 for next card
 
 ### External Portal Technical Workarounds
 
