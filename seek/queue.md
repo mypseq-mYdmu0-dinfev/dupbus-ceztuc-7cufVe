@@ -32,7 +32,7 @@
 - 2.1. After landing, read the "New to you" pill (blue stroke; green count to its right) and report its count in the SA loop report as `newtoyou=[n]`.
 - 2.2. If the current URL contains `&tags=new` → you are correctly on the New-to-you view; proceed.
 - 2.3. If the current URL does NOT contain `&tags=new` AND `n` = 0 → correct (New-to-you genuinely consumed); proceed with the plain view.
-- 2.4. If the current URL does NOT contain `&tags=new` BUT `n` > 0 → either a miss or jobs were just posted; **click "New to you" immediately** and prioritise those `n` cards before continuing the plain view. MA also enforces this from the `newtoyou=` field in the report.
+- 2.4. If the current URL does NOT contain `&tags=new` BUT `n` > 0 → either a miss or jobs were just posted; **click "New to you" immediately** (NOT appending `&tags=new`; unreliable) and prioritise those `n` cards before continuing the plain view. MA also enforces this from the `newtoyou=` field in the report.
 3. URL construction restriction (per `ajap.md` A7) still applies: use ONLY the URLs in this table (and the mechanical `&tags=new` strip). Never hand-build any other SEEK URL.
 
 ---

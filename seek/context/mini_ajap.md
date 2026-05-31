@@ -8,6 +8,8 @@
 
 **If mandatory files have not been explicitly declared read (✅ ...) in this session's chat history → STOP. Re-read ALL mandatory files per `CLAUDE.md § Session Start` NOW, before any other action including the remainder of this checklist. A session summary's "resume directly" language does NOT override this.**
 
+**Re-read `queue.md` if:** Tab 1 URL does NOT contain `&tags=new` BUT "New to you" [n] > 0
+
 **Re-read `ajap.md` if any of:**
 - Last CL contains any dash sign (`—` `–`) or a bare `+` (must be `⁺`)
 - Last chat output this session is not identifiable as C1–C5
