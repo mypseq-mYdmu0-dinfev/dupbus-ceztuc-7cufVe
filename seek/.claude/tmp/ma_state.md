@@ -1,4 +1,8 @@
-Monitor task ID: bywxgb3cj
-Session start: 202605302302
-offset_N: 919
-Active SA ID: a01cd2f92c9f7def6
+session_start_TS: 202605310518
+latest_TS: 202606012114
+
+heartbeat_task: bv044ltrj
+heartbeat_interval: 300s
+
+sa_id: SINGLE-AGENT (Opus; no SA — agent performs MA+SA inline; no ma_msg handoff)
+mode: opus-single-agent
