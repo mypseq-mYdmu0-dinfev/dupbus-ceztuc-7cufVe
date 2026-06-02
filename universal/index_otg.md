@@ -1,4 +1,4 @@
-- Unconditionally fetch now, before anything else: glossary.md, cc.md
+- Unconditionally fetch now, before anything else: glossary.md, rules.md
 - Format: `[alias]` `[URL]` —— always fetch via URL, refer by alias.
 
 ---
