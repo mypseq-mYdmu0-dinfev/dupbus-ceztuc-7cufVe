@@ -43,9 +43,11 @@ def main():
 
     # ---- pin every referenced file (anywhere in the index) to its last-commit SHA ----
     text = open(index_path).read()
-    paths = sorted(set(URL_RE.findall(text)))  # findall -> [(ref, path), ...]
-    paths = sorted({p for _ref, p in paths})
-    for p in paths:
+    paths = sorted({p for _ref, p in URL_RE.findall(text)})
+    # Nothing #sync touches may carry pending USER edits: the index, the prefs, and every
+    # listed file must already be committed+pushed, so your edits land in their own commits,
+    # kept separate from #sync's pin commits. Otherwise abort, untouched.
+    for p in [index_rel, prefs_rel] + paths:
         if git_out("status", "--porcelain", "--", p):
             sys.exit(f"ABORT: '{p}' has uncommitted changes. Commit & push it (GH Desktop) "
                      f"first, then re-run #sync. Nothing was changed.")
