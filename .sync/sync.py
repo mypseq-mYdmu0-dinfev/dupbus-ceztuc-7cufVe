@@ -112,10 +112,13 @@ def main():
     finally:
         os.remove(marker)
 
-    target = f"branch '{CLOUD_BRANCH}' (cloud)" if IS_CLOUD else "main"
-    print(f"Pushed to {target}." if pushed else "Nothing to push.")
-    print("\n=== index URL for userPref ===")
-    print(index_url)
+    if pushed:
+        target = f"branch '{CLOUD_BRANCH}' (cloud)" if IS_CLOUD else "main"
+        print(f"Pushed to {target}.")
+        print("=== index URL for userPref ===")
+        print(index_url)
+    else:
+        print(f"NO CHANGE: '{scope}' URLs unchanged —— do NOT report a URL for this scope.")
 
 
 if __name__ == "__main__":

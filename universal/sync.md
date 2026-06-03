@@ -19,7 +19,11 @@
 
 ## Run
 1. `python3 .sync/sync.py [scope]`
-2. Give the user the printed `=== index URL for userPref ===` value (or the full prefs block) → they paste it into userPref (works in OTGC too).
+2. Give the user the printed `=== index URL for userPref ===` value → they paste it into userPref (works in OTGC too).
+
+## Reporting
+- For each CHANGED scope, deliver its URL in its OWN fenced code block (exactly one URL per block) for clean one-tap copy.
+- If the script prints `NO CHANGE` for a scope, do NOT show any URL for it —— just state it's unchanged (the user's userPref is already current). If ALL scopes are NO CHANGE, simply say so and stop.
 
 ## Guarantees
 - Per-file SHA: only files whose content actually changed get a new URL → minimal edits, minimal tokens.
