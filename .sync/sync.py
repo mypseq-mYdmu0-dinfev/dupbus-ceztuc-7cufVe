@@ -46,6 +46,12 @@ def main():
     if not os.path.exists(index_path):
         sys.exit(f"no index for scope '{scope}': {index_rel} not found")
 
+    # Cloud clones are often SHALLOW -> per-file `git log` collapses to the shallow-boundary
+    # commit, breaking idempotency & true per-file SHAs. Unshallow first (cloud only, best-effort).
+    if IS_CLOUD and subprocess.run(["git", "rev-parse", "--is-shallow-repository"],
+                                   capture_output=True, text=True, cwd=ROOT).stdout.strip() == "true":
+        subprocess.run(["git", "fetch", "--unshallow"], cwd=ROOT)
+
     # ---- pin every referenced file (anywhere in the index) to its last-commit SHA ----
     text = open(index_path).read()
     paths = sorted({p for _ref, p in URL_RE.findall(text)})
