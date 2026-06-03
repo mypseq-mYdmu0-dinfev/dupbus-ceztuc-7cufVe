@@ -1,24 +1,10 @@
 #!/usr/bin/env python3
-"""#sync — refresh OTG SHA-permalinks. See universal/sync.md.
-
-Rewrites a scope's index_otg.md so every file URL is pinned to THAT file's
-last-commit SHA (immutable -> never served stale by CWI/CDN caches), then pins
-index_otg.md's own permalink inside preferences.md.
-
-Option B: content files are committed+pushed by the USER beforehand. This script
-commits+pushes ONLY the scope's index_otg.md + preferences.md.
-"""
+# #sync — refresh OTG SHA-permalinks. See universal/sync.md. Rewrites a scope's index so every file URL is pinned to that file's last-commit SHA (immutable -> never served stale by CWI/CDN caches), then pins the index's own permalink inside the prefs file. Commits + pushes ONLY those two control files; content files must already be committed+pushed (else it aborts untouched).
 import sys, subprocess, os, re
 
 OWNER = "mypseq-mYdmu0-dinfev"
 REPO = "dupbus-ceztuc-7cufVe"
 PREFIX = f"https://raw.githubusercontent.com/{OWNER}/{REPO}/"
-
-# Each scope -> its control files. Add CPs here as needed.
-SCOPES = {
-    "universal": {"index": "universal/index_otg.md", "prefs": "universal/preferences.md"},
-    # "career": {"index": "career/index_otg.md", "prefs": "career/preferences.md"},
-}
 
 ROOT = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                       capture_output=True, text=True).stdout.strip()
@@ -31,6 +17,13 @@ def git_out(*a):
     return r.stdout.strip()
 
 
+def resolve_scope(scope):
+    # universal uses index_otg.md + preferences.md; every CP uses CP_index_otg.md + CP_instr.md
+    if scope == "universal":
+        return "universal/index_otg.md", "universal/preferences.md"
+    return f"{scope}/CP_index_otg.md", f"{scope}/CP_instr.md"
+
+
 def parse_url(url):
     if not url.startswith(PREFIX):
         return None, None
@@ -40,12 +33,14 @@ def parse_url(url):
 
 def main():
     scope = sys.argv[1] if len(sys.argv) > 1 else "universal"
-    if scope not in SCOPES:
-        sys.exit(f"unknown scope '{scope}' (known: {', '.join(SCOPES)})")
-    cfg = SCOPES[scope]
-    index_path = os.path.join(ROOT, cfg["index"])
-    prefs_path = os.path.join(ROOT, cfg["prefs"])
+    index_rel, prefs_rel = resolve_scope(scope)
+    index_path = os.path.join(ROOT, index_rel)
+    prefs_path = os.path.join(ROOT, prefs_rel)
+    if not os.path.exists(index_path):
+        sys.exit(f"no index for scope '{scope}': {index_rel} not found")
 
+    # Pin each file (paths come from the index itself, so CP indexes may list
+    # files outside the CP folder, e.g. seek/context/*) to its last-commit SHA.
     out, changed = [], []
     for ln in open(index_path).read().splitlines():
         ref, path = parse_url(ln.strip())
@@ -54,7 +49,8 @@ def main():
             continue
         if git_out("status", "--porcelain", "--", path):
             sys.exit(f"ABORT: '{path}' has uncommitted changes.\n"
-                     f"Commit & push it (GH Desktop) first, then re-run #sync.")
+                     f"Commit & push it (GH Desktop) first, then re-run #sync. "
+                     f"Nothing was changed.")
         new = f"{PREFIX}{git_out('log', '-1', '--format=%H', '--', path)}/{path}"
         if new != ln.strip():
             changed.append(path)
@@ -66,22 +62,22 @@ def main():
     else:
         print("No file URLs changed.")
 
-    # ---- guarded commit: ONLY the 2 control files ----
+    # ---- guarded commit: ONLY this scope's 2 control files ----
     marker = os.path.join(ROOT, ".git", "SYNC_ACTIVE")
-    open(marker, "w").write(cfg["index"] + "\n" + cfg["prefs"] + "\n")
+    open(marker, "w").write(index_rel + "\n" + prefs_rel + "\n")
     try:
         if changed:
-            git_out("add", cfg["index"])
+            git_out("add", index_rel)
             git_out("commit", "-m", f"#sync {scope}: refresh file SHA-permalinks")
 
-        index_url = f"{PREFIX}{git_out('log', '-1', '--format=%H', '--', cfg['index'])}/{cfg['index']}"
+        index_url = f"{PREFIX}{git_out('log', '-1', '--format=%H', '--', index_rel)}/{index_rel}"
         ptext = open(prefs_path).read()
-        ptext2 = re.sub(re.escape(PREFIX) + r"[^/\s]+/" + re.escape(cfg["index"]),
+        ptext2 = re.sub(re.escape(PREFIX) + r"[^/\s]+/" + re.escape(index_rel),
                         index_url, ptext)
         if ptext2 != ptext:
             open(prefs_path, "w").write(ptext2)
-            git_out("add", cfg["prefs"])
-            git_out("commit", "-m", f"#sync {scope}: pin index permalink in preferences")
+            git_out("add", prefs_rel)
+            git_out("commit", "-m", f"#sync {scope}: pin index permalink")
 
         if changed or ptext2 != ptext:
             git_out("push", "origin", "HEAD:main")
@@ -91,7 +87,9 @@ def main():
     finally:
         os.remove(marker)
 
-    print("\n=== paste into userPref ===")
+    print("\n=== index URL for userPref ===")
+    print(index_url)
+    print("\n=== full prefs (paste whole thing if you prefer) ===")
     print(open(prefs_path).read())
 
 
