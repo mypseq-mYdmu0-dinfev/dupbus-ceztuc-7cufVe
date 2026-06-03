@@ -6,11 +6,12 @@
 ---
 
 1. Initiation
-- 1.1. At session start OR when root folder is added, before generating anything (regardless of msg content; if working directory is `/seek/`, STOP NOW), read (in order) **Unconditionals**:
-  - 1.1.1. `universal/glossary.md` —— terminology & definitions
-  - 1.1.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
-- 1.2. Declare in chat (per §3.2.1) w/ other reads (incl. CLAUDE.md) on a single line
-- 1.3. Monthly reminder (once per session): if any previous month's folder exists in `/sessions/` but lacks a `wrap_` file, remind the user
+- 1.1. Session Environment —— BEFORE anything else, run `uname -s`. `Linux` → CLOUD session: still read everything as usual (so the comms system is understood), but OVERRIDE the no-chat-text mandate (§3.1–§3.2) —— put the substantive reply directly in chat, ultra-concise, and generate NO **comms** files (§3.3); `#sync` edits to index/prefs files and any explicitly-requested code/deliverables stay allowed. Still emit the `✅`/`➡️` declarations. Assume a single turn (usually just `#sync [scope]`); prefix the reply with `☁️ Cloud mode`. Any OTHER result (e.g. `Darwin`, the local Mac) → local session: follow all sections below normally. (Default-safe: only an explicit `Linux` triggers chat-mode, so a local session can never misidentify as cloud.)
+- 1.2. At session start OR when root folder is added, before generating anything (regardless of msg content; if working directory is `/seek/`, STOP NOW), read (in order) **Unconditionals**:
+  - 1.2.1. `universal/glossary.md` —— terminology & definitions
+  - 1.2.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
+- 1.3. Declare in chat (per §3.2.1) w/ other reads (incl. CLAUDE.md) on a single line
+- 1.4. Monthly reminder (once per session): if any previous month's folder exists in `/sessions/` but lacks a `wrap_` file, remind the user
 
 2. Conventions
 - 2.1. ALWAYS use:

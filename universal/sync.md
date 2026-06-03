@@ -28,3 +28,9 @@
 - No arg → `universal` → `universal/index_otg.md` + `universal/preferences.md`.
 - `#sync <cp>` → `<cp>/CP_index_otg.md` + `<cp>/CP_instr.md`.
 - The file list is read from the index itself, so a CP index may legitimately list files OUTSIDE its folder (e.g. `seek/context/*`); those get pinned too, with no `otg/` folder and no `seek/` contamination.
+
+## Cloud sessions (Linux)
+- A cloud CC session can't push to main, so the script (detecting `platform.system() == "Linux"`) force-pushes the index + prefs commits to one fixed branch `otg-sync` instead. SHA permalinks resolve from ANY pushed branch, so the printed index URL still works OTG.
+- The individual FILE URLs inside the index stay pinned to their main commits (content was committed to main beforehand); only the index's own permalink (in prefs) lives on `otg-sync`.
+- No merge needed —— leave `otg-sync` as is; a later LOCAL `#sync` re-pins everything on main and supersedes it. Don't delete `otg-sync` until you've re-synced locally (deleting it would un-reference the cloud commit).
+- In a cloud session the whole comms protocol is suspended (see root CLAUDE.md §1.0): reply in chat only, ultra-concise, no files.

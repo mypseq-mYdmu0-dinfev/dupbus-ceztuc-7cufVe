@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # #sync — refresh OTG SHA-permalinks. See universal/sync.md. Rewrites a scope's index so every file URL is pinned to that file's last-commit SHA (immutable -> never served stale by CWI/CDN caches), then pins the index's own permalink inside the prefs file. Commits + pushes ONLY those two control files; content files must already be committed+pushed (else it aborts untouched). Reads the content of ONLY the 2 control files — every listed file uses git metadata only, never opened.
-import sys, subprocess, os, re
+import sys, subprocess, os, re, platform
+
+# Cloud CC (Linux) can't push to main -> push to one fixed branch; SHA permalinks
+# resolve from any branch, so the printed URL still works OTG. Local (Darwin) -> main.
+IS_CLOUD = platform.system() == "Linux"
+CLOUD_BRANCH = "otg-sync"
 
 OWNER = "mypseq-mYdmu0-dinfev"
 REPO = "dupbus-ceztuc-7cufVe"
@@ -93,12 +98,16 @@ def main():
                 git_out("commit", "-m", f"#sync {scope}: pin index permalink")
 
         if newtext != text or ptext2 != ptext:
-            git_out("push", "origin", "HEAD:main")
+            if IS_CLOUD:
+                git_out("push", "--force", "origin", f"HEAD:{CLOUD_BRANCH}")
+            else:
+                git_out("push", "origin", "HEAD:main")
             pushed = True
     finally:
         os.remove(marker)
 
-    print("Pushed." if pushed else "Nothing to push.")
+    target = f"branch '{CLOUD_BRANCH}' (cloud)" if IS_CLOUD else "main"
+    print(f"Pushed to {target}." if pushed else "Nothing to push.")
     print("\n=== index URL for userPref ===")
     print(index_url)
 
