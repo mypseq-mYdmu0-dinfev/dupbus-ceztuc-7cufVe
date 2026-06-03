@@ -52,3 +52,4 @@
 - OTG = on the go
 - OTGC = OTG Claude iPhone App (≈CWI)
 - #r = past/perfect tense of "read"; MUST use it to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)
+- directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen

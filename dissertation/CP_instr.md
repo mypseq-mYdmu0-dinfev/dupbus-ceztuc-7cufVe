@@ -4,12 +4,12 @@ Each file ... don't proceed. (same as userPref)
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all aliases below using `CP_directory.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_directory_33.md
+- Fetch at every chat start & resolve all aliases below using `CP_index.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/CP_index_otg.md
 - Except deliverables, all artefacts must be #numbered bullets (not prose) for easy read/reply
 
 ## CONDITIONAL
 
-Excerpt only; re-consult `CP_directory.md` if needed:
+Excerpt only; re-consult `CP_index.md` if needed:
 - Official_Files.md if module info/ethics process needed
 - A1-3.md if assessment info needed
 - "CB" if full research design needed

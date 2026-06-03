@@ -106,7 +106,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - Primary reference for all content decisions: `Concept Brief (comp).md`
 - Module rules and hard constraints: `Official Files (distilled).md`
 - Assessment criteria: `A1-3.md` *(fetch only immediately before P4 begins — not at chat start)*
-- Literature sources: `RefRepo.md` (renamed from TheoryRepo.md per AD03.2.5; created and available; see CP_directory.md)
+- Literature sources: `RefRepo.md` (renamed from TheoryRepo.md per AD03.2.5; created and available; see CP_index.md)
 - Seminar rules and design confirmations: `Seminars (distilled).md`
 
 ## M3. Key Standing Rules for A1
@@ -204,7 +204,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - AD03.1.2. Wk4 seminar: official full transcript fetched and compared against temp; #replace issued (#17); Culous applied update; temp flag removed
 - AD03.1.3. Wk5 seminar distilled (#18); Culous appended to `Seminars (distilled).md`
 - AD03.1.4. P1 (WCIC literature research) completed (substantively); 3 residual gaps documented (see AD03.3)
-- AD03.1.5. `MGTK751_RefRepo_01.md` created (#27); covers WCIC non-core sources only; uploaded to GitHub by Culous; placeholders for 13 core ref and official readings; NOT in CP_directory.md yet (intentional — incomplete); full completion next chat
+- AD03.1.5. `MGTK751_RefRepo_01.md` created (#27); covers WCIC non-core sources only; uploaded to GitHub by Culous; placeholders for 13 core ref and official readings; NOT in CP_index.md yet (intentional — incomplete); full completion next chat
 
 ### AD03.2. Key Decisions Made
 
@@ -215,7 +215,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - AD03.2.5. **TheoryRepo.md renamed RefRepo.md:** scope expanded beyond theories to all usable references; file renamed `MGTK751_RefRepo_01.md`
 - AD03.2.6. **Scope language change:** "industry-wide" removed from A1 framing; replaced with "cross-firm"; rationale: study spans multiple KBF industries (consulting, IT, accounting, law, R&D), not a single industry
 - AD03.2.7. **CoreRef.md established as separate file:** rich synthesis of 13 core ref (10 literature + 3 industry reports) via upload loop; RefRepo.md = concise index; separate fetch occasions for efficiency
-- AD03.2.8. **DevPlan.md temporarily removed from CP_directory.md mandatory auto-fetch:** preserve context capacity for CoreRef.md loop; restore when loop complete
+- AD03.2.8. **DevPlan.md temporarily removed from CP_index.md mandatory auto-fetch:** preserve context capacity for CoreRef.md loop; restore when loop complete
 - AD03.2.9. **Upload loop protocol established:** upload → synthesise → revert; each synthesis includes limitation header block (date, basis, scope, limitation note); Blau (1964) targeted page extraction only (124.1MB full book)
 - AD03.2.10. **A1 drafting deferred to Chat 07:** Chat 06 = CoreRef.md loop + RefRepo.md completion + Concept Brief updates; P4 begins Chat 07
 
@@ -228,10 +228,10 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 
 ### AD03.4. Critical Reminders for Future Chats
 
-- AD03.4.1. **Post-loop actions (Culous):** add CoreRef.md and RefRepo.md to CP_directory.md; restore DevPlan.md to mandatory auto-fetch — both only after all loop analyses fully complete
+- AD03.4.1. **Post-loop actions (Culous):** add CoreRef.md and RefRepo.md to CP_index.md; restore DevPlan.md to mandatory auto-fetch — both only after all loop analyses fully complete
 - AD03.4.2. **Concept Brief (comp) update (Chat 06):** apply 3 additions (Kim & Glomb 2014 → §3.1 empirical support for KM withdrawal coping; Sung et al. 2024 → §5 SCT not deterministic, malicious envy pathway relevant; Foss et al. 2010 → §4 micro-level governance gap); then trim scan for repeated content only; file remains single source of truth
 - AD03.4.3. **Blau (1964):** Culous to send ToC + chapter abstracts before CoreRef.md loop; targeted pages identified then uploaded
-- AD03.4.5. **"Items Potentially Missed" check (from #24):** CP_directory.md update for RefRepo.md and CoreRef.md — confirmed deferred to post-loop; DevPlan.md auto-fetch restore — deferred to post-loop; A1 deadline pressure (27/04/2026) — factor into Chat 06 pacing
+- AD03.4.5. **"Items Potentially Missed" check (from #24):** CP_index.md update for RefRepo.md and CoreRef.md — confirmed deferred to post-loop; DevPlan.md auto-fetch restore — deferred to post-loop; A1 deadline pressure (27/04/2026) — factor into Chat 06 pacing
 - AD03.4.6. **DA profile research (pre-first-contact):** once DA matching confirmed (Wk7+), fetch `Potential Advisors.md` to review matched DA's research interests, methodology preferences, and prior supervision topics before first VLE message. Create DA.md with only the matched DA+further info from research so `Potential Advisors.md` can be removed from GH. Not urgent until matching is confirmed.
 
 ### AD03.5. Standing Verification Items (Carried Forward)
@@ -246,7 +246,7 @@ Run targeted searches across UoL library databases (e.g. Business Source Complet
 - AD04.1.1. **CoreRef.md**: created, audited, and split into Part A (entries 01–07) & Part B (entries 08–13)
 - AD04.1.2. **RefRepo.md**: 13 core ref stubs added; Nonaka (1994) pre-existing entry verified/enriched by web_search; Saunders et al. (2023) official readings section added
 - AD04.1.3. **Concept Brief (comp & concise) updated to v06**: see AD04.5
-- AD04.1.4. **CP_directory.md**: added CoreRef.md (both parts) & RefRepo.md; DevPlan.md restored to mandatory auto-fetch
+- AD04.1.4. **CP_index.md**: added CoreRef.md (both parts) & RefRepo.md; DevPlan.md restored to mandatory auto-fetch
 - AD04.1.5. **P3 Completed**: DevPlan.md (v06); TheoryRepo → RefRepo throughout; P3.2 corrected; RQ-A/B → RQ1/RQ2; P4.4.4 saturation defence note added; P4.4.6 "Reliability and validity" → "Trustworthiness" + Shenton (2004); P4.6.3 practitioner sources exception noted; M2 A1-3.md fetch timing added; M3 "industry-wide" → "cross-firm"; M3 alert protocol added from AD01.4.12 (previously omitted)
 
 ### AD04.2. Key Decisions Made
@@ -336,7 +336,7 @@ For reference (do not re-apply):
 ## AD07. Post-P5 (Chat 10) —— Creation of lu.md
 
 ### AD07.1. What Was Done
-- AD07.1.1. lu.md created (#11 rebuilt; canonical version) and uploaded to GH (v01; `lu_01.md`); added to CP_directory.md under Created Files; alias `Lu.md` (NEVER `lu.md` due to visual confusion as `Iu.md`)
+- AD07.1.1. lu.md created (#11 rebuilt; canonical version) and uploaded to GH (v01; `lu_01.md`); added to CP_index.md under Created Files; alias `Lu.md` (NEVER `lu.md` due to visual confusion as `Iu.md`)
 - AD07.1.2. Forum reply to Lu Liu drafted (#04), revised by Culous, and sent; Lu replied; simple acceptance drafted (#06) and sent
 - AD07.1.3. First DA meeting held (02/05/2026, 12pm BST / 9pm AEST)
 - AD07.1.4. MGTK742 files (A1 PDF, A2 PDF, A3 PDF) parsed and synthesised into lu.md Part B

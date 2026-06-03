@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-# #sync — refresh OTG SHA-permalinks. See universal/sync.md. Rewrites a scope's index so every file URL is pinned to that file's last-commit SHA (immutable -> never served stale by CWI/CDN caches), then pins the index's own permalink inside the prefs file. Commits + pushes ONLY those two control files; content files must already be committed+pushed (else it aborts untouched).
+# #sync — refresh OTG SHA-permalinks. See universal/sync.md. Rewrites a scope's index so every file URL is pinned to that file's last-commit SHA (immutable -> never served stale by CWI/CDN caches), then pins the index's own permalink inside the prefs file. Commits + pushes ONLY those two control files; content files must already be committed+pushed (else it aborts untouched). Reads the content of ONLY the 2 control files — every listed file uses git metadata only, never opened.
 import sys, subprocess, os, re
 
 OWNER = "mypseq-mYdmu0-dinfev"
 REPO = "dupbus-ceztuc-7cufVe"
 PREFIX = f"https://raw.githubusercontent.com/{OWNER}/{REPO}/"
+# match a raw URL ANYWHERE in a line (handles bare URLs and "Label: <url>" forms)
+URL_RE = re.compile(re.escape(PREFIX) + r"([0-9a-fA-F]{7,40}|main)/(\S+)")
 
 ROOT = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                       capture_output=True, text=True).stdout.strip()
@@ -18,17 +20,17 @@ def git_out(*a):
 
 
 def resolve_scope(scope):
-    # universal uses index_otg.md + preferences.md; every CP uses CP_index_otg.md + CP_instr.md
     if scope == "universal":
         return "universal/index_otg.md", "universal/preferences.md"
     return f"{scope}/CP_index_otg.md", f"{scope}/CP_instr.md"
 
 
-def parse_url(url):
-    if not url.startswith(PREFIX):
-        return None, None
-    ref, _, path = url[len(PREFIX):].partition("/")
-    return ref, path
+def sha_of(path):
+    s = git_out("log", "-1", "--format=%H", "--", path)
+    if not s:
+        sys.exit(f"ABORT: '{path}' (referenced in the index) is not committed to git. "
+                 f"Commit & push it first, then re-run. Nothing was changed.")
+    return s
 
 
 def main():
@@ -39,58 +41,64 @@ def main():
     if not os.path.exists(index_path):
         sys.exit(f"no index for scope '{scope}': {index_rel} not found")
 
-    # Pin each file (paths come from the index itself, so CP indexes may list
-    # files outside the CP folder, e.g. seek/context/*) to its last-commit SHA.
-    out, changed = [], []
-    for ln in open(index_path).read().splitlines():
-        ref, path = parse_url(ln.strip())
-        if path is None:
-            out.append(ln)
-            continue
-        if git_out("status", "--porcelain", "--", path):
-            sys.exit(f"ABORT: '{path}' has uncommitted changes.\n"
-                     f"Commit & push it (GH Desktop) first, then re-run #sync. "
-                     f"Nothing was changed.")
-        new = f"{PREFIX}{git_out('log', '-1', '--format=%H', '--', path)}/{path}"
-        if new != ln.strip():
-            changed.append(path)
-        out.append(new)
+    # ---- pin every referenced file (anywhere in the index) to its last-commit SHA ----
+    text = open(index_path).read()
+    paths = sorted(set(URL_RE.findall(text)))  # findall -> [(ref, path), ...]
+    paths = sorted({p for _ref, p in paths})
+    for p in paths:
+        if git_out("status", "--porcelain", "--", p):
+            sys.exit(f"ABORT: '{p}' has uncommitted changes. Commit & push it (GH Desktop) "
+                     f"first, then re-run #sync. Nothing was changed.")
+    shamap = {p: sha_of(p) for p in paths}
+    changed = []
 
-    if changed:
-        open(index_path, "w").write("\n".join(out) + "\n")
-        print("Updated URLs:", ", ".join(changed))
+    def repl(m):
+        ref, p = m.group(1), m.group(2)
+        if ref != shamap[p]:
+            changed.append(p)
+        return f"{PREFIX}{shamap[p]}/{p}"
+
+    newtext = URL_RE.sub(repl, text)
+    if newtext != text:
+        open(index_path, "w").write(newtext)
+        print("Updated URLs:", ", ".join(sorted(set(changed))))
     else:
         print("No file URLs changed.")
 
     # ---- guarded commit: ONLY this scope's 2 control files ----
     marker = os.path.join(ROOT, ".git", "SYNC_ACTIVE")
     open(marker, "w").write(index_rel + "\n" + prefs_rel + "\n")
+    pushed = False
     try:
-        if changed:
+        if newtext != text:
             git_out("add", index_rel)
             git_out("commit", "-m", f"#sync {scope}: refresh file SHA-permalinks")
 
-        index_url = f"{PREFIX}{git_out('log', '-1', '--format=%H', '--', index_rel)}/{index_rel}"
+        index_sha = sha_of(index_rel)
+        index_url = f"{PREFIX}{index_sha}/{index_rel}"
         ptext = open(prefs_path).read()
-        ptext2 = re.sub(re.escape(PREFIX) + r"[^/\s]+/" + re.escape(index_rel),
-                        index_url, ptext)
-        if ptext2 != ptext:
-            open(prefs_path, "w").write(ptext2)
-            git_out("add", prefs_rel)
-            git_out("commit", "-m", f"#sync {scope}: pin index permalink")
-
-        if changed or ptext2 != ptext:
-            git_out("push", "origin", "HEAD:main")
-            print("Pushed.")
+        # the prefs file is expected to reference the index by its path
+        if index_rel not in ptext:
+            print(f"WARNING: {prefs_rel} does not reference {index_rel} — its entry URL "
+                  f"was NOT updated. Fix the prefs to point at {index_rel}, then re-run.")
+            ptext2 = ptext
         else:
-            print("Nothing to push.")
+            ptext2 = re.sub(re.escape(PREFIX) + r"(?:[0-9a-fA-F]{7,40}|main)/" + re.escape(index_rel),
+                            index_url, ptext)
+            if ptext2 != ptext:
+                open(prefs_path, "w").write(ptext2)
+                git_out("add", prefs_rel)
+                git_out("commit", "-m", f"#sync {scope}: pin index permalink")
+
+        if newtext != text or ptext2 != ptext:
+            git_out("push", "origin", "HEAD:main")
+            pushed = True
     finally:
         os.remove(marker)
 
+    print("Pushed." if pushed else "Nothing to push.")
     print("\n=== index URL for userPref ===")
     print(index_url)
-    print("\n=== full prefs (paste whole thing if you prefer) ===")
-    print(open(prefs_path).read())
 
 
 if __name__ == "__main__":
