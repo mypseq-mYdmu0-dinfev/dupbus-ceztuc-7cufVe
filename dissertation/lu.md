@@ -93,6 +93,8 @@ More conservative than Enis on research scope; defers to program director's sing
 
 ## PART D —— Comms Log
 
+*Note: All attachments from Lu are saved in '/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/From Lu/'. If you're not CC: Ignore this folder path & request attachments if necessary.*
+
 ### Log 01
 
 by Lu Liu - Wednesday, 29 April 2026, 7:31 PM (UK Time)
@@ -280,3 +282,18 @@ I look forward to your guidance on both points.
 
 Warm Regards,
 Culous
+
+### Log 14
+
+On 26 May 2026, at 03:03, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Sorry, Culous, I shared the wrong document with you. I have replaced it in the shared folder and attached a copy with this email. 
+
+Can you please read my comments first? If anything is unclear, please let me know. If you like, we can meet online to discuss it. 
+
+As to other changes you want to make, please follow your thoughts. 
+
+Kind regards,
+Lu
+
+<proposal-1-CL.docx>
