@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b8
 Brief overview.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b89e67769a0e195afdb6c400d988a424f7555f/dissertation/MGTK751_DevPlan.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a36d7cee65ff0a18140522f0ee98b85c18b8062f/dissertation/MGTK751_DevPlan.md
 Always follow.
 
 ---
