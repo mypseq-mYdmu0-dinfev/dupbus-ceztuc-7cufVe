@@ -17,7 +17,8 @@
 
 ## Guarantees
 - Per-file SHA: only files whose content actually changed get a new URL → minimal edits, minimal tokens.
-- Reads git history only —— never opens, edits, or `touch`es any content file's body/mtime.
+- MANDATE —— reads the CONTENT of only the 2 control files (the index + prefs/instr). For every file the index lists, it uses git metadata only (`git log`/`git status`), NEVER opening the file. So large listed files cost nothing and are never read.
+- Never opens, edits, or `touch`es any content file's body/mtime.
 - Auto-push restricted to the scope's 2 control files by three independent layers:
   - permission rule auto-approves ONLY `python3 .sync/sync.py` (general `git push`/`commit` stay gated);
   - the script stages only those 2 paths (never `git add -A`, which would stage the whole repo);

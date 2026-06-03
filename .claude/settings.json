@@ -1,10 +1,37 @@
 {
   "version": "0.1",
+  "permissions": {
+    "allow": [
+      "Bash(python3 .sync/sync.py:*)"
+    ]
+  },
   "hooks": {
     "PostCompact": [
       {
         "type": "command",
         "command": "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/.claude/post_compact.sh"
+      }
+    ],
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/.sync/date_added.py' hook-capture"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/.sync/date_added.py' hook-restore"
+          }
+        ]
       }
     ]
   }
