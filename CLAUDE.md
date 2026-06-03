@@ -70,6 +70,7 @@
   - 3.3.5. For CP chats, prefix all 4 types w/ CP folder name: `[CP_folder]_query_[TS].md`, etc.
   - 3.3.6. For special output (§3.7), name aptly + [current_TS] suffix, unless instructed otherwise
   - 3.3.7. Get `[current_TS]` via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+  - 3.3.8. `artefact_[close_TS].md` —— CWI/OTGC generated; TS matches its `close_` file for ref
 - 3.4. File Organisation:
   - 3.4.1. All output files (incl. CP) in `/sessions/[YYYY]/[YYYYMM]/` unless instructed otherwise
   - 3.4.2. If user msg contains .md w/ [TS] in filename but w/o folder specified, attempt in order:

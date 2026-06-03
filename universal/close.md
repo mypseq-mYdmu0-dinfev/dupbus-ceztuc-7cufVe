@@ -4,6 +4,16 @@
 
 ---
 
+## Non-CC Sessions
+
+If you're not CC, ONLY read § Non-CP Sessions (entirely disregard the rest) and strictly follow its structure with these adaptations:
+- Generate in artefact instead (no filename/location needed)
+- Skip all TS (timestamp; user manually input)
+- § 4. Session Files lists/counts artefact no. (#) instead
+- § 5. Other Files lists/counts deliverables/codes generated (ref artefact #; if any)
+
+---
+
 ## Non-CP Sessions
 
 *Close with 1 file*
@@ -35,18 +45,18 @@ Location: same folder as the session's query_/response_ files
 ## 4. Session Files ([file_count])
 - 4.1. `[YYYYMM]/query_[TS].md` —— [max. 8w descr]
 - 4.2. `[YYYYMM]/response_[TS].md` —— [ditto]
-- 4.3. ... [all `query_`/`response_` pairs created this session, in chronological order]
+- 4.3. ... [all `query_`/`response_` pairs (comms files) created this session, in chronological order]
 [skip 1 line]
 
 ## 5. Other Files ([file_count])
 - 5.1. Created:
   - 5.1.1. `enclosing_folder/file.py` [1 line each; same for below]
   - 5.1.2. `enclosing_folder/file.html`
-  - 5.1.3. ...
+  - 5.1.3. ... [all non-comms files in any format created this session, in chronological order]
 - 5.2. Modified:
-  - 5.2.1. ...
+  - 5.2.1. ... [ditto]
 - 5.3. Moved/Voided/Deleted:
-  - 5.3.1. ...
+  - 5.3.1. ... [ditto]
 [If none, input `N/A`]
 [skip 1 line]
 
@@ -99,7 +109,7 @@ Usage: to be deleted after user manually reviewed & appended to DevPlan (for all
 *Note: `###` level for appending under `## PART C` of DevPlan.md; XX = last addendum no. + 1 in 2 digits; Y.Y = phase(s) worked on; Z = this chat's number (last +1 unless told otherwise)*
 
 - AD[XX].1. Coverage
-  - AD[XX].1.1. [What was accomplished/done; e.g. list of issues/tasks addressed, any non-`/sessions/` files created/edited/deleted; if none AND 0% DevPlan progress, input N/A]
+  - AD[XX].1.1. [What was accomplished/done; e.g. list of issues/tasks addressed, any non-comms files created/edited/deleted; if none AND 0% DevPlan progress, input N/A]
   - AD[XX].1.2. ...
 [skip 1 line]
 

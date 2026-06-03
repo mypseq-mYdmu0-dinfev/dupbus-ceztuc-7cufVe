@@ -1,0 +1,20 @@
+#!/bin/sh
+# #sync guard (fail-safe). Restricts commits ONLY while the SYNC_ACTIVE marker
+# exists (i.e. during `python3 .sync/sync.py`). Your manual GH-Desktop commits
+# have no marker -> this exits 0 immediately and never interferes.
+#
+# ACTIVATE (you run this once, consciously):  git config core.hooksPath .githooks
+# If a crash ever leaves the marker behind and a normal commit is blocked,
+# delete: .git/SYNC_ACTIVE
+MARKER="$(git rev-parse --git-dir)/SYNC_ACTIVE"
+[ -f "$MARKER" ] || exit 0
+
+staged="$(git diff --cached --name-only)"
+for f in $staged; do
+  if ! grep -qxF "$f" "$MARKER"; then
+    echo "pre-commit: #sync blocked — '$f' is not in the allowlist:"
+    cat "$MARKER"
+    exit 1
+  fi
+done
+exit 0
