@@ -30,7 +30,7 @@ On sample size, the proposal currently states a minimum of 6 participants. Forma
 
 **Conceptual Framework**
 
-A contextual note on the framework may be helpful here. Sections §2 and §3 of this proposal have been drafted in preparation for reuse as Chapters 2 and 3 of the final dissertation (A3), which mandate limits of 2,500 and 850 words respectively. Every component of the framework has been considered with these eventual constraints in mind, and I have genuinely struggled to identify where further elaboration could be introduced without compromising the dissertation's scope at this stage. Is it possible for you to indicate the specific aspects that warrant greater detail? I would gladly address it in the revision.
+A contextual note on the framework may be helpful here. Sections §2 and §3 of this proposal have been drafted in preparation for reuse as Chapters 2 and 3 of the final dissertation (A3), which mandate limits of 2,500 and 850 words respectively, although further polish is expected rear to research during A3. Every component of the framework has been considered with these eventual constraints in mind, and I have genuinely struggled to identify where further elaboration could be introduced without compromising the dissertation's scope at this stage. Is it possible for you to indicate the specific aspects that warrant greater detail? I would gladly address it in the revision.
 
 Thank you again for your continued patience and guidance. I remain humbly waiting for your reply and would start advancing in the time being.
 
