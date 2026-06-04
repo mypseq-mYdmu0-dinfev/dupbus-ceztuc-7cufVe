@@ -13,7 +13,7 @@ I am working through the revision and will send you an updated draft in due cour
 
 Taking on board your guidance, I have revised the research aim to the following:
 
-*To investigate how TPS influences team cohesion and knowledge governance in Australian knowledge-based firms, building CYC's consulting knowledge on TPS-related KM governance as the empirical foundation for its KM practice.*
+*To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, advancing the empirical foundation for KM practice to address the management challenge of CYC as a startup MCF.*
 
 Could you please let me know if this captures the direction you intended, or if any further adjustment is needed?
 

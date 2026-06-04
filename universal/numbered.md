@@ -38,10 +38,10 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
   - Follow above format (rather than unnumbered bullets) for **easy reply**
   - Instead of `re "xxx..."`, I can refer by `re 1.2.1` or just `1.2.1:`
 - Numbering Continuity —— No number repetition throughout an issue, reset to pt 1 only if:
-  - User input is NOT a reply to a response (CC: i.e. `query_` has no `response_`/prev. pt no.); or
   - 1st response of a session (CC: despite referring to prev. `/sessions/` files); or
+  - User input is NOT replying a response (CC: the word `response_` AND any pt no. from previous `response_` were NOT found in `query_`); or
   - Snippets; or standalone/non-response outputs (e.g. codes, deliverables; CC: not `response_`)
-- Let's say you responded w/ § Example List, I replied `1.2.1: xxx...`
+- Let's say you responded w/ § Example List, my input: `1.2.1: xxx...` (i.e. replying a response)
   - You must NOT respond as `1.2.1. xxx...` again as that clashes w/ the original pt in last response, i.e. two counts of `1.2.1` on same issue
   - Instead start a new pt w/ continuing number (n+1), where n = last pt in last response
   - § Example List ends w/ pt 2, so next response starts w/ pt 3:
