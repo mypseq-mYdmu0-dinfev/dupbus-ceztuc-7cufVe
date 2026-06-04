@@ -89,6 +89,10 @@ Presents options rather than prescribing; uses prior cohort experiences as cauti
 
 More conservative than Enis on research scope; defers to program director's single-org / simulated company directive even where Enis provided explicit multi-org confirmation at seminar level; represents a material risk to the current A1 multi-org / industry-wide design; Chat 12 must resolve
 
+### C07. Culous' meeting preference (not Lu)
+
+Avoid meetings wherever possible —— 9-hour timezone gap (SYD vs. UK), and each Zoom session incurs non-trivial overhead from zoom-transcript rectification and analysis. Meetings only when genuinely unavoidable (e.g. fundamental disagreement that email cannot resolve). Default to email for all clarifications; if Lu proposes a meeting, gently redirect to email first.
+
 ---
 
 ## PART D —— Comms Log
