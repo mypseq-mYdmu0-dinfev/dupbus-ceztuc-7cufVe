@@ -31,6 +31,6 @@ so basically i:
 so basically i completely removed mgt recommendations because this transcends it —— mgt recommendations = direct deliverables to KBF mgrs; entrenching service offering foundation = inform all future service (consulting) on how to produce the direct deliverables to diff mgrs, esp. KBF mgrs; more versatile and depth w/ greater aspiration, informing CYC consultants on how to provision consulting services rather than just a piece of text like MCFs' quarterly/annual industry reports
 ---
 ## Missions
-- implement the Date Added act i requested
+- act as requested
 - tell your thoughts on all
 - if agree, update dissertation_email_Lu_202606042222.md as needed w/o changing filename (so i see the diff)
