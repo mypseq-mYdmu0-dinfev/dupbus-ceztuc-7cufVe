@@ -1,4 +1,4 @@
-# AJAP Fallback Queue (`queue.md`)
+# AJAP Queue
 
 *Referenced by `ajap.md § Tab 1 Accessibility Check` (A6) and `§ S7 Pagination`. This is NOT a `context/` file (it is mutable run-data, not protocol). The user reorders the `order:` line freely; never reorder by cut-pasting Qi rows.*
 
@@ -6,7 +6,7 @@
 
 ## order: 01, 02, 03
 
-*AJAP processes Qi strictly in the sequence on this line (left → right), NOT by row order in the table. To reprioritise, the user edits ONLY this line (e.g. `order: 02, 01, 03`).*
+*AJAP processes Qi strictly in the sequence on this line (left → right) within EACH of the two passes — ALL `n` (New-to-you) passes first across the whole sequence, THEN ALL `p` (plain) passes (i.e. `01n → 02n → 03n → 01p → 02p → 03p`), NOT by row order in the table. To reprioritise, the user edits ONLY this line (e.g. `order: 02, 01, 03`).*
 
 ---
 
@@ -24,10 +24,10 @@
 
 ## Processing Rules (per Qi)
 
-1. Each table URL already carries `&tags=new` (lands directly on "New to you"). AJAP derives TWO passes per Qi automatically — do NOT add separate `n`/`p` rows:
-- 1.1. **`[Qi]n` (new) — process FIRST.** Navigate to the table URL **unchanged** (it has `&tags=new`). Process all "New to you" cards across all its pages.
-- 1.2. **`[Qi]p` (plain) — process SECOND.** Take the SAME URL and **strip** the trailing `&tags=new` (stripping is safer than appending). Navigate there; process the default (all) view. This catches anything not surfaced under "New to you".
-- 1.3. Only after BOTH `[Qi]n` and `[Qi]p` are exhausted, advance to the next Qi in the `order:` line.
+1. Each table URL already carries `&tags=new` (lands directly on "New to you"). AJAP derives TWO passes per Qi automatically; process them in TWO ROUNDS across the whole `order:` line — ALL `n` passes first, THEN ALL `p` passes — do NOT add separate `n`/`p` rows:
+- 1.1. **Round 1 — ALL `[Qi]n` (new) passes FIRST, in `order:` sequence.** For each Qi left → right, navigate to its table URL **unchanged** (it has `&tags=new`) and process all "New to you" cards across all its pages (e.g. `01n → 02n → 03n`).
+- 1.2. **Round 2 — ALL `[Qi]p` (plain) passes SECOND, in `order:` sequence.** For each Qi left → right, take the SAME URL and **strip** the trailing `&tags=new` (stripping is safer than appending); navigate there and process the default (all) view (e.g. `01p → 02p → 03p`). This catches anything not surfaced under "New to you".
+- 1.3. Advance within a round by the `order:` line; move from Round 1 to Round 2 only after EVERY Qi's `n` pass is exhausted, and conclude only after every Qi's `p` pass is exhausted.
 2. **New-to-you enforcement on every navigation** (new page, or new Qi/pass):
 - 2.1. After landing, read the "New to you" pill (blue stroke; green count to its right) and report its count in the SA loop report as `newtoyou=[n]`.
 - 2.2. If the current URL contains `&tags=new` → you are correctly on the New-to-you view; proceed.
