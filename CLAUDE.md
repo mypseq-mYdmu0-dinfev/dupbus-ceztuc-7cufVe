@@ -41,38 +41,40 @@
   - 2.9.4. Opus if it makes meaningful difference on current task; default Sonnet
 
 3. Comms
-- 3.1. All responses must be written to files; chat text is restricted (§3.2), unless override (§9.1)
-- 3.2. Chat Interface (if applicable; in order; NO CHAT TEXT except these 5 declarations only):
-  - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
-    - 3.2.1.1. ANY non-comms file(s) read, incl. passively via system file-change notifications
-    - 3.2.1.2. Group all reads into 1 line; not always .md
-    - 3.2.1.3. `enclosing_folder` = immediate ONE parent only for clickability, except in `.claude/`
-    - 3.2.1.4. Declaration NEVER contains `/sessions/` or `/[YYYY]/`
-    - 3.2.1.5. §3.2.1 (`✅`) NEVER incl. comms files (the 4 types in §3.3; belong to §3.2.2)
-    - 3.2.1.6. §3.2.2 (`⇠`) NEVER incl. non-comms files (e.g. CLAUDE.md)
-    - 3.2.1.7. Declare §3.2.1–3.2.3 at response end (after all other actions) to ensure centralised
-  - 3.2.2. `⇠ `enclosing_folder/file.md`` —— comms file(s) read; 1 line each
-  - 3.2.3. `➡️ `enclosing_folder/file.md`` —— file(s) generated; 1 line each; not always .md; e.g.:
+- 3.1. All responses must be written to file(s)
+  - 3.1.1. IMPORTANT: Chat text is strictly restricted (§3.2), unless override (§9.1)
+  - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, except in `.claude/`
+  - 3.1.3. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (§3.1.4)
+  - 3.1.4. I/O Declarations (§3.2.1–3): centralised in order at response end (after actions); e.g.:
 
 ```
 ✅ `dupbus-ceztuc-7cufVe/CLAUDE.md`, `universal/cic.md`, `career/CP_notes.md`
-⇠ `202605/query_202605272319.md`
+⇠ `202605/career_query_202605300226.md`
 ⇠ `202605/close_202605300023.md`
 ➡️ `202605/career_response_202605300226.md`
-➡️ `seek/.claude/tmp/last_decision.md`
+➡️ `seek/.claude/settings.json`
 ```
 
+- 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
+  - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
+    - 3.2.1.1. All **non-comms** file(s) read, incl. passively via system file-change notifications
+    - 3.2.1.2. NEVER incl. comms files (the 5 types in §3.3; belong to §3.2.2); not always .md
+    - 3.2.1.3. Group all reads into 1 line, unlike §3.2.2/§3.2.3 (1 line each)
+  - 3.2.2. `⇠ `enclosing_folder/file.md``
+    - 3.2.2.1. All **comms** file(s) read (not just `query_`, if applicable); .md only
+    - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md) or contains `/sessions/` / `/[YYYY]/`
+  - 3.2.3. `➡️ `enclosing_folder/file.md`` —— ANY files created/edited; not always .md
   - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.5. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
 - 3.3. Comms File Naming:
-  - 3.3.1. `query_[TS].md` —— user msg/reply
-  - 3.3.2. `response_[TS].md` —— CC MD output
-  - 3.3.3. `close_[current_TS].md` —— session summary; triggered by `#close` (§7.3)
-  - 3.3.4. `wrap_[current_TS].md` —— monthly summary; triggered by `#wrap` (§7.3)
-  - 3.3.5. For CP chats, prefix all 4 types w/ CP folder name: `[CP_folder]_query_[TS].md`, etc.
-  - 3.3.6. For special output (§3.7), name aptly + [current_TS] suffix, unless instructed otherwise
-  - 3.3.7. Get `[current_TS]` via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
-  - 3.3.8. `artefact_[close_TS].md` —— CWI/OTGC generated; TS matches its `close_` file for ref
+  - 3.3.1. Type 1: `query_[TS].md` —— user msg/reply
+  - 3.3.2. Type 2: `response_[TS].md` —— CC MD output
+  - 3.3.3. Type 3: `close_[current_TS].md` —— session summary; triggered by `#close` (§7.3)
+  - 3.3.4. Type 4: `wrap_[current_TS].md` —— monthly summary; triggered by `#wrap` (§7.3)
+  - 3.3.5. Type 5: `artefact_[close_TS].md` —— CWI/OTGC generated; TS matches its `close_`
+  - 3.3.6. For CP chats, prefix all 4 types w/ CP folder name: `[CP_folder]_query_[TS].md`, etc.
+  - 3.3.7. For special output (§3.7), name aptly + [current_TS] suffix, unless instructed otherwise
+  - 3.3.8. Get `[current_TS]` via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
 - 3.4. File Organisation:
   - 3.4.1. All output files (incl. CP) in `/sessions/[YYYY]/[YYYYMM]/` unless instructed otherwise
   - 3.4.2. If user msg contains .md w/ [TS] in filename but w/o folder specified, attempt in order:
@@ -91,7 +93,7 @@
   - 3.6.2. If >30w: create `query_[current_TS].md` on user's behalf; both files share identical TS
 - 3.7. Non-MD (e.g. py, html) or non-response (e.g. deliverable) output:
   - 3.7.1. If ≤5 lines (former) or ≤80w (latter): within `response_[TS].md` as snippet for direct copy
-  - 3.7.2. Otherwise: create a separate file (§3.3.6)
+  - 3.7.2. Otherwise: create a separate file (§3.3.7)
 
 4. Retrospection
 - 4.1. DON'T auto-read past sessions files; read on demand, judging relevance on the spot
