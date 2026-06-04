@@ -24,6 +24,7 @@
 ## Reporting
 - For each CHANGED scope, deliver its URL in its OWN fenced code block (exactly one URL per block) for clean one-tap copy.
 - If the script prints `NO CHANGE` for a scope, do NOT show any URL for it —— just state it's unchanged (the user's userPref is already current). If ALL scopes are NO CHANGE, simply say so and stop.
+- CRITICAL —— relay the script's ACTUAL output verbatim. If a scope prints `Updated URLs… / Pushed… / === index URL for userPref === <url>`, THAT new `<url>` is what you report. NEVER say "no change" for a scope the script said it Pushed, and NEVER substitute an older or remembered URL. Read each scope's block in the run output and report exactly what it printed —— misreporting a stale URL silently breaks the user's OTG fetch.
 
 ## Guarantees
 - Per-file SHA: only files whose content actually changed get a new URL → minimal edits, minimal tokens.
