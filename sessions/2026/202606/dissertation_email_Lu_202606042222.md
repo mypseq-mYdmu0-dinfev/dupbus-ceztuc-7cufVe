@@ -1,6 +1,6 @@
 # Email Draft —— Lu Liu (A1R Update)
 *Not for comms log; for user review only. Log in lu.md after sending.*
-*RA verb "formalising" provisional — swap if different option selected from response_202606050408 pt 12.*
+*RA verb locked: "crystallising" (response_202606050455 pt 17).*
 
 ---
 
@@ -30,7 +30,11 @@ On sample size, the proposal currently states a minimum of 6 participants. Forma
 
 **Conceptual Framework**
 
-A contextual note on the framework may be helpful here. Sections §2 and §3 of this proposal have been drafted in preparation for reuse as Chapters 2 and 3 of the final dissertation (A3), which mandate limits of 2,500 and 850 words respectively, although further polish is expected following the empirical work in A3. Every component of the framework has been considered with these eventual constraints in mind, and I have genuinely struggled to identify where further elaboration could be introduced without compromising the dissertation's scope at this stage. Is it possible for you to indicate the specific aspects that warrant greater detail? I would gladly address it in the revision.
+I would welcome the opportunity to develop it further and would value your specific advice on the dimension you have in mind. At the proposal stage the framework is necessarily provisional, presented as a thematic structure to be refined once the empirical findings emerge, in keeping with the inductive design. I am conscious it could be elaborated in more than one direction, for instance the theoretical mechanisms linking the domains (SCT, SET, KBV, etc.), the relational associations amongst the domains themselves, or how the framework maps onto the RQs. If you could reveal which aspects you reckon would most strengthen the proposal, I would gladly expand it accordingly, and I expect the resulting detail would serve the eventual A3 Chapter 2 equally well.
+
+**Other Amendments**
+
+Separately, I have actioned your more clear-cut points directly in the working draft, including removing the Structure of Chapters subsection under §1 Introduction (reserved for A3) and separating the research philosophy, approach, and method into distinct, individually justified components.
 
 Thank you again for your continued patience and guidance. I remain humbly waiting for your reply and would start advancing in the meantime.
 
