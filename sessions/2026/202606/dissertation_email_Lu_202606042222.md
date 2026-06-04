@@ -1,38 +1,38 @@
 # Email Draft —— Lu Liu (A1R Update)
 *Not for comms log; for user review only. Log in lu.md after sending.*
+*RA verb "formalising" provisional — swap if different option selected from response_202606050408 pt 12.*
 
 ---
 
 Hello Lu,
 
-I hope this message finds you well. Please accept my sincere apologies for the delay —— I have been pulled into a particularly demanding period at work and only now have proper time to give your comments the careful attention they deserve.
+Please accept my sincere apologies for the length of time that has passed since your last email. A particularly demanding period at work has absorbed my attention considerably, and I wished to ensure my response was considered and complete rather than hasty.
 
-I am working through the revision and will send you an updated draft in due course. I did not want to keep you waiting without any update, so I am writing now to share a few points and seek your guidance before committing further to the revision.
+I am proactively working through the revision and shall forward an updated draft in due course. In the meantime, I would like to share a development direction on the research aim and to seek your guidance on a few specific points in order to expedite the process and minimise the lag.
 
 **Revised Research Aim**
 
-Taking on board your guidance, I have revised the research aim to the following:
+In response to your feedback, I have revised the research aim as follows:
 
-*To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, advancing the empirical foundation for KM practice to address the management challenge of CYC as a startup MCF.*
+*To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for KM practice to address the management challenge of CYC as a startup MCF.*
 
-Could you please let me know if this captures the direction you intended, or if any further adjustment is needed?
+I would be grateful for your confirmation that this resolves the concern over compliance to "within your work organisation", or your thoughts on any further adjustment that may be warranted.
 
 **Research Questions**
 
-On the research questions —— reviewing RQ1 and RQ2 in light of the revised aim, I believe they continue to address it from distinct angles: RQ1 (conditions shaping TPS dynamics) and RQ2 (how those dynamics are experienced by team members). Together I hope they still define the scope and boundary of the aim as you described. Please do let me know if you feel refinement is warranted and I am happy to revisit.
+Reviewing the existing RQs against the revised aim, I found their cores remained well-suited to the new framing. RQ1 investigates the conditions within KBFs that exacerbate or alleviate TPS, which directly maps to the structural knowledge CYC requires to develop its product (consulting service in KBF contexts). RQ2 examines how team members experience TPS-related dynamics, providing the experiential evidence from which CYC's consultation offerings will ultimately be derived. Together, they address the revised aim from two complementary dimensions, covering the antecedent structural conditions of TPS risk as well as its operational manifestation within teams, which I believe captures the scope and boundary intended. I would, of course, be much obliged by any further guidance from you.
 
 **Research Participants**
 
-I also wanted to confirm my understanding of your comment on the participants. The intended design has always been to recruit individual employees working within KBFs, one per organisation, with all consent at the individual level. No organisational-level authorisation letters are required or intended. I will ensure the methodology section reflects this clearly.
+I wish to clarify a point regarding the research participants. The intended design recruits individual employees working within KBFs, one per organisation, with all consent obtained at the individual level. No org-level authorisation (i.e. Line Manager's consent letter) is required or intended, and I will ensure the methodology section reflects this even more clearly. To be honest, I was simply avoiding to be perceived by reviewers as intentionally avoiding org-level authorisation, since I heard it was like the norm. So I attempted to frame it so that my project naturally doesn't need it.
 
-On sample size, I have kept the proposal at a minimum of six participants, as the final count will depend on availability and data saturation once collection begins. I hope this remains acceptable.
+On sample size, the proposal currently states a minimum of 6 participants. Formally speaking, the quantity shall be determined by data saturation rather than headcount (Guest, Bunce and Johnson, 2006). Practically speaking, the final number could not be reliably predicted until data collection is in progress, which we're strictly prohibited from starting before approval. I did not wish to overpromise so I'd propose to keep as is if you agree. To clarify, my framing sits identical to the "6" of "6–8", but may not retire at a maximum of 8 if opportunities emerge.
 
 **Conceptual Framework**
 
-Finally, regarding your note that the conceptual framework should be more detailed —— as the proposal is already near its word count ceiling, I want to make sure any expansion targets the right aspect. Could you please indicate which element you feel needs elaborating —— for instance, the theoretical mechanisms connecting the domains, the relationship between the framework and the research questions, or something else?
+A contextual note on the framework may be helpful here. Sections §2 and §3 of this proposal have been drafted in preparation for reuse as Chapters 2 and 3 of the final dissertation (A3), which mandate limits of 2,500 and 850 words respectively. Every component of the framework has been considered with these eventual constraints in mind, and I have genuinely struggled to identify where further elaboration could be introduced without compromising the dissertation's scope at this stage. Is it possible for you to indicate the specific aspects that warrant greater detail? I would gladly address it in the revision.
 
-Thank you again for your patience and guidance. I look forward to hearing from you.
+Thank you again for your continued patience and guidance. I remain humbly waiting for your reply and would start advancing in the time being.
 
 Warm Regards,
 Culous Yu
-(MGTK751)
