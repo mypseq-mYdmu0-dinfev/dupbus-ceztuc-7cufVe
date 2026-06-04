@@ -67,25 +67,3 @@
 *Note: once C3b is clarified by Lu, the full C0/C1/C3a/C4a #replace batch can be issued in one turn.*
 
 *Note on Ben Dingwall (UK): if the aim scopes to "Australian KBFs", his participation is technically outside scope. Since confidentiality means his background won't be disclosed, he can be included under "predominantly Australian KBF" framing in §3.3 —— or framed as supplementary triangulation if needed. Flag when participant recruitment is confirmed.*
-
----
-
-9. Email Draft
-
----
-
-Hello Lu,
-
-I hope this message finds you well. My sincere apologies for the delay —— I have been tied up with a busy work period on my end and only now have proper time to give your feedback the careful attention it deserves.
-
-I have gone through your comments thoroughly and am working on a revised draft. I will send it to you as soon as the revisions are complete, though I would not want to promise a date just yet as I want to ensure the quality is right before sending it through.
-
-In the meantime, I have one question I hope you can help clarify: your Comment 3 notes that the conceptual framework should be "more detailed." As the proposal is currently near its word count ceiling, I want to make sure any expansion targets what you have in mind. Could you please let me know which aspect of the framework you feel requires elaboration —— for instance, the theoretical mechanisms connecting the domains, the domain labels themselves, or the relationship between the framework and the research questions?
-
-Thank you again for your time and patience. I look forward to sending you the revised draft shortly.
-
-Warm Regards,
-Culous Yu
-(MGTK751)
-
----
