@@ -6,7 +6,7 @@
 ---
 
 1. Initiation
-- 1.1. Session Environment —— BEFORE anything else, run `uname -s`. `Linux` → CLOUD session: still read everything as usual (so the comms system is understood), but OVERRIDE the no-chat-text mandate (§3.1–§3.2) —— put the substantive reply directly in chat, ultra-concise, and generate NO **comms** files (§3.3); `#sync` edits to index/prefs files and any explicitly-requested code/deliverables stay allowed. Still emit the `✅`/`➡️` declarations. Assume a single turn (usually just `#sync [scope]`); prefix the reply with `☁️ Cloud mode`. Any OTHER result (e.g. `Darwin`, the local Mac) → local session: follow all sections below normally. (Default-safe: only an explicit `Linux` triggers chat-mode, so a local session can never misidentify as cloud.)
+- 1.1. Session Environment —— BEFORE anything else, run `uname -s`. `Linux` → CLOUD session: still read everything as usual (so the comms system is understood), but OVERRIDE the no-chat-text mandate (§3.1–§3.2) —— put the substantive reply directly in chat, ultra-concise, and generate NO **comms** files (§3.3); `#sync` edits to index/prefs files and any explicitly-requested code/deliverables stay allowed. Still emit the `✅`/`➡️` declarations. Assume a single turn (usually just `#sync [scope]`); prefix the reply with `☁️ **Cloud Mode**`. Any OTHER result (e.g. `Darwin`, the local Mac) → local session: follow all sections below normally. (Default-safe: only an explicit `Linux` triggers chat-mode, so a local session can never misidentify as cloud.)
 - 1.2. At session start OR when root folder is added, before generating anything (regardless of msg content; if working directory is `/seek/`, STOP NOW), read (in order) **Unconditionals**:
   - 1.2.1. `universal/glossary.md` —— terminology & definitions
   - 1.2.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
@@ -117,7 +117,7 @@
   - 6.2.3. User added CP folder to the session
 - 6.3. Once identified as a CP chat:
   - 6.3.1. All files (incl. `query_`) use the CP prefix, except special output (§3.7)
-  - 6.3.2. If any files since (not after) the `query_` triggering CP not prefixed: rename → declare
+  - 6.3.2. If any files since (not just after) `query_` triggering CP not prefixed: rename → declare
   - 6.3.3. Immediately read the CP's `CP_index_cc.md` (and any unconditional files it directs) if not already read this session; include them in either §5.3/§5.4 list after post-compaction
   - 6.3.4. Reminder: when prompted `#close` (i.e. saw close.md), mind the additional file
 - 6.4. Each CP folder has a `CLAUDE.md` that mandates (at minimum):
