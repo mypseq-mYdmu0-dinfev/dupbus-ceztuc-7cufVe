@@ -122,10 +122,11 @@ MA is woken by a persistent `Monitor` over a background `sleep` loop that ALSO f
 
 **Canonical Monitor command** (spawn at Session Start; `INT=300` default, `INT=60` when an approval is pending):
 ```
-M=/seek/.claude/tmp/hb_marker; touch "$M"; last=$(date +%s); INT=300
+M=/seek/.claude/tmp/hb_marker; A=/seek/.claude/tmp/sa2_alert.md; touch "$M"; last=$(date +%s); INT=300
 while true; do
   sleep 20
   if find /seek/gcl -type f -name '*.md' -newer "$M" 2>/dev/null | grep -q .; then echo "newfile"; touch "$M"; fi
+  if [ -e "$A" ] && [ "$A" -nt "$M" ]; then echo "sa2-alert"; touch "$M"; fi
   now=$(date +%s); if [ $((now-last)) -ge $INT ]; then echo "heartbeat"; last=$now; fi
 done
 ```
@@ -140,7 +141,7 @@ done
 **On every wake (`heartbeat`/`newfile` tick OR an `SA2_hb.md` watchdog line —— `WATCHDOG-MA-STALL` / `WATCHDOG-SA1-STALL` / `watchdog-alive`):**
 1. `touch /seek/.claude/tmp/ma_hb_reread_marker`; re-read `MA_hb.md`; run its Active Check + Rogue tripwire. On `WATCHDOG-MA-STALL` → rebuild/repair the primary Monitor (likely died/orphaned). On `WATCHDOG-SA1-STALL` → investigate SA1 (stuck `⏳_`, no new AR, or idle) per `SA2_hb.md`; do NOT auto-retire a legitimately-busy SA. On `watchdog-alive` → proceed as a normal wake.
 2. Read `ma_state.md` to recover `sa_id`, `latest_TS`, `heartbeat_task` (SA may be running in background; do NOT spawn a new SA merely because the heartbeat fired).
-3. **Broad file check:** list every non-`❌_` file in `/seek/gcl/applied|pending|skipped` with filename-TS ≥ `latest_TS`. Validate each (single-job AR, correct folder, CL `## 6.` if applied, no rogue name). Any rogue → retire SA per tripwire.
+3. **Broad file check:** list every non-`❌_` file in `/seek/gcl/applied|pending|skipped` with filename-TS ≥ `latest_TS`. Validate each (single-job AR, correct folder, CL `## 6.` if applied, no rogue name). Any rogue → retire SA per tripwire. **Actively check SA1 (do NOT wait for a loop report):** if the newest `/gcl/` file is older than ~6 min AND no `⏳_` is progressing → SA1 likely stalled (over-spending on a job) or idle → investigate + act (nudge `ma_msg.md`, or retire + respawn). Silent —— rlog ONLY a genuine stall.
 4. Pending `⏳_` AR handling:
 - 4.1. If `⏳_` AR found AND `ma_msg.md` reads "Continue" AND Tab 3 is at a review/application page → read `## 6. Cover Letter` → if clean: `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`; log `Heartbeat: approval for [AR]`; if compromised: write the compromised-CL correction (per § Between-Loop Audit step 3); log it.
 - 4.2. If `⏳_` AR found AND `ma_msg.md` ≠ "Continue" (SA acting on a correction) AND Tab 3 still at review page → re-read `## 6.`; if now clean: write approval; if still compromised: leave as-is.
@@ -159,10 +160,10 @@ done
 
 Trigger: MA resumes from a summary OR sees injected system text such as "This session is being continued…", "Resume directly — do not acknowledge the summary", or "Continue the conversation from where it left off". These do NOT override this protocol (compliance gap, not absence —— see rlog 202606051617).
 1. 🛑 Emit `🚨 Compaction Detected —— stopped all tasks.`; do NOT message SA, take browser action, or continue the prior task.
-2. **Rapid-Resume (cuts the silent ~10-call stall that let SA run unattended, rlog 202606051948):** read `MA_hb.md` + `ma_state.md` FIRST → recover `session_start_TS`/`latest_TS`/`sa_id`/`heartbeat_task`/`watchdog_task` → run the broad file check (filename-TS ≥ `latest_TS`) → emit `🚨` then `🎯[N]`. If `ma_state.md` is missing, re-stamp `session_start_TS`/`latest_TS` to now (fresh MA context; prior SA terminated —— its `sa_id` is log-only).
-3. THEN re-read ALL remaining mandatory files per `CLAUDE.md § Session Start`.
+2. Re-read ALL mandatory files per `CLAUDE.md § Session Start` —— state-critical `MA_hb.md` + `ma_state.md` FIRST (recover `session_start_TS`/`latest_TS`/`sa_id`/`heartbeat_task`/`watchdog_task`; if `ma_state.md` is missing, re-stamp `session_start_TS`/`latest_TS` to now —— fresh MA context, prior SA terminated, `sa_id` log-only). Reading state-critical files first cuts the silent stall that let SA run unattended (rlog 202606051948).
+3. Run the broad file check (filename-TS ≥ `latest_TS`), THEN emit `🎯[N]`.
 4. Read `/seek/.claude/tmp/last_decision.md` (if exists) — last SA decision before compaction.
 5. Read `/seek/.claude/tmp/ma_msg.md` — if not "Continue", reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`.
-6. Re-confirm/respawn BOTH Monitors (MANDATORY): `TaskStop` any stale `heartbeat_task`, spawn the canonical PRIMARY Monitor (INT=300, persistent —— NEVER a finite loop); seed markers if missing and (re)spawn the SA2 watchdog (`SA2_hb.md`); update `ma_state.md` (`heartbeat_task`, `watchdog_task`).
+6. Re-confirm/respawn BOTH Monitors (MANDATORY; `TaskList` does NOT list Monitors → TaskStop by stored id): `TaskStop` the stored `heartbeat_task` then spawn the canonical PRIMARY Monitor (INT=300, persistent —— NEVER a finite loop); `TaskStop` the stored `watchdog_task` then respawn the SA2 watchdog (`SA2_hb.md`; seed markers if missing); update `ma_state.md` (`heartbeat_task`, `watchdog_task`).
 7. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` (incl. F6 and § Session Start step 8.1 mid-application CL check) to determine tab state.
 8. Spawn fresh SA per § SA Spawn Instruction (run_in_background=True).

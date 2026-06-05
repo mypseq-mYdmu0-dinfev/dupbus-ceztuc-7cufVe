@@ -1,52 +1,35 @@
 # SA2 Watchdog Contract (`SA2_hb.md`)
 
-*Independent timekeeper watchdog —— SEPARATE from MA's primary heartbeat. Read by MA at Session Start (mandatory file #9) to spawn/maintain the watchdog, and consulted when reacting to a watchdog wake. The "timekeeper-SA" long-planned in prior investigations.*
+*The independent timekeeper that catches MA or SA1 stalling. MA reads this at Session Start to spawn it. SA2 is a deterministic bash `Monitor` —— NOT an LLM, so it cannot stall or compact, and it reads no other file. This file is the entire spec.*
 
----
+## Context it guards
+- MA orchestrates; SA1 applies to jobs one at a time. MA re-reads `MA_hb.md` and checks SA1 on every heartbeat. If MA freezes (e.g. compaction) or SA1 stalls/idles, heartbeats stop —— SA2 is the backstop that re-wakes MA.
 
-## What it is
+## Two tasks (every 900s = 15 min)
+1. MA-stall: `ma_hb_reread_marker` older than 6 min (MA has not re-read `MA_hb.md`) → alert MA to recover.
+2. SA1-stall: `ma_c2_marker` older than 14 min (no `🎯[N]` —— SA1 idle/stuck, or MA missed a declaration) → alert MA to check SA1. SA1 averages ~326s/job, so 14 min is very lenient; an alert is a PROMPT to investigate, never an auto-retire.
 
-- A SECOND, independent, persistent `Monitor` (deterministic bash —— NOT an LLM agent, for maximum robustness; an LLM watchdog could itself stall/compact).
-- Spawned ONCE at Session Start. NEVER `TaskStop`'d during dynamic-interval churn (unlike the primary Monitor, which churns 60/300). Re-confirmed/respawned only during post-compaction recovery if its liveness cannot be assumed.
-- Cadence 900s (15 min). It is the GUARANTEED independent MA wake: even if the primary Monitor is lost to churn or compaction, the watchdog keeps waking MA.
-- Liveness fact: `TaskList` does NOT enumerate background Monitors —— so the watchdog (not TaskList) is the heartbeat liveness mechanism.
+## How it wakes MA (two paths)
+- WRITES the alert to `/seek/.claude/tmp/sa2_alert.md` (MA's primary Monitor also file-watches that path → the write wakes MA) AND echoes the same line (a Monitor stdout line is itself a direct wake, independent of the primary). Either path re-wakes MA even if the primary Monitor died.
 
-## Measurement surface (MA must stamp; reading a file leaves no trace)
-
-- `ma_hb_reread_marker` —— MA `touch`es it at the TOP of every wake when it re-reads `MA_hb.md`.
-- `ma_c2_marker` —— MA `touch`es it on every `🎯[N]` (C2) emission.
-- Both are seeded (touched) at Session Start so early cycles do not false-trip.
-
-## Canonical watchdog Monitor command
-
-Spawn at Session Start with `persistent=true`. (Use the full absolute `/seek/...` paths when issuing; `/seek/` shown for brevity.)
-
+## Canonical command —— spawn ONCE at Session Start (`persistent=true`; full `/seek/...` paths when issuing)
 ```
-HB=/seek/.claude/tmp/ma_hb_reread_marker
-C2=/seek/.claude/tmp/ma_c2_marker
+HB=/seek/.claude/tmp/ma_hb_reread_marker; C2=/seek/.claude/tmp/ma_c2_marker; A=/seek/.claude/tmp/sa2_alert.md
 while true; do
   sleep 900
-  if [ -e "$HB" ] && find "$HB" -mmin +6 | grep -q .; then echo "WATCHDOG-MA-STALL"; fi
-  if [ -e "$C2" ] && find "$C2" -mmin +14 | grep -q .; then echo "WATCHDOG-SA1-STALL"; fi
-  echo "watchdog-alive"
+  msg=""
+  if find "$HB" -mmin +6 2>/dev/null | grep -q .; then msg="WATCHDOG-MA-STALL"; fi
+  if find "$C2" -mmin +14 2>/dev/null | grep -q .; then msg="$msg WATCHDOG-SA1-STALL"; fi
+  if [ -n "$msg" ]; then printf '%s %s\n' "$(date +%H%M)" "$msg" > "$A"; echo "$msg"; else echo "watchdog-alive"; fi
 done
 ```
 
-- Thresholds: MA-stall = `MA_hb.md` not re-read in `>6 min` (6 not 5 —— avoids tripping whilst MA is mid-reread). SA1-stall = no `🎯[N]` in `>14 min` (SA1 averages ~326s/job, so 14 min ≫ one loop —— very lenient; a slow research/external-portal job can legitimately approach this, so a trip is a PROMPT TO INVESTIGATE, never an auto-retire).
-- Quiet by design: it only emits the two STALL lines on a trip, plus a sparse `watchdog-alive` tick —— low event volume (avoids the Monitor auto-stop-on-too-many-events limit).
+## MA reactions
+- `WATCHDOG-MA-STALL` → re-read `MA_hb.md`; rebuild the primary Monitor; stamp markers.
+- `WATCHDOG-SA1-STALL` → actively check SA1 (stuck `⏳_`, no new AR, or idle); act per `main_ajap.md`; if SA1 is legitimately busy, just re-stamp.
+- `watchdog-alive` → normal heartbeat wake.
 
-## MA reactions (on each watchdog wake)
-
-- `WATCHDOG-MA-STALL` → MA re-reads `MA_hb.md`, rebuilds/repairs the PRIMARY Monitor (it likely died or was orphaned), stamps `ma_hb_reread_marker`. Log the repair (rlog DO-list).
-- `WATCHDOG-SA1-STALL` → MA investigates SA1: run the broad file check; is a `⏳_` AR stuck awaiting approval? has no new AR appeared? is SA idle (20×15s exhausted)? Act accordingly (write `ma_msg.md` / respawn SA). If SA1 is legitimately busy (active `⏳_`, tab live), take no action and re-stamp. If MA simply missed a `🎯[N]`, emit it now. Log only a genuine stall/retire (not a benign busy check).
-- `watchdog-alive` (no trip) → treat as a normal heartbeat wake (re-read `MA_hb.md`, broad check, stamp). This is the redundant 15-min MA wake; if the primary Monitor is dead, MA rebuilds it here.
-
-## Spawn / recovery rules
-
-- Session Start: seed both markers; spawn the watchdog; record `watchdog_task: [id]` in `ma_state.md`.
-- Dynamic-interval churn touches the PRIMARY Monitor only —— NEVER the watchdog.
-- Post-compaction recovery: re-confirm/respawn BOTH the primary Monitor and the watchdog (the primary is the most fragile; the watchdog is the safety net that woke MA in the first place).
-
-## Design note (convertibility)
-
-- Implemented as a deterministic Monitor for robustness. To convert to a true LLM SA2 later: spawn a background agent (`run_in_background=True`) whose sole loop is "read `SA2_hb.md`, perform the two marker checks, write any finding to `ma_msg.md`", driven by its own `sleep 900` Monitor. The file structure is unchanged; the Monitor form is preferred unless a reasoning-based watchdog is explicitly wanted.
+## Lifecycle (resolves the SA2-compaction loophole)
+- Being bash, SA2 NEVER compacts/degrades —— so no 5-hour retire and no periodic respawn are needed.
+- Spawned ONCE; recorded as `watchdog_task` in `ma_state.md`; NEVER TaskStop'd by dynamic-interval churn.
+- On MA post-compaction recovery only: `TaskStop` the stored `watchdog_task` (kills any survivor —— `TaskList` does NOT list Monitors, so always TaskStop by the stored id), then respawn fresh and update the id. This guarantees exactly one watchdog, no clutter.

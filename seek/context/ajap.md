@@ -82,9 +82,9 @@ A3. After each wait, check again whether a SEEK results page is now visible in a
 A4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 A5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
 A6. If after 3 cycles → still no SEEK results page → concise alert in chat w/ `🚨` then proceed to Qi:
-- A6.1. Read `/seek/queue.md`; process per that file's Processing Rules in TWO ROUNDS over the `order:` line sequence — Round 1: every `[Qi]n` New-to-you pass (table URL unchanged) in `order:` sequence; Round 2: every `[Qi]p` plain pass (`&tags=new` stripped) in `order:` sequence (i.e. `01n → 02n → 03n → 01p → 02p → 03p`).
-- A6.2. Enforce the New-to-you check on every navigation per `queue.md` rule 2 (report `newtoyou=[n]`; if URL lacks `&tags=new` AND n>0, click "New to you" first).
-- A6.3. If every Qi (n+p) is exhausted → run `queue.md § All-Qi-Exhausted Edge Case`.
+- A6.1. Read `/seek/queue.md`; process Qi01 → Qi06 sequentially in the `order:` line sequence (NO `n`/`p` system —— each Qi is a complete, ready-to-open URL).
+- A6.2. Enforce the New-to-you check on every navigation per `queue.md` rule 2 (report `newtoyou=[n]`; on a plain Qi04–06 with n>0, OPEN its new-twin Qi URL —— never click the pill, never append `&tags=new`).
+- A6.3. If every Qi01–06 is exhausted → run `queue.md § All-Qi-Exhausted Edge Case`.
 A7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
@@ -396,9 +396,7 @@ S6.4.8. Continue the loop
 ### S7 —— Pagination
 
 S7.1. When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop
-S7.2. If all pages are processed, check if "New to you" (see S1 for location) selected
-- S7.2.1. If yes, click "[no.] jobs" → continue
-- S7.2.2. If no, consume the `/seek/queue.md` fallback queue per A6 (in `order:` sequence, ALL `n` passes then ALL `p` passes) & continue
+S7.2. If all pages of the current Qi are processed, advance to the NEXT Qi in the `/seek/queue.md` `order:` sequence (Qi01 → Qi06) per A6 & continue; on landing, apply `queue.md` rule 2 New-to-you handling (on a plain Qi04–06 with n>0, open its new-twin Qi —— never click the pill or append `&tags=new`).
 S7.3. Never interact w/ SEEK search bar or construct SEEK URL (see A7)
 
 ---
