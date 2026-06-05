@@ -2,7 +2,7 @@
 """
 Process all *.txt receipt files (except temp.txt) into standardised csv files.
 Input:  this script's own directory (inside the repo)
-Output: /Volumes/FURY 2TB/Fury Downloads
+Output: this script's own directory (inputs are .txt, outputs are .csv — no clash)
 No external libraries required.
 """
 
@@ -11,7 +11,7 @@ import re
 import glob
 
 INPUT_DIR = os.path.dirname(os.path.abspath(__file__))
-OUTPUT_DIR = '/Volumes/FURY 2TB/Fury Downloads'
+OUTPUT_DIR = INPUT_DIR
 EXCLUDE   = 'temp.txt'
 
 

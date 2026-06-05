@@ -1,1 +1,1 @@
-Continue
+Submit then proceed to next card

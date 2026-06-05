@@ -127,7 +127,7 @@ F6. Check if any AR matching the current open job (by employer + role in filenam
 
 ### S0. Check Compliance & Cumulative Count
 
-S0.1. Re-read `/context/mini_ajap.md` in full → declare (only if succeeded; not from memory) per C1 → complete all active checks within it before continuing; if S0.3 violated:
+S0.1. Re-read `/context/MA_hb.md` in full → declare (only if succeeded; not from memory) per C1 → complete all active checks within it before continuing; if S0.3 violated:
 - S0.1.1. Attempt rectification by chat history per S0.2
 - S0.1.2. If attempted failed, tally files created in `/gcl/` (excl. `_archive` sub-folders) within last 2 hours (get current time per S5) before proceeding
 S0.2. Determine N by recalling the last `🎯[N]` count from this session's chat
@@ -200,7 +200,7 @@ S2.3. Tab 2 remains untouched for the rest of this job's process
 | 50–69 | Run S3.1; re-estimate after S3.1; skip S3.2 regardless of re-estimate |
 | 70⁺ | Run S3.1; re-estimate after S3.1; if re-estimate ≥ 70, run S3.2; if fallen to < 70, skip S3.2 |
 
-**External Portal Early-Exit:** if M7 = 0 ("Apply", not "Quick apply") AND ceiling < 70 → create AR then skip to next card; no research/CL.
+**External Portal Early-Exit:** if M7 = 0 ("Apply", not "Quick apply") AND ceiling < 70 → create AR then skip to next card; no research/CL. ⚠️ This `<70` skip applies ONLY to M7=0 (external "Apply"). A "Quick apply" job (M7=5) is NEVER skipped under this rule —— if its score is 35–49 it is APPLIED (35–49 band), 50–69 APPLIED, etc. Do NOT conflate a low score with the external-portal exit (recurring SA error, rlog 202606052250/060128).
 
 When final score derived (incl. Bonus if any), re-check Research Gate: if S3.2 was previously skipped but final score ≥ 70, run S3.2 → update AR (incl. score) if needed.
 
@@ -276,7 +276,7 @@ S4.4. **Suitability Score** —— score out of 100 using the following weighted
    | 85–109 | Apply w/ extra effort: open Para 1 w/ a specific, firm- & role-anchored claim rather than the standard template line; ensure 100% factual, no inference | S3.1 + S3.2 |
    | 110⁺ | Save on SEEK; create AR in `/gcl/pending/` ; flag in chat w/ `⭐❗`; skip —— do not apply; user handles manually | S3.1 + S3.2 |
 
-   **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply") → create AR then skip.
+   **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply", i.e. M7=0) → create AR then skip. (A "Quick apply"/M7=5 job is NEVER skipped for a 35–69 score —— it is APPLIED per its band.)
 
 S4.5. **Resume Selection** —— per decision rules in `gcl.md`
 S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md` (no dash sign)

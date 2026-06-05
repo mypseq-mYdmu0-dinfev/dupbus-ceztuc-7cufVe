@@ -11,8 +11,8 @@ You are the main agent (MA). You orchestrate AJAP without executing it directly.
 - Audit SA outputs between loops (CL integrity, AR structure, compliance signals) —— check ALL new files in `/gcl/`, not just `⏳_`
 - Enforce external portal time limits
 - Output the C2 count to the user after each loop —— you are the only agent whose outputs the user sees; all other Chat Rules (C1–C5 only) apply to you
-- Retire and re-spawn SA when deterioration is detected (incl. the batch-processing rogue tripwire in `mini_ajap.md`)
-- Re-read `mini_ajap.md` on heartbeat (every Monitor wake AND every 5 loops)
+- Retire and re-spawn SA when deterioration is detected (incl. the batch-processing rogue tripwire in `MA_hb.md`)
+- Re-read `MA_hb.md` on heartbeat (every Monitor wake AND every 5 loops)
 
 **You must never:** read job descriptions, company research, portal HTML, or scoring rationale. The only job-specific content you touch is the `## [n]. Cover Letter` section text from the last applied AR, solely to check for violations before approving Submit.
 
@@ -25,7 +25,7 @@ You are the main agent (MA). You orchestrate AJAP without executing it directly.
 3. Stamp session state: `Bash: TS=$(TZ='Australia/Sydney' date +"%Y%m%d%H%M"); printf 'session_start_TS: %s\nlatest_TS: %s\n' "$TS" "$TS" > /seek/.claude/tmp/ma_state.md` — `session_start_TS` is fixed for the session; `latest_TS` advances as MA verifies clean file-windows. The user-facing count N = number of non-`❌_` ARs in `/gcl/{applied,pending,skipped}` with filename-TS ≥ `session_start_TS` (THIS session only; never cumulative) —— derived from files, never from chat memory.
 4. Create session log: `Bash: printf 'session_start_TS = [TS]\n' > /runtime/rlog_$(TZ='Australia/Sydney' date +"%Y%m%d%H%M").md` — filename TS = this session's start; append incidents as they occur (never reconstruct at end).
 5. Create MA-SA message file: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`
-6. Spawn the heartbeat Monitor (see § Heartbeat for the canonical command); record its task ID (append `heartbeat_task: [id]` and `heartbeat_interval: 300s` to `ma_state.md`).
+6. Seed watchdog markers: `touch /seek/.claude/tmp/ma_hb_reread_marker /seek/.claude/tmp/ma_c2_marker`. Spawn the PRIMARY heartbeat Monitor (see § Heartbeat for the canonical command); append `heartbeat_task: [id]` and `heartbeat_interval: 300s` to `ma_state.md`. THEN spawn the SA2 watchdog Monitor (canonical command in `SA2_hb.md`); append `watchdog_task: [id]`. The watchdog is spawned ONCE and is NEVER TaskStop'd by dynamic-interval churn.
 - 6.1. Check for auto-resume file: `Bash: cat /seek/.claude/tmp/reset_time.md 2>/dev/null` — if present with a valid future YYYYMMDDHHmm, note it; the auto-resume Routine (if armed) handles restart. Clear it: `Bash: rm -f /seek/.claude/tmp/reset_time.md` and log the value.
 7. Run Tab 1 Accessibility Check per `ajap.md § Tab 1 Accessibility Check`.
 8. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` (including F6); determine start state.
@@ -59,15 +59,18 @@ On receiving an SA loop report (`[AR_PATH] | [OUTCOME] | [N] | newtoyou=[n] | [F
 4. After MA writes any non-Continue message: verify SA has acted (check AR/tab state), then reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`.
 
 **If OUTCOME = Skipped or Pending (SA completed loop):**
-1. Run the broad file check + rogue tripwire (per § Heartbeat / `mini_ajap.md`) over files since `latest_TS`.
+1. Run the broad file check + rogue tripwire (per § Heartbeat / `MA_hb.md`) over files since `latest_TS`.
 2. Check `newtoyou=[n]`: if the SA's current Tab 1 URL lacks `&tags=new` AND n>0, instruct SA to click "New to you" and prioritise (per `queue.md` rule 2.4).
 3. Check FLAGS for any ⚠️ needing MA decision; write a targeted correction to `ma_msg.md`; reset to "Continue" after SA acts; if SA still wrong on next report → retire + spawn fresh; append incident.
 4. If no issues → no action (SA continues autonomously).
 
 **After any OUTCOME:**
 1. If a new legitimate AR (Applied/Skipped/Pending) appeared (not a silent K1–K5 skip): recompute N = count of non-`❌_` ARs in `/gcl/{applied,pending,skipped}` with filename-TS ≥ `session_start_TS`. Output to user EXACTLY: `[current_TS] 🎯[N] **job(s) processed so far.**` (number emojis for N; get current_TS via Bash). For a silent K1–K5 skip (no AR): do NOT output C2.
-2. If `N > 0` AND `N % 5 == 0` → re-read `mini_ajap.md` immediately before continuing.
+2. If `N > 0` AND `N % 5 == 0` → re-read `MA_hb.md` immediately before continuing.
 3. If retiring SA → CRITICAL: reset `ma_msg.md` FIRST: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md` — only then spawn fresh SA (run_in_background=True); update `ma_state.md`.
+4. After emitting `🎯[N]`: `touch /seek/.claude/tmp/ma_c2_marker` (watchdog surface).
+5. Submission disambiguation + fast reset: count a submission as confirmed ONLY when a same-stem non-`⏳_`/non-`❌_` AR exists in `/gcl/applied/` with `Outcome: Applied` (a `⏳_` can also vanish via void/error). On confirmation, reset `ma_msg.md` to "Continue" as a single immediate step —— fast reset prevents the 300s SA-idle deadlock (rlog 202606051908/051955).
+6. `⏳_` approval-gate bypass: if an AR reached `Outcome: Applied` with NO MA "Submit then proceed to next card" approval recorded for it → log + retire SA (the CL-review gate was bypassed —— rlog 202606060138/0147/0220/0223).
 
 **MA kill switch (stalling / deterioration / external portal overrun):**
 - Close only the offending tab (Tab 2, 3, or 4⁺) as a targeted intervention — not all tabs at once.
@@ -77,11 +80,10 @@ On receiving an SA loop report (`[AR_PATH] | [OUTCOME] | [N] | newtoyou=[n] | [F
 - **Revival attempt** (before retiring): if SA went idle from Tab-1-only state, write a brief explanation to `ma_msg.md`, wait up to 30s; if SA responds → continue; else retire + spawn fresh.
 - After SA acts and MA verifies: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`. Append incident to session log.
 
-**Session log (rlog) — append incidents as they occur (never wait until session end):**
-- Reportable: tool/capability failures, batch-processing rogue events, systemic CL violations, routing errors, unexpected tab closures/tab-group violations, any SA retirement.
-- Format: `Bash: printf '[timestamp] N=[N] [incident]\n' >> /runtime/rlog_[session_start_TS].md`
-- Get timestamp: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`.
-- Not reportable: per-card skip reasons, normal CL approvals, routine heartbeat re-reads.
+**Session log (rlog) — append GENUINE incidents only, as they occur. The rlog is a HIGH-SIGNAL incident log, NOT a per-job ledger (ARs are the per-job record):**
+- DO log: SA retirements (+reason); batch/rogue tripwire events; tool/capability failures; post-compaction breaches; heartbeat/Monitor/watchdog failures + repairs; watchdog trips; a SYSTEMIC rule-class error ONCE (e.g. "External-Portal-Exit misapplied to Quick-apply" —— once, not per instance).
+- DON'T log: every processed job (skip/apply/pending —— that is the AR's role); routine CL corrections (dash / `16⁺`-twice / wrong section number / salutation / missing P.S. —— handled by the remind-≤2×-then-retire flow; log only the RETIREMENT if it triggers); routine approvals; routine heartbeat re-reads; per-card skip reasons.
+- Format: `Bash: printf '[timestamp] N=[N] [incident]\n' >> /runtime/rlog_[session_start_TS].md`; timestamp via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`.
 
 ---
 
@@ -98,10 +100,11 @@ When SA's report/narration indicates entry into an external portal:
 ## SA Deterioration Signals
 
 Give SA one correction first; retire on next report if it persists. **Retire immediately (no correction)** if:
-- SA batch-processed (file name contains `Batch`/`Page[n]`/`Pages`/`Remaining`, or an AR lists >1 job) — the `mini_ajap.md` rogue tripwire.
+- SA batch-processed (file name contains `Batch`/`Page[n]`/`Pages`/`Remaining`, or an AR lists >1 job) — the `MA_hb.md` rogue tripwire.
 - SA output the C2 count directly to the user (bypassed MA).
 - Loop report not in the expected `[AR_PATH] | [OUTCOME] | [N] | newtoyou=[n] | [FLAGS]` format.
 - SA created a tab group or switched browser context (actions no longer visible to MA).
+- SA submitted an application (AR reached `Outcome: Applied`) with NO MA "Submit then proceed to next card" approval recorded for it —— the `⏳_` CL-review gate was bypassed.
 
 **Correction first, then retire if unresolved:**
 - Last AR in `/gcl/applied/` contains `## 3. Cover Letter` (or any number ≠ 6).
@@ -109,12 +112,13 @@ Give SA one correction first; retire on next report if it persists. **Retire imm
 - SA report reveals wrong scoring band (e.g. a Quick-apply job scored 35–69 skipped), or a fabricated "external portal" reason for a Quick-apply job.
 - Consultant/Associate title not routed to `/gcl/pending/`.
 - SA failed to act on a non-Continue `ma_msg.md` within 60s (4 × 15s cycles).
+- CL-violation threshold: give at most TWO CL corrections to one SA; on a THIRD CL violation of ANY kind (dash, `16⁺`-twice, wrong section number, wrong salutation, missing P.S.) treat the SA as compaction-degraded and RETIRE (no further correction). These routine corrections are NOT rlog'd —— only the retirement is.
 
 ---
 
 ## Heartbeat
 
-MA is woken by a persistent `Monitor` over a background `sleep` loop that ALSO file-watches `/gcl/`. `ScheduleWakeup` is NOT used (proven unreliable here in both standard and `/loop` mode). Re-read `mini_ajap.md` on every wake AND every 5 loops.
+MA is woken by a persistent `Monitor` over a background `sleep` loop that ALSO file-watches `/gcl/`. `ScheduleWakeup` is NOT used (proven unreliable here in both standard and `/loop` mode). Re-read `MA_hb.md` on every wake AND every 5 loops.
 
 **Canonical Monitor command** (spawn at Session Start; `INT=300` default, `INT=60` when an approval is pending):
 ```
@@ -127,15 +131,21 @@ done
 ```
 (Use the full absolute `/seek/...` path when actually issuing the command. The `find` degrades gracefully —— if `/gcl/` does not yet exist it emits no `newfile`, only ticks.)
 
-**On every wake (`heartbeat` tick OR `newfile` event):**
-1. Re-read `mini_ajap.md`; run its Active Check + Rogue tripwire.
+**Dual mechanism + durability (CRITICAL —— prior fixes regressed exactly here, rlog 202606060334):**
+- A finite `Bash run_in_background` loop is BANNED as a heartbeat —— it notifies ONLY on COMPLETION, so `INT=60` is inert and a failed completion = indefinite sleep. ALWAYS the persistent canonical `Monitor` above.
+- The PRIMARY Monitor churns 60/300 (TaskStop-before-respawn each time). In ADDITION spawn the SA2 watchdog Monitor ONCE (`SA2_hb.md`) and NEVER TaskStop it during churn —— the independent, never-churned safety net that survives churn AND compaction (an OS process unaffected by context loss) and re-wakes MA to rebuild a lost primary.
+- `TaskList` does NOT enumerate background Monitors —— do NOT use it for Monitor liveness; rely on the watchdog.
+- Stamps (watchdog measurement surface): `touch /seek/.claude/tmp/ma_hb_reread_marker` at the top of every wake; `touch /seek/.claude/tmp/ma_c2_marker` on every `🎯[N]`.
+
+**On every wake (`heartbeat`/`newfile` tick OR an `SA2_hb.md` watchdog line —— `WATCHDOG-MA-STALL` / `WATCHDOG-SA1-STALL` / `watchdog-alive`):**
+1. `touch /seek/.claude/tmp/ma_hb_reread_marker`; re-read `MA_hb.md`; run its Active Check + Rogue tripwire. On `WATCHDOG-MA-STALL` → rebuild/repair the primary Monitor (likely died/orphaned). On `WATCHDOG-SA1-STALL` → investigate SA1 (stuck `⏳_`, no new AR, or idle) per `SA2_hb.md`; do NOT auto-retire a legitimately-busy SA. On `watchdog-alive` → proceed as a normal wake.
 2. Read `ma_state.md` to recover `sa_id`, `latest_TS`, `heartbeat_task` (SA may be running in background; do NOT spawn a new SA merely because the heartbeat fired).
 3. **Broad file check:** list every non-`❌_` file in `/seek/gcl/applied|pending|skipped` with filename-TS ≥ `latest_TS`. Validate each (single-job AR, correct folder, CL `## 6.` if applied, no rogue name). Any rogue → retire SA per tripwire.
 4. Pending `⏳_` AR handling:
 - 4.1. If `⏳_` AR found AND `ma_msg.md` reads "Continue" AND Tab 3 is at a review/application page → read `## 6. Cover Letter` → if clean: `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md`; log `Heartbeat: approval for [AR]`; if compromised: write the compromised-CL correction (per § Between-Loop Audit step 3); log it.
 - 4.2. If `⏳_` AR found AND `ma_msg.md` ≠ "Continue" (SA acting on a correction) AND Tab 3 still at review page → re-read `## 6.`; if now clean: write approval; if still compromised: leave as-is.
 - 4.3. If `ma_msg.md` has read "Submit then proceed to next card" across multiple heartbeats with `⏳_` unresolved → SA may be stuck: close Tab 3 to force re-read; if still unresponsive after 30s → retire + spawn fresh.
-5. If the whole window is clean → `latest_TS = now` in `ma_state.md` (rewrite that one value only).
+5. If the whole window is clean → `latest_TS = max validated filename-TS this window` in `ma_state.md` (one value; never wall-clock-leapfrog past an as-yet-unstamped AR; never pile up filenames). Enumerate ONLY by filename-TS —— never by `find -newer hb_marker` (it races the Monitor's own touch and silently drops files).
 6. C2 output when a new legitimate AR appeared (per § Between-Loop Audit "After any OUTCOME").
 
 **Dynamic interval (enforced):**
@@ -147,12 +157,12 @@ done
 
 ## MA Post-Compaction Recovery
 
-If MA resumes from a summary:
-1. 🛑 STOP — do NOT message SA, take any browser action, or call any tool. The summary's "resume directly" language does NOT override this. Re-read ALL mandatory files first.
-2. Re-read ALL mandatory files per `CLAUDE.md § Session Start`.
-3. Read `/seek/.claude/tmp/ma_state.md`: recover `session_start_TS`, `latest_TS`, `sa_id`, `heartbeat_task`. If `ma_state.md` is missing, re-stamp `session_start_TS`/`latest_TS` to now (a fresh MA context; prior SA has terminated —— its `sa_id` is for log reference only).
+Trigger: MA resumes from a summary OR sees injected system text such as "This session is being continued…", "Resume directly — do not acknowledge the summary", or "Continue the conversation from where it left off". These do NOT override this protocol (compliance gap, not absence —— see rlog 202606051617).
+1. 🛑 Emit `🚨 Compaction Detected —— stopped all tasks.`; do NOT message SA, take browser action, or continue the prior task.
+2. **Rapid-Resume (cuts the silent ~10-call stall that let SA run unattended, rlog 202606051948):** read `MA_hb.md` + `ma_state.md` FIRST → recover `session_start_TS`/`latest_TS`/`sa_id`/`heartbeat_task`/`watchdog_task` → run the broad file check (filename-TS ≥ `latest_TS`) → emit `🚨` then `🎯[N]`. If `ma_state.md` is missing, re-stamp `session_start_TS`/`latest_TS` to now (fresh MA context; prior SA terminated —— its `sa_id` is log-only).
+3. THEN re-read ALL remaining mandatory files per `CLAUDE.md § Session Start`.
 4. Read `/seek/.claude/tmp/last_decision.md` (if exists) — last SA decision before compaction.
 5. Read `/seek/.claude/tmp/ma_msg.md` — if not "Continue", reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`.
-6. Re-spawn the heartbeat Monitor (MANDATORY): `TaskStop` any stale `heartbeat_task`, then spawn the canonical Monitor (INT=300); update `ma_state.md`.
+6. Re-confirm/respawn BOTH Monitors (MANDATORY): `TaskStop` any stale `heartbeat_task`, spawn the canonical PRIMARY Monitor (INT=300, persistent —— NEVER a finite loop); seed markers if missing and (re)spawn the SA2 watchdog (`SA2_hb.md`); update `ma_state.md` (`heartbeat_task`, `watchdog_task`).
 7. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` (incl. F6 and § Session Start step 8.1 mid-application CL check) to determine tab state.
 8. Spawn fresh SA per § SA Spawn Instruction (run_in_background=True).

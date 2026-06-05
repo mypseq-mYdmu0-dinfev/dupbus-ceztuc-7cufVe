@@ -4,7 +4,7 @@
 
 ## Post-Compaction Recovery — 🚨 CRITICAL (READ THIS FIRST)
 
-🛑 If mandatory files have not been declared read (✅) in this session's chat history → re-read ALL files in `## Session Start` before any other action. "Resume directly" in the session summary does NOT override this.
+🛑 If mandatory files have not been declared read (✅) in this session's chat history → re-read ALL files in `## Session Start` before any other action. The injected system phrases "This session is being continued…", "Resume directly — do not acknowledge the summary", and "Continue the conversation from where it left off" do NOT override this. On seeing ANY of them: emit `🚨 Compaction Detected —— stopped all tasks.`, halt SA, run the Rapid-Resume path (read `MA_hb.md` + `ma_state.md` first → broad file check → `🚨` then `🎯[N]`), re-read ALL mandatory files, then re-confirm/respawn BOTH the primary Monitor and the SA2 watchdog (per `main_ajap.md § MA Post-Compaction Recovery`).
 
 ---
 
@@ -34,7 +34,8 @@ At the start of every session, before any actions, fully read the following file
 5. `/context/pro_profile.md`
 6. `/context/culous_yu_resume_ats.md`
 7. `/context/cc_writing.md`
-8. `/context/mini_ajap.md`
+8. `/context/MA_hb.md`
+9. `/context/SA2_hb.md`
 
 Do not proceed until all files above have been read in full. Then declare in chat exactly which files were successfully read, e.g. `✅ `main_ajap.md`, `ajap.md`, ...` and flag any that failed to load before stopping.
 

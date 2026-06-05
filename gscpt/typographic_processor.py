@@ -2,7 +2,7 @@ import os
 import re
 
 SRC = os.path.dirname(os.path.abspath(__file__))
-DST = '/Volumes/FURY 2TB/Fury Downloads'
+DST = SRC  # write outputs beside the inputs (same folder as this script)
 SKIP = {'temp.txt'}
 EXTS = {'.txt', '.md'}
 
@@ -68,14 +68,18 @@ def main():
 
     files = [
         f for f in os.listdir(SRC)
-        if f not in SKIP and os.path.splitext(f)[1].lower() in EXTS
+        if f not in SKIP
+        and os.path.splitext(f)[1].lower() in EXTS
+        and not os.path.splitext(f)[0].endswith('_processed')  # never re-process our own output
     ]
     multi = len(files) > 1
 
     total = 0
     for fname in files:
         src_path = os.path.join(SRC, fname)
-        dst_path = os.path.join(DST, fname)
+        name, ext = os.path.splitext(fname)
+        out_name = f'{name}_processed{ext}'
+        dst_path = os.path.join(DST, out_name)
 
         with open(src_path, 'r', encoding='utf-8') as f:
             text = f.read()
@@ -84,7 +88,7 @@ def main():
 
         if os.path.exists(dst_path):
             prefix = f'[{fname}] ' if multi else ''
-            print(f'{prefix}⛔STOPPED: "{fname}" already exists in output folder. Remove it and rerun.')
+            print(f'{prefix}⛔STOPPED: "{out_name}" already exists. Remove it and rerun.')
             continue
 
         with open(dst_path, 'w', encoding='utf-8') as f:
