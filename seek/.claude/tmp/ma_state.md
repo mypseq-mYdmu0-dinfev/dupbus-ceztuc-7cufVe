@@ -1,8 +1,5 @@
-session_start_TS: 202605310518
-latest_TS: 202606012114
-
-heartbeat_task: bv044ltrj
+session_start_TS: 202606050729
+latest_TS: 202606060428
+heartbeat_task: bbfu45exi
 heartbeat_interval: 300s
-
-sa_id: SINGLE-AGENT (Opus; no SA — agent performs MA+SA inline; no ma_msg handoff)
-mode: opus-single-agent
+sa_id: a53057424b7da3727
