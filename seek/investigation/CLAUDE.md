@@ -16,10 +16,12 @@ This CP ("AJAP Investigation") is for optimising AJAP (Agentic Job Application P
 
 ## Context
 
-- Read anything in `/seek/` as needed but NEVER delete
+- When prompted `
+- Read anything in `/seek/` (incl. `investigation/`) as needed but NEVER delete
   - DON'T follow programmatically (they're for AJAP) but review/analyse
 - For edits, unless explicitly told to execute, create `changes_[TS].md` for approval first
-- If necessary, read pervious `close_` `changes_` files in `/investigation/`
+- Actively read the concerned session's `rlog_`
+- If necessary, read pervious `close_` `audit_` `changes_` files in `/investigation/`
   - If insufficient or if I explicitly instruct, read other files
 
 ## Files Naming
@@ -27,5 +29,5 @@ This CP ("AJAP Investigation") is for optimising AJAP (Agentic Job Application P
 In addition to root CLAUDE.md §3.3:
 - `audit_[current_TS].md` = audit report; creation triggered by #audit
 - `changes_[current_TS].md` = #replace changes w/ optional explainers (read `coding.md` first)
-- `rchat_[copy_TS].txt` = copied chat history of an AJAP session; stored in `/runtime/` (NOT in this folder); copy_TS = time of copying, not session end. (Legacy `session_*` and `runtime_chat_*` names retired in favour of `rchat_`.)
-- Runtime logs are named `rlog_[session_start_TS].md` (legacy `runtime_*` retired) and live in `/runtime/`
+- `rlog_[session_start_TS].md` = runtime logs; live in `seek/runtime/`
+- `rchat_[copy_TS].txt` = copied chat history of an AJAP session; stored in `/runtime/` (NOT in this folder); copy_TS = time of copying, not session end; live in `seek/runtime/`
