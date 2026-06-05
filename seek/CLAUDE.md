@@ -19,6 +19,7 @@ When prompted:
 - `psl pending`, perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
 - `ccl`, read `/context/ccl.md` after mandatory files; perform `psl`; instead of `/gcl/applied/`, create AR(s) in `/ccl/` & ref past CLs in this folder (see its README.md) for quality & style
 - `investigation mode`, quit AJAP mode; read & follow `/investigation/CLAUDE.md`
+- `investigate session`, enter investigation mode; read & follow `/investigation/InvSes.md`
 - `#numbered`, read & follow `cc_numbered.md` in full
 - `#replace`, read & follow `cc_coding.md` in full
 
