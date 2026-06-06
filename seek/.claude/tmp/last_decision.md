@@ -1,1 +1,1 @@
-ABTCGroup | ICT Sales Consultant | Pending
+PERSOL | Social Media Manager | Skip
