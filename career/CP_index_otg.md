@@ -12,7 +12,7 @@
 
 CP_notes.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e103a501d732d281677f32dca46f04858cec4215/career/CP_notes.md
-Purpose & remarks of this CP.
+Purpose & remark of this CP.
 
 pro_profile.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfa361c1027b3ef447d731ed56eddc25482bab04/seek/context/pro_profile.md
