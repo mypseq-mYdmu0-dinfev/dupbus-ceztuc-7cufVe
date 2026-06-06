@@ -57,6 +57,9 @@ def load_timeframes():
     """
 
     timeframe_starts = set()
+    remarks = {}  # {dt: text after the 12-digit TS on its line}
+
+    line_pattern = re.compile(r"(\d{12})(?!\d)(.*)$")
 
     for file in SCRIPT_DIR.iterdir():
 
@@ -80,18 +83,29 @@ def load_timeframes():
 
             line = line.strip()
 
-            if re.fullmatch(r"\d{12}", line):
-                try:
-                    dt = datetime.strptime(line, "%Y%m%d%H%M")
-                    timeframe_starts.add(dt)
-                except ValueError:
-                    pass
+            if not line:            # ignore blank lines
+                continue
+
+            m = line_pattern.match(line)
+            if not m:               # line must start with a 12-digit TS
+                continue
+
+            try:
+                dt = datetime.strptime(m.group(1), "%Y%m%d%H%M")
+            except ValueError:
+                continue
+
+            remark = m.group(2).strip()   # content after the TS (ignored for processing)
+
+            timeframe_starts.add(dt)
+            if dt not in remarks or (remark and not remarks[dt]):
+                remarks[dt] = remark
 
     if not timeframe_starts:
         print("No valid timeframe timestamps found.")
         sys.exit(1)
 
-    return sorted(timeframe_starts)
+    return sorted(timeframe_starts), remarks
 
 
 def collect_files(directory: Path):
@@ -189,11 +203,15 @@ def format_parts(dt, warning=False):
     ]
 
 
-def scan_rule_violations():
+def scan_applied_violations():
+    """
+    Return {filename: total_violation_symbol_count} for Applied files,
+    counting RULE_VIOLATION_SYMBOLS that appear AFTER the Cover Letter marker.
+    """
 
     applied_dir = DIRS["Applied"]
 
-    violations = []
+    result = {}
 
     for item in applied_dir.iterdir():
 
@@ -214,12 +232,9 @@ def scan_rule_violations():
         except Exception:
             continue
 
-        marker_pattern = re.compile(
-            r"##\s+\d+\.\s+Cover Letter"
-        )
-
-        marker_match = marker_pattern.search(
-            content
+        marker_match = re.search(
+            r"##\s+\d+\.\s+Cover Letter",
+            content,
         )
 
         if not marker_match:
@@ -229,22 +244,15 @@ def scan_rule_violations():
             marker_match.start():
         ]
 
-        symbol_counts = {}
+        total = sum(
+            scan_content.count(symbol)
+            for symbol in RULE_VIOLATION_SYMBOLS
+        )
 
-        for symbol in RULE_VIOLATION_SYMBOLS:
+        if total > 0:
+            result[item.name] = total
 
-            count = scan_content.count(symbol)
-
-            if count > 0:
-                symbol_counts[symbol] = count
-
-        if symbol_counts:
-            violations.append({
-                "filename": item.name,
-                "counts": symbol_counts,
-            })
-
-    return violations
+    return result
 
 
 # =========================================================
@@ -253,7 +261,7 @@ def scan_rule_violations():
 
 def main():
 
-    timeframe_starts = load_timeframes()
+    timeframe_starts, remarks_by_dt = load_timeframes()
 
     files_by_category = {
         category: collect_files(path)
@@ -264,7 +272,7 @@ def main():
 
     overlap_warnings = 0
 
-    rule_violations = scan_rule_violations()
+    applied_violations = scan_applied_violations()
 
     for i, start_dt in enumerate(timeframe_starts):
 
@@ -322,6 +330,20 @@ def main():
         if overlap_warning:
             overlap_warnings += 1
 
+        a = len(applied_matches)
+
+        # Rule-violation tallies for THIS timeframe's Applied files
+        V = sum(
+            applied_violations.get(f["name"], 0)
+            for f in applied_matches
+        )
+        VF = sum(
+            1 for f in applied_matches
+            if applied_violations.get(f["name"], 0) > 0
+        )
+        v_a = f"{V / a:.2f}" if a else ""           # avg violations per Applied job (plain number, 2 dp)
+        vf_a = f"{VF / a * 100:.0f}%" if a else ""  # % of Applied jobs with any violation (0 dp)
+
         row = (
             format_parts(start_dt)
             + format_parts(
@@ -329,9 +351,14 @@ def main():
                 warning=overlap_warning
             )
             + [
-                len(applied_matches),
+                a,
                 len(skipped_matches),
                 len(pending_matches),
+                V,
+                VF,
+                v_a,
+                vf_a,
+                remarks_by_dt.get(start_dt, ""),
             ]
         )
 
@@ -382,6 +409,11 @@ def main():
         "Applied",
         "Skipped",
         "Pending",
+        "V",
+        "VF",
+        "V/A",
+        "VF/A",
+        "Remarks",
     ]
 
     with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
@@ -407,31 +439,8 @@ def main():
             f"{overlap_warnings}"
         )
 
-    if rule_violations:
-
-        print("")
-        print(
-            f"🚨 Rule violation(s) in "
-            f"{len(rule_violations)} file(s):"
-        )
-
-        for violation in rule_violations:
-
-            parts = []
-
-            for symbol, count in (
-                violation["counts"].items()
-            ):
-                parts.append(
-                    f"`{symbol}` ×{count}"
-                )
-
-            joined = "; ".join(parts)
-
-            print(
-                f"- {violation['filename']}: "
-                f"{joined}"
-            )
+    # Rule violations are now reported in the CSV columns V / VF / V/A / VF/A,
+    # not in the terminal.
 
     print("")
     print("CSV generated:")
