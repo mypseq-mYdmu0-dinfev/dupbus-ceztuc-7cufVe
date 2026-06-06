@@ -1,4 +1,31 @@
 #!/usr/bin/env python3
+"""
+AJAP Logs Processor
+
+Builds a per-timeframe CSV of job-application activity (Applied / Skipped / Pending 
+counts plus rule-violation tallies) by cross-referencing a timeframe
+instruction file against the repo's seek/gcl folders.
+
+USAGE
+-----
+1. In THIS script's own directory, place at least one instruction file with a
+   .txt or .md extension (any name except `temp.txt`). Each meaningful line
+   must START with a 12-digit timestamp (YYYYMMDDHHmm) marking a timeframe's
+   start; anything after the timestamp on that line is treated as an optional
+   free-text remark (e.g. `202606060900 morning batch`). Blank lines and lines
+   not starting with a 12-digit timestamp are ignored.
+2. The script also scans the repo's seek/gcl applied / skipped / pending
+   folders, bucketing each job file into the timeframe its filename timestamp
+   falls within.
+3. Run:  python3 ajap_logs.py
+4. Output CSV is written beside this script as
+   `AJAP Logs [input_stem].csv`, where [input_stem] is the first valid
+   instruction file's name without its extension.
+
+It STOPS with an alert if: no valid timeframe timestamps are found; no source
+.txt/.md instruction file exists; or the target output CSV already exists
+(delete/rename it first).
+"""
 
 from pathlib import Path
 from datetime import datetime
@@ -446,7 +473,9 @@ def main():
     # Use first valid source filename
     source_file = source_files[0]
 
-    output_file = source_file.with_suffix(".csv")
+    # Prefix the output CSV with "AJAP Logs " (mirrors battery_logs.py's
+    # "Battery Logs ..." convention); [input_stem] = source filename w/o ext.
+    output_file = source_file.with_name(f"AJAP Logs {source_file.stem}.csv")
 
     if output_file.exists():
         print("")

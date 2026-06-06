@@ -1,5 +1,20 @@
 """
 Battery Logs Processor
+
+Reads .txt files (except temp.txt) in this directory and consolidates them
+into one timestamped CSV (columns: HH, mm, %, Remarks).
+
+USAGE
+-----
+1. In THIS script's own directory, place one or more .txt files.
+   Each file holds lines of battery readings; a line of exactly 8 digits is
+   kept verbatim as a date marker, blank lines are preserved, and a `%` on a
+   line separates the numeric reading from an optional remark.
+2. Run:  python3 battery_logs.py
+3. Output CSV is written beside this script as `Battery Logs [timestamp].csv`
+   (timestamp = current local time, YYYYMMDDHHmm).
+
+If no numerical data is found, no output file is created.
 """
 
 import os

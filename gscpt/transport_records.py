@@ -2,6 +2,20 @@
 """
 Transportation Records Processor
 Processes Opal Card CSV files into standardised format for financial records
+
+USAGE
+-----
+1. Download your NSW Transport Connect statement as CSV (filename starts
+   with `Contactless Payment`, e.g. `Contactless Payment*.csv`) and drop it
+   into THIS script's own directory. If several such files are present, the
+   most recently created one is used automatically.
+2. Run:  python3 transport_records.py
+3. Output CSV is written beside this script as
+   `Transport Records [timestamp].csv` (columns: Date, Payee, Note, Amount;
+   timestamp = current local time, YYYYMMDDHHmm).
+
+It STOPS if no `Contactless Payment*` CSV is found, if the file lacks a
+`Card Details` column, or if the amount-conversion verification fails.
 """
 
 import pandas as pd

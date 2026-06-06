@@ -1,9 +1,25 @@
 #!/usr/bin/env python3
 """
+Shopping Records Processor
+
 Process all *.txt receipt files (except temp.txt) into standardised csv files.
 Input:  this script's own directory (inside the repo)
 Output: this script's own directory (inputs are .txt, outputs are .csv — no clash)
 No external libraries required.
+
+USAGE
+-----
+1. In THIS script's own directory, place one or more receipt .txt files (any
+   name except `temp.txt`). Each file is a raw receipt: description lines
+   accumulate until a standalone price line (e.g. `5.47`) closes a record;
+   prices glued onto the end of a line are split automatically.
+2. Run:  python3 shopping_records.py
+3. For each input, an output CSV is written beside this script as
+   `Shopping Records [input_stem].csv` (columns: Note, Amount), where
+   [input_stem] is that receipt's filename without its extension.
+
+A given output is SKIPPED (with an alert) if its CSV already exists — remove
+it and rerun.
 """
 
 import os
@@ -255,7 +271,9 @@ def main():
 
     for input_path in files:
         fname       = os.path.basename(input_path)
-        csv_name    = os.path.splitext(fname)[0] + '.csv'
+        # Prefix output CSV with "Shopping Records " (mirrors battery_logs.py's
+        # "Battery Logs ..." convention); [input_stem] = filename w/o ext.
+        csv_name    = f'Shopping Records {os.path.splitext(fname)[0]}.csv'
         output_path = os.path.join(OUTPUT_DIR, csv_name)
         prefix      = f'[{fname}] ' if multi else ''
 

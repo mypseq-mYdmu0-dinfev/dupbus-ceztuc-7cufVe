@@ -1,3 +1,23 @@
+"""
+Quotation Marks Fixer
+
+Converts straight quotes (" U+0022 and ' U+0027) in text files into their
+typographic equivalents (smart double/single quotes and apostrophes),
+choosing open vs close based on surrounding context.
+
+USAGE
+-----
+1. In THIS script's own directory, place one or more .txt or .md files (any
+   name except `temp.txt`; files whose stem ends in `_processed` are skipped
+   so outputs are never re-processed).
+2. Run:  python3 quote_fix.py
+3. For each input, an output file is written beside this script as
+   `[input_stem]_processed[ext]` with the quotes converted.
+
+A given output is SKIPPED (with an alert) if its `_processed` file already
+exists — remove it and rerun.
+"""
+
 import os
 import re
 

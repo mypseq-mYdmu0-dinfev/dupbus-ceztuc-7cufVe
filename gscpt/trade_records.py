@@ -2,6 +2,21 @@
 """
 Trade Records Processor
 Processes IBKR statement data CSV files into the required format
+
+USAGE
+-----
+1. Download your IBKR activity statement as CSV (filename starts with your
+   account id, e.g. `U11885223*.csv`) and drop it into THIS script's own
+   directory. If several such files are present, the most recently modified
+   one is used automatically.
+2. Run:  python3 trade_records.py
+   (Optionally pass an explicit output filename: `python3 trade_records.py out.csv`.)
+3. Two CSVs are written beside this script:
+     - `[input_stem]_processed [timestamp].csv` — the processed trade records
+     - `[input_stem]_ticker [timestamp].csv` — the sorted unique ticker list
+   (timestamp = current local time, YYYYMMDDHHmm.)
+
+It STOPS if no `U11885223*` CSV is found, or if no trade data is in the file.
 """
 
 import pandas as pd
@@ -26,10 +41,10 @@ def process_transaction_csv(input_filename, output_filename=None):
     input_path = os.path.join(base_path, input_filename)
     
     if output_filename is None:
-        # Generate output filename by adding _proc and current timestamp before .csv
+        # Generate output filename by adding _processed and current timestamp before .csv
         current_time = datetime.now().strftime('%Y%m%d%H%M')
         base_name = os.path.splitext(input_filename)[0]
-        output_filename = f"{base_name}_proc {current_time}.csv"
+        output_filename = f"{base_name}_processed {current_time}.csv"
     
     output_path = os.path.join(base_path, output_filename)
     
@@ -173,7 +188,7 @@ def process_transaction_csv(input_filename, output_filename=None):
         # Generate ticker list file
         current_time = datetime.now().strftime('%Y%m%d%H%M')
         base_name = os.path.splitext(input_filename)[0]
-        list_filename = f"{base_name}_list {current_time}.csv"
+        list_filename = f"{base_name}_ticker {current_time}.csv"
         list_path = os.path.join(base_path, list_filename)
         
         # Sort tickers alphabetically and save
@@ -205,7 +220,7 @@ def find_latest_csv():
     for filename in os.listdir(base_path):
         if (filename.startswith('U11885223') and 
             filename.endswith('.csv') and 
-            not filename.endswith('_proc {current_time}.csv')):
+            not filename.endswith('_processed {current_time}.csv')):
             file_path = os.path.join(base_path, filename)
             mod_time = os.path.getmtime(file_path)
             csv_files.append((filename, mod_time))
