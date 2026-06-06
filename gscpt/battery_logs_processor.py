@@ -21,7 +21,7 @@ def process_and_export_files(directory_path):
 
     # Generate a timestamp for the output file
     timestamp = datetime.now().strftime("%Y%m%d%H%M")
-    output_filename = f"Battery Log {timestamp}.csv"
+    output_filename = f"Battery Logs {timestamp}.csv"
     output_filepath = os.path.join(directory_path, output_filename)
 
     total_processed_lines = 0

@@ -29,6 +29,12 @@ VALID_EXTENSIONS = {".md", ".txt"}
 RULE_VIOLATION_SYMBOLS = ["—", "–", "+"]
 EXCLUDED_FILENAME_SYMBOL = "❌"
 
+# Line-2 override written when AJAP resumed a file after the 5h limit, e.g.
+# "(Last Modified: 10:54 on 05/06/2026)"  (HH:MM on DD/MM/YYYY)
+LAST_MODIFIED_PATTERN = re.compile(
+    r"Last Modified:\s*(\d{1,2}):(\d{2})\s+on\s+(\d{2})/(\d{2})/(\d{4})"
+)
+
 # =========================================================
 # HELPERS
 # =========================================================
@@ -255,6 +261,35 @@ def scan_applied_violations():
     return result
 
 
+def parse_last_modified(path):
+    """
+    Read the file's Line 2 for "(Last Modified: HH:MM on DD/MM/YYYY)".
+    Return a datetime, or None if absent/unparseable.
+    """
+    try:
+        with open(path, encoding="utf-8") as fh:
+            lines = fh.read().splitlines()
+    except Exception:
+        return None
+
+    if len(lines) < 2:
+        return None
+
+    m = LAST_MODIFIED_PATTERN.search(lines[1])
+
+    if not m:
+        return None
+
+    hh, mm, dd, mo, yyyy = m.groups()
+
+    try:
+        return datetime(
+            int(yyyy), int(mo), int(dd), int(hh), int(mm)
+        )
+    except ValueError:
+        return None
+
+
 # =========================================================
 # MAIN
 # =========================================================
@@ -309,15 +344,15 @@ def main():
             + pending_matches
         )
 
-        # Determine timeframe end
-        # Based on latest FILE MODIFIED time
-
+        # Last AR = the file with the latest filename (creation) TS in this
+        # timeframe; the timeframe end = that file's modified time.
+        last_ar = None
         if all_matches:
-            end_dt = max(
-                x["modified_timestamp"]
-                for x in all_matches
+            last_ar = max(
+                all_matches,
+                key=lambda x: x["created_timestamp"],
             )
-
+            end_dt = last_ar["modified_timestamp"]
         else:
             # No files found in timeframe
             end_dt = start_dt
@@ -326,6 +361,22 @@ def main():
             next_start_dt is not None
             and end_dt > next_start_dt
         )
+
+        # On overlap (AJAP resumed the last AR after the 5h limit, inflating its
+        # filesystem mod time): prefer the real end remarked on the file's Line 2.
+        overlap_filename = ""
+        if overlap_warning and last_ar is not None:
+            remarked_end = parse_last_modified(last_ar["path"])
+
+            if remarked_end is not None:
+                end_dt = remarked_end
+                overlap_warning = (
+                    next_start_dt is not None
+                    and end_dt > next_start_dt
+                )
+            else:
+                # No Line-2 remark: keep ⚠️ and surface the last AR's filename.
+                overlap_filename = last_ar["name"]
 
         if overlap_warning:
             overlap_warnings += 1
@@ -344,6 +395,16 @@ def main():
         v_a = f"{V / a:.2f}" if a else ""           # avg violations per Applied job (plain number, 2 dp)
         vf_a = f"{VF / a * 100:.0f}%" if a else ""  # % of Applied jobs with any violation (0 dp)
 
+        # Remarks = [overlapping last-AR filename] [; personal remark]
+        personal_remark = remarks_by_dt.get(start_dt, "")
+        if overlap_filename:
+            remark_out = (
+                f"{overlap_filename}; {personal_remark}"
+                if personal_remark else overlap_filename
+            )
+        else:
+            remark_out = personal_remark
+
         row = (
             format_parts(start_dt)
             + format_parts(
@@ -358,7 +419,7 @@ def main():
                 VF,
                 v_a,
                 vf_a,
-                remarks_by_dt.get(start_dt, ""),
+                remark_out,
             ]
         )
 
