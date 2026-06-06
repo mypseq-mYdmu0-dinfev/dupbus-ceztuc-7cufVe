@@ -48,6 +48,7 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
   - When all done, briefly tell your thoughts in `response_`
 
 ## Remarks
+- IMPORTANT: NO FALSE CLAIMS; e.g. ✅ `16⁺yr in content & project mgmt` (generic) | ❌ `16⁺yr in [industry]/[other_domain]` (specific); check CP files (e.g. pro_profile.md § Domain Exp)
 - Assume CAI by default in this CP. If CIC access fails, stop & remind to use CAI.
 - Never disclose that I founded KE in any deliverable.
   - Exception: may suggest disclosing only if reliable evidence confirms the employer genuinely values entrepreneurial founding experience —— always seek my explicit approval before including in any deliverable.

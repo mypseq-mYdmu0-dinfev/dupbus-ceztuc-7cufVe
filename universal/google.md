@@ -4,7 +4,7 @@
 
 ## General
 
-I've connected my Google Drive, Mail, and Calendar. If access failed (e.g. asked about events but calendar unlinked), STOP & alert me.
+I've connected my Google Drive, Mail, and Calendar. If access failed, STOP & alert me.
 
 ---
 
