@@ -1,1 +1,1 @@
-PreaJamesBridal | Junior Fashion Studio Assistant | Skip
+ABTCGroup | ICT Sales Consultant | Pending
