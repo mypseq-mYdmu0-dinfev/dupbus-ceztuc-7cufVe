@@ -4,7 +4,7 @@
 
 ---
 
-## order: 01, 02, 03, 04, 05, 06
+## order: 07, 01, 03, 05, 08, 02, 04, 06
 
 *Process Qi strictly left → right on this line, Qi01 → Qi06, sequentially. There is NO `n`/`p` system —— each Qi is a complete, ready-to-open URL. Qi01–03 are the New-to-you (`&tags=new`) views; Qi04–06 are the plain (all-jobs) views of the SAME three searches (its "new twin" is shown in the table). To reprioritise, edit ONLY this line (e.g. `order: 03, 06, 01, 04, 02, 05`).*
 
@@ -12,14 +12,16 @@
 
 ## Queue Table
 
-| # | keyword | tags=new | new twin | URL |
+| # | keyword | &tags=new | new twin | URL |
 |---|---|---|---|---|
 | Qi01 | `business analyst` | yes | — | `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual&tags=new` |
-| Qi02 | `ui/ux` | yes | — | `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual&tags=new` |
-| Qi03 | `business` | yes | — | `https://au.seek.com/business-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual&tags=new` |
-| Qi04 | `business analyst` | no | Qi01 | `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual` |
-| Qi05 | `ui/ux` | no | Qi02 | `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual` |
+| Qi02 | `business analyst` | no | Qi01 | `https://au.seek.com/business-analyst-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual` |
+| Qi03 | `ui/ux` | yes | — | `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual&tags=new` |
+| Qi04 | `ui/ux` | no | Qi02 | `https://au.seek.com/jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&keywords=ui%2Fux&salaryrange=0-100000&salarytype=annual` |
+| Qi05 | `business` | yes | — | `https://au.seek.com/business-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual&tags=new` |
 | Qi06 | `business` | no | Qi03 | `https://au.seek.com/business-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual` |
+| Qi07 | `project` | yes | — | `https://au.seek.com/project-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual&tags=new` |
+| Qi08 | `project` | no | — | `https://au.seek.com/project-jobs/in-Sydney-NSW-2000?classification=6263%2C6076%2C6281%2C6008&distance=25&salaryrange=0-100000&salarytype=annual` |
 
 ---
 
