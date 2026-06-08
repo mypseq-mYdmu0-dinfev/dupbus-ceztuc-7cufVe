@@ -56,6 +56,12 @@ VALID_EXTENSIONS = {".md", ".txt"}
 RULE_VIOLATION_SYMBOLS = ["—", "–", "+"]
 EXCLUDED_FILENAME_SYMBOL = "❌"
 
+# Every Applied file must END with EXACTLY this line (verbatim, no rephrasing,
+# and no text after it). Anything else is a P.S. rule violation.
+PS_REQUIRED_TAIL = (
+    "P.S. I hold full work rights until 2031 and would never require visa sponsorship."
+)
+
 # Line-2 override written when AJAP resumed a file after the 5h limit, e.g.
 # "(Last Modified: 10:54 on 05/06/2026)"  (HH:MM on DD/MM/YYYY)
 LAST_MODIFIED_PATTERN = re.compile(
@@ -238,8 +244,14 @@ def format_parts(dt, warning=False):
 
 def scan_applied_violations():
     """
-    Return {filename: total_violation_symbol_count} for Applied files,
-    counting RULE_VIOLATION_SYMBOLS that appear AFTER the Cover Letter marker.
+    Return {filename: total_violation_count} for Applied files. The total is
+    the sum of two violation types, treated identically:
+
+      1. Each occurrence of a RULE_VIOLATION_SYMBOLS symbol appearing AFTER the
+         Cover Letter marker (skipped if the file has no marker).
+      2. A single P.S.-ending violation (+1) if the file does NOT end with
+         exactly PS_REQUIRED_TAIL —— i.e. its final line is not that exact line,
+         or there is any text after it.
     """
 
     applied_dir = DIRS["Applied"]
@@ -265,22 +277,28 @@ def scan_applied_violations():
         except Exception:
             continue
 
+        total = 0
+
+        # --- Type 1: rule-violation symbols after the Cover Letter marker ---
         marker_match = re.search(
             r"##\s+\d+\.\s+Cover Letter",
             content,
         )
 
-        if not marker_match:
-            continue
+        if marker_match:
+            scan_content = content[marker_match.start():]
+            total += sum(
+                scan_content.count(symbol)
+                for symbol in RULE_VIOLATION_SYMBOLS
+            )
 
-        scan_content = content[
-            marker_match.start():
-        ]
-
-        total = sum(
-            scan_content.count(symbol)
-            for symbol in RULE_VIOLATION_SYMBOLS
-        )
+        # --- Type 2: file must END with exactly PS_REQUIRED_TAIL ---
+        # rstrip() tolerates an invisible trailing newline / spaces after the
+        # period, but any real text after the line fails the check.
+        stripped = content.rstrip()
+        last_line = stripped.splitlines()[-1] if stripped else ""
+        if last_line != PS_REQUIRED_TAIL:
+            total += 1
 
         if total > 0:
             result[item.name] = total
