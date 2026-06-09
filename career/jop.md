@@ -19,3 +19,8 @@
 - Outputs go to the AR, never `response_`.
 - Append: `## 7. Engagements` → `### Employer Reply` + `### User Reply` (FL1&2) OR `### Additional Questions` + `### User Answers` (FL3).
 - When all done, briefly note thoughts in `response_`.
+
+## Video Intro (only if requested)
+- Upload '/Volumes/FURY 2TB/IYM/Private/Virtual Presentation/20250430/Export/renamed/Culous_Yu_Presentation.mov'
+- If failed (too large, etc.), upload '/Volumes/FURY 2TB/IYM/Private/Virtual Presentation/20250430/Export/presentation_url.txt'
+- If URL input allowed, extract from the .txt & paste into field
