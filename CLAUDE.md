@@ -11,7 +11,7 @@
   - 1.2.1. `universal/glossary.md` —— terminology & definitions
   - 1.2.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
 - 1.3. Declare in chat (per §3.2.1) w/ other reads (incl. CLAUDE.md) on a single line
-- 1.4. Monthly reminder (once per session): if any previous month's folder exists in `/sessions/` but lacks a `wrap_` file, remind the user
+- 1.4. Monthly Reminder (up to once per session; silently process w/ NO chat text): if current month's folder has ≤5 files + any previous month's folder exists in `/sessions/` but lacks a `wrap_` file → remind user in 1st `response_`, otherwise don't mention
 
 2. Conventions
 - 2.1. ALWAYS use:
