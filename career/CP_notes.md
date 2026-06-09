@@ -32,9 +32,6 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
     - Start from oldest unless told otherwise
     - Stop at each PAR completion
 
-## CC: Job Opportunity Processing (`#jop`)
-- Spec moved to `career/jop.md` (CC-exclusive; read when `#job` flags items or `#jop` is prompted). Route via `career/CP_index_cc.md` § 3.4.
-
 ## Remarks
 - IMPORTANT: NO FALSE CLAIMS; e.g. ✅ `16⁺yr in content & project mgmt` (generic) | ❌ `16⁺yr in [industry]/[other_domain]` (specific); check CP files (e.g. pro_profile.md § Domain Exp)
 - Assume CAI by default in this CP. If CIC access fails, stop & remind to use CAI.
