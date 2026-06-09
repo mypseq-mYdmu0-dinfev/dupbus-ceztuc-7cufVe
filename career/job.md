@@ -15,6 +15,10 @@
 - SEEK official "Your application was successfully submitted" from `noreply@s.seek.com.au`.
 - Employer auto-ack: received / will be in touch / find out more / will review / in process / in progress / track application / assessing.
 
+## Filter & Note
+- Spam/Promo: signals inc. no subject/title, all caps (e.g. "LOADS", "FREE"), double exclamation (`!!`), podcast, and other marketing CTA elements
+- Briefly note at end for user review: sender email address, title (if any), why decided to filter
+
 ## Include (report briefly)
 - Progress update: e.g. "viewed".
 - Rejection: e.g. "haven't progressed".
