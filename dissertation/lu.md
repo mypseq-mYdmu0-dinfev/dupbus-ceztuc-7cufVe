@@ -97,7 +97,7 @@ Avoid meetings wherever possible —— 9-hour timezone gap (SYD vs. UK), and ea
 
 ## PART D —— Comms Log
 
-*Note: All attachments from Lu are saved in '/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/From Lu/'. If you're not CC: Ignore this folder path & request attachments if necessary.*
+*Note: All attachments from Lu are saved in '/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/From Lu/'. Non-CC: Ignore this folder path & request attachments if necessary.*
 
 ### Log 01
 
@@ -308,7 +308,9 @@ Lu
 After carefully considering your research topic and the requirements of this task. i.e. “This module provides the opportunity for you to undertake the MBA Project, a self-managed process of systematic practitioner inquiry, to address a management challenge within your work organisation. This project enables you to integrate, apply and develop the knowledge and skills that they have acquired during the MBA programme. Exceptionally, if you are unable to explore a challenge within your own work organisation, you may select an organisation you are closely involved with, such as a charity or sports club, or an organisation where you have significant access to relevant and reliable primary or secondary data sources, such as corporate archive data”. In this case, we need to focus on a management challenge. Understanding CYC’s clients’ challenge does not seem to meet this requirement. Thus, I recommend that we change the perspective to how Tall Poppy Syndrome should be managed at CYC. However, as CYC is a newly established consulting company, thus, the perspective is to study TPS’ influence on workplace dynamics in Australian knowledge-based firms, in order to inform the organisational design and people management strategies at CYC. Can you please revise the background from this perspective? And, define KBF and TPS before using them. 
 
 #### CM2 (on §1 Research Aim; 20260522)
-Based on the above comment, I recommend a research aim like this (just an example) The research aim is to investigate how Tall Poppy Syndrome influences workplace dynamics in Australian knowledge-based firms, in order to inform the organisational design and people management strategies of the newly established consulting firm CYC.Then, develop 2–3 specific research questions to address this aim from different aspects to define the scope and boundary of the research aim.
+Based on the above comment, I recommend a research aim like this (just an example) 
+The research aim is to investigate how Tall Poppy Syndrome influences workplace dynamics in Australian knowledge-based firms, in order to inform the organisational design and people management strategies of the newly established consulting firm CYC.
+Then, develop 2–3 specific research questions to address this aim from different aspects to define the scope and boundary of the research aim.
 
 #### CM3 (on §1 Structure of Chapters; 20260522)
 This is not for the proposal. Please remove.
@@ -317,7 +319,8 @@ This is not for the proposal. Please remove.
 Consider revising the literature review from the angle of the new research aim. The conceptual framework needs to be more detailed.
 
 #### CM5 (on §3 Methodology; 20260522)
-Consider revising the research design based on the new research aim. Separate research philosophy, research approach, and research method; describe each topic in detail, i.e. why constructivist ontology and interpretivist epistemological stances are followed; why research approach is adopted; why explanatory multi-case study is adopted.The interviewees should be individual people working in the KBFs. Please do not focus on organisations; otherwise, you will need an authorisation letter from each of them. I recommend 6-8 interviews. 
+Consider revising the research design based on the new research aim. Separate research philosophy, research approach, and research method; describe each topic in detail, i.e. why constructivist ontology and interpretivist epistemological stances are followed; why research approach is adopted; why explanatory multi-case study is adopted.
+The interviewees should be individual people working in the KBFs. Please do not focus on organisations; otherwise, you will need an authorisation letter from each of them. I recommend 6-8 interviews. 
 
 ### Log 15
 
