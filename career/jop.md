@@ -26,9 +26,10 @@
 - My availability = current_TS + 72h → next 3pm on a working day.
 
 ## AR output
-- Outputs go to the AR, never `response_`.
+- Outputs go to the job's AR, never `response_`.
+- NEVER edit AR filename, so user can track diff.
 - Append: `## 7. Engagements` → `### Employer Reply` + `### User Reply` (FL1&2) OR `### Additional Questions` + `### User Answers` (FL3).
-- FL3 only: immediately UNDER the `### Additional Questions` heading line, print **true URL** —— the CIC-opened tab's URL, NOT the long email link —— so open tabs map to ARs.
+- FL3 only: Immediately UNDER the `### Additional Questions` heading line, print **true URL** —— the CIC-opened tab's URL, NOT the long email link —— so open tabs map to ARs.
 - When all done, briefly note thoughts in `response_`.
 
 ## Video Intro (only if requested)
