@@ -4,13 +4,13 @@
 ---
 
 glossary.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/26a4dc41b3415bf31c231c183d6a56a72d38cd4d/universal/glossary.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/90c6839e1505612e61a8933d03910366a0596606/universal/glossary.md
 
 rules.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/527c71e498ee46ab87ef8acad32874d7e72b0eb0/universal/rules_otg.md
 
 google.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/aac1b0a8fcc9f6c81c61579e00c92ff8a296dc91/universal/google.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/89370d1a1cde8953b5bbe6d51bdeaeddf7414b15/universal/google.md
 
 profile.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fab59f7567b81f3f1a794a6f0ca3b10b26b90237/universal/profile.md
@@ -25,7 +25,7 @@ coding.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/4433eaf5dc0565d7d4b18a6744f22181cdc9242c/universal/coding.md
 
 numbered.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/24441f10997aed49031a962d57a1b7d5c2c51ed6/universal/numbered.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/7b135040a1feb65fb595159ee72fa234687c06b1/universal/numbered.md
 
 plan.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/84c46a292a1c2407619337945ea71c6e3ccb3e5f/universal/plan.md
@@ -58,4 +58,4 @@ buy.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8e27e8f99d3bb54578956c23b0892f96fbc49ad9/universal/buy.md
 
 close.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d4a4a41c4594506ad39c0abd156b60359d9a56c7/universal/close.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/91f9574ebe30cb69abbfab41f6a670a741a382c7/universal/close.md
