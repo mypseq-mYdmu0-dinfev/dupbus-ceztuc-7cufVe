@@ -127,7 +127,7 @@ Essence of "Developing as a Manager and Leader" module (Grade A).
 
 ---
 
-## CCL Archive
+## CCL Samples
 
 - Everything in `career/CCL_Archive`
 - Filename format: `CL_[CompanyName]_[TS].txt`

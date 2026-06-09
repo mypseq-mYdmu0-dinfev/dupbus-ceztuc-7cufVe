@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/0e5f
 CCL requirements for consulting job applications; built upon GCL.
 
 job.md
-[ADD raw GitHub URL after committing `career/job.md` —— pinned-commit form like the others]
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/524c4fce387dae41d4009b477c4c2ef6307d0679/career/job.md
 Fetch when `#job`.
 
 ---
