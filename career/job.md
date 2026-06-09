@@ -7,7 +7,7 @@
 ## Scope
 - Window: 1 week unless specified.
 - Sender: any (not just SEEK).
-- MUST add `-label:Label_1` (skip Unimportant; per google.md).
+- MUST add `-label:Label_1 -label:Label_2 -label:Label_3`.
 - Timezone: Gmail filters use UTC; fetch current SYD offset, adjust date boundaries.
 - Order: importance, then recency.
 

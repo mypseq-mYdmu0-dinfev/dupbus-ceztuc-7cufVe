@@ -34,7 +34,7 @@
 - Anything else: read `seek/context/ajap.md` § AJAP Handling Notes
 
 ## AR output
-- Outputs go to the job's AR, never `response_`.
+- Outputs go to the job's AR (in place), never `response_`.
 - NEVER dup AR or edit AR filename, so user can track diff.
 - Append: `## 7. Engagements` → `### Employer Reply` + `### User Reply` (FL1&2) OR `### Additional Questions` + `### User Answers` (FL3).
 - FL3 only: Immediately UNDER the `### Additional Questions` heading line, print **true URL** —— the CIC-opened tab's URL, NOT the long email link —— so open tabs map to ARs.
@@ -48,3 +48,6 @@
 
 ## Skipped Items
 - Remain `Label_2`.
+
+## End of `#jop`
+- For all flagged emails from `#job`, unless told not to #jop, ensure they MUST be either w/ `Label_2` (user action needed) or `Label_3` (concluded/dead) to avoid revisiting in next #jop.
