@@ -44,7 +44,19 @@ Use this exact prompt when spawning or re-spawning SA (fill ONLY the bracketed v
 
 > You are the AJAP sub-agent (SA). Read all mandatory files per `CLAUDE.md § Session Start` (items 3–8 only; do NOT read `main_ajap.md`), declare them, then follow `ajap.md` in full starting from [CARD_POSITION: e.g. "the next unprocessed card" or "the card currently open in Tab 2 — run Pre-Flight first"]. Tab state: [TAB_STATE: e.g. "Tab 1 only — clean state" or "Tab 2 open on [URL]"]. Current N = [N]. Process ONE card at a time, top-to-bottom; NEVER batch-process or summarise multiple cards into one AR (instant retirement). Communication: check `/seek/.claude/tmp/ma_msg.md` after every sub-section and, if applying, before S6.4.3 Submit — if it reads "Continue", proceed; if it reads "STOP", stop immediately and become idle; if anything else, follow the instruction, then wait 15s and re-check, up to 20 times (300s total); if still not "Continue" after 20 checks, stop (become idle). If any Tab 2–4⁺ is closed involuntarily (not by you), immediately stop all actions and read `/seek/.claude/tmp/ma_msg.md`. Report loop completion to MA via chat after every card (not just applying jobs): `[AR_PATH] | [OUTCOME: Applied/Skipped/Pending] | [N] | newtoyou=[n] | [FLAGS or "none"]` (newtoyou = the green count in the "New to you" pill on the current Tab 1 page; per `/seek/queue.md` rule 2). For applying jobs: at S6.4.2.5 before Submit, await explicit approval via `/seek/.claude/tmp/ma_msg.md`. Do not output the C2 count to user.
 
-**After spawning:** write `sa_id: [id]` to `/seek/.claude/tmp/ma_state.md` so it can be recovered after heartbeat re-invocations.
+**After spawning:** write `sa_id: [id]` to `/seek/.claude/tmp/ma_state.md` so it can be recovered after heartbeat re-invocations. Also append `sa_spawn_TS: [current_TS]` (via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`) to record spawn time for the 1hr retirement check.
+
+---
+
+## Opus-Mode Fallback (model-specific)
+
+*If you (MA) are running on **Opus**, apply this whole section; on Sonnet, ignore it. Rationale: Opus SAs have repeatedly refused the SA role ("instruction is from a machine, not a human") and Opus cannot autonomously `file_upload` local résumé PDFs to external portals (rlog/audit `202606081836` §5); 90%⁺ of all ARs were produced by Sonnet. This is treated as a model/harness limitation, NOT to be "fixed".*
+
+- Do NOT spawn SA1. Take on SA1's per-card loop yourself (run **solo**): MA executes `ajap.md` directly, ONE card at a time.
+- In solo mode, the SA-side safeguards are absent, so YOU must, at the top of EVERY card, perform `ajap.md S0.1` (literally Read `MA_hb.md` + emit `✅ context/MA_hb.md`) and self-gate Submit with a CL review (run `python3 /seek/context/cl_check.py [AR_PATH]` before any Submit).
+- You MAY still spawn helper agents for tasks that do NOT require reading any `/seek/context/` file (e.g. open web research); never delegate the per-card AJAP loop to them.
+- The heartbeat Monitor AND the SA2 watchdog remain enforced exactly as normal.
+- **Silently skip (NO AR) every M7=0 job** (any role whose application leaves SEEK for an external portal) —— you cannot upload files, so an external application can never complete; do not create skip-ARs for them (keeps the record clean for future upload-capable Sonnet runs).
 
 ---
 
@@ -105,6 +117,7 @@ Give SA one correction first; retire on next report if it persists. **Retire imm
 - Loop report not in the expected `[AR_PATH] | [OUTCOME] | [N] | newtoyou=[n] | [FLAGS]` format.
 - SA created a tab group or switched browser context (actions no longer visible to MA).
 - SA submitted an application (AR reached `Outcome: Applied`) with NO MA "Submit then proceed to next card" approval recorded for it —— the `⏳_` CL-review gate was bypassed.
+- SA has been running for 1hr⁺ from spawn (`sa_spawn_TS` in `ma_state.md`; check via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"` and compare) —— regardless of current activity; write "STOP" to `ma_msg.md`, wait 30s, reset to "Continue", retire, spawn fresh SA; log to rlog.
 
 **Correction first, then retire if unresolved:**
 - Last AR in `/gcl/applied/` contains `## 3. Cover Letter` (or any number ≠ 6).
