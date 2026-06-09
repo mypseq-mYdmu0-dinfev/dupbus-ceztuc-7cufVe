@@ -80,3 +80,18 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Additional Questions
+
+https://secure.dc2.pageuppeople.com/apply/549/aw/applicationForm/default.asp
+
+(PageUp "Complete Application" reminder email, 25/05/2026, sender careers-549@mail.pageuppeople.com. The reminder link redirects to an **Existing applicant login** gate — email + password required to resume the saved application. No application-form fields were reachable. Per hard safety rules, credentials must never be entered, so the form could not be opened or pre-filled.)
+
+- [Login gate question 1] Email address — BLANK — needs user (login credentials; CC must not enter)
+- [Login gate question 2] Password — BLANK — needs user (login credentials; CC must not enter)
+
+### User Answers
+
+BLANK — needs user. Application is gated behind an existing-applicant login (email + password). Culous must log in personally at the URL above, click 'Complete Application' beside "Manager, AI Transformation", complete the form, and submit. Application auto-deletes on 30/06/2026 if not completed. Tab left open.

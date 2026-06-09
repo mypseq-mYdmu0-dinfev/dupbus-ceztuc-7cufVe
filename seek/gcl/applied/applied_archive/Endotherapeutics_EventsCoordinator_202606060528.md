@@ -84,3 +84,17 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Additional Questions
+
+https://jobs.employmenthero.com/AU/prescreen_questions/answer/jvTvveP4hpkrQa8PHvNjjQ?candidate_job_id=8a5d217b-620e-4319-b87a-c3838b2bf3c9&expires=1785958870&from_smart_match_fmi=false&job_id=19a79f22-a1fd-4e5e-bd01-3299dfed986e&job_title=Events+Coordinator&org_name=Endotherapeutics&reminder=1&signature=2ef5a8a001197f900c46d2595e1106a24acc4fefcf0d15332a8d35d93f3eaa3f&source=SEEK
+
+1. Do you have the right to work in Australia full-time?
+2. Should your application be successful, are you willing to undergo a pre-employment medical assessment as part of onboarding requirements?
+
+### User Answers
+
+1. Yes (Subclass 485, full work rights until 2031, no sponsorship required)
+2. Yes

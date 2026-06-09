@@ -76,3 +76,30 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Additional Questions
+https://thereloadgroup.breezy.hr/f/c8ca45ce17a1
+
+Breezy "Follow-up Questions" form (multi-page) received 31/05/2026 via no-reply@breezy-mail.com, subject "Re: Opportunity at Reload Media".
+
+1. Experience Summary* (free text)
+2. Cover Letter* (free text)
+3. Work rights in Australia* (single-select radio)
+4. Expected availability to start* (free text)
+5. Expected annual salary* (free text)
+
+### User Answers
+
+1. **Experience Summary:** Marketing strategist with 16+ years of international experience in content and project management across diverse industries. I have managed multi-channel campaigns spanning social, digital, and content platforms, led client-facing strategy and reporting for diverse brand portfolios, and managed 100+ client engagements across B2B, B2C, NPO, and Government entities. My agency-side background includes a marketing/PR group and a consulting firm I helped grow to $1 million in first-year revenue. I actively adopt AI tools to improve campaign planning and execution efficiency, and I hold a Master of Human-Computer Interaction with a Data Analytics sub-major, giving me a strong analytical foundation for performance marketing.
+
+2. **Cover Letter:** (Section 6 cover letter pasted into the field, lightly adapted to plain characters for the form; signed "Yours faithfully, Culous Yu" with the work-rights P.S.)
+
+3. **Work rights in Australia:** "I have a graduate temporary work visa" (selected — corresponds to Subclass 485 Temporary Graduate visa; full work rights to 2031, no sponsorship required)
+
+4. **Expected availability to start:** 22/06/2026
+
+5. **Expected annual salary:** $75,000
+
+**Status:** All fields pre-filled. STOPPED before "Submit Application" per safety protocol — tab left open for user to review and submit. No personal fields left blank; no blockers (no login/CAPTCHA/account creation encountered).

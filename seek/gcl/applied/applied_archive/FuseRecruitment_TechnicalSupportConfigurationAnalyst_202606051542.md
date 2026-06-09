@@ -64,3 +64,31 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Additional Questions
+
+True URL: https://www.fuserecruitment.com/?survey=dXRtX3NvdXJjZT1IZXJlZmlzaCZ1dG1fbWVkaXVtPUVtYWlsJnN1cnZleUlkPTE1ODM1JmlzQ2hhdD10cnVlJmhmPTEyNTAyMDcxOCZ0eXBlPTAmZXRJZD0xNDY1NDImZUlkPTEyNTAyMDcxOCZ2MT03MmZkZjEwNDEwZTIyN2FjYjUzYTk3NjdkZWNjMDA2MTJkZDk3YmY4ZDNlNTkzNGZmMzc1NGJmYzM5MDY4NDYxJnRzPTE3ODA4NzUwNTQ2NjImdXRtX2NhbXBhaWduPXdlYnNpdGUmdXRtX21lZGl1bT1FbWFpbA
+
+Item 2.3 of #jop run — Fuse Recruitment "Complete our registration form" (email 07/06/2026, threadId 19ea46cd236a78b2).
+
+**Format note:** The registration is NOT a static web form. The email's "Complete our registration form" link redirects to a Herefish "Fuse Bot" conversational chat widget on fuserecruitment.com (surveyId 15835). Each answer is submitted turn-by-turn as a chat reply (each send is an irreversible commit; there is no single review-before-submit checkpoint). Per the email, the bot collects, across the conversation:
+
+1. Which country do you live in? [reached — bot offered buttons: Australia / New Zealand / United Kingdom / United States / Others]
+2. Main contact details (name, phone, email, location) [not yet reached]
+3. Emergency contact information (name + phone) [not yet reached]
+4. Confirmation of right to work [not yet reached]
+5. References and relevant information [not yet reached]
+6. OH&S (occupational health & safety) questions [not yet reached]
+
+### User Answers
+
+1. Which country do you live in? → **Australia** (from profile: Sydney, NSW). [Pre-fillable]
+2. Main contact details → Name: Culous Yu; Phone: (+61) 0 428 405 192; Email: c@CulousYu.com (note: Fuse account/email on file is culousyu@gmail.com); Location: Sydney, NSW, Australia. [Pre-fillable]
+3. Emergency contact information → **BLANK — needs user** (name + phone not in profile/resume).
+4. Confirmation of right to work → Subclass 485; full work rights until 2031; never requires visa sponsorship. [Pre-fillable]
+5. References / referees → **BLANK — needs user** (referee names/contacts not in profile/resume).
+6. OH&S questions → **BLANK — needs user** (questions not yet seen; likely health/injury declarations requiring user's personal confirmation).
+
+**STATUS: BLOCKED — needs user.** This is a conversational (chatbot) registration, not a fillable form, so the "pre-fill all then STOP before Submit" pattern does not apply cleanly — each chat reply commits irreversibly with no pre-submit review step, and the flow's mandatory fields (emergency contact, references, OH&S declarations) are all needs-user unknowns, making autonomous completion impossible. Per HARD SAFETY, did not drive the conversation to submission. Tab left OPEN at the live Fuse Bot conversation (country question) for the user to complete manually with the pre-fillable values above. Gmail label left at Actioning (Label_2) only; not marked Actioned.

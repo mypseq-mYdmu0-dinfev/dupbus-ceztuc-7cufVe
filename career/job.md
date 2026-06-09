@@ -17,7 +17,9 @@
 
 ## Filter & Note
 - Spam/Promo: signals inc. no subject/title, all caps (e.g. "LOADS", "FREE"), double exclamation (`!!`), podcast, and other marketing CTA elements
-- Briefly note at end for user review: sender email address, title (if any), why decided to filter
+- Post-Flag Rejection: if an email was flagged (see below) but a subsequent email from the same company (might not be identical email address) implies rejection
+- CC: The concerned job's AR is in `pending/` (user to process in PAR session, not #job)
+- All Filtered: Briefly note at end for user review: sender email address, title (if any), why filtered
 
 ## Include (report briefly)
 - Progress update: e.g. "viewed".

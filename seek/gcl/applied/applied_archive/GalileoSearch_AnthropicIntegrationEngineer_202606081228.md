@@ -72,3 +72,21 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Additional Questions
+
+https://au3.jobadder.com/external/jobapplications/addvideocoverletter/MS7FGPIXIEB57MWHQQMIHLPVDDYNVX7XV4OWL65NFYHKG3YSXJDQ
+
+- Video cover letter request (jobadder, "Showcase your application with a short video introduction!", from noreply@jobadder.com / Galileo Search team): record a 60-second video introduction.
+- The page is a Ziggeo recorder offering exactly two paths: "Record Video" (live webcam) and "Upload Video" (local file). No URL/link field, no textarea, no other text fields exist.
+
+### User Answers
+
+- NEEDS USER — video step could not be completed autonomously:
+  - Upload path: attempted to upload '/Volumes/FURY 2TB/IYM/Private/Virtual Presentation/20250430/Export/renamed/Culous_Yu_Presentation.mov' but the file is not shared with this CIC session, so the upload was rejected.
+  - URL fallback: not possible — the recorder has no URL/link input to paste 'http://Presentation.CulousYu.com' (or the Vimeo backup https://vimeo.com/1080590948/f68e1f5c68) into.
+  - Live webcam: cannot be faked (hard safety rule).
+  - No consent gates, cookie banners, or other fields to clear/pre-fill on this page.
+  - Tab left OPEN at the recorder state (not submitted). User to either record live via the webcam recorder or use "Upload Video" to select the .mov, then click Submit.

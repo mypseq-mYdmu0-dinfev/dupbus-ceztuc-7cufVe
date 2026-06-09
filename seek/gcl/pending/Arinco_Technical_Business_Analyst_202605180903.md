@@ -79,3 +79,24 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Additional Questions
+https://www.livehire.com/careers/arinco/job/NN48E/0LQHQXBHA1/arinco-technical-business-analyst
+
+- Apply method (Apply with email / Your resume / LinkedIn / Google / Facebook)
+- Email
+- Password (login required — existing Humanforce Talent account)
+
+### User Answers
+- Apply method: "Apply with email" selected (OAuth options skipped — would create/link account)
+- Email: culousyu@gmail.com
+- Password: BLANK — needs user (HARD BLOCK)
+
+**Blocker (this session, 10/06/2026 05:31 AEST):** After accepting the Terms & Conditions consent gate (required consents incl. Electronic Signature Authorisation agreed; cookies set to Reject Non-Essential) and choosing "Apply with email", the portal detected the email is already registered with Humanforce Talent and now demands account login: "It looks like you're already registered with Humanforce Talent. Log in to complete your application." A Password field + "Log in and continue" button block all further progress.
+
+Per hard safety rules, CC will NOT enter a password/login credentials. The application form (location Places-autocomplete field + citizenship/PR question noted in §4) sits BEHIND this login wall and could not be reached or pre-filled this session. **User must log in manually** to complete the saved application. Tab left open.
+
+- Tab URL: https://www.livehire.com/careers/arinco/job/NN48E/0LQHQXBHA1/arinco-technical-business-analyst
+- No later rejection email found (Gmail thread 19e427fa83a4bd6c still live; latest Arinco-domain msg = 19/05/2026 application reminder).

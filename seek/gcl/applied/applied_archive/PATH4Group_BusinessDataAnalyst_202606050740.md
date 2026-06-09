@@ -86,3 +86,18 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Additional Questions
+
+https://au6.jobadder.com/external/jobapplications/addvideocoverletter/RL6YT5OI4SVRANNIWWDGGEK6UXP7FH5RW3TKBHFIJ7XHXKKYBQQA
+
+- JobAdder/Ziggeo video cover letter request (email noreply@jobadder.com, 04/06/2026; thread 19e94a54abea614d). "Record a 60-second video cover letter."
+- Page offers only: (a) "Record Video" (live webcam), (b) "Upload Video" (local file input), (c) "Submit". NO URL/text field exists to paste the presentation link.
+- Upload of '/Volumes/FURY 2TB/IYM/Private/Virtual Presentation/20250430/Export/renamed/Culous_Yu_Presentation.mov' rejected by CIC (file not shared with session; also 2.8 GB > 10 MB limit).
+- Link valid for 7 days from 04/06/2026 (expires ~11/06/2026).
+
+### User Answers
+
+- Video cover letter: **BLANK — needs user.** No URL field to paste http://Presentation.CulousYu.com (backup: https://vimeo.com/1080590948/f68e1f5c68). User must either upload the .mov locally or record a live 60-second webcam intro, then click Submit. Tab left open; not submitted.
