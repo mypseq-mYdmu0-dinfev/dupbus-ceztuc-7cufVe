@@ -11,7 +11,7 @@
 ## Core Files
 
 CP_notes.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/524c4fce387dae41d4009b477c4c2ef6307d0679/career/CP_notes.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d239a5c0dae007ae7acdaa18b244be1175282b62/career/CP_notes.md
 Purpose & remarks of this CP.
 
 pro_profile.md
@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/0e5f
 CCL requirements for consulting job applications; built upon GCL.
 
 job.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/524c4fce387dae41d4009b477c4c2ef6307d0679/career/job.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/89370d1a1cde8953b5bbe6d51bdeaeddf7414b15/career/job.md
 Fetch when `#job`.
 
 ---
