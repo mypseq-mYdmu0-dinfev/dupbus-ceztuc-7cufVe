@@ -69,7 +69,7 @@ Location: same folder as the session's query_/response_ files
 
 ## CP Sessions
 
-*Close with 2 files*
+*Close with 2 files if DevPlan.md exists, otherwise follow § Non-CP Sessions exc. filename prefix [CP_folder].*
 
 1. Handoff
 Filename: `[CP_folder]_close_[TS].md`
