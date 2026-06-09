@@ -1,6 +1,11 @@
 # Session Closing Protocols
 
-*Triggered by: `#close` | Current_TS: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`*
+## Preamble
+
+- Triggered by: `#close` | Current_TS: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+- Updating `close_` file:
+  - Update [current_TS] on Line 1 (`# Session Closing...`)
+  - NEVER edit TS in filename, so user can track diff
 
 ---
 
