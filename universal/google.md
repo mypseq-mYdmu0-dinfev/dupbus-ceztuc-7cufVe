@@ -37,7 +37,7 @@ I've connected my Google Drive, Mail, and Calendar. If access failed, STOP & ale
 - Requires Gmail connector write scope (granted by disconnect/reconnect; CC: "Bypass permissions" mode only needed to DELETE a label, rarely).
 
 ### `#job` Prompted
-- Non-CC: Fetch job.md; if unrecognised, reminder user to enter "Career" CP.
+- Non-CC: Fetch & follow job.md (artefact only; no chat text); if unrecognised, reminder user to enter "Career" CP.
 - CC: Read `job.md` via `career/CP_index_cc.md`
 
 ---
