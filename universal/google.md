@@ -1,7 +1,5 @@
 # Google Connectors
 
-*`CC:` = for Claude Code only, disregard if you're not.*
-
 ## General
 
 I've connected my Google Drive, Mail, and Calendar. If access failed, STOP & alert me.
@@ -39,6 +37,7 @@ I've connected my Google Drive, Mail, and Calendar. If access failed, STOP & ale
 ### `#job` Prompted
 - Non-CC: Fetch & follow job.md (artefact only; no chat text); if unrecognised, reminder user to enter "Career" CP.
 - CC: Read `job.md` via `career/CP_index_cc.md`
+  - Override: DON'T read its "Unconditionals" until any flagged items (see job.md)
 
 ---
 
