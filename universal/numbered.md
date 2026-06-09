@@ -1,7 +1,5 @@
 # Numbered Lists (`#numbered`)
 
-*`CC:` = for Claude Code only, disregard if you're not.*
-
 ## Format
 
 Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (2nd level onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`).
