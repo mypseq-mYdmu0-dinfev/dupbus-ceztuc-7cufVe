@@ -29,6 +29,13 @@ I've connected my Google Drive, Mail, and Calendar. If access failed, STOP & ale
   - Sender: any, NOT just SEEK
 - CC: When prompted `#job`, read `career/CP_notes.md`
 
+### Labels (aka "boxes"in user's view)
+- Each thread carries a flat `labelIds` array (system + user labels)
+- `search_threads`/`get_thread` return label **IDs**, not display names; decode via `list_labels`
+- User-label ID map (actively suggest to update as labels change):
+  - `Label_1` = `Unimportant` —— user filter for non-actionable mail (mostly SEEK Submitted/Viewed/Expired/Rejected)
+- Token Saving: in ANY scan, MUST exclude `Label_1` via `-label:Label_1` in the query
+
 ---
 
 ## Google Calendar
