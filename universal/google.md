@@ -16,25 +16,29 @@ I've connected my Google Drive, Mail, and Calendar. If access failed, STOP & ale
 
 ## Gmail
 
-- Timezone: Gmail date filters use UTC; always fetch current SYD (or wherever I am) timezone offset before any date-based query and adjust boundaries
-- When prompted `#job`, scan for anything related to job application/interview/offer, etc.
-  - Exclude application confirmations inc. but not limited to
-    - SEEK official: Title "Your application was successfully submitted" from `noreply@s.seek.com.au`
-    - Employer automatic: e.g. content inc. received, will be in touch, find out more, will review, in process/progress, track application, assessing
-  - Briefly include progress update (e.g. "viewed"), rejection (e.g. "haven't progressed")
-  - Flag pending actions (even automatic): e.g. complete your application, a few more questions
-  - Flag employer manual (judge by yourself; e.g. "move forward", "invite")
-  - Order: prioritise importance then recency
-  - Scope: 1 week unless specified
-  - Sender: any, NOT just SEEK
-- CC: When prompted `#job`, read `career/CP_notes.md`
+### Timezone
+- Gmail date filters use UTC
+- Always fetch current SYD (or wherever I am) timezone offset before any date-based query and adjust boundaries
 
 ### Labels (aka "boxes"in user's view)
 - Each thread carries a flat `labelIds` array (system + user labels)
 - `search_threads`/`get_thread` return label **IDs**, not display names; decode via `list_labels`
-- User-label ID map (actively suggest to update as labels change):
-  - `Label_1` = `Unimportant` —— user filter for non-actionable mail (mostly SEEK Submitted/Viewed/Expired/Rejected)
-- Token Saving: in ANY scan, MUST exclude `Label_1` via `-label:Label_1` in the query
+- labelId map (actively suggest to update as labels change):
+  - `Label_1` = `Unimportant` (Non-actionable; e.g. SEEK Submitted/Viewed/Expired/Rejected)
+  - `Label_2` = `Actioning` (in progress)
+  - `Label_3` = `Actioned` (done)
+- ANY Scan: MUST exclude `Label_1` via `-label:Label_1` in the query
+- ALL Claude email-actioning tasks:
+  - NEVER archive; thread stays in `INBOX`.
+  - On START actioning a thread → add `Label_2`.
+  - On COMPLETION → add `Label_3` → remove `Label_2`.
+- Thread already on `Label_2` at session start = interrupted → alert user + ask resume or redo.
+- Actuation: via `label_thread` / `unlabel_thread`.
+- Requires Gmail connector write scope (granted by disconnect/reconnect; CC: "Bypass permissions" mode only needed to DELETE a label, rarely).
+
+### `#job` Prompted
+- Non-CC: Fetch job.md; if unrecognised, reminder user to enter "Career" CP.
+- CC: Read `job.md` via `career/CP_index_cc.md`
 
 ---
 

@@ -14,6 +14,7 @@
 - 3.1. `request` = MUST request my approval before fetch
 - 3.2. Most outputs in this CP are deliverables
 - 3.3. DON'T read `universal/profile.md` unless interest/hobby needed
+- 3.4. `#job`/`#jop`: Don't search `universal/`; see below
 
 ---
 
@@ -38,6 +39,14 @@ GCL prompt & CL template/rules for non-consulting job applications.
 ccl.md
 `seek/context/ccl.md`
 CCL requirements for consulting job applications; built upon GCL.
+
+job.md
+`career/job.md`
+Read when `#job`.
+
+jop.md
+`career/jop.md`
+Read when `#jop`.
 
 ---
 

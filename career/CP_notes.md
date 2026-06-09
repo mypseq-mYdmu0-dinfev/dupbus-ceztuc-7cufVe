@@ -32,20 +32,8 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
     - Start from oldest unless told otherwise
     - Stop at each PAR completion
 
-## CC: Job Opportunity Processing (`#jop` —— a term usable by CC)
-- When prompted `#job`, after its actions in google.md:
-  - Identify as `/career/` CP session → read Unconditionals → apply CP prefix to comms files
-  - In the same `career_response_`, ask for approval to #jop "flagged" items
-  - For each, briefly tell you plan (see below)
-- #jop "Flagged" items (per google.md):
-  - **Employer manual invite** → find AR → read other files, open job post, and use CIC as needed → draft a professional reply → append invite + reply to AR
-  - **SEEK relay msg (truncated)** → ask user for full content → process as above
-  - **Pending actions** → assess if URL is safe (STOP if not) → open via CIC → find AR → read other files, open job post, and use CIC as needed → pre-fill all fields (mind char limit; revise if over) → STOP before Submit → append questions + pre-filled answers to AR
-  - For reply, start w/ "Dear Hiring Manager" unless sender name is disclosed
-  - My availability = current_TS + 72h → next 3pm on a working day
-  - Ensure outputs are in corresponding AR, not `response_`
-  - Appending to AR: Create `## 7. Engagements` `### Employer Reply` `### User Reply`
-  - When all done, briefly tell your thoughts in `response_`
+## CC: Job Opportunity Processing (`#jop`)
+- Spec moved to `career/jop.md` (CC-exclusive; read when `#job` flags items or `#jop` is prompted). Route via `career/CP_index_cc.md` § 3.4.
 
 ## Remarks
 - IMPORTANT: NO FALSE CLAIMS; e.g. ✅ `16⁺yr in content & project mgmt` (generic) | ❌ `16⁺yr in [industry]/[other_domain]` (specific); check CP files (e.g. pro_profile.md § Domain Exp)

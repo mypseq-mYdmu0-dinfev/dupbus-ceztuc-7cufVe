@@ -30,6 +30,10 @@ ccl.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/0e5f5495113984219ff9cc1c41d3113c79fde579/seek/context/ccl.md
 CCL requirements for consulting job applications; built upon GCL.
 
+job.md
+[ADD raw GitHub URL after committing `career/job.md` —— pinned-commit form like the others]
+Fetch when `#job`.
+
 ---
 
 ## ATS Resumes
