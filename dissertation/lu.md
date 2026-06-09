@@ -359,3 +359,38 @@ Thank you again for your continued patience and guidance. I remain humbly waitin
 
 Warm Regards,
 Culous Yu
+
+### Log 16
+
+On 9 Jun 2026, at 11:25, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Hi, Culous,
+
+Your research question - "To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for KM practice to address the management challenge of CYC as a startup MCF.
+
+May not be valid. This CYC is a fictional company. How do you address its management challenges, which you need to collect data from this company to be able to achieve the research aim? 
+
+In my comments, I gave you an example - The research aim is to investigate how Tall Poppy Syndrome influences workplace dynamics in Australian knowledge-based firms, in order to inform the organisational design and people management strategies of the newly established consulting firm CYC.
+
+You do not need to adopt this research aim, but the underlying logic must remain the same: study Australian KBF practices or the people who work in this industry, their experiences and perceptions, to inform CYC in developing effective strategies to manage this issue. 
+
+As to whether the old research questions are working, I need to see the revised research aim first. 
+
+In terms of sampling, please consider the following points. 
+
+First, yes, you should recruit no more than one participant from each organisation. This will help avoid the need for organisational approval and ensure that the study focuses on individual perspectives rather than organisational practices.
+
+Second, participants should be asked to discuss their personal experiences and perceptions of employee engagement and retention rather than formally representing the practices of their current employer. They may draw upon experiences from their current or previous organisations; however, the focus of the interview should remain on their individual views and experiences. If the research is designed to evaluate or investigate the practices of a participant's current organisation, institutional authorisation may be required, which the student is seeking to avoid.
+
+Third, consider whether you want to include everyone working in this industry as the pool for sample selection. People in different job roles may introduce excessive variation within a small sample. Given that the study intends to interview only 6-8 participants, meaningful comparison may be difficult if participants occupy substantially different roles. It would be more appropriate to identify a specific role or occupational group that is relevant to the fictional company's need (for example, young staff, more experienced staff, managers? It depends on how you will formulate your research question and who's perspective you want to study) and recruit participants with similar professional responsibilities. This would improve comparability across interviews and strengthen the thematic analysis.
+
+Thus, the study should focus on understanding the experiences and expectations of individuals working in a specific role or belonging to a specific group in the Australian KBF firms. The findings can then be used to inform the strategy development regarding TPS influences team cohesion and knowledge governance in this CYC. 
+
+As for the conceptual framework, I feel what you did is, in reality, a theoretical framework. That is, use the key themes from the research questions to identify theories and literature, and then use these theories and literature to identify the key factors relevant to each research question. Then, use these factors to develop a theoretical framework. These themes identified from the literature review will be used to analyse the interview results. 
+
+As to other amendments you plan to do, please follow your thoughts. I will review them in your draft. 
+
+Should you have any questions, please let me know. Otherwise, I look forward to reviewing your draft proposal. 
+
+Regards,
+Lu
