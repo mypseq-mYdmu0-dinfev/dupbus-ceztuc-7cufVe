@@ -46,11 +46,13 @@
 - CP = Claude Project. Each CP may involve multiple projects and vice versa, e.g. I might say “Refer to files in this CP, draft...”
 - CIC = Claude in Chrome (MCP)
 - CC = Claude Code; "Code" tab of CAI (not terminal); addressed as `she/her`
+- `CC:` = disregard if you're not CC
+- `Non-CC:` = disregard if you're CC
 - CW = Claude Cowork (don't conflate w/ CWI); "Cowork" tab of CAI
 - CWI = Claude Web Interface (Claude Chat; https://claude.ai), allowing multi-window chats; if CIC failed, you're CWI
 - CAI = Claude (Mac) App Interface (Official), allowing more connectors; suggest continuing in CAI whenever extensive functions (e.g. CIC, Apple Notes) may help
 - OTG = on the go
 - OTGC = OTG Claude iPhone App (≈CWI)
-- #r = past/perfect tense of "read"; MUST use it to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)
+- #r = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)
 - directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen
 - I/O = input/output
