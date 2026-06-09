@@ -10,7 +10,7 @@ rules.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/527c71e498ee46ab87ef8acad32874d7e72b0eb0/universal/rules_otg.md
 
 google.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/97ff5501f644ba1d3623e7236a8114a01e74a749/universal/google.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/524c4fce387dae41d4009b477c4c2ef6307d0679/universal/google.md
 
 profile.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fab59f7567b81f3f1a794a6f0ca3b10b26b90237/universal/profile.md
@@ -58,4 +58,4 @@ buy.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8e27e8f99d3bb54578956c23b0892f96fbc49ad9/universal/buy.md
 
 close.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ca04e3338e9b23878a4edeb5b19907315bb311cf/universal/close.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d4a4a41c4594506ad39c0abd156b60359d9a56c7/universal/close.md
