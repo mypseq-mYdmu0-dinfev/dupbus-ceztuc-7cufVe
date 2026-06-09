@@ -10,7 +10,7 @@ rules.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/527c71e498ee46ab87ef8acad32874d7e72b0eb0/universal/rules_otg.md
 
 google.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/524c4fce387dae41d4009b477c4c2ef6307d0679/universal/google.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/aac1b0a8fcc9f6c81c61579e00c92ff8a296dc91/universal/google.md
 
 profile.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fab59f7567b81f3f1a794a6f0ca3b10b26b90237/universal/profile.md
