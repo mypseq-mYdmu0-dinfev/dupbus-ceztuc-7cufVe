@@ -11,7 +11,7 @@
 ## Core Files
 
 CP_notes.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e103a501d732d281677f32dca46f04858cec4215/career/CP_notes.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/524c4fce387dae41d4009b477c4c2ef6307d0679/career/CP_notes.md
 Purpose & remarks of this CP.
 
 pro_profile.md
