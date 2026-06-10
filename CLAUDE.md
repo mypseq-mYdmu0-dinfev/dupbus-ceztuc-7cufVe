@@ -127,7 +127,7 @@
   - 6.4.2. Read the CP's `CP_index_cc.md` via local path (never via GH)
 
 7. Conditionals
-- 7.1. Read (in `/universal/` unless specified) only when conditions are met; declare (per §3.2.1)
+- 7.1. Read (in `/universal/` unless specified) when conditions are met; declare (per §3.2.1)
 - 7.2. Actively scan input both explicitly & **implicitly** for conditions below:
 
 | File | Condition |
@@ -135,7 +135,7 @@
 | `google.md` | On personal email/calendar; OR `#job` mentioned |
 | `profile.md` | User's personal background needed |
 | `seek/context/pro_profile.md` | User's professional background needed |
-| `cic.md` | MUST read right before starting any CIC ops, unless already |
+| `cic.md` | MUST read right before starting any CIC ops, unless already & intact |
 | `writing.md` | On deliverables; OR "casual"/"whatsapp" style mentioned |
 | `coding.md` | `#replace` mentioned (even not coding); OR multi-script coding |
 | `plan.md` | No `DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
