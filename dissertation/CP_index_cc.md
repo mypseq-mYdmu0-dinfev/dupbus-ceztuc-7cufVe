@@ -54,10 +54,6 @@ Seminars.md / Seminars (distilled).md
 `dissertation/MGTK751_Seminars_distilled.md`
 Distilled seminar transcripts.
 
-A1_Grade.md
-`dissertation/MGTK751_A1_grade.md`
-By Enis (not DA).
-
 ---
 
 ## Created Files
@@ -93,3 +89,24 @@ Distilled DA meeting transcripts.
 A1R.md
 `dissertation/MGTK751_A1R.md`
 Refined A1 sent to Lu.
+
+---
+
+## Archive
+*Historical; read only if specifically needed.*
+
+A1_DevPlan.md
+`dissertation/archive/MGTK751_A1_DevPlan.md`
+Superseded A1-era dev plan (pre-A1R).
+
+A1_Grade.md
+`dissertation/archive/MGTK751_A1_grade.md`
+A1 grade by Enis (A1 marker ≠ A2/A3 marker).
+
+addenda.md (AD01–AD07)
+`dissertation/addenda/MGTK751_Addendum_AD[no.].md`
+Externalised pre-A1R DevPlan addenda; one file per AD; AD08⁺ remain inline in DevPlan PART C.
+
+Formative A1 set + misc
+`dissertation/archive/`
+Formative A1 draft (`MGTK751_A1_formative.md`) + its overview/feedback/email, `MGTK751_A1_Template.md`, and old combined `MGTK751 Official Files _ full _ inc A1-3.md`; all superseded.
