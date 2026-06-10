@@ -95,11 +95,3 @@ Superseded A1-era dev plan (pre-A1R).
 A1_Grade.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/archive/MGTK751_A1_grade.md
 A1 grade by Enis (A1 marker ≠ A2/A3 marker).
-
-addenda.md (AD01–AD07)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/addenda/MGTK751_Addendum_AD[no.].md
-Externalised pre-A1R DevPlan addenda; one file per AD ([no.] = 01–07); AD08⁺ remain inline in DevPlan.
-
-Formative A1 set + misc
-Base: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/archive/
-Append a filename: `MGTK751_A1_formative.md`, `MGTK751_A1_formative_overview.md`, `MGTK751_A1_formative_feedback.md`, `MGTK751_A1_formative_email.md`, `MGTK751_A1_Template.md`, or `MGTK751%20Official%20Files%20_%20full%20_%20inc%20A1-3.md` (spaces = %20); all superseded.
