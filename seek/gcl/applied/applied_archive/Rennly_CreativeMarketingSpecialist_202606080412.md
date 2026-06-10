@@ -49,7 +49,7 @@
 - ✅ PropTech growth sector; multiple brands = diverse project exposure
 - ⚠️ Video editing essential — Culous has working knowledge but no expert Adobe video credentials; honest framing required
 
-## 5. Anticipated Interviewer Questions
+## 5A. Interviewer Questions
 
 1. Tell me about yourself / walk me through your background.
 2. Why are you interested in this role, and why Rennly/HOME789 specifically?
@@ -67,7 +67,7 @@
 14. When are you available to start?
 15. Do you have the right to work in Australia?
 
-## 8. Questions to Ask
+## 5B. Questions to Ask
 
 1. Is the Mandarin requirement primarily for producing content targeting Chinese-speaking buyers (e.g. Rednote, WeChat), or also for internal team communication?
 2. How much of the role involves complex video production vs. shorter social media clips, and is there a preferred primary tool?
