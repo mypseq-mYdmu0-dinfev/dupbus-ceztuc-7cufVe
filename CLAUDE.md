@@ -183,8 +183,8 @@
     - 8.8.3.5. Remind user to manually delete
   - 8.8.4. ONLY if §8.8.1–3 failed:
     - 8.8.4.1. Run `sysctl -n hw.model`
-    - 8.8.4.2. If result=`Mac14,12` (WS), stop & alert
-    - 8.8.4.2. If result≠`Mac14,12` (OTGD), see below
+    - 8.8.4.2. If result=`Mac14,12` (WSM), `find` across storage
+    - 8.8.4.2. If result≠`Mac14,12` (OTGM), see below
     - 8.8.4.3. §8.8.1: '/Users/culous/Downloads'
     - 8.8.4.4. §8.8.2: '/Users/culous/Desktop'
     - 8.8.4.5. §8.8.3: '/Users/culous/Documents/PDF Conversion'
