@@ -3,7 +3,7 @@
 
 ## Trigger
 - `#jop` (CC-usable term, not just user) OR any flagged items from `#job`
-- Before processing, request approval in the same `career_response_`; per item, state plan briefly.
+- Before start, request approval in the same `career_response_`; per item, state plan briefly.
 
 ## Processing order
 - Follow `#job` result order: **importance, then recency (NEWEST first)** —— NOT oldest first.
@@ -27,8 +27,8 @@
 
 ## Answer rules
 - Salary: AR Score < 85: ~$75,000/yr (~$1,438/wk); Score ≥ 85 or Fully Remote Work: ~$60,000/yr (~$1,151/wk); Select nearest available option ≤ target; never above.
-- Visa: 485 Graduate Work Visa
-- Full Driver's License: Yes
+- Visa: 485 Graduate Work Visa (expiring 17 March 2031)
+- Full Driver's License: Yes (Manual)
 - Email (if asked): culousyu@gmail.com (NEVER use c@CulousYu.com despite in resumes)
 - Availability to start working = current_TS + 72h + 1 week → next Monday
 - Anything else: read `seek/context/ajap.md` § AJAP Handling Notes
