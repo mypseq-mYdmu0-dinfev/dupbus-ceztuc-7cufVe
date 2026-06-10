@@ -25,7 +25,8 @@ I've connected my Google Drive, Mail, and Calendar. If access failed, STOP & ale
   - `Label_1` = `Unimportant` (Non-actionable; e.g. SEEK Submitted/Viewed/Expired/Rejected)
   - `Label_2` = `Actioning` (in progress)
   - `Label_3` = `Actioned` (done)
-- ANY Scan: MUST exclude them via `-label:Label_1 -label:Label_2 -label:Label_3` in the query
+- ANY Scan: MUST exclude these via label **names** in the query: `-label:Unimportant -label:Actioning -label:Actioned`
+  - ⚠️ Gmail's `label:` search operator matches display NAME, not `Label_1/2/3` ID. Querying `-label:Label_1` matches nothing → labelled items surface & waste tokens. Always use names above. (Returned `labelIds` are still IDs; decode via the map for reading, but query by name.)
 - ALL Claude email-actioning tasks:
   - NEVER archive; thread stays in `INBOX`.
   - On START actioning a thread → add `Label_2`.

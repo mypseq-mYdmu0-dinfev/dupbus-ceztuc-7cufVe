@@ -8,7 +8,7 @@
 - Criteria: responding / related to submitted job applications; or signal job interview / offer.
 - Window: 1 week unless specified.
 - Sender: any (not just SEEK).
-- MUST disregard by `-label:Label_1 -label:Label_2 -label:Label_3` (DON'T read any).
+- MUST exclude labels (per google.md); DON'T read any excluded.
 - Timezone: Gmail filters use UTC; fetch current SYD offset, adjust date boundaries.
 - Order: importance, then recency.
 
