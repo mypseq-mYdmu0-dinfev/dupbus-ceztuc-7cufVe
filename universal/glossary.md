@@ -32,6 +32,7 @@
 - Mn = million
 - Bn = billion
 - WS = workstation (room), aka home office
+- WSM = WS Machine (Mac Mini M2 Pro)
 - TrV = Trading View (trading platform)
 - MS/MSFT = Microsoft
 - IB/IBKR = Interactive Brokers
@@ -55,6 +56,8 @@
 - CAI = Claude (Mac) App Interface (Official), allowing more connectors; suggest continuing in CAI whenever extensive functions (e.g. CIC, Apple Notes) may help
 - OTG = on the go
 - OTGC = OTG Claude iPhone App (≈CWI)
+- OTGD = OTG Device (iPhone 13 mini/i13m)
+- OTGM = OTG Machine (MacBook Air M1)
 - #r = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)
 - directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen
 - I/O = input/output
