@@ -184,10 +184,10 @@
   - 8.8.4. ONLY if §8.8.1–3 failed:
     - 8.8.4.1. Run `sysctl -n hw.model`
     - 8.8.4.2. If result=`Mac14,12` (WSM), `find` across storage
-    - 8.8.4.2. If result≠`Mac14,12` (OTGM), see below
-    - 8.8.4.3. §8.8.1: '/Users/culous/Downloads'
-    - 8.8.4.4. §8.8.2: '/Users/culous/Desktop'
-    - 8.8.4.5. §8.8.3: '/Users/culous/Documents/PDF Conversion'
+    - 8.8.4.3. If result≠`Mac14,12` (OTGM), see below
+    - 8.8.4.4. §8.8.1: '/Users/culous/Downloads'
+    - 8.8.4.5. §8.8.2: '/Users/culous/Desktop'
+    - 8.8.4.6. §8.8.3: '/Users/culous/Documents/PDF Conversion'
 
 9. Special Commands (user-only unless stated otherwise)
 - 9.1. `override` —— exception to "no chat text" or other restrictions for that single turn only
