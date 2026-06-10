@@ -11,7 +11,11 @@
   - 1.2.1. `universal/glossary.md` —— terminology & definitions
   - 1.2.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
 - 1.3. Declare in chat (per §3.2.1) w/ other reads (incl. CLAUDE.md) on a single line
-- 1.4. Monthly Reminder (up to once per session; silently process w/ NO chat text): if current month's folder has ≤5 files + any previous month's folder exists in `/sessions/` but lacks a `wrap_` file → remind user in 1st `response_`, otherwise don't mention
+- 1.4. Monthly Reminder
+  - 1.4.1. Up to once per session; silent process w/ NO chat text
+  - 1.4.2. Only if current month's folder (`sessions/[YYYY]/[YYYYMM]/`) has ≤5 files → §1.4.3
+  - 1.4.3. Check last month's folder has a `wrap_` file, only if no → §1.4.4
+  - 1.4.4. Remind user in 1st `response_`
 
 2. Conventions
 - 2.1. ALWAYS use:
@@ -177,6 +181,13 @@
     - 8.8.3.3. `find` & read converted PDF in same directory
     - 8.8.3.4. Void duplicated files & converted PDF
     - 8.8.3.5. Remind user to manually delete
+  - 8.8.4. ONLY if §8.8.1–3 failed:
+    - 8.8.4.1. Run `sysctl -n hw.model`
+    - 8.8.4.2. If result=`Mac14,12` (WS), stop & alert
+    - 8.8.4.2. If result≠`Mac14,12` (OTGD), see below
+    - 8.8.4.3. §8.8.1: '/Users/culous/Downloads'
+    - 8.8.4.4. §8.8.2: '/Users/culous/Desktop'
+    - 8.8.4.5. §8.8.3: '/Users/culous/Documents/PDF Conversion'
 
 9. Special Commands (user-only unless stated otherwise)
 - 9.1. `override` —— exception to "no chat text" or other restrictions for that single turn only
