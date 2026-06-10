@@ -397,3 +397,42 @@ Should you have any questions, please let me know. Otherwise, I look forward to 
 
 Regards,
 Lu
+### Log 17
+
+*DRAFT —— review/edit in place; add send timestamp on dispatch.*
+
+Hello Lu,
+
+Thank you very much for your considered reply, and for the clarity it has brought. On reflection I believe we are pursuing precisely the same logic, and that the remaining gap is one of wording on my part, which I am glad to close.
+
+**CYC and its management challenge**
+
+May I first clarify the nature of CYC, since it frames everything that follows. CYC is a startup management consulting firm (MCF) whose service offering is knowledge management (KM) consulting to knowledge-based firms (KBFs). It is founded on existing practitioner expertise, yet that expertise must be consolidated into a rigorous, evidence-based foundation before it can be relied upon as a consulting product. CYC's management challenge is therefore to strengthen that empirical foundation, which is exactly what this study provides. A study of organisational design or people-management strategy would be premature, as CYC has no operating workforce of its own to design around; its pressing concern is the knowledge on which its advisory practice will stand. I will state this explicitly at the opening of the revised proposal so the context is unmistakable before the aim is read.
+
+**Revised research aim**
+
+With that context, I have revised the aim to:
+
+*To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice.*
+
+The study thus examines the experiences and perceptions of individuals working in Australian KBFs, and those findings inform CYC's own consulting practice, which I hope captures the underlying logic you set out. I have removed the earlier reference to addressing CYC's challenge directly, since the data are drawn from the wider industry rather than from CYC itself. I am grateful that your feedback prompted this sharper formulation.
+
+**Research questions**
+
+I believe the existing pair continues to serve this aim, with RQ1 examining the conditions that shape TPS and RQ2 the experience of those dynamics among team members. Now that the aim is settled I would welcome your view, and will refine their wording accordingly.
+
+**Research participants**
+
+I am glad we are aligned that recruitment is one participant per organisation, with each speaking only to their own experiences and perceptions rather than representing any employer's practices. I take your point on comparability and will aim to recruit participants of broadly similar professional roles so far as access reasonably allows. In candour, as an individual researcher I cannot guarantee in advance the precise composition of a voluntary sample, so I will pursue the most comparable cohort feasible whilst holding the minimum of six, and will reflect this honestly in the methodology.
+
+**Framework**
+
+I should welcome one point of clarification so that I revise this correctly the first time. You observed that what I presented reads, in effect, as a theoretical framework. Would you prefer that I develop it as a theoretical framework in the manner you described, carrying themes from the research questions through the relevant theories and literature into the factors that will guide the analysis, or that I retain and refine a conceptual framework? I am keen to build the right one before returning the draft.
+
+**Other amendments**
+
+These, along with everything above, will appear in the revised draft for your review. Thank you again for your patient guidance, which has genuinely sharpened the work. Should any point above benefit from further discussion, I am content to continue by email.
+
+Warm Regards,
+Culous Yu
+(MGTK751)
