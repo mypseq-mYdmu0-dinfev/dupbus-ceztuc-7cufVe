@@ -60,3 +60,4 @@
 - I/O = input/output
 - SR = `<system-reminder>` (injected file-change notice); e.g. "Note: `<path>` was modified, ..."
 - QMM = `query_` my msg = follow root CLAUDE.md §3.6
+- r/w = read/write
