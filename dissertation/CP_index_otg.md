@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b8
 Brief overview.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a36d7cee65ff0a18140522f0ee98b85c18b8062f/dissertation/MGTK751_DevPlan.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/100a025464e358c9814fc34c693262eda9ce2b51/dissertation/MGTK751_DevPlan.md
 Always follow.
 
 ---
@@ -72,7 +72,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b8
 Submitted real A1.
 
 Lu.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/45f4c36edb15aa03dedd9dfcc1ce82de74053f91/dissertation/lu.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d5aba37b990959ce1de39be9815972310bc68b82/dissertation/lu.md
 Synthesised profile of matched DA (A2/A3 marker).
 
 Meetings.md / Meetings (distilled).md
@@ -89,9 +89,9 @@ Refined A1 sent to Lu.
 *Historical; fetch only if specifically needed. URLs use the `main` branch (non-SHA) pending the next #sync to pin them.*
 
 A1_DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/archive/MGTK751_A1_DevPlan.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b0bf45c538bfe12c69a9b87ac1ca4b64f9e95000/dissertation/archive/MGTK751_A1_DevPlan.md
 Superseded A1-era dev plan (pre-A1R).
 
 A1_Grade.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/archive/MGTK751_A1_grade.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b0bf45c538bfe12c69a9b87ac1ca4b64f9e95000/dissertation/archive/MGTK751_A1_grade.md
 A1 grade by Enis (A1 marker ≠ A2/A3 marker).
