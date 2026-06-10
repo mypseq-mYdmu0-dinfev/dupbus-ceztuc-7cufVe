@@ -15,7 +15,7 @@
 - Strongly avoids phone calls (meeting=acceptable but not preferred); prefers text/email
 - Investing mainly GLD, SPY, XOM, MSTR, Mag 7 with IBKR via TrV
 - Owns 100+ IoT across Mi Home, Grid Connect, SwitchBot, Tuya, Kogan; most centralised with Google Home and SmartThings
-- Daily use Mac Mini M2 Pro & sometimes MacBook Air M1 OTG
+- Daily use Mac Mini M2 Pro (WSM) & sometimes MacBook Air M1 (OTGM)
 
 ---
 
@@ -44,14 +44,14 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ## Devices
 
-- iPhone 13 mini (i13m): daily
+- iPhone 13 mini (i13m/OTGD): daily
 - Samsung Fold2: occasional
 - Mi Watch S4 mini (41mm, silvery titanium bracelet): daily, mainly for notifications/workouts
-- Mac Mini M2 Pro: always on, with Fury Renegade 2TB NVMe (everything except apps) and WD Green 2TB NVMe (Time Machine only), Magic Trackpad/Keyboard
-- MacBook Air M1: OTG only
-- Galaxy Buds+: for Mac Mini only
+- Mac Mini M2 Pro (WSM): always on, with Fury Renegade 2TB NVMe (everything except apps) & WD Green 2TB NVMe (Time Machine only), Magic Trackpad/Keyboard
+- MacBook Air M1 (OTGM): OTG only
+- Galaxy Buds+: for WSM only
 - Galaxy Buds Live: for TV only
-- Galaxy Buds Pro 2: OTG only
+- Galaxy Buds Pro 2: OTGD/M only
 
 ---
 
