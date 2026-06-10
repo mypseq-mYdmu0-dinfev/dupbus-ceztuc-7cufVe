@@ -7,16 +7,17 @@
 ## Scope
 - Window: 1 week unless specified.
 - Sender: any (not just SEEK).
-- MUST add `-label:Label_1 -label:Label_2 -label:Label_3`.
+- MUST disregard by `-label:Label_1 -label:Label_2 -label:Label_3` (DON'T read any).
 - Timezone: Gmail filters use UTC; fetch current SYD offset, adjust date boundaries.
 - Order: importance, then recency.
 
-## Exclude (application confirmations)
+## Exclude (completely disregard; DON'T include in response)
 - SEEK official "Your application was successfully submitted" from `noreply@s.seek.com.au`.
 - Employer auto-ack: received / will be in touch / find out more / will review / in process / in progress / track application / assessing.
+- Anything labelled or non-job-related.
 
 ## Filter & Note
-- Spam/Promo: signals inc. no subject/title, all caps (e.g. "LOADS", "FREE"), double exclamation (`!!`), podcast, and other marketing CTA elements
+- Spam/Promo: job-related w/ signals inc. no subject/title, all caps (e.g. "LOADS", "FREE"), double exclamation (`!!`), podcast, and other marketing CTA elements
 - Post-Flag Rejection: if an email was flagged (see below) but a subsequent email from the same company (might not be identical email address) implies rejection
 - CC: The concerned job's AR is in `pending/` (user to process in PAR session, not #job)
 - All Filtered: Briefly note at end for user review: sender email address, title (if any), why filtered
@@ -29,7 +30,14 @@
 - Pending action (even automatic): e.g. "complete your application", "a few more questions".
 - Employer manual (judge): "move forward", "invite".
 
-## CC only —— after scan
+## Avoid Revisiting
+- To avoid surfacing in next #job, directly label:
+  - § Filter & Note → Label_3
+  - § Include → Label_3
+  - § Flag → Label_2
+- Goal: If `#job` again, assuming no new emails, no results should surface since all labelled.
+
+## CC: Post-label `#jop`
 If & ONLY if any flagged items (in order):
 - Identify session as `/career/` CP
 - Read CP Unconditionals
