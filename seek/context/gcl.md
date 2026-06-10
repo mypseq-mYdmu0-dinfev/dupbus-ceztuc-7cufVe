@@ -30,9 +30,9 @@ Identify key requirements & qualifications from given content only. Provide a de
 
 Identify anything special about this position or company (& group) that I should be aware of, e.g. employee complaints, PR/reputation problems. Use bullet pt & emoji e.g. ⚠️
 
-### 5. Interview Questions
+### 5. Interviewer Questions
 
-Based on given content/web search/my bg, suggest 1-3 Qs potentially asked by interviewer.
+Based on given content/web search/my bg, predict 1-3 Qs potentially asked by interviewer.
 
 ### 6. Cover Letter (CL)
 
