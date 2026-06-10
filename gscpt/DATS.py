@@ -136,7 +136,7 @@ def main():
         else:
             all_targets += tg
     for t, err in blocked:
-        print(f"[skipped type: {t}] {err}\n")
+        print(f"⚠️ [skipped type: {t}] {err}\n")
 
     dtmap = {p: dt for p, ts, dt in all_targets}
     to_fix = []
@@ -146,11 +146,11 @@ def main():
             to_fix.append((p, ts, cur, abs(cur - int(dt.timestamp()))))
 
     if not to_fix:
-        print(f"DATS: nothing to fix ({len(all_targets)} files already aligned).")
+        print(f"☑️ DATS: nothing to fix ({len(all_targets)} files already aligned).")
         return
 
     if len(to_fix) >= 10:
-        print(f"DATS: {len(to_fix)} files to fix (>=10).")
+        print(f"DATS: {len(to_fix)} files to fix (≥10).")
         if dry:
             print("(dry-run) would write DATS_<ts>.txt and prompt. Files:")
             for x in to_fix:
@@ -160,9 +160,9 @@ def main():
         with open(txt, "w") as fh:
             for x in to_fix:
                 fh.write(fmt(x) + "\n")
-        print(f"List written to:\n  {txt}")
+        print(f"👀 List written to:\n  {txt}")
         if input("👉🏻 Review it, then type yes to fix ALL: ").strip() != "yes":
-            print("Aborted; changed nothing.")
+            print("⚠️ Aborted; changed nothing.")
             return
         for x in to_fix:
             set_added(x[0], dtmap[x[0]])
@@ -182,19 +182,19 @@ def main():
         for x in near:
             set_added(x[0], dtmap[x[0]])
         if near:
-            print(f"Fixed {len(near)} file(s) (<24h):")
+            print(f"✅ Fixed {len(near)} file(s) (<24h):")
             for x in near:
                 print("  " + fmt(x))
         if far:
-            print(f"{len(far)} file(s) are >=24h off — review:")
+            print(f"{len(far)} file(s) are ≥24h off — review:")
             for x in far:
                 print("  " + fmt(x))
             if input("👉🏻 Type yes to also fix these: ").strip() == "yes":
                 for x in far:
                     set_added(x[0], dtmap[x[0]])
-                print(f"Fixed {len(far)} file(s).")
+                print(f"✅ Fixed {len(far)} file(s).")
             else:
-                print("Left the >=24h files unchanged.")
+                print("☑️ Left the ≥24h files unchanged.")
 
 
 if __name__ == "__main__":
