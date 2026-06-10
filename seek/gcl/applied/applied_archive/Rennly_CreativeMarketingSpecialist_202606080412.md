@@ -23,7 +23,7 @@
 
 ## 2. Requirements
 
-- ❌ Strong video editing (essential): Premiere Pro / After Effects / CapCut — no documented expert video editing
+- ✅ Strong video editing (essential): 11⁺ yr as video producer/director; DaVinci Resolve (primary), Premiere Pro (since 2013); framing note: position as supporting capability, not headline — role is marketing, not multimedia production
 - ✅ Social media content management across Instagram, LinkedIn, Rednote — strong background
 - ✅ EDM/email marketing campaigns (Brevo or similar) — digital campaign management experience
 - ✅ Digital marketing — SEEK profile match
@@ -49,11 +49,29 @@
 - ✅ PropTech growth sector; multiple brands = diverse project exposure
 - ⚠️ Video editing essential — Culous has working knowledge but no expert Adobe video credentials; honest framing required
 
-## 5. Interview Questions
+## 5. Anticipated Interviewer Questions
 
-1. Mandarin is listed as a mandatory requirement — does this role primarily involve producing Mandarin-language content for Chinese-speaking audiences (e.g. Rednote, WeChat), or is it needed for internal team communication?
-2. The role mentions Premiere Pro, After Effects, and CapCut — is there a preferred primary tool, and how much of the role involves complex video production versus shorter social media clips?
-3. Given Rennly's flat management structure, how much creative autonomy does this role have in proposing and testing new content formats and campaign ideas?
+1. Tell me about yourself / walk me through your background.
+2. Why are you interested in this role, and why Rennly/HOME789 specifically?
+3. You've held senior management roles — why a Specialist position?
+4. Can you demonstrate your Mandarin? (may switch to Mandarin directly on the spot)
+5. Have you used Rednote (小红书)? How would you approach it for property marketing?
+6. What social media platforms have you managed, and what kind of content did you create?
+7. Walk me through a marketing campaign you ran from brief to delivery.
+8. What video editing tools do you use, and how experienced are you?
+9. Have you worked with EDM platforms? Which ones, and what did you do with them?
+10. How do you manage competing deadlines across multiple projects?
+11. What do you know about project marketing / property development marketing?
+12. Can you walk us through your portfolio?
+13. What salary are you expecting?
+14. When are you available to start?
+15. Do you have the right to work in Australia?
+
+## 8. Questions to Ask
+
+1. Is the Mandarin requirement primarily for producing content targeting Chinese-speaking buyers (e.g. Rednote, WeChat), or also for internal team communication?
+2. How much of the role involves complex video production vs. shorter social media clips, and is there a preferred primary tool?
+3. Given the flat management structure, how much creative autonomy does the role have in proposing and testing new content formats and campaign ideas?
 
 ## 6. Cover Letter
 
