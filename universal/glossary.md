@@ -48,7 +48,8 @@
 - CC = Claude Code; "Code" tab of CAI (not terminal); addressed as `she/her`
 - `CC:` = disregard if you're not CC
 - `Non-CC:` = disregard if you're CC
-- SA = sub-agent (most cases), or Service Agreement (niche cases)
+- MA = main agent (most cases), or moving average (niche cases)
+- SA = sub-agent (most cases), or service agreement (niche cases)
 - CW = Claude Cowork (don't conflate w/ CWI); "Cowork" tab of CAI
 - CWI = Claude Web Interface (Claude Chat; https://claude.ai), allowing multi-window chats; if CIC failed, you're CWI
 - CAI = Claude (Mac) App Interface (Official), allowing more connectors; suggest continuing in CAI whenever extensive functions (e.g. CIC, Apple Notes) may help

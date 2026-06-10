@@ -7,7 +7,7 @@ CIC = Claude in Chrome (Claude's connector/Chrome's extension), accessible via e
 - **CCIC** = Code-CIC, Claude's Mac app's "Code" tab; may config `.claude` files (e.g. hook); for **infinite** loop of programmed workflow (e.g. job application automation)
 - **WCIC** = Cowork-CIC, Claude's Mac app's "Cowork" tab; similar to BCIC but can r/w local files (see `cowork_[timestamp].md` below); for **long** tasks (~50 pages, technically unlimited)
 - All fully autonomous exc. ACIC; All via MCP exc. BCIC; All w/o any context exc. ACIC
-- CC: default CIC=CCIC; spawn SA to save session context window consumption if feasible (judge; e.g. SA pre-CIC context < SA post-CIC return)
+- CC: default CIC=CCIC; spawn SA to save context if feasible (judge; e.g. [SA briefing + SA return to main] < [direct CIC output to main])
 
 ---
 
