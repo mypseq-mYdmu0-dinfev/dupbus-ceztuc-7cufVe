@@ -116,7 +116,7 @@ Dear Elena,
 
 Thank you for reviewing my application for the Marketing & Growth Coordinator position and for inviting me to the first round of interviews.
 
-Next Tuesday (16 June 2026) works well for me. I would like to propose 3pm if possible. Please advise if that works and confirm if the interview location is Unit Q, 10-16 South St, Rydalmere NSW 2116. Kindly let me know if any preparation is expected or would be helpful.
+Next Tuesday (16 June 2026) works well for me. I would like to propose 3pm if possible. Please advise if that works and confirm the interview location is Unit Q, 10-16 South St, Rydalmere NSW 2116. Kindly let me know if any preparation is expected or would be helpful.
 
 Please let me know if any further information would assist you ahead of our conversation. I look forward to speaking with you.
 

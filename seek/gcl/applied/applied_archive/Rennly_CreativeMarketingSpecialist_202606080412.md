@@ -107,7 +107,7 @@ Dear Mary,
 
 Thank you for the invitation to interview for the Creative Marketing Specialist position. I would value the opportunity to meet you and your team in person at the Rhodes office.
 
-Friday suits me well. I would like to propose 3pm if possible. Please advise if that works and confirm if the interview location is Suite 4, Level 5, Building C, 1 Homebush Bay Drive, Rhodes NSW 2138. Kindly let me know if any preparation is expected or would be helpful.
+Friday suits me well. I would like to propose 3pm if possible. Please advise if that works and confirm the interview location is Suite 4, Level 5, Building C, 1 Homebush Bay Drive, Rhodes NSW 2138. Kindly let me know if any preparation is expected or would be helpful.
 
 Thank you so much for the opportunity.
 
