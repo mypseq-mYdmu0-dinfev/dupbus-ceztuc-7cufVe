@@ -25,7 +25,7 @@
 
 ## Reply rules
 - Open "Dear Hiring Manager" unless sender name disclosed.
-- My availability = current_TS + 72h → next 3pm on a working day.
+- My availability = current_TS + 72h → next 3pm on a working day (check my calendar).
 - Unless explicitly stated, always confirm interview location by quoting precise address.
 - Unless already explicitly instructed, always ask if any preparations would be expected/helpful.
 
@@ -34,7 +34,7 @@
 - Visa: 485 Graduate Work Visa (expiring 17 March 2031)
 - Full Driver's License: Yes (Manual)
 - Email (if asked): culousyu@gmail.com (NEVER use c@CulousYu.com despite in resumes)
-- Availability to start working = current_TS + 72h + 1 week → next Monday
+- Availability to start working = current_TS + 72h + 1 week → next Monday (check my calendar)
 - Anything else: read `seek/context/ajap.md` § AJAP Handling Notes
 
 ## AR output
