@@ -23,7 +23,7 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/0e5f5495113984219ff9cc1c41d3113c79fde579/seek/context/gcl.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/0bb343958ba3bf0d98602c533d059af0fb861122/seek/context/gcl.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/0e5f
 CCL requirements for consulting job applications; built upon GCL.
 
 job.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/89370d1a1cde8953b5bbe6d51bdeaeddf7414b15/career/job.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/266f8c19075bc61008ad4503df9523389fde9024/career/job.md
 Fetch when `#job`.
 
 ---
