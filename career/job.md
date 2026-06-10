@@ -2,9 +2,10 @@
 *Strict Prereq: `google.md`*
 
 ## Trigger
-- `#job` → scan Gmail for job-application / interview / offer signal.
+- `#job` → scan Gmail for criteria below.
 
 ## Scope
+- Criteria: responding / related to submitted job applications; or signal job interview / offer.
 - Window: 1 week unless specified.
 - Sender: any (not just SEEK).
 - MUST disregard by `-label:Label_1 -label:Label_2 -label:Label_3` (DON'T read any).
@@ -14,20 +15,21 @@
 ## Exclude (completely disregard; DON'T include in response)
 - SEEK official "Your application was successfully submitted" from `noreply@s.seek.com.au`.
 - Employer auto-ack: received / will be in touch / find out more / will review / in process / in progress / track application / assessing.
-- Anything labelled or non-job-related.
+- Anything criteria-unrelated / labelled BEFORE this session.
 
-## Filter & Note
-- Spam/Promo: job-related w/ signals inc. no subject/title, all caps (e.g. "LOADS", "FREE"), double exclamation (`!!`), podcast, and other marketing CTA elements
+## 👀 Filter (note very briefly)
+- Spam/Promo: criteria-related but w/ spam/promo signals inc. no subject/title, all caps (e.g. "LOADS", "FREE"), double exclamation (`!!`), podcast, and other marketing CTA elements
 - Post-Flag Rejection: if an email was flagged (see below) but a subsequent email from the same company (might not be identical email address) implies rejection
 - CC: The concerned job's AR is in `pending/` (user to process in PAR session, not #job)
 - All Filtered: Briefly note at end for user review: sender email address, title (if any), why filtered
 
-## Include (report briefly)
+## 🗑️ FYI (report briefly)
 - Progress update: e.g. "viewed".
 - Rejection: e.g. "haven't progressed".
 
-## Flag (actionable)
+## ⛳ Flag (actionable)
 - Pending action (even automatic): e.g. "complete your application", "a few more questions".
+- SEEK relay (body truncated): e.g. "... has responded to your application"
 - Employer manual (judge): "move forward", "invite".
 
 ## Avoid Revisiting
