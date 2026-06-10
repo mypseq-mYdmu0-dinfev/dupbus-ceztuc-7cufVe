@@ -16,20 +16,47 @@
 
 ## 1. Employer
 
-- Rennly Pty Ltd: growing AU PropTech group specialising in project marketing, property management, property sales, and property development; brands include Teamlink, HOME789, SBP
-- Rhodes, Sydney NSW; full-time; 2 days ago; low application volume
-- Flat management structure; values open communication, collaboration, teamwork; strong professional growth focus
-- Seeking Creative Marketing Specialist for content creation, social media management, EDM campaigns, and campaign execution
+**Group structure**
+- Rennly Pty Ltd: parent entity founded 2012; brands = HOME789 (B2B project marketing for developers), Teamlink (B2C property portal + app), SBP (unconfirmed); staff reported to work across all brands simultaneously under one salary — **not disclosed until day one** (per Glassdoor)
+- Revenue: ~$16.1M AUD (ZoomInfo estimate); 11–50 employees; all brands share the same Rhodes address
+
+**HOME789 specifically**
+- B2B project marketing agency: brand development, marketing strategy, digital marketing, lead generation for property developers; end-to-end from project inception to settlement
+- Long-standing developer clients: Deicorp (10⁺ yr relationship), ALAND, Coronation, Developcorp, Urban Property — credible client roster
+- Awards: 2025 REB Innovation Awards finalist (Innovator of the Year – Boutique); 2025 Urban Developer Urban Leader Awards finalist (Marketing) — finalist both times, did not win either
+
+**Team & structure**
+- Small marketing team: Digital Marketing Specialist (Angela Miao, joined Dec 2025), Marketing & Graphic Designer (Yichen Shi, joined Sep 2025); Creative Marketing Specialist = 3rd marketing hire
+- Strongly Chinese/Korean-skewing across visible staff (Kwak, Ko, Zhang, Lau, Kwon, Miao, Shi); consistent with Chinese/Korean buyer focus; Mary Shen = HR/Office Manager (Shen = Chinese surname)
+- Described as flat management in job ads; reality per Glassdoor contradicts this
+
+**Work mode**
+- Fully on-site, Rhodes; no hybrid or remote mentioned in any job ad or review
+
+**Competitive position**
+- Boutique specialist in off-the-plan/apartment project marketing; not a volume leader (doesn't appear in OpenLot top 5 NSW by estate count — different segment)
+- Niche edge: Chinese/Korean bilingual buyer network, channel sales, data-driven lead generation
+- Major apartment-market competitors (significantly larger): CBRE Residential, Colliers, Ray White Projects, JLL Residential
+
+**🚨 Glassdoor — Critical**
+- Score: **1.9/5** from 11 ratings; **5% recommend to a friend** (near-bottom of platform)
+- 1 review accessible without login (May 2026, rated 1.0 — "Do NOT intern here"):
+  - CEO described as verbally abusive: berates, yells, publicly insults staff; zero communication; constantly changes direction
+  - Uses AI-replacement threats as a management tool
+  - Staff required to work across 5 brands simultaneously; this is not disclosed until day one
+  - ~20 staff turnovers during reviewer's tenure (11–50 person company = near-total churn)
+  - No annual raises; minimum wage pay; no growth opportunities; chronic anxiety/burnout culture
+- 10 of 11 ratings gated behind Glassdoor login; aggregate 1.9/5 reflects all 11
 
 ## 2. Requirements
 
-- ✅ Strong video editing (essential): 11⁺ yr as video producer/director; DaVinci Resolve (primary), Premiere Pro (since 2013); framing note: position as supporting capability, not headline — role is marketing, not multimedia production
+- ⚠️ Strong video editing (essential): background is as producer/director (creative direction, not hands-on editing); active hands-on editing predates Creative Cloud era (pre-2012); heavy daily editing load = potential dealbreaker; AI video tools (CapCut AI, Runway etc.) — aware but zero hands-on experience; probe workload scope before/during interview
 - ✅ Social media content management across Instagram, LinkedIn, Rednote — strong background
 - ✅ EDM/email marketing campaigns (Brevo or similar) — digital campaign management experience
 - ✅ Digital marketing — SEEK profile match
 - ✅ Marketing asset library management — core strength
 - ✅ Multi-project management, deadline management — core strength
-- ✅ **Mandarin speaking and writing REQUIRED — Culous is native HK Traditional Chinese speaker** (16⁺ yr Chinese-speaking client portfolio: HK, Taiwan, China)
+- ✅ **Mandarin speaking and writing REQUIRED** — professional fluency in Mandarin (not native; native = Cantonese); written Chinese (Simplified + Traditional) fully capable; 16⁺ yr Chinese-speaking client portfolio: HK, Taiwan, China; sufficient for content creation and professional conversation
 - ✅ Portfolio required — Culous has Projects.CulousYu.com
 - ✅ Quick apply; full time; low application volume; PropTech/property marketing context
 
@@ -47,7 +74,7 @@
 - ✅ **Mandarin required** — rare mandatory requirement that directly matches Culous' native language; major differentiator in a competitive market
 - ✅ Low application volume — less competitive
 - ✅ PropTech growth sector; multiple brands = diverse project exposure
-- ⚠️ Video editing essential — Culous has working knowledge but no expert Adobe video credentials; honest framing required
+- ⚠️ Video editing essential — producer/director background (strategic, not hands-on editing); hands-on skills pre-date Creative Cloud era; if daily high-volume editing expected, this is a dealbreaker; probe scope in interview
 
 ## 5A. Interviewer Questions
 
@@ -70,7 +97,7 @@
 ## 5B. Questions to Ask
 
 1. Is the Mandarin requirement primarily for producing content targeting Chinese-speaking buyers (e.g. Rednote, WeChat), or also for internal team communication?
-2. How much of the role involves complex video production vs. shorter social media clips, and is there a preferred primary tool?
+2. How much of the role involves hands-on video editing day-to-day, and what volume is expected? Is there an existing editor, or is this role expected to handle all video production end-to-end?
 3. Given the flat management structure, how much creative autonomy does the role have in proposing and testing new content formats and campaign ideas?
 
 ## 6. Cover Letter
