@@ -79,3 +79,37 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Employer Reply
+*From Mary Shen (HR/Office Manager, HOME789 — Rennly brand), hr@home789.com.au, received 01:47 on 10/06/2026. Subject: "Application received for Creative Marketing Specialist".*
+
+Dear Culous,
+
+Your application is well-received.
+
+We would like to do a face-to-face interview with you at our Rhodes office.
+
+What is your availability this Friday, 12 June 2026?
+
+Looking forward to hearing from you.
+
+Kind Regards,
+MARY SHEN
+HR/Office Manager
+hr@home789.com.au | +61 2 9698 8818
+Suite 4, Level 5, Building C, 1 Homebush Bay Drive, Rhodes NSW 2138
+
+### User Reply
+
+Dear Mary,
+
+Thank you for the invitation to interview for the Creative Marketing Specialist position. I would value the opportunity to meet you and your team in person at the Rhodes office.
+
+Friday suits me well. I would like to propose 3pm if possible. Please advise if that works and confirm if the interview location is Suite 4, Level 5, Building C, 1 Homebush Bay Drive, Rhodes NSW 2138. Kindly let me know if any preparation is expected or would be helpful.
+
+Thank you so much for the opportunity.
+
+Kind regards,
+Culous Yu

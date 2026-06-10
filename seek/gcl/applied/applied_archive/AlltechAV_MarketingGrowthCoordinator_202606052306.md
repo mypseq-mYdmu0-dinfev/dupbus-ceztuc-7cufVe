@@ -93,3 +93,32 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Employer Reply
+*From Elena Melnykova (Alltech AV), via SEEK relay noreply@seek.com.au, received 06:37 on 09/06/2026. Subject: "Alltech AV - Marketing & Growth Coordinator".*
+
+Hi Culous,
+
+I've had a look over your Resume & Cover Letter and was interested in hearing more. I would like to offer you to proceed to the first round of interviews.
+
+Here are some options for times:
+Thursday 11th - After 4pm
+Monday 15th - After 10am
+Tuesday 16th - After 1pm
+
+If there's any further information you'd like to share with me in the mean time, let me know.
+
+### User Reply
+
+Dear Elena,
+
+Thank you for reviewing my application for the Marketing & Growth Coordinator position and for inviting me to the first round of interviews.
+
+Next Tuesday (16 June 2026) works well for me. I would like to propose 3pm if possible. Please advise if that works and confirm if the interview location is Unit Q, 10-16 South St, Rydalmere NSW 2116. Kindly let me know if any preparation is expected or would be helpful.
+
+Please let me know if any further information would assist you ahead of our conversation. I look forward to speaking with you.
+
+Kind regards,
+Culous Yu
