@@ -21,8 +21,8 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/512c
 writing.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a2c04a7b89a1ad70aaef92cc6962fc2707bf96e6/universal/writing.md
 
-coding.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/4433eaf5dc0565d7d4b18a6744f22181cdc9242c/universal/coding.md
+replace.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/replace.md
 
 numbered.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a11fa36cadaabbbf7ef1a9d61e3ef9d975e2651b/universal/numbered.md

@@ -141,7 +141,7 @@
 | `seek/context/pro_profile.md` | User's professional background needed |
 | `cic.md` | MUST read right before starting any CIC ops, unless already & intact |
 | `writing.md` | On deliverables; OR "casual"/"whatsapp" style mentioned |
-| `coding.md` | `#replace` mentioned (even not coding); OR multi-script coding |
+| `coding.md` | On multi-script coding |
 | `plan.md` | No `DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
 | `shrink.md` | Shrink/summarise/synthesise/distil/condense mentioned |
 

@@ -12,4 +12,4 @@ see her latest email (~9days ago) in last entry in Lu.md
 ## Missions
 - analyse her "Comments" in the .docx file (stop if you don't see any; there should be 5 in total)
 - summarise her email and "Comments", then tell your thoughts on each
-- critically evaluate then suggest if i should adopt them all; for each, if yes, how? if directly suggesting edits, strictly follow writing.md (must read first) using #replace (read coding.md)
+- critically evaluate then suggest if i should adopt them all; for each, if yes, how? if directly suggesting edits, strictly follow writing.md (must read first) using #replace (read replace.md)
