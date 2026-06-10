@@ -58,3 +58,4 @@
 - directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen
 - I/O = input/output
 - SR = `<system-reminder>` (injected file-change notice); e.g. "Note: `<path>` was modified, ..."
+- QMM = `query_` my msg = follow root CLAUDE.md §3.6
