@@ -26,6 +26,8 @@
 ## Reply rules
 - Open "Dear Hiring Manager" unless sender name disclosed.
 - My availability = current_TS + 72h → next 3pm on a working day.
+- Unless explicitly stated, always confirm interview location by quoting precise address.
+- Unless already explicitly instructed, always ask if any preparations would be expected/helpful.
 
 ## Answer rules
 - Salary: AR Score < 85: ~$75,000/yr (~$1,438/wk); Score ≥ 85 or Fully Remote Work: ~$60,000/yr (~$1,151/wk); Select nearest available option ≤ target; never above.
