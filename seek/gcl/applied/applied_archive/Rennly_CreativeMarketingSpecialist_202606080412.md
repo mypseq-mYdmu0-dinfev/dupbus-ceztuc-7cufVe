@@ -16,37 +16,51 @@
 
 ## 1. Employer
 
-**Group structure**
-- Rennly Pty Ltd: parent entity founded 2012; brands = HOME789 (B2B project marketing for developers), Teamlink (B2C property portal + app), SBP (unconfirmed); staff reported to work across all brands simultaneously under one salary — **not disclosed until day one** (per Glassdoor)
-- Revenue: ~$16.1M AUD (ZoomInfo estimate); 11–50 employees; all brands share the same Rhodes address
+### 1.1. Group & Legal Structure
+- 1.1.1. Rennly Pty Ltd: parent entity; brands = HOME789, Teamlink, SBP (+ UFN, property development arm); all share the same Rhodes address (Suite 4, Level 5, Building C, 1 Homebush Bay Drive)
+- 1.1.2. Revenue: ~$16.1M AUD (ZoomInfo estimate); ~38 employees total (RocketReach); all brands share one headcount
+- 1.1.3. Staff reported to work across all brands simultaneously under one salary — **not disclosed until day one** (per Glassdoor)
 
-**HOME789 specifically**
-- B2B project marketing agency: brand development, marketing strategy, digital marketing, lead generation for property developers; end-to-end from project inception to settlement
-- Long-standing developer clients: Deicorp (10⁺ yr relationship), ALAND, Coronation, Developcorp, Urban Property — credible client roster
-- Awards: 2025 REB Innovation Awards finalist (Innovator of the Year – Boutique); 2025 Urban Developer Urban Leader Awards finalist (Marketing) — finalist both times, did not win either
+### 1.2. HOME789 Specifically
+- 1.2.1. Primarily a project marketing channel sales firm — connects developers with Chinese/Korean buyers; creative/digital marketing function is a secondary, recently built capability
+- 1.2.2. Listed on the National Stock Exchange (NSX) in 2019 — publicly listed company
+- 1.2.3. Long-standing developer clients: Deicorp (10⁺ yr), ALAND, Coronation, Developcorp, Urban Property — credible developer relationships
+- 1.2.4. Awards: 2025 REB Innovation Awards finalist (Innovator of the Year – Boutique); 2025 Urban Developer Urban Leader Awards finalist (Marketing) — finalist both times, did not win either
+- 1.2.5. Bulk of ~38 staff are property/sales agents and consultants, not marketing; marketing is a genuinely small and new function
 
-**Team & structure**
-- Small marketing team: Digital Marketing Specialist (Angela Miao, joined Dec 2025), Marketing & Graphic Designer (Yichen Shi, joined Sep 2025); Creative Marketing Specialist = 3rd marketing hire
-- Strongly Chinese/Korean-skewing across visible staff (Kwak, Ko, Zhang, Lau, Kwon, Miao, Shi); consistent with Chinese/Korean buyer focus; Mary Shen = HR/Office Manager (Shen = Chinese surname)
-- Described as flat management in job ads; reality per Glassdoor contradicts this
+### 1.3. CEO & Founder
+- 1.3.1. Walton Chu: Chinese-Australian, migrated 2004; trained as a Western medicine doctor in Nanjing; studied international public health at University of Sydney
+- 1.3.2. Pivoted to real estate sales while broke; founded HOME789 in 2008 (originally "Great Fortune Investment"); also founded UFN (2015) and Teamlink (2020)
+- 1.3.3. CEO of all three entities simultaneously; pattern matches the Glassdoor description of a founder-driven, demanding single-point-of-authority organisation
+- 1.3.4. Has appeared on ABC The Business; described in press as a new breed of Chinese-Australian entrepreneur
 
-**Work mode**
-- Fully on-site, Rhodes; no hybrid or remote mentioned in any job ad or review
+### 1.4. Team & Structure
+- 1.4.1. Total: ~38 employees; majority are property consultants and sales agents (Chinese/Korean buyer channels), not marketing staff
+- 1.4.2. Marketing team (~4 total, per RocketReach): Digital Marketing Specialist (Angela Miao, joined Dec 2025), Marketing & Graphic Designer (Yichen Shi, joined Sep 2025); also Xueqi Zhang (Digital Marketing Coordinator — may have left given churn); no confirmed Marketing Manager or Marketing Director
+- 1.4.3. This role (Creative Marketing Specialist) = effectively most senior creative/content hire; no marketing manager above confirmed; likely reports directly to CEO or a Director
+- 1.4.4. Ethnic composition: strongly Chinese and Korean; named roles include a dedicated Korean Market Director (Claudia Ko) and Korean-named property consultants; everyday English is likely for internal comms at a professional firm, but Chinese/Korean market fluency is central to the commercial model
+- 1.4.5. "Flat management" stated in job ads; Glassdoor contradicts this — CEO is described as a centralised, volatile authority figure
 
-**Competitive position**
-- Boutique specialist in off-the-plan/apartment project marketing; not a volume leader (doesn't appear in OpenLot top 5 NSW by estate count — different segment)
-- Niche edge: Chinese/Korean bilingual buyer network, channel sales, data-driven lead generation
-- Major apartment-market competitors (significantly larger): CBRE Residential, Colliers, Ray White Projects, JLL Residential
+### 1.5. Work Mode
+- 1.5.1. Fully on-site, Rhodes; no hybrid or remote indicated in any job ad, review, or public source
 
-**🚨 Glassdoor — Critical**
-- Score: **1.9/5** from 11 ratings; **5% recommend to a friend** (near-bottom of platform)
-- 1 review accessible without login (May 2026, rated 1.0 — "Do NOT intern here"):
-  - CEO described as verbally abusive: berates, yells, publicly insults staff; zero communication; constantly changes direction
-  - Uses AI-replacement threats as a management tool
-  - Staff required to work across 5 brands simultaneously; this is not disclosed until day one
-  - ~20 staff turnovers during reviewer's tenure (11–50 person company = near-total churn)
-  - No annual raises; minimum wage pay; no growth opportunities; chronic anxiety/burnout culture
-- 10 of 11 ratings gated behind Glassdoor login; aggregate 1.9/5 reflects all 11
+### 1.6. Competitive Position
+- 1.6.1. Boutique specialist in off-the-plan/apartment project marketing (channel sales + developer marketing); not a creative marketing agency in the traditional sense
+- 1.6.2. Niche edge: Chinese/Korean bilingual buyer network; data-driven channel sales; end-to-end from branding through to settlement
+- 1.6.3. Larger project marketing players in the apartment space: Knight Frank Residential, Savills Residential, CBRE Residential — these are broader real estate consultancies with project marketing divisions, not pure creative agencies
+- 1.6.4. As a pure boutique, HOME789 competes on network depth and cultural market access, not scale
+
+### 1.7. Glassdoor — Critical 🚨
+- 1.7.1. Score: **1.9/5** from 11 ratings; **5% recommend to a friend** (near-bottom of platform)
+- 1.7.2. 1 review accessible without login (May 2026, rated 1.0 — "Do NOT intern here"); 10 of 11 gated — aggregate 1.9/5 reflects all 11
+- 1.7.3. Key themes from accessible review:
+  - CEO verbally abusive: berates, yells, publicly insults staff; zero communication; constantly changes direction
+  - Uses AI-replacement threats as a management lever
+  - Staff required to work across all 5 brands simultaneously; not disclosed until day one
+  - ~20 staff turnovers during reviewer's tenure (38-person org = near-total churn)
+  - No annual raises; minimum wage; no growth opportunities; chronic burnout
+- 1.7.4. Consistent with marketing team churn pattern: both Miao (Dec 2025) and Shi (Sep 2025) are very recent hires — likely replacing departed staff
+- 1.7.5. Context if offer received: salary, multi-brand loading, reporting line, and career runway should all be probed and weighed against this background
 
 ## 2. Requirements
 
