@@ -32,7 +32,7 @@ Identify anything special about this position or company (& group) that I should
 
 ### 5. Interview Questions
 
-Based on given content/web search/my bg, suggest 1-3 potential interview questions.
+Based on given content/web search/my bg, suggest 1-3 Qs potentially asked by interviewer.
 
 ### 6. Cover Letter (CL)
 
