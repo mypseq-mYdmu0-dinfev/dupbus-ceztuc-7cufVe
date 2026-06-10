@@ -135,7 +135,7 @@
 | `google.md` | On personal email/calendar; OR `#job` mentioned |
 | `profile.md` | User's personal background needed |
 | `seek/context/pro_profile.md` | User's professional background needed |
-| `cic.md` | CIC ops (not existing automation) |
+| `cic.md` | MUST read right before starting any CIC ops, unless already |
 | `writing.md` | On deliverables; OR "casual"/"whatsapp" style mentioned |
 | `coding.md` | `#replace` mentioned (even not coding); OR multi-script coding |
 | `plan.md` | No `DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
