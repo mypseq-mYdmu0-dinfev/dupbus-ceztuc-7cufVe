@@ -1,4 +1,11 @@
-# Glossary of Terms
+# Glossary
+
+*Non-case-sensitive unless specified*
+*MUST follow instr (if any); e.g. "deliverable"→writing.md*
+
+---
+
+## Terms
 
 - pt = point(s)
 - bg = background
@@ -18,12 +25,15 @@
 - ver = version
 - instr = instruct(ion)
 - HCI = Human-Computer Interaction
+- MHci = Master (degree) of HCI
 - IxD = Interaction Design
-- UoL = University of Liverpool (UK)
+- UTS = University of Technology Sydney (my MHci)
+- UoL = University of Liverpool (UK; my MBA)
 - TS = timestamp
 - 12-digit no. starting with "20" = TS in [YYYYMMDDHHmm] format
-- 1p = 1 page ≈ 200w in bullets (≠ target to reach; can be less)
-- 1w = 1 word
+- [no.]p = [no.] pages; 1p ≈ 200w in bullets (≠ target to reach; can be less)
+- [no.]w = [no.] words
+- [no.]tk = [no.] tokens; if suitable, convert to [no.]w
 - GH = GitHub (link)
 - $ = default A$, unless specified `US$`
 - #[no.] = artefact no. for #01–#09; else for #1–#9; clarify if not sure for #10⁺
@@ -40,11 +50,8 @@
 - Mi = Xiaomi
 - VS/VSC = Visual Studio Code, my primary code editor with venv
 - `<br>` = line break, NOT displayed text
-- QB = (raise any) questions/blockers (before proceeding); e.g. "... respond in artefact, qb"; if any, MUST separate (Q1, B1, etc.; NEVER: QB1, QB2, etc.) & #numbered
-- CIIW = Correct (me) if I'm wrong
 - Revert = edit a previous msg, usually practiced when we're processing super large files. e.g. when analysing multiple zoom transcripts, I prompt you on 1st one→create synthesis→save to CP→revert to handle 2nd one→loop in order to preserve chat capacity. Bottomline: When I said I reverted, something was done rear to that msg
-- Deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application)
-- CP = Claude Project. Each CP may involve multiple projects and vice versa, e.g. I might say “Refer to files in this CP, draft...”
+- CP = Claude Project; each CP may involve multiple projects and vice versa
 - CIC = Claude in Chrome (MCP)
 - CC = Claude Code; "Code" tab of CAI (not terminal); addressed as `she/her`
 - `CC:` = disregard if you're not CC
@@ -62,5 +69,20 @@
 - directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen
 - I/O = input/output
 - SR = `<system-reminder>` (injected file-change notice); e.g. "Note: `<path>` was modified, ..."
-- QMM = `query_` my msg = follow root CLAUDE.md §3.6
+- QMM = `query_` my msg = follow root CLAUDE.md §3.6 (CC only)
 - r/w = read/write
+- QB = question/blocker; if any, raise all Qs (Q1, Q2…) & Bs (B1, B2…) separately & #numbered before proceeding; NEVER label as QB1, QB2
+- CIIW = Correct (me) if I'm wrong; validate my msg rather than treating it as a direct command; correct errors before acting
+- override = exception to "no chat text" or other restrictions for that SINGLE turn only
+- yn (only usable by user) = override: respond w/ 1w only in chat, either `Yes` or `No`
+- deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
+
+---
+
+## Special
+
+- Dot (`.`) as blank line: 1 line between = same-issue break; 3 between = new-issue break
+- If user's msg only has a single `.`: respond w/ `.` only in chat; no file/artefact, no declarations
+- IMPORTANT: NEVER count words/tokens by yourself (100% wrong); always use:
+  - `echo "your text" | wc -w`
+  - `token-count --text "your text"`
