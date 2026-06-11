@@ -4,10 +4,10 @@
 ---
 
 glossary.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ea6813cf96e59f75c061b40fb47d51a5361af805/universal/glossary.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/762641f05ebc52be22a95faa001b8a054b94a0b8/universal/glossary.md
 
 rules.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/527c71e498ee46ab87ef8acad32874d7e72b0eb0/universal/rules_otg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/18d589e2310a6d0ed297b87c7be00685a1bc783c/universal/rules_otg.md
 
 google.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/02c6958a2f03b0fdbead506b9f464ce16ea0bbd7/universal/google.md
@@ -25,7 +25,7 @@ replace.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/replace.md
 
 numbered.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a11fa36cadaabbbf7ef1a9d61e3ef9d975e2651b/universal/numbered.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/217e853cffbb2c6c4447ccb046fffa5c9246c0b5/universal/numbered.md
 
 plan.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/84c46a292a1c2407619337945ea71c6e3ccb3e5f/universal/plan.md
