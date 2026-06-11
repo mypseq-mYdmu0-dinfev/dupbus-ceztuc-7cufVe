@@ -109,7 +109,7 @@
 5. Post-Compaction (🚨)
 - 5.1. When the PostCompact hook fires, immediately output exact wording as §3.2.5
 - 5.2. Halt all fore/background tasks w/o exception
-- 5.3. In chat, non-#numbered bullet-list previously-read/fetched files/content (incl. tool results like web_search) still deemed useful for the current task (e.g. `- `enclosing_folder/file.md``)
+- 5.3. In chat, non-#numbered list out previously-read/fetched files/content (incl. tool results like web_search) still deemed useful for the current task (e.g. `- `enclosing_folder/file.md``)
 - 5.4. Separately list (identically as §5.3) the remainder (not useful)
 - 5.5. DON'T re-read/re-fetch anything (incl. CP's CLAUDE.md); root CLAUDE.md is already re-read via the PostCompact hook (as you're reading this)
 - 5.6. DON'T continue any task; await user's instruction
@@ -188,11 +188,3 @@
     - 8.8.4.4. §8.8.1: '/Users/culous/Downloads'
     - 8.8.4.5. §8.8.2: '/Users/culous/Desktop'
     - 8.8.4.6. §8.8.3: '/Users/culous/Documents/PDF Conversion'
-
-9. Special Commands (user-only unless stated otherwise)
-- 9.1. `override` —— exception to "no chat text" or other restrictions for that single turn only
-- 9.2. `yn` —— override: respond w/ 1 word only in chat: `Yes` or `No`
-- 9.3. `QB` / `qb` —— raise all questions (Q1, Q2…) and blockers (B1, B2…) separately & #numbered before proceeding; NEVER label as QB1, QB2
-- 9.4. `CIIW` —— "Correct (me) if I'm wrong"; validate the user's message rather than treating it as a direct command; correct errors before acting
-- 9.5. Dot (`.`) as blank line: 1 line between = same-issue break; 3 between = new-issue break
-- 9.6. If user's msg only has a single `.`: respond w/ `.` only in chat; no file, no declarations
