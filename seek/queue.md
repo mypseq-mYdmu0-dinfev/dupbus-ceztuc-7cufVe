@@ -4,7 +4,7 @@
 
 ---
 
-## order: 07, 01, 03, 05, 08, 02, 04, 06
+## order: 01, 03, 07, 05, 02, 04, 08, 06
 
 *Process Qi strictly left → right on this line, Qi01 → Qi06, sequentially. There is NO `n`/`p` system —— each Qi is a complete, ready-to-open URL. Qi01–03 are the New-to-you (`&tags=new`) views; Qi04–06 are the plain (all-jobs) views of the SAME three searches (its "new twin" is shown in the table). To reprioritise, edit ONLY this line (e.g. `order: 03, 06, 01, 04, 02, 05`).*
 
