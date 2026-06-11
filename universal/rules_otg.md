@@ -217,13 +217,9 @@ When generating 2⁺ artefacts, NEVER pre-announce all titles as a group:
 
 ## Special Commands
 
-- `yn` —— strictly respond w/ just 1 word in chat (override), either Yes or No (e.g. "Should we...? yn"); only usable by ME
-- Single dot `.` as separator in my prompts: 1 line = normal break line (separating points on same issue); 3 lines = major break line (separating responses on different issues).
-- If and only if my prompt has nothing but ONE single dot `.`, immediately stop thinking and respond with nothing but `.` only in chat (override)
 - `#rules` —— reminder for complying this file, most likely you made mistakes (e.g. multiple artefacts with identical number) but I prefer not to rectify, just continue
 - If and only if my prompt has nothing but `#rules`, review your last response against this file & update in a new artefact
 - `#pp` —— reminder to run PP1+PP3+(+PP2 if `#lock` prompted earlier) for EVERY RESPONSE
-- `override` = exception to override "artefact only"/"no chat text"/"each file fetched once only" or similar instr
 
 ---
 
