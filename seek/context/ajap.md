@@ -288,6 +288,7 @@ S4.7. **SA CL Self-Review** — re-read the drafted CL in full before writing to
 - No banned GenAI words — spot-check top 10: "seamlessly", "resonates", "pivotal", "leverage", "spearhead", "transformative", "holistic", "robust", "passionate", "proactive"
 - CL ends with P.S. line
 - Do NOT proceed to S5 until all checks pass
+- **Deterministic gate (Apply only, runs AFTER S5 once the AR file exists):** before reporting `Applying` at S6.4.2.5, run `python3 /seek/context/cl_check.py [AR_PATH]`; any HARD violation (exit 1) = failed check → fix the AR in-place and re-run until exit 0. Soft `⚠️` warnings are advisory —— judge (e.g. a firm literally named "Synergy…" is fine). This is a backstop to the manual checks above, not a replacement
 
 ### S5. Create AR
 
