@@ -160,7 +160,7 @@ HR/Office Manager
 hr@home789.com.au | +61 2 9698 8818
 Suite 4, Level 5, Building C, 1 Homebush Bay Drive, Rhodes NSW 2138
 
-### User Reply
+### User Reply (On 10 Jun 2026, at 22:27)
 
 Dear Mary,
 
@@ -173,10 +173,29 @@ Thank you so much for the opportunity.
 Kind regards,
 Culous Yu
 
-### Suggestion
+### CC Suggestion
 
 1. **Title negotiation:** Do NOT raise the manager/senior title at the first interview — risks reading as presumptuous in a CEO-dominated culture. If advancing to a second interview or offer, raise it then: "Given there's currently no marketing manager, how is the reporting line structured, and is there room to frame the role at a manager level?" This also functions as a culture test — a healthy firm will engage; a toxic one will react badly.
 2. **Multi-brand loading:** Probe scope directly: "Can you describe a typical week — which brands or projects would I be working across?" Glassdoor confirms this is undisclosed until day one; surfacing it early is fair.
 3. **Video workload:** Use §5B Q2 to determine whether daily hands-on editing is expected. If yes and volume is high, this is a potential dealbreaker (hands-on editing predates Creative Cloud era).
 4. **Reporting line:** No confirmed marketing manager above this role; likely reports to CEO or a Director directly. This means high autonomy AND high exposure to Walton Chu's management style. Factor into offer decision.
 5. **Offer evaluation criteria:** If offer received, weigh salary (minimum wage risk per Glassdoor), multi-brand scope under one salary, reporting line, title, and whether the creative function has genuine mandate vs. being a one-person support role for a sales-led org.
+
+### Employer Confirmation
+
+On 11 Jun 2026, at 09:10, Mary Shen <hr@home789.com.au> wrote:
+
+Thank you for your response, Culous.
+
+Let's schedule the interview for this Friday at 3:00 pm. I will send you a calendar invitation shortly.
+
+In the meantime, please find the assessment attached. Could you kindly complete it and present your work during the interview?
+
+We look forward to speaking with you on Friday.
+
+Kind Regards,
+ 
+MARY SHEN
+HR/Office Manager
+
+<Creative Marketing Specialist Assessment 2026.pdf>
