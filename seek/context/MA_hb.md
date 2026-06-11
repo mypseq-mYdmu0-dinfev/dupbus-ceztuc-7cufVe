@@ -1,6 +1,6 @@
 # MA Heartbeat Contract (`MA_hb.md`)
 
-*Formerly `mini_ajap.md`. The lean checklist MA LITERALLY re-reads (not from memory) at the TOP of every wake AND at S0.1 of every card. First action each wake: `touch /seek/.claude/tmp/ma_hb_reread_marker`, then re-read this file. Detailed mechanics live in `main_ajap.md` (read at start); watchdog spec in `SA2_hb.md`. If unsure of any item, re-read `ajap.md` & `main_ajap.md`.*
+*Formerly `mini_ajap.md`. The lean checklist MA LITERALLY re-reads (not from memory) at the TOP of every wake AND at S0.1 of every card. Each wake: re-read this file IN FULL with the Read tool and emit `✅ context/MA_hb.md`, run the checks, THEN as the FINAL step `touch /seek/.claude/tmp/ma_hb_reread_marker` —— the marker CERTIFIES the re-read happened, so it MUST come after the read, never before (touching first is exactly what produced the hollow-heartbeat failure). Detailed mechanics live in `main_ajap.md` (read at start); watchdog spec in `SA2_hb.md`. If unsure of any item, re-read `ajap.md` & `main_ajap.md`.*
 
 ---
 
@@ -44,7 +44,7 @@ The heartbeat re-wakes you and this section re-asserts every wake, so any first-
 Mechanism (full spec in `main_ajap.md § Heartbeat`): a persistent primary `Monitor` (file-watches `/seek/gcl/` + `/seek/.claude/tmp/sa2_alert.md`; dynamic 60/300) PLUS the never-churned SA2 watchdog. A finite-loop heartbeat is BANNED. `ScheduleWakeup` is NOT used.
 
 On EVERY wake (primary `heartbeat`/`newfile`/`sa2-alert` tick, OR an `SA2_hb.md` watchdog line):
-- FIRST `touch /seek/.claude/tmp/ma_hb_reread_marker`, then run the Active Check + Rogue tripwire above.
+- FIRST re-read THIS file (`MA_hb.md`) in full with the Read tool and emit `✅ context/MA_hb.md`; then run the Active Check + Rogue tripwire above. (The `ma_hb_reread_marker` touch is the LAST action of the wake —— see the final bullet —— never the first.)
 - **Broad file check (NOT just `⏳_`):** list every non-`❌_` file in `/seek/gcl/applied`, `/gcl/pending`, `/gcl/skipped` with filename-TS ≥ `latest_TS`. Validate each: single-job AR, correct routing folder, CL `## 6.` if applied, no rogue name (per tripwire). Enumerate ONLY by filename-TS —— NEVER by `find -newer hb_marker`.
 - **Actively check SA1 (do NOT wait for a report):** if the newest `/gcl/` file is older than ~6 min AND no `⏳_` is progressing → SA1 is likely stalled (over-spending on a job) or idle → investigate and act (nudge via `ma_msg.md`, or retire + respawn). Silent —— rlog ONLY a genuine stall.
 - **SA 1hr hard limit:** check `sa_spawn_TS` in `ma_state.md`; if current time ≥ `sa_spawn_TS` + 60 min → write "STOP" to `ma_msg.md`, wait 30s, reset to "Continue", retire SA immediately, spawn fresh SA, log to rlog. No exceptions, regardless of current activity.
@@ -52,6 +52,7 @@ On EVERY wake (primary `heartbeat`/`newfile`/`sa2-alert` tick, OR an `SA2_hb.md`
 - If the whole window is clean (no retirement) → set `latest_TS = max validated filename-TS this window` in `ma_state.md` (one value; never wall-clock-leapfrog past an as-yet-unstamped AR; never pile up filenames).
 - Liveness: do NOT use `TaskList` to check Monitor liveness —— it does NOT list background Monitors. Liveness is guaranteed by the never-churned SA2 watchdog. Reactions: `WATCHDOG-MA-STALL` → rebuild/repair the primary Monitor; `WATCHDOG-SA1-STALL` → investigate SA1 (stuck `⏳_` / no new AR / idle) per `SA2_hb.md`; `watchdog-alive` → normal wake.
 - Output C2 when a new legitimate AR appeared: `[current_TS] 🎯[N] **job(s) processed so far.**` (N = number emojis = this-session count only); then `touch /seek/.claude/tmp/ma_c2_marker` (the watchdog measures this).
+- **Proof-of-read (FINAL action of EVERY wake):** `touch /seek/.claude/tmp/ma_hb_reread_marker` —— ONLY now, after the genuine re-read + `✅` + Active Check above are actually done. This is the signal the SA2 watchdog trusts; touching it at the top of the wake, or without a real re-read, is a contract breach and is the root of the hollow-heartbeat failure.
 
 **Dynamic interval (enforced) —— applies to the PRIMARY Monitor only:**
 - Default interval `sleep 300`.

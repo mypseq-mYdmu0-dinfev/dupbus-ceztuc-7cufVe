@@ -379,7 +379,7 @@ S6.3.2. Scroll to bottom; click "Continue →"
 
 S6.4.1. Do NOT click "Profile visibility", "Make a strong impression", or any other card
 S6.4.2. Verify "Resumé" filename is correct, go back if not; then verify "You wrote a cover letter for this application" is visible, go back if not
-S6.4.2.5. **[SA mode only]** Report to MA via chat: `[AR_PATH] | Applying | [N] | [FLAGS or "none"]` — then read `/seek/.claude/tmp/ma_msg.md` and wait (per MA-SA communication rules above) until it reads "Submit then proceed to next card"; if it reads an instruction to void, void the AR (per Void Rule: rename `⏳_` prefix to `❌_`) then close Tabs 3 & 2 and return to Tab 1; do NOT follow S6.2.3.2
+S6.4.2.5. **[SA mode only]** Report to MA via chat: `[AR_PATH] | Applying | [N] | [FLAGS or "none"]` — then read `/seek/.claude/tmp/ma_msg.md` and wait (per MA-SA communication rules above) until it reads "Submit then proceed to next card". **This approval is SINGLE-USE and EXPIRES 3 minutes after you first read it:** consume it for THIS ONE submit only; then immediately return to waiting and re-report `Applying` for the NEXT applying card to obtain a FRESH approval before any further submit —— NEVER carry one approval across cards (this is what prevents runaway multi-submits that never re-wake MA). If more than 3 min have passed since you read the approval and you have not yet submitted, discard it and re-report `Applying` to request a new one. If it reads an instruction to void, void the AR (per Void Rule: rename `⏳_` prefix to `❌_`) then close Tabs 3 & 2 and return to Tab 1; do NOT follow S6.2.3.2
 S6.4.3. Click "Submit application"
 S6.4.4. Confirm **success** ("Your application has been sent to...") then immediately:
 - S6.4.4.1. Edit AR as `Outcome: Applied` AND
