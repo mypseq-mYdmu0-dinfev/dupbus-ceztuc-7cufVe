@@ -30,15 +30,15 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 - Each number must have a dot `.` between it and the text e.g. `1.1. xxx` instead of `1.1 xxx`
 - The dot is not needed when referring to it e.g. "Item 1.1 detailed xxx..."
 
-## Reply
+## Optimise for Reply
 
-- On long responses above 100 words (even not prompted `#numbered`):
-  - Follow above format (rather than unnumbered bullets) for **easy reply**
+- On long responses above 100w (even not prompted `#numbered`; exc. deliverables):
+  - Follow above format (rather than `- `) w/ bitesize short lines for **easy reply**
   - Instead of `re "xxx..."`, I can refer by `re 1.2.1` or just `1.2.1:`
 - Numbering Continuity —— DEFAULT is to CONTINUE at n+1 (n = last pt of last response); NEVER default to resetting, even in doubt. No number repetition throughout an issue. Reset to pt 1 ONLY if at least one of below conditions met:
   - 1st response of a session (CC: despite referring to prev. comms files); or
   - User input is NOT replying a response (CC: NEITHER the word `response_` NOR any pt no. from previous `response_` was found in `query_`); or
-  - Snippets; or standalone/non-response outputs (e.g. codes, deliverables; CC: not `response_`)
+  - Snippets; or standalone/non-response outputs (e.g. code, deliverable; CC: non-`response_`)
 - Let's say you responded w/ § Example List, my input: `1.2.1: xxx...` (i.e. replying a response)
   - You must NOT respond as `1.2.1. xxx...` again as that clashes w/ the original pt in last response, i.e. two counts of `1.2.1` on same issue
   - Instead start a new pt w/ continuing number (n+1)
