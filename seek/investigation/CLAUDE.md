@@ -28,6 +28,6 @@ This CP ("AJAP Investigation") is for optimising AJAP (Agentic Job Application P
 
 In addition to root CLAUDE.md §3.3:
 - `audit_[current_TS].md` = audit report; creation triggered by #audit
-- `changes_[current_TS].md` = #replace changes w/ optional explainers (read `replace.md` first)
+- `changes_[current_TS].md` = #replace w/ optional explainers (read `replace.md` first)
 - `rlog_[session_start_TS].md` = runtime logs; live in `seek/runtime/`
 - `rchat_[copy_TS].txt` = copied chat history of an AJAP session; stored in `/runtime/` (NOT in this folder); copy_TS = time of copying, not session end; live in `seek/runtime/`
