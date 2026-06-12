@@ -199,3 +199,12 @@ MARY SHEN
 HR/Office Manager
 
 <Creative Marketing Specialist Assessment 2026.pdf>
+
+### User Confirmation (On 12 Jun 2026, at 10:59)
+
+Hello Mary,
+
+Acknowledged. See you later. If you see this in time, please advise if the car park at Rhodes Quarter could be granted access. Otherwise I'd just give it a try. Thank you!
+
+Regards,
+Culous
