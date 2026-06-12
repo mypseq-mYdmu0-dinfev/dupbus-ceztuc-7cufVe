@@ -1,1 +1,1 @@
-ALL tags=new queue exhausted this round. Qi07 project ~30 all eng nil-fits done. Qi01 BA=2 Wipro processed (TechLeadL1 M7=0 silent; PrincipalConsultant saved pending 1939). Qi03 ui/ux=0 new. Qi05 business=0 new. Next order items = plain Qi08/02/04/06 (huge already-mined lists, all K6). Awaiting user steer: grind plain views OR pause for new postings OR new Tab1 URL.
+FinXLITProfessionalServices | QualityAssuranceITTester | Apply
