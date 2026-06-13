@@ -16,16 +16,17 @@
 
 ---
 
-## Deliverable Lint —— `cscript/dlint.py` (MANDATORY)
+## Deliverable Lint —— `cscpt/dlint.py` (MANDATORY)
 
-- After creating ANY deliverable (separate file OR embedded in `response_`; any style above), you MUST lint it before finalising: `python3 cscript/dlint.py <deliverable_path>`
-  - Run on the deliverable TEXT ONLY, NEVER on a `response_`/comms file (those legitimately use ` —— `, colons, etc.)
-  - Long deliverable = its own file (per root §3.7.2) → lint that file directly
-  - Short deliverable embedded in `response_` → extract to a temp file beside the `response_`, lint it, paste back when clean, then VOID the temp (Void Rule)
-- It auto-fixes straight quotes → typographic in place, then prints two flag tiers:
-  - 🔴 RED (hard breaches: em/en-dash punctuation, banned Americanisms per root §2.1.1, mid-sentence colons) —— you CANNOT proceed until RED = 0; rectify then rerun, LOOPING until clean
-  - 🟡 YELLOW (conditional: bare `+`, spaced hyphen, sentence-initial `Where`, GenAI/cliche words & phrases) —— you MAY proceed with yellows remaining ONLY IF you concisely JUSTIFY each in `response_` (e.g. `+` is part of `iCloud+`)
-- Lists in `dlint.py` are seeded from this file + root `CLAUDE.md`, not exhaustive; the script does not replace your own judgement on rules it cannot lint (verb-object separation, ≥3-object Oxford comma, Hart's quotation)
+- After creating ANY deliverable (any style above), you MUST lint it before output —— RUN it (never read it; read only its terminal output). MODES:
+  - Separate-file deliverable (per root §3.7.2) → `python3 cscpt/dlint.py <path>` (FULL; auto-fixes quotes in place)
+  - Short deliverable embedded in `response_` → `python3 cscpt/dlint.py --text "the deliverable text"` (FULL; prints the quote-fixed text to paste back; no temp file)
+  - Lightweight all-output check (British spelling + Hart's quotation + #numbered only; safe on `response_`/comms) → add `--quick`, e.g. `python3 cscpt/dlint.py --quick <path>` or `python3 cscpt/dlint.py --quick --text "…"`
+  - NEVER lint the whole `response_`/comms files in FULL mode, as they legitimately use ` —— `, colons, etc.
+- It auto-fixes straight quotes → typographic, then prints two flag tiers (exact rules live in the script):
+  - 🔴 RED (hard breaches) —— zero tolerance: you CANNOT proceed until RED = 0; rectify then rerun, LOOPING until clean
+  - 🟡 YELLOW (conditional) —— you MAY proceed with yellows remaining ONLY IF you concisely JUSTIFY each in `response_`
+- This script does NOT replace your judgement on rules herein, especially those it cannot lint deterministically (e.g. verb-object separation, Oxford comma)
 
 ---
 
@@ -50,7 +51,7 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
 - STRICTLY eliminate em dash `—`; en dash `–` ONLY for range (e.g. `1–2`)
 - Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)
 - Avoid repeating same wording more than once every 1,000 words
-- Avoid common GenAI words including but not limited to (unless literally meaning that e.g. "elevate" in context of elevator/lift, or it's a trademark/conventional term e.g. "command" key of mac): elevate, captivate, tapestry, delve, leverage, resonate, embark, unleash, plethora, myriad, utilise, paradigm, landscape, evolving, nuanced, perspective, comprehensive, supercharge, dynamic, elucidate, holistic, synergy, pivotal, robust, aid, beacon, bolster, breeze, churn, command, crack, crucial, employ, enable, encourage, ensure, evoke, enhance, entices, essential, gaze, facilitate, forge, fortify, inundated, ignite, imperative, instrument, instills, navigate, irresistible, master, material(ly), paramount, promptly, realm, soar, revolutionize, safeguard, cutting-edge, triangulate(ion), enumerate(ion), substantive, persuasive, sparks, streamline, uncover, vast, journey, seamless, adhere, supercharge, evolve, beyond, bustling, enigma, It is important to note that..., Master the art of..., In summary/conclusion..., A testament to..., In the dynamic world of..., A tapestry of..., Delve into..., Embark on a journey..., A treasure trove of..., An ongoing voyage of, As we conclude, Captivating narrative, Encountered hurdles, Ever-evolving, Game-changer, Golden ticket, In a sea of, Let it shine through, On the ascent to, Reaching new heights, Seize the, To furnish, To thrive, Uncharted waters, Well-crafted
+- Avoid common GenAI/cliche words & phrases (e.g. elevate, delve, leverage, synergy, robust, tapestry, seamless, myriad, pivotal; "It is important to note...", "A testament to...", "Delve into...") UNLESS literally meant (e.g. "command" key) or a trademark/conventional term; `cscpt/dlint.py` enforces the full, growing list (run-not-read)
 - Briefly use web_search to fetch latest common GenAI words, since the above could be dated
 
 ---
