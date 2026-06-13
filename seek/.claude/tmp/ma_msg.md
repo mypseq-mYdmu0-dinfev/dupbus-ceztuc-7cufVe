@@ -1,1 +1,1 @@
-Submit then proceed to next card
+STOP

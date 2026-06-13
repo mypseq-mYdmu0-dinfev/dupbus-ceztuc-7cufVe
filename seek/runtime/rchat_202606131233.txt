@@ -1,0 +1,207 @@
+✅ `seek/CLAUDE.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`, `context/MA_hb.md`, `context/SA2_hb.md`
+
+Now spawning SA with Tab 1 refresh + New to you check instruction:
+
+✅ `context/MA_hb.md`
+
+Post-compaction recovery complete. Session state: N=1️⃣7️⃣4️⃣, no ⏳_ pending, monitors respawned (PRIMARY=bkn4695k1, WD=bqim1vlk7), fresh SA ac618f56f6be742d8 spawned (sa_spawn_TS=202606130225) with Tab 1 refresh + New to you check.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130229**
+
+Broad file check clean — only Homart (202606130053, already validated), no ⏳_, no new ARs. SA spawned 4 min ago (still initialising). 1hr limit: 202606130225 + 60min = 202606131225 — well clear.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130230**
+
+⏳_ found: `BWHHotelGroupAustralasia_MarketingSalesCoordinator_202606130229`. Running CL check.
+
+CL clean — no dashes, no bare `+`, `16⁺` once, P.S. present, no banned words. Approving.
+
+Approved BWH submission. Primary Monitor respawned at INT=60 (heartbeat_task=beaag0rkx).
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130232**
+
+⏳_ BWH still pending — approval written 2 min ago, within 3-min window. SA 1hr: 7 min elapsed. Waiting.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130233**
+
+⏳_ BWH — approval written at 202606130230, now 3 min elapsed (expiry edge). ⏳_ still present across 2 heartbeats. Per 4.3 protocol — will close Tab 3 if unresolved next heartbeat.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130234** — ⏳_ gone! Confirming applied AR.
+
+BWH Applied confirmed. Resetting ma_msg.md and updating state.
+
+202606130235 🎯1️⃣7️⃣5️⃣ **job(s) processed so far.**
+
+Now respawning Monitor at INT=300 (submission confirmed).
+
+BWH Applied ✅. Monitor back at INT=300 (bizsjxxji). SA continuing.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130239** — `watchdog-alive`. Two new ARs. Validating.
+
+Both valid — Wipro correctly in pending/ (Consultant title), PROIT correctly in skipped/ (PR required). Recount N.
+
+202606130240 🎯1️⃣7️⃣7️⃣ **job(s) processed so far.**
+
+`watchdog-alive` — clean. latest_TS=202606130238, N=1️⃣7️⃣7️⃣. SA continuing.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130245** — ⏳_ TheOnset PlatformEngineeringManager. Running CL check.
+
+CL clean — no dashes, `16⁺` once, P.S. present, no banned words. Approving.
+
+TheOnset approved. Monitor at INT=60 (bu1bx0ezk).
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130246** — ⏳_ gone, TheOnset clean AR confirmed. Verifying outcome.
+
+202606130247 🎯1️⃣7️⃣8️⃣ **job(s) processed so far.**
+
+TheOnset Applied ✅. Monitor at INT=300 (b71e3n6jh). N=1️⃣7️⃣8️⃣.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130252** — ⏳_ HarveyRobinson AzureSecurityEngineer. Running CL check.
+
+CL clean — no dashes, `16⁺` once, P.S. present, no banned words. Approving.
+
+HarveyRobinson approved. Monitor at INT=60 (brx9i845c).
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130254** — `watchdog-alive` (routine). ⏳_ HarveyRobinson — approval 2 min old, within window. Waiting.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130255** — ⏳_ HarveyRobinson, approval 3 min old (expiry boundary), across 3 heartbeats. Waiting one more before 4.3 intervention.
+
+newfile fired — checking immediately.
+
+**🕰️: 202606130256** — ⏳_ gone, HarveyRobinson clean AR confirmed. Verifying.
+
+202606130256 🎯1️⃣7️⃣9️⃣ **job(s) processed so far.**
+
+HarveyRobinson Applied ✅. Monitor at INT=300 (br8g1t4y2). N=1️⃣7️⃣9️⃣.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606130301** — 3 new ARs + ⏳_ JigsawStaffing. Burst spot-check triggered (3 ARs in ~2 min). Validating.
+
+Burst spot-check — reading Sedgwick sections 1–2 to verify genuine analysis.
+
+Burst spot-check ✅ — genuine analysis, legitimate sub-35 skip. Now CL check for JigsawStaffing.
+
+CL clean — no dashes, `300⁺` and `16⁺` each once, P.S. present. Approving. Also updating N for 3 validated ARs.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606130305`**
+
+Primary Monitor heartbeat. Processing new files.
+
+BespokeCareers burst spot-check: genuine (Score 21/100, no architecture degree, no ArchiCAD). SA cleared. N=187.
+
+sa2_alert is stale (02:23 pre-compaction, recovery already completed). Respawning Monitor at INT=300.
+
+202606130305 🎯🔘⑧➐ **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`
+
+Watchdog alive — no action needed.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606130316`**
+
+SA stopped (approval wait timeout). ⏳_JLL present. sa_spawn_TS=202606130225, elapsed ~51 min (limit at 03:25) — retiring old SA, spawning fresh.
+
+CL clean — JLL (no dashes, no bare `+`, P.S. present, specific and genuine). Writing approval now.
+
+202606130317 🎯🔘⑧➒ **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`, `runtime/rlog_202606120410.md`
+
+Watchdog alive — no action needed.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606130339`**
+
+JLL: External Portal Early-Exit (same as JigsawStaffing — legitimate). Airtasker burst spot-check: genuine (specific SQL/dbt/external portal reason). SA cleared.
+
+202606130339 🎯①⑨➐ **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`
+
+🚨 Compaction Detected —— stopped all tasks.
+
+WATCHDOG-FULLREAD-STALL: ma_full_reread_marker >75 min. Halting SA, re-reading all 9 mandatory files.
+
+SA stopped. Continuing mandatory file reads (3–9).
+
+✅ `seek/CLAUDE.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`, `context/MA_hb.md`, `context/SA2_hb.md`
+
+Burst spot-check: Danone — genuine (External Portal, M7=0, ceiling ~57, specific rationale). SA cleared.
+
+202606130356 🎯②0️⃣④ **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`, `runtime/rlog_202606120410.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606130429`**
+
+⏳_AVAAdvisory waiting. SA stopped (approval timeout). Checking CL + burst.
+
+CL clean (no dashes, P.S. present, specific/genuine, cl_check ✅). Nuix burst spot-check: genuine (Score 56, M7=0, ASX-listed specific). Writing approval.
+
+202606130430 🎯②①① **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606130450`**
+
+AVAAdvisory confirmed applied. Resetting ma_msg, checking MoiMoi CL.
+
+CL clean — highly specific (Moi Moi etymology, Diamonds Gallery 25% YoY, LAVANA brand angle). Writing approval.
+
+202606130450 🎯②①② **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606130504`**
+
+MoiMoi confirmed applied. SA stuck on stale approval (systemic: MA reset too slow). Resetting.
+
+202606130504 🎯②①② **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`, `runtime/rlog_202606120410.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606130524`**
+
+⏳_TheIntermediaGroup pending approval. Checking CL.
+
+CL clean — Mumbrella-specific (events named, Tim Burrowes, $1M campaign directly mapped). Approving.
+
+202606130525 🎯②①③ **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`

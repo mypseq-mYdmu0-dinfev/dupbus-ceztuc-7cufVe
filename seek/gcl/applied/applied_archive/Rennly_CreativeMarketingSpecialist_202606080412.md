@@ -208,3 +208,26 @@ Acknowledged. See you later. If you see this in time, please advise if the car p
 
 Regards,
 Culous
+
+### Employer Reply
+
+On 12 Jun 2026, at 11:02, Mary Shen <hr@home789.com.au> wrote:
+
+Hi Culous,
+
+If you drive, you may park at the Visitor Car Park (please refer to the attached). The first 2 hours are free.
+
+
+Kind Regards,
+
+MARY SHEN
+HR/Office Manager
+
+### User Reply (On 12 Jun 2026, at 11:09)
+
+Hello Mary,
+
+Much obliged. See you at 3pm.
+
+Regards,
+Culous
