@@ -20,9 +20,8 @@
 
 - After creating ANY deliverable (any style above), you MUST lint it before output —— RUN it (never read it; read only its terminal output). MODES:
   - Separate-file deliverable (per root §3.7.2) → `python3 cscpt/dlint.py <path>` (FULL; auto-fixes quotes in place)
-  - Short deliverable embedded in `response_` → `python3 cscpt/dlint.py --text "the deliverable text"` (FULL; prints the quote-fixed text to paste back; no temp file)
-  - **Non-deliverables:** Lightweight all-output check (British spelling + Hart's quotation + #numbered only; safe on `response_`/comms) → add `--quick`, e.g. `python3 cscpt/dlint.py --quick <path>` or `python3 cscpt/dlint.py --quick --text "…"`
-  - NEVER lint the whole `response_`/comms files in FULL mode, as they legitimately use ` —— `, colons, etc.
+  - Short deliverable embedded in `response_` → EXTRACT it and `python3 cscpt/dlint.py --text "the deliverable text"` (FULL; prints the quote-fixed text to paste back; no temp file)
+  - NEVER lint the whole `response_`/comms files in FULL mode, as they legitimately use ` —— `, colons, etc. (the `--quick` all-output check is governed by root §3.5.5 + its hook, not here)
 - It auto-fixes straight quotes → typographic, then prints two flag tiers (exact rules live in the script):
   - 🔴 RED (hard breaches) —— zero tolerance: you CANNOT proceed until RED = 0; rectify then rerun, LOOPING until clean
   - 🟡 YELLOW (conditional) —— you MAY proceed with yellows remaining ONLY IF you concisely JUSTIFY each in `response_`

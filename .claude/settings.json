@@ -38,7 +38,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/dlint_hook.py'"
+            "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/dlint_hook.sh'"
           }
         ]
       }

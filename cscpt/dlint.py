@@ -172,14 +172,22 @@ def _snip(line, limit=90):
 
 
 def _mask_code(text):
-    """Mask ONLY inline `code` spans (replace with spaces; length & newline count
-    preserved). FENCED code blocks are deliberately NOT masked —— deliverables are
-    often embedded in fenced blocks inside `response_`, so they MUST be linted.
-    Masking inline spans only spares a back-ticked REFERENCE to a banned term in
-    prose (e.g. discussing `color` vs `colour`); a deliverable is never inline, so
-    nothing real is hidden."""
+    """Mask BOTH fenced code blocks AND inline `code` spans (replace with spaces;
+    length & newline count preserved) so prose checks NEVER fire inside code.
+    A deliverable EMBEDDED in a fenced block is NOT meant to be caught here —— it
+    is linted separately by extracting it and running FULL `--text` on it (per
+    writing.md § Deliverable Lint). So masking code lets `--quick` over a whole
+    `response_` check the prose only, without false-flagging real code snippets."""
     out = []
+    in_fence = False
     for line in text.split("\n"):
+        if line.lstrip().startswith("```"):
+            in_fence = not in_fence
+            out.append(" " * len(line))          # blank the fence line itself too
+            continue
+        if in_fence:
+            out.append(" " * len(line))
+            continue
         out.append(re.sub(r"`[^`]*`", lambda m: " " * len(m.group(0)), line))
     return "\n".join(out)
 
@@ -308,9 +316,10 @@ def _genai_phrases(masked_text, yellow):
 
 
 def run_checks(text, quick=False):
-    """Return (red, yellow). Inline `code` spans are masked first (fenced blocks
-    are NOT —— embedded deliverables live there and must be linted); detection runs
-    on the masked text, snippets are shown from the original."""
+    """Return (red, yellow). Fenced code blocks AND inline `code` spans are masked
+    first so prose rules never fire inside code (embedded deliverables are linted
+    separately via FULL `--text`); detection runs on the masked text, snippets are
+    shown from the original."""
     orig = text.splitlines()
     masked_text = _mask_code(text)
     lines = masked_text.splitlines()
