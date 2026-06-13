@@ -3,30 +3,39 @@
 ## Preamble
 
 - Triggered by: `#close` | Current_TS: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
-- Updating `close_` file:
-  - Update end-of-range TS on Line 1 (`# Session Closing...`) w/ [current_TS]
+- Editing `close_` file:
+  - Also update end-of-range TS on Line 1 (`# Session Closing...`) w/ [current_TS]
   - NEVER edit TS in filename, so user can track diff
 
 ---
 
 ## Non-CC Sessions
 
-If you're not CC, ONLY read § Non-CP Sessions (entirely disregard the rest) and strictly follow its structure with these adaptations:
+If you're not CC, follow below structure with these adaptations:
 - Generate in artefact instead (no filename/location needed)
 - Skip all TS (timestamp; user manually input)
-- § 4. Session Files lists/counts artefact no. (#) instead
-- § 5. Other Files lists/counts deliverables/codes generated (ref artefact #; if any)
+- §4./AD[XX].4. Session Files lists/counts artefact no. (#) instead
+- §5. Other Files lists/counts deliverables/codes generated (ref artefact #; if any)
 
 ---
 
-## Non-CP Sessions
+## DevPlan
+
+- If DevPlan.md was declared in chat history OR in `CP_index_*.md`, follow § DevPlan Sessions
+- Non-CC: If `CP_index_*.md` not injected by system = no DevPlan
+- CC: If `CP_index_*.md` not in one of working directories AND not in context = no DevPlan
+- No DevPlan = follow § Non-DevPlan Sessions
+
+---
+
+## Non-DevPlan Sessions
 
 *Close with 1 file*
 
-Filename: `close_[TS].md`
+Filename: `close_[TS].md` (CC: If CP, prefix `[CP_folder]_` like other comms files)
 Location: same folder as the session's query_/response_ files
 
-### Non-CP Template
+### Non-DevPlan Template
 
 ```markdown
 # Session Closing ([1st_query_TS]–[current_TS])
@@ -72,21 +81,21 @@ Location: same folder as the session's query_/response_ files
 
 ---
 
-## CP Sessions
+## DevPlan Sessions
 
-*Close with 2 files if DevPlan.md exists, otherwise follow § Non-CP Sessions exc. filename prefix [CP_folder].*
+*Close with 2 files*
 
 1. Handoff
 Filename: `[CP_folder]_close_[TS].md`
 Location: same folder as the session's query_/response_ files
-Usage: to be kept & sent at next chat start; MUST be MECE with addendum
+Usage: to be kept for record & sent at next chat start; MUST be MECE with addendum
 
 2. Addendum
-Filename: `[CP_folder]_response_[TS].md` (a distinct response_ file, NOT appended to DevPlan.md; user reviews before appending)
+Filename: `[CP_folder]_response_[TS].md` (a distinct response_ file, NOT directly appended to DevPlan.md; user reviews first)
 Location: same folder as the session's query_/response_ files
-Usage: to be deleted after user manually reviewed & appended to DevPlan (for all CP sessions)
+Usage: to be deleted after user appended it to DevPlan (actively read by ALL future sessions)
 
-### CP Handoff Template
+### Handoff Template
 
 ```markdown
 # [CP_Name/Alias] Session Closing ([1st_query_TS]–[current_TS])
@@ -106,7 +115,7 @@ Usage: to be deleted after user manually reviewed & appended to DevPlan (for all
 [... all `query_`/`response_` pairs created this session, in chronological order]
 ```
 
-### CP Addendum Template
+### Addendum Template
 
 ```markdown
 ### AD[XX]. P[Y.Y] (Chat [Z]) —— [Heading max 8w]
@@ -140,7 +149,7 @@ Usage: to be deleted after user manually reviewed & appended to DevPlan (for all
 [skip 1 line]
 ```
 
-### CP Addendum Rules
+### Addendum Rules
 
 - MUST be #numbered & formatted as above:
   - 2nd level (AD[XX].n) uses bullet `- ` (NOT a heading)
