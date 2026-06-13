@@ -4,7 +4,7 @@
 
 ---
 
-## order: 01, 03, 07, 05, 02, 04, 08, 06
+## order: 01, 07, 05, 02, 04, 08, 06, 03
 
 *Process Qi strictly left → right on this line, Qi01 → Qi06, sequentially. There is NO `n`/`p` system —— each Qi is a complete, ready-to-open URL. Qi01–03 are the New-to-you (`&tags=new`) views; Qi04–06 are the plain (all-jobs) views of the SAME three searches (its "new twin" is shown in the table). To reprioritise, edit ONLY this line (e.g. `order: 03, 06, 01, 04, 02, 05`).*
 
@@ -27,7 +27,9 @@
 
 ## Processing Rules
 
-1. Process Qi01 → Qi06 in the `order:` line sequence. For each Qi, navigate to its exact URL (no editing) and process all cards across all its pages, then advance to the next Qi. Move on only when a Qi is exhausted.
+1. Process the Qi strictly in the live `## order:` line sequence (read that line each time —— positions are defined by it, NEVER by numeric Qi number; it may have been reordered), ALWAYS working the EARLIEST non-exhausted Qi in that line. For each Qi, navigate to its exact URL (no editing) and process all cards across all its pages.
+- 1.1. **Re-verification sweep (before advancing —— NEW):** when the current Qi is exhausted, do NOT jump straight to the next. First re-read the `## order:` line, then re-open every Qi that sits EARLIER than the current one on that line, walking left → right from the 1st position, each at its page-1 URL, and confirm it is still exhausted (apply rule 2 New-to-you handling on each landing). If an earlier Qi now shows unprocessed/new cards (freshly posted since it was last exhausted), process them there (ONE card per loop, as usual; already-processed cards silently K3-skip) before continuing. Advance to the NEXT (later) position on the `## order:` line ONLY once every earlier Qi AND the current Qi are confirmed exhausted within the same sweep.
+- 1.2. Net effect: new jobs in earlier searches are always picked up before going deeper. Example with the current `order: 01, 07, 05, 02, 04, 08, 06, 03` —— when Qi07 (2nd position) is exhausted: re-check Qi01 (1st), then Qi07 (2nd); if both truly exhausted, proceed to Qi05 (3rd). When Qi05 (3rd) is exhausted: re-check Qi01, Qi07, Qi05 in that order, then proceed to Qi02 (4th). The walk always follows the `## order:` line, not the numeric label.
 2. **New-to-you handling (open the right Qi —— NEVER click the pill, NEVER append `&tags=new`):**
 - 2.1. After landing on any Qi page, read the "New to you" pill (blue stroke; green count to its right) and report it in the SA loop report as `newtoyou=[n]`.
 - 2.2. On a `tags=new` Qi (Qi01–03): you are already on the New-to-you view; proceed.
