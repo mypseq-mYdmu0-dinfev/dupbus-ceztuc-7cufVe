@@ -33,6 +33,8 @@ USAGE
 It STOPS with an alert if: no valid timeframe timestamps are found; no source
 .txt/.md instruction file exists; or the target output CSV already exists
 (delete/rename it first).
+
+Format: `[TS]/[SS.png] [ses]%[wk]% ses[no.][start/end]`
 """
 
 from pathlib import Path
