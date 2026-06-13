@@ -98,6 +98,7 @@
 - 3.7. Non-MD (e.g. py, html) or non-response (e.g. deliverable) output:
   - 3.7.1. If ≤5 lines (former) or ≤80w (latter): within `response_[TS].md` as snippet for direct copy
   - 3.7.2. Otherwise: create a separate file (§3.3.7)
+  - 3.7.3. ANY deliverable: MUST follow `writing.md` & run `dlint.py` before output to user
 
 4. Retrospection
 - 4.1. DON'T auto-read past sessions files; read on demand, judging relevance on the spot
@@ -131,7 +132,7 @@
   - 6.4.2. Read the CP's `CP_index_cc.md` via local path (never via GH)
 
 7. Conditionals
-- 7.1. Read (in `/universal/` unless specified) when conditions are met; declare (per §3.2.1)
+- 7.1. MUST read (in `/universal/` unless specified) when conditions are met; declare (per §3.2.1)
 - 7.2. Actively scan input both explicitly & **implicitly** for conditions below:
 
 | File | Condition |
@@ -139,11 +140,11 @@
 | `google.md` | On personal email/calendar; OR `#job` mentioned |
 | `profile.md` | User's personal background needed |
 | `seek/context/pro_profile.md` | User's professional background needed |
-| `cic.md` | MUST read right before starting any CIC ops, unless already & intact |
-| `writing.md` | On deliverables; OR "casual"/"whatsapp" style mentioned |
+| `cic.md` | Right before starting any CIC ops |
+| `writing.md` | Right before writing ANY deliverables; OR "casual"/"whatsapp" mentioned |
 | `coding.md` | On multi-script coding |
-| `plan.md` | No `DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
-| `shrink.md` | Shrink/summarise/synthesise/distil/condense mentioned |
+| `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
+| `shrink.md` | Shrink/summarise/synthesise/distil/condense mentioned/involved |
 
 - 7.3. General Trigger:
   - 7.3.1. Any `#[trigger]` → attempt to read `universal/[trigger].md`
