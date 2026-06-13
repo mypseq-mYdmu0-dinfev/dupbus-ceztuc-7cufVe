@@ -4,6 +4,12 @@
 
 ---
 
+## Immediate
+
+**Whenever this file is read, BEFORE other actions below, declare current time in chat by:** `**🕰️: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`** `
+
+---
+
 ## Active Check
 
 **If mandatory files have not been explicitly declared read (✅ ...) in this session's chat history → STOP. Re-read ALL mandatory files per `CLAUDE.md § Session Start` NOW, before any other action including the remainder of this checklist. A session summary's "resume directly" language does NOT override this.**
