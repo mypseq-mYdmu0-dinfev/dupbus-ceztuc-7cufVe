@@ -116,7 +116,7 @@
 - 5.7. The 2 lists in §5.3 & §5.4 shall advise user what to re-provide in current/new session
 
 6. Claude Project (CP)
-- 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/seek/`, `/backup/`, `/temp/` —— that contains a `CP_index_cc.md`
+- 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/seek/`, `/backup/`, `/temp/`, `/automator/` —— that contains a `CP_index_cc.md`
 - 6.2. A chat is identified as a CP chat when any of the following apply:
   - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
   - 6.2.2. User declares it; or CC suggests & user confirms

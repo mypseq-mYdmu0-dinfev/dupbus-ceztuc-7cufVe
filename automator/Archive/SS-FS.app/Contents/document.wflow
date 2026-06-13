@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>AMApplicationBuild</key>
+	<string>534</string>
+	<key>AMApplicationVersion</key>
+	<string>2.10</string>
+	<key>AMDocumentVersion</key>
+	<string>2</string>
+	<key>actions</key>
+	<array>
+		<dict>
+			<key>action</key>
+			<dict>
+				<key>AMAccepts</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Optional</key>
+					<true/>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>AMActionVersion</key>
+				<string>1.0.2</string>
+				<key>AMApplication</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>AMParameterProperties</key>
+				<dict>
+					<key>source</key>
+					<dict/>
+				</dict>
+				<key>AMProvides</key>
+				<dict>
+					<key>Container</key>
+					<string>List</string>
+					<key>Types</key>
+					<array>
+						<string>com.apple.applescript.object</string>
+					</array>
+				</dict>
+				<key>ActionBundlePath</key>
+				<string>/System/Library/Automator/Run AppleScript.action</string>
+				<key>ActionName</key>
+				<string>Run AppleScript</string>
+				<key>ActionParameters</key>
+				<dict>
+					<key>source</key>
+					<string>do shell script "open -a '/Applications/macOS InstantView.app'"
+delay 60
+
+tell application "Google Chrome" to activatedelay 3tell application "Claude" to activatedelay 3
+
+tell application "Claude Web" to activatedelay 3tell application "System Events" to keystroke "p" using {command down, option down, control down}delay 3
+
+tell application "macOS InstantView" to activate
+delay 3
+tell application "System Events" to keystroke "w" using {command down}
+delay 3tell application "Preview"	activateend tellrepeat 3 times	do shell script "open -a Preview '/Users/culous/Pictures/Black/black_1.png'"	delay 1	do shell script "open -a Preview '/Users/culous/Pictures/Black/black_2.png'"	delay 1	do shell script "open -a Preview '/Users/culous/Pictures/Black/black_3.png'"	delay 1	do shell script "open -a Preview '/Users/culous/Pictures/Black/black_4.png'"	delay 3end repeattell application "System Events"	tell process "Preview"		set targetNames to {"black_1.png", "black_2.png", "black_3.png", "black_4.png"}				repeat			set pngWindows to {}			repeat with n in targetNames				try					set w to window n					if exists w then						set the end of pngWindows to w					end if				on error					-- skip				end try			end repeat						if (count of pngWindows) = 0 then exit repeat						-- Focus the FIRST matching PNG window			set w to item 1 of pngWindows			perform action "AXRaise" of w -- try to bring it to front			set value of attribute "AXFocused" of w to true			delay 3						-- Close it			try				keystroke "w" using {command down}				delay 3			on error				-- already gone; continue			end try		end repeat	end tellend telldelay 3-- Display 4do shell script "open -a Preview '/Users/culous/Pictures/Black/black_4.png'"delay 1tell application "Preview" to activatedelay 1tell application "System Events" to keystroke tab using {option down, shift down}delay 3tell application "System Events" to keystroke "f" using {command down, control down}delay 3-- Display 3do shell script "open -a Preview '/Users/culous/Pictures/Black/black_3.png'"delay 1tell application "Preview" to activatedelay 1tell application "System Events" to keystroke tab using {option down}delay 1tell application "System Events" to keystroke tab using {option down}delay 1tell application "System Events" to keystroke "f" using {command down, control down}delay 3-- Display 2do shell script "open -a Preview '/Users/culous/Pictures/Black/black_2.png'"delay 1tell application "Preview" to activatedelay 1tell application "System Events" to keystroke tab using {option down}delay 1tell application "System Events" to keystroke "f" using {command down, control down}delay 3-- Display 1do shell script "open -a Preview '/Users/culous/Pictures/Black/black_1.png'"delay 1tell application "Preview" to activatedelay 1tell application "System Events" to keystroke "f" using {command down, control down}delay 3</string>
+				</dict>
+				<key>BundleIdentifier</key>
+				<string>com.apple.Automator.RunScript</string>
+				<key>CFBundleVersion</key>
+				<string>1.0.2</string>
+				<key>CanShowSelectedItemsWhenRun</key>
+				<false/>
+				<key>CanShowWhenRun</key>
+				<true/>
+				<key>Category</key>
+				<array>
+					<string>AMCategoryUtilities</string>
+				</array>
+				<key>Class Name</key>
+				<string>RunScriptAction</string>
+				<key>InputUUID</key>
+				<string>5F8B3D3D-0B59-44D8-8A59-CE4E2F71779E</string>
+				<key>Keywords</key>
+				<array>
+					<string>Run</string>
+				</array>
+				<key>OutputUUID</key>
+				<string>2E627979-D01A-41A0-97B9-D474E9057AA5</string>
+				<key>UUID</key>
+				<string>0165BF16-CC04-4D48-830F-7629027CD9B6</string>
+				<key>UnlocalizedApplications</key>
+				<array>
+					<string>Automator</string>
+				</array>
+				<key>arguments</key>
+				<dict>
+					<key>0</key>
+					<dict>
+						<key>default value</key>
+						<string>on run {input, parameters}
+	
+	(* Your script goes here *)
+	
+	return input
+end run</string>
+						<key>name</key>
+						<string>source</string>
+						<key>required</key>
+						<string>0</string>
+						<key>type</key>
+						<string>0</string>
+						<key>uuid</key>
+						<string>0</string>
+					</dict>
+				</dict>
+				<key>isViewVisible</key>
+				<integer>1</integer>
+				<key>location</key>
+				<string>309.000000:631.000000</string>
+				<key>nibPath</key>
+				<string>/System/Library/Automator/Run AppleScript.action/Contents/Resources/Base.lproj/main.nib</string>
+			</dict>
+			<key>isViewVisible</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>connectors</key>
+	<dict/>
+	<key>workflowMetaData</key>
+	<dict>
+		<key>workflowTypeIdentifier</key>
+		<string>com.apple.Automator.application</string>
+	</dict>
+</dict>
+</plist>
