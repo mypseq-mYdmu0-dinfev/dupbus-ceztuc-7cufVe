@@ -12,7 +12,7 @@ If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a co
 
 ## Instructions
 
-Suggest which resume variant to submit <n>in chat</n> based on the job post/firm bg content provided. <n>STRICTLY ENSURE TO RESPOND IN ONE SINGLE ARTEFACT following below steps and using professional British English #cc all the time</n> & title case for section titles (bracketed=if applicable e.g. `(& group)`) with NO wording repetition (e.g. `16⁺ years`):
+Suggest which resume variant to submit <n>in chat</n> based on the job post/firm bg content provided. <n>STRICTLY ENSURE TO RESPOND IN ONE SINGLE ARTEFACT following below steps and using professional British English #rules (CC: c.md) all the time</n> & title case for section titles (bracketed=if applicable e.g. `(& group)`) with NO wording repetition (e.g. `16⁺ years`):
 
 ### 1. Employer
 
