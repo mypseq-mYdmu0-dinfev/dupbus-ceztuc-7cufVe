@@ -397,7 +397,7 @@ S6.4.8. Continue the loop
 ### S7 —— Pagination
 
 S7.1. When all cards on Tab 1 are processed, click "Next >" (near bottom) & continue the loop
-S7.2. If all pages of the current Qi are processed, advance to the NEXT Qi in the `/seek/queue.md` `order:` sequence (Qi01 → Qi06) per A6 & continue; on landing, apply `queue.md` rule 2 New-to-you handling (on a plain Qi04–06 with n>0, open its new-twin Qi —— never click the pill or append `&tags=new`).
+S7.2. If all pages of the current Qi are processed, do NOT advance yet —— run the `queue.md` rule 1.1 **re-verification sweep** first: re-read the `/seek/queue.md` `## order:` line, then re-open every Qi EARLIER than the current one on that line (left → right from the 1st position; positions follow the `order:` line, NEVER the numeric Qi label), each at its page-1 URL, confirm still exhausted, and process any new/unprocessed cards found there before going deeper. Advance to the NEXT (later) position on the `## order:` line only once all earlier Qi + the current Qi are confirmed exhausted in this sweep, per A6. On every landing, apply `queue.md` rule 2 New-to-you handling (on a plain Qi04–06 with n>0, open its new-twin Qi —— never click the pill or append `&tags=new`).
 S7.3. Never interact w/ SEEK search bar or construct SEEK URL (see A7)
 
 ---
