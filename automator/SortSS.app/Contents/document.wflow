@@ -64,10 +64,11 @@ dst="$src/Delete"
 
 mkdir -p -- "$dst"
 
-for f in "$src"/*; do
+for f in "$src"/*" (4).png"(N); do
   [[ -f "$f" ]] || continue
-  name=${f:t}
-  [[ "$name" == *" (4).png" ]] || mv -- "$f" "$dst/"
+  base=${f%" (4).png"}
+  [[ -f "$base.png" &amp;&amp; -f "$base (2).png" &amp;&amp; -f "$base (3).png" ]] || continue
+  mv -- "$base.png" "$base (2).png" "$base (3).png" "$dst/"
 done</string>
 					<key>CheckedForUserDefaultShell</key>
 					<true/>
@@ -178,12 +179,10 @@ done</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<integer>1</integer>
 				<key>location</key>
-				<string>309.000000:455.000000</string>
+				<string>309.000000:252.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Run Shell Script.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
