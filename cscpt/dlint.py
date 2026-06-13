@@ -171,82 +171,96 @@ def _snip(line, limit=90):
     return s if len(s) <= limit else s[:limit] + "…"
 
 
-def _americanisms(lines, red):
+def _mask_code(text):
+    """Mask ONLY inline `code` spans (replace with spaces; length & newline count
+    preserved). FENCED code blocks are deliberately NOT masked —— deliverables are
+    often embedded in fenced blocks inside `response_`, so they MUST be linted.
+    Masking inline spans only spares a back-ticked REFERENCE to a banned term in
+    prose (e.g. discussing `color` vs `colour`); a deliverable is never inline, so
+    nothing real is hidden."""
+    out = []
+    for line in text.split("\n"):
+        out.append(re.sub(r"`[^`]*`", lambda m: " " * len(m.group(0)), line))
+    return "\n".join(out)
+
+
+# Each check scans the MASKED lines/text for matches, but shows the ORIGINAL
+# line in its message (via orig[ln-1]) so flags stay readable.
+
+def _americanisms(lines, orig, red):
     for ln, line in enumerate(lines, 1):
         low = line.lower()
         for w, brit in AMERICANISMS.items():
             if re.search(rf"\b{re.escape(w)}\b", low):
-                red.append((ln, f"Americanism `{w}` -> use `{brit}`: {_snip(line)}"))
+                red.append((ln, f"Americanism `{w}` -> use `{brit}`: {_snip(orig[ln - 1])}"))
 
 
-def _hart(lines, red, yellow):
+def _hart(lines, orig, red, yellow):
     """Hart's logical quotation (root §2.1.4): punctuation belongs inside a quote
-    only if original to it. Flag ONLY the char that sits IMMEDIATELY before a
-    closing quote:
+    only if original to it. Flag ONLY the char IMMEDIATELY before a closing quote:
       - a comma             -> RED    (essentially never original; e.g. `test,"`)
       - a LONE period `.`   -> YELLOW (might end a fully-quoted sentence; `test."`)
-    An ellipsis (`..` / `...`) immediately before the quote is EXEMPT —— it is not
-    a lone dot (e.g. `test..."` and `test, still..."` are both fine)."""
+    An ellipsis (`..`/`...`) immediately before the quote is EXEMPT (not a lone
+    dot), e.g. `test..."` and `test, still..."` are both fine."""
     for ln, line in enumerate(lines, 1):
         for i, ch in enumerate(line):
             if ch not in CLOSING_QUOTES or i == 0:
                 continue
             prev = line[i - 1]
             if prev == ",":
-                red.append((ln, f"comma immediately inside closing quote `,{ch}` —— Hart: move it OUTSIDE: {_snip(line)}"))
+                red.append((ln, f"comma immediately inside closing quote `,{ch}` —— Hart: move it OUTSIDE: {_snip(orig[ln - 1])}"))
             elif prev == "." and not (i >= 2 and line[i - 2] == "."):   # exempt `..`/`...`
-                yellow.append((ln, f"lone period inside closing quote `.{ch}` —— OK only if it ends the quoted sentence, else move it out: {_snip(line)}"))
+                yellow.append((ln, f"lone period inside closing quote `.{ch}` —— OK only if it ends the quoted sentence, else move it out: {_snip(orig[ln - 1])}"))
 
 
-def _em_dash(lines, red):
+def _em_dash(lines, orig, red):
     for ln, line in enumerate(lines, 1):
-        if "—" in line:
-            red.append((ln, f"em dash `—` —— RESTRUCTURE the sentence (NOT a comma/colon swap): {_snip(line)}"))
+        if "\u2014" in line:
+            red.append((ln, f"em dash `\u2014` —— RESTRUCTURE the sentence (NOT a comma/colon swap): {_snip(orig[ln - 1])}"))
 
 
-def _en_dash(lines, yellow):
-    """en dash is OK ONLY for a range (1–2, Jan–Mar). Flagged YELLOW (not RED) so
-    a legitimate range never blocks; if it is an em-dash substitute, restructure."""
+def _en_dash(lines, orig, yellow):
+    """en dash is OK ONLY for a range (1\u20132, Jan\u2013Mar). YELLOW (not RED) so a
+    legitimate range never blocks; restructure if it substitutes an em dash."""
     for ln, line in enumerate(lines, 1):
-        for m in re.finditer(r"–", line):
+        for m in re.finditer(r"\u2013", line):
             i = m.start()
             left = line[i - 1] if i > 0 else ""
             right = line[i + 1] if i + 1 < len(line) else ""
-            if left.isdigit() and right.isdigit():   # `1–2` numeric range -> silent OK
+            if left.isdigit() and right.isdigit():        # `1\u20132` numeric range -> silent OK
                 continue
-            yellow.append((ln, f"en dash `–` —— keep ONLY if a genuine range (e.g. Jan–Mar); if it substitutes an em dash, RESTRUCTURE: {_snip(line)}"))
+            yellow.append((ln, f"en dash `\u2013` —— keep ONLY if a genuine range (e.g. Jan\u2013Mar); if it substitutes an em dash, RESTRUCTURE: {_snip(orig[ln - 1])}"))
             break
 
 
-def _colon(lines, red):
+def _colon(lines, orig, red):
     for ln, line in enumerate(lines, 1):
         for m in re.finditer(r":", line):
             i = m.start()
-            if line[i:i + 3] == "://":
+            if line[i:i + 3] == "://":                    # URL -> skip
                 continue
             l = line[i - 1] if i > 0 else ""
             r = line[i + 1] if i + 1 < len(line) else ""
-            if l.isdigit() and r.isdigit():          # 9:00, 3:1
+            if l.isdigit() and r.isdigit():               # 9:00, 3:1 -> skip
                 continue
-            if line[i + 1:].strip() != "":           # text follows -> not a list lead-in
-                red.append((ln, f"mid-sentence colon `:` (only allowed before a list/line break): {_snip(line)}"))
+            if line[i + 1:].strip() != "":                # text follows -> not a list lead-in
+                red.append((ln, f"mid-sentence colon `:` (only allowed before a list/line break): {_snip(orig[ln - 1])}"))
                 break
 
 
-def _plus(lines, yellow):
+def _plus(lines, orig, yellow):
     for ln, line in enumerate(lines, 1):
         if "+" in line:
-            yellow.append((ln, f"bare `+` —— OK only for addition/a name (else use `⁺`): {_snip(line)}"))
+            yellow.append((ln, f"bare `+` —— OK only for addition/a name (else use `\u207a`): {_snip(orig[ln - 1])}"))
 
 
-def _hyphen_bullet(lines, yellow):
-    """YELLOW a hyphen that is followed by a space then a NON-digit. This catches
-    BOTH a dash substitute (`word - word`) AND a non-#numbered bullet (`- text`,
-    `  - text`) —— every deliverable/output must be #numbered. EXEMPT:
-      - intra-word hyphen with no space after (`re-use`, `cutting-edge`)
-      - the token after the hyphen is a number (`- 1.`, `- 1.2.` = valid #numbered)
-      - a hyphen glued to a preceding word with no space (`say- text`) —— a typo,
-        not a bullet/dash, so left alone to avoid false positives."""
+def _hyphen_bullet(lines, orig, yellow):
+    """YELLOW a hyphen followed by a space then a NON-digit. Catches BOTH a dash
+    substitute (`word - word`) AND a non-#numbered bullet (`- text`, `  - text`)
+    —— every deliverable/output must be #numbered. EXEMPT:
+      - intra-word hyphen, no space after (`re-use`, `cutting-edge`)
+      - a number follows (`- 1.`, `- 1.2.` = valid #numbered sub-item)
+      - hyphen glued to a preceding word (`say- text`) —— a typo, not a bullet/dash."""
     for ln, line in enumerate(lines, 1):
         for m in re.finditer(r"-", line):
             i = m.start()
@@ -259,60 +273,64 @@ def _hyphen_bullet(lines, yellow):
             rest = after.lstrip(" ")
             if rest[:1].isdigit():                        # `- 1.` numbered list -> OK
                 continue
-            yellow.append((ln, f"`-` + space + non-number —— use #numbered (`- 1.1.`) for a list, or restructure if it is a dash: {_snip(line)}"))
+            yellow.append((ln, f"`-` + space + non-number —— use #numbered (`- 1.1.`) for a list, or restructure if it is a dash: {_snip(orig[ln - 1])}"))
             break
 
 
-def _ize(lines, yellow):
+def _ize(lines, orig, yellow):
     for ln, line in enumerate(lines, 1):
         for m in IZE_PATTERN.finditer(line.lower()):
             if m.group(0) not in IZE_EXCEPTIONS:
-                yellow.append((ln, f"`-ize/-isation` spelling `{m.group(0)}` —— Oxford `-ize` is acceptable, else use `-ise` (judge; `size`/`prize` etc. are fine): {_snip(line)}"))
+                yellow.append((ln, f"`-ize/-isation` spelling `{m.group(0)}` —— Oxford `-ize` is acceptable, else use `-ise` (judge; `size`/`prize` etc. are fine): {_snip(orig[ln - 1])}"))
 
 
-def _genai_words(lines, yellow):
+def _genai_words(lines, orig, yellow):
     for ln, line in enumerate(lines, 1):
         low = line.lower()
         for w in GENAI_WORDS:
             if re.search(rf"\b{re.escape(w)}\b", low):
-                yellow.append((ln, f"GenAI/cliche word `{w}` (OK if a name/trademark or literal sense): {_snip(line)}"))
+                yellow.append((ln, f"GenAI/cliche word `{w}` (OK if a name/trademark or literal sense): {_snip(orig[ln - 1])}"))
 
 
-def _where(text, yellow):
-    for m in re.finditer(r"(?:^|[.!?]\s+|\n\s*)(Where)\b", text):
-        ln = text.count("\n", 0, m.start(1)) + 1
+def _where(masked_text, yellow):
+    for m in re.finditer(r"(?:^|[.!?]\s+|\n\s*)(Where)\b", masked_text):
+        ln = masked_text.count("\n", 0, m.start(1)) + 1
         yellow.append((ln, "sentence-initial `Where` —— prefer whilst/since/as, or restructure (OK if a genuine question)"))
 
 
-def _genai_phrases(text, yellow):
-    low_text = text.lower()
+def _genai_phrases(masked_text, yellow):
+    low = masked_text.lower()
     for ph in GENAI_PHRASES:
-        idx = low_text.find(ph)
+        idx = low.find(ph)
         if idx != -1:
-            ln = text.count("\n", 0, idx) + 1
+            ln = masked_text.count("\n", 0, idx) + 1
             yellow.append((ln, f"GenAI/cliche phrase `{ph}`"))
 
 
 def run_checks(text, quick=False):
-    """Return (red, yellow) flag lists for already-quote-converted text."""
-    lines = text.splitlines()
+    """Return (red, yellow). Inline `code` spans are masked first (fenced blocks
+    are NOT —— embedded deliverables live there and must be linted); detection runs
+    on the masked text, snippets are shown from the original."""
+    orig = text.splitlines()
+    masked_text = _mask_code(text)
+    lines = masked_text.splitlines()
     red, yellow = [], []
 
     # register-independent rules —— wrong in ANY output; the ones --quick keeps
-    _americanisms(lines, red)
-    _hart(lines, red, yellow)
-    _ize(lines, yellow)
-    _hyphen_bullet(lines, yellow)     # dash substitute + #numbered-bullet compliance
+    _americanisms(lines, orig, red)
+    _hart(lines, orig, red, yellow)
+    _ize(lines, orig, yellow)
+    _hyphen_bullet(lines, orig, yellow)       # dash substitute + #numbered compliance
 
     if not quick:
         # deliverable-only rules (em dash / colons are fine in internal comms)
-        _em_dash(lines, red)
-        _colon(lines, red)
-        _en_dash(lines, yellow)
-        _plus(lines, yellow)
-        _genai_words(lines, yellow)
-        _where(text, yellow)
-        _genai_phrases(text, yellow)
+        _em_dash(lines, orig, red)
+        _colon(lines, orig, red)
+        _en_dash(lines, orig, yellow)
+        _plus(lines, orig, yellow)
+        _genai_words(lines, orig, yellow)
+        _where(masked_text, yellow)
+        _genai_phrases(masked_text, yellow)
 
     return red, yellow
 
@@ -347,24 +365,34 @@ def lint_file(path: Path, quick=False):
     except Exception as e:  # noqa: BLE001
         print(f"❌ {path}: unreadable ({e})")
         return None
-    converted, qn = convert_quotes(original)
-    if converted != original:
-        path.write_text(converted, encoding="utf-8")
-    qnote = f"Quotes: {qn} straight quote(s) converted in place." if qn else "Quotes: none to convert."
-    red, yellow = run_checks(converted, quick)
+    if quick:
+        # --quick NEVER rewrites: comms/code may contain intentional straight
+        # quotes (variable names, JSON), so leave the file byte-for-byte intact.
+        text = original
+        qnote = "Quotes: untouched (--quick does not rewrite; safe on comms/code)."
+    else:
+        text, qn = convert_quotes(original)
+        if text != original:
+            path.write_text(text, encoding="utf-8")
+        qnote = f"Quotes: {qn} straight quote(s) converted in place." if qn else "Quotes: none to convert."
+    red, yellow = run_checks(text, quick)
     return report(path.name, red, yellow, qnote)
 
 
 def lint_text(text, quick=False):
-    converted, qn = convert_quotes(text)
-    if qn:
-        print("\n--- QUOTE-FIXED TEXT (copy this back) ---")
-        print(converted)
-        print("--- end ---")
-        qnote = f"Quotes: {qn} straight quote(s) converted (see fixed text above)."
+    if quick:
+        qnote = "Quotes: untouched (--quick)."
+        checked = text
     else:
-        qnote = "Quotes: none to convert."
-    red, yellow = run_checks(converted, quick)
+        checked, qn = convert_quotes(text)
+        if qn:
+            print("\n--- QUOTE-FIXED TEXT (copy this back) ---")
+            print(checked)
+            print("--- end ---")
+            qnote = f"Quotes: {qn} straight quote(s) converted (see fixed text above)."
+        else:
+            qnote = "Quotes: none to convert."
+    red, yellow = run_checks(checked, quick)
     return report("--text", red, yellow, qnote)
 
 

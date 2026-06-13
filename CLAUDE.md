@@ -92,6 +92,9 @@
   - 3.5.2. Line 2 (optional): `*Heading max. 8w*`
   - 3.5.3. [TS] matches the corresponding `query_` filename, NOT current time
   - 3.5.4. Place in the same folder as the `query_` file
+  - 3.5.5. After writing/editing ANY `response_`, run `cscpt/dlint.py --quick` on it
+  - 3.5.6. Loop-fix all 🔴 RED to 0 (also enforced by PostToolUse hook)
+  - 3.5.7. Put any accepted-🟡 YELLOW justifications as LAST content of that same `response_`
 - 3.6. For msgs NOT in a `query_` file:
   - 3.6.1. If ≤30w: incl. user's msg verbatim in quote after `# Response to ` (Line 1) of `response_`
   - 3.6.2. If >30w: create `query_[current_TS].md` on user's behalf; both files share identical TS

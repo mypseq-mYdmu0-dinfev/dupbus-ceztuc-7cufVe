@@ -21,7 +21,7 @@
 - After creating ANY deliverable (any style above), you MUST lint it before output —— RUN it (never read it; read only its terminal output). MODES:
   - Separate-file deliverable (per root §3.7.2) → `python3 cscpt/dlint.py <path>` (FULL; auto-fixes quotes in place)
   - Short deliverable embedded in `response_` → `python3 cscpt/dlint.py --text "the deliverable text"` (FULL; prints the quote-fixed text to paste back; no temp file)
-  - Lightweight all-output check (British spelling + Hart's quotation + #numbered only; safe on `response_`/comms) → add `--quick`, e.g. `python3 cscpt/dlint.py --quick <path>` or `python3 cscpt/dlint.py --quick --text "…"`
+  - **Non-deliverables:** Lightweight all-output check (British spelling + Hart's quotation + #numbered only; safe on `response_`/comms) → add `--quick`, e.g. `python3 cscpt/dlint.py --quick <path>` or `python3 cscpt/dlint.py --quick --text "…"`
   - NEVER lint the whole `response_`/comms files in FULL mode, as they legitimately use ` —— `, colons, etc.
 - It auto-fixes straight quotes → typographic, then prints two flag tiers (exact rules live in the script):
   - 🔴 RED (hard breaches) —— zero tolerance: you CANNOT proceed until RED = 0; rectify then rerun, LOOPING until clean
@@ -51,8 +51,10 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
 - STRICTLY eliminate em dash `—`; en dash `–` ONLY for range (e.g. `1–2`)
 - Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)
 - Avoid repeating same wording more than once every 1,000 words
-- Avoid common GenAI/cliche words & phrases (e.g. elevate, delve, leverage, synergy, robust, tapestry, seamless, myriad, pivotal; "It is important to note...", "A testament to...", "Delve into...") UNLESS literally meant (e.g. "command" key) or a trademark/conventional term; `cscpt/dlint.py` enforces the full, growing list (run-not-read)
-- Briefly use web_search to fetch latest common GenAI words, since the above could be dated
+- Avoid common GenAI/cliche words & phrases (e.g. tapestry, seamless, myriad, pivotal; "It is important to note...", "A testament to..."), UNLESS literally meant (e.g. "command" key) or a trademark/conventional term
+  - `cscpt/dlint.py` enforces the full, growing list (run-not-read)
+  - Briefly web_search latest GenAI words (above could be dated)
+  - If a word was user-added (NOT by you) then yellow-flagged, don't rectify it but notice ONCE
 
 ---
 
