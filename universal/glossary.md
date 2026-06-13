@@ -65,6 +65,7 @@
 - OTGC = OTG Claude iPhone App (≈CWI)
 - OTGD = OTG Device (iPhone 13 mini/i13m)
 - OTGM = OTG Machine (MacBook Air M1)
+- c.md (only usable by user) = CLAUDE.md; assume the root's if no folder mentioned
 - #r = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)
 - directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen
 - I/O = input/output
