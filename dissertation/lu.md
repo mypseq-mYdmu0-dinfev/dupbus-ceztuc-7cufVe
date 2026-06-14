@@ -397,41 +397,52 @@ Should you have any questions, please let me know. Otherwise, I look forward to 
 
 Regards,
 Lu
-### Log 17
 
-*DRAFT —— review/edit in place; add send timestamp on dispatch.*
+### Log 17
 
 Hello Lu,
 
-Thank you very much for your considered reply, and for the clarity it has brought. On reflection I believe we are pursuing precisely the same logic, and that the remaining gap is one of wording on my part, which I am glad to close.
+Thank you very much for your considerate reply, and for the clarity it has brought. On reflection I believe we are pursuing precisely the same logic, and that the remaining gap is the wording on my part, which I am glad to close.
 
-**CYC and its management challenge**
+**CYC & its Management Challenge**
 
-May I first clarify the nature of CYC, since it frames everything that follows. CYC is a startup management consulting firm (MCF) whose service offering is knowledge management (KM) consulting to knowledge-based firms (KBFs). It is founded on existing practitioner expertise, yet that expertise must be consolidated into a rigorous, evidence-based foundation before it can be relied upon as a consulting product. CYC's management challenge is therefore to strengthen that empirical foundation, which is exactly what this study provides. A study of organisational design or people-management strategy would be premature, as CYC has no operating workforce of its own to design around; its pressing concern is the knowledge on which its advisory practice will stand. I will state this explicitly at the opening of the revised proposal so the context is unmistakable before the aim is read.
+May I first clarify the nature of CYC, since it frames everything that follows. CYC is a startup management consulting firm (MCF) whose service offering is knowledge management (KM) consulting to knowledge-based firms (KBFs). It is founded on existing practitioner knowledge, yet that expertise must be consolidated into a rigorous, evidence-based foundation before it can be relied upon as a **consulting product**. CYC's management challenge is therefore to strengthen that empirical foundation, which is exactly what this study seeks to offer.
 
-**Revised research aim**
+A study of organisational design or people-management strategy (your suggestion) might be rather premature, since CYC has no operating workforce of its own (as you noted) to design around; its pressing concern is the **knowledge** on which its advisory practice will stand. I will state explicitly at the opening of the revised proposal so the context, especially the management challenge being addressed, is unmistakable before the research aim is read.
 
-With that context, I have revised the aim to:
+**Revised Research Aim**
 
-*To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice.*
+With that context established, I have revised the aim to:
 
-The study thus examines the experiences and perceptions of individuals working in Australian KBFs, and those findings inform CYC's own consulting practice, which I hope captures the underlying logic you set out. I have removed the earlier reference to addressing CYC's challenge directly, since the data are drawn from the wider industry rather than from CYC itself. I am grateful that your feedback prompted this sharper formulation.
+*"To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice."*
 
-**Research questions**
+The study thus examines the experiences and perceptions of individuals working in Australian KBFs, and those findings inform CYC's own consulting practice, which I hope may capture the underlying logic you set out. I have removed the earlier reference to addressing CYC's challenge directly, since the data are drawn from the wider industry rather than from CYC itself. Also emphasised was "... for CYC's ..." so there is no ambiguity that this is dedicated to CYC's own challenge (not clients') and complies with "within your own work organisation". I am grateful that your feedback prompted this sharper formulation.
 
-I believe the existing pair continues to serve this aim, with RQ1 examining the conditions that shape TPS and RQ2 the experience of those dynamics among team members. Now that the aim is settled I would welcome your view, and will refine their wording accordingly.
+**Responses to Your Questions**
 
-**Research participants**
+To answer your question ("How do you address ... achieve the research aim?"):
+CYC studies individuals from other firms (not itself) to inform its own product (consulting service), which is addressing its own management challenge (lack of evidence-based foundation for its product).
 
-I am glad we are aligned that recruitment is one participant per organisation, with each speaking only to their own experiences and perceptions rather than representing any employer's practices. I take your point on comparability and will aim to recruit participants of broadly similar professional roles so far as access reasonably allows. In candour, as an individual researcher I cannot guarantee in advance the precise composition of a voluntary sample, so I will pursue the most comparable cohort feasible whilst holding the minimum of six, and will reflect this honestly in the methodology.
+Regarding your instruction ("the underlying logic must ... to manage this issue."):
+I agree by 100% and this is exactly what I meant and sought to reflect by the proposal. I do propose to study the people who work in Australian KBFs, including their experiences and perceptions. And this indeed informs CYC in developing the consulting product, which encompasses effective strategies to manage TPS.
+
+**Research Questions**
+
+I believe the existing pair continues to serve this aim, with RQ1 examining the conditions that shape TPS and RQ2 the experience of those dynamics amongst team members.
+
+**Sample Units**
+
+I am glad we are aligned that recruitment is one participant per organisation, with each speaking only to their own experiences and perceptions rather than representing any employer's practices. This has always been my intention.
+
+I take your point on comparability and will aim to recruit participants of broadly similar professional roles so far as access reasonably allows. In candour, as an individual researcher (rather than a research firm with resource to secure targeted personnel) I cannot guarantee in advance the precise composition of a voluntary sample, which doing so per se would unavoidably breach the prohibition of starting data collection before ethics approval, as mandated by this module. Thus, I will pursue the most comparable cohort feasible whilst holding the minimum of six, and will reflect this honestly in the methodology.
 
 **Framework**
 
-I should welcome one point of clarification so that I revise this correctly the first time. You observed that what I presented reads, in effect, as a theoretical framework. Would you prefer that I develop it as a theoretical framework in the manner you described, carrying themes from the research questions through the relevant theories and literature into the factors that will guide the analysis, or that I retain and refine a conceptual framework? I am keen to build the right one before returning the draft.
+You observed that what I presented reads, in effect, as a theoretical framework. I noticed the original Assessment 1 demands a conceptual framework, but I am of course more than willing to adapt as you guided. Would you prefer that I develop it as a theoretical framework, just as I described in my last email which you seemed to agree, and in the manner you guided me in last email, carrying themes from the research questions through the relevant theories and literature into the factors that will guide the analysis? I am keen to build the right one before returning the revised draft.
 
-**Other amendments**
+**Other Amendments**
 
-These, along with everything above, will appear in the revised draft for your review. Thank you again for your patient guidance, which has genuinely sharpened the work. Should any point above benefit from further discussion, I am content to continue by email.
+These, along with everything above, will appear in the revised draft for your review. Thank you again for your patient guidance, which has genuinely sharpened the work.
 
 Warm Regards,
 Culous Yu
