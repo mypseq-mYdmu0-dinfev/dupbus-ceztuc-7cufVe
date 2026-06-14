@@ -77,6 +77,7 @@
 - override = exception to "no chat text" or other restrictions for that SINGLE turn only
 - yn (only usable by user) = override: respond w/ 1w only in chat, either `Yes` or `No`
 - deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
+- summon me = push an app notification by using interactive-question tool (random Q if no QB)
 
 ---
 
