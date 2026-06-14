@@ -1,6 +1,6 @@
 # PSL (Process Single Loop)
 
-*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+*Read prompt-matching section; e.g. on `#psl`, read § `#psl`.*
 
 ## Shared Rules
 - If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
@@ -9,43 +9,44 @@
 - Before starting next AR, remind user (in chat) to delete any copies voided in this session
 - For spawning SA(s): always Sonnet, even you (MA) are Opus
 - For any questions/blockers: summon user by the interactive-question tool (⇒app notification)
-- `apply` = finish the loop (S6); STOP right before "Submit", "Submit application", or similar
-- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
-- `next` = don't touch current AR; proceed to next AR
-- `sprint` = auto-`next`; at S5 completion, directly proceed to next AR w/o S6 (application)
-- `parallel AJAP` = an AJAP session is running in parallel —— minimise disturbance by:
+- `#apply` = finish the loop (S6); STOP right before "Submit", "Submit application", or similar
+- `#done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `#next` = don't touch current AR; proceed to next AR
+- `#sprint` = auto-`#next`; at S5 completion, directly proceed to next AR w/o S6 (application)
+- `#para` = an AJAP session is running in parallel —— minimise disturbance by:
   - Except for "batch verify URLs..." below, avoid file changes in `/seek/` (notice if unavoidable)
   - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. "Dup From: `gcl/pending/`") → execute the intended creation/editing → if moving is needed: DON'T; instead remark where it should go (e.g. "Go To: `gcl/applied/`") right below "Dup From"
   - This overrides other directory-related instructions (e.g. "create AR in `/ccl/`")
+- `#unpara` = disable `#para`; re-enforce directory-related instructions; move files from `temp_seek/` to where they should be, as if `#para` never prompted
 
-## `psl`
+## `#psl`
 
 - Enter AJAP mode but process ONE single loop only
-- MUST stop at S5 completion, unless prompted `apply`
+- MUST stop at S5 completion, unless prompted `#apply`
 - A5's "SEEK results" become "any application"
 - DON'T spawn SA1 (run solo), skip any (ignore Save & Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
 - ONLY skip a job if score < 35 after re-evaluation
 - Skip A1; at A6 (waited 3 cycles), alert then STOP; DON'T proceed to Qi
-- DON'T proceed to next AR, unless prompted `done`/`next`/`sprint`
+- DON'T proceed to next AR, unless prompted `#done`/`#next`/`#sprint`
 
-## `psl [AR_filename(s)]`
+## `#psl [AR_filename(s)]`
 
-- Perform `psl` on the AR(s) (sequentially if multiple)
+- Perform `#psl` on the AR(s) (sequentially if multiple)
 - Read the file(s) (stop if not found) but never edit them
 - If it's complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
 - If it's incomplete, create new AR(s)
 - For each, open its URL like ajap.md's Tab 2 for reading, since there's no Tab 1 (single loop)
 
-## `psl pending`
+## `#psl pending`
 
-- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Perform `#psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
 - Right before reading the full file, bash extract its SEEK URL → open it
 - If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no "Apply" button) → concisely tell amount of voided & remained
 - Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
 
-## `ccl`
+## `#ccl`
 
 - Read `/context/ccl.md`
-- Perform `psl`
+- Perform `#psl`
 - Instead of `/gcl/applied/`, create AR in `/ccl/`
 - Reference ARs in `/ccl/` & `/ccl/ccl_archive/` for quality & style; adapt to current firm

@@ -6,7 +6,7 @@
 
 ## Missions
 
-If 1st word of 1st message of a chat is `seek` or `linkedin` AND is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable.
+If prompted `#seek` or `#linkedin` AND the job is not for a consulting role, strictly follow below prompts and leverage on other CP files whenever applicable.
 
 ---
 
