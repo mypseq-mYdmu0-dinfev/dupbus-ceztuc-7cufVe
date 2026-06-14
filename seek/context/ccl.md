@@ -1,12 +1,12 @@
 # CCL (Consulting Cover Letter)
 
-*Ensure you've read gcl.md before this file; `<n>[content]</n>` = Chat-only instruction; disregard entirely if you're CC (Claude Code), regard it if you're not CC.*
+*Ensure you've read gcl.md before this file; `<n>[content]</n>` = Non-CC only —— disregard entirely if you're CC (Claude Code), regard it if you're not CC.*
 
 ---
 
 ## Missions
 
-When prompted `CCL` <n>OR the job post is for a consulting/advisory role (MBB, Big 4, Accenture, or similar), use ACIC (immediately stop if failed; no fallback) to</n> access pre-opened tab(s) (maybe multiple, e.g. LinkedIn+Official). If none detected, open a new tab and stop. Once detected AND no questions/blockers (e.g. multiple tabs w/ diff positions), follow gcl.md BUT:
+When prompted `ccl` <n>OR the job post is for a consulting/advisory role (MBB, Big 4, Accenture, or similar), use CIC (immediately stop if failed; no fallback) to</n> access pre-opened tab(s) (maybe multiple, e.g. LinkedIn+Official). If none detected, open a new tab and stop. Once detected AND no questions/blockers (e.g. multiple tabs w/ diff positions = blocker), follow gcl.md BUT:
 1. Never close/alter pre-opened tabs; duplicate & perform interactions in other tabs if needed
 2. Ensure to use CIC for validating every web_search findings, esp those to be used in CL
 3. Apply additional requirements in below sections to `6. Cover Letter` w/ more stringent research (100% accuracy guaranteed), superior writing quality, and professional prudence
