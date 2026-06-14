@@ -122,3 +122,42 @@ Please let me know if any further information would assist you ahead of our conv
 
 Kind regards,
 Culous Yu
+
+### User Reply
+
+On 12 Jun 2026, at 13:53, c@culousyu.com wrote:
+
+Dear Elena,
+
+May I please ask if my last email was acknowledged? Or a reschedule is demanded? Thank you.
+
+Regards,
+Culous
+
+### Employer Reply
+
+On 12 Jun 2026, at 15:33, Elena Mel <elena@alltech.co> wrote:
+
+Hey Culous,
+
+Apologies for the delay.
+
+Tuesday 16th at 3pm works well. It will be a virtual meeting
+
+No specific prep really - only really what would be expected of a person in the role, aka reviewing the website and socials and the role so you're familiar. We can cover everything in the interview.
+
+Cheers,
+Elena
+Head of Strategic Operations & Growth
+Alltech
+
+### User Reply
+
+On 15 Jun 2026, at 06:44, c@culousyu.com wrote:
+
+Hello Elena,
+
+Acknowledged. No problem. See you.
+
+Regards,
+Culous
