@@ -11,11 +11,11 @@
 ## Trigger
 
 When prompted:
-- `seek`, enter AJAP mode; read `main_ajap.md` in full and act as main agent (MA); do NOT follow `ajap.md` directly — that file governs the AJAP sub-agent (SA) only
+- `#seek`, enter AJAP mode; read `main_ajap.md` in full and act as main agent (MA); do NOT follow `ajap.md` directly — that file governs the AJAP sub-agent (SA) only
   - In AJAP mode, whenever Tab 1≠SEEK results is reported by SA, handle per `main_ajap.md § SA Deterioration Signals`
-  - If already in AJAP mode but prompted `seek` again, re-read mandatory files again & continue
+  - If already in AJAP mode but prompted `#seek` again, re-read mandatory files again & continue
 - `investigation mode`, quit AJAP mode; read & follow `/investigation/CLAUDE.md`
-- `inv ses`/`invses`, enter investigation mode; read & follow `/investigation/InvSes.md`
+- `inv ses`/`invses`/`#invses`, enter investigation mode; read & follow `/investigation/InvSes.md`
 
 ## Session Start — Mandatory File Reads
 
@@ -44,7 +44,7 @@ Read only when relevant, NOT mandatory. Available in `/context/`:
 | `virtual_presentation.md` | `Presentation.CulousYu.com` in CL / S6.2 |
 | `mini_numbered.md` | `#numbered` prompted |
 | `mini_replace.md` | `#replace` prompted |
-| `psl.md` | `psl`/`ccl` prompted |
+| `psl.md` | `#psl`/`#ccl` prompted |
 
 ## Absolute Rules — ⚠️ IMPORTANT
 
