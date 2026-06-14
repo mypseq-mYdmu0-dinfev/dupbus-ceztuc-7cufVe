@@ -10,6 +10,10 @@
 - `apply` = finish the loop (S6); STOP right before "Submit", "Submit application", or similar
 - `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
 - `next` = don't touch current AR; proceed to next AR
+- `parallel AJAP` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for "batch verify URLs..." below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. "Dup From: `gcl/pending/`") → execute the intended creation/editing → if moving is needed: DON'T; instead remark where it should go (e.g. "Go To: `gcl/applied/`") right below "Dup From"
+  - This overrides other directory-related instructions (e.g. "create AR in `/ccl/`")
 
 ## `psl`
 
@@ -24,7 +28,7 @@
 - Read the file(s) (stop if not found) but never edit them
 - If it's complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
 - If it's incomplete, create new AR(s)
-- For each, open its URL like ajap.md's Tab 2 for reading, since there're no Tab 1 (single loop) or Tab 3 (no interaction)
+- For each, open its URL like ajap.md's Tab 2 for reading, since there's no Tab 1 (single loop)
 
 ## `psl pending`
 
