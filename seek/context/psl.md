@@ -3,10 +3,10 @@
 *Read prompt-matching section; e.g. on `psl`, read § `psl`.*
 
 ## Shared Rules
-- For all `psl`:
-  - If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
-  - If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
-  - Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON'T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
 - `apply` = finish the loop (S6); STOP right before "Submit", "Submit application", or similar
 - `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
 - `next` = don't touch current AR; proceed to next AR
