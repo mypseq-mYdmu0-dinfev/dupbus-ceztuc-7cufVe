@@ -17,11 +17,12 @@ When prompted:
 - `psl`, enter AJAP mode but process ONE loop only (stop at S5 end); A5's "SEEK results" become "any application"; DON'T spawn SA, use fallbacks (ignore A6), skip any (ignore K1–6), or interact w/ job page except screenshot/scrolling as needed; stop to ask anything if necessary
 - `psl [AR_filename(s)]`, read the file(s) (stop if not found) but never edit them; perform `psl` on the AR(s) (sequentially if multiple); if it's complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ; if it's incomplete, create new AR(s); for each, open its URL as Tab 2 for reading since no Tab 1 (single loop) or Tab 3 (no interaction); `next` = proceed to next AR
 - `psl pending`, perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- For all `psl`: if creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual; if NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/`; edit as `Outcome: Applying`; on `next`, remind to delete voided
 - `ccl`, read `/context/ccl.md` after mandatory files; perform `psl`; instead of `/gcl/applied/`, create AR(s) in `/ccl/` & ref past CLs in this folder (see its README.md) for quality & style
 - `investigation mode`, quit AJAP mode; read & follow `/investigation/CLAUDE.md`
-- `investigate session`, enter investigation mode; read & follow `/investigation/InvSes.md`
-- `#numbered`, read & follow `cc_numbered.md` in full
-- `#replace`, read & follow `cc_coding.md` in full
+- `inv ses`/`invses`, enter investigation mode; read & follow `/investigation/InvSes.md`
+- `#numbered`, read & follow `mini_numbered.md` in full
+- `#replace`, read & follow `mini_replace.md` in full
 
 ## Session Start — Mandatory File Reads
 
@@ -33,7 +34,7 @@ At the start of every session, before any actions, fully read the following file
 4. `/context/gcl.md`
 5. `/context/pro_profile.md`
 6. `/context/culous_yu_resume_ats.md`
-7. `/context/cc_writing.md`
+7. `/context/mini_writing.md`
 8. `/context/MA_hb.md`
 9. `/context/SA2_hb.md`
 
@@ -48,6 +49,8 @@ Read only when relevant, NOT mandatory. Available in `/context/`:
 | `culous_yu_linkedin.md` | LinkedIn profile needed |
 | `culous_yu_portfolio.md` | Past projects context required |
 | `virtual_presentation.md` | `Presentation.CulousYu.com` in CL / S6.2 |
+| `mini_numbered.md` | `#numbered` prompted |
+| `mini_replace.md` | `#replace` prompted |
 
 ## Absolute Rules — ⚠️ IMPORTANT
 

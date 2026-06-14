@@ -1,5 +1,4 @@
-# CC Writing Rules
-*User self note: blending cc.md & writing.md*
+# AJAP Writing Rules
 
 ## Language & Units
 

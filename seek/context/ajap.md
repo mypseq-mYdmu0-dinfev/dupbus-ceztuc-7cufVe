@@ -279,7 +279,7 @@ S4.4. **Suitability Score** —— score out of 100 using the following weighted
    **Exception:** final score < 70 AND method = "Apply" (external, not "Quick apply", i.e. M7=0) → create AR then skip. (A "Quick apply"/M7=5 job is NEVER skipped for a 35–69 score —— it is APPLIED per its band.)
 
 S4.5. **Resume Selection** —— per decision rules in `gcl.md`
-S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `cc_writing.md` (no dash sign)
+S4.6. **CL Writing** —— per template & rules in `gcl.md` AND `mini_writing.md` (no em dash)
 S4.7. **SA CL Self-Review** — re-read the drafted CL in full before writing to AR; check ALL of the following and rectify in-context if any fail:
 - No `—` `–` dash signs anywhere in the CL body
 - No bare `+` (must use `⁺` for "more than")
