@@ -436,14 +436,13 @@ I am glad we are aligned that recruitment is one participant per organisation, w
 
 I take your point on comparability and will aim to recruit participants of broadly similar professional roles so far as access reasonably allows. In candour, as an individual researcher (rather than a research firm with resource to secure targeted personnel) I cannot guarantee in advance the precise composition of a voluntary sample, which doing so per se would unavoidably breach the prohibition of starting data collection before ethics approval, as mandated by this module. Thus, I will pursue the most comparable cohort feasible whilst holding the minimum of six, and will reflect this honestly in the methodology.
 
-**Framework**
+**Theoretical Framework**
 
-You observed that what I presented reads, in effect, as a theoretical framework. I noticed the original Assessment 1 demands a conceptual framework, but I am of course more than willing to adapt as you guided. Would you prefer that I develop it as a theoretical framework, just as I described in my last email which you seemed to agree, and in the manner you guided me in last email, carrying themes from the research questions through the relevant theories and literature into the factors that will guide the analysis? I am keen to build the right one before returning the revised draft.
+You observed that what I presented reads, in effect, as a theoretical framework. Would you prefer that I develop it as I proposed in my last email and in the manner you guided me in your last email, carrying themes from the research questions through the relevant theories and literature into the factors that will guide the analysis? I am keen to build the right one before returning the revised draft.
 
 **Other Amendments**
 
 These, along with everything above, will appear in the revised draft for your review. Thank you again for your patient guidance, which has genuinely sharpened the work.
 
 Warm Regards,
-Culous Yu
-(MGTK751)
+Culous
