@@ -29,7 +29,7 @@ SCOPE & LIMITS
   - This is FORMAT linting, NOT truth-checking. It cannot catch false claims,
     wrong salary/notice answers, or wrong resume variant —— those still require
     SA1/SA3 reasoning. Keep both gates.
-  - BANNED_WORDS is seeded with known offenders; extend from gcl.md / cc_writing.md.
+  - BANNED_WORDS is seeded with known offenders; extend from gcl.md / mini_writing.md.
 """
 
 import re
@@ -61,7 +61,7 @@ SIXTEEN_PLUS = re.compile(r"16⁺")
 # label, so they are excluded by requiring letters-only before the colon.
 COLON_PILLAR = re.compile(r"^\s*\**[A-Z][A-Za-z][A-Za-z &/-]{2,40}:\s*\S", re.MULTILINE)
 
-# Seed list —— EXTEND from gcl.md / cc_writing.md banned-words.
+# Seed list —— EXTEND from gcl.md / mini_writing.md banned-words.
 BANNED_WORDS = [
     "seamlessly",
     "seamless",

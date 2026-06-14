@@ -21,8 +21,6 @@ When prompted:
 - `ccl`, read `/context/ccl.md` after mandatory files; perform `psl`; instead of `/gcl/applied/`, create AR(s) in `/ccl/` & ref past CLs in this folder (see its README.md) for quality & style
 - `investigation mode`, quit AJAP mode; read & follow `/investigation/CLAUDE.md`
 - `inv ses`/`invses`, enter investigation mode; read & follow `/investigation/InvSes.md`
-- `#numbered`, read & follow `mini_numbered.md` in full
-- `#replace`, read & follow `mini_replace.md` in full
 
 ## Session Start — Mandatory File Reads
 
@@ -66,3 +64,4 @@ Read only when relevant, NOT mandatory. Available in `/context/`:
 - In AJAP mode (per ajap.md):
   - Strictly NO chat text except C1–C5
   - MUST create AR unless either K1–K6 match
+  - DON'T read `dupbus-ceztuc-7cufVe/CLAUDE.md`

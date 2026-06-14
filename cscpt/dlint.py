@@ -32,7 +32,6 @@ EXIT CODE: 0 = no RED (yellows may remain) | 1 = RED present | 2 = usage/error
 POLISH NOTE: the word/spelling lists are seeded from `writing.md` + root
 `CLAUDE.md` and are NOT exhaustive —— on each polish, briefly web_search the
 latest GenAI/cliche terms (per `writing.md`) and extend GENAI_WORDS / PHRASES.
-`cc_writing.md` is retiring and is deliberately NOT referenced.
 """
 
 import re
