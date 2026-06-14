@@ -5,7 +5,8 @@ Go To: `gcl/applied/`
 # Staff Australia — Supply Chain Analytics Consultant
 **Date:** 22:42 on 14/06/2026 (Last Modified: 05:00 on 12/06/2026)
 **SEEK URL:** https://au.seek.com/job/92597401
-**Outcome:** Applying
+**Outcome:** Applied
+✅ SUBMITTED 14/06/2026 23:04 — SEEK confirmed "Your application has been sent to Staff Australia Pty. Ltd." (Quick apply: Consulting résumé + CL + 7/7 questions; graduate temporary work visa; Analytics Consultant 3 years; consulting >5 years; Excel Yes; analytics tools KNIME/Tableau/Excel; SQL "No experience"; viz tools Tableau/Excel/Matplotlib; salary field N/A — not asked).
 **Resume Selected:** Culous_Yu_Resume_Consulting.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 14/30 (data analytics/Python/consulting/presentations strong; advanced Excel/VBA partial, no SQL, no Power Platform)

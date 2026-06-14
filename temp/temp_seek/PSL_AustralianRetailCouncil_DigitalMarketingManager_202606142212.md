@@ -2,11 +2,12 @@ Dup From: `gcl/pending/⚠️_AustralianRetailCouncil_DigitalMarketingManager_20
 Go To: `gcl/applied/`
 ⚠️ FLAG (FORM ISSUE): Quick apply, but a SEEK Angular salary-field did not validate (Continue unresponsive) in the prior automated attempt. Manual entry of salary ($75,000) should resolve it. Applications close 19 June 2026.
 NOTE: AR complete; re-validation (score 75/100) unchanged; CL retained verbatim.
+✅ SUBMITTED 14/06/2026 22:50 — SEEK confirmed "Your application has been sent to Australian Retail Council" (Quick apply: Marketing résumé + CL + 2/2 questions, full unrestricted work rights, salary $75,000). The prior Angular salary-field bug did not recur.
 
 # Australian Retail Council — Digital Marketing Manager
 **Date:** 22:12 on 14/06/2026 (Last Modified: 21:36 on 31/05/2026)
 **SEEK URL:** https://au.seek.com/job/92380844
-**Outcome:** Applying
+**Outcome:** Applied
 **Resume Selected:** Culous_Yu_Resume_Marketing.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 23/30 (digital marketing, content creation, social; strong match)

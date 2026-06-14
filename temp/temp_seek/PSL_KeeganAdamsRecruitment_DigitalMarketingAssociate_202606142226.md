@@ -1,11 +1,12 @@
 Dup From: `gcl/pending/KeeganAdamsRecruitment_DigitalMarketingAssociate_202606060233.md`
 Go To: `gcl/applied/`
 NOTE: End client undisclosed (recruiter Keegan Adams, acting for an ETF/investment-management firm), so firm-specific research is not possible; fit is on marketing skills. Office-based 5 days/week.
+✅ SUBMITTED 14/06/2026 22:53 — SEEK confirmed "Your application has been sent to Keegan Adams Recruitment" (Quick apply: Marketing résumé + CL + 5/5 questions; graduate temporary work visa; salary $70k [nearest ≤ $75k target]; Yes to FS/professional-services, 1yr marketing, 5-day office).
 
 # Keegan Adams Recruitment — Digital Marketing Associate
 **Date:** 22:26 on 14/06/2026 (Last Modified: 02:33 on 06/06/2026)
 **SEEK URL:** https://au.seek.com/job/92457899
-**Outcome:** Applying
+**Outcome:** Applied
 **Resume Selected:** Culous_Yu_Resume_Marketing.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 25/30 (digital marketing, content, social, SEO/SEM, campaigns, collateral all held; over-qualified, not penalised)

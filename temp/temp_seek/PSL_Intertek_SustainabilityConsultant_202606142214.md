@@ -5,7 +5,8 @@ Go To: `gcl/applied/`
 # Intertek — Sustainability Consultant (Senior)
 **Date:** 22:14 on 14/06/2026 (Last Modified: 15:30 on 01/06/2026)
 **SEEK URL:** https://au.seek.com/job/92127622
-**Outcome:** Applying
+**Outcome:** Applied
+✅ SUBMITTED 14/06/2026 23:10 — SEEK confirmed "Your application has been sent to Intertek" (Quick apply: Consulting résumé + CL; no employer questions for this role).
 **Resume Selected:** Culous_Yu_Resume_Consulting.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 8/30 (consulting/analysis/MBA strategy transferable; technical ESG/GHG/carbon accounting and environmental degree absent)

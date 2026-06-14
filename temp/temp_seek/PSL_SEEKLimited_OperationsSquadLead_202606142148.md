@@ -3,11 +3,12 @@ Go To: `gcl/applied/`
 ⚠️ FLAG 1 (DUPLICATE): A same-day AR for this exact job (URL 92396883) exists — `gcl/pending/SEEKLimited_OperationsSquadLead_202606141511.md`, created today 15:11, likely by the parallel AJAP session. Resolve duplication before applying (do NOT submit twice).
 ⚠️ FLAG 2 (EXTERNAL PORTAL): SmartRecruiters portal; prior CIC file_upload could not access the résumé path. Manual résumé upload likely required even on `apply`.
 NOTE: AR is complete and re-validation (score 96/100) does not change the result; CL retained verbatim from the original.
+🛑 NOT RE-DRIVEN 15/06/2026 — SEEK shows "Visited employer's application site on 14 Jun 2026": the parallel AJAP session already engaged this external SmartRecruiters application today. Re-driving would risk a duplicate submission. Left to the parallel session; status remains Pending (external visit recorded). Verify completion on the SmartRecruiters side.
 
 # SEEK Limited — Operations Squad Lead
 **Date:** 21:48 on 14/06/2026 (Last Modified: 08:32 on 30/05/2026)
 **SEEK URL:** https://au.seek.com/job/92396883
-**Outcome:** Applying
+**Outcome:** Pending (external site visited 14 Jun by parallel session; not re-driven to avoid duplication)
 **Resume Selected:** Culous_Yu_Resume_Consulting.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 24/30 (ops/cross-func strong; minor data-viz gap)

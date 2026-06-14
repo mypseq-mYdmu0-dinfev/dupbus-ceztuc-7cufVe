@@ -2,11 +2,12 @@ Dup From: `gcl/pending/⚠️_CarnivalCorporation_SeniorDigitalMarketingSpeciali
 Go To: `gcl/applied/`
 ⚠️ FLAG (FORM ISSUE): Quick apply, but SEEK Angular role-requirements form did not advance previously. Manual completion should resolve.
 NOTE: AR complete; re-validation (score 73/100) unchanged; CL retained verbatim.
+✅ SUBMITTED 14/06/2026 22:57 — SEEK confirmed "Your application has been sent to Carnival Corporation & plc" (Quick apply: Marketing résumé + CL + 8/8 questions). Angular form bug did NOT recur. Three free-text answers given (appended to §3 below): years (>5), graduate temporary work visa, salary $70k, notice none.
 
 # Carnival Corporation & plc — Senior Digital Marketing Specialist
 **Date:** 22:14 on 14/06/2026 (Last Modified: 23:17 on 31/05/2026)
 **SEEK URL:** https://au.seek.com/job/92408376
-**Outcome:** Applying
+**Outcome:** Applied
 **Resume Selected:** Culous_Yu_Resume_Marketing.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 22/30 (digital marketing, multi-brand, content; strong match)

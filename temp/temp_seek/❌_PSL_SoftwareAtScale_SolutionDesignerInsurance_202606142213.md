@@ -1,12 +1,11 @@
 Dup From: `gcl/pending/⚠️_SoftwareAtScale_SolutionDesignerInsurance_202605312302.md`
-Go To: `gcl/applied/`
-⚠️ FLAG (FORM ISSUE): Quick apply, but SEEK Angular role-requirements form did not advance (Continue unresponsive) previously. Manual completion should resolve.
-NOTE: AR complete (CL + P.S.); re-validation (score 45/100) unchanged; CL retained verbatim.
+Go To: `gcl/skipped/`
+🛑 NOT SUBMITTED — user decision 14/06/2026 23:08. The SEEK screening asks for MANDATORY commercial insurance-sector experience and Guidewire/core-insurance-systems experience; Culous has neither (honest answer NO to both), making the application non-viable. Application abandoned before submit; outcome changed to Skipped.
 
 # Software At Scale — Solution Designer (Insurance) - Perm or Contract
 **Date:** 22:13 on 14/06/2026 (Last Modified: 23:02 on 31/05/2026)
 **SEEK URL:** https://au.seek.com/job/92406328
-**Outcome:** Applying
+**Outcome:** Skipped (mandatory insurance-sector + Guidewire experience absent; user opted to skip)
 **Resume Selected:** Culous_Yu_Resume_IT.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 12/30 (IT/HCI background; no insurance solution design)
