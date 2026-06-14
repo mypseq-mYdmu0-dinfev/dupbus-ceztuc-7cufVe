@@ -299,18 +299,16 @@ Culous
 - Benefits: medical insurance, etc.?
 - Car park: the key concern —— is parking provided or subsidised?
 
-### User Video Submission
-*Reply to Mary Shen (hr@home789.com.au), sending the completed assessment package. Package URL: http://Rennly20260612.CulousYu.com (Reel with soundtrack, caption, CTA, supporting files). Drafted 15/06/2026; tone respectful, unhurried.*
+### User Video Submission (On 15 Jun 2026, at 08:22)
 
 Dear Mary,
 
-Thank you again for the warm welcome last Friday. It was a genuine pleasure to meet you and the team, and to learn more about the role and the group.
+Thank you again for having me last Friday. It was a genuine pleasure to meet you ladies, and to learn more about the role and the group.
 
-I have completed the assessment and scored the soundtrack into the Reel as discussed. The full submission, comprising the video, caption copy, and supporting files, is available here.
-
+I have scored the soundtrack into the Reel as discussed. The full submission, comprising the video, caption copy, and supporting files, is available here:
 http://Rennly20260612.CulousYu.com
 
 Please feel free to review it at your convenience. Whenever it suits you, I would welcome your guidance on the next step.
 
-Kind regards,
+Warm Regards,
 Culous Yu

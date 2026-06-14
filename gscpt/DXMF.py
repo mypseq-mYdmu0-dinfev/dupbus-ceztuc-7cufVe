@@ -30,24 +30,20 @@ that contain venvs whose symlinks point at system binaries.
 
 USAGE
 -----
-A) Command line (preferred for folders):
-       python3 DXMF.py <YYYYMMDDHHmm> <path> [more paths...]
-   A path may be a file or a directory. Directories are scrubbed recursively,
-   including the directory itself and every file and subfolder within.
-
-B) Instruction file (DAMF-compatible, single target):
+Instruction file (DAMF-compatible):
    Place exactly one .txt beside this script (any name except temp.txt):
        Line 1: a filename to find anywhere in the repo, OR a path
                (relative to the repo root, or absolute) to a file or folder
        Line 2: the target timestamp in YYYYMMDDHHmm (Sydney local time)
    Then run:  python3 DXMF.py
+   A path that resolves to a folder is scrubbed recursively (the folder itself
+   plus every file and subfolder within).
 
 Timestamps are interpreted in Australia/Sydney local time.
 """
 
 import ctypes
 import ctypes.util
-import os
 import plistlib
 import struct
 import sys
@@ -216,23 +212,12 @@ def run(targets: list[Path], dt: datetime) -> None:
 
 
 def main() -> None:
-    args = sys.argv[1:]
-    if args:  # command-line mode
-        if len(args) < 2:
-            die("usage: python3 DXMF.py <YYYYMMDDHHmm> <path> [more paths...]")
-        dt = parse_ts(args[0])
-        targets = []
-        for token in args[1:]:
-            p = Path(token)
-            targets.append(p if p.exists() else resolve_target(token))
-        run(targets, dt)
-    else:  # instruction-file mode (DAMF-compatible)
-        txt = find_instruction_file()
-        lines = [ln.strip() for ln in txt.read_text(encoding="utf-8").splitlines() if ln.strip()]
-        if len(lines) < 2:
-            die(f"{txt.name} needs 2 non-empty lines (target, then YYYYMMDDHHmm).")
-        dt = parse_ts(lines[1])
-        run([resolve_target(lines[0])], dt)
+    txt = find_instruction_file()
+    lines = [ln.strip() for ln in txt.read_text(encoding="utf-8").splitlines() if ln.strip()]
+    if len(lines) < 2:
+        die(f"{txt.name} needs 2 non-empty lines (target, then YYYYMMDDHHmm).")
+    dt = parse_ts(lines[1])
+    run([resolve_target(lines[0])], dt)
 
 
 if __name__ == "__main__":

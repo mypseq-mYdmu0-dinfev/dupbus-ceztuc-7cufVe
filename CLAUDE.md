@@ -192,3 +192,6 @@
     - 8.8.4.4. §8.8.1: '/Users/culous/Downloads'
     - 8.8.4.5. §8.8.2: '/Users/culous/Desktop'
     - 8.8.4.6. §8.8.3: '/Users/culous/Documents/PDF Conversion'
+
+9. Miscellaneous
+- 9.1. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
