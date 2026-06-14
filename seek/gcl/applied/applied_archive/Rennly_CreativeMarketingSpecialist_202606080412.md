@@ -175,11 +175,13 @@ Culous Yu
 
 ### CC Suggestion
 
-1. **Title negotiation:** Do NOT raise the manager/senior title at the first interview — risks reading as presumptuous in a CEO-dominated culture. If advancing to a second interview or offer, raise it then: "Given there's currently no marketing manager, how is the reporting line structured, and is there room to frame the role at a manager level?" This also functions as a culture test — a healthy firm will engage; a toxic one will react badly.
-2. **Multi-brand loading:** Probe scope directly: "Can you describe a typical week — which brands or projects would I be working across?" Glassdoor confirms this is undisclosed until day one; surfacing it early is fair.
-3. **Video workload:** Use §5B Q2 to determine whether daily hands-on editing is expected. If yes and volume is high, this is a potential dealbreaker (hands-on editing predates Creative Cloud era).
-4. **Reporting line:** No confirmed marketing manager above this role; likely reports to CEO or a Director directly. This means high autonomy AND high exposure to Walton Chu's management style. Factor into offer decision.
-5. **Offer evaluation criteria:** If offer received, weigh salary (minimum wage risk per Glassdoor), multi-brand scope under one salary, reporting line, title, and whether the creative function has genuine mandate vs. being a one-person support role for a sales-led org.
+*⚠️ Pre-interview. Several points now superseded by the interview itself —— see `### Interview Notes` below. Supersession flagged inline.*
+
+1. **Title negotiation:** Do NOT raise the manager/senior title at the first interview — risks reading as presumptuous in a CEO-dominated culture. If advancing to a second interview or offer, raise it then: "Given there's currently no marketing manager, how is the reporting line structured, and is there room to frame the role at a manager level?" This also functions as a culture test — a healthy firm will engage; a toxic one will react badly. **[SUPERSEDED —— a marketing manager DOES exist (see Interview Notes §IN.3); the manager-seat premise was wrong. Reporting line is MM, not a vacancy.]**
+2. **Multi-brand loading:** Probe scope directly: "Can you describe a typical week — which brands or projects would I be working across?" Glassdoor confirms this is undisclosed until day one; surfacing it early is fair. **[ADDRESSED —— each specialist owns ONE brand (Culous → UFN); minimal cross-brand collab; see Interview Notes §IN.4.]**
+3. **Video workload:** Use §5B Q2 to determine whether daily hands-on editing is expected. If yes and volume is high, this is a potential dealbreaker (hands-on editing predates Creative Cloud era). **[ADDRESSED —— ~30% hands-on, not a daily grind; mitigated further by AI-system workflow; see Interview Notes §IN.5.]**
+4. **Reporting line:** No confirmed marketing manager above this role; likely reports to CEO or a Director directly. This means high autonomy AND high exposure to Walton Chu's management style. Factor into offer decision. **[SUPERSEDED —— reports to MM (+ sales/property team), NOT the CEO directly; CEO exposure for this seat is low; see Interview Notes §IN.3.]**
+5. **Offer evaluation criteria:** If offer received, weigh salary, multi-brand scope, reporting line, title, and whether the creative function has genuine mandate vs. being a one-person support role for a sales-led org. **[STILL VALID —— carried forward; see Interview Notes §IN.10 "Open items for offer-stage negotiation".]**
 
 ### Employer Confirmation
 
@@ -231,3 +233,68 @@ Much obliged. See you at 3pm.
 
 Regards,
 Culous
+
+### Interview Notes
+
+*Face-to-face, Fri 12/06/2026 3pm, Rhodes office. Interviewers: MM (Marketing Manager) + Mary Shen (HR). Reconstructed from memory (voice recording failed). Overall: strongly positive; most pre-interview concerns resolved in Culous' favour.*
+
+**IN.1. Overall read & environment**
+- Vibe better than the pre-interview research feared. Office elegant, almost luxurious. MM enthusiastic and chill (notably younger than Culous, ~late 20s); HR nice. Not the stressful/indecent environment the Glassdoor research implied for this seat.
+- Culous' two live concerns are physical/logistical, not cultural: (1) stamina for hands-on/physical tasks (interns can help move equipment; Culous is physically weak), (2) parking (see IN.9).
+
+**IN.2. Process & status**
+- No mention of a second round. Likely a single-shot hire / no-hire decision —— possibly no further interview.
+- No firm timeline; HR gave cliché closing ("strong candidate, but we have other candidates"). Inside the room HR stated directly that Culous is a very strong candidate.
+- Implication: these notes are for record-keeping + foundation for any offer-stage negotiation and the internal accept/decline decision —— not for chasing a next round.
+
+**IN.3. People & reporting line**
+- **MM** —— Indian female, ~late 20s. Heads the marketing function. Day-to-day reporting goes to her. Enthusiastic, hands-off on creative provided work aligns to brand guidelines (described the autonomy as "quite free"). Does not speak Mandarin (relevant to IN.6).
+- **HR (Mary Shen)** —— Chinese female, ~mid 30s; ~13 years tenure → likely a genuinely influential figure internally. Her favourable read of Culous carries real weight.
+- Reporting in practice: MM (head of dept) + property/sales team. Culous comfortable facing sales directly ("business guy, I get what they want").
+- This corrects the pre-interview assumption of no marketing manager / direct-CEO reporting. CEO (Walton Chu) exposure for this seat appears low.
+
+**IN.4. Team structure**
+- 4 full-time specialists (incl. this role if hired) + 5`~`7 interns (marketing background, not multimedia; ~2 paired with each specialist for execution help).
+- Model: 1 specialist ≈ 1 brand. Culous would take **UFN** (Instagram @ufnsydney —— currently very quiet but decent content quality).
+- Minimal-to-no collaboration between specialists; practically an independent "lone play" with only superiors (MM + sales) and subordinates (interns), effectively no peer colleagues. Cross-brand collab (e.g. one brand × another) exists but is rare. Culous fine with this (INTJ; values solitude; was only worried about support, not isolation).
+
+**IN.5. Role scope & workload**
+- ~30% hands-on (heavy-lifting: video shooting/editing); remaining ~70% strategic/systematic. Bounded enough to be acceptable —— and Culous intends to invest the time in refining AI prompt-systems and parameters rather than manual crafting.
+- Content cadence: ~3 content pillars per brand, reviewed quarterly, plus non-pillar work (ad-hoc campaigns, occasional collabs). ~2 posts/week + ad-hoc tasks.
+- Brand guidelines per brand are well-established (genuine guidelines, not just a logo) —— a real positive vs. many of Culous' past clients who had only a logo, sometimes only as .jpg/.png.
+
+**IN.6. Mandarin**
+- Needed for content only, NOT internal comms. MM herself cannot speak Mandarin. This neutralises the professional-fluency (non-native) concern as an internal-comms risk —— a "dealbreaker to a dealbreaker."
+
+**IN.7. Culous' positioning (what he conveyed)**
+- Core pitch: value lies not only in a decade-plus of experience but in the ability to build actual AI systems to do the work —— highly generalisable across language, style, culture, format. Told them he could "even create Russian content" if wanted.
+- Demonstrated via the assessment: disclosed the reel was built solely by AI —— ~1.5 hr programming + ~15 min production. Both interviewers visibly impressed ("speechless"). This is the single strongest differentiator and clearly landed.
+- Scalability framing: rather than competing on hand-crafting one video in 30 min (per the brief), he programmes the workflow to eventually produce many (e.g. ~10/hr). Hinted the daily reality of the role would be prompt/system refinement + debugging/optimisation.
+- "Why Rennly": spent ~a minute on his brand-management depth and how rarely he is impressed, yet was impressed by their branding —— quoting the CEO's YouTube video from their website. Resonated.
+- MM Q&A: software hands-on (Adobe pre-Creative-Cloud; DaVinci) ✅; hardware hands-on (ex-CPS; comfortable with all equipment brands) ✅; knowledge transfer (good with AI/programming; generalisable; once programmed, fast, mainly debugging) ✅.
+
+**IN.8. Honesty / strategic disclosures**
+- **Short-stay intent:** Culous framed this (even to them) as a likely short stay —— target is consulting; this role is a stepping stone for local experience. Internally: realistic horizon ~half a year.
+- **Loyalty:** HR stated the firm values LOYALTY and prefers multi-year retention. Internal reality: no genuine loyalty to this firm; demonstrate it outwardly only. ⚠️ Tension with IN.8 short-stay intent —— manage carefully if loyalty is probed at offer stage.
+- **Prior ICT BA application:** Culous disclosed his earlier application to Rennly's ICT BA role; framed it as genuine interest in the group (said he is fine with either role). HR confirmed role-shifting across the group is possible if fit matches. (Culous unlikely to wait that long regardless.)
+- **Communication:** the group values rich communication; autonomy is granted in exchange for it, always within brand guidelines.
+- **Overqualification:** raised and overcome. HR: "very strong candidate, highly overqualified but convinced." Chinese-to-Chinese aside —— found it rare for someone with Culous' manager/consulting background to return to a hands-on role, but understood after discussion. (Untested whether the CEO would share this view.)
+
+**IN.9. Compensation & logistics (Culous' read)**
+- Salary: Culous volunteered **70k**; HR did not react negatively (no shock). ⚠️ She did NOT confirm a band or say it was acceptable —— "seems ok" was Culous' impression/memory, not her words. To be pinned down precisely at offer stage.
+  - Context concern: Sydney white-collar starting salaries can run low (anecdote: a friend's partner started ~60k as an engineer). Given this is not a high-growth-value employer, remuneration must be satisfactory to justify accepting.
+- Start date: Culous indicated 1`~`2 weeks (pro bono advisory handoff).
+- Parking (key concern): visitor car park free first 2 hours only; nearest is Rhodes Waterside at $50⁺/day or $250⁺/month, and fairly far. Material cost factor.
+- Physical: Culous physically weak; relies on interns to move equipment for shoots; would want firm transport support (intends Uber for shoots).
+
+**IN.10. Open items for offer-stage negotiation** *(ask only if/when an offer is received —— reminder for the future negotiation session)*
+- Salary: exact base, package vs. base, review cadence. Push given low-growth-value employer + SYD-low-start risk.
+- BYO device: can Culous use his private OTGM? If not, software install allowed? (Fallback: AnyDesk to remote-control WSM.)
+- Software allowance: Adobe CC, DaVinci Resolve, Claude Max, GPT, Gemini, Canva, Shutterstock, etc.
+- Equipment: does the firm provide gear? If so, which brands/models?
+- Cameras: mandatory, or is phone acceptable?
+- Transport allowance: for shoots (Uber).
+- Hours: clock in/out required? Usual times? Flexible? OT pay?
+- Weekend work: any? Sat/Sun?
+- Benefits: medical insurance, etc.?
+- Car park: the key concern —— is parking provided or subsidised?
