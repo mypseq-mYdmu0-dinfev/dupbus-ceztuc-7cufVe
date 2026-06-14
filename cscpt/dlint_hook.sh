@@ -14,8 +14,8 @@
 payload=$(cat)
 
 case "$payload" in
-  *response_*) ;;        # might involve a response_ file -> verify in Python
-  *) exit 0 ;;           # definitely not -> do nothing, no Python spawned
+  *response_*|*close_*|*wrap_*) ;;   # might involve a CC comms file -> verify in Python
+  *) exit 0 ;;                        # definitely not -> do nothing, no Python spawned
 esac
 
 printf '%s' "$payload" | python3 "$(dirname "$0")/dlint_hook.py"
