@@ -195,3 +195,4 @@
 
 9. Miscellaneous
 - 9.1. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
+- 9.2. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
