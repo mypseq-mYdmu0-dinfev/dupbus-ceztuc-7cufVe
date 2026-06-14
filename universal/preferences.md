@@ -4,7 +4,7 @@ Each file (re-)fetched: MUST declare (per rules.md); STOP if failed, don't proce
 
 ## UNCONDITIONAL
 
-1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `index.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d253b2b0e4a0cb879a33f507debbb034fd6f87df/universal/index_otg.md
+1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `index.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e56549f5b4dbb2160db7d0c7288b1eb905ec9cdb/universal/index_otg.md
 2. Prerequisites of EVERY response before other `<thinking>` or anything else:
 2.1. Run PP1; if unrecognised/failed, fetch `index_otg.md` (userPref) AND `context.md`
 2.2. Scan incoming msg for "conditions" below, both explicitly & **implicitly** (e.g. "proceed to..." on deliverables all trigger `writing.md`) → fetch triggered files → declare
