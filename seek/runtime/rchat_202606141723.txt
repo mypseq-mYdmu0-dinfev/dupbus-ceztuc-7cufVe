@@ -1,0 +1,830 @@
+Stopping SA #31 first, then re-reading all mandatory files.
+
+SA #31 already dead (rate limit), no ⏳_ in progress. Re-reading all mandatory files:
+
+**🕰️: `202606141334`**
+
+✅ `context/MA_hb.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`, `context/SA2_hb.md`
+
+All 9 mandatory files re-read. Now reviewing session work and reading queue.md:
+
+Session looks clean — 17 applied, 80 skipped, 8 pending, no ⏳_. Checking potential duplicates before queue.md:
+
+BestLess is a genuine duplicate (same SEEK URL 92325575) — K6 should have caught it. SGFleet are different URLs (different job listings). Voiding the duplicate:
+
+N=96 confirmed. Updating latest_TS back to 202606141215 (max valid AR), then reading queue.md:
+
+✅ `context/MA_hb.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`, `context/SA2_hb.md`, `queue.md`
+
+queue.md read. Order: **01, 07, 05, 02, 04, 08, 06, 03** — restart from Qi01. Spawning SA #32:
+
+Session reviewed: 96 valid ARs (17 applied, 79 skipped, 8 pending — 2 ⚠️ skips +2 duplicates voided). SA #32 spawned, restarting from Qi01 per queue order 01→07→05→02→04→08→06→03.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141340`**
+
+No new files, no ⏳_. SA #32 at 4 min — still initialising. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141343`**
+
+⏳_ AR found — SA #32 is at S6.4.2.5 awaiting approval. Running CL check:
+
+🚨 Compaction Detected —— stopped all tasks.
+
+**🕰️: 202606141346**
+
+Now running broad file check and ma_msg check in parallel.
+
+ma_msg.md = "Continue" ✅. Now let me get a clean broad file check.
+
+Now running CL validation, MSI AR check, N count, and monitor teardown in parallel.
+
+cl_check.py exit 0 ✅. MSI AR has ## 6. ✅. N = 97. Both monitors stopped. Now reading EB Studio ## 6. formally and writing approval.
+
+CL clean: no dashes, no bare +, `16⁺` once, Template [1] correct, no banned words, P.S. line present. Writing approval and spawning monitors.
+
+✅ `context/CLAUDE.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`, `context/MA_hb.md`, `context/SA2_hb.md`
+
+Recovery complete. Now spawning SA #33.
+
+✅ `context/MA_hb.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`, `context/SA2_hb.md`
+
+Post-compaction recovery complete. State:
+- All 9 mandatory files re-read
+- Both monitors respawned: primary `bzv2lbtxe` (INT=60), watchdog `byv5al5ql`
+- EB Studio CL clean (cl_check exit 0, subjective pass) → approval written to ma_msg.md
+- SA #33 `a126fcf85e8a7681a` spawned, resuming EB Studio mid-application (Tab 3 at S6.2)
+- N = 9️⃣7️⃣, latest_TS = 202606141215
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141353**
+
+Active Check: mandatory files declared ✅. Last CL clean (no dashes/bare +). No ajap.md re-read needed. SA #33 just spawned (sa_spawn_TS 202606141353), 1hr limit = 202606151353 ✅. ⏳_ EB Studio AR present, approval pre-written in ma_msg.md ✅. No new files since last_TS. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141354**
+
+Active Check ✅. SA 1hr limit: 202606151353 ✅. Broad file check: only ⏳_EBStudio_StudioManager_202606141342.md ≥ latest_TS — SA #33 likely modified it (F2 mod-time append → triggered newfile). ma_msg.md = "Submit then proceed to next card" (approval pending, SA not yet at S6.4.2.5). Window clean. latest_TS unchanged (⏳_ not yet confirmed).
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141354**
+
+Active Check ✅. No new files — ⏳_ EBStudio AR unchanged, ma_msg.md approval still pending (SA #33 likely still in Pre-Flight/S6.1). Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141355**
+
+Active Check ✅. SA 1hr: 202606151353 ✅. ⏳_ EB Studio still active, approval pending (SA ~2 min in, likely in S6.1–S6.2). No new files. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141356**
+
+Active Check ✅. SA #33 ~3 min in, ⏳_ EB Studio approval still pending. No new files. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141357**
+
+Active Check ✅. SA #33 ~4 min, ⏳_ approval pending, no new files. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141358**
+
+Active Check ✅. SA #33 ~5 min, ⏳_ approval pending, no new files. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141359**
+
+Active Check ✅. Broad file check: no new ARs ≥ latest_TS — ⏳_ EB Studio still active (SA likely modifying AR for S6.2 answers → triggered newfile). Approval still pending. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141359**
+
+Active Check ✅. ⏳_ approval still pending, no new ARs. SA #33 ~6 min in. Window clean.
+
+⏳_ EB Studio is gone from applied tail. Checking if submission confirmed.
+
+EB Studio submitted — AR renamed to `EBStudio_StudioManager_202606141342.md`. Verifying Outcome and resetting.
+
+Outcome: Applied ✅. Resetting and respawning Monitor at INT=300.
+
+202606141401 🎯9️⃣7️⃣ **job(s) processed so far.**
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141406**
+
+Active Check ✅. SA #33 13 min in (limit 202606151353 ✅). ma_msg "Continue" ✅. No new ARs since EB Studio (latest_TS 202606141342) — SA likely researching next card. No ⏳_. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141407**
+
+`watchdog-alive` — normal. Active Check ✅. SA #33 14 min in, no new file since EB Studio (~7 min) — within normal S3 research range. No ⏳_, ma_msg "Continue". Window clean.
+
+🚨 Compaction Detected —— stopped all tasks.
+
+✅ `context/MA_hb.md`, `.claude/tmp/ma_state.md`
+
+**🕰️: 202606141410**
+
+Now proceeding with full mandatory re-read (Post-Compaction Recovery step 2).
+
+✅ `seek/CLAUDE.md`, `context/main_ajap.md`
+
+✅ `context/ajap.md`, `context/gcl.md`
+
+✅ `context/pro_profile.md`, `context/culous_yu_resume_ats.md`
+
+✅ `context/cc_writing.md`, `context/SA2_hb.md`
+
+All 9 mandatory files re-read. Now running broad file check and halting SA.
+
+N = 97. One new AR since latest_TS: `EBStudio_StudioManager_202606141342.md` (Applied, correct folder, confirmed). No `⏳_` pending. ma_msg = "Continue". 
+
+Halting SA #33, TaskStop-ing both monitors, then respawning.
+
+SA #33 was mid-research (pre-AR) when killed — no `⏳_` orphaned. Now respawning both monitors and resetting.
+
+Both monitors respawned. ma_state.md updated with new task IDs. Now running Pre-Flight Check.
+
+Tab 2+3 open: both on "Team Coordinator - Technology Team" (job/92392351) — Tab 3 ≡ Tab 2 (job post). F6 first: check for orphaned AR.
+
+Skipped AR exists: `Nuix_TeamCoordinatorTechnologyTeam_202605312134.md` (14 days old, < 30 days) → K6 match. Closing Tab 2 & 3, then spawning SA from next card.
+
+Clean state: Tab 1 only. Spawning fresh SA #34.
+
+✅ `context/MA_hb.md`, `.claude/tmp/ma_state.md`, `seek/CLAUDE.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`, `context/SA2_hb.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141416**
+
+Window clean. No new ARs since latest_TS (SA #34 spawned 4 min ago — still initialising, normal). No `⏳_`. SA 1hr limit: 202606141412 + 60 min = 202606151412, well clear.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141421**
+
+No new ARs since latest_TS (202606141342). No `⏳_`. SA #34 is 9 min into run — likely still on mandatory reads + first card research, normal. SA 1hr limit at 202606151412, clear.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141424**
+
+`⏳_NXGServices_TechnologyInnovationsAssistant_202606141423.md` — applying AR found. Running CL check.
+
+CL clean: exit 0, no dashes, no bare `+`, `16⁺ years` once, P.S. present, no banned words, factual content. Approving.
+
+Approval written. Respawning primary Monitor at INT=60.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141426**
+
+`⏳_NXGServices` still present; ma_msg still "Submit then proceed to next card" — approval written 2 min ago, SA mid-submit, normal. Watchdog-alive: OK.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141427**
+
+`⏳_NXGServices` unresolved across 2 heartbeats (approval written at 202606141424, 3 min ago, approaching expiry). Checking tab state.
+
+Tab 3 at S6.3 (Update SEEK Profile) — SA actively progressing, not stuck. `newfile` fired — checking if submission confirmed.
+
+SA at S6.3 (pre-submit) — hasn't reached S6.4.2.5 approval gate yet, progressing normally. Approval still valid. No action needed.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141428**
+
+4 min since approval, ⏳_ still present — checking tab to confirm SA still progressing (was at S6.3 last check).
+
+Tab 3 still at S6.3 (same URL as 1 min ago). Borderline — S6.3 scroll can take time. Waiting one more tick before intervening.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141429**
+
+Tab 3 stuck at S6.3 for 2⁺ min. Per § Heartbeat 4.3 — writing intervention to ma_msg first, then closing Tab 3.
+
+Tab 3 closed. SA will detect closure, read F3 instruction, re-open Tab 3. Resetting ma_msg to "Continue" so SA can proceed through S6.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141430**
+
+SA responded: new Tab 3 (2118538303) opened at job post URL — F3 executed correctly. SA re-entering S6 flow from the top. ma_msg = "Continue". Will approve again at S6.4.2.5.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141431**
+
+Tab 3 now at S6.1 "Choose documents" — SA progressing correctly through the application flow. No action needed.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141432**
+
+Tab 3 still at S6.1 "Choose documents" — SA selecting resume + pasting CL, normal timing. No action needed.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141433**
+
+Tab 3 at S6.1 for 2 min — could still be pasting the CL. Waiting one more tick before intervening.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141434**
+
+Tab 3 stuck at S6.1 for 3 min — same pattern as S6.3 stall. Intervening: writing to ma_msg first, then closing Tab 3.
+
+Tab 3 closed. Resetting ma_msg to "Continue" — SA will re-open Tab 3 via F3.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141435**
+
+SA opened new Tab 3 (2118538305) — fresh F3 attempt. Same S6.1 starting point. Monitoring one more tick before considering void.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141436**
+
+Tab 3 still at S6.1 after 3rd consecutive stall — persistent failure. Instructing SA to move AR to Pending and abandon this application.
+
+Tab 3 closed. Leaving pending instruction in ma_msg — SA needs time to move AR to pending and close Tab 2.
+
+🚨 Compaction Detected —— stopped all tasks.
+
+✅ `context/MA_hb.md`, `.claude/tmp/ma_state.md`
+
+**🕰️: 202606141439**
+
+Now re-reading all 9 mandatory files per Post-Compaction Recovery:
+
+✅ `seek/CLAUDE.md`, `context/main_ajap.md`, `context/ajap.md`, `context/gcl.md`, `context/SA2_hb.md`, `context/pro_profile.md`, `context/culous_yu_resume_ats.md`, `context/cc_writing.md`
+
+Good — ⚠️_NXGServices is in `/gcl/pending/`, no ⏳_ remaining. Now computing N and checking tabs.
+
+N=98. Now stopping old SA, resetting ma_msg, TaskStop'ing monitors, then respawning.
+
+Tab 1 only — clean state. SA followed instruction correctly. Now stopping both monitors.
+
+Both monitors stopped. Resetting ma_msg and stopping old SA.
+
+SA #34 confirmed stopped (was waiting for Continue on 5th check). Now respawning primary Monitor and SA2 watchdog.
+
+Both monitors up. Now updating ma_state.md, logging compaction, then spawning fresh SA.
+
+202606141442 🎯9️⃣8️⃣ **job(s) processed so far.**
+
+✅ `context/MA_hb.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141447**
+
+Broad check: only 202606141423 (⚠️_NXGServices, already counted). No ⏳_. SA #35 spawned 5 min ago — still initialising. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141452**
+
+No new ARs since 202606141423. No ⏳_. SA #35 at 10 min — still initialising (6-file read expected). Within 1hr limit. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141457** — SA2 watchdog-alive confirmed. No new ARs, no ⏳_. SA #35 at 15 min with no output — checking newest gcl file.
+
+Newest gcl file: ⚠️_NXGServices at 14:23 (34 min ago). SA #35 at 15 min — plausible if deep in first card research. Giving one more heartbeat before considering retirement.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141502** — SA #35 now 20 min with zero file output. Confirmed stall. Retiring SA #35 and spawning SA #36.
+
+SA #35 was running its own post-compaction recovery and read `main_ajap.md` (SA-banned). That's why it stalled. Resetting and spawning SA #36.
+
+SA #36 (a83ec90e7106b1ec7) spawned. ma_state.md updated.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141505** — new file + ⏳_ at 202606141505. Getting filenames.
+
+TCorp skip AR at 202606141505 — no ⏳_. Validating and computing N.
+
+202606141506 🎯9️⃣9️⃣ **job(s) processed so far.**
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141507** — no new ARs beyond TCorp (already counted). No ⏳_. SA #36 at 4 min — still initialising. 1hr limit: 202606151503. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141512** — watchdog-alive (normal). SA #36 at 9 min, no new ARs yet. Still within initialisation window. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141513** — ⏳_ applying: `SEEKLimited_OperationsSquadLead_202606141511.md`. Running CL check.
+
+CL clean — exit 0, no dashes, correct template [2], `16⁺` once, P.S. present. Approving.
+
+Now switching Monitor to INT=60 (approval pending).
+
+Primary Monitor respawned at INT=60 (task by81yc8n2). Awaiting SA submission confirmation.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141514** — ⏳_ still present, approval outstanding (1 min). SA consuming approval. Waiting.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141515** — ⏳_ still pending, 2 min since approval. Approval not yet expired (3-min limit). Holding one more tick before §4.3 intervention.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141516** — ⏳_ gone, 202606141511 remains in broad check. Verifying submission success.
+
+AR voided + `_moved_pending` suffix — SA moved to pending. Checking `/gcl/pending/`.
+
+AR moved to `/gcl/pending/` (no ⚠️_ prefix). Checking Outcome and prior pending K6 conflict.
+
+Same SEEK URL (92396883) — K6 miss confirmed (prior ⚠️_202605300832 in pending). Correction flagged for SA. Resetting ma_msg and switching to INT=300.
+
+202606141518 🎯1️⃣0️⃣0️⃣ **job(s) processed so far.**
+
+⚠️ K6 miss noted — SA #36 processed SEEK Limited (job/92396883) despite ⚠️_202605300832 existing in `/gcl/pending/`. One correction banked; will retire on next K6 miss.
+
+Monitor respawned INT=300 (task by94rlwbb). SA #36 continuing.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141524** — no new ARs since 202606141511 (13 min ago). SA #36 at 21 min, within 1hr limit. Plausibly mid-research on next card. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141527** — watchdog-alive (normal). No new ARs since 202606141511 (16 min ago). SA #36 at 24 min — possibly in S3.1/S3.2 deep research. Giving one more heartbeat before nudge.
+
+🚨 Compaction Detected —— stopped all tasks.
+
+**🕰️: 202606141530**
+
+SA #36 stopped (killed). Now reading remaining mandatory files.
+
+✅ `CLAUDE.md`, `main_ajap.md`, `ajap.md`, `gcl.md`, `pro_profile.md`, `culous_yu_resume_ats.md`, `cc_writing.md`, `context/MA_hb.md`, `SA2_hb.md`
+
+Now running broad file check and stopping old monitors.
+
+Both old monitors stopped. Now reading last_decision, respawning monitors, and resetting ma_msg.
+
+N=100 confirmed. Now running Pre-Flight Check before spawning SA #37.
+
+Tab 1 only — SEEK results Page 2. Clean state (F1). No ⏳_ ARs. Spawning SA #37.
+
+➡️ `.claude/tmp/ma_state.md`, `.claude/tmp/ma_msg.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141537**
+
+SA #37 spawned at 202606141534 — only 3 min old, still initialising. No new ARs yet; window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141542**
+
+SA #37 at 8 min — reading mandatory files (expected delay). No new ARs, no ⏳_. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141546**
+
+New: `AccorCorporateOfficePacific_DesignTechnicalServicesManager_202606141545.md` in `/skipped/`. SA #37 active. No rogue name. N=101.
+
+202606141546 🎯1️⃣0️⃣1️⃣ **job(s) processed so far.**
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141547**
+
+SA2: `watchdog-alive`. No new files since 202606141545 (2 min gap — SA actively processing). Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141552**
+
+No new files since 202606141545 (7 min gap). SA #37 likely in S3 research. No ⏳_. Window clean — monitoring next tick before nudge.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141556**
+
+New: `people2people_ITSiteCoordinator_202606141555.md` in `/skipped/`. No rogue name. N=102.
+
+202606141556 🎯1️⃣0️⃣2️⃣ **job(s) processed so far.**
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141557**
+
+No new files since 202606141555 (2 min gap — SA actively processing). SA #37 at 23 min. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141559**
+
+New: `CyberCX_ProjectManagerCyberSecurity_202606141558.md` in `/skipped/`. No rogue name. N=103.
+
+202606141559 🎯1️⃣0️⃣3️⃣ **job(s) processed so far.**
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141602**
+
+SA2: `watchdog-alive`. No new files since 202606141558 (4 min — likely S3 research). SA #37 at 28 min. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141606**
+
+⏳_ AR detected: `⏳_MJDRecruitment_EventCoordinator_202606141605.md`. SA #37 completed (wait expired). Checking tabs + CL now.
+
+Tab 2+3 both at job post URL — pre-application state. Reading CL and running cl_check.
+
+CL clean (exit 0). No dash, P.S. present, `16⁺` once. Tab 3 = job post (not application page) — do NOT pre-write approval. Spawning SA #38 with INT=60.
+
+202606141606 🎯1️⃣0️⃣4️⃣ **job(s) processed so far.**
+
+➡️ `.claude/tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141609**
+
+⏳_ still active, `ma_msg.md` = "Continue" — SA #38 progressing through S6. No new ARs.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141610**
+
+⏳_ active, `ma_msg.md` = "Continue" — SA #38 at 2 min, reading/Pre-Flight. Normal.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141611**
+
+⏳_ active, `ma_msg.md` = "Continue" — SA #38 at 3 min, still in S6 flow.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141612**
+
+⏳_ active, `ma_msg.md` = "Continue" — SA #38 at 4 min, progressing through S6.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141613**
+
+⏳_ active, `ma_msg.md` = "Continue" — SA #38 at 5 min, navigating application form.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141614**
+
+⏳_ active, `ma_msg.md` = "Continue" — SA #38 at 6 min, in application flow.
+
+✅ `context/MA_hb.md`
+
+🚨 Compaction Detected —— stopped all tasks.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141618**
+
+Now re-reading all mandatory files per Post-Compaction Recovery protocol.
+
+✅ `seek/CLAUDE.md`, `context/main_ajap.md`
+
+✅ `context/ajap.md`, `context/gcl.md`
+
+✅ `context/pro_profile.md`, `context/culous_yu_resume_ats.md`
+
+✅ `context/cc_writing.md`, `context/SA2_hb.md`
+
+All 9 mandatory files re-read. Now running the broad file check.
+
+SA #38 completed (idle at S6.4.2.5 — compaction broke approval delivery). Tab 3 is confirmed at the "Review & submit" page. Now running recovery steps 6–8.
+
+CL clean (exit 0, subjective pass — no dashes, no banned words, correct P.S., `16⁺` once). Stopping old monitors now.
+
+Both monitors stopped. Writing approval (CL clean), then respawning monitors and SA.
+
+Now spawning fresh SA #39.
+
+➡️ `.claude/tmp/ma_state.md`
+
+202606141618 🎯1️⃣0️⃣4️⃣ **job(s) processed so far.**
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141623**
+
+⏳_ AR still active, ma_msg.md = "Submit then proceed to next card" (awaiting SA #39 to reach S6.4.2.5). Window clean. SA #39 running for ~5 min — still in setup/Pre-Flight.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141623**
+
+No new ARs yet. Only ⏳_ 202606141605 persists. ma_msg.md = approval still standing. SA #39 spawned 1 min ago — reading mandatory files. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141625**
+
+No new ARs. ⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 3 min — still reading mandatory files. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141626**
+
+Still ⏳_ 202606141605 only. ma_msg.md = approval standing. SA #39 at 4 min — still in mandatory file reads. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141627**
+
+⏳_ 202606141605 still active. ma_msg.md = approval standing. SA #39 at 5 min — likely still reading mandatory files. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141628**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 6 min — approaching the threshold for active SA1 stall check. ⏳_ is progressing (SA #39 working through mandatory file reads + Pre-Flight), so no stall yet. Window clean.
+
+`newfile` event — checking immediately.
+
+No new AR — transient file change in `/gcl/`. ⏳_ 202606141605 still only entry. ma_msg.md = approval standing. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141629**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 7 min — ⏳_ still active so no stall. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141630**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 8 min — ⏳_ progressing, no stall. 1hr limit at 202606151622. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141631**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 9 min. ⏳_ active, no stall. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141632**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 10 min — ⏳_ active, no stall. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141633**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 11 min — still in mandatory file reads + Pre-Flight setup (normal for this stage). ⏳_ active, no stall. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141634**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 12 min — expected to be in Pre-Flight/S6 form-fill now. ⏳_ active, no stall. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141635**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 13 min — likely in S6 form-fill now. ⏳_ active, no stall. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141636**
+
+⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 14 min — ⏳_ active, no stall. Window clean.
+
+✅ `context/MA_hb.md`
+
+**🕰️: 202606141637**
+
+`watchdog-alive` — SA2 healthy. ⏳_ 202606141605 persists. ma_msg.md = approval standing. SA #39 at 15 min — ⏳_ active, no stall. Window clean.
+
+`newfile` — checking immediately.
+
+✅ `context/MA_hb.md`
+
+New AR at TS 202606141637 — checking.
+
+⏳_ removed — MJD Recruitment submitted! Verifying outcomes.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141641`**
+
+202606141641 🎯1️⃣0️⃣5️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141646`**
+
+CL check — no dashes, no bare `+`, P.S. present ✅. Running cl_check.py.
+
+cl_check exit 0 ✅. FlightCentre skipped valid ✅. SA 1hr: 202606141622 + 60min = 202606151622 → 24 min elapsed, safe ✅. N = 105 + FlightCentre + EquaCare = 107.
+
+202606141646 🎯1️⃣0️⃣7️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141648`**
+
+⏳_EquaCare still pending — approval written, SA #39 consuming. No new ARs. SA 1hr: 26 min elapsed ✅. No stall (⏳_ is progressing).
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141649`**
+
+⏳_EquaCare still present — SA #39 consuming approval (~2 min elapsed). SA 1hr: 27 min ✅. No new ARs.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141650`**
+
+⏳_EquaCare still present (approval 3 min ago, SA submitting). SA 1hr: 28 min ✅. No new ARs.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141651`**
+
+⏳_EquaCare still present (approval 4 min ago, newest file 6 min old — SA mid-submit). SA 1hr: 29 min ✅.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141652`**
+
+SA2 watchdog: `watchdog-alive` ✅. ⏳_EquaCare still present (approval 5 min ago, ⏳_ IS progressing — no stall). SA 1hr: 30 min ✅.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141653`**
+
+Approval unconsumed (SA still pre-gate). ⏳_ 8 min old — SA filling form or still pre-S6.4.2.5. ⏳_ IS progressing, no stall condition met. SA 1hr: 31 min ✅.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141654`**
+
+⏳_EquaCare 9 min old, approval unconsumed 7 min — SA likely still filling EquaCare form fields (S6.4.2.3), not yet at approval gate. SA 1hr: 32 min ✅. Watching.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141655`**
+
+newfile = likely SA updating ⏳_EquaCare AR in-progress (still active). Approval unconsumed 8 min — SA pre-gate. SA 1hr: 33 min ✅. No new completed ARs.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141655`**
+
+No change — ⏳_EquaCare 10 min, approval 8 min unconsumed, SA still pre-gate. SA 1hr: 33 min ✅.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141656`**
+
+⏳_ prefix removed from EquaCare — submission confirmed! Validating AR.
+
+Outcome: Applied ✅, ## 6. CL ✅, Resume: Marketing ✅. Confirmed clean.
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141701`**
+
+New skipped AR: `Cuscal_ProductOwnerCoreUniverse_202606141700.md`. Validating.
+
+Single-job, external portal exit, real scoring ✅. SA 1hr: 39 min ✅. N = 108.
+
+202606141701 🎯1️⃣0️⃣8️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141702`**
+
+No new ARs since 202606141700. Newest file 2 min old — SA progressing normally. SA 1hr: 40 min ✅.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141707`**
+
+SA2 watchdog: `watchdog-alive` ✅. New skipped AR: `SKEINYProjects_AssociateConsultantConsultant_202606141706.md` — "Consultant" in name, validating routing.
+
+K5 citizenship requirement — skipped/ correct (K5 overrides K1), all scores N/A ✅. Also newfile event received — checking simultaneously.
+
+No additional ARs — newfile was SKEINYProjects itself. N = 109. SA 1hr: 45 min ✅.
+
+202606141707 🎯1️⃣0️⃣9️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141708`**
+
+New skipped AR: `Rallee_SeniorIndustrialDesigner_202606141708.md`. Validating.
+
+Score gate 23/100 < 35, real per-card analysis ✅. N = 110. SA 1hr: 46 min ✅.
+
+202606141708 🎯1️⃣1️⃣0️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141709`**
+
+New pending AR: `WSPAustralia_SustainabilityConsultant_202606141709.md` — K1 title check ✅. Validating.
+
+K1 pending, N/A scores, correct folder ✅. N = 111. SA 1hr: 47 min ✅.
+
+202606141709 🎯1️⃣1️⃣1️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141710`**
+
+New skipped AR: `PlanitTestManagementSolutions_FunctionalAutomationTestEngineer_202606141710.md`. Validating.
+
+External portal exit, ceiling 44 < 70, real scoring ✅. N = 112. SA 1hr: 48 min ✅.
+
+202606141710 🎯1️⃣1️⃣2️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141712`**
+
+New skipped AR: `WaverleyCouncil_MediaAdvisor_202606141711.md`. Validating.
+
+External portal, score 56 < 70, real scoring ✅. N = 113. SA 1hr: 50 min ✅.
+
+202606141712 🎯1️⃣1️⃣3️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141713`**
+
+New skipped AR: `StantecAustralia_ProposalsTeamLeader_202606141713.md`. Validating.
+
+External portal, score 53 < 70, real scoring, `34,000⁺` superscript ✅. N = 114. SA 1hr: 51 min ✅.
+
+202606141713 🎯1️⃣1️⃣4️⃣ **job(s) processed so far.**
+
+➡️ `tmp/ma_state.md`
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141717`**
+
+No new ARs. SA 1hr: 55 min elapsed — limit at 202606141722 (5 min). Newest file 4 min old, no ⏳_, watching closely.
+
+✅ `context/MA_hb.md`
+
+**🕰️: `202606141720`**
+
+⚠️ SA 1hr limit in 2 min (202606141722). New AR to validate first, then executing retirement.
+
+Valid skip, real per-card scoring ✅. N = 115. Executing SA 1hr retirement now (limit 202606141722).
