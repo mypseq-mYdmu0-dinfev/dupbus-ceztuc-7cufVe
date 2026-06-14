@@ -9,7 +9,7 @@ Fetch at every chat start & resolve all aliases below using `CP_index.md`: https
 ## CONDITIONAL
 
 Excerpt only; re-consult `CP_index.md` if needed:
-- `gcl.md` if `seek` or `linkedin` is first word of first msg AND role is non-consulting, then fetch "ATS Resumes"
+- `gcl.md` if `#seek` or `#linkedin` is first word of first msg AND role is non-consulting, then fetch "ATS Resumes"
 - `ccl.md` if `CCL` mentioned OR consulting job application detected, then fetch "Consulting Resume" 
 - "ATS Resumes", "Career Docs", and "CL Archive" whenever needed
 - "AFP Application" if CL/questions requiring my character, self-awareness, critical reflection
