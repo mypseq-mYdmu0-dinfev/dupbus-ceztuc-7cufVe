@@ -446,3 +446,12 @@ These, along with everything above, will appear in the revised draft for your re
 
 Warm Regards,
 Culous
+
+### Log 18
+
+On 15 Jun 2026, at 03:08, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Yes, Culous, I agree with the plan you intend to use to amend your proposal. Please carry on completing the proposal. I look forward to receiving it shortly. 
+
+Thanks,
+Lu
