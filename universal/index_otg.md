@@ -4,7 +4,7 @@
 ---
 
 glossary.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/762641f05ebc52be22a95faa001b8a054b94a0b8/universal/glossary.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cc843aeb98968f3d5e187d900b548203448783b0/universal/glossary.md
 
 rules.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/18d589e2310a6d0ed297b87c7be00685a1bc783c/universal/rules_otg.md
@@ -40,7 +40,7 @@ twin.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/819a37a6754279d08e0f8a7d6e1d44ba95fc7c9a/universal/twin.md
 
 context.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a36d7cee65ff0a18140522f0ee98b85c18b8062f/universal/context.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f449013611656a3b4b79243001bca3e7e4b142ae/universal/context.md
 
 ftv.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d7d7f1451cef57c7715a2959dd6ff9925dba6a78/universal/ftv.md
@@ -58,4 +58,4 @@ buy.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8e27e8f99d3bb54578956c23b0892f96fbc49ad9/universal/buy.md
 
 close.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b7a897ee86a4b199f7f554ea2cb30c3fd615c060/universal/close.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ca99b1c511bc72c36c0ee56ff3f34267c0838279/universal/close.md
