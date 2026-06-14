@@ -1,40 +1,55 @@
 #!/usr/bin/env python3
 """
-DAMF.py —— Date Added Manual Fixer (macOS)
+DXMF.py —— Date eXtended Manual Fixer (macOS)
 
-WHAT THE PROBLEM WAS
+Upgraded from DAMF.py (which set only "Date Added"). DXMF sets ALL FOUR
+Finder-visible dates to a single target value:
+
+    1. Date Created     (catalog ATTR_CMN_CRTIME)
+    2. Date Modified    (catalog ATTR_CMN_MODTIME)
+    3. Date Added       (catalog ATTR_CMN_ADDEDTIME + Spotlight mirror)
+    4. Date Last Opened (xattr com.apple.lastuseddate#PS = {int64 sec, int64 nsec} LE)
+
+WHY THESE MECHANISMS
 --------------------
-Finder's "Date Added" is NOT the same thing as the Spotlight metadata that
-`xattr`/`mdls` expose. Finder reads the filesystem catalog attribute
-ATTR_CMN_ADDEDTIME (exposed in Swift as URLResourceValues.addedToDirectoryDate).
-Writing the `com.apple.metadata:kMDItemDateAdded` extended attribute only
-updates Spotlight's mirror —— Finder's column never moves. And Swift's
-addedToDirectoryDate property is GET-ONLY, so it can't set it either.
+Finder's "Date Added" and "Date Last Opened" are NOT plain mtime/atime.
+Date Added lives in the filesystem catalog attribute ATTR_CMN_ADDEDTIME
+(Swift's addedToDirectoryDate is get-only), so we set it via the low-level
+setattrlist() syscall. Date Last Opened is held in the per-file extended
+attribute `com.apple.lastuseddate#PS` (two little-endian 64-bit ints: seconds
+then nanoseconds), so we write that directly. Created and Modified are set in
+the same setattrlist() call. The inode change-time (ctime) cannot be set; macOS
+forces it to "now" on any metadata write, but it is not shown in Finder Get Info
+and does not survive copy/zip/upload.
 
-HOW IT IS FIXED
----------------
-Call the low-level setattrlist() syscall (via ctypes) with
-ATTR_CMN_ADDEDTIME = 0x10000000 and a `struct timespec` holding the target
-time. We also refresh the kMDItemDateAdded xattr so Spotlight agrees with the
-catalog value.
+SYMLINK SAFETY
+--------------
+All writes use NOFOLLOW (FSOPT_NOFOLLOW / follow_symlinks=False) so a symlink's
+own dates are changed, never its target's. This matters when scrubbing trees
+that contain venvs whose symlinks point at system binaries.
 
 USAGE
 -----
-1. In THIS script's own directory, create exactly one .txt file (any name
-   except `temp.txt`) containing:
-       Line 1: the target filename (e.g. dissertation_response_202606041852.md)
-       Line 2: the desired Date Added timestamp in YYYYMMDDHHmm (Sydney time)
-2. Run:  python3 DAMF.py
-3. The script searches the whole GitHub repo for that filename, and if exactly
-   one match is found, sets its Date Added.
+A) Command line (preferred for folders):
+       python3 DXMF.py <YYYYMMDDHHmm> <path> [more paths...]
+   A path may be a file or a directory. Directories are scrubbed recursively,
+   including the directory itself and every file and subfolder within.
 
-It STOPS with an alert if: 0 or >1 instruction .txt files exist; the .txt is
-malformed; the timestamp is invalid; or 0 / >1 target files are found in repo.
+B) Instruction file (DAMF-compatible, single target):
+   Place exactly one .txt beside this script (any name except temp.txt):
+       Line 1: a filename to find anywhere in the repo, OR a path
+               (relative to the repo root, or absolute) to a file or folder
+       Line 2: the target timestamp in YYYYMMDDHHmm (Sydney local time)
+   Then run:  python3 DXMF.py
+
+Timestamps are interpreted in Australia/Sydney local time.
 """
 
 import ctypes
 import ctypes.util
+import os
 import plistlib
+import struct
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -48,6 +63,52 @@ REPO_ROOT = Path(
 SYDNEY = ZoneInfo("Australia/Sydney")
 EXCLUDED_TXT = {"temp.txt"}  # never treat these as the instruction file
 
+# catalog attribute bits (sys/attr.h)
+ATTR_BIT_MAP_COUNT = 5
+ATTR_CMN_CRTIME    = 0x00000200
+ATTR_CMN_MODTIME   = 0x00000400
+ATTR_CMN_ADDEDTIME = 0x10000000
+FSOPT_NOFOLLOW     = 0x00000001  # setattrlist option
+XATTR_NOFOLLOW     = 0x00000001  # setxattr option
+LASTUSED_XATTR     = b"com.apple.lastuseddate#PS"
+
+_libc = ctypes.CDLL(ctypes.util.find_library("c"), use_errno=True)
+
+
+class _attrlist(ctypes.Structure):
+    _fields_ = [
+        ("bitmapcount", ctypes.c_ushort),
+        ("reserved",    ctypes.c_uint16),
+        ("commonattr",  ctypes.c_uint32),
+        ("volattr",     ctypes.c_uint32),
+        ("dirattr",     ctypes.c_uint32),
+        ("fileattr",    ctypes.c_uint32),
+        ("forkattr",    ctypes.c_uint32),
+    ]
+
+
+class _timespec(ctypes.Structure):
+    _fields_ = [("tv_sec", ctypes.c_long), ("tv_nsec", ctypes.c_long)]
+
+
+_libc.setattrlist.argtypes = [
+    ctypes.c_char_p, ctypes.c_void_p, ctypes.c_void_p,
+    ctypes.c_size_t, ctypes.c_ulong,
+]
+# macOS CPython has no os.setxattr; call libc directly.
+# int setxattr(path, name, value, size, position, options)
+_libc.setxattr.argtypes = [
+    ctypes.c_char_p, ctypes.c_char_p, ctypes.c_void_p,
+    ctypes.c_size_t, ctypes.c_uint32, ctypes.c_int,
+]
+
+
+def _setxattr(path: Path, name: bytes, value: bytes) -> int:
+    """Write one extended attribute without following symlinks."""
+    return _libc.setxattr(
+        str(path).encode(), name, value, len(value), 0, XATTR_NOFOLLOW,
+    )
+
 
 def die(msg: str) -> None:
     """Print an alert and stop immediately."""
@@ -55,11 +116,77 @@ def die(msg: str) -> None:
     sys.exit(1)
 
 
+# ----------------------------------------------------------------- date setting
+def set_all_dates(path: Path, dt: datetime) -> None:
+    """Set Created, Modified, Added and Last Opened on one item (NOFOLLOW)."""
+    sec = int(dt.timestamp())
+    raw = str(path).encode()
+
+    # 1-3) Created + Modified + Added in one catalog write.
+    # Buffer order follows the bitmap by increasing bit value:
+    # CRTIME (0x200) -> MODTIME (0x400) -> ADDEDTIME (0x10000000).
+    al = _attrlist()
+    al.bitmapcount = ATTR_BIT_MAP_COUNT
+    al.commonattr = ATTR_CMN_CRTIME | ATTR_CMN_MODTIME | ATTR_CMN_ADDEDTIME
+    buf = (_timespec * 3)(_timespec(sec, 0), _timespec(sec, 0), _timespec(sec, 0))
+    rc = _libc.setattrlist(
+        raw, ctypes.byref(al), ctypes.byref(buf), ctypes.sizeof(buf),
+        FSOPT_NOFOLLOW,
+    )
+    if rc != 0:
+        raise OSError(ctypes.get_errno(), "setattrlist failed", str(path))
+
+    # Keep Spotlight's Date Added mirror in agreement (CFDate plist, naive UTC).
+    utc_naive = dt.astimezone(ZoneInfo("UTC")).replace(tzinfo=None)
+    cfdate = plistlib.dumps(utc_naive, fmt=plistlib.FMT_BINARY)
+    _setxattr(path, b"com.apple.metadata:kMDItemDateAdded", cfdate)
+    # (mirror is best-effort; the catalog value is authoritative)
+
+    # 4) Date Last Opened: {int64 seconds, int64 nanoseconds} little-endian.
+    _setxattr(path, LASTUSED_XATTR, struct.pack("<qq", sec, 0))
+
+
+def collect_targets(target: Path) -> list[Path]:
+    """A file -> [file]; a directory -> the dir plus all descendants,
+    deepest first so parents are written last."""
+    if target.is_dir() and not target.is_symlink():
+        items = [target, *target.rglob("*")]
+        items.sort(key=lambda p: len(p.parts), reverse=True)
+        return items
+    return [target]
+
+
+# ------------------------------------------------------------------ input modes
+def parse_ts(ts_raw: str) -> datetime:
+    if len(ts_raw) != 12 or not ts_raw.isdigit():
+        die(f"timestamp '{ts_raw}' is not 12 digits (YYYYMMDDHHmm).")
+    try:
+        return datetime(
+            int(ts_raw[0:4]), int(ts_raw[4:6]), int(ts_raw[6:8]),
+            int(ts_raw[8:10]), int(ts_raw[10:12]), tzinfo=SYDNEY,
+        )
+    except ValueError as exc:
+        die(f"invalid timestamp '{ts_raw}': {exc}.")
+
+
+def resolve_target(token: str) -> Path:
+    """Resolve a token to a path: try as repo-relative, then absolute,
+    else search the repo for a unique file of that name (DAMF behaviour)."""
+    for cand in (REPO_ROOT / token, Path(token)):
+        if cand.exists():
+            return cand
+    matches = [p for p in REPO_ROOT.rglob(token) if p.is_file()]
+    if not matches:
+        die(f"'{token}' not found as a path or a filename under {REPO_ROOT.name}/.")
+    if len(matches) > 1:
+        listing = "\n   ".join(str(p) for p in matches)
+        die(f"{len(matches)} files named '{token}' found:\n   {listing}")
+    return matches[0]
+
+
 def find_instruction_file() -> Path:
-    """Exactly one eligible .txt must sit beside this script."""
     candidates = [
-        p for p in SCRIPT_DIR.glob("*.txt")
-        if p.name not in EXCLUDED_TXT
+        p for p in SCRIPT_DIR.glob("*.txt") if p.name not in EXCLUDED_TXT
     ]
     if not candidates:
         die(f"no instruction .txt found in {SCRIPT_DIR} (excluding {sorted(EXCLUDED_TXT)}).")
@@ -69,95 +196,43 @@ def find_instruction_file() -> Path:
     return candidates[0]
 
 
-def parse_instructions(txt: Path) -> tuple[str, datetime]:
-    """Line 1 = target filename, Line 2 = YYYYMMDDHHmm (Sydney local)."""
-    lines = [ln.strip() for ln in txt.read_text(encoding="utf-8").splitlines() if ln.strip()]
-    if len(lines) < 2:
-        die(f"{txt.name} needs 2 non-empty lines (filename, then YYYYMMDDHHmm).")
-    target_name, ts_raw = lines[0], lines[1]
+def run(targets: list[Path], dt: datetime) -> None:
+    done, failed = 0, []
+    for target in targets:
+        for item in collect_targets(target):
+            try:
+                set_all_dates(item, dt)
+                done += 1
+            except OSError as exc:
+                failed.append((item, exc))
 
-    if len(ts_raw) != 12 or not ts_raw.isdigit():
-        die(f"timestamp '{ts_raw}' is not 12 digits (YYYYMMDDHHmm).")
-    try:
-        dt = datetime(
-            int(ts_raw[0:4]), int(ts_raw[4:6]), int(ts_raw[6:8]),
-            int(ts_raw[8:10]), int(ts_raw[10:12]),
-            tzinfo=SYDNEY,
-        )
-    except ValueError as exc:
-        die(f"invalid timestamp '{ts_raw}': {exc}.")
-    return target_name, dt
-
-
-def find_target_in_repo(filename: str) -> Path:
-    """Exactly one file of that name must exist anywhere under the repo."""
-    if not REPO_ROOT.is_dir():
-        die(f"repo root not found: {REPO_ROOT}")
-    matches = [p for p in REPO_ROOT.rglob(filename) if p.is_file()]
-    if not matches:
-        die(f"'{filename}' not found anywhere under {REPO_ROOT.name}/.")
-    if len(matches) > 1:
-        listing = "\n   ".join(str(p) for p in matches)
-        die(f"{len(matches)} files named '{filename}' found:\n   {listing}")
-    return matches[0]
-
-
-def set_date_added(path: Path, dt: datetime) -> None:
-    """Set the filesystem catalog 'Date Added' via setattrlist()."""
-    libc = ctypes.CDLL(ctypes.util.find_library("c"), use_errno=True)
-
-    class attrlist(ctypes.Structure):
-        _fields_ = [
-            ("bitmapcount", ctypes.c_ushort),
-            ("reserved",    ctypes.c_uint16),
-            ("commonattr",  ctypes.c_uint32),
-            ("volattr",     ctypes.c_uint32),
-            ("dirattr",     ctypes.c_uint32),
-            ("fileattr",    ctypes.c_uint32),
-            ("forkattr",    ctypes.c_uint32),
-        ]
-
-    class timespec(ctypes.Structure):
-        _fields_ = [("tv_sec", ctypes.c_long), ("tv_nsec", ctypes.c_long)]
-
-    ATTR_BIT_MAP_COUNT = 5
-    ATTR_CMN_ADDEDTIME = 0x10000000
-
-    al = attrlist()
-    al.bitmapcount = ATTR_BIT_MAP_COUNT
-    al.commonattr = ATTR_CMN_ADDEDTIME
-    buf = timespec(int(dt.timestamp()), 0)
-
-    libc.setattrlist.argtypes = [
-        ctypes.c_char_p, ctypes.c_void_p, ctypes.c_void_p,
-        ctypes.c_size_t, ctypes.c_ulong,
-    ]
-    rc = libc.setattrlist(
-        str(path).encode(), ctypes.byref(al),
-        ctypes.byref(buf), ctypes.sizeof(buf), 0,
-    )
-    if rc != 0:
-        die(f"setattrlist failed (errno={ctypes.get_errno()}) on {path}")
-
-    # Keep Spotlight's mirror in agreement (CFDate plist; naive UTC for plistlib).
-    utc_naive = dt.astimezone(ZoneInfo("UTC")).replace(tzinfo=None)
-    cfdate = plistlib.dumps(utc_naive, fmt=plistlib.FMT_BINARY)
-    libc.setxattr(
-        str(path).encode(), b"com.apple.metadata:kMDItemDateAdded",
-        cfdate, len(cfdate), 0, 0,
-    )
+    stamp = dt.strftime("%d/%m/%Y %H:%M")
+    print(f"✅ All 4 dates set on {done} item(s) —— {stamp} AEST/AEDT")
+    if failed:
+        print(f"⚠️  {len(failed)} item(s) failed:")
+        for item, exc in failed[:20]:
+            print(f"   {item} —— {exc}")
+        sys.exit(1)
 
 
 def main() -> None:
-    txt = find_instruction_file()
-    target_name, dt = parse_instructions(txt)
-    target = find_target_in_repo(target_name)
-    set_date_added(target, dt)
-
-    stamp = dt.strftime("%d/%m/%Y %H:%M")
-    print(f"✅ Date Added set —— {target_name}")
-    print(f"   {stamp} AEST/AEDT")
-    print(f"   {target}")
+    args = sys.argv[1:]
+    if args:  # command-line mode
+        if len(args) < 2:
+            die("usage: python3 DXMF.py <YYYYMMDDHHmm> <path> [more paths...]")
+        dt = parse_ts(args[0])
+        targets = []
+        for token in args[1:]:
+            p = Path(token)
+            targets.append(p if p.exists() else resolve_target(token))
+        run(targets, dt)
+    else:  # instruction-file mode (DAMF-compatible)
+        txt = find_instruction_file()
+        lines = [ln.strip() for ln in txt.read_text(encoding="utf-8").splitlines() if ln.strip()]
+        if len(lines) < 2:
+            die(f"{txt.name} needs 2 non-empty lines (target, then YYYYMMDDHHmm).")
+        dt = parse_ts(lines[1])
+        run([resolve_target(lines[0])], dt)
 
 
 if __name__ == "__main__":
