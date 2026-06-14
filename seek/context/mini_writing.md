@@ -3,13 +3,13 @@
 ## Language & Units
 
 ALWAYS use:
-- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`, BUT DON'T CONVERT CURRENCY)
+- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`; don't convert currency)
 - Metric units (°C, metre, gram, litre, etc.)
 - Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise (e.g. ✅ `He said "I'm leaving", then left.` ❌ `He said "I'm leaving," then left.`)
 
-## CL Writing
+## Writing Rules
 
-- Always use confident language & powerful proactive verbs to highlight relevant skills/experience.
+- Always use confident, powerful, proactive language to highlight relevant skills/experience.
 - Never use "I believe/feel/think".
 - Avoid sentence/clause-initial "Where" (e.g. "Where [condition], [statement]"); prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
 - Avoid verb-object separation: Don't place long descriptive or prepositional phrases between a transitive verb (e.g. identify, state, argue) and its direct object or quotation
@@ -19,8 +19,8 @@ ALWAYS use:
   - ❌ [A], [B] and [C]
   - ✅ [A], [B], and [C]
 - Use professional, sophisticated, aptly witted, adept copywriter tone & manner w/o any abbreviations like `I'm`. 
-- Strictly no dash `—` `–` and colon `:` (except the 6 in CL template of `gcl.md`)
+- Strictly no em dash `—` & colon `:` (except the 6 in `gcl.md` §Template)
 - Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)
-- Avoid repeating same wording more than once every 1,000 words
-- Avoid common GenAI words including but not limited to (unless literally meaning that e.g. "elevate" in context of elevator/lift, or it's a trademark/conventional term e.g. "command" key of mac): elevate, captivate, tapestry, delve, leverage, resonate, embark, unleash, plethora, myriad, utilise, paradigm, landscape, evolving, nuanced, perspective, comprehensive, supercharge, dynamic, elucidate, holistic, synergy, pivotal, robust, aid, amidst, beacon, bolster, breeze, churn, command, crack, crucial, employ, enable, encourage, ensure, evoke, enhance, entices, essential, gaze, facilitate, forge, fortify, inundated, ignite, imperative, instrument, instills, navigate, irresistible, master, material(ly), paramount, promptly, realm, soar, revolutionize, safeguard, cutting-edge, triangulate(ion), enumerate(ion), substantive, persuasive, sparks, streamline, uncover, vast, journey, seamless, adhere, supercharge, evolve, beyond, bustling, enigma, It is important to note that..., Master the art of..., In summary/conclusion..., A testament to..., In the dynamic world of..., A tapestry of..., Delve into..., Embark on a journey..., A treasure trove of..., An ongoing voyage of, As we conclude, Captivating narrative, Encountered hurdles, Ever-evolving, Game-changer, Golden ticket, In a sea of, Let it shine through, On the ascent to, Reaching new heights, Seize the, To furnish, To thrive, Uncharted waters, Well-crafted
+- Avoid repeating same wording more than once in a CL
+- Avoid common GenAI words including but not limited to (unless literally meaning that e.g. "elevate" in context of elevator/lift, or it's a trademark/conventional term e.g. "command" key of mac): elevate, captivate, tapestry, delve, leverage, resonate, embark, unleash, plethora, myriad, utilise, paradigm, landscape, evolving, nuanced, perspective, comprehensive, supercharge, dynamic, elucidate, holistic, synergy, pivotal, robust, aid, beacon, bolster, breeze, churn, command, crack, crucial, employ, enable, encourage, ensure, evoke, enhance, entices, essential, gaze, facilitate, forge, fortify, inundated, ignite, imperative, instrument, instills, navigate, irresistible, master, material(ly), paramount, promptly, realm, soar, revolutionize, safeguard, cutting-edge, triangulate(ion), enumerate(ion), substantive, persuasive, sparks, streamline, uncover, vast, journey, seamless, adhere, supercharge, evolve, beyond, bustling, enigma, It is important to note that..., Master the art of..., In summary/conclusion..., A testament to..., In the dynamic world of..., A tapestry of..., Delve into..., Embark on a journey..., A treasure trove of..., An ongoing voyage of, As we conclude, Captivating narrative, Encountered hurdles, Ever-evolving, Game-changer, Golden ticket, In a sea of, Let it shine through, On the ascent to, Reaching new heights, Seize the, To furnish, To thrive, Uncharted waters, Well-crafted
 - Briefly use web_search to fetch latest common GenAI words, since the above could be dated
