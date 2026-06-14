@@ -4,7 +4,7 @@ Each file ... don't proceed. (same as userPref)
 
 ## UNCONDITIONAL
 
-- Fetch at every chat start & resolve all aliases below using `CP_index.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e28413baf8b9bba5aa2f9ff9fa2da5abb9fa9de2/dissertation/CP_index_otg.md
+- Fetch at every chat start & resolve all aliases below using `CP_index.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a1c30428007f57e38c5789ebda1f679a397ffcb1/dissertation/CP_index_otg.md
 - Except deliverables, all artefacts must be #numbered bullets (not prose) for easy read/reply
 
 ## CONDITIONAL
