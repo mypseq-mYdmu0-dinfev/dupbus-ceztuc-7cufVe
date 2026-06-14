@@ -36,18 +36,27 @@ Based on given content/web search/my bg, predict 1-3 Qs potentially asked by int
 
 ### 6. Cover Letter (CL)
 
-Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone (100% factual; no fabrication).
+Based on the following template, customise/rewrite the CL according to given content/my bg/other findings, ensuring highly relevant, accurate, and appropriate (no inferring/fabricating, <n>qb</n>). Strictly ensure no rich text (**bold**), header/footer, or any notes (direct submission ready). If applicable, show understanding of the industry/company and its challenges & goals, followed by justifying how my skills & experiences will add value in addressing them in compelling/confident tone (100% factual; no fabrication). Note: Content in `[]` = internal notes, ensure clean handling.
 
-#### Template —— Content in `[]` = internal notes, ensure clean handling
+In § Template, [Opening] MUST insert EITHER § Opening 1 OR § Opening 2 —— NO other options & NEVER both; e.g. "With my proven capabilities in Data Analytics, Strategic Analysis, and Cross-Functional Stakeholder Management, I am..." is UNACCEPTABLE VIOLATION.
+
+#### Opening 1
+
+*For entry/junior positions OR hands-on/non-desk duties (e.g. video editing/shooting); MUST use if title contains "Designer"/"Specialist"/"Analyst" w/o § Opening 2 keywords/attributes*
+
+"With my proven capabilities in Problem Solving, Quality Assurance, and Resource Management, ... [elaborate]"
+
+#### Opening 2
+
+*For mid positions OR when `virtual_presentation.md` highly applicable/strongly aligned; MUST include the bracketed URL; MUST use if title contains "Experienced"/"Senior"/"Manager"*
+
+"With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management (Virtual Presentation: http://Presentation.CulousYu.com), ... [elaborate]"
+
+#### Template
 
 Dear Hiring Manager,
 
-I am writing to express my strong interest in the [Job Title] position (of [Team/Department Name]) at [Company Name](, part of the esteemed [Group Name]). [1]/[2]
-
-[1] With my proven capabilities in Problem Solving, Quality Assurance, and Resource Management, ... [elaborate; for junior positions]
-[2] With my proven expertise and signature strengths in Strategic Transformation, Value Engineering, and Stakeholder Management (Virtual Presentation: http://Presentation.CulousYu.com), ... [elaborate; for mid/high-level (senior/mgmt) positions OR when `virtual_presentation.md` highly applicable/strongly aligned; MUST include the bracketed URL when adopting this line]
-
-... I am exceptionally well-positioned to contribute to [Company/Group Name]'s mission of ...
+I am writing to express my strong interest in the [Job Title] position (of [Team/Department Name]) at [Company Name](, part of the esteemed [Group Name]). [Opening] ... I am exceptionally well-positioned to contribute to [Company/Group Name]'s mission of ...
 
 My background in [industry], which includes [role(s)], has honed my skills in [relevant domain]. I am particularly drawn to [Company/Group Name]'s [unique aspect or its approach, as found by research prompted above].
 
