@@ -35,6 +35,7 @@ malformed; the timestamp is invalid; or 0 / >1 target files are found in repo.
 import ctypes
 import ctypes.util
 import plistlib
+import shlex
 import sys
 from datetime import datetime
 from pathlib import Path
@@ -89,17 +90,50 @@ def parse_instructions(txt: Path) -> tuple[str, datetime]:
     return target_name, dt
 
 
+def path_variants(token: str) -> list[str]:
+    """Forms to try for a copied path, in order. Raw is first so a plain
+    'Copy as Pathname' value (literal spaces) is honoured before shell-style
+    unescaping; quote-stripping and shlex then cover drag-and-drop / quoted
+    paths without mangling the literal-spaces case."""
+    token = token.strip()
+    out: list[str] = []
+    def add(t: str) -> None:
+        if t and t not in out:
+            out.append(t)
+    add(token)
+    if len(token) >= 2 and token[0] in "'\"" and token[-1] == token[0]:
+        add(token[1:-1])                       # surrounding quotes
+    try:
+        parts = shlex.split(token)             # backslash-escaped spaces, etc.
+        if len(parts) == 1:                    # ignore if it split a real space
+            add(parts[0])
+    except ValueError:
+        pass
+    return out
+
+
 def find_target_in_repo(filename: str) -> Path:
-    """Exactly one file of that name must exist anywhere under the repo."""
+    """Resolve Line 1 to a path. Accepts a full (absolute) path, a repo-relative
+    path, or a bare filename to search for, including shell-style copied paths
+    (literal or backslash-escaped spaces, or surrounding quotes)."""
     if not REPO_ROOT.is_dir():
         die(f"repo root not found: {REPO_ROOT}")
-    matches = [p for p in REPO_ROOT.rglob(filename) if p.is_file()]
-    if not matches:
-        die(f"'{filename}' not found anywhere under {REPO_ROOT.name}/.")
-    if len(matches) > 1:
-        listing = "\n   ".join(str(p) for p in matches)
-        die(f"{len(matches)} files named '{filename}' found:\n   {listing}")
-    return matches[0]
+    variants = path_variants(filename)
+    # 1) absolute path, or path relative to the repo root
+    for v in variants:
+        for cand in (REPO_ROOT / v, Path(v)):
+            if cand.exists():
+                return cand
+    # 2) bare filename: search the repo (rglob rejects absolute patterns)
+    for v in variants:
+        if not Path(v).is_absolute():
+            matches = [p for p in REPO_ROOT.rglob(v) if p.is_file()]
+            if len(matches) == 1:
+                return matches[0]
+            if len(matches) > 1:
+                listing = "\n   ".join(str(p) for p in matches)
+                die(f"{len(matches)} files named '{v}' found:\n   {listing}")
+    die(f"'{variants[0]}' not found as a path or a filename under {REPO_ROOT.name}/.")
 
 
 def set_date_added(path: Path, dt: datetime) -> None:

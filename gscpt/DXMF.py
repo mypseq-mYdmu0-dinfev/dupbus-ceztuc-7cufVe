@@ -45,6 +45,7 @@ Timestamps are interpreted in Australia/Sydney local time.
 import ctypes
 import ctypes.util
 import plistlib
+import shlex
 import struct
 import sys
 from datetime import datetime
@@ -165,19 +166,48 @@ def parse_ts(ts_raw: str) -> datetime:
         die(f"invalid timestamp '{ts_raw}': {exc}.")
 
 
+def path_variants(token: str) -> list[str]:
+    """Forms to try for a copied path, in order. Raw is first so a plain
+    'Copy as Pathname' value (literal spaces) is honoured before shell-style
+    unescaping; quote-stripping and shlex then cover drag-and-drop / quoted
+    paths without mangling the literal-spaces case."""
+    token = token.strip()
+    out: list[str] = []
+    def add(t: str) -> None:
+        if t and t not in out:
+            out.append(t)
+    add(token)
+    if len(token) >= 2 and token[0] in "'\"" and token[-1] == token[0]:
+        add(token[1:-1])                       # surrounding quotes
+    try:
+        parts = shlex.split(token)             # backslash-escaped spaces, etc.
+        if len(parts) == 1:                    # ignore if it split a real space
+            add(parts[0])
+    except ValueError:
+        pass
+    return out
+
+
 def resolve_target(token: str) -> Path:
-    """Resolve a token to a path: try as repo-relative, then absolute,
-    else search the repo for a unique file of that name (DAMF behaviour)."""
-    for cand in (REPO_ROOT / token, Path(token)):
-        if cand.exists():
-            return cand
-    matches = [p for p in REPO_ROOT.rglob(token) if p.is_file()]
-    if not matches:
-        die(f"'{token}' not found as a path or a filename under {REPO_ROOT.name}/.")
-    if len(matches) > 1:
-        listing = "\n   ".join(str(p) for p in matches)
-        die(f"{len(matches)} files named '{token}' found:\n   {listing}")
-    return matches[0]
+    """Resolve Line 1 to a path. Accepts a full (absolute) path, a repo-relative
+    path, or a bare filename to search for, including shell-style copied paths
+    (literal or backslash-escaped spaces, or surrounding quotes)."""
+    variants = path_variants(token)
+    # 1) absolute path, or path relative to the repo root
+    for v in variants:
+        for cand in (REPO_ROOT / v, Path(v)):
+            if cand.exists():
+                return cand
+    # 2) bare filename: search the repo (rglob rejects absolute patterns)
+    for v in variants:
+        if not Path(v).is_absolute():
+            matches = [p for p in REPO_ROOT.rglob(v) if p.is_file()]
+            if len(matches) == 1:
+                return matches[0]
+            if len(matches) > 1:
+                listing = "\n   ".join(str(p) for p in matches)
+                die(f"{len(matches)} files named '{v}' found:\n   {listing}")
+    die(f"'{variants[0]}' not found as a path or a filename under {REPO_ROOT.name}/.")
 
 
 def find_instruction_file() -> Path:
