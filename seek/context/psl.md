@@ -19,7 +19,7 @@
 
 - Enter AJAP mode but process ONE single loop only, stopping at S5 completion
 - A5's "SEEK results" become "any application"
-- DON'T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- DON'T spawn SA1 (run solo), skip any (ignore Save & Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
 - Skip A1; at A6 (waited 3 cycles), alert then STOP; DON'T proceed to Qi
 
 ## `psl [AR_filename(s)]`
