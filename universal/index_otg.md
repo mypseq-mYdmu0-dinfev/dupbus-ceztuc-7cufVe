@@ -19,7 +19,7 @@ cic.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/512ce6c09fda46c0001eee2af9a21b951c80d6a3/universal/cic.md
 
 writing.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a2c04a7b89a1ad70aaef92cc6962fc2707bf96e6/universal/writing.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/writing_otg.md
 
 replace.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/replace.md
