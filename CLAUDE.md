@@ -8,18 +8,19 @@
 1. Initiation
 - 1.1. Session Environment —— BEFORE anything else, run `uname -s`. `Linux` → CLOUD session: still read everything as usual (so the comms system is understood), but OVERRIDE the no-chat-text mandate (§3.1–§3.2) —— put the substantive reply directly in chat, ultra-concise, and generate NO **comms** files (§3.3); `#sync` edits to index/prefs files and any explicitly-requested code/deliverables stay allowed. Still emit the `✅`/`➡️` declarations. Assume a single turn (usually just `#sync [scope]`); prefix the reply with `☁️ **Cloud Mode**`. Any OTHER result (e.g. `Darwin`, the local Mac) → local session: follow all sections below normally. (Default-safe: only an explicit `Linux` triggers chat-mode, so a local session can never misidentify as cloud.)
 - 1.2. At session start OR when root folder is added, before generating anything (regardless of msg content; if working directory is `/seek/`, STOP NOW), read (in order) **Unconditionals**:
-  - 1.2.1. `universal/glossary.md` —— terminology & definitions
-  - 1.2.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
-- 1.3. Declare in chat (per §3.2.1) w/ other reads (incl. CLAUDE.md) on a single line
-- 1.4. Monthly Reminder
-  - 1.4.1. Up to once per session; silent process w/ NO chat text
-  - 1.4.2. Only if current month's folder (`sessions/[YYYY]/[YYYYMM]/`) has ≤5 files → §1.4.3
-  - 1.4.3. Check last month's folder has a `wrap_` file, only if no → §1.4.4
-  - 1.4.4. Remind user in 1st `response_`
+  - 1.2.1. `dupbus-ceztuc-7cufVe/CLAUDE.md` —— this file
+  - 1.2.2. `universal/glossary.md` —— terminology & definitions
+  - 1.2.3. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
+- 1.3. Declare in chat (per §3.2.1) w/ other reads (NO exception) on a single line
+- 1.4. Monthly Reminder (only once per session; silent process w/ NO chat text)
+  - 1.4.1. Check current month's folder (`sessions/[YYYY]/[YYYYMM]/`) has ≥5 files
+  - 1.4.2. ONLY if §1.4.1 = no → Check last month's folder has a `wrap_` file
+  - 1.4.3. ONLY if §1.4.2 = no → Remind user in 1st `response_`
+- 1.5. If user's 1st msg contains `ready`, read Unconditionals but no chat text or `response_`
 
 2. Conventions
 - 2.1. ALWAYS use:
-  - 2.1.1. British English (e.g. `learnt`, `amidst`, `towards`, `amongst`, `whilst`), but DON'T convert to GBP
+  - 2.1.1. British English (e.g. `amidst`, `towards`, `amongst`, `whilst`), but DON'T convert to GBP
   - 2.1.2. Metric units (°C, metre, gram, litre, etc.)
   - 2.1.3. AUD; show original currency in brackets if converted
   - 2.1.4. Hart's logical quotation rule: punctuation inside quotes only if original to the quote (e.g. ✅ `He said "I'm leaving", then left.` | ❌ `He said "I'm leaving," then left.`)
@@ -47,12 +48,13 @@
 3. Comms
 - 3.1. All responses must be written to file(s)
   - 3.1.1. IMPORTANT: Chat text is strictly restricted (§3.2), unless override (§9.1)
-  - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, except in `.claude/`
-  - 3.1.3. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (§3.1.4)
-  - 3.1.4. I/O Declarations (§3.2.1–3): centralised in order at response end (after actions); e.g.:
+  - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, EXCEPT in `.claude/`
+  - 3.1.3. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
+  - 3.1.4. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (see §3.1.5)
+  - 3.1.5. I/O Declarations (§3.2.1–3): centralised in order at response end (after actions); e.g.:
 
 ```
-✅ `dupbus-ceztuc-7cufVe/CLAUDE.md`, `universal/cic.md`, `career/CP_notes.md`
+✅ `career/CP_notes.md`, `context/gcl.md`
 ⇠ `202605/career_query_202605300226.md`
 ⇠ `202605/close_202605300023.md`
 ➡️ `202605/career_response_202605300226.md`
