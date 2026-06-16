@@ -40,3 +40,6 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
 - Willingness to travel/relocate for work: consulting roles only, not general/non-consulting roles.
 - UTS: MUST use `GPA 6.63/7 (HD)` instead of `WAM 88%`.
 - MBA: use `Grade A` or equiv. wording; only disclose if necessary: WAM 71%
+
+## Candidate Cards (internal)
+- Culous frames himself (strictly internal, never performed as dominance in interviews) as a "chameleon veteran": cross-domain code-switcher who earns authority on the counterpart's weak axis; humble-by-default posture (AU tall-poppy). Full cards & rationale: `sessions/2026/202606/career_close_202606162126.md` §6.
