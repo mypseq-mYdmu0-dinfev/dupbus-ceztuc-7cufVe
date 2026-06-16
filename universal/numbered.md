@@ -35,6 +35,8 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 - On long responses above 100w (even not prompted `#numbered`; exc. deliverables):
   - Follow above format (rather than `- `) w/ bitesize short lines for **easy reply**
   - Instead of `re "xxx..."`, I can refer by `re 1.2.1` or just `1.2.1:`
+  - Caveat: You must always add `re` to separate current pt & the pt you're replying to
+    - e.g. ❌ `3. 1.2.1: ...` (reads like `3.1.2.1`) | ✅ `3. re 1.2.1: ...` (pt 3 clearly replying 1.2.1)
 - Numbering Continuity —— DEFAULT is to CONTINUE at n+1 (n = last pt of last response); NEVER default to resetting, even in doubt. No number repetition throughout an issue. Reset to pt 1 ONLY if at least one of below conditions met:
   - 1st response of a session (CC: despite referring to prev. comms files); or
   - User input is NOT replying a response (CC: NEITHER the word `response_` NOR any pt no. from previous `response_` was found in `query_`); or
