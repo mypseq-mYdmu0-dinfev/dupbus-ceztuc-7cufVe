@@ -1,7 +1,7 @@
 # Rennly — Creative Marketing Specialist
 **Date:** 04:12 on 08/06/2026
 **SEEK URL:** https://au.seek.com/job/92534150
-**Outcome:** Applied
+**Outcome:** Applied (Interviewed on 12/06/2026; awaiting offer)
 **Resume Selected:** Culous_Yu_Resume_Marketing.pdf
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 18/30 (broad marketing/content background; Mandarin native speaker = significant advantage; no formal video editing qualification)
