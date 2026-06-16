@@ -1,4 +1,6 @@
-[+working directories: `dupbus-ceztuc-7cufVe/` & `investigation/`]
+@"/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
+@"/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/seek/investigation"
+
 Stop all tasks and heartbeat; retire SA —— this session ended
 Address below in order (NOT parallel; don't stop until completion):
 01. IMPORTANT: Before anything else (incl. reading ANYTHING; to preserve current context), scan your context window and identify all issues; generate an audit report as an `audit_` file
