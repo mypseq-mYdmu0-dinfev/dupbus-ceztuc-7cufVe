@@ -55,10 +55,12 @@
 - **Assistant Marketing Manager**, HK Equestrian Federation —— Aug-Oct 2023 (participated in 19th Asian Games; organised FEI (Fédération Equestre Internationale) World Challenge 2023 HK; directed rebranding for 50th Anniversary)
 - **Visual Director**, Backbone Limited —— Nov 2018-Apr 2020 (closed deal & led the group's first-ever $1 million one-off project with creative problem solving)
 
-### Historic (don't disclose unless highly relevant)
+### Historic (don't disclose unless highly relevant; all <1yr)
 
-- **Producer (Project Manager)**, HK Economic Times —— 2018 (<1yr)
-- **Marketing Assistant**, Gafencu —— 2017 (<1yr)
+- **Producer (Project Manager)**, Advertising Dept, HK Economic Times —— 2018
+- **Production Assistant (directed Ferrari 812 Superfast launch)**, Dream of Fish —— 2017–18
+- **Marketing Assistant (Multimedia Producer)**, Gafencu (Luxury Magazine) —— 2017
+- **Videographer (Director/DOP/Gaffer/Photographer)**, Visual Media (Crew House) —— 2017
 - **Teaching Assistant**, UNICEF —— Jun-Aug 2016
 - **Marketing Intern**, Trane —— Jun-Aug 2012
 
