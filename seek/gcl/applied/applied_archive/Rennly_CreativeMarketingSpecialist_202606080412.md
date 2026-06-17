@@ -1,9 +1,9 @@
 # Rennly — Creative Marketing Specialist
-**Date:** 04:12 on 08/06/2026
-**SEEK URL:** https://au.seek.com/job/92534150
-**Outcome:** Applied (Interviewed on 12/06/2026; awaiting offer)
-**Resume Selected:** Culous_Yu_Resume_Marketing.pdf
-**Suitability Score Breakdown:**
+- **Date:** 04:12 on 08/06/2026
+- **SEEK URL:** https://au.seek.com/job/92534150
+- **Outcome:** Applied (Interviewed on 12/06/2026; awaiting offer)
+- **Resume Selected:** Culous_Yu_Resume_Marketing.pdf
+- **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 18/30 (broad marketing/content background; Mandarin native speaker = significant advantage; no formal video editing qualification)
 2. Role Sufficiency — 14/20 (content management, social media, EDM campaigns, asset library management, stakeholder coordination)
 3. Sector fit — 10/15 (PropTech/property marketing; B2B/B2C digital marketing overlap)
@@ -12,7 +12,7 @@
 6. CL Differentiability — 8/10 (Mandarin REQUIRED = rare differentiator; strong content/social media/campaign background)
 7. Application Efficiency — 5/5 (Quick apply)
 8. Bonus — 3 (Mandarin required; native HK Chinese speaker)
-**Suitability Score:** 71/100
+- **Suitability Score:** 71/100
 
 ## 1. Employer
 
@@ -312,3 +312,93 @@ Please feel free to review it at your convenience. Whenever it suits you, I woul
 
 Warm Regards,
 Culous Yu
+
+### Employer Reply
+
+On 15 Jun 2026, at 09:15, Mary Shen <hr@home789.com.au> wrote:
+
+Morning Culous,
+Thank you for sending this through.
+
+It was a pleasure meeting you as well, and we appreciate the effort you've put into the assessment. Thank you for incorporating the soundtrack and providing the complete submission package.
+
+I will be in touch sometime this week with an update.
+
+In the meantime, if you have any questions, please feel free to reach out.
+
+Kind Regards,
+Mary
+
+### Employer Call Invite
+
+On 17 Jun 2026, at 10:49, Mary Shen <hr@home789.com.au> wrote:
+
+Hi Culous,
+
+Are you available for a quick call this afternoon at 4:00 pm?
+
+Thanks!
+
+Kind Regards,
+Mary
+
+### User Reply
+
+On 17 Jun 2026, at 11:28, c@culousyu.com wrote:
+
+Hello Mary,
+
+Thanks for your email. I might be driving at that time so I can’t be sure. You may call me and I’ll pick up if it’s safe to. If acceptable, you may convey via email and I’ll reply ASAP. Thank you for your understanding.
+
+Regards,
+Culous
+
+### Employer Reply
+
+On 17 Jun 2026, at 13:18, Mary Shen <hr@home789.com.au> wrote:
+
+Hi Culous,
+
+No worries at all. Thanks for letting me know.
+
+I'll give you a call tomorrow when you're available instead. Please let me know a time that suits you, and I'll do my best to accommodate.
+
+Thanks, and have a safe drive!
+
+Kind Regards,
+Mary
+
+### User Reply
+
+On 17 Jun 2026, at 14:20, c@culousyu.com wrote:
+
+Hello Mary,
+
+Thanks for your understanding. I’d be more than happy for a call at the same proposed time (4pm) tomorrow (18 June 2026) shall that works for you too. Looking forward to talking with you again.
+
+Regards,
+Culous
+
+### Employer Reply
+
+On 17 Jun 2026, at 14:24, Mary Shen <hr@home789.com.au> wrote:
+
+4 pm, 18 June works for me.
+
+Speak to you tomorrow.
+
+Have a lovely day.
+
+Kind Regards,
+Mary
+
+### User Reply
+
+On 17 Jun 2026, at 14:26, c@culousyu.com wrote:
+
+Hello Mary,
+
+Acknowledged. Wish you a relaxing evening.
+
+Regards,
+Culous
