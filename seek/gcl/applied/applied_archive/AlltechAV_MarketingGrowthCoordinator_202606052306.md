@@ -1,9 +1,9 @@
 # Alltech AV — Marketing & Growth Coordinator
-**Date:** 23:06 on 05/06/2026 (Last Modified: 202606052310)
-**SEEK URL:** https://au.seek.com/job/92511672
-**Outcome:** Applied
-**Resume Selected:** Culous_Yu_Resume_Marketing.pdf
-**Suitability Score Breakdown:**
+- **Date:** 23:06 on 05/06/2026 (Last Modified: 202606052310)
+- **SEEK URL:** https://au.seek.com/job/92511672
+- **Outcome:** Applied
+- **Resume Selected:** Culous_Yu_Resume_Marketing.pdf
+- **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 23/30 (strong marketing execution; minor AV-content gap)
 2. Role Sufficiency — 15/20 (GM/consulting clearly sufficient; slight over-qual at coordinator level)
 3. Sector fit — 7/15 (no direct AV; media/content production + HKEF events adjacent)
@@ -12,7 +12,7 @@
 6. CL Differentiability — 8/10 (build-from-scratch hook; NatGeo/Vogue photo; DaVinci/Premiere video; strong differentiation)
 7. Application Efficiency — 5/5 (Quick apply)
 8. Bonus — +20 (ops mgmt ✅ building marketing systems & processes; KPI reporting ✅ weekly leadership reporting to COO/CMO)
-**Suitability Score:** 89/100
+- **Suitability Score:** 89/100
 
 > 🔄 **Re-evaluated 202606150713** (CIC + web_search validated, ahead of virtual interview Tue 16/06 3pm). Original AJAP §1 was a 6-line stub; expanded below into 1.1`~`1.8. Original score 89 retained for record; corrections noted inline (salary band, headcount, named leadership, Glassdoor mis-attribution risk).
 
