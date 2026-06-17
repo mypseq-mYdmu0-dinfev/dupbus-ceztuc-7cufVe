@@ -319,20 +319,20 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 
 ```
 # [Company Name] — [Job Title]
-**Date:** [HH:mm on DD/MM/YYYY]
-**SEEK URL:** [url]
-**Outcome:** Applying / Pending / Skipped ([reason])
-**Resume Selected:** [filename or N/A]
-**Suitability Score Breakdown:**
-1. Qualification Sufficiency — [score]/30 ([comment ≤5 words])
-2. Role Sufficiency — [score]/20 (ditto)
-3. Sector fit — [score]/15 (ditto)
-4. Growth Value — [score]/10 (ditto)
-5. Employer Quality — [score]/10 (ditto)
-6. CL Differentiability — [score]/10 (ditto)
-7. Application Efficiency — [score]/5 (ditto)
-8. Bonus — [+5/10/20 or N/A] ([if triggered, ≤30 words])
-**Suitability Score:** [total]/100
+- **Date:** [HH:mm on DD/MM/YYYY]
+- **SEEK URL:** [url]
+- **Outcome:** Applying / Pending / Skipped ([reason])
+- **Resume Selected:** [filename or N/A]
+- **Suitability Score Breakdown:**
+M1. Qualification Sufficiency — [score]/30 ([comment ≤5 words])
+M2. Role Sufficiency — [score]/20 (ditto)
+M3. Sector fit — [score]/15 (ditto)
+M4. Growth Value — [score]/10 (ditto)
+M5. Employer Quality — [score]/10 (ditto)
+M6. CL Differentiability — [score]/10 (ditto)
+M7. Application Efficiency — [score]/5 (ditto)
+M8. Bonus — [+5/10/20 or N/A] ([if triggered, ≤30 words])
+- **Suitability Score:** [total]/100
 ```
 
 CRITICAL: If applying, MUST first temporarily have filename beginning with `⏳_` and mark as `Outcome: Applying`; ONLY after success confirmed (S6.4.4), edit as `Outcome: Applied` AND rename file to remove `⏳_` prefix. If saving or skipping after AR creation: move (per Move Rule) to `/gcl/pending/` or `/gcl/skipped/` respectively (no `⏳_` prefix in these two folders).
