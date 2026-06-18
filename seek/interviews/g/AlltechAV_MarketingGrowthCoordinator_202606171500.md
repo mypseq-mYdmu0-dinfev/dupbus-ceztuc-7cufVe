@@ -1,7 +1,7 @@
 # Alltech AV — Marketing & Growth Coordinator
 - **Date:** 23:06 on 05/06/2026 (Last Modified: 202606052310)
 - **SEEK URL:** https://au.seek.com/job/92511672
-- **Outcome:** Applied
+- **Outcome:** Applied (Interviewed at 202606171500)
 - **Resume Selected:** Culous_Yu_Resume_Marketing.pdf
 - **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 23/30 (strong marketing execution; minor AV-content gap)
