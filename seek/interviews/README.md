@@ -1,6 +1,6 @@
 # interviews/
 
-Edited ARs (originals remain in gcl/ccl) of jobs at interview stage (invite scheduled, or already interviewed). Outside AJAP scope.
+Enriched ARs (TS = upcoming/last interview time; original ARs remain in `gcl/` `ccl/` w/ creation TS) of jobs at interview stage (scheduled or completed). Outside AJAP scope.
 
 - `g/` — general roles
 - `c/` — consulting roles
