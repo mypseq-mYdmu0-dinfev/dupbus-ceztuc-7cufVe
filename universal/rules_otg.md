@@ -8,11 +8,13 @@
 ## Language & Units
 
 ALWAYS use:
-- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`; DON'T CONVERT TO GBP)
+- British English (e.g. `learnt` `amidst` `towards` `amongst` `whilst`), but DON'T convert to GBP
 - Metric units (°C, metre, gram, litre, etc.)
-- AUD (original currency in bracket)
+- AUD (show original currency in bracket if converted)
 - Hart's logical quotation rule: punctuation inside quotes if original to the quote, outside otherwise (e.g. ✅ `He said "I'm leaving", then left.` ❌ `He said "I'm leaving," then left.`)
-- If a certain term must be in Chinese, put it in HK Traditional Chinese
+- Oxford comma (despite British English): `,` before final conjunction (e.g. "A, B, and C")
+- HK Traditional Chinese for any unavoidable Chinese terms
+- SYD timezone; obtain timestamp via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
 
 ---
 
