@@ -13,6 +13,7 @@
   - ❌ [A], [B] and [C]
   - ✅ [A], [B], and [C]
 - When drafting anything est. 1,000⁺ words, suggest (ask confirmation) to create Dev Plan
+- Never use "Hi"; user strongly prefers "Hello"
 
 ---
 
