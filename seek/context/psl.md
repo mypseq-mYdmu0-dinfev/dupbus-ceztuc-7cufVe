@@ -12,7 +12,7 @@
 - `#apply` = finish the loop (S6); STOP right before "Submit", "Submit application", or similar
 - `#done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
 - `#next` = don't touch current AR; proceed to next AR
-- `#sprint` = auto-`#next`; at S5 completion, directly proceed to next AR w/o S6 (application)
+- `#auto` = auto-`#next`; at S5 completion, directly proceed to next AR w/o S6 (application)
 - `#para` = an AJAP session is running in parallel —— minimise disturbance by:
   - Except for "batch verify URLs..." below, avoid file changes in `/seek/` (notice if unavoidable)
   - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. "Dup From: `gcl/pending/`") → execute the intended creation/editing → if moving is needed: DON'T; instead remark where it should go (e.g. "Go To: `gcl/applied/`") right below "Dup From"
@@ -27,7 +27,7 @@
 - DON'T spawn SA1 (run solo), skip any (ignore Save & Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
 - ONLY skip a job if score < 35 after re-evaluation
 - Skip A1; at A6 (waited 3 cycles), alert then STOP; DON'T proceed to Qi
-- DON'T proceed to next AR, unless prompted `#done`/`#next`/`#sprint`
+- DON'T proceed to next AR, unless prompted `#done`/`#next`/`#auto`
 
 ## `#psl [AR_filename(s)]`
 
