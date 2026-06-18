@@ -197,6 +197,9 @@
     - 8.8.4.4. §8.8.1: '/Users/culous/Downloads'
     - 8.8.4.5. §8.8.2: '/Users/culous/Desktop'
     - 8.8.4.6. §8.8.3: '/Users/culous/Documents/PDF Conversion'
+  - 8.8.5. Reading MS Office (.docx/.xlsx/.pptx):
+    - 8.8.5.1. Judge by case —— read directly (e.g. textutil) OR via §8.8.3
+    - 8.8.5.2. `PDF Conversion.app` also works for MS (read README.md in same folder if MS)
 
 9. Miscellaneous
 - 9.1. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
