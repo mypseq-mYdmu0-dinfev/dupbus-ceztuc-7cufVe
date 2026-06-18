@@ -55,6 +55,7 @@ Read only when relevant, NOT mandatory. Available in `/context/`:
   - `/runtime/` —— ditto; ONLY access it if you're MA (not SA)
   - `/investigation/` —— DON'T access unless explicitly prompted `investigation mode`
   - `/ccl/` —— DON'T access unless explicitly prompted `ccl`
+  - `/interviews/` —— in AJAP mode, NEVER access (out of scope; user-managed)
   - All other paths —— read only; never edit, create, or delete any file
 - Each time a file in `/context/` is (re-)read → MUST declare in chat
 - In AJAP mode (per ajap.md):
