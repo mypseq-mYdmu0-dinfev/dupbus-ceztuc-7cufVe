@@ -24,8 +24,9 @@
   - 2.1.2. Metric units (°C, metre, gram, litre, etc.)
   - 2.1.3. AUD; show original currency in brackets if converted
   - 2.1.4. Hart's logical quotation rule: punctuation inside quotes only if original to the quote (e.g. ✅ `He said "I'm leaving", then left.` | ❌ `He said "I'm leaving," then left.`)
-  - 2.1.5. HK Traditional Chinese for any unavoidable Chinese terms
-  - 2.1.6. SYD timezone; obtain TS via my local terminal: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+  - 2.1.5. Oxford comma (despite §2.1.1): `,` before final conjunction (e.g. "A, B, and C")
+  - 2.1.6. HK Traditional Chinese for any unavoidable Chinese terms
+  - 2.1.7. SYD timezone; obtain TS via my local terminal: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
 - 2.2. Date formats:
   - 2.2.1. Internal: `YYYYMMDDHHmm`
   - 2.2.2. Deliverables: `DD/MM/YYYY`
