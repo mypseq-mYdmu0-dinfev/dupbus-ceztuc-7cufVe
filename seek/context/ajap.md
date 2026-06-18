@@ -150,7 +150,8 @@ IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loo
 
 **Save → AR → skip if:**
 - Title explicitly includes: `Consultant`/`Associate`
-- Employer is: Google/Apple/Amazon
+- Employer is: Google/Apple/Amazon/McKinsey/BCG/Bain/Deloitte/EY/PwC/KPMG
+- If "Hard Skip Conditions" met (except score < 35; still save anyway): don't save; follow S4.3
 - Actions:
   - Click "Save" (bookmark icon, next to `⌄`) 
   - Create AR in `/gcl/pending/`
@@ -159,7 +160,7 @@ IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loo
 
 **Skip silently if and ONLY if (check in order; stop at 1st match):**
 K1. Title contains `Director`/`Full Stack`/`Master`/`Architect`/`Interior`/`Surveyor`
-K2. Employer is Federal/State Govt (city council ok)
+K2. Employer is Federal/State Govt (city council/universities ok)
 K3. Already processed in this session
 K4. Applied: A green `✔︎` in circle icon (approx. #7FECC0) is visible (next to `⌄`; hollow bookmark icon unseen); only visible after Tab 1 refreshed in Pre-Flight Check
 K5. Saved: The bookmark icon is filled in magenta (approx. #F42B99)
