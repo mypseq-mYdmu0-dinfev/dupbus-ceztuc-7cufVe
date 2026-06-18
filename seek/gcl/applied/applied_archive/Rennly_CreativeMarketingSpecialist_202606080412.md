@@ -402,3 +402,19 @@ Acknowledged. Wish you a relaxing evening.
 
 Regards,
 Culous
+
+### Employer Call
+
+*At 202606181600*
+
+State: still screening candidates, just a quick quick (see below)
+
+Employer: You were at mgmt level, are you comfortable with this specialist role?
+User: 100% yes. As my resume shows, I stepped down from GM at KE to Assistant Marketing Manager at HKEF, which is practically a specialist role since nobody was below me, which proved it worked.
+
+*User took the chance and asked some questions, below are confirmations:*
+
+Working Hours: 0900–1730, Monday–Friday, 1hr lunch break
+Weekend Work: Generally no; if any, will compensate like AL; e.g. 3hr OT = 3hr leave later
+Car Park: free, right at basement of same building; each occupant (incl. Rennly) has an amount of free parking bays (Mary appeared surprised when user was asking how much is monthly parking rate as she assumed free), though user would have to re-confirm if any vacancy still available
+Next Step: will reply latest by next week
