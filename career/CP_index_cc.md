@@ -48,6 +48,10 @@ jop.md
 `career/jop.md`
 Read when `#jop`.
 
+int.md
+`career/int.md`
+Read when `#int`.
+
 ---
 
 ## ATS Resumes
