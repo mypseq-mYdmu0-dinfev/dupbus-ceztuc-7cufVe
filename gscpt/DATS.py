@@ -15,10 +15,11 @@ Per-type rules:
   - query, wrap : set Date Added = filename TS. (A wrap's line 1 carries only a
                   month, so wrap is treated exactly like query — no content check.)
   - close       : filename TS must equal the 2nd (range-end) TS on content line 1.
-                  If ANY close mismatches, that error aborts ONLY the close type —
-                  query & wrap still proceed.
-  - any type    : a non-template target whose name lacks a TS is a SERIOUS ERROR
-                  that aborts ONLY that type (others proceed); reported loudly.
+                  A close that mismatches is skipped + reported; every CONFORMING
+                  close still proceeds (one bad close no longer blocks the rest).
+  - any type    : a non-template target whose name lacks a TS is a SERIOUS ERROR;
+                  that one file is skipped + reported loudly, but the rest of its
+                  type (and all other types) still proceed.
 
 Gates (across the whole run's to-fix set):
   - files <24h off are auto-fixed; files >=24h off need a typed `yes`.
@@ -87,7 +88,10 @@ def now_ts():
 
 
 def gather(ftype):
-    """-> (targets[(path,ts,dt)], error_note|None). error_note blocks only this type."""
+    """-> (targets[(path,ts,dt)], note|None). A note lists ONLY the skipped
+    offender(s) — a no-TS filename, or (close) a content-TS mismatch. Every
+    conforming file of the type is still returned, so one bad file never blocks
+    the rest (per-file skip, not per-type abort)."""
     name_re = re.compile(rf"^(?:[A-Za-z0-9]+_)?{ftype}_")
     bare_re = re.compile(rf"^(?:[A-Za-z0-9]+_)?{ftype}_\.md$")
     targets, missing = [], []
@@ -103,10 +107,11 @@ def gather(ftype):
                     missing.append(os.path.join(dp, f))
                 else:
                     targets.append((os.path.join(dp, f), m.group(1)))
+    notes = []
     if missing:
-        return [], "SERIOUS ERROR — target(s) without a TS in filename:\n  " + "\n  ".join(missing)
+        notes.append("SERIOUS ERROR — target(s) without a TS in filename (skipped; others proceed):\n  " + "\n  ".join(missing))
     if ftype == "close":
-        bad = []
+        good, bad = [], []
         for p, ts in targets:
             with open(p) as fh:
                 first = fh.readline()
@@ -114,9 +119,12 @@ def gather(ftype):
             end = found[-1] if found else None
             if end != ts:
                 bad.append(f"  filename={ts}  content_end={end}  {p}")
+            else:
+                good.append((p, ts))
         if bad:
-            return [], "close: filename TS != content range-end TS:\n" + "\n".join(bad)
-    return [(p, ts, ts_dt(ts)) for p, ts in targets], None
+            notes.append("close: filename TS != content range-end TS (these skipped; others proceed):\n" + "\n".join(bad))
+        targets = good
+    return [(p, ts, ts_dt(ts)) for p, ts in targets], ("\n".join(notes) if notes else None)
 
 
 def fmt(x):
@@ -131,12 +139,11 @@ def main():
     all_targets, blocked = [], []
     for t in TYPES:
         tg, err = gather(t)
+        all_targets += tg
         if err:
             blocked.append((t, err))
-        else:
-            all_targets += tg
     for t, err in blocked:
-        print(f"⚠️ [skipped type: {t}] {err}\n")
+        print(f"⚠️ [{t}: offender(s) skipped, rest proceeding] {err}\n")
 
     dtmap = {p: dt for p, ts, dt in all_targets}
     to_fix = []
