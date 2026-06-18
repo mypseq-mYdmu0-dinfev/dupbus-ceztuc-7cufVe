@@ -149,7 +149,7 @@
 | `writing.md` | Right before writing ANY deliverables; OR "casual"/"whatsapp" mentioned |
 | `coding.md` | On multi-script coding |
 | `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
-| `shrink.md` | Shrink/summarise/synthesise/distil/condense mentioned/involved |
+| `shrink.md` | `shrink`/`summarise`/`synthesise`/`distil`/`condense` mentioned or involved |
 
 - 7.3. General Trigger:
   - 7.3.1. Any `#[trigger]` → attempt to read `universal/[trigger].md`
