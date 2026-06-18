@@ -1,7 +1,7 @@
 # KPMG — 2027 Graduate Program – Technology & Digital
 **Date:** 16:20 on 15/06/2026
 **SEEK URL:** https://au.seek.com/job/92310317
-**Outcome:** Skipped (External portal; ceiling ~62 < 70 with M7=0; early exit. Also: graduate-only eligibility — explicitly for final-year 2026 students or recent graduates not yet in professional work; Culous ineligible.)
+**Outcome:** Pending (KPMG)
 **Resume Selected:** N/A
 **Suitability Score Breakdown:**
 1. Qualification Sufficiency — 12/30 (tech grad target; Culous overqualified/ineligible)
@@ -12,7 +12,7 @@
 6. CL Differentiability — 10/10 (assumed max)
 7. Application Efficiency — 0/5 (external Apply)
 8. Bonus — N/A
-**Suitability Score:** ~62/100 (ceiling; external portal early-exit + graduate eligibility bar)
+**Suitability Score:** ~62/100
 
 ## 1. Employer
 
