@@ -48,7 +48,7 @@ I'm in a hurry; time IS the limiting factor. Work as if NOT in sprint (normal de
 
 ## Overriding Other Confirmation Gates
 
-A sprint also overrides the "await confirmation" steps of OTHER protocols invoked in the same task —— e.g. shrink.md's `#synthesise` / `#distil` / `#shrink`, which normally pause for sign-off before executing:
+A sprint also overrides the "await confirmation" steps of OTHER protocols invoked in the same task —— e.g. shrink.md's `#synthesise` / `#distil`, which normally pause for sign-off before executing:
 
 - Do NOT pause —— assume I approved, pick the best option, and push through.
 - **Log the assumed call** (e.g. the `#synthesise` objective, the `#distil` rule + breadth) so I can audit it:
