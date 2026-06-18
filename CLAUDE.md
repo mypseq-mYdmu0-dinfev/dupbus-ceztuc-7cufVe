@@ -185,7 +185,7 @@
   - 8.8.2. `Screenshot*.png`: assume '/Volumes/FURY 2TB/Fury Pictures/Screenshots'
   - 8.8.3. Reading iWork (.pages/.numbers/.key):
     - 8.8.3.1. Duplicate files to '/Volumes/FURY 2TB/Fury Documents/PDF Conversion'
-    - 8.8.3.2. Run '/Volumes/FURY 2TB/Fury Documents/PDF Conversion/PDF Conversion.scpt'
+    - 8.8.3.2. Run '/Volumes/FURY 2TB/Fury Documents/PDF Conversion/PDF Conversion.app'
     - 8.8.3.3. `find` & read converted PDF in same directory
     - 8.8.3.4. Void duplicated files & converted PDF
     - 8.8.3.5. Remind user to manually delete
