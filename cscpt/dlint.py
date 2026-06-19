@@ -17,9 +17,9 @@ WHAT IT DOES
 
 2. FLAG (print only) two tiers (the real rules ARE the check fns below):
      🔴 RED  —— hard breaches, ZERO TOLERANCE (must reach 0): exact Americanisms,
-                em dash, mid-sentence colon, a comma as the last char inside a
-                closing quote. Fires ONLY on a genuine breach, so a RED never
-                needs "conditional acceptance".
+                `vs.` with period, em dash, mid-sentence colon, a comma as the
+                last char inside a closing quote. Fires ONLY on a genuine breach,
+                so a RED never needs "conditional acceptance".
      🟡 YELLOW — conditional, may be legitimate: en dash, bare `+`, hyphen used as
                 a dash/non-#numbered bullet, `-ize`/`-isation` spellings,
                 sentence-initial `Where`, a lone period inside a closing quote,
@@ -202,6 +202,15 @@ def _americanisms(lines, orig, red):
                 red.append((ln, f"Americanism `{w}` -> use `{brit}`: {_snip(orig[ln - 1])}"))
 
 
+def _vs(lines, orig, red):
+    """`vs.` (with trailing period) is banned —— only the bare `vs` is accepted.
+    Matches case-insensitively on a word-boundaried `vs` immediately followed by
+    a period (e.g. `A vs. B`); the bare `vs` never fires."""
+    for ln, line in enumerate(lines, 1):
+        if re.search(r"\bvs\.", line, re.IGNORECASE):
+            red.append((ln, f"`vs.` with period —— use bare `vs`: {_snip(orig[ln - 1])}"))
+
+
 def _hart(lines, orig, red, yellow):
     """Hart's logical quotation (root §2.1.4): punctuation belongs inside a quote
     only if original to it. Flag ONLY the char IMMEDIATELY before a closing quote:
@@ -326,6 +335,7 @@ def run_checks(text, quick=False):
 
     # register-independent rules —— wrong in ANY output; the ones --quick keeps
     _americanisms(lines, orig, red)
+    _vs(lines, orig, red)
     _hart(lines, orig, red, yellow)
     _ize(lines, orig, yellow)
     _hyphen_bullet(lines, orig, yellow)       # dash substitute + #numbered compliance
