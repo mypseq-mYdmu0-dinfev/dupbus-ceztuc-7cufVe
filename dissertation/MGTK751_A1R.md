@@ -72,7 +72,7 @@ RO2. Explore how TPs’ peers (TPPs) in KBFs perceive and experience TPS dynamic
 RO3. Evaluate the organisational and interpersonal conditions that exacerbate or alleviate TPS.
 RO4. Formulate management recommendations addressing TPS-related KM and team cohesion risks.
 
-This study contributes academically by extending TPS studies beyond cultural psychology into management and KM domains, and practically by equipping managers with workforce-derived insights to address an under-recognised governance challenge. For CYC, the findings will inform a cross-sector advisory framework supporting KBF clients in diagnosing and mitigating the knowledge governance risks associated with TPS.
+This study contributes **academically** by extending TPS studies beyond cultural psychology into management and KM domains, and **practically** by equipping managers with workforce-derived insights to address an under-recognised governance challenge. For CYC, the findings will inform a cross-sector advisory framework supporting KBF clients in diagnosing and mitigating the knowledge governance risks associated with TPS.
 
 ### Structure of Chapters (pre-drafted for Assessment 3 full paper)
 
@@ -192,7 +192,7 @@ Standard UoL ethics approval would be sought prior to any data collection. Semi-
 |---|---|---|---|
 | 01 | A1 (Research Proposal) submitted | Week 6 | 27/04/2026 |
 | 02 | DA matched; proposal refinement begins under DA's guidance | Week 7 | w/c 28/04/2026 |
-| 03 | Refined proposal approved by DA and second reviewer | Week 8~9 | w/c 05/05/2026 |
+| 03 | Refined proposal approved by DA and second reviewer | Week 8–9 | w/c 05/05/2026 |
 | 04 | Ethics application submitted to DA and second reviewer | Week 9 | w/c 12/05/2026 |
 | 05 | Ethics application approved; written confirmation received | Week 11 | w/c 26/05/2026 |
 | 06 | Data collection commences | Week 12 | w/c 02/06/2026 |
