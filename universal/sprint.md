@@ -97,7 +97,7 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 - **Recovery**: right after each compaction, reading it still requires a one-off `✅` declaration (root CLAUDE.md §3.2.1) —— a proof of context recovery
 - **Append-only, NEVER overwrite** —— every write adds a new `[TS]`-headed block (one TS per block, not per line). The growing stack of blocks IS the log; appending (vs overwriting) avoids clobbering earlier state and preserves the timeline.
 - **TS** = `TZ='Australia/Sydney' date +"%Y%m%d%H%M"` —— TS deltas reveal how long each action took (retrospective value).
-- **Static header** (top of file, written once): `slog | sprint [start_TS] | #sprint|#quick`, then `GOAL: <one-liner>` and `TASKS: T01, T02, … Tnn` (a one-liner key each) —— these rarely change, so don't repeat them in blocks unless necessary.
+- **Static header** (top of file, written once): `Sprint Log [start_TS]` (append ` #quick` only if that mode was prompted), then `GOAL: <one-liner>` and `TASKS: T01, T02, … Tnn` (a one-liner key each) —— these rarely change, so don't repeat them in blocks unless necessary.
 - **Each block** (append on every meaningful state change —— task start/finish, each assumption, before/after an SA dispatch, immediately before any boundary):
   - `[TS] <headline —— what just happened, e.g. "DONE T03 (~6m) → wrote §2 to file X">`
   - `STATUS: <compact roster, e.g. T01–T02 done · T03 doing · T04–T07 pending>` —— so the LATEST block alone yields current state for recovery.
