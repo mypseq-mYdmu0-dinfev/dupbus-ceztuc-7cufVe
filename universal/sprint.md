@@ -115,3 +115,9 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 - **Compaction (§5) during a sprint** —— emit the `🚨` sentinel as always, then (rather than idling for the absent, un-summonable me) read the `slog` —— its latest block gives current `STATUS` + `NEXT` —— and resume autonomously from there. The slog carries exact state across the compaction —— a deliberate, slog-guarded exception to §5.6, for `#sprint` only.
 - **No-chat-text (§3) still holds** —— all progress lands in files (I will NOT read chat text); only the §3.2 declarations appear in chat.
 - **SAs never address the user** —— their output returns to MA, then MA writes the files.
+
+---
+
+## Remarks
+
+- If SA(s) spawned, ensure sufficient context (e.g. #cic for research)
