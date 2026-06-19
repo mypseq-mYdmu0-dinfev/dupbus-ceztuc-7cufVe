@@ -76,13 +76,35 @@ So I can resume instantly, the `response_` (or a dedicated file) must capture:
 
 - **Done** —— tasks completed, with the files produced.
 - **Assumed** —— every working assumption made to push through (not only blockers cleared by prediction): each QB raised in `<thinking>` with my predicted answer, plus any interpretive / methodological / scope call (e.g. an assumed `#synthesise` objective), and what was built on each. Surface FIRST any assumption that would invalidate downstream work if wrong, so I can catch it at a glance.
+- **Compactions** —— EVERY compaction event experienced during the sprint (when + how recovery went). Each is a heavy risk that may have compromised ALL work, including earlier tasks —— flag anything potentially affected; never silently omit one.
 - **Planned, not executed** —— critical/untracked tasks deferred per the caveat, with their plans.
 - **Open** —— anything still needing me, priority-tagged (🔴 blocking / 🟡 important / 🟢 nice-to-have).
+
+**Draft from the `slog`, not solely from the context window** —— a compaction you may not even realise occurred could have dropped events the slog still holds; treat the slog as ground truth for this report.
+
+---
+
+## Sprint Log (`slog`) —— Compaction Hedge
+
+A terse self-notebook (BOTH modes) so a mid-sprint compaction never loses sprint state. Write very efficiently for CC (current session) only; the user wouldn't read it.
+
+- **File**: `./.claude/tmp/slog_[current_TS].md` —— TS = sprint start; one per sprint; hidden by location.
+- **Silent**: creating/updating it is EXEMPT from the `➡️` declaration (root CLAUDE.md §3.2.3) —— a private scratchpad, kept out of chat
+- **Recovery**: Right after each compaction, reading it still requires a one-off `✅` declaration (root CLAUDE.md §3.2.1) —— a proof of context recovery
+- **Style**: machine-first (for your own re-orientation, not human reading); as concise as possible. A living `STATE` block (overwritten to reflect *now*) above a short event tail.
+- **`STATE` captures** (one line each):
+  - `GOAL` —— the overarching objective (never lose the *why*).
+  - `TASKS` —— each + status: done / doing / pending / assumed-through.
+  - `ASSUMPTIONS` —— every push-through assumption + my predicted answer; prefix `!!` any that would invalidate downstream work if wrong.
+  - `NEXT` —— the immediate next action (i.e. the resume point).
+  - `BOUNDARY` —— any irreversible/costly step NOT to cross + the pre-boundary state reached (hedge against web/progress loss).
+- **Cadence**: update at every meaningful state change —— task start/finish, each assumption, before/after an SA dispatch, and immediately before any irreversible boundary. Keep it lean, esp. under `#quick`.
+- **Relation to Sprint Report**: the Sprint Report (on return) is the human-facing distillation of the slog's final `STATE`.
 
 ---
 
 ## Interactions
 
-- **Compaction (§5) overrides sprint** —— if the PostCompact sentinel fires mid-sprint, halt everything per §5; NEVER push through a compaction.
+- **Compaction (§5) during a sprint** —— emit the `🚨` sentinel as always, then (rather than idling for the absent, un-summonable me) read the `slog`, re-orient from its `STATE`, and resume autonomously from `NEXT`. The slog carries exact state across the compaction —— a deliberate, slog-guarded exception to §5.6, for `#sprint` only.
 - **No-chat-text (§3) still holds** —— all progress lands in files (I will NOT read chat text); only the §3.2 declarations appear in chat.
 - **SAs never address the user** —— their output returns to MA, then MA writes the files.
