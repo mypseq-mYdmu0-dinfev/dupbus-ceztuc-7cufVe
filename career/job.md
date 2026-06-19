@@ -3,6 +3,7 @@
 
 ## Trigger
 - `#job` → scan Gmail for criteria below.
+- `#undo` → undo all actions by `#job` as if never prompted (e.g. remove `Label_`)
 
 ## Scope
 - Criteria: responding / related to submitted job applications; or signal job interview / offer.
