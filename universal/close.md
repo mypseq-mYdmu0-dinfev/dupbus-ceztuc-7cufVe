@@ -6,6 +6,11 @@
 - Editing `close_` file:
   - Also update end-of-range TS on Line 1 (`# Session Closing...`) w/ [current_TS]
   - NEVER edit TS in filename, so user can track diff
+- Sprint Log cleanup:
+  - Check `./.claude/tmp/` for any `slog_*.md`
+  - If any, judge from filename TS (between 1st comms file TS & current TS) + a selective read of its content (cross-checked against THIS session's context) whether created by current session
+  - If yes, after writing `close_`, remind user in chat to delete all `slog_*.md`
+  - If no (created by other sessions), remind similarly but to review before deletion
 
 ---
 
