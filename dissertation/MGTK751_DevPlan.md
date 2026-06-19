@@ -155,23 +155,83 @@
   - P11.6.2. Submit A1R.md by attaching in this email and by uploading to Lu's shared folder
   - P11.6.3. Remarks: enables Lu to verify compliance without reading A1R verbatim; richer and more detailed than P06.4 status update
 
-## P12. Post-Ethics
+## P12. A1R v2 —— Amendment for DA Approval *(CURRENT phase)*
 
-- P12.1. Submit Ethics Application
+*Status context: A1R v1 (P07–P11) complete and sent to Lu (Lu.md § Log 09). Lu reviewed via .docx and returned 5 comments CM1–CM5 (Log 12–16). After our exchange (Logs 15–17) she approved the full amendment plan (Log 18, 15/06/2026): "I agree with the plan you intend to use to amend your proposal." This phase produces A1R v2 and sends it. Scope ends at "draft sent"; Lu/reviewer approval and ethics are P13.*
+
+- P12.0. Prerequisites (blocking)
+  - P12.0.1. Read CB (`MGTK751_Concept_Brief_comp.md`), current `A1R.md`, `A1-3.md` + `A3_Template.md` (pair), `RefRepo.md`; Lu.md Logs 15–18 for the approved scope
+  - P12.0.2. References: ASSUMED none new required —— the theoretical framework draws on theories already in §2/RefRepo. If a specific factor lacks a citation during P12.2, acquire then via #cic (read `/Users/culous/Downloads/wcic_libs.md` if library login needed; note CIC now saves to `Fury Downloads/`, and that file was written for WCIC)
+
+- P12.1. §1 Introduction —— reframe + locked RA
+  - P12.1.1. Articulate CYC's management challenge explicitly BEFORE the RA: CYC = startup MCF; product = KM consulting to KBFs; challenge = strengthen (reinforce, not build from nothing) the empirical foundation underpinning that product
+  - P12.1.2. Insert the LOCKED RA: "To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice."
+  - P12.1.3. Apply held CM1/CM2/CM3 from `response_202606050610`, RE-DERIVED to the new RA (the batch was written for the old "management challenge of CYC" aim): CYC within-own-org reframe (never "study CYC"), formal KBF & TPS definitions at first use, AU scoping, updated contribution sentence, RO4 update, remove "Structure of Chapters"
+  - P12.1.4. Add a short MCF-defining footnote for the two UoL reviewers (likely no MCF/B2B exposure)
+  - P12.1.5. Keep RA concise —— no participant group named, no over-promise, no "manage the challenge" tail
+
+- P12.2. §2 —— Theoretical Framework *(core new build; Lu's recipe; longest task)*
+  - P12.2.1. Derive key themes from RQ1 (conditions that exacerbate/alleviate TPS) and RQ2 (peer experience of TPS dynamics)
+  - P12.2.2. Map each theme to grounding theory + literature: SCT (Festinger); SET (Blau); KBV (Grant; Kogut and Zander); TPS (Feather); team cohesion (Grossman; Gully; Mathieu); envy (Li; Kim and Glomb; Breidenthal; Sung); OCB (Podsakoff)
+  - P12.2.3. Extract the key factors per RQ —— illustrative: RQ1 (comparison threat, work-group identification, benign/malicious envy, reward and recognition, task interdependence, AU egalitarian norm); RQ2 (KS withdrawal, ostracism and exclusion, cohesion erosion, trust and reciprocity breakdown)
+  - P12.2.4. Assemble factors into a theoretical framework; relabel Figure 1 from "conceptual" to "theoretical framework"; relational lines only (no arrows); sensitising, NOT hypotheses
+  - P12.2.5. State explicitly that these themes/factors will guide (sensitise, not dictate) the §3.4 thematic analysis —— closes Lu's loop and preserves inductive openness
+  - P12.2.6. CC produces the framework spec + prose; Culous renders the figure in Pages (vector, horizontal)
+  - P12.2.7. Apply CM4a minor §2.4 reframe; otherwise leave the §2 body intact
+
+- P12.3. §3 —— Methodology refinements
+  - P12.3.1. Apply CM5a from the held batch: separate research philosophy / approach / method, each justified (constructivist ontology, interpretivist epistemology, inductive approach, explanatory multi-case study)
+  - P12.3.2. Sampling (CM5b + Lu Log 16): individual employees, one per organisation; frame around participants' OWN experiences and perceptions (current or prior employers), never evaluating a current employer's practices (this is what avoids institutional authorisation); hold the minimum of six; pursue a comparable professional cohort so far as access allows, with the honest solo-researcher access caveat tied to the no-collection-before-ethics rule
+  - P12.3.3. ASSUMPTION (flag to user): remove supplementary TP/manager interviews from the proposal to protect comparability (Lu's role-variation point; they were bonus-only per CB §7.2). Revisit if user wishes to retain
+  - P12.3.4. Link §3.4 thematic analysis to the §2 theoretical framework (themes/factors sensitise coding); retain inductive openness + the disconfirming-evidence node
+  - P12.3.5. 1-per-org stated as isolation rationale only, never a consent advantage (AD10.4.1, permanent)
+
+- P12.4. §4 Milestone Plan —— re-baseline
+  - P12.4.1. Original timeline lapsed (ethics targeted Wk9 w/c 12/05/2026; today ~15/06/2026). Rebuild the milestone dates backwards from the fixed 23/11/2026 A2/A3 deadline to realistic current ones
+  - P12.4.2. Retain the hard note: no data collection before written ethics approval
+
+- P12.5. Internal docs sync *(Lu now confirmed, so safe to update source-of-truth)*
+  - P12.5.1. CB: §10.1 aim → new RA; §10.2 RO4; §1.7 CYC framing (within-own-org "build the product" logic); §5.2 "conceptual" → "theoretical" framework
+  - P12.5.2. `ProjectSummary.md`: aim / method line
+  - P12.5.3. Sweep for any residual "management challenge of CYC" phrasing or HR drift (people-management) and purge
+
+- P12.6. Whole-doc QC
+  - P12.6.1. aim → RQ → RO → method → framework → analysis chain traceable without effort
+  - P12.6.2. No hypothesis / test / causal language; inductive throughout; no arrows
+  - P12.6.3. writing.md compliance (no dash, serial comma, British English, Hart's quotation, GenAI-word ban); MCF / KM / TPS terms consistent
+  - P12.6.4. Run `cscpt/dlint.py` on A1R v2 (deliverable rule §3.7.3); loop-fix RED to 0
+  - P12.6.5. Word count sane for unmarked A1R, but keep §2/§3 mindful of A3 Ch limits (2,500 / 850)
+
+- P12.7. Cover email (Log 19) + send
+  - P12.7.1. Draft Log 19 mapping each Log 16 point to the specific A1R v2 change that resolves it (lets Lu verify without re-reading verbatim; mirrors the P11.6 / Log 09 style)
+  - P12.7.2. Produce A1R v2 as Word .docx (Lu adds comments in Word, per Log 10) plus a PDF copy
+  - P12.7.3. Attach + upload to the shared folder; send; record as Log 19 in Lu.md
+
+> P12 effort & critical path: P12.2 (theoretical framework) is the long pole (design + Culous' Pages render); P12.1/P12.3 are largely re-application of the held batch re-pointed to the new RA; P12.5–P12.6 are mechanical. Rough order: P12.1, P12.3, P12.2 can proceed in parallel branches; P12.4–P12.7 follow. Realistically a focused multi-session push; gating on Culous for the figure render and the final send.
+
+## P13. Draft Approval & Ethics Gate *(after send)*
+
+- P13.1. Await Lu and the two UoL reviewers; address comments, iterating A1R v2.x as needed
+- P13.2. On approval, prepare the ethics application: blank consent forms, interview Guide A (TPP) plus any retained guide, all passing the safe-framing test (CB §11)
+- P13.3. Submit ethics; await written approval (hard gate, no data collection before it)
+
+## P14. Post-Ethics *(was P12)*
+
+- P14.1. Submit Ethics Application
 > Remarks: Lu to guide at that stage; detail TBD
 
-- P12.2. Review Files
+- P14.2. Review Files
 - If needed, update CP files inc. but not limited to: ProjectSummary.md, Concept Brief.md (both ver), Lu.md
 - Remarks: CoreRef.md and RefRepo.md — page number reliability flags (noted as unreliable in earlier chats due to distillation method) were resolved via accurate text extraction; both files not confirmed updated at that time; verify all flags cleared and accurate page numbers recorded throughout both files.
 
-- P12.3. Distil PART C
-  - P12.3.1. Compress AD01~AD07 (and beyond, if appropriate) into concise historic record
-  - P12.3.2. Remove A1-specific tactical detail no longer relevant for A2/A3
+- P14.3. Distil PART C
+  - P14.3.1. AD01~AD07 already externalised to `addenda/` (10/06/2026); compress AD08~AD10 into concise historic record at this point
+  - P14.3.2. Remove A1/A1R-specific tactical detail no longer relevant for A2/A3
 
-- P12.4. Reconstruct PART A for A2/A3
-  - P12.4.1. Stub all A1R phases (P01~P11) as completed
-  - P12.4.2. Build detailed A2/A3 phases spanning Wk9~Wk36 (end target: 23/11/2026)
-  - P12.4.3. Remarks: A2/A3 phases to be defined at that time; expected scope: data collection, transcription, coding, analysis, A2 slides + recording, A3 writeup, QC, submission
+- P14.4. Reconstruct PART A for A2/A3
+  - P14.4.1. Stub all A1 and A1R phases (P01~P13) as completed
+  - P14.4.2. Build detailed A2/A3 phases spanning the remaining weeks (end target: 23/11/2026)
+  - P14.4.3. Remarks: A2/A3 phases to be defined at that time; expected scope: data collection, transcription, coding, analysis, A2 slides + recording, A3 writeup, QC, submission
 
 ---
 
@@ -185,6 +245,7 @@
 - Governing quality standard: clarity and alignment between aim, RQs, objectives, and methodological decisions
 - Startup framing is an academically legitimate access pathway —— not a quality compromise (Enis confirmed); quality determined by alignment, not framing
 - Unmarked status means freedom to expand to ~3,000w; well-crafted §1 and §3 = draft A3 Ch1 and Ch3
+- A1R v2 (CURRENT): amended per Lu's CM1–CM5; Lu approved the amendment plan (Log 18, 15/06/2026); see M4 for locked decisions and P12 for the build plan
 
 ## M2. Source Files
 
@@ -204,6 +265,16 @@
 - Two CYC dimensions are distinct and must never be conflated: (a) CYC's own industry = MCF; (b) CYC's primary client base and research participant pool = KBFs broadly
 - Participant comparability to CYC's client base must be explicitly stated in §3.3; 1-per-org design retained and explained
 - Alert protocol: flag any content conflicting with A1-3.md, Official Files (distilled).md, DevPlan.md, or confirmed DA guidance before proceeding
+
+## M4. A1R v2 Locked Decisions (supersede conflicting M3 items; from Logs 15–18, this session)
+
+- **RA (LOCKED):** "To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice." The old "to address the management challenge of CYC" tail is removed (Lu misread it as studying CYC); never reinstate
+- **CYC logic:** study Australian KBF individuals' experiences/perceptions → inform CYC's KM consulting practice. CYC is the beneficiary/applier, NEVER the studied object. CYC's management challenge = it lacks (must strengthen, not build from scratch) the empirical foundation underpinning its consulting product; articulate this in §1 BEFORE the RA; add an MCF-defining footnote
+- **Framework (relabel):** "conceptual framework" → "theoretical framework" per Lu's recipe (RQ themes → theories/literature → key factors per RQ → framework that sensitises the thematic analysis). Relational lines only, no arrows, no hypotheses, inductive/sensitising. Lu approved developing it this way (Log 18)
+- **Sampling:** individual employees, one per organisation; participants speak to their OWN experiences/perceptions (current or prior employers), never representing/evaluating a current employer's practices (this is what avoids institutional authorisation); hold minimum six, never over-promise; pursue a comparable professional cohort so far as access allows; supplementary TP/manager interviews removed from the proposal to protect comparability (assumption, confirm with user); 1-per-org = isolation rationale only (AD10.4.1)
+- **RQs:** unchanged (RQ1 conditions; RQ2 peer experience); accepted implicitly by Lu (Log 18)
+- **Domain:** KM, not HR (CB §1.3); retain "team cohesion and knowledge governance" (Lu adopted this wording)
+- **Audience rule:** A1R serves Lu AND two UoL reviewers AND seats A2/A3. For any wording an objective reviewer could misread, reword in A1R; for a point that is only Lu's misread, explain by email and keep A1R clean
 
 ---
 
