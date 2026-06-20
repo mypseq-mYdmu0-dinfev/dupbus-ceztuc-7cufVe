@@ -26,7 +26,7 @@
 
 - MBA dissertation research method: IPA vs Case Study (i.e. 2 stances; can be more in other scenarios)
 - Debater roles: strategy mastermind in board of directors advising me as chairman
-- Observer role: external, unincentivised McKinsey-Partner-level management consultant
+- Observer role: external, unincentivised McKinsey-Senior-Partner-level management consultant
 
 ## Example Outputs
 
