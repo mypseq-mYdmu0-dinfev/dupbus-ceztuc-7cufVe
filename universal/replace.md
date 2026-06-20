@@ -1,4 +1,6 @@
-# Replace
+# Replace Protocol
+
+*If `#replace #adv` is prompted, read `universal/replace_adv.md` (advanced ver for deliverables finalised in a layout app, e.g. .pages; there is NO `adv.md`) after this file.*
 
 ## Large Content
 
