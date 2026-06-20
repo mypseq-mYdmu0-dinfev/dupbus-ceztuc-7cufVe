@@ -49,7 +49,7 @@ shrink.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/611fed05b92929d1256d71f6b9471fcafa326251/universal/shrink.md
 
 debate.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a1044f7c395acc32b1bdfd8cd6d4a59bb5649508/universal/debate.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/debate_otg.md
 
 park.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8e27e8f99d3bb54578956c23b0892f96fbc49ad9/universal/park.md
