@@ -6,6 +6,7 @@
 - Editing `close_` file:
   - Also update end-of-range TS on Line 1 (`# Session Closing...`) w/ [current_TS]
   - NEVER edit TS in filename, so user can track diff
+- Sprint Log —— if a `#sprint` ran this session, record its `slog_[TS].md` as a created non-comms file (§ Other Files; or § Coverage for Addendum) for future retrospection if needed.
 
 ---
 
