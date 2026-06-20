@@ -6,7 +6,7 @@
 
 ## Immediate
 
-**Whenever this file is read, BEFORE other actions below, declare current time in chat by:** `**🕰️: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`** `
+Whenever this file is read, BEFORE other actions below, declare current time in chat by: `**🕰️: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`** `
 
 ---
 
