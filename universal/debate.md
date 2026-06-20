@@ -3,7 +3,7 @@
 ## Activate
 
 - Trigger: `#debate`.
-- If told which roles/stances → follow; otherwise, MA judges and assigns
+- If told which roles/stances → follow; otherwise, MA judges and assigns.
 - Goals:
   - Pre-empt counter-arguments (from stakeholders in context, if applicable).
   - Surface multidimensional pros & cons; eliminate blindspots.
@@ -12,9 +12,12 @@
 ## Architecture
 
 - **One board** —— `debate_[start_TS].md` —— a shared, append-only file that grows live (the "forum" the user reads). Same folder as `response_`; CP-prefixed if a CP session.
-- **MA** = Orchestrator + Observer: creates the board, spawns SAs, observes, adjourns, writes the verdict.
-- **SAs** = Debaters, one per role, each spawned `run_in_background=True` (so MA is never blocked and can append `THE_END` whilst they run). Each free-runs —— reads, appends, rebuts —— until it sees `THE_END`.
-- Role/stance count and SA model (Sonnet/Opus) are MA's on-the-spot call, not hardcoded. `#debate` is rare and run with intent —— reliability over economy; the user watches usage and intervenes if needed.
+- **Debater SAs** —— one per role, each spawned `run_in_background=True`. Each free-runs —— reads, appends, rebuts —— until it sees `THE_END`.
+- **MA** —— sets roles/stances (ALWAYS MA: it alone holds full session context, and a wrong call here wastes the whole run), creates + declares the board, spawns the SAs, makes the final saturation call, and writes `THE_END` + the `## Observer` verdict + the `response_`.
+- **Observe mode —— MA's on-the-spot choice:**
+  - **Hybrid (default):** MA also spawns a light **Observer SA** that watches the board and digests it for MA, keeping MA's context free for you and other tasks. MA keeps the final saturation/verdict call. Adds one small internal file (the digest channel).
+  - **MA-as-observer:** on a large-context session, a short focused run, or whenever an Observer SA isn't worth it, MA watches the board itself —— keeping it to two files (board + `response_`).
+- Role/stance count and SA model (Sonnet/Opus) are MA's on-the-spot call, not hardcoded. `#debate` is rare and run with intent —— reliability over economy; the user watches usage.
 
 ## Roles & Stances
 
@@ -25,17 +28,18 @@
 
 - **Create:** MA only, once (`Write`/heredoc is fine for the initial board: header + topic + Standing Rules).
 - **Thereafter add ONLY via a Bash append (`>>`); read via the `Read` tool.** Never `Edit`/`Write` the board —— both overwrite and corrupt concurrent appends.
-- Append each block in ONE concise `>>` write. `O_APPEND` lands every write at end-of-file, so parallel SAs never clobber each other —— no temp files; a whole debate is just two files, the board and the final `response_`.
+- Append each block in ONE concise `>>` write. `O_APPEND` lands every write at end-of-file, so parallel writers never clobber each other —— no temp files.
+- Files: MA-as-observer mode → two (board + `response_`). Hybrid mode → three (+ the digest channel `debate_[start_TS]_obs.md`, a small internal SA→MA file).
 
 ## Lifecycle & the Adjourn Signal
 
-- The board is both source of truth and control channel —— no separate control file.
-- **`THE_END`** is the sole stop signal. Until it appears, no SA stops; SAs never self-terminate on a turn count.
-- Only MA writes the two MA-authored entries —— `THE_END` and the `## Observer` block —— both visually distinct from `## Debater [X]` blocks.
+- The board is both source of truth and control channel —— no separate control file for stopping.
+- **`THE_END`** is the sole stop signal; only MA writes it. Until it appears, no SA stops; SAs never self-terminate on a turn count. MA's adjourn (THE_END on the board) reaches the debaters AND the Observer SA at once —— so MA never needs to message an SA directly.
+- The only MA-authored board entries are `THE_END` and the `## Observer` block —— both visually distinct from `## Debater [X]` blocks.
 
-## SA Operation —— Sustain Loop
+## Debater SA —— Sustain Loop
 
-Each SA, once spawned:
+Each debater SA, once spawned:
 1. `Read` its briefing + the board in full (Standing Rules included).
 2. Append its opening block.
 3. Loop until `THE_END`:
@@ -51,22 +55,33 @@ Each SA, once spawned:
 B='[board]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done
 ```
 
-It returns within `~`3 s of any board change (new block, `## User`, or `THE_END`), else after `~`30 s —— the cap is only a fallback for a change that lands in the gap before the baseline `stat`. (macOS `stat -f %m`.)
+It returns within `~`3 s of any board change, else after `~`30 s (the cap is a fallback for a change that lands in the gap before the baseline `stat`). macOS `stat -f %m`.
+
+## Observer SA (hybrid mode only)
+
+A light SA spawned `run_in_background=True`, briefed to WATCH and DIGEST —— never to debate or write the verdict. It runs the same foreground watch-wait (above) but capped at `~`15 s (`seq 1 5`), and stops on `THE_END`. On each board change it appends to the digest channel `debate_[start_TS]_obs.md` (append-only `>>`):
+- ONE `≤20-word` digest of the new entry —— debater letter + the gist of the new point + a `[new]` or `[rehash]` tag (so MA can smell saturation from the digests alone, without re-reading the board).
+- A `## User` block's digest is prefixed `USER:` so MA catches interventions at once.
+- When arguments stop advancing (recycling, circling, a run of `[rehash]`), append `SATURATION? —— [one-line why]`.
+- On a quiet 60 s heartbeat, note any debater that looks dead/stalled.
+- At `THE_END` (or when it flags saturation), append a FINAL REPORT: the outcome, what was weighed, the block HEADINGS MA may want to read, and whether MA should read the whole board.
 
 ## MA Operation —— Orchestrate, Observe, Adjourn
 
-1. Decide topic, stances, roles, SA count, and model.
+1. Decide topic, stances, roles, SA count, model, AND observe mode.
 2. Create the board (header + topic + Standing Rules) and declare it at once (see § Declaration). Keep the literal word `STOP` OUT of the board text, so a stop-watcher can't false-match.
-3. Spawn one SA per role, `run_in_background=True`, via the briefing template.
-4. **Observe (woken by every board change):** keep a background watcher that wakes MA whenever the board changes —— poll its mtime every `~`15 s (changes within the interval batch into one wake, so MA reads several new turns at once —— low strain, still timely). On each wake, read the new blocks: handle any `## User` block, AND judge SATURATION —— the moment arguments recycle or circle, adjourn promptly (step 5) so the SAs don't burn tokens past a settled debate. Also keep a `~`60 s time-bound heartbeat as a safety net, so MA never sleeps forever if the watcher dies. (If the user has said they will control the stop, defer the adjourn to them.)
-5. **Adjourn:** append `THE_END` ONCE → confirm each SA stops because it read `THE_END` (their acks).
-6. **Observer:** append the `## Observer` block (MA is the observer —— the board is already in its context). Do NOT append `THE_END` again.
+3. Spawn one Debater SA per role (`run_in_background=True`); in hybrid mode also spawn the Observer SA.
+4. **Observe:**
+   - **Hybrid:** watch the DIGEST channel (not the board) on a `~`15 s change-poll + a `~`60 s heartbeat. Read new digest lines: act on a `USER:` line, and INDEPENDENTLY judge saturation as a guard —— MA may adjourn even if the Observer SA hasn't flagged it (the light SA can miss it). Watchdog: every `~`300 s confirm the Observer SA is alive (recent digest activity); re-spawn it if dead.
+   - **MA-as-observer:** watch the board directly (`~`15 s + `~`60 s), reading new turns and judging saturation.
+5. **Adjourn** (on saturation, or a `## User` `STOP`) → append `THE_END` ONCE to the board → confirm each SA stops because it read `THE_END`.
+6. **Observer block:** read the board —— selectively, guided by the Observer SA's heading list, or in full if the verdict warrants —— then append the `## Observer` block. Do NOT append `THE_END` again.
 7. **Surface:** distil the verdict + what it implies for the session into `response_[TS].md` (don't heavily repeat the Observer block). Board = audit trail; `response_` = takeaway.
-8. **Resilience:** if an SA dies/compacts mid-debate, re-spawn it —— the board is its memory.
+8. **Resilience:** re-spawn any debater (or the Observer SA) that dies mid-debate —— the board and digest channel are durable memory.
 
 ## User Interventions (highest authority)
 
-The user may append a `## User` block at any time (via the template at the bottom). It outranks MA and every SA.
+The user may append a `## User` block to the board at any time (via the template at the bottom). It outranks MA and every SA.
 - **MA:** a `## User` block containing `STOP` → adjourn gracefully (append `THE_END` → Observer → `response_`), never a hard-kill. Any other `## User` note → an authoritative steer (e.g. a new angle); let the debate continue along it.
 - **SAs:** fold a `## User` steer into the next block; still stop only on `THE_END`.
 
@@ -85,15 +100,19 @@ The user may append a `## User` block at any time (via the template at the botto
 - A `## User` block is the human moderator (highest authority).
 - 100% factual; your outputs go to MA only (never user-visible).
 
-## SA Briefing Template (fill brackets only)
+## Debater-SA Briefing Template (fill brackets only)
 
 > You are Debater [X] in a `#debate` on: [TOPIC]. Role: [ROLE]. You SUPPORT [STANCE], OPPOSE [STANCE(S)]. Board: [BOARD_PATH] —— `Read` it in full first and obey its Standing Rules. Append your opening block, then loop until `THE_END`: re-read FRESH; if `THE_END`, stop and report; if a new opposing or `## User` block appeared since your last post, append ONE block answering the freshest point by label (`Re B003:`), re-reading once more right before appending; if nothing new, run the foreground watch-wait —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` as a normal Bash call (`timeout: 45000`, never `run_in_background`) —— then re-read. Number your points as bullets —— `- [X]001.`, `- [X]002.`… (3-digit, continuing across blocks, never reset), indenting sub-levels 2 spaces (`  - [X]001.1.`); set the header `[HHmm]` from `date +%H%M` immediately before each append. Concise and factual; report each append to me in one line; never write to the user; only `THE_END` ends you.
+
+## Observer-SA Briefing Template (hybrid mode; fill brackets)
+
+> You are the OBSERVER for a `#debate` on: [TOPIC]. Do NOT debate and do NOT write any verdict —— only WATCH and DIGEST for MA. Board: [BOARD_PATH]; digest channel (append-only): [OBS_PATH]. `Read` the board, then loop until `THE_END`: on each change re-read FRESH, and for each NEW entry append to [OBS_PATH] one `≤20-word` line —— debater + gist + `[new]`/`[rehash]` (prefix a user block `USER:`). When arguments stop advancing, append `SATURATION? —— why`. Between changes, wait in the FOREGROUND —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 5); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` (`timeout: 45000`, never `run_in_background`); on a quiet pass note any stalled debater. At `THE_END`, append a final report (outcome; what was weighed; headings MA may want to read; whether MA should read the whole board). Never write to the user; only `THE_END` ends you.
 
 ## Example Scenario
 
 - MBA dissertation method: IPA vs Case Study (2 stances; more is fine).
 - Debaters: strategy masterminds on a board of directors advising the chairman (the user).
-- Observer (MA): external, unincentivised, McKinsey-Senior-Partner-level consultant.
+- Observer (MA, or the Observer SA's mechanical watch feeding it): external, unincentivised, McKinsey-Senior-Partner-level consultant.
 
 ## Example Outputs
 
@@ -126,6 +145,8 @@ Opening states the stance once; later blocks omit it. `[HHmm]` = real append tim
 1. [verdict point]
 2. [verdict point]
 ```
+
+Digest channel line (hybrid mode), e.g.: `2143 B [rehash] reasserts depth-premium; no new evidence vs A003.`
 
 ---
 
