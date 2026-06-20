@@ -52,9 +52,9 @@
 ## P07. §1 Rewrite
 
 - P07.1. Complete Prerequisites
-  - P07.1.1. Fetch CB (blocking)
-  - P07.1.2. Fetch A1-3.md (blocking)
-  - P07.1.3. Fetch MGTK751_A3_Template.md (blocking)
+  - P07.1.1. Read CB (blocking)
+  - P07.1.2. Read A1-3.md (blocking)
+  - P07.1.3. Read MGTK751_A3_Template.md (blocking)
   - P07.1.4. Remarks: write §1 to A3 register and structural requirements for Ch1 reuse; neglect A3-specific formatting rules (font, size, etc.)
 
 - P07.2. Rewrite §1 with CYC Framing
@@ -73,7 +73,7 @@
 ## P08. §2 Lit Review Restructure
 
 - P08.1. Reframe §2 Narrative Funnel
-  - P08.1.1. Fetch CB (blocking)
+  - P08.1.1. Read CB (blocking)
   - P08.1.2. Rewrite §2 narrative thread to reflect: TPS (foundational) → TPS in KM (governance impacts) → TPS in KBFs (specific org context)
   - P08.1.3. Attempt reframe of existing §2.1~2.5 narrative without reorganising subsections
   - P08.1.4. Flag and confirm with user before reorganising subsections if clearly necessary during execution
@@ -87,9 +87,9 @@
 ## P09. §3 Methodology Rewrite
 
 - P09.1. Complete Prerequisites
-  - P09.1.1. Fetch CB (blocking)
-  - P09.1.2. Fetch A1-3.md (blocking)
-  - P09.1.3. Fetch MGTK751_A3_Template.md if not already in context from P07 (blocking)
+  - P09.1.1. Read CB (blocking)
+  - P09.1.2. Read A1-3.md (blocking)
+  - P09.1.3. Read MGTK751_A3_Template.md if not already in context from P07 (blocking)
   - P09.1.4. Remarks: write §3 to A3 register and structural requirements for Ch3 reuse; neglect A3-specific formatting rules
 
 - P09.2. Name Research Method in §3
@@ -111,7 +111,7 @@
 ## P10. QC & Whole-Doc Integration
 
 - P10.1. Expand Document
-  - P10.1.1. Fetch CB (blocking)
+  - P10.1.1. Read CB (blocking)
   - P10.1.2. Expand A1R.md to ~3,000w (if need; not necessary)
   - P10.1.3. Verify §1 and §3 at A3 register and structured for Ch1/Ch3 cut-paste reuse
 
@@ -121,7 +121,7 @@
   - P10.2.3. Verify no hypothesis/testing language anywhere in full document
   - P10.2.4. Verify inductive framing consistent throughout full document
 
-## P11. Output Audit —— Lu's Checklist (every response: ensure CB intact, otherwise re-fetch)
+## P11. Output Audit —— Lu's Checklist (every response: ensure CB intact, otherwise re-read)
 
 - P11.1. Verify CYC Identity and Participant Comparability
   - P11.1.1. Confirm CYC (MCF specialising in KM) named throughout
@@ -162,6 +162,7 @@
 - P12.0. Prerequisites (blocking)
   - P12.0.1. Read CB (`MGTK751_Concept_Brief_comp.md`), current `A1R.md`, `A1-3.md` + `A3_Template.md` (pair), `RefRepo.md`; Lu.md Logs 15–18 for the approved scope
   - P12.0.2. References: ASSUMED none new required —— the theoretical framework draws on theories already in §2/RefRepo. If a specific factor lacks a citation during P12.2, acquire then via #cic (read `/Users/culous/Downloads/wcic_libs.md` if library login needed; note CIC now saves to `Fury Downloads/`, and that file was written for WCIC)
+  - P12.0.3. Validate the P12.0.2 assumption: spawn a subagent (SA) to re-read `lu.md` in FULL and confirm nothing in her comments/logs implies a source we lack; if a gap is found, acquire via #cic before drafting (else proceed)
 
 - P12.1. §1 Introduction —— reframe + locked RA
   - P12.1.1. Articulate CYC's management challenge explicitly BEFORE the RA: CYC = startup MCF; product = KM consulting to KBFs; challenge = strengthen (reinforce, not build from nothing) the empirical foundation underpinning that product
@@ -182,9 +183,10 @@
 - P12.3. §3 —— Methodology refinements
   - P12.3.1. Apply CM5a from the held batch: separate research philosophy / approach / method, each justified (constructivist ontology, interpretivist epistemology, inductive approach, explanatory multi-case study)
   - P12.3.2. Sampling (CM5b + Lu Log 16): individual employees, one per organisation; frame around participants' OWN experiences and perceptions (current or prior employers), never evaluating a current employer's practices (this is what avoids institutional authorisation); hold the minimum of six; pursue a comparable professional cohort so far as access allows, with the honest solo-researcher access caveat tied to the no-collection-before-ethics rule
-  - P12.3.3. ASSUMPTION (flag to user): remove supplementary TP/manager interviews from the proposal to protect comparability (Lu's role-variation point; they were bonus-only per CB §7.2). Revisit if user wishes to retain
+  - P12.3.3. RETAIN supplementary TP/manager interviews (user decision, 20/06/2026): Lu's role-variation comment was soft and non-mandatory; dropping them would forfeit genuinely valuable TP/manager insights (Culous' own academic interest) and risk the six-participant floor by shrinking the recruitable pool. Keep them as optional triangulation (CB §7.2); manage comparability through the TPP-primary frame and a comparable-cohort intent, not by deletion
   - P12.3.4. Link §3.4 thematic analysis to the §2 theoretical framework (themes/factors sensitise coding); retain inductive openness + the disconfirming-evidence node
   - P12.3.5. 1-per-org stated as isolation rationale only, never a consent advantage (AD10.4.1, permanent)
+  - P12.3.6. On completion of §1–§3, count the words of every (sub)section and append `([no.] words)` as a new line after each; then report the per-section figures and the overall sum to the user, noting whether the length stays socially reasonable for a proposal (Lu permits unlimited, but restraint preserves goodwill and eases later A3 Ch trimming)
 
 - P12.4. §4 Milestone Plan —— re-baseline
   - P12.4.1. Original timeline lapsed (ethics targeted Wk9 w/c 12/05/2026; today ~15/06/2026). Rebuild the milestone dates backwards from the fixed 23/11/2026 A2/A3 deadline to realistic current ones
@@ -207,7 +209,12 @@
   - P12.7.2. Produce A1R v2 as Word .docx (Lu adds comments in Word, per Log 10) plus a PDF copy
   - P12.7.3. Attach + upload to the shared folder; send; record as Log 19 in Lu.md
 
-> P12 effort & critical path: P12.2 (theoretical framework) is the long pole (design + Culous' Pages render); P12.1/P12.3 are largely re-application of the held batch re-pointed to the new RA; P12.5–P12.6 are mechanical. Rough order: P12.1, P12.3, P12.2 can proceed in parallel branches; P12.4–P12.7 follow. Realistically a focused multi-session push; gating on Culous for the figure render and the final send.
+- P12.8. Deliverable handoff to .pages *(read `universal/replace_adv.md`; trigger `#replace #adv`; PRECEDES the dispatch in P12.7)*
+  - P12.8.1. A1R.md is CC's working file (all P12 edits land here). The true deliverable is Culous' .pages file; `archive/MGTK751_A1R_backup_202606192247.md` is a read-only snapshot of A1R.md as it mirrored .pages BEFORE P12 —— never edit or delete it
+  - P12.8.2. When P12.1–P12.6 are complete: diff the backup against the finished A1R.md to identify every P12 change, then issue `#replace #adv` quoting from `MGTK751_A1R.pages.md` (a read-only copy-paste of the .pages file with broken/wrapped lines) so Culous can ⌘F-find each snippet in .pages
+  - P12.8.3. Culous applies the #replace to the .pages file, polishes layout/wording, exports PDF, then mirrors back to A1R.md; CC re-runs P12.6 QC on the mirrored A1R.md and diffs to confirm the final state; only then P12.7 dispatch
+
+> P12 effort & critical path: the single item needing Culous' hands (cannot be done by CC alone) is P12.2's figure render in .pages; P12.1/P12.3 are largely re-application of the held batch re-pointed to the new RA; P12.5–P12.6 are mechanical. Rough order: P12.1, P12.3, P12.2 design in parallel; P12.4–P12.6 follow; then P12.8 handoff; finalise; P12.7 send last. A focused multi-session push, gating on Culous for the figure and the dispatch.
 
 ## P13. Draft Approval & Ethics Gate *(after send)*
 
@@ -250,10 +257,10 @@
 ## M2. Source Files
 
 - Primary content authority: CB (Concept_Brief.md)
-- Assessment criteria + A3 structure: `A1-3.md` + `MGTK751_A3_Template.md` —— fetch as a pair; blocking prerequisite for P07 and P09; neglect formatting rules when writing for A1R
+- Assessment criteria + A3 structure: `A1-3.md` + `MGTK751_A3_Template.md` —— read as a pair; blocking prerequisite for P07 and P09; neglect formatting rules when writing for A1R
 - Literature sources: `RefRepo.md`
 - DA profile & comms: `Lu.md`, `Meetings.md`
-- Module rules: `Official Files (distilled).md` (fetch only if A1-3.md insufficient)
+- Module rules: `Official Files (distilled).md` (read only if A1-3.md insufficient)
 
 ## M3. Key Standing Rules for A1R
 
@@ -271,7 +278,7 @@
 - **RA (LOCKED):** "To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice." The old "to address the management challenge of CYC" tail is removed (Lu misread it as studying CYC); never reinstate
 - **CYC logic:** study Australian KBF individuals' experiences/perceptions → inform CYC's KM consulting practice. CYC is the beneficiary/applier, NEVER the studied object. CYC's management challenge = it lacks (must strengthen, not build from scratch) the empirical foundation underpinning its consulting product; articulate this in §1 BEFORE the RA; add an MCF-defining footnote
 - **Framework (relabel):** "conceptual framework" → "theoretical framework" per Lu's recipe (RQ themes → theories/literature → key factors per RQ → framework that sensitises the thematic analysis). Relational lines only, no arrows, no hypotheses, inductive/sensitising. Lu approved developing it this way (Log 18)
-- **Sampling:** individual employees, one per organisation; participants speak to their OWN experiences/perceptions (current or prior employers), never representing/evaluating a current employer's practices (this is what avoids institutional authorisation); hold minimum six, never over-promise; pursue a comparable professional cohort so far as access allows; supplementary TP/manager interviews removed from the proposal to protect comparability (assumption, confirm with user); 1-per-org = isolation rationale only (AD10.4.1)
+- **Sampling:** individual employees, one per organisation; participants speak to their OWN experiences/perceptions (current or prior employers), never representing/evaluating a current employer's practices (this is what avoids institutional authorisation); hold minimum six, never over-promise; pursue a comparable professional cohort so far as access allows; supplementary TP/manager interviews RETAINED as optional triangulation (user decision 20/06/2026 —— Lu's comment was soft/non-mandatory; dropping them risks the six-floor and forfeits valuable insight); comparability managed via the TPP-primary frame, not deletion; 1-per-org = isolation rationale only (AD10.4.1)
 - **RQs:** unchanged (RQ1 conditions; RQ2 peer experience); accepted implicitly by Lu (Log 18)
 - **Domain:** KM, not HR (CB §1.3); retain "team cohesion and knowledge governance" (Lu adopted this wording)
 - **Audience rule:** A1R serves Lu AND two UoL reviewers AND seats A2/A3. For any wording an objective reviewer could misread, reword in A1R; for a point that is only Lu's misread, explain by email and keep A1R clean
@@ -314,7 +321,7 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
 
 - AD08.1. What Was Done
 
-  - AD08.1.1. Full Meeting 01 transcript (02/05/2026, ~45 min) fetched and analysed; compliance direction, methodology discussion, and working arrangement confirmed; distilled record as 1st entry in Meetings.md
+  - AD08.1.1. Full Meeting 01 transcript (02/05/2026, ~45 min) read and analysed; compliance direction, methodology discussion, and working arrangement confirmed; distilled record as 1st entry in Meetings.md
   - AD08.1.2. Enis' email reply (04/05/2026) analysed (see #08 in Chat 12); confirms startup framing = legitimate academic pathway; email not accessible in future chats (Enis = A1 marker only)
   - AD08.1.3. DevPlan.md rebuilt: v10 (A1 DevPlan) → v11 (A1R DevPlan); P01~P05 stubs; P06~P12 new phases; PART B rewritten for A1R scope; PART C retained verbatim pending P12.3 distillation
 
