@@ -3,7 +3,7 @@
 ## Activate
 
 - Trigger: `#debate`.
-- If told which roles/stances → follow. Otherwise MA judges and assigns.
+- If told which roles/stances → follow; otherwise, MA judges and assigns
 - Goals:
   - Pre-empt counter-arguments (from stakeholders in context, if applicable).
   - Surface multidimensional pros & cons; eliminate blindspots.
@@ -56,9 +56,9 @@ It returns within `~`3 s of any board change (new block, `## User`, or `THE_END`
 ## MA Operation —— Orchestrate, Observe, Adjourn
 
 1. Decide topic, stances, roles, SA count, and model.
-2. Create the board (+ declare it at once, see § Declaration).
+2. Create the board (header + topic + Standing Rules) and declare it at once (see § Declaration). Keep the literal word `STOP` OUT of the board text, so a stop-watcher can't false-match.
 3. Spawn one SA per role, `run_in_background=True`, via the briefing template.
-4. **Observe (woken by changes):** keep a background watcher polling the board (`~`2 s) that wakes MA the instant a NEW `## User` block appears (e.g. fire when `grep -c '^## User'` rises) —— so interventions are handled near-instantly. Don't wake on every debater post (wasteful —— MA needn't see each turn); instead sample the debate periodically for SATURATION, and the moment arguments recycle or circle, adjourn promptly (step 5) —— unless the user has signalled they will control the stop.
+4. **Observe (woken by every board change):** keep a background watcher that wakes MA whenever the board changes —— poll its mtime every `~`15 s (changes within the interval batch into one wake, so MA reads several new turns at once —— low strain, still timely). On each wake, read the new blocks: handle any `## User` block, AND judge SATURATION —— the moment arguments recycle or circle, adjourn promptly (step 5) so the SAs don't burn tokens past a settled debate. Also keep a `~`60 s time-bound heartbeat as a safety net, so MA never sleeps forever if the watcher dies. (If the user has said they will control the stop, defer the adjourn to them.)
 5. **Adjourn:** append `THE_END` ONCE → confirm each SA stops because it read `THE_END` (their acks).
 6. **Observer:** append the `## Observer` block (MA is the observer —— the board is already in its context). Do NOT append `THE_END` again.
 7. **Surface:** distil the verdict + what it implies for the session into `response_[TS].md` (don't heavily repeat the Observer block). Board = audit trail; `response_` = takeaway.
@@ -79,7 +79,7 @@ The user may append a `## User` block at any time (via the template at the botto
 - Read via `Read`; add only via `>>`; never `Edit`/`Write` this board.
 - One concise block per append.
 - Re-read FRESH before every block; each non-opening block must directly answer the freshest opposing (or `## User`) point by its label. No stale reads, no monologues.
-- Number your points `[YourLetter][3-digit]`, continuing across ALL your blocks and never resetting (A001, A002, A003…). Add sub-levels when they shorten a line or pin exact content —— each on its own bullet line: `- A001.1. …`, `- A001.1.1. …`. Reference others by label (`Re B003.2:`).
+- Number your points `[YourLetter][3-digit]`, continuing across ALL your blocks and never resetting. Write EVERY point as its own bullet, indented 2 spaces per sub-level, so lines never collapse together: `- A001. …`, then `  - A001.1. …`, then `    - A001.1.1. …`. Reference others by label (`Re B003.2:`).
 - Header `[HHmm]` = the REAL append moment: set it from `TZ='Australia/Sydney' date +%H%M` run immediately before appending; never hardcode or reuse an earlier value.
 - Stop ONLY on `THE_END`; never self-terminate on a count.
 - A `## User` block is the human moderator (highest authority).
@@ -87,7 +87,7 @@ The user may append a `## User` block at any time (via the template at the botto
 
 ## SA Briefing Template (fill brackets only)
 
-> You are Debater [X] in a `#debate` on: [TOPIC]. Role: [ROLE]. You SUPPORT [STANCE], OPPOSE [STANCE(S)]. Board: [BOARD_PATH] —— `Read` it in full first and obey its Standing Rules. Append your opening block, then loop until `THE_END`: re-read FRESH; if `THE_END`, stop and report; if a new opposing or `## User` block appeared since your last post, append ONE block answering the freshest point by label (`Re B003:`), re-reading once more right before appending; if nothing new, run the foreground watch-wait —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` as a normal Bash call (`timeout: 45000`, never `run_in_background`) —— then re-read. Number your points [X]001, [X]002… (3-digit, continuing across blocks, never reset; add sub-levels like `- [X]001.1.` when useful); set the header `[HHmm]` from `date +%H%M` immediately before each append. Concise and factual; report each append to me in one line; never write to the user; only `THE_END` ends you.
+> You are Debater [X] in a `#debate` on: [TOPIC]. Role: [ROLE]. You SUPPORT [STANCE], OPPOSE [STANCE(S)]. Board: [BOARD_PATH] —— `Read` it in full first and obey its Standing Rules. Append your opening block, then loop until `THE_END`: re-read FRESH; if `THE_END`, stop and report; if a new opposing or `## User` block appeared since your last post, append ONE block answering the freshest point by label (`Re B003:`), re-reading once more right before appending; if nothing new, run the foreground watch-wait —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` as a normal Bash call (`timeout: 45000`, never `run_in_background`) —— then re-read. Number your points as bullets —— `- [X]001.`, `- [X]002.`… (3-digit, continuing across blocks, never reset), indenting sub-levels 2 spaces (`  - [X]001.1.`); set the header `[HHmm]` from `date +%H%M` immediately before each append. Concise and factual; report each append to me in one line; never write to the user; only `THE_END` ends you.
 
 ## Example Scenario
 
@@ -103,17 +103,17 @@ Opening states the stance once; later blocks omit it. `[HHmm]` = real append tim
 ## Debater A · turn 1 · [HHmm]
 - A: [stance] (opposing [stance(s)])
 
-A001. [point]
-A002. [claim]
-- A002.1. [optional sub-point]
+- A001. [point]
+- A002. [claim]
+  - A002.1. [optional sub-point]
 
 ---
 ```
 
 ```
 ## Debater A · turn 2 · [HHmm]
-A003. Re B002: [direct counter]
-A004. [point]
+- A003. Re B002: [direct counter]
+- A004. [point]
 
 ---
 ```
