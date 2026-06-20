@@ -161,7 +161,7 @@ IMPORTANT: Process ONE card at a time, top-to-bottom. Complete full "per-job loo
 - If "Hard Skip Conditions" met (except score < 35; still save anyway): don't save; follow S4.3
 - Actions:
   - Click "Save" (bookmark icon, next to `⌄`) 
-  - Create AR in `/gcl/pending/`
+  - Create AR in `/gcl/pending/` & prefix `⭐❗_`
   - Flag in chat w/ `⭐❗`
   - Skip to next card
 
