@@ -11,124 +11,119 @@
 
 ## Architecture
 
-- **One board** —— `debate_[start_TS].md` —— a single shared, append-only file that grows continuously; serves as a live, high-pace "forum" the user reads. In the same folder as `response_`; CP-prefixed if a CP session.
-- **MA** = Orchestrator + Observer. Creates the board, spawns SAs, watches the board, judges saturation, adjourns, writes the verdict.
-- **SAs** = Debaters, one per role, each spawned `run_in_background=True` so MA is NEVER blocked —— this is what prevents the spawn-vs-adjourn deadlock (MA can append `THE_END` whilst the SAs are still running). Each SA free-runs: reads the board, appends arguments, rebuts others, and keeps going until it sees `THE_END`.
-- Role/stance count and SA model (Sonnet/Opus) are MA's on-the-spot call —— scale to the decision's weight; not hardcoded. Cost is acceptable: `#debate` is rare and run with intent; reliability is prioritised over economy; user monitors usage limit & intervenes if needed.
+- **One board** —— `debate_[start_TS].md` —— a shared, append-only file that grows live (the "forum" the user reads). Same folder as `response_`; CP-prefixed if a CP session.
+- **MA** = Orchestrator + Observer: creates the board, spawns SAs, observes, adjourns, writes the verdict.
+- **SAs** = Debaters, one per role, each spawned `run_in_background=True` (so MA is never blocked and can append `THE_END` whilst they run). Each free-runs —— reads, appends, rebuts —— until it sees `THE_END`.
+- Role/stance count and SA model (Sonnet/Opus) are MA's on-the-spot call, not hardcoded. `#debate` is rare and run with intent —— reliability over economy; the user watches usage and intervenes if needed.
 
 ## Roles & Stances
 
-- Play multiple roles concurrently (one SA each):
-  - Supporting each stance, AND
-  - Directly opposing the single opposite OR the rest of the stances (MA judges).
-- Each SA argument must be:
-  - Eloquent, British spoken-style language; 100% factual; no fabrication.
-  - Compellingly justified; well-grounded; well-thought-out.
-  - Concise and #numbered for easy reply; actively grounded in context (read CP files if helpful).
+- Play multiple roles concurrently (one SA each): supporting each stance, AND opposing the single opposite OR the rest (MA judges).
+- Every argument: eloquent British spoken-style; 100% factual (no fabrication); well-grounded; concise.
 
 ## The Board —— Read/Append-Only (CRITICAL)
 
-- **Create:** MA only, once, at start. `Write`/heredoc is fine for the INITIAL board (header + topic + Standing Rules).
-- **Add content thereafter:** ONLY via a Bash append (`>>`) —— e.g. `printf '%s\n' "...block..." >> [board]`. To read, use the `Read` tool.
-- **NEVER** use `Edit`/`Write` on the board after creation —— both overwrite the file and will corrupt concurrent appends from parallel SAs.
-- **Why append is safe (no temp files needed):** `>>` opens the file in append mode (`O_APPEND`), so every write lands at the current end-of-file —— concurrent SAs can never overwrite one another. Write each block in ONE `>>` call and keep it concise; a single modest write is flushed atomically, so blocks won't interleave. Hence a whole debate produces just TWO files: the board and the final `response_` —— no scratch/part files.
-- **Block format:** one block per append, using the **Debater block** in § Example Outputs.
+- **Create:** MA only, once (`Write`/heredoc is fine for the initial board: header + topic + Standing Rules).
+- **Thereafter add ONLY via a Bash append (`>>`); read via the `Read` tool.** Never `Edit`/`Write` the board —— both overwrite and corrupt concurrent appends.
+- Append each block in ONE concise `>>` write. `O_APPEND` lands every write at end-of-file, so parallel SAs never clobber each other —— no temp files; a whole debate is just two files, the board and the final `response_`.
 
 ## Lifecycle & the Adjourn Signal
 
-- The board doubles as the control channel —— its source of truth AND its stop signal; there is no separate control file.
-- **`THE_END`** is the adjourn sentinel and the ONLY thing that stops an SA. Whilst the board does NOT contain `THE_END`, no SA may consider the task done; SAs never self-terminate on a turn count.
-- The only MA-authored entries are the `## Observer` block and the `THE_END` line —— both visually distinct from the Debaters' `## Debater [X]` blocks, so SAs recognise them on sight.
-- MA appends `THE_END` only when it judges the debate saturated (no materially new insight is surfacing) —— or immediately on a user `STOP` (see § User Interventions).
+- The board is both source of truth and control channel —— no separate control file.
+- **`THE_END`** is the sole stop signal. Until it appears, no SA stops; SAs never self-terminate on a turn count.
+- Only MA writes the two MA-authored entries —— `THE_END` and the `## Observer` block —— both visually distinct from `## Debater [X]` blocks.
 
-## SA Operation —— the Bounded Poll-Wait Loop
+## SA Operation —— Sustain Loop
 
 Each SA, once spawned:
-1. `Read` its briefing + the board in full (incl. the Standing Rules at the board's top).
-2. Append its opening argument block.
-3. **Sustain loop —— repeat until `THE_END`:**
-   - `Read` the board FRESH —— always re-read immediately before you decide or compose; never act on a stale read. This is what keeps the forum genuinely responsive.
-   - **`THE_END` present** → stop at once, go idle, return a one-line final ack to MA. Done. (`THE_END` is the only terminator —— never quit on a self-imposed count.)
-   - **A `## User` block present** → the human moderator (highest authority); fold its steer (e.g. a new angle) into your next block. You still stop only on `THE_END`.
-   - **New opposing block since your last post** → compose a block that DIRECTLY engages the freshest opposing argument(s) —— name the debater and the exact point you are answering. Then re-read ONCE more to confirm nothing newer landed; if it did, fold it in or re-target; then append. Every non-opening block MUST be a response, never a blind monologue.
-   - **Nothing new since your last post** → run the FOREGROUND board-watch wait (see Wait mechanism below) —— it blocks you, alive, until the board next changes or `THE_END` appears, then loop back and re-read. Do NOT fill the silence with a fresh block unless you have first answered all current opposing points AND are genuinely adding a new, non-repetitive angle. Never exit; never background the wait.
-- **Forum discipline:** address others by their Debater letter; build on the freshest blocks; prefer answering over racing ahead.
+1. `Read` its briefing + the board in full (Standing Rules included).
+2. Append its opening block.
+3. Loop until `THE_END`:
+   - `Read` the board FRESH (never act on a stale read).
+   - `THE_END` present → stop, return a one-line ack. (Only `THE_END` ends you.)
+   - New opposing block (or a `## User` block) since your last post → append ONE block that DIRECTLY answers the freshest point by its label (`Re B3:`); re-read once more right before appending so you answer the very latest.
+   - Nothing new → run the foreground watch-wait (below), then re-read. Don't post just to fill silence.
+- Address others by letter; answer rather than monologue.
 
-**Wait mechanism (CRITICAL —— this is what keeps an SA alive between turns).** When nothing new is on the board to answer, the SA waits by running a FOREGROUND blocking watch on the board file —— a poll loop that exits the instant the board's mtime changes, or after `~`60 s, whichever comes first:
+**Watch-wait (keeps the SA alive; FOREGROUND only).** When nothing is new, block on this as a normal Bash call (`timeout: 45000`), never `run_in_background` (backgrounding makes the SA come to rest and it cannot be resumed):
 
 ```
-B='[board]'; t=$(stat -f %m "$B"); for i in $(seq 1 20); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && { echo changed; break; }; done
+B='[board]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done
 ```
 
-Run it as a NORMAL foreground Bash call (set `timeout: 90000`) —— NEVER `run_in_background`. Foreground keeps the SA inside one continuous execution, so it loops and is woken by ANY board change (a new Debater block, a `## User` block, or `THE_END`) —— normally within `~`3 s. A BACKGROUNDED wait is the one fatal mistake —— it makes the SA come to rest and hand control to MA, which has no way to resume it, so the debate stalls.
-- **Why the `~`60 s cap matters (startup-collision race):** if another block lands in the brief gap between the SA's "nothing-new" read and this watch's baseline `stat` (most likely when two SAs open at the same moment), the baseline already includes it, so the watch never trips on it —— the SA only notices when the window elapses and it re-reads. The short window caps that worst-case latency at `~`60 s instead of minutes; posts that land after the baseline are still caught in `~`3 s. (macOS `stat -f %m`; no extra file needed —— the SA watches `debate_` directly.)
+It returns within `~`3 s of any board change (new block, `## User`, or `THE_END`), else after `~`30 s —— the cap is only a fallback for a change that lands in the gap before the baseline `stat`. (macOS `stat -f %m`.)
 
 ## MA Operation —— Orchestrate, Observe, Adjourn
 
-1. Decide topic framing, stances, roles, SA count, and SA model on the spot.
-2. Create the board (header + topic + Standing Rules) and declare it at once (see § Declaration).
-3. Spawn one SA per role with `run_in_background=True`, using the briefing template below.
-4. **Observe** the growing board —— wake on board changes via a `Monitor` file-watch, re-reading new blocks. Assess: are arguments still novel, or repeating/converging? Watch also for any `## User` block (see § User Interventions).
-5. **Adjourn** when saturated → append `THE_END` to the board. Then CONFIRM each SA actually stops because it read `THE_END` (re-read for their final acks / idle) —— the stop must come from `THE_END`, not from an SA finishing on its own.
-6. **Observer block:** MA itself (NOT a separate SA —— the whole board is already in MA's context) appends the final `## Observer` block to the board: objective assessment, winner(s)/loser(s), score(s) if apt, takeaway.
-7. **Surface to the user:** MA then distils into `response_[TS].md` —— the insights gained and what they imply for the ongoing session's work/decision —— WITHOUT heavily repeating the Observer block. The board is the audit trail; the `response_` is the takeaway.
-8. **Resilience:** if an SA dies/compacts mid-debate, re-spawn it —— the board is its durable memory, so the new SA reads the board and resumes. SAs naturally expire at compaction; MA retires and, if the debate is unfinished, re-spawns.
+1. Decide topic, stances, roles, SA count, and model.
+2. Create the board (+ declare it at once, see § Declaration).
+3. Spawn one SA per role, `run_in_background=True`, via the briefing template.
+4. **Observe:** re-read the board (or keep a lightweight background watch on it) for new blocks, saturation, and any `## User` block.
+5. **Adjourn:** append `THE_END` ONCE → confirm each SA stops because it read `THE_END` (their acks).
+6. **Observer:** append the `## Observer` block (MA is the observer —— the board is already in its context). Do NOT append `THE_END` again.
+7. **Surface:** distil the verdict + what it implies for the session into `response_[TS].md` (don't heavily repeat the Observer block). Board = audit trail; `response_` = takeaway.
+8. **Resilience:** if an SA dies/compacts mid-debate, re-spawn it —— the board is its memory.
 
 ## User Interventions (highest authority)
 
-The user may append their own block to the board at any time —— a block whose first line begins `## User` (via the copy-paste template at the very bottom of this file). The user outranks MA and every SA.
-- **MA, on seeing a `## User` block:**
-  - If it contains `STOP` (the all-caps token) → adjourn GRACEFULLY; do NOT hard-kill the run or end the turn abruptly. Append `THE_END`, confirm the SAs stop, append the `## Observer` block, and write the `response_` summary. (Closing it properly is exactly why the user posted `STOP` here instead of killing the background tasks themselves.)
-  - Otherwise (a moderation/steer, e.g. a new angle to explore) → treat it as authoritative direction: let the SAs continue along it and adjust your own observation accordingly.
-- **SAs, on seeing a `## User` block:** treat it as the highest-authority steer —— fold it into your next block. You still terminate only on `THE_END`.
+The user may append a `## User` block at any time (via the template at the bottom). It outranks MA and every SA.
+- **MA:** a `## User` block containing `STOP` → adjourn gracefully (append `THE_END` → Observer → `response_`), never a hard-kill. Any other `## User` note → an authoritative steer (e.g. a new angle); let the debate continue along it.
+- **SAs:** fold a `## User` steer into the next block; still stop only on `THE_END`.
 
 ## Declaration (overrides root CLAUDE.md §3.1.5)
 
-- Declare the board (`➡️ `[folder]/debate_[start_TS].md``) IMMEDIATELY after creating it —— not batched at turn-end —— so the user can watch it grow live.
-- The final `response_` is declared as usual.
+- Declare the board `➡️` IMMEDIATELY after creating it (not at turn-end) so the user can watch it grow. The `response_` is declared as usual.
 
-## Standing Rules (paste into the board header —— so SAs need no per-SA re-briefing)
+## Standing Rules (paste into the board header —— SAs inherit them by reading the board)
 
-- Read-only via `Read`; add only via `>>`; NEVER `Edit`/`Write` this board.
-- One block per append, in a single `>>` write; keep blocks concise.
-- Re-read the board FRESH before every block; each non-opening block must DIRECTLY engage the freshest opposing (or `## User`) content —— name what you answer. Never rebut from a stale read; no monologues.
-- Stop ONLY when `THE_END` appears —— never self-terminate on a turn count.
-- A `## User` block is the human moderator (highest authority) —— fold its steer into your next block.
-- Use the Debater block format (see § Example Outputs); be #numbered, 100% factual (no fabrication).
-- Your outputs go to MA only (never user-visible); narrate to MA freely.
+- Read via `Read`; add only via `>>`; never `Edit`/`Write` this board.
+- One concise block per append.
+- Re-read FRESH before every block; each non-opening block must directly answer the freshest opposing (or `## User`) point by its label. No stale reads, no monologues.
+- Number your points `[YourLetter][n]`, continuing across ALL your blocks and never resetting (A1, A2, A3…); reference others by label (`Re B3:`). This is the debate's own scheme —— not `numbered.md`'s nested `1.1.` style.
+- Header `[HHmm]` = the REAL append moment: set it from `TZ='Australia/Sydney' date +%H%M` run immediately before appending; never hardcode or reuse an earlier value.
+- Stop ONLY on `THE_END`; never self-terminate on a count.
+- A `## User` block is the human moderator (highest authority).
+- 100% factual; your outputs go to MA only (never user-visible).
 
 ## SA Briefing Template (fill brackets only)
 
-> You are Debater [X] in a `#debate` on: [TOPIC/DECISION]. Your role: [ROLE one-liner]. You SUPPORT [STANCE] and OPPOSE [STANCE(S)]. Board: [BOARD_PATH] —— first `Read` it in full, including the Standing Rules at its top, and obey them. Append your opening argument as one block (Debater block format). Then run the sustain loop until you see `THE_END`: re-read the board FRESH every cycle; if `THE_END` is present, stop and report done; if a new opposing block (or a `## User` block) has appeared since your last post, append a block that DIRECTLY engages it —— name the debater/point you answer —— re-reading once more right before appending so you respond to the very latest; if nothing new, WAIT in the FOREGROUND (never come to rest) by running, as a normal Bash call with `timeout: 90000`, `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 20); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` —— NEVER `run_in_background` (that makes you come to rest) —— then loop back and re-read. Never rebut from a stale read, never monologue, and never self-terminate on a turn count —— only `THE_END` ends you. Stay factual and concise; report each append to me in one line; never write to the user.
+> You are Debater [X] in a `#debate` on: [TOPIC]. Role: [ROLE]. You SUPPORT [STANCE], OPPOSE [STANCE(S)]. Board: [BOARD_PATH] —— `Read` it in full first and obey its Standing Rules. Append your opening block, then loop until `THE_END`: re-read FRESH; if `THE_END`, stop and report; if a new opposing or `## User` block appeared since your last post, append ONE block answering the freshest point by label (`Re B3:`), re-reading once more right before appending; if nothing new, run the foreground watch-wait —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` as a normal Bash call (`timeout: 45000`, never `run_in_background`) —— then re-read. Number your points [X]1, [X]2… continuing across blocks (never reset); set the header `[HHmm]` from `date +%H%M` immediately before each append. Concise and factual; report each append to me in one line; never write to the user; only `THE_END` ends you.
 
 ## Example Scenario
 
-- MBA dissertation research method: IPA vs Case Study (2 stances; can be more in other scenarios).
-- Debater roles: strategy masterminds on a board of directors advising the chairman (the user).
-- Observer role (MA): external, unincentivised, McKinsey-Senior-Partner-level management consultant.
+- MBA dissertation method: IPA vs Case Study (2 stances; more is fine).
+- Debaters: strategy masterminds on a board of directors advising the chairman (the user).
+- Observer (MA): external, unincentivised, McKinsey-Senior-Partner-level consultant.
 
 ## Example Outputs
 
-Follow the formats below; adapt as needed. The **Debater block** is the mandated per-append unit.
+Opening states the stance once; later blocks omit it. `[HHmm]` = real append time; point labels continue per debater.
 
 ```
-## Debater [A/B/C…] · turn [n] · [HHmm]
-- Supporting: [stance]
-- Opposing: [stance(s)]
+## Debater A · turn 1 · [HHmm]
+- A: [stance] (opposing [stance(s)])
 
-[#numbered argument]
+A1. [point]
+A2. [point]
+
+---
+```
+
+```
+## Debater A · turn 2 · [HHmm]
+A3. Re B2: [direct counter]
+A4. [point]
 
 ---
 ```
 
 ```
 ## Observer
-- Winner(s): [stance(s)]
-- Loser(s): [stance(s)]
-- Score(s): [if apt]
+- Winner(s): [stance(s)] · Loser(s): [stance(s)] · Score(s): [if apt]
 - Takeaway: [one_liner]
 
-[#numbered verdict]
+1. [verdict point]
+2. [verdict point]
 ```
 
 ---
