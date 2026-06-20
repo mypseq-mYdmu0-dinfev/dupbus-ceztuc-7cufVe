@@ -17,6 +17,7 @@ I'm away for an extended period; time is NOT the limiting factor. Utilise the wi
 - **Dispatch SAs liberally** —— even when slower (thinking/briefing overhead is acceptable here), because it saves MA context. Parallelise independent workstreams.
 - **Deeper CIC research** for validation/cross-checking whenever it meaningfully improves a decision (research only —— for CIC *execution*, see the Critical caveat).
 - **Deeper thinking** —— as if effort = Max (if not already); critically audit/improve outputs.
+- **Debate** —— spawn SA w/ just enough context (even deliberately less) to challenge/de-bias from multi-perspective; if deemed useful, rectify/improve accordingly
 - Spend the surplus time widening coverage and raising confidence, not merely finishing.
 - Judge: in-scope vs out-of-scope, so time/effort won't be wasted.
 
@@ -120,4 +121,4 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 
 ## Remarks
 
-- If SA(s) spawned, ensure sufficient context (e.g. #cic for research)
+- If SA(s) spawned for research, ensure she validates via #cic (not just web_search)
