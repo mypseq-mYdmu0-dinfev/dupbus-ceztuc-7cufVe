@@ -52,7 +52,7 @@
   - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, EXCEPT in `.claude/`
   - 3.1.3. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
   - 3.1.4. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (see §3.1.5)
-  - 3.1.5. I/O Declarations (§3.2.1–3): centralised in order at response end (after actions); e.g.:
+  - 3.1.5. I/O Declarations (§3.2.1–3): batched IN ORDER at response end (after all actions); e.g.:
 
 ```
 ✅ `career/CP_notes.md`, `context/gcl.md`
