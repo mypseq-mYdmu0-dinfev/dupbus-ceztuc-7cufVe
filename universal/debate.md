@@ -33,10 +33,9 @@
 ## Stopping —— saturation OR token budget
 
 - **Saturation** (normal trigger): adjourn when no materially new argument is surfacing.
-- **Token gate:** each wake the observer runs `token-count --file [board]` (cheap —— it's code):
-  - `<150k` → adjourn on saturation as usual.
-  - `150k–200k` → bias HARD toward stopping: continue ONLY if the latest round added a clearly new, material point; else adjourn. An Observer SA does NOT decide alone here —— it flags MA to judge.
-  - `≥200k` → stop now regardless, gracefully (THE_END → Observer → `response_`).
+- **Token gate —— two views of one `~`200k whole-debate budget.** The board file is only `~`1/25 of total spend (a 14k board ≈ a 384k debate), so the board count is the live proxy:
+  - **BOARD tokens (the LIVE gate —— all that's observable mid-run).** The observer runs `token-count --file [board]` on each `~`60 s heartbeat: `<5k` → adjourn on saturation as usual; `5k–8k` → bias HARD toward stopping (continue only on a clearly new material point; an Observer SA flags MA rather than deciding alone); `≥8k` → stop now, gracefully.
+  - **Whole-debate tokens (MA's secondary/closing guard).** MA sees each SA's usage as it FINISHES (reliably at completion; live polling is unreliable), sums them (incl. itself where it can), and: consider intervening near `150k`, force a graceful stop by `200k`. The figure is approximate (per-SA can read low) —— keep margin. The board gate is what fires live.
 - **`THE_END`** is the sole stop signal; only MA writes it. Appended to the board, it reaches debaters AND the Observer SA at once —— so MA never messages an SA directly. Until it appears no SA stops; none self-terminates on a turn count.
 - The only MA-authored board entries are `THE_END` and the `## Observer` block —— visually distinct from `## Debater [X]` blocks.
 
@@ -45,7 +44,7 @@
 Once spawned: (1) `Read` briefing + the full board; (2) append the opening block; (3) loop until `THE_END`:
 - `Read` the board FRESH (never act on a stale read).
 - `THE_END` present → stop, one-line ack.
-- New opposing (or `## User`) block since your last post → append ONE block DIRECTLY answering the freshest point by its label (`Re B003:`); re-read once more right before appending.
+- New opposing (or `## User`) block since your last post → compose ONE block answering the freshest point by its label (`Re B003:`). As the LAST step before the `>>`, re-read the board AND set a fresh `[HHmm]`: if `THE_END` is now present, STOP without appending; else append.
 - Nothing new → run the foreground watch-wait (below), then re-read. Don't post to fill silence.
 - Address others by letter; answer, don't monologue.
 
@@ -62,8 +61,8 @@ Returns within `~`3 s of any board change, else after `~`30 s. macOS `stat -f %m
 A light SA (`run_in_background=True`), briefed to WATCH and DIGEST —— never debate or write the verdict. Same foreground watch-wait, capped `~`15 s (`seq 1 5`); stops on `THE_END`. On each board change it appends to `debate_digest_[start_TS].md` (append-only):
 - ONE `≤20-word` digest of the new entry: debater + the new point's gist + a `[new]` / `[rehash]` tag (so MA smells saturation from digests alone, never re-reading the board).
 - A `## User` block's digest → prefix `USER:` (so MA catches interventions at once).
-- Arguments stop advancing (a run of `[rehash]`, circling) → append `SATURATION? —— [why]`. Token `150k–200k` → flag MA even on thin evidence.
-- Each wake: run `token-count --file [board]`; note crossing 150k / 200k.
+- Arguments stop advancing (a run of `[rehash]`, circling) → append `SATURATION? —— [why]`. In the `5k–8k` board band, flag MA even on thin evidence.
+- Each `~`60 s heartbeat: run `token-count --file [board]`; append `TOKENS≥5k —— MA judge` / `TOKENS≥8k —— stop` when crossed.
 - At `THE_END` (or when flagging): append a FINAL REPORT —— outcome, what was weighed, the block HEADINGS MA may want to read, and whether MA should read the whole board.
 
 ## MA Operation
@@ -99,11 +98,11 @@ The user may append a `## User` block to the board anytime (template at bottom).
 
 ## Debater-SA Briefing Template (fill brackets)
 
-> You are Debater [X] in a `#debate` on: [TOPIC]. Role: [ROLE]. SUPPORT [STANCE], OPPOSE [STANCE(S)]. Board: [BOARD_PATH] —— `Read` it fully first and obey its Standing Rules. Append your opening block, then loop until `THE_END`: re-read FRESH; if `THE_END`, stop and report; if a new opposing or `## User` block appeared since your last post, append ONE block answering the freshest point by label (`Re B003:`), re-reading once more right before appending; if nothing new, run the foreground watch-wait —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` (normal Bash call, `timeout: 45000`, never `run_in_background`) —— then re-read. Number points as bullets `- [X]001.`, `- [X]002.`… (3-digit, never reset; sub-levels `  - [X]001.1.`); set header `[HHmm]` from `date +%H%M` just before each append. Concise, factual; report each append to me in one line; never write to the user; only `THE_END` ends you.
+> You are Debater [X] in a `#debate` on: [TOPIC]. Role: [ROLE]. SUPPORT [STANCE], OPPOSE [STANCE(S)]. Board: [BOARD_PATH] —— `Read` it fully first and obey its Standing Rules. Append your opening block, then loop until `THE_END`: re-read FRESH; if `THE_END`, stop and report; if a new opposing or `## User` block appeared since your last post, append ONE block answering the freshest point by label (`Re B003:`) —— but as the LAST step before the `>>`, re-read the board and set a fresh `[HHmm]`: if `THE_END` has appeared, STOP without appending; if nothing new, run the foreground watch-wait —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 10); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` (normal Bash call, `timeout: 45000`, never `run_in_background`) —— then re-read. Number points as bullets `- [X]001.`, `- [X]002.`… (3-digit, never reset; sub-levels `  - [X]001.1.`); set header `[HHmm]` from `date +%H%M` just before each append. Concise, factual; report each append to me in one line; never write to the user; only `THE_END` ends you.
 
 ## Observer-SA Briefing Template (hybrid; fill brackets)
 
-> You are the OBSERVER for a `#debate` on: [TOPIC]. Do NOT debate or write a verdict —— only WATCH and DIGEST for MA. Board: [BOARD_PATH]; digest (append-only): [DIGEST_PATH]. `Read` the board, then loop until `THE_END`: on each change re-read FRESH and append to [DIGEST_PATH] one `≤20-word` line —— debater + gist + `[new]`/`[rehash]` (a user block → prefix `USER:`). Arguments stop advancing → append `SATURATION? —— why`. Each pass run `token-count --file [BOARD_PATH]`; if ≥150k flag MA to judge, and note crossing 200k. Between changes wait FOREGROUND —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 5); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` (`timeout: 45000`, never `run_in_background`); on a quiet pass note any stalled debater. At `THE_END` append a final report (outcome; what was weighed; headings MA may want; whether to read the whole board). Never write to the user; only `THE_END` ends you.
+> You are the OBSERVER for a `#debate` on: [TOPIC]. Do NOT debate or write a verdict —— only WATCH and DIGEST for MA. Board: [BOARD_PATH]; digest (append-only): [DIGEST_PATH]. `Read` the board, then loop until `THE_END`: on each change re-read FRESH and append to [DIGEST_PATH] one `≤20-word` line —— debater + gist + `[new]`/`[rehash]` (a user block → prefix `USER:`). Arguments stop advancing → append `SATURATION? —— why`. On each `~`60 s heartbeat run `token-count --file [BOARD_PATH]`; append `TOKENS≥5k —— MA judge` / `TOKENS≥8k —— stop` when crossed. Between changes wait FOREGROUND —— `B='[BOARD_PATH]'; t=$(stat -f %m "$B"); for i in $(seq 1 5); do sleep 3; [ "$(stat -f %m "$B")" != "$t" ] && break; done` (`timeout: 45000`, never `run_in_background`); on a quiet pass note any stalled debater. At `THE_END` append a final report (outcome; what was weighed; headings MA may want; whether to read the whole board). Never write to the user; only `THE_END` ends you.
 
 ## Example Scenario
 
