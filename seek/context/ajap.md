@@ -40,7 +40,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 | # | Permitted Output | Format / Constraint |
 |---|---|---|
 | C1 | File read/re-read declaration | Mandatory per `CLAUDE.md`; exact format: `✅ [file1], [file2], ...` |
-| C2 | S0.3 count | Exact format only: `[current_TS] 🎯[N] **job(s) processed so far.**`; N = THIS session only (ARs since `session_start_TS`), NEVER cumulative across sections; number emojis; no other text on the line |
+| C2 | S0.3 count | Exact format only: `**[current_TS]** 🎯[N] job(s) processed so far.`; N = THIS session only (ARs since `session_start_TS`), NEVER cumulative across sections; number emojis; no other text on the line |
 | C3 | `⭐❗` save+AR+flag | Only as indicated in S1 & if score ≥ 110 per S4 |
 | C4 | `🚨` Tab 1 alert | Only when A6 inaccessibility threshold reached |
 | C5 | Response to user msg | One sentence max; per § User Interventions |
