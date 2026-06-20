@@ -17,7 +17,7 @@ I'm away for an extended period; time is NOT the limiting factor. Utilise the wi
 - **Dispatch SAs liberally** —— even when slower (thinking/briefing overhead is acceptable here), because it saves MA context. Parallelise independent workstreams.
 - **Deeper CIC research** for validation/cross-checking whenever it meaningfully improves a decision (research only —— for CIC *execution*, see the Critical caveat).
 - **Deeper thinking** —— as if effort = Max (if not already); critically audit/improve outputs.
-- **Debate** —— spawn SA w/ just enough context (even deliberately less) to challenge/de-bias from multi-perspective; if deemed useful, rectify/improve accordingly
+- **Debate** —— spawn an SA with just enough context (even deliberately less, for fresh unbiased eyes) to challenge / red-team a key decision or output from other perspectives; rectify/improve wherever its challenge genuinely helps
 - Spend the surplus time widening coverage and raising confidence, not merely finishing.
 - Judge: in-scope vs out-of-scope, so time/effort won't be wasted.
 
@@ -93,8 +93,8 @@ So I can resume instantly, capture:
 
 A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never loses sprint state. Write very efficiently for CC (current session) only; the user wouldn't read it.
 
-- **File**: `./.claude/tmp/slog_[current_TS].md` —— TS = sprint start; one per sprint; hidden by location.
-- **Silent**: creating/updating it is EXEMPT from the `➡️` declaration (root CLAUDE.md §3.2.3) —— a private scratchpad, kept out of chat
+- **File**: `slog_[start_TS].md` (CP-prefixed if CP, e.g. `career_slog_[TS].md`) in the SAME folder as `response_` —— TS = sprint start; one per sprint.
+- **Silent**: creating/updating it is EXEMPT from the `➡️` declaration (root CLAUDE.md §3.2.3) —— a per-block log would otherwise flood chat
 - **Recovery**: right after each compaction, reading it still requires a one-off `✅` declaration (root CLAUDE.md §3.2.1) —— a proof of context recovery
 - **Append-only, NEVER overwrite** —— every write adds a new `[TS]`-headed block (one TS per block, not per line). The growing stack of blocks IS the log; appending (vs overwriting) avoids clobbering earlier state and preserves the timeline.
 - **TS** = `TZ='Australia/Sydney' date +"%Y%m%d%H%M"` —— TS deltas reveal how long each action took (retrospective value).

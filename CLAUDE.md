@@ -121,10 +121,10 @@
 - 5.5. DON'T re-read/re-fetch anything (incl. CP's CLAUDE.md); root CLAUDE.md is already re-read via the PostCompact hook (as you're reading this)
 - 5.6. DON'T continue any task; await user's instruction
 - 5.7. The 2 lists in §5.3 & §5.4 shall advise user what to re-provide in current/new session
-- 5.8. If any `slog_*.md` exists in `./.claude/tmp/`, `#sprint` was in flight at compaction:
-  - 5.8.1. If multiple found, selectively read each & determine if either matches current session
-  - 5.8.2. If only 1 found OR match determined, fully read it + sprint.md to restore context
-  - 5.8.3. Resume directly when latest state is identified, instead of §5.6's "await user's instr"
+- 5.8. If an `slog_*.md` sits amongst the 5 most-recently-modified files (`ls -t`, NOT a full listing per §9.2) of the current month's `sessions/` folder (where `response_` files go; CP-prefixed if CP), `#sprint` was in flight at compaction:
+  - 5.8.1. If exactly 1 `slog_` found, that's it; follow §5.8.3
+  - 5.8.2. If multiple, use the (compacted) context window + a selective content read to identify the right one to continue; follow §5.8.3
+  - 5.8.3. Fully read the identified slog + sprint.md → carefully analyse to restore context → resume directly from its latest block, instead of §5.6's "await user's instr"
 
 6. Claude Project (CP)
 - 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/seek/`, `/backup/`, `/temp/`, `/automator/` —— that contains a `CP_index_cc.md`
