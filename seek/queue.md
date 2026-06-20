@@ -4,7 +4,7 @@
 
 ---
 
-## order: 01, 07, 03, 05, 02, 08, 04, 06
+## order: 01, 03, 07, 05, 02, 04, 08, 06
 
 *Process Qi strictly left → right on this line (first Qi → last Qi), sequentially. Odd numbers are the "New-to-you" views (with `&tags=new`; NEVER append manually); even numbers are the plain (all-jobs) views. User reprioritises by editing ONLY this line (e.g. `order: 03, 06, 01`), not the table below.*
 
