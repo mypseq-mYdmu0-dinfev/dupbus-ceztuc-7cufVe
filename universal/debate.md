@@ -18,7 +18,7 @@
   - **Hybrid (default):** MA also spawns a light **Observer SA = Manager** that runs the live gig —— watches the board, digests it to `debate_digest_[start_TS].md`, judges saturation, and CLOSES the debate (writes `THE_END`). This frees MA's context for user comms / other work, but MA is NOT asleep: it keeps oversight via the digest and may itself judge and close.
   - **MA-as-observer:** large-context or short focused runs —— MA is both Director and Manager (watches the board directly, closes). No Observer SA, no digest (just board + `response_`).
 - **Both the Observer SA and MA may append `THE_END`** (identical effect). The Observer is the primary closer (it sees the verbatim board in real time); MA is the higher-authority overseer who closes if the Observer misses it (MA's edge: the full session picture —— including WHY this debate was started —— though it sees only the digest mid-run, not the board).
-- Role/stance count and SA model (Sonnet/Opus) are MA's on-the-spot call. `#debate` is rare and run with intent —— reliability over economy. The user watches usage and may intervene; but the auto-close + token cap let `#debate` self-govern even when the user is AWAY (e.g. under `#sprint`), needing no live intervention.
+- Role/stance count and SA model (Sonnet/Opus) are MA's on-the-spot call. `#debate` is rare and run with intent —— reliability over economy. The user watches usage and may intervene —— EXCEPT under `#sprint` (user away), where MA self-governs entirely: the auto-close + token cap need no live intervention, and MA judges every call (close / add-a-debater / void-restart) herself.
 
 ## Roles & Stances
 
@@ -45,7 +45,7 @@
 
 ## Debaters run dry ≠ saturation
 
-- Debaters running out of things to say (going idle) is NOT itself saturation, and is NEVER theirs to call —— they only ever idle-wait until `THE_END`.
+- Debaters running out of things to say (going idle) is NOT itself saturation, and is NEVER theirs to call —— they only ever idle-wait until `THE_END`. Crucially they stay ALIVE in that watch-wait, so a newly-added debater's (or a `## User`) post re-stimulates them —— which is exactly why adding a stance (below) revives a stalled board; a debater that had truly quit could not be revived.
 - When the board goes idle but the observer does NOT judge it genuinely saturated (a fresh stance/angle could still add value), do NOT close. Instead the Observer SA SUGGESTS (via the digest) that MA add one more debater; MA, if it agrees (not saturated, and a new stance would help), spawns another debater —— a new stance to stimulate the others —— WITHOUT consulting the user. Alternatively MA may restart with a better config. Close only when genuinely saturated (or the cap is hit).
 
 ## Debater SA —— Sustain Loop
@@ -68,9 +68,9 @@ Returns within `~`3 s of any board change, else after `~`30 s. macOS `stat -f %m
 ## Observer SA (hybrid mode only)
 
 A light SA (`run_in_background=True`), briefed to WATCH, DIGEST, and CLOSE —— never to debate or write the verdict. Same foreground watch-wait, capped `~`15 s (`seq 1 5`). Reads the board by DELTA. On each board change it appends to the pre-created `debate_digest_[start_TS].md` (append-only):
-- ONE `≤20-word` digest of each new entry: debater + the new point's gist + `[new]` / `[rehash]` (so MA, reading only the digest, has the whole picture). A `## User` block → prefix `USER:`.
+- ONE `≤20-word` digest of each new entry, written in a SINGLE `printf` as ONE line (never fragmented across lines, even under fast churn): debater + the new point's gist + `[new]` / `[rehash]` (so MA, reading only the digest, has the whole picture). A `## User` block → prefix `USER:`.
 - Each `~`60 s heartbeat: run `token-count --file [board]`; append `TOKENS=[n]` (proves the cap is polled live).
-- ALERT MA (a digest line) at `≥ 50%` of the cap; SUGGEST MA add a debater if the board idles but isn't genuinely saturated.
+- ALERT MA (a digest line) at `≥ 50%` of the cap. SUGGEST MA add a debater ONLY after SEVERAL consecutive genuinely-empty deltas (a true lull) and you judge it not saturated —— never on a single quiet poll (a momentary gap whilst debaters compose is not idleness).
 - **Close** when genuinely saturated, OR `≥ 100%` cap, OR a `## User` block contains `STOP`: append a standalone `THE_END` line to the BOARD, then a FINAL REPORT to the digest (outcome; what was weighed; the block HEADINGS MA should read; whether MA must read the whole board), then stop.
 
 ## MA Operation
@@ -79,8 +79,8 @@ A light SA (`run_in_background=True`), briefed to WATCH, DIGEST, and CLOSE —�
 2. Create + declare the board AND (hybrid) the digest at once (see § Declaration).
 3. Spawn one Debater SA per role (`run_in_background=True`); hybrid → also spawn the Observer SA.
 4. **Oversight (hybrid):** keep a light watch on the DIGEST (`~`15 s + `~`60 s heartbeat) —— read new digest lines as they land. The Observer owns the close, but YOU retain oversight: act on a `USER:` line; on an ALERT/SUGGEST; and judge saturation yourself from the digest + your session context —— if you deem it saturated and the Observer hasn't closed, close it yourself (append `THE_END`). Watchdog: every `~`300 s confirm the Observer SA is alive (recent digest activity); re-spawn if dead. **MA-as-observer:** watch the board directly (`~`15 s + `~`60 s), digest nothing, judge saturation + cap, and close yourself.
-5. **Verdict (MA, always):** once a standalone `THE_END` is down + (hybrid) the final report is in the digest, read the board —— SELECTIVELY (the report's heading list) or fully if it says so —— and append the `## Observer` block. Confirm the debaters stopped.
-6. **Surface + cost/compaction check:** distil the verdict + session implications into `response_[TS].md` (don't heavily repeat the Observer block). Tally whole-debate token usage (sum of per-SA usages seen at completion) as a cost report. If that sum exceeds `~`200k —— noteworthy —— check EACH SA against its context window (Sonnet 200k, Opus 1M): any SA OVER its window COMPACTED and its content may be compromised → MA MUST flag it (in `response_` and/or the Observer block). If > 50% of SAs compacted (round up: 1 of 2, 2 of 3, 2 of 4) → consider VOIDING the result and restarting with an adjusted config. Under `#sprint`, MA makes this call itself.
+5. **Verdict (MA, always) —— let the board SETTLE first.** After `THE_END` is down, do NOT verdict immediately: WAIT until every debater has actually stopped (their completion acks) —— a fast debater can append one or more blocks in its compose-window AFTER `THE_END`, so the board keeps growing for a beat. Only once it's settled, RE-READ the board's FINAL state afresh (NEVER verdict from an earlier oversight read —— the board moves fast and will have moved on) plus the digest's final report, THEN append the `## Observer` block. Skipping the wait/re-read produces a verdict that misses the last turns and a block stranded mid-board.
+6. **Surface + cost/compaction check:** distil the verdict + session implications into `response_[TS].md` (don't heavily repeat the Observer block). Tally whole-debate token usage (sum of per-SA usages seen at completion) as a cost report. If that sum exceeds `~`200k —— noteworthy —— check EACH SA against its context window (Sonnet 200k, Opus 1M): any SA OVER its window COMPACTED and its content may be compromised → MA MUST flag it (in `response_` and/or the Observer block). **The Observer SA especially:** if IT compacted, the digest MA steered by may itself be wrong —— strongly consider voiding + restarting. If > 50% of SAs compacted (round up: 1 of 2, 2 of 3, 2 of 4) → consider VOIDING the result and restarting with an adjusted config. For a debate expected to run large, pre-empt all this by spawning an OPUS Observer (5× Sonnet's window). Under `#sprint`, MA makes these calls itself.
 7. **Resilience:** re-spawn any debater or the Observer SA that dies mid-debate —— the board and digest are durable memory.
 
 ## User Interventions (highest authority)
