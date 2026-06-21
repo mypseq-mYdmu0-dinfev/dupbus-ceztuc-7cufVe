@@ -17,7 +17,8 @@ I'm away for an extended period; time is NOT the limiting factor. Utilise the wi
 - **Dispatch SAs liberally** —— even when slower (thinking/briefing overhead is acceptable here), because it saves MA context. Parallelise independent workstreams.
 - **Deeper CIC research** for validation/cross-checking whenever it meaningfully improves a decision (research only —— for CIC *execution*, see the Critical caveat).
 - **Deeper thinking** —— as if effort = Max (if not already); critically audit/improve outputs.
-- **Debate** —— spawn an SA with just enough context (even deliberately less, for fresh unbiased eyes) to challenge / red-team a key decision or output from other perspectives; rectify/improve wherever its challenge genuinely helps
+- **Challenge** —— spawn an SA with just enough context (even deliberately less, for fresh unbiased eyes) to challenge / red-team a key decision or output from other perspectives; rectify/improve wherever its challenge genuinely helps
+- **Debate** —— if the task may benefit from multi-turn, multi-perspective debate, where Challenge (above; w/ single SA) might not suffice, consider to #debate w/ apt amount of role counts (user WON'T be able to "live" monitor session limit & intervene in time)
 - Spend the surplus time widening coverage and raising confidence, not merely finishing.
 - Judge: in-scope vs out-of-scope, so time/effort won't be wasted.
 
