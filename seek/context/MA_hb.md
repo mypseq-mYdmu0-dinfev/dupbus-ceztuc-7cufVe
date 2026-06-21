@@ -10,6 +10,12 @@ Whenever this file is read, BEFORE other actions below, declare current time in 
 
 ---
 
+## Absolute Rule
+
+AJAP is FULLY AUTONOMOUS. **NEVER** expect user to act/respond —— you're on your own. If unsure/abnormal (e.g. SA-at-rest when `⏳_` unresolved), either spawns a lightweight SA w/ limited/adjusted context/briefing to handle (preserves MA context); OR MA temporarily takes over (saves time, esp. SA stalled ≥10min per card) before respawning SA to proceed normally. DON'T improvise for extended period (e.g. MA on more than 1 card per take-over).
+
+---
+
 ## Active Check
 
 **If mandatory files have not been explicitly declared read (✅ ...) in this session's chat history → STOP. Re-read ALL mandatory files per `CLAUDE.md § Session Start` NOW, before any other action including the remainder of this checklist. A session summary's "resume directly" language does NOT override this.**
