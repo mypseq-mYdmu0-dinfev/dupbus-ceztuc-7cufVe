@@ -40,7 +40,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 | # | Permitted Output | Format / Constraint |
 |---|---|---|
 | C1 | File read/re-read declaration | Mandatory per `CLAUDE.md`; exact format: `✅ [file1], [file2], ...` |
-| C2 | S0.3 count | Exact format only: `**[current_TS]** 🎯[N] job(s) processed so far.`; N = THIS session only (ARs since `session_start_TS`), NEVER cumulative across sections; number emojis; no other text on the line |
+| C2 | S0.3 count | Exact format only: `**[current_TS]** 🎯[N] job(s) processed.`; N = THIS session only (ARs since `session_start_TS`), NEVER cumulative across sections; number emojis; no other text on the line |
 | C3 | `⭐❗` save+AR+flag | Only as indicated in S1 & if score ≥ 110 per S4 |
 | C4 | `🚨` Tab 1 alert | Only when A6 inaccessibility threshold reached |
 | C5 | Response to user msg | One sentence max; per § User Interventions |
@@ -141,7 +141,7 @@ S0.2. Determine N by recalling the last `🎯[N]` count from this session's chat
 - S0.2.1. If no prior count is visible (1st card of session) → N = 0
 - S0.2.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1
 - S0.2.3. If previous card was a silent skip during S1 (no AR created) → N = [last_N]
-S0.3. C2 line format: `[current_TS] 🎯[N] **job(s) processed so far.**` (N = this-session count only) — **[SA mode: do NOT print to user; include N in loop completion report to MA instead]**
+S0.3. C2 line format: `**[current_TS]** 🎯[N] job(s) processed.` (N = this-session count only) — **[SA mode: do NOT print to user; include N in loop completion report to MA instead]**
 - S0.3.1. [N] = number emojis (0️⃣, 1️⃣, 2️⃣, ... 🔟, 1️⃣1️⃣, ...)
 - S0.3.2. Mandatory; NO alternative phrasing or additional remarks (e.g. bracketed content)
 S0.4. Proceed to S1
