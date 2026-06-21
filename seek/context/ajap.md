@@ -51,7 +51,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 - Read after completing every sub-section (e.g. S0.1, S0.2, S0.3, S1, S2, S3.1, S3.2, S4.1–S4.6, S5, S6.1, S6.2, S6.3, S6.4.1, S6.4.2, S6.4.2.5, S6.4.3–S6.4.8, S7.1–S7.3) AND immediately before S6.4.3 Submit
 - If reads "Continue" → proceed immediately (no delay)
 - If reads "STOP" (exact word, case-sensitive; may be followed by " — [reason]") → immediately stop all actions and become idle; do NOT wait; do NOT re-check
-- If reads anything else → follow the instruction exactly; then wait 15s and re-read; repeat up to 20 times (300s total); if still not "Continue" after 20 re-reads → stop all actions and become idle (do not take any further action)
+- If reads anything else → follow the instruction exactly; then wait 15s and re-read; repeat up to 60 times (900s total); if still not "Continue" after 60 re-reads → stop all actions and become idle (do not take any further action)
 - SA NEVER writes to `/seek/.claude/tmp/ma_msg.md` — read only
 - **Tab-kill trigger:** if any Tab 2–4⁺ is closed involuntarily (i.e. not by SA's own action) → immediately stop all current actions and read `/seek/.claude/tmp/ma_msg.md`; follow any instruction found there; this takes priority over any in-progress section. If that involuntary closure leaves Tab 1 as the only remaining open tab → treat as MA rogue-retirement signal; stop immediately and become idle without reading or waiting. Note: SA starting with Tab 1 only (clean state) does NOT trigger this — the signal requires witnessing a closure
 
