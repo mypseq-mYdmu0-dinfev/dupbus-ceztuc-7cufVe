@@ -18,7 +18,7 @@ I'm away for an extended period; time is NOT the limiting factor. Utilise the wi
 - **Deeper CIC research** for validation/cross-checking whenever it meaningfully improves a decision (research only —— for CIC *execution*, see the Critical caveat).
 - **Deeper thinking** —— as if effort = Max (if not already); critically audit/improve outputs.
 - **Challenge** —— spawn an SA with just enough context (even deliberately less, for fresh unbiased eyes) to challenge / red-team a key decision or output from other perspectives; rectify/improve wherever its challenge genuinely helps
-- **Debate** —— if the task may benefit from multi-turn, multi-perspective debate, where Challenge (above; w/ single SA) might not suffice, consider to #debate w/ apt amount of role counts (user WON'T be able to "live" monitor session limit & intervene in time)
+- **Debate** —— for a hard call that benefits from sustained multi-turn, multi-perspective deliberation (more than single-SA Challenge can give), consider `#debate`: MA spawns role-debaters + an Observer SA that digests the exchange and self-closes on saturation or a token cap —— fully autonomous, hence `#sprint`-safe despite no "live" monitoring. Pick apt role counts; MA judges every call (close / add-a-debater / void-restart) herself.
 - Spend the surplus time widening coverage and raising confidence, not merely finishing.
 - Judge: in-scope vs out-of-scope, so time/effort won't be wasted.
 
