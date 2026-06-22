@@ -1,5 +1,5 @@
-# Response to career_query_202606210501.md
-*Mis-prefixed (content is dissertation); responded as dissertation*
+# Response to dissertation_query_202606210501.md
+*Query was mis-prefixed `career_`; renamed to `dissertation_` on the 202606221521 turn*
 
 15. ⚠️ Prefix mismatch
 - 15.1. The query is named `career_query_202606210501.md`, which by §6.2.1 would trigger the career CP, but its content is "Reply to dissertation_response_202606201750.md" and is wholly dissertation (P12, sprint, SVG). I read the career CP index per protocol, confirmed the mismatch, and stopped (did not load career unconditionals); this remains a dissertation session.
