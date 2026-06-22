@@ -434,6 +434,37 @@ Culous
 
 ---
 
+### Employer Reply
+
+On 22 Jun 2026, at 09:41, Elena Mel <elena@alltech.co> wrote:
+
+Hi Culous,
+
+Glad to hear! Excited to see your work.
+
+Could we please move the interview to same time 24/6 or 26/6? 
+
+Thank you
+
+Elena Melnykova
+Head of Strategic Operations & Growth
+Alltech
+
+---
+
+### User Reply
+
+On 22 Jun 2026, at 16:31, c@culousyu.com wrote:
+
+Hello Elena,
+
+I just checked and can confirm my availability at 1:30pm on 26 June 2026. Please kindly confirm. Thank you!
+
+Regards,
+Culous
+
+---
+
 ## 8. Stage 2 Pack — Summary
 *Added in the 202606190127 session (CC). #summarise mode = abstractive, key dates/targets/names kept verbatim. Substitutes for the 5 attachments (too large to embed); all 5 + the invite #r in full.*
 
