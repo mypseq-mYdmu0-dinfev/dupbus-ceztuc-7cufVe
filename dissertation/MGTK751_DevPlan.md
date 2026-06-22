@@ -186,7 +186,7 @@
   - P12.3.3. RETAIN supplementary TP/manager interviews (user decision, 20/06/2026): Lu's role-variation comment was soft and non-mandatory; dropping them would forfeit genuinely valuable TP/manager insights (Culous' own academic interest) and risk the six-participant floor by shrinking the recruitable pool. Keep them as optional triangulation (CB §7.2); manage comparability through the TPP-primary frame and a comparable-cohort intent, not by deletion
   - P12.3.4. Link §3.4 thematic analysis to the §2 theoretical framework (themes/factors sensitise coding); retain inductive openness + the disconfirming-evidence node
   - P12.3.5. 1-per-org stated as isolation rationale only, never a consent advantage (AD10.4.1, permanent)
-  - P12.3.6. On completion of §1–§3, count the words of every (sub)section and append `([no.] words)` as a new line after each; then report the per-section figures and the overall sum to the user, noting whether the length stays socially reasonable for a proposal (Lu permits unlimited, but restraint preserves goodwill and eases later A3 Ch trimming)
+  - P12.3.6. On completion of §1–§3, count the words of every (sub)section and append `([no.] words)` after each, PRECEDED BY A BLANK LINE (i.e. end-of-text → blank line → `([no.] words)`); then report the per-section figures and the overall sum to the user, noting whether the length stays socially reasonable for a proposal (Lu permits unlimited, but restraint preserves goodwill and eases later A3 Ch trimming)
 
 - P12.4. §4 Milestone Plan —— re-baseline
   - P12.4.1. Original timeline lapsed (ethics targeted Wk9 w/c 12/05/2026; today ~15/06/2026). Rebuild the milestone dates backwards from the fixed 23/11/2026 A2/A3 deadline to realistic current ones
@@ -204,17 +204,18 @@
   - P12.6.4. Run `cscpt/dlint.py` on A1R v2 (deliverable rule §3.7.3); loop-fix RED to 0
   - P12.6.5. Word count sane for unmarked A1R, but keep §2/§3 mindful of A3 Ch limits (2,500 / 850)
 
-- P12.7. Cover email (Log 19) + send
-  - P12.7.1. Draft Log 19 mapping each Log 16 point to the specific A1R v2 change that resolves it (lets Lu verify without re-reading verbatim; mirrors the P11.6 / Log 09 style)
-  - P12.7.2. Produce A1R v2 as Word .docx (Lu adds comments in Word, per Log 10) plus a PDF copy
-  - P12.7.3. Attach + upload to the shared folder; send; record as Log 19 in Lu.md
+- P12.7. Deliverable handoff to .pages *(read `universal/replace_adv.md`; trigger `#replace #adv`; runs right after P12.6, BEFORE the dispatch in P12.8)*
+  - P12.7.1. A1R.md is CC's working file (all P12 edits land here). The true deliverable is Culous' .pages file; `archive/MGTK751_A1R_backup_202606192247.md` is a read-only snapshot of A1R.md as it mirrored .pages BEFORE P12 —— never edit or delete it
+  - P12.7.2. When P12.1–P12.6 are complete: diff the backup against the finished A1R.md to identify every P12 change, then issue `#replace #adv` quoting from `MGTK751_A1R.pages.md` (a read-only copy-paste of the .pages file with broken/wrapped lines) so Culous can ⌘F-find each snippet in .pages
+  - P12.7.3. Culous applies the #replace to the .pages file, polishes layout/wording, exports PDF, then mirrors back to A1R.md
+  - P12.7.4. CC then RE-RUNS P12.6 (whole-doc QC + dlint + word counts) on the mirrored A1R.md and diffs, since Culous' manual polish very likely introduced changes; only when clean → P12.8
 
-- P12.8. Deliverable handoff to .pages *(read `universal/replace_adv.md`; trigger `#replace #adv`; PRECEDES the dispatch in P12.7)*
-  - P12.8.1. A1R.md is CC's working file (all P12 edits land here). The true deliverable is Culous' .pages file; `archive/MGTK751_A1R_backup_202606192247.md` is a read-only snapshot of A1R.md as it mirrored .pages BEFORE P12 —— never edit or delete it
-  - P12.8.2. When P12.1–P12.6 are complete: diff the backup against the finished A1R.md to identify every P12 change, then issue `#replace #adv` quoting from `MGTK751_A1R.pages.md` (a read-only copy-paste of the .pages file with broken/wrapped lines) so Culous can ⌘F-find each snippet in .pages
-  - P12.8.3. Culous applies the #replace to the .pages file, polishes layout/wording, exports PDF, then mirrors back to A1R.md; CC re-runs P12.6 QC on the mirrored A1R.md and diffs to confirm the final state; only then P12.7 dispatch
+- P12.8. Cover email (Log 19) + send *(last; Culous finalises first)*
+  - P12.8.1. Draft Log 19 mapping each Log 16 point to the specific A1R v2 change that resolves it (lets Lu verify without re-reading verbatim; mirrors the P11.6 / Log 09 style)
+  - P12.8.2. Produce A1R v2 as Word .docx (Lu adds comments in Word, per Log 10) plus a PDF copy
+  - P12.8.3. Attach + upload to the shared folder; send; record as Log 19 in Lu.md
 
-> P12 effort & critical path: the single item needing Culous' hands (cannot be done by CC alone) is P12.2's figure render in .pages; P12.1/P12.3 are largely re-application of the held batch re-pointed to the new RA; P12.5–P12.6 are mechanical. Rough order: P12.1, P12.3, P12.2 design in parallel; P12.4–P12.6 follow; then P12.8 handoff; finalise; P12.7 send last. A focused multi-session push, gating on Culous for the figure and the dispatch.
+> P12 effort & critical path: the single item needing Culous' hands (cannot be done by CC alone) is P12.2's figure render in .pages; P12.1/P12.3 are largely re-application of the held batch re-pointed to the new RA; P12.5–P12.6 are mechanical. Rough order: P12.1, P12.3, P12.2 design in parallel; P12.4–P12.6 follow; P12.7 handoff (then re-run P12.6); Culous finalises; P12.8 send last. Gating on Culous for the figure and the dispatch.
 
 ## P13. Draft Approval & Ethics Gate *(after send)*
 
