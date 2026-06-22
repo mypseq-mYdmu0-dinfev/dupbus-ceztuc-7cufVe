@@ -117,7 +117,7 @@
   - TPS foundational literature (Feather 1989, 1994) — defines phenomenon; provides cultural baseline to contrast w/ KBF management context
   - Organisational Citizenship Behaviour (OCB) literature — relates to voluntary KM sharing behaviour
   - Team cohesion literature — foundational for Challenge A
-- 5.2. Conceptual framework type — qual = no arrows (arrows imply causal impact; only quant); use lines, shapes, thematic tree; updated post-analysis
+- 5.2. Theoretical framework (relabelled from "conceptual" per Lu Log 16/18) — theoretically-informed but sensitising (orients, not dictates); themes→theories→factors mapping (A1R Table 1) sensitises the thematic analysis; qual = no arrows (relational lines only); refined post-analysis
 - 5.3. Lit review structure (updated per DA Meeting 01; must follow golden thread from objectives)
   - Confirmed funnel: TPS foundational → TPS in KM governance (impacts) → TPS in KBFs (specific context)
   - §1 (intro): ~50/50 academic + practitioner; Australian contextual grounding where natural; NOT a §2 requirement
@@ -194,12 +194,12 @@
 | RQ-v | How do TPs in KBFs experience team dynamics, and what support do their mgrs provide? | ★★ | Psychological framing; ethics risk; TP-centric rather than mgmt-centric |
 
 10. **Research Aim & Objectives**
-- 10.1. Aim — "To investigate how TPS dynamics in KBFs generate team cohesion and knowledge governance challenges, surfacing management implications for practitioners" *(may be refined at P07/P08 post-lit-review; directional for now)*
+- 10.1. Aim (LOCKED; Lu-approved Log 18) — "To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice"
 - 10.2. Research Objectives (ROs)
   - RO1 — Critically review existing literature on TPS, team dynamics, and KM in KBFs
   - RO2 — Explore how TPPs in KBFs perceive and experience TPS dynamics
   - RO3 — Evaluate the organisational and interpersonal conditions that exacerbate or alleviate TPS
-  - RO4 — Formulate management recommendations addressing TPS-related KM and team cohesion risks
+  - RO4 — Synthesise a knowledge base on TPS-related KM and team cohesion risks from research insights to entrench CYC's service offering foundation
 - 10.3. Golden thread check — Aim → Obj 1–4 → Lit review structured by Obj 1–4 → RQ derived from lit review gaps → interview questions derived from RQ → findings respond to RQ → recommendations address Obj 4 → conclusions return to aim
 - 10.4. A-grade discipline — narrow scope, deep treatment; one primary challenge angle (A); B&C as discussion supplements only; resist expanding RQ scope
 
