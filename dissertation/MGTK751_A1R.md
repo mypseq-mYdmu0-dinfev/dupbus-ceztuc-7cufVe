@@ -72,6 +72,8 @@ RO2. Explore how TPs’ peers (TPPs) in KBFs perceive and experience TPS dynamic
 RO3. Evaluate the organisational and interpersonal conditions that exacerbate or alleviate TPS.
 RO4. Synthesise a knowledge base on TPS-related KM and team cohesion risks from research insights to entrench CYC's service offering foundation.
 
+Together, the two questions carry the aim's golden thread: RQ1 examines the conditions shaping TPS and RQ2 the team-level experience of its dynamics, addressed by RO3 and RO2 respectively, whilst RO1 establishes the literature and RO4 converts the resulting insight into CYC's consulting knowledge.
+
 This study contributes **academically** by extending TPS studies beyond cultural psychology into management and KM domains, and **practically** by equipping managers with workforce-derived insights to address an under-recognised governance challenge. For CYC, the findings will form the empirical foundation of its KM consulting practice, positioning the firm to advise future KBF clients on diagnosing and mitigating the knowledge governance risks associated with TPS.
 
 ### Footnote(s)
@@ -120,9 +122,9 @@ Figure 1 presents the study's **theoretical framework**: a theoretically-informe
 | RQ2 | Knowledge-sharing response | SET (Blau, 1964); Podsakoff et al. (2000) | reciprocity breakdown; KS withdrawal |
 | RQ2 | Social exclusion | Breidenthal et al. (2020) | ostracism; informal exclusion |
 | RQ2 | Cohesion and trust | Grossman et al. (2022); Mathieu et al. (2015) | cohesion erosion; trust breakdown |
-| Stakes | Strategic consequence | KBV (Grant, 1996; Kogut and Zander, 1992) | withheld tacit knowledge; KM governance risk |
+| Cross-cutting (stakes) | Strategic consequence | KBV (Grant, 1996; Kogut and Zander, 1992) | withheld tacit knowledge; KM governance risk |
 
-Within this structure, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that render the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study's openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
+Within this structure, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that bear on both questions rather than answering either, rendering the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study's openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
 
 ### Footnote(s)
 
@@ -200,7 +202,7 @@ The researcher’s professional network spans legal, accounting, consulting, eng
 
 ### 3.9. Ethics
 
-Standard UoL ethics approval would be sought prior to any data collection. Semi-structured interview questions will operate at the professional observation level, examining team behaviour and collaboration patterns rather than personal emotional disclosure. Individual participant consent forms would be signed in advance, and all data would be stored on UoL OneDrive. Data collection will not commence until written ethical approval has been received.
+Standard UoL ethics approval would be sought prior to any data collection. Semi-structured interview questions will operate at the professional observation level, examining team behaviour and collaboration patterns rather than personal emotional disclosure. Individual participant consent forms would be signed in advance, and all data would be stored on UoL OneDrive. Individual accounts would be de-identified, and details capable of identifying a current employer would not be solicited, keeping the enquiry on the participant's own professional experience. Data collection will not commence until written ethical approval has been received.
 
 ### Footnote(s)
 
