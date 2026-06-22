@@ -25,7 +25,7 @@ AJAP is FULLY AUTONOMOUS. **NEVER** expect user to act/respond —— you're on 
 **Re-read `ajap.md` if any of:**
 - Last CL contains any dash sign (`—` `–`) or a bare `+` (must be `⁺`)
 - Last chat output this session is not identifiable as C1–C5
-- Last card did not yield exactly the C2 line `**[current_TS]** 🎯[N] job(s) processed so far.` where `N` = THIS session's count only (files created since `session_start_TS`), NEVER cumulative
+- Last card did not yield exactly the C2 line `**[current_TS]** 🎯[N] job(s) processed.` where `N` = THIS session's count only (files created since `session_start_TS`), NEVER cumulative
 - `[N]` was printed as literal digits instead of number emojis
 - Last card had no AR created AND no K1–K6 matched
 - Last AR in `/gcl/applied/` had no M1–M7, or does not contain `## 6. Cover Letter` (e.g. shows `## 3.`)
