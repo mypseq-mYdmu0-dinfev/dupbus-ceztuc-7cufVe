@@ -50,7 +50,7 @@ w/c —— Week commencing
 
 Knowledge-based firms (KBFs), whose competitive advantage derives primarily from the specialist expertise of their individual professionals rather than from physical or financial capital, span sectors such as legal, accounting, consulting, engineering, IT, and R&D (Grant, 1996; Kogut and Zander, 1992). The strategic architecture of these firms depends on the continuous integration of specialist knowledge distributed across individuals, rendering knowledge management (KM) a governance priority rather than a peripheral function. Any mechanism that disrupts this integration is thus not a mere interpersonal matter, but an organisation-level risk with measurable commercial consequences.
 
-CYC is a newly established management consulting firm (MCF) specialising in KM, intended to serve KBF clients across the Australian professional services sector[1]. As a knowledge-based firm in its own right, CYC's central commercial asset is rigorous, evidence-based knowledge of the governance conditions that sustain or inhibit effective knowledge contribution within KBFs, and the management challenge motivating this study is the need to strengthen that empirical foundation upon which its consulting practice will stand. The phenomenon at the centre of that challenge, carrying direct implications for KM performance, is Tall Poppy Syndrome (TPS). Theorised by Feather (1989, 1994) as the social disposition whereby high-performing individuals face peer marginalisation in response to their standout performance, TPS represents a threat to the social conditions on which voluntary knowledge sharing (KS) depends. In KBFs, where individual intellectual performance constitutes the organisation’s core commercial offering, TPS is amplified precisely because excellence is simultaneously required and inherently comparative. When a Tall Poppy (TP) is subjected to peer marginalisation, a reactive recalibration of knowledge contribution follows (Li, Xu and Kwan, 2021); KS becomes a vulnerability rather than a reciprocal exchange, and the social trust underpinning effective KM erodes progressively. This mechanism converts peer-level interpersonal friction into a boardroom-level strategic concern and latent KM governance risk, particularly for KBFs whose competitive position is inextricable from the depth and availability of their practitioners’ knowledge.
+CYC is a newly established management consulting firm (MCF) specialising in KM, intended to serve KBF clients across the Australian professional services sector[1]. As a knowledge-based firm in its own right, CYC’s central commercial asset is rigorous, evidence-based knowledge of the governance conditions that sustain or inhibit effective knowledge contribution within KBFs, and the management challenge motivating this study is the need to strengthen that empirical foundation upon which its consulting practice will stand. The phenomenon at the centre of that challenge, carrying direct implications for KM performance, is Tall Poppy Syndrome (TPS). Theorised by Feather (1989, 1994) as the social disposition whereby high-performing individuals face peer marginalisation in response to their standout performance, TPS represents a threat to the social conditions on which voluntary knowledge sharing (KS) depends. In KBFs, where individual intellectual performance constitutes the organisation’s core commercial offering, TPS is amplified precisely because excellence is simultaneously required and inherently comparative. When a Tall Poppy (TP) is subjected to peer marginalisation, a reactive recalibration of knowledge contribution follows (Li, Xu and Kwan, 2021); KS becomes a vulnerability rather than a reciprocal exchange, and the social trust underpinning effective KM erodes progressively. This mechanism converts peer-level interpersonal friction into a boardroom-level strategic concern and latent KM governance risk, particularly for KBFs whose competitive position is inextricable from the depth and availability of their practitioners’ knowledge.
 
 The scale of this risk is evidenced across industry research. Survey data indicate that **87.3%** of high-performing professionals report colleagues actively undermining their achievements (Billan, 2023), whilst disengagement costs approximately **US$10 trillion[2] annually** (Gallup, 2026). In knowledge-intensive organisations, employee departure results in measurable losses of institutional knowledge, productivity, and talent continuity (Banerjee et al., 2023). Internal knowledge is the single highest-rated innovation source across organisations, outranking any single external factor, including clients, suppliers, and competitors, yet employees routinely withhold innovative input when they feel disengaged or perceive their managerial environment as unreceptive (Beatson, 2024). Only 51% employees deem their managers as “good at seeking their views”; only 37% say they are “allowed to influence final decisions” (Young and Tong, 2025, p.29), exposing the management vacuum in which TPS dynamics operate without intervention. The Australian context compounds these conditions, with workplace stress as a driver of “unscheduled absence” cited by 57% employers, up from 42% in 2023; and 33% of employers reporting increased conflict issues in 2024 (AHRI, 2025, p.12). Additionally, 35% of organisations indicate their leaders as “not proficient” in team development and people management (AHRI, 2026, p.6). For KBFs, these deficiencies translate into an elevated exposure to TPS.
 
@@ -58,7 +58,7 @@ Notwithstanding extensive literature on TPS in cultural psychology (Feather, 198
 
 ### Research Aim
 
-To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice.
+To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC’s KM consulting practice.
 
 ### Research Questions
 
@@ -70,9 +70,9 @@ RQ2. How do team members in KBFs experience TPS-related team dynamics?
 RO1. Critically review existing literature on TPS, team dynamics, and KM in KBFs.
 RO2. Explore how TPs’ peers (TPPs) in KBFs perceive and experience TPS dynamics.
 RO3. Evaluate the organisational and interpersonal conditions that exacerbate or alleviate TPS.
-RO4. Synthesise a knowledge base on TPS-related KM and team cohesion risks from research insights to entrench CYC's service offering foundation.
+RO4. Synthesise a knowledge base on TPS-related KM and team cohesion risks from research insights to entrench CYC’s service offering foundation.
 
-Together, the two questions carry the aim's golden thread: RQ1 examines the conditions shaping TPS and RQ2 the team-level experience of its dynamics, addressed by RO3 and RO2 respectively, whilst RO1 establishes the literature and RO4 converts the resulting insight into CYC's consulting knowledge.
+Together, the two questions carry the aim’s golden thread: RQ1 examines the conditions shaping TPS and RQ2 the team-level experience of its dynamics, addressed by RO3 and RO2 respectively, whilst RO1 establishes the literature and RO4 converts the resulting insight into CYC’s consulting knowledge.
 
 This study contributes **academically** by extending TPS studies beyond cultural psychology into management and KM domains, and **practically** by equipping managers with workforce-derived insights to address an under-recognised governance challenge. For CYC, the findings will form the empirical foundation of its KM consulting practice, positioning the firm to advise future KBF clients on diagnosing and mitigating the knowledge governance risks associated with TPS.
 
@@ -111,7 +111,7 @@ The academic foundations of TPS research are distinctly Australian. Feather’s 
 
 Existing TPS literature is concentrated in psychology[4], with management-oriented application in KBF contexts largely absent. Feather (1989) himself identified the need for “studies of tall poppies in actual situations” and cross-group replication, which is exactly a call this study directly answers. Peer-level competitive dynamics are explicitly regarded as an under-theorised frontier of KS behaviour (Foss, Husted and Michailova, 2010; Wang and Noe, 2010). This study thus precisely occupies the intersection of these gaps.
 
-Figure 1 presents the study's **theoretical framework**: a theoretically-informed yet sensitising structure that orients enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Table 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
+Figure 1 presents the study’s **theoretical framework**: a theoretically-informed yet sensitising structure that orients enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Table 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
 
 | RQ | Sensitising theme | Informing theory / literature | Illustrative factor (held open) |
 |---|---|---|---|
@@ -124,7 +124,7 @@ Figure 1 presents the study's **theoretical framework**: a theoretically-informe
 | RQ2 | Cohesion and trust | Grossman et al. (2022); Mathieu et al. (2015) | cohesion erosion; trust breakdown |
 | Cross-cutting (stakes) | Strategic consequence | KBV (Grant, 1996; Kogut and Zander, 1992) | withheld tacit knowledge; KM governance risk |
 
-Within this structure, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that bear on both questions rather than answering either, rendering the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study's openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
+Within this structure, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that bear on both questions rather than answering either, rendering the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study’s openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
 
 ### Footnote(s)
 
@@ -202,7 +202,7 @@ The researcher’s professional network spans legal, accounting, consulting, eng
 
 ### 3.9. Ethics
 
-Standard UoL ethics approval would be sought prior to any data collection. Semi-structured interview questions will operate at the professional observation level, examining team behaviour and collaboration patterns rather than personal emotional disclosure. Individual participant consent forms would be signed in advance, and all data would be stored on UoL OneDrive. Individual accounts would be de-identified, and details capable of identifying a current employer would not be solicited, keeping the enquiry on the participant's own professional experience. Data collection will not commence until written ethical approval has been received.
+Standard UoL ethics approval would be sought prior to any data collection. Semi-structured interview questions will operate at the professional observation level, examining team behaviour and collaboration patterns rather than personal emotional disclosure. Individual participant consent forms would be signed in advance, and all data would be stored on UoL OneDrive. Individual accounts would be de-identified, and details capable of identifying a current employer would not be solicited, keeping the enquiry on the participant’s own professional experience. Data collection will not commence until written ethical approval has been received.
 
 ### Footnote(s)
 
@@ -215,16 +215,15 @@ Standard UoL ethics approval would be sought prior to any data collection. Semi-
 | # | Milestone | UoL Week | Calendar Date |
 |---|---|---|---|
 | 01 | A1 (Research Proposal) submitted | Week 6 | 27/04/2026 |
-| 02 | DA matched; proposal refinement begins under DA's guidance | Week 7 | w/c 28/04/2026 |
-| 03 | Amended proposal (A1R v2) submitted to DA | Week 14 | w/c 22/06/2026 |
-| 04 | Refined proposal approved by DA and second reviewer | Week 16 | w/c 06/07/2026 |
-| 05 | Ethics application submitted to DA and second reviewer | Week 17 | w/c 13/07/2026 |
-| 06 | Ethics application approved; written confirmation received | Week 20 | w/c 03/08/2026 |
-| 07 | Data collection commences | Week 21 | w/c 10/08/2026 |
-| 08 | Data collection complete | Week 26 | w/c 14/09/2026 |
-| 09 | Transcription and coding complete | Week 29 | w/c 05/10/2026 |
-| 10 | Data analysis complete | Week 32 | w/c 26/10/2026 |
-| 11 | Draft A2 and A3 submitted | Week 34 | 09/11/2026 |
+| 02 | DA matched; proposal refinement begins under DA’s guidance | Week 7 | w/c 28/04/2026 |
+| 03 | Refined proposal approved by DA and second reviewer | Week 15 | w/c 23/06/2026 |
+| 05 | Ethics application submitted to DA and second reviewer | Week 16 | w/c 30/06/2026 |
+| 06 | Ethics application approved; written confirmation received | Week 17 | w/c 07/07/2026 |
+| 07 | Data collection commences | Week 18 | w/c 14/07/2026 |
+| 08 | Data collection complete | Week 26 | w/c 08/09/2026 |
+| 09 | Transcription and coding complete | Week 28 | w/c 22/09/2026 |
+| 10 | Data analysis complete | Week 30 | w/c 06/10/2026 |
+| 11 | Draft A2 and A3 submitted | Week 32 | 26/10/2026 |
 | 12 | Final A2 and A3 submitted | Week 36 | 23/11/2026 |
 
 *Note: Data collection will not commence until written ethical approval has been received.*
@@ -237,7 +236,7 @@ AHRI (2025) *Quarterly Australian Work Outlook: December Quarter 2025*. Melbourn
 
 AHRI (2026) *5 2026 Workforce Trends*. Melbourne: Australian HR Institute. Available at: https://www.ahri.com.au/wp-content/uploads/5-2026-workforce-trends-1.pdf (Accessed: 13 May 2026).
 
-Ayres, L., Kavanaugh, K. and Knafl, K.A. (2003) 'Within-case and across-case approaches to qualitative data analysis', *Qualitative Health Research*, 13(6), pp. 871–883. doi: 10.1177/1049732303013006008.
+Ayres, L., Kavanaugh, K. and Knafl, K.A. (2003) ‘Within-case and across-case approaches to qualitative data analysis’, *Qualitative Health Research*, 13(6), pp. 871–883. doi: 10.1177/1049732303013006008.
 
 Banerjee, I., Choudhary, M., Ladher, J., Sethi, A. and Sood, A. (2023) ‘Employee experience still matters: Talent retention at GCCs’, *McKinsey Digital*, October 2023. Available at: https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/employee-experience-still-matters-talent-retention-at-gccs (Accessed: 19 April 2026).
 
@@ -307,4 +306,4 @@ Yin, R.K. (2003) *Case Study Research: Design and Methods*. 3rd edn. Thousand Oa
 
 Young, J. and Tong, D. (2025) *Good Work Index 2025*. London: Chartered Institute of Personnel and Development. Available at: https://www.cipd.org/globalassets/media/knowledge/knowledge-hub/reports/2025-pdfs/8868-good-work-index-2025-report-web1.pdf (Accessed: 13 May 2026).
 
-Zainal, Z. (2007) 'Case study as a research method', *Jurnal Kemanusiaan*, 9, pp. 1–6.
+Zainal, Z. (2007) ‘Case study as a research method’, *Jurnal Kemanusiaan*, 9, pp. 1–6.
