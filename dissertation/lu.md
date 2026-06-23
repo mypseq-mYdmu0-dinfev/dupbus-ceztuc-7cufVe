@@ -488,7 +488,7 @@ Lu
 
 ### Log 22
 
-On 24 Jun 2026, at 07:56, Culous Yu <Culous.Yu@liverpool.ac.uk> wrote:
+On 24 Jun 2026, at 08:12, Culous Yu <Culous.Yu@liverpool.ac.uk> wrote:
 
 Hello Lu,
 
@@ -520,7 +520,7 @@ The methodology is split into separately justified parts, namely §3.1 Research 
 
 §3.5 now states that participants are individual employees, recruited no more than one per organisation, which keeps the work below the level requiring organisational authorisation. Interviews centre on each participant’s own experiences and perceptions, drawn from current or previous firms, rather than on any account of an employer’s practices. On comparability, the design now seeks participants of broadly comparable professional standing to support meaningful cross-case comparison and strengthen the thematic analysis, whilst holding a minimum of 6. §3.9 adds that accounts are de-identified and that employer-identifying details are not solicited.
 
-I hope this helps reading the refined proposal. I am happy to adjust anything further under your guidance. Thank you for your time!
+I hope this eases your reading of the refined proposal. I am happy to adjust anything further under your guidance. Thank you for your time!
 
 Warm Regards,
 Culous
