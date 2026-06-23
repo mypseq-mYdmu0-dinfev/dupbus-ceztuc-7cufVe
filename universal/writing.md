@@ -17,6 +17,7 @@
 - Avoid english numbers (except "one"), use numerals instead (easier human reading):
   - ❌ e.g. I use 1 tool to save two minutes.
   - ✅ e.g. I use one tool to save 2 minutes.
+  - Except § Casual Writing (e.g. "3rd"), use english number for ordinals (e.g. "third").
 
 ---
 
