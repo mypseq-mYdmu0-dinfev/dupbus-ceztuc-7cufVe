@@ -133,7 +133,7 @@ Figure 2 assembles these factors into the framework. Within it, the conditioning
 
 ---
 
-## Figure 1. Sensitising Themes, Informing Theories and Illustrative Factors by Research Question
+## Figure 1. Sensitising Themes, Informing Theories, and Illustrative Factors by RQs
 
 | RQ | Sensitising Theme | Informing Literature | Illustrative Factor |
 |---|---|---|---|
