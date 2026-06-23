@@ -513,3 +513,8 @@ voluntary knowledge contribution can thus be reactively withdrawn (Li, Xu and Kw
 ```
 voluntary knowledge contribution can thus be reactively withdrawn (Sung et al., 2024)
 ```
+
+*Status (per your reply 240534): Changes 35–37 (Billan / UK caveats) are REJECTED —— keep your .pages originals; I am reverting them in A1R.md. Changes 38–39 (Li → Sung) you have already applied. The ONLY outstanding .pages action is Change 40 below.*
+
+### Change 40 🔴 —— footnote renumber (close the gap from removing old footnote 3)
+Your .pages footnotes currently run 1, 2, **4, 5** (no 3). Renumber the last two —— at BOTH the in-text superscript AND the page-bottom footnote text —— so they run 1–4 with no gap. The footnote now **⁴** (§2.5 in-text "psychology⁴"; its page-7 text "Concentration of TPS literature …") becomes **³**; the footnote now **⁵** (§3.3 in-text "cases⁵"; its page-9 text "One participant per organisation …") becomes **⁴**. Footnotes 1 and 2 are unchanged. (If these were Pages' auto-numbered footnotes, deleting old #3 would have renumbered them automatically; since it did not, they are manual —— change the digits by hand.)
