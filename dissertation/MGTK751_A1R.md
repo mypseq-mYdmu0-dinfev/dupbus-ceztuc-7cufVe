@@ -121,7 +121,7 @@ The academic foundations of TPS research are distinctly Australian. Feather’s 
 
 Existing TPS literature is concentrated in psychology[4], with management-oriented application in KBF contexts largely absent. Feather (1989) himself identified the need for “studies of tall poppies in actual situations” and cross-group replication, which is exactly a call this study directly answers. Peer-level competitive dynamics are explicitly regarded as an under-theorised frontier of KS behaviour (Foss, Husted and Michailova, 2010; Wang and Noe, 2010). This study thus precisely occupies the intersection of these gaps.
 
-The study’s **theoretical framework** is theoretically-informed yet sensitising: it orients enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Figure 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
+The study’s **theoretical framework** is theoretically-informed yet sensitising, drawing on Blumer’s (1954) notion of sensitising concepts to orient enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Figure 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
 
 Figure 2 assembles these factors into the framework. Within it, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that bear on both questions rather than answering either, rendering the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study’s openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
 
@@ -133,7 +133,7 @@ Figure 2 assembles these factors into the framework. Within it, the conditioning
 
 ---
 
-## Figure 1. Sensitising Themes, Informing Theories, and Illustrative Factors by RQs
+## Figure 1. Sensitising Concepts
 
 | RQ | Sensitising Theme | Informing Literature | Illustrative Factor |
 |---|---|---|---|
@@ -279,6 +279,8 @@ Beatson, M. (2024) *People-Powered Innovation*. London: Chartered Institute of P
 Billan, R. (2023) *The Tallest Poppy*. Available at: https://www.womenofinfluence.ca/tps/ (Accessed: 19 April 2026).
 
 Blau, P.M. (1964) *Exchange and Power in Social Life*. New York: Wiley.
+
+Blumer, H. (1954) ‘What is wrong with social theory?’, *American Sociological Review*, 19(1), pp. 3–10. doi: 10.2307/2088165.
 
 Braun, V. and Clarke, V. (2006) ‘Using thematic analysis in psychology’, *Qualitative Research in Psychology*, 3(2), pp. 77–101. doi: 10.1191/1478088706qp063oa.
 

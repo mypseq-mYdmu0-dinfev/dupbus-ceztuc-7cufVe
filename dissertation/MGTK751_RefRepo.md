@@ -503,6 +503,16 @@ Per entry: ref line (###) → access (bold) → notes (bullets; strategic angle 
 
 ---
 
+### Blumer, H. (1954) ‘What is wrong with social theory?’, *American Sociological Review*, 19(1), pp. 3–10. doi: 10.2307/2088165.
+
+**Full text confirmed via CIC (Mead Project reproduction); citation validated on JSTOR — *American Sociological Review* 19(1), Feb 1954, pp. 3–10, doi 10.2307/2088165 (the Mead reproduction misprints the volume as 18; JSTOR and Crossref both confirm 19(1))**
+
+- Origin of the "sensitising concept", set against the "definitive concept": "definitive concepts provide prescriptions of what to see, sensitizing concepts merely suggest directions along which to look", giving "a general sense of reference and guidance in approaching empirical instances" (p. 7) — the warrant for a theoretically-informed but non-dictating framework
+- Grounds A1R's "sensitising" usage (§2.5 theoretical framework; Figure 1 "Sensitising Concepts"; §3.6 analysis), which previously used the term without attribution; pairs with Braun and Clarke (2006) theoretical TA and Saunders et al. (2023)
+- A1R §2.5 (cite at first use of "sensitising"); A3 Ch2/Ch3: canonical methodological attribution for the sensitising-framework design
+
+---
+
 ### Yin, R.K. (2003) *Case Study Research: Design and Methods*. 3rd ed. Thousand Oaks: SAGE.
 
 **Full text not extracted** *(`/From Lu/yin-case study-book.pdf` is a scanned image; OCR unavailable; key arguments captured via Zainal (2007) and folder example documents which cite Yin (1994; 2nd ed) directly — confirm edition before A3 submission)*
