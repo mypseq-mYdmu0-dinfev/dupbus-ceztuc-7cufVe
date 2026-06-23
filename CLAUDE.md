@@ -204,6 +204,10 @@
   - 8.8.5. Reading MS Office (.docx/.xlsx/.pptx):
     - 8.8.5.1. Judge by case —— read directly (e.g. textutil) OR via §8.8.3
     - 8.8.5.2. `PDF Conversion.app` also works for MS (read README.md in same folder if MS)
+  - 8.9. Self-initiated scripts (not asked by user):
+    - 8.9.1. NEVER create anything in root (`/dupbus-ceztuc-7cufVe/`) unless explicitly told
+    - 8.9.2. Temp/throwaway (to be voided): create beside the `response_` so user sees & deletes
+    - 8.9.3. Reusable scripts: create in `cscpt/` then update `cscpt/README.md`
 
 9. Miscellaneous
 - 9.1. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
