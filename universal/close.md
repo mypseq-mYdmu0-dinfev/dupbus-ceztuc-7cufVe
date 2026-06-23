@@ -4,7 +4,7 @@
 
 - Triggered by: `#close` | Current_TS: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
 - Editing `close_` file:
-  - Also update end-of-range TS on Line 1 (`# Session Closing...`) w/ [current_TS]
+  - Also update end-of-range TS on Line 1 w/ [current_TS]
   - NEVER edit TS in filename, so user can track diff
 - Sprint Log —— if a `#sprint` ran this session, record its `slog_[TS].md` as a created non-comms file (§ Other Files; or § Coverage for Addendum) for future retrospection if needed.
 
@@ -89,7 +89,7 @@ Location: same folder as the session's query_/response_ files
 1. Handoff
 Filename: `[CP_folder]_close_[TS].md`
 Location: same folder as the session's query_/response_ files
-Usage: to be kept for record & sent at next chat start; MUST be MECE with addendum
+Usage: to be kept for record & sent at next session start; MUST be MECE with addendum
 
 2. Addendum
 Filename: `[CP_folder]_response_[TS].md` (a distinct response_ file, NOT directly appended to DevPlan.md; user reviews first)
@@ -99,8 +99,8 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 ### Handoff Template
 
 ```markdown
-# [CP_Name/Alias] Session Closing ([1st_query_TS]–[current_TS])
-*Chat [Z]: [Heading max 8w]*
+# [CP_Name/Alias] Session Handoff ([1st_query_TS]–[current_TS])
+*Session [Z]: [Heading max 8w]*
 
 ## Status
 [Last & next issues; use P[no.]/AD[no.] if applicable; max 20w; all #numbered (same for below)]
@@ -116,12 +116,16 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 [... all `query_`/`response_` pairs created this session, in chronological order]
 ```
 
+### Handoff Rules
+
+- To be sent as (or in) 1st msg (or `query_`) to next session
+
 ### Addendum Template
 
 ```markdown
-### AD[XX]. P[Y.Y] (Chat [Z]) —— [Heading max 8w]
+### AD[XX]. P[Y.Y] (Session [Z]) —— [Heading max 8w]
 
-*Note: `###` level for appending under `## PART C` of DevPlan.md; XX = last addendum no. + 1 in 2 digits; Y.Y = phase(s) worked on; Z = this chat's number (last +1 unless told otherwise)*
+*Note: `###` level for appending under `## PART C` of DevPlan.md; XX = last addendum no. + 1 in 2 digits; Y.Y = phase(s) worked on; Z = this session's number (last +1 unless told otherwise)*
 
 - AD[XX].1. Coverage
   - AD[XX].1.1. [What was accomplished/done; e.g. list of issues/tasks addressed, any non-comms files created/edited/deleted; if none AND 0% DevPlan progress, input N/A]
@@ -157,7 +161,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
   - 3rd level uses sub-bullet `  - `
 - No separator `---` within addendum
 - MECE (Mutually Exclusive, Collectively Exhaustive):
-  - Handoff = only applicable to immediate next chat
-  - Addendum = persists for & valuable to all future chats
+  - Handoff = only applicable to immediate next session
+  - Addendum = persists for & valuable to all future sessions
 - Focus on discrepancies and special notes only
 - DON'T describe general progress (P[Y.Y] already indicates that)
