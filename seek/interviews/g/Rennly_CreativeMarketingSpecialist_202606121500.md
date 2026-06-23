@@ -418,3 +418,35 @@ Working Hours: 0900–1730, Monday–Friday, 1hr lunch break
 Weekend Work: Generally no; if any, will compensate like AL; e.g. 3hr OT = 3hr leave later
 Car Park: free, right at basement of same building; each occupant (incl. Rennly) has an amount of free parking bays (Mary appeared surprised when user was asking how much is monthly parking rate as she assumed free), though user would have to re-confirm if any vacancy still available
 Next Step: will reply latest by next week
+
+### Employer Decision
+
+On 22 Jun 2026, at 17:06, Mary Shen <hr@home789.com.au> wrote:
+
+Dear Culous,
+
+We appreciate your patience while we complete our review process.
+
+It was a pleasure getting to know you during the interview. We were impressed by your experience and enjoyed our conversation with you.
+
+After careful consideration, we have decided to move forward with another candidate whose background and experience more closely align with our current requirements. This was a difficult decision, as we received a number of strong applications, and your skills and professionalism made a positive impression on us.
+
+We sincerely appreciate the time and effort you invested in the interview process and wish you every success in your career. We have no doubt that you'll be a valuable addition to the right team, and we hope another opportunity may arise in the future.
+
+Thank you again, and all the best with your future endeavours.
+
+Kind Regards,
+
+MARY SHEN
+HR/Office Manager
+
+### User Reply
+
+On 23 Jun 2026, at 16:09, c@culousyu.com wrote:
+
+Hello Mary,
+
+Thank you for the update and for the opportunity granted. Shall there be future opportunities that you reckon I might fit, feel free to directly approach me, especially but not limited to Business Analyst or adjacent roles. Appreciate your time and consideration.
+
+Warm Regards,
+Culous
