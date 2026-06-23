@@ -102,4 +102,56 @@ www.duogroup.com.au
 • ATO Compliant • AIQS Registered • Australia-wide • Residential & Commercial • Australia's Most Reviewed Quantity Surveyor
 Duo Group accepts no liability for the content of this email, or for the consequences of any actions taken based on the information provided, unless that information is subsequently confirmed in writing. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.
 
-<SME- TASK.png> (INTERNAL: temp saved in `Fury Downloads/`)
+<SME- TASK.png>
+
+#### Attachment (converted from low-res PNG by Gemini Pro; could be wrong)
+
+```
+# Senior Marketing Executive
+
+*Candidate Application Assessment Task*
+
+## Purpose of This Task
+As part of the application process for the Senior Marketing Executive role, we would like to understand your practical marketing capability, written communication skills, campaign thinking, and ability to create clear marketing content for an Australian property-related audience.
+
+## Background Scenario
+Duo Tax wants to run a simple marketing campaign targeting Australian property investors who may not realise that older investment properties may still have depreciation potential.
+
+The campaign goal is to generate qualified enquiries for tax depreciation schedules.
+
+The target audience may include:
+* First-time property investors.
+* Investors who own older residential investment properties.
+* Investors who have recently renovated an investment property.
+* Accountants, mortgage brokers, or property professionals who may refer clients.
+
+Please ensure your responses are written clearly and professionally. Avoid making guaranteed tax savings claims or giving personal tax advice.
+
+## Task 1: Mini Campaign Brief
+
+In 150-200 words, outline a simple campaign approach for the above scenario.
+
+Please include:
+* Campaign objective.
+* Target audience.
+* Key message.
+* Recommended marketing channels.
+* Suggested call-to-action.
+* One or two key metrics you would track.
+
+We are looking for a practical and concise response that shows how you would structure a campaign and connect marketing activity to business outcomes.
+
+## Task 2: Marketing Copywriting
+
+Please write the following campaign copy.
+
+### A. Social Media Caption
+
+Write one caption suitable for Facebook, Instagram, or LinkedIn.
+
+**Maximum length:** 100 words
+
+Your caption should:
+* Be clear and professional.
+* Be written for Australian property investors.
+```
