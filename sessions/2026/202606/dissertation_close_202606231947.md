@@ -1,17 +1,14 @@
-# Dissertation (MP) Session Closing (202606040416–202606231947)
-*Chat 15: A1R v2 Build & Polish*
+# Dissertation (MP) Session Handoff (202606040416–202606232027)
+*Session 15: A1R v2 Build & Polish*
 
 ## Status
-- 1. P12 A1R v2 drafted, QC'd, red-teamed and polished on `MGTK751_A1R.md` (all of Lu's CM1–CM5, her Logs 16/18 approval, the forked #debate, and your polish feedback applied). NEXT: P12.7 (.pages handoff via `#replace #adv`) → finalise → P12.6 re-QC → P12.8 send. P13 (approval/ethics) and P14 (post-ethics) follow.
+- 1. P12 A1R v2 is fully drafted, QC'd, red-teamed and polished on `MGTK751_A1R.md` (Lu's CM1–CM5, her Logs 16/18 approval, a forked #debate, and all polish feedback applied). Next session's next action is **P12.7** (the .pages handoff via `#replace #adv`), then P12.6 re-QC → P12.8 send. P13/P14 follow.
 
 ## Remarks
-- 1. Next session = "MP16 (A1R Resubmission)". Re-read MOST comms for reliable recovery, NOT just this close_: priority = `lu.md` (Logs 12–19; Log 17 email + Log 18 approval are the spine), CB, and the latest response_ files `202606231835` + `202606231936` (they hold the most current decisions and the open items).
-- 2. Resume at **P12.7**. You will supply the read-only layout mirror `dissertation/archive/MGTK751_A1R_backup_202606231628.pages.md` (bold stripped on copy-paste —— refer to `…_backup_202606192247.md` for what was bolded). CC then diffs `…_backup_202606192247.md` vs the finished `MGTK751_A1R.md` to enumerate every P12 change and emits `#replace #adv` quoting the BROKEN lines so you ⌘F-apply them to your working `.pages`. After your manual polish you mirror back to `MGTK751_A1R.md`; CC re-runs P12.6 QC; only then P12.8 (do NOT draft the Log 19 cover email until you confirm the draft finalised).
-- 3. Held / yours: Figure 2 render in Pages (SVG `MGTK751_A1R_Figure2_TheoreticalFramework.svg` ready); the cover email; the send. Run a FULL dlint on A1R §1–3 immediately before dispatch (P12.8.0).
-- 4. Your OPEN decisions (from `response_202606231835`/`231936`): footnote-3 / SMART (left to Glossary); the uncited "Reward, Recognition, and Leadership" figure box; milestone front-gate tightness; whether to alter `lu.md` L182's verbatim "Yin, 2009" email record. Also: suggest a little more bolding after your manual edits, before submit.
-- 5. NB the inserted word-count lines in A1R §1–3 will surface in the P12.7 diff (expected).
+- 1. CC re-read for recovery: AD11 (now in DevPlan PART C); `lu.md` (Logs 12–19, especially 16/17/18); `MGTK751_A1R.md` (the deliverable, directly); CB + DevPlan (unconditionals); `universal/replace.md` + `universal/replace_adv.md` (the P12.7 workflow). From the session comms, re-read AD11.4.19 (Sprint Report —— what was built) and AD11.4.22–24 (the polish rounds + final decisions). The rest, AD11.4.1–18 and 20–21, are superseded by AD11 / A1R.md / lu.md —— skip unless tracing a specific detail.
+- 2. Nothing is owed by the USER —— everything is supplied. Next session's job is to execute **P12.7**: CC diffs `archive/MGTK751_A1R_backup_202606192247.md` (the pre-P12, unbroken snapshot) against the finished `MGTK751_A1R.md` to enumerate every change, then emits `#replace #adv` quoting the BROKEN lines from `archive/MGTK751_A1R_backup_202606231628.pages.md` (the layout mirror; bold stripped on copy-paste —— see the 192247 backup for what was bolded) so the USER can ⌘F-apply each to the working `.pages`. After the USER polishes and mirrors back to `MGTK751_A1R.md`, CC re-runs P12.6 QC, then P12.8 (draft the Log 19 cover email ONLY once the user confirms the draft finalised; run a FULL dlint on §1–3 before dispatch).
+- 3. Figure 2 (`MGTK751_A1R_Figure2_TheoreticalFramework.svg`) is final and good; the USER will paste it directly into `.pages` as an image (no recreation). CC simply reviews it alongside A1R.md and confirms.
+- 4. Order: turn 1 (this turn; the USER supplies this handoff) —— CC re-reads the above, confirms fully understands and agrees, raising any QB; turn 2 —— if no QB, user prompts `proceed` & CC starts P12.7.
 
-## Session Files (25 comms pairs + slog + figures)
-- 1. Full chronological list of all `query_`/`response_` pairs is in **AD11.4** (`dissertation_response_202606231947.md`, this session's addendum) —— avoids duplicating ~25 lines here.
-- 2. Most-relevant recent: `202606231936` (final polish), `202606231835` (polish round), `202606221543` (Sprint Report), `202606150723` (DevPlan P12 build).
-- 3. Non-comms of note: `dissertation_slog_202606221529.md` (sprint); `MGTK751_A1R_Figure2_TheoreticalFramework.svg`; `universal/replace_adv.md`; `addenda/MGTK751_Addendum_AD01–07.md`.
+## Session Files
+The full chronological list of all 25 comms pairs + non-comms is in AD11.4 (the addendum now in DevPlan PART C).
