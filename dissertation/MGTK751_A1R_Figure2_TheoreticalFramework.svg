@@ -35,7 +35,7 @@
 
   <!-- ===== RQ1 cluster ===== -->
   <rect class="cont" x="40" y="176" width="490" height="262" rx="10"/>
-  <text class="conttl" x="60" y="198" fill="#3a5a7a">RQ1 — Conditions That Exacerbate / Alleviate TPS</text>
+  <text class="conttl" x="285" y="198" fill="#3a5a7a" text-anchor="middle">RQ1 — Conditions That Exacerbate / Alleviate TPS</text>
 
   <rect class="b1" x="60" y="214" width="215" height="62" rx="8"/>
   <text class="ftxt" x="167" y="240" text-anchor="middle">Performance Comparison Threat</text>
@@ -51,7 +51,8 @@
   <text class="fsrc" x="167" y="345" text-anchor="middle">(Kim and Glomb, 2014)</text>
 
   <rect class="b1" x="295" y="290" width="215" height="62" rx="8"/>
-  <text class="ftxt" x="402" y="324" text-anchor="middle">Reward, Recognition &amp; Leadership</text>
+  <text class="ftxt" x="402" y="316" text-anchor="middle">Reward, Recognition,</text>
+  <text class="ftxt" x="402" y="332" text-anchor="middle">and Leadership</text>
 
   <rect class="b1" x="60" y="366" width="215" height="62" rx="8"/>
   <text class="ftxt" x="167" y="392" text-anchor="middle">Task Interdependence</text>
@@ -63,7 +64,7 @@
 
   <!-- ===== RQ2 cluster ===== -->
   <rect class="cont" x="590" y="176" width="490" height="262" rx="10"/>
-  <text class="conttl" x="610" y="198" fill="#3a7a55">RQ2 — How Peers Experience TPS Dynamics</text>
+  <text class="conttl" x="835" y="198" fill="#3a7a55" text-anchor="middle">RQ2 — How Peers Experience TPS Dynamics</text>
 
   <rect class="b2" x="610" y="214" width="215" height="62" rx="8"/>
   <text class="ftxt" x="717" y="240" text-anchor="middle">Knowledge-Sharing Withdrawal</text>

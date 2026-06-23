@@ -123,6 +123,18 @@ Existing TPS literature is concentrated in psychology[4], with management-orient
 
 The study’s **theoretical framework** is theoretically-informed yet sensitising: it orients enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Figure 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
 
+Figure 2 assembles these factors into the framework. Within it, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that bear on both questions rather than answering either, rendering the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study’s openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
+
+### Footnote(s)
+
+[4] Concentration of TPS literature in cultural psychology and attitudinal research is established in §1 Introduction with full citations and hence not repeated here.
+
+(319 words)
+
+---
+
+## Figure 1. Sensitising Themes, Informing Theories and Illustrative Factors by Research Question
+
 | RQ | Sensitising theme | Informing theory / literature | Illustrative factor (held open) |
 |---|---|---|---|
 | RQ1 | Performance comparison and threat | SCT (Festinger, 1954) | comparison threat; uniformity pressure |
@@ -132,17 +144,7 @@ The study’s **theoretical framework** is theoretically-informed yet sensitisin
 | RQ2 | Knowledge-sharing response | SET (Blau, 1964); Podsakoff et al. (2000) | reciprocity breakdown; KS withdrawal |
 | RQ2 | Social exclusion | Breidenthal et al. (2020) | ostracism; informal exclusion |
 | RQ2 | Cohesion and trust | Grossman et al. (2022); Mathieu et al. (2015) | cohesion erosion; trust breakdown |
-| Cross-Cutting (stakes) | Strategic consequence | KBV (Grant, 1996; Kogut and Zander, 1992) | withheld tacit knowledge; KM governance risk |
-
-*Figure 1. Sensitising themes, informing theories, and illustrative factors, by research question.*
-
-Figure 2 assembles these factors into the framework. Within it, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that bear on both questions rather than answering either, rendering the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study’s openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
-
-### Footnote(s)
-
-[4] Concentration of TPS literature in cultural psychology and attitudinal research is established in §1 Introduction with full citations and hence not repeated here.
-
-(319 words)
+| Stakes | Strategic consequence | KBV (Grant, 1996; Kogut and Zander, 1992) | withheld tacit knowledge; KM governance risk |
 
 ---
 
@@ -178,7 +180,7 @@ Figure 2 assembles these factors into the framework. Within it, the conditioning
 
 ### 3.1. Research Philosophy
 
-This study is grounded in an **interpretivist** epistemology and a constructivist ontology (Saunders, Lewis and Thornhill, 2023). Consistent with this position, TPS is treated not as an objective, independently measurable entity but as a phenomenon constituted through the social perceptions, attributions, and contextually contingent group behaviours of those who witness and enact it. An interpretivist epistemology is correspondingly adopted because meaningful knowledge of TPS can be derived only from the subjective accounts of those who experience it, rather than from detached statistical observation. These positions suit a phenomenon whose reality is inseparable from how team members understand and respond to it.
+This study is grounded in an **interpretivist** epistemology and a constructivist ontology (Saunders, Lewis and Thornhill, 2023). Consistent with this position, TPS is regarded not as an objective, independently measurable entity but as a phenomenon constituted through the social perceptions, attributions, and contextually contingent group behaviours of those who witness and enact it. An interpretivist epistemology is correspondingly adopted because meaningful knowledge of TPS can be derived only from the subjective accounts of those who experience it, rather than from detached statistical observation. These positions suit a phenomenon whose reality is inseparable from how team members understand and respond to it.
 
 (101 words)
 
