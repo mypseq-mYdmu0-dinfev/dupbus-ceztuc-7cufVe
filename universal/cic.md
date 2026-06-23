@@ -2,29 +2,30 @@
 
 CIC = Claude in Chrome (Claude's connector/Chrome's extension), accessible via either interfaces:
 
-- **ACIC** = App-CIC, Claude's Mac app's "Chat" tab; the ONLY one w/ full context but frequently require permissions (e.g. click "Continue" or access a non-white-listed site); for **short** tasks (~10 pages)
-- **BCIC** = Browser-CIC, Chrome's sidebar chat; for **medium** tasks (~30 pages)
-- **CCIC** = Code-CIC, Claude's Mac app's "Code" tab; may config `.claude` files (e.g. hook); for **infinite** loop of programmed workflow (e.g. job application automation)
-- **WCIC** = Cowork-CIC, Claude's Mac app's "Cowork" tab; similar to BCIC but can r/w local files (see `cowork_[timestamp].md` below); for **long** tasks (~50 pages, technically unlimited)
-- All fully autonomous exc. ACIC; All via MCP exc. BCIC; All w/o any context exc. ACIC
-- CC: default CIC=CCIC; spawn SA to save context if feasible (judge; e.g. [SA briefing + SA return to main] < [direct CIC output to main])
+- **BCIC** = Browser-CIC, Chrome's sidebar chat; very rarely used
+- **CCIC** = Code-CIC, used by CC; the **default** means
+- CC: default CIC=CCIC; actively consider spawning SA to save context if feasible (judge; e.g. [SA briefing + SA return to main] < [direct CIC output to main])
+
+---
+
+## Mandate —— when `#cic` is prompted (or any high-stake validation)
+
+- When `#cic` is prompted you **MUST** validate via CIC by reading the actual live web page. `web_search` and the **CrossRef API are TRIAGE ONLY** —— they locate and target candidates and NEVER confirm. NOTHING they surface may be cited in a deliverable, added to non-`response_` files (e.g. `RefRepo.md`), or relied on for any claim until CIC has read the live source. NEVER cite or add a source on a `web_search`/CrossRef result alone.
+- Scope: whenever `#cic` is prompted, OR on any high-stake task —— adding a NEW source, citing in a deliverable, or validating a statistic/figure/edition.
+- Why firm: a Crossref-only citation once entered the deliverable with the wrong volume; only CIC's live read caught it. Triage ≠ confirmation.
 
 ---
 
 ## When to Suggest CIC
 
-When we're on high-stake tasks requiring validation OR repetitive/lengthy tasks requiring minimal human intervention, briefly suggest (either below; but don't proceed yet):
-
-1. me to open CAI & Chrome for ACIC if we need **accuracy** beyond web_search
-2. if you should draft a prompt for BCIC to access live websites in high quantity and/or perform **non-context-dependent** actions
-3. if you should draft a prompt for WCIC when BCIC doesn't suffice (context overload anticipated) or local file access needed (e.g. literature downloading) for **context-dependent** actions
-4. to engineer a strict, sophisticated CCIC workflow for high-stake, length tasks (start by requesting existing CCIC CPs' files as sample)
+- CC: DON'T suggest; DIRECTLY go for it whenever applicable (false-positive leaning); CIC is always available for you, otherwise directly open Chrome by yourself.
+- Non-CC: When we're on high-stake tasks requiring validation OR repetitive/lengthy tasks requiring minimal human intervention, briefly suggest me to use CCIC if we need **accuracy** beyond web_search. If user is OTG (CIC is N/A), fall back to web_search & alert for inaccuracy.
 
 ---
 
 ## Pre-CIC Protocol
 
-Before starting ACIC or drafting any B/WCIC prompt, always run `web_search` first:
+Before any CIC operation, always run `web_search` first:
 - Surface as many candidate sources as possible; pass **valid candidates only** (inc. full URLs) into the CIC prompt as a starting pt to narrows CIC's scope & speed up execution
 - **Valid** = directly relevant to the task + from an authoritative source, regardless of whether it confirms or contradicts the hypothesis
 - **Invalid** = irrelevant, low-quality, or adds no substantive value
@@ -32,10 +33,8 @@ Before starting ACIC or drafting any B/WCIC prompt, always run `web_search` firs
 - If valid+invalid candidates are fewer than 5, CIC may also give a quick pass on invalid sources, prioritising borderline ones over clearly off-topic ones
 - CIC should also search for additional sources beyond the list as needed
 - web_search returning no results ≠ CIC will also find nothing —— worth CIC trying regardless
-- If any candidates are PDF + no equiv/similar web ver found:
-  - DON'T use BCIC (inefficient)
-  - Briefly alert me if I told to use BCIC
-  - Pivot to WCIC → Ensure PDFs are downloaded (not opened in Chrome tab)
+- If any candidates are PDF + no equiv/similar web ver found: DON'T use BCIC (can't handle files); pivot to CCIC → ensure PDFs are downloaded (not opened in a Chrome tab)
+- On academic, use the most efficient authoritative means (e.g. G Scholar); take the UoL/UTS Library as fallback when public sources paywall —— follow `universal/cic_libs.md` for Library entry points and full-text steps (NB Library access lapses after 2026, MBA graduation)
 
 ---
 
@@ -45,27 +44,6 @@ When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same f
 
 ---
 
-## Drafting for WCIC
-
-When drafting a WCIC prompt, follow the same approach as BCIC, plus:
-- Always instruct to:
-  - (1) get current timestamp via terminal (`TZ='Australia/Sydney' date +"%Y%m%d%H%M"`)
-  - (2) immediately create `/Users/culous/Downloads/cowork_[timestamp].md` at task start
-  - (3) write all requested responses (e.g. findings/analysis) to that file (mimicking an artefact)
-  - (4) ensure sequential workflow:
-    - ✅ research 1st → write 1st → research 2nd → write 2nd ...
-    - ❌ research all → write all (risks writing after context loss)
-  - (5) strictly ban web_search & CrossRef API, must access full text (of required chapter, if applicable)
-- On academic, use most efficient means guaranteeing authoritative (e.g. G Scholar) & take UoL/UTS Library as fallback (instead of necessity) when all public source returns paywall, etc.
-- Concisely remind me in chat (override):
-  - Open `Chrome>Settings>Downloads>Location` & change from `Fury Downloads` to `Downloads`
-  - Open `CAI>Cowork>Work in a project` & select `Downloads`
-
----
-
 ## IMPORTANT
 
-If I request to use ACIC, you are CAI (not CWI) & MUST use CIC instead of:
-- `web_search` alone, or
-- drafting B/WCIC prompts
-→ throughout whole chat unless instr otherwise. If failed, stop & alert.
+If I request to use CIC, you MUST use CIC instead of `web_search` alone or drafting a BCIC prompt. Enforced throughout session unless instr otherwise. If failed, stop & alert (no fallback).

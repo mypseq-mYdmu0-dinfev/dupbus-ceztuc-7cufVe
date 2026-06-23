@@ -17,7 +17,7 @@ Common: #[prompt] → extract & fetch `[prompt].md` if exists; e.g. `buy.md` if 
 Special:
 - `google.md` on email/calendar/schedule/event, OR if #job mentioned
 - `profile.md` for personal bg
-- `cic.md` on A/B/C/WCIC prompt creation, OR if browser automation may help
+- `cic.md` on CIC prompt creation, OR if browser automation may help
 - `writing.md` on deliverables, OR if "casual"/"whatsapp" mentioned
 - `coding.md` On multi-script coding task
 - `numbered.md` if #numbered mentioned, OR creating a multi-level list
