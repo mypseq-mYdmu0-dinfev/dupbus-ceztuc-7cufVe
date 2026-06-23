@@ -70,7 +70,7 @@
 - directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen
 - I/O = input/output
 - SR = `<system-reminder>` (injected file-change notice); e.g. "Note: `<path>` was modified, ..."
-- QMM = `query_` my msg = follow root CLAUDE.md §3.6 (CC only)
+- QMM = `query_` my msg = follow c.md §3.6, regardless of word count
 - r/w = read/write
 - QB = question/blocker; if any, raise all Qs (Q1, Q2…) & Bs (B1, B2…) separately & #numbered before proceeding; NEVER label as QB1, QB2
 - CIIW = Correct (me) if I'm wrong; validate my msg rather than treating it as a direct command; correct errors before acting
