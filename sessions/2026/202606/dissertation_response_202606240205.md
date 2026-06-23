@@ -1,0 +1,12 @@
+# Response to dissertation_query_202606240205.md
+*Pages cannot ⌘F across a line-break —— split fallback adopted; protocols + helper updated; 31→33 changes regenerated*
+
+9. My read first: you are right, and this is a genuine Pages limitation, not my error and not fully "fixable". A layout line-break is a `U+2028` soft-return, and Pages' ⌘F cannot match any query string that contains one (your same-app copy-find test proves it). So a break-spanning `Replace:` can never match. Your multi-block fallback is the correct and only reliable route, and I have implemented it exactly as specified.
+10. Approach taken:
+- 10.1. Split rule (your spec): 0 breaks → 1 block; 1 break → 2 blocks (before | after); ≥2 breaks → 3 blocks (before-first | middle-with-internal-breaks-cancelled | after-last). Blocks 1 and last are the ⌘F anchors; the middle is reference only.
+- 10.2. Encoded it in `replace_adv.md` as a new § Splitting, replacing the old "quote verbatim with the breaks" instruction that could never work; the Situation now states the ⌘F-across-`U+2028` impossibility plainly.
+- 10.3. Built the splitter into a reusable `cscpt/padv.py` (per the new §8.9.3) so future CC automates extract-and-split rather than doing it by eye.
+11. Preamble —— agreed and fixed: the one-edit-per-`## Change` rule was misplaced in `replace_adv.md`. I moved it to `replace.md` § Large Content (it governs ALL `#replace`, not just `#adv`), reworded as a standalone rule rather than a blind paste, and removed it from `replace_adv.md`.
+12. `dissertation_response_202606232120.md` regenerated —— the 31 changes are now **33**: the old Change 17 (§3.1 restructure) correctly splits into 3 single edits (heading; ¶1 → new §3.1 body + §3.2; ¶2 → §3.3). Every break-spanning `Replace:` is now 2 or 3 break-free blocks; your Change 15 reproduces exactly as your example. Residual `U+2028` in the file is 0; dlint clean.
+13. Side note —— I distilled the reusable essence of the throwaway script into `cscpt/padv.py` (functions `grab` + `split_for_pages`, plus a CLI: `python3 cscpt/padv.py <mirror.pages.md> "<start>" ["<end>"]`) and registered it in `cscpt/README.md`. The old `❌_temp_build_p127.py` and the fresh `❌_temp_padv_regen.py` I ran this turn are both superseded —— safe to delete.
+14. Hold unchanged —— apply Changes 01–33 to your `.pages`, mirror back, then I run P12.7.4 (re-QC). If a block still won't ⌘F, tell me which and I will shorten its anchor.
