@@ -135,7 +135,7 @@ Figure 2 assembles these factors into the framework. Within it, the conditioning
 
 ## Figure 1. Sensitising Themes, Informing Theories and Illustrative Factors by Research Question
 
-| RQ | Sensitising theme | Informing theory / literature | Illustrative factor (held open) |
+| RQ | Sensitising Theme | Informing Literature | Illustrative Factor (held open) |
 |---|---|---|---|
 | RQ1 | Performance comparison and threat | SCT (Festinger, 1954) | comparison threat; uniformity pressure |
 | RQ1 | Envy pathway | Sung et al. (2024); Li, Xu and Kwan (2021) | benign versus malicious envy |
