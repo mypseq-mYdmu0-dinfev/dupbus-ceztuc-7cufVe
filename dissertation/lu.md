@@ -492,7 +492,7 @@ On 24 Jun 2026, at 07:56, Culous Yu <Culous.Yu@liverpool.ac.uk> wrote:
 
 Hello Lu,
 
-Thank you so much for your kind words and understanding. It's winter here in Australia so the flu is everywhere, but I've already recovered and managed to finished the draft today as promised.
+Thank you so much for your kind words and understanding. It's winter here in Australia so the flu is everywhere, but I've already recovered and managed to finish the draft today as promised.
 
 Once again, thanks for all the prior guidance and for approving the amendment plan. The second refined proposal (A1R) is now complete, attached here and uploaded to the shared folder. Below I set out what changed against each of your points, so you can verify conveniently.
 
