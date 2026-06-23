@@ -23,6 +23,10 @@ yyy
 
 In actual practice, `xxx` `yyy` are immediate [code:] THREE LINES above/below the line(s) being changed OR [text:] TEN WORDS before/after the word(s) being changed, i.e. in each snippet, between the first/last [code:] 3 lines OR [text:] 10 words MUST be the content being changed. Strictly ensure ENTIRE text blocks in respective snippets; i.e. from `xxx` all the way to `yyy` in above example, don't leave any outside (e.g. `yyy`).
 
+## One Edit Per `## Change`
+
+Each numbered Change is exactly ONE find-replace —— a single `Replace:`/`With:` pair, one search target. NEVER bundle ≥2 distinct edits under one number; split them so each applies and verifies independently (hence `## Change 01`, not `## Changes 01`).
+
 ## Large Proportion
 
 If replacing 80%⁺ content of a file, DON'T #replace but generate full file in a new (separate) artefact:
