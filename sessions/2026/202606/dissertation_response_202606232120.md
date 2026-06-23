@@ -1,5 +1,5 @@
 # Response to "proceed"
-*P12.7 —— `#replace #adv` handoff. RE-REVISED per `dissertation_query_202606240205.md`: a layout line-break (`U+2028`) is un-searchable by Pages' ⌘F, so each `Replace:` that spans a break is now split into break-free blocks (1 break → 2 blocks; ≥2 → 3). Generated via `cscpt/padv.py`.*
+*P12.7 —— `#replace #adv` handoff. RE-REVISED per `dissertation_query_202606240205.md`: a layout line-break (`U+2028`) is un-searchable by Pages' ⌘F, so each `Replace:` that spans a break is now split into break-free blocks (1 break → 2 blocks; ≥2 → 3). Generated via `cscpt/padv.py`. Last updated alongside `dissertation_response_202606232120.md`.*
 
 ## How to use this
 1. Each Change is ONE edit. `Replace:` may be 1, 2 or 3 break-free blocks:
@@ -446,8 +446,70 @@ The only other §5 diffs were straight→curly quotes (Ayres, Zainal), which Pag
 ---
 
 ## Next steps
-1. Apply Changes 01–34 to your working .pages; build the Figure 1 table and paste the Figure 2 SVG; polish layout; export PDF.
+1. Apply Changes 01–39 to your working .pages (Changes 35–39 are the 🔴 post-§1 fixes at the very end —— they re-touch §1/§2.2, which you have already passed); build the Figure 1 table and paste the Figure 2 SVG; polish layout; export PDF.
 2. Mirror the finished .pages back into `MGTK751_A1R.md`.
 3. I then re-run P12.6 on the mirror-back (whole-doc QC + FULL dlint on §1–3 + word-count recheck) and diff it before anything is sent.
 4. Only once clean do we move to P12.8 (Log 19 cover email, then dispatch) —— not before you confirm send-ready.
 5. After your manual edits and before dispatch, remind me to suggest any further judicious bolding (MP15 12.10).
+
+---
+
+## 🔴 Post-§1 fixes (Changes 35–39 —— apply even though you have passed §1)
+
+*From the A1R.md QC (response_202606240326 §7.1–7.2). Each target is UNCHANGED by Changes 01–34, so it still matches your current .pages.*
+
+### Change 35 🔴 —— §1 Billan stat (scope + perception caveat)
+**Replace** (2 breaks → 3 blocks; ⌘F blocks 1 & 3, select first→last, replace; block 2 = middle, reference):
+```
+Survey data indicate that 87.3%
+```
+```
+of high-performing professionals report colleagues actively undermining their achievements
+```
+```
+(Billan, 2023)
+```
+**With:**
+```
+In a Canadian practitioner survey, **87.3%** of high-performing professionals report feeling their achievements undermined by colleagues (Billan, 2023)
+```
+
+### Change 36 🔴 —— §1 Young & Tong (flag UK sample)
+**Replace:**
+```
+Only 51% employees deem their managers
+```
+**With:**
+```
+Only 51% of UK employees deem their managers
+```
+
+### Change 37 🔴 —— §1 Beatson (flag UK sample)
+**Replace:**
+```
+single highest-rated innovation source across organisations, outranking
+```
+**With:**
+```
+single highest-rated innovation source across UK organisations, outranking
+```
+
+### Change 38 🔴 —— §1 repoint the mis-cite (Li → Sung, the "reactive" claim)
+**Replace:**
+```
+recalibration of knowledge contribution follows (Li, Xu and Kwan, 2021)
+```
+**With:**
+```
+recalibration of knowledge contribution follows (Sung et al., 2024)
+```
+
+### Change 39 🔴 —— §2.2 repoint the mis-cite (Li → Sung)
+**Replace:**
+```
+voluntary knowledge contribution can thus be reactively withdrawn (Li, Xu and Kwan, 2021)
+```
+**With:**
+```
+voluntary knowledge contribution can thus be reactively withdrawn (Sung et al., 2024)
+```

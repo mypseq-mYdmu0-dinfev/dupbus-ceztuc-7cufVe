@@ -1,0 +1,12 @@
+# Response to dissertation_query_202606240436.md
+*7.1/7.2 fixed in A1R.md + appended as 🔴 Changes 35–39; §3.6 and Figure 1 confirmed*
+
+15. Re 7.1/7.2 —— fixed in `A1R.md` and appended to the handoff as **🔴 Changes 35–39** at the very end (so you re-touch §1/§2.2 despite having passed them):
+- 15.1. **7.1 mis-cite (Li → Sung).** §1 "a reactive recalibration of knowledge contribution follows" and §2.2 "reactively withdrawn" now cite (Sung et al., 2024), whose proactive/reactive-KS construct actually grounds the "reactive" framing. Li, Xu and Kwan (2021) stays correctly cited in §2.1 for the general envy→reduced-sharing point and remains in §5. Changes 38–39.
+- 15.2. **7.2 caveats.** Billan is reworded to "In a Canadian practitioner survey, **87.3%** … report feeling their achievements undermined" (scope + perception, no longer a behavioural fact); Young & Tong and Beatson now read "UK employees" / "UK organisations". Changes 35–37.
+- 15.3. All five target text that Changes 01–34 never altered, so they ⌘F-match your current .pages. Only Change 35 is multi-block (the Billan sentence wraps twice in the layout); the other four are single break-free blocks.
+16. Re 7.3 —— understood, left as-is per your call. You justified the AHRI "33% … conflict" (neater, and paraphrasing dodges the copy-paste plagiarism risk); I have taken that as covering the rest of 7.3 too (the Gallup $10T gloss and the Guest homogeneity point). One within 7.3 is a citation-attribution nuance rather than wording —— §2.3 credits the "team-level envy moderator / proactive" finding to Breidenthal et al. (2020) alone, but it is Liu et al. (2024)'s (also in RefRepo). Holds unless you want it repointed; flagging once so it is your informed choice.
+17. Re 7.4 —— understood: GBP is deliberate for the UoL (British) submission, overriding the house-style AUD. No change.
+18. Re ## 11 (§3.6) —— already done: the §3.6 Blumer rewording is Change 26 in the handoff (synced last turn). Verified present; nothing to add.
+19. Re ## 12 (Figure 1 title) —— agreed, no Blumer cite in the title; left as "Sensitising Concepts".
+20. State: A1R.md now carries every QC fix you approved; the handoff runs Changes 01–39. No CIC was needed —— Sung (2024) and the caveat facts (Canadian / UK) were already validated in RefRepo. Next: your .pages application → mirror back → P12.7.4 re-QC → P12.8.0 full §1–3 dlint before dispatch.
