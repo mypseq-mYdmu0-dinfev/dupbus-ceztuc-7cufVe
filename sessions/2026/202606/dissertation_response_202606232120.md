@@ -181,7 +181,7 @@ the strategic stakes that render this a governance-critical concern. RQ1 and RQ2
 ```
 **With:**
 ```
-The study’s **theoretical framework** is theoretically-informed yet sensitising: it orients enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Figure 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
+The study’s **theoretical framework** is theoretically-informed yet sensitising, drawing on Blumer’s (1954) notion of sensitising concepts to orient enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Figure 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
 
 Figure 2 assembles these factors into the framework. Within it, the conditioning factors associated with RQ1, rooted in SCT and the envy literature, describe the social circumstances under which the reciprocity logic of SET, associated with RQ2, renders knowledge-sharing withdrawal more probable, whilst the KBV establishes the strategic stakes that bear on both questions rather than answering either, rendering the matter governance-critical. These themes and factors will sensitise, rather than determine, the thematic analysis (§3.4); coding is generated from the corpus, with theory aiding interpretation at the latent level rather than pre-registering codes for confirmation (Braun and Clarke, 2006). A disconfirming-evidence node is retained throughout, making explicit the study’s openness to dynamics that no listed theory anticipates. The framework asserts no causal direction, its relational lines denoting conjectural associations from the literature, and the explanatory character of the case study concerns analytic generalisation to theory rather than variable causation (Yin, 2003). The framework is provisional and will be refined once the empirical findings emerge (Saunders, Lewis and Thornhill, 2023).
 ```
@@ -201,7 +201,7 @@ Connecting lines represent relational associations; no causal direction implied.
 ```
 Framework to be refined post-analysis.
 ```
-**With** —— (a) build Figure 1 as a Pages TABLE, captioned “Figure 1. Sensitising Themes, Informing Theories and Illustrative Factors by Research Question”:
+**With** —— (a) build Figure 1 as a Pages TABLE, captioned “Figure 1. Sensitising Concepts”:
 
 | RQ | Sensitising Theme | Informing Literature | Illustrative Factor |
 |---|---|---|---|
@@ -426,14 +426,27 @@ One participant per organisation, totalling at least 6, see §3.5.
 
 ---
 
-## F. §5 References / Glossary / TOC / header —— NO ACTION
+## F. §5 References
 
-The only §5 diffs were straight→curly quotes on the Ayres and Zainal entries; since Pages auto-curls quotes, your .pages already matches, so nothing is applied there. The Glossary, Table of Contents, and the header table are all unchanged by P12.
+### Change 34 —— add the Blumer (1954) reference (new citation now introduced in §2.5)
+**Replace** (find the Blau entry, keep it, add Blumer after it):
+```
+Blau, P.M. (1964) Exchange and Power in Social Life. New York: Wiley.
+```
+**With:**
+```
+Blau, P.M. (1964) *Exchange and Power in Social Life*. New York: Wiley.
+
+Blumer, H. (1954) ‘What is wrong with social theory?’, *American Sociological Review*, 19(1), pp. 3–10. doi: 10.2307/2088165.
+```
+*(Alphabetical: Blumer sits between Blau and Braun; italicise the journal title, keep Blau's existing italics.)*
+
+The only other §5 diffs were straight→curly quotes (Ayres, Zainal), which Pages auto-curls, so nothing else is applied there; the Glossary, Table of Contents, and header table are unchanged by P12.
 
 ---
 
 ## Next steps
-1. Apply Changes 01–33 to your working .pages; build the Figure 1 table and paste the Figure 2 SVG; polish layout; export PDF.
+1. Apply Changes 01–34 to your working .pages; build the Figure 1 table and paste the Figure 2 SVG; polish layout; export PDF.
 2. Mirror the finished .pages back into `MGTK751_A1R.md`.
 3. I then re-run P12.6 on the mirror-back (whole-doc QC + FULL dlint on §1–3 + word-count recheck) and diff it before anything is sent.
 4. Only once clean do we move to P12.8 (Log 19 cover email, then dispatch) —— not before you confirm send-ready.
