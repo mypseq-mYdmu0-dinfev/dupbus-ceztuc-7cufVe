@@ -455,3 +455,72 @@ Yes, Culous, I agree with the plan you intend to use to amend your proposal. Ple
 
 Thanks,
 Lu
+
+### Log 19
+
+On 21 Jun 2026, at 23:45, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Hi, Culous,
+I hope you are well. How is your proposal? We need to speed up. Ideally, we should have the proposal approved now. I understand you may have various commitments. When having time, I would like to see an update on your proposal. 
+
+Kind regards,
+Lu
+
+### Log 20
+
+On 22 Jun 2026, at 14:58, Yu, Culous <Culous.Yu@liverpool.ac.uk> wrote:
+
+Hello Lu,
+
+I’m deeply sorry for the wait. I was ill for days and my computer had some critical problems that prohibited me from working. I’m finalising the draft and will send it to you on or before Wednesday (24 June 2026). Thank you so much for your patience.
+
+Regards,
+Culous
+
+### Log 21
+
+On 23 Jun 2026, at 07:59, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+I am sorry to hear that you are not feeling well. I hope you make a speedy recovery. Your health should be your priority at this time. Please focus on getting better, and only send me your work when you feel ready to do so.
+
+Take care and all the best.
+Lu
+
+### Log 22
+
+On 24 Jun 2026, at 07:56, Culous Yu <Culous.Yu@liverpool.ac.uk> wrote:
+
+Hello Lu,
+
+Thank you so much for your kind words and understanding. It's winter here in Australia so the flu is everywhere, but I've already recovered and managed to finished the draft today as promised.
+
+Once again, thanks for all the prior guidance and for approving the amendment plan. The second refined proposal (A1R) is now complete, attached here and uploaded to the shared folder. Below I set out what changed against each of your points, so you can verify conveniently.
+
+**1. CYC’s Perspective and KBF & TPS Definitions (Comment 1)**
+
+§1 is rebuilt around CYC itself rather than its clients. It now articulates that CYC is a simulated MCF (Management Consulting Firm) whose own commercial asset is rigorous, evidence-based knowledge of KBF conditions, and that its **management challenge** is to strengthen that foundation. The study therefore informs CYC’s own practice, not a client’s. KBF and TPS are now both defined at first use in §1, in addition to the Glossary.
+
+**2. Research Aim (Comment 2)**
+
+The RA now reads exactly as we agreed. This mirrors the logic of your example, studying the people who work in the industry to inform CYC, and the wording emphasises “for CYC’s” so there is no ambiguity that the work serves my own organisation. The 2 RQs are retained, whilst RO4 is reworded to tie the findings to CYC’s offering.
+
+**3. Structure of Chapters (Comment 3)**
+
+Removed in full from §1, as it belongs to the A3 paper rather than the proposal.
+
+**4. Theoretical Framework (Comment 4)**
+
+Following your guidance, §2.5 is reframed from a conceptual to a theoretical framework. It now carries themes from the research questions through the relevant theories and literature into the factors that will guide analysis. This is set out twice for clarity, with a new Figure 1 tabulating each strand against its sensitising theme, informing literature, and illustrative factors, and a new Figure 2 assembling those factors into the framework itself. The text states that these themes will be used to analyse the interview data.
+
+**5. Methodology, Philosophy, and Approach (Comment 5)**
+
+The methodology is split into separately justified parts, namely §3.1 Research Philosophy (why a constructivist ontology and interpretivist epistemology), §3.2 Research Approach (why inductive and qualitative), and §3.3 Research Method (why an explanatory multi-case study).
+
+**6. Sampling & Participants (Comment 5 and your previous email)**
+
+§3.5 now states that participants are individual employees, recruited no more than one per organisation, which keeps the work below the level requiring organisational authorisation. Interviews centre on each participant’s own experiences and perceptions, drawn from current or previous firms, rather than on any account of an employer’s practices. On comparability, the design now seeks participants of broadly comparable professional standing to support meaningful cross-case comparison and strengthen the thematic analysis, whilst holding a minimum of 6. §3.9 adds that accounts are de-identified and that employer-identifying details are not solicited.
+
+I hope this helps reading the refined proposal. I am happy to adjust anything further under your guidance. Thank you for your time!
+
+Warm Regards,
+Culous
