@@ -9,11 +9,14 @@
 - Avoid verb-object separation: Don't place long descriptive or prepositional phrases between a transitive verb (e.g. identify, state, argue) and its direct object or quotation
   - ❌ e.g. [Actor] identifies [long_descr] "[quote]".
   - ✅ e.g. [Actor] identifies "[quote]" as [long_descr].
-- On ≥3 objects:
+- Use Oxford comma on ≥3 objects:
   - ❌ [A], [B] and [C]
   - ✅ [A], [B], and [C]
 - When drafting anything est. 1,000⁺ words, suggest (ask confirmation) to create Dev Plan
 - Never use "Hi"; user strongly prefers "Hello"
+- Avoid english numbers (except "one"), use numerals instead (easier human reading):
+  - ❌ e.g. I use 1 tool to save two minutes.
+  - ✅ e.g. I use one tool to save 2 minutes.
 
 ---
 
