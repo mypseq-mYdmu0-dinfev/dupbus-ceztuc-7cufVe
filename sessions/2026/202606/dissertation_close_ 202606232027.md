@@ -2,7 +2,7 @@
 *Session 15: A1R v2 Build & Polish*
 
 ## Status
-- 1. P12 A1R v2 is fully drafted, QC'd, red-teamed and polished on `MGTK751_A1R.md` (Lu's CM1–CM5, her Logs 16/18 approval, a forked #debate, and all polish feedback applied). Next session's next action is **P12.7** (the .pages handoff via `#replace #adv`), then P12.6 re-QC → P12.8 send. P13/P14 follow.
+- 1. P12 A1R v2 is fully drafted, QC'd, red-teamed and polished on `MGTK751_A1R.md` (Lu's CM1–CM5, her Logs 16/18 approval, a forked #debate, and all polish feedback applied). Next session's (MP16: A1R Resubmission) next action is **P12.7** (the .pages handoff via `#replace #adv`), then P12.6 re-QC → P12.8 send. P13/P14 follow.
 
 ## Remarks
 - 1. CC re-read for recovery: AD11 (now in DevPlan PART C); `lu.md` (Logs 12–19, especially 16/17/18); `MGTK751_A1R.md` (the deliverable, directly); CB + DevPlan (unconditionals); `universal/replace.md` + `universal/replace_adv.md` (the P12.7 workflow). From the session comms, re-read AD11.4.19 (Sprint Report —— what was built) and AD11.4.22–24 (the polish rounds + final decisions). The rest, AD11.4.1–18 and 20–21, are superseded by AD11 / A1R.md / lu.md —— skip unless tracing a specific detail.
