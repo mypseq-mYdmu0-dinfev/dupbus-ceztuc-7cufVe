@@ -119,7 +119,7 @@ The academic foundations of TPS research are distinctly Australian. Feather’s 
 
 ### 2.5 Literature Gap & Theoretical Framework
 
-Existing TPS literature is concentrated in psychology[4], with management-oriented application in KBF contexts largely absent. Feather (1989) himself identified the need for “studies of tall poppies in actual situations” and cross-group replication, which is exactly a call this study directly answers. Peer-level competitive dynamics are explicitly regarded as an under-theorised frontier of KS behaviour (Foss, Husted and Michailova, 2010; Wang and Noe, 2010). This study thus precisely occupies the intersection of these gaps.
+Existing TPS literature is concentrated in psychology[3], with management-oriented application in KBF contexts largely absent. Feather (1989) himself identified the need for “studies of tall poppies in actual situations” and cross-group replication, which is exactly a call this study directly answers. Peer-level competitive dynamics are explicitly regarded as an under-theorised frontier of KS behaviour (Foss, Husted and Michailova, 2010; Wang and Noe, 2010). This study thus precisely occupies the intersection of these gaps.
 
 The study’s **theoretical framework** is theoretically-informed yet sensitising, drawing on Blumer’s (1954) notion of sensitising concepts to orient enquiry without dictating its findings. The constituent concepts, drawn from the literature reviewed above, suggest where analytic attention might productively fall; they are not variables to be tested, nor a fixed coding frame, and any may be reshaped, merged, or displaced by themes generated from the data. Figure 1 sets out, for each research question, the sensitising themes, their informing theories, and the illustrative factors each foregrounds.
 
@@ -127,7 +127,7 @@ Figure 2 assembles these factors into the framework. Within it, the conditioning
 
 ### Footnote(s)
 
-[4] Concentration of TPS literature in cultural psychology and attitudinal research is established in §1 Introduction with full citations and hence not repeated here.
+[3] Concentration of TPS literature in cultural psychology and attitudinal research is established in §1 Introduction with full citations and hence not repeated here.
 
 (319 words)
 
@@ -192,7 +192,7 @@ An inductive, qualitative approach is adopted. Induction is followed because the
 
 ### 3.3. Research Method
 
-The chosen research method is an **explanatory multi-case study** (Yin, 2003; Zainal, 2007). A case study is adopted because it suits the examination of a contemporary phenomenon within its real-life context, and the explanatory variant is applied because the study seeks to understand the conditions and mechanisms through which TPS operates within KBFs rather than merely to establish that it does (Zainal, 2007). Its explanatory character concerns analytic generalisation to theory rather than the inference of variable causation. Each participant constitutes a single case, with at least 6 participants drawn from independent organisations yielding a corresponding set of individual-level cases[5]. Analytical weight derives from “replication logic”, whereby patterns recurring across multiple independent cases carry stronger inferential value than those arising from a single site (Yin, 2003). This multi-case design also reflects the cross-sector character of the Australian KBFs that CYC, as an MCF specialising in KM, is founded to serve, and from which the research participant pool is drawn.
+The chosen research method is an **explanatory multi-case study** (Yin, 2003; Zainal, 2007). A case study is adopted because it suits the examination of a contemporary phenomenon within its real-life context, and the explanatory variant is applied because the study seeks to understand the conditions and mechanisms through which TPS operates within KBFs rather than merely to establish that it does (Zainal, 2007). Its explanatory character concerns analytic generalisation to theory rather than the inference of variable causation. Each participant constitutes a single case, with at least 6 participants drawn from independent organisations yielding a corresponding set of individual-level cases[4]. Analytical weight derives from “replication logic”, whereby patterns recurring across multiple independent cases carry stronger inferential value than those arising from a single site (Yin, 2003). This multi-case design also reflects the cross-sector character of the Australian KBFs that CYC, as an MCF specialising in KM, is founded to serve, and from which the research participant pool is drawn.
 
 (159 words)
 
@@ -238,7 +238,7 @@ Standard UoL ethics approval would be sought prior to any data collection. Semi-
 
 ### Footnote(s)
 
-[5] One participant per organisation, totalling at least 6, see §3.5.
+[4] One participant per organisation, totalling at least 6, see §3.5.
 
 (89 words)
 
