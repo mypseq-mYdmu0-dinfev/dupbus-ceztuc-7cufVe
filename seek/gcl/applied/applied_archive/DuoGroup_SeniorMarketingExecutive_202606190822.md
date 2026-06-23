@@ -73,3 +73,33 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+## 7. Engagements
+
+### Employer Email
+
+On 22 Jun 2026, at 10:24, Duo Group HR <hr@duogroup.com.au> wrote:
+
+Dear Culous,
+Thank you for your interest in the Senior Marketing Executive position with Duo Group.
+As part of our recruitment process, we would like to invite you to complete the attached assessment task. The assessment is designed to help us better understand your marketing capability, campaign thinking, and written communication skills.
+Please review the attached document and submit your completed assessment by Wednesday, 24th June 2026 at 10 pm.
+Once completed, kindly reply to this email with your assessment attached in either PDF or Word format.
+If you have any questions regarding the task, please feel free to reach out.
+We appreciate your time and effort and look forward to reviewing your submission.
+
+Regards,
+Alfred Agustin
+
+Duo Group
+Tax Depreciation • Property Valuation • Quantity Surveying • Property Insurance
+
+1300 185 498
+0485 041 063
+alfred@duogroup.com.au
+www.duogroup.com.au
+ 
+• ATO Compliant • AIQS Registered • Australia-wide • Residential & Commercial • Australia's Most Reviewed Quantity Surveyor
+Duo Group accepts no liability for the content of this email, or for the consequences of any actions taken based on the information provided, unless that information is subsequently confirmed in writing. If you are not the intended recipient you are notified that disclosing, copying, distributing or taking any action in reliance on the contents of this information is strictly prohibited.
+
+<SME- TASK.png> (INTERNAL: temp saved in `Fury Downloads/`)
