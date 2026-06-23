@@ -1,4 +1,4 @@
-# Reply to dissertation_response_202606240307.md & 
+# Reply to dissertation_response_202606240307.md & dissertation_response_202606240324.md
 
 ## re dissertation_response_202606240307.md
 
@@ -15,4 +15,21 @@ read these now: `/Users/culous/Downloads/CLAUDE.md` & `/Users/culous/Downloads/w
 edit cic.md to fully absorb everything useful, so i can delete these 2 files
 UPDATE: since wcic_libs.md is quite heavy and not often used (likely useless and unusable after i graduated from MBA), i suggest to save it as `universal/cic_libs.md` then have cic.md to pt to it whenever using libs, remarking the libs will no longer be available after this year (2026) as i graduate from my MBA
 
-### 
+### 9
+appreciate your effort in avoiding repetition but the long phrase "the ... in §2.5" you quoted seems a bit clumsy (im not sure) and might better replaced by citing Blumer again (neater); only edit that if you agree
+
+### Figure 1
+despite you added blumer to prose, i'd lightly suggest to cite it again at Figure 1's title; only do so if you agree that this is proper and needed
+
+## re dissertation_response_202606240324.md
+
+### 1
+edit cic.md so that this mistake/misunderstanding cannot take place again
+whenever #cic is prompted, you MUST use CIC; web_search was just to help like guiding the target, ANYTHING surfaced from web_search cannot be practically used unless validated by CIC's actual live web page read —— applicable on high-stake tasks or when prompted #cic, as this file should have suggested right now
+
+### 5
+i chose "Strand", apply it to A1R.md
+
+## Your Missions
+- Execute actions if any explicitly instructed & no qb
+- Tell your thoughts on all above (don't miss any)
