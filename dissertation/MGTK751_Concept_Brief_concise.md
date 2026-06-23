@@ -70,7 +70,7 @@
 | Mgr | Triangulation | Guide C | Bonus if secured |
 
 5. **Methodology**
-- 5.1. Research method — explanatory multi-case study (Yin, 2009; Zainal, 2007); each org = one case; 6 orgs = 6 cases; Q confirmed
+- 5.1. Research method — explanatory multi-case study (Yin, 2003; Zainal, 2007); each org = one case; 6 orgs = 6 cases; Q confirmed
 - 5.2. Data collection — semi-structured interviews (data collection technique within case study design); 6 TPPs default; expand if TP + mgr secured
 - 5.3. Analysis — thematic analysis (Braun & Clarke, 2006); within-case first → cross-case synthesis
 - 5.4. Multi-org design — 1 ppt per org = no org-level consent needed; isolation rationale in §3.3; consent/feasibility angle in §3.6 only (not A2/A3)

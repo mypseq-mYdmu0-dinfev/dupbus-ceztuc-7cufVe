@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 590" font-family="Helvetica, Arial, sans-serif">
+  <!-- Figure 2 (theoretical framework) blueprint; rebuild in Pages. Relational lines only, NO arrowheads. -->
+  <style>
+    .band   { fill:#eef1f5; stroke:#9aa7b4; stroke-width:1.2; }
+    .bandtxt{ fill:#2f3a45; font-size:15px; font-weight:bold; }
+    .bandsub{ fill:#54616e; font-size:11.5px; }
+    .tps    { fill:#d9534f; stroke:#b03a36; stroke-width:1.2; }
+    .tpstxt { fill:#ffffff; font-size:18px; font-weight:bold; }
+    .tpssub { fill:#ffffff; font-size:11.5px; }
+    .cont   { fill:none; stroke:#7f8c99; stroke-width:1.4; stroke-dasharray:4 3; }
+    .conttl { font-size:13.5px; font-weight:bold; }
+    .b1     { fill:#dce9f6; stroke:#7aa3cc; stroke-width:1.1; }
+    .b2     { fill:#dcefe1; stroke:#74b487; stroke-width:1.1; }
+    .kbv    { fill:#fbeccd; stroke:#c9a766; stroke-width:1.2; }
+    .ftxt   { fill:#243038; font-size:12.5px; font-weight:bold; }
+    .fsrc   { fill:#5c6770; font-size:10.5px; }
+    .link   { stroke:#9aa7b4; stroke-width:1.4; fill:none; }
+    .cap    { fill:#5c6770; font-size:11.5px; }
+  </style>
+
+  <!-- Top context band (narrowed) -->
+  <rect class="band" x="196" y="22" width="728" height="48" rx="8"/>
+  <text class="bandtxt" x="560" y="43" text-anchor="middle">Australian KBF Context</text>
+  <text class="bandsub" x="560" y="61" text-anchor="middle">Egalitarian Cultural Norm; Individual Expertise as Core Commercial Output (Feather, 1989; Meng et al., 2003)</text>
+
+  <line class="link" x1="560" y1="70" x2="560" y2="92"/>
+
+  <!-- TPS central node (double width; white subtitle) -->
+  <rect class="band tps" x="350" y="92" width="420" height="58" rx="10"/>
+  <text class="tpstxt" x="560" y="117" text-anchor="middle">Tall Poppy Syndrome</text>
+  <text class="tpssub" x="560" y="137" text-anchor="middle">Peer Marginalisation of High Performers (Feather, 1989, 1994)</text>
+
+  <line class="link" x1="470" y1="150" x2="285" y2="176"/>
+  <line class="link" x1="650" y1="150" x2="835" y2="176"/>
+
+  <!-- ===== RQ1 cluster ===== -->
+  <rect class="cont" x="40" y="176" width="490" height="262" rx="10"/>
+  <text class="conttl" x="60" y="198" fill="#3a5a7a">RQ1 — Conditions That Exacerbate / Alleviate TPS</text>
+
+  <rect class="b1" x="60" y="214" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="167" y="240" text-anchor="middle">Performance Comparison Threat</text>
+  <text class="fsrc" x="167" y="258" text-anchor="middle">(Festinger, 1954)</text>
+
+  <rect class="b1" x="295" y="214" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="402" y="240" text-anchor="middle">Benign vs Malicious Envy</text>
+  <text class="fsrc" x="402" y="258" text-anchor="middle">(Sung et al., 2024)</text>
+
+  <rect class="b1" x="60" y="290" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="167" y="312" text-anchor="middle">Work-Group Identification</text>
+  <text class="ftxt" x="167" y="328" text-anchor="middle">(Alleviating)</text>
+  <text class="fsrc" x="167" y="345" text-anchor="middle">(Kim and Glomb, 2014)</text>
+
+  <rect class="b1" x="295" y="290" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="402" y="324" text-anchor="middle">Reward, Recognition &amp; Leadership</text>
+
+  <rect class="b1" x="60" y="366" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="167" y="392" text-anchor="middle">Task Interdependence</text>
+  <text class="fsrc" x="167" y="410" text-anchor="middle">(Gully et al., 2012)</text>
+
+  <rect class="b1" x="295" y="366" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="402" y="392" text-anchor="middle">Cultural Egalitarian Pressure</text>
+  <text class="fsrc" x="402" y="410" text-anchor="middle">(Meng et al., 2003; Feather, 1989)</text>
+
+  <!-- ===== RQ2 cluster ===== -->
+  <rect class="cont" x="590" y="176" width="490" height="262" rx="10"/>
+  <text class="conttl" x="610" y="198" fill="#3a7a55">RQ2 — How Peers Experience TPS Dynamics</text>
+
+  <rect class="b2" x="610" y="214" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="717" y="240" text-anchor="middle">Knowledge-Sharing Withdrawal</text>
+  <text class="fsrc" x="717" y="258" text-anchor="middle">(Blau, 1964; Podsakoff et al., 2000)</text>
+
+  <rect class="b2" x="845" y="214" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="952" y="240" text-anchor="middle">Ostracism &amp; Exclusion</text>
+  <text class="fsrc" x="952" y="258" text-anchor="middle">(Breidenthal et al., 2020)</text>
+
+  <rect class="b2" x="610" y="290" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="717" y="316" text-anchor="middle">Team Cohesion Erosion</text>
+  <text class="fsrc" x="717" y="334" text-anchor="middle">(Mathieu et al., 2015; Grossman et al., 2022)</text>
+
+  <rect class="b2" x="845" y="290" width="215" height="62" rx="8"/>
+  <text class="ftxt" x="952" y="316" text-anchor="middle">Trust &amp; Reciprocity Breakdown</text>
+  <text class="fsrc" x="952" y="334" text-anchor="middle">(Blau, 1964)</text>
+
+  <rect class="b2" x="610" y="366" width="450" height="62" rx="8"/>
+  <text class="ftxt" x="835" y="392" text-anchor="middle">Withheld Tacit Knowledge (KBV-Critical)</text>
+  <text class="fsrc" x="835" y="410" text-anchor="middle">(Grant, 1996; Kogut and Zander, 1992)</text>
+
+  <!-- links clusters -> KBV band -->
+  <line class="link" x1="285" y1="438" x2="420" y2="470"/>
+  <line class="link" x1="835" y1="438" x2="700" y2="470"/>
+
+  <!-- KBV consequence band (narrowed) -->
+  <rect class="band kbv" x="196" y="470" width="728" height="50" rx="8"/>
+  <text class="bandtxt" x="560" y="491" text-anchor="middle">KM Governance &amp; Competitive Consequence for KBFs</text>
+  <text class="bandsub" x="560" y="509" text-anchor="middle">Strategic Stakes of Degraded Knowledge Integration (Grant, 1996; Kogut and Zander, 1992)</text>
+
+  <!-- final two lines: scholarly prose, sentence case -->
+  <text class="cap" x="560" y="546" text-anchor="middle">These themes and factors sensitise rather than dictate the thematic analysis at §3.4, coding remaining inductive with a disconfirming-evidence node retained.</text>
+  <text class="cap" x="560" y="566" text-anchor="middle">Figure 2. Theoretical framework of TPS dynamics in Australian KBFs; relational lines denote conjectural associations with no causal direction, provisional and refined post-analysis.</text>
+</svg>

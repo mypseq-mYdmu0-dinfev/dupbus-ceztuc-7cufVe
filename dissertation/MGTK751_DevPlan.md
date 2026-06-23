@@ -211,6 +211,7 @@
   - P12.7.4. CC then RE-RUNS P12.6 (whole-doc QC + dlint + word counts) on the mirrored A1R.md and diffs, since Culous' manual polish very likely introduced changes; only when clean → P12.8
 
 - P12.8. Cover email (Log 19) + send *(last; Culous finalises first)*
+  - P12.8.0. Pre-dispatch (user req, 221719): run FULL `cscpt/dlint.py` on the finalised A1R §1–3 and clear genuine flags; the reference-list, Glossary/TOC, and figure conventions are justified exceptions (verbatim titles, established formatting), not breaches
   - P12.8.1. Draft Log 19 mapping each Log 16 point to the specific A1R v2 change that resolves it (lets Lu verify without re-reading verbatim; mirrors the P11.6 / Log 09 style)
   - P12.8.2. Produce A1R v2 as Word .docx (Lu adds comments in Word, per Log 10) plus a PDF copy
   - P12.8.3. Attach + upload to the shared folder; send; record as Log 19 in Lu.md
@@ -373,7 +374,7 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
   - AD09.1.3. DevPlan PART A audited against CB —— no critical contradictions found; overlaps noted for P12.3 (see AD09.4.1)
 
 - AD09.2. Key Decisions Made
-  - AD09.2.1. Research method: explanatory multi-case study (Yin, 2009; Zainal, 2007); each org = one case; 6 orgs = 6 cases; within-case depth first → across-case synthesis (Ayres, Kavanaugh and Knafl, 2003)
+  - AD09.2.1. Research method: explanatory multi-case study (Yin, 2003; Zainal, 2007); each org = one case; 6 orgs = 6 cases; within-case depth first → across-case synthesis (Ayres, Kavanaugh and Knafl, 2003)
   - AD09.2.2. IPA eliminated on 3 grounds: (a) incompatible with cross-org comparison requiring homogeneous sample; (b) analytic method incompatible with Braun & Clarke; (c) RQ1 = comparative explanatory, not phenomenological; confirmed by CW validation of Lu's shared folder (`/From Lu/`)
   - AD09.2.3. CYC identity confirmed (see ProjectSummary.md); simulated status in A1R footnote only; two dimensions (CYC = MCF; participant pool = KBFs broadly) never conflated; full detail in CB §1.7
   - AD09.2.4. Multi-source handling: never mention absence; frame as "data collected across six independent organisational contexts"; cross-case comparison = functional triangulation; normalised by Ayres et al. (2003) and `/From Lu/` examples
@@ -387,7 +388,7 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
 
 - AD09.4. Notes for Future Chats
   - AD09.4.1. P12.3 task: remove redundant overlaps from DevPlan PART C — KM withdrawal rule duplicated in CB §3.1 and DevPlan M3; "never conflate two CYC dimensions" appears in 5 DevPlan locations; CYC identity in CB §1.7 (master) + DevPlan M3 (condensed) + AD08.2.2 (historical); participant comparability in CB §7.6 + 4 DevPlan phase locations
-  - AD09.4.2. P09 instance — §3 writing reminders (critical): (a) do not over-claim multi-source capabilities; acknowledge interview-primary design with Yin-supported justification; (b) remove IPA-sounding terms from §3: "lived experience" and "frames of reference"; (c) insert §3.3 paragraph explicitly naming explanatory multiple-case study (Yin, 2009; Zainal, 2007), within-case/across-case sequence (Ayres et al., 2003); (d) never use word "multi-source" anywhere; (e) frame cross-case comparison positively as functional validation
+  - AD09.4.2. P09 instance — §3 writing reminders (critical): (a) do not over-claim multi-source capabilities; acknowledge interview-primary design with Yin-supported justification; (b) remove IPA-sounding terms from §3: "lived experience" and "frames of reference"; (c) insert §3.3 paragraph explicitly naming explanatory multiple-case study (Yin, 2003; Zainal, 2007), within-case/across-case sequence (Ayres et al., 2003); (d) never use word "multi-source" anywhere; (e) frame cross-case comparison positively as functional validation
   - AD09.4.3. A3 instance (Ch4/Ch5): avoid garden path analysis (Ayres et al.) — thematic analysis must produce cross-case configuration (how themes relate and vary across orgs), not just a theme inventory
   - AD09.4.4. Methodology deliberation (historically notable): genuine documented struggle between IPA and case study occurred; final decision driven by RQ1 conditions-orientation and CYC framing; deliberation was acknowledged in Lu status update as a strength signal demonstrating methodological maturity; may be briefly surfaced in P11.6 Lu email
 
