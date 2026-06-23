@@ -203,7 +203,7 @@ Framework to be refined post-analysis.
 ```
 **With** —— (a) build Figure 1 as a Pages TABLE, captioned “Figure 1. Sensitising Concepts”:
 
-| RQ | Sensitising Theme | Informing Literature | Illustrative Factor |
+| Strand | Sensitising Theme | Informing Literature | Illustrative Factor |
 |---|---|---|---|
 | RQ1 | Performance comparison and threat | SCT (Festinger, 1954) | comparison threat; uniformity pressure |
 | RQ1 | Envy pathway | Sung et al. (2024); Li, Xu and Kwan (2021) | benign versus malicious envy |
@@ -341,7 +341,7 @@ Thematic analysis following Braun and Clarke’s (2006, p.87) six-phase framewor
 ```
 **With:**
 ```
-Thematic analysis following Braun and Clarke’s (2006, p.87) 6-phase framework is adopted. Coding commences after the 3rd interview and proceeds iteratively until saturation is reached. The theoretical framework set out in §2.5 sensitises this analysis, orienting attention towards the themes and factors the literature foregrounds whilst leaving the codebook to be generated from the data rather than pre-registered, so that theory aids interpretation at the latent level rather than imposing confirmation (Braun and Clarke, 2006). The analytic sequence follows a within-case then across-case approach (Ayres, Kavanaugh and Knafl, 2003). Each case is first analysed individually in depth before cross-case patterns, configurations, and variations are identified. This sequence preserves within-case richness before cross-case synthesis is attempted, consistent with the “replication logic” (Yin, 2003) of the study. Data are collected across each independent organisational context, enabling cross-case comparison and corroboration of emerging themes.
+Thematic analysis following Braun and Clarke’s (2006, p.87) 6-phase framework is adopted. Coding commences after the 3rd interview and proceeds iteratively until saturation is reached. The theoretical framework sensitises this analysis (Blumer, 1954), orienting attention towards the themes and factors the literature foregrounds whilst leaving the codebook to be generated from the data rather than pre-registered, so that theory aids interpretation at the latent level rather than imposing confirmation (Braun and Clarke, 2006). The analytic sequence follows a within-case then across-case approach (Ayres, Kavanaugh and Knafl, 2003). Each case is first analysed individually in depth before cross-case patterns, configurations, and variations are identified. This sequence preserves within-case richness before cross-case synthesis is attempted, consistent with the “replication logic” (Yin, 2003) of the study. Data are collected across each independent organisational context, enabling cross-case comparison and corroboration of emerging themes.
 ```
 
 ### Change 27 —— heading renumber 3.5 → 3.7
