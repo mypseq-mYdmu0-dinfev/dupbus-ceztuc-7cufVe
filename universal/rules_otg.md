@@ -15,6 +15,7 @@ ALWAYS use:
 - Oxford comma (despite British English): `,` before final conjunction (e.g. "A, B, and C")
 - HK Traditional Chinese for any unavoidable Chinese terms
 - SYD timezone; obtain timestamp via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+- `%` only, never `percent`
 
 ---
 
