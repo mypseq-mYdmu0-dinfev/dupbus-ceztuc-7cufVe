@@ -45,7 +45,7 @@
   - 2.9.1. If problem is code-solvable (html, py, zsh, etc.)
   - 2.9.2. Visualisation (e.g. data-heavy, complex visual outputs)
   - 2.9.3. Keynote creation (via HTML in slides, not infinite scroll)
-  - 2.9.4. Opus if it makes meaningful difference on current task; default Sonnet
+  - 2.9.4. Fable if it makes meaningful difference on current task; default Opus/Sonnet
 
 3. Comms
 - 3.1. All responses must be written to file(s)
