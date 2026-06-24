@@ -152,3 +152,16 @@ Your caption should:
 - Be clear and professional.
 - Be written for Australian property investors.
 ```
+
+### User Reply
+
+On 24 Jun 2026, at 19:51, Culous Yu <culousyu@gmail.com> wrote:
+
+Hello Alfred,
+
+I appreciate the opportunity to complete the Senior Marketing Executive assessment task. Please find my completed response attached as a PDF, covering the mini campaign brief and the social media caption for the Duo Tax depreciation campaign.
+
+I enjoyed developing a practical and compliant approach to a genuine business challenge, and I would welcome the chance to discuss it further. Thank you for your time.
+
+Kind regards,
+Culous Yu
