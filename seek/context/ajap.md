@@ -48,7 +48,7 @@ Output NO chat text during the loop except C1–C5 permitted outputs. Narration,
 **SA mode:** when running as AJAP SA (spawned by MA), outputs are received by the MA only and are never user-visible. C1–C5 restrictions apply solely to the MA's user-visible outputs. SA may narrate progress freely to facilitate MA auditing. SA must NOT output C2 (S0.3) to user; include N in the structured loop report to MA instead.
 
 **MA-SA communication (`/seek/.claude/tmp/ma_msg.md`) — SA rules:**
-- Read after completing every sub-section (e.g. S0.1, S0.2, S0.3, S1, S2, S3.1, S3.2, S4.1–S4.6, S5, S6.1, S6.2, S6.3, S6.4.1, S6.4.2, S6.4.2.5, S6.4.3–S6.4.8, S7.1–S7.3) AND immediately before S6.4.3 Submit
+- Read after completing every sub-section (e.g. S0.1) AND immediately before S6.4.3 Submit
 - If reads "Continue" → proceed immediately (no delay)
 - If reads "STOP" (exact word, case-sensitive; may be followed by " — [reason]") → immediately stop all actions and become idle; do NOT wait; do NOT re-check
 - If reads anything else → follow the instruction exactly; then wait 15s and re-read; repeat up to 60 times (900s total); if still not "Continue" after 60 re-reads → stop all actions and become idle (do not take any further action)
