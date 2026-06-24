@@ -26,6 +26,7 @@ If you're not CC, follow below structure with these adaptations:
 - Non-CC: If `CP_index_*.md` not injected by system = no DevPlan
 - CC: If `CP_index_*.md` not in one of working directories AND not in context = no DevPlan
 - No DevPlan = follow § Non-DevPlan Sessions
+- CP doesn't necessarily have DevPlan, but DevPlan must be in CP
 
 ---
 
@@ -102,23 +103,33 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 # [CP_Name/Alias] Session Handoff ([1st_query_TS]–[current_TS])
 *Session [Z]: [Heading max 8w]*
 
-## Status
-[Last & next issues; use P[no.]/AD[no.] if applicable; max 20w; all #numbered (same for below)]
+## 1. Status
+- 1.1. [Last & next issues; actively use P[no.]/AD[no.]; max 20w; all #numbered (same for below)]
+- 1.2. ...
 [skip 1 line]
 
-## Remarks
-[Next-session-only, temporary, but noteworthy; absent from DevPlan/Addenda; optional]
+## 2. Remarks
+- 2.1. [Next CP session only; temporary, but noteworthy; absent from DevPlan/Addenda]
+- 2.2. ...
+[If none, input `N/A`]
 [skip 1 line]
 
-## Session Files ([file_count])
-- `[YYYYMM]/[CP_folder]_query_[TS].md` —— [max. 8w descr]
-- `[YYYYMM]/[CP_folder]_response_[TS].md` —— [ditto]
-[... all `query_`/`response_` pairs created this session, in chronological order]
+## 3. Non-CP Files ([file_count])
+- 3.1. Created:
+  - 3.1.1. `enclosing_folder/file.py` [1 line each; same for below]
+  - 3.1.2. `enclosing_folder/file.html`
+  - 3.1.3. ... [all non-comms files in any format created this session, in chronological order]
+- 3.2. Modified:
+  - 3.2.1. ... [ditto]
+- 3.3. Moved/Voided/Deleted:
+  - 3.3.1. ... [ditto]
+[If none, input `N/A`]
 ```
 
 ### Handoff Rules
 
-- To be sent as (or in) 1st msg (or `query_`) to next session
+- To be sent as (or in) 1st msg (or `query_`) to next CP session; must be MECE (see below)
+- §3 is not intended for next CP session, but mainly for monthly #wrap; e.g. `universal/` files
 
 ### Addendum Template
 
@@ -128,7 +139,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 *Note: `###` level for appending under `## PART C` of DevPlan.md; XX = last addendum no. + 1 in 2 digits; Y.Y = phase(s) worked on; Z = this session's number (last +1 unless told otherwise)*
 
 - AD[XX].1. Coverage
-  - AD[XX].1.1. [What was accomplished/done; e.g. list of issues/tasks addressed, any non-comms files created/edited/deleted; if none AND 0% DevPlan progress, input N/A]
+  - AD[XX].1.1. [What was accomplished/done; e.g. list of issues/tasks addressed, any CP files (non-comms) created/modified/moved/deleted; if none AND 0% DevPlan progress, input N/A]
   - AD[XX].1.2. ...
 [skip 1 line]
 
