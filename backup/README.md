@@ -1,0 +1,2 @@
+- This folder is for user's backup files
+- NEVER edit/delete anything

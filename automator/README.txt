@@ -1,1 +1,0 @@
-This folder is for user's Apple Automators based on .sh/.scpt. NEVER edit/delete anything. Use #replace in `response_` or as instructed.

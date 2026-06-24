@@ -1,0 +1,2 @@
+- This folder is for user's Apple Automators based on .sh/.scpt
+- NEVER delete anything; only edit if explicitly instructed
