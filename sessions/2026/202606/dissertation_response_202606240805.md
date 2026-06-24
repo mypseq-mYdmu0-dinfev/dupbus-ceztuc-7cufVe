@@ -6,7 +6,7 @@
   - AD12.1.1. Executed **P12.7** (`#replace #adv` .pages handoff): diffed `archive/…192247.md` against `A1R.md`, emitted Changes 01–40 in `dissertation_response_202606232120.md`, which the user applied across many turns of iterative polish.
   - AD12.1.2. Executed **P12.8**: drafted the Log 19 cover email (SA-assisted), mapped CM1–CM5 + her Log 16 sampling points to each revision; the user pushed it to `lu.md` as **Log 22** (after intervening Logs 19–21).
   - AD12.1.3. Ran a full claim audit of `A1R.md`, a fresh-eyes re-QC of the final PDF, and an SA scan of Enis's materials on qualitative-language terms; mirrored `A1R.md` to the user-finalised `.pages`; ran the P12.8.0 full dlint (body clean).
-  - AD12.1.4. Protocol/tooling work (beyond the deliverable): created `cscpt/padv.py`; rewrote `universal/replace_adv.md`; added the one-edit rule to `universal/replace.md`; added **CLAUDE.md §8.9**; added the **CIC-validation Mandate** to `universal/cic.md` and removed WCIC; created `universal/cic_libs.md`.
+  - AD12.1.4. CP non-comms touched: `MGTK751_A1R.md` (Changes 01–40 + final mirror), `MGTK751_RefRepo.md` (Blumer 1954 entry), `lu.md` (Log 22), `MGTK751_A1R_Figure2_TheoreticalFramework.svg` (figure tweaks). System/non-CP file changes this session are recorded in `close_202606240805` §3.
 
 - AD12.2. Decisions
   - AD12.2.1. **U+2028 / `#replace #adv` overhaul (critical).** Pages' ⌘F CANNOT match any string containing a layout line-break (`U+2028` soft-return) —— confirmed empirically. So every `Replace:` is split at its `U+2028` into break-free blocks (MAX 3: before-first / middle / after-last); `cscpt/padv.py` extracts the verbatim span from the `.pages.md` mirror and splits it. Codified in `replace_adv.md` § Splitting.
@@ -26,10 +26,22 @@
   - AD12.3.3. Substantial protocol-file work this session is unrelated to the A1R deliverable but permanent (see AD12.1.4 / AD12.2).
 
 - AD12.4. Session Files
-  - AD12.4.1. Comms: the 16 `query_`/`response_` pairs + 2 standalone `response_` (202606232103, 202606232120) listed in `close_202606240805` § Session Files.
-  - AD12.4.2. Non-comms created: `cscpt/padv.py`; `universal/cic_libs.md`.
-  - AD12.4.3. Non-comms modified: `dissertation/MGTK751_A1R.md`, `MGTK751_RefRepo.md`, `lu.md`; `universal/replace.md`, `replace_adv.md`, `cic.md`; root `CLAUDE.md`; `cscpt/README.md`; `MGTK751_A1R_Figure2_TheoreticalFramework.svg` (figure tweaks, earlier turns).
-  - AD12.4.4. Voided: `❌_temp_build_p127.py`, `❌_temp_padv_regen.py`, `❌_temp_mirror_a1r.py`, `❌_temp_log19.md` (all beside the `response_`, safe to delete).
+- AD12.4.1. `202606/dissertation_response_202606232103.md` —— MP16 turn 1: context recovery, ready for P12.7
+- AD12.4.2. `202606/dissertation_response_202606232120.md` —— THE P12.7 `#replace #adv` handoff (Changes 01–40; live-edited all session)
+- AD12.4.3. `202606/dissertation_query_202606232204.md` + `…response` —— 2 serious mistakes (breaks + one-edit)
+- AD12.4.4. `202606/dissertation_query_202606232213.md` + `…response` —— harden `replace_adv.md`
+- AD12.4.5. `202606/dissertation_query_202606232308.md` + `…response` —— root-creation rule (CLAUDE.md §8.9)
+- AD12.4.6. `202606/dissertation_query_202606240205.md` + `…response` —— U+2028 unsearchable; split fallback; `padv.py`
+- AD12.4.7. `202606/dissertation_query_202606240243.md` + `…response` —— Figure 1 title + footnote superscripts
+- AD12.4.8. `202606/dissertation_query_202606240307.md` + `…response` —— Sensitising Concepts; Blumer gap
+- AD12.4.9. `202606/dissertation_query_202606240324.md` + `…response` —— CIC-validation breach rectified
+- AD12.4.10. `202606/dissertation_query_202606240326.md` + `…response` —— full A1R.md claim audit
+- AD12.4.11. `202606/dissertation_query_202606240412.md` + `…response` —— remove WCIC from cic.md
+- AD12.4.12. `202606/dissertation_query_202606240417.md` + `…response` —— library credentials into cic_libs.md
+- AD12.4.13. `202606/dissertation_query_202606240436.md` + `…response` —— QC fixes 7.1/7.2 as Changes 35–39
+- AD12.4.14. `202606/dissertation_query_202606240534.md` + `…response` —— PDF-vs-A1R.md diff; per-change calls
+- AD12.4.15. `202606/dissertation_query_202606240627.md` + `…response` —— P12 finale: re-QC, mirror, Log 19, dlint
+- AD12.4.16. `202606/dissertation_query_202606240759.md` + `…close/response_202606240805` —— this close (Log 22 review)
 
 - AD12.5. Remarks
   - AD12.5.1. Immediate next action is the USER's: fix the Log 22 typo ("managed to finished" → "managed to finish") and send; then the project enters P13 (Lu + 2 reviewers' approval → ethics).

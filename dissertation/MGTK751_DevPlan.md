@@ -338,7 +338,7 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
   - AD11.1.1. This was the FIRST MP (dissertation) session run in CC, migrated from CWI. Analysed Lu's 5 .docx comments (CM1–CM5), agreed an adoption map, and ran a multi-turn email exchange (Lu.md Logs 12–18): she APPROVED the full amendment plan (Log 18, 15/06/2026).
   - AD11.1.2. Built A1R v2 on `MGTK751_A1R.md` via `#sprint P12` (slog `dissertation_slog_202606221529.md`): §1 reframe + locked RA, §2 theoretical framework (table + diagram), §3 philosophy/approach/method split + sampling, §4 milestones, CB/ProjectSummary sync, QC + Challenge-SA red-team.
   - AD11.1.3. Folded in a forked `#debate` verdict and 2 rounds of your polish (numerals, semicolons, bolding, footnote trims, §2.2 revert, §3.1 reword, one-per-org emphasis, Figure 1 made standalone, Figure 2 SVG visual fixes).
-  - AD11.1.4. Housekeeping: archived A1/formative files to `archive/`; externalised AD01–AD07 to `addenda/`; stubbed P06–P11; created `universal/replace_adv.md` + `universal/br.md`; updated `numbered.md`, `glossary.md` (SR), CP indexes.
+  - AD11.1.4. Housekeeping: archived A1/formative files to `archive/`; externalised AD01–AD07 to `addenda/`; stubbed P06–P11; updated CP indexes. (System/non-CP file changes recorded in `close_202606232027` §3.)
 
 - AD11.2. Decisions
   - AD11.2.1. **LOCKED RA** (Lu-approved Log 18): "To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice." It REPLACED the RA Lu rejected as invalid in Log 16 —— "…crystallising the empirical foundation for KM practice to address the management challenge of CYC as a startup MCF" —— because the tail "to address the management challenge of CYC" implied studying the fictional firm. NB the term "management challenge" is still used (and bolded) in §1 prose; ONLY that rejected RA-tail construction is banned.
@@ -387,7 +387,7 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
   - AD11.4.22. `202606231835` —— A1R polish round (SVG, milestones, numerals, etc.)
   - AD11.4.23. `202606231936` —— final polish (Figure 1 standalone, Stakes, regarded)
   - AD11.4.24. `202606231947` —— this close_ + AD11
-  - AD11.4.25. Non-comms: `dissertation_slog_202606221529.md`; `MGTK751_A1R_Figure2_TheoreticalFramework.svg` (old Figure-1 svg voided); `universal/replace_adv.md`, `br.md`; `addenda/MGTK751_Addendum_AD01–07.md`; CP index updates; `dissertation_email_Lu_202606042222.md` (absorbed into Lu.md, then removed)
+  - AD11.4.25. Non-comms (CP): `MGTK751_A1R_Figure2_TheoreticalFramework.svg` (old Figure-1 svg voided); `addenda/MGTK751_Addendum_AD01–07.md`; CP index updates
 
 - AD11.5. Remarks
   - AD11.5.1. At project START (proposal approved by Lu + 2 reviewers), create the Calendar events for the milestone plan in the private calendar.
