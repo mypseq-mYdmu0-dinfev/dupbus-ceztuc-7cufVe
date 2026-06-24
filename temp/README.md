@@ -4,7 +4,7 @@
 - Anything to keep for good OR to retain git history → suggest where to move
 - DON'T read/edit existing folders unless instructed
 - `temp_seek/` remains (even empty)
-- `temp_archive/` (aka "The Morgue") stores finished temp projects for ~1yr from TS
+- `temp_archive/` ("The Morgue"): never work inside; stores finished temp work for ~1yr from TS
 - When explicitly told to work in this directory:
   - Create folder: `[deadline_YYYYMMDD]_[≤10char_org_name]/`
   - Subfolders inside (feel free to suggest more or other naming):
