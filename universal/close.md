@@ -105,12 +105,12 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 
 ## 1. Status
 - 1.1. [Last & next issues; actively use P[no.]/AD[no.]; max 20w; all #numbered (same for below)]
-- 1.2. ...
+- 1.2. ... [e.g. "P[no.] fully completed.", "Next: P[no.]."]
 [skip 1 line]
 
 ## 2. Remarks
 - 2.1. [Next CP session only; temporary, but noteworthy; absent from DevPlan/Addenda]
-- 2.2. ...
+- 2.2. ... [e.g. "Re-read [name].md to ..."]
 [If none, input `N/A`]
 [skip 1 line]
 
@@ -130,6 +130,8 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 
 - To be sent as (or in) 1st msg (or `query_`) to next CP session; must be MECE (see below)
 - §3 is not intended for next CP session, but mainly for monthly #wrap; e.g. `universal/` files
+- When done, check (via `echo "[text]" | wc -w`) if §1 & §2 under 20w each
+  - Otherwise, rectify it or explain why (e.g. special situation but only applicable to next session)
 
 ### Addendum Template
 
