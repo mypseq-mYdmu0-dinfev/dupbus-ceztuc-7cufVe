@@ -168,7 +168,7 @@ def main():
             for x in to_fix:
                 fh.write(fmt(x) + "\n")
         print(f"👀 List written to:\n  {txt}")
-        if input("👉🏻 Review it, then type yes to fix ALL: ").strip() != "yes":
+        if input("🚦 Review it, then type yes to fix ALL: ").strip() != "yes":
             print("⚠️ Aborted; changed nothing.")
             return
         for x in to_fix:
@@ -196,7 +196,7 @@ def main():
             print(f"{len(far)} file(s) are ≥24h off — review:")
             for x in far:
                 print("  " + fmt(x))
-            if input("👉🏻 Type yes to also fix these: ").strip() == "yes":
+            if input("🚦 Type yes to also fix these: ").strip() == "yes":
                 for x in far:
                     set_added(x[0], dtmap[x[0]])
                 print(f"✅ Fixed {len(far)} file(s).")
