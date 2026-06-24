@@ -128,9 +128,9 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 
 ### Handoff Rules
 
-- To be sent as (or in) 1st msg (or `query_`) to next CP session; must be MECE (see below)
+- To be sent as (or in) 1st msg (or `query_`) to next CP session
 - §3 is not intended for next CP session, but mainly for monthly #wrap; e.g. `universal/` files
-- When done, check (via `echo "[text]" | wc -w`) if §1 & §2 under 20w each
+- When done, check if MECE (see below) & if §1 & §2 under 20w each via `echo "[text]" | wc -w`
   - Otherwise, rectify it or explain why (e.g. special situation but only applicable to next session)
 
 ### Addendum Template
@@ -174,7 +174,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
   - 3rd level uses sub-bullet `  - `
 - No separator `---` within addendum
 - MECE (Mutually Exclusive, Collectively Exhaustive):
-  - Handoff = only applicable to immediate next session
+  - Handoff = only applicable to immediate next session; NO REPETITION (refer by P/AD no.)
   - Addendum = persists for & valuable to all future sessions
 - Focus on discrepancies and special notes only
 - DON'T describe general progress (P[Y.Y] already indicates that)
