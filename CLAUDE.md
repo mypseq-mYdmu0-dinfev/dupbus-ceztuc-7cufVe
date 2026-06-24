@@ -27,6 +27,7 @@
   - 2.1.5. Oxford comma (despite §2.1.1): `,` before final conjunction (e.g. "A, B, and C")
   - 2.1.6. HK Traditional Chinese for any unavoidable Chinese terms
   - 2.1.7. SYD timezone; obtain TS via my local terminal: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+  - 2.1.8. `%` only, never `percent`
 - 2.2. Date formats:
   - 2.2.1. Internal: `YYYYMMDDHHmm`
   - 2.2.2. Deliverables: `DD/MM/YYYY`
