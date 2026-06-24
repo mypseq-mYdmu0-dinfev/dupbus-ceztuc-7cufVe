@@ -129,7 +129,7 @@
 
 6. Claude Project (CP)
 - 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/seek/`, `/backup/`, `/temp/`, `/automator/` —— that contains a `CP_index_cc.md`
-- 6.2. A chat is identified as a CP chat when any of the following apply:
+- 6.2. Identify as a CP session when any of the following applies:
   - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
   - 6.2.2. User declares it; or CC suggests & user confirms
   - 6.2.3. User added CP folder to the session
@@ -179,7 +179,9 @@
   - 8.3.3. `_otg` suffix: OTG variant; if no CC variant exists in same folder, it's OTG-only
   - 8.3.4. `preferences.md` / `CP_instr.md`: for OTG only
 - 8.4. Filename suffix usually indicates variant; e.g. `CP_index_cc.md` = for CC (you)
-- 8.5. If a folder has `README.txt`/`README.md`, read it BEFORE its CLAUDE.md
+- 8.5. Whenever accessing any folder (except `universal/` & `sessions/`), actively scan for:
+  - 8.5.1. `README.md` —— read it (BEFORE its CLAUDE.md); alert if contradicting user instr
+  - 8.5.2. `CP_index_cc.md` —— indicates CP (follow §6)
 - 8.6. Memory (`~/.claude/projects/*/memory/`):
   - 8.6.1. READ freely; create/edit/delete ONLY on explicit `override`
   - 8.6.2. SUGGEST (request approval) write if detected info of lasting/critical value about user
