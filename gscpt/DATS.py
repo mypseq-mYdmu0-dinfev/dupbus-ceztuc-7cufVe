@@ -193,7 +193,7 @@ def main():
             for x in near:
                 print("  " + fmt(x))
         if far:
-            print(f"{len(far)} file(s) are ≥24h off — review:")
+            print(f"👀 {len(far)} file(s) are ≥24h off — review:")
             for x in far:
                 print("  " + fmt(x))
             if input("🚦 Type yes to also fix these: ").strip() == "yes":
