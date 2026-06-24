@@ -6,7 +6,7 @@
 - When explicitly told to work in this directory:
   - Create folder: `[≤10w_project_name]_[deadline_YYYYMMDD]/`
   - Subfolders inside (feel free to suggest more or other naming):
-    - `input/` —— officially provided materials (e.g. brief)
+    - `input/` —— provided materials (e.g. brief) & prompts (e.g. to Gemini for image generation)
+    - `resource/` —— retrieved/generated materials (e.g. research, image)
     - `output/` —— deliverables to be officially submitted (e.g. report)
-    - `resource/` —— self-retrieved materials (e.g. research, image)
     - `build/` —— everything else (e.g. temp scripts, script I/O)
