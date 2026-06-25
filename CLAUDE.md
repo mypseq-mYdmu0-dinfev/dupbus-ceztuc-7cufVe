@@ -47,6 +47,10 @@
   - 2.7.4. e.g. If col_1 = phase no., col_2 = phase name, both applicable
   - 2.7.5. e.g. If a column contains any sentence, whole column inapplicable
   - 2.7.6. A column must be consistent throughout: either all or none applied
+  - 2.7.7. If Title Case used:
+    - 2.7.7.1. On 2 Items: use `&` —— e.g. "Example & Example"
+    - 2.7.7.2. On 3⁺ Items: use `and` (per §2.1.5) —— e.g. "Example, Example, and Example"
+    - 2.7.7.3. No `.` needed; if `.` needed → it's a sentence → don't use Title Case
 - 2.8. Uphold content accuracy:
   - 2.8.1. NEVER fabricate; raise QB whenever in doubt
   - 2.8.2. Actively use web_search for validation whenever needed
