@@ -44,6 +44,18 @@ When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same f
 
 ---
 
+## Bot Blocks —— CAPTCHAs & Anti-Automation
+
+Some sites (esp. e-commerce —— Temu, Taobao, etc.) run bot-detection that trips on AUTOMATION SIGNALS, not on you personally. Symptoms: a "Security Verification" CAPTCHA (slide-puzzle / rotate-objects / pick-the-image), or CDP calls that simply HANG (300s timeouts).
+
+- TRIPS the wall (avoid on these sites): navigating by direct URL straight to a product/deep page; `javascript_tool` DOM-scraping; `get_page_text`/`read_page` on a bot-sensitive listing; any fast scripted interaction.
+- WORKS (slow but effective —— behave like a human): use the `computer` tool —— `navigate` only to the site's HOMEPAGE, type into its OWN search box, then `screenshot` and human-`left_click` the product cards. Let the site open the product in a new tab itself; it joins the MCP tab group and is fully controllable. Verify each opened page with a screenshot.
+- NEVER solve a CAPTCHA (prohibited bot-bypass). Its X usually just cycles a fresh one. If a site still CAPTCHAs or hangs despite human-like clicks, STOP on that site, leave its SEARCH tab open, and list the picks for the user to click —— a human clears the wall in one go.
+- DEFAULT, on bot-sensitive shopping sites, to the slow screenshot + click path FROM THE START; it beats fast scripted access, which only wastes time on CAPTCHAs and 300s hangs.
+- Proven (Jun 2026): Temu —— direct product-URL + `javascript_tool` = CAPTCHA, but homepage → search-box → human-CLICK opened products cleanly with no wall. Taobao (even logged-in) —— every CDP op (click, JS, `get_page_text`, even `screenshot`) hangs 300s; treat as unusable by automation and hand its home/search tab to the user. CONFIRMED: a FRESH tab + homepage + human-like clicks still hung on the very FIRST click (the tab never even left the homepage) —— Taobao detects the CDP/automation channel ITSELF, not behaviour, so the human-like trick that beats Temu does NOT work here. Don't burn 300s retrying it; load the homepage for the user and stop. Search engines can't rescue it either —— Alibaba blocks indexing of Taobao/Tmall ITEM pages (a Baidu `site:detail.tmall.com` query returns nothing; Google returns no item links), so the "find an item URL via Google/Baidu and navigate to it" fallback also fails. Conclusion: only the human can open Taobao/Tmall items —— don't sink time into it.
+
+---
+
 ## IMPORTANT
 
 If I request to use CIC, you MUST use CIC instead of `web_search` alone or drafting a BCIC prompt. Enforced throughout session unless instr otherwise. If failed, stop & alert (no fallback).
