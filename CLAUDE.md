@@ -151,16 +151,16 @@
 | `google.md` | On personal email/calendar; OR `#job` mentioned |
 | `profile.md` | User's personal background needed |
 | `seek/context/pro_profile.md` | User's professional background needed |
-| `cic.md` | Right before starting any CIC ops |
-| `writing.md` | Right before writing ANY deliverables; OR "casual"/"whatsapp" mentioned |
+| `cic.md` | ANY CIC ops |
+| `writing.md` | ANY deliverables; OR "casual"/"whatsapp" mentioned |
 | `coding.md` | On multi-script coding |
 | `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
 | `shrink.md` | `shrink`/`summarise`/`synthesise`/`distil`/`condense` mentioned or involved |
 
 - 7.3. General Trigger:
-  - 7.3.1. Any `#[trigger]` → attempt to read `universal/[trigger].md`
-  - 7.3.2. e.g. `#close` → `universal/close.md`
-  - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file not found
+  - 7.3.1. `#[trigger]` → `universal/[trigger].md` → if found: MUST read first, unless told otherwise
+  - 7.3.2. e.g. prompted `#replace` → DON'T EDIT FILES; read & follow `universal/replace.md`
+  - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file not found (some are elsewhere; e.g. in CP)
 
 8. File Rules
 - 8.1. Move Rule:
@@ -174,7 +174,7 @@
   - 8.2.3. Precaution: NEVER actually delete a file by yourself (user will review)
   - 8.2.4. Reminder user when spotting a voided file w/ mod time ≥7 days (don't actively search)
 - 8.3. Completely disregard anything w/ below filename attributes, unless explicitly referred:
-  - 8.3.1. `user_notes.txt`: private notes
+  - 8.3.1. `user_notes`: private notes
   - 8.3.2. `temp_` prefix: to be deleted soon
   - 8.3.3. `_otg` suffix: OTG variant; if no CC variant exists in same folder, it's OTG-only
   - 8.3.4. `preferences.md` / `CP_instr.md`: for OTG only
