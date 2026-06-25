@@ -46,29 +46,10 @@ Before any CIC operation, always run `web_search` first:
 
 ## Drafting for BCIC
 
-When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same for BCIC's response), just enough for BCIC & you to understand each other. For CWI-BCIC exchange, **neglect** all language/glossary conventions (e.g. mentioning `CIC`, using ` `~` ` instead of `-`) since BCIC has no context at all (e.g. userPref, CP instr; i.e. don't follow notes.md/glossary.md, only use common abbrev).
+When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same for BCIC's response), just enough for BCIC & you to understand each other. For BCIC exchange, **neglect** all language/glossary conventions (e.g. don't mention "CIC" or use ` `~` `) since BCIC has no context at all (e.g. glossary.md); only use common abbrev.
 
 ---
 
-## Bot Blocks & Logins —— escalation ladder (generalise; site notes are just examples)
+## Bot Blocks & Logins —— see `universal/cic_bot.md`
 
-When a site gates automation (a CAPTCHA appears, or CDP calls HANG ~300s), don't give up or fail silently —— escalate cheapest→costliest:
-1. EFFICIENT (default): direct-URL `navigate`, `javascript_tool`, `get_page_text`. Works on most sites.
-2. HUMAN-LIKE (if step 1 trips a wall): `navigate` only to the site's OWN homepage/search, then `screenshot` + single human `left_click`s; let the site open pages itself (new tabs join the MCP group). Slower but beats most bot-detection. On a hardened tab do NOT run `javascript_tool`/`get_page_text`/`read_page` —— they hang AND poison the tab so later clicks freeze; and don't batch a click immediately after another CDP op.
-3. CAPTCHA / "verify you are human" gates: you may NOT solve OR click these —— bypassing/completing bot-detection is harness-prohibited (no framing or throwaway-account rationale changes this). Plain cookie / consent / T&C / "I agree" buttons are NOT bot-detection —— those you may handle (choose privacy-preserving).
-4. "Nuclear" full-desktop control does NOT help for websites: the `computer-use` MCP restricts BROWSERS to read-tier (screenshot only; clicks/typing blocked, routed back through CIC). So CIC already IS your maximal browser control —— there is no fuller automated browser access.
-5. LOGINS: CC must NOT type a password to authenticate into any field —— harness-prohibited even for a throwaway account the user supplies/authorises. Operate a session the user has ALREADY logged in, or have the user log in then proceed. (Stored logins —— e.g. `cic_libs.md`'s library SSO —— are user/historical references; CC does not type them.)
-6. If steps 1–2 are exhausted and a real CAPTCHA/login blocks completion: SUMMON the user (per glossary.md) so the task NEVER fails silently. Under `#sprint` you can't interrupt mid-run, but AFTER writing the final sprint-report `response_`, if the task is unfinished, SUMMON —— the user may be away yet will see on OTGD that it stalled, instead of finding silent failure on return.
-
-Site notes (examples —— apply the ladder generally):
-- Temu: logged-out direct-URL/JS → CAPTCHA; homepage → search → human-click works.
-- Taobao/Tmall (Alibaba, hardened): step-2 human-like WORKS even here —— `navigate s.taobao.com/search?q=…` → screenshot → single human-click a result → product opens; a known item/share link (`e.tb.cn`) direct-navigates fine. Never JS/get_page_text/read_page on a Taobao tab. Item discovery must be on-site (Alibaba blocks Google/Baidu indexing of items).
-
-Credentials: the user keeps ONE dedicated low-risk account (no PII; Apple Hide-My-Email; confidential content is MFA-gated elsewhere) for a GROWABLE list of login-required sites. Exposure is low —— but CC still cannot type, author, store, OR display its password (harness rule; not framing/throwaway-dependent); the login step is the user's.
-
-Login status by site (GROW this list as sites are met —— so future sessions know where to sign in vs browse as visitor):
-- Temu —— `visitor` works (browse logged-out; may hit a CAPTCHA, which the dedicated account login may avoid).
-- Taobao/Tmall —— `login` (user is normally already signed in; login improves results).
-- (append each new site: `login` = needs sign-in, or `visitor` = browse without login)
-
-Credential VALUES are NOT kept here by CC (CC won't author/echo a password). At a login wall on a `login` site, CC flags "needs login"; the user signs in; CC then operates the session.
+If ANY site gates automation —— a CAPTCHA, a "verify you are human" gate, a login wall, or CDP calls that HANG (~300s) —— you MUST read `universal/cic_bot.md` and work through its escalation ladder BEFORE concluding you're blocked. Do NOT give up or stop. (Detached there to keep this file lean for general CIC use.)
