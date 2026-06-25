@@ -2,9 +2,14 @@
 *Bite-size reformat of the 192158 TLDR (lossless)*
 
 5. Deliverable (the reworked 90-day plan):
-- 5.1. Keeps the draft's arc (Immerse, Build, Execute, Scale) and the EOS voice.
-- 5.2. Five principles: sequence around peak season; phase, not parallelise; honest hours; respect the review gate on both sides; calibrate to a cooling AV market.
-- 5.3. Headline fix: front-load case-study extraction into quiet Jul–Aug (the team vanishes into delivery from Sep).
+- 5.1. Keeps the draft's structure (Immerse, Build, Execute, Scale) and the EOS voice.
+- 5.2. Five principles:
+  - 5.2.1. Sequence around peak season
+  - 5.2.2. Phase, not parallelise
+  - 5.2.3. Honest hours
+  - 5.2.4. Respect the review gate on both sides
+  - 5.2.5. Calibrate to a cooling AV market
+- 5.3. Headline fix: front-load case-study extraction into quiet Jul–Aug (peak season from Sep).
 - 5.4. HubSpot phased: essentials, then automations, then Rentman scoped then built.
 - 5.5. Pillars sequenced: core three independent by Month 3, all six by Month 6.
 - 5.6. Targets recut to realistic, benchmarked numbers: case studies 20 → 10–12 by Dec.
