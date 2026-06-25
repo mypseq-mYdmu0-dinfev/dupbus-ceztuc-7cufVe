@@ -1,6 +1,6 @@
 # CIC —— Claude in Chrome
 
-CIC = Claude in Chrome (Claude's connector/Chrome's extension), accessible via either interfaces:
+CIC = Claude in Chrome (Claude's connector/Chrome's extension), accessible via either:
 
 - **BCIC** = Browser-CIC, Chrome's sidebar chat; very rarely used
 - **CCIC** = Code-CIC, used by CC; the **default** means
@@ -18,8 +18,14 @@ CIC = Claude in Chrome (Claude's connector/Chrome's extension), accessible via e
 
 ## When to Suggest CIC
 
-- CC: DON'T suggest; DIRECTLY go for it whenever applicable (false-positive leaning); CIC is always available for you, otherwise directly open Chrome by yourself.
+- CC: DON'T suggest; DIRECTLY go for it whenever applicable (false-positive leaning); CIC should be always available for you, otherwise directly open Chrome by yourself.
 - Non-CC: When we're on high-stake tasks requiring validation OR repetitive/lengthy tasks requiring minimal human intervention, briefly suggest me to use CCIC if we need **accuracy** beyond web_search. If user is OTG (CIC is N/A), fall back to web_search & alert for inaccuracy.
+
+---
+
+## IMPORTANT
+
+If I request to use CIC, you MUST use CIC instead of `web_search` alone or drafting a BCIC prompt. Enforced throughout session unless instr otherwise. If failed, stop & alert (no fallback).
 
 ---
 
@@ -33,7 +39,7 @@ Before any CIC operation, always run `web_search` first:
 - If valid+invalid candidates are fewer than 5, CIC may also give a quick pass on invalid sources, prioritising borderline ones over clearly off-topic ones
 - CIC should also search for additional sources beyond the list as needed
 - web_search returning no results ≠ CIC will also find nothing —— worth CIC trying regardless
-- If any candidates are PDF + no equiv/similar web ver found: DON'T use BCIC (can't handle files); pivot to CCIC → ensure PDFs are downloaded (not opened in a Chrome tab)
+- If any candidates are PDF + no equiv./similar web ver found: DON'T use BCIC (can't handle files); pivot to CCIC → ensure PDFs are downloaded (not opened in a Chrome tab)
 - On academic, use the most efficient authoritative means (e.g. G Scholar); take the UoL/UTS Library as fallback when public sources paywall —— follow `universal/cic_libs.md` for Library entry points and full-text steps (NB Library access lapses after 2026, MBA graduation)
 
 ---
@@ -44,18 +50,25 @@ When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same f
 
 ---
 
-## Bot Blocks —— CAPTCHAs & Anti-Automation
+## Bot Blocks & Logins —— escalation ladder (generalise; site notes are just examples)
 
-Some sites (esp. e-commerce —— Temu, Taobao, etc.) run bot-detection that trips on AUTOMATION SIGNALS, not on you personally. Symptoms: a "Security Verification" CAPTCHA (slide-puzzle / rotate-objects / pick-the-image), or CDP calls that simply HANG (300s timeouts).
+When a site gates automation (a CAPTCHA appears, or CDP calls HANG ~300s), don't give up or fail silently —— escalate cheapest→costliest:
+1. EFFICIENT (default): direct-URL `navigate`, `javascript_tool`, `get_page_text`. Works on most sites.
+2. HUMAN-LIKE (if step 1 trips a wall): `navigate` only to the site's OWN homepage/search, then `screenshot` + single human `left_click`s; let the site open pages itself (new tabs join the MCP group). Slower but beats most bot-detection. On a hardened tab do NOT run `javascript_tool`/`get_page_text`/`read_page` —— they hang AND poison the tab so later clicks freeze; and don't batch a click immediately after another CDP op.
+3. CAPTCHA / "verify you are human" gates: you may NOT solve OR click these —— bypassing/completing bot-detection is harness-prohibited (no framing or throwaway-account rationale changes this). Plain cookie / consent / T&C / "I agree" buttons are NOT bot-detection —— those you may handle (choose privacy-preserving).
+4. "Nuclear" full-desktop control does NOT help for websites: the `computer-use` MCP restricts BROWSERS to read-tier (screenshot only; clicks/typing blocked, routed back through CIC). So CIC already IS your maximal browser control —— there is no fuller automated browser access.
+5. LOGINS: CC must NOT type a password to authenticate into any field —— harness-prohibited even for a throwaway account the user supplies/authorises. Operate a session the user has ALREADY logged in, or have the user log in then proceed. (Stored logins —— e.g. `cic_libs.md`'s library SSO —— are user/historical references; CC does not type them.)
+6. If steps 1–2 are exhausted and a real CAPTCHA/login blocks completion: SUMMON the user (per glossary.md) so the task NEVER fails silently. Under `#sprint` you can't interrupt mid-run, but AFTER writing the final sprint-report `response_`, if the task is unfinished, SUMMON —— the user may be away yet will see on OTGD that it stalled, instead of finding silent failure on return.
 
-- TRIPS the wall (avoid on these sites): navigating by direct URL straight to a product/deep page; `javascript_tool` DOM-scraping; `get_page_text`/`read_page` on a bot-sensitive listing; any fast scripted interaction.
-- WORKS (slow but effective —— behave like a human): use the `computer` tool —— `navigate` only to the site's HOMEPAGE, type into its OWN search box, then `screenshot` and human-`left_click` the product cards. Let the site open the product in a new tab itself; it joins the MCP tab group and is fully controllable. Verify each opened page with a screenshot.
-- NEVER solve a CAPTCHA (prohibited bot-bypass). Its X usually just cycles a fresh one. If a site still CAPTCHAs or hangs despite human-like clicks, STOP on that site, leave its SEARCH tab open, and list the picks for the user to click —— a human clears the wall in one go.
-- DEFAULT, on bot-sensitive shopping sites, to the slow screenshot + click path FROM THE START; it beats fast scripted access, which only wastes time on CAPTCHAs and 300s hangs.
-- Proven (Jun 2026): Temu —— direct product-URL + `javascript_tool` = CAPTCHA, but homepage → search-box → human-CLICK opened products cleanly with no wall. Taobao/Tmall (Alibaba) —— USABLE, but ONLY via navigate + screenshot + single human clicks (CORRECTED after a clean live retest): `navigate` (page load) and `screenshot` work; a SINGLE human `left_click` on a search RESULT from a freshly-loaded `s.taobao.com/search?q=...` page DOES open the product in a new tab. Working loop: navigate to the search URL → screenshot → human-click a result → screenshot/scroll the product → go `back` → repeat. Direct-navigating a KNOWN item or share link (e.g. an `e.tb.cn` link) also loads fine. CRUCIAL —— what hangs 300s on Taobao is the SCRIPTING/snapshot ops: `javascript_tool`, `get_page_text`, `read_page`; running one POISONS that tab so later clicks on it hang too. So NEVER run JS/get_page_text/read_page on a Taobao tab, and don't batch a click immediately after another CDP op. (An earlier note that "Taobao is unusable / human-clicks fail" was WRONG —— those clicks were confounded by a prior JS/get_page_text hang.) Item DISCOVERY must use Taobao's own on-site search —— Google/Baidu can't help, as Alibaba blocks indexing of Taobao/Tmall item pages (`site:detail.tmall.com` returns nothing).
+Site notes (examples —— apply the ladder generally):
+- Temu: logged-out direct-URL/JS → CAPTCHA; homepage → search → human-click works.
+- Taobao/Tmall (Alibaba, hardened): step-2 human-like WORKS even here —— `navigate s.taobao.com/search?q=…` → screenshot → single human-click a result → product opens; a known item/share link (`e.tb.cn`) direct-navigates fine. Never JS/get_page_text/read_page on a Taobao tab. Item discovery must be on-site (Alibaba blocks Google/Baidu indexing of items).
 
----
+Credentials: the user keeps ONE dedicated low-risk account (no PII; Apple Hide-My-Email; confidential content is MFA-gated elsewhere) for a GROWABLE list of login-required sites. Exposure is low —— but CC still cannot type, author, store, OR display its password (harness rule; not framing/throwaway-dependent); the login step is the user's.
 
-## IMPORTANT
+Login status by site (GROW this list as sites are met —— so future sessions know where to sign in vs browse as visitor):
+- Temu —— `visitor` works (browse logged-out; may hit a CAPTCHA, which the dedicated account login may avoid).
+- Taobao/Tmall —— `login` (user is normally already signed in; login improves results).
+- (append each new site: `login` = needs sign-in, or `visitor` = browse without login)
 
-If I request to use CIC, you MUST use CIC instead of `web_search` alone or drafting a BCIC prompt. Enforced throughout session unless instr otherwise. If failed, stop & alert (no fallback).
+Credential VALUES are NOT kept here by CC (CC won't author/echo a password). At a login wall on a `login` site, CC flags "needs login"; the user signs in; CC then operates the session.
