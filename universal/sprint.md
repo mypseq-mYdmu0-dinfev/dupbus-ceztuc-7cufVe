@@ -123,3 +123,4 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 ## Remarks
 
 - If SA(s) spawned for research, ensure she validates via #cic (not just web_search)
+- **Sprint End:** after #sprint started, if the tasks are fully finished AND the user directly sends a `query_` (not just msg text; not `QMM`), consider the #sprint as ended & stop editing `slog_`
