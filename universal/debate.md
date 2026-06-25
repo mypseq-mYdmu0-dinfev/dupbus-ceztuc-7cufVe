@@ -118,7 +118,7 @@ The user may append a `## User` block to the board anytime (template at bottom).
 
 ## Example Outputs
 
-Opening states the stance once; later blocks omit it. `[HHmm]` = real append time; labels continue per debater.
+Opening states the stance once; later blocks omit it. `[HHmm]` = real append time; labels continue per debater. Must include the separator `---` to separate from next output.
 
 ```
 ## Debater A · turn 1 · [HHmm]
