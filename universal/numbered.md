@@ -2,7 +2,7 @@
 
 ## Format
 
-Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (level-2 onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`).
+Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (level-2 onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`). This file applies to ALL outputs EXCEPT deliverables, codes (.py/.sh/etc.), and system files (.json/etc.).
 
 ## Example List
 
@@ -34,7 +34,7 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 
 ## Optimise for Reply
 
-- On long responses above 100w (even not prompted `#numbered`; EXCLUDING deliverables):
+- On ANY 100w⁺ outputs (not just `response_`; except `#opt`):
   - Write in above format (rather than `- xxx...`) & in bite-size (see § Bite-size) for **easy reply**
   - Instead of `re "xxx..."`, user can refer by `re 1.2.1` or just `1.2.1:`
   - Caveat: You must always add `re` to separate current pt & the pt you're replying to
