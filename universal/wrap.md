@@ -1,6 +1,12 @@
 # Monthly Wrapping Protocols
 
-*Triggered by: `#wrap` | Current_TS: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`*
+## Preamble
+
+- Triggered by: `#wrap` | Current_TS: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
+- Editing `wrap_` file: NEVER edit TS in filename, so user can track diff
+- After creating & declaring the file, run `gscpt/DATS.py`
+  - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
+  - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
 
 ---
 
@@ -8,7 +14,7 @@
 
 Filename: `wrap_[TS].md`
 Location: `/sessions/[YYYY]/[YYYYMM]/` —— one per month
-Format: all #numbered; reference last month's `wrap_` (if exists)
+Format: all #numbered; reference last month's `wrap_` (if applicable) to avoid repetition
 
 ---
 
@@ -61,5 +67,5 @@ Format: all #numbered; reference last month's `wrap_` (if exists)
 ## Wrap Rules
 
 - Read ALL `close_` files (incl. CP-prefixed) in the target month's folder before writing
-- Synthesise —— don't just copy; `wrap_` must be faster to read than all `close_` files combined
+- Synthesise —— don't just copy; `wrap_` must be easier to read than all `close_` files combined
 - If a `wrap_` already exists for the target month, STOP & alert user
