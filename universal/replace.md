@@ -1,10 +1,13 @@
 # Replace Protocol
 
-*If `#replace #adv` is prompted, read `universal/replace_adv.md` (advanced ver for deliverables finalised in a layout app, e.g. .pages; there is NO `adv.md`) after this file.*
+## Preamble
+
+- If `#replace` is prompted, DON'T edit files —— issue #replace blocks as instructed below.
+- CC: If `#replace #adv` is prompted, read `universal/replace_adv.md` (advanced ver for deliverables finalised in a layout app, e.g. .pages; there is NO `adv.md`) after this file.
 
 ## Large Content
 
-When prompted `#replace` or editing a file w/ 50⁺ lines of codes/500⁺ words of text, you MUST NOT generate full content OR update previous artefacts, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. to add `123` between lines `xxx` & `yyy` you should print (ALWAYS in a `text/markdown` artefact, NEVER a code-type artefact; use code blocks for the snippets, NOT "Replace"/"With"):
+When prompted `#replace` or editing a file w/ 50⁺ lines of codes/500⁺ words of text, you MUST NOT generate full content OR update previous contents, but quote existing snippet VERBATIM (NEVER "after xxx block", "in xxx function", etc.) to replace, e.g. to add `123` between lines `xxx` & `yyy` you should emit (Non-CC: ALWAYS in a `text/markdown` artefact, NEVER a code-type artefact; use code blocks for the snippets, NOT "Replace"/"With"):
 
 ```
 ## Change 01
