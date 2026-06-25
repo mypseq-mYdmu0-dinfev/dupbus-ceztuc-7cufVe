@@ -2,7 +2,7 @@
 
 ## Format
 
-Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (2nd level onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`).
+Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (level-2 onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`).
 
 ## Example List
 
@@ -29,6 +29,8 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 - Strictly ensure NO sentence/bullet/line unnumbered e.g. `- xxx...`
 - Each number must have a dot `.` between it and the text e.g. `1.1. xxx` instead of `1.1 xxx`
 - The dot is not needed when referring to it e.g. "Item 1.1 detailed xxx..."
+- Numbered points live in the BODY, NEVER on a heading: a `##`/`###`/etc. heading may LABEL a section (encouraged for readability), but the level-1 lines (`1.`/`2.`/etc.) and their sub-bullets (`- 1.1.`/`- 1.2.`/etc.) MUST sit UNDERNEATH a heading as normal lines
+- NEVER make the heading itself the numbered point (e.g. `## 1. xxx...`); doing so confuses you —— striping bullet structure & collapses its sub-points (`1.1.`/`1.2.`/etc.) onto 1 line (unreadable)
 
 ## Optimise for Reply
 
