@@ -98,7 +98,7 @@ The net effect is a plan that is slightly less front-loaded, noticeably more pra
 | Focus | Draft Target | My Reworked Target | Why |
 |---|---|---|---|
 | Social | 2–3 posts/week from 1 Oct | 3–4 posts/week, LinkedIn-led, ramping; first traction signals Nov–Dec | A sustainable solo cadence once the Section 5 repurposing system makes posts efficient to produce, one event becoming a week of content, unlike case studies which need scarce interviews; organic inbound is a 3 to 6 month build |
-| Case Studies | 20 published by Dec | 10 to 12 published by Dec | Beyond the 10–12 whose raw materials are banked in the quiet window, reaching 20 would mean interviewing through peak season; 1–2/mth is the realistic processing rate, with the Oct–Dec pace intentionally lower for peak season |
+| Case Studies | 20 published by Dec | 10–12 published by Dec | Beyond the 10–12 whose raw materials are banked in the quiet window, reaching 20 would mean interviewing through peak season; 1–2/mth is the realistic processing rate, with the Oct–Dec pace intentionally lower for peak season |
 | HubSpot | Fully live; Rentman integrated by Nov | Essentials live in Aug, automations live in Oct, Rentman integrated by Dec | Phased so a novice builds it safely, with integration after the core is stable |
 | Website | Underway to 2027 | Underway to 2027 (kept) | The draft is already quality-first here |
 | Sales Enablement | Full suite by Dec | First booklet by end Oct, core suite by Dec | Keeps the commercial priority and paces the rest |
@@ -122,17 +122,17 @@ The reason a single part-timer may credibly hit these targets is that I build AI
 
 However, limits apply. As the disclaimer goes: “AI can make mistakes”. AI scales fast and accelerates first drafts, but does not supersede judgement, brand fit, or factual accuracy, hence the review and approval gates stay.
 
-This is also why I am comfortable with the plan. I have engineered and been running the content & operations systems that organisations depend on, and the part of this role that matters is the ability to design workflows & systems, automate it, and document it, **which is exactly what I do.**
+This is also why I am comfortable with the plan. I have engineered and been running the content & operations systems that organisations depend on, and the part of this role that matters is the ability to design workflows, automate them, and document them, **which is exactly what I do.**
 
 ---
 
 # 6. My Questions
 
-Q1. How do the current data & system actually look like; that is, the social analytics, the brand-asset state, the website platform (Wix?), and the curated list of past projects? This determines how deep the Month 1 audits can go.
+Q1. What do the current data & system actually look like; that is, the social analytics, the brand-asset state, the website platform (Wix?), and the curated list of past projects? This determines how deep the Month 1 audits can go.
 Q2. How quickly can approvals turn around in practice (hours? days?), and would Elena be open to a set of pre-approved templates or benchmarks so the review gate protects quality whilst minimising slack?
 Q3. How is AI currently used across Alltech, and is there appetite to move from chatbot-style exchange to bespoke, agentic workflows that can run non-stop for days?
 Q4. Which subscriptions are in place (Claude Team/Enterprise)? Would this role have access, and would you consider API where a fixed plan caps the value? 
-Q5. Is anything deliberately off-limits to AI, say emails or contracts? *(I draw that line carefully and wish ours aligned from day one)*
+Q5. Is anything deliberately off-limits to AI, say emails or contracts? *(I draw that line carefully and wish ours were aligned from day one)*
 Q6. If Alltech could be known for one attribute/element in 18 months, what would it be? *(The whole content engine should ladder up to that one position)*
 
 *Thank You For Your Time!*
