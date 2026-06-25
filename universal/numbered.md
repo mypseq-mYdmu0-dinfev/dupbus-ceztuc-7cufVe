@@ -32,9 +32,9 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 
 ## Optimise for Reply
 
-- On long responses above 100w (even not prompted `#numbered`; exc. deliverables):
-  - Follow above format (rather than `- `) w/ bitesize short lines for **easy reply**
-  - Instead of `re "xxx..."`, I can refer by `re 1.2.1` or just `1.2.1:`
+- On long responses above 100w (even not prompted `#numbered`; EXCLUDING deliverables):
+  - Write in above format (rather than `- xxx...`) & in bite-size (see § Bite-size) for **easy reply**
+  - Instead of `re "xxx..."`, user can refer by `re 1.2.1` or just `1.2.1:`
   - Caveat: You must always add `re` to separate current pt & the pt you're replying to
     - e.g. ❌ `3. 1.2.1: ...` (reads like `3.1.2.1`) | ✅ `3. re 1.2.1: ...` (pt 3 clearly replying 1.2.1)
 - Numbering Continuity —— DEFAULT is to CONTINUE at n+1 (n = last pt of last response); NEVER default to resetting, even in doubt. No number repetition throughout an issue. Reset to pt 1 ONLY if at least one of below conditions met:
@@ -52,3 +52,37 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 - 3.2. xxx...
 ...
 ```
+
+## Bite-size
+
+DEFAULT bite-size short lines, not only when `#numbered` is prompted:
+- One point per line —— each bullet states ONE claim/action/caveat; if it holds ≥2, split into sibling/sub-bullets, NEVER merge into a paragraph
+- Verdict-first —— lead w/ the conclusion/directive (e.g. "Confirm alignment"); if reasoning exceeds one short clause, demote it to sub-bullets
+- No paragraph-bullets —— a bullet is ideally ≤1 sentence (a short trailing clause is fine); multi-sentence prose blocks are banned
+- Minimise meta-prose —— drop rhetorical/second-person framing; state plainly
+- Bold only when necessary, never sprinkled
+- Prefer more, smaller sections w/ functional titles over few large ones
+- LOSSLESS —— never DROP content for brevity; trim prose, not substance
+- If even bite-size still runs very long, consider `#opt` rather than omitting valuable details
+
+## `#opt` —— Optional-Reading Offload
+
+- Triggered by: `#opt` —— a **modifier** of `#numbered`; never find `opt.md` (this § governs)
+- Purpose: when response is already concise AND bite-size but still heavy (extended, appendix-worthy), split it so user reads only what matters NOW, whilst nothing is lost for future sessions
+- NEVER write-long-then-offload —— always attempt the most concise yet understandable response first (bite-size); `#opt` fires ONLY when, despite that, content is still unavoidably long
+- Activation:
+  - Auto-consider whenever content is (or is expected to be) long AND prose is already atomised to bite-size —— NO word threshold (active counting won't reliably fire); judge by feel
+  - Or user activates explicitly by prompting `#opt`
+- Mechanism —— necessary reading first, optional reading below a fixed separator:
+
+```
+[necessary_reading]
+---
+*`#opt`: Below are optional reading.*
+---
+[optional_reading]
+```
+
+- `[necessary_reading]` = what current rules already demand —— bite-size #numbered; the decisions/actions/caveats user needs now
+- `[optional_reading]` = still #numbered (DON'T reset no.), but NOT necessarily bite-size —— CC-facing, optimised for FUTURE sessions' read, not the human; an appendix / back-notes (e.g. fuller reasoning, options not taken, record-keeping detail that bite-size would otherwise drop)
+- Lossless link —— the offload is HOW #numbered stays lossless at length: detail trimmed from the bite-size body lands in `[optional_reading]`, never deleted
