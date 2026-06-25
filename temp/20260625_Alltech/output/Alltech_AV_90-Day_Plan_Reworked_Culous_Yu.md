@@ -1,9 +1,7 @@
-*Working text of the Alltech Stage 2 deliverable (exported to `.pages` for layout; not yet submitted). Kept in sync with the `.pages`/PDF for record-keeping and diff.*
-
 # ALLTECH AV
 # Marketing & Growth Coordinator
 ### Reworked 90-Day Plan & 3–6 Month Milestones
-*Prepared by Culous Yu for Stage 2*
+*Presented by Culous Yu for Stage 2*
 
 ---
 
@@ -50,7 +48,7 @@ The net effect is a plan that is slightly less front-loaded, noticeably more pra
 
 # 3. The Reworked 90-Day Plan
 
-> *Change-notes are marked [CHANGE] and explain what moved, was cut, or was added against the draft, and why.*
+> Change-notes are marked [CHANGE] and explain what moved, was cut, or was added against the draft, and why.
 
 ### Month 1 · July · Immerse & Audit
 **Goal (kept):** Build deep understanding of the brand, business, team, and current marketing state. No live content, with audit and foundation only.

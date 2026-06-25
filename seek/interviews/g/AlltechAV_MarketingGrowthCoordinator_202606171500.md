@@ -526,6 +526,23 @@ Culous
 
 ---
 
+### User Reply
+
+On 26 Jun 2026, at 01:59, c@culousyu.com wrote:
+
+Hello Elena,
+
+Please find attached my Stage 2 deliverable, sent early so it is with you ahead of the deadline.
+
+I genuinely enjoyed working on it. Rather than spoiling it here, I would much prefer to walk you through when we speak.
+
+Thank you again for a brief that was a pleasure to engage with. I look forward to our meeting today.
+
+Warm Regards,
+Culous
+
+---
+
 ## 8. Stage 2 Pack — Summary
 *Added in the 202606190127 session (CC). #summarise mode = abstractive, key dates/targets/names kept verbatim. Substitutes for the 5 attachments (too large to embed); all 5 + the invite #r in full.*
 
