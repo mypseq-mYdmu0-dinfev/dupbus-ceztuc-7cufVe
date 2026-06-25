@@ -465,6 +465,67 @@ Culous
 
 ---
 
+### User Chase
+
+On 24 Jun 2026, at 15:13, c@culousyu.com wrote:
+
+Hello Elena,
+
+Just received your Google Meet email but it says 12pm on Friday. Your last email seemed to indicate it’s 1:30pm on Friday. May I please confirm the actual time? If possible and convenient to you, I’d slightly lean towards remaining 1:30pm on Friday. Thank you so much!
+
+Regards,
+Culous
+
+---
+
+### User Chase
+
+On 25 Jun 2026, at 17:06, c@culousyu.com wrote:
+
+Hello Elena,
+
+Sorry for interrupting. Just wanna confirm the actual meeting time tomorrow. Thank you!
+
+Regards,
+Culous
+
+---
+
+### Employer Reply
+
+On 25 Jun 2026, at 18:29, Elena Mel <elena@alltech.co> wrote:
+
+Hi Culous, 
+
+Apologies, we’re on holiday and trying to say off devices as much as possible. I‘love move it to 1pm so it’s somewhere in the middle and I can turn offline earlier rather than later. 
+
+If that’s an issue let me know and we can figure something out.
+
+Elena Melnykova
+Head of Strategic Operations & Growth
+Alltech
+
+---
+
+### User Reply
+
+On 25 Jun 2026, at 19:03, c@culousyu.com wrote:
+
+Hello Elena,
+
+Thank you for the update and I completely understand. I appreciate you arranging this during your break.
+
+For tomorrow, I have several commitments earlier in the afternoon, so 1pm would be a little tight, though I will do my best to make it work.
+
+That said, if it's easier on you, I would be more than happy to move our session to next week, whenever suits once you are properly back. That way you are not pulled back online during your holiday. Either option is genuinely fine with me, so please pick whatever is least disruptive for you.
+
+Whichever we settle on, could you please kindly confirm with me? Looking forward to it, and please enjoy your time off.
+
+Warm Regards,
+Culous
+
+---
+
 ## 8. Stage 2 Pack — Summary
 *Added in the 202606190127 session (CC). #summarise mode = abstractive, key dates/targets/names kept verbatim. Substitutes for the 5 attachments (too large to embed); all 5 + the invite #r in full.*
 
