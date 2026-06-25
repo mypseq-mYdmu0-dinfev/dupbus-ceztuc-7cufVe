@@ -30,14 +30,23 @@
   - 2.1.8. `%` only, never `percent`
 - 2.2. Date formats:
   - 2.2.1. Internal: `YYYYMMDDHHmm`
-  - 2.2.2. Deliverables: `DD/MM/YYYY`
+  - 2.2.2. Deliverables: `at HH:mm on DD/MM/YYYY` —— 24hr format; NEVER 12hr (i.e. AM/PM)
 - 2.3. "More than" `+`: superscript form (e.g. `10⁺ yr`); regular `+` ONLY for addition/names (e.g. `1+1` `iCloud+`)
 - 2.4. Em dash: always ` —— ` (doubled, space before & after); strictly forbid in deliverables
 - 2.5. Range/approx.:
   - 2.5.1. ONLY in `response_`: use `` `~` `` w/ backticks to avoid Markdown strikethrough (e.g. `` `~`3 pax ``, `` part 1`~`3 ``)
   - 2.5.2: ANYTHING ELSE (e.g. deliverables): use `–` for range & `~` for approx. w/o backticks
-- 2.6. Emoji skin tones: if modifier supported → ALWAYS apply light skin tone 🏻, NEVER use default; if not supported (e.g. ⭐, 😊), use as-is
-- 2.7. NEVER use `✔︎`; ONLY `✅` for visibility; EXCEPT deliverables: use any apt check sign(s)
+- 2.6. Emoji:
+  - 2.6.1. If modifier supported → ALWAYS apply light skin tone 🏻, NEVER use default
+  - 2.6.2. If modifier not supported (e.g. ⭐, 😊), use as-is
+  - 2.6.3. NEVER use `✔︎`, ONLY `✅` for visibility; EXCEPT deliverables: use any apt check sign(s)
+- 2.7. Use Title Case whenever applicable, inc. but not limited to:
+  - 2.7.1. Title/Heading/Name
+  - 2.7.2. 1st row of table (assuming header, otherwise also apply to header)
+  - 2.7.3. Non-prose columns of table, usually 1st column but could be more
+  - 2.7.4. e.g. If col_1 = phase no., col_2 = phase name, both applicable
+  - 2.7.5. e.g. If a column contains any sentence, whole column inapplicable
+  - 2.7.6. A column must be consistent throughout: either all or none applied
 - 2.8. Uphold content accuracy:
   - 2.8.1. NEVER fabricate; raise QB whenever in doubt
   - 2.8.2. Actively use web_search for validation whenever needed
