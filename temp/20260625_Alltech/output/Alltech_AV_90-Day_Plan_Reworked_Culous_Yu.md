@@ -1,4 +1,4 @@
-*Mirror of `Alltech AV Onboarding Plan.pdf` (final, submitted via .pages). Transcribed verbatim for record-keeping and diff; wording and any slips preserved as in the PDF.*
+*Working text of the Alltech Stage 2 deliverable (exported to `.pages` for layout; not yet submitted). Kept in sync with the `.pages`/PDF for record-keeping and diff.*
 
 # ALLTECH AV
 # Marketing & Growth Coordinator
@@ -28,7 +28,7 @@ At 24 hours a week, a month warrants ~100 working hours *(24 × 30 ÷ 7 = 102.9h
 Every output passes through approval whilst trust is still being established. Front-loading my output into the quiet window also front-loads the review burden onto Elena in the same period, so I have built approval buffers into the timelines, batched reviews where I can, and proposed a set of pre-approved templates, so the gate protects quality without becoming the bottleneck for either of us.
 
 **V. Calibrate to the market.**
-The 2026 Cvent ANZ Event Industry Report show event-volume confidence cooling *(from 81% in 2025 to 65% in 2026)*, and AV treated as a budget-pressured line item, with only 31% expanding their event-technology budgets. Organic B2B content typically takes 3–6 months to yield meaningful inbound. So the targets below aim for steady share-of-voice and pipeline support, which is what the firm practically needs, rather than dramatic growth numbers that might not survive contact with the quarter.
+The 2026 Cvent ANZ Event Industry Report shows event-volume confidence cooling *(from 81% in 2025 to 65% in 2026)*, and AV treated as a budget-pressured line item, with only 31% expanding their event-technology budgets. Organic B2B content typically takes 3–6 months to yield meaningful inbound. So the targets below aim for steady share-of-voice and pipeline support, which is what the firm practically needs, rather than dramatic growth numbers that might not survive contact with the quarter.
 
 The net effect is a plan that is slightly less front-loaded, noticeably more practicable, and still commercially ambitious where the ambition is earned.
 
@@ -120,9 +120,9 @@ The reason a single part-timer may credibly hit these targets is that I build AI
 - **Video:** For titles and B-rolls, current tools such as Omni (previously Veo) and Runway produce social-ready clips at a fraction of the traditional cost. The authentic proof, like the real footage of Alltech’s work on site, remains human-shot, because that is the legit asset where GenAI cannot fake it.
 - **Research & Reporting:** Industry scans, monthly performance reviews, and first-draft proposals are AI-accelerated, then polished.
 
-However, limits apply. As the disclaimer goes: “AI can make mistakes”. AI scales fast and accelerates first drafts, but do not supersede judgement, brand fit, or factual accuracy, hence the review and approval gates stay.
+However, limits apply. As the disclaimer goes: “AI can make mistakes”. AI scales fast and accelerates first drafts, but does not supersede judgement, brand fit, or factual accuracy, hence the review and approval gates stay.
 
-This is also why I am comfortable with the plan. I have engineered and been running the content & operations systems that conglomerates depend on, and the part of this role that matters is the ability to design workflows & systems, automate it, and document it, **which is exactly what I do.**
+This is also why I am comfortable with the plan. I have engineered and been running the content & operations systems that organisations depend on, and the part of this role that matters is the ability to design workflows & systems, automate it, and document it, **which is exactly what I do.**
 
 ---
 
