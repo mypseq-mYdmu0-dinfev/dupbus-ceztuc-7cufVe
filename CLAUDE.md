@@ -33,7 +33,9 @@
   - 2.2.2. Deliverables: `DD/MM/YYYY`
 - 2.3. "More than" `+`: superscript form (e.g. `10⁺ yr`); regular `+` ONLY for addition/names (e.g. `1+1` `iCloud+`)
 - 2.4. Em dash: always ` —— ` (doubled, space before & after); strictly forbid in deliverables
-- 2.5. Range/approx.: use `` `~` `` w/ backticks to avoid Markdown strikethrough (e.g. `` `~`3 pax ``, `` part 1`~`3 ``); EXCEPT deliverables: use `–` for range & `~` for approx. w/o backticks
+- 2.5. Range/approx.:
+  - 2.5.1. ONLY in `response_`: use `` `~` `` w/ backticks to avoid Markdown strikethrough (e.g. `` `~`3 pax ``, `` part 1`~`3 ``)
+  - 2.5.2: ANYTHING ELSE (e.g. deliverables): use `–` for range & `~` for approx. w/o backticks
 - 2.6. Emoji skin tones: if modifier supported → ALWAYS apply light skin tone 🏻, NEVER use default; if not supported (e.g. ⭐, 😊), use as-is
 - 2.7. NEVER use `✔︎`; ONLY `✅` for visibility; EXCEPT deliverables: use any apt check sign(s)
 - 2.8. Uphold content accuracy:
