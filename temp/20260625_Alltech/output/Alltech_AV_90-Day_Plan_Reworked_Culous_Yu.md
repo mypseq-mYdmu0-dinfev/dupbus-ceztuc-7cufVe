@@ -128,11 +128,11 @@ This is also why I am comfortable with the plan. I have engineered and been runn
 
 # 6. My Questions
 
-1. How do the current data & system actually look like; that is, the social analytics, the brand-asset state, the website platform (Wix?), and the curated list of past projects? This determines how deep the Month 1 audits can go.
-2. How quickly can approvals turn around in practice (hours? days?), and would Elena be open to a set of pre-approved templates or benchmarks so the review gate protects quality whilst minimising slack?
-3. For Rentman, is there budget or vendor support, or is the integration fully in-house?
-4. On Women in AV, can you confirm the exact organisation, and is there appetite for an in-kind contribution at its Integrate forum as the entry point?
-5. Which 3 working days, and do they span around event peaks?
-6. Is organic-only confirmed for the full 12 months, or is there a point where a trial inorganic campaign comes into play?
+Q1. How do the current data & system actually look like; that is, the social analytics, the brand-asset state, the website platform (Wix?), and the curated list of past projects? This determines how deep the Month 1 audits can go.
+Q2. How quickly can approvals turn around in practice (hours? days?), and would Elena be open to a set of pre-approved templates or benchmarks so the review gate protects quality whilst minimising slack?
+Q3. How is AI currently used across Alltech, and is there appetite to move from chatbot-style exchange to bespoke, agentic workflows that can run non-stop for days?
+Q4. Which subscriptions are in place (Claude Team/Enterprise)? Would this role have access, and would you consider API where a fixed plan caps the value? 
+Q5. Is anything deliberately off-limits to AI, say emails or contracts? *(I draw that line carefully and wish ours aligned from day one)*
+Q6. If Alltech could be known for one attribute/element in 18 months, what would it be? *(The whole content engine should ladder up to that one position)*
 
 *Thank You For Your Time!*
