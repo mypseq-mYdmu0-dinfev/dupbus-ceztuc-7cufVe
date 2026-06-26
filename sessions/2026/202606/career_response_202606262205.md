@@ -1,0 +1,55 @@
+# Response to `career_query_202606262205.md`
+*Duo prep — CIC findings, the "why Duo" answer, cheat sheet built, WIB + Claude Design*
+
+## Re 2 — assessment & salary
+8. Re 2.1: agreed — salary held to offer stage.
+9. Re 2.3 — your assessment is more defensible than it feels; it quietly hits 3 senior signals (be ready to articulate WHY each choice — that articulation is what reads as senior, not the copy itself):
+- 9.1. **Compliance discipline** — you avoided guaranteed-savings claims and tax advice. That was the hidden test, and it is the No. 1 way candidates fail a regulated-finance brief. Lead with it if they probe.
+- 9.2. **Benchmark-relative metrics** — qualified enquiries + cost-per-qualified-lead vs THEIR historic baseline, rather than inventing funnel numbers you could not know. Reads as judgement and honesty.
+- 9.3. **The referral-partner channel** in the mix (accountants, brokers, buyers' agents) — that is literally Kim's world (§10), so it lands.
+- 9.4. So do not dismiss it as cliché — it is deliberately safe-and-senior. The risk is sounding bored; sound deliberate instead.
+
+## Re 3 — Kim Quach
+10. Re 3.1 (does she have marketing experience? can you climb SME→MM?):
+- 10.1. **Marketing experience: effectively none formal.** Her LinkedIn (CIC) shows 8.5 yr as **BDM at Duo Tax**, before that **Commonwealth Bank** (banking / customer service). Her "marketing" is BD-flavoured — trade shows, BNI/chamber networking, referral relationships, education content as a sales tool. She is a relationship/sales operator who absorbed marketing, not a trained marketer. That is your opening: she likely lacks depth in modern digital/performance/brand, which is exactly what you supply.
+- 10.2. **The SME→MM climb: genuinely plausible, and you read the politics right.** No contradiction with Kim — a real marketer freeing her from a hat she wears by default is a win for her, not a threat; she can stay/return to BD or go more senior. Caveats: (a) fast-scaling founder-led SME, so a path exists but never on paper; (b) "MM" here may stay a BD-leaning seat (title ≠ craft); (c) at $90–120k the pay alone can justify staying. Net: real optionality if you choose to stay — but treat it as upside, surfaced only at offer stage, never in the screen.
+11. Re 3.2 (treat-as-client + her education):
+- 11.1. Agreed and well-judged — handling Kim as a marketing-agency client you quietly babysit is exactly right, and your consultant's read of what she cares about (leads, partners, looking good to the Principal) will serve you. Keep it invisible — zero whiff of condescension.
+- 11.2. **Her education: not listed on LinkedIn** — no university or qualification shown, only the CommBank/customer-service history. So there is nothing public to dig out; assume she is experience-made, not credentialed (consistent with the BD-not-marketer read). I will not fabricate one; if you want certainty, glance at her profile's Education section yourself — it read as blank to me.
+12. Re 3.3 (clarify in ≤20w): don't out-shine her into feeling inferior; be the helpful expert who makes her look good, not a rival.
+
+## Re 4 — Jason Futrill
+13. Re 4.1 (legit, or a noise-maker?) — CIC verdict: **a competent, long-tenured digital-marketing/SEO operator, NOT an AI "legend".**
+- 13.1. Evidence: 20⁺ yr SEO/SEM/affiliate (he ran a 480-domain casino-affiliate network; later NiSi photography-brand marketing); rebranded **solo** to "AI Expert Sydney" only **May 2024**; **no live website** (both aiexpertsydney.com and .com.au are dead); **absent from every "top Sydney AI/SEO agency" list**; 771 LinkedIn followers; CQU IT bachelor.
+- 13.2. So "AI Expert" is self-branding layered on real SEO chops. Your instinct is fair (drop the racial framing — it is not needed and not safe to lean on): he is an applied-tools/SEO practitioner, not a frontier builder. Your actual depth (autonomous agentic systems, the Agent SDK) very likely exceeds his.
+- 13.3. Handle: be substantive if AI comes up, then stop — stay humble, do not showboat. He is an ally to befriend, not a rival to beat.
+14. Re 4.2: confirmed — he is **not** Duo staff (does not list Duo; only FOLLOWS them on LinkedIn) and almost certainly will not be in your 30-min screen. Most likely an external AI/SEO contractor Duo engages. Do not reference him or guess his role aloud.
+
+## Re 5 — company & founder
+15. Re 5.1 — Tuan Duong's story + your "why Duo" answer:
+- 15.1. **The story (CIC-confirmed):** Vietnamese-Australian, Western Sydney; **Bachelor of Construction Management, WSU 2005–09** (so seasoned, NOT a fresh grad — the 2015 you saw is the company's founding, not his graduation). He worked civil/building projects, became a property investor himself, his accountant sent him to a QS for a depreciation schedule, he was stunned how much tax he saved, realised most first-time investors have no idea this exists, and founded **Duo Tax (Feb 2015, reportedly from his mum's garage)** to democratise it. Solo → category leader in ~11 yr (51–200 staff, 4 divisions, 100k–170k investors, Trustpilot 4.9); **Parramatta Business Person of the Year 2018**. The engine is relentless EDUCATION (YouTube, podcasts, Money magazine columns; 8,135 followers).
+- 15.2. **What is special / your hook:** he won by *teaching* — turning a complex, overlooked benefit into something everyday investors understand. That is an education-led, content-driven growth story, and it is genuinely ownable.
+- 15.3. **Your "why Duo" answer (you had none):** "What draws me is that Duo grew by *educating* — you made an overlooked benefit clear and useful for everyday investors, and built a category leader on that content-and-trust engine. Making complex things simple is exactly what I have done for 16 years, and I would love to help scale that engine — including with AI — as you grow the brands." (You can add light admiration for the Western-Sydney underdog-to-leader arc, but the education-engine hook is the strongest and most authentic.)
+16. Re 5.2 — why Glassdoor is low (concise): **2.4/5 from just 6 reviews** — a founder-led, sales-driven scale-up whose structure/process/communication have not caught up with headcount (the lead review says "authoritarian management... no stable processes"). Classic fast-growth-SME growing pains under a strong-willed founder. Tiny sample, so directional not damning — and, as you say, the $90–120k pay offsets it. Park for offer-stage diligence.
+17. Re 5.3 — the 170k/100k figure = the cumulative number of **property investors served** (customers/clients helped), a client-base claim, NOT a project count. And it is inconsistent across their own pages (homepage "over 170,000+" vs /about "over 100,000") — that gap is your single-source-of-truth talking point.
+
+## Re 6 — strategy
+18. Re 6.2: agreed — that is the right spine. "AI systems that adapt across any domain + 16 yr marketing = output at a scale and speed others cannot match." It directly answers their grow-the-brand need with a lean, scalable engine. Just anchor it to THEIR outcomes (more qualified enquiries, more partner reach, more content per dollar), not AI for its own sake.
+19. Re 6.3 — the autonomous-agent / scalability card: strong, but use the **capability**, hide the **specific**.
+- 19.1. DO say: you build fully-autonomous, continuously-running agentic systems (even on the **Anthropic Agent SDK**) that scale marketing output with minimal supervision — emphasise SCALABILITY, the exact thing a lean, growing team needs.
+- 19.2. DON'T expose **AJAP** or the 3,000-jobs / 50-a-day benchmark — it reveals you are auto-applying to jobs (reads as low commitment, and it is your own hunt). Keep that number private.
+- 19.3. Safe proof of scale instead: the AI-built video reel (≈1.5 hr build → minutes to produce many), SpeakMate (your GenAI iOS app), or a generic "an agent that runs for days unattended generating content/research/reports". If depth is probed, talk architecture (agentic loops, tool use, guardrails) on a NEUTRAL domain — never the job hunt.
+
+## Re 7 — cheat sheet & WIB
+20. Re 7.1 — **cheat sheet built** (.md, modelled on your Alltech ones): `temp/20260624_Duo/output/CHEATSHEET_Duo_Interview.md`. It distils AR §5 into a 60-second essentials block, anticipated-Qs-with-steers, the assessment defence, the why-Duo line, questions to ask, and landmines. Not claiming it is perfect (you said yours aren't either) — tell me what to tighten.
+21. Re 7.2 — WIB:
+- 21.1. **Spec reconstructed.** I dispatched an SA to rebuild the full WIB build-spec from your prior comms: the exact A1–A4 tile copy, the "dissect the role" mechanism (+ the Alltech worked example), the stretched-"I" / wood-table layout, the firm NO-portrait decision, both adaptations (1920×1080 Zoom-bg vs 2208×1768 Fold2 — a reflow, not a crop), Avenir, the tone-ref image, and the show-only-for-creative/marketing display rule. Everything is ready to build except your **exact colours**.
+- 21.2. **Capability check (Claude Design) — honest answer: I do NOT have a tool called "Claude Design" connected here.** What I do have: (a) a **Canva connector** — I can build it as an EDITABLE Canva design you then freely tweak, and hand it over directly (not just a prompt); (b) an inline **SVG/HTML visualiser** — I can produce a pixel-precise WIB matching your tone-ref, rendered here and exportable, but not a drag-tweak surface. Trade-off: Canva = editable, but its API is template/autofill-oriented, so the bespoke bits (the stretched-I, wood texture, exact tile geometry) may be hard to nail precisely; SVG = precise, and I iterate for you, but you don't drag-edit it yourself. So the check "passes" via Canva (editable) OR SVG (precise) — just not via a thing literally named "Claude Design". Tell me which you value more (editability vs precision) and send the colours, and I will build both adaptations.
+- 21.3. ⚠️ FYI (data integrity): the WIB close that `int.md` §6 and others cite as `career_close_202606162126.md` does NOT exist — it was renamed to `career_close_ 202606162244.md` (leading space + different TS), so the cross-references are stale. Want me to fix the references and the odd leading-space filename?
+
+22. Housekeeping offer: the new CIC-confirmed facts above (Tuan's story + the why-Duo line, Jason's full profile, Kim's BD/ex-CommBank/no-degree background) are in this response and the cheat sheet but NOT yet in the AR. Say the word and I will fold them into AR §1/§5 so the AR stays self-sufficient. (Held off in case you want to tweak the why-Duo wording first.)
+
+---
+*🟡 dlint justifications (this response + the cheat sheet):*
+- *Lone period inside `."` (response 15.3/18; cheat sheet salary/assessment/why-Duo lines): each is a complete quoted sentence, so the full stop sits inside the quote per Hart's logical-quotation rule (§2.1.4).*
+- *Cheat-sheet bullet lines (`- **X:**`) left un-#numbered: intentional —— it mirrors the established Alltech cheat-sheet convention you asked me to match ("like current cheat sheets"); a glance-able cue-card, not a #numbered response.*
