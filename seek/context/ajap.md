@@ -136,7 +136,7 @@ F6. Check if any AR matching the current open job (by employer + role in filenam
 
 S0.1. Re-read `/context/MA_hb.md` in full → declare (only if succeeded; not from memory) per C1 → complete all active checks within it before continuing; if S0.3 violated:
 - S0.1.1. Attempt rectification by chat history per S0.2
-- S0.1.2. If attempted failed, tally files created in `/gcl/` (excl. `_archive` sub-folders) within last 2 hours (get current time per S5) before proceeding
+- S0.1.2. If attempted failed, tally files created in `/gcl/` (excl. anything under any `*_archive/` including its sub-folders) within last 2 hours (get current time per S5) before proceeding
 S0.2. Determine N by recalling the last `🎯[N]` count from this session's chat
 - S0.2.1. If no prior count is visible (1st card of session) → N = 0
 - S0.2.2. If previous card had an AR created (any outcome: applied, pending, post-S1 skipped) → set N = [last_N] + 1

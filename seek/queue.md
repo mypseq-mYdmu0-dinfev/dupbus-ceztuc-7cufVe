@@ -43,7 +43,7 @@
 
 *Runs ONLY when ALL Qi is genuinely exhausted —— extremely rare. Execute in order.*
 
-1. **Step A — recover mislabelled externals (always runs).** Re-scan THIS-session `gcl/skipped/` files (NOT `skipped_archive`) for the keyword `external`. For each, re-open the job post and re-verify the apply method. If it is actually "Quick apply" (not a true external portal) AND its score qualifies (≥35 per `ajap.md` bands), void the bad skip AR and apply properly.
+1. **Step A — recover mislabelled externals (always runs).** Re-scan THIS-session `gcl/skipped/` files (NOT anything under `skipped_archive/`, including its sub-folders) for the keyword `external`. For each, re-open the job post and re-verify the apply method. If it is actually "Quick apply" (not a true external portal) AND its score qualifies (≥35 per `ajap.md` bands), void the bad skip AR and apply properly.
 2. **Step B — lower the external gate (GATED; off by default).**
 - 2.1. `Active: false`
 - 2.2. While `Active: false`, Step B never runs. To arm it, the user replaces `false` with `active` on the line above.
