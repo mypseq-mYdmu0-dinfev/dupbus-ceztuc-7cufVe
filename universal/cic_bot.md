@@ -15,7 +15,7 @@ When a site gates automation (a CAPTCHA appears, or CDP calls HANG `~`300s), don
 ## Site notes (examples —— apply the ladder generally)
 
 - Temu: logged-out direct-URL/JS → CAPTCHA; homepage → search → human-click works.
-- Taobao/Tmall (Alibaba, hardened): step-2 human-like WORKS even here —— `navigate s.taobao.com/search?q=…` → screenshot → single human-click a result → product opens; a known item/share link (`e.tb.cn`) direct-navigates fine. Never JS/get_page_text/read_page on a Taobao tab. Item discovery must be on-site (Alibaba blocks Google/Baidu indexing of items).
+- Taobao/Tmall (Alibaba, hardened): step-2 human-like WORKS even here —— `navigate s.taobao.com/search?q=…` → screenshot → single human-click a result → product opens; a known item/share link (`e.tb.cn`) direct-navigates fine. Never JS/get_page_text/read_page on a Taobao tab (and use a FRESH tab per search —— a reused/poisoned Taobao tab won't re-navigate). Item discovery must be on-site (Alibaba blocks Google/Baidu indexing of items). NB: Taobao logs the user out almost daily —— expect a login wall; flag it and print the credential (§ Logins) for the user to paste.
 
 ## Logins & credentials
 
