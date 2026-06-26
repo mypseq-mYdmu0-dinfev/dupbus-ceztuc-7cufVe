@@ -10,7 +10,7 @@ CIC = Claude in Chrome (Claude's connector/Chrome's extension), accessible via e
 
 ## Mandate —— when `#cic` is prompted (or any high-stake validation)
 
-- When `#cic` is prompted you **MUST** validate via CIC by reading the actual live web page. `web_search` and the **CrossRef API are TRIAGE ONLY** —— they locate and target candidates and NEVER confirm. NOTHING they surface may be cited in a deliverable, added to non-`response_` files (e.g. `RefRepo.md`), or relied on for any claim until CIC has read the live source. NEVER cite or add a source on a `web_search`/CrossRef result alone.
+- When `#cic` is prompted you **MUST** validate via CIC by reading the actual live web page. `web_search`, CC's **`WebFetch`**, and the **CrossRef API are TRIAGE ONLY** —— they locate and target candidates and NEVER confirm (⚠️ `WebFetch` *reads* a page, so it FEELS like confirmation —— it is not; it can misrepresent, cache stale content, or miss gated/login-walled material). NOTHING they surface may be cited in a deliverable, added to non-`response_` files (e.g. `RefRepo.md`), or relied on for any claim until CIC has read the live source. NEVER cite or add a source on a `web_search`/`WebFetch`/CrossRef result alone.
 - Scope: whenever `#cic` is prompted, OR on any high-stake task —— adding a NEW source, citing in a deliverable, or validating a statistic/figure/edition.
 - Why firm: a Crossref-only citation once entered the deliverable with the wrong volume; only CIC's live read caught it. Triage ≠ confirmation.
 

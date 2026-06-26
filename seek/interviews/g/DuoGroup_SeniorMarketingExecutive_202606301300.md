@@ -14,13 +14,13 @@
 8. Bonus — N/A
 - **Suitability Score:** 48/100
 
-> 🔄 **Re-evaluated 202606261110; CIC-revalidated 202606261134** (live in-browser reads of the SEEK ad, duotax.com.au + /about, duogroup.com.au, and Trustpilot per `cic.md`; earlier triage SA findings since promoted to CIC-confirmed or downgraded —— see the §1.10 validation log). Original AJAP §1 was a 7-line stub; expanded below into 1.1–1.10. Original score 48 retained for record. 🚩 **Headline (CIC-confirmed) —— the live ad pays $90,000–$120,000 + super (negotiable); the lodged $70k (S6.2) is well below band (see §1.9 + §5D.6).**
+> 🔄 **Re-evaluated 202606261110; CIC-validated 202606261134 + 202606262100** (live in-browser reads —— pass 1: the SEEK ad, duotax.com.au + /about, duogroup.com.au, Trustpilot; pass 2 on the user's logged-in session: LinkedIn for Kim Quach, Jason Futrill, and the Duo Tax company page, plus Glassdoor —— per `cic.md`/`cic_bot.md`; see the §1.10 validation log). Original AJAP §1 was a 7-line stub; expanded below into 1.1–1.10. Original score 48 retained for record. 🚩 **Headline (CIC-confirmed) —— the live ad pays $90,000–$120,000 + super (negotiable); the lodged $70k (S6.2) is well below band (see §1.9 + §5D.6).**
 
 ## 1. Employer
 
 ### 1.1. Company Basics
 - 1.1.1. **Duo Group** = umbrella; **Duo Tax Quantity Surveyors** = flagship brand (tax depreciation schedules for residential and commercial investment property).
-- 1.1.2. A young, fast-scaling firm —— the site calls it "Australia's fastest-growing property tax depreciation service" and "Australia's largest property services organisation", with "over 130 combined years of experience" across the team [CIC ✅]. Founding ~2015 / garage origin and a 51–200 headcount band are triage-only [⚠️ not CIC-verified —— LinkedIn login-gated].
+- 1.1.2. **Founded 2015; 51–200 employees** (65 list Duo Tax as their workplace on LinkedIn); HQ Homebush; industry "Construction" [all CIC ✅ via the LinkedIn company page]. Positions itself as "Australia's fastest-growing property tax depreciation service" and "largest property services organisation", with "over 130 combined years of experience" [CIC ✅] —— a young, fast-scaling, founder-led SME.
 - 1.1.3. HQ **34/11–21 Underwood Rd, Homebush NSW 2140** (the interview venue). ⚠️ **Relocating to Parramatta in late 2026** (per the live ad); both western Sydney, but factor into commute and longevity.
 - 1.1.4. Footprint: Australia-wide service coverage (Sydney, Parramatta, Brisbane, Melbourne, Perth, Canberra, plus many service-area lines; not all are physical offices).
 - 1.1.5. Self-styled "Australia's fastest-growing property tax depreciation service" and "largest property services organisation"; actively hiring (incl. an offshore Philippines team) —— a genuine scale-up.
@@ -35,13 +35,14 @@
 - 1.3.3. **Quoc Duong** shares the founder's surname, likely family or co-principal (title unconfirmed). Other About-page names: Andy Tran, Brad Hibbard, Anthony Challita, Andy Trinh, Barry Ousmane, and **Eva Toy** (see 1.5.3).
 
 ### 1.4. Interviewer —— Kim Quach 🎯
-- 1.4.1. **Sole named panellist; Marketing Manager** (title per the employer's own invite —— authoritative). **CIC-confirmed she is on the Duo Tax team** (listed by name on the duotax.com.au/about "Meet the Team" page) [CIC ✅].
-- 1.4.2. ⚠️ A data-broker trail tagging her as a former **"Business Development Manager"** is **triage-only and could NOT be CIC-verified** (her LinkedIn hard-authwalls when logged out, and I do not log in) —— do **not** rely on the BD-background inference; treat it as unconfirmed.
-- 1.4.3. 🎯 **Read (re-anchored on the CIC-confirmed ad, not the broker claim):** the live ad is overtly commercial —— "lead generation", "drive business success", "commercially minded", activity "aligned with business objectives". Expect Kim to judge marketing on **outcomes/pipeline**, not craft alone. Pitch how creative drives qualified enquiries; bring measurable examples.
-- 1.4.4. 🔒 Gap to close: her education, tenure, and specialism remain unknown (LinkedIn login-gated). Open her profile while logged in (au.linkedin.com/in/kim-quach-9a6900157) and I will validate and fold it in.
+- 1.4.1. **Sole named panellist; Marketing Manager** per the invite. **CIC-confirmed via her LinkedIn (logged-in pass):** she has been **Business Development Manager at Duo Tax since Jan 2018 (8.5 yr)** —— so the earlier broker "BDM" tag was correct (I had over-cautiously downgraded it). Headline: "Tax Depreciation Schedule Guru | Professional Networker | Educator —— Helping Everyday Property Investors Maximise Their Cash-Flow" [CIC ✅].
+- 1.4.2. ⚠️ **Title nuance:** her LinkedIn still lists **BDM as current**; the invite says **Marketing Manager**. Read her as a long-tenured **BD / partnerships / networking** operator who now leads (or is hiring for) marketing —— recently moved or dual-hatted in a lean firm.
+- 1.4.3. Background [CIC ✅]: ex-**Commonwealth Bank** (banking / customer-service specialist, 2013–2017), Canley-Heights local; heavy **BNI / chamber-of-commerce / trade-show** networking; runs Duo's expo presence (Futurebuild, Accounting & Business Expo at ICC —— "6th year exhibiting"), tracks event leads; her audience = **accountants, brokers, and buyers' agents** (the referral-partner channel). Co-founder of a side venture ("The Laughing Factory").
+- 1.4.4. 🎯 **Read:** she assesses marketing through a **commercial / lead-gen / referral-partner / relationship lens** —— now strongly evidenced, not merely inferred from the ad. Pitch marketing as a **growth/pipeline engine** (enquiries, partner enablement, event ROI, education-led content for investors AND referrers). ⚠️ She is **not** a brand/creative-craft marketer —— do not over-index on aesthetics or theory; tie everything to leads and partners. Culous' assessment already named accountants/brokers/buyers' agents as a referral push —— that speaks her language directly.
+- 1.4.5. Dynamic to use: as a BD-rooted manager she likely wants the **execution/strategy depth she does not have** —— position as complementary ("I make the marketing function deliver measurable pipeline for you"), never as out-marketing the boss.
 
 ### 1.5. Others (Invite & Process)
-- 1.5.1. **Jason Futrill —— cc'd on the invite; role UNCONFIRMED** [⚠️ triage; LinkedIn login-gated, not CIC-verified]. No source ties any Jason Futrill to Duo; the best-fit namesake is a Sydney "AI / SEO-SEM / growth-automation" marketer, but that is a guess. Do **not** state his title aloud. Prep hedge: be ready on **AI in marketing, SEO/SEM, automation, and performance/growth** in case he is the AI/growth lead.
+- 1.5.1. **Jason Futrill —— cc'd on the invite; now CIC-resolved** [CIC ✅ via LinkedIn, logged-in pass]. He is **Founder & Director of "AI Expert Sydney"** (May 2024–present) —— 20⁺ yr digital marketing / SEO-SEM, plus AI tools, prompt systems, API integrations, **agentic AI workflows**, AI-assisted SEO content, and automation; CQU Bachelor of IT. **He FOLLOWS Duo Tax on LinkedIn** and was cc'd on a marketing interview, so he is almost certainly **Duo's external AI/SEO/digital-marketing consultant** (not an employee). 🎯 **Big implication:** Culous' strongest card —— **AI-accelerated marketing systems / agentic workflows / prompt engineering** —— is *exactly* Jason's domain, so it is both a **powerful alignment** and something a **real expert will scrutinise**: speak AI automation, agentic workflows, and SEO-content systems with genuine depth, not buzzwords. He may have set or will assess the role-specific task, or join a later stage.
 - 1.5.2. **Alfred(o) Agustin** (alfred@duogroup.com.au) handled scheduling; the @duogroup.com.au address confirms internal —— infer a Talent / People & Culture / HR function (title unconfirmed). The "Alfred Agustin, Elanco Philippines" profile is a different person.
 - 1.5.3. **Eva** (on-site contact, 0418 346 172) is almost certainly **Eva Toy** —— **CIC-confirmed on the duotax.com.au/about team list** [CIC ✅]. Greet her by name on arrival.
 
@@ -56,18 +57,19 @@
 
 ### 1.8. Reputation —— Anti-Conflation 🚨
 - 1.8.1. ⚠️ **Do NOT cite "Duo Security" (Cisco MFA, USA) or "Duo Marketing Group" (duogroup.com, a US agency)** —— unrelated namesakes; their reviews are not this employer.
-- 1.8.2. ⚠️ [triage —— Glassdoor login/403-gated, NOT CIC-verified] Employer-review data appears **thin** (a handful of Glassdoor reviews; ~nil on Indeed AU / SEEK) with faint anecdotal cons around communication, structure, and process —— consistent with a fast-scaling SME, but treat as unconfirmed.
-- 1.8.3. Net (safe read): customers clearly rate them highly [CIC ✅ via Trustpilot]; the employee signal is sparse and unverified —— park process maturity and pay as offer-stage diligence, not interview topics.
+- 1.8.2. **Glassdoor "Duo Tax" (E7573199): 2.4/5, 31% recommend, 6 reviews** [CIC ✅, logged-in pass]; the overall trend dipped 2.6→2.4 across May–June 2026. The lead visible review (1.0, "Authoritarian Management Style", Sales, former employee 3⁺ yr) cites "lacks clear communication, proper structure, and transparency... inconsistent and vague... no... stable processes". Tiny n, but now verified.
+- 1.8.3. Pattern: a **founder-led, sales-driven, fast-scaling SME** whose process/structure/management maturity lags growth —— the split between **customers (Trustpilot 4.9)** and **staff (Glassdoor 2.4)** is the classic "great service, rough internal machine". Mild ⚠️, not a dealbreaker at n=6.
+- 1.8.4. Handling: park management style, structure, and pay as **offer-stage diligence**; do NOT raise them in the 30-min screen.
 
 ### 1.9. Salary & Work Mode —— corrected 🚩
 - 1.9.1. **Live ad: $90,000–$120,000/yr + super, "negotiable based on demonstrated skills"; full-time, 5 days on-site; reports to the Marketing Manager (Kim).** [Confirmed via the job post.]
 - 1.9.2. 🚩 The lodged **$70k** (S6.2, an AJAP filter answer) is **well below** band. "Senior Marketing Executive" in AU is a senior IC rung below Marketing Manager, benchmarking `~`$85–95k in Sydney even before this firm's above-typical range —— so material headroom exists.
 - 1.9.3. Handling: do **NOT** re-anchor at $70k verbally; let them frame the number; reference the advertised band; defer hard negotiation to offer stage (see §5D.6).
 
-### 1.10. CIC Validation Log (202606261134)
-- 1.10.1. ✅ **CIC-confirmed live:** the SEEK ad ($90–120k + super, full-time onsite Homebush, Parramatta relocation late 2026, works to the Marketing Manager, requirements + employer questions); founder **Tuan Duong** (Principal & Founder, Building Economics, Registered Tax Agent, AIQS Affiliate); the four divisions; the team list incl. **Kim Quach** and **Eva Toy**; "most reviewed and highly-rated" + "fastest-growing"; ATO/AIQS; $13k / $68,495, 130 combined yr, ~5-day turnaround, 40-yr forecasts; **Trustpilot 4.9 / 1,857**; the **170,000 (home) vs 100,000 (about) inconsistency**.
-- 1.10.2. ⚠️ **Triage-only (NOT CIC-verified —— do not assert):** founding year and headcount band; Google review count; Instagram/YouTube follower scale; Glassdoor employer-review specifics; salary-benchmark figures (the ad band supersedes anyway).
-- 1.10.3. 🔒 **Login-gated, could not reach (I do not authenticate —— `cic_bot.md` §5):** LinkedIn profiles for **Kim Quach** and **Jason Futrill**, and Glassdoor. Open these while logged in and I will validate.
+### 1.10. CIC Validation Log (202606261134 + 202606262100)
+- 1.10.1. ✅ **CIC-confirmed, pass 1 (public web):** the SEEK ad ($90–120k + super, full-time onsite Homebush, Parramatta relocation late 2026, reports to the Marketing Manager, requirements + employer questions); founder **Tuan Duong**; the four divisions; the team list incl. **Kim Quach** and **Eva Toy**; "most reviewed and highly-rated" + "fastest-growing"; ATO/AIQS; $13k / $68,495, 130 combined yr, ~5-day, 40-yr forecasts; **Trustpilot 4.9 / 1,857**; the **170,000 vs 100,000** inconsistency.
+- 1.10.2. ✅ **CIC-confirmed, pass 2 (user's logged-in LinkedIn + Glassdoor):** **Kim Quach** = BDM at Duo Tax since Jan 2018, ex-CommBank, networking/partnerships profile; **Jason Futrill** = Founder of "AI Expert Sydney" (AI/SEO consultant) who follows Duo Tax; the Duo Tax company page (**founded 2015; 51–200 staff / 65 members; Homebush; ~2K followers**); **Glassdoor 2.4/5, 31% recommend, 6 reviews**.
+- 1.10.3. ⚠️ **Still triage-only (not CIC-walked):** Instagram/Facebook follower counts; the Google review count; the salary-benchmark figures (the ad band supersedes). No remaining login-gated blockers.
 
 ## 2. Requirements
 - 4–5 yr marketing/digital marketing/campaign coordination exp — gap (Culous is cross-industry PM/BA focus)
@@ -114,6 +116,8 @@
 - 5A.10. "How do you use AI in your marketing workflow?" —— likely live if the cc'd Jason is the AI/growth lead; lead with AI-accelerated production/systems and read the room.
 - 5A.11. "Property or finance industry experience?" —— a gap; bridge with B2B/B2C breadth and the assessment as proof of fast domain pickup.
 - 5A.12. Logistics: right to work, notice, availability, salary (already lodged in S6.2; verbal salary handling per §5D.6).
+- 5A.13. 🎯 (Kim's BD lens) "How would your marketing support our referral-partner channel —— accountants, brokers, buyers' agents —— and the BD/sales team?" Her core world; answer with partner-enablement content, co-marketing, and lead tracking.
+- 5A.14. 🎯 (Jason's domain) "How do you actually build and use AI in a marketing workflow?" Expect genuine depth-probing; be concrete on agentic workflows, prompt/SEO-content systems, and measurable output —— not buzzwords.
 
 ### 5B. Questions to Ask Kim
 - 5B.1. **Signature (always):** "What does success in this role look like —— to you, to the company, and to me?"
@@ -123,13 +127,14 @@
 - 5B.5. "Which brand carries the most marketing weight right now, and how is effort split across them?"
 - 5B.6. "Is there appetite to consolidate the headline brand metrics into a single source of truth?" (the 100k/130k/170k and review-count variance —— diplomatic, signals senior care; §1.6.3)
 - 5B.7. "How much of the seat is hands-on execution vs strategy, and is production in-house or agency-supported?"
-- 5B.8. "How will the late-2026 Parramatta move affect the team day-to-day?" (asked lightly, as logistics)
-- 5B.9. (Hold salary and any title framing to offer stage —— do not raise either first.)
+- 5B.8. "How does marketing work with the BD/sales team and the referral-partner channel today —— and where is the biggest unmet opportunity there?" (lands squarely in Kim's world)
+- 5B.9. "How will the late-2026 Parramatta move affect the team day-to-day?" (asked lightly, as logistics)
+- 5B.10. (Hold salary and any title framing to offer stage —— do not raise either first.)
 
 ### 5C. Logistics & Format
 - 5C.1. **On-site, Tue 30/06/2026 1:00pm, 30 min.** Arrive `~`12:50 (invite asks for 10 min early). A short slot = screening / culture-fit plus assessment debrief; be concise and front-load the strongest points.
 - 5C.2. Venue: **Unit 34, 11–21 Underwood Rd, Homebush** (next to Sneakies Cafe, near the boom gates). On-site contact **Eva, 0418 346 172** (likely Eva Toy).
-- 5C.3. Interviewer: **Kim Quach (Marketing Manager)**, single named panellist; Jason Futrill possibly present (unconfirmed).
+- 5C.3. Interviewer: **Kim Quach (Marketing Manager)** —— the named panellist; a BD-rooted, partnerships-minded leader (§1.4). Jason Futrill (external AI/SEO consultant, §1.5.1) is unlikely at a 30-min screen but may assess the task or join a later stage —— be AI-credible regardless.
 - 5C.4. **Dress: smart business attire —— explicitly NO sneakers and NO hoodies.** Take it literally; closed leather shoes.
 - 5C.5. Parking: free 2-hr at **DFO Homebush** or **Mason Park** (Underwood Rd); allow `~`10 extra min. Transport fallback: train to North Strathfield / Homebush, then bus or Uber.
 - 5C.6. Bring: 2–3 printed resume copies, a notepad, and have **Projects.CulousYu.com** and the **assessment PDF** ready (they may walk through it).
@@ -144,6 +149,9 @@
 - 5D.7. **AI leverage:** his strongest card —— AI-accelerated production/systems, generalisable across format and channel; surface it proportionately, especially if AI/growth comes up via Jason. Read the room (some AU firms are wary).
 - 5D.8. **Posture (chameleon-veteran):** humble by default (AU tall-poppy); deploy breadth to connect and complement, holster the dominate reflex.
 - 5D.9. **No false claims:** Mandarin = professional (native = Cantonese); video = creative direction, not heavy hands-on editing; keep career-wide records generic except marketing/content/PM.
+- 5D.10. 🎯 **Commercial lens (Kim):** lead with marketing as a measurable **growth/pipeline engine** for investors AND the referral-partner channel (accountants/brokers/buyers' agents); use the assessment's referral push as proof you already think this way.
+- 5D.11. 🎯 **AI under expert eyes (Jason):** the AI-systems card aligns with Duo's own AI consultant —— deploy it with genuine depth (agentic workflows, prompt/SEO-content systems), which both differentiates AND withstands scrutiny.
+- 5D.12. **Complementary, not threatening:** offer the execution/strategy depth a BD-minded manager wants —— "I make your marketing function deliver measurable pipeline", never out-marketing the boss.
 
 ### 5E. Assessment-Specific (likely the conversation spine)
 - 5E.1. Task 1 Mini Campaign Brief (159w) + Task 2A Social Caption (89w) —— delivered and well-received, so it earned this interview; be ready to defend every choice.
