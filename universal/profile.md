@@ -45,7 +45,7 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 ## Devices
 
 - iPhone 13 mini (i13m/OTGD): daily
-- Samsung Fold2: occasional
+- Samsung Fold2 (1768*2208px): occasional; mostly for business meetings / job interviews
 - Mi Watch S4 mini (41mm, silvery titanium bracelet): daily, mainly for notifications/workouts
 - Mac Mini M2 Pro (WSM): always on, with Fury Renegade 2TB NVMe (everything except apps) & WD Green 2TB NVMe (Time Machine only), Magic Trackpad/Keyboard
 - MacBook Air M1 (OTGM): OTG only
