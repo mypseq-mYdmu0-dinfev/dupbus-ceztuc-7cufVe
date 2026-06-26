@@ -10,7 +10,12 @@
 - 0.3. Most outputs here are deliverables or durable records — mind `writing.md` for anything sent to the employer, and run `dlint.py` accordingly.
 
 ## 1. Phase A — Pre-Interview Research
-- 1.1. Run `web_search` first to surface candidate sources, then validate every claim via CIC by actually visiting the source (web_search is triage, never confirmation).
+- 1.1. Research method —— **CIC validation is MANDATORY** (per `cic.md`); `web_search` and CC's `WebFetch` are TRIAGE ONLY:
+  - 1.1.1. `web_search`/`WebFetch` only surface and narrow candidate sources —— their output is NEVER usable as fact and may NEVER be written into the AR, a deliverable, or any prep. Treat every snippet/fetch as an unverified lead.
+  - 1.1.2. Before ANY web-sourced claim is used, it MUST be validated **live via CIC** by actually opening and reading the source page in-browser. A claim CIC has not confirmed is UNCONFIRMED —— omit it, or label it explicitly (e.g. `[UNCONFIRMED —— CIC unreached]`); never launder a triage snippet into an asserted fact.
+  - 1.1.3. ⚠️ `WebFetch` does NOT substitute for CIC —— it is itself triage (can misrepresent, cache stale content, or miss gated/login-walled material). A live CIC read is still required.
+  - 1.1.4. Delegating research to an SA does not waive this —— the SA's web_search/WebFetch findings remain triage; CIC must still confirm before anything is asserted.
+  - 1.1.5. If CIC is unavailable (extension not connected) or a source cannot be reached live, STOP and alert/remind to connect CIC or use CAI (per `cic.md` + `CP_notes.md`) —— do NOT proceed on web_search/WebFetch alone.
 - 1.2. Expand the AR's thin §1 stub into numbered subsections: company basics; scale/footprint; leadership; the interviewer(s) specifically; services + validated credits; work mode/structure; reputation; salary.
 - 1.3. Reputation — ⚠️ anti-conflation: beware same-name entities (e.g. Glassdoor for a global namesake vs the actual SME). State explicitly when review data is NOT the employer.
 - 1.4. Salary — capture the advertised band AND the part-time-vs-FTE-equivalent ambiguity; never resolve it by assumption.
