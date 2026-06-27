@@ -11,11 +11,11 @@
 ## Core Files
 
 ProjectSummary.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b89e67769a0e195afdb6c400d988a424f7555f/dissertation/MGTK751_ProjectSummary.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a652b84c0dd54147017994823941c9773f71fae9/dissertation/MGTK751_ProjectSummary.md
 Brief overview.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/100a025464e358c9814fc34c693262eda9ce2b51/dissertation/MGTK751_DevPlan.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a6dc26ac74bcb85174cd31bde3ce9f634c55163d/dissertation/MGTK751_DevPlan.md
 Always follow.
 
 ---
@@ -51,15 +51,15 @@ Distilled seminar transcripts.
 ## Created Files
 
 "CB" / Concept_Brief.md / Concept Brief (comp).md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b89e67769a0e195afdb6c400d988a424f7555f/dissertation/MGTK751_Concept_Brief_comp.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a652b84c0dd54147017994823941c9773f71fae9/dissertation/MGTK751_Concept_Brief_comp.md
 Ultimate source of truth; internal backstory.
 
 Concept Brief (concise).md (request)
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f7392faaa8e440dc9b4d63c5c19de74446bd0ea0/dissertation/MGTK751_Concept_Brief_concise.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/c6b9d18d6239d6e6f20dafba550c2c4221f68b7e/dissertation/MGTK751_Concept_Brief_concise.md
 For my reading only.
 
 RefRepo.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b89e67769a0e195afdb6c400d988a424f7555f/dissertation/MGTK751_RefRepo.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f50431d04ab358b80c3abd9874336dba92bb3337/dissertation/MGTK751_RefRepo.md
 All usable ref w/ brief notes.
 
 CoreRef.md (request)
@@ -72,7 +72,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b8
 Submitted real A1.
 
 Lu.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/4a5811c11de9831f6205d18e486f34e4e5b6f8cb/dissertation/lu.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ead6948d14a8435a59b9cdacd00c36e756e61305/dissertation/lu.md
 Synthesised profile of matched DA (A2/A3 marker).
 
 Meetings.md / Meetings (distilled).md
@@ -80,7 +80,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b8
 Distilled DA meeting transcripts.
 
 A1R.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b89e67769a0e195afdb6c400d988a424f7555f/dissertation/MGTK751_A1R.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e619d8795be702576d5e60eb48e2f02a4456e67e/dissertation/MGTK751_A1R.md
 Refined A1 sent to Lu.
 
 ---
