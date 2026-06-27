@@ -11,7 +11,8 @@ OWNER = "mypseq-mYdmu0-dinfev"
 REPO = "dupbus-ceztuc-7cufVe"
 PREFIX = f"https://raw.githubusercontent.com/{OWNER}/{REPO}/"
 # match a raw URL ANYWHERE in a line (handles bare URLs and "Label: <url>" forms)
-URL_RE = re.compile(re.escape(PREFIX) + r"([0-9a-fA-F]{7,40}|main)/(\S+)")
+# ref group is optional so bare URLs (no SHA/branch) are also caught and pinned
+URL_RE = re.compile(re.escape(PREFIX) + r"(?:([0-9a-fA-F]{7,40}|main)/)?(\S+)")
 
 ROOT = subprocess.run(["git", "rev-parse", "--show-toplevel"],
                       capture_output=True, text=True).stdout.strip()
