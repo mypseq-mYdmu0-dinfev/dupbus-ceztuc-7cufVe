@@ -338,7 +338,7 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
   - AD11.1.1. This was the FIRST MP (dissertation) session run in CC, migrated from CWI. Analysed Lu's 5 .docx comments (CM1–CM5), agreed an adoption map, and ran a multi-turn email exchange (Lu.md Logs 12–18): she APPROVED the full amendment plan (Log 18, 15/06/2026).
   - AD11.1.2. Built A1R v2 on `MGTK751_A1R.md` via `#sprint P12` (slog `dissertation_slog_202606221529.md`): §1 reframe + locked RA, §2 theoretical framework (table + diagram), §3 philosophy/approach/method split + sampling, §4 milestones, CB/ProjectSummary sync, QC + Challenge-SA red-team.
   - AD11.1.3. Folded in a forked `#debate` verdict and 2 rounds of your polish (numerals, semicolons, bolding, footnote trims, §2.2 revert, §3.1 reword, one-per-org emphasis, Figure 1 made standalone, Figure 2 SVG visual fixes).
-  - AD11.1.4. Housekeeping: archived A1/formative files to `archive/`; externalised AD01–AD07 to `addenda/`; stubbed P06–P11; updated CP indexes. (System/non-CP file changes recorded in `close_202606232027` §3.)
+  - AD11.1.4. Housekeeping: archived A1/formative files to `archive/`; externalised AD01–AD07 to `addenda/`; stubbed P06–P11; updated CP indexes; created `MGTK751_A1R_Figure2_TheoreticalFramework.svg` (old Figure-1 svg voided).
 
 - AD11.2. Decisions
   - AD11.2.1. **LOCKED RA** (Lu-approved Log 18): "To investigate how TPS influences team cohesion and knowledge governance in Australian KBFs, crystallising the empirical foundation for CYC's KM consulting practice." It REPLACED the RA Lu rejected as invalid in Log 16 —— "…crystallising the empirical foundation for KM practice to address the management challenge of CYC as a startup MCF" —— because the tail "to address the management challenge of CYC" implied studying the fictional firm. NB the term "management challenge" is still used (and bolded) in §1 prose; ONLY that rejected RA-tail construction is banned.
@@ -362,7 +362,7 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
   - AD11.3.5. Footnote [3] (SMART) NOT restored —— the Glossary already defines SMART and there is no in-text anchor after the CM3 removal of "Structure of Chapters".
   - AD11.3.6. P06–P11 were stubbed at #close WITHOUT first preserving them (CC error); the user rescued the full text from git to `archive/MGTK751_A1R_v1_DevPlan.md` and recorded the v1-archived / v2-current history in the DevPlan header. Lesson: preserve before any destructive stub/removal.
 
-- AD11.4. Session Files (25 comms pairs + standalone/non-comms)
+- AD11.4. Comms Files (24 pairs)
   - AD11.4.1. `202606040416` —— Lu's 5 .docx comments: analysis + adoption plan
   - AD11.4.2. `202606041852` —— per-comment strategy; CB check; email v1
   - AD11.4.3. `202606042219` —— RA/RO4 finalise; email update
@@ -387,7 +387,6 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
   - AD11.4.22. `202606231835` —— A1R polish round (SVG, milestones, numerals, etc.)
   - AD11.4.23. `202606231936` —— final polish (Figure 1 standalone, Stakes, regarded)
   - AD11.4.24. `202606231947` —— this close_ + AD11
-  - AD11.4.25. Non-comms (CP): `MGTK751_A1R_Figure2_TheoreticalFramework.svg` (old Figure-1 svg voided); `addenda/MGTK751_Addendum_AD01–07.md`; CP index updates
 
 - AD11.5. Remarks
   - AD11.5.1. At project START (proposal approved by Lu + 2 reviewers), create the Calendar events for the milestone plan in the private calendar.
@@ -419,23 +418,23 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
   - AD12.3.2. The cover email is logged as **Log 22**, not Log 19 (the comms log gained Logs 19–21: Lu's speed chase, Culous' illness note, Lu's health-first reply).
   - AD12.3.3. Substantial protocol-file work this session is unrelated to the A1R deliverable but permanent (see AD12.1.4 / AD12.2).
 
-- AD12.4. Session Files
-- AD12.4.1. `202606/dissertation_response_202606232103.md` —— MP16 turn 1: context recovery, ready for P12.7
-- AD12.4.2. `202606/dissertation_response_202606232120.md` —— THE P12.7 `#replace #adv` handoff (Changes 01–40; live-edited all session)
-- AD12.4.3. `202606/dissertation_query_202606232204.md` + `…response` —— 2 serious mistakes (breaks + one-edit)
-- AD12.4.4. `202606/dissertation_query_202606232213.md` + `…response` —— harden `replace_adv.md`
-- AD12.4.5. `202606/dissertation_query_202606232308.md` + `…response` —— root-creation rule (CLAUDE.md §8.9)
-- AD12.4.6. `202606/dissertation_query_202606240205.md` + `…response` —— U+2028 unsearchable; split fallback; `padv.py`
-- AD12.4.7. `202606/dissertation_query_202606240243.md` + `…response` —— Figure 1 title + footnote superscripts
-- AD12.4.8. `202606/dissertation_query_202606240307.md` + `…response` —— Sensitising Concepts; Blumer gap
-- AD12.4.9. `202606/dissertation_query_202606240324.md` + `…response` —— CIC-validation breach rectified
-- AD12.4.10. `202606/dissertation_query_202606240326.md` + `…response` —— full A1R.md claim audit
-- AD12.4.11. `202606/dissertation_query_202606240412.md` + `…response` —— remove WCIC from cic.md
-- AD12.4.12. `202606/dissertation_query_202606240417.md` + `…response` —— library credentials into cic_libs.md
-- AD12.4.13. `202606/dissertation_query_202606240436.md` + `…response` —— QC fixes 7.1/7.2 as Changes 35–39
-- AD12.4.14. `202606/dissertation_query_202606240534.md` + `…response` —— PDF-vs-A1R.md diff; per-change calls
-- AD12.4.15. `202606/dissertation_query_202606240627.md` + `…response` —— P12 finale: re-QC, mirror, Log 19, dlint
-- AD12.4.16. `202606/dissertation_query_202606240759.md` + `…close/response_202606240805` —— this close (Log 22 review)
+- AD12.4. Comms Files (14 pairs + 2 standalone)
+  - AD12.4.1. `dissertation_response_202606232103.md`: MP16 turn 1, context recovery, ready for P12.7
+  - AD12.4.2. `dissertation_response_202606232120.md`: THE P12.7 `#replace #adv` handoff (Changes 01–40; live-edited)
+  - AD12.4.3. `202606232204`: 2 serious mistakes (breaks + one-edit)
+  - AD12.4.4. `202606232213`: harden `replace_adv.md`
+  - AD12.4.5. `202606232308`: root-creation rule (CLAUDE.md §8.9)
+  - AD12.4.6. `202606240205`: U+2028 unsearchable; split fallback; `padv.py`
+  - AD12.4.7. `202606240243`: Figure 1 title + footnote superscripts
+  - AD12.4.8. `202606240307`: Sensitising Concepts; Blumer gap
+  - AD12.4.9. `202606240324`: CIC-validation breach rectified
+  - AD12.4.10. `202606240326`: full A1R.md claim audit
+  - AD12.4.11. `202606240412`: remove WCIC from cic.md
+  - AD12.4.12. `202606240417`: library credentials into cic_libs.md
+  - AD12.4.13. `202606240436`: QC fixes 7.1/7.2 as Changes 35–39
+  - AD12.4.14. `202606240534`: PDF-vs-A1R.md diff; per-change calls
+  - AD12.4.15. `202606240627`: P12 finale, re-QC, mirror, Log 19, dlint
+  - AD12.4.16. `202606240759` (+ close `202606240805`): P12 close, Log 22 review
 
 - AD12.5. Remarks
   - AD12.5.1. Immediate next action is the USER's: fix the Log 22 typo ("managed to finished" → "managed to finish") and send; then the project enters P13 (Lu + 2 reviewers' approval → ethics).
