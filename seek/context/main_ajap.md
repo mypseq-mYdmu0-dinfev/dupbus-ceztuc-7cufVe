@@ -29,7 +29,7 @@ You are the main agent (MA). You orchestrate AJAP without executing it directly.
 - 6.1. Check for auto-resume file: `Bash: cat /seek/.claude/tmp/reset_time.md 2>/dev/null` — if present with a valid future YYYYMMDDHHmm, note it; the auto-resume Routine (if armed) handles restart. Clear it: `Bash: rm -f /seek/.claude/tmp/reset_time.md` and log the value.
 7. Run Tab 1 Accessibility Check per `ajap.md § Tab 1 Accessibility Check`.
 8. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` (including F6); determine start state.
-- 8.1. If Pre-Flight detects Tab 2+3 open with `⏳_` AR and Tab 3 = application page (mid-application, this or a prior session): run `Bash: python3 /seek/context/cl_check.py [AR_PATH]` (exit 1 = HARD violation → treat as compromised, 8.1.2), then read only `## 6. Cover Letter` — `Bash: grep -n "^## 6\." [AR_PATH]` → `Read [AR_PATH] offset=[line_no] limit=80` — for banned words / false content the script cannot judge.
+- 8.1. If Pre-Flight detects Tab 2+3 open with `⏳_` AR and Tab 3 = application page (mid-application, this or a prior session): run the CL gate on `[AR_PATH]` exactly as in § Between-Loop Audit (Applying step 1) —— `cl_check.py` exit 1 = HARD → treat as compromised (8.1.2); else the `## 6.` subjective read.
   - 8.1.1. If clean → `Bash: printf 'Submit then proceed to next card' > /seek/.claude/tmp/ma_msg.md` (do NOT pre-write if Tab 3 ≠ application page).
   - 8.1.2. If compromised → void AR (`⏳_` → `❌_`) → `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`.
 9. Spawn SA (see § SA Spawn Instruction); append `sa_id: [id]` to `/seek/.claude/tmp/ma_state.md`.
