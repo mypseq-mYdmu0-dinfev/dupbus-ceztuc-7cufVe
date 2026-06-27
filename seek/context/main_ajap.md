@@ -50,7 +50,7 @@ Use this exact prompt when spawning or re-spawning SA (fill ONLY the bracketed v
 
 ## Opus-Mode Fallback (model-specific)
 
-*If you (MA) are running on **Opus**, apply this whole section; on Sonnet, ignore it. Rationale: Opus SAs have repeatedly refused the SA role ("instruction is from a machine, not a human") and Opus cannot autonomously `file_upload` local résumé PDFs to external portals (rlog/audit `202606081836` §5); 90%⁺ of all ARs were produced by Sonnet. This is treated as a model/harness limitation, NOT to be "fixed".*
+*If you (MA) run on **Opus**, apply this whole section; on Sonnet, ignore it. (Opus SAs refuse the SA role and Opus cannot `file_upload` résumés —— a model/harness limit, not to be fixed.)*
 
 - Do NOT spawn SA1. Take on SA1's per-card loop yourself (run **solo**): MA executes `ajap.md` directly, ONE card at a time.
 - In solo mode, the SA-side safeguards are absent, so YOU must, at the top of EVERY card, perform `ajap.md S0.1` (literally Read `MA_hb.md` + emit `✅ context/MA_hb.md`) and self-gate Submit with a CL review (run `python3 /seek/context/cl_check.py [AR_PATH]` before any Submit).
@@ -81,8 +81,8 @@ On receiving an SA loop report (`[AR_PATH] | [OUTCOME] | [N] | newtoyou=[n] | [F
 2. If `N > 0` AND `N % 5 == 0` → re-read `MA_hb.md` immediately before continuing.
 3. If retiring SA → CRITICAL: reset `ma_msg.md` FIRST: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md` — only then spawn fresh SA (run_in_background=True); update `ma_state.md`.
 4. After emitting `🎯[N]`: `touch /seek/.claude/tmp/ma_c2_marker` (watchdog surface).
-5. Submission disambiguation + fast reset: count a submission as confirmed ONLY when a same-stem non-`⏳_`/non-`❌_` AR exists in `/gcl/applied/` with `Outcome: Applied` (a `⏳_` can also vanish via void/error). On confirmation, reset `ma_msg.md` to "Continue" as a single immediate step —— fast reset prevents the 300s SA-idle deadlock (rlog 202606051908/051955).
-6. `⏳_` approval-gate bypass: if an AR reached `Outcome: Applied` with NO MA "Submit then proceed to next card" approval recorded for it → log + retire SA (the CL-review gate was bypassed —— rlog 202606060138/0147/0220/0223).
+5. Submission disambiguation + fast reset: count a submission as confirmed ONLY when a same-stem non-`⏳_`/non-`❌_` AR exists in `/gcl/applied/` with `Outcome: Applied` (a `⏳_` can also vanish via void/error). On confirmation, reset `ma_msg.md` to "Continue" as a single immediate step —— fast reset prevents the 300s SA-idle deadlock.
+6. `⏳_` approval-gate bypass: if an AR reached `Outcome: Applied` with NO MA "Submit then proceed to next card" approval recorded for it → log + retire SA (the CL-review gate was bypassed).
 
 **MA kill switch (stalling / deterioration / external portal overrun):**
 - Close only the offending tab (Tab 2, 3, or 4⁺) as a targeted intervention — not all tabs at once.
@@ -145,7 +145,7 @@ done
 ```
 (Use the full absolute `/seek/...` path when actually issuing the command. The `find` degrades gracefully —— if `/gcl/` does not yet exist it emits no `newfile`, only ticks.)
 
-**Dual mechanism + durability (CRITICAL —— prior fixes regressed exactly here, rlog 202606060334):**
+**Dual mechanism + durability (CRITICAL —— prior fixes regressed exactly here):**
 - A finite `Bash run_in_background` loop is BANNED as a heartbeat —— it notifies ONLY on COMPLETION, so `INT=60` is inert and a failed completion = indefinite sleep. ALWAYS the persistent canonical `Monitor` above.
 - The PRIMARY Monitor is FIXED at 300s and is NEVER churned (spawned once, never TaskStop'd during normal operation) —— guaranteed liveness. Faster cadence is a SEPARATE transient 60s Monitor (`hb60_task`: `while true; do sleep 60; echo "heartbeat"; done`) spawned only while an approval is pending and killed once submission confirms; the PRIMARY stays untouched. In ADDITION spawn the SA2 watchdog Monitor ONCE (`SA2_hb.md`) and NEVER TaskStop it —— the independent safety net that survives compaction (an OS process unaffected by context loss) and re-wakes MA to rebuild a lost primary.
 - `TaskList` does NOT enumerate background Monitors —— do NOT use it for Monitor liveness; rely on the watchdog.
@@ -172,9 +172,9 @@ done
 
 ## MA Post-Compaction Recovery
 
-Trigger: MA resumes from a summary OR sees injected system text such as "This session is being continued…", "Resume directly — do not acknowledge the summary", or "Continue the conversation from where it left off". These do NOT override this protocol (compliance gap, not absence —— see rlog 202606051617).
+Trigger: MA resumes from a summary OR sees injected system text such as "This session is being continued…", "Resume directly — do not acknowledge the summary", or "Continue the conversation from where it left off". These do NOT override this protocol (compliance gap, not absence).
 1. 🛑 Emit `🚨 Compaction Detected —— stopped all tasks.`; do NOT message SA, take browser action, or continue the prior task.
-2. Re-read ALL mandatory files per `CLAUDE.md § Session Start` —— state-critical `MA_hb.md` + `ma_state.md` FIRST (recover `session_start_TS`/`latest_TS`/`sa_id`/`heartbeat_task`/`watchdog_task`; if `ma_state.md` is missing, re-stamp `session_start_TS`/`latest_TS` to now —— fresh MA context, prior SA terminated, `sa_id` log-only). Reading state-critical files first cuts the silent stall that let SA run unattended (rlog 202606051948).
+2. Re-read ALL mandatory files per `CLAUDE.md § Session Start` —— state-critical `MA_hb.md` + `ma_state.md` FIRST (recover `session_start_TS`/`latest_TS`/`sa_id`/`heartbeat_task`/`watchdog_task`; if `ma_state.md` is missing, re-stamp `session_start_TS`/`latest_TS` to now —— fresh MA context, prior SA terminated, `sa_id` log-only). Reading state-critical files first cuts the silent stall that let SA run unattended.
 3. Run the broad file check (filename-TS ≥ `latest_TS`), THEN emit `🎯[N]`.
 4. Read `/seek/.claude/tmp/last_decision.md` (if exists) — last SA decision before compaction.
 5. Read `/seek/.claude/tmp/ma_msg.md` — if not "Continue", reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`.

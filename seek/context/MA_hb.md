@@ -1,6 +1,6 @@
 # MA Heartbeat Contract (`MA_hb.md`)
 
-*Formerly `mini_ajap.md`. The lean checklist MA LITERALLY re-reads (not from memory) at the TOP of every wake AND at S0.1 of every card. Each wake: re-read this file IN FULL with the Read tool and emit `✅ context/MA_hb.md`, run the checks, THEN as the FINAL step `touch /seek/.claude/tmp/ma_hb_reread_marker` —— the marker CERTIFIES the re-read happened, so it MUST come after the read, never before (touching first is exactly what produced the hollow-heartbeat failure). Detailed mechanics live in `main_ajap.md` (read at start); watchdog spec in `SA2_hb.md`. If unsure of any item, re-read `ajap.md` & `main_ajap.md`.*
+*The lean checklist MA LITERALLY re-reads (not from memory) at the TOP of every wake AND at S0.1 of every card. Each wake: re-read this file IN FULL with the Read tool and emit `✅ context/MA_hb.md`, run the checks, THEN as the FINAL step `touch /seek/.claude/tmp/ma_hb_reread_marker` —— the marker CERTIFIES the re-read happened, so it MUST come after the read, never before (touching first is exactly what produced the hollow-heartbeat failure). Detailed mechanics live in `main_ajap.md` (read at start); watchdog spec in `SA2_hb.md`. If unsure of any item, re-read `ajap.md` & `main_ajap.md`.*
 
 ---
 
