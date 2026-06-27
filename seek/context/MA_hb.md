@@ -54,7 +54,7 @@ The heartbeat re-wakes you and this section re-asserts every wake, so any first-
 
 **Re-read this file on every heartbeat AND every 5 loops —— no exceptions, no skipping.**
 
-Mechanism (full spec in `main_ajap.md § Heartbeat`): a persistent primary `Monitor` (file-watches `/seek/gcl/` + `/seek/.claude/tmp/sa2_alert.md`; dynamic 60/300) PLUS the never-churned SA2 watchdog. A finite-loop heartbeat is BANNED. `ScheduleWakeup` is NOT used.
+Mechanism (full spec in `main_ajap.md § Heartbeat`): a persistent primary `Monitor` FIXED at 300s (file-watches `/seek/gcl/` + `/seek/.claude/tmp/sa2_alert.md`; spawned once, NEVER churned) PLUS a SEPARATE transient 60s Monitor spawned only while an approval is pending (and killed once submission confirms) PLUS the never-churned SA2 watchdog. A finite-loop heartbeat is BANNED. `ScheduleWakeup` is NOT used.
 
 On EVERY wake (primary `heartbeat`/`newfile`/`sa2-alert` tick, OR an `SA2_hb.md` watchdog line):
 - FIRST re-read THIS file (`MA_hb.md`) in full with the Read tool and emit `✅ context/MA_hb.md`; then run the Active Check + Rogue tripwire above. (The `ma_hb_reread_marker` touch is the LAST action of the wake —— see the final bullet —— never the first.)
@@ -67,9 +67,9 @@ On EVERY wake (primary `heartbeat`/`newfile`/`sa2-alert` tick, OR an `SA2_hb.md`
 - Output C2 when a new legitimate AR appeared: `[current_TS] 🎯[N] **job(s) processed so far.**` (N = number emojis = this-session count only); then `touch /seek/.claude/tmp/ma_c2_marker` (the watchdog measures this).
 - **Proof-of-read (FINAL action of EVERY wake):** `touch /seek/.claude/tmp/ma_hb_reread_marker` —— ONLY now, after the genuine re-read + `✅` + Active Check above are actually done. This is the signal the SA2 watchdog trusts; touching it at the top of the wake, or without a real re-read, is a contract breach and is the root of the hollow-heartbeat failure.
 
-**Dynamic interval (enforced) —— applies to the PRIMARY Monitor only:**
-- Default interval `sleep 300`.
-- After writing ANY approval (`ma_msg.md` = "Submit then proceed to next card") → TaskStop the PRIMARY Monitor → re-spawn at `sleep 60`.
-- After confirming submission (`⏳_` AR gone AND `ma_msg.md` reset to "Continue") → TaskStop the PRIMARY → re-spawn at `sleep 300`.
-- The file-watch `newfile` event fires INDEPENDENTLY of the timed tick —— extra wake condition keeping both mechanisms live.
-- The SA2 watchdog Monitor is spawned ONCE and is NEVER TaskStop'd by this churn —— the independent safety net that survives churn AND compaction (an OS process, unaffected by context loss). A finite-loop heartbeat is BANNED —— ALWAYS the persistent canonical Monitor (`main_ajap.md § Heartbeat`).
+**Fast-confirm overlay (enforced) —— NEVER churn the PRIMARY:**
+- The PRIMARY 300s Monitor is spawned ONCE and is NEVER TaskStop'd or re-spawned during normal operation —— it runs untouched the whole session for guaranteed liveness. Do NOT change its interval.
+- When faster wakes are needed (after writing ANY approval, `ma_msg.md` = "Submit then proceed to next card") → spawn a SEPARATE transient 60s Monitor: a `Monitor` (`persistent=true`) running `while true; do sleep 60; echo "heartbeat"; done`; record its id as `hb60_task` in `ma_state.md`. Spawn ONLY if no `hb60_task` is already recorded (exactly one at a time).
+- After confirming submission (`⏳_` AR gone AND `ma_msg.md` reset to "Continue") → `TaskStop` the `hb60_task` ONLY; clear `hb60_task` from `ma_state.md`. The PRIMARY is untouched.
+- The PRIMARY's file-watch `newfile` event fires INDEPENDENTLY of either timer —— extra wake condition keeping the mechanisms live.
+- The SA2 watchdog Monitor is likewise spawned ONCE and NEVER TaskStop'd —— the independent safety net that survives compaction (an OS process, unaffected by context loss). A finite-loop heartbeat is BANNED —— ALWAYS the persistent canonical Monitors (`main_ajap.md § Heartbeat`).

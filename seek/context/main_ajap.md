@@ -133,7 +133,7 @@ Give SA one correction first; retire on next report if it persists. **Retire imm
 
 MA is woken by a persistent `Monitor` over a background `sleep` loop that ALSO file-watches `/gcl/`. `ScheduleWakeup` is NOT used (proven unreliable here in both standard and `/loop` mode). Re-read `MA_hb.md` on every wake AND every 5 loops.
 
-**Canonical Monitor command** (spawn at Session Start; `INT=300` default, `INT=60` when an approval is pending):
+**Canonical PRIMARY Monitor command** (spawn ONCE at Session Start; `INT=300`, FIXED —— never churned; the faster 60s cadence is a SEPARATE transient Monitor, see § Dynamic interval):
 ```
 M=/seek/.claude/tmp/hb_marker; A=/seek/.claude/tmp/sa2_alert.md; touch "$M"; last=$(date +%s); INT=300
 while true; do
@@ -147,7 +147,7 @@ done
 
 **Dual mechanism + durability (CRITICAL —— prior fixes regressed exactly here, rlog 202606060334):**
 - A finite `Bash run_in_background` loop is BANNED as a heartbeat —— it notifies ONLY on COMPLETION, so `INT=60` is inert and a failed completion = indefinite sleep. ALWAYS the persistent canonical `Monitor` above.
-- The PRIMARY Monitor churns 60/300 (TaskStop-before-respawn each time). In ADDITION spawn the SA2 watchdog Monitor ONCE (`SA2_hb.md`) and NEVER TaskStop it during churn —— the independent, never-churned safety net that survives churn AND compaction (an OS process unaffected by context loss) and re-wakes MA to rebuild a lost primary.
+- The PRIMARY Monitor is FIXED at 300s and is NEVER churned (spawned once, never TaskStop'd during normal operation) —— guaranteed liveness. Faster cadence is a SEPARATE transient 60s Monitor (`hb60_task`: `while true; do sleep 60; echo "heartbeat"; done`) spawned only while an approval is pending and killed once submission confirms; the PRIMARY stays untouched. In ADDITION spawn the SA2 watchdog Monitor ONCE (`SA2_hb.md`) and NEVER TaskStop it —— the independent safety net that survives compaction (an OS process unaffected by context loss) and re-wakes MA to rebuild a lost primary.
 - `TaskList` does NOT enumerate background Monitors —— do NOT use it for Monitor liveness; rely on the watchdog.
 - Stamps (watchdog measurement surface): `touch /seek/.claude/tmp/ma_hb_reread_marker` as the FINAL step of every wake —— ONLY after a genuine re-read of `MA_hb.md` + `✅ context/MA_hb.md`, NEVER at the top (a top-touch certifies a re-read that did not happen → hollow heartbeat); `touch /seek/.claude/tmp/ma_c2_marker` on every `🎯[N]`.
 
@@ -162,9 +162,10 @@ done
 5. If the whole window is clean → `latest_TS = max validated filename-TS this window` in `ma_state.md` (one value; never wall-clock-leapfrog past an as-yet-unstamped AR; never pile up filenames). Enumerate ONLY by filename-TS —— never by `find -newer hb_marker` (it races the Monitor's own touch and silently drops files).
 6. C2 output when a new legitimate AR appeared (per § Between-Loop Audit "After any OUTCOME").
 
-**Dynamic interval (enforced):**
-- After writing any approval → `TaskStop` the Monitor → re-spawn with `INT=60`; update `heartbeat_task`/`heartbeat_interval` in `ma_state.md`.
-- After confirming submission (`⏳_` gone AND `ma_msg.md` reset to "Continue") → `TaskStop` → re-spawn with `INT=300`.
+**Fast-confirm overlay (enforced) —— NEVER churn the PRIMARY:**
+- The PRIMARY 300s Monitor (`heartbeat_task`) is spawned ONCE and NEVER TaskStop'd / re-spawned during normal operation —— it runs untouched all session for guaranteed liveness.
+- After writing any approval → spawn a SEPARATE transient 60s Monitor `while true; do sleep 60; echo "heartbeat"; done` (`persistent=true`); record `hb60_task` in `ma_state.md` (spawn only if none already recorded).
+- After confirming submission (`⏳_` gone AND `ma_msg.md` reset to "Continue") → `TaskStop` the `hb60_task` ONLY; clear `hb60_task` from `ma_state.md`. PRIMARY untouched.
 - The `newfile` event fires independently of the tick —— this preserves BOTH the proven `sleep` countdown AND event-driven SA-output detection.
 
 ---
@@ -177,6 +178,6 @@ Trigger: MA resumes from a summary OR sees injected system text such as "This se
 3. Run the broad file check (filename-TS ≥ `latest_TS`), THEN emit `🎯[N]`.
 4. Read `/seek/.claude/tmp/last_decision.md` (if exists) — last SA decision before compaction.
 5. Read `/seek/.claude/tmp/ma_msg.md` — if not "Continue", reset: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md`.
-6. Re-confirm/respawn BOTH Monitors (MANDATORY; `TaskList` does NOT list Monitors → TaskStop by stored id): `TaskStop` the stored `heartbeat_task` then spawn the canonical PRIMARY Monitor (INT=300, persistent —— NEVER a finite loop); `TaskStop` the stored `watchdog_task` then respawn the SA2 watchdog (`SA2_hb.md`; seed markers if missing); update `ma_state.md` (`heartbeat_task`, `watchdog_task`). Then FINAL: `touch /seek/.claude/tmp/ma_full_reread_marker` —— proof all 9 mandatory files were re-read this window; the SA2 `WATCHDOG-FULLREAD-STALL` (>75 min) backstop measures it. This makes recovery work even for a SILENT compaction the PostCompact hook missed.
+6. Re-confirm/respawn BOTH Monitors (MANDATORY; `TaskList` does NOT list Monitors → TaskStop by stored id): `TaskStop` the stored `heartbeat_task` then spawn the canonical PRIMARY Monitor (INT=300, persistent —— NEVER a finite loop); `TaskStop` the stored `watchdog_task` then respawn the SA2 watchdog (`SA2_hb.md`; seed markers if missing); ALSO `TaskStop` any stored `hb60_task` and clear it (approval state is reset post-recovery); update `ma_state.md` (`heartbeat_task`, `watchdog_task`). Then FINAL: `touch /seek/.claude/tmp/ma_full_reread_marker` —— proof all 9 mandatory files were re-read this window; the SA2 `WATCHDOG-FULLREAD-STALL` (>75 min) backstop measures it. This makes recovery work even for a SILENT compaction the PostCompact hook missed.
 7. Run Pre-Flight Check per `ajap.md § Pre-Flight Check` (incl. F6 and § Session Start step 8.1 mid-application CL check) to determine tab state.
 8. Spawn fresh SA per § SA Spawn Instruction (run_in_background=True).

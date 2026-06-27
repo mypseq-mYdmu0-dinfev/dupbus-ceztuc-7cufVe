@@ -73,6 +73,15 @@ BANNED_WORDS = [
     "tapestry",
 ]
 
+# CL opening templates (gcl.md § 6 Cover Letter): the CL MUST open with EXACTLY
+# ONE of these two fixed skill-triad signatures —— inserted VERBATIM. Neither
+# present = a rogue/edited opening; both present = a violation (NEVER both).
+OPENING_1_SIG = "Problem Solving, Quality Assurance, and Resource Management"        # [1] entry/junior/hands-on
+OPENING_2_SIG = "Strategic Transformation, Value Engineering, and Stakeholder Management"  # [2] mid/high/senior/manager
+# Title keywords (from gcl.md § Opening 1/2) that dictate which template applies.
+TITLE_KW_O2 = ["experienced", "senior", "manager"]   # → MUST use Opening [2]
+TITLE_KW_O1 = ["designer", "specialist", "analyst"]  # → Opening [1] if no O2 keyword
+
 
 def check_one(path: Path):
     """Return (hard_violations, soft_warnings) for a single AR file.
@@ -127,6 +136,32 @@ def check_one(path: Path):
     for w in BANNED_WORDS:
         if re.search(rf"\b{re.escape(w)}\b", low):
             soft.append(f"possible banned word `{w}` (ignore if part of a company/person name)")
+
+    # HARD: opening template must be EXACTLY ONE of Opening [1] / [2] (gcl.md § 6)
+    has_o1 = OPENING_1_SIG in cl
+    has_o2 = OPENING_2_SIG in cl
+    if not has_o1 and not has_o2:
+        hard.append(
+            "CL opening matches NEITHER template [1] nor [2] (rogue/edited opening "
+            "—— must insert Opening 1 or Opening 2 VERBATIM per gcl.md § 6)"
+        )
+    elif has_o1 and has_o2:
+        hard.append("CL opening matches BOTH templates [1] and [2] (gcl.md § 6: exactly one, NEVER both)")
+    else:
+        # SOFT: exactly one present → seniority cross-check against the title (filename)
+        name = path.name.lower()
+        o2_kw = [k for k in TITLE_KW_O2 if k in name]
+        o1_kw = [k for k in TITLE_KW_O1 if k in name]
+        if has_o1 and o2_kw:
+            soft.append(
+                f"title has Opening-2 keyword(s) {o2_kw} but CL uses Opening [1] "
+                f"—— likely should be [2] (gcl.md § Opening 2)"
+            )
+        elif has_o2 and o1_kw and not o2_kw:
+            soft.append(
+                f"title has Opening-1 keyword(s) {o1_kw} and no Opening-2 keyword but CL uses Opening [2] "
+                f"—— verify (gcl.md § Opening 1)"
+            )
 
     return (hard, soft)
 

@@ -221,15 +221,15 @@ S3.1. web_search (run if pre-score ceiling ≥ 50):
 
 *Note valid candidate URLs (authoritative & relevant) for S3.2.*
 
-S3.2. CIC site visits (Tab 4⁺ ONLY; NEVER use Tab 3 for research; read then close each; max 10 **websites** in total per job, NOT webpages):
+S3.2. CIC site visits (Tab 4⁺ ONLY; NEVER use Tab 3 for research; read then close each; max 10 **websites** in total per job, NOT webpages). **MANDATORY for every job that reaches S3.2: S3.2.1 (Official), S3.2.2 (LinkedIn), and S3.2.4 (Glassdoor) —— all three MUST be visited and read; they are NOT skippable (the login obstacle that previously excused skipping LinkedIn/Glassdoor is removed —— see S3.2.2/S3.2.4). S3.2.3/S3.2.5 remain conditional.** If a mandatory source genuinely has no page for this employer (e.g. no LinkedIn company page exists), note that in the AR rather than silently omitting it.
 - S3.2.1. Official website (About, Values, Culture, Team; may browse sub-pages) —— before reading, verify site matches employer name/description from job post; if any doubt, additionally check if brand logo in site matches that in job post
-- S3.2.2. LinkedIn —— in Tab 4+: `navigate` to `https://www.google.com/search?q=[company_name]+site%3Alinkedin.com%2Fcompany` → `find` the LinkedIn company page result → `click` it (clicking from Google sets the referrer that renders LinkedIn's login wall bypassable) → dismiss login overlay once on page; ⚠️ MUST NOT construct/copy URL or use `navigate` / `web_search` / other method to reach LinkedIn directly
+- S3.2.2. LinkedIn (**MANDATORY —— never skip; being logged out is NOT a reason to skip: re-login and continue**) —— in Tab 4+: a logged-in account is available (credentials in `seek/.claude/aux_login.local.md`). `navigate` to `https://www.google.com/search?q=[company_name]+site%3Alinkedin.com%2Fcompany` → `find` the LinkedIn company page result → `click` it → if the page loads logged-in, read it; if a login wall/overlay appears (logged out), open the sign-in, enter the email & password from `seek/.claude/aux_login.local.md`, submit, then proceed. (The old Google-referrer bypass is retired —— you have an account now.)
 - S3.2.3. Validate S3.1 candidate URLs
-- S3.2.4. Glassdoor —— in Tab 4+: `navigate` to `https://www.google.com/search?q=[company_name]+site%3Aglassdoor.com.au` → `find` the Glassdoor result → `click` it → handle blocker if encountered (see S3.2 Notes); ⚠️ MUST NOT construct/copy URL or use `navigate` / `web_search` / other method to reach Glassdoor directly
+- S3.2.4. Glassdoor (**MANDATORY —— never skip; being logged out is NOT a reason to skip: re-login and continue**) —— in Tab 4+: same logged-in account as LinkedIn (credentials in `seek/.claude/aux_login.local.md`). `navigate` to `https://www.google.com/search?q=[company_name]+site%3Aglassdoor.com.au` → `find` the Glassdoor result → `click` it → if a login wall appears (logged out), sign in with the email & password from `seek/.claude/aux_login.local.md`; for a human-verification/captcha blocker, handle per S3.2 Notes. (Old Google-referrer bypass retired.)
 - S3.2.5. Other relevant sources (news, forums, Reddit for large firms; only if yet to hit 10 sites)
 
 S3.2 Notes:
-- For blockers, attempt up to twice before moving on
+- For blockers, attempt up to twice before moving on —— BUT a logged-out state is NEVER a blocker for the mandatory LinkedIn/Glassdoor sources: re-login (credentials in `seek/.claude/aux_login.local.md`) and continue; never "move on" from them for a login reason. Only a genuine unresolvable captcha after two attempts permits moving on, and it MUST be noted in the AR.
   - e.g. Glassdoor shows "Humans only" → screenshot → click the square box (next to "Verify you are human" below "...for troubleshooting steps.")
   - Logic: me = human; you = my representative; hence, you = human in this situation
 - If < 5 useful sources, expand within the 10-site cap per job

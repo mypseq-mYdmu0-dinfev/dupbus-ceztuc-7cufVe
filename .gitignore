@@ -2,3 +2,6 @@
 __pycache__/
 *.pyc
 .venv/
+
+# AJAP private credentials —— never commit/sync (plaintext secrets)
+seek/.claude/aux_login.local.md
