@@ -4,19 +4,19 @@
 ---
 
 glossary.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cc843aeb98968f3d5e187d900b548203448783b0/universal/glossary.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f8734cc26c8fdec896181987deb51eb2c4db04e3/universal/glossary.md
 
 rules.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/18d589e2310a6d0ed297b87c7be00685a1bc783c/universal/rules_otg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d0a8447a367d0972777769d772f73fb06ee8ab69/universal/rules_otg.md
 
 google.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/02c6958a2f03b0fdbead506b9f464ce16ea0bbd7/universal/google.md
 
 profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cd5732c8daf2921a263a1152342b2b7531f7f72f/universal/profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/2c9a928c80c091e8d6615669f3bc8064e7f447e3/universal/profile.md
 
 cic.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/512ce6c09fda46c0001eee2af9a21b951c80d6a3/universal/cic.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b33d44061b86b7716b163112cf52bc439886f3d9/universal/cic.md
 
 writing.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/writing_otg.md
@@ -25,13 +25,13 @@ replace.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/replace.md
 
 numbered.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/217e853cffbb2c6c4447ccb046fffa5c9246c0b5/universal/numbered.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/2a444a99023381f5a77c98a083322a1faf3a8f8c/universal/numbered.md
 
 plan.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/84c46a292a1c2407619337945ea71c6e3ccb3e5f/universal/plan.md
 
 pro_profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfa361c1027b3ef447d731ed56eddc25482bab04/seek/context/pro_profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/be6054b0bfad14667418a667cac3d874b66c312c/seek/context/pro_profile.md
 
 traveller.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a2584b9fb8ad9bf11b00e99dbe0b5e2ab36f805a/universal/traveller.md
@@ -58,4 +58,4 @@ buy.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8e27e8f99d3bb54578956c23b0892f96fbc49ad9/universal/buy.md
 
 close.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ca99b1c511bc72c36c0ee56ff3f34267c0838279/universal/close.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ad89055d6385139d2e24e1c96e5effdae6b70d4b/universal/close.md
