@@ -6,10 +6,13 @@
 - Editing `close_` file:
   - Also update end-of-range TS on Line 1 w/ [current_TS]
   - NEVER edit TS in filename, so user can track diff
-- Sprint Log —— if a `#sprint` ran this session, record its `slog_[TS].md` as a created non-comms file (§ Other Files; or § Coverage for Addendum) for future retrospection if needed.
+- Sprint Log —— if a `#sprint` ran this session, record its `slog_[TS].md` as a created non-comms file (§ Non-Comms Files; or § Coverage for Addendum) for future retrospection if needed.
 - After creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
+- Non-paired comms (applicable to both `## 4. Comms Files` & `- AD[XX].4. Comms Files`):
+  - If not a clean pair (e.g. a lone comms file, or extra comms file(s) from one turn), provide FULL filename(s) (w/o path) on its own line, e.g. `[CP_]close_[TS].md`: descr.
+  - CP non-comms go to AD[XX].1, NOT AD[XX].4.
 
 ---
 
@@ -18,8 +21,8 @@
 If you're not CC, follow below structure with these adaptations:
 - Generate in artefact instead (no filename/location needed)
 - Skip all TS (timestamp; user manually input)
-- §4./AD[XX].4. Session Files lists/counts artefact no. (#) instead
-- §5. Other Files lists/counts deliverables/codes generated (ref artefact #; if any)
+- §4./AD[XX].4. Comms Files lists/counts artefact no. (#) instead
+- §5. Non-Comms Files lists/counts deliverables/codes generated (ref artefact #; if any)
 
 ---
 
@@ -61,13 +64,12 @@ Location: same folder as the session's query_/response_ files
 - 3.2. ...
 [skip 1 line]
 
-## 4. Session Files ([file_count])
-- 4.1. `[YYYYMM]/query_[TS].md` —— [max. 8w descr]
-- 4.2. `[YYYYMM]/response_[TS].md` —— [ditto]
-- 4.3. ... [all `query_`/`response_` pairs (comms files) created this session, in chronological order]
+## 4. Comms Files ([no.] pairs)
+- 4.1. `[TS]`: [max. 8w descr of that turn]
+- 4.2. ... [ONE line per `query_`/`response_` PAIR; bare shared `[TS]` only; chronological order]
 [skip 1 line]
 
-## 5. Other Files ([file_count])
+## 5. Non-Comms Files ([file_count])
 - 5.1. Created:
   - 5.1.1. `enclosing_folder/file.py` [1 line each; same for below]
   - 5.1.2. `enclosing_folder/file.html`
@@ -158,10 +160,9 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
   - AD[XX].3.2. ...
 [skip 1 line]
 
-- AD[XX].4. Session Files ([file_count])
-  - AD[XX].4.1. `[YYYYMM]/query_[TS].md` —— [max. 8w descr]
-  - AD[XX].4.2. `[YYYYMM]/response_[TS].md` —— [ditto]
-[... all `query_`/`response_` pairs created this session, in chronological order]
+- AD[XX].4. Comms Files ([no.] pairs)
+  - AD[XX].4.1. `[TS]`: [max. 8w descr of that turn]
+  - AD[XX].4.2. ... [ONE line per `query_`/`response_` PAIR; bare shared `[TS]` only; chronological]
 [skip 1 line]
 
 - AD[XX].5. Remarks [replace with more subsections as needed; don't cramp into this]
