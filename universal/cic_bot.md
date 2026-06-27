@@ -20,9 +20,7 @@ When a site gates automation (a CAPTCHA appears, or CDP calls HANG `~`300s), don
 ## Logins & credentials
 
 - The user keeps ONE dedicated risk-free account (no PII; Apple Hide-My-Email; confidential content is MFA-gated elsewhere) for a GROWABLE list of login-required sites.
-- CIC-only account (at login wall, CC flags then prints credential in chat, so user can paste in):
-  - Email: `35-paleo-kindly@icloud.com`
-  - Password: `byqmed3kytRyxufqow`
+- Credentials are DETACHED to `universal/cic_login.local.md` (git-ignored —— never committed/synced). At a login wall: CC must NOT type the password (harness-prohibited even here, per § ladder step 5) —— instead READ `universal/cic_login.local.md` and PRINT the email & password in chat for the user to paste in.
 - Signed-in sites (APPEND as it grows):
   - Temu
   - Taobao/Tmall
