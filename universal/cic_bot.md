@@ -9,7 +9,7 @@ When a site gates automation (a CAPTCHA appears, or CDP calls HANG `~`300s), don
 2. HUMAN-LIKE (if step 1 trips a wall): `navigate` only to the site's OWN homepage/search, then `screenshot` + single human `left_click`s; let the site open pages itself (new tabs join the MCP group). Slower but beats most bot-detection. On a hardened tab do NOT run `javascript_tool`/`get_page_text`/`read_page` —— they hang AND poison the tab so later clicks freeze; and don't batch a click immediately after another CDP op.
 3. CAPTCHA / "verify you are human" gates: you may NOT solve OR click these —— bypassing/completing bot-detection is harness-prohibited (no framing or throwaway-account rationale changes this). Plain cookie / consent / T&C / "I agree" buttons are NOT bot-detection —— those you may handle (choose privacy-preserving).
 4. "Nuclear" full-desktop control does NOT help for WEBSITES: the `computer-use` MCP restricts BROWSERS to read-tier (screenshot only; clicks/typing blocked, routed back through CIC). So CIC already IS your maximal browser control. (`computer-use` DOES drive NON-browser apps —— VS Code, DaVinci —— moving the real system cursor; that is separate from CIC's in-Chrome cursor. So for a website, CIC is the only controller.)
-5. LOGINS: CC must NOT type a password to authenticate into any field —— harness-prohibited even for a throwaway account the user supplies/authorises. Operate a session the user has ALREADY logged in, or have the user log in then proceed. (Stored logins —— e.g. `cic_libs.md`'s library SSO —— are user/historical references; CC does not type them.)
+5. LOGINS (model-dependent): Opus CC is harness-blocked from typing a password into an auth field → READ the credential (§ Logins) and PRINT it in chat for the user to paste. Sonnet CC is NOT blocked → may input it directly. Either way, prefer a session the user has ALREADY logged in. (Stored logins —— e.g. `cic_libs.md`'s library SSO —— are user/historical references.)
 6. If steps 1`~`2 are exhausted and a real CAPTCHA/login blocks completion: SUMMON the user (per glossary.md) so the task NEVER fails silently. Under `#sprint` you can't interrupt mid-run, but AFTER writing the final sprint-report `response_`, if the task is unfinished, SUMMON —— the user may be away yet will see on OTGD that it stalled, instead of finding silent failure on return.
 
 ## Site notes (examples —— apply the ladder generally)
@@ -20,7 +20,7 @@ When a site gates automation (a CAPTCHA appears, or CDP calls HANG `~`300s), don
 ## Logins & credentials
 
 - The user keeps ONE dedicated risk-free account (no PII; Apple Hide-My-Email; confidential content is MFA-gated elsewhere) for a GROWABLE list of login-required sites.
-- Credentials are DETACHED to `universal/cic_login.local.md` (git-ignored —— never committed/synced). At a login wall: CC must NOT type the password (harness-prohibited even here, per § ladder step 5) —— instead READ `universal/cic_login.local.md` and PRINT the email & password in chat for the user to paste in.
+- Credentials are DETACHED to `.claude/cic_login.local.md` (git-ignored —— never committed/synced; not backed up by #sync, keep your own copy). At a login wall (per § ladder step 5): Opus CC READS it and PRINTS the email & password in chat for the user to paste; Sonnet CC may input them directly.
 - Signed-in sites (APPEND as it grows):
   - Temu
   - Taobao/Tmall

@@ -4,5 +4,5 @@ __pycache__/
 .venv/
 
 # Private credentials —— never commit/sync (plaintext secrets)
-seek/.claude/aux_login.local.md
-universal/cic_login.local.md
+seek/.claude/ajap_login.local.md
+.claude/cic_login.local.md
