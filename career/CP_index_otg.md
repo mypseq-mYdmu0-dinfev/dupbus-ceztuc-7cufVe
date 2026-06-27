@@ -11,11 +11,11 @@
 ## Core Files
 
 CP_notes.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d239a5c0dae007ae7acdaa18b244be1175282b62/career/CP_notes.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8b31d92206c66c078b684f35be62b590ac9caaba/career/CP_notes.md
 Purpose & remarks of this CP.
 
 pro_profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfa361c1027b3ef447d731ed56eddc25482bab04/seek/context/pro_profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/be6054b0bfad14667418a667cac3d874b66c312c/seek/context/pro_profile.md
 My professional profile; fetch below files for details if needed.
 
 ---
@@ -31,7 +31,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ac64
 CCL requirements for consulting job applications; built upon GCL.
 
 job.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/266f8c19075bc61008ad4503df9523389fde9024/career/job.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fe62dba4aa11b615a1b6c87f072a152769e6e230/career/job.md
 Fetch when `#job`.
 
 ---
