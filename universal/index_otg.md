@@ -19,10 +19,10 @@ cic.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b33d44061b86b7716b163112cf52bc439886f3d9/universal/cic.md
 
 writing.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/writing_otg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/4850cc0d8f1c1a018f44ffa3a721ee16da8ff214/universal/writing_otg.md
 
 replace.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/replace.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a9c82b23675ac93069eaa17aff2270e15125d8c2/universal/replace.md
 
 numbered.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/2a444a99023381f5a77c98a083322a1faf3a8f8c/universal/numbered.md
@@ -49,7 +49,7 @@ shrink.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/611fed05b92929d1256d71f6b9471fcafa326251/universal/shrink.md
 
 debate.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/universal/debate_otg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/133fdb3cfbe32fc42a947cb078f7b478d58177c1/universal/debate_otg.md
 
 park.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8e27e8f99d3bb54578956c23b0892f96fbc49ad9/universal/park.md
