@@ -100,47 +100,66 @@
 
 ## P13. Proposal Approval *(COMPLETE —— 26/06/2026)*
 
-- P13.1. A1R v2 sent to Lu 24/06/2026 (Lu.md Log 22). Proposal APPROVED by UoL reviewer Sirisopha Thongmern 26/06/2026; official letter from PD Dr Elspeth McFadzean (Log 23). Lu confirmed and released the ethics stage 27/06/2026 (Log 24)
-- P13.2. Approval letter saved at `…/MGTK751 MBA Project/Official/MGTK751 Proposal Approval - 200051046.pdf` (fully mirrored in Lu.md Log 23 —— no need to parse PDF)
+## P14. Ethics Forms Preparation *(CURRENT)*
 
-## P14. Ethics Forms Preparation *(CURRENT —— Lu-bounded scope, Log 24)*
+- P14.1. Setup
+  - P14.1.1. Duplicate the 3 templates (`/From Lu/Ethics Forms/`) into new `dissertation/ethics/` as `.md` —— never touch the source `.docx`/`.doc` (textutil/pandoc to extract)
+  - P14.1.2. Read CB §11 (safe-framing test) + §7.2 (retained-guide basis); A1R §3; `Key Ethics Information Required.docx`
+  - P14.1.3. Remarks: invariants —— never disclose pre-screening survey (AD08.4.1); one-per-org = isolation only (AD10.4.1); participants speak to own experience, never evaluate a current employer; no collection before written approval
 
-*Scope (Lu Log 24): amend the 3 templates she shared + prepare an interview-questions list + upload to `/From Lu/Ethics Forms`; tell Lu when done. HARD STOP before the online application form —— Lu gates it (P15). Templates + Key Info doc all verified present locally 27/06: PIS `.doc`, Consent `.docx`, Risk `.docx`, `Key Ethics Information Required.docx`, plus the online-form example.*
+- P14.2. Interim Reply
+  - P14.2.1. Draft Log 25 to Lu in `lu.md` —— recovered, delighted at approval, starting the ethics forms
 
-- P14.0. Prerequisites (blocking)
-  - P14.0.1. Read the 3 templates in `/From Lu/Ethics Forms/` —— PIS = `Participant_Information_Sheet-example-qualitative.doc`; Consent = `Participant Consent_Form-example-qualitative.docx`; Risk = `Basic Risk assessment form-example.docx` —— plus `Key Ethics Information Required.docx`. Convert the legacy `.doc` PIS via `textutil -convert docx` if direct read fails
-  - P14.0.2. Read CB safe-framing test (§11) + retained-guide basis (§7.2); A1R §3 (philosophy/approach/method, sampling, de-identification §3.9) for content alignment; ProjectSummary for the locked design
-  - P14.0.3. Safe-framing invariants —— NEVER disclose the pre-screening survey strategy (AD08.4.1); one-per-org = isolation rationale only, never a consent advantage (AD10.4.1); participants speak to their OWN experiences/perceptions, never evaluating a current employer's practices (this is what avoids institutional authorisation); no data collection before written ethics approval
+- P14.3. Information Sheet
+  - P14.3.1. Amend the PIS `.md` —— TPS in AU KBFs; CYC simulated-MCF context; voluntary; confidential + de-identified; right to withdraw; data handling; approval before contact
 
-- P14.1. Reply to Lu (Log 25) —— acknowledge approval + confirm starting the forms *(TIMING DECISION —— interim now vs bundle on completion; side-quest = keep Lu entertained)*
+- P14.4. Consent Form
+  - P14.4.1. Amend the Consent `.md` —— individual consent; own-experience framing; recording consent; withdrawal; de-identification
 
-- P14.2. Participant Information Sheet —— amend to the project (TPS in AU KBFs; CYC simulated-MCF context; voluntary participation; confidentiality + de-identification; right to withdraw; data handling/storage; ethics-approved before any contact)
+- P14.5. Risk Assessment
+  - P14.5.1. Amend the Risk `.md` —— low-risk interview study; TPS psychological sensitivity + signposting; data security; lone-researcher safeguards
 
-- P14.3. Consent Form —— amend (individual-level consent; own-experience framing; recording consent; withdrawal terms; de-identification assurance)
+- P14.6. Interview Guide
+  - P14.6.1. Build a semi-structured TPP-only guide aligned to RQ1 (conditions) + RQ2 (peer experience) and the §2 sensitising concepts; open, non-leading; safe-framing
+  - P14.6.2. Remarks: TPP only this stage (user 27/06); add TP/manager later via ethics amendment if recruited —— avoids triple work on a sanity-check stage
 
-- P14.4. Risk Assessment Form —— amend (low-risk interview study; psychological sensitivity of the TPS topic + signposting; data security; lone-researcher and participant safeguards)
+- P14.7. QC & Lint
+  - P14.7.1. Safe-framing + alignment QC —— every form passes CB §11, consistent with A1R §3, no comparability/authorisation flags
+  - P14.7.2. Run `cscpt/dlint.py` (FULL) on each form's prose; loop-fix RED to 0; UoL boilerplate/field labels are justified exceptions
 
-- P14.5. Interview Questions —— semi-structured guide(s) aligned to RQ1 (conditions) and RQ2 (peer experience) and the §2 sensitising concepts (Figure 1 strands); open, non-leading; safe-framing *(SCOPE DECISION —— TPP-primary guide only, or + retained TP/manager supplementary guides per the 20/06 decision)*
+- P14.8. Handoff
+  - P14.8.1. Finalise the 4 `.md` (3 amended forms + interview guide) in `dissertation/ethics/`
+  - P14.8.2. Draft the completion note to Lu as Log 26 in `lu.md`, mapping each form to her Log 24 asks
+  - P14.8.3. Remarks: handoff to Culous —— relayout `.md` to `.pages` in `…/MGTK751 MBA Project/Ethics/`, export PDF, send to Lu + upload to her shared drive, then await Lu for P15
 
-- P14.6. Safe-framing + alignment QC —— every form passes CB §11; consistent with A1R §3; no comparability/authorisation red flags; participant-type coverage matches the P14.5 decision
+## P15. Online Ethics Application *(GATED —— Lu authorises)*
 
-- P14.7. Deliverable lint —— writing.md compliance + `cscpt/dlint.py` (FULL) on each form's prose (deliverables, §3.7.3); loop-fix RED to 0; UoL boilerplate/field labels are justified exceptions
+- P15.1. Await & Access
+  - P15.1.1. Await Lu's go-ahead on the online form (she said: do NOT start it until instructed)
+  - P15.1.2. Request Culous to open the VLE Ethical Approval System for navigation
+  - P15.1.3. Read the VLE "Guidance for using the Ethical Approval System" + Field Work Document
 
-- P14.8. Handoff —— produce final `.docx` (amended in place, UoL structure retained; + PDF copies if useful) staged for Culous to upload to `/From Lu/Ethics Forms`; draft the completion note to Lu (Log 26). Actual upload + send = Culous (the untracked steps)
+- P15.2. Pre-fill
+  - P15.2.1. Map known fields (Lu.md Log 23) —— Q1.9 "Online Programme", Q1.22 "Human Participants", Epigeum Q25.5/25.6 = 0742720007 (Lu); attach the 4 forms
+  - P15.2.2. Pre-fill all reversible fields, logging each; STOP immediately before the irreversible Submit (sprint.md caveat)
 
-## P15. Online Ethics Application & Approval Gate *(GATED —— Lu guides; absorbs old P13.3 + old P14.1)*
-
-- P15.1. Await Lu's go-ahead on the online form —— she said explicitly: do NOT start or complete it until she instructs
-- P15.2. Pre-plan only (no entry yet) —— map the known requirements from Lu.md Log 23: Q1.9 = "Online Programme"; Q1.22 = "Human Participants" (mandatory for all applicants); Epigeum no. Q25.5/25.6 = 0742720007 (Lu, per lu.md, confirm against the supervisor bio list in Wk4); Field Work Document; refer throughout to the Key Info doc. Read the VLE "Guidance for using the Ethical Approval System" + Field Work Document once access is available
-- P15.3. On Lu's authorisation —— pre-fill all reversible fields, logging each; STOP immediately before the irreversible Submit (sprint.md Critical caveat)
-- P15.4. Await WRITTEN ethics approval —— hard gate; no data collection before it
+- P15.3. Approval
+  - P15.3.1. Submit on Lu's authorisation, then await WRITTEN ethics approval
+  - P15.3.2. Remarks: hard gate —— no data collection before written approval
 
 ## P16. Post-Ethics *(was P14)*
 
-- P16.1. Review Files —— update CP files as needed (ProjectSummary.md, Concept Brief both ver, Lu.md). CoreRef.md / RefRepo.md page-number flags: verify all cleared and accurate page numbers recorded throughout both files (carried from old P14.2)
-- P16.2. Distil PART C —— compress AD08~AD12 into a concise historic record; remove A1/A1R tactical detail no longer relevant for A2/A3 (AD01~AD07 already externalised to `addenda/`)
-- P16.3. Reconstruct PART A for A2/A3 —— stub P01~P15 as completed; build detailed A2/A3 phases to 23/11/2026 (data collection, transcription, coding, analysis, A2 slides + recording, A3 writeup, QC, submission)
-- P16.4. Parallel opportunity (Lu Log 24) —— the approved proposal §1~§3 map directly onto A3 Ch1~Ch3 (`MGTK751_A3_Template.md` structure; "content in the proposal can be directly copied"); early A3 drafting can run during the P15 ethics-review wait, off the critical path
+- P16.1. Review Files
+  - P16.1.1. Update CP files as needed —— ProjectSummary.md, Concept Brief (both ver), Lu.md
+  - P16.1.2. Verify CoreRef.md / RefRepo.md page-number flags all cleared and accurate
+
+- P16.2. Distil PART C
+  - P16.2.1. Compress AD08~AD12 into a concise historic record (AD01~AD07 already externalised)
+  - P16.2.2. Remove A1/A1R tactical detail no longer relevant for A2/A3
+
+- P16.3. Rebuild PART A
+  - P16.3.1. Stub P01~P15 as completed
+  - P16.3.2. Build detailed A2/A3 phases to 23/11/2026 (data collection, transcription, coding, analysis, A2 slides + recording, A3 writeup, QC, submission)
 
 ---
 
