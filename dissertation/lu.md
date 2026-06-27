@@ -524,3 +524,77 @@ I hope this eases your reading of the refined proposal. I am happy to adjust any
 
 Warm Regards,
 Culous
+
+### Log 23
+
+*NOT FROM LU*
+
+On 27 Jun 2026, at 02:17, Sirisopha Thongmern (via VLE) <noreply@liverpool-online-study.com> wrote:
+
+MGTK751 March 2026 » Forums » Supervisor Discussion Forum » Proposal Approval
+ST	
+Proposal Approval
+by Sirisopha Thongmern - Friday, 26 June 2026, 4:16 PM [UK TIME]
+ 	
+Hello Culous,
+ 
+We can confirm that your Project Proposal has been approved. The official approval letter can be found in the Project Proposal submission – feedback files. [INTERNAL: § Approval Letter]
+ 
+You may now proceed to the Ethics application process. Please follow the steps below carefully.
+ 
+1. Please visit the “Ethical Approval” - “Guidance for using the Ethical Approval System” in the classroom, where you can find important information such as the link to the online platform, guidance document, form templates. Please also refer to the Key information Document when you complete the online form. 
+2. Also, it's very important to make sure you select "Online Programme" in question 1.9 and “Human Participants” in 1.22 in your application. All ethics applicants should tick Human Participants even if they are collecting secondary data or undertaking a systematic literature review. 
+3. Field Work Document: this information is also on the page mentioned above. 
+4. Epigeum number in questions 25.5 and 25.6: you can find the number for your supervisor in the supervisor bio list, usually located in week 4. 
+ 
+Kind regards,
+Management Dissertation Team
+
+#### Approval Letter
+
+*Saved at '/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/Official/MGTK751 Proposal Approval - 200051046.pdf'; no need to parse PDF; fully mirrored in pure text here*
+
+KHE Proposal (Management)
+
+26th June 2026
+
+Dear Culous,
+
+I am pleased to inform you that your proposal for your dissertation has been approved, and you may now proceed to the Ethics application process for your research.
+
+Documents related to Ethical Approval can be found on the learning environment under the Ethical Approval menu.
+
+Please ensure you read all the information carefully and refer to the additional information found on the link above the Ethics forms.
+
+All the best
+Dr. Elspeth McFadzean
+Programme Director
+
+### Log 24
+
+On 27 Jun 2026, at 03:34, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Hi, Culous,
+
+The reviewer told me that your proposal is approved. The official approval note is also issued.
+
+Very well done! Let's start doing the ethics forms.
+
+​ethics form​ [INTERNAL: URL ≡ '/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/From Lu/Ethics Forms']
+
+Could you please begin working on the ethics forms?
+
+Please amend the templates I shared with you for the Participant Information Sheet, the Consent Form, and the Risk Assessment Form. There is no need to create new forms; just revise the existing ones to match your research project. Please also prepare a list of interview questions and upload it to the same folder.
+
+Once these tasks are completed, let me know. Do not start the online form until I let you do so. Do not complete the ethics application form. I will let you know how to use it later.
+
+Should you have any questions, please let me know. I hope these forms can be completed at your earliest convenience. 
+
+Meanwhile, you can also use your proposal to start writing your dissertation, i.e. the first three chapters, ​
+
+​MGTK751 MBA Full Project Outline.docx​ [INTERNAL: URL ≡ `MGTK751_A3_Template.md`]
+
+Please use this file to structure your dissertation. The content in the proposal can be directly copied into the dissertation.
+
+Kind regards,
+Lu
