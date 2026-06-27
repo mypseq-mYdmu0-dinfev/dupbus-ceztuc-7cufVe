@@ -41,7 +41,7 @@
   - 2.6.2. If modifier not supported (e.g. ⭐, 😊), use as-is
   - 2.6.3. NEVER use `✔︎`, ONLY `✅` for visibility; EXCEPT deliverables: use any apt check sign(s)
 - 2.7. Use Title Case whenever applicable, inc. but not limited to:
-  - 2.7.1. Title/Heading/Name
+  - 2.7.1. Name/Title/Heading (e.g. `## [Heading]`)
   - 2.7.2. 1st row of table (assuming header, otherwise also apply to header)
   - 2.7.3. Non-prose columns of table, usually 1st column but could be more
   - 2.7.4. e.g. If col_1 = phase no., col_2 = phase name, both applicable
