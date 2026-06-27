@@ -77,7 +77,7 @@ On receiving an SA loop report (`[AR_PATH] | [OUTCOME] | [N] | newtoyou=[n] | [F
 4. If no issues → no action (SA continues autonomously).
 
 **After any OUTCOME:**
-1. If a new legitimate AR (Applied/Skipped/Pending) appeared (not a silent K1–K5 skip): recompute N = count of non-`❌_` ARs in `/gcl/{applied,pending,skipped}` with filename-TS ≥ `session_start_TS`. Output to user EXACTLY: `[current_TS] 🎯[N] **job(s) processed so far.**` (number emojis for N; get current_TS via Bash). For a silent K1–K5 skip (no AR): do NOT output C2.
+1. If a new legitimate AR (Applied/Skipped/Pending) appeared (not a silent K1–K5 skip): recompute N = count of non-`❌_` ARs in `/gcl/{applied,pending,skipped}` with filename-TS ≥ `session_start_TS`. Output to user EXACTLY: `**[current_TS]** 🎯[N] job(s) processed.` (number emojis for N; get current_TS via Bash). For a silent K1–K5 skip (no AR): do NOT output C2.
 2. If `N > 0` AND `N % 5 == 0` → re-read `MA_hb.md` immediately before continuing.
 3. If retiring SA → CRITICAL: reset `ma_msg.md` FIRST: `Bash: printf 'Continue' > /seek/.claude/tmp/ma_msg.md` — only then spawn fresh SA (run_in_background=True); update `ma_state.md`.
 4. After emitting `🎯[N]`: `touch /seek/.claude/tmp/ma_c2_marker` (watchdog surface).
