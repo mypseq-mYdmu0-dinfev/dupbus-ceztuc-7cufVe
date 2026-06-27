@@ -50,6 +50,6 @@ When drafting a BCIC prompt, ensure it's concise yet succinctly detailed (same f
 
 ---
 
-## Bot Blocks & Logins —— see `universal/cic_bot.md`
+## Bot Blocks & Logins
 
-If ANY site gates automation —— a CAPTCHA, a "verify you are human" gate, a login wall, or CDP calls that HANG (~300s) —— you MUST read `universal/cic_bot.md` and work through its escalation ladder BEFORE concluding you're blocked. Do NOT give up or stop. (Detached there to keep this file lean for general CIC use.)
+If ANY site gates automation —— a CAPTCHA, a "verify you are human" gate, a login wall, or CDP calls that HANG (~300s) —— you MUST read `universal/cic_bot.md` and work through its escalation ladder BEFORE concluding you're blocked. Do NOT give up or stop.
