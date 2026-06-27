@@ -12,7 +12,6 @@
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
 - Non-paired comms (applicable to both `## 4. Comms Files` & `- AD[XX].4. Comms Files`):
   - If not a clean pair (e.g. a lone comms file, or extra comms file(s) from one turn), provide FULL filename(s) (w/o path) on its own line, e.g. `[CP_]close_[TS].md`: descr.
-  - CP non-comms go to AD[XX].1, NOT AD[XX].4.
 
 ---
 
@@ -26,13 +25,14 @@ If you're not CC, follow below structure with these adaptations:
 
 ---
 
-## DevPlan
+## DevPlan Notes
 
 - If DevPlan.md was declared in chat history OR in `CP_index_*.md`, follow § DevPlan Sessions
 - Non-CC: If `CP_index_*.md` not injected by system = no DevPlan
 - CC: If `CP_index_*.md` not in one of working directories AND not in context = no DevPlan
 - No DevPlan = follow § Non-DevPlan Sessions
 - CP doesn't necessarily have DevPlan, but DevPlan must be in CP
+- Reminder for Non-Comms: CP files → AD[XX].1 (NOT AD[XX].4); non-CP files → Handoff §3
 
 ---
 
