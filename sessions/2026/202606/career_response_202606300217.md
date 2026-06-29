@@ -1,0 +1,12 @@
+# Response to `career_query_202606300217.md`
+*What a Quantity Surveyor is —— profession, licensing, education*
+
+1. What a QS is: a **construction-cost professional** —— they measure, estimate, and manage the cost of building work ("quantities" = quantities of materials and labour). Core work = cost planning, estimating, tendering, contract administration, and cost control. For property investors, that same expertise is used to prepare **tax depreciation schedules** (Duo's flagship product).
+2. Are they "surveyors"? Name only —— they are **NOT land surveyors** (who measure boundaries and terrain) and not building surveyors (who certify code compliance). QS is a distinct discipline, sometimes called "construction economists" or "cost managers". Related heritage, different job.
+3. Licensed, or just a job? Firmly a **recognised profession**, well above "just a job like marketer":
+- 3.1. Accredited through professional bodies —— **AIQS** (Australian Institute of Quantity Surveyors) and/or **RICS** (Royal Institution of Chartered Surveyors); membership (e.g. MAIQS, MRICS / "Chartered") is the credential, earned via an accredited degree plus assessed experience.
+- 3.2. For **tax depreciation specifically**, there is a real statutory layer: the QS or firm must be a **Registered Tax Agent** with the Tax Practitioners Board, because a depreciation schedule is a tax document. Tuan Duong holds exactly this (AIQS Affiliate + Registered Tax Agent).
+- 3.3. So the barrier to entry is materially higher than marketing —— accreditation, plus (for tax work) statutory registration and professional-indemnity exposure.
+4. Education: typically a **Bachelor's degree** —— Construction Management, Quantity Surveying, Construction Economics, or Building (AIQS-accredited). Some hold a Master's; a **PhD is atypical** (it is a practice profession, not an academic one). Standard path = accredited bachelor's plus supervised experience, then professional membership. Tuan = Bachelor of Construction Management (WSU).
+5. 🎯 Interview angle: the people around you are credentialed technical professionals. Pitch yourself as the marketer who makes their rigorous, compliance-bound expertise understood and trusted by everyday investors —— complementary to their craft, never competing with it.
+6. Note: this is general-profession knowledge, not an employer-specific claim —— say the word if you want any point CIC-verified.
