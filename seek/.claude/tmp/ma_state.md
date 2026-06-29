@@ -1,15 +1,9 @@
-session_start_TS: 202606202330
-latest_TS: 202606221342
+session_start_TS: 202606272329
+latest_TS: 202606291040
 
-heartbeat_task: bjwvrypv4  [INT=60]
-heartbeat_interval: 60s
+heartbeat_task: bbnrlk2ep
+heartbeat_interval: 300s
+watchdog_task: b21uewxo4
 
-watchdog_task: bge4jeltn
-
-sa_spawn_TS: 202606221432
-
-# STANDING OVERRIDE (survives compaction — apply on every SA spawn)
-# ajap.md S6.4.2.5 default wait = 20 × 15s = 900s; override below
-sa_msg_wait_override: 60 checks × 15s = 900s (15 min) — replace "up to 20 times (300s total)" with "up to 60 times (900s total)" in SA spawn prompt
-
-sa_id: a6bcfefdea94cf5cd
+sa_id: a9e6a8d2652a684f7
+sa_spawn_TS: 202606291036
