@@ -14,7 +14,7 @@ A1. Business Innovation
 A2. Analytical Rigour
 - From Data Analytics Major
 
-A3. Signature Strengths
+A3. My Signature Strengths
 - Strategic Transformation,
 - Stakeholder Management,
 - and Value Engineering
@@ -42,7 +42,7 @@ A4. 16⁺ Years of Experience
   - Open to offer (compare multi-dimensional P&L)
 - Website?
   - Inconsistency (180k investors at “locations” page; 170k at “home”; 100k at “about”)
-  - Locations no pics
+  - Locations no actual pics
 - Questions?
   - What does success in this role look like —— to you, to the group, and to me?
   - How does marketing work with the BD team and the referral-partner channel today, and where is the biggest unmet opportunity there?
