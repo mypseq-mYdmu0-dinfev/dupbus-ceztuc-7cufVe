@@ -334,3 +334,81 @@ If there is anything I shall prepare in advance, please do not hesitate to let m
 Regards,
 Culous
 (c@CulousYu.com)
+
+## Interview Transcript (by Gemini)
+
+**Kim**: ...role available to yourself?
+
+**User**: No, I didn't know that.
+
+**Kim**: Right, okay. So there's been a bit of a shakeup with the roles themselves. So we're not actually hiring for a senior marketing executive, especially with your caliber in terms of skill sets and previous work skill set.
+
+**User**: Yeah.
+
+**Kim**: Um, the role would be actually of a producer role. So it's a bit more of a junior role helping Jason set up the equipment to film, record, shoot, um, rather than an actual strategist role, which is what the marketing executive is. Yeah. Did they make you... you're not aware of it?
+
+**User**: No.
+
+**Kim**: Okay, so yeah, I was very... that was really important because obviously I don't want to be wasting your time. Um, if that's something that you're genuinely interested in, um, we're actually not on market anymore for the senior marketing executive role.
+
+**User**: Yeah.
+
+**User**: Is that already taken or... what?
+
+**Kim**: Pardon?
+
+**User**: Is it already taken or what?
+
+**Kim**: Ah, pretty much, yeah. We have a strategist that we've just hired already in place of this. That's why with your background and your capabilities in production, that's why we told the HR team to see if you would be more fitting or if you would like to come in for an interview for the production role instead.
+
+**User**: That's alright.
+
+**Kim**: Yeah, yeah. Okay. Alright, well I guess can you tell us a little bit about yourself?
+
+**User**: Right. I started my career in 2010, spanning content project management but already branding and marketing.
+
+**Kim**: Are you using a phone to go through all your notes?
+
+**User**: Yeah.
+
+**Kim**: Yeah. Um, okay. Well, you know what? We like to meet people in person. Put the notes away, let's just get to know each other.
+
+**User**: Right. So rather than a role, because of the, you know, the years I had, rather than a role, what I bring to the table are four assets. The first one being business innovation. That's why I applied for the marketing role in the first place, but that's alright, it's totally adaptable. Um, and that comes from my MBA and my IT masters.
+
+**Kim**: Mmhmm. [User Observation: she appeared very surprised]
+
+**User**: My second asset is um... data analytics, as in the analytical rigour that was brought by my data analytics major. The third one is my signature strengths, which are strategic transformation, stakeholder management, and value engineering.
+
+**Kim**: Right, okay. [User Observation: she appeared very overwhelmed and seems to attempt stopping the user; user continues to finish the last point]
+
+**User**: My fourth asset that I bring to the table are my 16 years of experience, managing 300 projects, for 100 clients in 10 countries.
+
+**Kim**: Alright, okay. You know what? Um, I'm really sorry... uh... uh... I'm really sorry for you to have come in. I don't think yeah, with your your expectation, the... we don't think this would have been a... haha... [User Observation: she seems extremely shocked and doesn't know what to do]
+
+**User**: I actually don't mind because I was about to go to... like why I choose this company. Because this kind of... makes a different appearance to me uh in comparison to other employers. Because tax is a resilient market. And this is where the value is, especially after COVID, because I've been working, you know, for so long, um I've seen numerous companies collapse during the COVID. And I see uh the value of resilience. And tax payer is a very resilient market.
+
+**Kim**: Yes. [User Observation: that punchline seems to almost save the day as she appears to be a tiny bit more engaged despite the embarrassing situation]
+
+**User**: So I do see the value in it. This is one of the reasons why I am very interested in Duo Tax. The second being um... haha... Sorry I forgot about that.
+
+**Kim**: No that's okay. Well you know what I'll just keep it really short for you. I think um what you're expecting from us, we won't be able to deliver it to you. And what I'm gonna expect from you, I'm not gonna be able to I guess have that same... it's gonna be resentment because I'm not gonna offer you what you want and I'm gonna expect something that you really don't want to do. So what I'll do...
+
+**User**: That's alright. Can you tell me about the role because I haven't... never seen like that producer role before.
+
+**Kim**: A producer role? Okay, well, what did you what did you do in your previous company? Well what what were you doing? You were shooting video?
+
+**User**: I was the board member and advisor. And general manager. Before that. But that was before I come into Australia, so I do expect starting from scratch. I don't mind. And I appreciate you know the advantage of starting fresh. So I don't mind literally any role. I value more on the company as in how resilient, how does it hedge against you know the economy environment. That's what I care more about. Yeah.
+
+**Kim**: Yeah, so the role of a producer is to help like I said um Jason, myself and the um the marketing executive basically strategise or take the the assets or create the assets that we kind of think up of or strategise, right? So this is video, photography, um and managing like an offshore team. That's pretty much. It's like a junior role in terms of what you're expecting.
+
+**User**: Mmhmm.
+
+**Kim**: Yeah. So that's why when we hire, obviously we want to hire to have the people um know what their expectations are and that there's no resentment in uh, you know, they're applying for this particular role but someone else applied for it. That's why I wanted to be very transparent with you that the role itself that you applied for originally is no longer available. That it was for uh if you were to come in for an interview it's only for a producer role. But obviously with your skillset and what you're telling me now, um yeah, I'm gonna cut this interview short and good luck with the future and um I hope you find the that right position for you out there, yeah?
+
+**User**: Okay. No problem.
+
+**Kim**: Okay brilliant. Okay. Thank you.
+
+**User**: Thank you.
+
+**Kim**: Okay, cheers. See you. Bye.
