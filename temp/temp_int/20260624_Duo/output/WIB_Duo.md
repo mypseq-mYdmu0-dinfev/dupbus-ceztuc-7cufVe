@@ -1,28 +1,9 @@
 # WIB for Duo
 
-*What Do I Bring To The Table?*
-
 ## Special Opening
 “I started my career in 2010, spanning content & project management but all in branding & marketing.”
 
-## Standard Opening
-“Rather than a title, what I bring to the table are 4 assets…”
-
-A1. Business Innovation
-- From MBA & IT Master’s
-
-A2. Analytical Rigour
-- From Data Analytics Major
-
-A3. My Signature Strengths
-- Strategic Transformation,
-- Stakeholder Management,
-- and Value Engineering
-
-A4. 16⁺ Years of Experience
-- 300⁺ Projects for
-- 100⁺ Clients in
-- 10⁺ Countries
+[WIB]
 
 ## Special Notes
 
