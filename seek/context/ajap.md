@@ -86,10 +86,10 @@ A2. If no SEEK results page is visible: open one blank tab via CIC MCP, then wai
 A3. After each wait, check again whether a SEEK results page is now visible in any open tab
 A4. Cycle up to 3 times (30 seconds total) —— the user may be pasting a URL into the blank tab created by you
 A5. If a SEEK results page becomes visible during any cycle: that tab is Tab 1; proceed to Pre-Flight Check
-A6. If after 3 cycles → still no SEEK results page → concise alert in chat w/ `🚨` then proceed to Qi:
-- A6.1. Read `/seek/queue.md`; process Qi01 → Qi06 sequentially in the `order:` line sequence (NO `n`/`p` system —— each Qi is a complete, ready-to-open URL).
-- A6.2. Enforce the New-to-you check on every navigation per `queue.md` rule 2 (report `newtoyou=[n]`; on a plain Qi04–06 with n>0, OPEN its new-twin Qi URL —— never click the pill, never append `&tags=new`).
-- A6.3. If every Qi01–06 is exhausted → run `queue.md § All-Qi-Exhausted Edge Case`.
+A6. If after 3 cycles → still no SEEK results page → concise alert in chat w/ `🫥` then proceed to Qi:
+- A6.1. Read & follow `/seek/queue.md`
+- A6.2. Enforce the New-to-you handling on EVERY navigation per `queue.md` rule 2
+- A6.3. If Qi exhausted → re-read `queue.md`; NEVER STOP
 A7. Critical restriction: never construct a SEEK URL (including homepage `seek.com.au`) independently. Once Tab 1 is established, all navigations on it (scrolling, clicking job cards, pagination) are fully permitted.
 
 ---
