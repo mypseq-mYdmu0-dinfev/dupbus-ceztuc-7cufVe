@@ -335,7 +335,7 @@ Regards,
 Culous
 (c@CulousYu.com)
 
-## Interview Transcript (by Gemini)
+## Interview Transcript
 
 **Kim**: ...role available to yourself?
 
