@@ -6,7 +6,7 @@
 
 ## 0. Scope & Files
 - 0.1. Working (enriched) AR lives in `seek/interviews/g/` (general roles) or `seek/interviews/c/` (consulting); filename TS = the upcoming/last interview time. The pristine `Outcome: Applied` original stays in `gcl/applied/` (or `ccl/`) untouched, so AJAP re-application guards still hold.
-- 0.2. Read first: the role's AR, `seek/context/pro_profile.md`, and the apt resume variant. Use prior interview ARs as worked examples — Rennly (`seek/interviews/g/Rennly_CreativeMarketingSpecialist_202606121500.md`) and Alltech (`seek/interviews/g/AlltechAV_MarketingGrowthCoordinator_202606171500.md`).
+- 0.2. Read first: the role's AR, `seek/context/pro_profile.md`, and the apt resume variant. Use prior interview ARs in `seek/interviews/g|c/` as worked examples.
 - 0.3. Most outputs here are deliverables or durable records — mind `writing.md` for anything sent to the employer, and run `dlint.py` accordingly.
 
 ## 1. Phase A — Pre-Interview Research
@@ -22,11 +22,11 @@
 - 2.1. §5A Likely interviewer questions (anticipate, mapped to the role + the firm's stated values).
 - 2.2. §5B Questions to ask — ALWAYS include the signature question (§5 below); plus reporting/mentorship, first-90-day priority, P/T→F/T or promotion path, hands-on cadence, autonomy vs approval gates.
 - 2.3. §5C Logistics & format (virtual/in person; what to screen-share; test kit).
-- 2.4. §5D Strategy & key talking points (lead differentiator, builder framing, honest gap-handling, rapport hooks).
+- 2.4. §5D Strategy & key talking points (lead differentiator, builder framing, honest gap-handling, rapport hooks). Reusable rapport angle: post-disruption resilience (e.g. surviving the COVID-era shake-out) resonates across interviewers who lived it —— deploy if apt.
 - 2.5. §5E Any application/trial-task-specific prompts the ad asked for.
 
 ## 3. Phase C — Post-Interview Notes (into AR §7 as `Nth Interview Notes`)
-- 3.1. Recordings often fail (Rennly voice recorder; Alltech Google Meet) — reconstruct from memory; mark wording as approximate; quote only what is genuinely verbatim.
+- 3.1. Recordings often fail — reconstruct from memory; mark wording as approximate; quote only what is genuinely verbatim.
 - 3.2. BEFORE writing, ask the user an exhaustive clarifying set whilst memory is fresh — cover: meeting meta (length, who, camera, tone); what was shown vs only described; standard openers + framing; any scenario/task + the interviewer's reaction to the answer; AI stance (what was said, their reaction); people + decision-makers (esp. anyone at a later stage); compensation (any number? deferred?); loyalty/lifestyle probes + how handled; any concern raised about the candidate; the process/funnel; anything memorable.
 - 3.3. Then write `IN.x` notes: arc/tone; process & funnel; people & reporting; role scope/workload; comp & logistics; interviewer character read; honesty/loyalty handling; the WIB usage; open items + next-stage flags.
 - 3.4. Be candid (CIIW) — flag where the candidate may have over-hedged, mis-sequenced, or left a tension unresolved; do not just flatter.
@@ -40,7 +40,7 @@
 - 4.4. Draft the reply email (deliverable → `writing.md` + `dlint` FULL) into AR §7 under a `User Reply` heading; keep it lean — ask only questions that genuinely de-risk starting, banking the rest for the live session if the brief assesses the questions asked there.
 
 ## 5. Standard Questions Library
-- 5.1. Signature (use in every interview — lands well, reads as experienced; echoed back as a good question by both Rennly and Alltech): **"What does success in this role look like — to you, to the company, and to me?"**
+- 5.1. Signature (use in every interview — lands well, reads as experienced; interviewers have echoed it back as a good question): **"What does success in this role look like — to you, to the company, and to me?"**
 - 5.2. "How is the reporting structured in practice?"
 - 5.3. "What is the priority for the first 90 days?"
 - 5.4. "What is the path (seniority, scope) beyond this role, and what triggers it?"
@@ -82,10 +82,10 @@
 ```
 
 - 6.5. Remarks for Value Engineering: Deliberately reordered as the last strength because it could be puzzling to non-consulting industries; for inapplicable roles, it ends subtly as the last strength w/ **diminishing voice**; for applicable roles, it's stressed as **ending exclamation**.
-- 6.6. ⚠️ Usage caveats (banked from Duo):
-  - 6.6.1. IN-PERSON, INTERNALISE the WIB — do NOT visibly read it off a phone (Kim flagged it: "put the notes away"). The phone cue is for the waiting room, not the conversation.
-  - 6.6.2. READ THE ROOM — if the role premise collapses or the interviewer signals discomfort, DROP the script and converse. The framework serves the conversation, never the reverse (Duo: the WIB was recited through visible discomfort after the role was already gone — it misfired).
-  - 6.6.3. Genuine, self-derived insight outperforms the rehearsed tiles (the covid-resilience point landed where the A1–A4 recital did not).
+- 6.6. ⚠️ Usage caveats:
+  - 6.6.1. READ THE ROOM — if the role premise collapses or the interviewer signals discomfort, drop the script and converse; the framework serves the conversation, never the reverse.
+  - 6.6.2. Genuine, self-derived insight outperforms the rehearsed tiles — let the framework prompt a conversation, not a recital.
+  - 6.6.3. Glancing at notes (incl. on a phone) is fine when done naturally; no need to memorise a per-job script. Only ease off if a specific interviewer signals it bothers them.
 
 ## 7. Caveats — NO FALSE CLAIMS
 - 7.1. Mandarin = professional fluency, NOT native (native = Cantonese).
@@ -95,12 +95,12 @@
 - 7.5. Salary: hold to offer stage; let them frame the number; never re-anchor downward verbally.
 - 7.6. Keep career-wide records generic (16⁺ yr content/PM, 300⁺ projects, 100⁺ clients) unless the role is marketing/content/PM; never make them domain-specific.
 
-## 8. Output Files & Workflow (`temp/temp_int/`)
-- 8.1. After Phases A–D, produce two candidate-facing cue files in **`temp/temp_int/`** (flat folder; create if absent), named by org: **`CHEATSHEET_[org].md`** and **`WIB_[org].md`**. Generate them for EVERY interview (whether or not it has a trial task).
-- 8.2. File roles & lifecycle:
-  - 8.2.1. **AR** (`seek/interviews/g|c/`) — the permanent RECORD: full research, the submitted CL (valuable for future GCL refinement), emails, trial-task summaries, and the transcript (§3.5). Low live-prep value, but the ONLY file kept long-term.
-  - 8.2.2. **`CHEATSHEET_[org].md`** — the candidate's MUST-READ before the interview. 500–1000w (shorter is better; Duo's was 916w). May repeat AR content; distil §5 plus the few §1 facts that matter. Throwaway (deleted eventually).
-  - 8.2.3. **`WIB_[org].md`** — the candidate's IN-ROOM cue card: the §6 framework customised per role (special opening + special notes). Throwaway.
-- 8.3. Candidate reading order: **WIB → (time permitting) Cheatsheet → (if still time) AR.**
-- 8.4. Future CC MAY reference prior `CHEATSHEET_*.md` / `WIB_*.md` in `temp_int/` as FORMAT examples — but every job differs (a cheatsheet's substance can be entirely different). Match the format, rebuild the substance.
-- 8.5. `temp_int/` files are throwaway — never let them become the source of truth; the AR is.
+## 8. Output Files & Workflow
+- 8.1. After Phases A–D, produce 2 candidate-facing cue files for EVERY interview (only if invited; hold it if not yet), in that interview's `output/` subfolder (per `temp/README.md`): **`CHEATSHEET_[org].md`** and **`WIB_[org].md`**.
+- 8.2. Canonical record: the **Interview AR** (`seek/interviews/g|c/`) is the single source of truth and the ONLY file kept long-term (full research, the submitted CL —— valuable for future GCL refinement —— emails, trial-task summaries, transcript). Cheatsheet and WIB DERIVE from it.
+  - 8.2.1. Derivation does NOT limit them —— a cheatsheet/WIB may add framing, angles, or wording not in the AR.
+  - 8.2.2. Back-propagate: if anything genuinely valuable surfaces in a cheatsheet/WIB (or from the user), fold it back into the AR for the record.
+- 8.3. **`CHEATSHEET_[org].md`** —— candidate's MUST-READ before the interview. 500–1000w (shorter is better). May repeat AR content; distil §5 plus the few §1 facts that matter. Throwaway.
+- 8.4. **`WIB_[org].md`** —— candidate's IN-ROOM cue card: the §6 framework customised per role. Throwaway.
+- 8.5. Candidate reading order: **WIB → (time permitting) Cheatsheet → (if still time) AR.**
+- 8.6. CAN reuse prior `CHEATSHEET_*`/`WIB_*` as FORMAT examples —— but every job differs; match the format, rebuild the substance. These files are throwaway; never let them displace the AR.
