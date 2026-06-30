@@ -31,6 +31,13 @@ A4. 16⁺ Years of Experience
   - As an investor, I value diversification; Duo Tax is nation-wide
   - I believe in educational content, enlightening & inspiring prospects, which is what I enjoyed to do
   - The key practice, Property Depreciation, is technically not pitching customers to buy, but to gain awareness (alert) of already owned properties; almost like “up-selling”
+- Why “descending” from consulting?
+  - Complex to go through in detail but I’ll make one point:
+  - Many ppl reckon consulting is all about reports, like fancy slides
+  - But really, it’s not the report, but the rapport, like people, connection, and culture
+  - Marketing is a proper medium to gain hands-on experience with local ppl and learn the culture
+  - I also happen to have my whole life in marketing so far
+  - Finally, consulting isn’t in a good shape lately (MBB letting thousands go just last year)
 - Your Marketing Strengths?
   - I build frameworks & systems that manage risks & enhance efficiency
   - Industry Research & Insight Synthesis (IRIS), fully autonomously 24hr⁺
