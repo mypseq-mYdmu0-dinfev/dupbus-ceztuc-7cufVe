@@ -85,7 +85,7 @@
     - 3.2.1.3. Group all reads into 1 line, unlike §3.2.2/§3.2.3 (MUST: **1 line each** for `⇠` `➡️`)
   - 3.2.2. `⇠ `enclosing_folder/file.md``
     - 3.2.2.1. All **comms** file(s) read (not just `query_`, if applicable); .md only
-    - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md) or contains `/sessions/` / `/[YYYY]/`
+    - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md) or anything under `/sessions/`
   - 3.2.3. `➡️ `enclosing_folder/file.md`` —— ANY files created/edited; not always .md; 
   - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.5. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
@@ -99,13 +99,24 @@
   - 3.3.7. For special output (§3.7), name aptly + [current_TS] suffix, unless instructed otherwise
   - 3.3.8. Get `[current_TS]` via `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
 - 3.4. File Organisation:
-  - 3.4.1. All output files (incl. CP) in `/sessions/[YYYY]/[YYYYMM]/` unless instructed otherwise
-  - 3.4.2. If user msg contains .md w/ [TS] in filename but w/o folder specified, attempt in order:
-    - 3.4.2.1. path = \`/sessions/[YYYY]/[YYYYMM]/[file].md\` (YYYY = TS[1:4], YYYYMM = TS[1:6])
-    - 3.4.2.2. try immediate last month (MM - 1)
-    - 3.4.2.3. `find` as usual
-  - 3.4.3. If currently reading `query_` file is in a wrong folder: confirm w/ user before moving; may be intentional (e.g. continuing a prior month's chat)
-  - 3.4.4. Create folder if it doesn't exist (e.g. 1st session of month)
+  - 3.4.1. All comms files (incl. CP) in `/sessions/[YYYY]/[YYYYMM]/` unless instructed otherwise
+  - 3.4.2. Other outputs (not editing existing files):
+    - 3.4.2.1. Default = same folder as comms files
+    - 3.4.2.2. If >3 files, suggest working in `temp/` after reading `temp/README.md`
+  - 3.4.3. Once session started, all outputs throughout MUST be in same folder
+  - 3.4.4. `[YYYY]/` & `[YYYYMM]/` folder names indicate session START only
+  - 3.4.5. Session spanning multi-year/month: still in start-month folder
+  - 3.4.6. Create year/month folder ONLY if:
+    - 3.4.6.1. 1st response of session; AND
+    - 3.4.6.2. User msg doesn't contain `query_*.md`; AND
+    - 3.4.6.3. Current year/month folder doesn't exist (i.e. 1st session of period)
+  - 3.4.7. If currently reading `query_` is 1st of session AND is not in current year/month folder:
+    - 3.4.7.1. Confirm w/ user before moving to rectify
+    - 3.4.7.2. May be intentional (e.g. continuing a prior period's session to be incl. in its #wrap)
+  - 3.4.8. Finding `*_[TS].md` w/o path, attempt in order:
+    - 3.4.8.1. By session's start-month: `sessions/[YYYY]/[YYYYMM]/[filename].md`
+    - 3.4.8.2. By 1 last month (MM - 1)
+    - 3.4.8.3. `find` as usual
 - 3.5. `response_` File Rules:
   - 3.5.1. Line 1: `# Response to [query_filename]`
   - 3.5.2. Line 2 (optional): `*Heading max. 8w*`
