@@ -10,7 +10,7 @@
 2. I focused on keeping the ambition and adjusting things that could break in a real quarter at 24 hours a week.
 3. It comes down to 5 principles, and the big one is the first one: sequencing around the peak season.
 4.  The original draft back-loads the case studies into September to December, quite likely exactly when the team is flat out, so I front-loaded the interviews into the quiet July and August window and banked the materials early.
-5. That single move managed a big risk.
+5. That single move managed a major risk.
 6. The other 4, briefly speaking, phase the build rather than run 6 pillars at once, make the hours honest, respect the review gate on both sides, and calibrate to a cooling market.
 
 ## The plan (pages 3 to 5)
@@ -25,7 +25,7 @@
 ## AI (page 7)
 1. Page 7 is how I make a 24-hour week actually work.
 2. I build systems to do the heavy lifting and keep the judgement for myself.
-3. On case studies from interview transcripts, 1 event turned into a week of social, AI for B-rolls but the real footage of the work remains real.
+3. On case studies from interview transcripts, 1 event turned into a week of social, AI for B-rolls & graphics, but the real footage of the work remains real.
 4. The judgement, the brand fit, and the accuracy stay with me and with your approval.
 
 ## My questions (page 8)
