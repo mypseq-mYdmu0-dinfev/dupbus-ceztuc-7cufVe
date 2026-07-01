@@ -74,6 +74,7 @@
 - r/w = read/write
 - QB = question/blocker; if any, raise all Qs (Q1, Q2…) & Bs (B1, B2…) separately & #numbered before proceeding; NEVER label as QB1, QB2
 - CIIW = Correct (me) if I'm wrong; validate my msg rather than treating it as a direct command; correct errors before acting
+- ses = session
 - override = exception to "no chat text" or other restrictions for that SINGLE turn only
 - yn (only usable by user) = override: respond w/ 1w only in chat, either `Yes` or `No`
 - deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
