@@ -1,6 +1,6 @@
 # Writing Rules
 
-## General (all writing styles)
+## General (shared by all writing manners)
 
 - NEVER use em dash `—` for ANY deliverables, only OK for internal use between you and me
   - When removing a banned dash, RESTRUCTURE the whole sentence —— NEVER a mere comma/colon swap. The dash carries emphasis the rest of the sentence must then absorb, so a direct substitution reads oddly. (`dlint.py` reprints this on every dash flag)
@@ -23,7 +23,7 @@
 
 ## Deliverable Lint —— `cscpt/dlint.py` (MANDATORY)
 
-- After creating ANY deliverable (any style above), you MUST lint it before output —— RUN it (never read it; read only its terminal output). MODES:
+- After creating ANY deliverable (any writing manners), you MUST lint it before output —— RUN it (never read it; read only its terminal output). MODES:
   - Separate-file deliverable (per root §3.7.2) → `python3 cscpt/dlint.py <path>` (FULL; auto-fixes quotes in place)
   - Short deliverable embedded in `response_` → EXTRACT it and `python3 cscpt/dlint.py --text "the deliverable text"` (FULL; prints the quote-fixed text to paste back; no temp file)
 - NEVER lint the whole `response_`/comms files in FULL mode, as they legitimately use ` —— `, colons, etc.
