@@ -543,6 +543,51 @@ Culous
 
 ---
 
+## Employer Reply
+
+On 26 Jun 2026, at 08:32, Elena Mel <elena@alltech.co> wrote:
+
+Hi Culous, 
+
+I’ve moved it to next Thursday (see latest invite for date and time), I remembered why I moved it to 12-1pm, as we have something on at 1pm.
+
+We can go through everything then and you can take me through your assignment.
+
+Elena Melnykova
+Head of Strategic Operations & Growth
+Alltech
+
+---
+
+## Google Meet Notification
+
+On 26 Jun 2026, at 08:31, Elena Mel <elena@alltech.co> wrote:
+
+This event has been updated
+Changed: Time
+  
+Join with Google Meet
+Meeting link
+meet.google.com/ets-vfnf-rqx
+
+**When**
+Thursday 2 Jul 2026 ⋅ 12pm – 1pm (Australian Eastern Time - Sydney)
+
+---
+
+## User Reply
+
+On 26 Jun 2026, at 09:31, c@culousyu.com wrote:
+
+Morning Elena,
+
+Thank you for telling in time. Let’s talk next week then. Wish you a nice weekend in advance.
+
+Regards,
+Culous
+
+---
+
 ## 8. Stage 2 Pack — Summary
 *Added in the 202606190127 session (CC). #summarise mode = abstractive, key dates/targets/names kept verbatim. Substitutes for the 5 attachments (too large to embed); all 5 + the invite #r in full.*
 
