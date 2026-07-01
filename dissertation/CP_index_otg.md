@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a652
 Brief overview.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a6dc26ac74bcb85174cd31bde3ce9f634c55163d/dissertation/MGTK751_DevPlan.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fed94e9bafa6a6c0099edbaaed568577e468108f/dissertation/MGTK751_DevPlan.md
 Always follow.
 
 ---
@@ -72,7 +72,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b8
 Submitted real A1.
 
 Lu.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ead6948d14a8435a59b9cdacd00c36e756e61305/dissertation/lu.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/12a4a8e7a93324480a464ec0b6163d238025733e/dissertation/lu.md
 Synthesised profile of matched DA (A2/A3 marker).
 
 Meetings.md / Meetings (distilled).md
