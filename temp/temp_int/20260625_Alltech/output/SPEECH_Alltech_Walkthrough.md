@@ -35,7 +35,7 @@
 ## How I would actually work with AI (page 7)
 1. P.7 is the part I am most keen to talk about, because it is what makes a 24-hour week credible in the first place.
 2. In a nutshell, I build systems to do the heavy lifting and keep the judgement for myself.
-3. For case studies, I would record the interviews and run an agentic system that turns a transcript into a first draft, then I edit for your review & approval.
+3. For case studies, I would manage the interviews and run an agentic system that turns a transcript into a first draft, then I edit for your review & approval.
 4. One event becomes a week of social content through a repurposing system.
 5. For video, my AI systems handle B-rolls & graphics, but the real footage of the work on site remains real, because that is the actual selling asset and AI cannot fake it.
 6. And I am deliberate about what AI should not touch, the judgement, the brand fit, the factual accuracy, all of that stays with me and with your approval gate.
