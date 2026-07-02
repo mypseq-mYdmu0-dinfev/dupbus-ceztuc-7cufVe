@@ -1,0 +1,1 @@
+input=[path]; output="${input%.*}_downsized.${input##*.}"; magick "$input" -scale 100x100 "$output"; echo "Resized to '$output'"

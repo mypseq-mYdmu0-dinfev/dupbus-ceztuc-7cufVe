@@ -14,13 +14,13 @@ set -euo pipefail
 # ============================================================
 
 # >>> SET INPUT FILE PATH HERE <<<
-SRC="/Volumes/FURY 2TB/Fury Downloads/REPLACE_ME.mov"
+SRC="/Volumes/FURY 2TB/Fury Downloads/Screen Recording 2026-07-02 at 12.00.00.mov"
 # >>> SET INPUT FILE PATH HERE <<<
 
 # ---- editable settings ----
-START_TRIM_MIN=0        # minutes to remove from the start (default 0)
+START_TRIM_MIN=19        # minutes to remove from the start (default 0)
 END_TRIM_MIN=0          # minutes to remove from the end (default 0)
-SEGMENT_MIN=4.9            # length of each output part, default 4.9min (Gemini max 5min)
+SEGMENT_MIN=4.9            # length of each output part, default 5min (Gemini max)
 # ----------------------------
 
 OUT_DIR="/Volumes/FURY 2TB/Fury Downloads/$(TZ='Australia/Sydney' date +'%Y%m%d%H%M')"

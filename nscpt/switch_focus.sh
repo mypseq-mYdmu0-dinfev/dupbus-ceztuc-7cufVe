@@ -1,0 +1,1 @@
+osascript -e 'tell application "Claude" to activate'

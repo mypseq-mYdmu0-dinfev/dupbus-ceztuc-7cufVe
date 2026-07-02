@@ -1,0 +1,1 @@
+git log --follow temp/temp.md
