@@ -684,8 +684,12 @@ Culous
 
 ## Stage 2 Interview Summary
 
-- After Bali small-talk, the user screen-shared and walked the user's reworked 90-day plan: the five principles, peak-season front-loading, and case studies cut 20 to 10–12.
-- The user's six questions were answered: assets on Wix, Google Drive migrating to Photos; approvals batched quarterly under Seb's sign-off; Claude Team barely a month old; API later; nothing off-limits.
-- Elena reframed "one thing to be known for" into the highest-value asset: HubSpot (agency-built, live 1 September, the user assisting 8h/week, ~$1M ROI), then case studies, then a StoryBrand website.
-- Social trimmed to 2–3/week; values and candour questions; a culture-fit concern (professional versus banter); salary, the $60k was a typo, real $75–85k pro-rated part-time.
-- The user likely advanced to an in-person Stage 3 with director Seb; dress casual.
+- After Bali small-talk, the user screen-shared and walked the reworked 90-day plan: the five principles, peak-season front-loading, and case studies cut 20 to 10–12.
+- The six questions were answered: website on Wix; brand assets on Google Drive, migrating to Google Photos; approvals batched quarterly under Seb's final sign-off; Claude Team barely a month old (novice usage); API considered later; nothing off-limits to AI.
+- Elena reframed "one thing to be known for" into the role's highest-value asset, HubSpot. Key reveal: an external agency builds it (live ~first week September, plus the Rentman integration), and this role assists ~8h/week then owns and coordinates it, so it is genuinely a coordinator seat and the user's HubSpot gap is largely de-risked. The "~$1M lost" is Elena's verbatim quote and stated top pain point, but reads as a projected/opportunity figure, not booked revenue forgone.
+- Priority order: HubSpot, then case studies (keep clients warm), then website (StoryBrand framework, 12-month phased, core pages first). Social cut to 2–3/week across the three platforms.
+- Values and candour questions (education, "held back?"). The one flagged concern is culture fit: the user reads as "too professional" for a banter-heavy Aussie crew, so performed banter and rapport at length to neutralise it (Elena is the firm's only formally-educated member).
+- Salary (decision-critical): the $75–85k is per annum, pro-rated to the 24h part-time (24/40 = 0.6), so the real ceiling is ~$51k; the user's lodged $60k pro-rates to ~$36k. Elena raised it to pre-empt disappointment. Net: ~$51k top, below the user's need but above the $36k his ask implied.
+- Resilience yellow-flag: despite any "nation-wide" framing, the firm is Sydney-based and regional (jobs mainly NSW, lower QLD, upper VIC), so more exposed if the NSW market contracts, reinforcing the bearish long-term read (§9.6.4); still a reasonable local-experience stepping stone.
+- Status: the user likely advanced to an in-person Stage 3 with director Seb (~80% confidence; Elena to confirm by end of day Fri 03/07); dress casual (Seb vetoes overdressed candidates). Stage-3 prep must include studying the StoryBrand framework (Donald Miller's customer-as-hero messaging model, distinct from "brand-story video").
+- The full reconstructed interview transcript is kept as a separate working file (`temp/temp_int/20260625_Alltech/output/Alltech_interview_transcript_202607021219_fixed.md`), not appended here owing to size; to be folded in or discarded once this application resolves.
