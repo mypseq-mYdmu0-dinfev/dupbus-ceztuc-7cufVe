@@ -11,12 +11,12 @@
 2. The 3-phase structure, the discipline of no live posts until October, the case-study-as-sales-asset logic, the EOS cadence, etc.
 3. So I focused on keeping the ambition and adjusting the few things that could quietly break in a real first quarter at 24 hours a week.
 4. You see I've boiled that down to 5 principles.
-5. The big one is the first one: sequencing around the peak season, not against it.
+5. The first one is key: sequencing around the peak season, not against it.
 6. The original draft back-loads the case studies into September to December, which is exactly when the technicians & PMs are flat out.
 7. So I've front-loaded the case-study interviews into the quiet July and August window, banked the materials whilst the mates are actually around, and left the writing to run steadily afterwards.
 8. That single move managed a major risk in the plan.
 9. For the other 4, I'll go through quickly: phase the build rather than run all 6 pillars at once; make the hours honest, so every month carries a real hour-budget; respect the review gate on both sides, because front-loading my work also front-loads your reviewing; and calibrate to the market, which I'll come back to on the table.
-10. P.2 just lists the constraints I deliberately built around, the peak season, the 24-hour week, organic-only for the first year, your approval gate, and the fact that this is genuinely 1 person + AI, not a team yet.
+10. Remainder of P.2 just lists the constraints I deliberately built around: the peak season, the 24-hour week, organic-only for the first year, your approval gate, and the fact that this is genuinely 1 person + AI, not a team yet.
 
 ## The reworked plan, month by month (pages 3 to 5)
 1. P.3 to 5 are the plan itself, where I kept the IBE (Immerse, Build, Execute structure).
@@ -28,7 +28,7 @@
 
 ## The milestones, and the number I moved most (page 6)
 1. P.6 is the milestones table, the original draft target against my reworked one, with the reasoning in the last column.
-2. The headline is the case studies.
+2. The focus is on the case studies.
 3. The original draft aimed for 20 published by December, I've tuned it down to 10 to 12, and the reason is right there on the page: 20 would mean interviewing through the peak season when the team is least reachable, whereas 1 to 2 a month is the genuinely sustainable rate.
 4. It's the same logic as the front-loading, just carried through to the number.
 
