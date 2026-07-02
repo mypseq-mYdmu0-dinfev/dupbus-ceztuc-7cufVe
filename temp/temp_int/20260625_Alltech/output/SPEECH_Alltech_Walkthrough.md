@@ -10,7 +10,7 @@
 1. The first thing I wanna be clear about is that the original draft was genuinely well-planned.
 2. The 3-phase structure, the discipline of no live posts until October, the case-study-as-sales-asset logic, the EOS cadence, etc.
 3. So I focused on keeping the ambition and adjusting the few things that could quietly break in a real first quarter at 24 hours a week.
-4. You see I've boiled that down to 5 principles on the first page.
+4. You see I've boiled that down to 5 principles.
 5. The big one is the first one: sequencing around the peak season, not against it.
 6. The original draft back-loads the case studies into September to December, which is exactly when the technicians & PMs are flat out.
 7. So I've front-loaded the case-study interviews into the quiet July and August window, banked the materials whilst the mates are actually around, and left the writing to run steadily afterwards.
