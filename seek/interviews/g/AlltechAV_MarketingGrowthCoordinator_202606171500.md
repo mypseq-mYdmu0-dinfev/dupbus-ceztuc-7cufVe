@@ -679,3 +679,13 @@ Culous
 - 9.7.3. Depth of v1: how far to take it given it is explicitly "version 1" fleshed out at the interview (avoid over-building).
 - 9.7.4. Current-state data: will he get real inputs (past-project list, analytics, brand assets, current HubSpot state) before Stage 2, or should the plan state assumptions? (Likely state assumptions.)
 - 9.7.5. Stage-2 logistics: venue + parking (the Brief confirms *in person*; venue presumably the Rydalmere office, ≈13 min from home — await Elena's invite rather than asking now; the Rennly-era parking concern is mild here given proximity).
+
+---
+
+## Stage 2 Interview Summary
+
+- After Bali small-talk, the user screen-shared and walked the user's reworked 90-day plan: the five principles, peak-season front-loading, and case studies cut 20 to 10–12.
+- The user's six questions were answered: assets on Wix, Google Drive migrating to Photos; approvals batched quarterly under Seb's sign-off; Claude Team barely a month old; API later; nothing off-limits.
+- Elena reframed "one thing to be known for" into the highest-value asset: HubSpot (agency-built, live 1 September, the user assisting 8h/week, ~$1M ROI), then case studies, then a StoryBrand website.
+- Social trimmed to 2–3/week; values and candour questions; a culture-fit concern (professional versus banter); salary, the $60k was a typo, real $75–85k pro-rated part-time.
+- The user likely advanced to an in-person Stage 3 with director Seb; dress casual.
