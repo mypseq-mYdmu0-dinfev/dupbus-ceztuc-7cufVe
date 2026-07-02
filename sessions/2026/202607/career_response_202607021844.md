@@ -55,5 +55,16 @@
 - 9.4. Social trimmed to 2–3/week; values and candour questions; a culture-fit concern (professional versus banter); salary, the $60k was a typo, real $75–85k pro-rated part-time.
 - 9.5. You advanced to an in-person Stage 3 with director Seb; dress casual.
 
+## Post-Notes Resolution (via rough_notes.md, added 202607021923)
+
+10. The interviewee's live notes arrived after this response was written; they corroborate the business half and close several questions above.
+- 10.1. ✅ Q5.1 salary —— confirmed per annum, pro-rated to the 24h part-time; notes give the exact math (3 of 5 days → ~$51k top at an $85k FTE), accepted as a stepping stone. Elena's spoken "half" was loose; the "24-hour equivalent" (0.6) is the accurate figure.
+- 10.2. ✅ Q5.2 HubSpot —— confirmed and sharpened: the agency does the bulk, he assists ~8h/week and owns/troubleshoots; the ~$1M "lost" is a verbatim Elena quote and her stated top pain point; the assist-the-agency remit is effectively the role's core (genuinely a "coordinator").
+- 10.3. ✅ Q5.4 priorities —— HubSpot → case studies → website (StoryBrand, 12-month, core pages first); social to 2–3/week.
+- 10.4. ✅ Q6.2 socials —— Elena rejected 3–4/week; the notes correct the tangled [125611] to "2–3/week across the three platforms (LinkedIn, Facebook, Instagram) as the starting point" (transcript updated).
+- 10.5. 🟡 Q5.3 next stage —— partial: in-person, after 1pm, with Seb + Elena confirmed; the exact day is still unresolved (notes silent).
+- 10.6. 🔴 Still open (notes do not cover) —— Q6.1/6.3 attribution and Q7.1–7.4/Q8.x garbles: the values, culture, code-website, T-shirt, and scheduling tail. Your memory remains the only source there.
+- 10.7. Notes ADD two facts the captions dropped —— Elena is the firm's only highly-educated person, and you persuaded her at length that you work happily with less-formally-educated crew (the spine of the culture-fit exchange).
+
 ---
 *dlint FULL on the dialogue = RED 0. The 9 remaining YELLOWs are ALL verbatim or near-verbatim spoken words in the transcript body (a record of speech, not authored prose), so substituting house-style synonyms would falsify the record: `seamlessly` ([123309] Elena), `Where` ([123050] "Where is it?"), `streamline` ([124021] you), `perspective` ([124741] Elena), `elevate` ([125057] you), `master` ([125927] "master degrees", literal), `journey` ([130147] Elena "their own journeys"), `ensure` ([130821] you), `beyond` ([131952] you, "beyond stage 3"). All GenAI-word flags in my own note/annotations were reworded to clear them.*
