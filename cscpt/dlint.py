@@ -18,14 +18,17 @@ WHAT IT DOES
 2. FLAG (print only) two tiers (the real rules ARE the check fns below):
      🔴 RED  —— hard breaches, ZERO TOLERANCE (must reach 0): exact Americanisms,
                 `vs.` with period, em dash, mid-sentence colon, a comma as the
-                last char inside a closing quote. Fires ONLY on a genuine breach,
-                so a RED never needs "conditional acceptance".
+                last char inside a closing quote, `hi` as a greeting. Fires ONLY
+                on a genuine breach, so a RED never needs "conditional acceptance".
      🟡 YELLOW — conditional, may be legitimate: en dash, bare `+`, hyphen used as
                 a dash/non-#numbered bullet, `-ize`/`-isation` spellings,
                 sentence-initial `Where`, a lone period inside a closing quote,
-                GenAI/cliche words & phrases.
+                GenAI/cliche words & phrases, weak/unsophisticated words
+                (want/something/big).
    --quick keeps ONLY the register-independent rules (Americanisms, Hart's
-   quotation, `-ize`, hyphen/#numbered) so it is safe to run over comms too.
+   quotation, `-ize`, hyphen/#numbered, `hi` greeting) so it is safe to run over
+   comms too —— weak words and GenAI words are deliverable-only (FULL mode),
+   since ordinary language between user and CC should not be nagged.
 
 EXIT CODE: 0 = no RED (yellows may remain) | 1 = RED present | 2 = usage/error
 
@@ -147,6 +150,26 @@ GENAI_WORDS = {
     "streamline", "uncover", "vast", "journey", "seamless", "seamlessly",
     "adhere", "beyond", "bustling", "enigma", "triangulate", "triangulation",
     "enumerate", "enumeration", "significant", "demonstrate", "perspective",
+}
+
+# RED —— "hi" as a greeting is impolite in the user's culture (writing.md §
+# General); "Hello" or any other salutation is fine. Register-independent (also
+# checked by --quick) since this is a firm ban, not a register-dependent style
+# choice. Simple word-boundary match, same precision tradeoff as AMERICANISMS —
+# judgement still governs genuine edge cases (e.g. "hi-vis", "hi-fi").
+GREETING_HI = re.compile(r"\bhi\b", re.IGNORECASE)
+
+# YELLOW —— "weak"/unsophisticated words (writing.md § General): actively avoid,
+# NOT banned —— CC may still insist through a mis-flag when context calls for it
+# (e.g. Casual Writing, or a deliberate human touch). Deliverable-only (FULL mode
+# only, like GENAI_WORDS) since ordinary language between user and CC in
+# response_/comms should not be nagged. Kept short and hard-coded on purpose —
+# writing.md states the PRINCIPLE (prefer precise/stronger words, e.g. "believe"
+# over "feel"/"want"), this list is just the 3 concrete always-avoid words.
+WEAK_WORDS = {
+    "want": r"\bwants?\b|\bwanted\b|\bwanting\b",
+    "something": r"\bsomething\b",
+    "big": r"\bbig(?:ger|gest)?\b",
 }
 
 # YELLOW —— GenAI cliche PHRASES (case-insensitive substring).
@@ -300,6 +323,20 @@ def _ize(lines, orig, yellow):
                 yellow.append((ln, f"`-ize/-isation` spelling `{m.group(0)}` —— Oxford `-ize` is acceptable, else use `-ise` (judge; `size`/`prize` etc. are fine): {_snip(orig[ln - 1])}"))
 
 
+def _greeting_hi(lines, orig, red):
+    for ln, line in enumerate(lines, 1):
+        if GREETING_HI.search(line):
+            red.append((ln, f"`hi` as a greeting is banned —— use `Hello` or another salutation: {_snip(orig[ln - 1])}"))
+
+
+def _weak_words(lines, orig, yellow):
+    for ln, line in enumerate(lines, 1):
+        low = line.lower()
+        for w, pat in WEAK_WORDS.items():
+            if re.search(pat, low):
+                yellow.append((ln, f"weak/unsophisticated word `{w}` —— avoid where a stronger, more precise word fits (e.g. `believe` > `feel`/`want`): {_snip(orig[ln - 1])}"))
+
+
 def _genai_words(lines, orig, yellow):
     for ln, line in enumerate(lines, 1):
         low = line.lower()
@@ -339,6 +376,7 @@ def run_checks(text, quick=False):
     _hart(lines, orig, red, yellow)
     _ize(lines, orig, yellow)
     _hyphen_bullet(lines, orig, yellow)       # dash substitute + #numbered compliance
+    _greeting_hi(lines, orig, red)            # `hi` banned everywhere, incl. --quick
 
     if not quick:
         # deliverable-only rules (em dash / colons are fine in internal comms)
@@ -347,6 +385,7 @@ def run_checks(text, quick=False):
         _en_dash(lines, orig, yellow)
         _plus(lines, orig, yellow)
         _genai_words(lines, orig, yellow)
+        _weak_words(lines, orig, yellow)
         _where(masked_text, yellow)
         _genai_phrases(masked_text, yellow)
 
