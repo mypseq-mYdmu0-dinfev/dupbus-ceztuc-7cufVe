@@ -19,7 +19,7 @@
 10. P.2 just lists the constraints I deliberately built around, the peak season, the 24-hour week, organic-only for the first year, your approval gate, and the fact that this is genuinely 1 person + AI, not a team yet.
 
 ## The reworked plan, month by month (pages 3 to 5)
-1. P.3 to 5 are the plan itself, and I kept your IBE (Immerse, Build, Execute structure).
+1. P.3 to 5 are the plan itself, which I kept the IBE (Immerse, Build, Execute structure).
 2. On P.3, Month 1 is immersion and 3 audits, which I have spanned across the weeks rather than dumping all 3 at the end of week 2, plus starting those case-study interviews early.
 3. On P.4, Month 2 is where the systems get built: the content calendars, 5 case studies, the HubSpot essentials, and the website proposal.
 4. And I've been honest that August is actually the heaviest month, so I flag exactly how I protect it.
