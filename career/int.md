@@ -20,7 +20,7 @@
 
 ## 2. Phase B — Prep Deliverables (into AR §5)
 - 2.1. §5A Likely interviewer questions (anticipate, mapped to the role + the firm's stated values).
-- 2.2. §5B Questions to ask — ALWAYS include the signature question (§5 below); plus reporting/mentorship, first-90-day priority, P/T→F/T or promotion path, hands-on cadence, autonomy vs approval gates.
+- 2.2. §5B Questions to ask — draw from the §5 Standard Questions Library (ALWAYS §5.1 signature + the §5.2–5.5 probes), plus the role-specific extras not in §5: mentorship structure, P/T→F/T or promotion path, and autonomy vs approval gates.
 - 2.3. §5C Logistics & format (virtual/in person; what to screen-share; test kit).
 - 2.4. §5D Strategy & key talking points (lead differentiator, builder framing, honest gap-handling, rapport hooks). Reusable rapport angle: post-disruption resilience (e.g. surviving the COVID-era shake-out) resonates across interviewers who lived it —— deploy if apt.
 - 2.5. §5E Any application/trial-task-specific prompts the ad asked for.
