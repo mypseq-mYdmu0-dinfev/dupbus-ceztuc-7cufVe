@@ -399,3 +399,52 @@ format e.g.:
 
 ### Part 15
 
+[132738] **User**: Let me give you a little bit of background. I used to work in Crew house for video production, I think that was ah, 2017. And then I worked in multiple production house. All these guys are without a degree and my wife of course, doesn't have the grain. So I am fully comfortable with whatever people. I am very I will say bound to us. So that's not a problem. {sharing personal background, relaxed and open}
+
+[132752] **Elena**: Let me just put it in a way that I think it will be so blunt and direct, like a lot of the guys that are on crew, like, do accents and some people will take that as an offense. But most Aussie's don't, um, we've had a lot of people of every ethnicity and culture work with us and they usually Due to the hiring process, they usually don't get offended. But all of the guys here, do accents in one shape or form. And that is one of like the banters that they do. I guess there's a lot of different banters that they do, but I want to be very, very clear and direct about it. {direct and candid, using hands to express the casual but potentially offensive office dynamic}
+
+[132836] **User**: Yeah, if you mean the letter action I wear an awesome everyone there's an upson right? Like we're not okay. Like I'll say that. Yeah this Right now. I mean like they they will joke by putting on other accents from different cultures. I don't mind. I don't mind at all. I kind of enjoy. {laughing, receptive, showing he is unbothered by jokes}
+
+[132853] **Elena**: Okay, I do too. But I also need to be careful as well because I'm like, you guys are literally a walking HR disaster for me. {laughing and holding her hands up, joking about HR}
+
+[132904] **User**: Yeah, I wouldn't worry about that. I'm being honest, I wouldn't worry about that. {reassuring her, smiling}
+
+[132912] **Elena**: Okay, okay. Well look, it's always better to take some people. Some people are very like Sensitive. There's the whole like, I mean, I feel like cancel cultures moving on finally, but there are some people That still can't take a joke, so Especially with how much they talk s*** here in English. Yeah. Like a stable. I get Yeah, the cons, they're talking s*** The you know, {explaining the practical reason she's bringing it up, gesturing}
+
+[132943] **User**: Yeah, Norris. {nodding along}
+
+[132946] **Elena**: Funny accents, whatever. I just need to be sure that {smiling}
+
+[132949] **User**: Yeah. No one's going to offend anyone. {confirming confidently}
+
+[132953] **Elena**: Yeah. {nodding}
+
+[132958] **User**: I think over my years of working, if there's one thing that has come to my attention that's particular valuable is adaptability. I am very adaptable and that's why I guess so, yeah, I could follow that. In one of the Roman, the mother is like, super high state like those high society. Oh yeah. I used to work for luxury magazines. I, I and I am comfortable in those tenant situation. And, as I said, I worked in a cruel house. Those kind of things, and event production, video production, all those help people. So. I am fully at adaptable and, as I said, my wife, is a chef. So I have with chefs and kitchen crew, so that's how things and. {speaking confidently, citing extensive and diverse work experience, including his wife's career}
+
+[133049] **Elena**: Yeah. It is, it is just one night. Come dressed casually for to do and say {smiling, giving practical advice for the next interview stage}
+
+[133054] **User**: Yeah, oh, really enjoy Yes. right, I'll try that. Yeah. I think I just know that the director is one thing that he'll definitely. Take notice of. {taking mental note, pointing out a potential pitfall}
+
+[133107] **Elena**: Oh, really. So like he particularly doesn't like people like shoot up. I've He's vetoed a lot of candidates for various roles because they were too overdressed for the interview. {sharing insider information about the director's preferences}
+
+[133125] **User**: Oh, really, oh, that's you. Okay, right. I just were my, you know, casual outfit. {relieved, confirming his casual attire plan}
+
+[133132] **Elena**: Absolutely. Right, basically, all black You can even if yeah, if you want to put on a funny T-shirt, even bonus points. {encouraging, nodding}
+
+[133142] **User**: Mike. Jesus. The funny this. I just shut all my T-shirt society about some and I never wear a brand season. Oh, I love that. I love that. I feel like You got my? I can. Show you. So like this is my design, like maybe five five years ago, you see them. You see that? {excited, leaning forward to show a t-shirt design on his end}
+
+[133206] **Elena**: Yes. Yeah, so like I love that. Actually the director, with one of the guys that works here. He they have their own like production. Company. their own like, T-shirt and Hoodies company for specifically for the production industry. So he would appreciate {impressed, confirming that his design background will be a hit with the director}
+
+[133226] **User**: Good. Great. {smiling, satisfied}
+
+### Part 16
+
+[133238] **Elena**: All right, I will let you go. I have to run to meeting and I will be in touch before end of day. Tomorrow, {smiling, adjusting hair, preparing to wrap up the interview}
+
+[133242] **User**: Yep. Okay. Yeah. {nodding respectfully, acknowledging the timeline}
+
+[133247] **User**: Thank you, thank you so much for the time and all the fun. Thank you so much. {smiling warmly, expressing genuine appreciation for the conversation}
+
+[133249] **Elena**: Great White Palace speak later. Okay. {smiling and waving goodbye; *note: CC likely misinterpreted a phrase like "Great, bye guys, speak later"*}
+
+[133250] **User**: Bye. {smiling, waving goodbye as the call concludes}
