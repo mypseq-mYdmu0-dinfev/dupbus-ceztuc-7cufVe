@@ -29,7 +29,7 @@
 ## The milestones, and the number I moved most (page 6)
 1. P.6 is the milestones table, the original draft target against my reworked one, with the reasoning in the last column.
 2. The headline is the case studies.
-3. The original draft aimed for 20 published by December, I've tuned it that to 10 to 12, and the reason is right there on the page: 20 would mean interviewing through the peak season when the team is least reachable, whereas 1 to 2 a month is the genuinely sustainable rate.
+3. The original draft aimed for 20 published by December, I've tuned it down to 10 to 12, and the reason is right there on the page: 20 would mean interviewing through the peak season when the team is least reachable, whereas 1 to 2 a month is the genuinely sustainable rate.
 4. It's the same logic as the front-loading, just carried through to the number.
 
 ## How I would actually work with AI (page 7)
