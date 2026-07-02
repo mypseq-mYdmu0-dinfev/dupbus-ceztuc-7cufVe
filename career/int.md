@@ -5,7 +5,7 @@
 ---
 
 ## 0. Scope & Files
-- 0.1. Working (enriched) AR lives in `seek/interviews/g/` (general roles) or `seek/interviews/c/` (consulting); filename TS = the upcoming/last interview time. The pristine `Outcome: Applied` original stays in `gcl/applied/` (or `ccl/`) untouched, so AJAP re-application guards still hold.
+- 0.1. Working (enriched) AR lives in `seek/interviews/g/` (general roles) or `seek/interviews/c/` (consulting); filename TS = the (first) interview time. The pristine `Outcome: Applied` original stays in `gcl/applied/` (or `ccl/`) untouched, so AJAP re-application guards still hold.
 - 0.2. Read first: the role's AR, `seek/context/pro_profile.md`, and the apt resume variant. Use prior interview ARs in `seek/interviews/g|c/` as worked examples.
 - 0.3. Most outputs here are deliverables or durable records — mind `writing.md` for anything sent to the employer, and run `dlint.py` accordingly.
 
