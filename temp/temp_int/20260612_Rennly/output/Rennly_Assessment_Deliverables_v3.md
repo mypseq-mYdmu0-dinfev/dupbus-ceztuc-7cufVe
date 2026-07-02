@@ -2,7 +2,7 @@
 
 Instagram Reel for a Premium Sydney Apartment Development
 Creative Marketing Specialist Assessment
-Prepared by Culous Yu
+Presented by Culous Yu
 
 ---
 
