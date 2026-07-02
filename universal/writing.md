@@ -5,19 +5,52 @@
 - NEVER use em dash `—` for ANY deliverables, only OK for internal use between you and me
   - When removing a banned dash, RESTRUCTURE the whole sentence —— NEVER a mere comma/colon swap. The dash carries emphasis the rest of the sentence must then absorb, so a direct substitution reads oddly. (`dlint.py` reprints this on every dash flag)
 - NEVER use colons `:` in sentences (e.g. replacing dash) as it still breaks the narrative; only OK when followed by a list AND when listing per se is context-appropriate
-- Avoid sentence/clause-initial "Where" (e.g. "Where [condition], [statement]"); prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
-- Avoid verb-object separation: Don't place long descriptive or prepositional phrases between a transitive verb (e.g. identify, state, argue) and its direct object or quotation
-  - ❌ e.g. [Actor] identifies [long_descr] "[quote]".
-  - ✅ e.g. [Actor] identifies "[quote]" as [long_descr].
+- Writing should read fluently ALOUD if possible (esp. `#style`), not just scan well visually
+  - If sounds awkward spoken, try to restructure it even if it reads fine on the page
+  - Avoid sentence/clause-initial "Where" (e.g. "Where [condition], [statement]"): prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
+  - Avoid verb-object separation: Don't place long descriptive or prepositional phrases between a transitive verb (e.g. identify, state, argue) and its direct object or quotation
+    - ❌ e.g. [Actor] identifies [long_descr] "[quote]".
+    - ✅ e.g. [Actor] identifies "[quote]" as [long_descr].
 - Use Oxford comma on ≥3 objects:
   - ❌ [A], [B] and [C]
   - ✅ [A], [B], and [C]
 - When drafting anything est. 1,000⁺ words, suggest (ask confirmation) to create Dev Plan
-- Never use "Hi"; user strongly prefers "Hello"
+- Never use "Hi" (culturally impolite)
+  - Vary the salutation to taste instead
+  - e.g. "Hello", "Greetings"; no fixed alternatives
 - Avoid english numbers (except "one"), use numerals instead (easier human reading):
   - ❌ e.g. I use 1 tool to save two minutes.
   - ✅ e.g. I use one tool to save 2 minutes.
   - Except § Casual Writing (e.g. "3rd"), use english number for ordinals (e.g. "third").
+- Grammar must be stringently correct by default in deliverables
+  - Zero tolerance for sloppiness
+  - Flex only when the user self-applies & explicitly insists on it
+  - e.g. a deliberate touch of imperfection to sound more "human"
+- Prefer precise, stronger wording over weak/unsophisticated words
+  - e.g. "believe" rather than "feel"/"want", unless literally a physical sensation like cold/warm
+  - `dlint.py` flags `want`/`something`/`big` as concrete always-avoid cases (🟡, not banned —— insist through a mis-flag when context genuinely calls for the plain word, e.g. § Casual Writing)
+- Front-load content (the what/why/how) to pre-empt the need for a follow-up meeting/call
+  - User strongly avoids verbal exchange; user's comms pref ([pref%]; [concerns]):
+    - WhatsApp/Instant Msg (100% preferred; none)
+    - Email (90%; wait times, cyber risks)
+    - Virtual Meeting (varies; synchronous exchange, schedule clash)
+      - Zoom (80%; none additional)
+      - Teams (60%; interface/access bugs)
+      - G Meet (55%; unacceptable transcription quality)
+    - Physical Meeting (50%; fuel/toll costs, stamina, small talks, inefficiency)
+    - Phone Call (0%; sound quality, ineffectiveness, unknown calls default-blocked)
+  - Never state this pref explicitly, but let completeness & clarity do the work instead
+  - e.g. DON'T write "happy to continue this by writing" NOR "a meeting/call would suit us"
+- Pre-empt accusation or push-back before it lands
+  - Word strategically so neither party is left holding an easy grievance against the other
+  - e.g. ❌ "I cannot attend but would not miss it next time" → ✅ "... would avoid missing it ..."
+- Length follows context, not a fixed target
+  - Short email/text may attach PDF for details
+  - PDF may split as executive summary +body
+  - Only when situation truly warrants fuller record (e.g. formal complaint), never as padding
+  - Judge by case; e.g. a word-limited job application question cannot use this
+- Avoid repeating the same wording more than once every 1,000 words
+  - If unavoidable (e.g. proper noun/company name recurring throughout), consider introducing occasional variety where natural (e.g. "the firm" instead of the full name each time)
 
 ---
 
@@ -55,7 +88,6 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
 - Remember #rules (CC: root CLAUDE.md)
 - STRICTLY eliminate em dash `—`; en dash `–` ONLY for range (e.g. `1–2`)
 - Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)
-- Avoid repeating same wording more than once every 1,000 words
 - Avoid common GenAI/cliche words & phrases (e.g. tapestry, seamless, myriad, pivotal; "It is important to note...", "A testament to..."), UNLESS literally meant (e.g. "command" key) or a trademark/conventional term
   - `cscpt/dlint.py` enforces the full, growing list (run-not-read)
   - Briefly web_search latest GenAI words (above could be dated)
