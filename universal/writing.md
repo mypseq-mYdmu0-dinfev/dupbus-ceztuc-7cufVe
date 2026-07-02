@@ -3,8 +3,11 @@
 ## General (shared by all writing manners)
 
 - NEVER use em dash `—` for ANY deliverables, only OK for internal use between you and me
-  - When removing a banned dash, RESTRUCTURE the whole sentence —— NEVER a mere comma/colon swap. The dash carries emphasis the rest of the sentence must then absorb, so a direct substitution reads oddly. (`dlint.py` reprints this on every dash flag)
-- NEVER use colons `:` in sentences (e.g. replacing dash) as it still breaks the narrative; only OK when followed by a list AND when listing per se is context-appropriate
+  - When removing dash, RESTRUCTURE whole sentence —— NEVER mere comma/colon swap
+  - Dash carries emphasis the rest of sentence must then absorb; direct substitution reads oddly
+- NEVER use colons `:` in sentences
+  - e.g. replacing dash —— It still breaks the narrative
+  - Only OK when followed by a list AND when listing per se is context-appropriate
 - Writing should read fluently ALOUD if possible (esp. `#style`), not just scan well visually
   - If sounds awkward spoken, try to restructure it even if it reads fine on the page
   - Avoid sentence/clause-initial "Where" (e.g. "Where [condition], [statement]"): prefer "whilst/since/as/owing to/etc." OR restructure like "[Statement], where [condition]" etc.
