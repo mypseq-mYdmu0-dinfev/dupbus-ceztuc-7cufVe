@@ -14,12 +14,12 @@
 5. The big one is the first one: sequencing around the peak season, not against it.
 6. The original draft back-loads the case studies into September to December, which is exactly when the technicians & PMs are flat out.
 7. So I've front-loaded the case-study interviews into the quiet July and August window, banked the materials whilst the mates are actually around, and left the writing to run steadily afterwards.
-8. That single move managed a major risk  of the plan.
+8. That single move managed a major risk in the plan.
 9. For the other 4, I'll go through quickly: phase the build rather than run all 6 pillars at once; make the hours honest, so every month carries a real hour-budget; respect the review gate on both sides, because front-loading my work also front-loads your reviewing; and calibrate to the market, which I'll come back to on the table.
 10. P.2 just lists the constraints I deliberately built around, the peak season, the 24-hour week, organic-only for the first year, your approval gate, and the fact that this is genuinely 1 person + AI, not a team yet.
 
 ## The reworked plan, month by month (pages 3 to 5)
-1. P.3 to 5 are the plan itself, which I kept the IBE (Immerse, Build, Execute structure).
+1. P.3 to 5 are the plan itself, where I kept the IBE (Immerse, Build, Execute structure).
 2. On P.3, Month 1 is immersion and 3 audits, which I have spanned across the weeks rather than dumping all 3 at the end of week 2, plus starting those case-study interviews early.
 3. On P.4, Month 2 is where the systems get built: the content calendars, 5 case studies, the HubSpot essentials, and the website proposal.
 4. And I've been honest that August is actually the heaviest month, so I flag exactly how I protect it.
@@ -36,7 +36,7 @@
 1. P.7 is the part I am most keen to talk about, because it is what makes a 24-hour week credible in the first place.
 2. In a nutshell, I build systems to do the heavy lifting and keep the judgement for myself.
 3. For case studies, I would manage the interviews and run an agentic system that turns a transcript into a first draft, then I edit for your review & approval.
-4. One event becomes a week of social content through a repurposing system.
+4. One event becomes a week of social content (3–5 posts) through a repurposing system.
 5. For video, my AI systems handle B-rolls & graphics, but the real footage of the work on site remains real, because that is the actual selling asset and AI cannot fake it.
 6. And I am deliberate about what AI should not touch, the judgement, the brand fit, the factual accuracy, all of that stays with me and with your approval gate.
 
