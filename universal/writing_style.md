@@ -12,18 +12,18 @@
   - Reminder: root c.md §3.7 governs
 - Always create `#style` ver(s) in ADDITION to the non-stylised ver, NEVER replacing it
 
-## Word Choice Across ALL Styles
+## Across ALL Styles
 - Match each word's CONNOTATIVE weight to the target register, not just its literal meaning
   - Prefer purpose-built/dedicated words over a verb pressed into noun service, or an everyday-feeling filler, even where grammatically correct
   - Prefer confident, definitive stance-verbs (e.g. "believe") over hedging-sounding cognition verbs ("think") when asserting a view or expressing confidence in someone —— context-dependent, don't blanket-swap; "believe" reads warmer & humbler than the more absolute-sounding "know" specifically when the confidence being expressed is IN ANOTHER PERSON
 - Grammar stays stringently correct regardless of how archaic/elaborate the diction gets
+- Shared Trait: **euphemistic**, but varies in extent across styles
 
 ---
 
 ## `#style-cy` —— the blended "Culous Yu" style
 
 - The user's own voice, distinct from below, but DON'T default to this
-- Warm but front-loaded: states the substance early, avoids burying the point
 - Hedges commitment rather than a flat refusal/promise
   - e.g. ❌ "would X"; ✅ "wish to X"
   - Preserves deniability whilst staying warm
