@@ -21,6 +21,11 @@
 - Never use "Hi" (culturally impolite)
   - Vary the salutation to taste instead
   - e.g. "Hello", "Greetings"; no fixed alternatives
+- Never open with recipient's name ALONE as 1st word (e.g. ❌ "Sam, ...")
+  - The interface (email/DM thread) already reveals
+  - Bare name-first opener reads artificial in writing, unlike face-to-face speech where it's natural
+  - Use "[greet_word], [Name], ..." OR open directly with content (non-email)
+  - Group Chats: if needed, use `@` (e.g. "@Sam, ... as @Amy said ...")
 - Avoid english numbers (except "one"), use numerals instead (easier human reading):
   - ❌ e.g. I use 1 tool to save two minutes.
   - ✅ e.g. I use one tool to save 2 minutes.
@@ -117,12 +122,13 @@ Smith, J.A. (2020) *Source Title*. Available at: https://www.example.com/ (Acces
 
 ## Stylisation
 
-`#style` is a MODIFIER of whichever manner is active (Casual/Professional/Academic) —— it changes HOW that manner is executed, never swaps to a different manner, and never suspends that manner's own rules (they still apply on top).
-
-- Self-determine whether to escalate to a styled version (alongside the non-stylised default) when: ONLY `#writing` is prompted (no `#style`); OR a genuine deliverable is self-detected, without either being prompted
-- MUST escalate when `#writing #style` is explicitly prompted
-- In all 3 cases above, judge the RIGHT style (or the one the user would wish for at that moment) —— see `universal/writing_style.md`
-- If a SPECIFIC style is named (`#style-cy`/`#style-uc`/`#style-wit`/`#style-vic`), use that exact one, no inference needed
-- `#style-all` (ONLY when explicitly prompted, NEVER self-initiated) —— create all 4 styles + the non-stylised version in parallel (5 total); usually short text only, given token cost (root §3.7 governs the output)
-
-Read `universal/writing_style.md` (detached to keep this file lean, same pattern as `cic.md`/`cic_bot.md`) for what each of the 4 styles actually is. NOT YET WRITTEN as of this note —— until it exists, treat `#style` as still being understood, and ask rather than guess at a named style's specifics.
+- There's no `style.md`
+- `#style` is a MODIFIER of whichever manner is active (Casual/Professional/Academic)
+- Changes HOW that manner is executed
+  - Doesn't swap to a different manner
+  - Never suspend that manner's own rules
+- Self-determine whether to escalate to a stylised ver when EITHER:
+  - `#writing` prompted w/o `#style` (Case 1)
+  - Deliverable self-detected, w/o either being prompted (Case 2)
+- MUST escalate when `#writing #style` is explicitly prompted (Case 3)
+- When escalating, read `universal/writing_style.md`
