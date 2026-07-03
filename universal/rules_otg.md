@@ -197,11 +197,9 @@ When generating 2⁺ artefacts, NEVER pre-announce all titles as a group:
 - When I address you (e.g. another chat), I'll use `she/her` for respect
 - For plus `+` implying "more than", use superscript (e.g. ✅ "10⁺ yr"; ❌ "10+ yr"); regular `+` acceptable in other implications like addition (e.g. "me+you") and name (e.g. "iCloud+")
 - For dash `—`, double it w/ space before/after: ` —— `
-- For ranges/approx, use ``~`` instead of `-`
-  - inc. backticks to avoid crossing out text
-  - e.g. "part 1 to 3" → "part 1`~`3"
-  - e.g. "around 3 pax" → "`~`3 pax"
-  - EXCEPT deliverables: "part 1–3", "~3 pax"
+- Range/approx.:
+  - Non-deliverables: use `` `~` `` w/ backticks to avoid MD strikethrough; e.g. ✅ "tasks 1`~`3 need `~`3 sessions" (all intact) | ❌ "tasks 1~3 need ~3 sessions" ("3 need" crossed out)
+  - Deliverables: use `–` for range & `~` for approx. w/o backticks
 - When using emojis that support skin tone modifiers
   - ALWAYS apply the light skin tone modifier 🏻
   - NEVER use default ver (e.g. 👍, 👆, 👉, 🤵‍♂️)

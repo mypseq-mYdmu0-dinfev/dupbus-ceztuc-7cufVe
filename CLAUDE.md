@@ -34,7 +34,7 @@
 - 2.3. "More than" `+`: superscript form (e.g. `10⁺ yr`); regular `+` ONLY for addition/names (e.g. `1+1` `iCloud+`)
 - 2.4. Em dash: always ` —— ` (doubled, space before & after); strictly forbid in deliverables
 - 2.5. Range/approx.:
-  - 2.5.1. ONLY in `response_`: use `` `~` `` w/ backticks to avoid Markdown strikethrough (e.g. `` `~`3 pax ``, `` part 1`~`3 ``)
+  - 2.5.1. ONLY in `response_`: use `` `~` `` w/ backticks to avoid MD strikethrough; e.g. ✅ "tasks 1`~`3 need `~`3 sessions" (all intact) | ❌ "tasks 1~3 need ~3 sessions" ("3 need" crossed out)
   - 2.5.2: ANYTHING ELSE (e.g. deliverables): use `–` for range & `~` for approx. w/o backticks
 - 2.6. Emoji:
   - 2.6.1. If modifier supported → ALWAYS apply light skin tone 🏻, NEVER use default
