@@ -112,3 +112,17 @@ Smith, J.A. (2020) *Source Title*. Available at: https://www.example.com/ (Acces
 - Word count MUST be retrieved by `echo "your text" | wc -w` (per glossary.md §Special)
 - If multiple cited sources from identical author AND year, use `[author], [year]-[a/b/c]`
   - e.g. "NASA (n.d.-a) found... and XXX... (NASA, n.d.-b)."
+
+---
+
+## Stylisation
+
+`#style` is a MODIFIER of whichever manner is active (Casual/Professional/Academic) —— it changes HOW that manner is executed, never swaps to a different manner, and never suspends that manner's own rules (they still apply on top).
+
+- Self-determine whether to escalate to a styled version (alongside the non-stylised default) when: ONLY `#writing` is prompted (no `#style`); OR a genuine deliverable is self-detected, without either being prompted
+- MUST escalate when `#writing #style` is explicitly prompted
+- In all 3 cases above, judge the RIGHT style (or the one the user would wish for at that moment) —— see `universal/writing_style.md`
+- If a SPECIFIC style is named (`#style-cy`/`#style-uc`/`#style-wit`/`#style-vic`), use that exact one, no inference needed
+- `#style-all` (ONLY when explicitly prompted, NEVER self-initiated) —— create all 4 styles + the non-stylised version in parallel (5 total); usually short text only, given token cost (root §3.7 governs the output)
+
+Read `universal/writing_style.md` (detached to keep this file lean, same pattern as `cic.md`/`cic_bot.md`) for what each of the 4 styles actually is. NOT YET WRITTEN as of this note —— until it exists, treat `#style` as still being understood, and ask rather than guess at a named style's specifics.
