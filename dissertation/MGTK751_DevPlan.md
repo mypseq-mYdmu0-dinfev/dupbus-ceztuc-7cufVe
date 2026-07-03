@@ -98,20 +98,25 @@
 
 > P12 effort & critical path: the single item needing Culous' hands (cannot be done by CC alone) is P12.2's figure render in .pages; P12.1/P12.3 are largely re-application of the held batch re-pointed to the new RA; P12.5–P12.6 are mechanical. Rough order: P12.1, P12.3, P12.2 design in parallel; P12.4–P12.6 follow; P12.7 handoff (then re-run P12.6); Culous finalises; P12.8 send last. Gating on Culous for the figure and the dispatch.
 
-## P13. Proposal Approval *(COMPLETE —— 26/06/2026)*
+## P13. Draft Approval & Ethics Gate *(after send)*
 
-## P14. Ethics Forms Preparation *(CURRENT)*
+- P13.1. Await Lu and the two UoL reviewers; address comments, iterating A1R v2.x as needed
+- P13.2. On approval, prepare and submit the ethics application (hard gate —— no data collection before written approval); prep and submission are expanded as P14 and P15 respectively
+
+## P14. Ethics Forms Preparation
 
 - P14.1. Setup
-  - P14.1.1. Duplicate the 3 templates (`/From Lu/Ethics Forms/`) into new `dissertation/ethics/` as `.md` —— never touch the source `.docx`/`.doc` (textutil/pandoc to extract)
-  - P14.1.2. Read CB §11 (safe-framing test) + §7.2 (retained-guide basis); A1R §3; `Key Ethics Information Required.docx`
+  - P14.1.1. Bring the 3 templates (`/From Lu/Ethics Forms/`) into new `dissertation/ethics/` —— for each, `X.docx` → `X.md` (faithful pristine conversion via pandoc/textutil) PLUS a working copy `X_filled.md`; amend only `X_filled.md` so the `X.md`↔`X_filled.md` diff shows every edit; never touch the source `.docx`/`.doc`
+  - P14.1.2. Read CB §11 (safe-framing test) + §7.2 (retained-guide basis); A1R §3 + §4 milestones; `Key Ethics Information Required.docx` + the ethics-form example
   - P14.1.3. Remarks: invariants —— never disclose pre-screening survey (AD08.4.1); one-per-org = isolation only (AD10.4.1); participants speak to own experience, never evaluate a current employer; no collection before written approval
 
-- P14.2. Interim Reply
-  - P14.2.1. Draft Log 25 to Lu in `lu.md` —— recovered, delighted at approval, starting the ethics forms
+- P14.2. Requirements Research
+  - P14.2.1. SA via #cic —— does UoL online-MBA ethics require verbatim interview questions or a guide-level outline; how strictly must submitted materials be followed post-approval (flex latitude)
+  - P14.2.2. SA via #cic —— independently re-check whether one may interview only the participant type(s) the approval covers (proceed with all 3 sets regardless, per user 04/07)
+  - P14.2.3. Remarks: SAs told "you're a sub-agent" (§9.3); validate via #cic, not web_search alone
 
 - P14.3. Information Sheet
-  - P14.3.1. Amend the PIS `.md` —— TPS in AU KBFs; CYC simulated-MCF context; voluntary; confidential + de-identified; right to withdraw; data handling; approval before contact
+  - P14.3.1. Amend the PIS `.md` —— generic to all 3 participant types; TPS in AU KBFs; CYC simulated-MCF context; voluntary; confidential + de-identified; right to withdraw; data handling; approval before contact
 
 - P14.4. Consent Form
   - P14.4.1. Amend the Consent `.md` —— individual consent; own-experience framing; recording consent; withdrawal; de-identification
@@ -119,20 +124,21 @@
 - P14.5. Risk Assessment
   - P14.5.1. Amend the Risk `.md` —— low-risk interview study; TPS psychological sensitivity + signposting; data security; lone-researcher safeguards
 
-- P14.6. Interview Guide
-  - P14.6.1. Build a semi-structured TPP-only guide aligned to RQ1 (conditions) + RQ2 (peer experience) and the §2 sensitising concepts; open, non-leading; safe-framing
-  - P14.6.2. Remarks: TPP only this stage (user 27/06); add TP/manager later via ethics amendment if recruited —— avoids triple work on a sanity-check stage
+- P14.6. Interview Guides
+  - P14.6.1. Build all 3 semi-structured guides (TPP primary, TP, manager) —— each aligned to RQ1 (conditions) + RQ2 (peer experience) and the §2 sensitising concepts; open, non-leading; safe-framing; "just right" depth (flexible yet approval-ready)
+  - P14.6.2. TPP guide flawless —— extra scrutiny, self-challenge, and an SA red-team on it specifically; TP and manager held to a solid bar
+  - P14.6.3. Remarks: all 3 approved now so recruited TP/manager are usable without a later amendment (which would strain Lu → grade)
 
 - P14.7. QC & Lint
-  - P14.7.1. Safe-framing + alignment QC —— every form passes CB §11, consistent with A1R §3, no comparability/authorisation flags
-  - P14.7.2. Run `cscpt/dlint.py` (FULL) on each form's prose; loop-fix RED to 0; UoL boilerplate/field labels are justified exceptions
+  - P14.7.1. Safe-framing + alignment QC —— every deliverable passes CB §11, consistent with A1R §3, no comparability/authorisation flags
+  - P14.7.2. Run `cscpt/dlint.py` (FULL) on each deliverable's prose; loop-fix RED to 0; UoL boilerplate/field labels are justified exceptions
 
 - P14.8. Handoff
-  - P14.8.1. Finalise the 4 `.md` (3 amended forms + interview guide) in `dissertation/ethics/`
-  - P14.8.2. Draft the completion note to Lu as Log 26 in `lu.md`, mapping each form to her Log 24 asks
+  - P14.8.1. Finalise in `dissertation/ethics/` —— 3 amended forms (each `X_filled.md` beside its pristine `X.md`) + 3 interview guides
+  - P14.8.2. Draft the lightweight Lu email as the next Log in `lu.md` —— brief status + one concise dedication line (weekend context handled gently)
   - P14.8.3. Remarks: handoff to Culous —— relayout `.md` to `.pages` in `…/MGTK751 MBA Project/Ethics/`, export PDF, send to Lu + upload to her shared drive, then await Lu for P15
 
-## P15. Online Ethics Application *(GATED —— Lu authorises)*
+## P15. Online Ethics Application
 
 - P15.1. Await & Access
   - P15.1.1. Await Lu's go-ahead on the online form (she said: do NOT start it until instructed)
@@ -140,7 +146,7 @@
   - P15.1.3. Read the VLE "Guidance for using the Ethical Approval System" + Field Work Document
 
 - P15.2. Pre-fill
-  - P15.2.1. Map known fields (Lu.md Log 23) —— Q1.9 "Online Programme", Q1.22 "Human Participants", Epigeum Q25.5/25.6 = 0742720007 (Lu); attach the 4 forms
+  - P15.2.1. Map known fields (Lu.md Log 23) —— Q1.9 "Online Programme", Q1.22 "Human Participants", Epigeum Q25.5/25.6 = 0742720007 (Lu); attach the ethics forms + interview guides
   - P15.2.2. Pre-fill all reversible fields, logging each; STOP immediately before the irreversible Submit (sprint.md caveat)
 
 - P15.3. Approval
@@ -154,11 +160,11 @@
   - P16.1.2. Verify CoreRef.md / RefRepo.md page-number flags all cleared and accurate
 
 - P16.2. Distil PART C
-  - P16.2.1. Compress AD08~AD12 into a concise historic record (AD01~AD07 already externalised)
+  - P16.2.1. Compress AD08–AD12 into a concise historic record (AD01–AD07 already externalised)
   - P16.2.2. Remove A1/A1R tactical detail no longer relevant for A2/A3
 
 - P16.3. Rebuild PART A
-  - P16.3.1. Stub P01~P15 as completed
+  - P16.3.1. Stub P01–P15 as completed
   - P16.3.2. Build detailed A2/A3 phases to 23/11/2026 (data collection, transcription, coding, analysis, A2 slides + recording, A3 writeup, QC, submission)
 
 ---
@@ -203,6 +209,13 @@
 - **RQs:** unchanged (RQ1 conditions; RQ2 peer experience); accepted implicitly by Lu (Log 18)
 - **Domain:** KM, not HR (CB §1.3); retain "team cohesion and knowledge governance" (Lu adopted this wording)
 - **Audience rule:** A1R serves Lu AND two UoL reviewers AND seats A2/A3. For any wording an objective reviewer could misread, reword in A1R; for a point that is only Lu's misread, explain by email and keep A1R clean
+
+## M5. DevPlan Editing Discipline (standing)
+
+- The DevPlan is a plan to FOLLOW, not a checklist to mutate —— do NOT edit phases as work progresses, and do NOT add progress markers (e.g. `*(CURRENT)*` / `*(COMPLETE)*`); current whereabouts come from session context and the session-start handoff, not this file
+- Frequent per-step edits are error-prone and defeat the file's purpose; substantive updates append as ADs at the foot (PART C)
+- Stub completed phases ONCE at reconstruction (P16.2/P16.3), together, never piecemeal
+- ANY structural edit here must first re-read `universal/plan.md` for format compliance (lean headings, no PX.0, max 9 per level, tasks-vs-remarks); this would have pre-empted the P13/P14 slips of 04/07
 
 ---
 
