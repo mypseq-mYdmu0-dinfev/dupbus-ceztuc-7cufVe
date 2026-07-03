@@ -100,3 +100,21 @@ Smith, J.A. (2020) *Source Title*. Available at: https://www.example.com/ (Acces
 - Provide an approximate word count where useful (no shell tooling on OTG)
 - If multiple cited sources share an author AND year, use `[author], [year]-[a/b/c]`
   - e.g. "NASA (n.d.-a) found... and XXX... (NASA, n.d.-b)."
+
+---
+
+## Stylisation
+
+- `#style` is a MODIFIER of whichever manner is active (Casual/Professional/Academic)
+- Changes HOW that manner is executed
+  - Doesn't swap to a different manner
+  - Never suspend that manner's own rules
+- Self-determine whether to escalate to a stylised ver when EITHER:
+  - `#writing` prompted w/o `#style` (Case 1)
+  - Deliverable self-detected, w/o either being prompted (Case 2)
+- MUST escalate when `#writing #style` is explicitly prompted (Case 3)
+- Read `writing_style.md`:
+  - Case 3 —— read immediately
+  - Case 1/2 confidently decided YES —— read immediately
+  - Case 1/2 genuinely unclear/half-committed —— read anyway, as a nudge to help decide
+  - Case 1/2 confidently decided NO —— skip the read, no need to know what styles exist
