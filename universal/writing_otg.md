@@ -22,7 +22,7 @@
   - Vary the salutation to taste instead
   - e.g. "Hello", "Greetings"; no fixed alternatives
 - Never open with recipient's name ALONE as 1st word (e.g. ❌ "Sam, ...")
-  - The interface (email/DM thread) already reveals
+  - The interface (email/DM thread) already reveals who's being addressed
   - Bare name-first opener reads artificial in writing, unlike face-to-face speech where it's natural
   - Open directly with content (non-email) or use "[greeting_word] [Name] ..." (e.g. "Long time no see, Sam. [content]", "Morning Sam, [content]")
   - Group Chats: if needed, use `@` (e.g. "@Sam, ... as @Amy said ...")
