@@ -35,7 +35,7 @@ format e.g.:
 [121941] **Elena**: And three years for my partner. So yeah, that’s very… {laughing softly, happy}
 [121946] **User**: Where did you go? {interested}
 [121947] **Elena**: Bali. {grinning, slightly bashful}
-[121955] **User**: Really? Typical one. I still haven’t been there yet, but I do wish I can go sometime. [that makes one of us?]. {teasing, conversational}
+[121955] **User**: Really? Typical one. I still haven’t been there yet, but I do wish I can go sometime. {teasing, conversational}
 [121956] **Elena**: Yes, it was great. It was much needed. {smiling warmly, nodding}
 [122000] **User**: Yeah, but is it summer or winter there? I’m not so sure. It’s like the middle of, you know, the hemisphere. {curious, gesturing slightly}
 [122007] **Elena**: Ah, they don’t have winter, they only have dry season and wet season, and we went in the dry season. {informative, slightly amused}
@@ -45,7 +45,7 @@ format e.g.:
 [122027] **Elena**: Right now? {nodding}
 [122028] **User**: Yeah. {agreeing}
 [122030] **Elena**: No, the most popular is end of July and August. {correcting gently, informative}
-[122036] **User**: Oh, [so you went just in time?] Cool. {impressed}
+[122036] **User**: Oh, so you went just in time? Cool. {impressed}
 [122038] **Elena**: Yes. Okay, because we didn’t want to sit there with that many people, because it was a little chaotic as it was, but I can imagine in July it gets very hectic. {smiling, expressive, gesturing with hand}
 [122055] **User**: That’s cool.
 [122057] **Elena**: How are you? {friendly pivot to professional}
