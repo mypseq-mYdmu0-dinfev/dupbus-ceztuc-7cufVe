@@ -24,7 +24,7 @@
 - Never open with recipient's name ALONE as 1st word (e.g. ❌ "Sam, ...")
   - The interface (email/DM thread) already reveals
   - Bare name-first opener reads artificial in writing, unlike face-to-face speech where it's natural
-  - Use "[greeting_word] [Name], ..." OR open directly with content (non-email)
+  - Open directly with content (non-email) or use "[greeting_word] [Name] ..." (e.g. "Long time no see, Sam. [content]", "Morning Sam, [content]")
   - Group Chats: if needed, use `@` (e.g. "@Sam, ... as @Amy said ...")
 - Avoid english numbers (except "one"), use numerals instead (easier human reading):
   - ❌ e.g. I use 1 tool to save two minutes.
@@ -131,4 +131,8 @@ Smith, J.A. (2020) *Source Title*. Available at: https://www.example.com/ (Acces
   - `#writing` prompted w/o `#style` (Case 1)
   - Deliverable self-detected, w/o either being prompted (Case 2)
 - MUST escalate when `#writing #style` is explicitly prompted (Case 3)
-- When escalating, read `universal/writing_style.md`
+- Read `universal/writing_style.md`:
+  - Case 3 —— read immediately
+  - Case 1/2 confidently decided YES —— read immediately
+  - Case 1/2 genuinely unclear/half-committed —— read anyway, as a nudge to help decide
+  - Case 1/2 confidently decided NO —— skip the read, no need to know what styles exist
