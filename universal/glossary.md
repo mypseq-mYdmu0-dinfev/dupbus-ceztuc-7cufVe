@@ -80,6 +80,10 @@
 - deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
 - summon me = push an app notification by using interactive-question tool (random Q if no QB)
 - pcmd = prompt/protocol & context .md files; e.g. `br.md` = prompt; `profile.md` = context
+- "professional" (w/ quotes) = user's own definition: **a bar, not a degree**; a role/standard one either meets or does not, akin to a "professional camera", defined by whether the paid work it enables clears the bar, not by attitude or output quality
+  - e.g. Canon 1DX Mark I is an old but professional camera, despite likely lower quality than modern iPhone, vice versa
+  - e.g. Experienced/renowned PM struggles in comms/breaks promise = not a "professional"
+  - e.g. ❌ "X is less professional"; ✅ "X is not a professional"
 
 ---
 
