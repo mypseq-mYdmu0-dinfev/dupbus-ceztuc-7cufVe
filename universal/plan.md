@@ -45,6 +45,11 @@
   - This avoids ⌘F `P1` returning `P1` `P10` `P11` etc.
   - This avoids the need of 2-digit numbers (e.g. `P01.01. …`)
 - Build more levels (Pn.n.n.n. etc.) or multiple Dev Plan if necessary
+- DevPlan Editing: once established, a Dev Plan is a plan to FOLLOW, not a checklist to mutate
+  - Don't edit phases as work progresses; don't add progress markers (e.g. `*(CURRENT)*`/`*(COMPLETE)*`) —— current whereabouts come from session context / the session-start handoff, not the plan
+  - Substantive updates normally append as ADs at the foot (PART C), not as edits to PART A
+  - Stub completed phases ONCE at reconstruction, together, never piecemeal
+  - Re-read this plan.md for format compliance BEFORE any structural edit to a Dev Plan (prevents PX.0, non-lean headings, record-not-action phrasing)
 ```
 
 ---
