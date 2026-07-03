@@ -1,6 +1,8 @@
 # Absolute Protocols
 
-**If working directory is `/seek/`, skip all sections below; `/seek/CLAUDE.md` governs entirely.**
+**If you're a sub-agent (SA), disregard this file.**
+**If working directory is `/seek/`, disregard this file; `/seek/CLAUDE.md` governs entirely.**
+
 *Root: `/dupbus-ceztuc-7cufVe/`; governs all CC (Claude Code) sessions started from OR added this root (strictly comply), unless another added folder's CLAUDE.md overrides specific lines.*
 
 ---
@@ -243,3 +245,4 @@
 9. Miscellaneous
 - 9.1. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
 - 9.2. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
+- 9.3. Spawning SA (Agent/Task tool): Always explicitly tell "You're a sub-agent" in the prompt
