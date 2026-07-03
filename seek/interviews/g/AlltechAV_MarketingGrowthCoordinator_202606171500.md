@@ -693,3 +693,30 @@ Culous
 - Resilience yellow-flag: despite any "nation-wide" framing, the firm is Sydney-based and regional (jobs mainly NSW, lower QLD, upper VIC), so more exposed if the NSW market contracts, reinforcing the bearish long-term read (§9.6.4); still a reasonable local-experience stepping stone.
 - Status: the user likely advanced to an in-person Stage 3 with director Seb (~80% confidence; Elena to confirm by end of day Fri 03/07); dress casual (Seb vetoes overdressed candidates). Stage-3 prep must include studying the StoryBrand framework (Donald Miller's customer-as-hero messaging model, distinct from "brand-story video").
 - The full reconstructed interview transcript is kept as a separate working file (`temp/temp_int/20260625_Alltech/output/Alltech_interview_transcript_202607021219_fixed.md`), not appended here owing to size; to be folded in or discarded once this application resolves.
+
+## Stage 3 Prep & Strategy Notes
+*Captured 202607031748 (CC). Durable notes for the Stage-3 push and the accept/decline; most are conditional.*
+
+- **Follow-up timing:** Elena promised an update by end of Fri 03/07 but (true to her messy scheduling) did not reply. Expect Monday 06/07; if still silent by Tuesday 07/07, soft-push on Wednesday 08/07. Her update is either a Stage-3 invite or a rejection (~80% read = advanced).
+- **AI-disclosure strategy (standing):** do NOT fully explain or over-disclose the user's AI capability to Alltech. Governing line: *show, do not tell; and reveal over time rather than all at once, since staged disclosure compounds into lasting impact and preserves working slack once hired.* Applies to all future Alltech comms. (If hired, keep a private running log of what has been disclosed, to keep the staged reveal consistent.)
+- **StoryBrand:** confirmed. Elena literally said "customer is the hero", the core tenet of Donald Miller's StoryBrand (SB7) messaging framework. The user aptly disclaimed uncertainty in the room. Study it properly ONCE Stage 3 is confirmed (it is distinct from a "brand-story video"; it leans branding, which the user prefers).
+- **Web-dev grade (background only):** the academic site shown in the interview ("Cariculous", a functional car-rental booking site with backend and AJAX) actually scored 100%; the subject "Internet Programming" scored 97% across three assessments. The user said "90%" in the room. Surface the true 100% ONLY if Elena or Seb re-ask; otherwise do not raise it (the role is not web-dev-exposed).
+- **If hired, storage:** research whether Google Photos stores losslessly; if theirs is lossy, consider flagging it (saves them, shows tech-savvy). The user's own practice is to keep masters in Google Drive (lossless) and only DUPLICATE to Google Photos for the visual convenience, not migrate. His personal setup mirrors a local NVMe (Fury Renegade 2TB) to Drive for fast local plus remote RAID access, worth suggesting to Alltech (large Drive downloads can take hours to days).
+- **If hired, connectivity:** the user will keep using his own machine (WSM), remote-controlled via AnyDesk (TeamViewer backup), so confirm Alltech's NBN tier AND the actual wifi speed. Benchmark: at or above his home (↓246 Mbps, ↑46.3, ping 7 ms, jitter 2 ms) is fine.
+
+## People Profiles (for future comms & decisions)
+*Captured 202607031910 (CC). Observations plus clearly-labelled inferences; refine as more surfaces.*
+
+**Elena Melnykova** (Head of Strategic Ops & Growth; hiring manager; fractional):
+- Self-described (repeatedly, this interview) as "chaotic"/messy, corroborated by the multiple reschedules and time mix-ups across Stages 1–2. Understandable for a lean crew-house, not a red flag, but calibrate: expect slow, uneven responses and approval latency; keep follow-ups gentle and patient.
+- Capable strategist and EOS believer, AI-positive but executes "good-not-meticulous" (§9.4); values self-direction and being challenged, not merely obeyed.
+- Reads the user as highly educated and "killer-grade", and flagged culture fit (too professional vs banter) as her sole concern, which he performed past.
+
+**Sebastian "Seb" Hall** (Director/Founder; final decision-maker; appears at Stage 3):
+- Still thin online; the one hard new clue is behavioural: he strongly prefers casual dress and will "veto" overdressed candidates (per Elena). Inference (labelled): likely a casual, easy-going, typical-Aussie "mate", not a suit.
+- Founder-salesman who has personally run sales for ~17 years (since 2009); the firm has survived a fragile, demand-taking, large-client-dependent market including COVID. Inference: his relationship-first, hustle personality plausibly IS the survival moat, which also makes him a single point of dependency (the marketing function exists partly to scale demand beyond his personal network).
+- Stage-3 lens to prep for: cost, hustle, loyalty, relationship, and "is this person low-maintenance and one of us", more than strategy altitude (Elena's lane). Dress casual; lean into mate-rapport and the builder story, holster the polish.
+
+**Soft signal** (labelled inference, not evidence): the user did NOT ask about dress code, yet Elena volunteered Seb's "veto", a mild positive that she personally may favour him (she could have let him walk into that pitfall). Weight lightly; consistent with the ~80% "advanced" read, but could equally be default thoroughness.
+
+**Firm framing** (context): Alltech is, bluntly, a competent Sydney crew-house, not prestigious or large-scale; regional, word-of-mouth-dependent, asset-heavy. Good for local AU experience and a stepping stone; a poor long-term bet (reinforces §9.6.4).
