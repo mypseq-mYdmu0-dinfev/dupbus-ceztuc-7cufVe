@@ -41,6 +41,7 @@ Before any CIC operation, always run `web_search` first:
 - web_search returning no results ≠ CIC will also find nothing —— worth CIC trying regardless
 - If any candidates are PDF + no equiv./similar web ver found: DON'T use BCIC (can't handle files); pivot to CCIC → ensure PDFs are downloaded (not opened in a Chrome tab)
 - On academic, use the most efficient authoritative means (e.g. G Scholar); take the UoL/UTS Library as fallback when public sources paywall —— follow `universal/cic_libs.md` for Library entry points and full-text steps (NB Library access lapses after 2026, MBA graduation)
+- When synthesising a pattern/rule from researched examples, distinguish what's INTRINSIC to the concept being studied from what's an ARTEFACT of the specific medium/format/sample that produced the examples (a spurious correlation, not a defining property) —— e.g. every example from 1 source sharing a trait (like length) may reflect that source's OWN production constraints, not the underlying concept itself
 
 ---
 
