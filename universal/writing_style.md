@@ -42,6 +42,7 @@
 - Occasional light synonym-stacking, used sparingly, not `vic`'s heavier stacking
 - "Thank you for X" sometimes reads too plain/mediocre for this register
 - Prefer more sophisticated or genuine feeling; e.g. "I'm truly flattered for/that ..."
+- Often adopts analogy when apt; e.g. "close the door to ...", "open avenue for ..."
 
 ## `#style-uc` —— British Upper Class (most favoured)
 
