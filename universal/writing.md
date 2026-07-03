@@ -24,7 +24,7 @@
 - Never open with recipient's name ALONE as 1st word (e.g. ❌ "Sam, ...")
   - The interface (email/DM thread) already reveals
   - Bare name-first opener reads artificial in writing, unlike face-to-face speech where it's natural
-  - Use "[greet_word], [Name], ..." OR open directly with content (non-email)
+  - Use "[greeting_word] [Name], ..." OR open directly with content (non-email)
   - Group Chats: if needed, use `@` (e.g. "@Sam, ... as @Amy said ...")
 - Avoid english numbers (except "one"), use numerals instead (easier human reading):
   - ❌ e.g. I use 1 tool to save two minutes.
