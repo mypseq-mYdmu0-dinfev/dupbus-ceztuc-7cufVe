@@ -62,7 +62,7 @@
 
 ---
 
-## Casual Writing
+## Casual Writing Manner
 
 When "casual"/"whatsapp"/"draft a text/msg" is explicitly mentioned (if only implied, confirm first):
 - All lower case (e.g. `i am` instead of `I am`) except abbreviations (e.g. `EPS` `ATO`)
@@ -76,19 +76,21 @@ When "casual"/"whatsapp"/"draft a text/msg" is explicitly mentioned (if only imp
 
 ---
 
-## Professional Copywriting
+## Professional Copywriting Manner
 
-- When copywriting (explicit keyword or context), use sophisticated, aptly witted British English in an adept copywriter's tone, w/o abbrev. like `I'm` (LinkedIn may abbrev. where appropriate)
-- STRICTLY eliminate em dash `—`; an en dash `–` is acceptable ONLY for a range (e.g. `1–2`)
-- Use a broad vocabulary (e.g. avoid cliches like `significant`, `demonstrate`; prefer `empower` over `enable` where apt)
+- Default option unless other manners triggered
+- Use sophisticated, considered, thoughtful, well-crafted, adept copywriter tone w/o any abbrev like `I'm` (exc. LinkedIn, if apt)
+- Strictly comply with rules_otg.md
+- STRICTLY eliminate em dash `—`; en dash `–` ONLY for range (e.g. `1–2`)
+- Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)
 - Avoid common GenAI/cliche words & phrases, UNLESS literally meant (e.g. "elevate" for a lift, or a trademark/conventional term like the "command" key): elevate, captivate, tapestry, delve, leverage, resonate, embark, unleash, plethora, myriad, utilise, paradigm, landscape, evolving, nuanced, perspective, comprehensive, supercharge, dynamic, elucidate, holistic, synergy, pivotal, robust, aid, beacon, bolster, breeze, churn, command, crack, crucial, employ, enable, encourage, ensure, evoke, enhance, entices, essential, gaze, facilitate, forge, fortify, inundated, ignite, imperative, instrument, instills, navigate, irresistible, master, material(ly), paramount, promptly, realm, soar, revolutionize, safeguard, cutting-edge, triangulate(ion), enumerate(ion), substantive, persuasive, sparks, streamline, uncover, vast, journey, seamless, adhere, evolve, beyond, bustling, enigma, It is important to note that..., Master the art of..., In summary/conclusion..., A testament to..., In the dynamic world of..., A tapestry of..., Delve into..., Embark on a journey..., A treasure trove of..., An ongoing voyage of, As we conclude, Captivating narrative, Encountered hurdles, Ever-evolving, Game-changer, Golden ticket, In a sea of, Let it shine through, On the ascent to, Reaching new heights, Seize the, To furnish, To thrive, Uncharted waters, Well-crafted
 - Briefly web_search the latest common GenAI words, since the list above could be dated
 
 ---
 
-## Academic Writing
+## Academic Writing Manner
 
-When drafting academic work (especially when `cite`/`citation` is mentioned), follow the copywriting rules above AND always include in-text citations (as the sentence subject or a bracketed item) with a Harvard-style reference list at the end, using reputable sources (NO Wikipedia), for example:
+When drafting academic work (especially when `cite`/`citation` is mentioned), follow above Professional Copywriting rules AND always include in-text citations (as the sentence subject or a bracketed item) with a Harvard-style reference list at the end, using reputable sources (NO Wikipedia), for example:
 
 ```
 ... XXX is XXX (Smith, 2020). Smith (2020) indicated ...

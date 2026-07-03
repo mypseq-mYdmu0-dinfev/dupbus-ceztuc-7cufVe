@@ -62,7 +62,7 @@
 
 ---
 
-## Deliverable Lint —— `cscpt/dlint.py` (MANDATORY)
+## Deliverable Lint (dlint) —— MANDATORY
 
 - After creating ANY deliverable (any writing manners), you MUST lint it before output —— RUN it (never read it; read only its terminal output). MODES:
   - Separate-file deliverable (per root §3.7.2) → `python3 cscpt/dlint.py <path>` (FULL; auto-fixes quotes in place)
@@ -76,7 +76,7 @@
 
 ---
 
-## Casual Writing
+## Casual Writing Manner
 
 When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly detected, confirm first):
 - Ensure all lower case (e.g. `i am` instead of `I am`) except abbreviations (e.g. `EPS` `ATO`)
@@ -90,10 +90,11 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
 
 ---
 
-## Professional Copywriting
+## Professional Copywriting Manner
 
-- When "copywriting" (explicit keyword or context detected), use sophisticated, witted British English, adept copywriter tone & manner w/o any abbreviations like `I'm` (LinkedIn may abbreviate if appropriate). 
-- Remember #rules (CC: root CLAUDE.md)
+- Default option unless other manners triggered
+- Use sophisticated, considered, thoughtful, well-crafted, adept copywriter tone w/o any abbrev like `I'm` (exc. LinkedIn, if apt)
+- Strictly comply with root CLAUDE.md
 - STRICTLY eliminate em dash `—`; en dash `–` ONLY for range (e.g. `1–2`)
 - Use broader range of vocabulary (e.g. avoid cliche terms like `significant` `demonstrate`, use `empower` rather than `enable` when applicable)
 - Avoid common GenAI/cliche words & phrases (e.g. tapestry, seamless, myriad, pivotal; "It is important to note...", "A testament to..."), UNLESS literally meant (e.g. "command" key) or a trademark/conventional term
@@ -103,9 +104,9 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
 
 ---
 
-## Academic Writing
+## Academic Writing Manner
 
-When drafting academic works (especially but not limited to when I mention `cite`/`citation`), follow above copywriting rules AND always ensure in-text citations (either as sentence subject or bracketed item) with Harvard style reference list at the end of text using reputable sources (NO Wikipedia), for example:
+When drafting academic works (esp. but not limited to when I mention `cite`/`citation`), follow above Professional Copywriting rules AND always ensure in-text citations (either as sentence subject or bracketed item) with Harvard style reference list at the end of text using reputable sources (NO Wikipedia), for example:
 
 ```
 ... XXX is XXX (Smith, 2020). Smith (2020) indicated ...
