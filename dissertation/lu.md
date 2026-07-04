@@ -601,7 +601,7 @@ Lu
 
 ### Log 25
 
-*DRAFT cover email for the ethics materials, for Culous to review and send; not yet sent. Attachments = the 6 files in `dissertation/ethics/` (PIS, Consent, Risk Assessment, and interview guides A/B/C), once relaid out to `.pages` and exported to PDF.*
+On 5 Jul 2026, at 05:31, Culous Yu <Culous.Yu@liverpool.ac.uk> wrote:
 
 Hello Lu,
 
