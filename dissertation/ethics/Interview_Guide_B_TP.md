@@ -6,7 +6,7 @@
 | Version | 1, 4 July 2026 |
 | Researcher | Culous Yu, University of Liverpool |
 
-*Note for the reviewer. This supplementary semi-structured guide is used only where a participant identifies during the interview as someone who has been regarded as a standout performer. It explores their professional experience of team dynamics and their own approach to sharing knowledge, drawing on their own experience across current or previous roles rather than any evaluation of an employer’s policies. As with Guide A, the questions stay at the professional level, do not ask about personal distress, and give balanced room to describe both what eased and what strained teamwork. Section B addresses the conditions that shape the dynamics (RQ1), and Section C addresses how those dynamics and knowledge sharing are experienced (RQ2).*
+*Note for reviewer: This supplementary semi-structured guide is used only where a participant identifies during the interview as someone who has been regarded as a standout performer. It explores their professional experience of team dynamics and their own approach to sharing knowledge, drawing on their own experience across current or previous roles rather than any evaluation of an employer’s policies. As with Guide A, the questions stay at the professional level, do not ask about personal distress, and give balanced room to describe both what eased and what strained teamwork. Section B addresses the conditions that shape the dynamics (RQ1), and Section C addresses how those dynamics and knowledge sharing are experienced (RQ2).*
 
 **Interviewer opening (read to the participant)**
 

@@ -6,7 +6,7 @@
 | Version | 1, 4 July 2026 |
 | Researcher | Culous Yu, University of Liverpool |
 
-*Note for the reviewer. This supplementary semi-structured guide is for participants who have managed a team that included a standout performer. It explores their observations, the strategies they used, and the gaps they perceived. The questions draw on the participant’s own experience and stay at the professional level, giving balanced room to describe both what eased and what strained teamwork. Section B addresses the conditions that shape the dynamics (RQ1), and Section C addresses the experience of those dynamics, knowledge sharing, and the managerial response (RQ2).*
+*Note for reviewer: This supplementary semi-structured guide is for participants who have managed a team that included a standout performer. It explores their observations, the strategies they used, and the gaps they perceived. The questions draw on the participant’s own experience and stay at the professional level, giving balanced room to describe both what eased and what strained teamwork. Section B addresses the conditions that shape the dynamics (RQ1), and Section C addresses the experience of those dynamics, knowledge sharing, and the managerial response (RQ2).*
 
 **Interviewer opening (read to the participant)**
 
