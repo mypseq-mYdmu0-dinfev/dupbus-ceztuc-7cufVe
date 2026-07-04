@@ -4,7 +4,7 @@
 ## A. Your DevPlan Changes (Re 27)
 
 39. Identified from git (no full re-read):
-- 39.1. Stubbed P07~P12 to one-line completion markers (e.g. P12 "A1R v2 completed & sent; Log 22"); P07~P09 "done".
+- 39.1. Stubbed P07`~`P12 to one-line completion markers (e.g. P12 "A1R v2 completed & sent; Log 22"); P07`~`P09 "done".
 - 39.2. Restored P13's original title and points —— my rename ("Proposal Approval") made it read as if P13 spanned into P14, breaking the sequence.
 - 39.3. Added the `> Standing Rules:` line at PART B top (line 174).
 - 39.4. Housekeeping (Chat → Session, spacing).
@@ -54,7 +54,7 @@
 ## H. Format Issues + Reformat (I now have the PDF)
 
 52. Root cause —— I converted the `.docx` via pandoc to `.md`, which stripped its real structure. The PDF shows what I missed:
-- 52.1. Sections ARE numbered 1~15; I lost the numbers. Restoring them as two-digit `**01.**`~`**15.**` so `⌘F "01"` lands cleanly.
+- 52.1. Sections ARE numbered 1`~`15; I lost the numbers. Restoring them as two-digit `**01.**` `~` `**15.**` so `⌘F "01"` lands cleanly.
 - 52.2. The `> ` blockquotes were pandoc's rendering; I will keep a single `> ` per block but on ONE unwrapped line, so you strip the prefix once per block, not per wrapped line.
 - 52.3. Item 8 ("How will my data be collected … destroyed") is a 2-column table; I will render each left-column question as a sub-heading with its answer as text beneath, which is both readable and easy to grab.
 53. Reformatting all 3 forms (pristine and filled) to match the PDFs, via a sub-agent (mechanical, and it preserves my context). I will keep your pristine-vs-filled diff intact by reformatting the pristine, then re-applying only the content fills to a `_filled2` copy, and voiding the old `_filled` for your review and rename.
