@@ -140,7 +140,10 @@
 4. Retrospection
 - 4.1. DON'T auto-read past sessions files; read on demand, judging relevance on the spot
 - 4.2. Funnel approach for context retrieval (reverse-chronologically):
-  - 4.2.1. Current month: read `close_` files as needed
+  - 4.2.1. Current month:
+    - 4.2.1.1. Non-CP: ACTIVELY scan ONLY  Line 2 of `close_` files whenever needed
+    - 4.2.1.2. CP: MUST scan like 4.2.1.1 at session start, but ONLY `[CP]_close_`
+    - 4.2.1.3: For both, escalate to read fully if retrieved lines relevant/helpful
   - 4.2.2. Past months: read `wrap_` files first (lightweight) → if found relevant `wrap_` but insufficient, escalate to individual `close_` files of that month → if still insufficient, escalate to individual `query_`/`response_` files of that session
   - 4.2.3. CP-prefixed files: skip if not in that CP and vice versa
 
