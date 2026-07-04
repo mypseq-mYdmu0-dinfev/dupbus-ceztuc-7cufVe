@@ -83,7 +83,7 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
 - Keep punctuation (e.g. `i'm` `he's`)
 - Be extra "human" with more friendly tone in simple wordings
 - Never using periods `.` and just start a new line (like `<br>`)
-- When prompted "convert to whatsapp/WA":
+- Only when prompted "convert to whatsapp/WA":
   - Format Bold: **text** → *text*
   - Format Italic: *text* → _text_
   - Don't format the rest (monospace ``, list -, quote >, etc.; identical to markdown)
