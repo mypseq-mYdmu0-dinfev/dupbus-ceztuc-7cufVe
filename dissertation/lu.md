@@ -605,15 +605,15 @@ Lu
 
 Hello Lu,
 
-Thank you again for the good news on the approval, and for your kind patience whilst I recovered. I am glad to say that I am fully well again and have prepared the ethics materials you asked for.
+Thank you again for the good news on the approval, and for your kind patience whilst I recovered. I am glad to tell that I am now fully well and have completed the ethics materials.
 
-I have amended the 3 templates to suit the study, namely the Participant Information Sheet, the Consent Form, and the Risk Assessment, and I have prepared the interview questions. To keep the interviews comparable, these centre on a primary guide for peers, with 2 short supplementary guides for standout performers and for managers, so that any of these voices can be included consistently should the opportunity arise. The materials are in the shared folder and attached here.
+I have filled the 3 docs to suit the study, namely the Participant Information Sheet, the Consent Form, and the Risk Assessment, where I have also prepared the interview questions. To keep the interviews comparable, these centre on a primary guide for peers (TPP), with 2 short supplementary guides for standout performers (TP) and for managers, so that any of these voices can be included consistently should the opportunity arise. The materials are in the shared folder and also attached here.
 
-As you instructed, I have not started the online application form, and I will wait for your guidance on that step.
+As you instructed, I have not started the online application. I will wait for your guidance on that step.
 
-One small note for context. My messages have at times reached you over a weekend, which simply reflects when my concentrated study hours fall amidst a busy work schedule, rather than any lack of priority on my part. The project has my full attention as we move into this next stage.
+One minor note: My messages have at times reached you over weekends, which simply reflect when my concentrated study hours fall amidst a busy work schedule, rather than any lack of priority on my part. I wish to assure you that I am fully committed to this project and would always devote my best effort as always.
 
-I would be grateful for any thoughts whenever it suits you, and I am happy to refine anything.
+I would be grateful for any thoughts whenever it suits you, and I am happy to refine anything. Thank you for your time and support!
 
-Warm regards,
+Warm Regards,
 Culous
