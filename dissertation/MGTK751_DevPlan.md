@@ -1,7 +1,7 @@
 # MGTK751 A1R Dev Plan
 **Goal/Output:** A1R.md —— Revised Research Proposal; DA and proposal/ethics reviewer approval
 **Organisation:** University of Liverpool (UoL)
-**Due:** No formal deadline; ethics application target Wk9 (w/c 12/05/2026)
+**Due:** No formal deadline; ethics application submitted Wk16 (w/c 30/06/2026), approval targeted Wk17 (w/c 07/07/2026) per A1R §4
 **Target Result:** A1R.md approved by Lu Liu and proposal reviewer; ethics application submission-ready
 **Created:**
 - Original: 202504120000 (Chat 03; archived as `A1_DevPlan.md`)
@@ -177,7 +177,7 @@
 
 - A1R.md is an unmarked revised Research Proposal (~3,000w ceiling); succeeds A1 v09 (submitted 27/04/2026; grade pending)
 - Dual audience: Lu Liu (DA; primary) and proposal reviewer + ethics reviewer (UoL second-stage)
-- Target timing: A1R approved Wk8~9; ethics application submitted Wk9
+- Target timing: A1R approved Wk15 (w/c 23/06/2026); ethics application submitted Wk16 (w/c 30/06/2026); approval targeted Wk17 (w/c 07/07/2026) per A1R §4
 - Governing quality standard: clarity and alignment between aim, RQs, objectives, and methodological decisions
 - Startup framing is an academically legitimate access pathway —— not a quality compromise (Enis confirmed); quality determined by alignment, not framing
 - Unmarked status means freedom to expand to ~3,000w; well-crafted §1 and §3 = draft A3 Ch1 and Ch3
@@ -211,13 +211,6 @@
 - **RQs:** unchanged (RQ1 conditions; RQ2 peer experience); accepted implicitly by Lu (Log 18)
 - **Domain:** KM, not HR (CB §1.3); retain "team cohesion and knowledge governance" (Lu adopted this wording)
 - **Audience rule:** A1R serves Lu AND two UoL reviewers AND seats A2/A3. For any wording an objective reviewer could misread, reword in A1R; for a point that is only Lu's misread, explain by email and keep A1R clean
-
-## M5. DevPlan Editing Discipline (standing)
-
-- The DevPlan is a plan to FOLLOW, not a checklist to mutate —— do NOT edit phases as work progresses, and do NOT add progress markers (e.g. `*(CURRENT)*` / `*(COMPLETE)*`); current whereabouts come from session context and the session-start handoff, not this file
-- Frequent per-step edits are error-prone and defeat the file's purpose; substantive updates append as ADs at the foot (PART C)
-- Stub completed phases ONCE at reconstruction (P16.2/P16.3), together, never piecemeal
-- ANY structural edit here must first re-read `universal/plan.md` for format compliance (lean headings, no PX.0, max 9 per level, tasks-vs-remarks); this would have pre-empted the P13/P14 slips of 04/07
 
 ---
 
