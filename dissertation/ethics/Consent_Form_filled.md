@@ -14,7 +14,7 @@ Please initial box
 
 **02.**
 
-> I understand that taking part in the study involves being interviewed once by the researcher, who is a University of Liverpool Master’s student called Culous Yu. I will be asked around 10-15 open-ended questions about my experiences of teamwork, collaboration, and knowledge sharing when working alongside standout performers, which should take about 45-60 minutes of my time. I understand that the interview will be held online on Microsoft Teams and audio-recorded.
+> I understand that taking part in the study involves being interviewed once by the researcher, who is a University of Liverpool Master’s student called Culous Yu. I will be asked around 10-15 open-ended questions about my experiences of teamwork, collaboration, and knowledge sharing when working alongside standout performers, which should take about 45-60 minutes of my time. I understand that the interview will be in-person/on MS Teams and audio-recorded.
 
 **03.**
 
@@ -34,7 +34,7 @@ Please initial box
 
 **07.**
 
-> I understand that electronically signed consent form and the anonymised interview transcript will be kept in the student researcher’s password-protected laptop/PC, accessible only by the student researcher until the completion of the student’s study period at the University of Liverpool and within 5 years after the completion date for the findings to be published as a journal paper or a conference paper. I understand that once the transcript has been completed, the original audio will be deleted from the UoL OneDrive.
+> I understand that electronically signed consent form and the anonymised interview transcript will be kept in the student researcher’s password-protected laptop/PC, accessible only by the student researcher until the completion of the student’s study period at the University of Liverpool and within 5 years after the completion date for the findings to be published as a journal paper or a conference paper. I understand that once the transcript has been completed, and participant approved of the transcription, the original audio will be deleted from the UoL OneDrive.
 
 **08.**
 
@@ -54,10 +54,10 @@ Participant name Date Signature
 
 Date Signature
 
-**Principal Investigator** **Student Investigator**
+**Principal Investigator** | **Student Investigator**
 
-Dr Lu Liu Culous Yu
+Dr Lu Liu | Culous Yu
 
-University of Liverpool Online University of Liverpool Online
+University of Liverpool Online | University of Liverpool Online
 
-<lu.liu@liverpool.ac.uk> Culous.Yu@liverpool.ac.uk
+<lu.liu@liverpool.ac.uk> | Culous.Yu@liverpool.ac.uk
