@@ -27,7 +27,7 @@ If you're not CC, follow below structure with these adaptations:
 
 ## DevPlan Notes
 
-- If DevPlan.md was declared in chat history OR in `CP_index_*.md`, follow § DevPlan Sessions
+- If `*_DevPlan.md` declared in chat history OR in `CP_index_*.md`, follow § DevPlan Sessions
 - Non-CC: If `CP_index_*.md` not injected by system = no DevPlan
 - CC: If `CP_index_*.md` not in one of working directories AND not in context = no DevPlan
 - No DevPlan = follow § Non-DevPlan Sessions
