@@ -25,7 +25,7 @@ AJAP is FULLY AUTONOMOUS. **NEVER** expect user to act/respond —— you're on 
 **Re-read `ajap.md` if any of:**
 - Last CL contains any dash sign (`—` `–`) or a bare `+` (must be `⁺`)
 - Last chat output this session is not identifiable as C1–C5
-- Last card did not yield exactly the C2 line `**[current_TS]** 🎯[N] job(s) processed.` where `N` = THIS session's count only (files created since `session_start_TS`), NEVER cumulative
+- Last card did not yield exactly the C2 line `**[current_TS]** 🎯[N] jobs processed.` where `N` = THIS session's count only (files created since `session_start_TS`), NEVER cumulative
 - `[N]` was printed as literal digits instead of number emojis
 - Last card had no AR created AND no K1–K6 matched
 - Last AR in `/gcl/applied/` had no M1–M7, or does not contain `## 6. Cover Letter` (e.g. shows `## 3.`)
@@ -64,7 +64,7 @@ On EVERY wake (primary `heartbeat`/`newfile`/`sa2-alert` tick, OR an `SA2_hb.md`
 - For any pending `⏳_` AR (applying): read its `## 6. Cover Letter` section → approve if clean, correct if compromised (per `main_ajap.md § Between-Loop Audit`).
 - If the whole window is clean (no retirement) → set `latest_TS = max validated filename-TS this window` in `ma_state.md` (one value; never wall-clock-leapfrog past an as-yet-unstamped AR; never pile up filenames).
 - Liveness: do NOT use `TaskList` to check Monitor liveness —— it does NOT list background Monitors. Liveness is guaranteed by the never-churned SA2 watchdog. Reactions: `WATCHDOG-MA-STALL` → rebuild/repair the primary Monitor; `WATCHDOG-FULLREAD-STALL` → run the full Post-Compaction Recovery (re-read ALL 9 mandatory files + `touch ma_full_reread_marker`) —— treat as a silent compaction; `WATCHDOG-SA1-STALL` → investigate SA1 (stuck `⏳_` / no new AR / idle) per `SA2_hb.md`; `watchdog-alive` → normal wake.
-- Output C2 when a new legitimate AR appeared: `**[current_TS]** 🎯[N] job(s) processed.` (N = number emojis = this-session count only); then `touch /seek/.claude/tmp/ma_c2_marker` (the watchdog measures this).
+- Output C2 when a new legitimate AR appeared: `**[current_TS]** 🎯[N] jobs processed.` (N = number emojis = this-session count only); then `touch /seek/.claude/tmp/ma_c2_marker` (the watchdog measures this).
 - **Proof-of-read (FINAL action of EVERY wake):** `touch /seek/.claude/tmp/ma_hb_reread_marker` —— ONLY now, after the genuine re-read + `✅` + Active Check above are actually done. This is the signal the SA2 watchdog trusts; touching it at the top of the wake, or without a real re-read, is a contract breach and is the root of the hollow-heartbeat failure.
 
 **Fast-confirm overlay (enforced) —— NEVER churn the PRIMARY:**
