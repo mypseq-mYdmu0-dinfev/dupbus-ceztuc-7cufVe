@@ -29,7 +29,7 @@ If I request to use CIC, you MUST use CIC instead of `web_search` alone or draft
 
 ---
 
-## Pre-CIC Protocol
+## CIC Protocol
 
 Before any CIC operation, always run `web_search` first:
 - Surface as many candidate sources as possible; pass **valid candidates only** (inc. full URLs) into the CIC prompt as a starting pt to narrows CIC's scope & speed up execution
@@ -41,7 +41,7 @@ Before any CIC operation, always run `web_search` first:
 - web_search returning no results ≠ CIC will also find nothing —— worth CIC trying regardless
 - If any candidates are PDF + no equiv./similar web ver found: DON'T use BCIC (can't handle files); pivot to CCIC → ensure PDFs are downloaded (not opened in a Chrome tab)
 - On academic, use the most efficient authoritative means (e.g. G Scholar); take the UoL/UTS Library as fallback when public sources paywall —— follow `universal/cic_libs.md` for Library entry points and full-text steps (NB Library access lapses after 2026, MBA graduation)
-- When synthesising a pattern/rule from researched examples, distinguish what's INTRINSIC to the concept being studied from what's an ARTEFACT of the specific medium/format/sample that produced the examples (a spurious correlation, not a defining property) —— e.g. every example from 1 source sharing a trait (like length) may reflect that source's OWN production constraints, not the underlying concept itself
+- When synthesising a pattern/rule from researched examples, distinguish what's INTRINSIC to the concept being studied from what's an ARTEFACT of the specific medium/format/sample that produced the examples (a spurious correlation, not a defining property) —— e.g. every example from a few sources sharing a trait (like length) might reflect those sources' OWN constraints, not the underlying concept itself; key pt: JUDGE CRITICALLY
 
 ---
 

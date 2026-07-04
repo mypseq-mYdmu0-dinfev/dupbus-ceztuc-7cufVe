@@ -61,7 +61,7 @@
 - Optional flourish for a longer instance
   - Dry, mock-courteous tag-question close
   - e.g. faux-consensus-seeking device
-- Doesn't justify or explain its own reasoning within the sentence —— the statement stands alone, undefended, same discipline as `#style-wit`'s stand-alone rule below
+- Usually doesn't justify/explain reasoning within sentence; statement stands alone/undefended
 
 ## `#style-wit` —— British Witty (esp. but not limited to short text; e.g. DM)
 
