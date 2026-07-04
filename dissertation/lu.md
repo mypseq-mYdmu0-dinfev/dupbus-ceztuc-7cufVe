@@ -598,3 +598,22 @@ Please use this file to structure your dissertation. The content in the proposal
 
 Kind regards,
 Lu
+
+### Log 25
+
+*DRAFT cover email for the ethics materials, for Culous to review and send; not yet sent. Attachments = the 6 files in `dissertation/ethics/` (PIS, Consent, Risk Assessment, and interview guides A/B/C), once relaid out to `.pages` and exported to PDF.*
+
+Hello Lu,
+
+Thank you again for the good news on the approval, and for your kind patience whilst I recovered. I am glad to say that I am fully well again and have prepared the ethics materials you asked for.
+
+I have amended the 3 templates to suit the study, namely the Participant Information Sheet, the Consent Form, and the Risk Assessment, and I have prepared the interview questions. To keep the interviews comparable, these centre on a primary guide for peers, with 2 short supplementary guides for standout performers and for managers, so that any of these voices can be included consistently should the opportunity arise. The materials are in the shared folder and attached here.
+
+As you instructed, I have not started the online application form, and I will wait for your guidance on that step.
+
+One small note for context. My messages have at times reached you over a weekend, which simply reflects when my concentrated study hours fall amidst a busy work schedule, rather than any lack of priority on my part. The project has my full attention as we move into this next stage.
+
+I would be grateful for any thoughts whenever it suits you, and I am happy to refine anything.
+
+Warm regards,
+Culous
