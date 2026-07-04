@@ -189,7 +189,9 @@
 
 - 7.3. General Trigger:
   - 7.3.1. `#[trigger]` → `universal/[trigger].md` → if found: MUST read first, unless told otherwise
-  - 7.3.2. e.g. prompted `#replace` → DON'T EDIT FILES; read & follow `universal/replace.md`
+  - 7.3.2. NEVER guess its meaning, READ it
+    - 7.3.2.1. e.g. `#replace` → DON'T edit files; MUST follow `universal/replace.md`
+    - 7.3.2.2. e.g. `#debate` → MUST follow `universal/debate.md` & create required files
   - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file not found (some are elsewhere; e.g. in CP)
 
 8. File Rules
