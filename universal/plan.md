@@ -3,13 +3,13 @@
 **Organisation:** [name]
 **Due:** [YYYYMMDDHHmm]
 **Target Result:** [value/descr]
-**Created:** [YYYYMMDDHHmm] (Chat [no.])
+**Created:** [YYYYMMDDHHmm] (Session [no.])
 
 ```
 **Internal Rules (delete when creating):**
 - Filename: `[project_alias]_DevPlan.md`
 - This opening (before "PART A") must be concise, start w/ `# [title] Dev Plan`, and end w/ `**Created:** …`; lines between = examples (editable)
-- "PARTS A-C" are mandatory, add more if necessary after approval
+- "PARTS A–C" are mandatory, add more if necessary after approval
 - ONLY use separators `---` right after opening and between "PARTS" (see below)
 ```
 
@@ -45,17 +45,16 @@
   - This avoids ⌘F `P1` returning `P1` `P10` `P11` etc.
   - This avoids the need of 2-digit numbers (e.g. `P01.01. …`)
 - Build more levels (Pn.n.n.n. etc.) or multiple Dev Plan if necessary
-- DevPlan Editing: once established, a Dev Plan is a plan to FOLLOW, not a checklist to mutate
-  - Don't edit phases as work progresses; don't add progress markers (e.g. `*(CURRENT)*`/`*(COMPLETE)*`) —— current whereabouts come from session context / the session-start handoff, not the plan
-  - Substantive updates normally append as ADs at the foot (PART C), not as edits to PART A
-  - Stub completed phases ONCE at reconstruction, together, never piecemeal
-  - Re-read this plan.md for format compliance BEFORE any structural edit to a Dev Plan (prevents PX.0, non-lean headings, record-not-action phrasing)
+- For very long (usually months) and/or growing (adding phases post-creation) projects:
+  - User may prompt for reconstruction to lean, which is why you're reading this after its creation
+  - Stub completed phases ONCE at each reconstruction, together, never piecemeal
 ```
 
 ---
 
 ## PART B —— MASTER CONTEXT
 
+> Standing Rules: DevPlan can't be edited by CC unless requested (only on requested lines). Precise Status: by `close_` & AD. Phase (not sub-phase) Completion: reminder user to note on heading line by suggesting e.g. `P1. [heading] *(done on [TS]; [optional_≤20chars_remarks]*)`. When user requests to reconstruct DevPlan (e.g. lean), immediately read plan.md before action.
 
 ### M1. Organisation & Scope
 …
@@ -69,35 +68,30 @@
 ```
 **Internal Rules (delete when creating):**
 - Focus on constant info remaining unchanged throughout (e.g. deadline, budget)
-- Above M1-3 are examples only, not necessarily applicable
+- Above M1–3 are examples only, not necessarily applicable
 - No max. item limit like "PART A"; be most efficient by all means; intended for Claude only
 - If academic: build `[project_code/alias]_RefRepo.md` instead of including here
 - DON'T repeat other synthesised files (e.g. `ProjectSummary.md` `Core_File_Summary.md`)
+- The line `> Standing Rules: ...` must remain verbatim in DevPlan just like `## PART [X] ...`
+- "DevPlan can't be edited" is enforced AFTER user's confirmation of initial creation completion
 ```
 
 ---
 
-## PART C —— PER-CHAT ADDENDA
+## PART C —— PER-SESSION ADDENDA
 
-### AD01. P0 (Chat [no.]) —— [brief_heading]
+### AD01. P0 (Session [no.]) —— [≤8w_Heading]
 
-- AD01.1. What Was Done
+- AD01.1. Coverage
   - AD01.1.1. …
 
-- AD01.2. Key Decisions Made
-  - AD01.2.1. …
-
-- AD01.3. Deviation from Dev Plan
-  - AD01.3.1. …
+- AD01.2. Decisions
+...
 
 ```
 **Internal Rules (delete when creating):**
-- Above AD01.1-3 are mandatory subsections for each addendum, input `N/A` if none
-- Add subsections as needed, no limit like "PART A"
-- 1st level `AD[nn]. …` must be 2-digit to accommodate 9⁺ chats
-- P0 (Phase 0) = before Dev Plan creation
-- DON'T repeat `Chat Handoff`
-  - Chat Handoff: only for immediate next chat
-  - Addendum: persists for & meaningful to all chats
-  - Both created at each chat's end
+- Follow close.md § Addendum Template for canonical requirements
+- 1st level `AD[nn]. …` must be 2-digit to accommodate 9⁺ sessions
+- P0 (Phase 0) = before & during Dev Plan creation
+- Reminder: must be MECE (per close.md § Addendum Rules)
 ```
