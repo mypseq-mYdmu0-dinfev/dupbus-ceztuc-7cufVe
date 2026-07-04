@@ -3,7 +3,7 @@
 **Organisation:** [name]
 **Due:** [YYYYMMDDHHmm]
 **Target Result:** [value/descr]
-**Created:** [YYYYMMDDHHmm] (Session [no.])
+**Created:** [YYYYMMDDHHmm] (Session [nn])
 
 ```
 **Internal Rules (delete when creating):**
@@ -11,6 +11,7 @@
 - This opening (before "PART A") must be concise, start w/ `# [title] Dev Plan`, and end w/ `**Created:** …`; lines between = examples (editable)
 - "PARTS A–C" are mandatory, add more if necessary after approval
 - ONLY use separators `---` right after opening and between "PARTS" (see below)
+- `[nn]` = 2-digit no.; e.g. ❌ "Session 1"; ✅ "Session 01"
 ```
 
 ---
@@ -44,7 +45,10 @@
   - ✅ `P1.1.9. …`; ❌ `P1.1.10. …`
   - This avoids ⌘F `P1` returning `P1` `P10` `P11` etc.
   - This avoids the need of 2-digit numbers (e.g. `P01.01. …`)
-- Build more levels (Pn.n.n.n. etc.) or multiple Dev Plan if necessary
+- Build more levels (Pnn.n.n.n. etc.) or multiple Dev Plan if necessary
+- NEVER:
+  - P0 in PART A; see `- P0 ...` in PART C
+  - P[nn].0; see `> [one_liner] ...` above
 - For very long (usually months) and/or growing (adding phases post-creation) projects:
   - User may prompt for reconstruction to lean, which is why you're reading this after its creation
   - Stub completed phases ONCE at each reconstruction, together, never piecemeal
@@ -80,7 +84,7 @@
 
 ## PART C —— PER-SESSION ADDENDA
 
-### AD01. P0 (Session [no.]) —— [≤8w_Heading]
+### AD01. P0 (Session [nn]) —— [≤8w_Heading]
 
 - AD01.1. Coverage
   - AD01.1.1. …
@@ -92,6 +96,6 @@
 **Internal Rules (delete when creating):**
 - Follow close.md § Addendum Template for canonical requirements
 - 1st level `AD[nn]. …` must be 2-digit to accommodate 9⁺ sessions
-- P0 (Phase 0) = before & during Dev Plan creation
+- P0 (Phase 0) = anything before & during Dev Plan creation
 - Reminder: must be MECE (per close.md § Addendum Rules)
 ```
