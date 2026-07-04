@@ -53,7 +53,7 @@ Use this exact prompt when spawning or re-spawning SA (fill ONLY the bracketed v
 *If you (MA) run on **Opus**, apply this whole section; on Sonnet, ignore it. (Opus SAs refuse the SA role and Opus cannot `file_upload` résumés —— a model/harness limit, not to be fixed.)*
 
 - Do NOT spawn SA1. Take on SA1's per-card loop yourself (run **solo**): MA executes `ajap.md` directly, ONE card at a time.
-- In solo mode, the SA-side safeguards are absent, so YOU must, at the top of EVERY card, perform `ajap.md S0.1` (literally Read `MA_hb.md` + emit `✅ context/MA_hb.md`) and self-gate Submit with a CL review (run `python3 /seek/context/cl_check.py [AR_PATH]` before any Submit).
+- In solo mode, the SA-side safeguards are absent, so YOU must, at the top of EVERY card, perform `ajap.md S0.1` (literally Read `MA_hb.md` + emit `✅ context/MA_hb.md`) and self-gate Submit with a CL review (**MUST** run `python3 /seek/context/cl_check.py [AR_PATH]` before any Submit).
 - You MAY still spawn helper agents for tasks that do NOT require reading any `/seek/context/` file (e.g. open web research); never delegate the per-card AJAP loop to them.
 - The heartbeat Monitor AND the SA2 watchdog remain enforced exactly as normal.
 - **Silently skip (NO AR) every M7=0 job** (any role whose application leaves SEEK for an external portal) —— you cannot upload files, so an external application can never complete; do not create skip-ARs for them (keeps the record clean for future upload-capable Sonnet runs).

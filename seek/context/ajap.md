@@ -296,7 +296,7 @@ S4.7. **SA CL Self-Review** — re-read the drafted CL in full before writing to
 - No banned GenAI words — spot-check top 10: "seamlessly", "resonates", "pivotal", "leverage", "spearhead", "transformative", "holistic", "robust", "passionate", "proactive"
 - CL ends with P.S. line
 - Do NOT proceed to S5 until all checks pass
-- **Deterministic gate (Apply only, runs AFTER S5 once the AR file exists):** before reporting `Applying` at S6.4.2.5, run `python3 /seek/context/cl_check.py [AR_PATH]`; any HARD violation (exit 1) = failed check → fix the AR in-place and re-run until exit 0. Soft `⚠️` warnings are advisory —— judge (e.g. a firm literally named "Synergy…" is fine). This is a backstop to the manual checks above, not a replacement
+- **Deterministic gate (Apply only, runs AFTER S5 once the AR file exists):** before reporting `Applying` at S6.4.2.5, **MUST** run `python3 /seek/context/cl_check.py [AR_PATH]`; any HARD violation (exit 1) = failed check → fix the AR in-place and re-run until exit 0. Soft `⚠️` warnings are advisory —— judge (e.g. a firm literally named "Synergy…" is fine). This is a backstop to the manual checks above, not a replacement
 
 ### S5. Create AR
 
@@ -375,7 +375,7 @@ S6.2.3. If text input required + answer non-trivial (not a number, yes/no, or di
 - S6.2.3.1. If non-critical & acceptable: input `N/A` → rename AR by **appending** `⚠️_` (prefix becomes `⚠️_⏳_`) → continue
 - S6.2.3.2. Otherwise: Edit AR as `Outcome: Pending` → move (per Move Rule) AR to `/gcl/pending/` → rename AR by **replacing** `⏳_` prefix with `⚠️_` → close Tabs 3 & 2 → return to Tab 1 for next card
 - S6.2.3.3. For both: remark w/ `⚠️` in AR for `ajap.md` update
-S6.2.4. If answered any questions, MUST **append** to end of "3. Application Tailoring" in AR (DON'T replace/overwrite entire section)
+S6.2.4. If answered any questions, MUST **append** them to the END of "3. Application Tailoring" in the AR (DON'T replace/overwrite the section). NEVER create a new section (e.g. `## 7. Employer Questions`) —— the CL (§6) MUST stay the LAST AR section so its P.S. is the file's final line (exactly what `cl_check.py` enforces; ANY section after §6 is a HARD violation)
 S6.2.5. Click "Continue →"
 
 #### S6.3. "Update SEEK Profile"

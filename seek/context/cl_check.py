@@ -117,11 +117,19 @@ def check_one(path: Path):
     if n16 > 1:
         hard.append(f"`16⁺` appears x{n16} (allowed once)")
 
-    # HARD: P.S. tail must be the exact final line
+    # HARD: the P.S. tail must be the file's FINAL content line —— the CL (§6)
+    # is the LAST AR section, so nothing may follow the P.S. (logic unchanged;
+    # only the message guides the agent to the correct fix).
     stripped = content.rstrip()
     last_line = stripped.splitlines()[-1] if stripped else ""
     if last_line != PS_REQUIRED_TAIL:
-        hard.append("file does NOT end with the exact required P.S. line")
+        hard.append(
+            "AR does NOT end with the exact P.S. line —— the CL (§6) must be the "
+            "LAST section, so the P.S. must be the file's final line. If employer "
+            "questions were answered, APPEND them to the END of §3 Application "
+            "Tailoring (S6.2.4); NEVER put them in a new section after the CL, and "
+            "never replace/overwrite §3."
+        )
 
     # SOFT: colon-pillar headers (audit_202606040352 §9.1)
     pillars = COLON_PILLAR.findall(cl)
