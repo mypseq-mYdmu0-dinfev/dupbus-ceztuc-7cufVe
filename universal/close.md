@@ -47,7 +47,7 @@ Location: same folder as the session's query_/response_ files
 
 ```markdown
 # Session Closing ([1st_query_TS]–[current_TS])
-*[Heading max 8w]*
+*[≤8w_Heading]*
 
 ## 1. Coverage
 - 1.1. [List of issues/tasks addressed; all #numbered (same for all below sections)]
@@ -65,7 +65,7 @@ Location: same folder as the session's query_/response_ files
 [skip 1 line]
 
 ## 4. Comms Files ([no.] pairs)
-- 4.1. `[TS]`: [max. 8w descr of that turn]
+- 4.1. `[TS]`: [≤8w_Descr]
 - 4.2. ... [ONE line per `query_`/`response_` PAIR; bare shared `[TS]` only; chronological order]
 [skip 1 line]
 
@@ -106,7 +106,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 
 ```markdown
 # [CP_Name/Alias] Session Handoff ([1st_query_TS]–[current_TS])
-*Session [Z]: [Heading max 8w]*
+*Session [Z]: [≤8w_Heading]*
 
 ## 1. Status
 - 1.1. [Last & next issues; actively use P[no.]/AD[no.]; max 20w; all #numbered (same for below)]
@@ -141,7 +141,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 ### Addendum Template
 
 ```markdown
-### AD[XX]. P[Y.Y] (Session [Z]) —— [Heading max 8w]
+### AD[XX]. P[Y.Y] (Session [Z]) —— [≤8w_Heading]
 
 *Note: `###` level for appending under `## PART C` of DevPlan.md; XX = last addendum no. + 1 in 2 digits; Y.Y = phase(s) worked on; Z = this session's number (last +1 unless told otherwise)*
 
@@ -161,7 +161,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 [skip 1 line]
 
 - AD[XX].4. Comms Files ([no.] pairs)
-  - AD[XX].4.1. `[TS]`: [max. 8w descr of that turn]
+  - AD[XX].4.1. `[TS]`: [≤8w_Descr]
   - AD[XX].4.2. ... [ONE line per `query_`/`response_` PAIR; bare shared `[TS]` only; chronological]
 [skip 1 line]
 
