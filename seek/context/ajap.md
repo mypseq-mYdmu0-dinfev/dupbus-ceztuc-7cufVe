@@ -346,7 +346,7 @@ TZ='Australia/Sydney' date +"%Y%m%d%H%M"
 CRITICAL: If applying, MUST first temporarily have filename beginning with `⏳_` and mark as `Outcome: Applying`; ONLY after success confirmed (S6.4.4), edit as `Outcome: Applied` AND rename file to remove `⏳_` prefix. If saving or skipping after AR creation: move (per Move Rule) to `/gcl/pending/` or `/gcl/skipped/` respectively (no `⏳_` prefix in these two folders).
 
 Body: complete all 6 GCL sections per `gcl.md`:
-1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interview Questions | 6. CL (full plain text; no dash sign)
+1. Employer | 2. Requirements | 3. Application Tailoring | 4. Noteworthy Aspects (if applicable) | 5. Interviewer Questions | 6. CL (full plain text; no dash sign)
 
 **If skipping: sections 1–2 only.**
 
