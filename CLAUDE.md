@@ -138,14 +138,25 @@
   - 3.7.3. ANY deliverable: MUST follow `writing.md` & run `dlint.py` before output to user
 
 4. Retrospection
-- 4.1. DON'T auto-read past sessions files; read on demand, judging relevance on the spot
+- 4.1. DON'T auto-read past comms files; follow §4.2
 - 4.2. Funnel approach for context retrieval (reverse-chronologically):
-  - 4.2.1. Current month:
-    - 4.2.1.1. Non-CP: ACTIVELY scan ONLY  Line 2 of `close_` files whenever needed
-    - 4.2.1.2. CP: MUST scan like 4.2.1.1 at session start, but ONLY `[CP]_close_`
-    - 4.2.1.3: For both, escalate to read fully if retrieved lines relevant/helpful
-  - 4.2.2. Past months: read `wrap_` files first (lightweight) → if found relevant `wrap_` but insufficient, escalate to individual `close_` files of that month → if still insufficient, escalate to individual `query_`/`response_` files of that session
-  - 4.2.3. CP-prefixed files: skip if not in that CP and vice versa
+  - 4.2.1. Current Month:
+    - 4.2.1.1. Non-CP:
+      - 4.2.1.1.1. ACTIVELY scan ONLY Line 2 (≤8w heading) of `close_` files, incl. `[CP]_close_`
+      - 4.2.1.1.2. Each scan = 5 `close_`, then 5 more as needed, until current month consumed
+    - 4.2.1.2. CP: MUST (not just actively) scan like 4.2.1.1 at session start, but ONLY `[CP]_close_`
+    - 4.2.1.3. For both CP/Non-CP: escalate to fully read `close_` if retrieved lines relevant/helpful
+  - 4.2.2. Past Month(s):
+    - 4.2.2.1. Read `wrap_` file(s) first (lightweight)
+    - 4.2.2.2. If found relevant `wrap_` but insufficient, escalate to individual `close_` file(s)
+ → if still insufficient, escalate to individual `query_`/`response_` files of that session
+- 4.3. Reading Scope:
+  - 4.3.1. Non-CP Sessions: read any comms files as needed
+  - 4.3.2. CP Sessions: default disregard non-CP-prefixed comms files
+- 4.4. If `*_DevPlan.md` in context:
+  - 4.4.1. Disregard entire §4
+  - 4.4.2. Sufficient context from initial `query_`, DevPlan, CP files, etc.
+  - 4.4.3. If insufficient, alert user
 
 5. Post-Compaction (🚨)
 - 5.1. When the PostCompact hook fires, immediately output exact wording as §3.2.5
