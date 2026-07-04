@@ -251,8 +251,8 @@
     - 8.8.4.5. §8.8.2: '/Users/culous/Desktop'
     - 8.8.4.6. §8.8.3: '/Users/culous/Documents/PDF Conversion'
   - 8.8.5. Reading MS Office (.docx/.xlsx/.pptx):
-    - 8.8.5.1. If user didn't say he'll read it AND editing it is not expected, use `textutil`, etc.
-    - 8.8.5.2. Otherwise, read it by §8.8.3 (also works for MS) via Quick Mode (see README.md in that folder), which shows formatting (auto-numbering, table, etc.) & better syncs your view w/ user's view in MS apps
+    - 8.8.5.1. If user didn't say he'll read it AND editing it is not expected, use `textutil`; if output unintelligible OR complex formatting (table, etc.) suspected (i.e. unintelligible), follow §8.8.5.2
+    - 8.8.5.2. Otherwise, read it by §8.8.3 (also works for MS) via Quick Mode (see README.md in that folder), which displays formatting & better syncs your view w/ user's view in MS apps
     - 8.8.5.3. Only if fully identical view needed (e.g. page no. match for many pages) AND `#sprint` NOT prompted, suggest user to manually run Full Mode (avoid if possible; inefficient)
 - 8.9. Self-initiated scripts (not asked by user):
   - 8.9.1. NEVER create anything in root (`/dupbus-ceztuc-7cufVe/`) unless explicitly told
