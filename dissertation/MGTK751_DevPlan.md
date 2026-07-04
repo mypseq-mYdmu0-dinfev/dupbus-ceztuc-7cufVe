@@ -23,19 +23,19 @@
 
 ## P05. A1 QC & Submission *(v09 submitted 27/04/2026)*
 
-## P06. Strategy & Identity *(completed Chat 13; method = explanatory multi-case study, CYC identity, participant comparability — see AD09 + M3/M4)*
+## P06. Strategy & Identity *(completed by Chat 13; method = explanatory multi-case study, CYC identity, participant comparability — see AD09 + M3/M4)*
 
-## P07. §1 Rewrite *(A1R v1 completed; superseded for v2 by P12.1)*
+## P07. §1 Rewrite *(done; superseded for v2 by P12.1)*
 
-## P08. §2 Lit Review Restructure *(A1R v1 completed; see AD10; v2 theoretical framework in P12.2)*
+## P08. §2 Lit Review Restructure *(done; see AD10; v2 theoretical framework in P12.2)*
 
-## P09. §3 Methodology Rewrite *(A1R v1 completed; see AD10; v2 in P12.3)*
+## P09. §3 Methodology Rewrite *(done; see AD10; v2 in P12.3)*
 
 ## P10. QC & Whole-Doc Integration *(A1R v1 completed)*
 
-## P11. Output Audit —— Lu's Checklist *(A1R v1 completed and sent; Lu.md Log 09)*
+## P11. Output Audit —— Lu's Checklist *(A1R v1 sent; Lu.md Log 09)*
 
-## P12. A1R v2 —— Amendment for DA Approval
+## P12. A1R v2 —— Amendment for DA Approval *(A1R v2 completed & sent; Lu.md Log 22)*
 
 *Status context: A1R v1 (P07–P11) complete and sent to Lu (Lu.md § Log 09). Lu reviewed via .docx and returned 5 comments CM1–CM5 (Log 12–16). After our exchange (Logs 15–17) she approved the full amendment plan (Log 18, 15/06/2026): "I agree with the plan you intend to use to amend your proposal." This phase produces A1R v2 and sends it. Scope ends at "draft sent"; Lu/reviewer approval and ethics are P13.*
 
@@ -98,10 +98,10 @@
 
 > P12 effort & critical path: the single item needing Culous' hands (cannot be done by CC alone) is P12.2's figure render in .pages; P12.1/P12.3 are largely re-application of the held batch re-pointed to the new RA; P12.5–P12.6 are mechanical. Rough order: P12.1, P12.3, P12.2 design in parallel; P12.4–P12.6 follow; P12.7 handoff (then re-run P12.6); Culous finalises; P12.8 send last. Gating on Culous for the figure and the dispatch.
 
-## P13. Draft Approval & Ethics Gate *(after send)*
+## P13. Proposal Approval *(received on 27/06/2026; no changes needed)*
 
-- P13.1. Await Lu and the two UoL reviewers; address comments, iterating A1R v2.x as needed
-- P13.2. On approval, prepare and submit the ethics application (hard gate —— no data collection before written approval); prep and submission are expanded as P14 and P15 respectively
+- P13.1. Await Lu & 1st UoL reviewer (non-ethics)
+- P13.2. Iterate A1R if needed
 
 ## P14. Ethics Forms Preparation
 
@@ -170,6 +170,8 @@
 ---
 
 # PART B —— MASTER CONTEXT
+
+> Standing Rules: DevPlan can't be edited by CC unless requested (only on requested lines). Precise Status: by `close_` & AD. Phase (not sub-phase) Completion: reminder user to note on heading line by suggesting e.g. `P1. [heading] *(done on [TS]; [optional_≤20chars_remarks]*)`.
 
 ## M1. A1R Scope & Context
 
