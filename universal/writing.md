@@ -101,7 +101,7 @@ When "casual"/"whatsapp"/"draft a text/msg" explicitly mentioned (if implicitly 
   - `cscpt/dlint.py` enforces the full, growing list (run-not-read)
   - Briefly web_search latest GenAI words (above could be dated)
   - If a word was user-added (NOT by you) then yellow-flagged, don't rectify it but notice ONCE
-- Email sign-off MUST be Title Case (user's signature treatment); e.g. "Warm Regards"
+- Email sign-off MUST be Title Case (user's signature treatment); e.g. "Warm Regards,"
 
 ---
 
