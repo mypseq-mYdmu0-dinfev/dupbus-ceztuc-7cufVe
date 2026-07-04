@@ -6,7 +6,7 @@
 | Version | 1, 4 July 2026 |
 | Researcher | Culous Yu, University of Liverpool |
 
-*Note for reviewer: This is a semi-structured guide. The questions below are indicative, and the interviewer may follow them with brief prompts or adapt the wording slightly to the flow of the conversation, whilst keeping to these topics. The questions draw on the participant’s own experience and observations across current or previous roles, and do not ask the participant to evaluate any employer’s policies or practices. Every question stays at the level of professional observation of team behaviour and collaboration rather than personal or emotional disclosure, and each gives balanced room to describe both what eased and what strained teamwork. Section B explores the conditions that shape the dynamics (RQ1), and Section C explores how team members experience them (RQ2).*
+*Note for reviewer: This is a semi-structured guide. The questions below are indicative, and the interviewer may follow them with brief prompts or adapt the wording slightly to the flow of the conversation, whilst keeping to these topics. The questions draw on the participant’s own experience and observations across current or previous roles. Every question stays at the level of professional observation of team behaviour and collaboration rather than personal or emotional disclosure, and each gives balanced room to describe both what eased and what strained teamwork. Section B explores the conditions that shape the dynamics (RQ1), and Section C explores how team members experience them (RQ2).*
 
 **Interviewer opening (read to the participant)**
 
