@@ -1,0 +1,26 @@
+{"event": "job", "run_id": "202607060351", "ts": "20260706035126", "outcome": "applied", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060351", "ts": "20260706035126", "outcome": "void_lint", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060351", "ts": "20260706035127", "outcome": "void_audit", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060351", "ts": "20260706035127", "outcome": "silent_skip", "title": "Data Director", "employer": "Acme"}
+{"event": "job", "run_id": "202607060351", "ts": "20260706035127", "outcome": "applied", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060351", "ts": "20260706035127", "outcome": "silent_skip", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035248", "outcome": "applied", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035248", "outcome": "void_lint", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035248", "outcome": "void_audit", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035248", "outcome": "silent_skip", "title": "Data Director", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035249", "outcome": "applied", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035249", "outcome": "silent_skip", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035249", "outcome": "void_audit", "title": "Marketing Coordinator", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035249", "outcome": "applied", "title": "Marketing Coordinator", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035249", "outcome": "portal_pending", "title": "Analyst", "employer": "Acme"}
+{"event": "job", "run_id": "202607060352", "ts": "20260706035249", "outcome": "applied", "title": "Analyst", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035904", "outcome": "applied", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "void_lint", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "void_audit", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "silent_skip", "title": "Data Director", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "applied", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "silent_skip", "title": "Clerk", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "void_audit", "title": "Marketing Coordinator", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "applied", "title": "Marketing Coordinator", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "portal_pending", "title": "Analyst", "employer": "Acme"}
+{"event": "job", "run_id": "202607060359", "ts": "20260706035905", "outcome": "applied", "title": "Analyst", "employer": "Acme"}
