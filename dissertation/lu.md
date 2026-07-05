@@ -617,3 +617,18 @@ I would be grateful for any thoughts whenever it suits you, and I am happy to re
 
 Warm Regards,
 Culous
+
+### Log 26
+
+On 6 Jul 2026, at 00:45, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Got it, Culous. I will review the forms shortly. 
+
+You may continue working on your research report draft, i.e. chapters 1-3, if you have time. 
+
+As for when you send me your drafts, it is completely up to you.  And I fully understand that you may only have time to study on the weekend, as many other online part-time students do. This is not an issue at all. I am used to receiving work from my students and working with online programmes on the weekend, too. 
+
+Your efforts and diligence are greatly appreciated. 
+
+Kind regards,
+Lu
