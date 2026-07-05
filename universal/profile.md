@@ -44,11 +44,15 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ## Devices
 
-- iPhone 13 mini (i13m/OTGD): daily
-- Samsung Fold2 (1768*2208px): occasional; mostly for business meetings / job interviews
+- iPhone 13 mini (i13m/OTGD): daily since 20250303
+- Samsung Fold2 (1768*2208px): retired; occasionally use for business meetings/job interviews
 - Mi Watch S4 mini (41mm, silvery titanium bracelet): daily, mainly for notifications/workouts
 - Mac Mini M2 Pro (WSM): always on, with Fury Renegade 2TB NVMe (everything except apps) & WD Green 2TB NVMe (Time Machine only), Magic Trackpad/Keyboard
-- MacBook Air M1 (OTGM): OTG only
+  - Disk Health:
+    - WSM 94% (as of 202607052017), since 20230202
+    - Fury 91% (as of 202607052018), since 20230226
+  - Avoid r/w on WSM (internal); prefer Fury (replaceable)
+- MacBook Air M1 (OTGM): OTG only; since 20240111
 - Galaxy Buds+: for WSM only
 - Galaxy Buds Live: for TV only
 - Galaxy Buds Pro 2: OTGD/M only
