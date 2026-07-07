@@ -1,0 +1,84 @@
+<!doctype html><meta charset='utf-8'><title>Git History — testing.md</title><style>
+:root{--bg:#f6f8fa;--card:#fff;--fg:#1f2328;--muted:#57606a;--line:#d0d7de;
+      --chip:#ddf4ff;--chipfg:#0969da;--hd:#24292f;--hdfg:#fff;--hdmut:#c9d1d9;
+      --insbg:#dafbe1;--insfg:#116329;--delbg:#ffebe9;--delfg:#82071e;
+      --hover:#f3f4f6}
+body.dark{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#8d96a0;
+      --line:#30363d;--chip:#121d2f;--chipfg:#58a6ff;--hd:#010409;
+      --hdfg:#e6edf3;--hdmut:#8d96a0;--insbg:#12261e;--insfg:#3fb950;
+      --delbg:#25171c;--delfg:#f85149;--hover:#1c2129}
+*{font-family:Avenir,'Avenir Next',-apple-system,sans-serif}
+body{font-size:15px;line-height:1.55;margin:0;background:var(--bg);
+     color:var(--fg)}
+header{background:var(--hd);color:var(--hdfg);padding:12px 22px;display:flex;
+       align-items:flex-start;gap:14px}
+header .grow{flex:1;min-width:0}
+header h1{font-size:17px;margin:0}
+header .sub{color:var(--hdmut);font-size:12px;margin-top:3px}
+header .sub a{color:var(--hdmut);text-decoration:underline;cursor:pointer}
+.btn{background:transparent;border:1px solid var(--hdmut);color:var(--hdfg);
+     border-radius:6px;font-size:12px;padding:4px 10px;cursor:pointer;
+     white-space:nowrap;margin-top:2px}
+.btn:hover{border-color:var(--hdfg)}
+main{max-width:980px;margin:18px auto;padding:0 14px}
+.commit{background:var(--card);border:1px solid var(--line);border-radius:8px;
+        margin-bottom:14px;overflow:hidden}
+.commit summary{cursor:pointer;padding:10px 14px;display:flex;gap:10px;
+        align-items:baseline;flex-wrap:wrap;list-style:none}
+.commit summary::-webkit-details-marker{display:none}
+.commit summary:hover{background:var(--hover)}
+.hash{font-family:ui-monospace,Menlo,monospace;font-size:12px;
+      color:var(--chipfg);background:var(--chip);border-radius:4px;
+      padding:1px 6px;cursor:pointer}
+.hash:hover{outline:1px solid var(--chipfg)}
+.subj{font-weight:600}
+.meta{color:var(--muted);font-size:12.5px;margin-left:auto;white-space:nowrap}
+.rename{font-size:12px;color:#9a6700;background:#fff8c5;border-radius:4px;
+        padding:1px 6px}
+body.dark .rename{background:#2b2300;color:#e3b341}
+.body{border-top:1px solid var(--line);padding:12px 16px;background:var(--card)}
+pre.diff{white-space:pre-wrap;word-wrap:break-word;margin:0;
+         font-family:ui-monospace,Menlo,monospace;font-size:12.8px}
+pre.mdcode{white-space:pre-wrap;background:var(--bg);border-radius:6px;
+           padding:8px 10px;font-family:ui-monospace,Menlo,monospace;
+           font-size:12.8px}
+del{background:var(--delbg);color:var(--delfg);text-decoration:line-through}
+ins{background:var(--insbg);color:var(--insfg);text-decoration:none}
+.note{color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.view-html .code-view{display:none}
+body:not(.view-html) .html-view{display:none}
+.html-view h2,.html-view h3{margin:0.7em 0 0.3em}
+.html-view code{background:var(--bg);border-radius:4px;padding:0 4px;
+                font-family:ui-monospace,Menlo,monospace;font-size:0.9em}
+.html-view hr{border:0;border-top:1px solid var(--line)}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:26px 0 18px}
+#helpbox{display:none;position:fixed;top:64px;right:22px;background:var(--card);
+        border:1px solid var(--line);border-radius:8px;padding:12px 16px;
+        font-size:13px;box-shadow:0 6px 24px rgba(0,0,0,.25);z-index:9}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+       background:var(--hd);color:var(--hdfg);border-radius:6px;
+       padding:6px 14px;font-size:12.5px;display:none;z-index:9}
+</style><body><header><div class='grow'><h1>Git History (4): testing.md</h1><div class='sub'>temp/temp_misc/testing.md</div><div class='sub'>Generated 202607080504 | <a onclick='toggleHelp()'>Help</a></div></div><button class='btn' id='viewbtn' onclick='toggleView()'>HTML</button><button class='btn' id='darkbtn' onclick='toggleDark()'>Dark Mode</button></header><div id='helpbox'>- Newest first<br>- Click a commit to expand<br>- Click a SHA chip to copy it + open the commit on GitHub<br>- HTML view = the file as rendered rich text after that commit<br>- Code view = word-level diff vs the previous commit<br>- Dark Mode follows your macOS setting by default</div><div id='toast'></div><main><details class='commit' open><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'4eaefab','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/4eaefab9bea164b37b4b5c0c72c6a1e1ea528c47')">4eaefab</span><span class='subj'>Move/Rename temp/testing.md to temp/temp_misc/testing.md</span><span class='rename'>renamed</span><span class='meta'>2026-07-08 04:58</span></summary><div class='body'><p class='note'>vs previous commit (9f394be) · renamed from <code>temp/testing.md</code></p><div class='code-view'><pre class='diff'>testing</pre></div><div class='html-view'><p>testing</p></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'9f394be','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/9f394befa09a06c62e448a5077cee493faabecd5')">9f394be</span><span class='subj'>Move/Rename temp/temp_misc/testing.md to temp/testing.md</span><span class='rename'>renamed</span><span class='meta'>2026-07-08 04:58</span></summary><div class='body'><p class='note'>vs previous commit (457f97c) · renamed from <code>temp/temp_misc/testing.md</code></p><div class='code-view'><pre class='diff'>testing</pre></div><div class='html-view'><p>testing</p></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'457f97c','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/457f97c15465cac5d554ae3f53946e5166aab303')">457f97c</span><span class='subj'>Move/Rename temp/testing.md to temp/temp_misc/testing.md</span><span class='rename'>renamed</span><span class='meta'>2026-07-08 04:57</span></summary><div class='body'><p class='note'>vs previous commit (9bde1ed) · renamed from <code>temp/testing.md</code></p><div class='code-view'><pre class='diff'>testing</pre></div><div class='html-view'><p>testing</p></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'9bde1ed','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/9bde1ed7fa39e2082656a3aff9897d0d8719d0fe')">9bde1ed</span><span class='subj'>testing git mv then git_history.py</span><span class='meta'>2026-07-08 04:55</span></summary><div class='body'><p class='note'>file created in this commit</p><div class='code-view'><pre class='diff'><ins>testing</ins></pre></div><div class='html-view'><p>testing</p></div></div></details></main><footer>Confidential Intellectual Property of Culous Yu</footer><script>
+const body = document.body;
+if (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)
+  body.classList.add('dark');
+syncBtns();
+function syncBtns(){
+  document.getElementById('darkbtn').textContent =
+    body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+  document.getElementById('viewbtn').textContent =
+    body.classList.contains('view-html') ? 'Code' : 'HTML';
+}
+function toggleDark(){ body.classList.toggle('dark'); syncBtns(); }
+function toggleView(){ body.classList.toggle('view-html'); syncBtns(); }
+function toggleHelp(){ const h = document.getElementById('helpbox');
+  h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
+function shaClick(ev, sha, url){
+  ev.preventDefault(); ev.stopPropagation();
+  navigator.clipboard && navigator.clipboard.writeText(sha);
+  const t = document.getElementById('toast');
+  t.textContent = sha + ' copied'; t.style.display = 'block';
+  setTimeout(()=>{ t.style.display='none'; }, 1400);
+  if (url) window.open(url, '_blank');
+}
+</script></body>
