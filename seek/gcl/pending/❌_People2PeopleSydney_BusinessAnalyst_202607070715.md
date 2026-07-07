@@ -1,3 +1,4 @@
+<!-- VOID: re-queued 202607072027 — struggle cause fixed, AJAP re-applies itself @ 202607072027 -->
 # people2people - Sydney — Business Analyst
 
 SEEK URL: https://www.seek.com.au/job/92827800?type=standard&ref=search-standalone&origin=cardTitle#sol=8f2d1c395625fc103d11ed07ee4c9af96e4059c6

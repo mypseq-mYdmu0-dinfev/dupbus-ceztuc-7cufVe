@@ -1,3 +1,4 @@
+<!-- VOID: re-queued 202607072027 — struggle cause fixed, AJAP re-applies itself @ 202607072027 -->
 # Williams Fashion Logistics — IT Operations Support Specialist
 
 SEEK URL: https://www.seek.com.au/job/93140005?type=promoted&ref=search-standalone&origin=cardTitle#sol=35f80433cda0caeb890260b9fc7bcb635fa22a8f

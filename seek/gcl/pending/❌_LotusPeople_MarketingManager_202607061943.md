@@ -1,3 +1,4 @@
+<!-- VOID: re-queued 202607072027 — struggle cause fixed, AJAP re-applies itself @ 202607072027 -->
 # Lotus People — Marketing Manager
 
 SEEK URL: https://www.seek.com.au/job/92991424?type=standard&ref=search-standalone&origin=cardTitle#sol=37c9ca6b49073a7c35888f45798a2ce16b32e455

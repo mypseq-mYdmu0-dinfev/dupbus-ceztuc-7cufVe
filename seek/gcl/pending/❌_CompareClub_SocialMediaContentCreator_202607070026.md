@@ -1,3 +1,4 @@
+<!-- VOID: re-queued 202607072027 — struggle cause fixed, AJAP re-applies itself @ 202607072027 -->
 # Compare Club — Social Media Content Creator
 
 SEEK URL: https://www.seek.com.au/job/93003900?type=standard&ref=search-standalone&origin=cardTitle#sol=5648d2ff50af2e3ee5b66b60cab997074a801c5d

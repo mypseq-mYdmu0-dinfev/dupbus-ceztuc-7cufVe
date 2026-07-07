@@ -1,3 +1,4 @@
+<!-- VOID: re-queued 202607072027 — struggle cause fixed, AJAP re-applies itself @ 202607072027 -->
 # SCE Energy Solutions — Marketing & Customer Experience Coordinator
 
 SEEK URL: https://www.seek.com.au/job/93095840?type=standard&ref=search-standalone&origin=cardTitle#sol=bf0711b5f87e4b0dc001830ba29c161b4725b2e8
