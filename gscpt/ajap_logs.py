@@ -2,39 +2,39 @@
 """
 AJAP Logs Processor
 
-Builds a per-timeframe CSV of job-application activity (Applied / Skipped / Pending 
-counts plus rule-violation tallies) by cross-referencing a timeframe
-instruction file against the repo's seek/gcl folders.
+Builds a per-timeframe CSV of job-application activity (Applied / Skipped /
+Pending counts plus rule-violation tallies) by cross-referencing a timeframe
+instruction file against the NEW AJAP's LEDGER (user 202607080322 §269/297:
+the ledger records every job the programme processed, so file moves by #psl
+sessions can never contaminate counts; old-AJAP file-scan compatibility is
+deliberately dropped).
 
 USAGE
 -----
 1. In THIS script's own directory, place at least one instruction file with a
-   .txt or .md extension (any name except `temp.txt`). Each meaningful line
-   must START with a 12-digit timestamp (YYYYMMDDHHmm) marking a timeframe's
-   start; anything after the timestamp on that line is treated as an optional
-   free-text remark (e.g. `202606060900 morning batch`). Blank lines and lines
-   not starting with a 12-digit timestamp are ignored.
-   NOTE: As a convenience, any line containing a macOS screenshot filename
-   (e.g. `Screenshot 2026-06-13 at 17.01.29 (4).png X%X% comment`) is first
-   normalised into the expected 12-digit-TS form before the above runs: the
-   `YYYY-MM-DD at HH.MM` part becomes `YYYYMMDDHHmm`, anything between the
-   minute and `.png` (here `.29 (4)`) is ignored, the `.png` token itself is
-   removed, and whatever follows `.png` is preserved as the remark. So the
-   example line becomes `202606131701 X%X% comment`. Lines without `.png`
-   pass through untouched.
-2. The script also scans the repo's seek/gcl applied / skipped / pending
-   folders, bucketing each job file into the timeframe its filename timestamp
-   falls within.
-3. Run:  python3 ajap_logs.py
-4. Output CSV is written beside this script as
-   `AJAP Logs [input_stem].csv`, where [input_stem] is the first valid
-   instruction file's name without its extension.
+   .txt or .md extension (any name except `temp.txt`; anything inside
+   `parked/` is ignored). Each meaningful line must START with a 12-digit
+   timestamp (YYYYMMDDHHmm) marking a timeframe's start; anything after the
+   timestamp on that line is an optional free-text remark. The AJAP programme
+   auto-writes these files as `ajap_logs_input_[runtime_start_TS].md`
+   (`ses[nn]s`/`ses[nn]e` lines) and runs this script itself on STOP.
+   NOTE: macOS screenshot filenames on a line are still normalised into the
+   12-digit-TS form first (legacy convenience).
+2. Job data comes from the ledger
+   (AJAP_repo/AJAP_code/runtime/ledger.db, read-only): every row with outcome
+   Applied / Skipped / Pending, bucketed by its processed timestamp.
+   Mirror*/LegacyImport/Void/AlreadyApplied rows are excluded by design
+   (they are file moves or dedupe memory, not run activity).
+3. Run:  python3 ajap_logs.py   (or let AJAP run it at STOP)
+4. Output CSV beside this script: for an `ajap_logs_input_*` source the name
+   is `ajap_logs_output_[output_TS].csv` ([output_TS] = when the CSV was
+   produced); other sources keep the legacy `AJAP Logs [input_stem].csv`.
 
 It STOPS with an alert if: no valid timeframe timestamps are found; no source
-.txt/.md instruction file exists; or the target output CSV already exists
-(delete/rename it first).
+.txt/.md instruction file exists; the ledger is missing; or the target output
+CSV already exists (delete/rename it first).
 
-Format: `[TS]/[SS.png] [ses]%[wk]% ses[no.][start/end]`
+Input-line format: `[TS] [ses]%[wk]% ses[no.][s/e]`
 """
 
 from pathlib import Path
@@ -47,17 +47,13 @@ import sys
 # CONFIG
 # =========================================================
 
-BASE_DIR = Path(
-    "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/seek/gcl"
+LEDGER_DB = Path(
+    "/Volumes/FURY 2TB/Fury Documents/GitHub/AJAP_repo/AJAP_code/runtime/ledger.db"
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 
-DIRS = {
-    "Applied": BASE_DIR / "applied",
-    "Skipped": BASE_DIR / "skipped",
-    "Pending": BASE_DIR / "pending",
-}
+CATEGORIES = ("Applied", "Skipped", "Pending")
 
 TIMESTAMP_PATTERN = re.compile(r"(\d{12})(?=\.[^.]+$)")
 
@@ -156,7 +152,7 @@ def load_timeframes():
         if not file.is_file():
             continue
 
-        if file.name == "temp.txt":
+        if file.name in ("temp.txt", "README.md"):
             continue
 
         if file.suffix.lower() not in VALID_EXTENSIONS:
@@ -201,49 +197,53 @@ def load_timeframes():
     return sorted(timeframe_starts), remarks
 
 
-def collect_files(directory: Path):
+def collect_ledger_rows():
     """
-    Collect only files directly inside directory
-    (excluding subfolders).
+    Read the AJAP ledger (read-only) and return {category: [row_dict, ...]}
+    for Applied / Skipped / Pending outcomes — the ledger replaces the old
+    gcl-folder filename scan entirely (user §269/297).
 
-    Filename timestamp = creation/start timestamp
-    File modified time = actual latest activity timestamp
+    processed.ts (YYYYMMDDHHmm) = creation/start timestamp
+    processed.epoch (row write time) = actual latest activity timestamp
     """
+    import sqlite3
 
-    collected = []
+    if not LEDGER_DB.exists():
+        print(f"Ledger not found: {LEDGER_DB}")
+        sys.exit(1)
 
-    for item in directory.iterdir():
+    conn = sqlite3.connect(f"file:{LEDGER_DB}?mode=ro", uri=True)
+    rows = conn.execute(
+        "SELECT title, employer, outcome, ar_path, ts, epoch FROM processed "
+        "WHERE outcome IN ('Applied', 'Skipped', 'Pending')"
+    ).fetchall()
+    conn.close()
 
-        if not item.is_file():
+    by_cat = {c: [] for c in CATEGORIES}
+
+    for title, employer, outcome, ar_path, ts, epoch in rows:
+        try:
+            created_ts = datetime.strptime(str(ts)[:12], "%Y%m%d%H%M")
+        except (ValueError, TypeError):
             continue
-
-        if item.suffix.lower() not in VALID_EXTENSIONS:
-            continue
-
-        # Completely ignore excluded files
-        if EXCLUDED_FILENAME_SYMBOL in item.name:
-            continue
-
-        created_ts = extract_timestamp(item.name)
-
-        if not created_ts:
-            continue
-
-        modified_ts = datetime.fromtimestamp(
-            item.stat().st_mtime
-        )
-
-        collected.append({
-            "path": item,
+        try:
+            modified_ts = datetime.fromtimestamp(float(epoch))
+        except (ValueError, TypeError, OSError):
+            modified_ts = created_ts
+        path = Path(ar_path) if ar_path else None
+        name = (path.name if path is not None and path.name
+                else f"{employer}_{title}_{str(ts)[:12]}.md")
+        by_cat[outcome].append({
+            "path": path,
             "created_timestamp": created_ts,
             "modified_timestamp": modified_ts,
-            "name": item.name,
+            "name": name,
         })
 
-    return sorted(
-        collected,
-        key=lambda x: x["created_timestamp"]
-    )
+    for c in CATEGORIES:
+        by_cat[c].sort(key=lambda x: x["created_timestamp"])
+
+    return by_cat
 
 
 def count_files_in_range(files, start_dt, next_start_dt, category):
@@ -302,10 +302,11 @@ def format_parts(dt, warning=0):
     ]
 
 
-def scan_applied_violations():
+def scan_applied_violations(applied_rows):
     """
-    Return {filename: total_violation_count} for Applied files. The total is
-    the sum of two violation types, treated identically:
+    Return {filename: total_violation_count} for the ledger's Applied rows
+    (the AR file is read via the row's ar_path; rows whose file has been
+    moved/cleared are skipped — counts still come from the ledger). Total =
 
       1. Each occurrence of a RULE_VIOLATION_SYMBOLS symbol appearing AFTER the
          Cover Letter marker (skipped if the file has no marker).
@@ -314,16 +315,13 @@ def scan_applied_violations():
          or there is any text after it.
     """
 
-    applied_dir = DIRS["Applied"]
-
     result = {}
 
-    for item in applied_dir.iterdir():
+    for row in applied_rows:
 
-        if not item.is_file():
-            continue
+        item = row["path"]
 
-        if item.suffix.lower() not in VALID_EXTENSIONS:
+        if item is None or not item.is_file():
             continue
 
         # Completely ignore excluded files
@@ -403,16 +401,13 @@ def main():
 
     timeframe_starts, remarks_by_dt = load_timeframes()
 
-    files_by_category = {
-        category: collect_files(path)
-        for category, path in DIRS.items()
-    }
+    files_by_category = collect_ledger_rows()
 
     rows = []
 
     overlap_warnings = 0
 
-    applied_violations = scan_applied_violations()
+    applied_violations = scan_applied_violations(files_by_category["Applied"])
 
     for i, start_dt in enumerate(timeframe_starts):
 
@@ -557,7 +552,7 @@ def main():
         f for f in SCRIPT_DIR.iterdir()
         if (
             f.is_file()
-            and f.name != "temp.txt"
+            and f.name not in ("temp.txt", "README.md")
             and f.suffix.lower() in VALID_EXTENSIONS
             and EXCLUDED_FILENAME_SYMBOL not in f.name
         )
@@ -570,9 +565,15 @@ def main():
     # Use first valid source filename
     source_file = source_files[0]
 
-    # Prefix the output CSV with "AJAP Logs " (mirrors battery_logs.py's
-    # "Battery Logs ..." convention); [input_stem] = source filename w/o ext.
-    output_file = source_file.with_name(f"AJAP Logs {source_file.stem}.csv")
+    # Naming (user §286): an AJAP-written input (`ajap_logs_input_*`) yields
+    # `ajap_logs_output_[output_TS].csv` ([output_TS] = now); any other source
+    # keeps the legacy "AJAP Logs [input_stem].csv" convention.
+    if source_file.stem.startswith("ajap_logs_input"):
+        out_ts = datetime.now().strftime("%Y%m%d%H%M")
+        output_file = source_file.with_name(f"ajap_logs_output_{out_ts}.csv")
+    else:
+        output_file = source_file.with_name(
+            f"AJAP Logs {source_file.stem}.csv")
 
     if output_file.exists():
         print("")

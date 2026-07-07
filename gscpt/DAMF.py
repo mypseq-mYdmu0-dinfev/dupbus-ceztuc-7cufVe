@@ -21,7 +21,8 @@ catalog value.
 USAGE
 -----
 1. In THIS script's own directory, create exactly one .txt file (any name
-   except `temp.txt`) containing:
+   except `temp.txt`; anything inside parked/ is ignored, incl. by the
+   bare-filename search) containing:
        Line 1: the target filename (e.g. dissertation_response_202606041852.md)
        Line 2: the desired Date Added timestamp in YYYYMMDDHHmm (Sydney time)
 2. Run:  python3 DAMF.py
@@ -48,6 +49,7 @@ REPO_ROOT = Path(
 )
 SYDNEY = ZoneInfo("Australia/Sydney")
 EXCLUDED_TXT = {"temp.txt"}  # never treat these as the instruction file
+PARKED_DIR = SCRIPT_DIR / "parked"  # gscpt/parked/ —— contents ignored by every gscpt script
 
 
 def die(msg: str) -> None:
@@ -60,8 +62,8 @@ def find_instruction_file() -> Path:
     """Exactly one eligible .txt must sit beside this script."""
     candidates = [
         p for p in SCRIPT_DIR.glob("*.txt")
-        if p.name not in EXCLUDED_TXT
-    ]
+        if p.is_file() and p.name not in EXCLUDED_TXT
+    ]  # top-level only: anything inside parked/ (or any subfolder) never matches
     if not candidates:
         die(f"no instruction .txt found in {SCRIPT_DIR} (excluding {sorted(EXCLUDED_TXT)}).")
     if len(candidates) > 1:
@@ -124,10 +126,12 @@ def find_target_in_repo(filename: str) -> Path:
         for cand in (REPO_ROOT / v, Path(v)):
             if cand.exists():
                 return cand
-    # 2) bare filename: search the repo (rglob rejects absolute patterns)
+    # 2) bare filename: search the repo (rglob rejects absolute patterns);
+    #    anything parked under gscpt/parked/ is invisible to the search
     for v in variants:
         if not Path(v).is_absolute():
-            matches = [p for p in REPO_ROOT.rglob(v) if p.is_file()]
+            matches = [p for p in REPO_ROOT.rglob(v)
+                       if p.is_file() and PARKED_DIR not in p.parents]
             if len(matches) == 1:
                 return matches[0]
             if len(matches) > 1:

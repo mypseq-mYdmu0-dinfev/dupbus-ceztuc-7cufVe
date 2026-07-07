@@ -31,7 +31,8 @@ that contain venvs whose symlinks point at system binaries.
 USAGE
 -----
 Instruction file (DAMF-compatible):
-   Place exactly one .txt beside this script (any name except temp.txt):
+   Place exactly one .txt beside this script (any name except temp.txt;
+   anything inside parked/ is ignored, incl. by the bare-filename search):
        Line 1: a filename to find anywhere in the repo, OR a path
                (relative to the repo root, or absolute) to a file or folder
        Line 2: the target timestamp in YYYYMMDDHHmm (Sydney local time)
@@ -59,6 +60,7 @@ REPO_ROOT = Path(
 )
 SYDNEY = ZoneInfo("Australia/Sydney")
 EXCLUDED_TXT = {"temp.txt"}  # never treat these as the instruction file
+PARKED_DIR = SCRIPT_DIR / "parked"  # gscpt/parked/ —— contents ignored by every gscpt script
 
 # catalog attribute bits (sys/attr.h)
 ATTR_BIT_MAP_COUNT = 5
@@ -198,10 +200,12 @@ def resolve_target(token: str) -> Path:
         for cand in (REPO_ROOT / v, Path(v)):
             if cand.exists():
                 return cand
-    # 2) bare filename: search the repo (rglob rejects absolute patterns)
+    # 2) bare filename: search the repo (rglob rejects absolute patterns);
+    #    anything parked under gscpt/parked/ is invisible to the search
     for v in variants:
         if not Path(v).is_absolute():
-            matches = [p for p in REPO_ROOT.rglob(v) if p.is_file()]
+            matches = [p for p in REPO_ROOT.rglob(v)
+                       if p.is_file() and PARKED_DIR not in p.parents]
             if len(matches) == 1:
                 return matches[0]
             if len(matches) > 1:
@@ -212,8 +216,9 @@ def resolve_target(token: str) -> Path:
 
 def find_instruction_file() -> Path:
     candidates = [
-        p for p in SCRIPT_DIR.glob("*.txt") if p.name not in EXCLUDED_TXT
-    ]
+        p for p in SCRIPT_DIR.glob("*.txt")
+        if p.is_file() and p.name not in EXCLUDED_TXT
+    ]  # top-level only: anything inside parked/ (or any subfolder) never matches
     if not candidates:
         die(f"no instruction .txt found in {SCRIPT_DIR} (excluding {sorted(EXCLUDED_TXT)}).")
     if len(candidates) > 1:

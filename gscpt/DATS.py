@@ -6,6 +6,9 @@ own filename, repairing drift caused by atomic-save edits/drags. Zero-token, loc
 Run:  python3 DATS.py [--dry-run|-n]
   (no file-type argument — all three types are processed every run.)
 
+Scanned roots (see SCAN_DIRS): the default repo's sessions/ and
+seek/investigation/, plus AJAP_repo's AJAP_inv/ — same rules in all roots.
+
 Date-Added method (matches DAMF.py): setattrlist(ATTR_CMN_ADDEDTIME) moves
 Finder's catalog "Date Added", and a kMDItemDateAdded xattr keeps Spotlight/mdls
 in agreement (xattr alone never moves Finder's column; the syscall is the one
@@ -30,9 +33,13 @@ import os, re, sys, ctypes, ctypes.util, struct, subprocess, plistlib
 from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
-# ---- config (edit FOLDERS to add more) ----
+# ---- config (edit SCAN_DIRS to add more roots) ----
 REPO = "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
-FOLDERS = ["sessions", "seek/investigation"]
+AJAP_REPO = "/Volumes/FURY 2TB/Fury Documents/GitHub/AJAP_repo"
+FOLDERS = ["sessions", "seek/investigation"]          # relative to REPO (legacy)
+SCAN_DIRS = [os.path.join(REPO, f) for f in FOLDERS] + [
+    os.path.join(AJAP_REPO, "AJAP_inv"),              # #inv comms live here now
+]
 CONFIRM_DIR = os.path.join(REPO, "gscpt")
 TYPES = ["query", "close", "wrap"]  # response is intentionally never processed
 SYDNEY = ZoneInfo("Australia/Sydney")
@@ -95,8 +102,8 @@ def gather(ftype):
     name_re = re.compile(rf"^(?:[A-Za-z0-9]+_)?{ftype}_")
     bare_re = re.compile(rf"^(?:[A-Za-z0-9]+_)?{ftype}_\.md$")
     targets, missing = [], []
-    for fold in FOLDERS:
-        for dp, _, fs in os.walk(os.path.join(REPO, fold)):
+    for root in SCAN_DIRS:
+        for dp, _, fs in os.walk(root):
             for f in fs:
                 if not f.endswith(".md") or not name_re.match(f):
                     continue

@@ -12,7 +12,8 @@ number of times still shows its whole story.
 USAGE (DXMF-style activation)
 -----------------------------
 1. Place an instruction file with a .txt or .md extension beside this script
-   (any name except `temp.txt` and this script's own outputs). Its FIRST
+   (any name except `temp.txt`/`README.md` and this script's own outputs;
+   the parked/ subfolder is never scanned). Its FIRST
    non-empty line = the target file's path (macOS "copy file path" absolute
    form; a leading/trailing quote pair is tolerated).
 2. Run:  python3 ghist.py
@@ -46,7 +47,7 @@ def read_instruction() -> Path:
     for p in sorted(SCRIPT_DIR.iterdir()):
         if p.suffix.lower() not in (".txt", ".md"):
             continue
-        if p.name in ("temp.txt",) or p.name.startswith("ghist_"):
+        if p.name in ("temp.txt", "README.md") or p.name.startswith("ghist_"):
             continue
         if p.name == "ajap_runtime_log.md":      # AJAP's analytics log, not ours
             continue
