@@ -126,10 +126,10 @@ def _vanished_sources(repo: Path, commit: str) -> list:
 
 
 def _bridge_candidates(dead_path: str, gone: list) -> list:
-    """GitHub-parity shortlist: the sole vanished path qualifies outright;
-    amongst several, filename-token overlap ranks them (numeric-only tokens
-    like the _00/_01 duplication suffixes are ignored — they pair the wrong
-    twins) and zero overlap disqualifies."""
+    """GitHub-parity shortlist (202607090137 §353.5): the sole vanished path
+    qualifies outright; amongst several, filename-token overlap ranks them
+    (numeric-only tokens like the _00/_01 duplication suffixes are ignored —
+    they pair the wrong twins) and zero overlap disqualifies."""
     if not gone:
         return []
     if len(gone) == 1:
@@ -194,7 +194,7 @@ def extend_history(repo: Path, commits: list) -> list:
     edited the file (similarity < threshold). Keep digging: from the OLDEST
     known commit, re-run --follow on that commit's PATH strictly before it,
     and append whatever appears. Capped; dedup by hash.
-    Final fallback per hop = the STRUCTURAL BRIDGE:
+    Final fallback per hop = the STRUCTURAL BRIDGE (user 202607090137 §336):
     when the oldest commit plain-ADDED the file (nothing content-based can
     ever dig deeper), hop to the best-matching path that VANISHED in that
     same commit — exactly what GitHub's history view does silently. The hop
