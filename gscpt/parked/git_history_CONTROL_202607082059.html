@@ -1,0 +1,106 @@
+<!doctype html><meta charset='utf-8'><title>Git History — CONTROL.md</title><style>
+:root{--bg:#f6f8fa;--card:#fff;--fg:#1f2328;--muted:#57606a;--line:#d0d7de;
+      --chip:#ddf4ff;--chipfg:#0969da;--hd:#24292f;--hdfg:#fff;--hdmut:#c9d1d9;
+      --insbg:#dafbe1;--insfg:#116329;--delbg:#ffebe9;--delfg:#82071e;
+      --hover:#f3f4f6}
+body.dark{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#8d96a0;
+      --line:#30363d;--chip:#121d2f;--chipfg:#58a6ff;--hd:#010409;
+      --hdfg:#e6edf3;--hdmut:#8d96a0;--insbg:#12261e;--insfg:#3fb950;
+      --delbg:#25171c;--delfg:#f85149;--hover:#1c2129}
+*{font-family:Avenir,'Avenir Next',-apple-system,sans-serif}
+body{font-size:15px;line-height:1.55;margin:0;background:var(--bg);
+     color:var(--fg)}
+header{background:var(--hd);color:var(--hdfg);padding:12px 22px;display:flex;
+       align-items:flex-start;gap:14px}
+header .grow{flex:1;min-width:0}
+header h1{font-size:17px;margin:0}
+header .sub{color:var(--hdmut);font-size:12px;margin-top:3px}
+header .sub a{color:var(--hdmut);text-decoration:underline;cursor:pointer}
+.btn{background:transparent;border:1px solid var(--hdmut);color:var(--hdfg);
+     border-radius:6px;font-size:12px;padding:4px 10px;cursor:pointer;
+     white-space:nowrap;margin-top:2px}
+.btn:hover{border-color:var(--hdfg)}
+main{max-width:980px;margin:18px auto;padding:0 14px}
+.commit{background:var(--card);border:1px solid var(--line);border-radius:8px;
+        margin-bottom:14px;overflow:hidden}
+.commit summary{cursor:pointer;padding:10px 14px;display:flex;gap:10px;
+        align-items:baseline;flex-wrap:wrap;list-style:none}
+.commit summary::-webkit-details-marker{display:none}
+.commit summary:hover{background:var(--hover)}
+.hash{font-family:ui-monospace,Menlo,monospace;font-size:12px;
+      color:var(--chipfg);background:var(--chip);border-radius:4px;
+      padding:1px 6px;cursor:pointer}
+.hash:hover{outline:1px solid var(--chipfg)}
+.subj{font-weight:600}
+.meta{color:var(--muted);font-size:12.5px;margin-left:auto;white-space:nowrap}
+.rename{font-size:12px;color:#9a6700;background:#fff8c5;border-radius:4px;
+        padding:1px 6px}
+body.dark .rename{background:#2b2300;color:#e3b341}
+.body{border-top:1px solid var(--line);padding:12px 16px;background:var(--card)}
+pre.diff{white-space:pre-wrap;word-wrap:break-word;margin:0;
+         font-family:ui-monospace,Menlo,monospace;font-size:12.8px}
+pre.mdcode{white-space:pre-wrap;background:var(--bg);border-radius:6px;
+           padding:8px 10px;font-family:ui-monospace,Menlo,monospace;
+           font-size:12.8px}
+del{background:var(--delbg);color:var(--delfg);text-decoration:line-through}
+ins{background:var(--insbg);color:var(--insfg);text-decoration:none}
+.note{color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.view-html .code-view{display:none}
+body:not(.view-html) .html-view{display:none}
+.html-view h2,.html-view h3{margin:0.7em 0 0.3em}
+.html-view code{background:var(--bg);border-radius:4px;padding:0 4px;
+                font-family:ui-monospace,Menlo,monospace;font-size:0.9em}
+.html-view hr{border:0;border-top:1px solid var(--line)}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:26px 0 18px}
+#helpbox{display:none;position:fixed;top:64px;right:22px;background:var(--card);
+        border:1px solid var(--line);border-radius:8px;padding:12px 16px;
+        font-size:13px;box-shadow:0 6px 24px rgba(0,0,0,.25);z-index:9}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+       background:var(--hd);color:var(--hdfg);border-radius:6px;
+       padding:6px 14px;font-size:12.5px;display:none;z-index:9}
+</style><body><header><div class='grow'><h1>Git History (3): CONTROL.md</h1><div class='sub'>CONTROL.md</div><div class='sub'>Generated 202607082059 | <a onclick='toggleHelp()'>Help</a></div></div><button class='btn' id='copybtn' onclick='toggleCopy()'>Copy Only</button><button class='btn' id='viewbtn' onclick='toggleView()'>HTML</button><button class='btn' id='darkbtn' onclick='toggleDark()'>Dark Mode</button></header><div id='helpbox'>- Newest first<br>- Click commit bar to expand or collapse<br>- Click SHA chip to copy it & open the commit on GitHub<br>- HTML View: the file as rendered rich text after that commit<br>- Code View: word-level diff vs the previous commit<br>- Dark Mode follows macOS setting by default</div><div id='toast'></div><main><details class='commit' open><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'84fc86d','https://github.com/mypseq-mYdmu0-dinfev/AJAP_repo/commit/84fc86dd916c89876e4d35ab9314eef03bcc2908')">84fc86d</span><span class='subj'>response_202607080833.md</span><span class='rename'>renamed</span><span class='meta'>2026-07-08 20:57</span></summary><div class='body'><p class='note'>vs previous commit (8c43369) · renamed from <code>AJAP_protocols/CONTROL.md</code></p><div class='code-view'><pre class='diff'>STOP
+DARK
+<ins>Qi01</ins>
+*The AJAP kill switch + appearance control <del>(moved</del><ins>(at</ins> <del>from</del><ins>the</ins> <del>`AJAP_code/runtime/control.md`,</del><ins>REPO</ins> <del>202607071751;</del><ins>ROOT since 202607080833;</ins> Line 2 added <del>202607080322).</del><ins>202607080322; Line 3 = Qi mirror/override).</ins> Polled every card. Line 1 = `RUN` / `PAUSE` (idle after current card) / `STOP` (graceful end); a missing file counts as `RUN`. Line 2 = `DARK` / `LIGHT`, control-centre style: AJAP mirrors macOS appearance plus the clock rule (0100→dark, 0800→light) and writes its state here itself —— edit the line yourself to OVERRIDE until the next system/clock event rewrites it. <ins>Line 3 = `Qi[nn]`, same semantics: AJAP mirrors the queue item it is working; edit it to JUMP the run to that Qi (backwards restarts it, forwards skips ahead). </ins>Changes take effect at the next card. See <del>`USER_MANUAL.md`</del><ins>`AJAP_protocols/USER_MANUAL.md`</ins> §5.*
+</pre></div><div class='html-view'><p>STOP</p>
+<p>DARK</p>
+<p>Qi01</p>
+<p><em>The AJAP kill switch + appearance control (at the REPO ROOT since 202607080833; Line 2 added 202607080322; Line 3 = Qi mirror/override). Polled every card. Line 1 = <code>RUN</code> / <code>PAUSE</code> (idle after current card) / <code>STOP</code> (graceful end); a missing file counts as <code>RUN</code>. Line 2 = <code>DARK</code> / <code>LIGHT</code>, control-centre style: AJAP mirrors macOS appearance plus the clock rule (0100→dark, 0800→light) and writes its state here itself —— edit the line yourself to OVERRIDE until the next system/clock event rewrites it. Line 3 = <code>Qi[nn]</code>, same semantics: AJAP mirrors the queue item it is working; edit it to JUMP the run to that Qi (backwards restarts it, forwards skips ahead). Changes take effect at the next card. See <code>AJAP_protocols/USER_MANUAL.md</code> §5.</em></p></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'8c43369','https://github.com/mypseq-mYdmu0-dinfev/AJAP_repo/commit/8c4336901324eb32a8b1feb869bb41b3c7db4f11')">8c43369</span><span class='subj'>partial actions of response_202607080322.md; #eng AJAP</span><span class='meta'>2026-07-08 05:28</span></summary><div class='body'><p class='note'>vs previous commit (b84d019)</p><div class='code-view'><pre class='diff'><del>PAUSE</del><ins>STOP
+DARK</ins>
+
+*The AJAP kill switch <ins>+ appearance control </ins>(moved from `AJAP_code/runtime/control.md`, <del>202607071751).</del><ins>202607071751; Line 2 added 202607080322). Polled every card.</ins> Line 1 <del>is the ONLY control the programme reads, polled every card:</del><ins>=</ins> `RUN` / `PAUSE` (idle after current card) / `STOP` (graceful <del>end).</del><ins>end);</ins> <del>A</del><ins>a</ins> missing file counts as `RUN`. <ins>Line 2 = `DARK` / `LIGHT`, control-centre style: AJAP mirrors macOS appearance plus the clock rule (0100→dark, 0800→light) and writes its state here itself —— edit the line yourself to OVERRIDE until the next system/clock event rewrites it. Changes take effect at the next card. </ins>See `USER_MANUAL.md` §5.*
+</pre></div><div class='html-view'><p>STOP</p>
+<p>DARK</p>
+
+<p><em>The AJAP kill switch + appearance control (moved from <code>AJAP_code/runtime/control.md</code>, 202607071751; Line 2 added 202607080322). Polled every card. Line 1 = <code>RUN</code> / <code>PAUSE</code> (idle after current card) / <code>STOP</code> (graceful end); a missing file counts as <code>RUN</code>. Line 2 = <code>DARK</code> / <code>LIGHT</code>, control-centre style: AJAP mirrors macOS appearance plus the clock rule (0100→dark, 0800→light) and writes its state here itself —— edit the line yourself to OVERRIDE until the next system/clock event rewrites it. Changes take effect at the next card. See <code>USER_MANUAL.md</code> §5.</em></p></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'b84d019','https://github.com/mypseq-mYdmu0-dinfev/AJAP_repo/commit/b84d019228f9a2069ff34c97f7162209ebe7fb19')">b84d019</span><span class='subj'>response_202607071751.md</span><span class='meta'>2026-07-07 21:38</span></summary><div class='body'><p class='note'>file created in this commit</p><div class='code-view'><pre class='diff'><ins>PAUSE
+
+*The AJAP kill switch (moved from `AJAP_code/runtime/control.md`, 202607071751). Line 1 is the ONLY control the programme reads, polled every card: `RUN` / `PAUSE` (idle after current card) / `STOP` (graceful end). A missing file counts as `RUN`. See `USER_MANUAL.md` §5.*
+</ins></pre></div><div class='html-view'><p>PAUSE</p>
+
+<p><em>The AJAP kill switch (moved from <code>AJAP_code/runtime/control.md</code>, 202607071751). Line 1 is the ONLY control the programme reads, polled every card: <code>RUN</code> / <code>PAUSE</code> (idle after current card) / <code>STOP</code> (graceful end). A missing file counts as <code>RUN</code>. See <code>USER_MANUAL.md</code> §5.</em></p></div></div></details></main><footer>Confidential Intellectual Property of Culous Yu</footer><script>
+const body = document.body;
+if (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)
+  body.classList.add('dark');
+syncBtns();
+function syncBtns(){
+  document.getElementById('copybtn').textContent =
+    window.copyOnly ? 'Copy+GH' : 'Copy Only';
+  document.getElementById('darkbtn').textContent =
+    body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+  document.getElementById('viewbtn').textContent =
+    body.classList.contains('view-html') ? 'Code' : 'HTML';
+}
+function toggleDark(){ body.classList.toggle('dark'); syncBtns(); }
+function toggleCopy(){ window.copyOnly = !window.copyOnly; syncBtns(); }
+function toggleView(){ body.classList.toggle('view-html'); syncBtns(); }
+function toggleHelp(){ const h = document.getElementById('helpbox');
+  h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
+function shaClick(ev, sha, url){
+  ev.preventDefault(); ev.stopPropagation();
+  navigator.clipboard && navigator.clipboard.writeText(sha);
+  const t = document.getElementById('toast');
+  t.textContent = sha + ' copied'; t.style.display = 'block';
+  setTimeout(()=>{ t.style.display='none'; }, 1400);
+  if (url && !window.copyOnly) window.open(url, '_blank');
+}
+</script></body>

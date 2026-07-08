@@ -1,0 +1,399 @@
+<!doctype html><meta charset='utf-8'><title>Git History — MGTK751_ProjectSummary.md</title><style>
+:root{--bg:#f6f8fa;--card:#fff;--fg:#1f2328;--muted:#57606a;--line:#d0d7de;
+      --chip:#ddf4ff;--chipfg:#0969da;--hd:#24292f;--hdfg:#fff;--hdmut:#c9d1d9;
+      --insbg:#dafbe1;--insfg:#116329;--delbg:#ffebe9;--delfg:#82071e;
+      --hover:#f3f4f6}
+body.dark{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#8d96a0;
+      --line:#30363d;--chip:#121d2f;--chipfg:#58a6ff;--hd:#010409;
+      --hdfg:#e6edf3;--hdmut:#8d96a0;--insbg:#12261e;--insfg:#3fb950;
+      --delbg:#25171c;--delfg:#f85149;--hover:#1c2129}
+*{font-family:Avenir,'Avenir Next',-apple-system,sans-serif}
+body{font-size:15px;line-height:1.55;margin:0;background:var(--bg);
+     color:var(--fg)}
+header{background:var(--hd);color:var(--hdfg);padding:12px 22px;display:flex;
+       align-items:flex-start;gap:14px}
+header .grow{flex:1;min-width:0}
+header h1{font-size:17px;margin:0}
+header .sub{color:var(--hdmut);font-size:12px;margin-top:3px}
+header .sub a{color:var(--hdmut);text-decoration:underline;cursor:pointer}
+.btn{background:transparent;border:1px solid var(--hdmut);color:var(--hdfg);
+     border-radius:6px;font-size:12px;padding:4px 10px;cursor:pointer;
+     white-space:nowrap;margin-top:2px}
+.btn:hover{border-color:var(--hdfg)}
+main{max-width:980px;margin:18px auto;padding:0 14px}
+.commit{background:var(--card);border:1px solid var(--line);border-radius:8px;
+        margin-bottom:14px;overflow:hidden}
+.commit summary{cursor:pointer;padding:10px 14px;display:flex;gap:10px;
+        align-items:baseline;flex-wrap:wrap;list-style:none}
+.commit summary::-webkit-details-marker{display:none}
+.commit summary:hover{background:var(--hover)}
+.hash{font-family:ui-monospace,Menlo,monospace;font-size:12px;
+      color:var(--chipfg);background:var(--chip);border-radius:4px;
+      padding:1px 6px;cursor:pointer}
+.hash:hover{outline:1px solid var(--chipfg)}
+.subj{font-weight:600}
+.meta{color:var(--muted);font-size:12.5px;margin-left:auto;white-space:nowrap}
+.rename{font-size:12px;color:#9a6700;background:#fff8c5;border-radius:4px;
+        padding:1px 6px}
+body.dark .rename{background:#2b2300;color:#e3b341}
+.body{border-top:1px solid var(--line);padding:12px 16px;background:var(--card)}
+pre.diff{white-space:pre-wrap;word-wrap:break-word;margin:0;
+         font-family:ui-monospace,Menlo,monospace;font-size:12.8px}
+pre.mdcode{white-space:pre-wrap;background:var(--bg);border-radius:6px;
+           padding:8px 10px;font-family:ui-monospace,Menlo,monospace;
+           font-size:12.8px}
+del{background:var(--delbg);color:var(--delfg);text-decoration:line-through}
+ins{background:var(--insbg);color:var(--insfg);text-decoration:none}
+.note{color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.view-html .code-view{display:none}
+body:not(.view-html) .html-view{display:none}
+.html-view h2,.html-view h3{margin:0.7em 0 0.3em}
+.html-view code{background:var(--bg);border-radius:4px;padding:0 4px;
+                font-family:ui-monospace,Menlo,monospace;font-size:0.9em}
+.html-view hr{border:0;border-top:1px solid var(--line)}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:26px 0 18px}
+#helpbox{display:none;position:fixed;top:64px;right:22px;background:var(--card);
+        border:1px solid var(--line);border-radius:8px;padding:12px 16px;
+        font-size:13px;box-shadow:0 6px 24px rgba(0,0,0,.25);z-index:9}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+       background:var(--hd);color:var(--hdfg);border-radius:6px;
+       padding:6px 14px;font-size:12.5px;display:none;z-index:9}
+</style><body><header><div class='grow'><h1>Git History (6): MGTK751_ProjectSummary.md</h1><div class='sub'>dissertation/MGTK751_ProjectSummary.md</div><div class='sub'>Generated 202607082102 | <a onclick='toggleHelp()'>Help</a></div></div><button class='btn' id='copybtn' onclick='toggleCopy()'>Copy Only</button><button class='btn' id='viewbtn' onclick='toggleView()'>HTML</button><button class='btn' id='darkbtn' onclick='toggleDark()'>Dark Mode</button></header><div id='helpbox'>- Newest first<br>- Click commit bar to expand or collapse<br>- Click SHA chip to copy it & open the commit on GitHub<br>- HTML View: the file as rendered rich text after that commit<br>- Code View: word-level diff vs the previous commit<br>- Dark Mode follows macOS setting by default</div><div id='toast'></div><main><details class='commit' open><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'a652b84','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/a652b84c0dd54147017994823941c9773f71fae9')">a652b84</span><span class='subj'>dlint quote fix only</span><span class='meta'>2026-06-23 16:04</span></summary><div class='body'><p class='note'>vs previous commit (a5f98aa)</p><div class='code-view'><pre class='diff'># Project Summary
+
+## Module
+MGTK751 <del>&quot;MBA</del><ins>“MBA</ins> <del>Project&quot;</del><ins>Project”</ins> (aka MP) is the capstone/final module of my online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars by Dr Enis Elezi. Wk7–36: self-directed w/ DA (Dissertation Advisor/A2&amp;3 marker): Lu Liu (PhD in KM; confirmed Wk7). Culous: 16⁺ yr <del>int&#x27;l</del><ins>int’l</ins> exp in project &amp; content mgmt; 6⁺ yr in consulting; HCI/IxD <del>master&#x27;s</del><ins>master’s</ins> w/ data analytics sub-major (UTS, 95% HD); final MBA module (this project) due 23/11/2026.
+
+## Assessments
+
+- A1: Research Proposal, 10%, 1,500w (70%; Grade A)
+- A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)
+- A3: Dissertation, 70%, ≤8,000w
+- A2&amp;3: due 23/11/2026
+
+## Research Topic: **Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)**
+
+TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
+
+- **Research vehicle:** CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant
+- **Primary mgmt challenge (A):** team cohesion erosion + KM governance failure
+- **Contingency/Discussion angles:** attrition cost (B), systemic cultural conditions (C)
+- **Scope:** cross-firm KBF sampling (1 per org)
+- **Method:** explanatory multi-case study (Yin, 2003; Zainal, 2007); semi-structured interviews as qualitative data collection technique; theoretically-informed (sensitising) thematic analysis (Braun &amp; Clarke, 2006)
+- **Primary participants (ppt):** <del>TPs&#x27;</del><ins>TPs’</ins> peers (TPPs) who experienced TPS dynamics; min. 6 pax
+- **RQ1:** What conditions within KBFs exacerbate or alleviate TPS?
+- **RQ2:** How do team members in KBFs experience TPS-related team dynamics?
+- **Current phase:** A1R v2 — amended per Lu (Logs 16/18, approved); aim reframed to inform <del>CYC&#x27;s</del><ins>CYC’s</ins> KM consulting practice; theoretical framework added; target DA/reviewer approval then ethics (timeline re-baselined; final A2/A3 23/11/2026)
+- **Remarks:** British English + <del>Hart&#x27;s</del><ins>Hart’s</ins> quotation rule always</pre></div><div class='html-view'><h2>Project Summary</h2>
+
+<h3>Module</h3>
+<p>MGTK751 “MBA Project” (aka MP) is the capstone/final module of my online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars by Dr Enis Elezi. Wk7–36: self-directed w/ DA (Dissertation Advisor/A2&amp;3 marker): Lu Liu (PhD in KM; confirmed Wk7). Culous: 16⁺ yr int’l exp in project &amp; content mgmt; 6⁺ yr in consulting; HCI/IxD master’s w/ data analytics sub-major (UTS, 95% HD); final MBA module (this project) due 23/11/2026.</p>
+
+<h3>Assessments</h3>
+
+<ul>
+<li>A1: Research Proposal, 10%, 1,500w (70%; Grade A)</li>
+<li>A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)</li>
+<li>A3: Dissertation, 70%, ≤8,000w</li>
+<li>A2&amp;3: due 23/11/2026</li>
+</ul>
+
+<h3>Research Topic: <strong>Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)</strong></h3>
+
+<p>TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.</p>
+
+<ul>
+<li><strong>Research vehicle:</strong> CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant</li>
+<li><strong>Primary mgmt challenge (A):</strong> team cohesion erosion + KM governance failure</li>
+<li><strong>Contingency/Discussion angles:</strong> attrition cost (B), systemic cultural conditions (C)</li>
+<li><strong>Scope:</strong> cross-firm KBF sampling (1 per org)</li>
+<li><strong>Method:</strong> explanatory multi-case study (Yin, 2003; Zainal, 2007); semi-structured interviews as qualitative data collection technique; theoretically-informed (sensitising) thematic analysis (Braun &amp; Clarke, 2006)</li>
+<li><strong>Primary participants (ppt):</strong> TPs’ peers (TPPs) who experienced TPS dynamics; min. 6 pax</li>
+<li><strong>RQ1:</strong> What conditions within KBFs exacerbate or alleviate TPS?</li>
+<li><strong>RQ2:</strong> How do team members in KBFs experience TPS-related team dynamics?</li>
+<li><strong>Current phase:</strong> A1R v2 — amended per Lu (Logs 16/18, approved); aim reframed to inform CYC’s KM consulting practice; theoretical framework added; target DA/reviewer approval then ethics (timeline re-baselined; final A2/A3 23/11/2026)</li>
+<li><strong>Remarks:</strong> British English + Hart’s quotation rule always</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'a5f98aa','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/a5f98aaf7a42bb1ee07fe789ac31f48ebb13704e')">a5f98aa</span><span class='subj'>#sprint on Lu&#x27;s request</span><span class='meta'>2026-06-22 16:49</span></summary><div class='body'><p class='note'>vs previous commit (72b89e6)</p><div class='code-view'><pre class='diff'># Project Summary
+
+## Module
+MGTK751 &quot;MBA Project&quot; (aka MP) is the capstone/final module of my online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars by Dr Enis Elezi. Wk7–36: self-directed w/ DA (Dissertation Advisor/A2&amp;3 marker): Lu Liu (PhD in KM; confirmed Wk7). Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; HCI/IxD master&#x27;s w/ data analytics sub-major (UTS, 95% HD); final MBA module (this project) due 23/11/2026.
+
+## Assessments
+
+- A1: Research Proposal, 10%, 1,500w (70%; Grade A)
+- A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)
+- A3: Dissertation, 70%, ≤8,000w
+- A2&amp;3: due 23/11/2026
+
+## Research Topic: **Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)**
+
+TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
+
+- **Research vehicle:** CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant
+- **Primary mgmt challenge (A):** team cohesion erosion + KM governance failure
+- **Contingency/Discussion angles:** attrition cost (B), systemic cultural conditions (C)
+- **Scope:** cross-firm KBF sampling (1 per org)
+- **Method:** explanatory multi-case study (Yin, <del>2009;</del><ins>2003;</ins> Zainal, 2007); semi-structured interviews as qualitative data collection technique;<ins> theoretically-informed (sensitising)</ins> thematic analysis (Braun &amp; Clarke, 2006)
+- **Primary participants (ppt):** TPs&#x27; peers (TPPs) who experienced TPS dynamics; min. 6 pax
+- **RQ1:** What conditions within KBFs exacerbate or alleviate TPS?
+- **RQ2:** How do team members in KBFs experience TPS-related team dynamics?
+- **Current phase:** A1R <ins>v2 </ins>— <del>revised</del><ins>amended</ins> <del>proposal;</del><ins>per Lu (Logs 16/18, approved); aim reframed to inform CYC&#x27;s KM consulting practice; theoretical framework added;</ins> target <del>Wk8–9 DA</del><ins>DA/reviewer</ins> approval <del>+ Wk9</del><ins>then</ins> ethics <del>application</del><ins>(timeline re-baselined; final A2/A3 23/11/2026)</ins>
+- **Remarks:** British English + Hart&#x27;s quotation rule always</pre></div><div class='html-view'><h2>Project Summary</h2>
+
+<h3>Module</h3>
+<p>MGTK751 &quot;MBA Project&quot; (aka MP) is the capstone/final module of my online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars by Dr Enis Elezi. Wk7–36: self-directed w/ DA (Dissertation Advisor/A2&amp;3 marker): Lu Liu (PhD in KM; confirmed Wk7). Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; HCI/IxD master&#x27;s w/ data analytics sub-major (UTS, 95% HD); final MBA module (this project) due 23/11/2026.</p>
+
+<h3>Assessments</h3>
+
+<ul>
+<li>A1: Research Proposal, 10%, 1,500w (70%; Grade A)</li>
+<li>A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)</li>
+<li>A3: Dissertation, 70%, ≤8,000w</li>
+<li>A2&amp;3: due 23/11/2026</li>
+</ul>
+
+<h3>Research Topic: <strong>Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)</strong></h3>
+
+<p>TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.</p>
+
+<ul>
+<li><strong>Research vehicle:</strong> CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant</li>
+<li><strong>Primary mgmt challenge (A):</strong> team cohesion erosion + KM governance failure</li>
+<li><strong>Contingency/Discussion angles:</strong> attrition cost (B), systemic cultural conditions (C)</li>
+<li><strong>Scope:</strong> cross-firm KBF sampling (1 per org)</li>
+<li><strong>Method:</strong> explanatory multi-case study (Yin, 2003; Zainal, 2007); semi-structured interviews as qualitative data collection technique; theoretically-informed (sensitising) thematic analysis (Braun &amp; Clarke, 2006)</li>
+<li><strong>Primary participants (ppt):</strong> TPs&#x27; peers (TPPs) who experienced TPS dynamics; min. 6 pax</li>
+<li><strong>RQ1:</strong> What conditions within KBFs exacerbate or alleviate TPS?</li>
+<li><strong>RQ2:</strong> How do team members in KBFs experience TPS-related team dynamics?</li>
+<li><strong>Current phase:</strong> A1R v2 — amended per Lu (Logs 16/18, approved); aim reframed to inform CYC&#x27;s KM consulting practice; theoretical framework added; target DA/reviewer approval then ethics (timeline re-baselined; final A2/A3 23/11/2026)</li>
+<li><strong>Remarks:</strong> British English + Hart&#x27;s quotation rule always</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'72b89e6','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/72b89e67769a0e195afdb6c400d988a424f7555f')">72b89e6</span><span class='subj'>Batch remove _00 suffix from dissertation files; renamed  to</span><span class='rename'>renamed</span><span class='meta'>2026-05-29 20:41</span></summary><div class='body'><p class='note'>vs previous commit (71ab412) · renamed from <code>dissertation/MGTK751_ProjectSummary_00.md</code></p><div class='code-view'><pre class='diff'># Project Summary
+
+## Module
+MGTK751 &quot;MBA Project&quot; (aka MP) is the capstone/final module of my online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars by Dr Enis Elezi. Wk7–36: self-directed w/ DA (Dissertation Advisor/A2&amp;3 marker): Lu Liu (PhD in KM; confirmed Wk7). Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; HCI/IxD master&#x27;s w/ data analytics sub-major (UTS, 95% HD); final MBA module (this project) due 23/11/2026.
+
+## Assessments
+
+- A1: Research Proposal, 10%, 1,500w (70%; Grade A)
+- A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)
+- A3: Dissertation, 70%, ≤8,000w
+- A2&amp;3: due 23/11/2026
+
+## Research Topic: **Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)**
+
+TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
+
+- **Research vehicle:** CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant
+- **Primary mgmt challenge (A):** team cohesion erosion + KM governance failure
+- **Contingency/Discussion angles:** attrition cost (B), systemic cultural conditions (C)
+- **Scope:** cross-firm KBF sampling (1 per org)
+- **Method:** explanatory multi-case study (Yin, 2009; Zainal, 2007); semi-structured interviews as qualitative data collection technique; thematic analysis (Braun &amp; Clarke, 2006)
+- **Primary participants (ppt):** TPs&#x27; peers (TPPs) who experienced TPS dynamics; min. 6 pax
+- **RQ1:** What conditions within KBFs exacerbate or alleviate TPS?
+- **RQ2:** How do team members in KBFs experience TPS-related team dynamics?
+- **Current phase:** A1R — revised proposal; target Wk8–9 DA approval + Wk9 ethics application
+- **Remarks:** British English + Hart&#x27;s quotation rule always</pre></div><div class='html-view'><h2>Project Summary</h2>
+
+<h3>Module</h3>
+<p>MGTK751 &quot;MBA Project&quot; (aka MP) is the capstone/final module of my online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars by Dr Enis Elezi. Wk7–36: self-directed w/ DA (Dissertation Advisor/A2&amp;3 marker): Lu Liu (PhD in KM; confirmed Wk7). Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; HCI/IxD master&#x27;s w/ data analytics sub-major (UTS, 95% HD); final MBA module (this project) due 23/11/2026.</p>
+
+<h3>Assessments</h3>
+
+<ul>
+<li>A1: Research Proposal, 10%, 1,500w (70%; Grade A)</li>
+<li>A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)</li>
+<li>A3: Dissertation, 70%, ≤8,000w</li>
+<li>A2&amp;3: due 23/11/2026</li>
+</ul>
+
+<h3>Research Topic: <strong>Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)</strong></h3>
+
+<p>TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.</p>
+
+<ul>
+<li><strong>Research vehicle:</strong> CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant</li>
+<li><strong>Primary mgmt challenge (A):</strong> team cohesion erosion + KM governance failure</li>
+<li><strong>Contingency/Discussion angles:</strong> attrition cost (B), systemic cultural conditions (C)</li>
+<li><strong>Scope:</strong> cross-firm KBF sampling (1 per org)</li>
+<li><strong>Method:</strong> explanatory multi-case study (Yin, 2009; Zainal, 2007); semi-structured interviews as qualitative data collection technique; thematic analysis (Braun &amp; Clarke, 2006)</li>
+<li><strong>Primary participants (ppt):</strong> TPs&#x27; peers (TPPs) who experienced TPS dynamics; min. 6 pax</li>
+<li><strong>RQ1:</strong> What conditions within KBFs exacerbate or alleviate TPS?</li>
+<li><strong>RQ2:</strong> How do team members in KBFs experience TPS-related team dynamics?</li>
+<li><strong>Current phase:</strong> A1R — revised proposal; target Wk8–9 DA approval + Wk9 ethics application</li>
+<li><strong>Remarks:</strong> British English + Hart&#x27;s quotation rule always</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'71ab412','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/71ab4123e4d4b2632adb4fb51d2f8db4f232afbf')">71ab412</span><span class='subj'>key MP CP files major update</span><span class='meta'>2026-05-10 21:03</span></summary><div class='body'><p class='note'>vs previous commit (df2dfd8)</p><div class='code-view'><pre class='diff'># Project Summary
+
+## Module
+MGTK751 &quot;MBA Project&quot; (aka <del>MP/dissertation)</del><ins>MP)</ins> is the <del>capstone</del><ins>capstone/final</ins> module of <del>Culous Yu&#x27;s</del><ins>my</ins> online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars <del>(UK</del><ins>by</ins> <del>Fri</del><ins>Dr</ins> <del>16:00).</del><ins>Enis Elezi.</ins> Wk7–36: self-directed w/ <del>DA.</del><ins>DA</ins> <del>Module</del><ins>(Dissertation</ins> <del>lecturer:</del><ins>Advisor/A2&amp;3</ins> <del>Dr</del><ins>marker):</ins> <del>Enis</del><ins>Lu</ins> <del>Elezi.</del><ins>Liu (PhD in KM; confirmed Wk7).</ins> Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; <del>18⁺ yr in paid writing; </del>HCI/IxD master&#x27;s <ins>w/ data analytics sub-major </ins>(UTS, <del>88%</del><ins>95%</ins> HD); final MBA module (this project) due 23/11/2026.
+
+## Assessments
+
+- A1: Research Proposal, 10%, 1,500w<ins> (70%; Grade A)</ins>
+- A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)
+- A3: Dissertation, 70%, ≤8,000w<ins>
+- A2&amp;3: due 23/11/2026</ins>
+
+## Research Topic: **Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)**
+
+TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
+
+- <ins>**Research vehicle:** CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant
+- </ins>**Primary mgmt challenge (A):** team cohesion erosion + KM governance failure
+- **Contingency/Discussion angles:** attrition cost (B), systemic cultural conditions (C)
+- **Scope:** <del>industry-wide</del><ins>cross-firm</ins> <del>across KBFs; cross-firm</del><ins>KBF</ins> sampling (1 per org)
+- **Method:** <del>qual</del><ins>explanatory</ins> <del>primary</del><ins>multi-case</ins> <del>(6</del><ins>study</ins> <del>TPPs</del><ins>(Yin,</ins> <del>via</del><ins>2009; Zainal, 2007);</ins> semi-structured <del>interviews)</del><ins>interviews as qualitative data collection technique; thematic analysis (Braun &amp; Clarke, 2006)</ins>
+- **Primary <del>participants:**</del><ins>participants (ppt):**</ins> TPs&#x27; peers (TPPs) who experienced TPS dynamics; <ins>min. </ins>6 <del>min. for qual</del><ins>pax</ins>
+- <del>**RQ</del><ins>**RQ1:**</ins> <del>direction:** &quot;What</del><ins>What</ins> conditions within KBFs exacerbate or alleviate <del>TPS,</del><ins>TPS?
+-</ins> <del>and</del><ins>**RQ2:**</ins> <del>how</del><ins>How</ins> do team members <ins>in KBFs </ins>experience <del>them?</del><ins>TPS-related team dynamics?</ins>
+- <del>**Full</del><ins>**Current</ins> <del>topic</del><ins>phase:**</ins> <del>details:**</del><ins>A1R</ins> <del>`Concept</del><ins>—</ins> <del>Brief</del><ins>revised</ins> <del>(comp).md`</del><ins>proposal; target Wk8–9 DA approval + Wk9 ethics application</ins>
+- **Remarks:** <del>Always use </del>British English <del>&amp;</del><ins>+</ins> Hart&#x27;s quotation rule<ins> always</ins></pre></div><div class='html-view'><h2>Project Summary</h2>
+
+<h3>Module</h3>
+<p>MGTK751 &quot;MBA Project&quot; (aka MP) is the capstone/final module of my online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars by Dr Enis Elezi. Wk7–36: self-directed w/ DA (Dissertation Advisor/A2&amp;3 marker): Lu Liu (PhD in KM; confirmed Wk7). Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; HCI/IxD master&#x27;s w/ data analytics sub-major (UTS, 95% HD); final MBA module (this project) due 23/11/2026.</p>
+
+<h3>Assessments</h3>
+
+<ul>
+<li>A1: Research Proposal, 10%, 1,500w (70%; Grade A)</li>
+<li>A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)</li>
+<li>A3: Dissertation, 70%, ≤8,000w</li>
+<li>A2&amp;3: due 23/11/2026</li>
+</ul>
+
+<h3>Research Topic: <strong>Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)</strong></h3>
+
+<p>TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.</p>
+
+<ul>
+<li><strong>Research vehicle:</strong> CYC (Culous Yu Consultancy) — simulated MCF (management consulting firm) specialising in KM (knowledge mgmt); boutique/specialist tier; Culous as founding chief consultant</li>
+<li><strong>Primary mgmt challenge (A):</strong> team cohesion erosion + KM governance failure</li>
+<li><strong>Contingency/Discussion angles:</strong> attrition cost (B), systemic cultural conditions (C)</li>
+<li><strong>Scope:</strong> cross-firm KBF sampling (1 per org)</li>
+<li><strong>Method:</strong> explanatory multi-case study (Yin, 2009; Zainal, 2007); semi-structured interviews as qualitative data collection technique; thematic analysis (Braun &amp; Clarke, 2006)</li>
+<li><strong>Primary participants (ppt):</strong> TPs&#x27; peers (TPPs) who experienced TPS dynamics; min. 6 pax</li>
+<li><strong>RQ1:</strong> What conditions within KBFs exacerbate or alleviate TPS?</li>
+<li><strong>RQ2:</strong> How do team members in KBFs experience TPS-related team dynamics?</li>
+<li><strong>Current phase:</strong> A1R — revised proposal; target Wk8–9 DA approval + Wk9 ethics application</li>
+<li><strong>Remarks:</strong> British English + Hart&#x27;s quotation rule always</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'df2dfd8','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/df2dfd8165eb8d63a3cba3cfcb6231d0ceab892e')">df2dfd8</span><span class='subj'>KBF inc. engineering; CP_directory.md temp exc. DevPlan.md</span><span class='meta'>2026-04-20 18:41</span></summary><div class='body'><p class='note'>vs previous commit (f75d8f8)</p><div class='code-view'><pre class='diff'># Project Summary
+
+## Module
+MGTK751 &quot;MBA Project&quot; (aka MP/dissertation) is the capstone module of Culous Yu&#x27;s online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars (UK Fri 16:00). Wk7–36: self-directed w/ DA. Module lecturer: Dr Enis Elezi. Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; 18⁺ yr in paid writing; HCI/IxD master&#x27;s (UTS, 88% HD); final MBA module (this project) due 23/11/2026.
+
+## Assessments
+
+- A1: Research Proposal, 10%, 1,500w
+- A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)
+- A3: Dissertation, 70%, ≤8,000w
+
+## Research Topic: **Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)**
+
+TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. <ins>legal, accounting, </ins>consulting, <del>law, A&amp;F,</del><ins>engineering,</ins> IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
+
+- **Primary mgmt challenge (A):** team cohesion erosion + KM governance failure
+- **Contingency/Discussion angles:** attrition cost (B), systemic cultural conditions (C)
+- **Scope:** industry-wide across KBFs; cross-firm sampling (1 per org)
+- **Method:** qual primary (6 TPPs via semi-structured interviews)
+- **Primary participants:** TPs&#x27; peers (TPPs) who experienced TPS dynamics; 6 min. for qual
+- **RQ direction:** &quot;What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them?
+- **Full topic details:** `Concept Brief (comp).md`
+- **Remarks:** Always use British English &amp; Hart&#x27;s quotation rule</pre></div><div class='html-view'><h2>Project Summary</h2>
+
+<h3>Module</h3>
+<p>MGTK751 &quot;MBA Project&quot; (aka MP/dissertation) is the capstone module of Culous Yu&#x27;s online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars (UK Fri 16:00). Wk7–36: self-directed w/ DA. Module lecturer: Dr Enis Elezi. Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; 18⁺ yr in paid writing; HCI/IxD master&#x27;s (UTS, 88% HD); final MBA module (this project) due 23/11/2026.</p>
+
+<h3>Assessments</h3>
+
+<ul>
+<li>A1: Research Proposal, 10%, 1,500w</li>
+<li>A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)</li>
+<li>A3: Dissertation, 70%, ≤8,000w</li>
+</ul>
+
+<h3>Research Topic: <strong>Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)</strong></h3>
+
+<p>TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. legal, accounting, consulting, engineering, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.</p>
+
+<ul>
+<li><strong>Primary mgmt challenge (A):</strong> team cohesion erosion + KM governance failure</li>
+<li><strong>Contingency/Discussion angles:</strong> attrition cost (B), systemic cultural conditions (C)</li>
+<li><strong>Scope:</strong> industry-wide across KBFs; cross-firm sampling (1 per org)</li>
+<li><strong>Method:</strong> qual primary (6 TPPs via semi-structured interviews)</li>
+<li><strong>Primary participants:</strong> TPs&#x27; peers (TPPs) who experienced TPS dynamics; 6 min. for qual</li>
+<li><strong>RQ direction:</strong> &quot;What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them?</li>
+<li><strong>Full topic details:</strong> <code>Concept Brief (comp).md</code></li>
+<li><strong>Remarks:</strong> Always use British English &amp; Hart&#x27;s quotation rule</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'f75d8f8','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/f75d8f841c1ab0a69f832959e38d22e525db887a')">f75d8f8</span><span class='subj'>MP CP build</span><span class='meta'>2026-04-10 05:45</span></summary><div class='body'><p class='note'>file created in this commit</p><div class='code-view'><pre class='diff'><ins># Project Summary
+
+## Module
+MGTK751 &quot;MBA Project&quot; (aka MP/dissertation) is the capstone module of Culous Yu&#x27;s online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars (UK Fri 16:00). Wk7–36: self-directed w/ DA. Module lecturer: Dr Enis Elezi. Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; 18⁺ yr in paid writing; HCI/IxD master&#x27;s (UTS, 88% HD); final MBA module (this project) due 23/11/2026.
+
+## Assessments
+
+- A1: Research Proposal, 10%, 1,500w
+- A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)
+- A3: Dissertation, 70%, ≤8,000w
+
+## Research Topic: **Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)**
+
+TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. consulting, law, A&amp;F, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.
+
+- **Primary mgmt challenge (A):** team cohesion erosion + KM governance failure
+- **Contingency/Discussion angles:** attrition cost (B), systemic cultural conditions (C)
+- **Scope:** industry-wide across KBFs; cross-firm sampling (1 per org)
+- **Method:** qual primary (6 TPPs via semi-structured interviews)
+- **Primary participants:** TPs&#x27; peers (TPPs) who experienced TPS dynamics; 6 min. for qual
+- **RQ direction:** &quot;What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them?
+- **Full topic details:** `Concept Brief (comp).md`
+- **Remarks:** Always use British English &amp; Hart&#x27;s quotation rule</ins></pre></div><div class='html-view'><h2>Project Summary</h2>
+
+<h3>Module</h3>
+<p>MGTK751 &quot;MBA Project&quot; (aka MP/dissertation) is the capstone module of Culous Yu&#x27;s online MBA at University of Liverpool (UoL), running 36 weeks. Wk1–6: taught lectures + seminars (UK Fri 16:00). Wk7–36: self-directed w/ DA. Module lecturer: Dr Enis Elezi. Culous: 16⁺ yr int&#x27;l exp in project &amp; content mgmt; 6⁺ yr in consulting; 18⁺ yr in paid writing; HCI/IxD master&#x27;s (UTS, 88% HD); final MBA module (this project) due 23/11/2026.</p>
+
+<h3>Assessments</h3>
+
+<ul>
+<li>A1: Research Proposal, 10%, 1,500w</li>
+<li>A2: Recorded Presentation, 20%, .pptx + .mp4 (≤10 min)</li>
+<li>A3: Dissertation, 70%, ≤8,000w</li>
+</ul>
+
+<h3>Research Topic: <strong>Tall Poppy Syndrome (TPS) as a Management Challenge in Knowledge-Based Firms (KBFs)</strong></h3>
+
+<p>TPS = social phenomenon where high-performing individuals (Tall Poppies / TPs) are marginalised by peers in response to their standout performance. In KBFs (creating value via expertise/intellectual capital e.g. consulting, law, A&amp;F, IT, R&amp;D), where individual excellence is the core product, TPS creates team cohesion erosion and KM governance risks as TPs logically withdraw from knowledge sharing when marginalised.</p>
+
+<ul>
+<li><strong>Primary mgmt challenge (A):</strong> team cohesion erosion + KM governance failure</li>
+<li><strong>Contingency/Discussion angles:</strong> attrition cost (B), systemic cultural conditions (C)</li>
+<li><strong>Scope:</strong> industry-wide across KBFs; cross-firm sampling (1 per org)</li>
+<li><strong>Method:</strong> qual primary (6 TPPs via semi-structured interviews)</li>
+<li><strong>Primary participants:</strong> TPs&#x27; peers (TPPs) who experienced TPS dynamics; 6 min. for qual</li>
+<li><strong>RQ direction:</strong> &quot;What conditions within KBFs exacerbate or alleviate TPS, and how do team members experience them?</li>
+<li><strong>Full topic details:</strong> <code>Concept Brief (comp).md</code></li>
+<li><strong>Remarks:</strong> Always use British English &amp; Hart&#x27;s quotation rule</li>
+</ul></div></div></details></main><footer>Confidential Intellectual Property of Culous Yu</footer><script>
+const body = document.body;
+if (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)
+  body.classList.add('dark');
+syncBtns();
+function syncBtns(){
+  document.getElementById('copybtn').textContent =
+    window.copyOnly ? 'Copy+GH' : 'Copy Only';
+  document.getElementById('darkbtn').textContent =
+    body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+  document.getElementById('viewbtn').textContent =
+    body.classList.contains('view-html') ? 'Code' : 'HTML';
+}
+function toggleDark(){ body.classList.toggle('dark'); syncBtns(); }
+function toggleCopy(){ window.copyOnly = !window.copyOnly; syncBtns(); }
+function toggleView(){ body.classList.toggle('view-html'); syncBtns(); }
+function toggleHelp(){ const h = document.getElementById('helpbox');
+  h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
+function shaClick(ev, sha, url){
+  ev.preventDefault(); ev.stopPropagation();
+  navigator.clipboard && navigator.clipboard.writeText(sha);
+  const t = document.getElementById('toast');
+  t.textContent = sha + ' copied'; t.style.display = 'block';
+  setTimeout(()=>{ t.style.display='none'; }, 1400);
+  if (url && !window.copyOnly) window.open(url, '_blank');
+}
+</script></body>
