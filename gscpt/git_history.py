@@ -104,11 +104,103 @@ def history(repo: Path, rel: str) -> list[dict]:
     return commits
 
 
+def _name_tokens(path: str) -> set:
+    return {t for t in re.split(r"[^a-z0-9]+", Path(path).stem.lower()) if t}
+
+
+def _vanished_sources(repo: Path, commit: str) -> list:
+    """Paths that DISAPPEARED from their old location in `commit` — rename
+    sources (Rxx old→new) and deletions (D)."""
+    try:
+        out = git(repo, "show", "--name-status", "-M20%", "--format=", commit)
+    except RuntimeError:
+        return []
+    gone: list = []
+    for line in out.splitlines():
+        parts = line.split("\t")
+        if parts and parts[0].startswith("R") and len(parts) >= 3:
+            gone.append(parts[1])
+        elif parts and parts[0] == "D" and len(parts) >= 2:
+            gone.append(parts[1])
+    return gone
+
+
+def _bridge_candidates(dead_path: str, gone: list) -> list:
+    """GitHub-parity shortlist (202607090137 §353.5): the sole vanished path
+    qualifies outright; amongst several, filename-token overlap ranks them
+    (numeric-only tokens like the _00/_01 duplication suffixes are ignored —
+    they pair the wrong twins) and zero overlap disqualifies."""
+    if not gone:
+        return []
+    if len(gone) == 1:
+        return list(gone)
+    base = {t for t in _name_tokens(dead_path) if not t.isdigit()}
+    scored = sorted(((len(base & {t for t in _name_tokens(g)
+                                  if not t.isdigit()})
+                      / max(len(base | _name_tokens(g)), 1), g)
+                     for g in gone), key=lambda t: (-t[0], t[1]))
+    return [g for s, g in scored if s > 0]
+
+
+_FOLLOW_MEMO: dict = {}
+
+
+def _follow_before(repo: Path, upto: str, path: str, seen: set) -> list:
+    """git log --follow strictly BEFORE `upto` for `path` → fresh commit
+    dicts (newest first), skipping hashes already seen."""
+    memo_key = (upto, path)
+    if memo_key not in _FOLLOW_MEMO:
+        try:
+            _FOLLOW_MEMO[memo_key] = git(
+                repo, "log", "--follow", "-M20%", "--name-only",
+                "--format=@@@%H%x09%ad%x09%s",
+                "--date=format:%Y-%m-%d %H:%M", f"{upto}^", "--", path)
+        except RuntimeError:
+            _FOLLOW_MEMO[memo_key] = ""
+    extra, cur = [], None
+    for line in _FOLLOW_MEMO[memo_key].splitlines():
+        if line.startswith("@@@"):
+            h, ad, sub = (line[3:].split("\t", 2) + ["", ""])[:3]
+            cur = ({"hash": h, "date": ad, "subject": sub, "path": path}
+                   if h not in seen else None)
+            if cur:
+                extra.append(cur)
+        elif line.strip() and cur is not None:
+            cur["path"] = line.strip()
+    return extra
+
+
+def _bridge_depth(repo: Path, oldest: dict, seen: set, hops: int) -> int:
+    """Lookahead: how many commits the best recursive bridging from `oldest`
+    ultimately reaches — the pick between same-score candidates (e.g. the
+    user's zoom_w1 vs Potential-Advisors twins at f75d8f8) must go to the one
+    whose chain digs deepest, matching or beating GitHub's."""
+    if hops <= 0:
+        return 0
+    best = 0
+    for cand in _bridge_candidates(
+            oldest["path"], _vanished_sources(repo, oldest["hash"]))[:3]:
+        chain = _follow_before(repo, oldest["hash"], cand, seen)
+        if not chain:
+            continue
+        d = len(chain) + _bridge_depth(
+            repo, chain[-1], seen | {c["hash"] for c in chain}, hops - 1)
+        best = max(best, d)
+    return best
+
+
 def extend_history(repo: Path, commits: list) -> list:
     """--follow can still dead-end on a rename whose commit also heavily
     edited the file (similarity < threshold). Keep digging: from the OLDEST
     known commit, re-run --follow on that commit's PATH strictly before it,
-    and append whatever appears. Capped; dedup by hash."""
+    and append whatever appears. Capped; dedup by hash.
+    Final fallback per hop = the STRUCTURAL BRIDGE (user 202607090137 §336):
+    when the oldest commit plain-ADDED the file (nothing content-based can
+    ever dig deeper), hop to the best-matching path that VANISHED in that
+    same commit — exactly what GitHub's history view does silently. The hop
+    is content-unrelated by construction, so the first bridged commit is
+    MARKED (c["bridge"]) and rendered behind a warning divider: this script
+    then always shows at least what GitHub shows, minus the pretence."""
     seen = {c["hash"] for c in commits}
     for _ in range(10):
         oldest = commits[-1]
@@ -157,6 +249,31 @@ def extend_history(repo: Path, commits: list) -> list:
                         extra.append(cur)
                         seen.add(cur["hash"])
                         cur = None
+            if not extra:
+                # structural bridge (GH-parity; see docstring): try the
+                # shortlisted vanished paths, keep the DEEPEST-digging one
+                best_chain, best_score = [], 0
+                for cand in _bridge_candidates(
+                        oldest["path"],
+                        _vanished_sources(repo, oldest["hash"]))[:3]:
+                    chain = _follow_before(repo, oldest["hash"], cand, seen)
+                    if not chain:
+                        continue
+                    score = len(chain) + _bridge_depth(
+                        repo, chain[-1],
+                        seen | {c["hash"] for c in chain}, hops=4)
+                    if score > best_score:
+                        best_chain, best_score = chain, score
+                if not best_chain:
+                    break
+                best_chain[0]["bridge"] = (
+                    f"{Path(oldest['path']).name} was plain-ADDED in "
+                    f"{oldest['hash'][:7]}; rows below continue as "
+                    f"{best_chain[0]['path']} — a path that vanished in that "
+                    f"same commit (GitHub-style structural guess, "
+                    f"content-unrelated)")
+                extra = best_chain
+                seen |= {c["hash"] for c in extra}
             if not extra:
                 break
         commits.extend(extra)
@@ -289,6 +406,9 @@ main{max-width:980px;margin:18px auto;padding:0 14px}
 .rename{font-size:12px;color:#9a6700;background:#fff8c5;border-radius:4px;
         padding:1px 6px}
 body.dark .rename{background:#2b2300;color:#e3b341}
+.bridge{border:1px dashed #9a6700;color:#9a6700;background:#fff8c5;
+        border-radius:8px;padding:8px 14px;margin-bottom:14px;font-size:12.5px}
+body.dark .bridge{background:#2b2300;color:#e3b341;border-color:#e3b341}
 .body{border-top:1px solid var(--line);padding:12px 16px;background:var(--card)}
 pre.diff{white-space:pre-wrap;word-wrap:break-word;margin:0;
          font-family:ui-monospace,Menlo,monospace;font-size:12.8px}
@@ -361,16 +481,23 @@ def main() -> None:
     for idx, c in enumerate(commits):            # newest first
         new_i = n - 1 - idx
         new_text = texts[new_i]
-        old_text = texts[new_i - 1] if new_i > 0 else ""
-        renamed = (new_i > 0 and commits[idx + 1]["path"] != c["path"])
+        older = commits[idx + 1] if new_i > 0 else None
+        # across a structural bridge the "previous" content is a DIFFERENT
+        # file's — a word-diff there is meaningless, so treat as created
+        cross = older is not None and bool(older.get("bridge"))
+        old_text = "" if (new_i == 0 or cross) else texts[new_i - 1]
+        renamed = (older is not None and not cross
+                   and older["path"] != c["path"])
         if len(old_text) + len(new_text) > MAX_RENDER_CHARS:
             body = ("<p class='note'>diff too large to render word-by-word "
                     f"({len(new_text)} chars).</p>")
         else:
             label = ("file created in this commit" if new_i == 0 else
-                     f"vs previous commit ({commits[idx + 1]['hash'][:7]})")
+                     "file ADDED here — older rows continue via the "
+                     "structural bridge below" if cross else
+                     f"vs previous commit ({older['hash'][:7]})")
             body = (f"<p class='note'>{html.escape(label)}"
-                    + (f" · renamed from <code>{html.escape(commits[idx + 1]['path'])}</code>"
+                    + (f" · renamed from <code>{html.escape(older['path'])}</code>"
                        if renamed else "")
                     + "</p>"
                     + "<div class='code-view'><pre class='diff'>"
@@ -379,6 +506,9 @@ def main() -> None:
                     + md_to_html(new_text) + "</div>")
         url = f"{gh}/commit/{c['hash']}" if gh else ""
         open_attr = " open" if idx == 0 else ""
+        if c.get("bridge"):
+            cards.append("<div class='bridge'>⚠️ Structural Bridge: "
+                         f"{html.escape(c['bridge'])}</div>")
         cards.append(
             f"<details class='commit'{open_attr}><summary>"
             f"<span class='hash' title='copy SHA + open on GitHub' "
@@ -407,6 +537,8 @@ def main() -> None:
         "- Click SHA chip to copy it & open the commit on GitHub<br>"
         "- HTML View: the file as rendered rich text after that commit<br>"
         "- Code View: word-level diff vs the previous commit<br>"
+        "- ⚠️ structural bridge: rows below it are GitHub-style guesses "
+        "(a same-commit vanished path), NOT verified content lineage<br>"
         "- Dark Mode follows macOS setting by default</div>"
         "<div id='toast'></div>"
         "<main>" + "".join(cards) + "</main>"
