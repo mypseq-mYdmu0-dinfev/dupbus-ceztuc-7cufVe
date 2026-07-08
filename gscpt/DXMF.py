@@ -31,8 +31,9 @@ that contain venvs whose symlinks point at system binaries.
 USAGE
 -----
 Instruction file (DAMF-compatible):
-   Place exactly one .txt beside this script (any name except temp.txt;
-   anything inside parked/ is ignored, incl. by the bare-filename search):
+   Place exactly one .txt beside this script (any name except
+   temp.txt/blank.md/README.md or a ❌_-prefixed name; anything inside
+   parked/ is ignored, incl. by the bare-filename search):
        Line 1: a filename to find anywhere in the repo, OR a path
                (relative to the repo root, or absolute) to a file or folder
        Line 2: the target timestamp in YYYYMMDDHHmm (Sydney local time)
@@ -59,7 +60,9 @@ REPO_ROOT = Path(
     "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
 )
 SYDNEY = ZoneInfo("Australia/Sydney")
-EXCLUDED_TXT = {"temp.txt"}  # never treat these as the instruction file
+# Never treat these as the instruction file (blank.md is the renamed temp.txt).
+EXCLUDED_NAMES = {"temp.txt", "blank.md", "readme.md"}  # compared lowercase
+EXCLUDED_PREFIX = "❌_"  # parked-in-place marker —— such files never activate
 PARKED_DIR = SCRIPT_DIR / "parked"  # gscpt/parked/ —— contents ignored by every gscpt script
 
 # catalog attribute bits (sys/attr.h)
@@ -217,10 +220,12 @@ def resolve_target(token: str) -> Path:
 def find_instruction_file() -> Path:
     candidates = [
         p for p in SCRIPT_DIR.glob("*.txt")
-        if p.is_file() and p.name not in EXCLUDED_TXT
+        if p.is_file() and p.name.lower() not in EXCLUDED_NAMES
+        and not p.name.startswith(EXCLUDED_PREFIX)
     ]  # top-level only: anything inside parked/ (or any subfolder) never matches
     if not candidates:
-        die(f"no instruction .txt found in {SCRIPT_DIR} (excluding {sorted(EXCLUDED_TXT)}).")
+        die(f"no instruction .txt found in {SCRIPT_DIR} "
+            f"(excluding {sorted(EXCLUDED_NAMES)} and {EXCLUDED_PREFIX}* names).")
     if len(candidates) > 1:
         names = ", ".join(sorted(p.name for p in candidates))
         die(f"multiple .txt files found ({names}); leave exactly one.")

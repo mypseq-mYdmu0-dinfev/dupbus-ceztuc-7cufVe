@@ -3,9 +3,10 @@
 ocr_reads.py —— OCR batch reader (macOS)
 
 Detects every .jpg / .png / .pdf file sitting BESIDE this script (top level of
-gscpt/ only; anything inside parked/ or any other subfolder is ignored),
-OCR-reads each one, and writes one .md per input (identical basename) into a
-NEW folder `gscpt/[YYYYMMDDHHmm]/` (current Sydney time).
+gscpt/ only; anything inside parked/ or any other subfolder is ignored, as is
+any `❌_`-prefixed filename), OCR-reads each one, and writes one .md per input
+(identical basename) into a NEW folder `gscpt/[YYYYMMDDHHmm]/` (current Sydney
+time).
 
 OCR means, in preference order (a "means" = one OCR engine/config):
   1. vision-accurate —— Apple Vision framework (pyobjc), accurate recognition
@@ -223,9 +224,11 @@ def read_with_means(path: Path, means: str) -> str:
 
 # ------------------------------------------------------------------- run logic
 def detect_inputs() -> list[Path]:
-    """Top-level gscpt/ only —— parked/ and every other subfolder are ignored."""
+    """Top-level gscpt/ only —— parked/ and every other subfolder are ignored,
+    as are ❌_-prefixed files (parked in place)."""
     return sorted(p for p in SCRIPT_DIR.iterdir()
-                  if p.is_file() and p.suffix.lower() in INPUT_EXTS)
+                  if p.is_file() and p.suffix.lower() in INPUT_EXTS
+                  and not p.name.startswith("❌_"))
 
 
 def folder_md_bases(folder: Path, all_means: list[str]) -> dict[str, set[str | None]]:

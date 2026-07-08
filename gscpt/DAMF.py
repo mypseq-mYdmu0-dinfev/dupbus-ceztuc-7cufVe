@@ -21,8 +21,8 @@ catalog value.
 USAGE
 -----
 1. In THIS script's own directory, create exactly one .txt file (any name
-   except `temp.txt`; anything inside parked/ is ignored, incl. by the
-   bare-filename search) containing:
+   except `temp.txt`/`blank.md`/`README.md` or a `❌_`-prefixed name; anything
+   inside parked/ is ignored, incl. by the bare-filename search) containing:
        Line 1: the target filename (e.g. dissertation_response_202606041852.md)
        Line 2: the desired Date Added timestamp in YYYYMMDDHHmm (Sydney time)
 2. Run:  python3 DAMF.py
@@ -48,7 +48,9 @@ REPO_ROOT = Path(
     "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
 )
 SYDNEY = ZoneInfo("Australia/Sydney")
-EXCLUDED_TXT = {"temp.txt"}  # never treat these as the instruction file
+# Never treat these as the instruction file (blank.md is the renamed temp.txt).
+EXCLUDED_NAMES = {"temp.txt", "blank.md", "readme.md"}  # compared lowercase
+EXCLUDED_PREFIX = "❌_"  # parked-in-place marker —— such files never activate
 PARKED_DIR = SCRIPT_DIR / "parked"  # gscpt/parked/ —— contents ignored by every gscpt script
 
 
@@ -62,10 +64,12 @@ def find_instruction_file() -> Path:
     """Exactly one eligible .txt must sit beside this script."""
     candidates = [
         p for p in SCRIPT_DIR.glob("*.txt")
-        if p.is_file() and p.name not in EXCLUDED_TXT
+        if p.is_file() and p.name.lower() not in EXCLUDED_NAMES
+        and not p.name.startswith(EXCLUDED_PREFIX)
     ]  # top-level only: anything inside parked/ (or any subfolder) never matches
     if not candidates:
-        die(f"no instruction .txt found in {SCRIPT_DIR} (excluding {sorted(EXCLUDED_TXT)}).")
+        die(f"no instruction .txt found in {SCRIPT_DIR} "
+            f"(excluding {sorted(EXCLUDED_NAMES)} and {EXCLUDED_PREFIX}* names).")
     if len(candidates) > 1:
         names = ", ".join(sorted(p.name for p in candidates))
         die(f"multiple .txt files found ({names}); leave exactly one.")

@@ -8,9 +8,9 @@ choosing open vs close based on surrounding context.
 USAGE
 -----
 1. In THIS script's own directory, place one or more .txt or .md files (any
-   name except `temp.txt`/`README.md`; files whose stem ends in `_processed`
-   are skipped so outputs are never re-processed; the parked/ subfolder is
-   never scanned).
+   name except `temp.txt`/`blank.md`/`README.md` or a `❌_`-prefixed name;
+   files whose stem ends in `_processed` are skipped so outputs are never
+   re-processed; the parked/ subfolder is never scanned).
 2. Run:  python3 quote_fix.py
 3. For each input, an output file is written beside this script as
    `[input_stem]_processed[ext]` with the quotes converted.
@@ -24,7 +24,9 @@ import re
 
 SRC = os.path.dirname(os.path.abspath(__file__))
 DST = SRC  # write outputs beside the inputs (same folder as this script)
-SKIP = {'temp.txt', 'README.md'}
+# Never treat these as input (blank.md is the renamed temp.txt); compared lowercase.
+SKIP = {'temp.txt', 'blank.md', 'readme.md'}
+SKIP_PREFIX = '❌_'  # parked-in-place marker —— such files never activate
 EXTS = {'.txt', '.md'}
 
 # -----------------------------------------------------------------------
@@ -88,8 +90,9 @@ def main():
     os.makedirs(DST, exist_ok=True)
 
     files = [
-        f for f in os.listdir(SRC)
-        if f not in SKIP
+        f for f in os.listdir(SRC)  # top level only —— parked/ never matches
+        if f.lower() not in SKIP
+        and not f.startswith(SKIP_PREFIX)
         and os.path.splitext(f)[1].lower() in EXTS
         and not os.path.splitext(f)[0].endswith('_processed')  # never re-process our own output
     ]

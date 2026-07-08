@@ -152,7 +152,10 @@ def load_timeframes():
         if not file.is_file():
             continue
 
-        if file.name in ("temp.txt", "README.md"):
+        if file.name in ("temp.txt", "blank.md", "README.md"):
+            continue
+
+        if EXCLUDED_FILENAME_SYMBOL in file.name:   # ❌_ voided = non-existent
             continue
 
         if file.suffix.lower() not in VALID_EXTENSIONS:
@@ -552,7 +555,7 @@ def main():
         f for f in SCRIPT_DIR.iterdir()
         if (
             f.is_file()
-            and f.name not in ("temp.txt", "README.md")
+            and f.name not in ("temp.txt", "blank.md", "README.md")
             and f.suffix.lower() in VALID_EXTENSIONS
             and EXCLUDED_FILENAME_SYMBOL not in f.name
         )

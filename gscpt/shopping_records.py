@@ -10,7 +10,8 @@ No external libraries required.
 USAGE
 -----
 1. In THIS script's own directory, place one or more receipt .txt files (any
-   name except `temp.txt`). Each file is a raw receipt: description lines
+   name except `temp.txt`/`blank.md`/`README.md` or a `❌_`-prefixed name;
+   the parked/ subfolder is never scanned). Each file is a raw receipt: description lines
    accumulate until a standalone price line (e.g. `5.47`) closes a record;
    prices glued onto the end of a line are split automatically.
 2. Run:  python3 shopping_records.py
@@ -28,7 +29,9 @@ import glob
 
 INPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = INPUT_DIR
-EXCLUDE   = 'temp.txt'
+# Never treat these as input (blank.md is the renamed temp.txt); compared lowercase.
+EXCLUDE        = {'temp.txt', 'blank.md', 'readme.md'}
+EXCLUDE_PREFIX = '❌_'  # parked-in-place marker —— such files never activate
 
 
 # ── Text Transformations ──────────────────────────────────────────────────────
@@ -263,9 +266,10 @@ def to_csv(records):
 # ── Entry Point ───────────────────────────────────────────────────────────────
 
 def main():
-    files = sorted(
+    files = sorted(  # top level only —— parked/ never matches
         f for f in glob.glob(os.path.join(INPUT_DIR, '*.txt'))
-        if os.path.basename(f).lower() != EXCLUDE.lower()
+        if os.path.basename(f).lower() not in EXCLUDE
+        and not os.path.basename(f).startswith(EXCLUDE_PREFIX)
     )
     multi = len(files) > 1
 

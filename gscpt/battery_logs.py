@@ -1,8 +1,9 @@
 """
 Battery Logs Processor
 
-Reads .txt files (except temp.txt) in this directory and consolidates them
-into one timestamped CSV (columns: HH, mm, %, Remarks).
+Reads .txt files in this directory (except temp.txt/blank.md/README.md and
+❌_-prefixed names; the parked/ subfolder is never scanned) and consolidates
+them into one timestamped CSV (columns: HH, mm, %, Remarks).
 
 USAGE
 -----
@@ -20,6 +21,10 @@ If no numerical data is found, no output file is created.
 import os
 import re
 from datetime import datetime
+
+# Never treat these as input (blank.md is the renamed temp.txt); compared lowercase.
+IGNORED_NAMES = {"temp.txt", "blank.md", "readme.md"}
+IGNORED_PREFIX = "❌_"  # parked-in-place marker —— such files never activate
 
 def process_and_export_files(directory_path):
     """
@@ -48,9 +53,12 @@ def process_and_export_files(directory_path):
             outfile.write("HH,mm,%,Remarks\n")
 
             # Iterate over all files in the specified directory
+            # (top level only —— parked/ and other subfolders never match)
             for filename in os.listdir(directory_path):
-                # Process only files with a .txt extension
-                if filename.endswith(".txt"):
+                # Process only eligible files with a .txt extension
+                if (filename.endswith(".txt")
+                        and filename.lower() not in IGNORED_NAMES
+                        and not filename.startswith(IGNORED_PREFIX)):
                     input_filepath = os.path.join(directory_path, filename)
                     
                     print(f"Processing '{input_filepath}'...")

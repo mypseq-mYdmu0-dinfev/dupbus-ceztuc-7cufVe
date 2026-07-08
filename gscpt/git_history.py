@@ -18,9 +18,9 @@ confidentiality footer at the very bottom.
 USAGE (DXMF-style activation)
 -----------------------------
 1. Place an instruction file with a .txt or .md extension beside this script
-   (any name except `temp.txt`; `parked/` is ignored). Its FIRST non-empty
-   line = the target file's path (macOS "copy file path" absolute form;
-   surrounding quotes tolerated).
+   (any name except `temp.txt`/`blank.md`/`README.md` or a `❌_`-prefixed
+   name; `parked/` is ignored). Its FIRST non-empty line = the target file's
+   path (macOS "copy file path" absolute form; surrounding quotes tolerated).
 2. Run:  python3 git_history.py
 3. Output: `git_history_[target-stem]_[YYYYMMDDHHmm].html` beside this script.
 
@@ -50,8 +50,9 @@ def read_instruction() -> Path:
     for p in sorted(SCRIPT_DIR.iterdir()):
         if not p.is_file() or p.suffix.lower() not in (".txt", ".md"):
             continue
-        if p.name in ("temp.txt",) or p.name.startswith(
-                ("ghist_", "git_history_", "ajap_logs_")):
+        # blank.md is the renamed temp.txt; ❌_ marks a file parked in place.
+        if p.name.lower() in ("temp.txt", "blank.md", "readme.md") or p.name.startswith(
+                ("ghist_", "git_history_", "ajap_logs_", "ajap_runtime_log", "❌_")):
             continue
         for line in p.read_text(encoding="utf-8", errors="replace").splitlines():
             line = line.strip().strip("'\"")
@@ -88,7 +89,7 @@ def github_base(repo: Path) -> str:
 
 def history(repo: Path, rel: str) -> list[dict]:
     """[{hash, date, subject, path}], newest first, rename-following."""
-    out = git(repo, "log", "--follow", "--name-only",
+    out = git(repo, "log", "--follow", "-M20%", "--name-only",
               "--format=@@@%H%x09%ad%x09%s",
               "--date=format:%Y-%m-%d %H:%M", "--", rel)
     commits: list[dict] = []
@@ -100,6 +101,65 @@ def history(repo: Path, rel: str) -> list[dict]:
             commits.append(cur)
         elif line.strip() and cur is not None:
             cur["path"] = line.strip()          # the file's name AT that commit
+    return commits
+
+
+def extend_history(repo: Path, commits: list) -> list:
+    """--follow can still dead-end on a rename whose commit also heavily
+    edited the file (similarity < threshold). Keep digging: from the OLDEST
+    known commit, re-run --follow on that commit's PATH strictly before it,
+    and append whatever appears. Capped; dedup by hash."""
+    seen = {c["hash"] for c in commits}
+    for _ in range(10):
+        oldest = commits[-1]
+        try:
+            out = git(repo, "log", "--follow", "-M20%", "--name-only",
+                      "--format=@@@%H%x09%ad%x09%s",
+                      "--date=format:%Y-%m-%d %H:%M",
+                      f"{oldest['hash']}^", "--", oldest["path"])
+        except RuntimeError:
+            break
+        extra, cur = [], None
+        for line in out.splitlines():
+            if line.startswith("@@@"):
+                h, ad, sub = (line[3:].split("\t", 2) + ["", ""])[:3]
+                cur = {"hash": h, "date": ad, "subject": sub,
+                       "path": oldest["path"]}
+                if h not in seen:
+                    extra.append(cur)
+                    seen.add(h)
+                else:
+                    cur = None
+            elif line.strip() and cur is not None:
+                cur["path"] = line.strip()
+        if not extra:
+            # non-atomic rename (the file was plain-ADDED under this name —
+            # the user's _00/_[TS] suffix conventions): dig by basename core
+            core = re.sub(r"(_\d{1,12})+$", "", Path(oldest["path"]).stem)
+            try:
+                out2 = git(repo, "log", "--name-only",
+                           "--format=@@@%H%x09%ad%x09%s",
+                           "--date=format:%Y-%m-%d %H:%M",
+                           f"{oldest['hash']}^", "--", f"*{core}*")
+            except RuntimeError:
+                break
+            cur = None
+            for line in out2.splitlines():
+                if line.startswith("@@@"):
+                    h, ad, sub = (line[3:].split("\t", 2) + ["", ""])[:3]
+                    cur = ({"hash": h, "date": ad, "subject": sub, "path": ""}
+                           if h not in seen else None)
+                elif line.strip() and cur is not None:
+                    cand = line.strip()
+                    if re.sub(r"(_\d{1,12})+$", "",
+                              Path(cand).stem) == core:
+                        cur["path"] = cand
+                        extra.append(cur)
+                        seen.add(cur["hash"])
+                        cur = None
+            if not extra:
+                break
+        commits.extend(extra)
     return commits
 
 
@@ -259,12 +319,15 @@ if (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)
   body.classList.add('dark');
 syncBtns();
 function syncBtns(){
+  document.getElementById('copybtn').textContent =
+    window.copyOnly ? 'Copy+GH' : 'Copy Only';
   document.getElementById('darkbtn').textContent =
     body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
   document.getElementById('viewbtn').textContent =
     body.classList.contains('view-html') ? 'Code' : 'HTML';
 }
 function toggleDark(){ body.classList.toggle('dark'); syncBtns(); }
+function toggleCopy(){ window.copyOnly = !window.copyOnly; syncBtns(); }
 function toggleView(){ body.classList.toggle('view-html'); syncBtns(); }
 function toggleHelp(){ const h = document.getElementById('helpbox');
   h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
@@ -274,7 +337,7 @@ function shaClick(ev, sha, url){
   const t = document.getElementById('toast');
   t.textContent = sha + ' copied'; t.style.display = 'block';
   setTimeout(()=>{ t.style.display='none'; }, 1400);
-  if (url) window.open(url, '_blank');
+  if (url && !window.copyOnly) window.open(url, '_blank');
 }
 """
 
@@ -289,6 +352,7 @@ def main() -> None:
     commits = history(repo, rel)
     if not commits:
         die(f"no git history for {rel}")
+    commits = extend_history(repo, commits)
     texts: list[str] = []
     for c in reversed(commits):                  # oldest first
         texts.append(content_at(repo, c["hash"], c["path"]))
@@ -336,7 +400,7 @@ def main() -> None:
         f"<div class='sub'>Generated {ts} | "
         "<a onclick='toggleHelp()'>Help</a></div>"
         "</div>"
-        "<button class='btn' id='viewbtn' onclick='toggleView()'>HTML</button>"
+        "<button class='btn' id='copybtn' onclick='toggleCopy()'>Copy Only</button><button class='btn' id='viewbtn' onclick='toggleView()'>HTML</button>"
         "<button class='btn' id='darkbtn' onclick='toggleDark()'>Dark Mode</button>"
         "</header>"
         "<div id='helpbox'>- Newest first<br>- Click commit bar to expand or collapse<br>"

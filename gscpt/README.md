@@ -1,10 +1,10 @@
 # `gscpt/` —— the user's own scripts
 
-Personal utility scripts, mostly activated by dropping an instruction/input file into THIS folder and running the script (`temp.txt` is always ignored). Sibling: `cscpt/` holds CC-only scripts —— different folder, different owner.
+Personal utility scripts, mostly activated by dropping an instruction/input file into THIS folder and running the script. Every script ignores ALL of: `blank.md` (the renamed `temp.txt`), `temp.txt`, `README.md`, any `❌_`-prefixed filename (parked in place), and everything inside `parked/`. Sibling: `cscpt/` holds CC-only scripts —— different folder, different owner.
 
 ## `parked/`
 
-Files here are ignored by every gscpt script —— park instruction files you want temporarily inactive. (Scripts scan only this folder's top level, so parked files never activate anything; `DAMF.py`/`DXMF.py` bare-filename searches also skip `parked/` explicitly.)
+Files here are ignored by every gscpt script —— park instruction files you want temporarily inactive. (Scripts scan only this folder's top level, so parked files never activate anything; `DAMF.py`/`DXMF.py` bare-filename searches also skip `parked/` explicitly.) A `❌_` filename prefix parks a file in place at the top level —— equally invisible to every script.
 
 ## Scripts
 
