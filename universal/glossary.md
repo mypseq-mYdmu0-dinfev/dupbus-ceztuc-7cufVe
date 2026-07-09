@@ -66,8 +66,11 @@
 - OTGD = OTG Device (iPhone 13 mini/i13m)
 - OTGM = OTG Machine (MacBook Air M1)
 - c.md (only usable by user, never CC) = CLAUDE.md; assume the root's if no folder mentioned
+- root = assume default repo unless mentioned as "AJAP root"
+- default repo = `/dupbus-ceztuc-7cufVe/`
+- AJAP repo = `/AJAP_repo/` (isolated to avoid its instances reading default repo's root c.md)
 - #r = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)
-- directory.md/CP_directory.md = index.md/CP_index.md; leftover pre-repo-overhaul; immediately alert when any are seen
+- directory.md = legacy file; immediately alert when any are seen/mentioned
 - I/O = input/output
 - SR = `<system-reminder>` (injected file-change notice); e.g. "Note: `<path>` was modified, ..."
 - QMM = `query_` my msg; follow root CLAUDE.md §3.6, but REGARDLESS of msg word count
