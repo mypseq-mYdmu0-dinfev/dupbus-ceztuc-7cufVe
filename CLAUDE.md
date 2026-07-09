@@ -259,7 +259,13 @@
   - 8.9.2. Temp/throwaway (to be voided): create beside the `response_` so user sees & deletes
   - 8.9.3. Reusable scripts: create in `cscpt/` then update `cscpt/README.md` (read it first)
 
-9. Miscellaneous
-- 9.1. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
-- 9.2. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
-- 9.3. Spawning SA (Agent/Task tool): Always explicitly tell "You're a sub-agent" in the prompt
+9. Miscellaneous *(`9.[nn]` 2-digit to accommodate 9⁺ pts)*
+- 9.01. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
+- 9.02. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
+- 9.03. Spawning SA (Agent/Task tool): Always explicitly tell "You're a sub-agent" in the prompt
+- 9.04. Editing/creating pcmd/scripts:
+  - 9.04.1. Avoid hard-coding or mentioning specific comms files (e.g. `*_[TS].md`); alert if any
+  - 9.04.2. If apt, actively point to pcmd/scripts to avoid repetition (e.g. "read `[name].md` first")
+- 9.05. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
+  - 9.05.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
+  - 9.05.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
