@@ -609,6 +609,8 @@ Thank you again for the good news on the approval, and for your kind patience wh
 
 I have filled the 3 docs to suit the study, namely the Participant Information Sheet, the Consent Form, and the Risk Assessment, where I have also prepared the interview questions. To keep the interviews comparable, these centre on a primary guide for peers (TPP), with 2 short supplementary guides for standout performers (TP) and for managers, so that any of these voices can be included consistently should the opportunity arise. The materials are in the shared folder and also attached here.
 
+[INTERNAL: 6 attachments in `202607041946/`]
+
 As you instructed, I have not started the online application. I will wait for your guidance on that step.
 
 One minor note: My messages have at times reached you over weekends, which simply reflect when my concentrated study hours fall amidst a busy work schedule, rather than any lack of priority on my part. I wish to assure you that I am fully committed to this project and would always devote my best effort as always.
@@ -629,6 +631,33 @@ You may continue working on your research report draft, i.e. chapters 1-3, if yo
 As for when you send me your drafts, it is completely up to you.  And I fully understand that you may only have time to study on the weekend, as many other online part-time students do. This is not an issue at all. I am used to receiving work from my students and working with online programmes on the weekend, too. 
 
 Your efforts and diligence are greatly appreciated. 
+
+Kind regards,
+Lu
+
+### Log 27
+
+On 8 Jul 2026, at 11:31, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Hi, Culous,
+
+I have reviewed these forms. And replaced the files in this folder. 
+​​Culous Yu's Ethics Docs​​
+
+[INTERNAL: 6 attachments in `202607092008/`]
+
+I did not change the interview questions. Let's review them when you start the data collection. 
+
+I also need you to create a short advertisement, i.e. a concise version of the participant information sheet, and use it to contact the participants for the first time. After they show interest, you send them the PIS and consent form. 
+
+Once this advertisement is created, please also post it to the shared folder. 
+
+You may start doing the online form. When doing the form, please check this document and carefully follow the instructions. 
+​Key Ethics Information Required.docx​
+[INTERNAL: untouched in `202607041906/`]
+
+When answering the questions, you may also check this file, ​Research ethics application form - example.docx​, if any answer is applicable, you may copy it into your form. 
+[INTERNAL: untouched in `202607041906/`]
 
 Kind regards,
 Lu
