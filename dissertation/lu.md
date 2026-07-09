@@ -93,6 +93,10 @@ More conservative than Enis on research scope; defers to program director's sing
 
 Avoid meetings wherever possible —— 9-hour timezone gap (SYD vs. UK), and each Zoom session incurs non-trivial overhead from zoom-transcript rectification and analysis. Meetings only when genuinely unavoidable (e.g. fundamental disagreement that email cannot resolve). Default to email for all clarifications; if Lu proposes a meeting, gently redirect to email first.
 
+### C08. Ethics-forms review pattern (Log 27, 08/07/2026)
+
+Edits documents directly rather than commenting (confirmed no Word comments, no tracked changes across all 6 returned files —— she reviews with Track Changes off and rewrites silently); tends to reuse text she already has to hand rather than draft fresh (the PIS purpose paragraph she inserted is a verbatim lift from the approved A1R's Research Aim, academic register unsuited to a participant-facing document); scrutiny depth varies by document type —— procedural/administrative forms (PIS, Consent, Risk) got a fast, light-touch pass and a quick green light (2 business days), whereas she explicitly deferred any real content review of the interview guides to when data collection begins, despite requiring their upload now; net predictive pattern —— expect efficient, low-friction turnaround on compliance paperwork, but hold genuine methodological scrutiny in reserve for substantive research-design artefacts (the guides, later the analysis).
+
 ---
 
 ## PART D —— Comms Log

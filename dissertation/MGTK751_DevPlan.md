@@ -144,6 +144,7 @@
   - P15.1.1. Await Lu's go-ahead on the online form (she said: do NOT start it until instructed)
   - P15.1.2. Request Culous to open the VLE Ethical Approval System for navigation
   - P15.1.3. Read the VLE "Guidance for using the Ethical Approval System" + Field Work Document; also reference the 2 local files in `/From Lu/Ethics Forms/` —— `Key Ethics Information Required.docx` (field-by-field guidance) and `Research ethics application form - example.docx` (a worked example of the online form)
+  - P15.1.4. Draft a short recruitment advertisement (a concise, plain-language version of the PIS) per Lu Log 27; post to the shared drive; attach to the online application if the field for it applies (Key Ethics Info Q5.24–26)
 
 - P15.2. Pre-fill
   - P15.2.1. Map known fields (Lu.md Log 23) —— Q1.9 "Online Programme", Q1.22 "Human Participants", Epigeum Q25.5/25.6 = 0742720007 (Lu); attach the ethics forms + interview guides
@@ -152,7 +153,8 @@
 - P15.3. Approval
   - P15.3.1. Submit on Lu's authorisation, then await WRITTEN ethics approval
   - P15.3.2. Remarks: hard gate —— no data collection before written approval
-  - P15.3.3. Remarks: on written approval, remind Culous of the optional `_internal` enriched interview guides (extra probes/notes on the approved topics, for the actual interviews) —— deferred by user 04/07
+  - P15.3.3. Remarks: on written approval, remind Culous of the optional enriched interview guides (extra probes/notes on the approved topics, for the actual interviews) —— deferred by user 04/07
+  - P15.3.4. Remarks: interview questions must still be uploaded now (UoL mandates this, Key Ethics Info Q5.14) even though Lu personally deferred her own content review to data-collection start (Log 27); once submitted, remind Culous to review the 3 guides verbatim himself whilst awaiting approval, so anything to fix lands before her eventual read
 
 ## P16. Post-Ethics *(was P14)*
 
