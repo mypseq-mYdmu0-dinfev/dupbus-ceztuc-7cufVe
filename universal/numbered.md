@@ -1,4 +1,11 @@
-# Numbered Lists (`#numbered`)
+# Numbered Lists
+
+## Trigger
+- This file is an Unconditional, so you must follow even not triggered
+- If `#numbered` in query, take it as a reminder/confirmation (e.g. "[content] is also #numbered")
+- If `#numbered` alone received as chat msg, audit your last output files then update as needed
+  - e.g. You might have reset pt no. in prohibited conditions (see below); renumber accordingly
+  - As a nudge (not `query_`), no `response_`/chat text (exc. declaration of updated files) needed
 
 ## Format
 
