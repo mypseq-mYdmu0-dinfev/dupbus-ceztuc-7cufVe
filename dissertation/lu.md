@@ -665,3 +665,20 @@ When answering the questions, you may also check this file, ​Research ethics a
 
 Kind regards,
 Lu
+
+### Log 28
+
+*DRAFT courtesy email for Culous to review and send; not yet sent. For his awareness only, not requesting approval before proceeding, since all changes are cosmetic.*
+
+Hello Lu,
+
+Thank you again for reviewing and returning the forms; I have incorporated your edits throughout.
+
+Whilst preparing the final version for submission, I made a small number of purely cosmetic corrections, namely spelling, punctuation, and quote-style consistency, to the Participant Information Sheet and the Consent Form. Nothing you wrote has been changed in meaning, and the Risk Assessment needed no further edits at all.
+
+I am now proceeding to complete the online ethics application as you kindly authorised, together with the interview guides, which of course remain open for your review once data collection begins. I will also prepare the short recruitment advertisement you asked for.
+
+I will let you know once the application has been submitted.
+
+Warm Regards,
+Culous
