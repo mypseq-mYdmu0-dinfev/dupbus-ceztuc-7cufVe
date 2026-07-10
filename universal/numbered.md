@@ -32,12 +32,18 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
   - If a sub-item would be alone, don't build that level —— include it in the parent instead
   - e.g. In above example, if 1.2.1.2 is not necessary (leaving 1.2.1.1 alone), don't build the 4th level and just include 1.2.1.1 in 1.2.1
   - If a sub-item level (e.g. 4th level: 1.2.1.1 & 1.2.1.2) is established, ensure its parent (e.g. 3rd level: 1.2.1) exists
+  - If 2nd level (e.g. 1.1, 1.2) is established for a pt, its 1st level (e.g. 1, 2) becomes a mere heading & MUST be ≤10w, so I'd either reply the whole pt (e.g. "re 1: ...") OR particular sub-items (e.g. "re 1.1: ..."), never both (e.g. "re 1: ...; re 1.1: ...")
 - Must use hardcoded manual numbering, never markdown auto-numbering
 - Strictly ensure NO sentence/bullet/line unnumbered e.g. `- xxx...`
 - Each number must have a dot `.` between it and the text e.g. `1.1. xxx` instead of `1.1 xxx`
 - The dot is not needed when referring to it e.g. "Item 1.1 detailed xxx..."
 - Numbered points live in the BODY, NEVER on a heading: a `##`/`###`/etc. heading may LABEL a section (encouraged for readability), but the level-1 lines (`1.`/`2.`/etc.) and their sub-bullets (`- 1.1.`/`- 1.2.`/etc.) MUST sit UNDERNEATH a heading as normal lines
 - NEVER make the heading itself the numbered point (e.g. `## 1. xxx...`); doing so confuses you —— striping bullet structure & collapses its sub-points (`1.1.`/`1.2.`/etc.) onto 1 line (unreadable)
+- NEVER create `[N].0` (e.g. `- 1.0. ...`), instead make it `[N].1` (e.g. `- 1.1. ...`)
+- AVOID having 9⁺ items on each level (e.g. `- 1.10. ...`)
+  - Rationale: ⌘F `1.1` will surface both 1.1, 1.10, 1.11, etc.
+  - Priority: Split as multiple pts; e.g. instead of adding 1.10, consider taking some under pt 2
+  - Fallback: If unavoidable (i.e. must hold 9⁺ sub-items), make that level 2-digit (e.g. 1.01, 1.02)
 
 ## Optimise for Reply
 
