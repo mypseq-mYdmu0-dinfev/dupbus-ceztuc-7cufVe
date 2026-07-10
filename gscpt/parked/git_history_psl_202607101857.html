@@ -1,0 +1,1322 @@
+<!doctype html><meta charset='utf-8'><title>Git History — psl.md</title><style>
+:root{--bg:#f6f8fa;--card:#fff;--fg:#1f2328;--muted:#57606a;--line:#d0d7de;
+      --chip:#ddf4ff;--chipfg:#0969da;--hd:#24292f;--hdfg:#fff;--hdmut:#c9d1d9;
+      --insbg:#dafbe1;--insfg:#116329;--delbg:#ffebe9;--delfg:#82071e;
+      --hover:#f3f4f6}
+body.dark{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#8d96a0;
+      --line:#30363d;--chip:#121d2f;--chipfg:#58a6ff;--hd:#010409;
+      --hdfg:#e6edf3;--hdmut:#8d96a0;--insbg:#12261e;--insfg:#3fb950;
+      --delbg:#25171c;--delfg:#f85149;--hover:#1c2129}
+*{font-family:Avenir,'Avenir Next',-apple-system,sans-serif}
+body{font-size:15px;line-height:1.55;margin:0;background:var(--bg);
+     color:var(--fg)}
+header{background:var(--hd);color:var(--hdfg);padding:12px 22px;display:flex;
+       align-items:flex-start;gap:14px}
+header .grow{flex:1;min-width:0}
+header h1{font-size:17px;margin:0}
+header .sub{color:var(--hdmut);font-size:12px;margin-top:3px}
+header .sub a{color:var(--hdmut);text-decoration:underline;cursor:pointer}
+.btn{background:transparent;border:1px solid var(--hdmut);color:var(--hdfg);
+     border-radius:6px;font-size:12px;padding:4px 10px;cursor:pointer;
+     white-space:nowrap;margin-top:2px}
+.btn:hover{border-color:var(--hdfg)}
+main{max-width:980px;margin:18px auto;padding:0 14px}
+.commit{background:var(--card);border:1px solid var(--line);border-radius:8px;
+        margin-bottom:14px;overflow:hidden}
+.commit summary{cursor:pointer;padding:10px 14px;display:flex;gap:10px;
+        align-items:baseline;flex-wrap:wrap;list-style:none}
+.commit summary::-webkit-details-marker{display:none}
+.commit summary:hover{background:var(--hover)}
+.hash{font-family:ui-monospace,Menlo,monospace;font-size:12px;
+      color:var(--chipfg);background:var(--chip);border-radius:4px;
+      padding:1px 6px;cursor:pointer}
+.hash:hover{outline:1px solid var(--chipfg)}
+.subj{font-weight:600}
+.meta{color:var(--muted);font-size:12.5px;margin-left:auto;white-space:nowrap}
+.rename{font-size:12px;color:#9a6700;background:#fff8c5;border-radius:4px;
+        padding:1px 6px}
+body.dark .rename{background:#2b2300;color:#e3b341}
+.bridge{border:1px dashed #9a6700;color:#9a6700;background:#fff8c5;
+        border-radius:8px;padding:8px 14px;margin-bottom:14px;font-size:12.5px}
+body.dark .bridge{background:#2b2300;color:#e3b341;border-color:#e3b341}
+.body{border-top:1px solid var(--line);padding:12px 16px;background:var(--card)}
+pre.diff{white-space:pre-wrap;word-wrap:break-word;margin:0;
+         font-family:ui-monospace,Menlo,monospace;font-size:12.8px}
+pre.mdcode{white-space:pre-wrap;background:var(--bg);border-radius:6px;
+           padding:8px 10px;font-family:ui-monospace,Menlo,monospace;
+           font-size:12.8px}
+del{background:var(--delbg);color:var(--delfg);text-decoration:line-through}
+ins{background:var(--insbg);color:var(--insfg);text-decoration:none}
+.note{color:var(--muted);font-size:12.5px;margin:0 0 8px}
+.view-html .code-view{display:none}
+body:not(.view-html) .html-view{display:none}
+.html-view h2,.html-view h3{margin:0.7em 0 0.3em}
+.html-view code{background:var(--bg);border-radius:4px;padding:0 4px;
+                font-family:ui-monospace,Menlo,monospace;font-size:0.9em}
+.html-view hr{border:0;border-top:1px solid var(--line)}
+footer{color:var(--muted);font-size:12px;text-align:center;padding:26px 0 18px}
+#helpbox{display:none;position:fixed;top:64px;right:22px;background:var(--card);
+        border:1px solid var(--line);border-radius:8px;padding:12px 16px;
+        font-size:13px;box-shadow:0 6px 24px rgba(0,0,0,.25);z-index:9}
+#toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+       background:var(--hd);color:var(--hdfg);border-radius:6px;
+       padding:6px 14px;font-size:12.5px;display:none;z-index:9}
+</style><body><header><div class='grow'><h1>Git History (12): psl.md</h1><div class='sub'>temp/temp_diff/psl.md</div><div class='sub'>Generated 202607101857 | <a onclick='toggleHelp()'>Help</a></div></div><button class='btn' id='copybtn' onclick='toggleCopy()'>Copy Only</button><button class='btn' id='viewbtn' onclick='toggleView()'>HTML</button><button class='btn' id='darkbtn' onclick='toggleDark()'>Dark Mode</button></header><div id='helpbox'>- Newest first<br>- Click commit bar to expand or collapse<br>- Click SHA chip to copy it & open the commit on GitHub<br>- HTML View: the file as rendered rich text after that commit<br>- Code View: word-level diff vs the previous commit<br>- ⚠️ structural bridge: rows below it are GitHub-style guesses (a same-commit vanished path), NOT verified content lineage<br>- Dark Mode follows macOS setting by default</div><div id='toast'></div><main><details class='commit' open><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'818d423','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/818d423614c6b074da86a70e4ed697c5c32f8d24')">818d423</span><span class='subj'>diff only</span><span class='meta'>2026-07-10 18:56</span></summary><div class='body'><p class='note'>vs previous commit (641b312)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)<ins> —— NEW-AJAP Edition
+
+*Proposed replacement for `psl.md` (the verbatim old copy beside this file). After user review: copy-paste this content into `psl.md`, delete this file.*</ins>
+
+*Read prompt-matching section; e.g. on `#psl`, read § `#psl`.*
+
+## <ins>What Changed vs the Old System
+
+- The CC no longer processes cards herself —— she drives the PROGRAMME&#x27;s single-job mode: `./.venv/bin/python -m AJAP_code.main --psl &quot;&lt;job_url&gt;&quot;`.
+- The programme does everything up to S5-equivalent (score, band, research per band, CL, deterministic lint, LLM audit w/ playbook) and writes a `PSL_` AR —— it NEVER submits in this mode unless `--apply` is added.
+- Old `#auto` / `#para` / `#unpara` dissolve: there is no manual loop to auto-advance, and run state lives in the LEDGER (the programme never re-reads `gcl/` filenames mid-run), so PSL file moves can never collide w/ a running AJAP —— `--psl-done` below also updates the ledger atomically (WAL-safe at any time), which closes the last gap of the old parallel-session era.
+
+## </ins>Shared Rules
+
+- <del>If</del><ins>🔴</ins> <del>creating</del><ins>The</ins> <del>new</del><ins>LEDGER</ins> <del>AR,</del><ins>is</ins> <del>do</del><ins>the single source of truth: NEVER hand-move an AR ACROSS status folders (`pending/` ↔ `applied/` ↔ `skipped/`) —— a hand-move leaves the ledger row stale (dirty analytics + sabotage of a running AJAP); ALWAYS use the commands below, which move the file AND update the ledger</ins> in <del>`/gcl/applied/`</del><ins>one atomic step. (mirror.py self-heals stale rows at the next programme start —— a safety net, not a licence.) Archiving WITHIN a status (e.g. `applied/` → `applied/applied_archive/`) is always safe: the ledger row is path-agnostic.
+- AR lands in `gcl/pending/`</ins> (Outcome: <del>Applying)</del><ins>Pending) w/ prefix `PSL_` (clickable), written by the programme —— NOT `applied/`, so ajap_logs counts stay clean; declare `➡️`</ins> as usual
+- <del>If</del><ins>The</ins> <del>NOT</del><ins>CC</ins> <del>creating</del><ins>reads</ins> <del>(AR</del><ins>the</ins> <del>complete;</del><ins>AR</ins> <del>nothing</del><ins>back</ins> to <del>improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind</del><ins>the</ins> user <del>(in</del><ins>(concise)</ins> <del>chat)</del><ins>and</ins> <del>to</del><ins>awaits</ins> <del>delete</del><ins>his</ins> <del>any copies voided in this session
+- For spawning SA(s): always Sonnet, even you (MA) are Opus</del><ins>verdict</ins>
+- For any questions/blockers: summon user <del>by</del><ins>via</ins> the interactive-question tool<del> (⇒app notification)</del>
+- `#apply` = <del>finish</del><ins>re-run w/ `--apply` appended:</ins> the <del>loop</del><ins>programme</ins> <del>(S6);</del><ins>performs</ins> <del>STOP</del><ins>the</ins> <del>right</del><ins>real</ins> <del>before</del><ins>submission</ins> <del>&quot;Submit&quot;,</del><ins>(quick-apply</ins> <del>&quot;Submit application&quot;,</del><ins>flow</ins> or <del>similar</del><ins>agentic portal driver), then confirms —— the AR is promoted to `applied/` by the programme itself</ins>
+- `#done` = <del>edit</del><ins>user</ins> <del>as</del><ins>submitted</ins> <del>`Outcome:</del><ins>manually</ins> <del>Applied`;</del><ins>himself</ins> <del>remove</del><ins>——</ins> <del>`⏳_`</del><ins>run:</ins> <del>from</del><ins>`cd</ins> <del>filename;</del><ins>AJAP_repo</ins> <del>proceed</del><ins>&amp;&amp; ./.venv/bin/python -m AJAP_code.main --psl-done &quot;&lt;job_url_or_AR_filename&gt;&quot;` (promotes the `PSL_` pending AR → `applied/`, Outcome→Applied, prefix stripped, TS restamped</ins> to <del>next</del><ins>promotion time, ledger outcome `PslApplied` —— invisible to ajap_logs by design; safe whether or not AJAP is running)
+- `#skip` = user deems the job no longer worth applying —— run: `cd AJAP_repo &amp;&amp; ./.venv/bin/python -m AJAP_code.main --user-skip &quot;&lt;job_url_or_AR_filename&gt;&quot;` (moves the pending</ins> AR<ins> → `skipped/`, Outcome→Skipped (user), prefixes stripped, ledger outcome `UserSkipped` —— invisible to ajap_logs; original TS kept, a skip is not an application event)</ins>
+- `#next` = <del>don&#x27;t touch</del><ins>leave</ins> current <del>AR;</del><ins>AR</ins> <del>proceed</del><ins>untouched;</ins> <del>to</del><ins>await the</ins> next <del>AR
+- `#auto` = auto-`#next`; at S5 completion, directly proceed to next AR w/o S6 (application)
+- `#para` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was</del><ins>URL/AR</ins> from <del>(e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute </del>the <del>intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+- `#unpara` = disable `#para`; re-enforce directory-related instructions; move files from `temp_seek/` to where they should be, as if `#para` never prompted</del><ins>user</ins>
+
+## `#psl`
+
+- <del>Enter</del><ins>User</ins> <del>AJAP</del><ins>supplies</ins> <del>mode</del><ins>a</ins> <del>but</del><ins>job</ins> <del>process</del><ins>URL</ins> <del>ONE</del><ins>(or</ins> <del>single</del><ins>has</ins> <del>loop</del><ins>it</ins> <del>only</del><ins>open); run: `cd AJAP_repo &amp;&amp; ./.venv/bin/python -m AJAP_code.main --psl &quot;&lt;job_url&gt;&quot;`</ins>
+- <del>MUST</del><ins>The</ins> <del>stop</del><ins>programme</ins> <del>at</del><ins>scrapes</ins> <del>S5</del><ins>the</ins> <del>completion,</del><ins>job,</ins> <del>unless</del><ins>scores</ins> <del>prompted</del><ins>it,</ins> <del>`#apply`
+-</del><ins>researches</ins> <del>A5&#x27;s</del><ins>per</ins> <del>&quot;SEEK</del><ins>band,</ins> <del>results&quot;</del><ins>writes</ins> <del>become</del><ins>the</ins> <del>&quot;any</del><ins>CL,</ins> <del>application&quot;
+-</del><ins>runs</ins> <del>DON&#x27;T</del><ins>both</ins> <del>spawn</del><ins>gates,</ins> <del>SA1</del><ins>and</ins> <del>(run</del><ins>STOPS</ins> <del>solo),</del><ins>before</ins> <del>skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</del><ins>submission</ins>
+- ONLY skip<del> a job</del> if score &lt; 35 after <del>re-evaluation
+-</del><ins>the</ins> <del>Skip</del><ins>programme&#x27;s</ins> <del>A1;</del><ins>evaluation</ins> <del>at</del><ins>(its</ins> <del>A6</del><ins>routing</ins> <del>(waited</del><ins>says</ins> <del>3</del><ins>so);</ins> <del>cycles),</del><ins>otherwise</ins> <del>alert</del><ins>present</ins> <del>then</del><ins>the</ins> <del>STOP;</del><ins>AR</ins> <del>DON&#x27;T</del><ins>whatever</ins> <del>proceed</del><ins>the</ins> <del>to Qi</del><ins>band</ins>
+- DON&#x27;T proceed <del>to</del><ins>anywhere</ins> <del>next</del><ins>else;</ins> <del>AR,</del><ins>single</ins> <del>unless</del><ins>loop</ins> <del>prompted</del><ins>means</ins> <del>`#done`/`#next`/`#auto`</del><ins>exactly one job</ins>
+
+## `#psl [AR_filename(s)]`
+
+- <del>Perform</del><ins>For</ins> <del>`#psl`</del><ins>each</ins> <del>on</del><ins>AR</ins> <del>the</del><ins>(sequentially):</ins> <del>AR(s)</del><ins>extract</ins> <del>(sequentially</del><ins>its</ins> <del>if</del><ins>SEEK</ins> <del>multiple)
+-</del><ins>URL</ins> <del>Read</del><ins>(bash</ins> <del>the</del><ins>grep,</ins> <del>file(s)</del><ins>avoid</ins> <del>(stop</del><ins>full</ins> <del>if</del><ins>read)</ins> <del>not</del><ins>→</ins> <del>found)</del><ins>run</ins> <del>but</del><ins>`--psl &quot;&lt;url&gt;&quot;` → programme re-validates and writes a fresh `PSL_` AR;</ins> never edit <del>them</del><ins>the original AR</ins>
+- If <del>it&#x27;s</del><ins>404/closed/expired:</ins> <del>complete</del><ins>void</ins> <del>(w/</del><ins>the</ins> <del>P.S.</del><ins>original</ins> <del>line),</del><ins>per</ins> <del>re-validate</del><ins>Void</ins> <del>(S3/S4)</del><ins>Rule,</ins> <del>then</del><ins>tell</ins> <del>create</del><ins>the</ins> <del>new</del><ins>user,</ins> <del>AR(s)</del><ins>move</ins> <del>(S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</del><ins>on</ins>
+
+## `#psl pending`
+
+- Perform `#psl [AR_filename(s)]` <del>on</del><ins>over</ins> <del>`/gcl/pending/`</del><ins>`gcl/pending/`</ins> <del>ARs starting from</del><ins>ARs,</ins> oldest<ins> first</ins>
+- <del>Right</del><ins>Batch-verify</ins> <del>before</del><ins>URLs</ins> <del>reading</del><ins>first</ins> <del>the</del><ins>via SA(s) (no</ins> full <del>file,</del><ins>AR</ins> <del>bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) →</del><ins>reads);</ins> void <del>all </del>unavailable <del>ARs</del><ins>ones</ins> (no <del>&quot;Apply&quot;</del><ins>Apply</ins> <del>button) → concisely</del><ins>button);</ins> tell <del>amount</del><ins>counts</ins> <del>of</del><ins>voided/remaining,</ins> <del>voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat),</del><ins>then</ins> proceed <del>(from oldest available)</del><ins>oldest-first</ins>
+
+## `#ccl`
+
+- Read <del>`/context/ccl.md`</del><ins>`seek/context/ccl.md` (consulting-CL doctrine) —— pass its rules to the run by exporting `AJAP_CCL=1` before `--psl` (the worker prompt then loads ccl.md as doctrine)</ins>
+- <del>Perform `#psl`
+- Instead of `/gcl/applied/`, create </del>AR <del>in</del><ins>goes</ins> <del>`/ccl/`</del><ins>to `AJAP_repo/ccl/` (NOT `seek/ccl/` —— that tree is read-only until cutover; the two merge at P6.4)</ins>
+- Reference <ins>past </ins>ARs in <del>`/ccl/`</del><ins>`seek/ccl/`</ins> <del>&amp;</del><ins>(+</ins> <del>`/ccl/ccl_archive/`</del><ins>`ccl_archive/`)</ins> for quality &amp; <del>style; adapt to current firm</del><ins>style
+</ins></pre></div><div class='html-view'><h2>PSL (Process Single Loop) —— NEW-AJAP Edition</h2>
+
+<p><em>Proposed replacement for <code>psl.md</code> (the verbatim old copy beside this file). After user review: copy-paste this content into <code>psl.md</code>, delete this file.</em></p>
+
+<p><em>Read prompt-matching section; e.g. on <code>#psl</code>, read § <code>#psl</code>.</em></p>
+
+<h3>What Changed vs the Old System</h3>
+
+<ul>
+<li>The CC no longer processes cards herself —— she drives the PROGRAMME&#x27;s single-job mode: <code>./.venv/bin/python -m AJAP_code.main --psl &quot;&lt;job_url&gt;&quot;</code>.</li>
+<li>The programme does everything up to S5-equivalent (score, band, research per band, CL, deterministic lint, LLM audit w/ playbook) and writes a <code>PSL_</code> AR —— it NEVER submits in this mode unless <code>--apply</code> is added.</li>
+<li>Old <code>#auto</code> / <code>#para</code> / <code>#unpara</code> dissolve: there is no manual loop to auto-advance, and run state lives in the LEDGER (the programme never re-reads <code>gcl/</code> filenames mid-run), so PSL file moves can never collide w/ a running AJAP —— <code>--psl-done</code> below also updates the ledger atomically (WAL-safe at any time), which closes the last gap of the old parallel-session era.</li>
+</ul>
+
+<h3>Shared Rules</h3>
+
+<ul>
+<li>🔴 The LEDGER is the single source of truth: NEVER hand-move an AR ACROSS status folders (<code>pending/</code> ↔ <code>applied/</code> ↔ <code>skipped/</code>) —— a hand-move leaves the ledger row stale (dirty analytics + sabotage of a running AJAP); ALWAYS use the commands below, which move the file AND update the ledger in one atomic step. (mirror.py self-heals stale rows at the next programme start —— a safety net, not a licence.) Archiving WITHIN a status (e.g. <code>applied/</code> → <code>applied/applied_archive/</code>) is always safe: the ledger row is path-agnostic.</li>
+<li>AR lands in <code>gcl/pending/</code> (Outcome: Pending) w/ prefix <code>PSL_</code> (clickable), written by the programme —— NOT <code>applied/</code>, so ajap_logs counts stay clean; declare <code>➡️</code> as usual</li>
+<li>The CC reads the AR back to the user (concise) and awaits his verdict</li>
+<li>For any questions/blockers: summon user via the interactive-question tool</li>
+<li><code>#apply</code> = re-run w/ <code>--apply</code> appended: the programme performs the real submission (quick-apply flow or agentic portal driver), then confirms —— the AR is promoted to <code>applied/</code> by the programme itself</li>
+<li><code>#done</code> = user submitted manually himself —— run: <code>cd AJAP_repo &amp;&amp; ./.venv/bin/python -m AJAP_code.main --psl-done &quot;&lt;job_url_or_AR_filename&gt;&quot;</code> (promotes the <code>PSL_</code> pending AR → <code>applied/</code>, Outcome→Applied, prefix stripped, TS restamped to promotion time, ledger outcome <code>PslApplied</code> —— invisible to ajap_logs by design; safe whether or not AJAP is running)</li>
+<li><code>#skip</code> = user deems the job no longer worth applying —— run: <code>cd AJAP_repo &amp;&amp; ./.venv/bin/python -m AJAP_code.main --user-skip &quot;&lt;job_url_or_AR_filename&gt;&quot;</code> (moves the pending AR → <code>skipped/</code>, Outcome→Skipped (user), prefixes stripped, ledger outcome <code>UserSkipped</code> —— invisible to ajap_logs; original TS kept, a skip is not an application event)</li>
+<li><code>#next</code> = leave current AR untouched; await the next URL/AR from the user</li>
+</ul>
+
+<h3><code>#psl</code></h3>
+
+<ul>
+<li>User supplies a job URL (or has it open); run: <code>cd AJAP_repo &amp;&amp; ./.venv/bin/python -m AJAP_code.main --psl &quot;&lt;job_url&gt;&quot;</code></li>
+<li>The programme scrapes the job, scores it, researches per band, writes the CL, runs both gates, and STOPS before submission</li>
+<li>ONLY skip if score &lt; 35 after the programme&#x27;s evaluation (its routing says so); otherwise present the AR whatever the band</li>
+<li>DON&#x27;T proceed anywhere else; single loop means exactly one job</li>
+</ul>
+
+<h3><code>#psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>For each AR (sequentially): extract its SEEK URL (bash grep, avoid full read) → run <code>--psl &quot;&lt;url&gt;&quot;</code> → programme re-validates and writes a fresh <code>PSL_</code> AR; never edit the original AR</li>
+<li>If 404/closed/expired: void the original per Void Rule, tell the user, move on</li>
+</ul>
+
+<h3><code>#psl pending</code></h3>
+
+<ul>
+<li>Perform <code>#psl [AR_filename(s)]</code> over <code>gcl/pending/</code> ARs, oldest first</li>
+<li>Batch-verify URLs first via SA(s) (no full AR reads); void unavailable ones (no Apply button); tell counts voided/remaining, then proceed oldest-first</li>
+</ul>
+
+<h3><code>#ccl</code></h3>
+
+<ul>
+<li>Read <code>seek/context/ccl.md</code> (consulting-CL doctrine) —— pass its rules to the run by exporting <code>AJAP_CCL=1</code> before <code>--psl</code> (the worker prompt then loads ccl.md as doctrine)</li>
+<li>AR goes to <code>AJAP_repo/ccl/</code> (NOT <code>seek/ccl/</code> —— that tree is read-only until cutover; the two merge at P6.4)</li>
+<li>Reference past ARs in <code>seek/ccl/</code> (+ <code>ccl_archive/</code>) for quality &amp; style</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'641b312','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/641b3128dbd6df2b57df10b97d7772a808d63aa4')">641b312</span><span class='subj'>diff only</span><span class='rename'>renamed</span><span class='meta'>2026-07-10 18:56</span></summary><div class='body'><p class='note'>vs previous commit (12a80df) · renamed from <code>seek/context/psl.md</code></p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `#psl`, read § `#psl`.*
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- For spawning SA(s): always Sonnet, even you (MA) are Opus
+- For any questions/blockers: summon user by the interactive-question tool (⇒app notification)
+- `#apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `#done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `#next` = don&#x27;t touch current AR; proceed to next AR
+- `#auto` = auto-`#next`; at S5 completion, directly proceed to next AR w/o S6 (application)
+- `#para` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+- `#unpara` = disable `#para`; re-enforce directory-related instructions; move files from `temp_seek/` to where they should be, as if `#para` never prompted
+
+## `#psl`
+
+- Enter AJAP mode but process ONE single loop only
+- MUST stop at S5 completion, unless prompted `#apply`
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- ONLY skip a job if score &lt; 35 after re-evaluation
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+- DON&#x27;T proceed to next AR, unless prompted `#done`/`#next`/`#auto`
+
+## `#psl [AR_filename(s)]`
+
+- Perform `#psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)
+
+## `#psl pending`
+
+- Perform `#psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `#ccl`
+
+- Read `/context/ccl.md`
+- Perform `#psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>#psl</code>, read § <code>#psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li>For spawning SA(s): always Sonnet, even you (MA) are Opus</li>
+<li>For any questions/blockers: summon user by the interactive-question tool (⇒app notification)</li>
+<li><code>#apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>#done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>#next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>#auto</code> = auto-<code>#next</code>; at S5 completion, directly proceed to next AR w/o S6 (application)</li>
+<li><code>#para</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+<li><code>#unpara</code> = disable <code>#para</code>; re-enforce directory-related instructions; move files from <code>temp_seek/</code> to where they should be, as if <code>#para</code> never prompted</li>
+</ul>
+
+<h3><code>#psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only</li>
+<li>MUST stop at S5 completion, unless prompted <code>#apply</code></li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>ONLY skip a job if score &lt; 35 after re-evaluation</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+<li>DON&#x27;T proceed to next AR, unless prompted <code>#done</code>/<code>#next</code>/<code>#auto</code></li>
+</ul>
+
+<h3><code>#psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>#psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>#psl pending</code></h3>
+
+<ul>
+<li>Perform <code>#psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>#ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>#psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'12a80df','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/12a80dfde706355c0797827c6ff1f3a1dd1567b3')">12a80df</span><span class='subj'>#sprint → #auto</span><span class='meta'>2026-06-19 02:12</span></summary><div class='body'><p class='note'>vs previous commit (cf18bd5)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `#psl`, read § `#psl`.*
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- For spawning SA(s): always Sonnet, even you (MA) are Opus
+- For any questions/blockers: summon user by the interactive-question tool (⇒app notification)
+- `#apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `#done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `#next` = don&#x27;t touch current AR; proceed to next AR
+- <del>`#sprint`</del><ins>`#auto`</ins> = auto-`#next`; at S5 completion, directly proceed to next AR w/o S6 (application)
+- `#para` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+- `#unpara` = disable `#para`; re-enforce directory-related instructions; move files from `temp_seek/` to where they should be, as if `#para` never prompted
+
+## `#psl`
+
+- Enter AJAP mode but process ONE single loop only
+- MUST stop at S5 completion, unless prompted `#apply`
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- ONLY skip a job if score &lt; 35 after re-evaluation
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+- DON&#x27;T proceed to next AR, unless prompted <del>`#done`/`#next`/`#sprint`</del><ins>`#done`/`#next`/`#auto`</ins>
+
+## `#psl [AR_filename(s)]`
+
+- Perform `#psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)
+
+## `#psl pending`
+
+- Perform `#psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `#ccl`
+
+- Read `/context/ccl.md`
+- Perform `#psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>#psl</code>, read § <code>#psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li>For spawning SA(s): always Sonnet, even you (MA) are Opus</li>
+<li>For any questions/blockers: summon user by the interactive-question tool (⇒app notification)</li>
+<li><code>#apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>#done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>#next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>#auto</code> = auto-<code>#next</code>; at S5 completion, directly proceed to next AR w/o S6 (application)</li>
+<li><code>#para</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+<li><code>#unpara</code> = disable <code>#para</code>; re-enforce directory-related instructions; move files from <code>temp_seek/</code> to where they should be, as if <code>#para</code> never prompted</li>
+</ul>
+
+<h3><code>#psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only</li>
+<li>MUST stop at S5 completion, unless prompted <code>#apply</code></li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>ONLY skip a job if score &lt; 35 after re-evaluation</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+<li>DON&#x27;T proceed to next AR, unless prompted <code>#done</code>/<code>#next</code>/<code>#auto</code></li>
+</ul>
+
+<h3><code>#psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>#psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>#psl pending</code></h3>
+
+<ul>
+<li>Perform <code>#psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>#ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>#psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'cf18bd5','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/cf18bd52d472b683c2ff7c98a67d5ecf4536cfbe')">cf18bd5</span><span class='subj'>hashtag</span><span class='meta'>2026-06-14 22:36</span></summary><div class='body'><p class='note'>vs previous commit (3af8df9)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on <del>`psl`,</del><ins>`#psl`,</ins> read § <del>`psl`.*</del><ins>`#psl`.*</ins>
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- For spawning SA(s): always Sonnet, even you (MA) are Opus
+- For any questions/blockers: summon user by the interactive-question tool (⇒app notification)
+- <del>`apply`</del><ins>`#apply`</ins> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- <del>`done`</del><ins>`#done`</ins> = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- <del>`next`</del><ins>`#next`</ins> = don&#x27;t touch current AR; proceed to next AR
+- <del>`sprint`</del><ins>`#sprint`</ins> = <del>auto-`next`;</del><ins>auto-`#next`;</ins> at S5 completion, directly proceed to next AR w/o S6 (application)
+- <del>`parallel AJAP`</del><ins>`#para`</ins> = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+<ins>- `#unpara` = disable `#para`; re-enforce directory-related instructions; move files from `temp_seek/` to where they should be, as if `#para` never prompted
+</ins>
+## <del>`psl`</del><ins>`#psl`</ins>
+
+- Enter AJAP mode but process ONE single loop only
+- MUST stop at S5 completion, unless prompted <del>`apply`</del><ins>`#apply`</ins>
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- ONLY skip a job if score &lt; 35 after re-evaluation
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+- DON&#x27;T proceed to next AR, unless prompted <del>`done`/`next`/`sprint`</del><ins>`#done`/`#next`/`#sprint`</ins>
+
+## <del>`psl</del><ins>`#psl</ins> [AR_filename(s)]`
+
+- Perform <del>`psl`</del><ins>`#psl`</ins> on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)
+
+## <del>`psl</del><ins>`#psl</ins> pending`
+
+- Perform <del>`psl</del><ins>`#psl</ins> [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## <del>`ccl`</del><ins>`#ccl`</ins>
+
+- Read `/context/ccl.md`
+- Perform <del>`psl`</del><ins>`#psl`</ins>
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>#psl</code>, read § <code>#psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li>For spawning SA(s): always Sonnet, even you (MA) are Opus</li>
+<li>For any questions/blockers: summon user by the interactive-question tool (⇒app notification)</li>
+<li><code>#apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>#done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>#next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>#sprint</code> = auto-<code>#next</code>; at S5 completion, directly proceed to next AR w/o S6 (application)</li>
+<li><code>#para</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+<li><code>#unpara</code> = disable <code>#para</code>; re-enforce directory-related instructions; move files from <code>temp_seek/</code> to where they should be, as if <code>#para</code> never prompted</li>
+</ul>
+
+<h3><code>#psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only</li>
+<li>MUST stop at S5 completion, unless prompted <code>#apply</code></li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>ONLY skip a job if score &lt; 35 after re-evaluation</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+<li>DON&#x27;T proceed to next AR, unless prompted <code>#done</code>/<code>#next</code>/<code>#sprint</code></li>
+</ul>
+
+<h3><code>#psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>#psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>#psl pending</code></h3>
+
+<ul>
+<li>Perform <code>#psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>#ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>#psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'3af8df9','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/3af8df90ab3cccc987db630383a1919bb7e60f0c')">3af8df9</span><span class='subj'>+sprint; clarified</span><span class='meta'>2026-06-14 21:38</span></summary><div class='body'><p class='note'>vs previous commit (cc843ae)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- For spawning SA(s): always Sonnet, even you (MA) are Opus
+- For any questions/blockers: summon user by the interactive-question tool (⇒app notification)
+- `apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR
+- <ins>`sprint` = auto-`next`; at S5 completion, directly proceed to next AR w/o S6 (application)
+- </ins>`parallel AJAP` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop <del>only,</del><ins>only
+-</ins> <del>stopping</del><ins>MUST stop</ins> at S5 <del>completion</del><ins>completion, unless prompted `apply`</ins>
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- <ins>ONLY skip a job if score &lt; 35 after re-evaluation
+- </ins>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi<ins>
+- DON&#x27;T proceed to next AR, unless prompted `done`/`next`/`sprint`</ins>
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li>For spawning SA(s): always Sonnet, even you (MA) are Opus</li>
+<li>For any questions/blockers: summon user by the interactive-question tool (⇒app notification)</li>
+<li><code>apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>sprint</code> = auto-<code>next</code>; at S5 completion, directly proceed to next AR w/o S6 (application)</li>
+<li><code>parallel AJAP</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only</li>
+<li>MUST stop at S5 completion, unless prompted <code>apply</code></li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>ONLY skip a job if score &lt; 35 after re-evaluation</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+<li>DON&#x27;T proceed to next AR, unless prompted <code>done</code>/<code>next</code>/<code>sprint</code></li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'cc843ae','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/cc843aeb98968f3d5e187d900b548203448783b0')">cc843ae</span><span class='subj'>+summon</span><span class='meta'>2026-06-14 21:27</span></summary><div class='body'><p class='note'>vs previous commit (2a8ee3c)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- For spawning SA(s): always Sonnet, even you (MA) are Opus<ins>
+- For any questions/blockers: summon user by the interactive-question tool (⇒app notification)</ins>
+- `apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR
+- `parallel AJAP` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop only, stopping at S5 completion
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li>For spawning SA(s): always Sonnet, even you (MA) are Opus</li>
+<li>For any questions/blockers: summon user by the interactive-question tool (⇒app notification)</li>
+<li><code>apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>parallel AJAP</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only, stopping at S5 completion</li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'2a8ee3c','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/2a8ee3cd72133ae2d7b2c9c0f9296496a3e1854e')">2a8ee3c</span><span class='subj'>SA must be Sonnet</span><span class='meta'>2026-06-14 21:06</span></summary><div class='body'><p class='note'>vs previous commit (bfad804)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session<ins>
+- For spawning SA(s): always Sonnet, even you (MA) are Opus</ins>
+- `apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR
+- `parallel AJAP` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop only, stopping at S5 completion
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li>For spawning SA(s): always Sonnet, even you (MA) are Opus</li>
+<li><code>apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>parallel AJAP</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only, stopping at S5 completion</li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'bfad804','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/bfad8043cdab57603f1930f1b3aea88fa82cca1b')">bfad804</span><span class='subj'>no save &amp; skip</span><span class='meta'>2026-06-14 21:02</span></summary><div class='body'><p class='note'>vs previous commit (ff0f5f9)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- `apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR
+- `parallel AJAP` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop only, stopping at S5 completion
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore <del>K1–6),</del><ins>Save &amp; Skip/K1–6),</ins> or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li><code>apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>parallel AJAP</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only, stopping at S5 completion</li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore Save &amp; Skip/K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'ff0f5f9','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/ff0f5f9cfff2e0c35827ed0ad01f4e6d72bd4173')">ff0f5f9</span><span class='subj'>defined `parallel AJAP`</span><span class='meta'>2026-06-14 20:56</span></summary><div class='body'><p class='note'>vs previous commit (5647f25)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+- If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- `apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR<ins>
+- `parallel AJAP` = an AJAP session is running in parallel —— minimise disturbance by:
+  - Except for &quot;batch verify URLs...&quot; below, avoid file changes in `/seek/` (notice if unavoidable)
+  - For both creating/editing: duplicate to `dupbus-ceztuc-7cufVe/temp/temp_seek/` → remark at top where it was from (e.g. &quot;Dup From: `gcl/pending/`&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: `gcl/applied/`&quot;) right below &quot;Dup From&quot;
+  - This overrides other directory-related instructions (e.g. &quot;create AR in `/ccl/`&quot;)</ins>
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop only, stopping at S5 completion
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since <del>there&#x27;re</del><ins>there&#x27;s</ins> no Tab 1 (single loop)<del> or Tab 3 (no interaction)</del>
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li><code>apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+<li><code>parallel AJAP</code> = an AJAP session is running in parallel —— minimise disturbance by:</li>
+<li>Except for &quot;batch verify URLs...&quot; below, avoid file changes in <code>/seek/</code> (notice if unavoidable)</li>
+<li>For both creating/editing: duplicate to <code>dupbus-ceztuc-7cufVe/temp/temp_seek/</code> → remark at top where it was from (e.g. &quot;Dup From: <code>gcl/pending/</code>&quot;) → execute the intended creation/editing → if moving is needed: DON&#x27;T; instead remark where it should go (e.g. &quot;Go To: <code>gcl/applied/</code>&quot;) right below &quot;Dup From&quot;</li>
+<li>This overrides other directory-related instructions (e.g. &quot;create AR in <code>/ccl/</code>&quot;)</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only, stopping at S5 completion</li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;s no Tab 1 (single loop)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'5647f25','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/5647f25965512de33d5b927b16332cc2333d690a')">5647f25</span><span class='subj'>fix clickability issue</span><span class='meta'>2026-06-14 20:34</span></summary><div class='body'><p class='note'>vs previous commit (6391698)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- <del>For all `psl`:
+  - </del>If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+  - If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+  <ins>- For both creating/editing: DON&#x27;T prefix `⏳_` (unclickable) but `PSL_` instead → declare `➡️`
+</ins>- Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- `apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop only, stopping at S5 completion
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;re no Tab 1 (single loop) or Tab 3 (no interaction)
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>For both creating/editing: DON&#x27;T prefix <code>⏳_</code> (unclickable) but <code>PSL_</code> instead → declare <code>➡️</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li><code>apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only, stopping at S5 completion</li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;re no Tab 1 (single loop) or Tab 3 (no interaction)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'6391698','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/63916980712867bb7cd1f48c708a852cf8ebfe70')">6391698</span><span class='subj'>added `apply`</span><span class='meta'>2026-06-14 20:22</span></summary><div class='body'><p class='note'>vs previous commit (87e7b93)</p><div class='code-view'><pre class='diff'># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- For all `psl`:
+  - If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+  - If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+  - Before starting next AR, remind user (in chat) to delete any copies voided in this session<ins>
+- `apply` = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</ins>
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop only, stopping at S5 completion
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;re no Tab 1 (single loop) or Tab 3 (no interaction)
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>For all <code>psl</code>:</li>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li><code>apply</code> = finish the loop (S6); STOP right before &quot;Submit&quot;, &quot;Submit application&quot;, or similar</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only, stopping at S5 completion</li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;re no Tab 1 (single loop) or Tab 3 (no interaction)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details><details class='commit'><summary><span class='hash' title='copy SHA + open on GitHub' onclick="shaClick(event,'87e7b93','https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/commit/87e7b930ac9b3006afe8ee7fbb000a602b513249')">87e7b93</span><span class='subj'>separated from c.md</span><span class='meta'>2026-06-14 20:18</span></summary><div class='body'><p class='note'>file created in this commit</p><div class='code-view'><pre class='diff'><ins># PSL (Process Single Loop)
+
+*Read prompt-matching section; e.g. on `psl`, read § `psl`.*
+
+## Shared Rules
+- For all `psl`:
+  - If creating new AR, do in `/gcl/applied/` (Outcome: Applying) as usual
+  - If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. `/pending/`) to `/applied/` → edit as `Outcome: Applying`
+  - Before starting next AR, remind user (in chat) to delete any copies voided in this session
+- `done` = edit as `Outcome: Applied`; remove `⏳_` from filename; proceed to next AR
+- `next` = don&#x27;t touch current AR; proceed to next AR
+
+## `psl`
+
+- Enter AJAP mode but process ONE single loop only, stopping at S5 completion
+- A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;
+- DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary
+- Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi
+
+## `psl [AR_filename(s)]`
+
+- Perform `psl` on the AR(s) (sequentially if multiple)
+- Read the file(s) (stop if not found) but never edit them
+- If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ
+- If it&#x27;s incomplete, create new AR(s)
+- For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;re no Tab 1 (single loop) or Tab 3 (no interaction)
+
+## `psl pending`
+
+- Perform `psl [AR_filename(s)]` on `/gcl/pending/` ARs starting from oldest
+- Right before reading the full file, bash extract its SEEK URL → open it
+- If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained
+- Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)
+
+## `ccl`
+
+- Read `/context/ccl.md`
+- Perform `psl`
+- Instead of `/gcl/applied/`, create AR in `/ccl/`
+- Reference ARs in `/ccl/` &amp; `/ccl/ccl_archive/` for quality &amp; style; adapt to current firm</ins></pre></div><div class='html-view'><h2>PSL (Process Single Loop)</h2>
+
+<p><em>Read prompt-matching section; e.g. on <code>psl</code>, read § <code>psl</code>.</em></p>
+
+<h3>Shared Rules</h3>
+<ul>
+<li>For all <code>psl</code>:</li>
+<li>If creating new AR, do in <code>/gcl/applied/</code> (Outcome: Applying) as usual</li>
+<li>If NOT creating (AR complete; nothing to improve), move (per Move Rule) from current directory (e.g. <code>/pending/</code>) to <code>/applied/</code> → edit as <code>Outcome: Applying</code></li>
+<li>Before starting next AR, remind user (in chat) to delete any copies voided in this session</li>
+<li><code>done</code> = edit as <code>Outcome: Applied</code>; remove <code>⏳_</code> from filename; proceed to next AR</li>
+<li><code>next</code> = don&#x27;t touch current AR; proceed to next AR</li>
+</ul>
+
+<h3><code>psl</code></h3>
+
+<ul>
+<li>Enter AJAP mode but process ONE single loop only, stopping at S5 completion</li>
+<li>A5&#x27;s &quot;SEEK results&quot; become &quot;any application&quot;</li>
+<li>DON&#x27;T spawn SA1 (run solo), skip any (ignore K1–6), or interact w/ job page (opened by user) except screenshot/scrolling as needed; stop to ask anything if necessary</li>
+<li>Skip A1; at A6 (waited 3 cycles), alert then STOP; DON&#x27;T proceed to Qi</li>
+</ul>
+
+<h3><code>psl [AR_filename(s)]</code></h3>
+
+<ul>
+<li>Perform <code>psl</code> on the AR(s) (sequentially if multiple)</li>
+<li>Read the file(s) (stop if not found) but never edit them</li>
+<li>If it&#x27;s complete (w/ P.S. line), re-validate (S3/S4) then create new AR(s) (S5) if results differ</li>
+<li>If it&#x27;s incomplete, create new AR(s)</li>
+<li>For each, open its URL like ajap.md&#x27;s Tab 2 for reading, since there&#x27;re no Tab 1 (single loop) or Tab 3 (no interaction)</li>
+</ul>
+
+<h3><code>psl pending</code></h3>
+
+<ul>
+<li>Perform <code>psl [AR_filename(s)]</code> on <code>/gcl/pending/</code> ARs starting from oldest</li>
+<li>Right before reading the full file, bash extract its SEEK URL → open it</li>
+<li>If 404/closed/expired, use SAs to batch verify URLs of all pending ARs (w/o fully reading ARs) → void all unavailable ARs (no &quot;Apply&quot; button) → concisely tell amount of voided &amp; remained</li>
+<li>Otherwise (still available) or when done (told amount in chat), proceed (from oldest available)</li>
+</ul>
+
+<h3><code>ccl</code></h3>
+
+<ul>
+<li>Read <code>/context/ccl.md</code></li>
+<li>Perform <code>psl</code></li>
+<li>Instead of <code>/gcl/applied/</code>, create AR in <code>/ccl/</code></li>
+<li>Reference ARs in <code>/ccl/</code> &amp; <code>/ccl/ccl_archive/</code> for quality &amp; style; adapt to current firm</li>
+</ul></div></div></details></main><footer>Confidential Intellectual Property of Culous Yu</footer><script>
+const body = document.body;
+if (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches)
+  body.classList.add('dark');
+syncBtns();
+function syncBtns(){
+  document.getElementById('copybtn').textContent =
+    window.copyOnly ? 'Copy+GH' : 'Copy Only';
+  document.getElementById('darkbtn').textContent =
+    body.classList.contains('dark') ? 'Light Mode' : 'Dark Mode';
+  document.getElementById('viewbtn').textContent =
+    body.classList.contains('view-html') ? 'Code' : 'HTML';
+}
+function toggleDark(){ body.classList.toggle('dark'); syncBtns(); }
+function toggleCopy(){ window.copyOnly = !window.copyOnly; syncBtns(); }
+function toggleView(){ body.classList.toggle('view-html'); syncBtns(); }
+function toggleHelp(){ const h = document.getElementById('helpbox');
+  h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
+function shaClick(ev, sha, url){
+  ev.preventDefault(); ev.stopPropagation();
+  navigator.clipboard && navigator.clipboard.writeText(sha);
+  const t = document.getElementById('toast');
+  t.textContent = sha + ' copied'; t.style.display = 'block';
+  setTimeout(()=>{ t.style.display='none'; }, 1400);
+  if (url && !window.copyOnly) window.open(url, '_blank');
+}
+</script></body>
