@@ -11,7 +11,7 @@
 
 ## 1. Phase A — Pre-Interview Research
 - 1.0. FIRST step of any `#int` session, upon an interview invitation — stringent AR source verification (gate before 1.1 onward): the AR carries per-section footnote refs `[^NN]` w/ source URLs (LinkedIn/Glassdoor/official site etc.).
-  - 1.0.1. Match the inviting email's domain against the OFFICIAL SITE domain recorded in the AR refs; the verified official site becomes the ANCHOR.
+  - 1.0.1. Match the inviting email's domain against the OFFICIAL SITE domain recorded in the AR refs; the verified official site becomes the ANCHOR. If domain = gmail.com, FLAG & STOP.
   - 1.0.2. Using the anchor's exact firm name, branding, and logo, judge whether the OTHER referenced sources (esp. LinkedIn + Glassdoor) truly belong to this firm — brand logos SHOULD match the official site's, BUT a mismatch does not absolutely rule them out (known live example: Woolworths' official site logo is green whilst its Glassdoor logo is a dated blue — aggregator logos can lag rebrands).
   - 1.0.3. Escalate to the user before proceeding when verification fails or stays doubtful.
 - 1.1. Research = high-stake validation → **CIC is MANDATORY**. Before researching, read and FOLLOW `cic.md` in full (and `cic_bot.md` the moment any login wall / CAPTCHA / hang appears); it governs the method entirely —— not restated here.
