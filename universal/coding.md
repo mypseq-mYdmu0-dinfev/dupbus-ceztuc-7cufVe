@@ -59,6 +59,7 @@
 ## HTML & Visual Output
 - html bullets render as `•` —— a literal `-` reads as a stray hyphen; match the .md-preview look
 - html supports dark mode as standard —— follow OS scheme AND provide a manual toggle
+- a toggle button's label names its DESTINATION, not the current state (e.g. a light page's toggle reads "Dark Mode", not "Light Mode") —— the current state is already visible on the page, so the label should tell the user what clicking WILL DO; recompute every such label from one shared function after any state change, so they never drift out of sync with each other
 - For ANY non-pure-text output (.html pages, .py charts, scripts w/ visual output, etc.): dispatch SA to actually LOOK at + interact w/ the artefact (read the rendered result/screenshots, click the links) and fix findings BEFORE delivery —— maximises one-shot success
 
 ## Scripts & pcmd (protocol/context .md files; e.g. this file)
