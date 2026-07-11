@@ -197,7 +197,7 @@
 | `seek/context/pro_profile.md` | User's professional background needed |
 | `cic.md` | ANY CIC ops |
 | `writing.md` | ANY deliverables; OR "casual"/"whatsapp" mentioned |
-| `coding.md` | On multi-script coding |
+| `coding.md` | Creating/editing ANY script/pcmd (e.g. in `universal/`) |
 | `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
 | `shrink.md` | `shrink`/`summarise`/`synthesise`/`distil`/`condense` mentioned or involved |
 
@@ -263,9 +263,6 @@
 - 9.01. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
 - 9.02. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
 - 9.03. Spawning SA (Agent/Task tool): Always explicitly tell "You're a sub-agent" in the prompt
-- 9.04. Editing/creating pcmd/scripts:
-  - 9.04.1. Avoid hard-coding or mentioning specific comms files (e.g. `*_[TS].md`); alert if any
-  - 9.04.2. If apt, actively point to pcmd/scripts to avoid repetition (e.g. "read `[name].md` first")
-- 9.05. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
-  - 9.05.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
-  - 9.05.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
+- 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
+  - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
+  - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
