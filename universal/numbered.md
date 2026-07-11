@@ -39,11 +39,12 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 - The dot is not needed when referring to it e.g. "Item 1.1 detailed xxx..."
 - Numbered points live in the BODY, NEVER on a heading: a `##`/`###`/etc. heading may LABEL a section (encouraged for readability), but the level-1 lines (`1.`/`2.`/etc.) and their sub-bullets (`- 1.1.`/`- 1.2.`/etc.) MUST sit UNDERNEATH a heading as normal lines
 - NEVER make the heading itself the numbered point (e.g. `## 1. xxx...`); doing so confuses you —— striping bullet structure & collapses its sub-points (`1.1.`/`1.2.`/etc.) onto 1 line (unreadable)
-- NEVER create `[N].0` (e.g. `- 1.0. ...`), instead make it `[N].1` (e.g. `- 1.1. ...`)
-- AVOID having 9⁺ items on each level (e.g. `- 1.10. ...`)
-  - Rationale: ⌘F `1.1` will surface both 1.1, 1.10, 1.11, etc.
+- NEVER create `[N].0` (e.g. 1.0, 1.1.0), instead make it `[N].1` (e.g. 1.1, 1.1.1)
+- AVOID having 9⁺ items on each level (e.g. 1.10, 1.1.10)
+  - Rationale: ⌘F `[N].1` will surface both [N].1, [N].10, [N].11, etc.
   - Priority: Split as multiple pts; e.g. instead of adding 1.10, consider taking some under pt 2
-  - Fallback: If unavoidable (i.e. must hold 9⁺ sub-items), make that level 2-digit (e.g. 1.01, 1.02)
+  - Fallback: If unavoidable (i.e. must hold 9⁺ sub-items), make that level 2-digit (e.g. [N].01, [N].02)
+  - Implication: If `[N].01` is seen, `[N].10` (at least) is expected.
 
 ## Optimise for Reply
 

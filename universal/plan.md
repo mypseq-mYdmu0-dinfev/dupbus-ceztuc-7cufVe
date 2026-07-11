@@ -58,7 +58,7 @@
 
 ## PART B —— MASTER CONTEXT
 
-> Standing Rules: DevPlan can't be edited by CC unless requested (only on requested lines). Precise Status: by `close_` & AD. Phase (not sub-phase) Completion: reminder user to note on heading line by suggesting e.g. `P1. [heading] *(done on [TS]; [optional_≤20chars_remarks]*)`. When user requests to reconstruct DevPlan (e.g. lean), immediately read plan.md before action.
+> Standing Rules: DevPlan can't be edited by CC unless requested (only on requested lines). Precise Status: by `close_` & AD. Phase (not sub-phase) Completion: remind user to note on heading line by suggesting e.g. `P1. [heading] *(done on [TS]; [optional_≤20chars_remarks]*)`. When user requests to reconstruct DevPlan (e.g. lean), immediately read plan.md before action.
 
 ### M1. Organisation & Scope
 …
