@@ -537,7 +537,7 @@ def main() -> None:
         "- Click SHA chip to copy it & open the commit on GitHub<br>"
         "- HTML View: the file as rendered rich text after that commit<br>"
         "- Code View: word-level diff vs the previous commit<br>"
-        "- ⚠️ structural bridge: rows below it are GitHub-style guesses "
+        "- ⚠️ Structural Bridge: rows below it are GitHub-style guesses "
         "(a same-commit vanished path), NOT verified content lineage<br>"
         "- Dark Mode follows macOS setting by default</div>"
         "<div id='toast'></div>"
