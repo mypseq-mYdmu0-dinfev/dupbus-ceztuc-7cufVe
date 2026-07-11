@@ -71,7 +71,8 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 
 ## Bite-size
 
-DEFAULT bite-size short lines, not only when `#numbered` is prompted:
+DEFAULT bite-size short lines (NOT only when `#numbered` is prompted):
+- Intent: Apart from easier reading, this allows even more precise, targeted reply
 - One point per line —— each bullet states ONE claim/action/caveat; if it holds ≥2, split into sibling/sub-bullets, NEVER merge into a paragraph
 - Verdict-first —— lead w/ the conclusion/directive (e.g. "Confirm alignment"); if reasoning exceeds one short clause, demote it to sub-bullets
 - No paragraph-bullets —— a bullet is ideally ≤1 sentence (a short trailing clause is fine); multi-sentence prose blocks are banned
