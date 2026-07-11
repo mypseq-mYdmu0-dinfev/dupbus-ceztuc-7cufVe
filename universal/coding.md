@@ -56,6 +56,11 @@
   - Never assume prior directory or shell state
   - User default clears (⌘K) terminal after ⌘A+⌘C for your checking, unless told not to
 
+## HTML & Visual Output
+- html bullets render as `•` —— a literal `-` reads as a stray hyphen; match the .md-preview look
+- html supports dark mode as standard —— follow the OS scheme AND provide a manual toggle
+- For ANY non-pure-text output (.html pages, charts, scripts w/ visual output): dispatch an SA to actually LOOK at + interact w/ the artefact (read the rendered result/screenshots, click the links) and fix findings BEFORE delivery —— maximises one-shot success
+
 ## Scripts & pcmd (protocol/context .md files; e.g. this file)
 - Avoid mentioning specific comms files (`*_[TS].md`) or hard-coding; alert if any exist or slip in
 - If apt, actively point to an existing script/pcmd instead of repeating its content (e.g. "read `[name].md` first") —— one source of truth, no drift
