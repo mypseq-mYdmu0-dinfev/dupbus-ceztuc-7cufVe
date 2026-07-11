@@ -1,6 +1,6 @@
 # Coding
 
-*Loaded on multi-script coding (root §7). Self-contained —— every rule carries its own rationale; no conversation/comms file explains or overrides anything here.*
+*Loaded when creating/editing any script/pcmd (root §7). Self-contained —— every rule carries its own rationale; no conversation/comms file explains or overrides anything here.*
 
 ## Issue Reporting Format
 - Report EVERY code problem/fix as one compact block: **what / if-unfixed / pre-fix-question / risk-if-pushed —— then outcome**
@@ -47,6 +47,15 @@
 - When a fix's scope widens beyond what was named (same rule, more targets), DISCLOSE the widening explicitly —— never silently include extra files
 - If a prior claim turns out overstated, flag it honestly and make it true in the same turn —— better you find it than the audit
 
-## Pcmd and Scripts
-- Avoid hard-coding or mentioning specific comms files (`*_[TS].md`) in pcmd/scripts; alert if any exist or slip in
-- If apt, actively point to an existing pcmd/script instead of repeating its content (e.g. "read `[name].md` first") —— one source of truth, no drift
+## Commands
+- Run commands YOURSELF
+  - Never hand the user a command you could run
+  - If it needs "Bypass permissions" & it's off (meaning either user forgot, OR CLI unexpected yet not prohibited), request w/ ⪅10w reason (e.g. what needs it, what'll break otherwise)
+- If the user genuinely must run something himself, give it in FULL for a FRESH terminal
+  - Copy-paste-ready, `cd` stated first (or once on top if several commands share it)
+  - Never assume prior directory or shell state
+  - User default clears (⌘K) terminal after ⌘A+⌘C for your checking, unless told not to
+
+## Scripts & pcmd (protocol/context .md files; e.g. this file)
+- Avoid mentioning specific comms files (`*_[TS].md`) or hard-coding; alert if any exist or slip in
+- If apt, actively point to an existing script/pcmd instead of repeating its content (e.g. "read `[name].md` first") —— one source of truth, no drift
