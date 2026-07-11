@@ -67,8 +67,8 @@
 | ↓ | ↘ | ↘ | ↘ |
 | Sleep⇅Clue | → | Netflix | Comet |
 | ↓ | ↘ | Formula 1 | Subtext |
-| [Travel] | [Finance] | [Utilities] | +Plus |
-| {Call KK} | {LPM} | {Bedtime Mode} | {Wakeup Mode} |
+| [Travel] | [Finance] | [Utilities] | {Call KK} |
+| {LPM} | {Bedtime Mode} | {Wakeup Mode} | {Timekeeper} |
 
 ---
 
