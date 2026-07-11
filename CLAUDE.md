@@ -260,7 +260,7 @@
   - 8.9.3. Reusable scripts: create in `cscpt/` then update `cscpt/README.md` (read it first)
 
 9. Miscellaneous *(`9.[nn]` 2-digit to accommodate 9⁺ pts)*
-- 9.01. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
+- 9.01. Changing file "Dates" (e.g. Date Created): read `cscpt/README.md` then `set_dates.py`
 - 9.02. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
 - 9.03. Spawning SA (Agent/Task tool):
   - 9.03.1. Always explicitly tell "You're a sub-agent" in the prompt
@@ -277,4 +277,4 @@
 - 9.06. Turn-End Push (the working repo; commit name: ≤8w summary if ≤5 files changed, else `response_[TS].md`) —— after all create/edit works done, check uncommitted changes:
   - 9.06.1. ONLY this turn's CC changes (± this turn's `query_`) → commit + push
   - 9.06.2. Ditto + user changes on OTHER files → commit + push CC-touched files only
-  - 9.06.3. User changes ON CC-touched files (extremely rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his in-progress manual works (risks clashing w/ CC's edits or corrupting the file)
+  - 9.06.3. User changes ON CC-touched files (extremely rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)

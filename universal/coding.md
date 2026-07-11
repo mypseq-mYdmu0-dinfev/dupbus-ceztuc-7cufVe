@@ -58,8 +58,8 @@
 
 ## HTML & Visual Output
 - html bullets render as `•` —— a literal `-` reads as a stray hyphen; match the .md-preview look
-- html supports dark mode as standard —— follow the OS scheme AND provide a manual toggle
-- For ANY non-pure-text output (.html pages, charts, scripts w/ visual output): dispatch an SA to actually LOOK at + interact w/ the artefact (read the rendered result/screenshots, click the links) and fix findings BEFORE delivery —— maximises one-shot success
+- html supports dark mode as standard —— follow OS scheme AND provide a manual toggle
+- For ANY non-pure-text output (.html pages, .py charts, scripts w/ visual output, etc.): dispatch SA to actually LOOK at + interact w/ the artefact (read the rendered result/screenshots, click the links) and fix findings BEFORE delivery —— maximises one-shot success
 
 ## Scripts & pcmd (protocol/context .md files; e.g. this file)
 - Avoid mentioning specific comms files (`*_[TS].md`) or hard-coding; alert if any exist or slip in
