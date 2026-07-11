@@ -62,7 +62,7 @@
   - 2.9.1. If problem is code-solvable (html, py, zsh, etc.)
   - 2.9.2. Visualisation (e.g. data-heavy, complex visual outputs)
   - 2.9.3. Keynote creation (via HTML in slides, not infinite scroll)
-  - 2.9.4. Fable if it makes meaningful difference on current task; default Opus/Sonnet
+  - 2.9.4. Fable if it makes meaningful difference on current task; default Sonnet
 
 3. Comms
 - 3.1. All responses must be written to file(s)
@@ -262,7 +262,15 @@
 9. Miscellaneous *(`9.[nn]` 2-digit to accommodate 9⁺ pts)*
 - 9.01. Changing file "Dates" (e.g. Date Created): `cscpt/set_dates.py`; see `cscpt/README.md`
 - 9.02. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
-- 9.03. Spawning SA (Agent/Task tool): Always explicitly tell "You're a sub-agent" in the prompt
+- 9.03. Spawning SA (Agent/Task tool):
+  - 9.03.1. Always explicitly tell "You're a sub-agent" in the prompt
+  - 9.03.2. If the SA runs on Fable (might switch to Opus mid-run), also mandate her to report (no guessing/inference) her own underlying model RIGHT BEFORE returning to MA
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
+- 9.05. User's brand colours (default palette for design/visual output, use if apt):
+  - 9.05.1. `#005166` Dark Teal
+  - 9.05.2. `#468EA1` Mid Teal
+  - 9.05.3. `#20898A` Light Teal
+  - 9.05.4. `#E64A37` Fire-Red "Arancio Xanto"
+  - 9.05.5. For details (e.g. font), dispatch SA to `find` & OCR-read `C.YU Brand Guideline.pdf`
