@@ -1,4 +1,4 @@
-# Coding
+# Coding Rules
 
 *Loaded when creating/editing any script/pcmd (root §7). Self-contained —— every rule carries its own rationale; no conversation/comms file explains or overrides anything here.*
 
@@ -31,7 +31,7 @@
 - "Exists + unit-tested" ≠ done —— a component is done only when WIRED and exercised end-to-end; a tested loader nothing calls proves nothing
 - Prefer deterministic checks (linters, schema/format validators) over hoping instructions are obeyed —— if an invariant matters, a small regex/lint check beats instruction text
 
-## Concurrency and Resources
+## Concurrency & Resources
 - Adversarially self-review concurrency code in MULTIPLE independent passes —— each pass red-teams the previous fix; expect a second pass to find real bugs in the first pass's own redesign
 - Re-check stop/abort conditions immediately BEFORE each spawn/act (TOCTOU) —— a check at the top of a loop is stale by the time you act on it
 - Claim/mark shared state only AFTER every gate that could still abort the action —— claiming first leaks the item (or skips it forever) when a gate fires
