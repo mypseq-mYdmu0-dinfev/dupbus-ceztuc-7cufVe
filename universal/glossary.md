@@ -79,7 +79,7 @@
 - CIIW = Correct (me) if I'm wrong; validate my msg rather than treating it as a direct command; correct errors before acting
 - ses = session
 - wk = week(ly)
-- sesL = Anthropic's 5hr-session limit; resets in 297min once started
+- sesL = Anthropic's 5hr-session limit; resets in 290min once started
 - wkL = Anthropic's weekly limit; always resets on Mondays 9pm (SYD time)
 - override = exception to "no chat text" or other restrictions for that SINGLE turn only
 - yn (only usable by user) = override: respond w/ 1w only in chat, either `Yes` or `No`
