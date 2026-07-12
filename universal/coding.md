@@ -64,3 +64,4 @@
 ## Scripts & pcmd (protocol/context .md files; e.g. this file)
 - Avoid mentioning specific comms files (`*_[TS].md`) or hard-coding; alert if any exist or slip in
 - If apt, actively point to an existing script/pcmd instead of repeating its content (e.g. "read `[name].md` first") —— one source of truth, no drift
+- When measuring/reporting a pcmd's size or a trim's savings, count TOKENS (`token-count --text`), never words —— word count doesn't gate context budget, tokens do
