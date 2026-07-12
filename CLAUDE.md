@@ -265,6 +265,7 @@
 - 9.03. Spawning SA (Agent/Task tool):
   - 9.03.1. Always explicitly tell "You're a sub-agent" in the prompt
   - 9.03.2. If the SA runs on Fable (might switch to Opus mid-run), also mandate her to report (no guessing/inference) her own underlying model RIGHT BEFORE returning to MA
+  - 9.03.3. N SAs sharing a common mandatory-context prefix (e.g. project basics, a shared spec, a file everyone must read first) get ZERO prompt-caching benefit via plain Agent-tool dispatch (hardcoded off —— anthropics/claude-code#29966) —— case-by-case, consider whether CC's native session-FORK feature (inherits/reuses the parent's cached prefix) fits better; forking trades a clean-slate agent for shared conversation state/tools, so weigh it, don't default to it
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
