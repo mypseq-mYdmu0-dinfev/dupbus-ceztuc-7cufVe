@@ -2,6 +2,8 @@
 
 Every script in this folder is CC-only and **designed to be RUN via the shell, NEVER read into context**. Read a script ONLY when explicitly asked to POLISH that script itself. Reading one wastes context (each is thousands of tokens); its behaviour is documented where it is actually needed, so a caller never has to open the `.py`.
 
+Exception: `dark_mode.html` is a READ template (not a run script) —— see its own entry below.
+
 (`gscpt/` is the user's own scripts —— different folder, different owner.)
 
 ## Scripts
@@ -11,3 +13,4 @@ Every script in this folder is CC-only and **designed to be RUN via the shell, N
 - `dlint_hook.sh` —— PostToolUse fast-path shim wired in root `.claude/settings.json`. Exits 0 instantly unless the payload mentions `response_`/`close_`/`wrap_` (so Python is spawned only when relevant), then delegates to `dlint_hook.py`. **Run by the harness, not read.**
 - `dlint_hook.py` —— the hook body. On a CC-authored comms write/edit (`response_`/`close_`/`wrap_` `.md`, incl. CP prefixes) it runs `dlint.py --quick` and blocks (exit 2) until 🔴 RED = 0. Ignores `query_`/`artefact_`, code, automations, `/seek/`; fail-safe (exits 0 on any error). **Run by the harness, not read.**
 - `padv.py` —— `#replace #adv` helper (see `universal/replace_adv.md`). A layout app's ⌘F cannot match across a `U+2028` soft-return, so a `Replace:` target must be quoted as break-free blocks (max 3). Extracts a verbatim span from a `<name>.pages.md` mirror and splits it: 0 breaks → 1 block, 1 → 2, ≥2 → 3. Usage: `python3 cscpt/padv.py <mirror.pages.md> "<start_anchor>" ["<end_anchor>"]` (prints ready-to-paste fenced blocks); also importable (`grab`, `split_for_pages`). **Run, never read.**
+- `dark_mode.html` —— light/dark toggle button template, pointed to from `universal/coding.md` § HTML & Visual Output. **READ (not run)** whenever building a light/dark toggle into a new .html —— the working circular-button reference build (CSS+JS, copy-paste-ready) plus the full design rationale live here as an HTML comment, kept out of `coding.md` so non-html sessions don't pay the token cost. Default template only —— adapt position/label/shape to the target page's layout (e.g. `gscpt/git_history.sh`'s output uses a text-labelled header button instead, which suits its dense toolbar layout better).

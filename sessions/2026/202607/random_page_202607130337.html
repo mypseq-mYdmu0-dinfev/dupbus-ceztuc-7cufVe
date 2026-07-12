@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Page</title>
+<style>
+  :root[data-theme="light"] {
+    --bg: #fff; --fg: #1a1a1a; --panel: #f4f4f5; --accent: #005166; --accent-2: #468EA1;
+  }
+  :root[data-theme="dark"] {
+    --bg: #111; --fg: #e8e8e8; --panel: #1c1c1e; --accent: #20898A; --accent-2: #468EA1;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: var(--bg); color: var(--fg);
+    font-family: -apple-system, system-ui, "SF Pro Text", "Segoe UI", sans-serif;
+    display: flex; align-items: center; justify-content: center; padding: 2rem;
+  }
+  .card {
+    max-width: 32rem; padding: 2.5rem; border-radius: 1rem;
+    background: var(--panel); border: 1px solid var(--accent-2);
+  }
+  h1 { color: var(--accent); margin-top: 0; }
+  ul { padding-left: 1.2rem; }
+  ul li { list-style: none; padding-left: 0; }
+  ul li::before { content: "• "; color: var(--accent); }
+  #themeBtn {
+    position: fixed; right: 1.1rem; bottom: 1.1rem; width: 2.9rem; height: 2.9rem;
+    border-radius: 50%; border: 1px solid var(--accent-2); background: var(--panel);
+    color: var(--accent); font-size: 1.2rem; cursor: pointer;
+    font-family: -apple-system, system-ui, "SF Pro", "SF Pro Text", "Segoe UI Symbol", "Noto Sans Symbols2", sans-serif;
+  }
+</style>
+</head>
+<body>
+<div class="card">
+  <h1>Fact of the Moment</h1>
+  <p>A random fact, freshly generated for this page:</p>
+  <ul>
+    <li>Octopuses have 3 hearts and blue blood.</li>
+    <li>Honey never spoils —— archaeologists found 3000-year-old honey still edible.</li>
+    <li>A day on Venus is longer than its year.</li>
+  </ul>
+  <p>Click the circular button (bottom-right) to switch themes.</p>
+</div>
+<button id="themeBtn" aria-label="Toggle theme"></button>
+<script>
+  var THEME_KEY = "pageTheme", root = document.documentElement, btn = document.getElementById("themeBtn");
+  function systemPrefersDark() { return !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches); }
+  function currentTheme() { var t = root.getAttribute("data-theme"); return (t==="dark"||t==="light") ? t : (systemPrefersDark()?"dark":"light"); }
+  function paintButton(t) { btn.textContent = t === "dark" ? "☀" : "☾"; }
+  function setTheme(t) { root.setAttribute("data-theme", t); paintButton(t); }
+  var saved = null;
+  try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+  if (saved === "dark" || saved === "light") setTheme(saved); else paintButton(currentTheme());
+  btn.addEventListener("click", function () {
+    var next = currentTheme() === "dark" ? "light" : "dark";
+    setTheme(next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  });
+</script>
+</body>
+</html>
