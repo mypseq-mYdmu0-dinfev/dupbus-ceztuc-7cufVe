@@ -60,6 +60,36 @@
 - html bullets render as `•` —— a literal `-` reads as a stray hyphen; match the .md-preview look
 - html supports dark mode as standard —— follow OS scheme AND provide a manual toggle
 - a toggle button's label names its DESTINATION, not the current state (e.g. a light page's toggle reads "Dark Mode", not "Light Mode") —— the current state is already visible on the page, so the label should tell the user what clicking WILL DO; recompute every such label from one shared function after any state change, so they never drift out of sync with each other
+- a circular ☀/☾ theme-toggle button (destination-labelled glyph set as text, not an image) needs its own symbol-font pin, `font-family: -apple-system, system-ui, "SF Pro", "SF Pro Text", "Segoe UI Symbol", "Noto Sans Symbols2", sans-serif` —— the glyphs live outside normal text/body fonts so engine fallbacks diverge, and the filled (not thin-outline) shapes live in the SF family; SF must be reached via `-apple-system`/`system-ui` because WebKit/Safari does NOT resolve the css name "SF Pro" (macOS hides the system family from font-family name lookup; only fontconfig engines like chromium honour it, so keep those names as a chromium backstop); NEVER list "Apple Symbols" —— its ☀/☾ are the thin-outline wrong shapes, and any stack that can fall through to it will; and keep the glyphs PLAIN (bare U+2600/U+263E) —— NEVER append U+FE0E to ☀, since despite Unicode's variation-selector fallback rules it empirically flips Safari/CoreText to a thin-outline sun (measured, theory lost), and w/ the stack above chromium renders the plain sun filled anyway, so the selector buys nothing and breaks Safari
+- reference build for that toggle (fixed circular button + OS-scheme-overriding persistence), confirmed working Safari + Claude-app webview —— reuse verbatim, only the two traps above are non-obvious:
+  ```css
+  /* circular fixed button; --accent/--panel etc already theme-aware CSS vars */
+  #themeBtn { position: fixed; right: 1.1rem; bottom: 1.1rem; width: 2.9rem; height: 2.9rem;
+    border-radius: 50%; border: 1px solid var(--accent-2); background: var(--panel);
+    color: var(--accent); font-size: 1.2rem; cursor: pointer;
+    font-family: -apple-system, system-ui, "SF Pro", "SF Pro Text", "Segoe UI Symbol", "Noto Sans Symbols2", sans-serif; }
+  /* :root[data-theme] beats the bare :root inside @media (prefers-color-scheme) on
+     specificity alone —— an attribute selector always outweighs a mediaquery-wrapped
+     bare selector, so this is how a manual override wins over the OS signal in EITHER
+     direction w/o !important. Duplicate the full var block under each attribute value. */
+  :root[data-theme="light"] { --bg: #fff; /* …full light var set… */ }
+  :root[data-theme="dark"]  { --bg: #111; /* …full dark var set…  */ }
+  ```
+  ```js
+  var THEME_KEY = "pageTheme", root = document.documentElement, btn = document.getElementById("themeBtn");
+  function systemPrefersDark() { return !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches); }
+  function currentTheme() { var t = root.getAttribute("data-theme"); return (t==="dark"||t==="light") ? t : (systemPrefersDark()?"dark":"light"); }
+  function paintButton(t) { btn.textContent = t === "dark" ? "☀" : "☾"; }   // shows the DESTINATION, not current state
+  function setTheme(t) { root.setAttribute("data-theme", t); paintButton(t); }   // ONE shared call —— every state change routes through here so button+CSS never drift apart
+  var saved = null;
+  try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}              // sandboxed viewers throw on localStorage access —— swallow, just skip persistence
+  if (saved === "dark" || saved === "light") setTheme(saved); else paintButton(currentTheme());
+  btn.addEventListener("click", function () {
+    var next = currentTheme() === "dark" ? "light" : "dark";
+    setTheme(next);
+    try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+  });
+  ```
 - For ANY non-pure-text output (.html pages, .py charts, scripts w/ visual output, etc.): dispatch SA to actually LOOK at + interact w/ the artefact (read the rendered result/screenshots, click the links) and fix findings BEFORE delivery —— maximises one-shot success
 
 ## Scripts & pcmd (protocol/context .md files; e.g. this file)
