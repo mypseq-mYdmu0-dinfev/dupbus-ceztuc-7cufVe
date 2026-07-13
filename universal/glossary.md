@@ -84,7 +84,7 @@
 - override = exception to "no chat text" or other restrictions for that SINGLE turn only
 - yn (only usable by user) = override: respond w/ 1w only in chat, either `Yes` or `No`
 - deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
-- summon me = push an app notification by using interactive-question tool (random Q if no QB)
+- summon me = push an app notification by using `AskUserQuestion` tool (random Q if no QB)
 - pcmd = prompt/protocol & context .md files; e.g. `ww.md` = prompt; `profile.md` = context
 - "professional" (w/ quotes) = user's own definition: **a bar, not a degree**; a role/standard one either meets or does not, akin to a "professional camera", defined by whether the paid work it enables clears the bar, not by attitude or output quality
   - e.g. Canon 1DX Mark I is an old but professional camera, despite likely lower quality than modern iPhone, vice versa
