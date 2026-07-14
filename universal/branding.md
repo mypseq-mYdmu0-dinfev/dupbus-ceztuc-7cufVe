@@ -6,15 +6,15 @@ A distilled, CC-facing guideline to Culous Yu / C.YU MGT's personal visual ident
 
 Use this file directly for any design/visual-output task. The hard rules below (hex values, font names, wordmark shape) are fixed, but their application is judged case-by-case against the actual output being built, not stamped on as a rigid template —— the source guideline is the most authoritative arbiter of that judgement, ranked below.
 
-Escalate to the primary sources only when this file doesn't suffice, or the stakes are very high (e.g. a permanent/formal document) —— and even then, dispatch a sub-agent to read them rather than reading directly: each is heavy (a large PNG-converted 1-page guideline, a 22-page portfolio PDF, a 5-subdomain website), and reading all three directly filled a very large share of this session's own context —— treat direct MA reads of them as costly by default.
+Escalate to the primary sources only when this file doesn't suffice, or the stakes are very high (e.g. a permanent/formal document) —— and even then, you MUST dispatch SA(s) to read them rather than reading directly: each is heavy, and reading all three directly filled a very large share of this session's own context —— treat direct MA reads of them as costly by default.
 
-- `C.YU Brand Guideline.pdf` —— `/Volumes/FURY 2TB/IYM/Design/C.YU Branding/` —— most authoritative.
-- `Portfolio of Culous Yu.pdf` —— `/Volumes/FURY 2TB/IYM/Private/Profession/Portfolio/` —— dated, predates this guideline.
-- `culousyu.com` (+ its 4 category subdomains: consulting/technical/eventmgt/visuals) —— most current lived execution, but its specific choices are exact-usage-driven, not a blanket template.
+- `C.YU Brand Guideline.pdf` —— `/Volumes/FURY 2TB/IYM/Design/C.YU Branding/` —— most authoritative; 162.7MB; .ai-converted 1-page guideline
+- `Portfolio of Culous Yu.pdf` —— `/Volumes/FURY 2TB/IYM/Private/Profession/Portfolio/` —— dated, predates this guideline; 28.9MB (compressed from 171.5MB); 22-page portfolio
+- `culousyu.com` (+ its 4 category subdomains: consulting/technical/eventmgt/visuals) —— most current lived execution, but its specific choices are exact-usage-driven, not a blanket template; 5-subdomain website
 
 ## Colour Palette — Hard Rule (fixed hex; judge usage case-by-case)
 
-Source: `C.YU Brand Guideline.pdf` (1p, authoritative).
+*Source: `C.YU Brand Guideline.pdf` (1p, authoritative).*
 
 | Name | Hex | RGB | Role | Worked Example(s) |
 |---|---|---|---|---|
@@ -25,22 +25,23 @@ Source: `C.YU Brand Guideline.pdf` (1p, authoritative).
 
 - "Worked Example(s)" shows how Culous HAS used each colour, illustratively —— not an exhaustive list of the only permitted uses. E.g. Light Teal is for whenever a situation calls for more "character" (more stylised, generally less formal, but don't hard-code that pairing) —— the logo dot is one instance of that, not its sole licence.
 - The 60/70/80/90% rings shown around each swatch in the source guideline are a human-preview gradient only (the swatch's own centre = 100%) —— meaningless as a rule for CC and safely disregarded. Colours may be used at any opacity, no mandated steps, judged case-by-case against the actual output.
-- Mid Teal vs Dark Teal are close in hue, almost a brightness/intensity pair rather than genuinely different colours; usual (not strict) practice: Mid Teal on a dark background or where more stand-out is wanted (e.g. a table of contents), Dark Teal on a light background or for a more subtle/formal feel. Light Teal, by contrast, IS a genuinely different colour, tuned specifically to manifest Culous's character.
+- Mid Teal vs Dark Teal are close in hue, almost a brightness/intensity pair rather than genuinely different colours; usual (not strict) practice: Mid Teal where more stand-out is wanted (e.g. a table of contents), Dark Teal for a more subtle/formal feel. Light Teal, by contrast, IS a genuinely different colour, tuned specifically to manifest Culous's character.
 - Chrome/shell (cards, borders, section labels, backgrounds, highlighted text) stays within this 4-colour system; content imagery (case-study stills, video frames, category thumbnails) is NOT colour-restricted —— the restraint applies to the frame, not what it holds.
-- Arancio Xanto IS the CTA colour per the guideline, but culousyu.com's homepage is saturated with CTAs, so Culous deliberately falls back to Dark Teal there for the lower-stakes/rarely-actioned ones (e.g. the "Send" button, by his own account rarely used) to avoid a visually "busy" page; the 4 category subdomains, having fewer competing CTAs, correctly show their one key CTA (the PDF-takeaway link) in Arancio Xanto. This is the clearest illustration that culousyu.com's exact choices are usage-driven, not a template to copy blind —— hence the guideline PDF outranks it on conflict; judge colour choice by case, using the guideline's roles as the default.
-- Arancio Xanto is a personal colour, not just a brand one: it echoes the signature fire-red/orange finish of Lamborghini (Culous's favourite car marque, alongside their iconic lime green, which he doesn't favour) —— grabbed at its exact hex for digital-view accuracy; never produced physically (too hard to tune, and moot since nothing C.YU MGT has been physically manufactured in it).
+- Arancio Xanto IS the CTA colour per the guideline, but culousyu.com's homepage is saturated with CTAs, so Culous deliberately falls back to Teal there for the lower-stakes/rarely-actioned ones (e.g. the "Send" button, by his own account rarely used) to avoid a visually "busy" page; the 4 category subdomains, having fewer competing CTAs, correctly show their one key CTA (the PDF-takeaway link) in Arancio Xanto. This is the clearest illustration that culousyu.com's exact choices are usage-driven, not a template to copy blind —— hence the guideline PDF outranks it on conflict; judge colour choice by case, using the guideline's roles as the default.
+- Arancio Xanto is a personal colour, not just a brand one: it echoes the signature fire-red/orange finish of Lamborghini (Culous's favourite car marque) —— grabbed at its exact hex for digital-view accuracy; never produced physically (too hard to tune, and moot since nothing C.YU MGT has been physically manufactured in it).
 
 ## Typography — Hard Rule (fixed fonts; judge sizing/weight/colour case-by-case)
 
-Source: same guideline page, § Typography.
+*Source: same guideline page, § Typography.*
 
 | Role | Font | Typical Size | Notes |
 |---|---|---|---|
 | Body / Default | Avenir Book | ~12pt | versatile, universally accepted —— zero backlash across a decade of use, even under a strict Arial-only mandate |
 | Heading — personal-use context | Mplus 1p Thin | ~20–30pt | e.g. culousyu.com's section headings; NEVER in a formal deliverable (unprofessional/playful/hard to read) unless for a creative-industry client he no longer serves |
-| Heading — professional/work-use context | Garamond Pro Display | matches heading scale | serif; NEVER for body text (hard to read at length); tightly kerned —— ALWAYS double-space between words when set (e.g. `This  is  a  Title`) |
-| CTA / special highlight | MF XingHei | 100–150% of body | rarest element in the whole identity, rarer even than Arancio Xanto —— unprofessional/hard to read by design, but unmissable; ALL CAPS or Title Case |
+| Heading — professional/work-use context | Garamond Pro Display | ~20pt | serif; NEVER for body text (hard to read at length); tightly kerned —— ALWAYS double-space between words when set (e.g. `This  is  a  Title`) |
+| CTA / special highlight | MF XingHei | 150–250% of body | rarest element in the whole identity, rarer even than Arancio Xanto —— unprofessional/hard to read by design, but unmissable; ALL CAPS or Title Case |
 
+- "Typical Size" scales according to output; e.g. HTML might require globally larger size for readability.
 - The personal-vs-work split is about the OUTPUT'S context/use-case, NOT its subject matter: culousyu.com (a personal-use platform) uses Mplus 1p Thin even for headings about his work; a formal/professional document (a work-use context) uses Garamond Pro Display even when discussing his private life.
 - Both Mplus 1p Thin and Garamond Pro Display MUST be 100% Title Case.
 - "(Non-commercial)" is literally part of "MF XingHei"'s font name —— it carries no licensing meaning and is NOT a usage restriction.
@@ -63,8 +64,8 @@ Source: same guideline page, § Typography.
 ## Signature Motif — Soft Pattern
 
 - The full-bleed grey-blue ocean/wave photograph is named "Miller" (after the ocean planet in Nolan's *Interstellar*, which it evokes for Culous) —— shot by Culous himself on a cruise in the Aegean Sea, his personal all-time favourite of his own photography, awarded/published multiple times over a decade ago. It is itself a piece of his fine-art photography practice (see Professional Facets), not stock imagery.
-- Available at `/Volumes/FURY 2TB/IYM/IYM/Images/Miller` (multiple variations, e.g. `Miller_compressed.jpg`); reuse it, or a close equivalent, as the default backdrop for anything representing Culous personally (website bg, résumé bg, video-call bg, etc.), rather than a plain colour field.
-- To keep the photo from stealing focus, a tuned-opacity white overlay sits between it and the content —— content itself lives in white/off-white translucent rounded "squircle" cards (very rounded corners, thin teal-toned border) floating above —— text never sits directly on the photography.
+- Available at `/Volumes/FURY 2TB/IYM/IYM/Images/Miller` (multiple variations, e.g. `Miller_compressed.jpg`); only if apt, reuse it as the default backdrop for anything representing Culous personally (website bg, résumé bg, video-call bg, etc.), rather than a plain colour field.
+- To keep the photo from stealing focus, a tuned-opacity white overlay sits between it and the content. If apt, consider to have content in white/off-white translucent rounded "squircle" cards (very rounded corners, thin teal-toned border) floating above, for better readability.
 
 ## Layout Conventions — Soft Pattern
 
@@ -74,7 +75,7 @@ Observed consistently across the 22p case-study portfolio and culousyu.com; not 
 - Stat callouts favour a big number with a `+` or `×` suffix inside a circular or triangular badge (e.g. "55,000+", "12×") —— visually distinct from prose, where root `CLAUDE.md` §2.3's superscript `⁺` rule governs instead.
 - Category/section labels run as vertical rotated-text tabs in Dark Teal along a card's edge; on culousyu.com the equivalent is a full-width stadium/pill button per category, large light-weight caps text over a fading project-thumbnail collage.
 - Interactive elements are pill/stadium-shaped throughout: outline pills (Dark Teal border & text) for links/social/nav, solid Dark Teal fill for primary/low-stakes actions —— see Colour Palette above for when Arancio Xanto takes the CTA role instead.
-- Video is Vimeo-first, presented via a circular play-button badge or embedded player; show-reel-style videos carry a legacy "IFYU" title card (his pre-Australia-migration professional alias, e.g. `vimeo.com/IFYU`, `instagram.com/IFYU_official`) —— NOT current; new outputs use "C.YU" or "Culous Yu" only, IFYU persists only because older assets haven't been fully migrated.
+- Video is Vimeo-first (uncompressed, download-friendly, ad-free), presented via a circular play-button badge or embedded player; show-reel-style videos carry a legacy "IFYU" title card (his pre-Australia-migration professional alias, e.g. `vimeo.com/IFYU`, `instagram.com/IFYU_official`) —— NOT current; new outputs use "C.YU" or "Culous Yu" only, IFYU persists only because older assets haven't been fully migrated.
 - Sections/elements fade in on scroll (opacity transition, no hard cuts) and generous whitespace separates them —— pacing is unhurried and spacious, not dense.
 - The 4 category subdomains (consulting/technical/eventmgt/visuals.culousyu.com) are thin re-filters of the same portfolio content behind the shared header, each closing with a link back to the master PDF ("📥 PDF Takeaway: `Portfolio.CulousYu.com`", styled in Arancio Xanto as that page's one key CTA); some case-study cards there add Mid-Teal-bold hashtag tags (e.g. `#TechFest #MachineLearning #GenAI`) not present in the static PDF —— a minor web-only enhancement, not a separate design language.
 
