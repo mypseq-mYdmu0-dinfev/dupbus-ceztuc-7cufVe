@@ -6,7 +6,8 @@
 
 ---
 
-1. Initiation
+## 1. Initiation
+
 - 1.1. Session Environment —— BEFORE anything else, run `uname -s`. `Linux` → CLOUD session: still read everything as usual (so the comms system is understood), but OVERRIDE the no-chat-text mandate (§3.1–§3.2) —— put the substantive reply directly in chat, ultra-concise, and generate NO **comms** files (§3.3); `#sync` edits to index/prefs files and any explicitly-requested code/deliverables stay allowed. Still emit the `✅`/`➡️` declarations. Assume a single turn (usually just `#sync [scope]`); prefix the reply with `☁️ **Cloud Mode**`. Any OTHER result (e.g. `Darwin`, the local Mac) → local session: follow all sections below normally. (Default-safe: only an explicit `Linux` triggers chat-mode, so a local session can never misidentify as cloud.)
 - 1.2. At session start OR when root folder is added, before generating anything (regardless of msg content; if working directory is `/seek/`, STOP NOW), read (in order) **Unconditionals**:
   - 1.2.1. `dupbus-ceztuc-7cufVe/CLAUDE.md` —— this file
@@ -19,7 +20,10 @@
   - 1.4.3. ONLY if §1.4.2 = no → Remind user in 1st `response_`
 - 1.5. If user's 1st msg contains `ready`, read Unconditionals but no chat text or `response_`
 
-2. Conventions
+---
+
+## 2. Conventions
+
 - 2.1. ALWAYS use:
   - 2.1.1. British English (e.g. `amidst`, `towards`, `amongst`, `whilst`), but DON'T convert to GBP
   - 2.1.2. Metric units (°C, metre, gram, litre, etc.)
@@ -63,7 +67,10 @@
   - 2.9.3. Keynote creation (via HTML in slides, not infinite scroll)
   - 2.9.4. Fable if it makes meaningful difference on current task; default Sonnet
 
-3. Comms
+---
+
+## 3. Comms
+
 - 3.1. All responses must be written to file(s)
   - 3.1.1. IMPORTANT: Chat text is strictly restricted (§3.2), unless override (§9.1)
   - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, EXCEPT in `.claude/`
@@ -136,7 +143,10 @@
   - 3.7.2. Otherwise: create a separate file (§3.3.7)
   - 3.7.3. ANY deliverable: MUST follow `writing.md` & run `dlint.py` before output to user
 
-4. Retrospection
+---
+
+## 4. Retrospection
+
 - 4.1. DON'T auto-read past comms files; follow §4.2
 - 4.2. Funnel approach for context retrieval (reverse-chronologically):
   - 4.2.1. Current Month:
@@ -157,7 +167,10 @@
   - 4.4.2. Sufficient context from initial `query_`, DevPlan, CP files, etc.
   - 4.4.3. If insufficient, alert user
 
-5. Post-Compaction (🚨)
+---
+
+## 5. Post-Compaction (`🚨`)
+
 - 5.1. When the PostCompact hook fires, immediately output exact wording as §3.2.5
 - 5.2. Halt all fore/background tasks w/o exception
 - 5.3. In chat, non-#numbered list out previously-read/fetched files/content (incl. tool results like web_search) still deemed useful for the current task (e.g. `- `enclosing_folder/file.md``)
@@ -170,7 +183,10 @@
   - 5.8.2. If multiple, use the (compacted) context window + a selective content read to identify the right one to continue; follow §5.8.3
   - 5.8.3. Fully read the identified slog + sprint.md → carefully analyse to restore context → resume directly from its latest block, instead of §5.6's "await user's instr"
 
-6. Claude Project (CP)
+---
+
+## 6. Claude Project (CP)
+
 - 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/seek/`, `/backup/`, `/temp/`, `/automator/` —— that contains a `CP_index_cc.md`
 - 6.2. Identify as a CP session when any of the following applies:
   - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
@@ -185,7 +201,10 @@
   - 6.4.1. Read the root CLAUDE.md (this file)
   - 6.4.2. Read the CP's `CP_index_cc.md` via local path (never via GH)
 
-7. Conditionals
+---
+
+## 7. Conditionals
+
 - 7.1. MUST read (in `/universal/` unless specified) when conditions are met; declare (per §3.2.1)
 - 7.2. Actively scan input both explicitly & **implicitly** for conditions below:
 
@@ -208,7 +227,10 @@
     - 7.3.2.2. e.g. `#debate` → MUST follow `universal/debate.md` & create required files
   - 7.3.3. Alert w/ `⚠️` if trigger unrecognised or file not found (some are elsewhere; e.g. in CP)
 
-8. File Rules
+---
+
+## 8. File Rules
+
 - 8.1. Move Rule:
   - 8.1.1. Enforced whenever moving files, even not mentioned "Move Rule"
   - 8.1.2. Ops: copy to target folder → void original (per §8.2) → add suffix `_moved_[directory]` to original filename
@@ -259,7 +281,10 @@
   - 8.9.2. Temp/throwaway (to be voided): create beside the `response_` so user sees & deletes
   - 8.9.3. Reusable scripts: create in `cscpt/` then update `cscpt/README.md` (read it first)
 
-9. Miscellaneous *(`9.[nn]` 2-digit to accommodate 9⁺ pts)*
+---
+
+## 9. Miscellaneous *(`9.[nn]` 2-digit to accommodate 9⁺ pts)*
+
 - 9.01. Changing file "Dates" (e.g. Date Created): read `cscpt/README.md` then `set_dates.py`
 - 9.02. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
 - 9.03. Spawning SA (Agent/Task tool):
