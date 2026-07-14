@@ -7,9 +7,9 @@ Ever worked with a standout colleague? Or maybe you're that exceptional performe
 I'm currently on my MBA dissertation, researching how standout performers shape team dynamics, collaboration, and knowledge sharing within knowledge-based firms (e.g. legal, accounting, consulting, engineering, IT, R&D).
 
 **What?**
-⏳ A single, relaxed video chat (45-55min).
+⏳ A single, relaxed video chat (45-60min).
 🔒 Everything strictly confidential and anonymous.
-✅ No right or wrong answers. Only your true feelings.
+✅ No right or wrong answers. Just your honest observations.
 
 **Who?**
 Anyone with professional experience working within a knowledge-based firm, who may have observed how a team responds when a colleague stands out. Participation is entirely voluntary.
