@@ -1,7 +1,6 @@
 # Absolute Protocols
 
 **If you're a sub-agent (SA), disregard this file.**
-**If working directory is `/seek/`, disregard this file; `/seek/CLAUDE.md` governs entirely.**
 
 *Root: `/dupbus-ceztuc-7cufVe/`; governs all CC (Claude Code) sessions started from OR added this root (strictly comply), unless another added folder's CLAUDE.md overrides specific lines.*
 
@@ -195,12 +194,12 @@
 | `google.md` | On personal email/calendar; OR `#job` mentioned |
 | `profile.md` | User's personal background needed |
 | `seek/context/pro_profile.md` | User's professional background needed |
-| `cic.md` | ANY CIC ops |
+| `cic.md` | ANY CIC ops; OR research requires accuracy/recency |
 | `writing.md` | ANY deliverables; OR "casual"/"whatsapp" mentioned |
 | `coding.md` | Creating/editing ANY script/pcmd (e.g. in `universal/`) |
+| `branding.md` | Creating/editing ANY design/visual output, unless official template enforced |
 | `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
 | `shrink.md` | `shrink`/`summarise`/`synthesise`/`distil`/`condense` mentioned or involved |
-| `branding.md` | Creating ANY design/visual output (HTML, slides, decks) representing Culous personally |
 
 - 7.3. General Trigger:
   - 7.3.1. `#[trigger]` → `universal/[trigger].md` → if found: MUST read first, unless told otherwise
@@ -266,11 +265,15 @@
 - 9.03. Spawning SA (Agent/Task tool):
   - 9.03.1. Always explicitly tell "You're a sub-agent" in the prompt
   - 9.03.2. If the SA runs on Fable (might switch to Opus mid-run), also mandate her to report (no guessing/inference) her own underlying model RIGHT BEFORE returning to MA
-  - 9.03.3. USE PROMPT CACHING to save tokens when N SAs share a common mandatory-context prefix (e.g. project basics, a shared spec, a file everyone must read first) —— don't give it to each SA separately if it can be given once. Plain Agent-tool dispatch currently gets ZERO caching benefit (hardcoded off —— anthropics/claude-code#29966), so the win comes from CC's native session-FORK feature instead (a fork inherits/reuses the parent's already-cached prefix —— read that shared context ONCE in the parent, then fork per SA). Trade-off to weigh, not a reason to skip it: a fork also carries the parent's conversation state/tools forward, unlike a clean-slate SA — case-by-case, but default TOWARDS using this when the token saving is meaningful
+  - 9.03.3. Actively use PROMPT CACHING to save tokens when multi-SAs share a common mandatory-context prefix (e.g. project basics, a shared spec, a file everyone must read first)
+    - 9.03.3.1. Don't give it to each SA separately if it can be given only once
+    - 9.03.3.2. Plain Agent-tool dispatch currently gets ZERO caching benefit (hardcoded off —— anthropics/claude-code#29966)
+    - 9.03.3.3. The win comes from CC's native session-FORK feature instead (a fork inherits/reuses the parent's already-cached prefix —— read that shared context ONCE in the parent, then fork per SA)
+    - 9.03.3.4. Trade-off to weigh, not a reason to skip it: a fork also carries the parent's conversation state/tools forward, unlike a clean-slate SA — case-by-case, but default TOWARDS using this when the token saving is meaningful
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
 - 9.05. Turn-End Push (the working repo; commit name: ≤8w summary if ≤5 files changed, else `response_[TS].md`) —— after all create/edit works done, check uncommitted changes:
   - 9.05.1. ONLY this turn's CC changes (± this turn's `query_`) → commit + push
   - 9.05.2. Ditto + user changes on OTHER files → commit + push CC-touched files only
-  - 9.05.3. User changes ON CC-touched files (extremely rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
+  - 9.05.3. User changes on CC-touched files (extremely rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
