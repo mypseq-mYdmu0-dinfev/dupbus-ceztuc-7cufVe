@@ -38,6 +38,7 @@ Source: same guideline page, § Typography.
 - Wordmark is an interlocking "CYU" monogram in thin outline stroke —— a "C" wrapping into a "Y" whose downstroke continues into a "U", with "ulous" in small script wrapping under/around the C, so the full mark reads "Culous" + "YU" together.
 - The Light Teal dot is the mark's one explicit colour accent (on digital versions only).
 - Appears two ways: a small solid-line badge icon (page corners/headers) or a large translucent "ghost" watermark over photography (cover/closing slides) —— never as a solid-fill logo.
+- Site-wide fixed header pairs the wordmark with a tagline: "Strategy · Analytics" / "Transformation · Implementation" (centre-dot separated, two lines) —— reuse this pairing wherever the logo introduces Culous in a professional/business context.
 
 ## Signature Motif — Soft Pattern
 
@@ -54,6 +55,7 @@ Observed consistently across the 22p case-study portfolio and culousyu.com; not 
 - Interactive elements are pill/stadium-shaped throughout: outline pills (Dark Teal border & text) for links/social/nav, solid Dark Teal fill for primary actions (e.g. the contact form's "Send" button).
 - Video is Vimeo-first, presented via a circular play-button badge or embedded player; show-reel-style videos open on a title card bearing the "IFYU" personal moniker (his separate handle for video/reel content, e.g. `vimeo.com/IFYU`, `instagram.com/IFYU_official`).
 - Sections/elements fade in on scroll (opacity transition, no hard cuts) and generous whitespace separates them —— pacing is unhurried and spacious, not dense.
+- The 4 category subdomains (consulting/technical/eventmgt/visuals.culousyu.com) are thin re-filters of the same portfolio content behind the shared header, each closing with an emoji-flagged link back to the master PDF ("📥 PDF Takeaway: `Portfolio.CulousYu.com`"); some case-study cards there add Mid-Teal-bold hashtag tags (e.g. `#TechFest #MachineLearning #GenAI`) not present in the static PDF —— a minor web-only enhancement, not a separate design language.
 
 ## Voice-Adjacent Visual Patterns — Soft Pattern
 
