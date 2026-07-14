@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research Participants Wanted — MGTK751</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* This ad is a static social-media post, exported as a fixed image/PDF and never
+     viewed as a live interactive page —— single fixed light appearance only, no
+     theme toggle. Page chrome is a neutral backdrop that simply frames the poster. */
+  * { box-sizing: border-box; }
+  html, body { margin:0; padding:0; }
+  body{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#EDEAE2;
+    font-family:-apple-system, system-ui, "SF Pro Text", "Segoe UI", sans-serif;
+  }
+
+  /* ---------- the 1080x1080 poster (fixed brand palette) ---------- */
+  .canvas{
+    width:1080px;
+    height:1080px;
+    position:relative;
+    overflow:hidden;
+    background:linear-gradient(135deg,#005166 0%,#468EA1 100%);
+    box-shadow:0 30px 90px rgba(0,0,0,0.28);
+    flex-shrink:0;
+  }
+  .wave{ position:absolute; inset:0; width:100%; height:100%; z-index:1; }
+
+  .card{
+    position:absolute;
+    top:44px; left:44px; right:44px;
+    z-index:2;
+    background:#FCFBF7;
+    border-radius:46px;
+    border:1.5px solid rgba(70,142,161,0.4);
+    box-shadow:0 20px 54px rgba(0,30,40,0.20);
+    padding:46px 60px 40px;
+    display:flex;
+    flex-direction:column;
+    font-family:'Poppins',sans-serif;
+  }
+
+  .eyebrow{
+    align-self:flex-start;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#E64A37;
+    color:#fff;
+    padding:8px 20px 8px 16px;
+    border-radius:999px;
+    font:600 13.5px/1 'Poppins',sans-serif;
+    letter-spacing:0.10em;
+    text-transform:uppercase;
+    margin:0 0 17px;
+    box-shadow:0 8px 18px rgba(230,74,55,0.30);
+  }
+  .eyebrow svg{ width:15px; height:15px; flex-shrink:0; }
+
+  h1.title{
+    font:600 47px/1.15 'EB Garamond', serif;
+    color:#005166;
+    margin:0 0 17px;
+    word-spacing:0.25em;
+    letter-spacing:0.2px;
+    overflow-wrap:break-word;
+  }
+
+  .study{ margin:0 0 19px; }
+  .study-label{
+    font:600 13.5px/1 'Poppins',sans-serif;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:#468EA1;
+    margin:0 0 7px;
+  }
+  .study-name{
+    font:italic 500 22px/1.38 'EB Garamond', serif;
+    color:#005166;
+    margin:0;
+    word-spacing:0.16em;
+    overflow-wrap:break-word;
+  }
+
+  .intro{ margin:0 0 19px; display:flex; flex-direction:column; gap:11px; }
+  .intro p{
+    font:400 16.5px/1.52 'Poppins',sans-serif;
+    color:#24273A;
+    margin:0;
+    overflow-wrap:break-word;
+  }
+
+  .section{ margin:0 0 16px; }
+  .section h2{
+    font:600 23px/1.2 'EB Garamond', serif;
+    color:#005166;
+    margin:0 0 10px;
+    word-spacing:0.2em;
+  }
+
+  .what .bullet-row{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin:0 0 9px;
+  }
+  .what .bullet-row:last-child{ margin-bottom:0; }
+  .icon-chip{
+    width:41px; height:41px; min-width:41px;
+    border-radius:50%;
+    background:rgba(32,137,138,0.10);
+    border:1px solid rgba(70,142,161,0.35);
+    display:flex; align-items:center; justify-content:center;
+    flex-shrink:0;
+  }
+  .icon-chip svg{ width:21px; height:21px; }
+  .bullet-row p{
+    font:400 16px/1.4 'Poppins',sans-serif;
+    color:#24273A;
+    margin:0;
+    overflow-wrap:break-word;
+  }
+
+  .who p, .interested p{
+    font:400 16px/1.5 'Poppins',sans-serif;
+    color:#24273A;
+    margin:0;
+    overflow-wrap:break-word;
+  }
+  .cta-highlight{ color:#E64A37; font-weight:600; }
+
+  .divider{
+    height:1px;
+    background:rgba(70,142,161,0.32);
+    margin:2px 0 15px;
+  }
+
+  .contact h2{ margin-bottom:11px; }
+  .contact-row{
+    display:flex;
+    align-items:center;
+    gap:13px;
+    margin:0 0 8px;
+  }
+  .contact-row:last-child{ margin-bottom:0; }
+  .contact-row .icon-chip{ width:35px; height:35px; min-width:35px; }
+  .contact-row .icon-chip svg{ width:17px; height:17px; }
+  .contact-row .email{
+    font:600 18px/1.3 'Poppins',sans-serif;
+    color:#005166;
+    overflow-wrap:break-word;
+  }
+  .contact-row .uni{
+    font:400 15.5px/1.4 'Poppins',sans-serif;
+    color:#24273A;
+    overflow-wrap:break-word;
+  }
+
+  /* icon strokes, shared */
+  .icon-chip svg{ fill:none; stroke:#005166; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <svg class="wave" viewBox="0 0 1080 1080" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M0,995 C130,965 260,1030 390,1000 C520,970 650,1032 780,1000 C900,972 1000,1030 1080,1000 L1080,1080 L0,1080 Z" fill="#20898A" opacity="0.20"/>
+    <path d="M0,1030 C160,1005 320,1055 480,1032 C640,1008 800,1058 960,1034 C1010,1026 1050,1040 1080,1034 L1080,1080 L0,1080 Z" fill="#FCFBF7" opacity="0.10"/>
+    <path d="M0,55 C150,85 300,25 450,55 C600,85 750,25 900,55 C1000,75 1040,45 1080,55 L1080,0 L0,0 Z" fill="#20898A" opacity="0.18"/>
+  </svg>
+
+  <div class="card">
+
+    <div class="eyebrow">
+      <svg viewBox="0 0 28 20" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 1L27 7.5L14 14L1 7.5Z" fill="#fff"/>
+        <path d="M7 9.2V14C7 16.2 10.1 18 14 18C17.9 18 21 16.2 21 14V9.2" fill="none" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+      </svg>
+      MBA Dissertation Research
+    </div>
+
+    <h1 class="title">Research Participants Wanted</h1>
+
+    <div class="study">
+      <p class="study-label">Study:</p>
+      <p class="study-name">Tall Poppy Syndrome as a Management Challenge in Knowledge-Based Firms</p>
+    </div>
+
+    <div class="intro">
+      <p>Ever worked with a standout colleague? Or maybe you’re that exceptional performer? I’d love to hear about your experience.</p>
+      <p>I’m currently on my MBA dissertation, researching how standout performers shape team dynamics, collaboration, and knowledge sharing within knowledge-based firms (e.g. legal, accounting, consulting, engineering, IT, R&amp;D).</p>
+    </div>
+
+    <div class="section what">
+      <h2>What?</h2>
+
+      <div class="bullet-row">
+        <div class="icon-chip">
+          <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <path d="M7 5H21 M7 23H21 M7 5L14 14L7 23 M21 5L14 14L21 23"/>
+          </svg>
+        </div>
+        <p>A single, relaxed video chat (45-60min).</p>
+      </div>
+
+      <div class="bullet-row">
+        <div class="icon-chip">
+          <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <path d="M9 12V9a5 5 0 0 1 10 0v3"/>
+            <rect x="6.5" y="12" width="15" height="10.5" rx="2.5"/>
+            <circle cx="14" cy="16.7" r="1.3"/>
+            <path d="M14 18V19.9"/>
+          </svg>
+        </div>
+        <p>Everything strictly confidential and anonymous.</p>
+      </div>
+
+      <div class="bullet-row">
+        <div class="icon-chip">
+          <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="14" cy="14" r="10"/>
+            <path d="M9.5 14.3L12.8 17.6L18.7 10.8"/>
+          </svg>
+        </div>
+        <p>No right or wrong answers. Just your honest observations.</p>
+      </div>
+    </div>
+
+    <div class="section who">
+      <h2>Who?</h2>
+      <p>Anyone with professional experience working within a knowledge-based firm, who may have observed how a team responds when a colleague stands out. Participation is entirely voluntary.</p>
+    </div>
+
+    <div class="section interested">
+      <h2>Interested?</h2>
+      <p>Please <span class="cta-highlight">comment on this post</span> and you will instantly receive the full Participant Information Sheet and Consent Form with all the details.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section contact">
+      <h2>Contact:</h2>
+
+      <div class="contact-row">
+        <div class="icon-chip">
+          <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <rect x="3" y="7" width="22" height="15" rx="2.5"/>
+            <path d="M4 8.5L14 16L24 8.5"/>
+          </svg>
+        </div>
+        <span class="email">Culous.Yu@liverpool.ac.uk</span>
+      </div>
+
+      <div class="contact-row">
+        <div class="icon-chip">
+          <svg viewBox="0 0 28 28" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 3.5C9.6 3.5 6 7 6 11.2C6 16.8 14 24.5 14 24.5C14 24.5 22 16.8 22 11.2C22 7 18.4 3.5 14 3.5Z"/>
+            <circle cx="14" cy="11.2" r="3.2"/>
+          </svg>
+        </div>
+        <span class="uni">University of Liverpool, United Kingdom</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
