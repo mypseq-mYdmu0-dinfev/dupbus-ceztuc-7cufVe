@@ -5,6 +5,7 @@
 - If `#numbered` in query, take it as a reminder/confirmation (e.g. "[content] is also #numbered")
 - If `#numbered` alone received as chat msg, audit your last output files then update as needed
   - e.g. You might have reset pt no. in prohibited conditions (see below); renumber accordingly
+  - e.g. You might have failed to comply with §Bite-size (see below); restructure pts accordingly
   - As a nudge (not `query_`), no `response_`/chat text (exc. declaration of updated files) needed
 
 ## Format
