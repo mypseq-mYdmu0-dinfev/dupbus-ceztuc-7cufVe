@@ -56,7 +56,7 @@ Date Signature
 
 **Principal Investigator** | **Student Investigator**
 
-Dr Lu Liu | Culous Yu
+Dr. LU LIU | Culous Yu
 
 University of Liverpool Online | University of Liverpool Online
 
