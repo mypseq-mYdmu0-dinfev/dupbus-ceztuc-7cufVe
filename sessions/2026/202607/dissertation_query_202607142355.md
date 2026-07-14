@@ -1,0 +1,1 @@
+my bad, i forgot to prompt you to read branding.md; have an SA read that then update on Canva and export/download again; save in `202607141922/` so whole folder (as a package) will be submitted to the online portal
