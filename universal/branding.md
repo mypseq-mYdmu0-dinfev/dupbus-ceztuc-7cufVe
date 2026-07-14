@@ -1,6 +1,7 @@
 # Branding
 
-*Culous Yu / C.YU MGT's personal visual identity —— colour, type, logo, and layout conventions, distilled from the brand guideline, the case-study portfolio, and culousyu.com for consistent design/visual output (HTML, slides, documents, decks). Self-contained —— all rationale is inline. C.YU MGT is not a live agency; Culous no longer runs it as a real firm, so treat this as a personal identity, not corporate brand governance —— keep design copy in a personal-portfolio register, never "our company/our team" language.*
+## Preamble
+Culous Yu / C.YU MGT's personal visual identity —— colour, type, logo, and layout conventions, distilled from the brand guideline, the case-study portfolio, and culousyu.com for consistent design/visual output (HTML, slides, documents, decks). Self-contained —— all rationale is inline. C.YU MGT is not a live agency; Culous no longer runs it as a real firm, so treat this as a personal identity, not corporate brand governance —— keep design copy in a personal-portfolio register, never "our company/our team" language.
 
 ## Colour Palette — Hard Rule
 
@@ -16,6 +17,7 @@ Source: `C.YU Brand Guideline.pdf` (1p, authoritative).
 - Each swatch ships with a 60/70/80/90% tonal scale (tint/shade rings shown in the source guideline) —— usable for gradients, depth, or a lighter/darker variant without leaving the palette.
 - Mid Teal is the default "key" colour when only one accent is wanted; Light Teal is reserved specifically for the logo dot per its explicit usage —— don't repurpose it on a whim.
 - Chrome/shell only (cards, borders, section labels, backgrounds, highlighted text) stays within this 4-colour system. Content imagery (case-study stills, video frames, category thumbnails) is NOT colour-restricted —— full-saturation photography/footage sits inside neutral teal-framed containers; the restraint applies to the frame, not what it holds.
+- In practice on culousyu.com, Dark Teal —— not Arancio Xanto —— fills the everyday interactive elements (the "Send" button, outline pill links/badges); reserve Arancio Xanto for rarer, higher-emphasis accents (glows, special-highlight badges) rather than routine buttons, despite its "CTA" role label in the source guideline.
 
 ## Typography — Hard Rule
 
@@ -48,9 +50,10 @@ Observed consistently across the 22p case-study portfolio and culousyu.com; not 
 
 - Client/project entries: circular client-logo badge (top-left) + intro paragraph(s) in a rounded card + a structured left-side summary block (`Scale` / `Industry` / `Commissions` for commercial work, `Organisation` / `Subject` / `Grade` for academic work) + right-side stat callouts or screenshots/video.
 - Stat callouts favour a big number with a `+` or `×` suffix inside a circular or triangular badge (e.g. "55,000+", "12×") —— visually distinct from prose, where root `CLAUDE.md` §2.3's superscript `⁺` rule governs instead.
-- Category/section labels run as vertical rotated-text tabs in Dark Teal along a card's edge.
+- Category/section labels run as vertical rotated-text tabs in Dark Teal along a card's edge; on culousyu.com the equivalent is a full-width stadium/pill button per category, large light-weight caps text over a fading project-thumbnail collage.
+- Interactive elements are pill/stadium-shaped throughout: outline pills (Dark Teal border & text) for links/social/nav, solid Dark Teal fill for primary actions (e.g. the contact form's "Send" button).
 - Video is Vimeo-first, presented via a circular play-button badge or embedded player; show-reel-style videos open on a title card bearing the "IFYU" personal moniker (his separate handle for video/reel content, e.g. `vimeo.com/IFYU`, `instagram.com/IFYU_official`).
-- Generous whitespace between sections —— pacing is unhurried and spacious, not dense.
+- Sections/elements fade in on scroll (opacity transition, no hard cuts) and generous whitespace separates them —— pacing is unhurried and spacious, not dense.
 
 ## Voice-Adjacent Visual Patterns — Soft Pattern
 
@@ -65,7 +68,7 @@ For linguistic register/tone (email, DM, formality level), see `writing_style.md
 All under the same C.YU MGT / Culous Yu identity; pick the facet the context actually calls for rather than assuming business-consulting is the whole story:
 
 - Business/strategy consulting, software/technical builds, data analytics, event management, commercials & social-media production —— the portfolio's throughline.
-- Fine-art photography —— awarded by HIPA, PX3, WPO, etc.; published by Vogue, NatGeo, Sony, etc.; a distinct creative practice documented only on culousyu.com (ARTWORKS section), not in the business portfolio.
+- Fine-art photography —— awarded by HIPA, PX3, WPO, etc.; published by Vogue, NatGeo, Sony, etc.; a distinct creative practice documented only on culousyu.com (ARTWORKS section), not in the business portfolio. Visually its own register, not the teal business palette: moody monochrome/black-and-white, architectural and landscape/nature subjects (e.g. a lone sailboat, a symmetric corridor, a hazy shoreline) —— treat this facet's imagery as B&W-first when representing it.
 
 ## Caveats
 
