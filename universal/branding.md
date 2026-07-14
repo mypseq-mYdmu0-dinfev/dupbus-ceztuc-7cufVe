@@ -97,4 +97,3 @@ All under the same C.YU MGT / Culous Yu identity; pick the facet the context act
 ## Caveats
 
 - Source authority on conflict: this file (guideline-sourced) > culousyu.com (most current lived execution, but its specific colour/CTA choices are usage-driven for that site, not a template —— see Colour Palette) > the Portfolio PDF (dated, and notably predates this guideline).
-- Root `CLAUDE.md` §9.05 currently duplicates the four hex codes above; that section is slated for removal (replaced by a §7 Conditional pointing here) once Culous reviews this file —— expect temporary overlap until then.

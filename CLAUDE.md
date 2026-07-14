@@ -200,6 +200,7 @@
 | `coding.md` | Creating/editing ANY script/pcmd (e.g. in `universal/`) |
 | `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
 | `shrink.md` | `shrink`/`summarise`/`synthesise`/`distil`/`condense` mentioned or involved |
+| `branding.md` | Creating ANY design/visual output (HTML, slides, decks) representing Culous personally |
 
 - 7.3. General Trigger:
   - 7.3.1. `#[trigger]` → `universal/[trigger].md` → if found: MUST read first, unless told otherwise
@@ -269,13 +270,7 @@
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
-- 9.05. User's brand colours (default palette for design/visual output, use if apt):
-  - 9.05.1. `#005166` Dark Teal
-  - 9.05.2. `#468EA1` Mid Teal
-  - 9.05.3. `#20898A` Light Teal
-  - 9.05.4. `#E64A37` Fire-Red "Arancio Xanto"
-  - 9.05.5. For details (e.g. font), dispatch SA to `find` & OCR-read `C.YU Brand Guideline.pdf`
-- 9.06. Turn-End Push (the working repo; commit name: ≤8w summary if ≤5 files changed, else `response_[TS].md`) —— after all create/edit works done, check uncommitted changes:
-  - 9.06.1. ONLY this turn's CC changes (± this turn's `query_`) → commit + push
-  - 9.06.2. Ditto + user changes on OTHER files → commit + push CC-touched files only
-  - 9.06.3. User changes ON CC-touched files (extremely rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
+- 9.05. Turn-End Push (the working repo; commit name: ≤8w summary if ≤5 files changed, else `response_[TS].md`) —— after all create/edit works done, check uncommitted changes:
+  - 9.05.1. ONLY this turn's CC changes (± this turn's `query_`) → commit + push
+  - 9.05.2. Ditto + user changes on OTHER files → commit + push CC-touched files only
+  - 9.05.3. User changes ON CC-touched files (extremely rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
