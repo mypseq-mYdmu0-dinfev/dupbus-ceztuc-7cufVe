@@ -34,16 +34,17 @@ Escalate to the primary sources only when this file doesn't suffice, or the stak
 
 *Source: same guideline page, § Typography.*
 
-| Role | Font | Typical Size | Notes |
+| Role | Font Family / Typeface(s) | Typical Size | Notes |
 |---|---|---|---|
-| Body / Default | Avenir Book | ~12pt | versatile, universally accepted —— zero backlash across a decade of use, even under a strict Arial-only mandate |
-| Heading — personal-use context | Mplus 1p Thin | ~20–30pt | e.g. culousyu.com's section headings; NEVER in a formal deliverable (unprofessional/playful/hard to read) unless for a creative-industry client he no longer serves |
-| Heading — professional/work-use context | Garamond Pro Display | ~20pt | serif; NEVER for body text (hard to read at length); tightly kerned —— ALWAYS double-space between words when set (e.g. `This  is  a  Title`) |
-| CTA / special highlight | MF XingHei | 150–250% of body | rarest element in the whole identity, rarer even than Arancio Xanto —— unprofessional/hard to read by design, but unmissable; ALL CAPS or Title Case |
+| Body / Default | Avenir / any | ~12pt | versatile, universally accepted —— zero backlash across a decade of use, even under a strict Arial-only mandate |
+| Heading — personal-use context | Mplus 1p / "Thin" only | ~20–30pt | e.g. culousyu.com's section headings; NEVER in a formal deliverable (unprofessional/playful/hard to read) unless for a creative-industry client he no longer serves —— ALWAYS "Thin" typeface |
+| Heading — professional/work-use context | Garamond Premier Pro / "Display" variants | ~20pt | serif; NEVER for body text (hard to read at length); tightly kerned —— ALWAYS double-space between words when set (e.g. `This  is  a  Title`) AND "Display" typefaces (see below) |
+| CTA / special highlight | MF XingHei / "Light" only | 150–250% of body | rarest element in the whole identity, rarer even than Arancio Xanto —— unprofessional/hard to read by design, but unmissable; ALL CAPS or Title Case |
 
 - "Typical Size" scales according to output; e.g. HTML might require globally larger size for readability.
-- The personal-vs-work split is about the OUTPUT'S context/use-case, NOT its subject matter: culousyu.com (a personal-use platform) uses Mplus 1p Thin even for headings about his work; a formal/professional document (a work-use context) uses Garamond Pro Display even when discussing his private life.
-- Both Mplus 1p Thin and Garamond Pro Display MUST be 100% Title Case.
+- The personal-vs-work split is about the OUTPUT'S context/use-case, NOT its subject matter: culousyu.com (a personal-use platform) uses Mplus 1p Thin even for headings about his work; a formal/professional document (a work-use context) uses "Garamond" even when discussing his private life.
+- "Garamond" MUST use either typefaces: "Display" (default), "Medium Display", "Semibold Display", or "Bold Display"; its default "Caption" typeface is UNACCEPTABLE
+- Both "Mplus" and "Garamond" MUST be 100% Title Case.
 - "(Non-commercial)" is literally part of "MF XingHei"'s font name —— it carries no licensing meaning and is NOT a usage restriction.
 - Text-colour pairing applies across all 4 fonts, not just headings:
   - `#24273A` —— the default, ~99.9% of content; tuned to read as near-black without being pure black (his signature, "less boring").
@@ -51,7 +52,7 @@ Escalate to the primary sources only when this file doesn't suffice, or the stak
   - `#000000` —— extremely rare, almost exclusive to legal documents.
   - `#B57450` —— highlight text when white-on-dark isn't used; also distinguishes header/footer from body (e.g. his default .pages template, casual use only).
 - Avenir weight scale (default = Book): Light, or a smaller Book size, for remarks; Medium for a subtle/longer highlight; Heavy for a normal/shorter highlight (⌘B suffices in practice); Black —— the actual heaviest weight (not "Heavy") —— reserved for one extreme highlight per document, at most.
-- Fallback when a required font is unavailable: actively install the package first. If truly unavailable, alert Culous (he finds this "highly provoking") and use Helvetica Neue throughout —— no serif accepted except Garamond itself, and Times New Roman is explicitly blacklisted as unacceptably ugly; Arial is the last resort only if Helvetica Neue is also unavailable.
+- Fallback when a required font is unavailable: actively install the package first. If truly unavailable, alert Culous (he finds this "highly provoking") and use Helvetica Neue throughout —— no serif accepted except "Garamond" itself, and Times New Roman is explicitly blacklisted as unacceptably ugly; Arial is the last resort only if Helvetica Neue is also unavailable.
 
 ## Logo — Hard Rule
 
