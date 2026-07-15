@@ -40,3 +40,7 @@
 - AD13.5. Remarks
   - AD13.5.1. P15 (online application) is next, dispatched to SA immediately following this close; the user is signed in to the UoL portal already.
   - AD13.5.2. Once P15 reaches the pre-Submit checkpoint, the close outputs (this Handoff + Addendum) will be updated again per the user's instruction —— treat this AD13 as provisional until that update lands.
+
+### AD14. P15.2 (Session 17 cont.) —— Online Application Filled, Ready for Signature
+
+P15.2 (Session 17 cont.) —— SA-driven pre-fill failed (wrong title), abandoned; user filled the live UoL ethics form personally with CC as read-only monitor. All docs attached: A1R, Risk Assessment, PIS v3, Consent Form v3, 3 interview guides, ad. Discovered the Key Ethics guide's question numbers don't match the live portal's numbering, causing early confusion; resolved by reading the guide's literal text each time. Added a new EU-data-transfer consent clause to PIS Q08 and Consent Form item 07 (both re-uploaded). Form complete through Section 25; final snapshot "Ethics_Application_202607151826.pdf". Only "Request Signature" remains, deliberately left for the user.

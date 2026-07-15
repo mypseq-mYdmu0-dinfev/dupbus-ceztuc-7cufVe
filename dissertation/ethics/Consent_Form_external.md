@@ -34,13 +34,17 @@ Please initial box
 
 **07.**
 
-> I understand that electronically signed consent form and the anonymised interview transcript will be kept in the student researcher’s password-protected laptop, accessible only by the student researcher until the completion of the student’s study period at the University of Liverpool and within 5 years after the completion date for the findings to be published as a journal paper or a conference paper. I understand that once the transcript has been completed, the original audio will be deleted from the UoL OneDrive.
+> I understand that my personal data, including audio and video during the interview, may be transferred outside the EU if I or the researcher are based outside the UK/EU, and that this data will continue to be processed on University of Liverpool systems applying UK GDPR-standard protections. I consent to this transfer.
 
 **08.**
 
-> I understand and agree that my participation will be audio recorded and I am aware of and consent to your use of these recordings for the purpose of the creation of an anonymised interview transcript for analysis.
+> I understand that electronically signed consent form and the anonymised interview transcript will be kept in the student researcher’s password-protected laptop, accessible only by the student researcher until the completion of the student’s study period at the University of Liverpool and within 5 years after the completion date for the findings to be published as a journal paper or a conference paper. I understand that once the transcript has been completed, the original audio will be deleted from the UoL OneDrive.
 
 **09.**
+
+> I understand and agree that my participation will be audio recorded and I am aware of and consent to your use of these recordings for the purpose of the creation of an anonymised interview transcript for analysis.
+
+**10.**
 
 > I agree to take part in the above study.
 

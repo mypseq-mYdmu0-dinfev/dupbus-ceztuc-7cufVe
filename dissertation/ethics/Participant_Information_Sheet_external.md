@@ -52,6 +52,10 @@
 >
 > Audio recording and anonymised transcripts will be saved on OneDrive. All electronic files will also be kept in secured, password-protected personal laptop that only the student researcher can access.
 >
+**Will my data be transferred outside the EU?**
+>
+> Yes. As you or the researcher may be based outside the UK/EU (for example, in Australia), your personal data, including audio and video during the interview, may be transferred outside the EU. All data continues to be processed on University of Liverpool systems, which apply UK GDPR-standard protections regardless of location. By providing consent, you agree to this transfer.
+>
 **Will my data be anonymised?**
 >
 > Yes, the transcript will be fully anonymised and labelled only as “Participant A”, “Participant B”, etc.
