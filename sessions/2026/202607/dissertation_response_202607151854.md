@@ -1,0 +1,6 @@
+# Response to dissertation_query_202607151854.md
+
+374. Disagree, checked against the form's OWN definition (Section 7 intro, already quoted in #315): "Secondary data analysis is the re-analysis of data for the purpose of answering the original research question with better statistical techniques, or answering new questions with old data" (Glass, 1976).
+375. That definition means re-analysing an EXISTING dataset someone else already collected (or your own old data from a prior study), not analysing the fresh interview data you're collecting for THIS study. Thematic analysis of your own primary interview transcripts is primary analysis, full stop —— the same distinction as #303-305's literature-vs-data clarification, just for the analysis step rather than the lit review.
+376. The guide's "Most common" line is just listing typical method examples (Interviews / Questionnaires / Secondary analysis of data), not instructing you to tick all three regardless of fit —— it's a menu, not a checklist to complete in full.
+377. Recommend un-ticking "Secondary analysis of data" at Q3.5 —— as-is it visually contradicts every Section 7 answer beneath it ("Not applicable"), which could read as an inconsistency to a reviewer.

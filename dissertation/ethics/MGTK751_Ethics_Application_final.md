@@ -1,6 +1,6 @@
 # Research Ethics Application Form - 18783
 
-*Cleaned from raw `pdftotext` layout-mode dump of the final submitted 26-page PDF, then hand-patched against CC's own direct visual reads of the same PDF (the pdftotext pass couldn't distinguish which radio/checkbox was ticked; CC's earlier session reads of the rendered pages could).*
+*Hand-verified directly against the rendered pages of `Ethics_Application_202607151859.pdf` (25 pages), a re-export taken after the user unticked "Secondary analysis of data (including audits)" at Q3.5 and confirmed removal of Section 7: Secondary Data (previously a stray/leftover selection with zero actual secondary data in the study). All other sections re-checked against this export and found unchanged from the prior 26-page version.*
 
 ---
 
@@ -134,9 +134,7 @@
 ### Section 3: Description of the research - Methods
 
 **Q3.5.** Please select which of the following methods/procedures will be used in the study: (checklist incl. Archival research, Autoethnography, Human stem cell research, Human tissue, Interviews (including focus groups), Invasive experiments, Observations, Non-invasive experiments, Questionnaires, Secondary analysis of data, Other; plus a separate animal-projects checklist)
-> Selected: **Interviews (including focus groups)** AND **Secondary analysis of data (including audits)**.
->
-> ⚠️ Note: the "Secondary analysis of data" tick appears to be a stray/leftover selection — it's what makes Section 7 appear in the form at all — but every Section 7 answer (Q7.1–7.3) explicitly states "Not applicable, this study does not involve secondary data analysis." This is a minor internal inconsistency spotted while compiling this reference file; not corrected before Request Signature, flagged here for the record.
+> Selected: **Interviews (including focus groups)**
 
 ### Section 3: Description of the research - Aims
 
@@ -247,39 +245,6 @@
 > Selected: **No**
 
 **Q5.54.** Will you discuss topics which raise considerations over whether there will be a duty to disclose the information which has been revealed during the interview? (Yes/No)
-> Selected: **No**
-
----
-
-## Section 7: Secondary Data
-
-*Definition (form guidance): secondary data analysis is the re-analysis of data for the purpose of answering the original research question with better statistical techniques, or answering new questions with old data. Resource cited: Glass, G.V., 1976. Primary, secondary, and meta-analysis of research. Educational researcher, pp.3-8.*
-
-### 7: Secondary analysis of data
-
-**Q7.1.** Please describe the source of the data:
-> Not applicable. This study does not involve secondary data analysis; all data will be collected directly through primary semi-structured interviews with participants.
-
-**Q7.2.** Please describe the type of data that will be used in the research:
-> Not applicable. No secondary data will be used; the only data collected will be primary, participant-generated interview data.
-
-**Q7.3.** Do you anticipate any ethical issues arising from the use of the data?
-> Not applicable, as no secondary data will be used in this study.
-
-**Q7.4.** Is the study a clinical audit? (Yes/No)
-> Selected: **No**
-
-### 7: Secondary data - anonymity
-
-**Q7.27.** Is the data fully anonymised? (Yes/No)
-> Selected: **Yes**
-
-**Q7.28.** Please describe the level of anonymisation in place:
-> Interview transcripts will be fully anonymised; participants will be labelled only as "Participant A", "Participant B", and so on, with all identifying details removed, including names, employer names, and any other information that could reveal a participant's identity. Audio recordings will be deleted once transcription is complete.
-
-### 7: Secondary analysis of data - Data links
-
-**Q7.29.** Will the data be linked or combined with other data in a way which may compromise the anonymity of the data? (Yes/No)
 > Selected: **No**
 
 ---
