@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a652
 Brief overview.
 
 DevPlan.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fed94e9bafa6a6c0099edbaaed568577e468108f/dissertation/MGTK751_DevPlan.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b5394be62314fee257018f6063c8880cd431308a/dissertation/MGTK751_DevPlan.md
 Always follow.
 
 ---
@@ -72,7 +72,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/72b8
 Submitted real A1.
 
 Lu.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/12a4a8e7a93324480a464ec0b6163d238025733e/dissertation/lu.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b5394be62314fee257018f6063c8880cd431308a/dissertation/lu.md
 Synthesised profile of matched DA (A2/A3 marker).
 
 Meetings.md / Meetings (distilled).md
@@ -84,7 +84,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e619
 Refined A1 sent to Lu.
 
 Ethics_Application_final.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/ethics/MGTK751_Ethics_Application_final.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/b5394be62314fee257018f6063c8880cd431308a/dissertation/ethics/MGTK751_Ethics_Application_final.md
 Canonical Q-by-Q record of the completed/submitted UoL ethics application; most-preferred access point for what was submitted. URL uses `main` branch pending the next #sync to pin it.
 
 ethics/ (folder)
