@@ -17,7 +17,7 @@ USAGE
    timestamp (YYYYMMDDHHmm) marking a timeframe's start; anything after the
    timestamp on that line is an optional free-text remark. The AJAP programme
    auto-writes these files as `ajap_logs_input_[runtime_start_TS].md`
-   (`ses[nn]s`/`ses[nn]e` lines) and runs this script itself on STOP.
+   (`ses[nn]s`/`ses[nn]e🔴` lines) and runs this script itself on STOP.
    NOTE: macOS screenshot filenames on a line are still normalised into the
    12-digit-TS form first (legacy convenience).
 2. Job data comes from the ledger
