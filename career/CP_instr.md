@@ -4,7 +4,9 @@ Each file ... not proceed. (same as userPref)
 
 ## UNCONDITIONAL
 
-Fetch at every chat start & resolve all aliases below using `CP_index.md`: https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ae05bb38c576e8a7be3c10f125fc8dce0347092c/career/CP_index_otg.md
+Fetch at every chat start & resolve all aliases below using `CP_index.md`:
+
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ae05bb38c576e8a7be3c10f125fc8dce0347092c/career/CP_index_otg.md
 
 ## CONDITIONAL
 
