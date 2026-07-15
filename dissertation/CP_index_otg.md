@@ -83,6 +83,18 @@ A1R.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e619d8795be702576d5e60eb48e2f02a4456e67e/dissertation/MGTK751_A1R.md
 Refined A1 sent to Lu.
 
+Ethics_Application_final.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/main/dissertation/ethics/MGTK751_Ethics_Application_final.md
+Canonical Q-by-Q record of the completed/submitted UoL ethics application; most-preferred access point for what was submitted. URL uses `main` branch pending the next #sync to pin it.
+
+ethics/ (folder)
+https://github.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/tree/main/dissertation/ethics
+Canonical working PIS/Consent/Risk Assessment/interview guide/ad `.md` + `.html` sources the submission was built from.
+
+Ethics Forms/ (folder)
+N/A — local-only, outside the git repo; ask user for the path.
+Raw portal-exported docx/pdf submission package folders; least-preferred, superseded by `ethics/` and the Q-by-Q record above.
+
 ---
 
 ## Archive

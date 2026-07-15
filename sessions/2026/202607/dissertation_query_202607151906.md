@@ -1,0 +1,7 @@
+last tasks:
+1. see CIC tab; i clicked "Request Signature" and it requires a short msg; fill something for me (ensure #writing)
+2. `MGTK751_Ethics_Application_final.md`'s header requires indication of source (`Ethics_Application_202607151859.pdf`) AND how it was generated (from "View as PDF" on the portal); try to keep this header text concise, OTHERWISE consider to make it a preamble for easier CC-reading
+2. update Lu.md Log 28 (drafted earlier this session before the application started) as we no longer are "now proceeding to complete..." (ensure #writing); also she should have received the email from the online portal upon receiving this email so we don't have to repeat; however if you agree, we may also note that all files in `202607141922/` (just referred as Ethics Application Docs or something) are already uploaded to her shared drive, simply for her convenience as she can also access them via the online portal
+3. all ethics stuffs currently unlocatable by CC; so update both CP_index_*.md to inc. `MGTK751_Ethics_Application_final.md` (most preferred access pt), `dissertation/ethics/` (just the folder name; tell what we attached is inside), and `From Lu/Ethics Forms/` (most unpreferred access pt as they should have been represented by what's in `dissertation/ethics/` —— keep these additions VERY CONCISE as it's quite likely we dont needa look back on ethics once it's approved
+4. update `dissertation_response_202607151550.md` `dissertation_close_202607151550.md` again if needed
+proceed if no qb; consider SA if helpful (your context 77% full)

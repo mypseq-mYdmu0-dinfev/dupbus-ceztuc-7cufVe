@@ -90,6 +90,18 @@ A1R.md
 `dissertation/MGTK751_A1R.md`
 Refined A1 sent to Lu.
 
+Ethics_Application_final.md
+`dissertation/ethics/MGTK751_Ethics_Application_final.md`
+Canonical Q-by-Q record of the completed/submitted UoL ethics application; most-preferred access point for what was submitted.
+
+ethics/ (folder)
+`dissertation/ethics/`
+Canonical working PIS/Consent/Risk Assessment/interview guide/ad `.md` + `.html` sources the submission was built from.
+
+Ethics Forms/ (folder)
+`/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/From Lu/Ethics Forms/`
+Raw portal-exported docx/pdf submission package folders; least-preferred, superseded by `ethics/` and the Q-by-Q record above.
+
 ---
 
 ## Archive

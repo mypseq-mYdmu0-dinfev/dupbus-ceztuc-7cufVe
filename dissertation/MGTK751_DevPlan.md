@@ -489,3 +489,56 @@ Post-P5; lu.md created & uploaded, first DA meeting held, MGTK742 PDFs synthesis
 - AD12.5. Remarks
   - AD12.5.1. Immediate next action is the USER's: fix the Log 22 typo ("managed to finished" → "managed to finish") and send; then the project enters P13 (Lu + 2 reviewers' approval → ethics).
   - AD12.5.2. P13/P14 remain to be detailed once the draft is approved; A2/A3 phases built then (AD11.5.3 stands).
+
+### AD13. P14–P15 (Session 17) —— Ethics Forms Finalised, Online Application Submitted for Signature
+
+- AD13.1. Coverage
+  - AD13.1.1. Ran `#sprint P14` in full: amended PIS, Consent, and Risk Assessment; built all 3 interview guides (TPP primary, TP and manager supplementary, per user's 04/07 decision to submit all 3 upfront rather than risk a later amendment); QC'd against CB §11 safe-framing and dlint; drafted the Log 25 cover email.
+  - AD13.1.2. Ran an 8-agent `#debate` (per `debate.md`, properly invoked this time) judging whether the 3 guides were "flawless"; verdict was CONTESTED —— ethically sound throughout, but `~`6 one-line polish edits recommended (Guide A's multi-barrelled Q4, Guide C's institutional-authorisation-adjacent Q4, minor leading phrasing); applied the agreed subset.
+  - AD13.1.3. Sent Log 25 (05/07); Lu replied Log 27 (08/07): approved starting P15, silently edited 3 of the 6 forms (PIS heaviest, Consent moderate, Risk minor/signed), left the 3 guides untouched but deferred her real content review to data-collection start; assigned a new task (a recruitment advertisement).
+  - AD13.1.4. Diffed Lu's edits via SA, mirrored them into canonical `_filled.md`, then restructured into `_filled` (frozen Log-25 record) / `_external` (Lu's edits, submission-bound) / `_internal` (PIS only, participant-facing, "Australia" and "CYC" reverted) per user's explicit split.
+  - AD13.1.5. Built the recruitment advertisement: text (`MGTK751_ad.md`) → several failed Canva attempts (blocked by no-paid-plan template access, a font-family API limitation, one agent drifting into live browser automation against instruction) → abandoned Canva entirely → built a 1080×1080 HTML/CSS/SVG version directly, iterated through several rounds of user-driven layout polish, exported to PDF+PNG via headless Chrome.
+  - AD13.1.6. Assembled `From Lu/Ethics Forms/202607141922/` as the final online-portal submission package (6 docx+pdf pairs + the ad pdf+png), content-verified against the canonical `.md`/`.html`.
+  - AD13.1.7. P15.2 (online application): an SA-driven pre-fill attempt failed (entered a project title not matching A1R) and was abandoned; the user filled the live UoL ethics form personally, with CC restricted to a read-only monitor role, giving field-by-field hints checked against A1R/CB/the Key Ethics guide/the finalised ethics `.md` files.
+  - AD13.1.8. Attached to the online application: A1R (study proposal), Risk Assessment, PIS, Consent Form, all 3 interview guides, and the advertisement; discovered mid-fill that the PIS/Consent Form lacked a required EU-data-transfer consent clause (participants and/or researcher based outside the UK/EU), so added one to both `_external.md` sources, mirrored into fresh docx/pdf via SA, and re-uploaded as v3.
+  - AD13.1.9. Caught and corrected a stray "Secondary analysis of data" tick at Q3.5 (this study has zero secondary data); removing it cleanly dropped the whole "Section 7: Secondary Data" block from the form.
+  - AD13.1.10. Form completed through Section 25 (training/adverse-events/sign-off declarations, latest-version and ready-to-submit confirmations); the user actioned "Request Signature" via the portal's own flow (auto-emails Lu), with CC filling only the accompanying message (writing.md-clean) and deliberately not clicking the button itself.
+  - AD13.1.11. Built `dissertation/ethics/MGTK751_Ethics_Application_final.md` as the canonical Q-by-Q record of the submitted application (hand-verified against the portal's own "View as PDF" export, not machine-converted, since `pdftotext` cannot capture which radio/checkbox was ticked); added pointers to it (plus `dissertation/ethics/` and `From Lu/Ethics Forms/`, in that preference order) in both `CP_index_cc.md` and `CP_index_otg.md`.
+
+- AD13.2. Decisions
+  - AD13.2.1. All 3 interview guides submitted now, none held back —— UoL requires the actual questions/schedule uploaded at application time (Key Ethics Info Q5.14) regardless of Lu's own review timeline; a later amendment to add a participant type would need re-review and risks straining the DA relationship.
+  - AD13.2.2. Australia-eligibility and CYC-naming: Lu's edits reinstate both in the PIS. Resolution —— keep her wording for `_external` (the submission, consistency with the approved RA/reviewers), but strip both back out for `_internal` (the actual participant-facing document), since neither serves the participants and the Australia restriction actively costs international candidates like Ben (UK).
+  - AD13.2.3. `branding.md` corrected —— Garamond (proper name: Garamond Premiere Pro) must always use Display-optical-size weight variants, never its default Caption cut; web substitutes with no true optical axis (e.g. EB Garamond) should use their heaviest clean weight instead.
+  - AD13.2.4. Ad platform —— Canva definitively abandoned for this deliverable (no paid-plan template access, no font-family API control, one agent's browser-automation drift); direct hand-built HTML is now the standing approach for this kind of static export.
+  - AD13.2.5. Portal 1.10 (Co-Investigators) = "Yes", duplicating Lu Liu already entered as 1.7 Supervisor —— user-confirmed deliberate choice per the Key Ethics guide, accepted as intentional and not a blocker.
+  - AD13.2.6. Portal 23.15 (personal data transferred outside the EU) = "Yes" —— accurate given the researcher/participants span AU/UK; required the new consent clause in AD13.1.8 rather than answering "No" to sidestep it.
+
+- AD13.3. Deviations
+  - AD13.3.1. Multiple `#sprint` invocations this session did NOT get a fresh `sprint.md` read or a slog, contrary to protocol; corrected mid-session after the user caught it. §3.2 (chat declarations) also drifted —— several turns closed with no declaration block, or misclassified a comms file under `✅` instead of `➡️`; corrected after the user's explicit catch, full CLAUDE.md + coding.md re-read.
+  - AD13.3.2. A sub-agent edited the Log-27 `.docx` files in `202607092008/` directly in place rather than on a copy first, destroying the pristine record; user caught it and directed the recovery (void + move to `202607141922/`, re-download fresh copies for `202607092008/`).
+  - AD13.3.3. The Canva build consumed roughly 3 agent attempts and significant time/tokens before being abandoned for HTML —— worth defaulting to hand-built HTML/SVG sooner for any future static-export design task, rather than reaching for Canva first.
+  - AD13.3.4. The "Key Ethics Information Required.pdf" guide's question numbers do NOT reliably match the live portal's actual field numbers (e.g. its "Q1.10" text is really instructing the portal's field 1.7) —— always read the guide's literal instruction text, never assume its numbering aligns; this caused avoidable back-and-forth confusion (e.g. the 1.10 Co-Investigator question) before being identified.
+  - AD13.3.5. Automated CIC checkbox/radio clicks on Section 25 did not persist server-side on first attempt (visually showed checked, but a "View as PDF" export taken minutes later showed them all empty) despite an apparent success; the textareas' explicit "Save complete" banner had no equivalent for checkboxes/radios. Re-clicking and re-verifying via a fresh PDF export resolved it. Worth a deliberate re-verify pass after any bulk raw-click automation on this portal's checkbox/radio fields specifically.
+
+- AD13.4. Comms Files (this session's dissertation_-prefixed pairs, chronological; `+` marks an async follow-up response with no separate query)
+  - AD13.4.1. `202606272120`: MP17 kickoff, DevPlan proposal
+  - AD13.4.2. `202606272255`: DevPlan corrections (P13 restore, plan.md fix)
+  - AD13.4.3. `202607040354` (+`202607040403`, +`202607040448`): `#sprint P14` kickoff → Sprint Report
+  - AD13.4.4. `202607041952`: sprint review, reformat directive
+  - AD13.4.5. `202607042229` (+`202607042249`): Guide A CIIW, 8-agent debate → verdict
+  - AD13.4.6. `202607042320`: confirmations, docx apply dispatch
+  - AD13.4.7. `202607042336`: PDF/PNG conversion for the full pack
+  - AD13.4.8. `202607092131`: session-drift digest, Lu-diff SA dispatch
+  - AD13.4.9. `202607092212` (+`202607092219`, +`202607092225`, +`202607092240`): Log 27 read, Lu's edits diffed, mirror to `.md`
+  - AD13.4.10. `202607092314` (+`202607092340`): external/internal/filled restructuring, docx mirror
+  - AD13.4.11. `202607141915` (+§3.2 self-audit): Canva pivot decided, coding.md/branding.md compliance
+  - AD13.4.12. `202607142316` (+`202607142328`): first Canva build reviewed, defect found
+  - AD13.4.13. `202607142355`, `202607142357`: Canva fix attempts (font, blurred icons)
+  - AD13.4.14. `202607150025` (+several async SA-report responses through `202607150053`): Canva abandoned, HTML ad built, fixed, finalised
+  - AD13.4.15. `202607150122`: PDF/PNG line-wrap bug found and fixed (`@page` unit bug)
+  - AD13.4.16. `202607151548`: this close (Handoff, superseded in scope by this Addendum's later content)
+  - AD13.4.17. `202607151617`–`202607151911` (~65 pairs): P15.2 online-application monitor session —— failed-SA handoff, live field-by-field hinting, EU-transfer clause discovery and fix, Section 7 removal, Request Signature actioned, final wrap-up; VOIDED (❌_ prefix) as trivial field-by-field exchange once superseded by `MGTK751_Ethics_Application_final.md`, except `dissertation_query_202607151820.md` (kept, marks the wrap-up decision point) and this response_/its paired close_ (kept, this Addendum)
+
+- AD13.5. Remarks
+  - AD13.5.1. P15.2 (online application) is DONE; P15.3 is next —— await Lu's sign-off and WRITTEN ethics approval (hard gate, no data collection before it arrives).
+  - AD13.5.2. On written approval, remind the user of the optional enriched interview guides (extra probes/notes for the actual interviews, deferred by user 04/07), and that he should personally review all 3 guides verbatim whilst awaiting approval, since Lu deferred her own content review to data-collection start (Log 27).

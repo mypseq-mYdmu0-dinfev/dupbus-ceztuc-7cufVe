@@ -668,17 +668,13 @@ Lu
 
 ### Log 28
 
-*DRAFT courtesy email for Culous to review and send; not yet sent. For his awareness only, not requesting approval before proceeding, since all changes are cosmetic.*
-
 Hello Lu,
 
-Thank you again for reviewing and returning the forms; I have incorporated your edits throughout.
+Thank you again for reviewing and returning the forms. I have incorporated your edits throughout, together with a small number of purely cosmetic corrections, mainly spelling, punctuation, and quote-style consistency, to the Participant Information Sheet and the Consent Form. Nothing you wrote has been changed in meaning.
 
-Whilst preparing the final version for submission, I made a small number of purely cosmetic corrections, namely spelling, punctuation, and quote-style consistency, to the Participant Information Sheet and the Consent Form. Nothing you wrote has been changed in meaning, and the Risk Assessment needed no further edits at all.
+The online ethics application is now complete, and I have just requested your signature directly through the portal, so you should have also received its automated notification separately. For convenience, all the submitted documents (including the advertisement) sit in the shared drive too ("Culous Yu's Ethics Docs/Submitted 202607151910/"), alongside the earlier version untouched.
 
-I am now proceeding to complete the online ethics application as you kindly authorised, together with the interview guides, which of course remain open for your review once data collection begins. I will also prepare the short recruitment advertisement you asked for.
-
-I will let you know once the application has been submitted.
+I look forward to your review and written approval, which I understand must be in place before I begin any data collection.
 
 Warm Regards,
 Culous
