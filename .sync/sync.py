@@ -27,7 +27,7 @@ def git_out(*a):
 
 def resolve_scope(scope):
     if scope == "universal":
-        return "universal/index_otg.md", "universal/preferences.md"
+        return "universal/index_otg.md", "universal/preferences_otg.md"
     return f"{scope}/CP_index_otg.md", f"{scope}/CP_instr.md"
 
 

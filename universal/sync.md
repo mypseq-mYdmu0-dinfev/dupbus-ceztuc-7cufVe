@@ -10,7 +10,7 @@
 
 ## What it solves
 - CWI/OTGC caches raw-GitHub URLs (Claude web-fetch `~`15 min + GH CDN), so a `/main/` URL is served stale (the original "v01" bug).
-- A commit-SHA permalink is a unique, immutable URL → never stale. `#sync` pins every file URL in `index_otg.md` to that file's last-commit SHA, and pins `index_otg.md`'s own permalink inside `preferences.md`.
+- A commit-SHA permalink is a unique, immutable URL → never stale. `#sync` pins every file URL in `index_otg.md` to that file's last-commit SHA, and pins `index_otg.md`'s own permalink inside `preferences_otg.md`.
 
 ## Precondition
 - Content edits are committed + pushed by the USER (GH Desktop) BEFORE running `#sync`.
@@ -36,7 +36,7 @@
   - `.githooks/pre-commit` rejects any other staged path whilst the `.git/SYNC_ACTIVE` marker is set (active only after the user runs `git config core.hooksPath .githooks`).
 
 ## Scopes (no hard-coding)
-- No arg → `universal` → `universal/index_otg.md` + `universal/preferences.md`.
+- No arg → `universal` → `universal/index_otg.md` + `universal/preferences_otg.md`.
 - `#sync <cp>` → `<cp>/CP_index_otg.md` + `<cp>/CP_instr.md`.
 - The file list is read from the index itself, so a CP index may legitimately list files OUTSIDE its folder (e.g. `seek/context/*`); those get pinned too, with no `otg/` folder and no `seek/` contamination.
 

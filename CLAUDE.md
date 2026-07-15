@@ -248,7 +248,7 @@
   - 8.3.1. `user_notes`: private notes
   - 8.3.2. `temp_` prefix: to be deleted soon
   - 8.3.3. `_otg` suffix: OTG variant; if no CC variant exists in same folder, it's OTG-only
-  - 8.3.4. `preferences.md` / `CP_instr.md`: for OTG only
+  - 8.3.4. `CP_instr.md`: for OTG only
 - 8.4. Filename suffix usually indicates variant; e.g. `CP_index_cc.md` = for CC (you)
 - 8.5. Whenever accessing any folder (except `universal/` & `sessions/`), actively scan for:
   - 8.5.1. `README.md` —— read it (BEFORE its CLAUDE.md); alert if contradicting user instr
