@@ -56,8 +56,6 @@
 - CC = Claude Code; "Code" tab of CAI (not terminal); addressed as `she/her`
 - `CC:` = disregard if you're not CC
 - `Non-CC:` = disregard if you're CC
-- MA = main agent (most cases), or moving average (niche cases)
-- SA = sub-agent (most cases; spawn when helpful), or service agreement (niche cases)
 - CW = Claude Cowork (don't conflate w/ CWI); "Cowork" tab of CAI
 - CWI = Claude Web Interface (Claude Chat; https://claude.ai), allowing multi-window chats; if CIC failed, you're CWI
 - CAI = Claude (Mac) App Interface (Official), allowing more connectors; suggest continuing in CAI whenever extensive functions (e.g. CIC, Apple Notes) may help
@@ -79,22 +77,30 @@
 - CIIW = Correct (me) if I'm wrong; validate my msg rather than treating it as a direct command; correct errors before acting
 - ses = session
 - wk = week(ly)
-- sesL = Anthropic's 5hr-session limit; resets in 290min once started
+- sesL = Anthropic's 5hr-session limit; resets in 290–300min once started
 - wkL = Anthropic's weekly limit; always resets on Mondays 9pm (SYD time)
 - override = exception to "no chat text" or other restrictions for that SINGLE turn only
-- yn (only usable by user) = override: respond w/ 1w only in chat, either `Yes` or `No`
 - deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
 - summon me = push an app notification by using `AskUserQuestion` tool (random Q if no QB)
 - pcmd = prompt/protocol & context .md files; e.g. `ww.md` = prompt; `profile.md` = context
-- "professional" (w/ quotes) = user's own definition: **a bar, not a degree**; a role/standard one either meets or does not, akin to a "professional camera", defined by whether the paid work it enables clears the bar, not by attitude or output quality
-  - e.g. Canon 1DX Mark I is an old but professional camera, despite likely lower quality than modern iPhone, vice versa
+- "professional" (w/ quotes) = user's own definition: **a bar, not a degree**; a role/standard one either meets or doesn't, akin to "professional camera", defined by whether the paid work it enables clears the bar, not by output quality
+  - e.g. Canon 1DX Mark I is old but professional, despite lower quality than iPhone, vice versa
   - e.g. Experienced/renowned PM struggles in comms/breaks promise = not a "professional"
-  - e.g. ❌ "X is less professional"; ✅ "X is not a professional"
+  - e.g. ❌ "X is less professional" | ✅ "X is not a professional"
+- MA = main agent (most cases; i.e. user-facing CC), or moving average (niche cases)
+- SA = sub-agent (most cases; spawn when helpful), or service agreement (niche cases)
+- `[#|##][S|M]A` = instr on agent use for specific turn/section/line (no `SA.md`/`MA.md`)
+  - `#SA` = MUST be done by SA (e.g. heavy); `#MA` = MUST be done by MA (e.g. high-stake)
+  - `##[S|M]A` = suggest to be done by SA/MA; `[#|##][S|M]A` not prompted = judge by case
+  - e.g. `# Reply to ... (#SA)` = whole turn actioned by SA (MA as orchestrator only)
+  - e.g. `## [Heading] (#SA)` = this section, ditto; e.g. `#SA [prose]` = this line, ditto
+  - Disagreement: `#[S|M]A` = stop & alert; `##[S|M]A` = assume acceptance & don't stop
 
 ---
 
 ## Special
 
+- `yn` (only usable by user) = OVERRIDE: respond w/ 1w only in chat, either `Yes` or `No`
 - Dot (`.`) as blank line: 1 line between = same-issue break; 3 between = new-issue break
 - If user's msg only has a single `.`: respond w/ `.` only in chat; no file/artefact, no declarations
 - IMPORTANT: NEVER count words/tokens by yourself (100% wrong); always use:
