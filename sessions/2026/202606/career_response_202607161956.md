@@ -1,0 +1,7 @@
+# Response to `career_query_202607161956.md`
+*Scope-creep agreed; queued query created; closing*
+
+1. Agreed on scope creep. This session opened as a single-job task (`#int` for Duo Group) and organically expanded into a full AJAP targeting-strategy review once the Duo interview collapsed —— that second thread (queue.md vs gcl.md, the overqualification paradox, the AU migrant-experience stats) is a genuinely separate, weightier topic that deserves a dedicated session, not a tail end of a closed-out job's thread.
+2. Your read on the central issue is right, and matches where the three referenced pairs actually landed: `queue.md` itself tested out as reasonably sound (I conceded the cap/keyword changes in 202606302233), so the live lever is **CL/resume altitude in `gcl.md`** —— but that conclusion deserves fresh scrutiny in the new session, not inherited as settled. I framed the queued query as a pointer, not a brief, so the next session can independently re-derive or challenge it.
+3. Done —— created `sessions/queued_queries/ajap_query_202607162356.md`, pointing to the 3 comms pairs (202606302138, 202606302233, 202607010037) plus `queue.md`/`gcl.md`/`pro_profile.md`, framed around your stated goal (maximise interview invites AND speed-to-offer), with #cic research mandated throughout. Per the queued-queries workflow, remember to rename it (`career_query_[send_TS].md`) and move it to that new session's month folder when you actually send it, and set your Apple Reminder.
+4. No QB —— proceeding to `#close`.
