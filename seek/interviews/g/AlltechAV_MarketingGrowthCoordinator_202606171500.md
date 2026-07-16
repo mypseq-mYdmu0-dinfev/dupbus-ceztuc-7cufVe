@@ -543,7 +543,7 @@ Culous
 
 ---
 
-## Employer Reply
+### Employer Reply
 
 On 26 Jun 2026, at 08:32, Elena Mel <elena@alltech.co> wrote:
 
@@ -559,7 +559,7 @@ Alltech
 
 ---
 
-## Google Meet Notification
+### Google Meet Notification
 
 On 26 Jun 2026, at 08:31, Elena Mel <elena@alltech.co> wrote:
 
@@ -575,7 +575,7 @@ Thursday 2 Jul 2026 ⋅ 12pm – 1pm (Australian Eastern Time - Sydney)
 
 ---
 
-## User Reply
+### User Reply
 
 On 26 Jun 2026, at 09:31, c@culousyu.com wrote:
 
@@ -585,6 +585,28 @@ Thank you for telling in time. Let’s talk next week then. Wish you a nice week
 
 Regards,
 Culous
+
+---
+
+### Employer Decision
+
+On 7 Jul 2026, at 22:31, Elena Mel <elena@alltech.co> wrote:
+
+Hi Culous,
+
+Thank you for your interest in the Marketing & Growth Coordinator role - for applying for the role, how you presented yourself during the interviews and the amazing job you did for the assignment. 
+
+After careful consideration and extensive deliberation we've made the very difficult decision to offer the role to another candidate. Please do not be discouraged! It was a very competitive pool of candidates. The decision wasn't an easy one; it's no reflection of your ability or the effort you put into the process.
+
+It was truely a pleasure getting to know you. 
+
+I have not offered this to any other candidates, but I would personally love to keep in touch with you. I would love to arrange for a coffee on the week of the 20th June if you're interested. 
+
+The whole team at Alltech and I wish you all the best with your search. Please feel free to stay in touch with us via our socials also!
+
+Elena Melnykova
+Director of Business Operations
+Alltech
 
 ---
 
