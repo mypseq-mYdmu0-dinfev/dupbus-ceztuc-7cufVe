@@ -298,6 +298,7 @@
     - 9.03.3.2. Plain Agent-tool dispatch currently gets ZERO caching benefit (hardcoded off —— anthropics/claude-code#29966)
     - 9.03.3.3. The win comes from CC's native session-FORK feature instead (a fork inherits/reuses the parent's already-cached prefix —— read that shared context ONCE in the parent, then fork per SA)
     - 9.03.3.4. Trade-off to weigh, not a reason to skip it: a fork also carries the parent's conversation state/tools forward, unlike a clean-slate SA — case-by-case, but default TOWARDS using this when the token saving is meaningful
+  - 9.03.4. Limit-interrupted SAs (user 202607161616): when ANY dispatched SA (incl. Workflow agents) dies on a session/usage limit, its task is NOT done — on revival (e.g. a `continue` nudge, or the limit reset) RECOVER it: re-dispatch, or completely REDO the affected scope for safety (partial results may be compromised). A limit hit is NEVER an excuse for uncompleted/un-audited scope. Disregard a `continue` nudge ONLY when 100% certain everything possible is fully done.
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
