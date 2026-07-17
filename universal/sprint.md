@@ -7,6 +7,7 @@
 - Meaning: Push the given tasks (and any derived sub-tasks) to completion without pausing for my confirmation/input; user summoning is unavailable.
 - Core Invariant (BOTH modes): never compromise quality whilst pushing through; don't stop until every task is thoroughly done; retain fidelity to the goal(s) *behind* each task (and whole project), not just its literal wording.
 - The ONLY difference between the two modes is whether time is abundant (`#sprint`) or scarce (`#sprint #quick`).
+- MANDATORY PAIR: every `#sprint` produces BOTH `slog_` (when sprint starts) AND Sprint Report (in final `response_`, or updating a previous one if instructed). Neither is EVER optional.
 
 ---
 
@@ -72,24 +73,6 @@ Either way, real progress is staged for my review the moment I'm back, with no i
 
 ---
 
-## Sprint Report (on return; strictly all #numbered)
-
-**Heading** —— state the span + derived duration: `Sprint Report ([start_TS]–[report_TS]) · ran ~Xh Ym` (start = slog filename TS; report = now).
-
-**Placement** —— the Report ALWAYS lives in `response_` (or a separate file if ≥ 1,000w), NEVER in an output/deliverable file. Assumptions *alone* may ALSO be recorded in a NON-deliverable output file —— per § Overriding Other Confirmation Gates —— so future CC editing that material sees what was assumed and why.
-
-So I can resume instantly, capture:
-
-- **Done** —— tasks completed, with the files produced.
-- **Assumed** —— every working assumption made to push through (not only blockers cleared by prediction): each QB raised in `<thinking>` with my predicted answer, plus any interpretive / methodological / scope call (e.g. an assumed `#synthesise` objective), and what was built on each. Surface FIRST any assumption that would invalidate downstream work if wrong, so I can catch it at a glance.
-- **Compactions** —— EVERY compaction event experienced during the sprint (when + how recovery went). Each is a heavy risk that may have compromised ALL work, including earlier tasks —— flag anything potentially affected; never silently omit one.
-- **Planned, not executed** —— critical/untracked tasks deferred per the caveat, with their plans.
-- **Open** —— anything still needing me, priority-tagged (🔴 blocking / 🟡 important / 🟢 nice-to-have).
-
-**Draft from the `slog`, not solely from the context window** —— a compaction you may not even realise occurred could have dropped events the slog still holds; treat the slog as ground truth for this report.
-
----
-
 ## Sprint Log (`slog`) —— Compaction Hedge
 
 A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never loses sprint state. Write very efficiently for CC (current session) only; the user wouldn't read it.
@@ -97,6 +80,7 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 - **File**: `slog_[start_TS].md` (CP-prefixed if CP, e.g. `career_slog_[TS].md`) in the SAME folder as `response_` —— TS = sprint start; one per sprint.
 - **Silent**: creating/updating it is EXEMPT from the `➡️` declaration (root CLAUDE.md §3.2.3) —— a per-block log would otherwise flood chat
 - **Recovery**: right after each compaction, reading it still requires a one-off `✅` declaration (root CLAUDE.md §3.2.1) —— a proof of context recovery
+- **Interruptions are blocks too**: EVERY interruption —— a sesL/usage-limit hit (log on the wake, e.g. the user's `continue`), a compaction, an SA/Workflow batch dying or returning compromised —— gets its own `[TS]` block when detected, naming the affected scope and the recovery/redo action; the Sprint Report's Interruptions tally is drafted from these blocks.
 - **Append-only, NEVER overwrite** —— every write adds a new `[TS]`-headed block (one TS per block, not per line). The growing stack of blocks IS the log; appending (vs overwriting) avoids clobbering earlier state and preserves the timeline.
 - **TS** = `TZ='Australia/Sydney' date +"%Y%m%d%H%M"` —— TS deltas reveal how long each action took (retrospective value).
 - **Static header** (top of file, written once): `Sprint Log [start_TS]` (append ` #quick` only if that mode was prompted), then `GOAL: <one-liner>` and `TASKS: T01, T02, … Tnn` (a one-liner key each) —— these rarely change, so don't repeat them in blocks unless necessary.
@@ -109,6 +93,24 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 - **Recovery read** = the LAST block gives current `STATUS` + `NEXT` (resume point); skim the rest for the full assumption set + every compaction event (the Sprint Report needs both).
 - **Keep lean**, esp. under `#quick` —— headline + `STATUS` + `NEXT` each block; `ASSUME` / `BOUNDARY` only when they actually occur.
 - **Relation to Sprint Report**: the Sprint Report (on return) is the human-facing distillation of the slog —— its latest `STATUS` plus the assumptions and compaction events logged along the way.
+
+---
+
+## Sprint Report (on return; strictly all #numbered)
+
+**Heading** —— state the span + derived duration: `Sprint Report ([start_TS]–[report_TS]) · ran ~Xh Ym` (start = slog filename TS; report = now).
+
+**Placement** —— the Report ALWAYS lives in `response_` (or a separate file if ≥ 1,000w), NEVER in an output/deliverable file. Assumptions *alone* may ALSO be recorded in a NON-deliverable output file —— per § Overriding Other Confirmation Gates —— so future CC editing that material sees what was assumed and why.
+
+So I can resume instantly, capture:
+
+- **Done** —— tasks completed, with the files produced.
+- **Assumed** —— every working assumption made to push through (not only blockers cleared by prediction): each QB raised in `<thinking>` with my predicted answer, plus any interpretive / methodological / scope call (e.g. an assumed `#synthesise` objective), and what was built on each. Surface FIRST any assumption that would invalidate downstream work if wrong, so I can catch it at a glance.
+- **Interruptions** —— EVERY interruption experienced during the sprint: compactions, sesL/usage-limit hits (incl. each wake via the user's `continue`), SAs that died or returned compromised/partial results, crashes —— each w/ when + how recovery went + what scope was affected/redone. State the TOTAL COUNT and the times. Each is a risk that may have compromised work, including earlier tasks —— flag anything potentially affected; never silently omit one.
+- **Planned, not executed** —— critical/untracked tasks deferred per the caveat, with their plans.
+- **Open** —— anything still needing me, priority-tagged (🔴 blocking / 🟡 important / 🟢 nice-to-have).
+
+**Draft from the `slog`, not solely from the context window** —— a compaction you may not even realise occurred could have dropped events the slog still holds; treat the slog as ground truth for this report.
 
 ---
 
