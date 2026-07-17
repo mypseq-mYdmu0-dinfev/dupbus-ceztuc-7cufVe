@@ -303,9 +303,9 @@
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
-- 9.05. Turn-End Push —— after all create/edit works done, check uncommitted changes on worked repo(s), i.e. EVERY repo touched this turn (a session working in one repo but editing another must push BOTH):
-  - 9.05.1. Commit name: ≤8w summary if ≤5 files changed, else `response_[TS].md`
+- 9.05. Turn-End Push:
+  - 9.05.1. Commit name: ≤8w summary; Scope: all touched repo(s)
   - 9.05.2. ONLY this turn's CC changes (± this turn's `query_`) → commit + push
   - 9.05.3. Ditto + user changes on OTHER files → commit + push CC-touched files only
-  - 9.05.4. User changes on CC-touched files (extremely rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
-  - 9.05.5. ONE return per turn: emit the §3.2 declaration batch ONCE, only at full completion, w/ ONE commit+push per worked repo; interim state lives in the slog, never interim declarations; ONLY when nearing compaction/context limits, mid-turn checkpoint commits (w/o declarations) are allowed to protect work
+  - 9.05.4. User changes on CC-touched files (rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
+  - 9.05.5. ONE commit per turn(per touched repo: never interim commit(s), UNLESS nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
