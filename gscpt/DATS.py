@@ -7,7 +7,7 @@ Run:  python3 DATS.py [--dry-run|-n]
   (no file-type argument — all three types are processed every run.)
 
 Scanned roots (see SCAN_DIRS): the default repo's sessions/ and
-seek/investigation/, plus AJAP_repo's AJAP_inv/ — same rules in all roots.
+seek/investigation/, plus AJAP_repo's inv/ — same rules in all roots.
 
 Date-Added method (matches DAMF.py): setattrlist(ATTR_CMN_ADDEDTIME) moves
 Finder's catalog "Date Added", and a kMDItemDateAdded xattr keeps Spotlight/mdls
@@ -38,7 +38,7 @@ REPO = "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
 AJAP_REPO = "/Volumes/FURY 2TB/Fury Documents/GitHub/AJAP_repo"
 FOLDERS = ["sessions", "seek/investigation"]          # relative to REPO (legacy)
 SCAN_DIRS = [os.path.join(REPO, f) for f in FOLDERS] + [
-    os.path.join(AJAP_REPO, "AJAP_inv"),              # #inv comms live here now
+    os.path.join(AJAP_REPO, "inv"),                   # #inv comms live here now
 ]
 CONFIRM_DIR = os.path.join(REPO, "gscpt")
 TYPES = ["query", "close", "wrap"]  # response is intentionally never processed

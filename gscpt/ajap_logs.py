@@ -21,7 +21,7 @@ USAGE
    NOTE: macOS screenshot filenames on a line are still normalised into the
    12-digit-TS form first (legacy convenience).
 2. Job data comes from the ledger
-   (AJAP_repo/AJAP_code/runtime/ledger.db, read-only): every row with outcome
+   (AJAP_repo/scripts/runtime/ledger.db, read-only): every row with outcome
    Applied / Skipped / Pending, bucketed by its processed timestamp.
    Mirror*/LegacyImport/Void/AlreadyApplied rows are excluded by design
    (they are file moves or dedupe memory, not run activity).
@@ -48,7 +48,7 @@ import sys
 # =========================================================
 
 LEDGER_DB = Path(
-    "/Volumes/FURY 2TB/Fury Documents/GitHub/AJAP_repo/AJAP_code/runtime/ledger.db"
+    "/Volumes/FURY 2TB/Fury Documents/GitHub/AJAP_repo/scripts/runtime/ledger.db"
 )
 
 SCRIPT_DIR = Path(__file__).resolve().parent
