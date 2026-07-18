@@ -23,12 +23,12 @@ Identified by `Outcome: Pending` on Line 4. Saved for manual ops due to consulti
 - AR filename format: [Company]_[Role]_[TS].md
   - e.g. Dentons_BusinessAnalyst_202605091830.md = Business Analyst at Dentons
 - `find` AR in (incl. subfolders):
-  - `/seek/gcl/applied/` —— for applied/interview invite received
-  - `/seek/gcl/skipped/` —— for skipped; least possible
-  - `/seek/gcl/pending/`
+  - `/AJAP_repo/gcl/applied/` —— for applied/interview invite received
+  - `/AJAP_repo/gcl/skipped/` —— for skipped; least possible
+  - `/AJAP_repo/gcl/pending/`
     - for § PAR; `When received:` doesn't apply to you (`find` it)
     - "1st artefact" = `response_`
-    - "2nd artefact" = move PAR to `/seek/gcl/applied/` as `⏳_[original_filename]_[current_TS].md` → edit it accordingly → `Outcome: Applying`
+    - "2nd artefact" = move PAR to `/AJAP_repo/gcl/applied/` as `⏳_[original_filename]_[current_TS].md` → edit it accordingly → `Outcome: Applying`
     - Start from oldest unless told otherwise
     - Stop at each PAR completion
 
