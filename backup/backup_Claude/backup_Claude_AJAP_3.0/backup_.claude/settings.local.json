@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__Control_Chrome__list_tabs",
+      "mcp__Control_Chrome__get_page_content",
+      "mcp__Claude_in_Chrome__list_connected_browsers",
+      "mcp__Claude_in_Chrome__select_browser",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__get_page_text",
+      "mcp__Claude_in_Chrome__read_page",
+      "mcp__Claude_in_Chrome__tabs_create_mcp",
+      "WebSearch",
+      "mcp__Claude_in_Chrome__tabs_close_mcp"
+    ]
+  }
+}
