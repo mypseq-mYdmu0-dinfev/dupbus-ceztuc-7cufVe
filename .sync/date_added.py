@@ -9,7 +9,7 @@ CLI:
 
 Hook modes (stdin = Claude Code hook JSON). They capture a file's Date Added
 before an Edit/Write and restore it after, so editing a file under sessions/ or
-seek/investigation/ never shifts its Date-Added ordering. New files (no prior
+AJAP_repo/inv/ never shifts its Date-Added ordering. New files (no prior
 value) are left as-is. Always exit 0 so a tool call is never blocked.
   python3 .sync/date_added.py hook-capture   # wire to PreToolUse
   python3 .sync/date_added.py hook-restore   # wire to PostToolUse
@@ -19,7 +19,7 @@ import sys, ctypes, ctypes.util, struct, time, datetime, os, json, hashlib, temp
 ATTR_BIT_MAP_COUNT = 5
 ATTR_CMN_ADDEDTIME = 0x10000000
 libc = ctypes.CDLL(ctypes.util.find_library("c"), use_errno=True)
-SCOPED = ("/sessions/", "/seek/investigation/")
+SCOPED = ("/sessions/", "/AJAP_repo/inv/")  # (why: seek/ retired 202607181152; investigation → AJAP_repo/inv)
 STASH = os.path.join(tempfile.gettempdir(), "cc_da_stash")
 
 

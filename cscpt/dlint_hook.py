@@ -10,8 +10,8 @@ same file.
 
 Scope guard —— it acts ONLY on `response_`/`close_`/`wrap_` `.md` files (NOT
 `query_` = user's words, NOT `artefact_` = non-CC), so it can NEVER misfire on
-code scripts, deliverables, automations (`/seek/`), or anything else. FAIL-SAFE
-—— on ANY error or non-match it exits 0; it will never block on its own failure.
+code scripts, deliverables, or anything else. FAIL-SAFE —— on ANY error or
+non-match it exits 0; it will never block on its own failure.
 (Run, not read —— see README.)"""
 
 import sys
@@ -35,8 +35,9 @@ def main():
         k in base for k in ("response_", "close_", "wrap_")
     ):
         return 0
-    if "/seek/" in fp:            # AJAP automation —— never touch
-        return 0
+    # (why: seek/ retired 202607181152; this hook is wired only via this
+    # dupbus repo's own .claude/settings.json, so the old /seek/ exemption
+    # had no live target left — removed rather than repointed)
     if not os.path.isfile(fp):
         return 0
 
