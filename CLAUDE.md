@@ -215,7 +215,7 @@
 |---|---|
 | `google.md` | On personal email/calendar; OR `#job` mentioned |
 | `profile.md` | User's personal background needed |
-| `seek/context/pro_profile.md` | User's professional background needed |
+| `cp/career/pro_profile.md` | User's professional background needed |
 | `cic.md` | ANY CIC ops; OR research requires accuracy/recency |
 | `writing.md` | ANY deliverables; OR "casual"/"whatsapp" mentioned |
 | `coding.md` | Creating/editing ANY script/pcmd (e.g. in `universal/`) |

@@ -4,7 +4,7 @@
 
 1. Unconditionals (READ NOW):
 - 1.1. `career/CP_notes.md`
-- 1.2. `seek/context/pro_profile.md`
+- 1.2. `career/pro_profile.md`
 - 1.3. `universal/writing.md`
 2. Format: `[alias]` `[path]` `[descr]`
 - 2.1. Read local files directly (no GH fetch)
@@ -25,7 +25,7 @@ CP_notes.md
 Purpose & remarks of this CP.
 
 pro_profile.md
-`seek/context/pro_profile.md`
+`career/pro_profile.md`
 Professional profile; read files below for details if needed.
 
 ---
@@ -33,11 +33,11 @@ Professional profile; read files below for details if needed.
 ## Prompts
 
 gcl.md
-`seek/context/gcl.md`
+`career/gcl.md`
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
-`seek/context/ccl.md`
+`career/ccl.md`
 CCL requirements for consulting job applications; built upon GCL.
 
 job.md
@@ -57,7 +57,7 @@ Read when `#int`.
 ## ATS Resumes
 
 "ATS Resumes"
-`seek/context/culous_yu_resume_ats.md`
+`career/culous_yu_resume_ats.md`
 Combines all 5 variants below.
 
 "Consulting Resume"
@@ -89,15 +89,15 @@ For all other roles; downplay bg to avoid over-qualification for entry-level job
 Full career history/details; not directly submitted but linked in ATS resumes as `Full Resume Available` hyperlink exc. General.
 
 "Portfolio"
-`seek/context/culous_yu_portfolio.md`
+`career/culous_yu_portfolio.md`
 Full case studies in PDF form; referred in all resumes.
 
 "My LinkedIn"
-`seek/context/culous_yu_linkedin.md`
+`career/culous_yu_linkedin.md`
 Snapshots of LinkedIn pages.
 
 "Virtual Presentation Script"
-`seek/context/virtual_presentation.md`
+`career/virtual_presentation.md`
 Transcript of "Virtual Presentation Video" below.
 
 ---

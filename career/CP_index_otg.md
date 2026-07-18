@@ -11,11 +11,11 @@
 ## Core Files
 
 CP_notes.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8b31d92206c66c078b684f35be62b590ac9caaba/career/CP_notes.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cp/career/CP_notes.md
 Purpose & remarks of this CP.
 
 pro_profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/be6054b0bfad14667418a667cac3d874b66c312c/seek/context/pro_profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cp/career/pro_profile.md
 My professional profile; fetch below files for details if needed.
 
 ---
@@ -23,15 +23,15 @@ My professional profile; fetch below files for details if needed.
 ## Prompts
 
 gcl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cf18bd52d472b683c2ff7c98a67d5ecf4536cfbe/seek/context/gcl.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cp/career/gcl.md
 GCL prompt & CL template/rules for non-consulting job applications.
 
 ccl.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/ac64ec4a6c2d80505b388e12be613ac62e8b954e/seek/context/ccl.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cp/career/ccl.md
 CCL requirements for consulting job applications; built upon GCL.
 
 job.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fe62dba4aa11b615a1b6c87f072a152769e6e230/career/job.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cp/career/job.md
 Fetch when `#job`.
 
 ---
@@ -39,7 +39,7 @@ Fetch when `#job`.
 ## ATS Resumes
 
 "ATS Resumes"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fab59f7567b81f3f1a794a6f0ca3b10b26b90237/seek/context/culous_yu_resume_ats.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cp/career/culous_yu_resume_ats.md
 Combines all 5 variants below.
 
 "Consulting Resume"
@@ -67,19 +67,19 @@ For all other roles; downplay bg to avoid over-qualification for entry-level job
 ## Career Docs
 
 "Full Resume"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/e4828fc595ca1e28d6961f7da18c4663b969eec2/career/culous_yu_resume_full.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cp/career/culous_yu_resume_full.md
 Full career history/details; not directly submitted in applications but linked in ATS resumes as `Full Resume Available` hyperlink exc. General to downplay.
 
 "Portfolio"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/16e44d0e9e73d6789aeeaed8a97b9d305c722069/seek/context/culous_yu_portfolio.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/16e44d0e9e73d6789aeeaed8a97b9d305c722069/cp/career/culous_yu_portfolio.md
 Full case studies in PDF form; referred in all resumes; cover slide shows: "Strategy ⋅ Analytics ⋅ Transformation ⋅ Implementation", hinting my focused approaches/practices.
 
 "My LinkedIn"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/16e44d0e9e73d6789aeeaed8a97b9d305c722069/seek/context/culous_yu_linkedin.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/16e44d0e9e73d6789aeeaed8a97b9d305c722069/cp/career/culous_yu_linkedin.md
 Snapshots of pages in filename.
 
 "Virtual Presentation Script"
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/16e44d0e9e73d6789aeeaed8a97b9d305c722069/seek/context/virtual_presentation.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/16e44d0e9e73d6789aeeaed8a97b9d305c722069/cp/career/virtual_presentation.md
 Transcript of "Virtual Presentation Video" below.
 
 ---
