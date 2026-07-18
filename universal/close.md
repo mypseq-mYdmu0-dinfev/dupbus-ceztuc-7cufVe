@@ -7,9 +7,10 @@
   - Also update end-of-range TS on Line 1 w/ [current_TS]
   - NEVER edit TS in filename, so user can track diff
 - Sprint Log —— if a `#sprint` ran this session, record its `slog_[TS].md` as a created non-comms file (§ Non-Comms Files; or § Coverage for Addendum) for future retrospection if needed.
-- After creating & declaring the file(s), run `gscpt/DATS.py`
+- ONLY AFTER after creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
+- The DATS override does NOT replace the batch declaration (per root c.md §3.1.6), do it first
 - Non-paired comms (applicable to both `## 4. Comms Files` & `- AD[XX].4. Comms Files`):
   - If not a clean pair (e.g. a lone comms file, or extra comms file(s) from one turn), provide FULL filename(s) (w/o path) on its own line, e.g. `[CP_]close_[TS].md`: descr.
 
