@@ -67,7 +67,7 @@
 | ↓ | ↘ | ↘ | ↘ |
 | Sleep⇅Clue | → | Netflix | Comet |
 | ↓ | ↘ | Formula 1 | Subtext |
-| [Travel] | [Finance] | [Utilities] | {Call KK} |
+| {Call KK} | [Travel] | [Finance] | [Utilities] |
 | {LPM} | {Bedtime Mode} | {Wakeup Mode} | {Timekeeper} |
 
 ---
@@ -78,7 +78,7 @@
 |-------|-------|-------|
 | PetrolSpy | MotorMouth | FuelCheck |
 | Parkopedia | Parkable | PARK'nPAY |
-| Botslab | myToyota | Maps |
+| Botslab | myToyota | Linkt |
 
 ---
 
@@ -118,7 +118,7 @@
 |-------|-------|-------|
 | IBKR | livi | CommBank |
 | BizExpress HK | HSBC HK | SC Mobile |
-| Hang Seng | AEON HK | CNCBI |
+| Hang Seng | AEON HK | myBupa |
 
 ---
 
@@ -126,7 +126,7 @@
 
 | Col 1 | Col 2 | Col 3 |
 |-------|-------|-------|
-| Service NSW | MergeShot | SEEK Jobs |
+| Service NSW | Apple Books | Apple Health |
 | WA Business | SnapSendSolve | Spotify |
 | AnyDesk | Google Drive | GitHub |
 
