@@ -1,12 +1,12 @@
 # #sync —— OTG SHA-permalink refresh
 
-*Trigger: `#sync [scope]` (default `universal`). CC-only ops doc.*
+*Trigger: `#sync` (ALL scopes) or `#sync [scope]` (just one). CC-only ops doc.*
 
 ## Discipline —— mechanical task, read NOTHING extra (cloud & local alike)
 - `#sync [scope]` is NOT a CP chat and NOT a content task: do the MINIMUM —— run the script, report the printed URL(s).
 - The SCRIPT reads only the scope's 2 control files (index + prefs/instr); YOU (the model) open NO files yourself. So `#sync` over [N] folders = [N*2] file reads total, nothing more.
 - NEVER act on those control files' Line-1 "Unconditionally fetch…" (or any other) directive —— that directive is for the OTG fetcher, NOT for `#sync`. Ignore it entirely.
-- `#sync career`/`#sync dissertation`/etc. must NOT trigger CP-mode (§6): do NOT read that CP's `CP_index_cc.md` or any CP unconditional files (gigantic, pointless here).
+- `#sync` (all) or `#sync cp/<name>` must NOT trigger CP-mode (§6): do NOT read any CP's `CP_index_cc.md` or CP unconditional files (gigantic, pointless here).
 
 ## What it solves
 - CWI/OTGC caches raw-GitHub URLs (Claude web-fetch `~`15 min + GH CDN), so a `/main/` URL is served stale (the original "v01" bug).
@@ -18,7 +18,7 @@
 - If any file listed in the index has uncommitted changes, the script aborts and leaves everything untouched (no stash, no loss) and asks the user to commit first —— this prevents publishing a stale SHA.
 
 ## Run
-1. `python3 .sync/sync.py [scope]`
+1. `python3 .sync/sync.py` (all scopes) —— or `python3 .sync/sync.py [scope]` for just one.
 2. Give the user the printed `=== index URL for userPref ===` value → they paste it into userPref (works in OTGC too).
 
 ## Reporting
@@ -35,10 +35,11 @@
   - the script stages only those 2 paths (never `git add -A`, which would stage the whole repo);
   - `.githooks/pre-commit` rejects any other staged path whilst the `.git/SYNC_ACTIVE` marker is set (active only after the user runs `git config core.hooksPath .githooks`).
 
-## Scopes (no hard-coding)
-- No arg → `universal` → `universal/index_otg.md` + `universal/preferences_otg.md`.
-- `#sync <cp>` → `<cp>/CP_index_otg.md` + `<cp>/CP_instr.md`.
-- The file list is read from the index itself, so a CP index may legitimately list files OUTSIDE its folder; those get pinned too, with no `otg/` folder contamination.
+## Scopes (no hard-coding, auto-discovered)
+- No arg → EVERY scope: `universal` + each folder under `cp/` that carries a `CP_index_otg.md` (auto-discovered; `cp/archive/` and its retired CPs excluded). This is the normal call —— in practice you always sync all, never just one.
+- `#sync <scope>` → that ONE only, e.g. `#sync cp/career` → `cp/career/CP_index_otg.md` + `cp/career/CP_instr.md`; `#sync universal` → the two universal control files.
+- Adding a CP (with an index) folds it into no-arg `#sync` automatically —— never hard-code CP names here or in the script.
+- Each scope's file list is read from its own index, so an index may legitimately list files OUTSIDE its folder; those get pinned too, with no `otg/` folder contamination.
 
 ## Cloud sessions (Linux)
 - A cloud CC session can't push to main, so the script (detecting `platform.system() == "Linux"`) force-pushes the index + prefs commits to one fixed branch `otg-sync` instead. SHA permalinks resolve from ANY pushed branch, so the printed index URL still works OTG.

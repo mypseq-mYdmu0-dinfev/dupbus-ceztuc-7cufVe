@@ -190,7 +190,7 @@
 
 ## 6. Claude Project (CP)
 
-- 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/backup/`, `/temp/`, `/automator/` —— that contains a `CP_index_cc.md`
+- 6.1. A CP is any folder directly under `cp/` —— EXCEPT `cp/archive/`, whose OWN children are CPs too but retired/legacy (not actively used; still workable in the rare case one is needed). No marker file required: presence in `cp/` alone makes a folder a CP (a simple CP may hold neither `CP_index_cc.md` nor `CLAUDE.md`).
 - 6.2. Identify as a CP session when any of the following applies:
   - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
   - 6.2.2. User declares it; or CC suggests & user confirms
@@ -198,11 +198,11 @@
 - 6.3. Once identified as a CP chat:
   - 6.3.1. All files (incl. `query_`) use the CP prefix, except special output (§3.7)
   - 6.3.2. If any files since (not just after) `query_` triggering CP not prefixed: rename → declare
-  - 6.3.3. Immediately read the CP's `CP_index_cc.md` (and any unconditional files it directs) if not already read this session; include them in either §5.3/§5.4 list after post-compaction
+  - 6.3.3. Immediately read the CP's `CP_index_cc.md` (and any unconditional files it directs) IF PRESENT (a simple CP may have none) & not already read this session; include them in either §5.3/§5.4 list after post-compaction
   - 6.3.4. Reminder: when prompted `#close` (i.e. saw close.md), mind the additional file
-- 6.4. Each CP folder has a `CLAUDE.md` that mandates (at minimum):
+- 6.4. A CP folder MAY have a `CLAUDE.md`; when present it mandates (at minimum):
   - 6.4.1. Read the root CLAUDE.md (this file)
-  - 6.4.2. Read the CP's `CP_index_cc.md` via local path (never via GH)
+  - 6.4.2. Read the CP's `CP_index_cc.md` (if any) via local path (never via GH)
 
 ---
 

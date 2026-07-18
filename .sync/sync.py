@@ -39,13 +39,13 @@ def sha_of(path):
     return s
 
 
-def main():
-    scope = sys.argv[1] if len(sys.argv) > 1 else "universal"
+def sync_scope(scope):
     index_rel, prefs_rel = resolve_scope(scope)
     index_path = os.path.join(ROOT, index_rel)
     prefs_path = os.path.join(ROOT, prefs_rel)
     if not os.path.exists(index_path):
-        sys.exit(f"no index for scope '{scope}': {index_rel} not found")
+        print(f"[{scope}] no index ({index_rel}) —— skipped.")
+        return
 
     # Cloud clones are often SHALLOW -> per-file `git log` collapses to the shallow-boundary
     # commit, breaking idempotency & true per-file SHAs. Unshallow first (cloud only, best-effort).
@@ -115,11 +115,38 @@ def main():
 
     if pushed:
         target = f"branch '{CLOUD_BRANCH}' (cloud)" if IS_CLOUD else "main"
-        print(f"Pushed to {target}.")
-        print("=== index URL for userPref ===")
+        print(f"[{scope}] Pushed to {target}.")
+        print(f"=== [{scope}] index URL for userPref ===")
         print(index_url)
     else:
-        print(f"NO CHANGE: '{scope}' URLs unchanged —— do NOT report a URL for this scope.")
+        print(f"[{scope}] NO CHANGE: URLs unchanged —— do NOT report a URL for this scope.")
+
+
+def discover_scopes():
+    """universal + every CP folder directly under cp/ that carries a
+    CP_index_otg.md. cp/archive/ (and its retired-CP children) are excluded —
+    archived CPs aren't kept OTG-fresh. No CP names are hard-coded: adding a CP
+    with an index folds it into #sync automatically."""
+    scopes = ["universal"]
+    cp_dir = os.path.join(ROOT, "cp")
+    if os.path.isdir(cp_dir):
+        for d in sorted(os.listdir(cp_dir)):
+            if d == "archive":
+                continue
+            if os.path.exists(os.path.join(cp_dir, d, "CP_index_otg.md")):
+                scopes.append(f"cp/{d}")
+    return scopes
+
+
+def main():
+    # explicit scope -> just that one; no arg -> universal + ALL cp/ CPs.
+    if len(sys.argv) > 1:
+        sync_scope(sys.argv[1])
+        return
+    scopes = discover_scopes()
+    print("#sync ALL scopes:", ", ".join(scopes))
+    for s in scopes:
+        sync_scope(s)
 
 
 if __name__ == "__main__":
