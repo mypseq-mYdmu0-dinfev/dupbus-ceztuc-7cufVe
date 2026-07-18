@@ -9,6 +9,10 @@ destination, flattened --- subfolder structure is NOT preserved, and the now-
 empty source subfolders are left behind untouched (never auto-deleted; Void
 Rule applies to the user, not to folders left empty by a move).
 
+Noise files (SKIP_NAMES, e.g. `.DS_Store`) are silently excluded from every
+move --- they're never tracked by git anyway, so including them just breaks
+the generated `.sh`'s `git mv` step.
+
 USAGE
 -----
 Run:  python3 nscpt/git_move_batch.py
@@ -69,6 +73,8 @@ import subprocess
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.dirname(HERE)
+
+SKIP_NAMES = {".DS_Store"}
 
 TEMPLATE = """# Batch Moving {ts}
 
@@ -136,15 +142,17 @@ def validate(from_lines, to_lines):
 
 
 def collect_files(from_lines):
-    """Flatten: folders contribute every file found inside (any depth)."""
+    """Flatten: folders contribute every file found inside (any depth), skipping SKIP_NAMES."""
     files = []
     for src in from_lines:
         if os.path.isfile(src):
-            files.append(src)
+            if os.path.basename(src) not in SKIP_NAMES:
+                files.append(src)
         else:
             for root, _dirs, names in os.walk(src):
                 for name in names:
-                    files.append(os.path.join(root, name))
+                    if name not in SKIP_NAMES:
+                        files.append(os.path.join(root, name))
     return files
 
 
