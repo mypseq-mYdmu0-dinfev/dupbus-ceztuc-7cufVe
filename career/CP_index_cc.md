@@ -128,11 +128,3 @@ Pre-AU career narrative, personal profile, and 3 key STAR incidents.
 "MBA Learnings"
 `career/MGTK737_Theories_Frameworks.txt`
 Essence of "Developing as a Manager and Leader" module (Grade A).
-
----
-
-## CCL Samples
-
-- Everything in `career/CCL_Archive`
-- Filename format: `CL_[CompanyName]_[TS].txt`
-- Note: reference tone/style/facts if applicable; see gcl.md/ccl.md for latest instr
