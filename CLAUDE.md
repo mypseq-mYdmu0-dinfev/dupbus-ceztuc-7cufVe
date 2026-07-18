@@ -9,10 +9,9 @@
 ## 1. Initiation
 
 - 1.1. Session Environment —— BEFORE anything else, run `uname -s`. `Linux` → CLOUD session: still read everything as usual (so the comms system is understood), but OVERRIDE the no-chat-text mandate (§3.1–§3.2) —— put the substantive reply directly in chat, ultra-concise, and generate NO **comms** files (§3.3); `#sync` edits to index/prefs files and any explicitly-requested code/deliverables stay allowed. Still emit the `✅`/`➡️` declarations. Assume a single turn (usually just `#sync [scope]`); prefix the reply with `☁️ **Cloud Mode**`. Any OTHER result (e.g. `Darwin`, the local Mac) → local session: follow all sections below normally. (Default-safe: only an explicit `Linux` triggers chat-mode, so a local session can never misidentify as cloud.)
-- 1.2. At session start OR when root folder is added, before generating anything (regardless of msg content; if working directory is `/seek/`, STOP NOW), read (in order) **Unconditionals**:
-  - 1.2.1. `dupbus-ceztuc-7cufVe/CLAUDE.md` —— this file
-  - 1.2.2. `universal/glossary.md` —— terminology & definitions
-  - 1.2.3. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
+- 1.2. At session start OR when root folder is added, before generating anything (regardless of msg content), read (in order) **Unconditionals**:
+  - 1.2.1. `universal/glossary.md` —— terminology & definitions
+  - 1.2.2. `universal/numbered.md` —— format protocol for ALL non-code responses >100w
 - 1.3. Declare in chat (per §3.2.1) w/ other reads (NO exception) on a single line
 - 1.4. Monthly Reminder (only once per session; silent process w/ NO chat text)
   - 1.4.1. Check current month's folder (`sessions/[YYYY]/[YYYYMM]/`) has ≥5 files
@@ -83,11 +82,11 @@
   - 3.1.6. I/O Declarations (§3.2.1–3): batched IN ORDER at response end (after all actions); e.g.:
 
 ```
-✅ `career/CP_notes.md`, `context/gcl.md`
+✅ `career/CP_notes.md`, `cscpt/dlint.py`
 ⇠ `202605/career_query_202605300226.md`
 ⇠ `202605/close_202605300023.md`
 ➡️ `202605/career_response_202605300226.md`
-➡️ `seek/.claude/settings.json`
+➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
 ```
 
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
@@ -191,7 +190,7 @@
 
 ## 6. Claude Project (CP)
 
-- 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/seek/`, `/backup/`, `/temp/`, `/automator/` —— that contains a `CP_index_cc.md`
+- 6.1. A CP is any folder directly under root —— except `/universal/`, `/sessions/`, `/backup/`, `/temp/`, `/automator/` —— that contains a `CP_index_cc.md`
 - 6.2. Identify as a CP session when any of the following applies:
   - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
   - 6.2.2. User declares it; or CC suggests & user confirms
