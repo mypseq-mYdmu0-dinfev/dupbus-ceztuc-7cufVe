@@ -612,21 +612,19 @@ Alltech
 
 ### User Reply
 
-Draft, awaiting user send.
+On 18 Jul 2026, at 19:35, c@culousyu.com wrote:
 
-Dear Elena,
+Hello Elena,
 
-Thank you for letting me know, and for your generous words about the interviews and the assignment.
+Thank you for letting me know, and for your generous words about the interviews and the assignment. I understand a decision like this comes down to fine margins across a strong field. I genuinely valued the process, not least the candour running through it.
 
-I am naturally disappointed, though I understand a decision like this comes down to fine margins across a strong field. I genuinely valued the process, not least the candour running through it.
-
-I am currently working through my MBA dissertation ahead of graduation later this year, alongside a few ongoing advisory commitments, so I will hold off on the coffee for now, though I would be glad to reconnect once things settle.
+I was coincidentally occupied by my advisory commitments, as some key personnel are departing, so I will hold off on the coffee for now, though I would be glad to reconnect once things settle.
 
 If you are able to share it, I would appreciate a little context on where I fell short against the other finalists, purely so I can sharpen for future opportunities.
 
 Thank you again for the experience, and for keeping in touch. I wish Alltech continued success.
 
-Warm regards,
+Warm Regards,
 Culous
 
 ---
