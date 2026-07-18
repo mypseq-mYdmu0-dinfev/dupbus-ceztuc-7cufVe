@@ -35,11 +35,11 @@
 - Full Driver's License: Yes (Manual)
 - Email (if asked): culousyu@gmail.com (NEVER use c@CulousYu.com despite in resumes)
 - Availability to start working = current_TS + 72h + 1 week → next Monday (check my calendar)
-- Anything else: read `seek/context/ajap.md` § AJAP Handling Notes
+- Anything else: dispatch SA (never by yourself) to selectively read `AJAP_repo/protocols/playbook.md` by searching exact & adjacent keywords (avoid reading in full)
 
 ## AR output
 - Outputs go to the job's AR (in place), never `response_`.
-- Don't read `seek/CLAUDE.md`; if already, completely disregard.
+- Don't read `AJAP_repo/CLAUDE.md` (repeated)
 - NEVER dup AR or edit AR filename, so user can track diff.
 - Append: `## 7. Engagements` → `### Employer Reply` + `### User Reply` (FL1&2) OR `### Additional Questions` + `### User Answers` (FL3).
 - FL3 only: Immediately UNDER the `### Additional Questions` heading line, print **true URL** —— the CIC-opened tab's URL, NOT the long email link —— so open tabs map to ARs.

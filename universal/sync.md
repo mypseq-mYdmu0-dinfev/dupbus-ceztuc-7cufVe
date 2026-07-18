@@ -38,7 +38,7 @@
 ## Scopes (no hard-coding)
 - No arg → `universal` → `universal/index_otg.md` + `universal/preferences_otg.md`.
 - `#sync <cp>` → `<cp>/CP_index_otg.md` + `<cp>/CP_instr.md`.
-- The file list is read from the index itself, so a CP index may legitimately list files OUTSIDE its folder (e.g. `seek/context/*`); those get pinned too, with no `otg/` folder and no `seek/` contamination.
+- The file list is read from the index itself, so a CP index may legitimately list files OUTSIDE its folder; those get pinned too, with no `otg/` folder contamination.
 
 ## Cloud sessions (Linux)
 - A cloud CC session can't push to main, so the script (detecting `platform.system() == "Linux"`) force-pushes the index + prefs commits to one fixed branch `otg-sync` instead. SHA permalinks resolve from ANY pushed branch, so the printed index URL still works OTG.

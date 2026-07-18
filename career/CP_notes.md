@@ -6,7 +6,7 @@
 This CP ("Career") is for anything related to work: resume, cover letter (CL), interview, pitch, etc. Always use confident language & powerful proactive verbs to highlight relevant skills/experience in deliverables. Never use "I believe/feel/think".
 
 ## AJAP (Agentic Job Application Programme)
-Fully autonomous CC agent that scans job cards, researches firms, scores roles, drafts CLs, and submits job applications via CIC — no user input; runs indefinitely; based on GCL.
+Fully autonomously scans job cards, researches firms, scores roles, drafts CLs, and submits job applications —— no user input; runs indefinitely; based on GCL/CCL. If necessary, read `AJAP_repo/README.md` for details.
 
 ## AR (Accountability Record)
 Per-job .md logs storing score breakdown + GCL outputs.

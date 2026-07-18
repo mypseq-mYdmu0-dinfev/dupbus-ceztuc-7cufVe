@@ -5,8 +5,8 @@
 ---
 
 ## 0. Scope & Files
-- 0.1. Working (enriched) AR lives in `seek/interviews/g/` (general roles) or `seek/interviews/c/` (consulting); filename TS = the (first) interview time. The pristine `Outcome: Applied` original stays in `gcl/applied/` (or `ccl/`) untouched, so AJAP re-application guards still hold.
-- 0.2. Read first: the role's AR, `seek/context/pro_profile.md`, and the apt resume variant. Use prior interview ARs in `seek/interviews/g|c/` as worked examples.
+- 0.1. Working (enriched) AR lives in `/int/g_int/` (general roles) or `/int/c_int/` (consulting); filename TS = the (first) interview time. The pristine `Outcome: Applied` original stays in `gcl/applied/` (or `ccl/`) untouched, so AJAP re-application guards still hold.
+- 0.2. Read first: the role's AR, `career/pro_profile.md`, and the apt resume variant. Use prior interview ARs in `g_int/`|`c_int/` as worked examples.
 - 0.3. Most outputs here are deliverables or durable records — mind `writing.md` for anything sent to the employer, and run `dlint.py` accordingly.
 
 ## 1. Phase A — Pre-Interview Research
@@ -101,7 +101,7 @@
 
 ## 8. Output Files & Workflow
 - 8.1. After Phases A–D, produce 2 candidate-facing cue files for EVERY interview (only if invited; hold it if not yet), in that interview's `output/` subfolder (per `temp/README.md`): **`CHEATSHEET_[org].md`** and **`WIB_[org].md`**.
-- 8.2. Canonical record: the **Interview AR** (`seek/interviews/g|c/`) is the single source of truth and the ONLY file kept long-term (full research, the submitted CL —— valuable for future GCL refinement —— emails, trial-task summaries, transcript). Cheatsheet and WIB DERIVE from it.
+- 8.2. Canonical record: the **Interview AR** (`g_int/`|`c_int/`) is the single source of truth and the ONLY file kept long-term (full research, the submitted CL —— valuable for future GCL refinement —— emails, trial-task summaries, transcript). Cheatsheet and WIB DERIVE from it.
   - 8.2.1. Derivation does NOT limit them —— a cheatsheet/WIB may add framing, angles, or wording not in the AR.
   - 8.2.2. Back-propagate: if anything genuinely valuable surfaces in a cheatsheet/WIB (or from the user), fold it back into the AR for the record.
 - 8.3. **`CHEATSHEET_[org].md`** —— candidate's MUST-READ before the interview. 500–1000w (shorter is better). May repeat AR content; distil §5 plus the few §1 facts that matter. Throwaway.

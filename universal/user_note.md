@@ -1,1 +1,1 @@
-Rear to major `writing.md` changes, remember to manually mirror to `/seek/context/`
+Rear to major `writing.md` `numbered.md` changes, remember to manually mirror to `/AJAP_repo/protocols/mini_*.md`
