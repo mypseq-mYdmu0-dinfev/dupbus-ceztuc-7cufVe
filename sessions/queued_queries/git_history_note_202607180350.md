@@ -27,3 +27,8 @@
 - `git log --follow -- <new/path>` shows the pre-move history —— spot-check a few files per batch, incl. the smallest ones (most fragile).
 - GH's web file-history view applies its own rename detection; if GH shows a break but `--follow` locally does not, the history is intact —— GH's view is the weaker detector, not the truth.
 - Catch problems BEFORE pushing more work on top: a severed move can be redone cleanly only whilst it is the tip (reset, redo as move-only); once buried, repair needs history rewriting.
+
+## 6. `career/` is PARTIALLY DONE already —— do NOT re-migrate these
+- The AJAP #inv session already moved these INTO `cp/career/` (in-repo `git mv`, histories intact, dupbus commit `956ad90` on 202607180420s): the 7 live-context files (`pro_profile.md`, `gcl.md`, `ccl.md`, `culous_yu_resume_ats.md`, `culous_yu_portfolio.md`, `culous_yu_linkedin.md`, `virtual_presentation.md`) and the whole `seek/interviews/` tree → `cp/career/int/`.
+- These are the AJAP-related career files only; the REST of `cp/career/` (the wider career CP) remains yours to build.
+- So: treat `cp/career/{the 7 files, int/}` as already-placed —— never move them again (a second move over already-moved files is where history most easily severs).
