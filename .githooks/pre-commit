@@ -1,20 +1,42 @@
 #!/bin/sh
 # #sync guard (fail-safe). Restricts commits ONLY while the SYNC_ACTIVE marker
-# exists (i.e. during `python3 .sync/sync.py`). Your manual GH-Desktop commits
-# have no marker -> this exits 0 immediately and never interferes.
-#
-# ACTIVATE (you run this once, consciously):  git config core.hooksPath .githooks
-# If a crash ever leaves the marker behind and a normal commit is blocked,
-# delete: .git/SYNC_ACTIVE
+# exists (i.e. during `python3 .sync/sync.py`). Manual GH-Desktop commits have
+# no marker -> the allowlist block is skipped and the pairing check runs instead.
 MARKER="$(git rev-parse --git-dir)/SYNC_ACTIVE"
-[ -f "$MARKER" ] || exit 0
+if [ -f "$MARKER" ]; then
+  staged="$(git diff --cached --name-only)"
+  for f in $staged; do
+    if ! grep -qxF "$f" "$MARKER"; then
+      echo "pre-commit: #sync blocked — '$f' is not in the allowlist:"
+      cat "$MARKER"
+      exit 1
+    fi
+  done
+  exit 0
+fi
 
-staged="$(git diff --cached --name-only)"
+# No #sync marker: enforce response_/query_ pairing on normal commits.
+staged="$(git diff --cached --name-only --diff-filter=AM)"
 for f in $staged; do
-  if ! grep -qxF "$f" "$MARKER"; then
-    echo "pre-commit: #sync blocked — '$f' is not in the allowlist:"
-    cat "$MARKER"
-    exit 1
+  base="${f##*/}"
+  dir="${f%/*}"
+  [ "$dir" = "$f" ] && dir="."
+  # Match: optional CP prefix + response_ + 12-digit TS + .md
+  ts="$(printf '%s\n' "$base" | sed -n 's/^\(.*_\)\{0,1\}response_\([0-9]\{12\}\)\.md$/\2/p')"
+  [ -n "$ts" ] || continue
+  prefix="$(printf '%s\n' "$base" | sed -n 's/^\(\(.*_\)\{0,1\}\)response_[0-9]\{12\}\.md$/\1/p')"
+  sibbase="${prefix}query_${ts}.md"
+  sibling="${dir}/${sibbase}"
+  # PASS if sibling staged in this commit...
+  if printf '%s\n' "$staged" | grep -qxF "$sibling"; then
+    continue
   fi
+  # ...or already tracked.
+  if git ls-files --error-unmatch "$sibling" >/dev/null 2>&1; then
+    continue
+  fi
+  echo "pre-commit: orphaned response file '$f' has no sibling query."
+  echo "  expected: $sibling (staged in this commit, or already tracked)"
+  exit 1
 done
 exit 0
