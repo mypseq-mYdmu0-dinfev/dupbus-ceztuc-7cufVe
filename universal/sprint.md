@@ -98,7 +98,7 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 
 ## Sprint Report (on return; strictly all #numbered)
 
-**Heading** —— state the span + derived duration: `Sprint Report ([start_TS]–[report_TS]) · ran ~Xh Ym` (start = slog filename TS; report = now).
+**Heading** —— state the span + derived duration: `Sprint Report ([start_TS]–[report_TS]) · ran ~Xh Ym` (start = slog filename TS; `report_TS` = STAMP the `§ TS` date command output at the moment the report is finalised —— NEVER estimate/pre-fill it ahead of the closing action, the false-TS slip class).
 
 **Placement** —— the Report ALWAYS lives in `response_` (or a separate file if ≥ 1,000w), NEVER in an output/deliverable file. Assumptions *alone* may ALSO be recorded in a NON-deliverable output file —— per § Overriding Other Confirmation Gates —— so future CC editing that material sees what was assumed and why.
 
