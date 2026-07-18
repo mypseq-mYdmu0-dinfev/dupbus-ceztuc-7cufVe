@@ -6,7 +6,7 @@ Each file ... don't proceed. (same as userPref)
 
 - Fetch at every chat start & resolve all aliases below using `CP_index.md`:
 
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/89ca7b3e05cd38c5e6f8925177c1ec60b9c69f67/cp/dissertation/CP_index_otg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/307c22a0bdf8093ed65be1247445998edb9ab0bd/cp/dissertation/CP_index_otg.md
 
 - Except deliverables, all artefacts must be #numbered bullets (not prose) for easy read/reply
 
