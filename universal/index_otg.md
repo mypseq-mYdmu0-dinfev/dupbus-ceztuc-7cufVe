@@ -34,7 +34,7 @@ plan.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f8bfe18a1bd80cf795e6efb787fe5d1dfd2c3b29/universal/plan.md
 
 pro_profile.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/be6054b0bfad14667418a667cac3d874b66c312c/seek/context/pro_profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/956ad9060088a7234648cdfbf374cf1013757dcb/cp/career/pro_profile.md
 
 traveller.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a2584b9fb8ad9bf11b00e99dbe0b5e2ab36f805a/universal/traveller.md
