@@ -215,12 +215,12 @@
 
 | File | Condition |
 |---|---|
-| `google.md` | On personal email/calendar; OR `#job` mentioned |
+| `google.md` | On personal email/calendar, OR `#job` mentioned |
 | `profile.md` | User's personal background needed |
 | `cp/career/pro_profile.md` | User's professional background needed |
-| `cic.md` | ANY CIC ops; OR research requires accuracy/recency |
-| `writing.md` | ANY deliverables; OR "casual"/"whatsapp" mentioned |
-| `coding.md` | Creating/editing ANY script/pcmd (e.g. in `universal/`) |
+| `cic.md` | ANY CIC ops, OR research requires accuracy/recency; MA reads it too |
+| `writing.md` | ANY deliverables, OR "casual"/"whatsapp" mentioned; MA reads it too |
+| `coding.md` | Creating/editing ANY script/pcmd (e.g. in `universal/`); MA reads it too |
 | `branding.md` | Creating/editing ANY design/visual output, unless official template enforced |
 | `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
 | `shrink.md` | `shrink`/`summarise`/`synthesise`/`distil`/`condense` mentioned or involved |
