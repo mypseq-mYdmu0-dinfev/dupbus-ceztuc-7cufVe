@@ -190,7 +190,9 @@
 
 ## 6. Claude Project (CP)
 
-- 6.1. A CP is any folder directly under `cp/` —— EXCEPT `cp/archive/`, whose OWN children are CPs too but retired/legacy (not actively used; still workable in the rare case one is needed). No marker file required: presence in `cp/` alone makes a folder a CP (a simple CP may hold neither `CP_index_cc.md` nor `CLAUDE.md`).
+- 6.1. A CP is any folder directly under `cp/`
+  - 6.1.1. EXCEPT `cp/archive/`, whose OWN children are CPs too but retired/legacy (not actively used; still workable in the rare case one is needed)
+  - 6.1.2. No marker file required: presence in `cp/` alone makes a folder a CP (a simple CP may hold neither `CP_index_cc.md` nor `CLAUDE.md`)
 - 6.2. Identify as a CP session when any of the following applies:
   - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
   - 6.2.2. User declares it; or CC suggests & user confirms
