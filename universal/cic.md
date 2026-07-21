@@ -1,10 +1,16 @@
-# CIC —— Claude in Chrome
+# CIC Protocols
+
+## Definitions
 
 CIC = Claude in Chrome (Claude's connector/Chrome's extension), accessible via either:
 
 - **BCIC** = Browser-CIC, Chrome's sidebar chat; very rarely used
 - **CCIC** = Code-CIC, used by CC; the **default** means
 - CC: default CIC=CCIC; actively consider spawning SA to save context if feasible (judge; e.g. [SA briefing + SA return to main] < [direct CIC output to main])
+
+## Immediate Action
+
+If Chrome is not open when you read this file, you MUST open it now or SA(s) can't use CIC.
 
 ---
 
