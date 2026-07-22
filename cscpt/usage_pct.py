@@ -28,10 +28,21 @@ Safari), our ⌘R could refresh THEIR page and wipe work. Zero-dep mitigation
 (no pyobjc, so no pid-targeted posting here): before EACH keystroke, verify
 the frontmost process really is "Claude Web"; if not, re-activate + short
 wait + re-check (up to 3); still wrong → that keystroke is NOT fired and the
-attempt fails safely. A tiny check→keystroke TOCTOU window remains — the
-AJAP sibling closes even that via Quartz CGEventPostToPid. Additionally a
-pre-run dialog (3 s auto-continue; Cancel / Defer 1 min) warns the user to
-pause typing; `--no-dialog` skips it for scripted callers.
+attempt fails safely. A tiny check→keystroke TOCTOU window remains (by
+physics — a check can never be atomic with the act it gates) — the AJAP
+sibling closes even that via Quartz CGEventPostToPid. Additionally a pre-run
+dialog (15 s auto-continue; Cancel / Defer 1 min) warns the user to pause
+typing; `--no-dialog` skips it for scripted callers.
+
+GUARD FIX (user 202607230551): the frontmost guard used to self-calibrate —
+sample System Events' frontmost-process NAME ~0.4 s after OUR OWN activate
+and remember it as the target, because the PWA's real process name is NOT
+"Claude Web" (live find 202607222359). Live-caught flaw: a SLOW activation
+means that 0.4 s sample lands on whatever the user happens to be in at that
+moment — their own foreground app — the guard then calibrates to THAT and
+fires keystrokes there (the user watched it ⌘A his VS Code window). Fixed by
+asking "Claude Web" itself for its own frontmost property directly — no name
+to guess, nothing to calibrate, no window for a slow activation to poison.
 
 USAGE:
     python3 cscpt/usage_pct.py            # human line, exit 0 ok / 1 fail
@@ -65,38 +76,20 @@ def _osa(*lines: str) -> bool:
     return subprocess.run(args, capture_output=True, text=True).returncode == 0
 
 
-_TARGET_PROC = {"name": None}    # the PWA's System Events process name is
-                                 # NOT "Claude Web" (live find 202607222359) —
-                                 # calibrate to whatever is frontmost right
-                                 # after OUR OWN activate succeeds
-
-
-def _frontmost_name() -> str:
-    r = subprocess.run(
-        ["osascript", "-e",
-         ("tell application \"System Events\" to get name of first application "
-          "process whose frontmost is true")],
-        capture_output=True, text=True)
-    return r.stdout.strip() if r.returncode == 0 else ""
-
-
 def _activate() -> None:
     _osa(f'tell application "{APP_NAME}" to activate')
-    time.sleep(0.4)
-    got = _frontmost_name()
-    if got:
-        _TARGET_PROC["name"] = got
-    time.sleep(0.4)
+    time.sleep(0.8)
 
 
 def _frontmost_ok() -> bool:
+    """Direct target query (guard fix, user 202607230551) — see module
+    docstring. Ask "Claude Web" ITSELF whether it considers itself frontmost;
+    no process-name guessing, no self-calibration to whatever happened to be
+    in front after our own activate."""
     r = subprocess.run(
-        ["osascript", "-e",
-         ('tell application "System Events" to name of first application '
-          "process whose frontmost is true")],
+        ["osascript", "-e", f'tell application "{APP_NAME}" to get frontmost'],
         capture_output=True, text=True)
-    want = _TARGET_PROC["name"] or APP_NAME
-    return r.returncode == 0 and r.stdout.strip() == want
+    return r.returncode == 0 and r.stdout.strip() == "true"
 
 
 def _keystroke(line: str) -> bool:
@@ -105,8 +98,9 @@ def _keystroke(line: str) -> bool:
     their work. So verify frontmost IS "Claude Web" before EACH keystroke;
     wrong app → re-activate + short wait + re-check (up to 3); still wrong →
     fire NOTHING and return False (the attempt fails safely). A tiny
-    check→keystroke TOCTOU window remains — closing it needs pid-targeted
-    event posting (pyobjc), which the AJAP sibling has; this stays zero-dep."""
+    check→keystroke TOCTOU window remains by physics (a check can never be
+    atomic with the act it gates) — closing it needs pid-targeted event
+    posting (pyobjc), which the AJAP sibling has; this stays zero-dep."""
     for _ in range(3):
         if _frontmost_ok():
             return _osa(line)
@@ -241,8 +235,8 @@ def read() -> dict:
 
 def _predialog() -> None:
     """Pre-run warning (user 202607222309): the script is about to drive the
-    frontmost app with keystrokes — give the user 3 s to pause typing before
-    the first activate. Auto-continues after 3 s ("giving up"); "Cancel"
+    frontmost app with keystrokes — give the user 15 s to pause typing before
+    the first activate. Auto-continues after 15 s ("giving up"); "Cancel"
     exits 1 quietly; "Defer 1 min" sleeps 60 then shows the dialog once more
     (the second showing's Defer just proceeds — no unbounded deferral).
     Skipped by --no-dialog for scripted callers. STANDALONE ONLY by design:
@@ -250,10 +244,10 @@ def _predialog() -> None:
     for shown in range(2):
         r = subprocess.run(
             ["osascript", "-e",
-             ('display dialog "usage_pct will drive Claude Web in 3s '
+             ('display dialog "usage_pct will drive Claude Web in 15s '
               '(⌘R + ⌘A/⌘C). Pause your typing." '
               'buttons {"Defer 1 min", "Cancel", "Run now"} '
-              'default button "Run now" giving up after 3')],
+              'default button "Run now" giving up after 15')],
             capture_output=True, text=True)
         if r.returncode != 0:       # "Cancel" errors osascript (-128) — quiet
             sys.exit(1)
