@@ -21,6 +21,7 @@ I'm away for an extended period; time is NOT the limiting factor. Utilise the wi
 - **Challenge** —— spawn an SA with just enough context (even deliberately less, for fresh unbiased eyes) to challenge / red-team a key decision or output from other perspectives; rectify/improve wherever its challenge genuinely helps
 - **Debate** —— for a hard call that benefits from sustained multi-turn, multi-perspective deliberation (more than single-SA Challenge can give), consider `#debate`: MA spawns role-debaters + an Observer SA that digests the exchange and self-closes on saturation or a token cap —— fully autonomous, hence `#sprint`-safe despite no "live" monitoring. Pick apt role counts; MA judges every call (close / add-a-debater / void-restart) herself.
 - Spend the surplus time widening coverage and raising confidence, not merely finishing.
+- **Workflow (scripted SA orchestration)** —— for big HOMOGENEOUS fan-outs (audit sweeps, mass verification, judge/refuter panels) prefer the Workflow tool over hand-dispatched SAs: deterministic control flow, every SA call journaled, a limit-killed run RESUMES via `resumeFromRunId` (completed calls replay from cache). MANDATE wave-staging INSIDE the script —— bounded sequential batches, NEVER one all-at-once fleet (a sesL kills them together; partials are compromised per root CLAUDE.md §9.03.4). Judgement-gated stages (MA triage between waves) stay Agent-tool waves. Applies doubly under Ultracode.
 - Judge: in-scope vs out-of-scope, so time/effort won't be wasted.
 
 ---
