@@ -231,6 +231,7 @@
 | `branding.md` | Creating/editing ANY design/visual output, unless official template enforced |
 | `plan.md` | No `*_DevPlan.md` in CP but "dev plan"/"addendum" mentioned |
 | `shrink.md` | `shrink`/`summarise`/`synthesise`/`distil`/`condense` mentioned or involved |
+| `cscpt/README.md` | Getting ses%/wk%, or changing file "Dates" (e.g. Date Created) |
 
 - 7.3. General Trigger:
   - 7.3.1. `#[trigger]` → `universal/[trigger].md` → if found: MUST read first, unless told otherwise
@@ -297,17 +298,17 @@
 
 ## 9. Miscellaneous *(`9.[nn]` 2-digit to accommodate 9⁺ pts)*
 
-- 9.01. Changing file "Dates" (e.g. Date Created): read `cscpt/README.md` then `set_dates.py`
-- 9.02. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
-- 9.03. Spawning SA (Agent/Task tool):
-  - 9.03.1. Always explicitly tell "You're a sub-agent" in the prompt
-  - 9.03.2. If the SA runs on Fable (might switch to Opus mid-run), also mandate her to report (no guessing/inference) her own underlying model RIGHT BEFORE returning to MA
-  - 9.03.3. Actively use PROMPT CACHING to save tokens when multi-SAs share a common mandatory-context prefix (e.g. project basics, a shared spec, a file everyone must read first)
-    - 9.03.3.1. Don't give it to each SA separately if it can be given only once
-    - 9.03.3.2. Plain Agent-tool dispatch currently gets ZERO caching benefit (hardcoded off —— anthropics/claude-code#29966)
-    - 9.03.3.3. The win comes from CC's native session-FORK feature instead (a fork inherits/reuses the parent's already-cached prefix —— read that shared context ONCE in the parent, then fork per SA)
-    - 9.03.3.4. Trade-off to weigh, not a reason to skip it: a fork also carries the parent's conversation state/tools forward, unlike a clean-slate SA — case-by-case, but default TOWARDS using this when the token saving is meaningful
-  - 9.03.4. Limit-interrupted SAs (user 202607161616): when ANY dispatched SA (incl. Workflow agents) dies on a session/usage limit, its task is NOT done — on revival (e.g. a `continue` nudge, or the limit reset) RECOVER it: re-dispatch, or completely REDO the affected scope for safety (partial results may be compromised). A limit hit is NEVER an excuse for uncompleted/un-audited scope. Disregard a `continue` nudge ONLY when 100% certain everything possible is fully done.
+- 9.01. NEVER list all files in `[YYYYMM]/`; can be hundreds (token/context strain)
+- 9.02. Spawning SA (Agent/Task tool):
+  - 9.02.1. Always explicitly tell "You're a sub-agent" in the brief
+  - 9.02.2. If the SA runs on Fable (might switch to Opus mid-run), also mandate her to report (no guessing/inference) her own underlying model RIGHT BEFORE returning to MA
+  - 9.02.3. Actively use PROMPT CACHING to save tokens when multi-SAs share a common mandatory-context prefix (e.g. project basics, a shared spec, a file everyone must read first)
+    - 9.02.3.1. Don't give it to each SA separately if it can be given only once
+    - 9.02.3.2. Plain Agent-tool dispatch currently gets ZERO caching benefit (hardcoded off —— anthropics/claude-code#29966)
+    - 9.02.3.3. The win comes from CC's native session-FORK feature instead (a fork inherits/reuses the parent's already-cached prefix —— read that shared context ONCE in the parent, then fork per SA)
+    - 9.02.3.4. Trade-off to weigh, not a reason to skip it: a fork also carries the parent's conversation state/tools forward, unlike a clean-slate SA — case-by-case, but default TOWARDS using this when the token saving is meaningful
+  - 9.02.4. When ANY dispatched SA (incl. Workflow agents) dies on a session/usage limit, its task is NOT done —— on revival, RECOVER by re-dispatch, or completely REDO the affected scope for safety (partial results may be compromised) —— a limit hit is NEVER an excuse for uncompleted/un-audited scope
+- 9.03. Disregard a `continue` nudge ONLY when 100% certain everything possible is fully done
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
@@ -317,6 +318,6 @@
   - 9.05.3. Ditto + user changes on OTHER files → commit + push CC-touched files only
   - 9.05.4. User changes on CC-touched files (rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
   - 9.05.5. ONE commit per turn(per touched repo: never interim commit(s), UNLESS nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
-- 9.06. `/loop`/timed wakes:
+- 9.06. `/loop` or timed wakes:
   - 9.06.1. Use persistent Monitor sleep-loop (event line per interval, self-end on completion)
   - 9.06.2. NEVER CronCreate, which fires only on an idle REPL, so busy sessions starve it silently 

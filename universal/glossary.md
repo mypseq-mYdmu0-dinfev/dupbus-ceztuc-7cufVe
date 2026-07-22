@@ -79,6 +79,7 @@
 - wk = week(ly)
 - sesL = Anthropic's 5hr-session limit; resets in 290–300min once started
 - wkL = Anthropic's weekly limit; always resets on Mondays 9pm (SYD time)
+- ses% / wk% = sesL / wkL usage; 100% = sesL / wkL hit
 - override = exception to "no chat text" or other restrictions for that SINGLE turn only
 - deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
 - summon me = push an app notification by using `AskUserQuestion` tool (random Q if no QB)
