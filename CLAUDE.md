@@ -80,9 +80,6 @@
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
   - 3.1.5. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (see §3.1.6)
   - 3.1.6. I/O Declarations (§3.2.1–3): batched IN ORDER at response end (after all actions); e.g.:
-  - 3.1.7. CC: right AFTER §3.1.6's batch, mark a chapter titled `Turn [N]` (session chapter tool, harness-permitting; N = the turn count) —— keeps super-long sessions navigable; markers can't be removed once made, so mark ONLY at the true turn end, never mid-turn
-    - 3.1.7.1. HARD ORDER (user 202607222356, live slip): the §3.1.6 batch = the turn's FINAL chat text, the marker = the turn's FINAL action; emit NOTHING after the marker (no status/closing line —— any trailing output lands in the next chapter and breaks the boundary)
-
 ```
 ✅ `career/CP_notes.md`, `cscpt/dlint.py`
 ⇠ `202605/career_query_202605300226.md`
@@ -90,6 +87,13 @@
 ➡️ **`202605/career_response_202605300226.md`**
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
 ```
+  - 3.1.7. Right AFTER §3.1.6's batch, mark a chapter
+    - 3.1.7.1. Title: `Turn [N]` (session chapter tool, harness-permitting; N = the turn count)
+    - 3.1.7.2. Mark ONLY at the true turn end (can't be removed once made), never mid-turn
+    - 3.1.7.3. Clarifications on I/O Declarations & Chapter Marker:
+      - 3.1.7.3.1. The §3.1.6's batch = the turn's FINAL chat text
+      - 3.1.7.3.2. The marker = the turn's FINAL action
+      - 3.1.7.3.3. Avoid emitting anything after the marker, unless explicitly required
 
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
