@@ -35,7 +35,8 @@ import sys
 import time
 
 APP_NAME = "Claude Web"
-REFRESH_WAIT = 4.0          # ~2-5 s panel reload after ⌘R (user spec)
+REFRESH_WAIT = 10.0         # settle after ONE ⌘R before grabbing (user 202607221929)
+MAX_TRIES = 6               # refresh→wait→grab cycles, ~1 min total (user 202607221929)
 MAX_WINDOWS = 4             # rare multi-window case: cycle with ⌘` this many
 
 
@@ -54,6 +55,12 @@ def _activate() -> None:
 def _refresh() -> None:
     _osa('tell application "System Events" to keystroke "r" using command down')
     time.sleep(REFRESH_WAIT)
+
+
+def _deselect() -> None:
+    # collapse the ⌘A selection once grabbed — an all-blue page provokes the
+    # user's eyes (user 202607221929); ↓-arrow is a harmless caret collapse.
+    _osa('tell application "System Events" to key code 125')
 
 
 def _next_window() -> None:
@@ -131,20 +138,27 @@ def parse(text: str) -> dict:
 
 
 def read() -> dict:
-    """Full cycle: activate → per window (⌘R, wait, grab, parse) until the
-    panel's anchors appear; one extra ⌘R if it isn't 'just now' yet."""
+    """Full cycle (user 202607221929): per attempt exactly ONE ⌘R, wait
+    REFRESH_WAIT, grab, parse; retry only on failure, up to MAX_TRIES
+    (~1 min); deselect the ⌘A highlight once a grab succeeds. A window whose
+    FIRST grab shows no anchors is the wrong window — cycle to the next."""
     _activate()
     for _ in range(MAX_WINDOWS):
-        _refresh()
-        got = parse(_grab_text() or "")
-        if got["ses"] is not None or got["wk"] is not None:      # right window
-            lu = (got.get("last_updated") or "").lower()
-            if "just now" not in lu:            # not verifiably fresh — one retry
-                _refresh()
-                got = parse(_grab_text() or "") or got
-            got["ok"] = got["ses"] is not None and got["wk"] is not None
-            return got
-        _next_window()                          # wrong window — try the next
+        for attempt in range(MAX_TRIES):
+            _refresh()                          # ONE refresh per attempt
+            got = parse(_grab_text() or "")
+            anchors = got["ses"] is not None or got["wk"] is not None
+            if not anchors:
+                if attempt == 0:
+                    break                       # wrong window — next window
+                continue                        # transient bad grab — retry
+            fresh = "just now" in (got.get("last_updated") or "").lower()
+            complete = got["ses"] is not None and got["wk"] is not None
+            if (fresh and complete) or attempt == MAX_TRIES - 1:
+                _deselect()
+                got["ok"] = complete
+                return got
+        _next_window()                          # wrong window or tries spent
     return {"ses": None, "wk": None, "ses_reset": None,
             "last_updated": None, "ok": False}
 
