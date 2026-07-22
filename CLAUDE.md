@@ -310,3 +310,4 @@
   - 9.05.3. Ditto + user changes on OTHER files → commit + push CC-touched files only
   - 9.05.4. User changes on CC-touched files (rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
   - 9.05.5. ONE commit per turn(per touched repo: never interim commit(s), UNLESS nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
+- 9.06. `/loop`/timed wakes: implement via a persistent Monitor sleep-loop (event line per interval, self-end on completion), NEVER CronCreate —— cron fires only on an idle REPL, so busy sessions starve it silently (live-proven 202607152246 + 202607221249)
