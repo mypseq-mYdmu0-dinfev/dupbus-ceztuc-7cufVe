@@ -85,7 +85,7 @@
 ✅ `career/CP_notes.md`, `cscpt/dlint.py`
 ⇠ `202605/career_query_202605300226.md`
 ⇠ `202605/close_202605300023.md`
-➡️ `202605/career_response_202605300226.md`
+➡️ **`202605/career_response_202605300226.md`**
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
 ```
 
@@ -93,13 +93,14 @@
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
     - 3.2.1.1. All **non-comms** file(s) read, incl. passively via system file-change notifications
     - 3.2.1.2. NEVER incl. comms files (the 5 types in §3.3; belong to §3.2.2); not always .md
-    - 3.2.1.3. Group all reads into 1 line, unlike `⇠` `➡️` (per §3.2.3.2)
+    - 3.2.1.3. Group all reads into 1 line, unlike `⇠` & `➡️` (per §3.2.3.2)
   - 3.2.2. `⇠ `enclosing_folder/file.md``
     - 3.2.2.1. All **comms** file(s) read (not just `query_`, if applicable); .md only
     - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md) or anything under `/sessions/`
   - 3.2.3. `➡️ `enclosing_folder/file.md``
     - 3.2.3.1. ANY files created/edited, incl. both comms & non-comms; not always .md
     - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING, unlike `✅` (per §3.2.1.3)
+    - 3.2.3.3. Per §3.1.6, bold the main `response_` (better visibility; ONLY for `➡️`; ≤1 per turn)
   - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.5. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
 - 3.3. Comms File Naming:
