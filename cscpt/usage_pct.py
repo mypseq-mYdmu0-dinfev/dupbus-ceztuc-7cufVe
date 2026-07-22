@@ -58,9 +58,12 @@ def _refresh() -> None:
 
 
 def _deselect() -> None:
-    # collapse the ⌘A selection once grabbed — an all-blue page provokes the
-    # user's eyes (user 202607221929); ↓-arrow is a harmless caret collapse.
-    _osa('tell application "System Events" to key code 125')
+    # clear the ⌘A highlight once grabbed (user 202607221929). Live find
+    # 202607221947: arrow keys do NOT collapse a selection in a non-editable
+    # browser page (they scroll; the blue stays) — a final ⌘R is the reliable
+    # click-free deselect: the reload drops the selection and leaves the
+    # panel freshly rendered. Fire-and-exit; no settle needed.
+    _osa('tell application "System Events" to keystroke "r" using command down')
 
 
 def _next_window() -> None:
