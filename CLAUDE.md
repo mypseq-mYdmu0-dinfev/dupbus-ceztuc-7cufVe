@@ -80,6 +80,7 @@
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
   - 3.1.5. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (see §3.1.6)
   - 3.1.6. I/O Declarations (§3.2.1–3): batched IN ORDER at response end (after all actions); e.g.:
+  - 3.1.7. CC: right AFTER §3.1.6's batch, mark a chapter titled `Turn [N]` (session chapter tool, harness-permitting; N = the turn count) —— keeps super-long sessions navigable; markers can't be removed once made, so mark ONLY at the true turn end, never mid-turn
 
 ```
 ✅ `career/CP_notes.md`, `cscpt/dlint.py`

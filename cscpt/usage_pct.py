@@ -16,11 +16,29 @@ in the rare multi-window case) — NEVER a click. The user's clipboard is saved
 and restored. Freshness: it ⌘R-refreshes and waits for "Last updated: just
 now" (the ~30-60 s window where the numbers are trustworthy) before reading.
 
+SIBLING: `AJAP_repo/scripts/core/ajap_usage_pct.py` is the venv-bound twin of
+this script (same ⌘R/settle/⌘A+⌘C cycle + parser, plus OCR fallback + sampler
+wiring). Any fix or improvement here should be CONSIDERED for mirroring there,
+and vice versa. They stay separate BY DESIGN: this one must stay ZERO-DEP so
+any session/machine can run it on bare python3; the module gets pyobjc.
+
+KEYSTROKE SAFETY (user 202607222309 risk report): System Events keystrokes
+land on whatever app is FRONTMOST — if the user grabs focus mid-run (e.g.
+Safari), our ⌘R could refresh THEIR page and wipe work. Zero-dep mitigation
+(no pyobjc, so no pid-targeted posting here): before EACH keystroke, verify
+the frontmost process really is "Claude Web"; if not, re-activate + short
+wait + re-check (up to 3); still wrong → that keystroke is NOT fired and the
+attempt fails safely. A tiny check→keystroke TOCTOU window remains — the
+AJAP sibling closes even that via Quartz CGEventPostToPid. Additionally a
+pre-run dialog (3 s auto-continue; Cancel / Defer 1 min) warns the user to
+pause typing; `--no-dialog` skips it for scripted callers.
+
 USAGE:
     python3 cscpt/usage_pct.py            # human line, exit 0 ok / 1 fail
     python3 cscpt/usage_pct.py --json     # {"ses":100,"wk":12,"ok":true,...}
     python3 cscpt/usage_pct.py --ses      # just the ses integer (or "?")
     python3 cscpt/usage_pct.py --wk       # just the wk integer  (or "?")
+    python3 cscpt/usage_pct.py --no-dialog  # skip the pre-run warning dialog
 
 Falls back to nothing on failure (prints "?" / ok:false, exit 1) — it never
 guesses. If text-grab is unreadable, re-run, or check that "Claude Web" is
@@ -47,14 +65,62 @@ def _osa(*lines: str) -> bool:
     return subprocess.run(args, capture_output=True, text=True).returncode == 0
 
 
+_TARGET_PROC = {"name": None}    # the PWA's System Events process name is
+                                 # NOT "Claude Web" (live find 202607222359) —
+                                 # calibrate to whatever is frontmost right
+                                 # after OUR OWN activate succeeds
+
+
+def _frontmost_name() -> str:
+    r = subprocess.run(
+        ["osascript", "-e",
+         ("tell application \"System Events\" to get name of first application "
+          "process whose frontmost is true")],
+        capture_output=True, text=True)
+    return r.stdout.strip() if r.returncode == 0 else ""
+
+
 def _activate() -> None:
     _osa(f'tell application "{APP_NAME}" to activate')
     time.sleep(0.4)
+    got = _frontmost_name()
+    if got:
+        _TARGET_PROC["name"] = got
+    time.sleep(0.4)
 
 
-def _refresh() -> None:
-    _osa('tell application "System Events" to keystroke "r" using command down')
-    time.sleep(REFRESH_WAIT)
+def _frontmost_ok() -> bool:
+    r = subprocess.run(
+        ["osascript", "-e",
+         ('tell application "System Events" to name of first application '
+          "process whose frontmost is true")],
+        capture_output=True, text=True)
+    want = _TARGET_PROC["name"] or APP_NAME
+    return r.returncode == 0 and r.stdout.strip() == want
+
+
+def _keystroke(line: str) -> bool:
+    """Guarded keystroke (user 202607222309): System Events keystrokes land
+    on the FRONTMOST app — a stray ⌘R on the user's own browser could wipe
+    their work. So verify frontmost IS "Claude Web" before EACH keystroke;
+    wrong app → re-activate + short wait + re-check (up to 3); still wrong →
+    fire NOTHING and return False (the attempt fails safely). A tiny
+    check→keystroke TOCTOU window remains — closing it needs pid-targeted
+    event posting (pyobjc), which the AJAP sibling has; this stays zero-dep."""
+    for _ in range(3):
+        if _frontmost_ok():
+            return _osa(line)
+        _osa(f'tell application "{APP_NAME}" to activate')
+        time.sleep(0.5)
+    return False
+
+
+def _refresh() -> bool:
+    ok = _keystroke(
+        'tell application "System Events" to keystroke "r" using command down')
+    if ok:
+        time.sleep(REFRESH_WAIT)
+    return ok
 
 
 def _deselect() -> None:
@@ -63,25 +129,31 @@ def _deselect() -> None:
     # browser page (they scroll; the blue stays) — a final ⌘R is the reliable
     # click-free deselect: the reload drops the selection and leaves the
     # panel freshly rendered. Fire-and-exit; no settle needed.
-    _osa('tell application "System Events" to keystroke "r" using command down')
+    _keystroke(
+        'tell application "System Events" to keystroke "r" using command down')
 
 
 def _next_window() -> None:
     # ⌘` cycles windows WITHIN the frontmost app (key code 50 = the ` key).
-    _osa('tell application "System Events" to key code 50 using command down')
+    _keystroke(
+        'tell application "System Events" to key code 50 using command down')
     time.sleep(0.4)
 
 
 def _grab_text() -> str | None:
-    """⌘A+⌘C the frontmost window; save/restore the user's clipboard."""
+    """⌘A+⌘C the frontmost window; save/restore the user's clipboard. Each
+    keystroke is individually frontmost-guarded (the user could grab focus
+    between the ⌘A and the ⌘C)."""
     try:
         prev = subprocess.run(["pbpaste"], capture_output=True, text=True).stdout
     except Exception:
         prev = None
-    ok = _osa(
-        'tell application "System Events" to keystroke "a" using command down',
-        "delay 0.15",
-        'tell application "System Events" to keystroke "c" using command down')
+    ok = _keystroke(
+        'tell application "System Events" to keystroke "a" using command down')
+    if ok:
+        time.sleep(0.15)
+        ok = _keystroke(
+            'tell application "System Events" to keystroke "c" using command down')
     time.sleep(0.25)
     txt = None
     try:
@@ -148,7 +220,8 @@ def read() -> dict:
     _activate()
     for _ in range(MAX_WINDOWS):
         for attempt in range(MAX_TRIES):
-            _refresh()                          # ONE refresh per attempt
+            if not _refresh():                  # guard aborted — nothing was
+                continue                        # fired; count a failed attempt
             got = parse(_grab_text() or "")
             anchors = got["ses"] is not None or got["wk"] is not None
             if not anchors:
@@ -166,6 +239,30 @@ def read() -> dict:
             "last_updated": None, "ok": False}
 
 
+def _predialog() -> None:
+    """Pre-run warning (user 202607222309): the script is about to drive the
+    frontmost app with keystrokes — give the user 3 s to pause typing before
+    the first activate. Auto-continues after 3 s ("giving up"); "Cancel"
+    exits 1 quietly; "Defer 1 min" sleeps 60 then shows the dialog once more
+    (the second showing's Defer just proceeds — no unbounded deferral).
+    Skipped by --no-dialog for scripted callers. STANDALONE ONLY by design:
+    the AJAP sibling must stay prompt-free for unattended runs."""
+    for shown in range(2):
+        r = subprocess.run(
+            ["osascript", "-e",
+             ('display dialog "usage_pct will drive Claude Web in 3s '
+              '(⌘R + ⌘A/⌘C). Pause your typing." '
+              'buttons {"Defer 1 min", "Cancel", "Run now"} '
+              'default button "Run now" giving up after 3')],
+            capture_output=True, text=True)
+        if r.returncode != 0:       # "Cancel" errors osascript (-128) — quiet
+            sys.exit(1)
+        if "Defer 1 min" in r.stdout and shown == 0:
+            time.sleep(60)
+            continue
+        return
+
+
 def _fmt_reset(r) -> str:
     if not r:
         return "?"
@@ -174,6 +271,8 @@ def _fmt_reset(r) -> str:
 
 
 def main() -> int:
+    if "--no-dialog" not in sys.argv:
+        _predialog()
     got = read()
     ses = got["ses"] if got["ses"] is not None else "?"
     wk = got["wk"] if got["wk"] is not None else "?"
