@@ -31,10 +31,14 @@
 - 5.2. Holds ONLY scratch: oversized baselines, non-historic A/B versions (new pcmds with no git history), experiments. When unsure whether something belongs elsewhere, default it here —— no drawback.
 - 5.3. Before deleting anything here: commit + push → delete → commit + push, so a rare rescue stays recoverable from git.
 
-## 6. #wrap —— a CCSIM Job
-- 6.1. `#wrap` runs in a CCSIM session (SA fan-out over the month's `close_`).
-- 6.2. Gate: if the user reports context >50% full, suggest a fresh session first; ≤50%, proceed. (Threshold tunable —— calibrate on the first real wrap.)
-- 6.3. `wrap_` stays UNPREFIXED even here (it's repo-wide, not CCSIM-scoped) —— the §3.3.6 prefix exception.
+## 6. Backlog Sweep (do after EVERY #wrap → push first → update `wrap_`)
+- ##SA scan the month's comms (funnel approach: wrap→close→response→query) for EMERGENT cross-session patterns worth a CCSIM fix that no single `close_` already logged
+- Append any new ones to `backlog.md` (per §3); per-session items already self-registered by each `close_` (per `close.md`), so hunt PATTERNS, not un-logged flags
+- Surface `backlog.md`'s OPEN items (those without a `→ ✅ RESOLVED` line)
+  - For EACH open item, PROPOSE a concrete solution + rough effort
+  - This monthly sweep is what keeps the backlog from growing unbounded
+  - For large items (e.g. spanned ≥3 turns), suggest a dedicated session (context concerns)
+- Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries).
 
 ## 7. Comms Prefix
 - 7.1. CCSIM comms carry the `ccsim_` prefix: `ccsim_query_`, `ccsim_response_`, `ccsim_close_`.
