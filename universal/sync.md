@@ -39,6 +39,7 @@
 - No arg → EVERY scope: `universal` + each folder under `cp/` that carries a `CP_index_otg.md` (auto-discovered; `cp/archive/` and its retired CPs excluded). This is the normal call —— in practice you always sync all, never just one.
 - `#sync <scope>` → that ONE only, e.g. `#sync cp/career` → `cp/career/CP_index_otg.md` + `cp/career/CP_instr.md`; `#sync universal` → the two universal control files.
 - Adding a CP (with an index) folds it into no-arg `#sync` automatically —— never hard-code CP names here or in the script.
+- A `cp/` folder WITHOUT a `CP_index_otg.md` is still a CP, but CC-LOCAL only —— not synced, hence not OTG-fetchable; add an index to make it available OTG.
 - Each scope's file list is read from its own index, so an index may legitimately list files OUTSIDE its folder; those get pinned too, with no `otg/` folder contamination.
 
 ## Cloud sessions (Linux)
