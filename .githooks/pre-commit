@@ -15,7 +15,11 @@ if [ -f "$MARKER" ]; then
   exit 0
 fi
 
-# No #sync marker: enforce response_/query_ pairing on normal commits.
+# No #sync marker: WARN (non-blocking) on an orphaned response_ so the committer is
+# reminded to also push its query_ sibling if that file exists. This must NEVER block:
+# a response_ may legitimately have no query_ (a short chat msg is quoted into the
+# response_ itself), so an exit 1 here would wrongly refuse a valid commit. Mirror
+# dlint's yellow flag (remind), not its red flag (block).
 staged="$(git diff --cached --name-only --diff-filter=AM)"
 for f in $staged; do
   base="${f##*/}"
@@ -35,8 +39,8 @@ for f in $staged; do
   if git ls-files --error-unmatch "$sibling" >/dev/null 2>&1; then
     continue
   fi
-  echo "pre-commit: orphaned response file '$f' has no sibling query."
-  echo "  expected: $sibling (staged in this commit, or already tracked)"
-  exit 1
+  echo "pre-commit reminder: response '$base' has no sibling query '$sibbase'"
+  echo "  staged or tracked — if the user's query file exists, remember to push it too."
+  echo "  (Non-blocking: this commit proceeds.)"
 done
 exit 0
