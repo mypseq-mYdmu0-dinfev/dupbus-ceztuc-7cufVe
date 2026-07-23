@@ -33,6 +33,6 @@
 - 3.3. Logged as a 5th Backlog Sweep finding —— `ccsim/backlog.md`, Ref this file §3
 
 ## 4. CCSIM Recent-5 Index (per `ccsim/CLAUDE.md` §2)
-- 3.1. `ccsim_close_202605300023.md` —— Maintenance (01): CC comms system designed & deployed [#r prior session]
-- 3.2. `ccsim_close_202606070527.md` —— Maintenance (02): #sync, gscpt migration, script tools [#r this session, via SA]
-- 3.3. `ccsim_close_202607232054.md` —— CCSIM (03): converter Option C, cp/ migration, CCSIM CP [#r this session, directly]
+- 4.1. `ccsim_close_202605300023.md` —— Maintenance (01): CC comms system designed & deployed [#r prior session]
+- 4.2. `ccsim_close_202606070527.md` —— Maintenance (02): #sync, gscpt migration, script tools [#r this session, via SA]
+- 4.3. `ccsim_close_202607232054.md` —— CCSIM (03): converter Option C, cp/ migration, CCSIM CP [#r this session, directly]
