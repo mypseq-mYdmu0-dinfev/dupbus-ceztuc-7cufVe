@@ -7,9 +7,7 @@
 - Context gate: `#wrap` reads a whole month of `close_` (heavy); if the user reports the session is >50% context-full, advise running it in a FRESH session first
 - Prefix: `wrap_` always stays unprefixed; never `[CP]_wrap_`
 - Reminder: if this is a CCSIM session, remember your own CLAUDE.md's §6 (Backlog Sweep)
-- After creating & declaring the file, run `gscpt/DATS.py`
-  - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
-  - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
+- No DATS step here —— the `#wrap` session runs DATS at its own `#close` (DATS processes `wrap_` files too), so a `wrap_` is never left un-DATS'd. (You always #wrap the PRIOR month, so this session's own `close_` belongs to the NEXT #wrap, not this one.)
 
 ---
 

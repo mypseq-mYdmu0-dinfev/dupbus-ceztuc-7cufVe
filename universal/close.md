@@ -12,7 +12,7 @@
   - If none, skip silently
   - If any:
     - APPEND to `cp/ccsim/backlog.md` (entry format: read ONLY §3 of `cp/ccsim/CLAUDE.md`)
-    - DON'T repeat in `close_` body —— the backlog is the single source
+    - ALSO keep it in the `close_` body (e.g. § Issues) —— so the backlog entry's `Ref: close_[TS] §x.x` points there for full context (the backlog can't intelligibly point at raw comms)
 - ONLY AFTER creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
