@@ -23,3 +23,8 @@ Ref: `wrap_202607232332.md` §1.2 / §5.1
 Problem: 3 items currently sit in `sessions/queued_queries/` (`ccsim_query_202607060438.md` since 6 Jul, `citi_query_202607162351.md` and `ajap_query_202607162356.md` since 16 Jul) awaiting the user to manually send each to a dedicated new session; nothing currently surfaces their age or count except an ad hoc check like this sweep's.
 Suggestion: Have `universal/wrap.md`'s template (or the CCSIM §2 Session-Start check) glob + list `sessions/queued_queries/` open items (excluding `README.md`/`.DS_Store`) with their queued-since date, so ageing items surface automatically at every `#wrap` rather than needing a manual find.
 Ref: `wrap_202607232332.md` §3.1 / §3.4 / §3.5
+
+## `ccsim_response_202607232338.md` — Pairing-lint hook has no exception for root CLAUDE.md §3.6.1's short-message case
+Problem: Root CLAUDE.md §3.6.1 allows a `response_` to a non-`query_` message ≤30w to skip creating a sibling `query_` file (quote the message in Line 1 instead), but `.githooks/pre-commit`'s pairing lint (built this same month, per `ccsim_close_202607232054.md` §1.7) enforces the sibling unconditionally, blocking the commit until a `query_` is created anyway. Discovered live this turn.
+Suggestion: Either drop §3.6.1's skip-if-≤30w exception (always create the `query_`, simplest fix) or teach the hook to allow an orphaned `response_` whose Line 1 matches the `# Response to "..."` quoted-message pattern. Recommend the former —— the hook's invariant (every `response_` has a traceable `query_`) is valuable for `DATS.py`/`#wrap` funnel-reading and a quoted-message `query_` costs nothing to create.
+Ref: `ccsim_response_202607232338.md` §3
