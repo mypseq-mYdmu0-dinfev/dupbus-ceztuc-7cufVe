@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<!--
+  ANF Nano — single-page front end. ALL CSS and JS are inlined below; there are
+  NO external CDN, font, or script requests, so this page runs fully offline.
+  It talks to server.py purely over the local JSON REST API via fetch().
+
+  Branding follows Culous Yu / C.YU MGT personal identity: teal system for
+  chrome (Mid/Dark Teal), Arancio Xanto (#E64A37) for the expense/destructive
+  red and the one signature "own your data" CTA (Export CSV). Interactive
+  elements are pill/stadium-shaped; content sits on rounded squircle cards.
+  Dark-mode toggle follows the working reference pattern in cscpt/dark_mode.html
+  (attribute selector beats the @media bare :root; button label names its
+  DESTINATION; every state change routes through one shared setter).
+-->
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANF Nano — Personal Finance</title>
+<style>
+  /* ---- Palette (C.YU teal system) ------------------------------------- */
+  :root {
+    --light-teal: #20898A;
+    --mid-teal:   #468EA1;
+    --dark-teal:  #005166;
+    --arancio:    #E64A37;
+    --ink:        #24273A;
+
+    /* Themed tokens — light is the default field. */
+    --bg:          #F4F7F8;
+    --card:        #FFFFFF;
+    --card-border: rgba(70, 142, 161, 0.28);
+    --fg:          var(--ink);
+    /* Chrome labels/hints derive from the ink token at reduced opacity, so no
+       bespoke neutral sits outside the teal system (branding.md §chrome). */
+    --muted:       rgba(36, 39, 58, 0.62);
+    --chrome:      var(--dark-teal);
+    --chrome-fg:   #FFFFFF;
+    --thead:       var(--mid-teal);
+    --thead-fg:    #FFFFFF;
+    --row-hover:   rgba(70, 142, 161, 0.08);
+    --income:      var(--light-teal);
+    --expense:     var(--arancio);
+    --input-bg:    #FFFFFF;
+    --input-border:rgba(36, 39, 58, 0.20);
+    --shadow:      0 6px 20px rgba(0, 81, 102, 0.08);
+  }
+  /* Manual override via [data-theme]; an attribute selector outweighs the
+     media-wrapped bare :root, so it wins in EITHER direction w/o !important. */
+  :root[data-theme="light"] {
+    --bg: #F4F7F8; --card: #FFFFFF; --card-border: rgba(70,142,161,0.28);
+    --fg: var(--ink); --muted: rgba(36,39,58,0.62); --chrome: var(--dark-teal);
+    --thead: var(--mid-teal); --row-hover: rgba(70,142,161,0.08);
+    --input-bg: #FFFFFF; --input-border: rgba(36,39,58,0.20);
+    --shadow: 0 6px 20px rgba(0,81,102,0.08);
+  }
+  :root[data-theme="dark"] {
+    --bg: #0E1B20; --card: #12262C; --card-border: rgba(70,142,161,0.40);
+    --fg: #E8EEF0; --muted: #9DB0B6; --chrome: #0A2027;
+    --thead: #0D333F; --thead-fg: #E8EEF0; --row-hover: rgba(70,142,161,0.14);
+    --income: #3FB8B0; --expense: #F26A57;
+    --input-bg: #0C2026; --input-border: rgba(157,176,182,0.30);
+    --shadow: 0 6px 22px rgba(0,0,0,0.45);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      --bg: #0E1B20; --card: #12262C; --card-border: rgba(70,142,161,0.40);
+      --fg: #E8EEF0; --muted: #9DB0B6; --chrome: #0A2027;
+      --thead: #0D333F; --thead-fg: #E8EEF0; --row-hover: rgba(70,142,161,0.14);
+      --income: #3FB8B0; --expense: #F26A57;
+      --input-bg: #0C2026; --input-border: rgba(157,176,182,0.30);
+      --shadow: 0 6px 22px rgba(0,0,0,0.45);
+    }
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: "Avenir", "Avenir Next", "Helvetica Neue", sans-serif;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* Headings use the Avenir system stack, NOT branding.md's Mplus 1p Thin /
+     Garamond Premier Pro: both are non-system fonts and loading them would need
+     an external/embedded request, which the no-external-requests rule forbids.
+     Avenir is the offline stand-in for these small UI-chrome headings. */
+  h1, h2, h3 { font-family: "Avenir", "Avenir Next", "Helvetica Neue", sans-serif;
+    font-weight: 600; margin: 0; }
+  ul { list-style: disc; padding-left: 1.2rem; }  /* real bullets, never a literal '-' */
+
+  /* ---- Header chrome -------------------------------------------------- */
+  header.app {
+    background: var(--chrome);
+    color: var(--chrome-fg);
+    padding: 1.1rem 1.4rem;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 1rem; flex-wrap: wrap;
+  }
+  header.app .brand { display: flex; flex-direction: column; }
+  header.app h1 { font-size: 1.5rem; letter-spacing: 0.5px; }
+  header.app .tagline { font-size: 0.82rem; opacity: 0.85; margin-top: 2px;
+    letter-spacing: 0.3px; }
+
+  .wrap { max-width: 1120px; margin: 0 auto; padding: 1.4rem; }
+
+  /* ---- Buttons (pill / stadium) --------------------------------------- */
+  button, .btn {
+    font-family: inherit; font-size: 0.9rem; font-weight: 600;
+    border: none; border-radius: 999px; padding: 0.5rem 1.1rem;
+    cursor: pointer; transition: transform 0.06s ease, filter 0.15s ease;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+    white-space: nowrap;
+  }
+  button:active, .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--dark-teal); color: #fff; }
+  .btn-primary:hover { filter: brightness(1.12); }
+  .btn-cta { background: var(--arancio); color: #fff; }   /* the one signature CTA */
+  .btn-cta:hover { filter: brightness(1.06); }
+  .btn-ghost {
+    background: transparent; color: var(--mid-teal);
+    border: 1.5px solid var(--mid-teal);
+  }
+  .btn-ghost:hover { background: var(--row-hover); }
+  .btn-danger {
+    background: transparent; color: var(--arancio);
+    border: 1.5px solid var(--arancio); padding: 0.32rem 0.8rem; font-size: 0.82rem;
+  }
+  .btn-danger:hover { background: rgba(230, 74, 55, 0.10); }
+  .btn-mini {
+    padding: 0.32rem 0.8rem; font-size: 0.82rem;
+    background: transparent; color: var(--mid-teal); border: 1.5px solid var(--mid-teal);
+  }
+  .btn-mini:hover { background: var(--row-hover); }
+  #themeBtn {
+    background: rgba(255,255,255,0.12); color: #fff;
+    border: 1.5px solid rgba(255,255,255,0.4); font-size: 0.82rem;
+  }
+  #themeBtn:hover { background: rgba(255,255,255,0.22); }
+
+  /* ---- Cards ---------------------------------------------------------- */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 1.2rem 1.3rem;
+    margin-bottom: 1.3rem;
+  }
+  .card h2 { font-size: 1.05rem; color: var(--mid-teal); margin-bottom: 0.9rem;
+    letter-spacing: 0.3px; }
+
+  /* ---- Summary strip -------------------------------------------------- */
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem;
+    margin-bottom: 1.3rem; }
+  .stat {
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 18px; padding: 0.95rem 1.1rem; box-shadow: var(--shadow);
+  }
+  .stat .label { font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.7px;
+    color: var(--muted); font-weight: 600; }
+  .stat .value { font-size: 1.5rem; font-weight: 700; margin-top: 0.25rem; }
+  .stat.income .value  { color: var(--income); }
+  .stat.expense .value { color: var(--expense); }
+  .stat.net .value     { color: var(--dark-teal); }
+  :root[data-theme="dark"] .stat.net .value { color: var(--mid-teal); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) .stat.net .value { color: var(--mid-teal); }
+  }
+
+  /* ---- Forms ---------------------------------------------------------- */
+  .field-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.85rem; }
+  .field { display: flex; flex-direction: column; gap: 0.3rem; }
+  .field label { font-size: 0.76rem; font-weight: 600; color: var(--muted);
+    letter-spacing: 0.3px; }
+  input, select {
+    font-family: inherit; font-size: 0.9rem; color: var(--fg);
+    background: var(--input-bg); border: 1.5px solid var(--input-border);
+    border-radius: 12px; padding: 0.5rem 0.7rem; width: 100%;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--mid-teal);
+    box-shadow: 0 0 0 3px rgba(70, 142, 161, 0.18); }
+  .form-actions { margin-top: 1rem; display: flex; gap: 0.7rem; }
+
+  .toolbar { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;
+    margin-bottom: 1.3rem; }
+  .toolbar .search { flex: 1; min-width: 220px; }
+  .toolbar .search input { border-radius: 999px; padding-left: 1rem; }
+
+  /* ---- Table ---------------------------------------------------------- */
+  .table-card { padding: 0; overflow: hidden; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  thead th {
+    background: var(--thead); color: var(--thead-fg);
+    text-align: left; padding: 0.7rem 0.85rem; font-weight: 600;
+    letter-spacing: 0.3px; white-space: nowrap;
+  }
+  thead th.num, tbody td.num { text-align: right; }
+  tbody td { padding: 0.6rem 0.85rem; border-top: 1px solid var(--card-border);
+    vertical-align: middle; }
+  tbody tr:hover { background: var(--row-hover); }
+  td.amount { font-variant-numeric: tabular-nums; font-weight: 600; white-space: nowrap; }
+  td.amount.pos { color: var(--income); }
+  td.amount.neg { color: var(--expense); }
+  .pill-tag {
+    display: inline-block; font-size: 0.76rem; padding: 0.14rem 0.6rem;
+    border-radius: 999px; background: rgba(70, 142, 161, 0.14);
+    color: var(--mid-teal); font-weight: 600; white-space: nowrap;
+  }
+  td.actions { white-space: nowrap; text-align: right; }
+  td.actions button { margin-left: 0.35rem; }
+  .empty { padding: 2rem; text-align: center; color: var(--muted); }
+
+  /* ---- Modal ---------------------------------------------------------- */
+  .modal-backdrop {
+    position: fixed; inset: 0; background: rgba(0, 32, 40, 0.55);
+    display: none; align-items: center; justify-content: center; padding: 1rem; z-index: 50;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--card); border-radius: 20px; padding: 1.4rem;
+    width: 100%; max-width: 520px; box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+    border: 1px solid var(--card-border);
+  }
+  .modal h2 { margin-bottom: 1rem; }
+
+  .hint { font-size: 0.8rem; color: var(--muted); margin-top: 0.6rem; }
+  footer.app { text-align: center; color: var(--muted); font-size: 0.78rem;
+    padding: 1.5rem 1rem 2.5rem; }
+
+  @media (max-width: 760px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    .field-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 480px) {
+    .field-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+<header class="app">
+  <div class="brand">
+    <h1>ANF Nano</h1>
+    <span class="tagline">Personal Finance · Own Your Data</span>
+  </div>
+  <button id="themeBtn" type="button" aria-label="Toggle colour theme"></button>
+</header>
+
+<div class="wrap">
+
+  <!-- Summary strip -->
+  <div class="summary" id="summary">
+    <div class="stat"><div class="label">Records</div><div class="value" id="s-count">—</div></div>
+    <div class="stat income"><div class="label">Income</div><div class="value" id="s-income">—</div></div>
+    <div class="stat expense"><div class="label">Expense</div><div class="value" id="s-expense">—</div></div>
+    <div class="stat net"><div class="label">Net</div><div class="value" id="s-net">—</div></div>
+  </div>
+
+  <!-- Toolbar: search + export -->
+  <div class="toolbar">
+    <div class="search">
+      <input type="search" id="search" placeholder="Search payee, note, label, or category…" autocomplete="off">
+    </div>
+    <a class="btn btn-cta" id="exportBtn" href="/api/export.csv">Export CSV</a>
+    <button class="btn btn-ghost" id="toggleAddBtn" type="button">+ Add Record</button>
+  </div>
+
+  <!-- Add-record form (collapsible) -->
+  <div class="card" id="addCard" style="display:none;">
+    <h2>Add a Record</h2>
+    <div class="field-grid">
+      <div class="field"><label for="a-date">Date</label><input type="date" id="a-date"></div>
+      <div class="field"><label for="a-payee">Payee</label><input type="text" id="a-payee" placeholder="e.g. Woolworths"></div>
+      <div class="field"><label for="a-amount">Amount (AUD)</label><input type="number" step="0.01" id="a-amount" placeholder="Negative for expense"></div>
+      <div class="field"><label for="a-note">Note</label><input type="text" id="a-note" placeholder="What it was for"></div>
+      <div class="field"><label for="a-label">Label</label><input type="text" id="a-label" placeholder="e.g. Groceries"></div>
+      <div class="field"><label for="a-category">Category</label><input type="text" id="a-category" placeholder="e.g. Essentials"></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" id="addSubmit" type="button">Add Record</button>
+      <button class="btn btn-ghost" id="addCancel" type="button">Cancel</button>
+    </div>
+    <div class="hint">Tip — expenses are negative (e.g. <code>-12.50</code>); income is positive.</div>
+  </div>
+
+  <!-- Batch-rename control -->
+  <div class="card">
+    <h2>Batch Rename</h2>
+    <div class="field-grid">
+      <div class="field">
+        <label for="br-field">Field</label>
+        <select id="br-field">
+          <option value="category">Category</option>
+          <option value="label">Label</option>
+        </select>
+      </div>
+      <div class="field"><label for="br-from">From</label><input type="text" id="br-from" placeholder="Existing value"></div>
+      <div class="field"><label for="br-to">To</label><input type="text" id="br-to" placeholder="New value"></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" id="brApply" type="button">Apply to All Matching</button>
+    </div>
+    <div class="hint">Renames every record whose chosen field matches, in one action — no row-by-row editing.</div>
+  </div>
+
+  <!-- Records table -->
+  <div class="card table-card">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th><th>Payee</th><th>Note</th>
+            <th class="num">Amount</th><th>Label</th><th>Category</th>
+            <th class="num">Actions</th>
+          </tr>
+        </thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <div class="empty" id="emptyState" style="display:none;">No records match.</div>
+  </div>
+
+</div>
+
+<footer class="app">
+  ANF Nano — a non-scalable prototype. All data lives in <code>anf_nano.db</code> beside the server; yours to export or back up anytime.
+</footer>
+
+<!-- Edit modal -->
+<div class="modal-backdrop" id="editBackdrop">
+  <div class="modal">
+    <h2>Edit Record</h2>
+    <div class="field-grid">
+      <div class="field"><label for="e-date">Date</label><input type="date" id="e-date"></div>
+      <div class="field"><label for="e-payee">Payee</label><input type="text" id="e-payee"></div>
+      <div class="field"><label for="e-amount">Amount (AUD)</label><input type="number" step="0.01" id="e-amount"></div>
+      <div class="field"><label for="e-note">Note</label><input type="text" id="e-note"></div>
+      <div class="field"><label for="e-label">Label</label><input type="text" id="e-label"></div>
+      <div class="field"><label for="e-category">Category</label><input type="text" id="e-category"></div>
+    </div>
+    <div class="form-actions">
+      <button class="btn btn-primary" id="editSave" type="button">Save Changes</button>
+      <button class="btn btn-ghost" id="editCancel" type="button">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<script>
+"use strict";
+
+/* ---- Dark-mode toggle (per cscpt/dark_mode.html reference) ------------- */
+var THEME_KEY = "anfNanoTheme",
+    root = document.documentElement,
+    themeBtn = document.getElementById("themeBtn");
+function systemPrefersDark() {
+  return !!(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches);
+}
+function currentTheme() {
+  var t = root.getAttribute("data-theme");
+  return (t === "dark" || t === "light") ? t : (systemPrefersDark() ? "dark" : "light");
+}
+function paintThemeBtn(t) {
+  // Label names the DESTINATION, not the current state.
+  themeBtn.textContent = t === "dark" ? "Light Mode" : "Dark Mode";
+}
+function setTheme(t) {                    // one shared setter — button + CSS never drift
+  root.setAttribute("data-theme", t);
+  paintThemeBtn(t);
+}
+(function initTheme() {
+  var saved = null;
+  try { saved = localStorage.getItem(THEME_KEY); } catch (e) {}
+  if (saved === "dark" || saved === "light") setTheme(saved);
+  else paintThemeBtn(currentTheme());
+})();
+themeBtn.addEventListener("click", function () {
+  var next = currentTheme() === "dark" ? "light" : "dark";
+  setTheme(next);
+  try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+});
+
+/* ---- Money formatting (AUD, $ + thousands separators) ----------------- */
+var AUD = new Intl.NumberFormat("en-AU", {
+  style: "currency", currency: "AUD", minimumFractionDigits: 2, maximumFractionDigits: 2
+});
+function money(n) { return AUD.format(n); }
+function esc(s) {
+  return String(s == null ? "" : s)
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+/* ---- API helpers ------------------------------------------------------- */
+async function api(method, url, body) {
+  var opts = { method: method, headers: {} };
+  if (body !== undefined) {
+    opts.headers["Content-Type"] = "application/json";
+    opts.body = JSON.stringify(body);
+  }
+  var res = await fetch(url, opts);
+  var data = null;
+  try { data = await res.json(); } catch (e) {}
+  if (!res.ok) {
+    var msg = (data && data.error) ? data.error : ("Request failed (" + res.status + ")");
+    throw new Error(msg);
+  }
+  return data;
+}
+
+/* ---- Rendering --------------------------------------------------------- */
+var rowsEl = document.getElementById("rows"),
+    emptyEl = document.getElementById("emptyState"),
+    recordsById = {};
+
+function renderRows(records) {
+  recordsById = {};
+  rowsEl.innerHTML = "";
+  if (!records.length) {
+    // Distinguish 'a filter hid everything' from 'there is simply no data yet'.
+    emptyEl.textContent = document.getElementById("search").value.trim()
+      ? "No records match."
+      : "No records yet — add one to get started.";
+    emptyEl.style.display = "block";
+    return;
+  }
+  emptyEl.style.display = "none";
+
+  records.forEach(function (r) {
+    recordsById[r.id] = r;
+    var neg = r.amount < 0;
+    var tr = document.createElement("tr");
+    tr.innerHTML =
+      '<td>' + esc(r.date) + '</td>' +
+      '<td>' + esc(r.payee) + '</td>' +
+      '<td>' + esc(r.note) + '</td>' +
+      '<td class="num amount ' + (neg ? "neg" : "pos") + '">' + money(r.amount) + '</td>' +
+      '<td>' + (r.label ? '<span class="pill-tag">' + esc(r.label) + '</span>' : '') + '</td>' +
+      '<td>' + (r.category ? '<span class="pill-tag">' + esc(r.category) + '</span>' : '') + '</td>' +
+      '<td class="actions">' +
+        '<button class="btn-mini" data-edit="' + r.id + '">Edit</button>' +
+        '<button class="btn-danger" data-del="' + r.id + '">Delete</button>' +
+      '</td>';
+    rowsEl.appendChild(tr);
+  });
+}
+
+async function refreshSummary() {
+  var s = await api("GET", "/api/summary");
+  document.getElementById("s-count").textContent = s.count;
+  document.getElementById("s-income").textContent = money(s.income);
+  document.getElementById("s-expense").textContent = money(s.expense);
+  document.getElementById("s-net").textContent = money(s.net);
+}
+
+async function loadRecords() {
+  var q = document.getElementById("search").value.trim();
+  var url = "/api/records" + (q ? "?q=" + encodeURIComponent(q) : "");
+  var records = await api("GET", url);
+  renderRows(records);
+}
+
+async function refreshAll() {
+  try {
+    await Promise.all([loadRecords(), refreshSummary()]);
+  } catch (e) { alert(e.message); }
+}
+
+/* ---- Search (live filter) --------------------------------------------- */
+var searchTimer = null;
+document.getElementById("search").addEventListener("input", function () {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(function () { loadRecords().catch(function (e) { alert(e.message); }); }, 180);
+});
+
+/* ---- Add record -------------------------------------------------------- */
+var addCard = document.getElementById("addCard");
+function todayISO() {                       // LOCAL calendar day, not UTC
+  // toISOString() is UTC; in Sydney (UTC+10/+11) that rolls back to yesterday
+  // before ~10–11am, mis-dating new records. Offset to local first.
+  var n = new Date();
+  return new Date(n.getTime() - n.getTimezoneOffset() * 60000).toISOString().slice(0, 10);
+}
+document.getElementById("toggleAddBtn").addEventListener("click", function () {
+  var showing = addCard.style.display !== "none";
+  addCard.style.display = showing ? "none" : "block";
+  if (!showing) { document.getElementById("a-date").value = todayISO(); document.getElementById("a-payee").focus(); }
+});
+document.getElementById("addCancel").addEventListener("click", function () {
+  addCard.style.display = "none";
+});
+document.getElementById("addSubmit").addEventListener("click", async function () {
+  var body = {
+    date: document.getElementById("a-date").value,
+    payee: document.getElementById("a-payee").value,
+    note: document.getElementById("a-note").value,
+    amount: document.getElementById("a-amount").value,
+    label: document.getElementById("a-label").value,
+    category: document.getElementById("a-category").value
+  };
+  try {
+    await api("POST", "/api/records", body);
+    ["a-payee", "a-note", "a-amount", "a-label", "a-category"].forEach(function (id) {
+      document.getElementById(id).value = "";
+    });
+    addCard.style.display = "none";
+    await refreshAll();
+  } catch (e) { alert(e.message); }
+});
+
+/* ---- Row actions: edit + delete (event delegation) -------------------- */
+rowsEl.addEventListener("click", function (ev) {
+  var editId = ev.target.getAttribute("data-edit");
+  var delId = ev.target.getAttribute("data-del");
+  if (editId) openEdit(recordsById[editId]);
+  else if (delId) doDelete(delId);
+});
+
+async function doDelete(id) {
+  var r = recordsById[id];
+  if (!confirm('Delete this record?\n\n' + r.date + ' · ' + r.payee + ' · ' + money(r.amount))) return;
+  try { await api("DELETE", "/api/records/" + id); await refreshAll(); }
+  catch (e) { alert(e.message); }
+}
+
+/* ---- Edit modal -------------------------------------------------------- */
+var backdrop = document.getElementById("editBackdrop"), editingId = null;
+function openEdit(r) {
+  editingId = r.id;
+  document.getElementById("e-date").value = r.date;
+  document.getElementById("e-payee").value = r.payee;
+  document.getElementById("e-amount").value = r.amount;
+  document.getElementById("e-note").value = r.note || "";
+  document.getElementById("e-label").value = r.label || "";
+  document.getElementById("e-category").value = r.category || "";
+  backdrop.classList.add("open");
+}
+function closeEdit() { backdrop.classList.remove("open"); editingId = null; }
+document.getElementById("editCancel").addEventListener("click", closeEdit);
+backdrop.addEventListener("click", function (ev) { if (ev.target === backdrop) closeEdit(); });
+document.getElementById("editSave").addEventListener("click", async function () {
+  if (editingId == null) return;
+  var body = {
+    date: document.getElementById("e-date").value,
+    payee: document.getElementById("e-payee").value,
+    note: document.getElementById("e-note").value,
+    amount: document.getElementById("e-amount").value,
+    label: document.getElementById("e-label").value,
+    category: document.getElementById("e-category").value
+  };
+  try { await api("PUT", "/api/records/" + editingId, body); closeEdit(); await refreshAll(); }
+  catch (e) { alert(e.message); }
+});
+
+/* ---- Batch rename ------------------------------------------------------ */
+document.getElementById("brApply").addEventListener("click", async function () {
+  var body = {
+    field: document.getElementById("br-field").value,
+    from: document.getElementById("br-from").value,
+    to: document.getElementById("br-to").value
+  };
+  try {
+    var res = await api("POST", "/api/batch-rename", body);
+    alert(res.updated + " record(s) updated.");
+    document.getElementById("br-from").value = "";
+    document.getElementById("br-to").value = "";
+    await refreshAll();
+  } catch (e) { alert(e.message); }
+});
+
+/* ---- Go ---------------------------------------------------------------- */
+refreshAll();
+</script>
+</body>
+</html>
