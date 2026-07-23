@@ -13,7 +13,7 @@
   - If any:
     - APPEND to `cp/ccsim/backlog.md` (entry format: read ONLY §3 of `cp/ccsim/CLAUDE.md`)
     - DON'T repeat in `close_` body —— the backlog is the single source
-- ONLY AFTER after creating & declaring the file(s), run `gscpt/DATS.py`
+- ONLY AFTER creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
 - The DATS override does NOT replace the batch declaration (per root c.md §3.1.6), do it first

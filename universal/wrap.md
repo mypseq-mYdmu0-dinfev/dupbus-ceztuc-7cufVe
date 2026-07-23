@@ -6,6 +6,7 @@
 - Editing `wrap_` file: NEVER edit TS in filename, so user can track diff
 - Context gate: `#wrap` reads a whole month of `close_` (heavy); if the user reports the session is >50% context-full, advise running it in a FRESH session first
 - Prefix: `wrap_` always stays unprefixed; never `[CP]_wrap_`
+- CCSIM backlog sweep: on THIS repo's `#wrap`, also run the monthly Backlog Sweep (`cp/ccsim/CLAUDE.md` §6). An AJAP `#wrap` follows its own repo's rules, not this.
 - After creating & declaring the file, run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
@@ -37,7 +38,7 @@ Format: all #numbered; reference last month's `wrap_` (if applicable) to avoid r
 - 2.2. ...
 [skip 1 line]
 
-## Issues
+## 3. Issues
 - 3.1. [Todos or unresolved items with priority tag: 🔴 blocking / 🟡 important / 🟢 nice-to-have]
 - 3.2. ...
 [skip 1 line]
