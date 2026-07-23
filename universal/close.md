@@ -11,8 +11,8 @@
   - e.g. pcmd/script/protocol improvement, recurring snag, system gap
   - If none, skip silently
   - If any:
+    - Flag in `close_` (e.g. § Issues; cite comms files), so backlog entry points there for full context
     - APPEND to `cp/ccsim/backlog.md` (entry format: read ONLY §3 of `cp/ccsim/CLAUDE.md`)
-    - ALSO keep it in the `close_` body (e.g. § Issues) —— so the backlog entry's `Ref: close_[TS] §x.x` points there for full context (the backlog can't intelligibly point at raw comms)
 - ONLY AFTER creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
@@ -126,22 +126,28 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 [If none, input `N/A`]
 [skip 1 line]
 
-## 3. Non-CP Files ([file_count])
-- 3.1. Created:
-  - 3.1.1. `enclosing_folder/file.py` [1 line each; same for below]
-  - 3.1.2. `enclosing_folder/file.html`
-  - 3.1.3. ... [all non-comms files in any format created this session, in chronological order]
-- 3.2. Modified:
-  - 3.2.1. ... [ditto]
-- 3.3. Moved/Voided/Deleted:
-  - 3.3.1. ... [ditto]
+## 3. Non-CP Issues
+- 3.1. [Todos or unresolved items with priority tag: 🔴 blocking / 🟡 important / 🟢 nice-to-have]
+- 3.2. ...
+[If none, input `N/A`]
+[skip 1 line]
+
+## 4. Non-CP Files ([file_count])
+- 4.1. Created:
+  - 4.1.1. `enclosing_folder/file.py` [1 line each; same for below]
+  - 4.1.2. `enclosing_folder/file.html`
+  - 4.1.3. ... [all non-comms files in any format created this session, in chronological order]
+- 4.2. Modified:
+  - 4.2.1. ... [ditto]
+- 4.3. Moved/Voided/Deleted:
+  - 4.3.1. ... [ditto]
 [If none, input `N/A`]
 ```
 
 ### Handoff Rules
 
 - To be sent as (or in) 1st msg (or `query_`) to next CP session
-- §3 is not intended for next CP session, but mainly for monthly #wrap; e.g. `universal/` files
+- §3 & §4 aren't intended for next CP session, but mainly for monthly #wrap (per § Preamble)
 - When done, check if MECE (see below) & if §1 & §2 under 20w each via `echo "[text]" | wc -w`
   - Otherwise, rectify it or explain why (e.g. special situation but only applicable to next session)
 

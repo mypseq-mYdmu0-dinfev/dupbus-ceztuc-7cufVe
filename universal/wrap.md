@@ -7,7 +7,9 @@
 - Context gate: `#wrap` reads a whole month of `close_` (heavy); if the user reports the session is >50% context-full, advise running it in a FRESH session first
 - Prefix: `wrap_` always stays unprefixed; never `[CP]_wrap_`
 - Reminder: if this is a CCSIM session, remember your own CLAUDE.md's §6 (Backlog Sweep)
-- No DATS step here —— the `#wrap` session runs DATS at its own `#close` (DATS processes `wrap_` files too), so a `wrap_` is never left un-DATS'd. (You always #wrap the PRIOR month, so this session's own `close_` belongs to the NEXT #wrap, not this one.)
+- `#wrap` session runs DATS at its own `#close`, not during `#wrap`
+so a `wrap_` is never left un-DATS'd. (You always #wrap the PRIOR month, so this session's own `close_` belongs to the NEXT #wrap, not this one.)
+- `#wrap` session must have its own `#close` (in current month folder; belonging to next `#wrap`)
 
 ---
 

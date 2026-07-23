@@ -39,4 +39,4 @@
   - This monthly sweep is what keeps the backlog from growing unbounded
   - For large items (e.g. spanned ≥3 turns), suggest a dedicated session (context concerns)
 - Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries)
-- The 2nd `wrap_` push (after the sweep) is an ALLOWED override of root c.md §9.05.5's one-commit-per-turn —— #wrap then sweep-then-update is intentionally two commits.
+- The 2nd `wrap_` push (post-sweep) is an ALLOWED override of root CLAUDE.md's one-commit-per-turn.
