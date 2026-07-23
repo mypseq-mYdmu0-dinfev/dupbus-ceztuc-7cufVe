@@ -22,7 +22,7 @@
 ## 4. Change Simulation QA —— Actively Propose It
 - 4.1. For ANY non-trivial change to a pcmd/script/protocol (create, edit, shrink, delete a helper, restructure), ACTIVELY PROPOSE dispatching SA(s) to simulate its real-world effect before calling the work done —— don't wait to be asked.
 - 4.2. The SA runs a realistic scenario exercising the change and reports what happened; you then improve/debug from the findings and re-simulate if needed.
-- 4.3. When a BEFORE/AFTER comparison is meaningful (e.g. a shrink/edit —— "as effective as before?"), run 2 BLIND SAs (§9.02.1: each told "You're a sub-agent") on the SAME scenario —— one fed the CURRENT version, one the baseline; neither learns of the change, the other version, or the intent (uncontaminated fresh eyes).
+- 4.3. When a BEFORE/AFTER comparison is meaningful (e.g. a shrink/edit —— "as effective as before?"), run 2 BLIND SAs (each told "You're a sub-agent") on the SAME scenario —— one fed the CURRENT version, one the baseline; neither learns of the change, the other version, or the intent (uncontaminated fresh eyes).
 - 4.4. Baseline source: `git show <pre-change-SHA>:<path>` for a historic version; `sandbox/` (§5) for a too-big-to-inline baseline OR a non-historic version (e.g. a brand-new pcmd's alternative draft).
 - 4.5. The user approves unless trivial.
 
@@ -38,8 +38,4 @@
   - For EACH open item, PROPOSE a concrete solution + rough effort
   - This monthly sweep is what keeps the backlog from growing unbounded
   - For large items (e.g. spanned ≥3 turns), suggest a dedicated session (context concerns)
-- Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries).
-
-## 7. Comms Prefix
-- 7.1. CCSIM comms carry the `ccsim_` prefix: `ccsim_query_`, `ccsim_response_`, `ccsim_close_`.
-- 7.2. `wrap_` stays unprefixed (never `ccsim_wrap_`; rule owned by `wrap.md`).
+- Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries)
