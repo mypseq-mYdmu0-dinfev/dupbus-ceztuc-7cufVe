@@ -4,6 +4,7 @@
 
 - Triggered by: `#wrap` | Current_TS: `TZ='Australia/Sydney' date +"%Y%m%d%H%M"`
 - Editing `wrap_` file: NEVER edit TS in filename, so user can track diff
+- Context gate —— `#wrap` reads a whole month of `close_` (heavy). If the user reports the session is >50% context-full, advise running it in a FRESH session first (`cp/ccsim/CLAUDE.md` §6.2). `#wrap` is a CCSIM job; `wrap_` stays unprefixed.
 - After creating & declaring the file, run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
@@ -61,6 +62,16 @@ Format: all #numbered; reference last month's `wrap_` (if applicable) to avoid r
 - 6.1. [Standing context that next month's sessions should know; ONLY what's not in sections above; optional]
 - 6.2. ...
 ```
+
+---
+
+## CCSIM Backlog Sweep (do BEFORE writing the `wrap_`, so it's reflected in it)
+
+- Surface `cp/ccsim/backlog.md`'s OPEN items (those without a `→ ✅ RESOLVED` line).
+- Scan the month's `close_` for EMERGENT cross-session patterns worth a CCSIM fix that no single `close_` already logged; append any new one to `backlog.md` (format: `cp/ccsim/CLAUDE.md` §3). Per-session items are already self-registered by each `close_` (close.md), so hunt PATTERNS, not un-logged flags.
+- For EACH open item, PROPOSE a concrete solution + rough effort —— this monthly sweep is what keeps the backlog from growing unbounded.
+- Do NOT fix at wrap time (context cost); instead tee up a dedicated CCSIM session to action the proposals.
+- Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries).
 
 ---
 

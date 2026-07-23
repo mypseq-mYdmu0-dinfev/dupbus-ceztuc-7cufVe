@@ -7,6 +7,7 @@
   - Also update end-of-range TS on Line 1 w/ [current_TS]
   - NEVER edit TS in filename, so user can track diff
 - Sprint Log —— if a `#sprint` ran this session, record its `slog_[TS].md` as a created non-comms file (§ Non-Comms Files; or § Coverage for Addendum) for future retrospection if needed.
+- CCSIM backlog —— whilst drafting the close, scan THIS session for anything CCSIM-worthy (a pcmd/script/protocol improvement, a recurring snag, a system gap). If any, APPEND it to `cp/ccsim/backlog.md` (entry format: `cp/ccsim/CLAUDE.md` §3) and do NOT repeat it in the `close_` body —— the backlog is the single source. None → skip silently.
 - ONLY AFTER after creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
   - If any other results (e.g. `👀 [no.] file(s) ...`), stop (don't input `yes`) & concisely tell user.
