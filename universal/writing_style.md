@@ -17,7 +17,7 @@
   - Prefer purpose-built/dedicated words over a verb pressed into noun service, or an everyday-feeling filler, even where grammatically correct
   - Prefer confident, definitive stance-verbs (e.g. "believe") over hedging-sounding cognition verbs ("think") when asserting a view or expressing confidence in someone —— context-dependent, don't blanket-swap; "believe" reads warmer & humbler than the more absolute-sounding "know" specifically when the confidence being expressed is IN ANOTHER PERSON
 - Grammar stays stringently correct regardless of how archaic/elaborate the diction gets
-- Shared Trait: **euphemistic**, but varies in extent across styles
+- Shared Trait: **euphemistic**, but varies in extent across styles; e.g. "This doesn't makes sense." → "This statement lacks sufficient logical coherence to be reasonably understood."
 
 ---
 
