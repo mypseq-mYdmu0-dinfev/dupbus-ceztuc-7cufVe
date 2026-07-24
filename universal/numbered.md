@@ -8,13 +8,17 @@
   - e.g. You might have failed to comply with §Bite-size (see below); restructure pts accordingly
   - As a nudge (not `query_`), no `response_`/chat text (exc. declaration of updated files) needed
 
+## Definition
+- 1st level = `[N]. [content]`, 2nd level = `[N].[N]. [content]`, etc.
+- i.e. Qty of `[N]` = Order of Level
+
 ## Format
 
-Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (level-2 onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`). This file applies to ALL outputs EXCEPT deliverables, codes (.py/.sh/etc.), and system files (.json/etc.).
+Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (2nd level onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`). This file applies to ALL outputs EXCEPT deliverables, codes (.py/.sh/etc.), and system files (.json/etc.).
 
 ## Example List
 
-e.g. 4-level indentation (build up to 5 levels but only if necessary):
+e.g. 4-level indentation (build up to 5 levels, but only if necessary):
 
 ```
 1. xxx...
@@ -27,25 +31,28 @@ e.g. 4-level indentation (build up to 5 levels but only if necessary):
 2. xxx...
 ```
 
-## Notes
+## Basic Rules
 
 - Each level MUST have more than one item
   - If a sub-item would be alone, don't build that level —— include it in the parent instead
-  - e.g. In above example, if 1.2.1.2 is not necessary (leaving 1.2.1.1 alone), don't build the 4th level and just include 1.2.1.1 in 1.2.1
-  - If a sub-item level (e.g. 4th level: 1.2.1.1 & 1.2.1.2) is established, ensure its parent (e.g. 3rd level: 1.2.1) exists
-  - If 2nd level (e.g. 1.1, 1.2) is established for a pt, its 1st level (e.g. 1, 2) becomes a mere heading & MUST be ≤10w, so I'd either reply the whole pt (e.g. "re 1: ...") OR particular sub-items (e.g. "re 1.1: ..."), never both (e.g. "re 1: ...; re 1.1: ...")
-- Must use hardcoded manual numbering, never markdown auto-numbering
+  - e.g. In above example, if 1.2.1.2 is not necessary (leaving 1.2.1.1 alone), don't build the 4th level —— just include 1.2.1.1 in 1.2.1
+- If a sub-item level is established, ensure its parent exists; e.g. 1.2.1.1 prereq = 1.2.1
+- If 2nd level (e.g. 1.1, 1.2, 2.1, 2.2) is established for a pt, its 1st level (e.g. 1, 2) becomes a mere heading & MUST be ≤10w; so I'd either reply the whole pt (e.g. "re 1: ...") OR particular sub-items (e.g. "re 1.1: ..."), never both (e.g. "re 1: ...; re 1.1: ...")
+- MUST use **hardcoded manual numbering**, NEVER **markdown auto-numbering**
 - Strictly ensure NO sentence/bullet/line unnumbered e.g. `- xxx...`
-- Each number must have a dot `.` between it and the text e.g. `1.1. xxx` instead of `1.1 xxx`
-- The dot is not needed when referring to it e.g. "Item 1.1 detailed xxx..."
-- Numbered points live in the BODY, NEVER on a heading: a `##`/`###`/etc. heading may LABEL a section (encouraged for readability), but the level-1 lines (`1.`/`2.`/etc.) and their sub-bullets (`- 1.1.`/`- 1.2.`/etc.) MUST sit UNDERNEATH a heading as normal lines
-- NEVER make the heading itself the numbered point (e.g. `## 1. xxx...`); doing so confuses you —— striping bullet structure & collapses its sub-points (`1.1.`/`1.2.`/etc.) onto 1 line (unreadable)
+- Each number must have a dot `.` between it and the text; e.g. `1.1. xxx` instead of `1.1 xxx`
+- The dot is not needed when referring to it; e.g. "Item 1.1 detailed ..."
+- Labelling a section of pts w/ headings (`##`/`###`/etc.) is encouraged for readability
+- Heading may also be a numbered pt (e.g. § Example List's `1. xxx...` → `## 1. xxx...`), BUT:
+  - The heading (now the 1st level pt) MUST be ≤5w (due to larger font); AND
+  - Its sub-pts (even 2nd level) MUST remain bulleted (e.g. § Example List's `- 1.1. xxx...` kept)
+- NEVER stripe sub-pts' bullets (e.g. `1.1. xxx...`), which renders them into long line (unreadable)
 - NEVER create `[N].0` (e.g. 1.0, 1.1.0), instead make it `[N].1` (e.g. 1.1, 1.1.1)
 - AVOID having 9⁺ items on each level (e.g. 1.10, 1.1.10)
   - Rationale: ⌘F `[N].1` will surface both [N].1, [N].10, [N].11, etc.
   - Priority: Split as multiple pts; e.g. instead of adding 1.10, consider taking some under pt 2
-  - Fallback: If unavoidable (i.e. must hold 9⁺ sub-items), make that level 2-digit (e.g. [N].01, [N].02)
-  - Implication: If `[N].01` is seen, `[N].10` (at least) is expected.
+  - Fallback: If unavoidable (must hold 9⁺ sub-items), make that level 2-digit (e.g. [N].01, [N].02)
+  - Net: If `[N].01` is seen, `[N].10` (at least) is expected.
 
 ## Optimise for Reply
 
@@ -89,7 +96,7 @@ DEFAULT bite-size short lines (NOT only when `#numbered` is prompted):
 - Purpose: when response is already concise AND bite-size but still heavy (extended, appendix-worthy), split it so user reads only what matters NOW, whilst nothing is lost for future sessions
 - NEVER write-long-then-offload —— always attempt the most concise yet understandable response first (bite-size); `#opt` fires ONLY when, despite that, content is still unavoidably long
 - Activation:
-  - Auto-consider whenever content is (or is expected to be) long AND prose is already atomised to bite-size —— NO word threshold (active counting won't reliably fire); judge by feel
+  - **Auto-consider** whenever content is (or is expected to be) long AND prose is already atomised to bite-size —— NO word threshold (active counting won't reliably fire); judge by feel
   - Or user activates explicitly by prompting `#opt`
 - Mechanism —— necessary reading first, optional reading below a fixed separator:
 
