@@ -1,6 +1,7 @@
 # CC System Improvement & Maintenance (CCSIM)
 
 *Meta-CP: improves CC's own pcmds/scripts/etc. (OS/firmware-style upkeep), not deliverables. Read `dupbus-ceztuc-7cufVe/CLAUDE.md` if not already. A simple CP: no `CP_index_cc.md`.*
+*New file added to `ccsim/`? Note it in this CLAUDE.md or `README.md`.*
 
 ## 1. Every Turn —— Change Hunt
 - 1.1. Read `cp/ccsim/last_seen.md` (line under the heading = `[TS] [SHA]` of the last audit).

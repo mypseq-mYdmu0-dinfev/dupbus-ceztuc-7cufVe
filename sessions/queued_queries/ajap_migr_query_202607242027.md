@@ -18,3 +18,9 @@
 - 3.2. `~/.codex` is now a symlink -> FURY (guard against internal writes from the ChatGPT app). Unlikely to affect AJAP, noted for completeness.
 - 3.3. Chrome profile `~/Library/Application Support/Google/Chrome/Default` + Chrome/Perplexity caches were symlinked to FURY. If AJAP drives real Chrome (not Playwright's bundled Chromium), note the profile is now on FURY.
 - 3.4. Standing rule for all of the above: never launch an app that uses a migrated path while FURY is unmounted (dangling symlink -> split-brain). Recovery patterns: `cp/ccsim/ssd_migration_guide.md`.
+
+## 4. Register `tlint` for AJAP (cross-repo TS-uniqueness enforcement)
+- 4.1. The rule `AJAP_repo/inv/CLAUDE.md:31` ("no files can share identical name, even in different repos ... either must add 1min (mm+1)") is enforced by CONVENTION only on the AJAP side —— AJAP sessions run NO PostToolUse hooks (AJAP's `.claude/settings.json` has none).
+- 4.2. The dupbus repo now has `cscpt/tlint_hook.py` (a timestamp linter) that checks the written file's own folder AND its cross-repo mirror (`AJAP_repo/inv/<YYYY>/<YYYYMM>` ↔ `dupbus/sessions/<YYYY>/<YYYYMM>`). But hooks load ONLY from the launch repo, so it never fires for AJAP-launched sessions.
+- 4.3. To enforce AJAP-side too: register a tlint PostToolUse hook in `AJAP_repo/.claude/settings.json` (point it at `../dupbus-ceztuc-7cufVe/cscpt/tlint_hook.sh`, or copy the script in). It already computes the `inv/`↔`sessions/` mirror, so it catches cross-repo `close_[TS]` clashes both ways. Non-blocking YELLOW only.
+- 4.4. Known existing cross-repo collisions to de-collide by mm+1 (per the inv/CLAUDE.md rule): `close_202607190110.md` and `close_202607231053.md` each exist in BOTH `AJAP_repo/inv/2026/202607/` and `dupbus/sessions/2026/202607/`. Coordinate with the user on which side bumps.
