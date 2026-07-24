@@ -21,21 +21,31 @@ WHAT it does, self-contained (no external state):
      `**` bold wrapper before the glyph (e.g. `**➡️ …`, per §3.2.3.3's bolded
      response_ line).
 
-VERDICT —— NON-BLOCKING by design (variant a). A Stop hook that exits 2 (or emits
-`decision:"block"`) would FORCE the agent to continue —— the opposite of what we
-want. So on a breach it exits 0, surfaces a user-facing warning via the universal
-`systemMessage` JSON field (shown to the user, NOT fed to the model as an
-instruction), and appends the event to `cscpt/.clint_hook.log`. No breach ->
-exit 0 with no output.
+VERDICT —— BLOCK-ONCE by design. A Stop hook's `systemMessage` (exit 0) reaches
+only the USER, never the model —— so a non-blocking warning can NEVER make the
+agent self-correct: its turn has already ended and it never sees the note. The one
+channel that reaches the MODEL on Stop is a block —— exit 2 feeds stderr back to
+Claude as an error and forces exactly one more turn. So on a breach this hook
+exits 2 with a terse, glyph-free stderr instruction to end the turn adding no
+further prose; Claude reads it, ends cleanly, and future turns self-correct. The
+event is still appended to `cscpt/.clint_hook.log`. No breach -> exit 0, no output.
 
-CRITICAL —— the warning text carries NONE of the 5 glyphs/emoji: naming them
-would teach exactly which prefixes pass and invite gaming by bolting a glyph onto
-prose. `_WARN` is a fixed, glyph-free string.
+LOOP GUARD —— exit 2 forces a continuation that ends in another Stop, so an
+unguarded block would loop forever. The hook honours `stop_hook_active` (set true
+by the harness once Claude is already continuing because of a prior Stop-block):
+when it is true the hook logs the breach but exits 0, letting the turn finally end.
+Net effect —— at most ONE extra turn per stop-cycle; each fresh genuine user turn
+re-arms a single enforcement shot. This deliberately blocks ONCE (the only way to
+reach the model on Stop); it does not force the agent to keep producing prose ——
+the message tells it to stop, and the guard guarantees the next Stop succeeds.
+
+CRITICAL —— the stderr text carries NONE of the 5 glyphs/emoji: naming them would
+teach exactly which prefixes pass and invite gaming by bolting a glyph onto prose.
+`_BREACH` is a fixed, glyph-free string.
 
 FAIL-SAFE —— any parse error, missing field, or unreadable transcript -> exit 0
-silently; a linter must never break a turn on its own failure. (`stop_hook_active`
-needs no special handling here: this hook never blocks, so it cannot induce the
-stop-hook loop that flag guards against.)
+silently; a linter must never break a turn on its own failure. A stderr-write
+failure on the block path also falls back to exit 0, never a broken turn.
 (Run by the harness, not read —— see README.)"""
 
 import sys
@@ -50,8 +60,11 @@ _GLYPHS = ("✅", "⇠", "➡", "⚠", "\U0001f6a8")  # ✅ ⇠ ➡ ⚠ 🚨
 # A markdown horizontal-rule / chapter divider line: 3+ of -, *, or _.
 _HR_RE = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
 
-# Fixed, GLYPH-FREE warning (see docstring CRITICAL —— must not name the glyphs).
-_WARN = "No chat text except the 5 declarations (per root CLAUDE.md §3.2)."
+# Fixed, GLYPH-FREE breach message fed to the model via stderr on exit 2 (see
+# docstring CRITICAL —— must not name the glyphs, or it teaches how to game the
+# check). Terse and terminal: tell the model to END the turn, not write more.
+_BREACH = ("Chat-prose breach (root CLAUDE.md §3.2): emit ONLY the 5 permitted "
+           "declarations. End the turn now —— add no further prose.")
 
 # Log path (overridable for tests via CLINT_LOG); default beside this script.
 _LOG = os.environ.get("CLINT_LOG") or os.path.join(
@@ -149,24 +162,32 @@ def main():
     if not offending:
         return 0                          # clean turn -> silent, non-blocking
 
-    # Breach. Log it first (offending prose is glyph-free by definition, so the
-    # log never leaks the passing glyphs; the user-facing WARN is glyph-free too).
+    # Are we ALREADY continuing because a prior Stop-block fired? If so, blocking
+    # again would loop —— log it but let the turn end (see docstring LOOP GUARD).
+    active = bool(data.get("stop_hook_active"))
+
+    # Log every breach (offending prose is glyph-free by definition, so the log
+    # never leaks the passing glyphs; the stderr message is glyph-free too).
     try:
         sid = str(data.get("session_id") or "")[:8]
         with open(_LOG, "a", encoding="utf-8") as lf:
-            lf.write("%s\tsession=%s\tlines=%d\tfirst=%s\n" % (
+            lf.write("%s\tsession=%s\taction=%s\tlines=%d\tfirst=%s\n" % (
                 datetime.now().isoformat(timespec="seconds"),
-                sid, len(offending),
+                sid, "suppressed" if active else "block", len(offending),
                 offending[0][:200].replace("\t", " ").replace("\n", " ")))
     except Exception:
         pass                              # logging must never break the turn
 
-    # Surface the warning to the user, NON-blocking (exit 0, no decision:block).
+    if active:
+        return 0                          # loop guard -> allow the stop to finish
+
+    # Fresh stop-cycle breach: block ONCE and feed the model the reason via
+    # stderr. On exit 2 the harness ignores stdout/JSON, so write to STDERR.
     try:
-        sys.stdout.write(json.dumps({"systemMessage": _WARN}))
+        sys.stderr.write(_BREACH)
     except Exception:
-        pass
-    return 0
+        return 0                          # fail-safe: never break the turn
+    return 2                              # blocks the stop; stderr reaches Claude
 
 
 if __name__ == "__main__":
