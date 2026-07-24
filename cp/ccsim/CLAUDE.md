@@ -42,6 +42,9 @@
   - For EACH open item, PROPOSE a concrete solution + rough effort
   - This monthly sweep is what keeps the backlog from growing unbounded
   - For large items (e.g. spanned ≥3 turns), suggest a dedicated session (context concerns)
-- SKILL AUTO-PROPOSE (i5) —— for each surfaced problem/pattern, if it maps to a pcmd lacking an alias-skill (or a NEW pcmd worth one), PROPOSE creating that skill so CC triggers the protocol more reliably; propose only, never auto-create
+- For each surfaced problem/pattern, create/adjust pcmd and/or "skills" to optimise CC
+  - Skills are just pointers to pcmds (#SA probe current skills/pcmds first)
+  - A skill cannot exist w/o its pcmd, but NOT vice versa (pcmd can be triggered by #[name])
+  - If trivial (not worth a pcmd/skill), consider creating/adjusting "memories" instead
 - Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries)
 - The 2nd `wrap_` push (post-sweep) is an ALLOWED override of root CLAUDE.md's one-commit-per-turn.
