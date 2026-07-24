@@ -1,9 +1,5 @@
 # Queued Queries
 
-## Basics
-- This folder stores queries being drafted by user (e.g. during sesL)
-- Unless asked to, CC should never visit this folder
-
 ## Organisation
 If a file in this folder was directly sent in chat, do sequentially:
 - Rename as `[CP_folder]_query_[current_TS].md`
@@ -19,6 +15,6 @@ If a file in this folder was directly sent in chat, do sequentially:
 - Upon finishing writeup, user is supposed to:
   - Rename & move as told above
   - Send to the right session
-  - Create Apple Reminder:
+  - Create Apple Reminder (optional):
     - When to prompt `continue`
     - Which session(s)
