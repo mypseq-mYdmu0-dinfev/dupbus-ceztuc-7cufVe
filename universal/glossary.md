@@ -58,7 +58,7 @@
 - `Non-CC:` = disregard if you're CC
 - CW = Claude Cowork (don't conflate w/ CWI); "Cowork" tab of CAI
 - CWI = Claude Web Interface (Claude Chat; https://claude.ai), allowing multi-window chats; if CIC failed, you're CWI
-- CAI = Claude (Mac) App Interface (Official), allowing more connectors; suggest continuing in CAI whenever extensive functions (e.g. CIC, Apple Notes) may help
+- CAI = Claude (Mac/Desktop) App Interface (NOT CLI)
 - OTG = on the go
 - OTGC = OTG Claude iPhone App (≈CWI)
 - OTGD = OTG Device (iPhone 13 mini/i13m)
