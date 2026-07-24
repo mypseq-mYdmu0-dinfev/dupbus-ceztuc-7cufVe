@@ -11,7 +11,7 @@
   - e.g. pcmd/script/protocol improvement, recurring snag, system gap
   - If none, skip silently
   - If any:
-    - Flag in `close_` (e.g. § Issues; cite comms files), so backlog entry points there for full context
+    - Flag in `close_` (e.g. § Issues; cite comms files), so backlog entry ref the pts for full context
     - APPEND to `cp/ccsim/backlog.md` (entry format: read ONLY §3 of `cp/ccsim/CLAUDE.md`)
 - ONLY AFTER creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."

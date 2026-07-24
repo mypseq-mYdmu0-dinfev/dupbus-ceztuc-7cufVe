@@ -1,7 +1,6 @@
 # CC System Improvement & Maintenance (CCSIM)
 
-*Meta-CP: improves CC's own pcmds/scripts/etc. (OS/firmware-style upkeep), not deliverables. Read `dupbus-ceztuc-7cufVe/CLAUDE.md` if not already. A simple CP: no `CP_index_cc.md`.*
-*New file added to `ccsim/`? Note it in this CLAUDE.md or `README.md`.*
+*Meta-CP: improves CC's own pcmds/scripts/etc. (OS/firmware-style upkeep), not deliverables. Read root `CLAUDE.md` if not already. New file in `ccsim/`: either note here or `README.md`.*
 
 ## 1. Every Turn —— Change Hunt
 - 1.1. Read `cp/ccsim/last_seen.md` (line under the heading = `[TS] [SHA]` of the last audit).
@@ -16,9 +15,9 @@
 - 2.4. Reading a prior CCSIM close IN FULL is DISCRETIONARY —— only when its subheading looks relevant.
 
 ## 3. backlog.md —— Append-Only Log
-- 3.1. `cp/ccsim/backlog.md` collects system-improvement items (from `close_`/`wrap_` scans or ad-hoc).
-- 3.2. Entry: `## `[close_/wrap_ filename]` — [title]`, then `Problem:` / `Suggestion:` / `Ref: [filename] §x.x`.
-- 3.3. NEVER edit/delete an entry; resolve by appending `→ ✅ RESOLVED [TS] (ref …)` beneath it.
+- 3.1. Collects CC's own system-improvement items (from `close_`/`wrap_` scans or ad-hoc).
+- 3.2. Entry: `## [title]`, then `- Problem:` / `- Suggestion:` / `- Ref: [filename] §x.x`.
+- 3.3. NEVER edit/delete an entry; append `→ ✅ RESOLVED [current_TS] (Ref: …)` beneath it.
 
 ## 4. Change Simulation QA —— Actively Propose It
 - 4.1. For ANY non-trivial change to a pcmd/script/protocol (create, edit, shrink, delete a helper, restructure), ACTIVELY PROPOSE dispatching SA(s) to simulate its real-world effect before calling the work done —— don't wait to be asked.
