@@ -79,7 +79,7 @@
   - 3.1.3. i.e. If a file path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6)
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
   - 3.1.5. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (see §3.1.6)
-  - 3.1.6. I/O Declarations (§3.2.1–3): batched IN ORDER as the turn's FINAL output —— after ALL actions AND after the chapter marker (§3.1.7); e.g.:
+  - 3.1.6. I/O Declarations (§3.2.1–3): batched IN ORDER as the turn's FINAL output; e.g.:
 ```
 ✅ `career/CP_notes.md`, `cscpt/dlint.py`
 ⇠ `202605/career_query_202605300226.md`
@@ -87,12 +87,12 @@
 ➡️ **`202605/career_response_202605300226.md`**
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
 ```
-  - 3.1.7. Right BEFORE §3.1.6's batch (after every other action), mark a chapter
+  - 3.1.7. After ALL actions AND right BEFORE §3.1.6's batch, mark a chapter
     - 3.1.7.1. Title: `Turn [N]` (session chapter tool, harness-permitting; N = the turn count)
     - 3.1.7.2. Mark ONLY at the true turn end (can't be removed once made), never mid-turn
     - 3.1.7.3. Clarifications on I/O Declarations & Chapter Marker:
-      - 3.1.7.3.1. Order = [all actions] → mark chapter → §3.1.6's batch; the batch is the turn's FINAL output
-      - 3.1.7.3.2. Marker immediately PRECEDES the batch, so clicking the chapter lands on the declarations (not a blank line)
+      - 3.1.7.3.1. Order = all actions → mark chapter → §3.1.6's batch
+      - 3.1.7.3.2. Marker immediately PRECEDES the batch, so clicking it lands on declarations
       - 3.1.7.3.3. Nothing follows the batch, unless explicitly required
 
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
