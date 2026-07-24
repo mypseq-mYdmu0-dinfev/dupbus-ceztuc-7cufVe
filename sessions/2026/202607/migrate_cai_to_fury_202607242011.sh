@@ -42,8 +42,12 @@ ASIDE="${LOC}.premigrate-backup-${TS}"
 STALE=""
 LOCK="/tmp/migrate_cai_to_fury.lock"
 say(){ printf '%s\n' "$*"; }
-claude_procs(){ { pgrep -x Claude; pgrep -x claude; pgrep -f 'Claude Helper'; \
-                  pgrep -f '/Applications/Claude.app'; pgrep -f 'chrome_crashpad_handler'; } 2>/dev/null | sort -u; }
+# Match ONLY Claude/CAI processes (the rescue script's proven-working set). Do NOT
+# match `chrome_crashpad_handler` —— EVERY Electron app (Chrome, VS Code, Slack, …)
+# runs one and instantly respawns it when killed, so that broad match never clears
+# and the script false-aborts "Claude STILL running" (changing PID each run). Nor a
+# bare app-bundle path. rename-aside + the lsof guard cover any lingering CAI FD.
+claude_procs(){ { pgrep -x Claude; pgrep -x claude; pgrep -f 'Claude Helper'; } 2>/dev/null | sort -u; }
 open_under(){ [ -n "$(lsof +D "$1" 2>/dev/null)" ]; }       # 0 = something open (best-effort)
 
 # 0. Single-instance lock --------------------------------------------------
@@ -90,7 +94,7 @@ say "Asking CAI to quit cleanly (lets SQLite checkpoint)..."
 osascript -e 'quit app "Claude"' 2>/dev/null || true; sleep 3
 for _ in 1 2 3 4 5; do
   pkill -x Claude 2>/dev/null||true; pkill -x claude 2>/dev/null||true
-  pkill -f 'Claude Helper' 2>/dev/null||true; pkill -f 'chrome_crashpad_handler' 2>/dev/null||true
+  pkill -f 'Claude Helper' 2>/dev/null||true
   sleep 1
   pkill -9 -x Claude 2>/dev/null||true; pkill -9 -x claude 2>/dev/null||true; pkill -9 -f 'Claude Helper' 2>/dev/null||true
   sleep 2
