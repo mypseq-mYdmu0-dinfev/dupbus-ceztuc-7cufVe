@@ -98,6 +98,21 @@ def _is_clean_pair(w_base, sib_base, ts):
     return frozenset({wr, sr}) in _CLEAN_ROLE_SETS
 
 
+def _mirror_dir(dirpath):
+    """Cross-repo comms mirror of a `.../GitHub/<repo>/<sub>/<YYYY>/<YYYYMM>` folder:
+    dupbus `sessions/` <-> AJAP `inv/` for the SAME year-month. Returns the mirror
+    path if it exists, else None. Enforces TS-uniqueness across BOTH repos, but only
+    the matching year-month sub-folder — so AJAP's huge trees are never walked."""
+    ap = os.path.abspath(dirpath)
+    m = re.search(r"^(.*/GitHub/)(dupbus-ceztuc-7cufVe/sessions|AJAP_repo/inv)/(\d{4})/(\d{6})$", ap)
+    if not m:
+        return None
+    base, repo, y, ym = m.group(1), m.group(2), m.group(3), m.group(4)
+    other = "AJAP_repo/inv" if repo.endswith("sessions") else "dupbus-ceztuc-7cufVe/sessions"
+    cand = os.path.join(base, other, y, ym)
+    return cand if os.path.isdir(cand) else None
+
+
 def main():
     try:
         data = json.load(sys.stdin)
@@ -114,32 +129,38 @@ def main():
         return 0  # written file has no TS -> nothing to check
 
     dirpath = os.path.dirname(fp) or "."
-    try:
-        entries = os.listdir(dirpath)
-    except Exception:
+
+    def _hits(d):
+        try:
+            return [e for e in os.listdir(d)
+                    if _has_ts(e, ts) and os.path.isfile(os.path.join(d, e))]
+        except Exception:
+            return []
+
+    # Same-TS files in the written file's OWN folder (incl. itself), plus any in
+    # the cross-repo mirror folder (dupbus sessions <-> AJAP inv, same year-month).
+    own = _hits(dirpath)
+    own_others = [e for e in own if e != w_base]
+    mdir = _mirror_dir(dirpath)
+    mirror_others = _hits(mdir) if mdir else []
+
+    if not own_others and not mirror_others:
+        return 0  # lone TS -> silent
+
+    # Benign ONLY when: exactly one SAME-FOLDER sibling forms a clean pair
+    # (query/response or close/artefact), AND nothing shares the TS cross-repo.
+    if (not mirror_others) and len(own) == 2 and _is_clean_pair(w_base, own_others[0], ts):
         return 0
 
-    # Every file in THIS directory carrying the same TS (including the written
-    # file itself). Directories are skipped; one listing, no recursion.
-    same_ts = [
-        e for e in entries
-        if _has_ts(e, ts) and os.path.isfile(os.path.join(dirpath, e))
-    ]
-    others = [e for e in same_ts if e != w_base]
-
-    if not others:
-        return 0  # lone TS (only the written file) -> silent
-
-    # A collision exists. It is benign ONLY when the written file and exactly
-    # ONE sibling form a clean query_/response_ pair (no third same-TS file).
-    if len(same_ts) == 2 and _is_clean_pair(w_base, others[0], ts):
-        return 0
-
-    colliding = ", ".join(sorted(others))
+    parts = []
+    if own_others:
+        parts.append(", ".join(sorted(own_others)) + " (same folder)")
+    if mirror_others:
+        parts.append(", ".join(sorted(mirror_others)) + " (cross-repo: " + mdir + ")")
     sys.stderr.write(
         "TS clash: `" + w_base + "` shares timestamp " + ts + " with "
-        + colliding + " in the same folder —— only a clean query_/response_ "
-        "pair may share a TS. Re-stamp the odd one out (or confirm intentional).\n"
+        + "; ".join(parts) + " —— only a co-located query_/response_ (or close_/"
+        "artefact_) pair may share a TS. Re-stamp the odd one out (or confirm intentional).\n"
     )
     return 0
 

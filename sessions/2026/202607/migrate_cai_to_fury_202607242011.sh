@@ -58,9 +58,13 @@ while [ "${p:-0}" -gt 1 ]; do
   p="$(ps -o ppid= -p "$p" 2>/dev/null | tr -d ' ' || true)"; [ -z "$p" ] && break
 done
 
-# 2. FURY must be a REAL mountpoint, with no duplicate ---------------------
-mount | grep -q "on $VOL (" || { say "ABORT: '$VOL' is not a mounted volume (leftover dir?). NOTHING changed."; exit 1; }
-mount | grep -q "on ${VOL} 1 (" && { say "ABORT: a duplicate mount '${VOL} 1' exists — eject/rename it first."; exit 1; }
+# 2. FURY must be a REAL mounted volume (not a leftover dir), no duplicate --
+#    Uses diskutil (a direct volume query), NOT `mount | grep -q`: under
+#    `set -o pipefail`, grep -q exits on first match and SIGPIPEs `mount`, so the
+#    pipeline returns 141 and the check FALSE-ABORTS (v1's "not a mounted volume"
+#    bug on a machine with many mounts). diskutil has no pipe and is authoritative.
+diskutil info "$VOL" >/dev/null 2>&1 || { say "ABORT: '$VOL' is not a mounted volume (leftover dir?). NOTHING changed."; exit 1; }
+[ -d "${VOL} 1" ] && { say "ABORT: a duplicate mount '${VOL} 1' exists — eject/rename it first."; exit 1; }
 
 # 3. Heal a mid-flight interruption instead of re-breaking -----------------
 if [ ! -e "$LOC" ] && [ ! -L "$LOC" ]; then

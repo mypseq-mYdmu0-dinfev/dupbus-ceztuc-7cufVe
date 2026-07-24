@@ -186,7 +186,7 @@ def main():
             path = None
         if path:
             lines.append(
-                "`#%s` detected; read `%s` unless intentionally deferred."
+                "`#%s` detected; read `%s` unless already read or intentionally deferred."
                 % (raw, path))
         if len(lines) >= _MAX_REMINDERS:
             break
