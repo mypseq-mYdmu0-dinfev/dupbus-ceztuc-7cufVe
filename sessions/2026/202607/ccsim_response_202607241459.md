@@ -49,7 +49,7 @@ bash "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/sessions/2026
 - 8.4. §8.2 noowners —— you're right it's not a privacy/other-humans issue (only you touch FURY physically). The concern is narrower: (a) some apps REFUSE to run unless their files hold enforceable `0600` perms (e.g. ssh) —— noowners can't enforce that, so those apps break; (b) HFS+ is more prone to SQLite corruption on a surprise unmount than APFS. So "keys never / live-DB careful", not "someone could read it"
 
 ## 9. Housekeeping
-- 9.1. Stray file —— `sessions/ccsim_query_.md` (0 bytes, empty TS, tracked since 29 May, wrong folder). Almost certainly cruft. Want me to `git rm` it? (Flagging, not touching your comms area unasked)
+- 9.1. `sessions/ccsim_query_.md` —— RETRACTED (I'd first flagged it as a stray). Your mid-turn commit `0447201` added `sessions/README.md` clarifying that the root `*_query_.md` files are copy-paste TEMPLATES —— "never touch them". So it's intentional, left untouched. Good that I flagged rather than removed it
 - 9.2. Revert-log —— `202607/ccsim_migration_revertlog_202607241459.md` created (CC-facing, per your §4.2.4): every action + exact revert command, kept out of this response_
 - 9.3. Pairing-lint hook (last turn) is now a non-blocking warning, so this turn's graduated query didn't block the commit
 
