@@ -64,7 +64,7 @@ _HR_RE = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
 # docstring CRITICAL —— must not name the glyphs, or it teaches how to game the
 # check). Terse and terminal: tell the model to END the turn, not write more.
 _BREACH = ("Chat-prose breach (root CLAUDE.md §3.2): emit ONLY the 5 permitted "
-           "declarations. End the turn now —— add no further prose.")
+           "declarations. Avoid further prose.")
 
 # Log path (overridable for tests via CLINT_LOG); default beside this script.
 _LOG = os.environ.get("CLINT_LOG") or os.path.join(
