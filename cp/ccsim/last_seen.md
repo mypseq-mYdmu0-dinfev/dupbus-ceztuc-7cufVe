@@ -2,4 +2,4 @@
 
 *The line below = the last audited commit as `[TS] [SHA]` (TS first). CCSIM overwrites it every turn (see `cp/ccsim/CLAUDE.md` §1). Only CC reads this.*
 
-202607242317 ebbb38a73c2a1a26a5e3299186eb9bf299f5b92f
+202607242323 450749d4ba97c57dddeffb819354541c6afb4f51
