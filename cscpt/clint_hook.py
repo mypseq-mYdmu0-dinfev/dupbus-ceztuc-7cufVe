@@ -25,7 +25,7 @@ VERDICT —— NON-BLOCKING by design (variant a). A Stop hook that exits 2 (or 
 `decision:"block"`) would FORCE the agent to continue —— the opposite of what we
 want. So on a breach it exits 0, surfaces a user-facing warning via the universal
 `systemMessage` JSON field (shown to the user, NOT fed to the model as an
-instruction), and appends the event to `cscpt/.nprose_hook.log`. No breach ->
+instruction), and appends the event to `cscpt/.clint_hook.log`. No breach ->
 exit 0 with no output.
 
 CRITICAL —— the warning text carries NONE of the 5 glyphs/emoji: naming them
@@ -53,9 +53,9 @@ _HR_RE = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
 # Fixed, GLYPH-FREE warning (see docstring CRITICAL —— must not name the glyphs).
 _WARN = "No chat text except the 5 declarations (per root CLAUDE.md §3.2)."
 
-# Log path (overridable for tests via NPROSE_LOG); default beside this script.
-_LOG = os.environ.get("NPROSE_LOG") or os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), ".nprose_hook.log")
+# Log path (overridable for tests via CLINT_LOG); default beside this script.
+_LOG = os.environ.get("CLINT_LOG") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), ".clint_hook.log")
 
 
 def _line_ok(line):
