@@ -13,8 +13,11 @@ WHAT it does, self-contained (no external state):
   1. Read the Stop-hook stdin JSON; take `transcript_path` (a JSONL file).
   2. Parse it defensively. Keep MAIN-agent lines only (`isSidechain` falsy) so a
      sub-agent's prose never counts against the main turn. Find the last GENUINE
-     user message (a `user` line whose content is NOT purely tool_result blocks),
-     then scan every assistant text block AFTER it —— the final turn's chat.
+     user message (a `user` line whose content is NOT purely tool_result blocks,
+     AND not a system-injected wrapper such as a task-notification or
+     local-command echo that Claude Code appends as a `type: "user"` turn with
+     no human behind it —— see `_is_real_user`), then scan every assistant text
+     block AFTER it —— the final turn's chat.
   3. Flag a breach if any assistant text line, after leading whitespace, is
      non-blank yet does NOT begin with one of the 5 glyphs. Tolerated: a blank
      line; a markdown horizontal-rule / chapter divider (`---`/`***`/`___`); a
@@ -66,6 +69,15 @@ _HR_RE = re.compile(r"^\s*(?:-{3,}|\*{3,}|_{3,})\s*$")
 _BREACH = ("Chat-prose breach (root CLAUDE.md §3.2): emit ONLY the 5 permitted "
            "declarations. Avoid further prose.")
 
+# Known system-injected wrapper tags Claude Code appends as `type: "user"`
+# turns (notifications/command echoes) even though no human typed them —
+# see `_is_real_user`. Exact prefix match only, never substring, so real
+# human prose that merely mentions these words is unaffected.
+_SYSTEM_INJECTED_TAGS = (
+    "<task-notification>", "<local-command-caveat>",
+    "<local-command-stdout>", "<command-name>", "<command-message>",
+    "<command-args>")
+
 # Log path (overridable for tests via CLINT_LOG); default beside this script.
 _LOG = os.environ.get("CLINT_LOG") or os.path.join(
     os.path.dirname(os.path.abspath(__file__)), ".clint_hook.log")
@@ -99,12 +111,22 @@ def _text_of(content):
 
 
 def _is_real_user(obj):
-    """A genuine user prompt, not a tool_result-only `user` turn."""
+    """A genuine user prompt, not a tool_result-only `user` turn, and not a
+    system-injected wrapper. Claude Code appends several notices as `type:
+    "user"` turns with plain-string `message.content` even though no human
+    typed them: background task-completion notifications
+    (`<task-notification>...`) and local slash-command echoes
+    (`<local-command-caveat>`, `<local-command-stdout>`, `<command-name>`,
+    `<command-message>`, `<command-args>`). Treating those as genuine user
+    turns would wrongly reset the scan boundary past real assistant prose
+    from the current exchange, hiding it from the breach check —— so any
+    string content beginning with one of these exact tag prefixes (after
+    stripping leading whitespace) is excluded here."""
     if obj.get("type") != "user":
         return False
     content = (obj.get("message") or {}).get("content")
     if isinstance(content, str):
-        return True
+        return not content.lstrip().startswith(_SYSTEM_INJECTED_TAGS)
     if isinstance(content, list):
         # A tool_result-only turn is not a prompt; any non-tool_result => genuine.
         return any(isinstance(b, dict) and b.get("type") != "tool_result"
