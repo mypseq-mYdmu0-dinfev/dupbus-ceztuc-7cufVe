@@ -606,7 +606,7 @@ HELP_RAW = (
     "- **Show More**: reveal commits beyond the file's last rename<br>"
     "- **Full Content**: reveal contents beyond changed lines<br>"
     "- **HTML View**: render as rich text like GitHub preview<br>"
-    "- **Copy Only**: clicking a SHA chip won't open the commit on GitHub<br>"
+    "- **Copy Only**: clicking SHA won't open the commit on GitHub<br>"
     "- **Dark Mode**: follows macOS setting by default<br>"
     "- ⚠️ **Structural Bridge**: rows below it are GitHub-style guesses")
 HELP_HTML = re.sub(r"(^|<br>)- ", r"\1• ", HELP_RAW)
