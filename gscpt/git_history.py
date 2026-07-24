@@ -477,8 +477,8 @@ body.dark{--bg:#0d1117;--card:#161b22;--fg:#e6edf3;--muted:#8d96a0;
 *{font-family:Avenir,'Avenir Next',-apple-system,sans-serif}
 body{font-size:15px;line-height:1.55;margin:0;background:var(--bg);
      color:var(--fg)}
-header{background:var(--hd);color:var(--hdfg);padding:12px 22px;display:flex;
-       align-items:flex-start;gap:14px}
+header{position:sticky;top:0;z-index:5;background:var(--hd);color:var(--hdfg);
+       padding:12px 22px;display:flex;align-items:flex-start;gap:14px}
 header .grow{flex:1;min-width:0}
 header h1{font-size:17px;margin:0}
 header .sub{color:var(--hdmut);font-size:12px;margin-top:3px}
@@ -573,8 +573,20 @@ function toggleCopy(){ window.copyOnly = !window.copyOnly; syncBtns(); }
 function toggleView(){ body.classList.toggle('view-html'); syncBtns(); }
 function toggleShow(){ body.classList.toggle('show-all'); syncBtns(); updateCount(); }
 function toggleContent(){ body.classList.toggle('full-content'); syncBtns(); }
-function toggleHelp(){ const h = document.getElementById('helpbox');
-  h.style.display = h.style.display === 'block' ? 'none' : 'block'; }
+function toggleHelp(){
+  const h = document.getElementById('helpbox');
+  const opening = h.style.display !== 'block';
+  h.style.display = opening ? 'block' : 'none';
+  // Dismiss on ANY click while shown. Attach the listener next tick (not
+  // immediately) so the very click that OPENS the box doesn't also bubble
+  // into this handler and instantly close it again.
+  if (opening) setTimeout(function(){ document.addEventListener('click', closeHelp); }, 0);
+  else document.removeEventListener('click', closeHelp);
+}
+function closeHelp(){
+  document.getElementById('helpbox').style.display = 'none';
+  document.removeEventListener('click', closeHelp);
+}
 function shaClick(ev, sha, url){
   ev.preventDefault(); ev.stopPropagation();
   navigator.clipboard && navigator.clipboard.writeText(sha);
@@ -584,6 +596,21 @@ function shaClick(ev, sha, url){
   if (url && !window.copyOnly) window.open(url, '_blank');
 }
 """
+
+# Help-box authoring stays markdown-lite ("- " bullets, **bold**) so it's easy
+# to hand-edit; rendered here as real HTML (bullets -> •, bold -> <strong>;
+# HTML bullets render as • per coding.md) WITHOUT altering the wording itself.
+HELP_RAW = (
+    "- Newest first<br>- Click commit bar to expand or collapse<br>"
+    "- Click SHA chip to copy it & open the commit on GitHub<br>"
+    "- **Show More**: reveal commits beyond the file's last rename<br>"
+    "- **Full Content**: reveal contents beyond changed lines<br>"
+    "- **HTML View**: render as rich text like GitHub preview<br>"
+    "- **Copy Only**: clicking a SHA chip won't open the commit on GitHub<br>"
+    "- **Dark Mode**: follows macOS setting by default<br>"
+    "- ⚠️ **Structural Bridge**: rows below it are GitHub-style guesses")
+HELP_HTML = re.sub(r"(^|<br>)- ", r"\1• ", HELP_RAW)
+HELP_HTML = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", HELP_HTML)
 
 
 def build_page(target: Path) -> Path:
@@ -685,14 +712,7 @@ def build_page(target: Path) -> Path:
         "<button class='btn' id='copybtn' onclick='toggleCopy()'>Copy Only</button>"
         "<button class='btn' id='darkbtn' onclick='toggleDark()'>Dark Mode</button>"
         "</header>"
-        "<div id='helpbox'>- Newest first<br>- Click commit bar to expand or collapse<br>"
-        "- Click SHA chip to copy it & open the commit on GitHub<br>"
-        "- **Show More**: reveal commits beyond the file's last rename<br>"
-        "- **Full Content**: reveal contents beyond changed lines<br>"
-        "- **HTML View**: render as rich text like GitHub preview<br>"
-        "- **Copy Only**: clicking a SHA chip won't open the commit on GitHub<br>"
-        "- **Dark Mode**: follows macOS setting by default<br>"
-        "- ⚠️ **Structural Bridge**: rows below it are GitHub-style guesses</div>"
+        "<div id='helpbox'>" + HELP_HTML + "</div>"
         "<div id='toast'></div>"
         "<main>" + "".join(cards) + "</main>"
         "<footer>Confidential Intellectual Property of Culous Yu</footer>"

@@ -13,6 +13,10 @@
 - 2.2. Read ONLY each one's line 2 (≤8w subheading).
 - 2.3. Print `ccsim_close_[TS] — [subheading]` at the FOOT of the 1st `response_`, marking any not yet #r this session.
 - 2.4. Reading a prior CCSIM close IN FULL is DISCRETIONARY —— only when its subheading looks relevant.
+- 2.5. WSM internal-SSD health (also every session start):
+  - 2.5.1. Run `smartctl -a disk0 | grep -i "Percentage Used"` (no sudo); health% = 100 − that value.
+  - 2.5.2. ALERT the user in the 1st `response_` ONLY when health ≤93% (Percentage Used ≥7%); track how long each 1% drop takes (wear-rate → WSM-replacement runway).
+  - 2.5.3. Baseline 202607250332 —— 6% used = 94% (unchanged from session 05).
 
 ## 3. backlog.md —— Append-Only Log
 - 3.1. Collects CC's own system-improvement items (from `close_`/`wrap_` scans or ad-hoc).
@@ -38,5 +42,6 @@
   - For EACH open item, PROPOSE a concrete solution + rough effort
   - This monthly sweep is what keeps the backlog from growing unbounded
   - For large items (e.g. spanned ≥3 turns), suggest a dedicated session (context concerns)
+- SKILL AUTO-PROPOSE (i5) —— for each surfaced problem/pattern, if it maps to a pcmd lacking an alias-skill (or a NEW pcmd worth one), PROPOSE creating that skill so CC triggers the protocol more reliably; propose only, never auto-create
 - Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries)
 - The 2nd `wrap_` push (post-sweep) is an ALLOWED override of root CLAUDE.md's one-commit-per-turn.
