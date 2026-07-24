@@ -14,10 +14,11 @@
 # WHY v2 IS SAFE (the audit's fixes):
 #   - Never deletes the source: RENAME ASIDE (mv, atomic) THEN symlink. A failure
 #     can't leave a gutted dir with no link.
-#   - RE-VERIFIES zero Claude processes + no open files IMMEDIATELY before the mv
-#     (closes the multi-minute copy window where CAI could relaunch -> split-brain).
-#   - Broad process guard (Claude, claude, Claude Helper*, the app bundle, crashpad),
-#     a clean `quit` first, polled re-check, force-kill only stragglers.
+#   - RE-VERIFIES zero Claude processes IMMEDIATELY before the mv (closes the
+#     multi-minute copy window where CAI could relaunch -> split-brain).
+#   - Process guard = Claude / claude / Claude Helper (the proven rescue-script set),
+#     a clean `quit` first, polled re-check, force-kill only stragglers. (NOT the
+#     crashpad handler — every Electron app runs one, so matching it false-aborts.)
 #   - Proves FURY is a REAL mountpoint (not a leftover dir), rejects a duplicate
 #     "FURY 2TB 1" mount, refuses to run from inside Claude, single-instance lock.
 #   - Verifies BOTH file count AND byte size; aborts on an implausibly small source.
@@ -46,9 +47,8 @@ say(){ printf '%s\n' "$*"; }
 # match `chrome_crashpad_handler` —— EVERY Electron app (Chrome, VS Code, Slack, …)
 # runs one and instantly respawns it when killed, so that broad match never clears
 # and the script false-aborts "Claude STILL running" (changing PID each run). Nor a
-# bare app-bundle path. rename-aside + the lsof guard cover any lingering CAI FD.
+# bare app-bundle path. The rename-aside `mv` tolerates a lingering CAI crashpad FD.
 claude_procs(){ { pgrep -x Claude; pgrep -x claude; pgrep -f 'Claude Helper'; } 2>/dev/null | sort -u; }
-open_under(){ [ -n "$(lsof +D "$1" 2>/dev/null)" ]; }       # 0 = something open (best-effort)
 
 # 0. Single-instance lock --------------------------------------------------
 mkdir "$LOCK" 2>/dev/null || { say "ABORT: another run in progress ($LOCK). Delete it if stale."; exit 1; }
@@ -101,8 +101,12 @@ for _ in 1 2 3 4 5; do
   [ -z "$(claude_procs)" ] && break
 done
 R="$(claude_procs)"; [ -n "$R" ] && { say "ABORT: Claude STILL running (PIDs $(echo $R|tr '\n' ' ')). Force-Quit all 'Claude'/'Claude Helper' in Activity Monitor, re-run. NOTHING changed."; exit 1; }
-open_under "$LOC" && { say "ABORT: files under $LOC still open. NOTHING changed."; exit 1; }
-say "Confirmed: zero Claude processes, no open files."
+# NO lsof-open guard here: after CAI quits, the only FD left under $LOC is its
+# passive crashpad handler (crash-report infra, NOT session data). Killing it just
+# makes it respawn (and the earlier over-broad crashpad match false-aborted). The
+# rename-aside `mv` tolerates open FDs (unlike rm), and the claude_procs re-verify
+# in step 7 catches a genuinely RELAUNCHED CAI. Mirrors the proven rescue script.
+say "Confirmed: zero Claude / Claude Helper processes."
 
 # 6. Fresh FURY copy (stale aside first), verify COUNT + BYTES -------------
 if [ -e "$FURY" ] || [ -L "$FURY" ]; then
@@ -123,7 +127,6 @@ lo=$(( sb - sb/100 - 1024 )); hi=$(( sb + sb/100 + 1024 ))
 
 # 7. RE-VERIFY right before the destructive mv (close the copy-window TOCTOU)
 R="$(claude_procs)"; [ -n "$R" ] && { say "ABORT: Claude RELAUNCHED during the copy (PIDs $(echo $R|tr '\n' ' ')). NOTHING moved."; exit 1; }
-open_under "$LOC" && { say "ABORT: files under $LOC re-opened during the copy. NOTHING moved."; exit 1; }
 
 # 8. Critical section: rename-aside THEN symlink, signal-protected ---------
 trap '' HUP INT TERM
