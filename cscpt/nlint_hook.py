@@ -18,7 +18,10 @@ How it decides (all self-contained, no external state):
      has meaning for a `response_`.
   2. Reset —— after masking fenced code blocks (```...```) so code never
      false-triggers, a body line that (ignoring leading whitespace) begins a
-     level-1 count at 1: a heading `## 1.`, a bullet `- 1.1.`, or a bare `1.`.
+     level-1 count at 1 in one of three forms: a heading `## 1. ` (trailing
+     space REQUIRED), a bullet `- 1.` (e.g. `- 1.1.`, no trailing-space rule so
+     sub-numbers still match), or a bare `1. ` (trailing space REQUIRED, so a
+     prose decimal such as "1.5 million" is NOT a false positive).
   3. Reply-signal —— read the response's first line `# Response to <FILE>`, take
      <FILE> as the trimmed remainder after `Response to `, open that file in the
      SAME directory, and read ITS first line. The turn "replies to a response"
@@ -45,9 +48,16 @@ import json
 _RESPONSE_RE = re.compile(r"^(?:[A-Za-z0-9-]+_)*response_\d{12}\.md$")
 
 # A top-level numbering RESET (numbering restarted at 1): after leading
-# whitespace, an optional heading marker (`## `) OR bullet (`- `), then `1.`
-# followed by whitespace, a digit (the `.1` of `1.1.`), or end-of-line.
-_RESET_RE = re.compile(r"^\s*(?:#{1,6}\s+)?(?:-\s+)?1\.(?:\s|\d|$)")
+# whitespace, ANY of three forms —
+#   (i)   heading  `#{1,6}\s+1\.\s`  e.g. "## 1. " — trailing space REQUIRED
+#   (ii)  bullet   `-\s+1\.`         e.g. "- 1.1.", "- 1. ", "  - 1." — no
+#         trailing-space rule, so a sub-number like `1.1` still matches
+#   (iii) bare     `1\.\s`           e.g. "1. text" — trailing space REQUIRED,
+#         so a prose decimal like "1.5 million" does NOT false-trigger
+# The trailing-space requirement on (i)/(iii) is precisely what stops a prose
+# decimal ("1.5 million", "## 1.5 …") reading as a reset, whilst every genuine
+# level-1 restart still fires (a real reset is always "1." + space/newline).
+_RESET_RE = re.compile(r"^\s*(?:#{1,6}\s+1\.\s|-\s+1\.|1\.\s)")
 
 # Fence delimiter line: three backticks (optionally a language), any indent.
 _FENCE_RE = re.compile(r"^\s*```")

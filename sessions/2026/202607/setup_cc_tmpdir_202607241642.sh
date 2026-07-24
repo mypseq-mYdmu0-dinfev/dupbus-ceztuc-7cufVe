@@ -3,9 +3,15 @@
 # where sub-agent .output files + scratchpads live) to FURY, via the supported env var
 # CLAUDE_CODE_TMPDIR, applied by a MOUNT-GUARDED login LaunchAgent: if FURY isn't
 # mounted it safely unsets the var (falls back to internal /tmp), avoiding a stray dir.
-# NOTE: this is only a MODEST wear win — the bulk of sub-agent write bytes are the
-# transcripts under ~/.claude/projects (relocated by migrate_to_fury_...sh, whole ~/.claude).
-# Run once in a plain Terminal, then QUIT + RELAUNCH Claude so it inherits the var.
+# NOTE: this is a genuine wear win despite the small size — the harness scratch is
+# rewritten constantly during agent-fleet use. (The bulk of transcript bytes live in
+# ~/.claude/projects, already relocated by migrate_to_fury_...sh.)
+# This script only writes a LaunchAgent + a helper + sets an env var — it touches NO
+# live app data dir, so the rename-aside migration discipline does not apply here; it
+# is safe to run with apps open, and fully reversible (revert line printed at the end).
+# HOW TO RUN — FURY mounted, in a PLAIN Terminal:
+#   bash "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/sessions/2026/202607/setup_cc_tmpdir_202607241642.sh"
+# Then QUIT + RELAUNCH Claude so it inherits the var.
 set -e
 DIR="/Volumes/FURY 2TB/cctmp"    # 23 bytes — under the ~30-byte AF_UNIX socket-path limit
 BIN="$HOME/bin/cc-tmpdir.sh"

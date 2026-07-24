@@ -8,10 +8,10 @@
 - 1.2. `npm` is the exception: no symlink —— its cache is repointed by config (`npm config set cache '/Volumes/FURY 2TB/npm-cache'`).
 - 1.3. Safe move method (ALWAYS): `ditto` copy → verify file counts match → only then `rm -rf` source → `ln -s`. NEVER cross-volume `mv` (its copy-then-delete can half-finish on a Finder `.DS_Store` regeneration race —— that scare happened once, recovered, 0 data lost).
 
-## 2. Current state (as of 202607241642)
-- 2.1. DONE by CC (symlink → FURY): `~/.vscode`, `~/Library/Application Support/Code`, `~/.codex` (guard: was deleted by user; symlink pre-created so any future write lands on FURY), `~/.ajap` (done earlier by the AJAP Fable session). `npm` cache repointed.
-- 2.2. SCRIPTED for the user to run after quitting ALL Claude (`sessions/2026/202607/migrate_to_fury_202607241642.sh`): `~/.claude` (whole dir —— transcripts + settings + hooks + future skills) and `~/Library/Application Support/Claude` (CAI desktop app, ~13 GB, ~10 writes/min).
-- 2.3. NOT migrated: `~/.mcp` (jobspy) —— it is static `node_modules` (0 churn; jobspy's runtime writes go elsewhere, not here), and it was in use (MCP server running); space-only 117 MB win, not worth it. `~/.config/raycast` + `~/Library/Application Support/com.raycast.macos` —— KEPT LOCAL by user choice (Raycast replaced Spotlight; user accepts its wear). Keys (`~/.ssh`), `~/.Trash`, small static dotdirs —— stay local.
+## 2. Current state (as of 202607242011)
+- 2.1. DONE (symlink → FURY): `~/.claude` (WHOLE dir —— user ran the script; transcripts + settings + hooks + future skills), `~/.vscode`, `~/Library/Application Support/Code`, `~/.codex` (guard —— codex respawned but now writes to FURY), `~/.ajap` (AJAP session), `~/Library/Caches/Google` (Chrome cache), `~/Library/Application Support/Google/Chrome/Default` (Chrome profile), `~/Library/Caches/ai.perplexity.macv3` (Perplexity cache), `~/Library/Application Support/TradingView`. `npm` cache repointed. Deletable caches purged (`brew cleanup`, pip).
+- 2.2. CAI (`~/Library/Application Support/Claude`, ~12 GB, highest churn) —— NOT yet migrated. The first attempt FAILED (see §7) and was rolled back to internal by `rescue_cai_appdata_202607241900.sh`; CAI runs on internal now. Re-attempt via the HARDENED `sessions/2026/202607/migrate_cai_to_fury_202607242011.sh` (user runs after quitting ALL Claude). Recovery if it ever breaks post-migration: `nscpt/recover_cai_appdata.sh`.
+- 2.3. NOT migrated (left local): `~/.mcp` (jobspy —— static node_modules + in-use; AJAP's call, see the AJAP note); Spotify (dir actively shrinks on quit —— its big cache already redirected in-app; low value); Perplexity APP dir (its `perplexityd` LaunchAgent respawns after kill —— can't cleanly quit; only its cache migrated); Signal + Google Drive (user: too fragile, high loss risk); Adobe (aggressive respawn); Raycast (`com.raycast.macos` —— user keeps local, accepts wear); keys (`~/.ssh`), `~/.Trash`, small static dotdirs.
 - 2.4. `~/.claude.json` (auth token) lives in HOME, NOT inside `~/.claude` —— never moved (stays on internal, off the noowners volume).
 
 ## 3. Mount-race — the ONE hazard, and recovery
@@ -39,4 +39,17 @@
 - 5.4. Verify after: each symlink still resolves (`readlink` each), apps launch, and Finder "Date Added" survived on a sample.
 
 ## 6. Revert (undo any single migration)
-- 6.1. Per-item exact revert commands live in the session revert-logs (`ccsim_migration_revertlog_202607241459.md`, `..._202607241642.md`). General form: `rm <symlink> && mv '/Volumes/FURY 2TB/<name>' <original path>` (or `ditto` back); for npm: `npm config delete cache`.
+- 6.1. Per-item exact revert commands live in the session revert-logs (`ccsim_migration_revertlog_202607241459.md`, `..._202607241642.md`, `..._202607242011.md`). General form: `rm <symlink> && mv '/Volumes/FURY 2TB/<name>' <original path>` (or `ditto` back); for npm: `npm config delete cache`. Live app migrations also keep a `*.migbak-*` / `*.premigrate-backup-*` aside copy for instant rollback.
+
+## 7. THE MIGRATION FAILURE + THE SAFE PATTERN (mandatory reading before any app-dir move)
+- 7.1. What happened (24 Jul, CAI): the first script did `rm -rf SRC && ln -s DST SRC`. `ditto` had already copied CAI to FURY, but `rm -rf` FAILED ("Directory not empty") because CAI's `Claude Helper` children were still alive and re-writing the folder. The `&&` then skipped `ln -s` —— so NO symlink was made AND the partial `rm` had already GUTTED ~34,500 of 35,584 files. CAI, still running, rebuilt a blank state → signed out, sessions/pins/settings gone. Data was safe on FURY; the live app was wrecked. The user was severely distressed.
+- 7.2. Two root faults: (a) the process guard only did `pgrep -x Claude`, MISSING the `Claude Helper` processes; (b) a long DESTRUCTIVE `rm` ran on the LIVE path with no symlink yet.
+- 7.3. THE SAFE PATTERN (use for EVERY live app-dir migration —— never deviate):
+  - 7.3.1. Force-quit the app AND all helpers (`pkill -x App`, `pkill -f 'App Helper'`, then `-9`); WAIT; re-check; ABORT if any process survives (some, e.g. Perplexity's `perplexityd` or Adobe, respawn via LaunchAgent —— SKIP those, don't race them).
+  - 7.3.2. `lsof +D` the dir right before touching it (TOCTOU guard).
+  - 7.3.3. Rename any STALE FURY copy aside first (else `ditto` MERGES and the count-verify won't match live data).
+  - 7.3.4. `ditto` SRC → FURY; verify file counts (excl `.DS_Store`) match EXACTLY; abort on mismatch (source intact).
+  - 7.3.5. RENAME the source aside atomically (`mv SRC SRC.migbak-TS`) —— NEVER `rm` it. THEN `ln -s`. A failed step can never leave a gutted dir with no link, because the source is preserved and the symlink is created before any delete.
+  - 7.3.6. KEEP the aside backup until the app runs cleanly for ~a day; then delete to reclaim space. Rollback = `rm <symlink> && mv <aside> <path>`.
+- 7.4. Reference implementations of the safe pattern: `sessions/2026/202607/migrate_cai_to_fury_202607242011.sh` (CAI) and `migrate_apps_to_fury_202607242011.sh` (general, per-app guarded).
+- 7.5. Ongoing (not migration-time) residual for CAI-on-FURY: a SURPRISE FURY unmount while CAI runs live can corrupt its SQLite/LevelDB. Mitigations: never unmount FURY with CAI open; CAI sessions are cloud-synced; `nscpt/recover_cai_appdata.sh` re-links + CAI self-heals; the APFS reformat (§5) removes the HFS+ corruption-proneness. This residual is inherent to a live DB on a removable volume —— it is NOT a script bug and cannot be scripted away, only reduced.

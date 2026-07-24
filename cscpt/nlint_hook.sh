@@ -1,8 +1,8 @@
 #!/bin/bash
-# PostToolUse fast-path wrapper for numlint_hook.py.
+# PostToolUse fast-path wrapper for nlint_hook.py.
 #
 # Rationale: the hook fires on EVERY Edit/Write/MultiEdit (Claude Code matchers
-# are tool-name only, no path filter). numlint only ever acts on a `response_`
+# are tool-name only, no path filter). nlint only ever acts on a `response_`
 # file, so this bash shim reads the payload and exits 0 IMMEDIATELY unless the
 # payload even mentions `response_` —— sparing a Python spawn on the common edit.
 # The Python hook then does the rigorous basename check (CP-prefix + response_ +
@@ -22,5 +22,5 @@ case "$payload" in
   *) exit 0 ;;       # definitely not -> do nothing, no Python spawned
 esac
 
-printf '%s' "$payload" | python3 "$(dirname "$0")/numlint_hook.py"
+printf '%s' "$payload" | python3 "$(dirname "$0")/nlint_hook.py"
 exit $?

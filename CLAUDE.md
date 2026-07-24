@@ -93,7 +93,7 @@
     - 3.1.7.3. Clarifications on I/O Declarations & Chapter Marker:
       - 3.1.7.3.1. The §3.1.6's batch = the turn's FINAL chat text
       - 3.1.7.3.2. The marker = the turn's FINAL action
-      - 3.1.7.3.3. Avoid emitting anything after the marker, unless explicitly required
+      - 3.1.7.3.3. NOTHING follows the marker —— the marker tool-call IS the turn's last output; NEVER append trailing chat text after it (not even a lone `✅`, `Done.`, or acknowledgement); such a token is prose & violates §3.1.7.3.2
 
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
