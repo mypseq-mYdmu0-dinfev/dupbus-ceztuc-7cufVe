@@ -31,7 +31,7 @@ channel that reaches the MODEL on Stop is a block —— exit 2 feeds stderr bac
 Claude as an error and forces exactly one more turn. So on a breach this hook
 exits 2 with a terse, glyph-free stderr instruction to end the turn adding no
 further prose; Claude reads it, ends cleanly, and future turns self-correct. The
-event is still appended to `cscpt/.clint_hook.log`. No breach -> exit 0, no output.
+event is still appended to `cscpt/.clint.log`. No breach -> exit 0, no output.
 
 LOOP GUARD —— exit 2 forces a continuation that ends in another Stop, so an
 unguarded block would loop forever. The hook honours `stop_hook_active` (set true
@@ -96,7 +96,7 @@ _SYSTEM_INJECTED_TAGS = (
 
 # Log path (overridable for tests via CLINT_LOG); default beside this script.
 _LOG = os.environ.get("CLINT_LOG") or os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), ".clint_hook.log")
+    os.path.dirname(os.path.abspath(__file__)), ".clint.log")
 
 
 def _line_ok(line):

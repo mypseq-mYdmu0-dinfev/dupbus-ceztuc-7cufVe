@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Regression test for cscpt/nlint_hook.py's § Numbering Continuity advisory.
+"""Regression test for cscpt/nlint.py's § Numbering Continuity advisory.
 
 WHY this test exists (coding.md: "a fix without its test is unfinished"):
-a reported bug claimed nlint_hook neither fired nor flagged on the response
+a reported bug claimed nlint neither fired nor flagged on the response
 sessions/2026/202607/ccsim_response_202607250326.md (replying via
 sessions/2026/202607/ccsim_query_202607250326.md). Tracing the ACTUAL code
 (piping realistic PostToolUse payloads through the real shim -> python
@@ -36,7 +36,7 @@ file with reset-shaped content must never even be inspected.
 Self-contained: fixtures for Tests 2-3-5 are synthesised into a throwaway
 tempdir at run time (no permanent files added to the repo, nothing to void
 afterwards); Tests 1/4/6 alone read real, historical repo files, kept out
-of cscpt/nlint_hook.py itself (which must not name specific comms files —
+of cscpt/nlint.py itself (which must not name specific comms files —
 this test script is not that script, and per coding.md test fixtures MAY
 use real comms files). Run directly:
 
@@ -54,7 +54,7 @@ import tempfile
 
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", ".."))
-SHIM = os.path.join(REPO_ROOT, "cscpt", "nlint_hook.sh")
+SHIM = os.path.join(REPO_ROOT, "cscpt", "nlint.sh")
 
 # The exact real files the bug report named, plus two more real responses
 # that reinforce (via genuine repo history) the "should stay silent" side
