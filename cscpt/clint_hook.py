@@ -46,9 +46,25 @@ CRITICAL —— the stderr text carries NONE of the 5 glyphs/emoji: naming them 
 teach exactly which prefixes pass and invite gaming by bolting a glyph onto prose.
 `_BREACH` is a fixed, glyph-free string.
 
-FAIL-SAFE —— any parse error, missing field, or unreadable transcript -> exit 0
+DIAGNOSTIC —— every exit from `main()` logs exactly ONE terse line via
+`_log_event`, tagged by the stage reached (no_stdin / no_transcript /
+unreadable_transcript / empty_transcript / clean / block / suppressed), not
+only breaches. WHY: a log that writes solely on a breach can never tell "ran
+this turn and found nothing" apart from "the harness never invoked this
+command" —— an empty log is consistent with BOTH, which is precisely how a
+dead Stop-hook wiring went unnoticed across many real sessions even though the
+script itself was proven correct under direct/manual invocation. A non-growing
+log across real turns is now unambiguous: the harness is not calling this
+command. The extra log line never adds a leakage surface: the breach line
+already logs the offending text (glyph-free by construction, see CRITICAL);
+every other stage logs no user content at all.
+
+FAIL-SAFE —— any parse error (including stdin JSON that parses but is not an
+object), missing field, or unreadable transcript -> log the stage, then exit 0
 silently; a linter must never break a turn on its own failure. A stderr-write
-failure on the block path also falls back to exit 0, never a broken turn.
+failure on the block path also falls back to exit 0, never a broken turn. The
+log write itself is equally fail-safe (see `_log_event`): a full disk or a
+permissions error there must never break a turn either.
 (Run by the harness, not read —— see README.)"""
 
 import sys
@@ -134,14 +150,36 @@ def _is_real_user(obj):
     return False
 
 
+def _log_event(sid, action, lines=0, first="-"):
+    """Append ONE terse diagnostic line for ANY hook invocation, breach or not
+    (see docstring DIAGNOSTIC). FAIL-SAFE: swallow all errors -- a logging
+    failure must never break a turn (same contract as the rest of this file)."""
+    try:
+        with open(_LOG, "a", encoding="utf-8") as lf:
+            lf.write("%s\tsession=%s\taction=%s\tlines=%d\tfirst=%s\n" % (
+                datetime.now().isoformat(timespec="seconds"),
+                sid, action, lines,
+                str(first)[:200].replace("\t", " ").replace("\n", " ")))
+    except Exception:
+        pass
+
+
 def main():
     try:
         data = json.load(sys.stdin)
     except Exception:
+        _log_event("unknown", "no_stdin")
         return 0
+
+    if not isinstance(data, dict):
+        _log_event("unknown", "no_stdin")
+        return 0
+
+    sid = str(data.get("session_id") or "")[:8] or "unknown"
 
     tp = data.get("transcript_path") or ""
     if not tp or not os.path.isfile(tp):
+        _log_event(sid, "no_transcript")
         return 0
 
     try:
@@ -158,9 +196,11 @@ def main():
                 if isinstance(o, dict) and o.get("isSidechain") is not True:
                     objs.append(o)       # MAIN-agent lines only
     except Exception:
+        _log_event(sid, "unreadable_transcript")
         return 0
 
     if not objs:
+        _log_event(sid, "empty_transcript")
         return 0
 
     # Boundary: everything after the last GENUINE user message = the final turn.
@@ -182,7 +222,8 @@ def main():
                     offending.append(ln.strip())
 
     if not offending:
-        return 0                          # clean turn -> silent, non-blocking
+        _log_event(sid, "clean")          # clean turn -> proof-of-life, non-blocking
+        return 0
 
     # Are we ALREADY continuing because a prior Stop-block fired? If so, blocking
     # again would loop —— log it but let the turn end (see docstring LOOP GUARD).
@@ -190,15 +231,8 @@ def main():
 
     # Log every breach (offending prose is glyph-free by definition, so the log
     # never leaks the passing glyphs; the stderr message is glyph-free too).
-    try:
-        sid = str(data.get("session_id") or "")[:8]
-        with open(_LOG, "a", encoding="utf-8") as lf:
-            lf.write("%s\tsession=%s\taction=%s\tlines=%d\tfirst=%s\n" % (
-                datetime.now().isoformat(timespec="seconds"),
-                sid, "suppressed" if active else "block", len(offending),
-                offending[0][:200].replace("\t", " ").replace("\n", " ")))
-    except Exception:
-        pass                              # logging must never break the turn
+    _log_event(sid, "suppressed" if active else "block", len(offending),
+               offending[0])
 
     if active:
         return 0                          # loop guard -> allow the stop to finish

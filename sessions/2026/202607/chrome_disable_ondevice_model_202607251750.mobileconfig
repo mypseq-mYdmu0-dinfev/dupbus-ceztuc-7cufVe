@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>PayloadContent</key>
+	<array>
+		<dict>
+			<key>PayloadType</key>
+			<string>com.google.Chrome</string>
+			<key>PayloadVersion</key>
+			<integer>1</integer>
+			<key>PayloadIdentifier</key>
+			<string>local.culous.chrome.disableondevicemodel.com.google.Chrome</string>
+			<key>PayloadUUID</key>
+			<string>7CE2B99C-E04C-42F8-8D56-170D749568E7</string>
+			<key>PayloadDisplayName</key>
+			<string>Google Chrome Policy: GenAILocalFoundationalModelSettings</string>
+			<key>PayloadDescription</key>
+			<string>Forces the Chrome enterprise policy GenAILocalFoundationalModelSettings = 1 (Disabled). This stops Chrome's component updater from downloading or re-downloading the on-device "Gemini Nano" foundational GenAI model (the multi-gigabyte OptGuideOnDeviceModel component under ~/Library/Application Support/Google/Chrome/). Installed as a mandatory (machine-scope) managed preference, not a recommended/testing-level one.</string>
+			<key>PayloadOrganization</key>
+			<string>Personal</string>
+			<key>GenAILocalFoundationalModelSettings</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>PayloadDisplayName</key>
+	<string>Chrome: Disable On-Device GenAI Model Download</string>
+	<key>PayloadDescription</key>
+	<string>Machine-wide, mandatory Chrome policy that sets GenAILocalFoundationalModelSettings to 1 (Disabled), preventing Google Chrome from downloading or re-downloading its on-device Gemini-Nano foundational model (approx. 4GB, stored as OptGuideOnDeviceModel under each user's Chrome profile folder). This is enforced as an enterprise policy at Mandatory/Machine level, so it holds regardless of chrome://flags settings (feature flags alone do not stop the component updater from re-fetching the model). Install via System Settings > General > Device Management, then fully quit and relaunch Chrome. Can be removed later from the same Device Management pane if the policy is no longer wanted.</string>
+	<key>PayloadIdentifier</key>
+	<string>local.culous.chrome.disableondevicemodel</string>
+	<key>PayloadOrganization</key>
+	<string>Personal</string>
+	<key>PayloadRemovalDisallowed</key>
+	<false/>
+	<key>PayloadScope</key>
+	<string>System</string>
+	<key>PayloadType</key>
+	<string>Configuration</string>
+	<key>PayloadUUID</key>
+	<string>8CD966DC-BC41-480D-8213-5FF945F36584</string>
+	<key>PayloadVersion</key>
+	<integer>1</integer>
+</dict>
+</plist>
