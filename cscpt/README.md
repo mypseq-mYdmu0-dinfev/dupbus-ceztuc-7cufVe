@@ -6,6 +6,16 @@ Exception: `dark_mode.html` is a READ template (not a run script) —— see its
 
 (`gscpt/` is the user's own scripts —— different folder, different owner.)
 
+## Where the hooks are registered (IMPORTANT)
+
+All hooks (`dlint_hook.sh`, `nlint.sh`, `tlint.sh`, `hlint.py`, `clint.py`, plus `.sync/date_added.py` and `.claude/post_compact.sh`) are registered in the **USER** settings file `~/.claude/settings.json` —— NOT in this repo's `.claude/settings.json`.
+
+Why: the Claude Desktop app executes user-level hooks but silently ignores project-level ones (proven by probe: a project-registered hook never fired across a whole session, whilst the identical user-registered hook fired immediately). Project registration was therefore removed so that a future Desktop fix cannot double-fire everything.
+
+Consequence: user-level hooks fire in EVERY project on the machine, so each script self-scopes —— it reads the hook payload's `cwd` (falling back to the `transcript_path` project-slug) and exits 0 immediately unless the call belongs to this repo. The scope check fails OPEN: if neither field is usable the lint still runs, because a silently-disabled lint is the exact failure this design guards against.
+
+Recovery / new machine: `cscpt/hooks_user_settings.reference.json` holds a copy of the registration block —— merge its `hooks` object into `~/.claude/settings.json` and fix the absolute paths. Verify with `cp/ccsim/sandbox/hook_probe_response_.md` (editing it must be blocked by dlint) and `cp/ccsim/sandbox/repo_scope_guard_regression_test.py`.
+
 ## Scripts
 
 - `set_dates.py` —— macOS date setter. Sets a file/folder's Finder dates to a target timestamp (Sydney local). Usage: `python3 cscpt/set_dates.py <mode> <YYYYMMDDHHmm> <path> [more...]`. Modes: `1`=Created, `2`=Modified, `3`=Added, `4`=Last Opened, `5`=all four. A path may be a file or a directory (recursive, deepest-first, symlink-safe). Use to strip local timestamps before a file leaves the machine, or to set a deliberate date. `ctime` cannot be set and Spotlight's displayed Last-Opened may lag (the xattr is authoritative); both are local-only and do not survive copy/upload. **Run, never read.** (Sibling: `gscpt/DXMF.py` is the user's `.txt`-driven equivalent.)

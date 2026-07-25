@@ -48,6 +48,68 @@ import os
 import re
 import json
 
+# ---------------------------------------------------------------------------
+# REPO-SCOPE GUARD.
+#
+# WHY: this hook is registered in the USER-level ~/.claude/settings.json, not
+# a project settings.json —— proven live this session that Claude Desktop
+# NEVER runs project-level hooks, only user-level ones. A user-level
+# registration fires for EVERY project open on this Mac, not just this repo.
+# Unscoped, that is actively harmful here: this hook enforces THIS repo's
+# own comms-filename timestamp convention and would flag unrelated
+# projects' files for sharing a bare numeric substring that has no meaning
+# there. So before doing anything else, self-scope to this repo and exit
+# silently everywhere else.
+#
+# HOW: prefer the payload's `cwd` (an absolute path, confirmed present on
+# every real PostToolUse payload captured live this session —— exactly the
+# event type this hook receives). If `cwd` is ever absent, fall back to
+# `transcript_path`'s Claude-Code project slug: transcripts live at
+# `~/.claude/projects/<slug>/<uuid>.jsonl`, where `<slug>` is the project
+# directory with every `/` and ` ` replaced by `-` (confirmed live).
+# Compare either signal against THIS repo's own root/slug, derived from
+# this script's OWN location (never a hard-coded path, so the repo stays
+# portable/relocatable) —— resolving symlinks via `os.path.realpath` and
+# treating a sub-path of the repo as in-scope too.
+#
+# FAIL-OPEN: if NEITHER field is present/parseable, run exactly as if this
+# guard did not exist. An unscopeable payload is not evidence of a
+# different project —— it is just a shape we cannot read —— and a lint
+# that goes silently dark on ambiguity is precisely the failure this whole
+# hook-migration effort exists to fix.
+# ---------------------------------------------------------------------------
+_REPO_ROOT_REAL = os.path.realpath(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_REPO_SLUG = re.sub(r"[/ ]", "-", _REPO_ROOT_REAL.rstrip("/"))
+
+
+def _in_scope(data):
+    """True if this invocation's project is THIS repo (or a sub-path of
+    it), or if scope genuinely cannot be determined (FAIL-OPEN, see block
+    comment above). Never raises: any unexpected error here must default to
+    "run the lint", exactly like every other fail-safe path in this file."""
+    try:
+        if not isinstance(data, dict):
+            return True
+        cwd = data.get("cwd")
+        if isinstance(cwd, str) and cwd:
+            real_cwd = os.path.realpath(cwd)
+            return (real_cwd == _REPO_ROOT_REAL
+                    or real_cwd.startswith(_REPO_ROOT_REAL + os.sep))
+        tp = data.get("transcript_path")
+        if isinstance(tp, str) and tp:
+            m = re.search(r"/projects/([^/]+)/", tp)
+            if m:
+                slug = m.group(1)
+                return (slug == _REPO_SLUG
+                        or slug.startswith(_REPO_SLUG + "-"))
+            # transcript_path present but not the recognised
+            # .../projects/<slug>/... shape -> unparseable -> fall through.
+        return True  # neither field usable -> FAIL-OPEN
+    except Exception:
+        return True  # never let a scope-check error silence the lint
+
+
 # A filename TS: 12 digits starting "20" (YYYYMMDDHHmm), not part of a longer
 # digit run (so a 13+-digit id never reads as a TS, and a TS is not matched
 # inside one). Used both to find the written file's TS and to test siblings.
@@ -117,6 +179,9 @@ def main():
     try:
         data = json.load(sys.stdin)
     except Exception:
+        return 0
+
+    if not _in_scope(data):
         return 0
 
     fp = (data.get("tool_input") or {}).get("file_path") or ""

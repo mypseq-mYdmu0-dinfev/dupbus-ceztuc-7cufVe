@@ -73,6 +73,71 @@ import re
 import json
 from datetime import datetime
 
+# ---------------------------------------------------------------------------
+# REPO-SCOPE GUARD.
+#
+# WHY: this hook is registered in the USER-level ~/.claude/settings.json, not
+# a project settings.json —— proven live this session that Claude Desktop
+# NEVER runs project-level hooks, only user-level ones. A user-level
+# registration fires for EVERY project open on this Mac, not just this repo.
+# Unscoped, that is actively harmful here: this hook enforces THIS repo's
+# own bespoke no-chat-prose discipline (root CLAUDE.md §3.2) and would start
+# BLOCKING Stop turns in unrelated projects that never agreed to any such
+# rule. So before doing anything else (bar the diagnostic log —— see the
+# DIAGNOSTIC docstring section above, which this guard deliberately keeps
+# alive via a distinct "out_of_scope" tag), self-scope to this repo and
+# exit silently everywhere else.
+#
+# HOW: prefer the payload's `cwd` if present (confirmed present on a live
+# PostToolUse payload captured this session; NOT yet confirmed on a real
+# Stop payload, which is what THIS hook actually receives —— so the
+# fallback below is a live safety net, not just theoretical). If `cwd` is
+# absent, fall back to `transcript_path`'s Claude-Code project slug:
+# transcripts live at `~/.claude/projects/<slug>/<uuid>.jsonl`, where
+# `<slug>` is the project directory with every `/` and ` ` replaced by `-`
+# (confirmed live). Compare either signal against THIS repo's own
+# root/slug, derived from this script's OWN location (never a hard-coded
+# path, so the repo stays portable/relocatable) —— resolving symlinks via
+# `os.path.realpath` and treating a sub-path of the repo as in-scope too.
+#
+# FAIL-OPEN: if NEITHER field is present/parseable, run exactly as if this
+# guard did not exist. An unscopeable payload is not evidence of a
+# different project —— it is just a shape we cannot read —— and a lint
+# that goes silently dark on ambiguity is precisely the failure this whole
+# hook-migration effort exists to fix.
+# ---------------------------------------------------------------------------
+_REPO_ROOT_REAL = os.path.realpath(
+    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+_REPO_SLUG = re.sub(r"[/ ]", "-", _REPO_ROOT_REAL.rstrip("/"))
+
+
+def _in_scope(data):
+    """True if this invocation's project is THIS repo (or a sub-path of
+    it), or if scope genuinely cannot be determined (FAIL-OPEN, see block
+    comment above). Never raises: any unexpected error here must default to
+    "run the lint", exactly like every other fail-safe path in this file."""
+    try:
+        if not isinstance(data, dict):
+            return True
+        cwd = data.get("cwd")
+        if isinstance(cwd, str) and cwd:
+            real_cwd = os.path.realpath(cwd)
+            return (real_cwd == _REPO_ROOT_REAL
+                    or real_cwd.startswith(_REPO_ROOT_REAL + os.sep))
+        tp = data.get("transcript_path")
+        if isinstance(tp, str) and tp:
+            m = re.search(r"/projects/([^/]+)/", tp)
+            if m:
+                slug = m.group(1)
+                return (slug == _REPO_SLUG
+                        or slug.startswith(_REPO_SLUG + "-"))
+            # transcript_path present but not the recognised
+            # .../projects/<slug>/... shape -> unparseable -> fall through.
+        return True  # neither field usable -> FAIL-OPEN
+    except Exception:
+        return True  # never let a scope-check error silence the lint
+
+
 # Base glyph codepoints (variation selectors ignored, so `➡️` and `➡` both pass).
 _GLYPHS = ("✅", "⇠", "➡", "⚠", "\U0001f6a8")  # ✅ ⇠ ➡ ⚠ 🚨
 
@@ -176,6 +241,10 @@ def main():
         return 0
 
     sid = str(data.get("session_id") or "")[:8] or "unknown"
+
+    if not _in_scope(data):
+        _log_event(sid, "out_of_scope")
+        return 0
 
     tp = data.get("transcript_path") or ""
     if not tp or not os.path.isfile(tp):

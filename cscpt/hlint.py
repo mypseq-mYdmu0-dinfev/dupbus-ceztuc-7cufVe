@@ -52,6 +52,70 @@ import json
 # relies on cwd, which may be a sub-folder for a given session).
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+# ---------------------------------------------------------------------------
+# REPO-SCOPE GUARD.
+#
+# WHY: this hook is registered in the USER-level ~/.claude/settings.json, not
+# a project settings.json —— proven live this session that Claude Desktop
+# NEVER runs project-level hooks, only user-level ones. A user-level
+# registration fires for EVERY project open on this Mac, not just this repo.
+# Unscoped, that is actively harmful here: this hook injects THIS repo's
+# `#[trigger]` protocol-file reminders (root CLAUDE.md §7.3.1) into the
+# model's context, and would inject meaningless noise into unrelated
+# projects' prompts, where no `universal/[trigger].md` convention exists at
+# all. So before doing anything else (incl. before the repo-wide `.md`
+# index walk below, which is real Python work this guard must pre-empt),
+# self-scope to this repo and exit silently everywhere else.
+#
+# HOW: prefer the payload's `cwd` if present (confirmed present on a live
+# PostToolUse payload captured this session; NOT yet confirmed on a real
+# UserPromptSubmit payload, which is what THIS hook actually receives ——
+# so the fallback below is a live safety net, not just theoretical). If
+# `cwd` is absent, fall back to `transcript_path`'s Claude-Code project
+# slug: transcripts live at `~/.claude/projects/<slug>/<uuid>.jsonl`, where
+# `<slug>` is the project directory with every `/` and ` ` replaced by `-`
+# (confirmed live). Compare either signal against THIS repo's own
+# root/slug (`_ROOT` above, already this script's own deterministic
+# anchor) —— resolving symlinks via `os.path.realpath` and treating a
+# sub-path of the repo as in-scope too.
+#
+# FAIL-OPEN: if NEITHER field is present/parseable, run exactly as if this
+# guard did not exist. An unscopeable payload is not evidence of a
+# different project —— it is just a shape we cannot read —— and a lint
+# that goes silently dark on ambiguity is precisely the failure this whole
+# hook-migration effort exists to fix.
+# ---------------------------------------------------------------------------
+_REPO_ROOT_REAL = os.path.realpath(_ROOT)
+_REPO_SLUG = re.sub(r"[/ ]", "-", _REPO_ROOT_REAL.rstrip("/"))
+
+
+def _in_scope(data):
+    """True if this invocation's project is THIS repo (or a sub-path of
+    it), or if scope genuinely cannot be determined (FAIL-OPEN, see block
+    comment above). Never raises: any unexpected error here must default to
+    "run the lint", exactly like every other fail-safe path in this file."""
+    try:
+        if not isinstance(data, dict):
+            return True
+        cwd = data.get("cwd")
+        if isinstance(cwd, str) and cwd:
+            real_cwd = os.path.realpath(cwd)
+            return (real_cwd == _REPO_ROOT_REAL
+                    or real_cwd.startswith(_REPO_ROOT_REAL + os.sep))
+        tp = data.get("transcript_path")
+        if isinstance(tp, str) and tp:
+            m = re.search(r"/projects/([^/]+)/", tp)
+            if m:
+                slug = m.group(1)
+                return (slug == _REPO_SLUG
+                        or slug.startswith(_REPO_SLUG + "-"))
+            # transcript_path present but not the recognised
+            # .../projects/<slug>/... shape -> unparseable -> fall through.
+        return True  # neither field usable -> FAIL-OPEN
+    except Exception:
+        return True  # never let a scope-check error silence the lint
+
+
 # Directories never worth walking (VCS internals, dependency/cache trees).
 _SKIP_DIRS = {
     ".git", "node_modules", ".venv", "venv", "env",
@@ -163,6 +227,10 @@ def main():
 
     if not isinstance(data, dict):
         return 0
+
+    if not _in_scope(data):
+        return 0
+
     prompt = data.get("prompt")
     if not isinstance(prompt, str) or not prompt:
         return 0
