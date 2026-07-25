@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Regression test for the REPO-SCOPE GUARD added to all 5 cscpt/ hook
-scripts (clint.py, hlint.py, nlint.py, tlint.py, dlint_hook.py).
+scripts (clint.py, hlint.py, nlint.py, tlint.py, dlint_quick.py).
 
 WHY this test exists (coding.md: "a fix without its test is unfinished"):
 all 5 hooks moved from a PROJECT-level settings.json registration (which
@@ -22,7 +22,7 @@ unit-tested' != done -- done only when WIRED and exercised end-to-end").
 Self-contained: every fixture (transcripts, comms-file pairs, TS-clash
 pairs) is synthesised into a throwaway tempdir at run time; the one
 exception is cscpt's own real `cp/ccsim/sandbox/hook_probe_response_.md`
-probe fixture, reused deliberately for the dlint_hook.py cases because it
+probe fixture, reused deliberately for the dlint_quick.py cases because it
 is the exact artefact the task's own acceptance test names (a real file
 with 5 guaranteed dlint RED flags) -- nothing here is deleted or modified.
 Run directly:
@@ -296,17 +296,20 @@ def section_hlint():
     _record("B1 in-scope cwd=repo root -> still emits #buy -> universal/buy.md reminder",
             r.returncode == 0 and "universal/buy.md" in r.stdout, r)
 
-    # B2: out-of-scope via cwd -> silent.
+    # B2/B3: hlint is DELIBERATELY GLOBAL —— it carries no repo-scope guard, so a
+    # foreign cwd or transcript slug must NOT silence it. Rationale: hlint only ever
+    # injects an advisory "read the pcmd" reminder and can never block, whilst a
+    # `#trigger` silently not firing in another repo has already cost the owner
+    # 100+ hours of work. These two cases therefore assert that it still ACTS.
     payload = _user_prompt_submit_payload(prompt, cwd=OUT_OF_SCOPE_CWD)
     r = _run_direct("hlint.py", payload)
-    _record("B2 out-of-scope cwd (sibling repo) -> exit 0, empty stdout",
-            r.returncode == 0 and r.stdout.strip() == "", r)
+    _record("B2 foreign cwd -> hlint STILL reminds (deliberately global, no guard)",
+            r.returncode == 0 and "universal/buy.md" in r.stdout, r)
 
-    # B3: out-of-scope via transcript_path slug (no cwd key).
     payload = _user_prompt_submit_payload(prompt, transcript_path=OOS_TP, cwd=None)
     r = _run_direct("hlint.py", payload)
-    _record("B3 out-of-scope transcript_path slug (no cwd key) -> exit 0, empty stdout",
-            r.returncode == 0 and r.stdout.strip() == "", r)
+    _record("B3 foreign transcript slug -> hlint STILL reminds (deliberately global)",
+            r.returncode == 0 and "universal/buy.md" in r.stdout, r)
 
     # B4: fail-open -- neither field usable; hlint's OWN logic needs only
     # `prompt`, so a full, unsuppressed reminder is the correct proof.
@@ -317,7 +320,7 @@ def section_hlint():
 
 
 def section_nlint():
-    print("\n--- nlint.py (PostToolUse hook, invoked via nlint.sh, as settings.json does) ---")
+    print("\n--- nlint.py (PostToolUse hook, invoked via nlint_hook.sh, as settings.json does) ---")
     with tempfile.TemporaryDirectory() as td:
         response = _make_nlint_fixture(td)
 
@@ -326,27 +329,27 @@ def section_nlint():
 
         # C1: in-scope -> still flags the illegitimate reset.
         payload = _post_tool_use_payload(response, cwd=REPO_ROOT)
-        r = _run_shim("nlint.sh", payload)
+        r = _run_shim("nlint_hook.sh", payload)
         _record("C1 in-scope cwd=repo root -> still FLAGS illegitimate reset",
                 flagged(r), r)
 
         # C2: out-of-scope via cwd -> silent, even though the same file
         # would otherwise flag.
         payload = _post_tool_use_payload(response, cwd=OUT_OF_SCOPE_CWD)
-        r = _run_shim("nlint.sh", payload)
+        r = _run_shim("nlint_hook.sh", payload)
         _record("C2 out-of-scope cwd (sibling repo) -> silent despite reset-shaped file",
                 not flagged(r), r)
 
         # C3: out-of-scope via transcript_path slug (no cwd key).
         payload = _post_tool_use_payload(response, transcript_path=OOS_TP, cwd=None)
-        r = _run_shim("nlint.sh", payload)
+        r = _run_shim("nlint_hook.sh", payload)
         _record("C3 out-of-scope transcript_path slug (no cwd key) -> silent",
                 not flagged(r), r)
 
         # C4: fail-open -- neither field usable -> still flags (nlint's own
         # logic needs only tool_input.file_path).
         payload = _post_tool_use_payload(response, transcript_path="", cwd=None)
-        r = _run_shim("nlint.sh", payload)
+        r = _run_shim("nlint_hook.sh", payload)
         _record("C4 fail-open (neither field) -> STILL flags illegitimate reset",
                 flagged(r), r)
 
@@ -354,43 +357,46 @@ def section_nlint():
         # '.../projects/<slug>/...' shape -> unparseable -> fail-open, not
         # a silent false "out of scope".
         payload = _post_tool_use_payload(response, transcript_path=UNPARSEABLE_TP, cwd=None)
-        r = _run_shim("nlint.sh", payload)
+        r = _run_shim("nlint_hook.sh", payload)
         _record("C5 fail-open: transcript_path present but unparseable shape -> STILL flags",
                 flagged(r), r)
 
 
 def section_tlint():
-    print("\n--- tlint.py (PostToolUse hook, invoked via tlint.sh, as settings.json does) ---")
+    print("\n--- tlint.py (PostToolUse hook, invoked via tlint_hook.sh, as settings.json does) ---")
     with tempfile.TemporaryDirectory() as td:
         written = _make_tlint_fixture(td)
 
         # D1: in-scope -> still flags the TS clash (stderr non-empty).
         payload = _post_tool_use_payload(written, cwd=REPO_ROOT)
-        r = _run_shim("tlint.sh", payload)
+        r = _run_shim("tlint_hook.sh", payload)
         _record("D1 in-scope cwd=repo root -> still flags TS clash (stderr)",
                 r.returncode == 0 and r.stderr.strip() != "", r)
 
-        # D2: out-of-scope via cwd -> silent.
+        # D2/D3: tlint is DELIBERATELY GLOBAL —— no repo-scope guard, so a foreign
+        # cwd or transcript slug must NOT silence it. Rationale: tlint is warn-only
+        # (stderr then exit 0, never blocks), so it is harmless anywhere, whilst a
+        # timestamp clash in the sibling investigation repo is exactly the case the
+        # cross-repo mirror check exists to catch. It still exits 0 either way.
         payload = _post_tool_use_payload(written, cwd=OUT_OF_SCOPE_CWD)
-        r = _run_shim("tlint.sh", payload)
-        _record("D2 out-of-scope cwd (sibling repo) -> silent despite TS clash",
-                r.returncode == 0 and r.stderr.strip() == "", r)
+        r = _run_shim("tlint_hook.sh", payload)
+        _record("D2 foreign cwd -> tlint STILL flags TS clash (deliberately global)",
+                r.returncode == 0 and r.stderr.strip() != "", r)
 
-        # D3: out-of-scope via transcript_path slug (no cwd key).
         payload = _post_tool_use_payload(written, transcript_path=OOS_TP, cwd=None)
-        r = _run_shim("tlint.sh", payload)
-        _record("D3 out-of-scope transcript_path slug (no cwd key) -> silent",
-                r.returncode == 0 and r.stderr.strip() == "", r)
+        r = _run_shim("tlint_hook.sh", payload)
+        _record("D3 foreign transcript slug -> tlint STILL flags (deliberately global)",
+                r.returncode == 0 and r.stderr.strip() != "", r)
 
         # D4: fail-open -- neither field usable -> still flags.
         payload = _post_tool_use_payload(written, transcript_path="", cwd=None)
-        r = _run_shim("tlint.sh", payload)
+        r = _run_shim("tlint_hook.sh", payload)
         _record("D4 fail-open (neither field) -> STILL flags TS clash",
                 r.returncode == 0 and r.stderr.strip() != "", r)
 
 
-def section_dlint_hook():
-    print("\n--- dlint_hook.py (PostToolUse hook, invoked via dlint_hook.sh -- MANDATORY case) ---")
+def section_dlint_quick():
+    print("\n--- dlint_quick.py (PostToolUse lint body, invoked via dlint_hook.sh -- MANDATORY case) ---")
     probe_abs = os.path.join(REPO_ROOT, PROBE_FILE_REL)
     if not os.path.isfile(probe_abs):
         _record("E* probe fixture missing -> %s" % probe_abs, False)
@@ -430,7 +436,7 @@ def main():
     section_hlint()
     section_nlint()
     section_tlint()
-    section_dlint_hook()
+    section_dlint_quick()
 
     passed = sum(1 for r in _RESULTS if r)
     total = len(_RESULTS)

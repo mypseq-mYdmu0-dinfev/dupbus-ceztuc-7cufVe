@@ -2,39 +2,45 @@
 """
 dlint.py —— deterministic DELIVERABLE linter (CC-only; lives in /cscpt/).
 
-DESIGNED TO BE RUN, NOT READ —— normal use invokes it via the shell and reads
-ONLY its terminal output. This docstring & the comments below are for the NEXT CC
-that POLISHES this script, not for routine callers. USAGE, MODES (file / --text /
---quick) and the run-and-loop workflow live in `universal/writing.md`
-§ Deliverable Lint —— kept there because THAT file is read at deliverable time
-whilst THIS one is not.
+=== NON-CCSIM —— all you need to RUN it ===
+USAGE (`--quick`, if used, must come FIRST):
+    python3 cscpt/dlint.py [--quick] <path> [<path> ...]
+    python3 cscpt/dlint.py [--quick] --text "your text"
 
-WHAT IT DOES
-------------
-1. AUTO-FIX: straight quotes/apostrophes (U+0022 / U+0027) -> typographic, by
-   context. File mode rewrites IN PLACE; --text mode prints the fixed text.
-   Idempotent (already-typographic quotes are left alone).
+* FILE mode rewrites the file IN PLACE; `--text` prints the fixed text instead.
+* AUTO-FIX (full mode only): straight quotes/apostrophes -> typographic, chosen
+  by context. Idempotent —— already-typographic quotes are left alone.
+* `--quick` NEVER rewrites (comms and code may hold intentional straight quotes)
+  and keeps ONLY the register-independent rules —— Americanisms, Hart's
+  quotation, `-ize`, hyphen/#numbered, `hi` greeting —— so it is safe over
+  comms. FULL mode adds the deliverable-only rules (weak words, GenAI/cliche).
+* FLAGS are printed, never auto-applied (dlint flags, you rewrite):
+    🔴 RED —— hard breaches, ZERO TOLERANCE, must reach 0: exact Americanisms,
+       `vs.` with period, em dash, mid-sentence colon, a comma as the last char
+       inside a closing quote, `hi` as a greeting.
+    🟡 YELLOW —— conditional, may be legitimate: en dash, bare `+`, hyphen used
+       as a dash/non-#numbered bullet, `-ize`/`-isation`, sentence-initial
+       `Where`, a lone period inside a closing quote, GenAI/cliche words and
+       phrases, weak words (want/something/big).
+* EXIT: 0 = no RED (yellows may remain) | 1 = RED present | 2 = usage/error.
+* The run-and-loop WORKFLOW lives in `universal/writing.md` § Deliverable Lint,
+  not here —— that file is open at deliverable time whilst this one is not.
+DESIGNED TO BE RUN, NOT READ —— normal use reads only the terminal output.
 
-2. FLAG (print only) two tiers (the real rules ARE the check fns below):
-     🔴 RED  —— hard breaches, ZERO TOLERANCE (must reach 0): exact Americanisms,
-                `vs.` with period, em dash, mid-sentence colon, a comma as the
-                last char inside a closing quote, `hi` as a greeting. Fires ONLY
-                on a genuine breach, so a RED never needs "conditional acceptance".
-     🟡 YELLOW — conditional, may be legitimate: en dash, bare `+`, hyphen used as
-                a dash/non-#numbered bullet, `-ize`/`-isation` spellings,
-                sentence-initial `Where`, a lone period inside a closing quote,
-                GenAI/cliche words & phrases, weak/unsophisticated words
-                (want/something/big).
-   --quick keeps ONLY the register-independent rules (Americanisms, Hart's
-   quotation, `-ize`, hyphen/#numbered, `hi` greeting) so it is safe to run over
-   comms too —— weak words and GenAI words are deliverable-only (FULL mode),
-   since ordinary language between user and CC should not be nagged.
-
-EXIT CODE: 0 = no RED (yellows may remain) | 1 = RED present | 2 = usage/error
-
-POLISH NOTE: the word/spelling lists are seeded from `writing.md` + root
-`CLAUDE.md` and are NOT exhaustive —— on each polish, briefly web_search the
-latest GenAI/cliche terms (per `writing.md`) and extend GENAI_WORDS / PHRASES.
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+* The real rules ARE the check fns below; this header is a map, not a spec ——
+  keep it so, rather than duplicating the lists into prose that drifts.
+* RED fires ONLY on a genuine breach, so it never needs "conditional
+  acceptance". Anything register-dependent belongs in YELLOW: generalised
+  `-ize`/`-isation` sits there because exact rules must be unconditional and
+  `-ize` has Oxford-acceptable exceptions.
+* Suggested British forms are never auto-applied —— the rewrite stays the
+  author's, so a flag is judged rather than obeyed.
+* The double-quote open/close toggle can DESYNC on unbalanced quotes —— eyeball
+  the result if a deliverable has stray quotes (see `convert_quotes`).
+* POLISH NOTE: the word/spelling lists are seeded from `writing.md` + root
+  `CLAUDE.md` and are NOT exhaustive —— on each polish, briefly web_search the
+  latest GenAI/cliche terms (per `writing.md`) and extend GENAI_WORDS / PHRASES.
 """
 
 import re

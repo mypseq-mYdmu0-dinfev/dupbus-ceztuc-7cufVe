@@ -5,7 +5,7 @@
 
 ## 1. What is portable vs WSM-local (read first)
 - 1.1. PORTABLE (survives losing the Mac): the two git repos on GitHub (`dupbus-ceztuc-7cufVe`, `AJAP_repo`); cloud-synced Claude/ChatGPT sessions + memories (account-side); anything committed + pushed.
-- 1.2. ON FURY (lost if FURY dies, unless backed up): all migrated app data —— CAI (`~/Library/Application Support/Claude`), VS Code state (`~/Library/Application Support/Code`), Chrome profile + caches, TradingView, Perplexity cache, `~/.claude` (CC transcripts), `~/.vscode`, `~/.codex`, `~/.mcp`(local), npm cache, `~/.ajap`.
+- 1.2. ON FURY (lost if FURY dies, unless backed up): all migrated app data —— CAI (`~/Library/Application Support/Claude`), VS Code state (`~/Library/Application Support/Code`), Chrome profile + caches, TradingView, Perplexity cache, `~/.claude` (CC transcripts + `settings.json`, which holds the ONLY live hook registrations —— §5.2.7), `~/.vscode`, `~/.codex`, `~/.mcp`(local), npm cache, `~/.ajap`.
 - 1.3. WSM-LOCAL, NOT in git or cloud (must be RE-CREATED on a new Mac): the symlinks themselves (`~/.claude`, `~/.vscode`, `~/.codex`, `~/Library/.../Code`, `~/Library/.../Claude` → FURY); the LaunchAgents (`com.culous.fury-guard`, `com.culous.cc-tmpdir`) + their `~/bin` scripts; `npm config` cache path; `git config core.hooksPath`; macOS Automation/permissions grants; Finder "Date Added" metadata; credentials (`.claude/cic_login.local.md`, `seek/.claude/ajap_login.local.md` —— git-ignored by design); CAI's local settings (fonts/pins —— sessions are cloud, these local prefs are not).
 - 1.4. RULE OF THUMB: git has the CODE + PROTOCOLS; cloud has the SESSIONS; FURY has the APP DATA; the WSM has the WIRING. A new Mac needs the wiring rebuilt by hand (re-run the setup scripts per §5.2 + re-grant permissions).
 
@@ -18,15 +18,15 @@
 ## 3. Scenario B —— FURY LOST (no access to FURY data; WSM + internal data intact)
 - 3.1. What's gone: everything on FURY (§1.2) —— CAI data, VS Code state, Chrome profile, `~/.claude` transcripts, etc. The symlinks now dangle.
 - 3.2. What survives: the git repos (GitHub); cloud CAI/ChatGPT sessions; and any INTERNAL backups still present (`*.migbak-*`, `*.premigrate-backup-*` —— only if not yet deleted). Time Machine helps ONLY for paths that were on the internal disk or if FURY had been added to TM (external volumes are excluded by default).
-- 3.3. Recovery onto a NEW drive: name the new volume EXACTLY `FURY 2TB` (then every surviving symlink + LaunchAgent resolves unchanged —— the WSM wiring itself is intact in this scenario), OR rename it and re-point the symlinks. Then repopulate the FURY data: restore the FURY backup if one was made, else re-run the app migrations fresh (`sessions/2026/202607/migrate_cai_to_fury_202607242011.sh` for CAI, plus the per-app migration for the rest) from whatever internal `*.migbak-*`/`*.premigrate-backup-*` copies remain, and let CAI re-sync sessions from cloud. Re-clone both repos from GitHub if needed. Verify after: each symlink resolves (`readlink`) and apps launch.
+- 3.3. Recovery onto a NEW drive: name the new volume EXACTLY `FURY 2TB` (then every surviving symlink + LaunchAgent resolves unchanged —— the WSM wiring itself is intact in this scenario), OR rename it and re-point the symlinks. Then repopulate the FURY data: restore the FURY backup if one was made, else re-run the app migrations fresh (`sessions/2026/202607/migrate_cai_to_fury_202607242011.sh` for CAI, plus the per-app migration for the rest) from whatever internal `*.migbak-*`/`*.premigrate-backup-*` copies remain, and let CAI re-sync sessions from cloud. Re-clone both repos from GitHub if needed. Verify after: each symlink resolves (`readlink`), apps launch, and the hooks fire (§5.2.8) —— `~/.claude/settings.json` lived on FURY, so the lint registrations died with it and re-cloning the repo does NOT bring them back (§5.2.7).
 - 3.4. LESSON for prevention: keep an independent FURY backup (Time Machine that INCLUDES FURY, or a periodic `ditto` to a second drive) —— once the `*.migbak`/`*.premigrate` copies are deleted, FURY becomes the SOLE copy of that app data.
 
 ## 4. Scenario C —— FURY being REPLACED (the WSM + current FURY data are BOTH still available) *[HIGHLY LIKELY, ~1 year out]*
 - 4.1. Context: the user plans to replace FURY (2TB PCIe 4.0) with a larger drive (e.g. FURY 4TB PCIe 5.0), so this WILL happen —— not soon, but treat it as expected.
 - 4.2. The clean path (timing is user-controlled): follow `ssd_migration_guide.md` §5.3.0 —— QUIESCE FURY (Safe Mode boot, or quit every FURY-writer incl. Google Drive), then `ditto`/`rsync` a metadata-preserving copy of all of `/Volumes/FURY 2TB` to the new drive.
-- 4.3. Name the new drive EXACTLY `FURY 2TB` → all symlinks + LaunchAgents resolve with zero changes. (If renamed, update every symlink target + the two LaunchAgent scripts.)
+- 4.3. Name the new drive EXACTLY `FURY 2TB` → all symlinks + LaunchAgents resolve with zero changes. (If renamed, update every symlink target, the two LaunchAgent scripts, and the absolute hook command paths inside `~/.claude/settings.json` —— a rename breaks those paths silently, leaving every lint dead with no error; §5.2.7.)
 - 4.4. This is also the opportunity to switch FURY to APFS (removes the HFS+ corruption-proneness) —— see `ssd_migration_guide.md` §5.
-- 4.5. Verify after: each symlink resolves (`readlink`), apps launch, Finder "Date Added" survived on a sample.
+- 4.5. Verify after: each symlink resolves (`readlink`), apps launch, Finder "Date Added" survived on a sample, hooks still fire (§5.2.8).
 
 ## 5. Scenario D —— WSM being REPLACED (both the current WSM + FURY data are still available)
 - 5.1. Move FURY to the new Mac (its app data comes with it). Clone both repos from GitHub.
@@ -37,6 +37,8 @@
   - 5.2.4. Re-supply credentials (`.claude/cic_login.local.md` etc. —— they're git-ignored, so copy them from the user's own secure store).
   - 5.2.5. Re-grant macOS permissions (Automation for the usage/keystroke scripts, Full Disk if needed).
   - 5.2.6. CAI: sign in → sessions re-sync from cloud; re-set local prefs (fonts/pins) —— those are local, not cloud.
+  - 5.2.7. RE-REGISTER THE HOOKS —— the registrations are not in git: they live in `~/.claude/settings.json` (USER level), because the Claude Desktop app executes user-level hooks and silently ignores project-level ones, so user level is the only thing that runs —— a necessity, not a preference (each lint self-scopes to this repo, so global registration is safe). A clean GitHub restore therefore brings back every lint SCRIPT and registers NONE of them: the machine comes up with all 5 lints silently dead. Restore by merging the `hooks` object from `.claude/hooks_user_settings.reference.json` (an inert reference copy kept in the repo for exactly this) into `~/.claude/settings.json`, then correcting every absolute path inside it if the repo or the volume no longer sits where it did. If FURY travelled with the machine, `settings.json` came along —— still correct the paths, then verify.
+  - 5.2.8. VERIFY, never assume: Edit `cp/ccsim/sandbox/hook_probe_response_.md` with the Edit/Write tool —— it deliberately carries RED flags, so a live chain BLOCKS the write with a dlint report; a silent success means the hooks are still dead. Piping a payload into a lint by hand proves only that the SCRIPT works, NEVER that the harness invokes it —— that exact gap is how the lints once sat dead for weeks unnoticed. Full rationale: `cp/ccsim/hook_guide.md`.
 - 5.3. Keep a short "new-Mac checklist" handy —— this §5.2 IS it.
 
 ## 6. Scenario E —— FURY + WSM BOTH lost (true doomsday)
@@ -54,3 +56,4 @@
 - 8.2. Never delete the `*.migbak-*` / `*.premigrate-backup-*` copies until a migrated app has run cleanly for a while.
 - 8.3. Back up the credential store (`*.local.md`) off the WSM —— git + cloud both intentionally exclude it.
 - 8.4. Push both repos regularly.
+- 8.5. Re-probe the hooks (§5.2.8) after ANY volume rename, repo move, or machine change —— they fail SILENTLY, so nothing tells you they stopped.

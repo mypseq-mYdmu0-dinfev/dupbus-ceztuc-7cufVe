@@ -17,6 +17,11 @@
   - 2.5.1. Run `smartctl -a disk0 | grep -i "Percentage Used"` (no sudo); health% = 100 − that value.
   - 2.5.2. ALERT the user in the 1st `response_` ONLY when health ≤93% (Percentage Used ≥7%); track how long each 1% drop takes (wear-rate → WSM-replacement runway).
   - 2.5.3. Baseline 202607250332 —— 6% used = 94% (unchanged from session 05).
+- 2.6. Stale-session sweep (also every session start; auto-purge is OFF —— `cleanupPeriodDays: 36500`, so nothing self-cleans):
+  - 2.6.1. `ls -lt ~/.claude/projects/` —— flag any dir whose newest activity is ≥90 days old AND whose project is no longer in use.
+  - 2.6.2. PROPOSE deletion with sizes; NEVER delete without approval.
+  - 2.6.3. ALWAYS EXEMPT `-Volumes-FURY-2TB-Fury-Documents-GitHub` —— the Reader session, kept alive indefinitely by reverting; age is meaningless for it.
+  - 2.6.4. Before proposing ANY dir, check `<dir>/memory/` —— a populated one holds persistent auto-memory that no repo can restore; exclude it from the proposal.
 
 ## 3. backlog.md —— Append-Only Log
 - 3.1. Collects CC's own system-improvement items (from `close_`/`wrap_` scans or ad-hoc).

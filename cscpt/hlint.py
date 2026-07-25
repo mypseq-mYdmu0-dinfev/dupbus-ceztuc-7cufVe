@@ -1,47 +1,64 @@
 #!/usr/bin/env python3
-"""UserPromptSubmit hook —— "hashtag/trigger linter". When the user submits a
-prompt, scan it (and any comms file it references) for `#[trigger]` tokens and,
-for each trigger that has a matching `[trigger].md` in the repo, inject a
-NON-BLOCKING YELLOW reminder telling CC to read that file (root CLAUDE.md
-§7.3.1 —— `#[trigger]` MUST be resolved by reading `universal/[trigger].md`
-first, never guessed). Purely advisory: a trigger already handled or
-intentionally deferred is fine.
+"""UserPromptSubmit hook —— "hashtag/trigger linter". Scans a submitted prompt (and
+any comms file it names) for `#[trigger]` tokens and, for each trigger that has
+a matching `[trigger].md` in this repo, injects a NON-BLOCKING reminder to read
+that file (root CLAUDE.md §7.3.1: a `#[trigger]` MUST be resolved by reading its
+file, never guessed).
 
-WHY a hook, not trust: forgetting to read a trigger's protocol file is a silent,
-high-cost slip (e.g. running `#replace`/`#debate` from a guessed meaning instead
-of the file). A deterministic prompt-time scan surfaces the right file to read
-before the turn starts (coding.md —— back a prompt-declared invariant with cheap
-code enforcement).
+=== NON-CCSIM —— all you need to RUN it ===
+* Run by the harness, never by hand. Registered as a `UserPromptSubmit` hook in
+  the USER-level `~/.claude/settings.json` (the Claude Desktop app executes
+  user-level hooks and silently ignores project-level ones). NO repo-scope
+  guard: it runs in EVERY project on this Mac, deliberately (see CCSIM), and
+  every path it resolves is anchored on THIS repo.
+* IN: UserPromptSubmit JSON on stdin (field `prompt`). OUT: on a match, JSON on
+  stdout carrying `hookSpecificOutput.additionalContext` —— one line per matched
+  trigger, naming the repo-relative file to read. No match -> no output.
+* EXIT is ALWAYS 0. It never blocks and never emits `decision:"block"` (which
+  for UserPromptSubmit would ERASE the user's prompt).
+* SCAN CORPUS: the prompt text PLUS the content of any `*.md` file the prompt
+  names (bare token or path, located by basename anywhere in the repo). Exactly
+  ONE level deep, never recursive.
+* RESOLUTION per trigger: canonical `universal/[name].md` first, else one pruned
+  repo-wide search (covers CP-local triggers, §7.3.3). Unmatched -> silent.
+* ADVISORY ONLY: a trigger already handled or intentionally deferred is fine ——
+  the reminder line says so.
+* FAIL-SAFE: any error, missing field or unreadable file -> exit 0, no output.
+  It must never break or delay a prompt on its own failure.
+(Run by the harness, not read —— see README.)
 
-WHAT it does, self-contained (no external state, no comms-file coupling):
-  1. Read the UserPromptSubmit stdin JSON; take the prompt text (field `prompt`).
-  2. Build a scan corpus = the prompt text ITSELF, PLUS the content of any `*.md`
-     file the prompt names (a bare token like `ccsim_query_202607242145.md`, or a
-     pathed `universal/foo.md`). Named files are located by basename anywhere in
-     the repo. This is exactly ONE level of file reading (files named in the
-     prompt) —— never recursive, so it is always bounded.
-  3. Extract every UNIQUE `#[name]` token (name = letters/digits/_/-) from the
-     corpus (case-insensitive dedupe: `#close` x10 -> once).
-  4. For each unique name, resolve `[name].md`: canonical `universal/[name].md`
-     first (the §7.3.1 home of most triggers), else a single pruned repo-wide
-     search (covers CP-local triggers, §7.3.3). No match -> stay silent for it.
-  5. Emit ONE reminder line per matched trigger, giving the repo-relative path.
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WHY A HOOK, NOT TRUST: forgetting to read a trigger's protocol file is a silent,
+high-cost slip (running `#replace`/`#debate` from a guessed meaning). A
+deterministic prompt-time scan names the right file BEFORE the turn starts.
 
-SURFACING —— it injects the reminder into CC's context via the UserPromptSubmit
-JSON contract `hookSpecificOutput.additionalContext` (Claude Code adds that
-string to the model's context for this turn; for UserPromptSubmit, plain stdout
-would also be added, but the structured field is explicit and unambiguous). It
-NEVER blocks: exit is always 0, and it never emits `decision:"block"` (which for
-UserPromptSubmit would ERASE the user's prompt). No matched trigger -> no output.
+WHY NO REPO-SCOPE GUARD, unlike clint/dlint_quick/nlint (tlint likewise has
+none): those three can BLOCK a turn, so loosing them on a project that never
+agreed to this repo's conventions is a genuine hazard. This one is purely
+ADVISORY —— one appended line of context, exit always 0 —— so its worst misfire
+elsewhere is a single ignorable line, set against the far larger cost of a MISSED
+`#[trigger]` (guessing a protocol instead of reading it). Intentional asymmetry
+—— do not "restore consistency" with a guard.
 
-PERFORMANCE —— the repo-wide search runs LAZILY (only if a file is referenced or
-a trigger is not canonical) and ONCE per run (indexed), pruning `.git`,
-`node_modules`, `.venv`, etc.; referenced-file reads are capped in count and
-bytes so a huge file can never stall the prompt.
+CONSEQUENCE FOR PATHS: because invocations routinely arrive from OTHER repos,
+`#[name]` must still resolve against THIS repo's `universal/`. Every path is
+anchored on `_ROOT` (derived from `__file__`), NEVER on the process cwd, which
+is now commonly a different repo entirely. Nothing here may reintroduce a
+cwd-relative path.
 
-FAIL-SAFE —— any error, missing field, or unreadable file -> exit 0 with no
-output; a linter must never break or delay a prompt on its own failure.
-(Run by the harness, not read —— see README.)"""
+REGEX PRECISION: `_TRIGGER_RE` requires the `#` NOT to follow a word char, so a
+URL fragment (`file#L10`) never matches whilst a standalone `#close` does, and a
+markdown heading (`# Heading`) has a space after `#` so never matches either.
+`_MD_TOKEN_RE` stops at whitespace and common quoting/bracket chars, so trailing
+punctuation is not swallowed. Names are deduped case-insensitively (`#close` x10
+-> one reminder), first-seen casing kept.
+
+PERFORMANCE: the repo-wide index is built LAZILY (only if a file is referenced or
+a trigger is not canonical) and at most ONCE per run, pruning `.git`,
+`node_modules`, `.venv` and friends. Caps (never hit in normal use) bound the
+index, the referenced-file count/bytes and the reminder count, so neither a huge
+file nor a trigger-stuffed prompt can stall a turn.
+"""
 
 import sys
 import os
@@ -53,68 +70,13 @@ import json
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # ---------------------------------------------------------------------------
-# REPO-SCOPE GUARD.
-#
-# WHY: this hook is registered in the USER-level ~/.claude/settings.json, not
-# a project settings.json —— proven live this session that Claude Desktop
-# NEVER runs project-level hooks, only user-level ones. A user-level
-# registration fires for EVERY project open on this Mac, not just this repo.
-# Unscoped, that is actively harmful here: this hook injects THIS repo's
-# `#[trigger]` protocol-file reminders (root CLAUDE.md §7.3.1) into the
-# model's context, and would inject meaningless noise into unrelated
-# projects' prompts, where no `universal/[trigger].md` convention exists at
-# all. So before doing anything else (incl. before the repo-wide `.md`
-# index walk below, which is real Python work this guard must pre-empt),
-# self-scope to this repo and exit silently everywhere else.
-#
-# HOW: prefer the payload's `cwd` if present (confirmed present on a live
-# PostToolUse payload captured this session; NOT yet confirmed on a real
-# UserPromptSubmit payload, which is what THIS hook actually receives ——
-# so the fallback below is a live safety net, not just theoretical). If
-# `cwd` is absent, fall back to `transcript_path`'s Claude-Code project
-# slug: transcripts live at `~/.claude/projects/<slug>/<uuid>.jsonl`, where
-# `<slug>` is the project directory with every `/` and ` ` replaced by `-`
-# (confirmed live). Compare either signal against THIS repo's own
-# root/slug (`_ROOT` above, already this script's own deterministic
-# anchor) —— resolving symlinks via `os.path.realpath` and treating a
-# sub-path of the repo as in-scope too.
-#
-# FAIL-OPEN: if NEITHER field is present/parseable, run exactly as if this
-# guard did not exist. An unscopeable payload is not evidence of a
-# different project —— it is just a shape we cannot read —— and a lint
-# that goes silently dark on ambiguity is precisely the failure this whole
-# hook-migration effort exists to fix.
+# GLOBAL REACH —— no repo-scope guard here, deliberately: this lint is
+# ADVISORY-ONLY (one line of context, exit always 0), so it may safely run in
+# every project the user-level registration reaches, and a missed `#[trigger]`
+# is the expensive failure. Consequence: every path below is anchored on
+# `_ROOT`, NEVER on the process cwd, since invocations routinely arrive from
+# other repos. Full rationale is in the CCSIM section of the docstring above.
 # ---------------------------------------------------------------------------
-_REPO_ROOT_REAL = os.path.realpath(_ROOT)
-_REPO_SLUG = re.sub(r"[/ ]", "-", _REPO_ROOT_REAL.rstrip("/"))
-
-
-def _in_scope(data):
-    """True if this invocation's project is THIS repo (or a sub-path of
-    it), or if scope genuinely cannot be determined (FAIL-OPEN, see block
-    comment above). Never raises: any unexpected error here must default to
-    "run the lint", exactly like every other fail-safe path in this file."""
-    try:
-        if not isinstance(data, dict):
-            return True
-        cwd = data.get("cwd")
-        if isinstance(cwd, str) and cwd:
-            real_cwd = os.path.realpath(cwd)
-            return (real_cwd == _REPO_ROOT_REAL
-                    or real_cwd.startswith(_REPO_ROOT_REAL + os.sep))
-        tp = data.get("transcript_path")
-        if isinstance(tp, str) and tp:
-            m = re.search(r"/projects/([^/]+)/", tp)
-            if m:
-                slug = m.group(1)
-                return (slug == _REPO_SLUG
-                        or slug.startswith(_REPO_SLUG + "-"))
-            # transcript_path present but not the recognised
-            # .../projects/<slug>/... shape -> unparseable -> fall through.
-        return True  # neither field usable -> FAIL-OPEN
-    except Exception:
-        return True  # never let a scope-check error silence the lint
-
 
 # Directories never worth walking (VCS internals, dependency/cache trees).
 _SKIP_DIRS = {
@@ -226,9 +188,6 @@ def main():
         return 0
 
     if not isinstance(data, dict):
-        return 0
-
-    if not _in_scope(data):
         return 0
 
     prompt = data.get("prompt")

@@ -1,85 +1,84 @@
 #!/usr/bin/env python3
-"""PostToolUse hook —— after a CC-authored `response_` file is written/edited,
-ADVISE (never hard-block) when its top-level numbering RESETS back to pt 1
-whilst numbered.md's § Numbering Continuity conditions that would excuse a
-reset are NOT evident. numbered.md: continuing at n+1 is the default; a
-reset is legitimate if ANY of —— (a) 1st response of a session, (b) the
-query is NOT a reply, or (c) a snippet/non-response (never applies here:
-scope below is already `response_`-only, so every file checked IS a
-response).
+"""PostToolUse hook —— numbering-continuity linter. After a CC-authored `response_`
+file is written/edited, it ADVISES (never blocks) when the file's top-level
+numbering RESETS to pt 1 whilst none of numbered.md's § Numbering Continuity
+excuses is evident.
 
-Why advisory, never a hard block —— a proven false positive on real data:
-whether (a) holds is SESSION-BOUNDARY information this self-contained,
-stateless hook (no external state, by design) cannot see. numbered.md
-itself anticipates a reset that LOOKS like a reply yet is fine: "1st
-response of a session (CC: despite referring to prev. comms files)". A
-real reported turn hit exactly that shape —— a response textually replying
-to prior comms (its query opened "# Reply to ...") that was ALSO its
-session's 1st response, with the user spelling out in-query that a reset
-was deliberately authorised this once (a "new session... override" style
-remark). The PRIOR version of this hook treated "replies to a response"
-alone as a confirmed breach (RED, exit 2) —— which is a proven false
-positive on that real turn (condition (a) plus an explicit user override
-both held). Since a stateless hook can NEVER verify (a), and cannot
-reliably parse arbitrary override wording, asserting "confirmed breach" is
-never honest —— so this hook now only ever WARNS, and does so via the
-channel that reaches the model WITHOUT blocking (see §5 below). That real
-turn is pinned as a regression fixture/test (see `cp/ccsim/sandbox/` —— not
-named here; scripts don't cite specific comms files, per coding.md).
+=== NON-CCSIM —— all you need to RUN it ===
+* Run by the harness via `nlint_hook.sh` (the registered bash fast-path), never
+  by hand. Registered PostToolUse (Edit|Write|MultiEdit) in the USER-level
+  `~/.claude/settings.json` —— the Claude Desktop app executes user-level hooks
+  and silently ignores project-level ones —— and it self-scopes: outside THIS
+  repo it exits 0 silently.
+* SCOPE: acts ONLY on a comms RESPONSE file —— basename = optional CP prefix +
+  `response_` + exactly 12 digits + `.md`. Anything else (query_/close_/wrap_/
+  code) -> exit 0, silent.
+* IN: PostToolUse JSON on stdin. OUT: on a flag, JSON on stdout carrying
+  `hookSpecificOutput.additionalContext` —— the one PostToolUse channel that
+  reaches the model WITHOUT blocking. Silent otherwise.
+* EXIT is ALWAYS 0; it never blocks (PostToolUse cannot anyway —— the write has
+  already happened) and never asserts a confirmed breach.
+* WHEN IT FLAGS —— all three must hold: (1) a level-1 reset appears outside
+  fenced code (`## 1. `, `- 1.`, or a bare `1. `); (2) the file this response
+  replies to reads as a reply itself (its first line contains `response_` or
+  "reply"); (3) that query contains no same-line authorisation of a reset. Miss
+  any one -> silent.
+* FAIL-SAFE: any error, missing field, or an unresolvable/unreadable query ->
+  exit 0 with no output.
+(Run by the harness, not read —— see README.)
 
-How it decides (self-contained, no external state):
-  1. Scope —— acts ONLY on a comms RESPONSE file: basename = optional CP
-     prefix (e.g. `ccsim_`) + `response_` + exactly 12 digits + `.md`.
-     Anything else (query_/close_/wrap_/code/etc.) -> exit 0 silently.
-  2. Reset —— after masking fenced code blocks (```...```) so code never
-     false-triggers, a body line that (ignoring leading whitespace) begins
-     a level-1 count at 1 in one of three forms: a heading `## 1. `
-     (trailing space REQUIRED), a bullet `- 1.` (e.g. `- 1.1.`, no
-     trailing-space rule so sub-numbers still match), or a bare `1. `
-     (trailing space REQUIRED, so a prose decimal such as "1.5 million"
-     is NOT a false positive). No reset -> exit 0 silently (nothing to
-     check).
-  3. Reply-signal —— read the response's first line `# Response to <FILE>`,
-     take <FILE> as the trimmed remainder, open that file in the SAME
-     directory, and read ITS first line. Condition (b) ("NOT a reply") is
-     satisfied —— confidently, this IS checkable —— when that first line
-     does NOT contain `response_` (case-insensitive) and does NOT match
-     `[Rr]eply`; also treated as satisfied (fail-safe) if the referenced
-     file cannot be found/read at all, since there is then no positive
-     evidence of a reply either. Either way -> exit 0 silently.
-  4. Sanctioned —— reply-signal DID fire (this genuinely reads as a
-     reply), so the ONLY remaining excuse is condition (a) or an explicit
-     user exception. Scan the QUERY body (fence-masked) for a line naming
-     BOTH a numbering-reset word (reset/restart/"pt 1"/"point 1") AND an
-     authorisation word (override/new session/fresh session/1st
-     response/session start) —— the concrete, same-line co-occurrence
-     that IS cheaply checkable, extracted from the real reported query's
-     own phrasing ("...reset from pt 1 (override)"). Found -> confirmed
-     legitimate -> exit 0 silently. This is deliberately narrow
-     (same-line, not whole-document) —— a document-wide scan risks an
-     unrelated "override" elsewhere legitimising an unrelated reset. A
-     differently-worded authorisation this regex misses simply falls
-     through to §5 —— the model's own judgement is the backstop (it
-     already, in the real reported turn, correctly reasoned through the
-     override on its own).
-  5. Otherwise -> ADVISORY. A reset with no evidence excusing it is only
-     ever a MAYBE (this hook cannot rule out an unusually-worded (a) or an
-     override it didn't recognise) —— so it never asserts a breach and
-     never hard-blocks. It surfaces via exit 0 + structured stdout
-     (`hookSpecificOutput.additionalContext`), which Claude Code's own
-     PostToolUse contract delivers to the model as a system-reminder next
-     to the tool result WITHOUT blocking (docs: code.claude.com/docs/en/
-     hooks —— PostToolUse "cannot block, the tool already ran" even on
-     exit 2, and PLAIN exit-0 stdout/stderr text is never shown to the
-     model at all, only STRUCTURED JSON is). This is the one channel that
-     is both non-blocking AND model-visible, i.e. exactly a "WARN that
-     reaches the model" rather than either a silent no-op or a false
-     assertion.
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WHY ADVISORY, NEVER A HARD BLOCK —— a proven false positive on real data:
+numbered.md excuses a reset if ANY of (a) it is the session's 1st response, (b)
+the query is NOT a reply, or (c) it is a snippet/non-response ((c) can never
+apply here —— scope is `response_`-only). Whether (a) holds is SESSION-BOUNDARY
+information a stateless, self-contained hook cannot see, and numbered.md itself
+anticipates a reset that LOOKS like a reply yet is fine: "1st response of a
+session (CC: despite referring to prev. comms files)". A real turn hit exactly
+that shape —— a response textually replying to prior comms that was ALSO its
+session's 1st, with the user authorising the reset in-query. The PRIOR version
+treated "replies to a response" alone as a confirmed breach (RED, exit 2), which
+that turn disproves. Since a stateless hook can NEVER verify (a) and cannot
+reliably parse arbitrary override wording, asserting a breach is never honest ——
+so this hook only ever WARNS. That turn is pinned as a regression fixture in
+`cp/ccsim/sandbox/` (test file named there, not here —— scripts don't cite comms
+files, per coding.md).
 
-FAIL-SAFE —— on ANY error, missing field, or non-match it exits 0 with NO
-output; it can never block (PostToolUse cannot, regardless), and it can
-never manufacture certainty it doesn't have. (Run by the harness, not
-read —— see README.)"""
+CHANNEL CHOICE: PostToolUse cannot block regardless of exit code, and PLAIN
+exit-0 stdout/stderr text never reaches the model at all —— only STRUCTURED
+exit-0 JSON (or exit-2 stderr) does. `additionalContext` is therefore the single
+channel that is both non-blocking AND model-visible, i.e. exactly "a WARN that
+reaches the model" rather than a silent no-op or a false assertion.
+
+DETECTION DETAIL: fenced ```...``` blocks are masked first, so code never
+false-triggers either the reset scan or the sanction scan. The trailing-space
+requirement on the heading and bare forms is load-bearing: it stops a prose
+decimal ("1.5 million", "## 1.5 …") reading as a reset, whilst every genuine
+level-1 restart ("1." + space) still fires. The bullet form deliberately has no
+such rule so a sub-number (`- 1.1.`) still matches.
+
+REPLY-SIGNAL FAIL-SAFE: an unresolvable or unreadable referenced query counts as
+"not a reply" —— absence of positive evidence must not become evidence.
+
+SANCTION SCAN is deliberately narrow: one LINE must carry BOTH a reset word and
+an authorisation word (phrasing mined from the real query's own "...reset from pt
+1 (override)"). A document-wide scan would let an unrelated "override" elsewhere
+legitimise an unrelated reset. A differently-worded authorisation this regex
+misses simply falls through to the advisory —— the model's own judgement is the
+backstop, and in the real turn it reasoned through the override correctly on its
+own. Precision beats recall here: a hit suppresses a warning entirely.
+
+REPO SCOPE (`_in_scope`): this lint advises on a convention that exists only
+here, so it must stay silent elsewhere. Signals in order: the payload's `cwd` (an
+absolute path, confirmed present on every real PostToolUse payload captured
+live), else the `~/.claude/projects/<slug>/<uuid>.jsonl` transcript slug (the
+project dir with every `/` and ` ` replaced by `-`). Both are compared against
+values derived from this script's OWN location, never a hard-coded path, so the
+repo stays relocatable; symlinks are resolved and a sub-path counts as in-scope.
+It FAILS OPEN when neither signal is usable —— an unreadable payload is not
+evidence of a different project, and a lint that goes silently dark on ambiguity
+is the failure this whole wiring exists to fix.
+"""
 
 import sys
 import os
@@ -87,34 +86,13 @@ import re
 import json
 
 # ---------------------------------------------------------------------------
-# REPO-SCOPE GUARD.
-#
-# WHY: this hook is registered in the USER-level ~/.claude/settings.json, not
-# a project settings.json —— proven live this session that Claude Desktop
-# NEVER runs project-level hooks, only user-level ones. A user-level
-# registration fires for EVERY project open on this Mac, not just this repo.
-# Unscoped, that is actively harmful here: this hook advises on THIS repo's
-# own `response_`-numbering convention (root CLAUDE.md / numbered.md) and
-# would scan unrelated projects' files for a numbering pattern that has no
-# meaning there. So before doing anything else, self-scope to this repo and
-# exit silently everywhere else.
-#
-# HOW: prefer the payload's `cwd` (an absolute path, confirmed present on
-# every real PostToolUse payload captured live this session —— exactly the
-# event type this hook receives). If `cwd` is ever absent, fall back to
-# `transcript_path`'s Claude-Code project slug: transcripts live at
-# `~/.claude/projects/<slug>/<uuid>.jsonl`, where `<slug>` is the project
-# directory with every `/` and ` ` replaced by `-` (confirmed live).
-# Compare either signal against THIS repo's own root/slug, derived from
-# this script's OWN location (never a hard-coded path, so the repo stays
-# portable/relocatable) —— resolving symlinks via `os.path.realpath` and
-# treating a sub-path of the repo as in-scope too.
-#
-# FAIL-OPEN: if NEITHER field is present/parseable, run exactly as if this
-# guard did not exist. An unscopeable payload is not evidence of a
-# different project —— it is just a shape we cannot read —— and a lint
-# that goes silently dark on ambiguity is precisely the failure this whole
-# hook-migration effort exists to fix.
+# REPO-SCOPE GUARD —— user-level registration fires in EVERY project on this
+# Mac, so self-scope to THIS repo and exit silently elsewhere. Signals, in
+# order: the payload's `cwd`, else the `~/.claude/projects/<slug>/` transcript
+# slug —— both compared against values derived from this file's OWN location,
+# never a hard-coded path. FAILS OPEN when neither is usable. Full rationale
+# (why user-level, why fail-open, why THIS lint in particular must not roam)
+# is in the CCSIM section of the module docstring above.
 # ---------------------------------------------------------------------------
 _REPO_ROOT_REAL = os.path.realpath(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))))

@@ -54,7 +54,7 @@ import tempfile
 
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", ".."))
-SHIM = os.path.join(REPO_ROOT, "cscpt", "nlint.sh")
+SHIM = os.path.join(REPO_ROOT, "cscpt", "nlint_hook.sh")
 
 # The exact real files the bug report named, plus two more real responses
 # that reinforce (via genuine repo history) the "should stay silent" side

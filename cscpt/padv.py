@@ -1,19 +1,28 @@
 #!/usr/bin/env python3
-"""padv.py —— `#replace #adv` helper (RUN, don't read).
+"""padv.py —— `#replace #adv` helper (RUN, don't read). Extracts a verbatim span
+from a `<name>.pages.md` mirror and splits it into break-free blocks ready to
+paste into a Pages find-and-replace.
 
-Pages' ⌘F cannot match a string that contains a U+2028 layout line-break, so a
-`Replace:` target spanning breaks must be quoted as break-free blocks (max 3).
-This extracts a verbatim span from a `<name>.pages.md` mirror and splits it.
-
+=== NON-CCSIM —— all you need to RUN it ===
 CLI:  python3 cscpt/padv.py <mirror.pages.md> "<start_anchor>" ["<end_anchor>"]
       -> prints the U+2028 count and the ready-to-paste fenced Replace block(s).
       Omit <end_anchor> to grab just the start_anchor text.
 Lib:  import sys; sys.path.insert(0, 'cscpt'); from padv import grab, split_for_pages
       span   = grab(open(mirror).read(), start, end)   # verbatim, U+2028 intact
-      blocks = split_for_pages(span)                    # 1, 2 or 3 break-free blocks
+      blocks = split_for_pages(span)                   # 1, 2 or 3 break-free blocks
 
-Anchor tips: pick start/end anchors from break-free runs (no U+2028 inside the
-anchor itself); the span between them may contain any number of breaks.
+* ANCHOR TIPS: pick anchors from break-free runs (no U+2028 inside the anchor
+  itself); the span between them may contain any number of breaks.
+* A missing anchor raises ValueError naming which one; nothing is printed.
+
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WHY THE SPLIT EXISTS: Pages' ⌘F cannot match a string containing a U+2028 layout
+line-break, so a `Replace:` target spanning breaks must be quoted as break-free
+blocks (max 3): 0 breaks -> the span; 1 -> [before, after]; 2+ -> [before_first,
+middle with its internal breaks cancelled, after_last].
+Each non-final mirror segment ends with the space that preceded its U+2028, so
+joining the middle with '' restores single spaces —— never insert a separator
+there, nor strip the segments individually before joining.
 """
 import sys
 

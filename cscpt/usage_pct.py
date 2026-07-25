@@ -1,48 +1,10 @@
 #!/usr/bin/env python3
 """Live Claude usage reader — ses% & wk% from the "Claude Web" usage panel.
 
-WHY: so ANY CC session (except the AJAP cockpit) can see the live 5-hourly
-session % (`ses%`) and the weekly "All models" % (`wk%`). Told something like
-"proceed ... UNTIL ses% = 95%", a session runs this every minute and reads the
-printed ses% to know when to stop.
-
-HOW (user 202607212102): the panel is real, SELECTABLE text — not a picture —
-so this grabs it directly (⌘A+⌘C → clipboard) and parses by LABEL, not by
-pixel. Zero third-party deps: only `osascript`, `pbpaste`, `pbcopy`, so any
-`python3` runs it. Structurally immune to the promo/notice banner that shifts
-the two integers down (we anchor on "Current session" / "All models", never on
-a line offset). Keystrokes ONLY — ⌘R (refresh), ⌘A/⌘C (grab), ⌘` (next window
-in the rare multi-window case) — NEVER a click. The user's clipboard is saved
-and restored. Freshness: it ⌘R-refreshes and waits for "Last updated: just
-now" (the ~30-60 s window where the numbers are trustworthy) before reading.
-
-SIBLING: `AJAP_repo/scripts/core/ajap_usage_pct.py` is the venv-bound twin of
-this script (same ⌘R/settle/⌘A+⌘C cycle + parser, plus OCR fallback + sampler
-wiring). Any fix or improvement here should be CONSIDERED for mirroring there,
-and vice versa. They stay separate BY DESIGN: this one must stay ZERO-DEP so
-any session/machine can run it on bare python3; the module gets pyobjc.
-
-KEYSTROKE SAFETY (user 202607222309 risk report): System Events keystrokes
-land on whatever app is FRONTMOST — if the user grabs focus mid-run (e.g.
-Safari), our ⌘R could refresh THEIR page and wipe work. Zero-dep mitigation
-(no pyobjc, so no pid-targeted posting here): before EACH keystroke, verify
-the frontmost process really is "Claude Web"; if not, re-activate + short
-wait + re-check (up to 3); still wrong → that keystroke is NOT fired and the
-attempt fails safely. A tiny check→keystroke TOCTOU window remains (by
-physics — a check can never be atomic with the act it gates) — the AJAP
-sibling closes even that via Quartz CGEventPostToPid. Additionally a pre-run
-dialog (15 s auto-continue; Cancel / Defer 1 min) warns the user to pause
-typing; `--no-dialog` skips it for scripted callers.
-
-GUARD FIX (user 202607230551): the frontmost guard used to self-calibrate —
-sample System Events' frontmost-process NAME ~0.4 s after OUR OWN activate
-and remember it as the target, because the PWA's real process name is NOT
-"Claude Web" (live find 202607222359). Live-caught flaw: a SLOW activation
-means that 0.4 s sample lands on whatever the user happens to be in at that
-moment — their own foreground app — the guard then calibrates to THAT and
-fires keystrokes there (the user watched it ⌘A his VS Code window). Fixed by
-asking "Claude Web" itself for its own frontmost property directly — no name
-to guess, nothing to calibrate, no window for a slow activation to poison.
+=== NON-CCSIM —— all you need to RUN it ===
+Gives ANY CC session (except the AJAP cockpit) the live 5-hourly session %
+(`ses%`) and weekly "All models" % (`wk%`). Told "proceed ... UNTIL ses% = 95%",
+a session runs this every minute and reads the printed ses%.
 
 USAGE:
     python3 cscpt/usage_pct.py            # human line, exit 0 ok / 1 fail
@@ -51,9 +13,56 @@ USAGE:
     python3 cscpt/usage_pct.py --wk       # just the wk integer  (or "?")
     python3 cscpt/usage_pct.py --no-dialog  # skip the pre-run warning dialog
 
-Falls back to nothing on failure (prints "?" / ok:false, exit 1) — it never
-guesses. If text-grab is unreadable, re-run, or check that "Claude Web" is
-open and showing the usage page. **Run, never read.**
+* PRECONDITION: the "Claude Web" app must be open on the usage page. Zero
+  third-party deps — only `osascript`, `pbpaste`, `pbcopy` — so any `python3`
+  runs it.
+* IT DRIVES THE MAC: keystrokes only (⌘R refresh, ⌘A/⌘C grab, ⌘` next window),
+  never a click, and only whilst "Claude Web" is frontmost. Don't type during a
+  run. A pre-run dialog warns the user (15 s auto-continue; Cancel exits 1
+  quietly; Defer 1 min waits, then asks once more); `--no-dialog` skips it for
+  scripted callers. The clipboard is saved and restored, and the ⌘A highlight is
+  cleared after a successful grab.
+* TIMING: it refreshes and waits for "Last updated: just now" (the ~30–60 s
+  window where the numbers are trustworthy), retrying up to ~1 min, and cycles
+  windows if the frontmost one is not the usage panel.
+* IT NEVER GUESSES: on failure it prints "?" / `ok:false` and exits 1. Re-run,
+  or check that "Claude Web" is open on the usage page.
+**Run, never read.**
+
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+PARSE BY LABEL, NOT PIXEL: the panel is real, SELECTABLE text, so it is grabbed
+via ⌘A+⌘C and parsed by anchoring on "Current session" / "All models" — never on
+a line offset, making it structurally immune to the promo/notice banner that
+shifts the two integers down. Exactly two %% are accepted (the "Fable" weekly bar
+is ignored), everything from "Usage credits" onward is dropped, and prose lines
+(ending in a full stop) discarded.
+
+KEYSTROKE SAFETY: System Events keystrokes land on whatever app is FRONTMOST —
+if the user grabs focus mid-run, a stray ⌘R could refresh THEIR page and wipe
+work. So EVERY keystroke is gated on a frontmost check; wrong app -> re-activate,
+wait, re-check (up to 3); still wrong -> nothing is fired and the attempt fails
+safely. A tiny check->keystroke TOCTOU window remains by physics; closing it
+needs pid-targeted event posting (Quartz CGEventPostToPid, via pyobjc), which the
+AJAP sibling has and this file deliberately does not.
+
+THE GUARD MUST ASK THE APP DIRECTLY, NEVER SELF-CALIBRATE: an earlier version
+sampled System Events' frontmost-process NAME ~0.4 s after its own activate and
+remembered THAT as the target, because the PWA's real process name is not "Claude
+Web". Live-caught flaw: a slow activation makes that sample land on whatever the
+user is in at that moment, and the guard then fires keystrokes THERE (it once
+⌘A-ed the user's VS Code window). Fixed by asking "Claude Web" itself for its own
+`frontmost` property — nothing to guess, no window for a slow activation to
+poison. Do not reintroduce a calibration step.
+
+DESELECT VIA ⌘R: arrow keys do NOT collapse a selection in a non-editable
+browser page (they scroll; the highlight stays), so a final ⌘R is the reliable
+click-free deselect — the reload drops the selection and re-renders the panel.
+
+SIBLING: `AJAP_repo/scripts/core/ajap_usage_pct.py` is the venv-bound twin (same
+cycle + parser, plus OCR fallback + sampler wiring); CONSIDER mirroring any fix
+either way. They stay separate BY DESIGN: this one must remain ZERO-DEP so any
+session/machine runs it on bare python3, whilst the sibling gets pyobjc and must
+stay prompt-free for unattended runs (hence the pre-run dialog lives here only).
 """
 from __future__ import annotations
 

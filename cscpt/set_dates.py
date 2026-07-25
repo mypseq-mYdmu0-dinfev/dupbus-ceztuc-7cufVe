@@ -1,36 +1,40 @@
 #!/usr/bin/env python3
 """
-set_dates.py —— CC's macOS date setter (terminal-driven).
+set_dates.py —— CC's macOS date setter (terminal-driven). RUN it, don't read it.
 
-Sets any one or all of a file/folder's four Finder-visible dates to a target
-timestamp. Built for Claude Code's own use; run it WITHOUT reading this file
-(see cscpt/README.md for usage). Sibling of gscpt/DXMF.py (the user's .txt-driven
-variant); this one takes terminal arguments and offers per-date modes.
+=== NON-CCSIM —— all you need to RUN it ===
+Sets any one, or all, of a file/folder's four Finder-visible dates.
 
-USAGE
-    python3 cscpt/set_dates.py <mode> <YYYYMMDDHHmm> <path> [more paths...]
+USAGE   python3 cscpt/set_dates.py <mode> <YYYYMMDDHHmm> <path> [more paths...]
+MODES   1 = Created | 2 = Modified | 3 = Added | 4 = Last Opened | 5 = all four
 
-MODES
-    1 = Date Created only
-    2 = Date Modified only
-    3 = Date Added only
-    4 = Date Last Opened only
-    5 = all four dates
+* The timestamp is Australia/Sydney local time, 12 digits, and is validated ——
+  a bad mode/TS or a missing path stops at once with `⚠️  STOPPED`, exit 1.
+* A path may be a file or a directory; a directory is processed RECURSIVELY (the
+  folder itself plus everything within), deepest first.
+* Symlink-safe (NOFOLLOW): a symlink's own dates change, never its target's ——
+  matters for trees containing venvs.
+* Exit 0 on full success, 1 if any item failed (first 20 failures printed).
+  Per-item failures do not abort the run.
+* CAVEATS: the inode change-time (ctime) CANNOT be set (macOS forces it to now),
+  but it is not shown in Get Info and does not survive copy/upload. Spotlight's
+  DISPLAYED Date Last Opened can lag a fresh write; the xattr is authoritative.
+* Usage is also summarised in `cscpt/README.md`.
 
-NOTES
-    - Timestamp is Australia/Sydney local time (12 digits, YYYYMMDDHHmm).
-    - A path may be a file or a directory; directories are processed recursively
-      (the folder itself plus every file and subfolder within), deepest first.
-    - All writes are symlink-safe (NOFOLLOW), so a symlink's own dates change,
-      never its target's —— matters for trees containing venvs.
-    - Mechanisms: Created/Modified/Added use the filesystem catalogue via
-      setattrlist(); Added also refreshes the Spotlight mirror; Last Opened is
-      the `com.apple.lastuseddate#PS` xattr ({int64 sec, int64 nsec} LE).
-      macOS CPython has no os.setxattr, so libc.setxattr is called directly.
-    - The inode change-time (ctime) cannot be set (macOS forces it to now); it
-      is not shown in Get Info and does not survive copy/upload.
-    - Spotlight's DISPLAYED kMDItemLastUsedDate can lag a manual xattr edit; the
-      stored xattr is authoritative.
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+* Sibling of gscpt/DXMF.py (the user's .txt-driven variant); this one takes
+  terminal arguments and offers per-date modes. Keep the two aligned.
+* MECHANISMS: Created/Modified/Added go through the filesystem catalogue via
+  `setattrlist()`; Added also refreshes the Spotlight mirror xattr
+  (`kMDItemDateAdded`) so Finder agrees; Last Opened is the
+  `com.apple.lastuseddate#PS` xattr ({int64 sec, int64 nsec} little-endian).
+  macOS CPython has no `os.setxattr`, so `libc.setxattr` is called directly ——
+  that ctypes plumbing has no stdlib substitute.
+* `_catalogue_set` needs its attr_bits ASCENDING by bit value: the syscall reads
+  the value buffer in bitmap order, so a mis-ordered list silently writes the
+  wrong date into the wrong field.
+* Directories are sorted deepest-first so a parent's own dates are written LAST
+  and are not disturbed by the writes inside it.
 """
 
 import ctypes

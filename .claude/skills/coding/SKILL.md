@@ -1,6 +1,6 @@
 ---
 name: coding
-description: Creating, editing, fixing, debugging, testing, renaming or reviewing any script or protocol/context file — .py, .sh, .json config, hook, linter, or a .md (pcmd). Covers bug fixes, refactors, simulations and dispatching a sub-agent to do any of these. Loads the project coding rules (issue-reporting format, self-contained scripts, regression tests, git rename discipline).
+description: Use when creating, editing, fixing, debugging, testing, renaming or reviewing any script or protocol/context file — .py, .sh, .json config, hook, linter, or a .md (pcmd). Covers bug fixes, refactors, simulations and dispatching a sub-agent to do any of these. Loads the project coding rules (issue-reporting format, self-contained scripts, regression tests, git rename discipline).
 ---
 
 Read `universal/coding.md` in full and follow it for the current task — BEFORE the first edit, and before briefing any sub-agent that will edit code. This skill is a thin alias for that project protocol; the authoritative, always-current rules live there, not here.

@@ -1,47 +1,65 @@
 #!/usr/bin/env python3
-"""PostToolUse hook (fires on Write/Edit) —— "timestamp linter". Guards the
-implicit filename-TS invariant: no two files in one comms folder may carry the
-SAME 12-digit TS (YYYYMMDDHHmm), EXCEPT a clean `query_`/`response_` pair (same
-TS, same optional CP prefix, exactly one `query_` + one `response_`).
+"""PostToolUse hook —— "timestamp linter". Guards the implicit filename-TS
+invariant: no two files in one comms folder (nor across the dupbus/AJAP comms
+mirror) may carry the SAME 12-digit TS (YYYYMMDDHHmm), EXCEPT a sanctioned pair.
 
-Why this exists (self-contained rationale —— no comms/conversation file explains
-it, per coding.md):
-  * A comms TS is the join key between a turn's files. Root CLAUDE.md sanctions
-    exactly ONE many-to-one case —— a `query_`/`response_` PAIR shares an
-    identical TS (§3.5.3 "response TS matches its query"; §3.6.2 "both files
-    share identical TS"). Every OTHER same-TS collision is an accident: a second
-    `response_`, a `close_` written over a turn's TS, a stray script named with
-    a TS, a file mis-stamped from a neighbour. Such collisions are silent at
-    write time and only surface much later (a `#close` that pairs the wrong two
-    files, a `#ww` that grabs the wrong sibling), so a cheap deterministic check
-    at write time beats hoping the convention is obeyed (coding.md —— back a
-    prompt-declared invariant with code enforcement).
-  * The check is a NON-BLOCKING YELLOW only (never RED / exit 2). A TS clash is
-    a smell, not a correctness bug the harness can safely auto-block on: the
-    "right" fix (re-stamp which file?) is a human judgement, and blocking a
-    write mid-turn on a filename smell would do more harm than the smell.
+=== NON-CCSIM —— all you need to RUN it ===
+* Run by the harness via `tlint_hook.sh` (the registered bash fast-path), never
+  by hand. Registered PostToolUse (Edit|Write|MultiEdit) in the USER-level
+  `~/.claude/settings.json` (the Claude Desktop app executes user-level hooks
+  and silently ignores project-level ones). NO repo-scope guard: it runs in
+  EVERY project on this Mac, deliberately (see CCSIM).
+* TRIGGERS only when the written file's basename carries a TS —— 12 digits
+  starting "20", not flanked by other digits. A TS-less write (code, docs,
+  CLAUDE.md) -> exit 0, silent.
+* WHERE IT LOOKS: the written file's OWN directory, plus —— only when that
+  directory is `.../GitHub/{dupbus.../sessions|AJAP_repo/inv}/YYYY/YYYYMM` ——
+  the matching year-month folder in the other repo. Two listings at most; AJAP's
+  wider trees are never walked.
+* SANCTIONED same-TS pairs (identical optional CP prefix, exactly one
+  co-located sibling, nothing sharing the TS cross-repo): `query_`+`response_`
+  (root CLAUDE.md §3.5.3/§3.6.2) and `close_`+`artefact_` (§3.3.5). Anything
+  else sharing a TS is flagged.
+* OUT: one warning line to STDERR naming the clashing files, then EXIT 0 ——
+  ALWAYS. It never exits 2, never blocks, never alters a write. Mind the
+  channel: PostToolUse delivers text to the MODEL only via exit-2 stderr or
+  structured exit-0 JSON, so this line surfaces to the user/hook output, not CC.
+* FAIL-SAFE: any error, missing field or non-match -> exit 0.
+(Run by the harness, not read —— see README.)
 
-KNOWN CAVEAT (documented same-TS case this check does NOT exempt): root
-CLAUDE.md §3.3.5 defines `artefact_[close_TS].md` —— an `artefact_` file
-deliberately SHARES its `close_`'s TS, and both live in the same comms folder.
-That legitimate pair is NOT `query_`/`response_`, so writing such an `artefact_`
-beside its `close_` yields ONE non-blocking YELLOW. This is tolerated by design:
-the brief scopes the sole exception to `query_`/`response_`, the false positive
-is advisory-only (exit 0), and surfacing the rare artefact/close overlap is
-harmless. Widen `_CLEAN_ROLES` / the pair test here only if that YELLOW proves
-noisy in practice.
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WHY IT EXISTS (self-contained —— no comms/conversation file explains it, per
+coding.md): a comms TS is the join key between a turn's files, and root CLAUDE.md
+sanctions only the two many-to-one cases above. Every other same-TS collision is
+an accident —— a second `response_`, a `close_` over a turn's TS, a file
+mis-stamped from a neighbour —— silent at write time and surfacing far later as
+the wrong two files being paired (a `#close` or `#ww` grabbing the wrong
+sibling). A cheap write-time check beats hoping the convention is obeyed.
 
-Scope & safety:
-  * Acts ONLY when the WRITTEN file's basename carries a TS (a 12-digit run
-    starting "20", not flanked by other digits —— glossary: "12-digit no.
-    starting with 20"). TS-less writes (code, docs, CLAUDE.md, etc.) -> exit 0.
-  * Searches the written file's OWN directory only (comms live per-folder; that
-    is where TS-as-pair matters) —— exactly ONE directory listing, so it is fast.
-  * Surfacing mirrors the nlint/dlint YELLOW path: warning text to STDERR, then
-    exit 0 (non-blocking). It NEVER exits 2 and NEVER blocks.
-  * FAIL-SAFE —— on ANY error, missing field, or non-match it exits 0; it can
-    never block or crash a turn on its own failure.
-(Run by the harness, not read —— see README.)"""
+WHY WARN-ONLY, NEVER RED: a TS clash is a smell, not a correctness bug the
+harness can auto-resolve —— the fix ("re-stamp which file?") is human
+judgement, and blocking a write over a filename smell harms more than the smell.
+
+WHY NO REPO-SCOPE GUARD, unlike clint/dlint_quick/nlint (hlint likewise has
+none): those three can BLOCK, so a stray firing elsewhere is a real hazard. This
+one's only output is a stderr line at an always-0 exit, so it can never block,
+alter or fail a write anywhere —— whilst a missed clash stays invisible until far
+too late. The residual false positive (another project stamping 12-digit "20"
+filenames and writing two that share one) costs one line of text; the guard it
+replaces cost total blindness everywhere but here. Intentional asymmetry —— do
+not "restore consistency" by adding a guard.
+
+CROSS-REPO MIRROR: dupbus `sessions/` and AJAP `inv/` hold one comms stream, so
+TS uniqueness must hold across both. `_mirror_dir` maps one to the other for the
+SAME year-month only —— narrow by design, keeping the check to two listings
+rather than a tree walk, and returning None when the shape does not match.
+
+SHAPE GUARDS: `_TS_RE`/`_has_ts` require the 12 digits not to sit inside a
+longer run, so a 13+-digit id never reads as a TS nor matches one by substring.
+The `isinstance(data, dict)` check is not decorative: valid JSON that is not an
+object would make `.get` raise and exit 1, breaking this file's own fail-safe
+promise —— which matters all the more now any project's payload can arrive.
+"""
 
 import sys
 import os
@@ -49,66 +67,12 @@ import re
 import json
 
 # ---------------------------------------------------------------------------
-# REPO-SCOPE GUARD.
-#
-# WHY: this hook is registered in the USER-level ~/.claude/settings.json, not
-# a project settings.json —— proven live this session that Claude Desktop
-# NEVER runs project-level hooks, only user-level ones. A user-level
-# registration fires for EVERY project open on this Mac, not just this repo.
-# Unscoped, that is actively harmful here: this hook enforces THIS repo's
-# own comms-filename timestamp convention and would flag unrelated
-# projects' files for sharing a bare numeric substring that has no meaning
-# there. So before doing anything else, self-scope to this repo and exit
-# silently everywhere else.
-#
-# HOW: prefer the payload's `cwd` (an absolute path, confirmed present on
-# every real PostToolUse payload captured live this session —— exactly the
-# event type this hook receives). If `cwd` is ever absent, fall back to
-# `transcript_path`'s Claude-Code project slug: transcripts live at
-# `~/.claude/projects/<slug>/<uuid>.jsonl`, where `<slug>` is the project
-# directory with every `/` and ` ` replaced by `-` (confirmed live).
-# Compare either signal against THIS repo's own root/slug, derived from
-# this script's OWN location (never a hard-coded path, so the repo stays
-# portable/relocatable) —— resolving symlinks via `os.path.realpath` and
-# treating a sub-path of the repo as in-scope too.
-#
-# FAIL-OPEN: if NEITHER field is present/parseable, run exactly as if this
-# guard did not exist. An unscopeable payload is not evidence of a
-# different project —— it is just a shape we cannot read —— and a lint
-# that goes silently dark on ambiguity is precisely the failure this whole
-# hook-migration effort exists to fix.
+# GLOBAL REACH —— no repo-scope guard here, deliberately: this lint is
+# WARN-ONLY (one stderr line, exit always 0), so it may safely run in every
+# project the user-level registration reaches, and a missed TS clash is the
+# expensive failure. Full rationale —— and why clint/dlint_quick/nlint DO
+# self-scope —— is in the CCSIM section of the module docstring above.
 # ---------------------------------------------------------------------------
-_REPO_ROOT_REAL = os.path.realpath(
-    os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-_REPO_SLUG = re.sub(r"[/ ]", "-", _REPO_ROOT_REAL.rstrip("/"))
-
-
-def _in_scope(data):
-    """True if this invocation's project is THIS repo (or a sub-path of
-    it), or if scope genuinely cannot be determined (FAIL-OPEN, see block
-    comment above). Never raises: any unexpected error here must default to
-    "run the lint", exactly like every other fail-safe path in this file."""
-    try:
-        if not isinstance(data, dict):
-            return True
-        cwd = data.get("cwd")
-        if isinstance(cwd, str) and cwd:
-            real_cwd = os.path.realpath(cwd)
-            return (real_cwd == _REPO_ROOT_REAL
-                    or real_cwd.startswith(_REPO_ROOT_REAL + os.sep))
-        tp = data.get("transcript_path")
-        if isinstance(tp, str) and tp:
-            m = re.search(r"/projects/([^/]+)/", tp)
-            if m:
-                slug = m.group(1)
-                return (slug == _REPO_SLUG
-                        or slug.startswith(_REPO_SLUG + "-"))
-            # transcript_path present but not the recognised
-            # .../projects/<slug>/... shape -> unparseable -> fall through.
-        return True  # neither field usable -> FAIL-OPEN
-    except Exception:
-        return True  # never let a scope-check error silence the lint
-
 
 # A filename TS: 12 digits starting "20" (YYYYMMDDHHmm), not part of a longer
 # digit run (so a 13+-digit id never reads as a TS, and a TS is not matched
@@ -181,7 +145,12 @@ def main():
     except Exception:
         return 0
 
-    if not _in_scope(data):
+    # Valid JSON that is not an object (a bare list/string/number) would make
+    # the `.get` below raise AttributeError, printing a traceback and exiting
+    # 1 —— breaking this file's own FAIL-SAFE promise. Cheap to rule out, and
+    # it matters more now the hook runs machine-wide: an unexpected payload
+    # shape from ANY project must still cost nothing but a silent exit 0.
+    if not isinstance(data, dict):
         return 0
 
     fp = (data.get("tool_input") or {}).get("file_path") or ""

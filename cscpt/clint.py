@@ -1,71 +1,113 @@
 #!/usr/bin/env python3
-"""Stop hook —— when the MAIN agent finishes a turn, verify it obeyed the
-project's NO-CHAT-TEXT discipline (root CLAUDE.md §3.2): the only chat text
-permitted is the 5 declaration lines, each led by one of the glyphs
-✅ ⇠ ➡️ ⚠️ 🚨. Any other non-blank line in the turn's final assistant text is
-prose —— a breach.
+"""Stop hook —— enforces root CLAUDE.md §3.2 NO-CHAT-TEXT: when the MAIN agent ends
+a turn, the only chat text permitted is the 5 declaration lines led by
+✅ ⇠ ➡️ ⚠️ 🚨; any other non-blank line in that turn's assistant text is a breach.
 
-WHY a hook, not trust: the discipline is silent to break and only caught on a
-human re-read; a deterministic Stop-time scan surfaces the slip immediately
-(coding.md —— back a prompt-declared invariant with cheap code enforcement).
+=== NON-CCSIM —— all you need to RUN it ===
+* Run by the harness, never by hand. Registered as a `Stop` hook in the
+  USER-level `~/.claude/settings.json` (the Claude Desktop app executes
+  user-level hooks and silently ignores project-level ones), so it fires in
+  EVERY project on this Mac —— and self-scopes: outside THIS repo it logs
+  `out_of_scope` and exits 0.
+* IN: Stop-hook JSON on stdin (`transcript_path`, `cwd`, `session_id`,
+  `stop_hook_active`). OUT: nothing at all on a clean turn.
+* EXIT 0 = clean, out-of-scope, tolerated, or ANY failure. EXIT 2 = the FIRST
+  breach under a given user prompt: a terse glyph-free reason goes to STDERR,
+  Claude reads it and is forced to end the turn again. Every LATER breach under
+  that same prompt is logged but never blocked —— at most ONE split turn per
+  prompt.
+* TOLERATED lines: blank; a `---`/`***`/`___` divider; a glyph-led line; a `**`
+  bold wrapper before the glyph (`**➡️ …`, per §3.2.3.3).
+* LOG `cscpt/.clint.log` —— exactly ONE tab-delimited line per invocation
+  whatever the verdict (`clean`, `block`, `block_failed`, `yellow:spent`,
+  `yellow:active`, `out_of_scope`, or the parse stage reached), each carrying
+  `pid=` (the prompt it belongs to), so one `grep` shows every invocation for a
+  prompt and why it was tiered so. A log that does NOT grow across real turns
+  means the harness is not calling this hook at all.
+* `CLINT_LOG=<path>` redirects it —— and with it the RED/YELLOW ledger, which
+  lives in the same file, so a test run neither reads nor pollutes real
+  escalation state. There is no second file to redirect.
+* FAIL-SAFE: bad payload, unreadable transcript, or a failed stderr/log write ->
+  exit 0. It can never break a turn on its own failure.
+(Run by the harness, not read —— see README.)
 
-WHAT it does, self-contained (no external state):
-  1. Read the Stop-hook stdin JSON; take `transcript_path` (a JSONL file).
-  2. Parse it defensively. Keep MAIN-agent lines only (`isSidechain` falsy) so a
-     sub-agent's prose never counts against the main turn. Find the last GENUINE
-     user message (a `user` line whose content is NOT purely tool_result blocks,
-     AND not a system-injected wrapper such as a task-notification or
-     local-command echo that Claude Code appends as a `type: "user"` turn with
-     no human behind it —— see `_is_real_user`), then scan every assistant text
-     block AFTER it —— the final turn's chat.
-  3. Flag a breach if any assistant text line, after leading whitespace, is
-     non-blank yet does NOT begin with one of the 5 glyphs. Tolerated: a blank
-     line; a markdown horizontal-rule / chapter divider (`---`/`***`/`___`); a
-     `**` bold wrapper before the glyph (e.g. `**➡️ …`, per §3.2.3.3's bolded
-     response_ line).
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WHY A HOOK, NOT TRUST: the discipline is silent to break and normally caught only
+on a human re-read; a deterministic Stop-time scan surfaces the slip at once.
 
-VERDICT —— BLOCK-ONCE by design. A Stop hook's `systemMessage` (exit 0) reaches
-only the USER, never the model —— so a non-blocking warning can NEVER make the
-agent self-correct: its turn has already ended and it never sees the note. The one
-channel that reaches the MODEL on Stop is a block —— exit 2 feeds stderr back to
-Claude as an error and forces exactly one more turn. So on a breach this hook
-exits 2 with a terse, glyph-free stderr instruction to end the turn adding no
-further prose; Claude reads it, ends cleanly, and future turns self-correct. The
-event is still appended to `cscpt/.clint.log`. No breach -> exit 0, no output.
+SCAN BOUNDARY: keep MAIN-agent lines only (`isSidechain` falsy) so a sub-agent's
+prose never counts against the main turn, then scan every assistant text block
+after the last GENUINE user line. `_is_real_user` excludes tool_result-only turns
+AND the wrappers Claude Code appends as `type:"user"` with no human behind them
+(`_SYSTEM_INJECTED_TAGS` —— task notifications, local-command echoes; exact
+prefix match, so human prose merely mentioning those words is unaffected):
+counting one as genuine would push the boundary PAST real prose from the current
+exchange and hide the breach.
 
-LOOP GUARD —— exit 2 forces a continuation that ends in another Stop, so an
-unguarded block would loop forever. The hook honours `stop_hook_active` (set true
-by the harness once Claude is already continuing because of a prior Stop-block):
-when it is true the hook logs the breach but exits 0, letting the turn finally end.
-Net effect —— at most ONE extra turn per stop-cycle; each fresh genuine user turn
-re-arms a single enforcement shot. This deliberately blocks ONCE (the only way to
-reach the model on Stop); it does not force the agent to keep producing prose ——
-the message tells it to stop, and the guard guarantees the next Stop succeeds.
+HYBRID RED/YELLOW: a Stop hook's exit-0 output (`systemMessage` included) reaches
+only the USER, never the model —— the turn has already ended —— so a non-blocking
+warning can NEVER make the agent self-correct. The one channel reaching the MODEL
+on Stop is a block: exit 2 feeds stderr back as an error and forces exactly one
+more turn. Hence RED blocks once, YELLOW only logs. INVARIANT: YELLOW is
+log/user-facing BY DESIGN and cannot be made model-facing —— anything that made
+it so would BE a second RED, the very cost this tier exists to avoid.
 
-CRITICAL —— the stderr text carries NONE of the 5 glyphs/emoji: naming them would
-teach exactly which prefixes pass and invite gaming by bolting a glyph onto prose.
-`_BREACH` is a fixed, glyph-free string.
+ARMING: "the same user prompt" is keyed on the harness `promptId`, stamped on
+EVERY main-agent `user` line —— genuine prompts, `tool_result` lines and the
+harness's own `Stop hook feedback:` line alike. Two live-verified properties make
+it the right key: the feedback line a RED injects INHERITS the interrupted
+prompt's id, so the forced continuation can only ever be YELLOW; and a new
+genuine prompt carries a fresh id, which re-arms the single RED shot. Do NOT key
+on that line's `uuid` instead —— it is itself a new `user` line, so a uuid key
+mints a new value per continuation, re-arms RED and loops. As that line is not a
+`_SYSTEM_INJECTED_TAGS` wrapper it also becomes the scan boundary, so a YELLOW
+reports NEW prose from the continuation, never the original breach twice.
 
-DIAGNOSTIC —— every exit from `main()` logs exactly ONE terse line via
-`_log_event`, tagged by the stage reached (no_stdin / no_transcript /
-unreadable_transcript / empty_transcript / clean / block / suppressed), not
-only breaches. WHY: a log that writes solely on a breach can never tell "ran
-this turn and found nothing" apart from "the harness never invoked this
-command" —— an empty log is consistent with BOTH, which is precisely how a
-dead Stop-hook wiring went unnoticed across many real sessions even though the
-script itself was proven correct under direct/manual invocation. A non-growing
-log across real turns is now unambiguous: the harness is not calling this
-command. The extra log line never adds a leakage surface: the breach line
-already logs the offending text (glyph-free by construction, see CRITICAL);
-every other stage logs no user content at all.
+LEDGER IN THE LOG: "RED already spent for this id" is read back from this
+script's OWN log tail —— no second artefact to corrupt, desync, gitignore or
+clean up, and it is the very line a human already greps. Matching is
+TAB-DELIMITED field equality, never substring, so `action=block_failed` can never
+read as `action=block`; `pid=` is never truncated the way `session=` is (a
+shortened id could collide with another prompt's prefix and downgrade a genuine
+RED); ids containing whitespace are REJECTED, not sanitised, since an embedded
+tab would split a field and desync reader from writer. The 64 KiB tail keeps the
+read O(1) as the log grows without bound, and a miss would degrade towards
+ENFORCEMENT (one extra RED, still loop-guarded), never towards a breach going
+unrecorded. `action=block` is written only AFTER the stderr write succeeds: the
+ledger records shots FIRED, not attempted, so an undelivered block never spends
+the prompt's RED.
 
-FAIL-SAFE —— any parse error (including stdin JSON that parses but is not an
-object), missing field, or unreadable transcript -> log the stage, then exit 0
-silently; a linter must never break a turn on its own failure. A stderr-write
-failure on the block path also falls back to exit 0, never a broken turn. The
-log write itself is equally fail-safe (see `_log_event`): a full disk or a
-permissions error there must never break a turn either.
-(Run by the harness, not read —— see README.)"""
+LOOP GUARD: exit 2 forces a continuation that ends in another Stop, so an
+unguarded block would loop forever. Two independent guards, EITHER sufficient
+alone: (a) the promptId ledger; (b) `stop_hook_active`, set by the harness once
+Claude is continuing because of a prior Stop-block. Both are kept —— a failed log
+write would silently make (a) forget that RED was spent, and a lint that blocks
+every continuation forever is far worse than one that nudges twice; conversely
+(a) keeps the promise when (b) is absent or false on a same-prompt re-stop. With
+neither id readable it degrades to (b) alone: the pre-hybrid behaviour.
+
+GLYPH-FREE STDERR: `_BREACH` names NONE of the 5 glyphs. Naming them would teach
+exactly which prefixes pass and invite gaming by bolting a glyph onto prose.
+
+LOG EVERY STAGE: a breach-only log cannot tell "ran this turn and found
+nothing" apart from "the harness never invoked this command" —— an empty log fits
+BOTH, which is exactly how dead Stop-hook wiring went unnoticed across many real
+sessions whilst the script itself was provably correct under manual invocation.
+Leakage stays nil: a breach line logs only the offending text (glyph-free by
+construction), every other stage logs no user content at all.
+
+REPO SCOPE (`_in_scope`): user-level registration reaches every project and this
+lint BLOCKS, so it must not police repos that never agreed to §3.2. Signals, in
+order: the payload's `cwd` (confirmed present on a live PostToolUse payload, NOT
+yet on a real Stop payload —— so the fallback is a live safety net, not theory),
+else the `~/.claude/projects/<slug>/<uuid>.jsonl` transcript slug (the project
+dir with every `/` and ` ` replaced by `-`). Both compare against values derived
+from this script's OWN location, never a hard-coded path, so the repo stays
+relocatable; symlinks are resolved and a sub-path counts as in-scope. It FAILS
+OPEN when neither signal is usable: an unreadable payload is not evidence of a
+different project, and a lint that goes dark on ambiguity is the failure this
+whole wiring exists to fix.
+"""
 
 import sys
 import os
@@ -74,37 +116,13 @@ import json
 from datetime import datetime
 
 # ---------------------------------------------------------------------------
-# REPO-SCOPE GUARD.
-#
-# WHY: this hook is registered in the USER-level ~/.claude/settings.json, not
-# a project settings.json —— proven live this session that Claude Desktop
-# NEVER runs project-level hooks, only user-level ones. A user-level
-# registration fires for EVERY project open on this Mac, not just this repo.
-# Unscoped, that is actively harmful here: this hook enforces THIS repo's
-# own bespoke no-chat-prose discipline (root CLAUDE.md §3.2) and would start
-# BLOCKING Stop turns in unrelated projects that never agreed to any such
-# rule. So before doing anything else (bar the diagnostic log —— see the
-# DIAGNOSTIC docstring section above, which this guard deliberately keeps
-# alive via a distinct "out_of_scope" tag), self-scope to this repo and
-# exit silently everywhere else.
-#
-# HOW: prefer the payload's `cwd` if present (confirmed present on a live
-# PostToolUse payload captured this session; NOT yet confirmed on a real
-# Stop payload, which is what THIS hook actually receives —— so the
-# fallback below is a live safety net, not just theoretical). If `cwd` is
-# absent, fall back to `transcript_path`'s Claude-Code project slug:
-# transcripts live at `~/.claude/projects/<slug>/<uuid>.jsonl`, where
-# `<slug>` is the project directory with every `/` and ` ` replaced by `-`
-# (confirmed live). Compare either signal against THIS repo's own
-# root/slug, derived from this script's OWN location (never a hard-coded
-# path, so the repo stays portable/relocatable) —— resolving symlinks via
-# `os.path.realpath` and treating a sub-path of the repo as in-scope too.
-#
-# FAIL-OPEN: if NEITHER field is present/parseable, run exactly as if this
-# guard did not exist. An unscopeable payload is not evidence of a
-# different project —— it is just a shape we cannot read —— and a lint
-# that goes silently dark on ambiguity is precisely the failure this whole
-# hook-migration effort exists to fix.
+# REPO-SCOPE GUARD —— user-level registration fires in EVERY project on this
+# Mac, so self-scope to THIS repo and exit silently elsewhere. Signals, in
+# order: the payload's `cwd`, else the `~/.claude/projects/<slug>/` transcript
+# slug —— both compared against values derived from this file's OWN location,
+# never a hard-coded path. FAILS OPEN when neither is usable. Full rationale
+# (why user-level, why fail-open, why THIS lint in particular must not roam)
+# is in the CCSIM section of the module docstring above.
 # ---------------------------------------------------------------------------
 _REPO_ROOT_REAL = os.path.realpath(
     os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
@@ -160,8 +178,20 @@ _SYSTEM_INJECTED_TAGS = (
     "<command-args>")
 
 # Log path (overridable for tests via CLINT_LOG); default beside this script.
+# The log doubles as the RED/YELLOW ledger (see docstring ARMING), so pointing
+# CLINT_LOG at a scratch file also isolates a test run's escalation state ——
+# there is deliberately no second file to redirect and forget.
 _LOG = os.environ.get("CLINT_LOG") or os.path.join(
     os.path.dirname(os.path.abspath(__file__)), ".clint.log")
+
+# How much of the log tail to consult when asking "was RED already spent for
+# this promptId?". 64 KiB is ~500 log lines —— many turns' worth, whilst the
+# read stays O(1) as the log grows without bound. Only a handful of lines can
+# ever separate a RED from the continuation it forces, so a live prompt's
+# verdict cannot fall out of the window; and if one somehow did, the miss
+# degrades towards ENFORCEMENT (one extra RED, still loop-guarded by
+# `stop_hook_active`), never towards a breach going unrecorded.
+_TAIL_BYTES = 64 * 1024
 
 
 def _line_ok(line):
@@ -215,18 +245,89 @@ def _is_real_user(obj):
     return False
 
 
-def _log_event(sid, action, lines=0, first="-"):
+def _log_event(sid, action, lines=0, first="-", pid="-"):
     """Append ONE terse diagnostic line for ANY hook invocation, breach or not
-    (see docstring DIAGNOSTIC). FAIL-SAFE: swallow all errors -- a logging
-    failure must never break a turn (same contract as the rest of this file)."""
+    (see docstring DIAGNOSTIC). An `action=block` line is ALSO the ledger entry
+    meaning "RED already spent for this pid" (see `_red_spent`), so the caller
+    must write it only once the block is actually being delivered.
+
+    Fields are TAB-separated and `first=` stays LAST because it alone may carry
+    free text (tabs/newlines in it are flattened, so a record is always exactly
+    one line). `pid=` is NOT truncated the way `session=` is: it is matched
+    exactly by `_red_spent`, and a shortened id could collide with another
+    prompt's prefix and wrongly downgrade a genuine RED to YELLOW.
+
+    FAIL-SAFE: swallow all errors -- a logging failure must never break a turn
+    (same contract as the rest of this file). A lost write only costs the
+    ledger its memory, which `stop_hook_active` independently covers."""
     try:
         with open(_LOG, "a", encoding="utf-8") as lf:
-            lf.write("%s\tsession=%s\taction=%s\tlines=%d\tfirst=%s\n" % (
+            lf.write("%s\tsession=%s\tpid=%s\taction=%s\tlines=%d\tfirst=%s\n" % (
                 datetime.now().isoformat(timespec="seconds"),
-                sid, action, lines,
+                sid, pid, action, lines,
                 str(first)[:200].replace("\t", " ").replace("\n", " ")))
     except Exception:
         pass
+
+
+def _turn_id(data, objs):
+    """The id of the user prompt this Stop belongs to —— the RED/YELLOW key
+    (see docstring ARMING). Prefer the transcript's last main-agent `user`
+    line's `promptId`: that is the value proven live to stay constant across a
+    RED-forced continuation (the injected `Stop hook feedback:` line inherits
+    it) and to change on every new genuine user message. Fall back to the
+    payload's own prompt id for harnesses whose transcript lines lack the
+    field. Returns "" when neither is readable —— the caller then degrades to
+    `stop_hook_active` alone. Never raises.
+
+    Ids containing whitespace are REJECTED rather than sanitised: the ledger is
+    tab-delimited, so an embedded tab would split one field into two and the
+    reader would silently stop matching what the writer wrote. Rejecting keeps
+    writer and reader in lockstep and degrades to the safe path instead."""
+    def _clean(p):
+        return isinstance(p, str) and p and not any(c.isspace() for c in p)
+
+    try:
+        for o in reversed(objs):
+            if isinstance(o, dict) and o.get("type") == "user":
+                p = o.get("promptId")
+                if _clean(p):
+                    return p
+        for key in ("prompt_id", "promptId"):   # payload naming varies
+            p = data.get(key)
+            if _clean(p):
+                return p
+    except Exception:
+        pass
+    return ""
+
+
+def _red_spent(turn_id):
+    """True if a RED block was already delivered for this prompt id, read back
+    from this script's own log tail (see docstring ARMING). Matching is
+    TAB-DELIMITED field equality, never substring: `action=block_failed` shares
+    a prefix with `action=block` and must NOT count as a spent shot.
+
+    FAIL-SAFE: an unknown id, a missing/unreadable/rotated log, or any error ->
+    False, i.e. "RED still armed". Failing towards enforcement keeps the lint
+    alive; `stop_hook_active` remains as the independent loop guard."""
+    if not turn_id:
+        return False
+    try:
+        with open(_LOG, "rb") as lf:
+            try:
+                lf.seek(-_TAIL_BYTES, os.SEEK_END)
+            except OSError:
+                lf.seek(0)                # log shorter than the tail window
+            blob = lf.read().decode("utf-8", errors="replace")
+        want = "pid=" + turn_id
+        for line in blob.splitlines():
+            fields = line.split("\t")
+            if "action=block" in fields and want in fields:
+                return True
+    except Exception:
+        pass
+    return False
 
 
 def main():
@@ -272,6 +373,9 @@ def main():
         _log_event(sid, "empty_transcript")
         return 0
 
+    turn = _turn_id(data, objs)               # RED/YELLOW key for this prompt
+    plog = turn or "-"
+
     # Boundary: everything after the last GENUINE user message = the final turn.
     start = 0
     for i, o in enumerate(objs):
@@ -291,27 +395,42 @@ def main():
                     offending.append(ln.strip())
 
     if not offending:
-        _log_event(sid, "clean")          # clean turn -> proof-of-life, non-blocking
+        # Clean turn -> proof-of-life, non-blocking.
+        _log_event(sid, "clean", pid=plog)
         return 0
 
-    # Are we ALREADY continuing because a prior Stop-block fired? If so, blocking
-    # again would loop —— log it but let the turn end (see docstring LOOP GUARD).
-    active = bool(data.get("stop_hook_active"))
+    # --- Tier the breach (see docstring VERDICT / ARMING / LOOP GUARD) --------
+    # Either guard alone downgrades RED to YELLOW; both are checked because each
+    # covers the other's failure mode.
+    if bool(data.get("stop_hook_active")):
+        why = "yellow:active"             # harness says: already in a continuation
+    elif _red_spent(turn):
+        why = "yellow:spent"              # ledger says: RED already fired this prompt
+    else:
+        why = None                        # RED still armed
 
-    # Log every breach (offending prose is glyph-free by definition, so the log
-    # never leaks the passing glyphs; the stderr message is glyph-free too).
-    _log_event(sid, "suppressed" if active else "block", len(offending),
-               offending[0])
+    # Offending prose is glyph-free by definition, so the log never leaks the
+    # passing glyphs; the stderr message is glyph-free too.
+    if why:
+        # YELLOW —— record the nudge, do not block. Nothing is written to
+        # stdout/stderr: at exit 0 no output of ours reaches the MODEL anyway
+        # (docstring VERDICT), and staying silent keeps the turn's own ending
+        # untouched. The log line IS the nudge.
+        _log_event(sid, why, len(offending), offending[0], pid=plog)
+        return 0
 
-    if active:
-        return 0                          # loop guard -> allow the stop to finish
-
-    # Fresh stop-cycle breach: block ONCE and feed the model the reason via
-    # stderr. On exit 2 the harness ignores stdout/JSON, so write to STDERR.
+    # RED —— first breach of this prompt: block ONCE and feed the model the
+    # reason via stderr. On exit 2 the harness ignores stdout/JSON, so write to
+    # STDERR. The stderr write is the last gate that can still abort the block,
+    # so the ledger entry (`action=block`) is claimed only AFTER it succeeds ——
+    # otherwise a failed delivery would spend the shot without ever reaching the
+    # model, and the real breach would be silently downgraded to YELLOW.
     try:
         sys.stderr.write(_BREACH)
     except Exception:
+        _log_event(sid, "block_failed", len(offending), offending[0], pid=plog)
         return 0                          # fail-safe: never break the turn
+    _log_event(sid, "block", len(offending), offending[0], pid=plog)
     return 2                              # blocks the stop; stderr reaches Claude
 
 

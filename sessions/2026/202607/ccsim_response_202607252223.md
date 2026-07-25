@@ -124,3 +124,49 @@
 
 ## 41. Sprint
 - 41.1. `#sprint` starting now; `slog_` created. Sprint Report will be appended here as new pts, per your update rules.
+
+## 42. Sprint Report (202607252227–202607252329) · ran `~`1h 2m
+
+### 42.1. Done
+- 42.1.1. Wave-staged Workflow, 10 SAs, 0 failures, 5 phases (Code → Rename → Docs → TopComments → README) —— `~`1.16Mn SA-tokens kept off my window.
+- 42.1.2. clint HYBRID shipped —— RED blocks the first breach of a user turn, YELLOW (log-only) thereafter. Keyed on the harness `promptId`, using clint's own log tail as the ledger (no new state file). The SA proved on the LIVE transcript that a Stop-block's feedback line inherits the SAME `promptId`, so a continuation cannot re-arm RED —— and that keying on the line `uuid` instead would have looped forever.
+- 42.1.3. hlint + tlint GLOBALISED (guards removed) —— they now fire in every repo, incl. AJAP. clint/dlint/nlint stay dupbus-only, as you specified.
+- 42.1.4. `plint.py` created —— the 6th lint. PreToolUse, never blocking: reminds to read `coding.md` before editing a script/pcmd, and `writing.md` (+ consider `## Stylisation`) when content carries a greeting/sign-off marker. Your keyword list, plus `sincerely`, `best wishes`, `to whom it may concern`, `yours`. Comms files deliberately exempt.
+- 42.1.5. Renames landed —— `dlint_hook.py`→`dlint_quick.py`, `nlint.sh`→`nlint_hook.sh`, `tlint.sh`→`tlint_hook.sh`; reference JSON moved to `.claude/`.
+- 42.1.6. `cp/ccsim/hook_guide.md` created (2,763w) and `cp/ccsim/skiller.md` created (1,629w).
+- 42.1.7. All 16 skill descrs reviewed/rewritten to the hybrid style, `cscpt` skill created, `writing` extended to cover dlint FULL mode. Pinned by a new `skill_desc_regression_test.py` (16/16).
+- 42.1.8. Every `cscpt/` script's top comment split NON-CCSIM / CCSIM; `README.md` trimmed 1,676w→788w (3,022→1,211 tk, −60%) with the funnel mandate + CCSIM-ownership rule.
+- 42.1.9. `doomsday.md` gained the hook re-registration step (your §17.3 catch).
+- 42.1.10. MA-side: `~/.claude/settings.json` re-pointed to the new names, `plint` registered (9 hooks, 0 unresolved), `cleanupPeriodDays: 36500`, `ccsim/CLAUDE.md` §2.6 stale-session sweep.
+
+### 42.2. Assumed
+- 42.2.1. ⚠️ Surfaced first because it changes a deliverable: I did NOT implement your "5 lints paired with 5 `_hook.sh`" symmetry. Only the 3 PostToolUse lints have shims; clint/hlint fire once per turn/prompt so a shim would add a process, not save one. Reasoning in §37.7 —— overturn it and I will add them.
+- 42.2.2. Named the 6th lint `plint.py` (protocol-read reminder) —— you specified the behaviour, not the name.
+- 42.2.3. `cleanupPeriodDays: 36500` rather than a literal off-switch —— the setting has no disable value; its floor is 1 day.
+- 42.2.4. Added a memory-check guard to the §2.6 sweep you did not request (never propose deleting a dir holding auto-memory).
+- 42.2.5. Kept `dark_mode.html` as the sole hard-coded name in `README.md`, per your caveat.
+
+### 42.3. Interruptions
+- 42.3.1. ZERO. No compaction, no limit hit, no SA death, no compromised return. 10/10 agents completed.
+- 42.3.2. Two side tasks interleaved on your instruction (projects cleanup, auto-purge) —— handled in their own QMM pairs, sprint scope untouched.
+
+### 42.4. Caught in Review (not SA-reported)
+- 42.4.1. The guard regression suite dropped to 19/23 after the globalisation. NOT a regression —— the 4 hlint/tlint out-of-scope cases still asserted the OLD behaviour. I rewrote them to assert the new intent (foreign cwd must NOT silence them) with the rationale inline. Back to 23/23.
+- 42.4.2. Worth noting: had I only read the SA reports, this would have shipped looking green.
+
+### 42.5. Chrome (re 14) —— CONFIRMED ACTIVE
+- 42.5.1. Verified at the OS layer: `/Library/Managed Preferences/com.google.Chrome.plist` exists, `mcxdomain => always` (= Mandatory) and `mcx_computer_*` (= Machine scope).
+- 42.5.2. ⚠️ Honest gap: NONE of the three screenshots is `chrome://policy` —— they are the download alert, Device Management, and a removal sheet. The SA refused to paraphrase a table it never saw, and substituted stronger OS-level evidence. Correct call.
+- 42.5.3. ⚠️ Near-miss you should know about: screenshot 3 caught you one click from REMOVING the profile. You clicked Cancel —— proven by the plist mtime (18:59:23) predating the 19:05 sheet. Had you clicked Remove, the policy would be gone and the 4GB would return.
+- 42.5.4. On deleting the `.mobileconfig` FILE: safe —— it is an inert installer; the installed PROFILE is the policy. I still recommend keeping it as your re-install kit.
+
+### 42.6. Verification
+- 42.6.1. `repo_scope_guard_regression_test.py` 23/23 · `nlint_regression_test.py` 6/6 · `skill_desc_regression_test.py` 16/16.
+- 42.6.2. All `cscpt/*.py` compile; all `.sh` pass `bash -n`; 9 registered hook paths resolve, 0 missing.
+- 42.6.3. Live proof this turn: plint fired on my edits, hlint fired on your prompts, dlint blocked a RED write, clint blocked my chat prose. Four of six confirmed by observation, not assertion.
+
+### 42.7. Open
+- 42.7.1. 🟡 §37.7 —— confirm or overturn the shim asymmetry (42.2.1).
+- 42.7.2. 🟡 6.7 external skills —— still deferred by you; reminding as promised.
+- 42.7.3. 🟢 The 413MB `~/.claude/projects/` deletion is yours to run.
+- 42.7.4. 🟢 post_compact has still never fired for real —— only a genuine compaction proves it. Not claiming it until then.
