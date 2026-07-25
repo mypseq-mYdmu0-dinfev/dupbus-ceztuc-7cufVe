@@ -8,10 +8,11 @@
   - NEVER edit TS in filename, so user can track diff
 - Sprint Log —— if a `#sprint` ran this session, record its `slog_[TS].md` as a created non-comms file (§ Non-Comms Files; or § Coverage for Addendum) for future retrospection if needed.
 - CCSIM backlog —— whilst drafting the close, scan THIS session for anything CCSIM-worthy
-  - e.g. pcmd/script/protocol improvement, recurring snag, system gap
+  - inc. but not limited to: script/pcmd/"skill" fix/improvement, recurring snag, system gap
+  - e.g. a query should've triggered [X] skill → you didn't read [X].md → user reminded by #[X]
   - If none, skip silently
   - If any:
-    - Flag in `close_` (e.g. § Issues; cite comms files), so backlog entry ref the pts for full context
+    - Flag in `close_` (e.g. § Issues; cite comms files), so backlog entry ref the pt(s) for full context
     - APPEND to `cp/ccsim/backlog.md` (entry format: read ONLY §3 of `cp/ccsim/CLAUDE.md`)
 - ONLY AFTER creating & declaring the file(s), run `gscpt/DATS.py`
   - If `✅ Fixed [no.] file(s) ...`, simply tell in chat (override; exact): "DATS done. Fixed [no.] file(s)."
