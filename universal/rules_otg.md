@@ -30,7 +30,7 @@ ALWAYS use:
     - >5 words → in most relevant artefact
   - Example:
 ```
-✅ `rules.md`, `profile.md` (for KK's bg)
+✅ `rules.md`, `personal_bg.md` (for KK's bg)
 ```
 
 ---

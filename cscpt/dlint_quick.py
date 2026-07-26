@@ -3,26 +3,28 @@
 file is written/edited, it runs the quick lint on that file and BLOCKS whilst
 any 🔴 RED flag remains, feeding the flags back so CC fixes them.
 
-=== NON-CCSIM —— all you need to RUN it ===
-* Run by the harness via `dlint_hook.sh` (the registered bash fast-path), never
-  by hand: shim -> this file -> `dlint.py --quick <file>`. Registered PostToolUse
-  (Edit|Write|MultiEdit) in the USER-level `~/.claude/settings.json` (the Claude
-  Desktop app executes user-level hooks and silently ignores project-level
-  ones), and it self-scopes: outside THIS repo it exits 0.
-* SCOPE: `response_`/`close_`/`wrap_` `.md` files only (incl. CP prefixes). NOT
-  `query_` (the user's words), NOT `artefact_` (non-CC), and never code or
-  deliverables —— so it cannot misfire on them.
-* IN: PostToolUse JSON on stdin. EXIT 2 whilst RED remains, with the flag list
-  on STDERR for CC to act on; the write-fix-rewrite loop repeats until RED = 0.
-  EXIT 0 otherwise.
-* YELLOW never blocks —— CC surfaces and justifies YELLOW flags from its own
-  `dlint.py --quick` run (root CLAUDE.md §3.5.5), placed as the LAST content of
-  the same file.
-* FAIL-SAFE: any error, missing field, non-match, or a missing/slow `dlint.py`
-  (30 s timeout) -> exit 0. It never blocks on its own failure.
-(Run, not read —— see README.)
+=== NON-CCSIM —— start of all you need to RUN it ===
+* WHAT: the ONLY lint here that can BLOCK. After a CC-authored comms file is
+  written it runs `dlint.py --quick` on it and refuses the turn whilst any 🔴
+  RED flag remains.
+* IF IT BLOCKS (exit 2): the flag list is on stderr. Fix every RED and rewrite;
+  the loop repeats until RED = 0.
+* 🟡 YELLOW never blocks —— surface and justify yellows yourself, as the LAST
+  content of that same file (root CLAUDE.md §3.5.5).
+* SCOPE: `response_`/`close_`/`wrap_` `.md` only (CP prefixes included). Never
+  `query_`, `artefact_`, code, deliverables, or anything outside this repo.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WIRING (kept here, not in NON-CCSIM: nobody invokes this file by hand, so the
+plumbing serves only an editor). Run by the harness via `dlint_hook.sh`, the
+registered bash fast-path: shim -> this file -> `dlint.py --quick <file>`.
+Registered PostToolUse (Edit|Write|MultiEdit) in the USER-level
+`~/.claude/settings.json` —— the Claude Desktop app executes user-level hooks
+and silently ignores project-level ones. IN: PostToolUse JSON on stdin.
+FAIL-SAFE: any error, missing field, non-match, or a missing/slow `dlint.py`
+(30 s timeout) -> exit 0, so it never blocks on its own failure.
+
 NAMED `_quick`, NOT `_hook`: the registered hook is `dlint_hook.sh`. Across
 `cscpt/` every `.sh` carries `_hook` and no `.py` does, so the filename tells the
 truth about which file the harness actually launches. This is not a generic hook

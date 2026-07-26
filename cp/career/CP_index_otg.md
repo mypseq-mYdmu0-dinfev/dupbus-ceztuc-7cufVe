@@ -1,5 +1,5 @@
-- Unconditionally fetch now: CP_notes.md, pro_profile.md, writing.md (everything=deliverable)
-- DON'T fetch profile.md unless interest/hobby needed
+- Unconditionally fetch now: CP_notes.md, career_bg.md, writing.md (everything=deliverable)
+- DON'T fetch personal_bg.md unless interest/hobby needed
 - Format: `[alias]` `[URL]` `[descr]`
   - Always fetch via URL
   - If no URL, search CP
@@ -14,9 +14,9 @@ CP_notes.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d3047c88b64e0d9c4f5ed92d19c38430b6b48384/cp/career/CP_notes.md
 Purpose & remarks of this CP.
 
-pro_profile.md
+career_bg.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/956ad9060088a7234648cdfbf374cf1013757dcb/cp/career/pro_profile.md
-My professional profile; fetch below files for details if needed.
+My career background; fetch below files for details if needed.
 
 ---
 

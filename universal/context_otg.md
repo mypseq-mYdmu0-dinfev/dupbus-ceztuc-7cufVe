@@ -27,4 +27,4 @@
 - "Other files fetched" = conditionals, GH provided, web_search results, and other tool results even not declared
 - Re-fetch skipping examples (judge per chat):
   - shrink.md if no more content shrinking expected
-  - profile.md after demanded info extracted
+  - personal_bg.md after demanded info extracted

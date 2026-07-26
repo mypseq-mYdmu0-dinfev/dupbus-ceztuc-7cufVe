@@ -6,7 +6,7 @@
 
 ## 0. Scope & Files
 - 0.1. Working (enriched) AR lives in `/int/g_int/` (general roles) or `/int/c_int/` (consulting); filename TS = the (first) interview time. The pristine `Outcome: Applied` original stays in `gcl/applied/` (or `ccl/`) untouched, so AJAP re-application guards still hold.
-- 0.2. Read first: the role's AR, `career/pro_profile.md`, and the apt resume variant. Use prior interview ARs in `g_int/`|`c_int/` as worked examples.
+- 0.2. Read first: the role's AR, `career/career_bg.md`, and the apt resume variant. Use prior interview ARs in `g_int/`|`c_int/` as worked examples.
 - 0.3. Most outputs here are deliverables or durable records — mind `writing.md` for anything sent to the employer, and run `dlint.py` accordingly.
 
 ## 1. Phase A — Pre-Interview Research

@@ -4,7 +4,7 @@
 
 1. Unconditionals (READ NOW):
 - 1.1. `career/CP_notes.md`
-- 1.2. `career/pro_profile.md`
+- 1.2. `career/career_bg.md`
 - 1.3. `universal/writing.md`
 2. Format: `[alias]` `[path]` `[descr]`
 - 2.1. Read local files directly (no GH fetch)
@@ -13,7 +13,7 @@
 3. Remarks:
 - 3.1. `request` = MUST request my approval before fetch
 - 3.2. Most outputs in this CP are deliverables
-- 3.3. DON'T read `universal/profile.md` unless interest/hobby needed
+- 3.3. DON'T read `universal/personal_bg.md` unless interest/hobby needed
 - 3.4. `#job`/`#jop`: Don't search `universal/`; see below
 
 ---
@@ -24,9 +24,9 @@ CP_notes.md
 `career/CP_notes.md`
 Purpose & remarks of this CP.
 
-pro_profile.md
-`career/pro_profile.md`
-Professional profile; read files below for details if needed.
+career_bg.md
+`career/career_bg.md`
+Career background; read files below for details if needed.
 
 ---
 

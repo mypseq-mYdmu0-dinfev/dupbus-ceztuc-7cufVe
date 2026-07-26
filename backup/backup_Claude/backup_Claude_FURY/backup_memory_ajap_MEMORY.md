@@ -1,0 +1,2 @@
+- [Don't block on user questions in AJAP cockpit mode](feedback_ajap_no_blocking_questions.md) — never AskUserQuestion during #seek; state, don't wait, and keep going.
+- [Never trigger permission prompts in AJAP cockpit mode](feedback_ajap_no_permission_prompts.md) — no screencapture/TCC-gated actions during #seek/#eng; diagnose from logs only.

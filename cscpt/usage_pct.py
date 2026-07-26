@@ -1,35 +1,33 @@
 #!/usr/bin/env python3
 """Live Claude usage reader — ses% & wk% from the "Claude Web" usage panel.
 
-=== NON-CCSIM —— all you need to RUN it ===
-Gives ANY CC session (except the AJAP cockpit) the live 5-hourly session %
-(`ses%`) and weekly "All models" % (`wk%`). Told "proceed ... UNTIL ses% = 95%",
-a session runs this every minute and reads the printed ses%.
+=== NON-CCSIM —— start of all you need to RUN it ===
+WHAT: prints live Claude usage —— the 5-hourly session % (`ses%`) and weekly
+`wk%`. PRECONDITION: "Claude Web" open on its usage page.
 
-USAGE:
-    python3 cscpt/usage_pct.py            # human line, exit 0 ok / 1 fail
-    python3 cscpt/usage_pct.py --json     # {"ses":100,"wk":12,"ok":true,...}
-    python3 cscpt/usage_pct.py --ses      # just the ses integer (or "?")
-    python3 cscpt/usage_pct.py --wk       # just the wk integer  (or "?")
-    python3 cscpt/usage_pct.py --no-dialog  # skip the pre-run warning dialog
+    python3 cscpt/usage_pct.py --ses     # that integer alone, or "?" (--wk too)
+    #  bare = human line; --json = both machine-readable; --no-dialog skips
+    #  the pre-run warning
 
-* PRECONDITION: the "Claude Web" app must be open on the usage page. Zero
-  third-party deps — only `osascript`, `pbpaste`, `pbcopy` — so any `python3`
-  runs it.
-* IT DRIVES THE MAC: keystrokes only (⌘R refresh, ⌘A/⌘C grab, ⌘` next window),
-  never a click, and only whilst "Claude Web" is frontmost. Don't type during a
-  run. A pre-run dialog warns the user (15 s auto-continue; Cancel exits 1
-  quietly; Defer 1 min waits, then asks once more); `--no-dialog` skips it for
-  scripted callers. The clipboard is saved and restored, and the ⌘A highlight is
-  cleared after a successful grab.
-* TIMING: it refreshes and waits for "Last updated: just now" (the ~30–60 s
-  window where the numbers are trustworthy), retrying up to ~1 min, and cycles
-  windows if the frontmost one is not the usage panel.
-* IT NEVER GUESSES: on failure it prints "?" / `ok:false` and exits 1. Re-run,
-  or check that "Claude Web" is open on the usage page.
-**Run, never read.**
+* IT DRIVES THE MAC by keystroke, only whilst "Claude Web" is frontmost ——
+  tell the user not to type meanwhile.
+* SLOW: up to ~1 min, waiting for the ~30–60 s window in which the numbers are
+  true.
+* IT NEVER GUESSES: on failure it prints "?" / `ok:false`, exit 1. Re-run.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+RUN DETAIL (moved out of NON-CCSIM —— a caller needs the warning, not the
+mechanism). Keystrokes only (⌘R refresh, ⌘A/⌘C grab, ⌘` next window), never a
+click. The pre-run dialog gives 15 s auto-continue; Cancel exits 1 quietly;
+Defer waits 1 min then asks once more; `--no-dialog` skips it for scripted
+callers. The clipboard is saved and restored, and the ⌘A highlight cleared after
+a successful grab. It retries for up to ~1 min waiting on "Last updated: just
+now", cycling windows if the frontmost one is not the usage panel. Zero
+third-party deps — only `osascript`, `pbpaste`, `pbcopy` — so any `python3` runs
+it; the AJAP cockpit uses its own sibling instead (see SIBLING below).
+
+
 PARSE BY LABEL, NOT PIXEL: the panel is real, SELECTABLE text, so it is grabbed
 via ⌘A+⌘C and parsed by anchoring on "Current session" / "All models" — never on
 a line offset, making it structurally immune to the promo/notice banner that

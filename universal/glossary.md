@@ -83,7 +83,7 @@
 - override = exception to "no chat text" or other restrictions for that SINGLE turn only
 - deliverable = anything to be sent/potentially exposed to a third party (e.g. email, report, slides, LinkedIn, cover letter, application); ensure writing.md in context
 - summon me = push an app notification by using `AskUserQuestion` tool (random Q if no QB)
-- pcmd = prompt/protocol & context .md files; e.g. `ww.md` = prompt; `profile.md` = context
+- pcmd = prompt/protocol & context .md files; e.g. `ww.md` = prompt; `personal_bg.md` = context
 - "professional" (w/ quotes) = user's own definition: **a bar, not a degree**; a role/standard one either meets or doesn't, akin to "professional camera", defined by whether the paid work it enables clears the bar, not by output quality
   - e.g. Canon 1DX Mark I is old but professional, despite lower quality than iPhone, vice versa
   - e.g. Experienced/renowned PM struggles in comms/breaks promise = not a "professional"

@@ -12,7 +12,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/dd26
 google.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/02c6958a2f03b0fdbead506b9f464ce16ea0bbd7/universal/google.md
 
-profile.md
+personal_bg.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8d6dd3afe5cdd292ca368aca2f698d1241ee9ea1/universal/profile.md
 
 cic.md
@@ -33,7 +33,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/c890
 plan.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f8bfe18a1bd80cf795e6efb787fe5d1dfd2c3b29/universal/plan.md
 
-pro_profile.md
+career_bg.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/956ad9060088a7234648cdfbf374cf1013757dcb/cp/career/pro_profile.md
 
 traveller.md

@@ -30,7 +30,7 @@
 **Objective inference hierarchy (when not explicitly stated):**
 
 1. CP context —— stated goals, audience, stakes (e.g. academic grade, client pitch, financial decision)
-2. Culous' bg —— strategic thinker, investor, MBA, HCI/data; priorities: business impact, decision quality ("won't regret"), efficiency, scalability, intellectual precision; fetch `profile.md` and/or `pro_profile.md` if personal and/or professional bg (respectively) is centrally relevant
+2. Culous' bg —— strategic thinker, investor, MBA, HCI/data; priorities: business impact, decision quality ("won't regret"), efficiency, scalability, intellectual precision; fetch `personal_bg.md` and/or `career_bg.md` if personal and/or professional bg (respectively) is centrally relevant
 3. Immediate task context —— what decision or insight would be most actionable right now
 4. Default: most actionable and directly applicable conclusion from available content
 

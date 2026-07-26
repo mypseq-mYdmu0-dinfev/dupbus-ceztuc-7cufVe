@@ -21,7 +21,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/0a61
 | File | Condition |
 |---|---|
 | `google.md` | On personal email/calendar; OR `#job` mentioned |
-| `profile.md` | User's personal background needed |
+| `personal_bg.md` | User's personal background needed |
 | `cic.md` | ANY CIC ops; OR research requires accuracy/recency |
 | `writing.md` | ANY deliverables; OR "casual"/"whatsapp" mentioned |
 | `coding.md` | Creating/editing ANY script/pcmd (e.g. in `index.md`) |

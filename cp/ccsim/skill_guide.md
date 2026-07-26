@@ -1,6 +1,8 @@
-# Skiller —— House Style for Skill Descriptions
+# Skill Guide —— House Style for Skill Descriptions
 
 *Read before creating, editing, or auditing any `.claude/skills/*/SKILL.md`. Self-contained: every rule carries its own rationale, so no conversation or comms file is needed (or permitted) to explain it.*
+
+> **Standing convention —— guide files in `cp/ccsim/` are named `*_guide.md`.** Any document in this folder whose job is to GUIDE how something is written or built takes that suffix: `skill_guide.md` (this file) for skill descriptions, `hook_guide.md` for hooks, `ssd_migration_guide.md` for the SSD migration procedure. Name every future guide the same way. The point is that the folder stays self-describing —— a reader can tell a guide apart from an index, a log, a playbook, or a backlog by filename alone, without opening anything. A merely clever name tells a newcomer nothing; the shared suffix is what makes the set legible at a glance.
 
 ---
 
@@ -9,6 +11,9 @@
 - A skill has two halves with two very different price tags: the **frontmatter** (`name` + `description`) is injected into the SYSTEM PROMPT on EVERY turn of EVERY session; the **body** is loaded only when the skill is actually invoked.
 - So the description is the ONLY standing cost. The body is free until used —— which is why depth belongs in the pcmd the body points to, never in the description.
 - The skill listing is budget-capped at roughly **1% of the context window** (~2,000 tokens on a 200k window), and that cap is shared by project skills, plugin skills, and built-ins alike. Descriptions therefore COMPETE: every token one spends is a token another cannot have, and an over-budget listing gets truncated rather than negotiated.
+- **The cap is a per-turn CEILING, not a running total.** The listing is assembled once into the system prompt, so it costs the same on turn 50 as on turn 1 —— it does NOT accumulate as a session lengthens. The sting is the other half of that sentence: you pay it on EVERY turn of EVERY session, including the majority in which no skill fires at all.
+- **Over budget, the harness shortens rather than asks.** Two limits bite independently: `skillListingMaxDescChars` (default 1,536 characters) truncates any single over-long description, whilst `skillListingBudgetFraction` (default `0.01`) governs the shared 1% —— once the total exceeds it, descriptions are mechanically shortened to fit, and in the worst case skills drop out of the listing altogether. Both are raisable in `settings.json`, but raising them only relocates the cost onto every turn; it never removes it.
+- That loss is SILENT —— exactly like the YAML `#` truncation of §4.3, the file still looks perfect on screen whilst the model sees a stub, and a description that arrives shortened is a skill that cannot reliably fire. So treat description length as a **shared, finite resource**: every character you spend is one a sibling cannot have, and brevity is a courtesy owed to every other skill in the listing —— including the built-ins you cannot edit and the ones you did not write.
 - Measure, don't guess: concatenate every `name: description` line into one file and run `token-count --file <path>` (word count doesn't gate context budget, tokens do). Measured at the time of writing: 16 project skills = 991 tokens, roughly HALF the cap, before a single plugin or built-in skill is counted. There is no slack to be casual with.
 - Working target: **≤300 characters (~65 tokens)** per description. Past ~400 you are crowding a sibling out, so spend the extra length only where it demonstrably buys matchability (see §3).
 
@@ -33,7 +38,7 @@ Use when <concrete task-shape> — <short tail of concrete trigger words in the 
 - Why hybrid and not either extreme: a pure keyword list has no WHEN, so it over-fires on any incidental mention (cost = a wasted body read plus a derailed turn); pure abstract prose has no match surface, so it never fires at all (cost = the entire skill, silently). One failure is noisy, the other is invisible —— which makes the abstract one worse.
 - Write the tail in the **user's** vocabulary, not the system's. The description is matched against what the user actually typed, and users say "which laptop should I get", never "I am engaging in a spending activity".
 - Add a **negative clause** when over-firing is likely or expensive: e.g. "not routine or low-stakes questions", "not the lint hooks (they run themselves)". One clause of exclusion is cheaper than a wrong invocation.
-- Add a **boundary clause** when a sibling skill is nearby: e.g. "use pro-profile for career work". This is what keeps §4.4 from happening.
+- Add a **boundary clause** when a sibling skill is nearby: e.g. "use career-bg for career work". This is what keeps §4.4 from happening.
 - Punctuation: descriptions use a single spaced `—`, not the house doubled ` —— ` of root §2.4. Descriptions are machine-facing match text, the doubled dash costs standing budget on every turn and buys nothing in matching, and all existing SKILL.md files already read this way. Prose in a skill BODY follows the normal house style.
 
 ## 4. Anti-Patterns
@@ -46,8 +51,8 @@ Each fails for a specific reason. Learn the reason, not just the shape.
   - Redundancy —— `hlint` already catches every literal `#trigger` and points at the pcmd, so the clause is dead weight (§4.2).
   - MECHANICAL TRUNCATION —— in YAML, a ` #` inside an unquoted scalar starts a COMMENT. Everything from the `#` to end of line is silently discarded before the model ever sees it. The `google` skill lost 51% of its description this way (134 chars authored, 65 surviving: the listing read "…or calendar operations, or when" and simply stopped), and nothing warns you —— the file looks perfect on screen.
   - If a `#` is ever genuinely unavoidable, the entire description must be wrapped in quotes. Prefer removing it.
-- **4.4. Two skills claiming the same job.** Either both fire (two body reads, two protocols competing for the same turn) or the model picks the wrong one and the right one never runs. Give the more specific skill ownership and give the other an explicit boundary clause (e.g. `profile` says "use pro-profile for career work").
-  - COMPLEMENTARY skills are not this defect: `buy` supplies the research protocol and `profile` supplies who the buyer is, so both firing on "which laptop should I get" is correct. The test is whether they offer the SAME payload for the same request, not whether they co-occur.
+- **4.4. Two skills claiming the same job.** Either both fire (two body reads, two protocols competing for the same turn) or the model picks the wrong one and the right one never runs. Give the more specific skill ownership and give the other an explicit boundary clause (e.g. `personal-bg` says "use career-bg for career work").
+  - COMPLEMENTARY skills are not this defect: `buy` supplies the research protocol and `personal-bg` supplies who the buyer is, so both firing on "which laptop should I get" is correct. The test is whether they offer the SAME payload for the same request, not whether they co-occur.
 - **4.5. Padding the description with what belongs in the body.** Procedure, caveats, and rules cost nothing in the body and cost every turn in the description. If a sentence does not help the model DECIDE, it goes in the pcmd.
 
 ## 5. Body Rules (Thin Pointer)

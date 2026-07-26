@@ -1,6 +1,6 @@
 # CC System Improvement & Maintenance (CCSIM)
 
-*Meta-CP: harness/environment engineering to improve CC/pcmds/scripts/OS/firmware/etc. Read root `CLAUDE.md` if not already. If creating ANY new file in `ccsim/`, concisely note here.*
+*Meta-CP: harness/environment engineering to improve CC/pcmds/scripts/OS/firmware/etc. Read root `CLAUDE.md` if not already. If creating ANY new file in `ccsim/`, give it a §7 index line in the SAME turn.*
 
 ## 1. Every Turn —— Change Hunt
 - 1.1. Read `cp/ccsim/last_seen.md` (line under the heading = `[TS] [SHA]` of the last audit).
@@ -53,3 +53,22 @@
   - If trivial (not worth a pcmd/skill), consider creating/adjusting "memories" instead
 - Record the sweep in the `wrap_` § Issues: the open count + your proposals, referencing `backlog.md` (don't re-list its entries)
 - The 2nd `wrap_` push (post-sweep) is an ALLOWED override of root CLAUDE.md's one-commit-per-turn.
+
+## 7. `ccsim/` File Index —— What Each File Is & When to Read It
+
+- 7.1. This § is the folder's ONLY index (no separate `README`/`index` file exists —— this CP is CC-only, so one governing file carries everything). Every file in `ccsim/` is either listed below or governed by a § above; create a file here and it stays invisible —— hence never read —— until its line exists, so add the line in the same turn.
+- 7.2. `last_seen.md` (§1, the change-hunt anchor) is the ONLY file read EVERY turn. Everything below is STRICTLY ON-DEMAND: each guide runs to several thousand tokens, so opening one without its trigger is pure context waste —— and skipping one WITH its trigger is how a solved problem gets re-derived wrongly.
+- 7.3. Already governed above, no entry needed: `backlog.md` (§3), `last_seen.md` (§1), `sandbox/` (§5).
+- 7.4. `hook_guide.md` —— hook machinery: registration, payloads, self-scoping, verification, recovery, backup mirror. Read BEFORE creating, editing, debugging, or trusting any hook.
+- 7.5. `skill_guide.md` —— house style for `.claude/skills/*/SKILL.md` descriptions (the only part billed every turn). Read before creating, editing, or auditing a skill.
+- 7.6. `ssd_migration_guide.md` —— WSM SSD-wear relocations, the safe-move pattern, the standing APFS-reformat plan. Read before any home-path move/revert or disk-health question.
+- 7.7. `doomsday.md` —— hardware-failure recovery map (FURY or WSM lost, unmounted, or being replaced). Read when one of those has happened or is being planned.
+- 7.8. Naming: a `*_guide.md` file guides how something is written or built (convention + rationale inside `skill_guide.md`). Keep future guides on that suffix so the folder stays legible by filename alone, and name non-guides so their kind is equally obvious (index, log, playbook, anchor).
+- 7.9. `.DS_Store` is a Finder artefact —— never read, edit, or index it.
+
+## 8. Operating Posture —— How CCSIM Decides
+
+- 8.1. CCSIM engineers the ENVIRONMENT, not deliverables. The output is the CONDITIONS under which correct behaviour happens automatically rather than being remembered —— a rule that only works if someone recalls it at the right moment has already failed. Prefer a lint, hook, or default that makes the wrong move hard over an instruction that asks for the right one.
+- 8.2. The CLIENT is every OTHER CC, not this one. Success = she reaches her goal having read as LITTLE as possible. Documentation here is an interface with a token budget, not a reference work: every line added is a standing tax on every future session, so the default move is to CUT, and depth belongs in the on-demand file (§7.2), never in the thing she must pass through.
+- 8.3. The lints ARE the harness proper —— the harness invokes them, so no other agent needs to know how to run them. She needs only what each one IS and what to do when one fires a 🔴/🟡. Preserve that —— anything CC must REMEMBER to run is a design defect to fix, not to document around.
+- 8.4. Ownership & escalation: changes to scripts/pcmds/hooks/skills belong to CCSIM BY DEFAULT. Another CC MAY fix something small in passing —— but MUST record it (append to `backlog.md`, §3) even for a one-character change, because unrecorded drift is the failure mode that makes every later audit untrustworthy. Anything large: ESCALATE (queue a CCSIM query, or raise it) rather than attempt it with borrowed context.

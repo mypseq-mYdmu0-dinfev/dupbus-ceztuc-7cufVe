@@ -31,7 +31,7 @@ instruction is obeyed —— see `universal/coding.md` § Testing):
   3. Every path the body points at must exist —— a skill whose target has moved
      fails mid-task, after the model has already committed to using it.
 
-House style for the descriptions themselves: `cp/ccsim/skiller.md`.
+House style for the descriptions themselves: `cp/ccsim/skill_guide.md`.
 
 Usage: python3 cp/ccsim/sandbox/skill_desc_regression_test.py
 Exit 0 = all good; exit 1 = at least one failure (details on stdout).

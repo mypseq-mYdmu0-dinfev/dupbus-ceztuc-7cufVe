@@ -3,32 +3,42 @@
 what is about to be written and injects a NON-BLOCKING reminder to read the
 governing protocol file FIRST.
 
-=== NON-CCSIM —— all you need to RUN it ===
-* Run by the harness, never by hand. Registered as a `PreToolUse` hook
-  (Edit|Write|MultiEdit) in the USER-level `~/.claude/settings.json` (the Claude
-  Desktop app executes user-level hooks and silently ignores project-level
-  ones). NO repo-scope guard: it runs in EVERY project on this Mac,
-  deliberately (see CCSIM).
-* TWO RULES:
-  - CODE (mechanical, certain) —— target is a script or pcmd: extension
-    `.py`/`.sh`, or a `.md` that lives under `universal/`, is a `CLAUDE.md`, or
-    sits under `cp/<project>/`. -> read `universal/coding.md`. Comms files
-    (`query_`/`response_`/`close_`/`wrap_`/`slog_`/`artefact_`) are excluded.
-  - DELIVERABLE (heuristic, uncertain) —— the written CONTENT carries a
-    greeting/sign-off marker (`hello`, `dear`, `greetings`, `regards`,
-    `sincerely`, `best wishes`, `yours`, ...; the list is `_MARKERS` below).
-    -> read `universal/writing.md`, and consider its `## Stylisation` section.
-* Each rule is gated on its pcmd existing (missing -> that rule stays silent),
-  and names the file by ABSOLUTE path so it is openable from any project.
-* IN: PreToolUse JSON on stdin (`tool_input`). OUT: on a match, JSON on stdout
-  carrying `hookSpecificOutput.additionalContext` —— one line per rule.
-* EXIT is ALWAYS 0. It never gates a write: no `permissionDecision` of
-  `deny`/`ask` is ever emitted. Advisory —— ignore it if already read.
-* FAIL-SAFE: any error, missing field or unreadable payload -> exit 0, no
-  output.
-(Run by the harness, not read —— see README.)
+=== NON-CCSIM —— start of all you need to RUN it ===
+* WHAT: a PreToolUse hook —— before a write lands it reminds you to read the
+  governing protocol FIRST.
+* TWO RULES: a script/pcmd write -> read `universal/coding.md`; content bearing
+  a greeting or sign-off -> read `universal/writing.md` (incl. its
+  `## Stylisation` section).
+* IF IT FIRES: read the named file, or ignore it if you already have —— it is
+  ADVISORY and can NEVER gate a write.
+* KNOWN LIMITS: the deliverable rule is a heuristic —— a script merely printing
+  "hello" trips it; and a pcmd named like a comms file (`response_*.md`) gets no
+  reminder.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WIRING (kept here, not in NON-CCSIM: a caller never invokes this file, so the
+plumbing is dead weight to everyone but an editor). Registered as a `PreToolUse`
+hook (Edit|Write|MultiEdit) in the USER-level `~/.claude/settings.json` —— the
+Claude Desktop app executes user-level hooks and silently ignores project-level
+ones. IN: PreToolUse JSON on stdin (`tool_input`). OUT: on a match, JSON on
+stdout carrying `hookSpecificOutput.additionalContext`, one line per rule. EXIT
+is ALWAYS 0 and no `permissionDecision` of `deny`/`ask` is ever emitted ——
+that is the mechanism behind "can NEVER gate a write". FAIL-SAFE: any error,
+missing field or unreadable payload -> exit 0, no output. Each rule is gated on
+its pcmd EXISTING (missing -> that rule stays silent) and names the file by
+ABSOLUTE path, so it is openable from any project.
+
+EXACT MATCH SETS (kept here rather than in NON-CCSIM: when the hook fires it
+NAMES the file to read, so a caller never has to reconstruct which rule caught
+them). CODE (mechanical, certain) —— extension `.py`/`.sh`, or a `.md` that
+lives under `universal/`, is a `CLAUDE.md`, or sits under `cp/<project>/`; the
+comms exclusion covers `query_`/`response_`/`close_`/`wrap_`/`slog_`/`artefact_`.
+DELIVERABLE (heuristic, uncertain) —— the written CONTENT carries a
+greeting/sign-off marker: `hello`, `dear`, `greetings`, `regards`, `sincerely`,
+`best wishes`, `yours sincerely`, `yours faithfully`, ... —— the live list is
+`_MARKERS` below, which is the spec; this is a map of it.
+
 WHY IT EXISTS (self-contained —— no conversation or comms file explains or
 overrides anything here): these protocol reads get SILENTLY SKIPPED, and the cost
 is asymmetric and back-loaded. A script written without coding.md misses the
@@ -64,13 +74,26 @@ exists for the same reason: in a session rooted elsewhere, a repo-relative
 MATCHING DETAIL: `_COMMS_RE` is ANCHORED so an ordinary pcmd merely CONTAINING a
 role word (`my_response_notes.md`) is not swallowed. `_MARKER_RE` uses
 WORD-BOUNDARY matching, load-bearing rather than cosmetic: a bare substring test
-makes `regardless` match `regards` and `yourself` match `yours`, firing on
-ordinary prose and training the reader to ignore the hook. Inner spaces match
-one-or-more whitespace so a line-wrapped "best wishes" still hits, and the echoed
-marker is whitespace-collapsed to keep output at one line per rule. Only NEW text
-is scanned (Write `content`, Edit/MultiEdit `new_string`) —— the rule is about
-what goes in, not what comes out —— and each rule sits in its own try/except so
-one failing never suppresses the other.
+makes `regardless` match `regards` and `dearth` match `dear`, firing on ordinary
+prose and training the reader to ignore the hook. Inner spaces match one-or-more
+whitespace so a line-wrapped "best wishes" still hits, and the echoed marker is
+whitespace-collapsed to keep output at one line per rule. Only NEW text is
+scanned (Write `content`, Edit/MultiEdit `new_string`) —— the rule is about what
+goes in, not what comes out —— and each rule sits in its own try/except so one
+failing never suppresses the other.
+
+WHY THE SIGN-OFF MARKERS ARE THE FULL PHRASES ("yours sincerely" / "yours
+faithfully") AND NEVER A BARE "yours": word boundaries stop `yourself` matching,
+but they cannot stop `yours` itself, which is an ordinary English possessive
+("the choice is yours", "yours may differ") that appears constantly in normal
+prose and in this repo's own protocol files. It was the single biggest
+false-positive source in the marker list, and a heuristic that cries wolf is
+worse than no heuristic —— see WHY IT CAN NEVER BLOCK above. Those two phrases
+are the only genuine letter sign-offs built on the word, so matching them
+exactly keeps every real hit whilst dropping the noise. ("yours sincerely" is
+additionally covered by the standalone `sincerely` marker; it is listed in full
+anyway so the pair reads as the deliberate, complete replacement rather than an
+accidental half-edit.)
 """
 
 import sys
@@ -103,12 +126,17 @@ _COMMS_RE = re.compile(
 
 # Greeting/sign-off markers for the DELIVERABLE rule. WORD-BOUNDARY matching is
 # load-bearing, not cosmetic: a bare substring test makes `regardless` match
-# `regards` and `yourself` match `yours`, which are common words that would fire
+# `regards` and `dearth` match `dear`, which are common words that would fire
 # the rule on ordinary prose and train the reader to ignore it. Inner spaces are
 # `\s+` so a line-wrapped "best\nwishes" still matches.
+# The sign-off built on "yours" is listed ONLY as its two full phrases: word
+# boundaries cannot rescue a bare `yours`, which is an everyday possessive
+# ("the choice is yours") and fired constantly on ordinary prose. These two are
+# the only real letter forms of it —— full rationale in the module docstring.
 _MARKERS = (
     "hello", "dear", "greetings", "regards", "sincerely",
-    "best wishes", "to whom it may concern", "yours",
+    "best wishes", "to whom it may concern",
+    "yours sincerely", "yours faithfully",
 )
 _MARKER_RE = re.compile(
     r"\b(" + "|".join(m.replace(" ", r"\s+") for m in _MARKERS) + r")\b",

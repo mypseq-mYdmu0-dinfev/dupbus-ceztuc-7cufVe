@@ -2,26 +2,29 @@
 """
 set_dates.py —— CC's macOS date setter (terminal-driven). RUN it, don't read it.
 
-=== NON-CCSIM —— all you need to RUN it ===
-Sets any one, or all, of a file/folder's four Finder-visible dates.
+=== NON-CCSIM —— start of all you need to RUN it ===
+WHAT: sets a file/folder's Finder-visible dates.
 
 USAGE   python3 cscpt/set_dates.py <mode> <YYYYMMDDHHmm> <path> [more paths...]
 MODES   1 = Created | 2 = Modified | 3 = Added | 4 = Last Opened | 5 = all four
 
-* The timestamp is Australia/Sydney local time, 12 digits, and is validated ——
-  a bad mode/TS or a missing path stops at once with `⚠️  STOPPED`, exit 1.
-* A path may be a file or a directory; a directory is processed RECURSIVELY (the
-  folder itself plus everything within), deepest first.
-* Symlink-safe (NOFOLLOW): a symlink's own dates change, never its target's ——
-  matters for trees containing venvs.
-* Exit 0 on full success, 1 if any item failed (first 20 failures printed).
-  Per-item failures do not abort the run.
-* CAVEATS: the inode change-time (ctime) CANNOT be set (macOS forces it to now),
-  but it is not shown in Get Info and does not survive copy/upload. Spotlight's
-  DISPLAYED Date Last Opened can lag a fresh write; the xattr is authoritative.
-* Usage is also summarised in `cscpt/README.md`.
+* TS = Sydney local, 12 digits; a bad mode/TS or missing path stops at once
+  (`⚠️  STOPPED`, exit 1).
+* Directories are processed RECURSIVELY; a symlink's OWN dates change, never its
+  target's.
+* EXIT 0 = all done | 1 = any failure (first 20 printed; run continues).
+* CAVEAT: inode ctime cannot be set —— macOS forces it to now.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+* CAVEAT DETAIL (moved out of NON-CCSIM —— a caller only needs to know ctime is
+  unsettable, not why it is harmless): ctime is not shown in Get Info and does
+  not survive copy/upload, so nothing user-visible depends on it. Spotlight's
+  DISPLAYED Date Last Opened can lag a fresh write; the xattr is authoritative.
+* Directories are walked deepest-first, and the NOFOLLOW symlink behaviour
+  matters most for trees containing venvs.
+* `cscpt/README.md` carries a one-line summary of the usage above —— keep the
+  two in step.
 * Sibling of gscpt/DXMF.py (the user's .txt-driven variant); this one takes
   terminal arguments and offers per-date modes. Keep the two aligned.
 * MECHANISMS: Created/Modified/Added go through the filesystem catalogue via

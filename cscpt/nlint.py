@@ -1,33 +1,85 @@
 #!/usr/bin/env python3
-"""PostToolUse hook —— numbering-continuity linter. After a CC-authored `response_`
-file is written/edited, it ADVISES (never blocks) when the file's top-level
-numbering RESETS to pt 1 whilst none of numbered.md's § Numbering Continuity
-excuses is evident.
+"""PostToolUse hook —— numbering linter for `universal/numbered.md`. TWO
+INDEPENDENT advisory checks: a file may trip one, the other, both, or neither.
+Both only ever ADVISE; neither ever blocks.
 
-=== NON-CCSIM —— all you need to RUN it ===
-* Run by the harness via `nlint_hook.sh` (the registered bash fast-path), never
-  by hand. Registered PostToolUse (Edit|Write|MultiEdit) in the USER-level
-  `~/.claude/settings.json` —— the Claude Desktop app executes user-level hooks
-  and silently ignores project-level ones —— and it self-scopes: outside THIS
-  repo it exits 0 silently.
-* SCOPE: acts ONLY on a comms RESPONSE file —— basename = optional CP prefix +
-  `response_` + exactly 12 digits + `.md`. Anything else (query_/close_/wrap_/
-  code) -> exit 0, silent.
-* IN: PostToolUse JSON on stdin. OUT: on a flag, JSON on stdout carrying
-  `hookSpecificOutput.additionalContext` —— the one PostToolUse channel that
-  reaches the model WITHOUT blocking. Silent otherwise.
-* EXIT is ALWAYS 0; it never blocks (PostToolUse cannot anyway —— the write has
-  already happened) and never asserts a confirmed breach.
-* WHEN IT FLAGS —— all three must hold: (1) a level-1 reset appears outside
-  fenced code (`## 1. `, `- 1.`, or a bare `1. `); (2) the file this response
-  replies to reads as a reply itself (its first line contains `response_` or
-  "reply"); (3) that query contains no same-line authorisation of a reset. Miss
-  any one -> silent.
-* FAIL-SAFE: any error, missing field, or an unresolvable/unreadable query ->
-  exit 0 with no output.
-(Run by the harness, not read —— see README.)
+=== NON-CCSIM —— start of all you need to RUN it ===
+* WHAT: a PostToolUse hook enforcing `universal/numbered.md`. TWO independent
+  ADVISORY checks; a file may trip either, both, or neither. Neither blocks nor
+  asserts a breach.
+* CHECK A —— TENTH SIBLING fires at a level's 10th item (`- [n].10.`), because
+  ⌘F `[n].1` then also hits `[n].10`, `[n].11`, ... FIX: SPLIT that level into
+  separate points (preferred), or renumber 2-digit (`[n].01`–`[n].09`). Any file
+  bar code/system types.
+* CHECK B —— NUMBERING RESET fires when a `response_` restarts top-level
+  numbering at pt 1 with no § Numbering Continuity excuse. FIX: continue the
+  count, or say why the reset is warranted.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WIRING (kept here, not in NON-CCSIM: nobody invokes this file by hand, so the
+plumbing serves only an editor). Run by the harness via `nlint_hook.sh`, the
+registered bash fast-path; registered PostToolUse (Edit|Write|MultiEdit) in the
+USER-level `~/.claude/settings.json` —— the Claude Desktop app executes
+user-level hooks and silently ignores project-level ones —— and it self-scopes,
+exiting 0 silently outside THIS repo. IN: PostToolUse JSON on stdin. OUT: on a
+flag, JSON on stdout carrying `hookSpecificOutput.additionalContext`, the one
+PostToolUse channel that reaches the model WITHOUT blocking; both checks share
+ONE payload, one line each. EXIT is ALWAYS 0 —— PostToolUse cannot block anyway,
+the write has already happened. FAIL-SAFE: any error, missing field,
+oversized/unreadable file, or an unresolvable/unreadable query -> exit 0, no
+output.
+
+EXACT SCOPES AND GATES. CHECK A covers ANY file, comms or not, EXCEPT the types
+numbered.md itself exempts (code/system extensions —— `_NUMBERING_EXEMPT_EXTS`),
+and stays silent when that level is ALREADY 2-digit (a sibling `- [n].0X.`
+exists), since `[n].10` is then the remedy working rather than a breach. CHECK B
+covers a comms RESPONSE file only —— basename = optional CP prefix + `response_`
++ exactly 12 digits + `.md`; query_/close_/wrap_/code are never reset-checked ——
+and flags only when all three hold: (1) a level-1 reset appears outside fenced
+code (`## 1. `, `- 1.`, or a bare `1. `); (2) the file this response replies to
+reads as a reply itself (its first line contains `response_` or "reply"); (3)
+that query carries no same-line authorisation of a reset. Miss any one ->
+silent.
+
+CHECK A —— WHY THIS EXACT SHAPE. numbered.md mandates a dot between number and
+text (`1.1. xxx`, never `1.1 xxx`), and THAT dot is what separates a numbered
+item from a prose decimal. So `.10` must be followed by a `.` or by end-of-line:
+"- 3.10. Foo" fires, whilst "- 3.10 metres" (a measurement, a price, a version)
+stays silent —— the false positive to fear here is nagging ordinary prose, since
+`X.10` is a far more common decimal than a genuine 10th sibling. `[n]` is a
+dotted numeric prefix of ANY depth, so a nested "- 1.2.10." fires too, whilst
+"- 10.1." does not (its level-2 counter is only at 1). "- 3.100." is likewise
+unmatched: a level that deep necessarily passed `.10` earlier, so the reminder
+was already due then. Missed the other way, deliberately: an item numbered
+WITHOUT its mandatory dot ("- 3.10 foo") goes unflagged —— that already breaches
+a different numbered.md rule, and a silent miss is the harmless direction.
+Level-1 (`## 10.` / `10. `) is out of scope on purpose —— continuing at pt 10 is
+the NORMAL state of a long-running session under § Numbering Continuity, so
+flagging it would fire on nearly every mature response.
+
+CHECK A —— WHY NOT LITERALLY EVERY FILE. numbered.md § Format exempts
+"deliverables, codes (.py/.sh/etc.), and system files (.json/etc.)". Firing
+there would enforce a rule its own protocol says does not apply, so exempt
+extensions are skipped. Extension is the only slice of that carve-out a
+stateless hook can see: a deliverable written as .md is indistinguishable from
+a response and is tolerated as a possible (one-line, non-blocking) false hit.
+
+CHECK A —— WHY IT STOPS NAGGING. Once the 2-digit fallback is applied the level
+reads `[n].01 … [n].09, [n].10`, at which point `[n].10.` is CORRECT ——
+numbered.md says so outright ("If `[N].01` is seen, `[N].10` (at least) is
+expected").
+So a sibling `- [n].0X.` anywhere in the same file suppresses the advisory for
+that `[n]`. Without it the hook would nag hardest at the file that already took
+its advice.
+
+CHECK A —— WHY THE SHIM HAD TO WIDEN. The `nlint_hook.sh` fast-path used to exit
+before Python unless the payload mentioned `response_`; that gate would have
+suppressed Check A on every non-response file. The gate now ALSO passes a
+payload whose written text carries a bullet-digit plus `.10` —— rationale for
+that specific pattern, and for gating on payload text rather than disk, lives in
+the shim itself.
+
 WHY ADVISORY, NEVER A HARD BLOCK —— a proven false positive on real data:
 numbered.md excuses a reset if ANY of (a) it is the session's 1st response, (b)
 the query is NOT a reply, or (c) it is a snippet/non-response ((c) can never
@@ -128,7 +180,40 @@ def _in_scope(data):
 
 # A comms RESPONSE file: optional CP prefix segment(s) ending in `_`
 # (e.g. `ccsim_`, `career_`), then `response_`, exactly 12 digits, `.md`.
+# Gates CHECK B ONLY —— CHECK A is file-type-agnostic (see below).
 _RESPONSE_RE = re.compile(r"^(?:[A-Za-z0-9-]+_)*response_\d{12}\.md$")
+
+# CHECK A scope carve-out. numbered.md § Format applies "to ALL outputs EXCEPT
+# deliverables, codes (.py/.sh/etc.), and system files (.json/etc.)", so a
+# numbering reminder on those enforces a rule its own protocol disclaims.
+# Extension is the only slice of that exemption a stateless hook can observe.
+_NUMBERING_EXEMPT_EXTS = frozenset({
+    ".py", ".sh", ".bash", ".zsh", ".pl", ".rb", ".go", ".rs", ".swift",
+    ".c", ".h", ".cpp", ".java", ".js", ".ts", ".jsx", ".tsx", ".css",
+    ".scss", ".html", ".htm", ".applescript", ".sql",
+    ".json", ".jsonl", ".yaml", ".yml", ".toml", ".ini", ".cfg", ".conf",
+    ".plist", ".xml", ".lock", ".env",
+    ".pyc", ".pyo", ".so",  # compiled artefacts: text-shaped only by accident
+})
+
+# CHECK A read cap. Check B only ever opened a comms `.md`; Check A can be
+# handed any path the shim let through, so bound the read —— a numbered list
+# never approaches this, and nothing bigger should delay the tool call.
+_MAX_FILE_BYTES = 2 * 1024 * 1024
+
+# CHECK A —— a level's TENTH sibling: after leading whitespace, a bullet, then a
+# dotted numeric prefix of any depth, then `.10` that is IMMEDIATELY followed by
+# a `.` (numbered.md's mandatory number/text separator) or by end-of-line. That
+# lookahead is the whole false-positive defence: "- 3.10. Foo" is an item,
+# "- 3.10 metres" is a measurement. Backtracking makes `[n]` land correctly at
+# any depth —— "- 1.2.10." matches with `[n]`=`1.2`, whilst "- 10.1." does not
+# match at all (nothing there is a 10th sibling).
+_TENTH_RE = re.compile(r"^[ \t]*-[ \t]+(\d+(?:\.\d+)*)\.10(?=\.|[ \t]*$)")
+
+# CHECK A suppressor —— the SAME shape, but a `.0X` sibling: the 2-digit
+# fallback numbered.md prescribes. Its capture is the parent, so suppression is
+# keyed per level rather than per file.
+_TWO_DIGIT_RE = re.compile(r"^[ \t]*-[ \t]+(\d+(?:\.\d+)*)\.0[1-9](?=\.|[ \t]*$)")
 
 # A top-level numbering RESET (numbering restarted at 1): after leading
 # whitespace, ANY of three forms —
@@ -161,6 +246,17 @@ _RESET_WORD_RE = re.compile(
     re.IGNORECASE,
 )
 
+_TENTH_MSG_TEMPLATE = (
+    "nlint: a numbered level has reached its 10th item ({snippet!r}) in "
+    "`{base}`. numbered.md says AVOID 9⁺ items on a level, because searching "
+    "`{parent}.1` also surfaces `{parent}.10`, `{parent}.11`, etc. Two valid "
+    "remedies: (1) SPLIT into separate points —— e.g. move the overflow under "
+    "the next top-level pt —— so no level exceeds 9; or (2) make THAT level "
+    "2-digit ({parent}.01–{parent}.09, then {parent}.10). Owner softly PREFERS "
+    "(1): it is cleaner, whilst (2) is clumsier though perfectly valid. "
+    "Non-blocking —— if 9⁺ siblings are genuinely unavoidable, take (2)."
+)
+
 _MSG_TEMPLATE = (
     "nlint: numbering reset detected ({snippet!r}) in a response whose "
     "query ({ref}) reads as a reply to a prior response. Per numbered.md, "
@@ -190,12 +286,42 @@ def _iter_unfenced(lines):
         yield ln
 
 
-def _find_reset_line(lines):
-    """Return the first non-fenced body line that restarts level-1
+def _find_reset_line(body):
+    """CHECK B. Return the first fence-masked body line that restarts level-1
     numbering at 1, or None if numbering never resets."""
-    for ln in _iter_unfenced(lines):
+    for ln in body:
         if _RESET_RE.match(ln):
             return ln
+    return None
+
+
+def _find_tenth(body):
+    """CHECK A. Return `(line, parent)` for the first fence-masked bullet that
+    numbers a level's 10th sibling (`- [n].10.`), or None.
+
+    Suppressed when that same level is ALREADY in the 2-digit form numbered.md
+    prescribes as the fallback —— i.e. a sibling `- [n].0X.` exists —— because
+    `[n].10` is then the remedy working as intended, not a breach. Suppression
+    is keyed on the hit's OWN parent, so an unrelated 2-digit level elsewhere
+    in the file can never launder a genuine breach. Both sweeps are single
+    passes over the same list (never a nested re-scan per hit), so cost stays
+    linear even on a long document full of near-misses —— this runs inside a
+    PostToolUse hook, where any added latency is paid on every write."""
+    two_digit_parents = set()
+    hits = []
+    for ln in body:
+        m = _TWO_DIGIT_RE.match(ln)
+        if m:
+            two_digit_parents.add(m.group(1))
+            continue
+        m = _TENTH_RE.match(ln)
+        if m:
+            hits.append((ln, m.group(1)))
+    # EVERY hit is kept, not just the first: one level having taken the 2-digit
+    # remedy must not excuse a DIFFERENT level that has not.
+    for ln, parent in hits:
+        if parent not in two_digit_parents:
+            return ln, parent
     return None
 
 
@@ -225,55 +351,40 @@ def _referenced_filename(response_first_line):
     return m.group(1).strip()
 
 
-def _emit_advisory(reset_line, ref):
+def _snippet(line):
+    """Echo the offending line back, bounded, so the reader can dismiss a
+    false positive at a glance without re-opening the file."""
+    s = line.strip()
+    return s if len(s) <= 80 else s[:77] + "..."
+
+
+def _emit_advisory(messages):
     """Exit 0 + structured stdout so Claude Code delivers `additionalContext`
-    to the model as a non-blocking system-reminder (see module docstring
-    §5) —— a WARN that actually reaches the model, without asserting a
-    breach the hook cannot confirm, and without blocking (PostToolUse
-    cannot block regardless of exit code —— the write already happened)."""
-    snippet = reset_line.strip()
-    if len(snippet) > 80:
-        snippet = snippet[:77] + "..."
-    msg = _MSG_TEMPLATE.format(snippet=snippet, ref=ref)
+    to the model as a non-blocking system-reminder —— a WARN that actually
+    reaches the model, without asserting a breach the hook cannot confirm, and
+    without blocking (PostToolUse cannot block regardless of exit code —— the
+    write already happened). Both checks share this ONE payload, one line each,
+    because a second emission would simply be discarded."""
     payload = {
         "suppressOutput": True,
         "hookSpecificOutput": {
             "hookEventName": "PostToolUse",
-            "additionalContext": msg,
+            "additionalContext": "\n".join(messages),
         },
     }
     print(json.dumps(payload))
 
 
-def main():
-    try:
-        data = json.load(sys.stdin)
-    except Exception:
-        return 0
-
-    if not _in_scope(data):
-        return 0
-
-    fp = (data.get("tool_input") or {}).get("file_path") or ""
-    base = os.path.basename(fp)
-
-    # Scope: response_ files only (incl. CP-prefixed). Everything else -> silent.
-    if not _RESPONSE_RE.match(base):
-        return 0
-    if not os.path.isfile(fp):
-        return 0
-
-    try:
-        lines = _read_lines(fp)
-    except Exception:
-        return 0
-
-    reset_line = _find_reset_line(lines)
+def _reset_message(fp, lines, body):
+    """CHECK B end-to-end: returns the advisory message, or None when the reset
+    is absent or legitimate. Every early return is a deliberate acquittal ——
+    absence of positive evidence must never become evidence of a breach."""
+    reset_line = _find_reset_line(body)
     if reset_line is None:
-        return 0  # continued numbering (or empty) -> nothing to check
+        return None  # continued numbering (or empty) -> nothing to check
 
-    # Reset present. §3 Reply-signal: resolve the file this response replies
-    # to via its own first line, then check THAT file's first line.
+    # Reset present. Reply-signal: resolve the file this response replies to
+    # via its own first line, then check THAT file's first line.
     first_line = lines[0] if lines else ""
     ref = _referenced_filename(first_line)
     ref_path = os.path.join(os.path.dirname(os.path.abspath(fp)), ref) if ref else ""
@@ -286,18 +397,74 @@ def main():
             query_lines = None
 
     if not query_lines:
-        return 0  # can't resolve/read the query -> no positive reply evidence
+        return None  # can't resolve/read the query -> no positive reply evidence
 
     if not _reply_signal(query_lines[0] if query_lines else ""):
-        return 0  # query doesn't read as a reply -> condition (b) satisfied
+        return None  # query doesn't read as a reply -> condition (b) satisfied
 
-    # §4 Sanctioned: reply-signal fired, so only (a)/explicit-override can
-    # excuse this reset. Scan the FULL query body (not just line 1) for it.
+    # Sanctioned: reply-signal fired, so only "1st of session"/explicit override
+    # can excuse this reset. Scan the FULL query body (not just line 1) for it.
     if _sanctioned(query_lines):
-        return 0  # confirmed legitimate -> silent
+        return None  # confirmed legitimate -> silent
 
-    # §5: reset + reply-signal + no sanction evident -> ADVISORY (never RED).
-    _emit_advisory(reset_line, ref)
+    # Reset + reply-signal + no sanction evident -> ADVISORY (never RED).
+    return _MSG_TEMPLATE.format(snippet=_snippet(reset_line), ref=ref)
+
+
+def main():
+    try:
+        data = json.load(sys.stdin)
+    except Exception:
+        return 0
+
+    if not _in_scope(data):
+        return 0
+
+    fp = (data.get("tool_input") or {}).get("file_path") or ""
+    if not fp or not os.path.isfile(fp):
+        return 0
+    base = os.path.basename(fp)
+
+    # Per-check scope, evaluated independently so a file can trip one, the
+    # other, both, or neither. CHECK B: `response_` only (incl. CP-prefixed).
+    # CHECK A: any file bar the types numbered.md itself exempts.
+    want_reset = bool(_RESPONSE_RE.match(base))
+    want_tenth = os.path.splitext(base)[1].lower() not in _NUMBERING_EXEMPT_EXTS
+    if not (want_reset or want_tenth):
+        return 0  # nothing to do -> don't even open the file
+
+    try:
+        if os.path.getsize(fp) > _MAX_FILE_BYTES:
+            return 0
+        lines = _read_lines(fp)
+    except Exception:
+        return 0
+
+    # Fence-mask ONCE: neither check may ever fire on code-block content.
+    body = list(_iter_unfenced(lines))
+
+    messages = []
+
+    if want_tenth:
+        try:
+            hit = _find_tenth(body)
+            if hit:
+                line, parent = hit
+                messages.append(_TENTH_MSG_TEMPLATE.format(
+                    snippet=_snippet(line), base=base, parent=parent))
+        except Exception:
+            pass  # one check failing must never suppress the other
+
+    if want_reset:
+        try:
+            msg = _reset_message(fp, lines, body)
+            if msg:
+                messages.append(msg)
+        except Exception:
+            pass
+
+    if messages:
+        _emit_advisory(messages)
     return 0
 
 

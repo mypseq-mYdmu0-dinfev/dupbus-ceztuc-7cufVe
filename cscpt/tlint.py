@@ -3,31 +3,36 @@
 invariant: no two files in one comms folder (nor across the dupbus/AJAP comms
 mirror) may carry the SAME 12-digit TS (YYYYMMDDHHmm), EXCEPT a sanctioned pair.
 
-=== NON-CCSIM —— all you need to RUN it ===
-* Run by the harness via `tlint_hook.sh` (the registered bash fast-path), never
-  by hand. Registered PostToolUse (Edit|Write|MultiEdit) in the USER-level
-  `~/.claude/settings.json` (the Claude Desktop app executes user-level hooks
-  and silently ignores project-level ones). NO repo-scope guard: it runs in
-  EVERY project on this Mac, deliberately (see CCSIM).
-* TRIGGERS only when the written file's basename carries a TS —— 12 digits
-  starting "20", not flanked by other digits. A TS-less write (code, docs,
-  CLAUDE.md) -> exit 0, silent.
-* WHERE IT LOOKS: the written file's OWN directory, plus —— only when that
-  directory is `.../GitHub/{dupbus.../sessions|AJAP_repo/inv}/YYYY/YYYYMM` ——
-  the matching year-month folder in the other repo. Two listings at most; AJAP's
-  wider trees are never walked.
-* SANCTIONED same-TS pairs (identical optional CP prefix, exactly one
-  co-located sibling, nothing sharing the TS cross-repo): `query_`+`response_`
-  (root CLAUDE.md §3.5.3/§3.6.2) and `close_`+`artefact_` (§3.3.5). Anything
-  else sharing a TS is flagged.
-* OUT: one warning line to STDERR naming the clashing files, then EXIT 0 ——
-  ALWAYS. It never exits 2, never blocks, never alters a write. Mind the
-  channel: PostToolUse delivers text to the MODEL only via exit-2 stderr or
-  structured exit-0 JSON, so this line surfaces to the user/hook output, not CC.
-* FAIL-SAFE: any error, missing field or non-match -> exit 0.
-(Run by the harness, not read —— see README.)
+=== NON-CCSIM —— start of all you need to RUN it ===
+* WHAT: a PostToolUse hook guarding the filename-TS invariant —— no two files in
+  one comms folder (nor across the dupbus/AJAP comms mirror) may share a 12-digit
+  TS, bar two sanctioned pairs.
+* SANCTIONED: `query_`+`response_` and `close_`+`artefact_`. Anything else
+  sharing a TS is flagged.
+* IF IT WARNS: one stderr line naming the clashing files, then EXIT 0 —— always.
+  It never blocks and never alters a write, so the fix is yours: re-stamp
+  whichever file took the wrong TS.
+* MIND THE CHANNEL: that line reaches the user, NOT the model —— do not rely on
+  seeing it.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+WIRING (kept here, not in NON-CCSIM: nobody invokes this file by hand, so the
+plumbing serves only an editor). Run by the harness via `tlint_hook.sh`, the
+registered bash fast-path; registered PostToolUse (Edit|Write|MultiEdit) in the
+USER-level `~/.claude/settings.json` —— the Claude Desktop app executes
+user-level hooks and silently ignores project-level ones. TRIGGERS only when the
+written file's basename carries a TS (12 digits starting "20", not flanked by
+other digits); a TS-less write —— code, docs, CLAUDE.md —— exits 0, silent.
+WHERE IT LOOKS: the written file's OWN directory, plus —— only when that
+directory is `.../GitHub/{dupbus.../sessions|AJAP_repo/inv}/YYYY/YYYYMM` —— the
+matching year-month folder in the other repo. Two listings at most; AJAP's wider
+trees are never walked. A pair counts as SANCTIONED only with an identical
+optional CP prefix, exactly one co-located sibling, and nothing sharing the TS
+cross-repo: `query_`+`response_` (root CLAUDE.md §3.5.3/§3.6.2) and
+`close_`+`artefact_` (§3.3.5). It never exits 2. FAIL-SAFE: any error, missing
+field or non-match -> exit 0.
+
 WHY IT EXISTS (self-contained —— no comms/conversation file explains it, per
 coding.md): a comms TS is the join key between a turn's files, and root CLAUDE.md
 sanctions only the two many-to-one cases above. Every other same-TS collision is

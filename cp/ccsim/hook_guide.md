@@ -233,3 +233,35 @@ for ev,groups in d.items():
   - 9.3.6. Run `cp/ccsim/sandbox/repo_scope_guard_regression_test.py` to confirm the scope guards still behave (in-scope, out-of-scope, and fail-open branches).
 - 9.4. Keep the reference file in step with the live file whenever a hook is added, renamed, or re-pointed —— a stale reference is a recovery that silently restores dead wiring.
 - 9.5. The reference file is documentation, so it may legitimately run AHEAD of the live file during a change; whichever is ahead, close the gap before the turn ends.
+
+---
+
+## 10. Backup Mirror Discipline
+
+*§9 restores the hook REGISTRATIONS from a reference file inside the repo. This section covers the wider problem: `~/.claude` is a symlink to `/Volumes/FURY 2TB/.claude`, so if that drive is lost, every hand-made configuration on it goes with it. `backup/backup_Claude/backup_Claude_FURY/` is the repo's copy of the handful of files that no clone, no cloud account, and no internal disk can reproduce. A backup nobody updates is worse than none, so the rule below is a MANDATE, not a suggestion.*
+
+- 10.1. THE MANDATE: any change to a file under `/Volumes/FURY 2TB/.claude/` that has a counterpart in `backup/backup_Claude/backup_Claude_FURY/` MUST be mirrored into that folder in the SAME turn, so the two stay byte-identical.
+- 10.2. This applies however the live file changed —— a hook added by hand, a `settings.json` edit, a new auto-memory entry, a Routine reworded. The mirror is not a periodic chore; it is part of the edit.
+- 10.3. Currently mirrored (the folder's own README carries the full table, the selection test, and the exclusions):
+  - 10.3.1. `settings.json` —— the ONLY live hook registration; outside git by necessity (§1.6).
+  - 10.3.2. `projects/*/memory/*.md` for both projects —— persistent auto-memory; written locally, never cloud-synced.
+  - 10.3.3. `scheduled-tasks/ajap-auto-resume/SKILL.md` —— hand-written Routine logic that exists nowhere else.
+- 10.4. THE NET EFFECT, stated plainly: if FURY is lost, restore the repo from GitHub, then COPY THESE BACKED-UP FILES INTO THE NEW `~/.claude/` (stripping the `backup_` prefix, the project tag, and any added `.md`). Without them, a clean GitHub restore brings back every lint SCRIPT and registers NONE of them, and the auto-memory is simply gone —— §5's failure signature, from a standing start.
+- 10.5. `settings.json` is now covered TWICE, deliberately, and the two are not interchangeable:
+  - 10.5.1. `.claude/hooks_user_settings.reference.json` (§9.2) is a HOOKS-ONLY excerpt, shaped for merging into an existing user file.
+  - 10.5.2. `backup_settings.json.md` is the WHOLE file, including the unrelated preferences a merge would not carry.
+  - 10.5.3. A hook change must update BOTH in the same turn; updating one alone leaves a restore that is half-right, which reads as success.
+- 10.6. Adding anything new to the backup folder: apply its README's selection test —— IRREPLACEABLE and UNTRACKED and SMALL, all three —— then list it in that README. Bulk transcripts, caches, `session-env/`, and server-pushed files fail the test and stay out.
+- 10.7. Drift check —— cheap, deterministic, and the only thing that catches a mirror silently left behind. Run it after any change to the live tree, and during any hook audit alongside §7.6:
+
+```bash
+cd "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
+B=backup/backup_Claude/backup_Claude_FURY; S="/Volumes/FURY 2TB/.claude"
+cmp -s "$S/settings.json" "$B/backup_settings.json.md" && echo "ok    settings.json" || echo "DRIFT settings.json"
+for f in "$S"/projects/*dupbus-ceztuc-7cufVe/memory/*.md; do n="$(basename "$f")"; cmp -s "$f" "$B/backup_memory_dupbus_$n" && echo "ok    $n" || echo "DRIFT $n"; done
+for f in "$S"/projects/*AJAP-repo/memory/*.md; do n="$(basename "$f")"; cmp -s "$f" "$B/backup_memory_ajap_$n" && echo "ok    ajap/$n" || echo "DRIFT ajap/$n"; done
+cmp -s "$S/scheduled-tasks/ajap-auto-resume/SKILL.md" "$B/backup_scheduled-tasks_ajap-auto-resume_SKILL.md" && echo "ok    ajap-auto-resume" || echo "DRIFT ajap-auto-resume"
+```
+
+- 10.8. A missing counterpart also prints `DRIFT` —— that is correct: a live file whose mirror was never made is exactly the gap this check exists to surface.
+- 10.9. If FURY is merely UNMOUNTED rather than lost, nothing here applies —— do NOT restore anything on top of an intact drive. Run `nscpt/fury_unmounted.sh`, which diagnoses the link, repairs it by renaming any stray aside (never deleting), and verifies every registered hook path still resolves.

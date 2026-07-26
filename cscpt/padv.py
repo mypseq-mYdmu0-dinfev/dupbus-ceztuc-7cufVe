@@ -3,19 +3,27 @@
 from a `<name>.pages.md` mirror and splits it into break-free blocks ready to
 paste into a Pages find-and-replace.
 
-=== NON-CCSIM —— all you need to RUN it ===
+=== NON-CCSIM —— start of all you need to RUN it ===
+WHAT: `#replace #adv` helper —— extracts a verbatim span from a `.pages.md`
+mirror, split into break-free blocks Pages' find-and-replace can match.
+
 CLI:  python3 cscpt/padv.py <mirror.pages.md> "<start_anchor>" ["<end_anchor>"]
-      -> prints the U+2028 count and the ready-to-paste fenced Replace block(s).
-      Omit <end_anchor> to grab just the start_anchor text.
+      -> prints the U+2028 count + paste-ready Replace block(s).
+      Omit <end_anchor> for the start_anchor text alone.
 Lib:  import sys; sys.path.insert(0, 'cscpt'); from padv import grab, split_for_pages
-      span   = grab(open(mirror).read(), start, end)   # verbatim, U+2028 intact
+      span   = grab(open(mirror).read(), start, end)   # U+2028 intact
       blocks = split_for_pages(span)                   # 1, 2 or 3 break-free blocks
 
-* ANCHOR TIPS: pick anchors from break-free runs (no U+2028 inside the anchor
-  itself); the span between them may contain any number of breaks.
-* A missing anchor raises ValueError naming which one; nothing is printed.
+* ANCHORS must themselves be break-free (no U+2028 inside); the span between
+  them may hold any number of breaks.
+* A missing anchor raises ValueError naming which one.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+FAIL-LOUD, NOT PARTIAL: a missing anchor raises before anything is printed, so a
+half-formed Replace block can never reach the clipboard and be pasted over live
+Pages content.
+
 WHY THE SPLIT EXISTS: Pages' ⌘F cannot match a string containing a U+2028 layout
 line-break, so a `Replace:` target spanning breaks must be quoted as break-free
 blocks (max 3): 0 breaks -> the span; 1 -> [before, after]; 2+ -> [before_first,

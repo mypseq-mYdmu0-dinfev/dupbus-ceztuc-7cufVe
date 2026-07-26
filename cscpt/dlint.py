@@ -2,32 +2,38 @@
 """
 dlint.py —— deterministic DELIVERABLE linter (CC-only; lives in /cscpt/).
 
-=== NON-CCSIM —— all you need to RUN it ===
-USAGE (`--quick`, if used, must come FIRST):
-    python3 cscpt/dlint.py [--quick] <path> [<path> ...]
-    python3 cscpt/dlint.py [--quick] --text "your text"
+=== NON-CCSIM —— start of all you need to RUN it ===
+WHAT: the deterministic prose linter for `universal/writing.md`.
 
-* FILE mode rewrites the file IN PLACE; `--text` prints the fixed text instead.
-* AUTO-FIX (full mode only): straight quotes/apostrophes -> typographic, chosen
-  by context. Idempotent —— already-typographic quotes are left alone.
-* `--quick` NEVER rewrites (comms and code may hold intentional straight quotes)
-  and keeps ONLY the register-independent rules —— Americanisms, Hart's
-  quotation, `-ize`, hyphen/#numbered, `hi` greeting —— so it is safe over
-  comms. FULL mode adds the deliverable-only rules (weak words, GenAI/cliche).
-* FLAGS are printed, never auto-applied (dlint flags, you rewrite):
-    🔴 RED —— hard breaches, ZERO TOLERANCE, must reach 0: exact Americanisms,
-       `vs.` with period, em dash, mid-sentence colon, a comma as the last char
-       inside a closing quote, `hi` as a greeting.
-    🟡 YELLOW —— conditional, may be legitimate: en dash, bare `+`, hyphen used
-       as a dash/non-#numbered bullet, `-ize`/`-isation`, sentence-initial
-       `Where`, a lone period inside a closing quote, GenAI/cliche words and
-       phrases, weak words (want/something/big).
-* EXIT: 0 = no RED (yellows may remain) | 1 = RED present | 2 = usage/error.
-* The run-and-loop WORKFLOW lives in `universal/writing.md` § Deliverable Lint,
-  not here —— that file is open at deliverable time whilst this one is not.
-DESIGNED TO BE RUN, NOT READ —— normal use reads only the terminal output.
+    python3 cscpt/dlint.py [--quick] <path>...
+    python3 cscpt/dlint.py [--quick] --text "…"
+
+* `--quick` must come FIRST.
+* FULL mode REWRITES THE FILE IN PLACE (quote conversion only) and applies the
+  deliverable-only rules; `--text` prints instead. `--quick` does neither, so it
+  is safe over comms.
+* 🔴 RED = hard breach, ZERO TOLERANCE, loop until 0. 🟡 YELLOW = conditional;
+  judge each, justify any you accept. Flags print, never auto-apply.
+* EXIT: 0 = no RED | 1 = RED | 2 = usage error.
+* WORKFLOW (run-and-loop): `universal/writing.md` § Deliverable Lint.
+=== NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+* WHAT EACH TIER HOLDS (moved out of NON-CCSIM —— a caller reads the terminal
+  output, which names the rule that fired, so the enumeration only serves an
+  editor). RED: exact Americanisms, `vs.` with period, em dash, mid-sentence
+  colon, a comma as the last char inside a closing quote, `hi` as a greeting.
+  YELLOW: en dash, bare `+`, hyphen used as a dash/non-#numbered bullet,
+  `-ize`/`-isation`, sentence-initial `Where`, a lone period inside a closing
+  quote, GenAI/cliche words and phrases, weak words (want/something/big).
+* `--quick` keeps ONLY the register-independent rules —— Americanisms, Hart's
+  quotation, `-ize`, hyphen/#numbered, `hi` greeting —— and never rewrites,
+  because comms and code may hold intentional straight quotes.
+* AUTO-FIX (full mode only) converts straight quotes/apostrophes to typographic,
+  chosen by context, and is idempotent —— already-typographic quotes are left
+  alone.
+* The run-and-loop workflow lives in `universal/writing.md`, not here: that file
+  is open at deliverable time whilst this one is not.
 * The real rules ARE the check fns below; this header is a map, not a spec ——
   keep it so, rather than duplicating the lists into prose that drifts.
 * RED fires ONLY on a genuine breach, so it never needs "conditional
