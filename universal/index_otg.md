@@ -13,7 +13,7 @@ google.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/02c6958a2f03b0fdbead506b9f464ce16ea0bbd7/universal/google.md
 
 personal_bg.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfdadc8ea63a02cd4fcfe9e50e5272f3367f0055/universal/profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfdadc8ea63a02cd4fcfe9e50e5272f3367f0055/universal/personal_bg.md
 
 cic.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8b88b2202d3c8a1782f79011ad6f0be7e67e15b4/universal/cic.md
@@ -34,7 +34,7 @@ plan.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f8bfe18a1bd80cf795e6efb787fe5d1dfd2c3b29/universal/plan.md
 
 career_bg.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfdadc8ea63a02cd4fcfe9e50e5272f3367f0055/cp/career/pro_profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfdadc8ea63a02cd4fcfe9e50e5272f3367f0055/cp/career/career_bg.md
 
 traveller.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a2584b9fb8ad9bf11b00e99dbe0b5e2ab36f805a/universal/traveller.md

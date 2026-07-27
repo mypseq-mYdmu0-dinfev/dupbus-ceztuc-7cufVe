@@ -32,6 +32,15 @@ def resolve_scope(scope):
 
 
 def sha_of(path):
+    # A path that no longer EXISTS still has git history, and `git log -1` happily
+    # returns the commit that deleted/renamed it —— pinning there yields a URL that
+    # 404s, silently, because the file is absent at that very SHA. Renaming a pcmd
+    # and then re-syncing used to produce exactly that. So existence in the working
+    # tree is checked FIRST: a stale index entry must abort loudly, never re-pin.
+    if not os.path.exists(os.path.join(ROOT, path)):
+        sys.exit(f"ABORT: '{path}' (referenced in the index) does not exist. It was "
+                 f"probably renamed or moved —— update the index entry to the new "
+                 f"path, then re-run. Nothing was changed.")
     s = git_out("log", "-1", "--format=%H", "--", path)
     if not s:
         sys.exit(f"ABORT: '{path}' (referenced in the index) is not committed to git. "
