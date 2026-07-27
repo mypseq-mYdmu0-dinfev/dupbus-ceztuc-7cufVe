@@ -15,7 +15,7 @@ https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a17d
 Purpose & remarks of this CP.
 
 career_bg.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfdadc8ea63a02cd4fcfe9e50e5272f3367f0055/cp/career/career_bg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a17d1ce8d872a19a9a50788a1e278a30ca8dc4a3/cp/career/career_bg.md
 My career background; fetch below files for details if needed.
 
 ---
