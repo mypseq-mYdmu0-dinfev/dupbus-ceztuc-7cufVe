@@ -124,3 +124,11 @@
 - 55.2. Core diagnosis: the old `profile` skill never fired because the FILE is organised around abstract categories rather than the concrete situations where it would help —— the same anti-pattern that made its description unmatchable.
 - 55.3. Suggested direction: lead each with a short "use me when" situation list mirroring the new skill description, so the file and its trigger reinforce each other.
 - 55.4. Awaiting your approval before any content edit.
+
+## 56. Post-Turn Addendum —— §49.2 Closed, and a Real Bug Found
+- 56.1. I ran `#sync` to re-pin the OTG permalinks after the pcmd renames (the loose end I flagged in §49.2). It went wrong, and I caught it immediately.
+- 56.2. ⚠️ THE BUG (pre-existing in `.sync/sync.py`, not introduced by the renames): `sha_of()` pins a path to the last commit that TOUCHED it. For a renamed-away path that is the rename commit itself —— where the file no longer exists. So the re-pin silently produced 3 URLs that 404.
+- 56.3. Why it matters beyond today: it would recur on EVERY future pcmd rename, and it fails silently —— the index looks correct, and only an OTG fetch would reveal it.
+- 56.4. Fixed twice over: the 3 index entries now point at the new paths, and `sha_of()` now checks the working tree FIRST, aborting loudly on a stale entry instead of re-pinning a corpse. Rationale baked into the function.
+- 56.5. Verified: all 50 permalinks across the three index files resolve at their pinned SHA (was 3 broken). Guard unit-tested —— an existing path returns a SHA, a renamed-away path aborts.
+- 56.6. Meta: this is the third time this session that running the real mechanism —— rather than reasoning about it —— exposed something reasoning had missed. Worth remembering as the pattern, not the incident.
