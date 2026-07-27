@@ -11,11 +11,11 @@
 ## Core Files
 
 CP_notes.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/d3047c88b64e0d9c4f5ed92d19c38430b6b48384/cp/career/CP_notes.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a17d1ce8d872a19a9a50788a1e278a30ca8dc4a3/cp/career/CP_notes.md
 Purpose & remarks of this CP.
 
 career_bg.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/956ad9060088a7234648cdfbf374cf1013757dcb/cp/career/pro_profile.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/cfdadc8ea63a02cd4fcfe9e50e5272f3367f0055/cp/career/pro_profile.md
 My career background; fetch below files for details if needed.
 
 ---
