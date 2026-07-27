@@ -2,6 +2,11 @@
 
 *Loaded when creating/editing any script/pcmd (root §7). Self-contained —— every rule carries its own rationale; no conversation/comms file explains or overrides anything here.*
 
+## Layout
+- If possible, keep each line ≤90chars
+- Otherwise (longer line), ensure no word-wrapping
+- Rationale: user's VSC already does that; CC naturally doesn't need that; net advantage = none
+
 ## Issue Reporting Format
 - Report EVERY code problem/fix as one compact block: **what / if-unfixed / pre-fix-question / risk-if-pushed —— then outcome**
   - **what** —— the defect, one plain sentence
