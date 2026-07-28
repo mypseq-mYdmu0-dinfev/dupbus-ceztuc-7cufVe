@@ -96,6 +96,9 @@
   - e.g. `# Reply to ... (#SA)` = whole turn actioned by SA (MA as orchestrator only)
   - e.g. `## [Heading] (#SA)` = this section, ditto; e.g. `#SA [prose]` = this line, ditto
   - Disagreement: `#[S|M]A` = stop & alert; `##[S|M]A` = assume acceptance & don't stop
+- FOF = fan-out (SA) fleet; if apt, use Workflow tool w/ all-at-once fleet
+  - This overrides `sprint.md`'s "NEVER one all-at-once fleet..." (don't read unless #sprint)
+  - Usually means ses% = 0, hence sesL is unlikely to kill SAs mid-flight
 
 ---
 
