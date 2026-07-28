@@ -1,6 +1,7 @@
 # Interview Prep Protocol (`#int`)
 
-*Triggered by `#int`. Codifies the repeatable end-to-end interview workflow refined across the Rennly and Alltech interviews, so any role reaching interview stage is handled consistently. Read alongside the role's AR. v1 — refine over time.*
+*Triggered by `#int`. Codifies the repeatable end-to-end interview workflow refined across the Rennly and Alltech interviews, so any role reaching interview stage is handled consistently. Read alongside the role's AR. Refine this file over time.*
+*Read `int/README.md` for enriched AR structure (created AFTER this file).*
 
 ---
 
