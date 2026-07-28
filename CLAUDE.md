@@ -122,7 +122,7 @@
   - 3.4.1. All comms files (incl. CP) in `/sessions/[YYYY]/[YYYYMM]/` unless instructed otherwise
   - 3.4.2. Other outputs (not editing existing files):
     - 3.4.2.1. Default = same folder as comms files
-    - 3.4.2.2. If >3 files, suggest working in `temp/` after reading `temp/README.md`
+    - 3.4.2.2. If 3⁺ files, suggest working in `temp/` after reading `temp/README.md`
   - 3.4.3. Once session started, all outputs throughout MUST be in same folder
   - 3.4.4. `[YYYY]/` & `[YYYYMM]/` folder names indicate session START only
   - 3.4.5. Session spanning multi-year/month: still in start-month folder
