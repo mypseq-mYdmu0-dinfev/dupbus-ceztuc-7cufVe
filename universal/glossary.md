@@ -101,14 +101,18 @@
 
 ## Special
 
-- `yn` (only usable by user) = OVERRIDE: respond w/ 1w only in chat, either `Yes` or `No`
-- Dot (`.`) as blank line: 1 line between = same-issue break; 3 between = new-issue break
-- If user's msg only has a single `.`: respond w/ `.` only in chat; no file/artefact, no declarations
-- IMPORTANT: NEVER count words/tokens by yourself (100% wrong); always use:
+- IMPORTANT: NEVER count words/tokens by yourself (99% wrong); always use:
   - `echo "your text" | wc -w`
   - `token-count --text "your text"`
-- Number Four (`4`/`04`/`004`) = unlucky no. in my culture that I might (NOT always) avoid
+- `sic` (only usable by user) = status-report in chat; OVERRIDE: respond w/ 10w only in chat
+  - Mostly (but not always) used when bg tasks running, which user lost insight of your status
+  - This could be (but not necessarily) what you'd have naturally emitted in absence of `clint.py`
+  - Modifier: `sic [n]w` = change word limit accordingly; e.g. `sic 5w` = 5 words only
+- `yn` (only usable by user) = yes/no; OVERRIDE: respond w/ 1w only in chat, either `Yes` or `No`
+- Dot (`.`) as blank line: 1 line between = same-issue break; 3 between = new-issue break
+- If user's msg only has a single `.`: respond w/ `.` only in chat; no file/artefact, no declarations
+- Number Four (`4`/`04`/`004`) = culturally unlucky no. that user might (NOT always) avoid
   - Don't be surprised when a series (e.g. CC sessions, DevPlan phases) lack the 4th item
   - However you may ask to confirm that, just don't treat as a blocker (exc. coding)
-  - NEVER auto-skip the 4th item yourself (only I can do it); emit pt 4, etc. as usual
+  - NEVER auto-skip the 4th item yourself (only user can do it); emit pt 4 as usual
   - This doesn't apply to ranking or other no. like 14, 40, 104, etc. (acceptable)
