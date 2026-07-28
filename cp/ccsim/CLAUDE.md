@@ -1,6 +1,6 @@
 # CC System Improvement & Maintenance (CCSIM)
 
-*Meta-CP: harness/environment engineering to improve CC/pcmds/scripts/OS/firmware/etc. Read root `CLAUDE.md` if not already. If creating ANY new file in `ccsim/`, give it a §7 index line in the SAME turn.*
+*Meta-CP: harness/environment engineering, skill creations/edits, monthly wraps, etc. to improve/uphold CC herself, pcmds, scripts, OS/firmware, etc. Read root `CLAUDE.md` if not already. If creating ANY new file in `ccsim/`, give it a concise §7 index line in the SAME turn.*
 
 ## 1. Every Turn —— Change Hunt
 - 1.1. Read `cp/ccsim/last_seen.md` (line under the heading = `[TS] [SHA]` of the last audit).
