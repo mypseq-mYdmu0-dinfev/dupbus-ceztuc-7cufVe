@@ -14,5 +14,9 @@ Only if speakers are confirmed being only 1 male + 1 female:
 
 ## Task
 - Upon receiving audio or video files, transcribe in .md format
-- Each line of dialogue: `[[timestamp]] **[Speaker]**: [dialogue] {[optional: tone remarks, if any]}`
-- e.g. [00:00:03] **User**: Hello? {tentative}
+- Each dialogue line: `- [[timestamp]] **[Speaker]**: [dialogue] {[optional: tone remarks, if any]}`
+- For example:
+```
+- [00:00:03] **User**: Hello? {tentative}
+- [00:00:05] **Male 1**: Hello! {passionate}
+```
