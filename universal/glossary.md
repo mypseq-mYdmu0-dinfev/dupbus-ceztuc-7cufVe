@@ -107,3 +107,8 @@
 - IMPORTANT: NEVER count words/tokens by yourself (100% wrong); always use:
   - `echo "your text" | wc -w`
   - `token-count --text "your text"`
+- Number Four (`4`/`04`/`004`) = unlucky no. in my culture that I might (NOT always) avoid
+  - Don't be surprised when a series (e.g. CC sessions, DevPlan phases) lack the 4th item
+  - However you may ask to confirm that, just don't treat as a blocker (exc. coding)
+  - NEVER auto-skip the 4th item yourself (only I can do it); emit pt 4, etc. as usual
+  - This doesn't apply to ranking or other no. like 14, 40, 104, etc. (acceptable)
