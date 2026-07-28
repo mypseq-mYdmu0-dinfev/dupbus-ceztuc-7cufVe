@@ -16,6 +16,8 @@
 
 > 🔄 **Re-evaluated 202606150713** (CIC + web_search validated, ahead of virtual interview Tue 16/06 3pm). Original AJAP §1 was a 6-line stub; expanded below into 1.1`~`1.8. Original score 89 retained for record; corrections noted inline (salary band, headcount, named leadership, Glassdoor mis-attribution risk).
 
+## 1. Employer
+
 ### 1.1. Company Basics
 - 1.1.1. Alltech AV (trading entity for AV hire + event production); founded 2009; 15⁺ yr operating
 - 1.1.2. Address: Unit Q, 10–16 South St, Rydalmere NSW 2116; industry = Events Services
@@ -62,7 +64,7 @@
 ### 1.8. Salary — corrected & flagged ⚠️
 - 1.8.1. Live ad band: **$75,000–$85,000/yr**, listed under the part-time (24 hr/wk) role (original AR assumed "FTE $80–90k" — superseded by the actual posted figure)
 - 1.8.2. Ambiguity: unclear whether $75–85k is the *actual* part-time pay or an *FTE-equivalent* (pro-rata to 0.6 FTE ≈ $45–51k actual). Resolve at interview
-- 1.8.3. 🚩 Culous' submitted expectation was **$60k** (§3 S6.2, already lodged via SEEK — unchanged). If $75–85k is the real part-time pay, $60k materially undersells; if FTE-equivalent, $60k sits above pro-rata. Either way, do NOT re-anchor downward verbally — let them frame the number, then position against the $75–85k band (see §5D)
+- 1.8.3. 🚩 Culous' submitted expectation was **$60k** (§3 S6.2, already lodged via SEEK — unchanged). If $75–85k is the real part-time pay, $60k materially undersells; if FTE-equivalent, $60k sits above pro-rata. Either way, do NOT re-anchor downward verbally — let them frame the number, then position against the $75–85k band (see §5.4)
 
 ## 2. Requirements
 
@@ -105,50 +107,50 @@
 
 > ✅ **Stage 1 complete** (Wed 17/06/2026 — see §7 `1st Interview Notes`). §5 below is the pre-1st-interview prep, retained for record; most anticipations held (mentorship, priority lanes, P/T→F/T, on-site capture, AI). Stage-2/3 prep lives in the Task-2 sections at the AR foot.
 
-### 5A. Likely Interviewer Questions (anticipate)
-- 5A.1. "Tell me about yourself / why this role after senior/GM-level work?" (over-qualification, as at Rennly — own it: deliberate move towards hands-on building + local AU experience)
-- 5A.2. "Why Alltech specifically?" (ad asks this explicitly — see 5E.4)
-- 5A.3. "Walk me through a marketing function or process you built from scratch and the measurable result." (the builder mandate; KE ground-up build)
-- 5A.4. "How would you prioritise the six lanes (social, case studies, website, sales enablement, on-site content, partnerships) with limited time at 24 hr/wk?"
-- 5A.5. "How would you turn 5 years of projects into case studies that sell — given client NDAs / brand restrictions?"
-- 5A.6. "What's your experience with HubSpot / CRM setup, and integrating Rentman + Teamwork?" (likely a genuine gap — see 5D.5; be honest + frame learn-fast + systems-thinking)
-- 5A.7. "How do you use AI in your workflow?" (strong ground — lead with the AI-system reel; ChatGPT/Gemini/Veo)
-- 5A.8. "Comfortable capturing content on-site at live events?" (physical/stamina caveat per Rennly IN — frame willingness + that production-grade capture is where his photo/film background shines)
-- 5A.9. "What would you fix about how AV/trades businesses show up online?" (ad asks this — see 5E.4)
-- 5A.10. "Salary expectations / availability / right to work / licence + car?" (already lodged in S6.2; for verbal salary handling see 5D.1)
-- 5A.11. "You'd be the first marketing hire reporting to a fractional lead — how do you work with light oversight?" (autonomy fit; INTJ self-direction is a genuine asset here)
+### 5.1. Anticipated Interviewer Questions
+- 5.1.1. "Tell me about yourself / why this role after senior/GM-level work?" (over-qualification, as at Rennly — own it: deliberate move towards hands-on building + local AU experience)
+- 5.1.2. "Why Alltech specifically?" (ad asks this explicitly — see 5.5.4)
+- 5.1.3. "Walk me through a marketing function or process you built from scratch and the measurable result." (the builder mandate; KE ground-up build)
+- 5.1.4. "How would you prioritise the six lanes (social, case studies, website, sales enablement, on-site content, partnerships) with limited time at 24 hr/wk?"
+- 5.1.5. "How would you turn 5 years of projects into case studies that sell — given client NDAs / brand restrictions?"
+- 5.1.6. "What's your experience with HubSpot / CRM setup, and integrating Rentman + Teamwork?" (likely a genuine gap — see 5.4.5; be honest + frame learn-fast + systems-thinking)
+- 5.1.7. "How do you use AI in your workflow?" (strong ground — lead with the AI-system reel; ChatGPT/Gemini/Veo)
+- 5.1.8. "Comfortable capturing content on-site at live events?" (physical/stamina caveat per Rennly IN — frame willingness + that production-grade capture is where his photo/film background shines)
+- 5.1.9. "What would you fix about how AV/trades businesses show up online?" (ad asks this — see 5.5.4)
+- 5.1.10. "Salary expectations / availability / right to work / licence + car?" (already lodged in S6.2; for verbal salary handling see 5.4.1)
+- 5.1.11. "You'd be the first marketing hire reporting to a fractional lead — how do you work with light oversight?" (autonomy fit; INTJ self-direction is a genuine asset here)
 
-### 5B. Questions to Ask Elena
-- 5B.1. "Is the $75–85k band the part-time figure or an FTE-equivalent?" (resolves §1.8 ambiguity — ask neutrally, framed around understanding the structure, not haggling round one)
-- 5B.2. "How is the COO/CMO mentorship structured in practice — is the marketing strategy set with you as the fractional growth lead, and how much sits with me to define?"
-- 5B.3. "Which of the six lanes is the priority for the first 90 days (the first 'Rock')?"
-- 5B.4. "What does the current stack look like — is HubSpot already in place or greenfield, and are Rentman/Teamwork live?"
-- 5B.5. "What's the path from part-time to full-time — what triggers the step-up in hours and scope?"
-- 5B.6. "How does on-site content capture work — what's the cadence of live events, and is crew/transport support available for shoots?" (surfaces the stamina/logistics factor without leading with weakness)
-- 5B.7. "Where do you see the brand's biggest perception gap versus the quality of work you actually deliver?"
+### 5.2. Questions to Ask Interviewer
+- 5.2.1. "Is the $75–85k band the part-time figure or an FTE-equivalent?" (resolves §1.8 ambiguity — ask neutrally, framed around understanding the structure, not haggling round one)
+- 5.2.2. "How is the COO/CMO mentorship structured in practice — is the marketing strategy set with you as the fractional growth lead, and how much sits with me to define?"
+- 5.2.3. "Which of the six lanes is the priority for the first 90 days (the first 'Rock')?"
+- 5.2.4. "What does the current stack look like — is HubSpot already in place or greenfield, and are Rentman/Teamwork live?"
+- 5.2.5. "What's the path from part-time to full-time — what triggers the step-up in hours and scope?"
+- 5.2.6. "How does on-site content capture work — what's the cadence of live events, and is crew/transport support available for shoots?" (surfaces the stamina/logistics factor without leading with weakness)
+- 5.2.7. "Where do you see the brand's biggest perception gap versus the quality of work you actually deliver?"
 
-### 5C. Logistics & Format
-- 5C.1. **Virtual** interview — actually held Wed 17/06/2026 3:00pm (rescheduled from Tue 16/06 per the §7 Meet-date mix-up). Test camera/mic/lighting/background beforehand; have portfolio + reel ready to screen-share
-- 5C.2. Interviewer = Elena Melnykova (§1.4); first round; she gave low-key prep guidance ("review website, socials, the role"). No second round confirmed yet
-- 5C.3. Have open in tabs: Projects.CulousYu.com, Presentation.CulousYu.com, and the AI-built reel from the Rennly assessment (live proof of the AI-system production claim — Culous' single strongest differentiator)
+### 5.3. Logistics & Format
+- 5.3.1. **Virtual** interview — actually held Wed 17/06/2026 3:00pm (rescheduled from Tue 16/06 per the §7 Meet-date mix-up). Test camera/mic/lighting/background beforehand; have portfolio + reel ready to screen-share
+- 5.3.2. Interviewer = Elena Melnykova (§1.4); first round; she gave low-key prep guidance ("review website, socials, the role"). No second round confirmed yet
+- 5.3.3. Have open in tabs: Projects.CulousYu.com, Presentation.CulousYu.com, and the AI-built reel from the Rennly assessment (live proof of the AI-system production claim — Culous' single strongest differentiator)
 
-### 5D. Strategy & Key Talking Points
-- 5D.1. **Salary:** let them name the number first; anchor against the $75–85k ad band, not the $60k figure. If pressed, "the listing's $75–85k range feels right for the scope; I'm flexible on structure for the right build." Defer hard negotiation to offer stage (mirrors Rennly IN.9/IN.10)
-- 5D.2. **Differentiator (lead with this):** ability to *build AI systems* that produce marketing output at scale, not just hand-craft one asset — generalisable across format/channel/language. Demonstrate with the AI-built reel (≈1.5 hr programming + 15 min production). This directly answers the "almost nobody knows about us" gap with a scalable, low-headcount solution
-- 5D.3. **Builder, not maintainer:** map KE ground-up build (marketing infrastructure, processes, content systems, reporting to leadership) onto the exact ad language. Use "Strategic Transformation, Value Engineering, Stakeholder Management"
-- 5D.4. **Production credibility:** published photographer (NatGeo, Vogue, Sony) + award-winning filmmaker + DaVinci/Premiere — he can capture/produce premium on-site content without external contractors. ⚠️ Caveat (honesty, per CP rules): hands-on heavy editing predates the Creative Cloud era; frame as creative-direction + AI-accelerated production rather than overstating daily manual-editing volume
-- 5D.5. **HubSpot/Rentman/Teamwork gap:** the one genuine soft spot. Be candid; offset with CRM/systems conceptual fluency + proven fast tool adoption + "I build and document processes as I go" (which the ad explicitly wants)
-- 5D.6. **Rapport — UTS:** Elena is a UTS alum (§1.4.4). A light, genuine mention can warm the room; do not force it
-- 5D.7. **Cultural fit:** the ad prizes initiative, ownership, taste, commercial brain, zero excuses — Culous' GM/consulting background is a direct match; lean into "owns mistakes and fixes them"
-- 5D.8. ⚠️ **Honesty/loyalty tension (carried from Rennly IN.8):** this is realistically a stepping-stone towards consulting. Do NOT volunteer short-stay intent; if loyalty/longevity is probed, speak to commitment to the *build* and the growth path, truthfully and without over-promising tenure
-- 5D.9. **Never disclose KE founding** (CP rule) — frame KE strictly as GM/leadership tenure where the marketing function was built
+### 5.4. Strategy & Key Talking Points
+- 5.4.1. **Salary:** let them name the number first; anchor against the $75–85k ad band, not the $60k figure. If pressed, "the listing's $75–85k range feels right for the scope; I'm flexible on structure for the right build." Defer hard negotiation to offer stage (mirrors Rennly IN.9/IN.10)
+- 5.4.2. **Differentiator (lead with this):** ability to *build AI systems* that produce marketing output at scale, not just hand-craft one asset — generalisable across format/channel/language. Demonstrate with the AI-built reel (≈1.5 hr programming + 15 min production). This directly answers the "almost nobody knows about us" gap with a scalable, low-headcount solution
+- 5.4.3. **Builder, not maintainer:** map KE ground-up build (marketing infrastructure, processes, content systems, reporting to leadership) onto the exact ad language. Use "Strategic Transformation, Value Engineering, Stakeholder Management"
+- 5.4.4. **Production credibility:** published photographer (NatGeo, Vogue, Sony) + award-winning filmmaker + DaVinci/Premiere — he can capture/produce premium on-site content without external contractors. ⚠️ Caveat (honesty, per CP rules): hands-on heavy editing predates the Creative Cloud era; frame as creative-direction + AI-accelerated production rather than overstating daily manual-editing volume
+- 5.4.5. **HubSpot/Rentman/Teamwork gap:** the one genuine soft spot. Be candid; offset with CRM/systems conceptual fluency + proven fast tool adoption + "I build and document processes as I go" (which the ad explicitly wants)
+- 5.4.6. **Rapport — UTS:** Elena is a UTS alum (§1.4.4). A light, genuine mention can warm the room; do not force it
+- 5.4.7. **Cultural fit:** the ad prizes initiative, ownership, taste, commercial brain, zero excuses — Culous' GM/consulting background is a direct match; lean into "owns mistakes and fixes them"
+- 5.4.8. ⚠️ **Honesty/loyalty tension (carried from Rennly IN.8):** this is realistically a stepping-stone towards consulting. Do NOT volunteer short-stay intent; if loyalty/longevity is probed, speak to commitment to the *build* and the growth path, truthfully and without over-promising tenure
+- 5.4.9. **Never disclose KE founding** (CP rule) — frame KE strictly as GM/leadership tenure where the marketing function was built
 
-### 5E. Application Intro Prompts (the ad's required pitch — likely conversation spine)
+### 5.5. Application Intro Prompts (the ad's required pitch — likely conversation spine)
 *The ad asked applicants to address these; Elena may open the conversation from them.*
-- 5E.1. A marketing piece you're proud of → the AI-built reel + a KE/Backbone campaign with a measurable outcome
-- 5E.2. Tools/platforms you know well → Adobe CC, DaVinci Resolve, Figma, AI stack (Claude/GPT/Gemini/Veo); honest on HubSpot (learning)
-- 5E.3. Biggest win + how measured → KE first-year $1M⁺ revenue build (framed as marketing-infrastructure contribution); or a campaign with concrete engagement/lead metrics
-- 5E.4. **"Why Alltech" + "one thing you'd fix about how AV/trades show up online":** they lead with *kit and specs* (the IG bio is literally a gear list) rather than *client outcomes and the human story behind the production*; no consistent case-study narrative; followers ≈ following (low authority). Fix = reposition from "what we own" to "what we make possible for clients", anchored on a repeatable case-study engine — exactly the role's mandate. This answer doubles as the strongest "why me" proof
+- 5.5.1. A marketing piece you're proud of → the AI-built reel + a KE/Backbone campaign with a measurable outcome
+- 5.5.2. Tools/platforms you know well → Adobe CC, DaVinci Resolve, Figma, AI stack (Claude/GPT/Gemini/Veo); honest on HubSpot (learning)
+- 5.5.3. Biggest win + how measured → KE first-year $1M⁺ revenue build (framed as marketing-infrastructure contribution); or a campaign with concrete engagement/lead metrics
+- 5.5.4. **"Why Alltech" + "one thing you'd fix about how AV/trades show up online":** they lead with *kit and specs* (the IG bio is literally a gear list) rather than *client outcomes and the human story behind the production*; no consistent case-study narrative; followers ≈ following (low authority). Fix = reposition from "what we own" to "what we make possible for clients", anchored on a repeatable case-study engine — exactly the role's mandate. This answer doubles as the strongest "why me" proof
 
 ## 6. Cover Letter
 
@@ -181,7 +183,7 @@ P.S. I hold full work rights until 2031 and would never require visa sponsorship
 
 ## 7. Engagements
 
-### 7.01. Employer Reply
+### 7.01. Employer Invite
 *From Elena Melnykova (Alltech AV), via SEEK relay noreply@seek.com.au, received 06:37 on 09/06/2026. Subject: "Alltech AV - Marketing & Growth Coordinator".*
 
 Hi Culous,
@@ -600,7 +602,7 @@ Sebastian Hall
 ## 8. Interviews
 *Stage 1 Interview's full transcript was not saved and hence lost.*
 
-### 8.1. Stage 1 Interview Notes
+### 8.1. Stage 1 Interview (Notes ONLY; 202606171500)
 
 *Virtual (Google Meet), Wed 17/06/2026 3:00pm, 53m39s, 1:1 with Elena Melnykova, both cameras on. Screen-recorded by Culous (no audio/transcript — QuickTime limitation); **reconstructed from user's memory**. Unless quoted, wording is approximate. Overall: strongly positive — advanced to Stage 2 on the spot. ("you"=Elena; "i/me"=Culous if hired.)*
 
@@ -623,7 +625,7 @@ Sebastian Hall
 
 #### 8.1.04. Opening "what would you improve about our website?" (the one soft patch)
 - 8.1.04.1. Her very first substantive question (drawn from her own "review the website/socials" prep steer). Culous did not perform strongly here — web engineering is not a core strength, and the site is not visibly broken.
-- 8.1.04.2. He noted the site resembles KE's and many industry players' (basic info + past cases), then offered a slightly clichéd close ("it should have meta tags and backend/GA4 analytics; without backend access I can't comment further"). Flag for Stage 2/3: have a sharper, outcome-led website critique ready (ties to §5E.4).
+- 8.1.04.2. He noted the site resembles KE's and many industry players' (basic info + past cases), then offered a slightly clichéd close ("it should have meta tags and backend/GA4 analytics; without backend access I can't comment further"). Flag for Stage 2/3: have a sharper, outcome-led website critique ready (ties to §5.5.4).
 
 #### 8.1.05. Role Scope, Priorities, and Hands-on (his Q1/Q2/Q5)
 - 8.1.05.1. First-90-days priority (the first "Rock"): **HubSpot setup** is the utmost priority — it unblocks sales hiring and growth. **Case studies** are a close second (NOT "secondary") — also to arm sales. (Elena is a former HubSpot coach and Canva power-user, so HubSpot is close to her heart — 8.1.11.)
@@ -766,7 +768,7 @@ Sebastian Hall
 - 8.3.7.4. Current-state data: will he get real inputs (past-project list, analytics, brand assets, current HubSpot state) before Stage 2, or should the plan state assumptions? (Likely state assumptions.)
 - 8.3.7.5. Stage-2 logistics: venue + parking (the Brief confirms *in person*; venue presumably the Rydalmere office, ≈13 min from home — await Elena's invite rather than asking now; the Rennly-era parking concern is mild here given proximity).
 
-### 8.4. Stage 2 Interview
+### 8.4. Stage 2 Interview (202607021200)
 
 #### 8.4.1. Summary
 
@@ -1099,7 +1101,7 @@ format e.g.:
 
 ---
 
-## 9. People Profiles (for future comms & decisions)
+## 9. Stakeholder Profiles (for future comms & decisions)
 *Captured 202607031910 (CC). Observations plus clearly-labelled inferences; refine as more surfaces.*
 
 **Elena Melnykova** (Head of Strategic Ops & Growth; hiring manager; fractional):
