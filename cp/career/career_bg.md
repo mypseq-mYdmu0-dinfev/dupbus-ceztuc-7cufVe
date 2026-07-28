@@ -1,6 +1,28 @@
 # Career Background —— Culous Yu
 
-## Personal
+## Which Section Do I Need?
+
+*Every section below stands alone —— read only the one that answers the question in front of you, not the whole file. The bold anchors are the opening words of the real headings, so they are directly searchable.*
+
+| If the Question in Front of You Is About… | Read |
+|---|---|
+| a screening/eligibility question —— where he is, visa, work rights, sponsorship, languages, when his career started | **Answering Screening Questions** |
+| which degrees to cite, what each one is taken to cover, and which to leave out | **Quoting His Degrees** |
+| certificates, programmes, and awards with dates, for a credentials list | **Listing His Certificates** |
+| a headline/summary line —— his three key strengths, or the career-wide numbers and the claims that would be false | **Headline Claims** |
+| filling a CV/LinkedIn work section —— recent employers, titles, dates, and what each role achieved | **Filling in His Recent Roles** |
+| whether to include an early, short, pre-2019 job | **Pre-2019 Roles** |
+| how to word a KE role —— seniority, the M&A engagement, or currency | **Describing His KE Roles** |
+| reaching for a standout proof point —— app, ML model, photography, film awards | **Reaching for a Standout Credential** |
+| how many years of experience to claim in a particular domain | **How Many Years He Has** |
+| which creative/design software he can actually use, and how well | **Which Creative Software** |
+| a link to his portfolio, case studies, virtual presentation, or company site | **Linking to His Portfolio** |
+
+Any shorthand you meet below (e.g. KE, MHci, UTS, FEIT) is expanded in `universal/glossary.md` —— kept there rather than repeated here so there is one source of truth and nothing drifts.
+
+---
+
+## Answering Screening Questions —— Location, Visa, Work Rights, and Languages
 
 **Name:** Culous Yu
 **Location:** Sydney, NSW
@@ -10,7 +32,7 @@
 
 ---
 
-## Education
+## Quoting His Degrees, and What Each One Is Taken to Cover
 
 - **Master of Human-Computer Interaction** (internal: "MHci") w/ Data Analytics sub-major, Faculty of Engineering & IT (FEIT), UTS —— graduated NOV 2025, HD (GPA: 6.63/7)
   - Encompass IT degrees (e.g. computer science/IS/cloud)
@@ -22,7 +44,7 @@
 
 ---
 
-## Certification
+## Listing His Certificates, Programmes, and Dated Awards
 
 - **McKinsey Forward Programme** (Oct-Dec 2025)
 - **Apple Foundation Programme** (as Technical Lead, May-Jun 2025)
@@ -32,7 +54,7 @@
 
 ---
 
-## Career Summary
+## Headline Claims —— Strengths, Career-Wide Numbers, and What Would Be False
 
 - **Key Strengths:** Strategic Transformation, Value Engineering, Stakeholder Management
 - **Career-wide personal records** (across all firms/domains, not solely attributable to KE/consulting): content & project management experience over 16⁺ years, 300⁺ projects, 100⁺ clients, 10⁺ countries, spanning B2B/C, NPO, startup, Govt.
@@ -44,9 +66,7 @@
 
 ---
 
-## Work History
-
-### Recent
+## Filling in His Recent Roles —— Employers, Titles, Dates, and Achievements
 
 - **Board Member & Advisor (Strategy & Operations)**, KE (Karma Effect Ltd.) —— Jun 2025-present (pro bono)
 - **M&A PMO**, KE —— Jan 2025-Jun 2025
@@ -55,7 +75,9 @@
 - **Assistant Marketing Manager**, HK Equestrian Federation —— Aug-Oct 2023 (participated in 19th Asian Games; organised FEI (Fédération Equestre Internationale) World Challenge 2023 HK; directed rebranding for 50th Anniversary)
 - **Visual Director**, Backbone Limited —— Nov 2018-Apr 2020 (closed deal & led the group's first-ever $1 million one-off project with creative problem solving)
 
-### Historic (don't disclose unless highly relevant; all <1yr)
+---
+
+## Pre-2019 Roles (Historic) —— don't disclose unless highly relevant; all <1yr
 
 - **Producer (Project Manager)**, Advertising Dept, HK Economic Times —— 2018
 - **Production Assistant (directed Ferrari 812 Superfast launch)**, Dream of Fish —— 2017–18
@@ -64,14 +86,18 @@
 - **Teaching Assistant**, UNICEF —— Jun-Aug 2016
 - **Marketing Intern**, Trane —— Jun-Aug 2012
 
-### KE Designation Rules
+---
+
+## Describing His KE Roles Without Overstating Them
+
 - For junior roles: downplay bg, only mention GM designation
 - KE M&A engagement (Jan-Jun 2025): acquirer was an international entertainment group but also HK-based —— never describe as cross-border
 - Example phrasing: "led the teams to $1Mn⁺" (always plain "$", never "HK$")
 
 ---
 
-## Notable Credentials
+## Reaching for a Standout Credential —— App, ML Model, Photography, Film
+
 ⚠️ Only reference items below when highly relevant to the role. These are retained as writing material, not default inclusions.
 
 - iOS app developer: SpeakMate (multimodal GenAI/ML integration; custom algo)
@@ -82,7 +108,7 @@
 
 ---
 
-## Domain Experience
+## How Many Years He Has in a Given Domain
 
 | Domain | Years |
 |---|---|
@@ -97,7 +123,9 @@
 | UI/UX/IxD/HCI/product design | 3 |
 | IT/IS/data analytics | 3 |
 
-## Creative Software Experience
+---
+
+## Which Creative Software He Can Use, and How Well
 
 | Application | Notes |
 |---|---|
@@ -110,7 +138,9 @@
 | DaVinci Resolve | Strongest; default video tool |
 | Figma | Since 2023 |
 
-## Key Links
+---
+
+## Linking to His Portfolio, Presentation, or Company Site
 
 - Portfolio / Case Studies: http://Projects.CulousYu.com
 - Virtual Presentation: http://Presentation.CulousYu.com

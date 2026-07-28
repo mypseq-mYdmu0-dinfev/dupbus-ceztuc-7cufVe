@@ -144,12 +144,30 @@ def _action(log_line):
     return "<none>"
 
 
+def _family(action):
+    """Tag family —— the part before the ':' qualifier.
+
+    clint's log tags carry a granular class suffix (`block:prose`,
+    `block:warn_words`, `exempt:sic`, ...) so a breach can be audited by REASON.
+    A test that asserts the family (`block`) stays correct as new classes are
+    added; a test that needs one specific class simply passes the full tag and
+    still gets exact matching. Comparing families never blurs the outcomes that
+    matter —— `block`, `exempt`, `clean` and `out_of_scope` remain distinct.
+    """
+    return action.split(":", 1)[0]
+
+
 def _check(label, got, want_exit, want_action):
     code, line, _ = got
-    ok = (code == want_exit and _action(line) == want_action)
+    got_action = _action(line)
+    if ":" in want_action:          # caller asked for one exact class
+        action_ok = got_action == want_action
+    else:                           # caller asked for the family
+        action_ok = _family(got_action) == want_action
+    ok = (code == want_exit and action_ok)
     return _record("%s -> exit %d, action=%s" % (label, want_exit, want_action),
                    ok, "got exit=%s action=%s line=%r"
-                   % (code, _action(line), line))
+                   % (code, got_action, line))
 
 
 # --- A. the once-per-prompt ceiling is gone --------------------------------

@@ -13,6 +13,7 @@
 - 1.5. NEVER register the same hook in both files —— a future Desktop fix would then double-fire everything.
 - 1.6. `~/.claude/settings.json` is OUTSIDE this repo, so it is NOT under version control and NOT restored by a clone (recovery: §9).
 - 1.7. Paths in the registration are ABSOLUTE, so a repo relocation silently kills every hook until they are re-pointed.
+- 1.8. Because of 1.6, an edit to `~/.claude/settings.json` is only HALF done when it works —— the registration exists on one untracked drive and nowhere else. Mirror it in the same turn (§10), or the next drive failure takes every hook with it.
 
 ---
 
@@ -240,28 +241,39 @@ for ev,groups in d.items():
 
 *§9 restores the hook REGISTRATIONS from a reference file inside the repo. This section covers the wider problem: `~/.claude` is a symlink to `/Volumes/FURY 2TB/.claude`, so if that drive is lost, every hand-made configuration on it goes with it. `backup/backup_Claude/backup_Claude_FURY/` is the repo's copy of the handful of files that no clone, no cloud account, and no internal disk can reproduce. A backup nobody updates is worse than none, so the rule below is a MANDATE, not a suggestion.*
 
-- 10.1. THE MANDATE: any change to a file under `/Volumes/FURY 2TB/.claude/` that has a counterpart in `backup/backup_Claude/backup_Claude_FURY/` MUST be mirrored into that folder in the SAME turn, so the two stay byte-identical.
-- 10.2. This applies however the live file changed —— a hook added by hand, a `settings.json` edit, a new auto-memory entry, a Routine reworded. The mirror is not a periodic chore; it is part of the edit.
-- 10.3. Currently mirrored (the folder's own README carries the full table, the selection test, and the exclusions):
-  - 10.3.1. `settings.json` —— the ONLY live hook registration; outside git by necessity (§1.6).
-  - 10.3.2. `projects/*/memory/*.md` for both projects —— persistent auto-memory; written locally, never cloud-synced.
-  - 10.3.3. `scheduled-tasks/ajap-auto-resume/SKILL.md` —— hand-written Routine logic that exists nowhere else.
-- 10.4. THE NET EFFECT, stated plainly: if FURY is lost, restore the repo from GitHub, then COPY THESE BACKED-UP FILES INTO THE NEW `~/.claude/` (stripping the `backup_` prefix, the project tag, and any added `.md`). Without them, a clean GitHub restore brings back every lint SCRIPT and registers NONE of them, and the auto-memory is simply gone —— §5's failure signature, from a standing start.
-- 10.5. `settings.json` is now covered TWICE, deliberately, and the two are not interchangeable:
-  - 10.5.1. `.claude/hooks_user_settings.reference.json` (§9.2) is a HOOKS-ONLY excerpt, shaped for merging into an existing user file.
-  - 10.5.2. `backup_settings.json.md` is the WHOLE file, including the unrelated preferences a merge would not carry.
-  - 10.5.3. A hook change must update BOTH in the same turn; updating one alone leaves a restore that is half-right, which reads as success.
-- 10.6. Adding anything new to the backup folder: apply its README's selection test —— IRREPLACEABLE and UNTRACKED and SMALL, all three —— then list it in that README. Bulk transcripts, caches, `session-env/`, and server-pushed files fail the test and stay out.
-- 10.7. Drift check —— cheap, deterministic, and the only thing that catches a mirror silently left behind. Run it after any change to the live tree, and during any hook audit alongside §7.6:
+- 10.1. THE MANDATE: run this at EVERY CCSIM SESSION START. It diffs every mirrored pair and overwrites any backup that no longer matches its live file:
 
 ```bash
-cd "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
-B=backup/backup_Claude/backup_Claude_FURY; S="/Volumes/FURY 2TB/.claude"
-cmp -s "$S/settings.json" "$B/backup_settings.json.md" && echo "ok    settings.json" || echo "DRIFT settings.json"
-for f in "$S"/projects/*dupbus-ceztuc-7cufVe/memory/*.md; do n="$(basename "$f")"; cmp -s "$f" "$B/backup_memory_dupbus_$n" && echo "ok    $n" || echo "DRIFT $n"; done
-for f in "$S"/projects/*AJAP-repo/memory/*.md; do n="$(basename "$f")"; cmp -s "$f" "$B/backup_memory_ajap_$n" && echo "ok    ajap/$n" || echo "DRIFT ajap/$n"; done
-cmp -s "$S/scheduled-tasks/ajap-auto-resume/SKILL.md" "$B/backup_scheduled-tasks_ajap-auto-resume_SKILL.md" && echo "ok    ajap-auto-resume" || echo "DRIFT ajap-auto-resume"
+"/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/backup/backup_Claude/backup_Claude_FURY/mirror.sh" sync
 ```
 
-- 10.8. A missing counterpart also prints `DRIFT` —— that is correct: a live file whose mirror was never made is exactly the gap this check exists to surface.
-- 10.9. If FURY is merely UNMOUNTED rather than lost, nothing here applies —— do NOT restore anything on top of an intact drive. Run `nscpt/fury_unmounted.sh`, which diagnoses the link, repairs it by renaming any stray aside (never deleting), and verifies every registered hook path still resolves.
+- 10.2. THE SPECIFIC MISTAKE THIS PREVENTS: editing `~/.claude/settings.json` —— adding a hook, re-pointing a path, changing a matcher —— and not mirroring it. The edit works, every test passes, nothing complains, and the only copy of the new registration is sitting on an untracked drive. Run `mirror.sh sync` in the SAME turn as any `settings.json` edit; do not wait for the next session start.
+  - 10.2.1. The same applies to any other live change (a new auto-memory entry, a Routine reworded), but `settings.json` is the one that costs the whole hook system.
+- 10.3. To INSPECT without writing anything, drop the argument —— same report, no changes. Useful during a hook audit alongside §7.6:
+
+```bash
+"/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/backup/backup_Claude/backup_Claude_FURY/mirror.sh"
+```
+
+- 10.4. Read it by exit code: `0` all identical; `1` drift (check mode only —— `sync` repairs and returns `0`); `2` a human decision is needed, and the line says which —— `UNMIRRORED` (live file nothing backs up), `ORPHAN` (backup whose source is unknown), `MISSING` (mapped source deleted upstream), `ABSENT` (mirror never made). `ABSENT` and `UNMIRRORED` are the gaps this check exists to surface, so they are reported loudly rather than assumed benign.
+- 10.5. `mirror.sh` DISCOVERS the live memory folders instead of trusting a fixed list, so a brand-new auto-memory file —— or a whole new project's `memory/` —— is flagged `UNMIRRORED` the first time the check runs after it appears. It never invents a backup name for one; that needs a naming decision, so it stops and says so.
+- 10.6. Overwriting the backup is intended and safe —— that folder is tracked by git, so prior contents stay recoverable from history. The live file is the truth; the copy is the follower.
+- 10.7. ACCEPTED RISK, recorded honestly: the check is session-START, so a live file changed MID-session is unprotected until the next session begins. Per-turn mirroring was considered and REJECTED —— it taxes every turn of every session to close a window of minutes, for files that change a few times a month. §10.2's same-turn habit for `settings.json` is what narrows the gap that matters; the session-start run is the safety net behind it.
+- 10.8. The obvious upgrade —— a `SessionStart` hook running `mirror.sh sync` automatically —— is deliberately NOT in place: it would itself require a `settings.json` edit, which must then be mirrored, and an unattended writer touching the backup folder is a bigger change than the problem warrants. Revisit only if the session-start run is observed being skipped.
+- 10.9. After editing `mirror.sh`, run `mirror_test.sh` beside it —— temp fixtures only, never touching the real `.claude`; exit 0 means the checker still catches drift.
+
+---
+
+## 11. Backup Mirror —— Scope & Restore
+
+- 11.1. Currently mirrored (the folder's own README carries the full table, the selection test, and the exclusions):
+  - 11.1.1. `settings.json` —— the ONLY live hook registration; outside git by necessity (§1.6).
+  - 11.1.2. `projects/*/memory/*.md` for both projects —— persistent auto-memory; written locally, never cloud-synced.
+  - 11.1.3. `scheduled-tasks/ajap-auto-resume/SKILL.md` —— hand-written Routine logic that exists nowhere else.
+- 11.2. `settings.json` is covered TWICE, deliberately, and the two are not interchangeable:
+  - 11.2.1. `.claude/hooks_user_settings.reference.json` (§9.2) is a HOOKS-ONLY excerpt, shaped for merging into an existing user file.
+  - 11.2.2. `backup_settings.json.md` is the WHOLE file, including the unrelated preferences a merge would not carry.
+  - 11.2.3. A hook change must update BOTH in the same turn; updating one alone leaves a restore that is half-right, which reads as success.
+- 11.3. Adding anything new to the backup folder: apply its README's selection test —— IRREPLACEABLE and UNTRACKED and SMALL, all three —— then add it to the `MAP` block in `mirror.sh` AND that README. Bulk transcripts, caches, `session-env/`, and server-pushed files fail the test and stay out. Credentials are barred outright regardless of the test, because that folder is pushed to GitHub.
+- 11.4. THE NET EFFECT, stated plainly: if FURY is lost, restore the repo from GitHub FIRST (the backups live inside it), then copy these files into the new `~/.claude/`. `mirror.sh restore-plan` prints the exact `mkdir -p` + `cp` commands and writes nothing, so it reverses the naming rule for you rather than leaving it to be fumbled by hand. Without this folder, a clean GitHub restore brings back every lint SCRIPT and registers NONE of them, and the auto-memory is simply gone —— §5's failure signature, from a standing start.
+- 11.5. If FURY is merely UNMOUNTED rather than lost, nothing here applies —— do NOT restore anything on top of an intact drive. Run `nscpt/fury_unmounted.sh`, which diagnoses the link, repairs it by renaming any stray aside (never deleting), and verifies every registered hook path still resolves.

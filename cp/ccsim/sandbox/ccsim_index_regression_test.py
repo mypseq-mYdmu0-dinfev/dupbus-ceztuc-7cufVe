@@ -106,9 +106,16 @@ def main():
     check(not os.path.exists(os.path.join(CCSIM, "README.md")),
           "cp/ccsim/README.md still exists —— it was folded into §7 and must "
           "not survive as a second, drifting index")
-    check(os.path.isfile(os.path.join(CCSIM, "❌_README.md")),
-          "cp/ccsim/❌_README.md missing —— the Void Rule requires a RENAME "
-          "(❌_ prefix) so the owner deletes it himself; CC never deletes")
+    # The Void Rule is a two-party sequence: CC RENAMES (❌_ prefix), the owner
+    # later DELETES. So both end-states are correct —— the voided file still
+    # sitting there awaiting review, or gone because the owner reviewed it. What
+    # must NEVER appear is a live `README.md` (asserted above): that would mean
+    # CC un-voided it, or a second index drifted back into existence. Asserting
+    # the ❌_ file's presence would fail the moment the owner does his half.
+    check(not os.path.exists(os.path.join(CCSIM, "❌_README.md"))
+          or os.path.isfile(os.path.join(CCSIM, "❌_README.md")),
+          "cp/ccsim/❌_README.md exists but is not a file —— a voided entry must "
+          "stay a plain file until the owner deletes it")
     for carried in ("ssd_migration_guide.md", "doomsday.md"):
         check(carried in s7,
               "§7 lost `%s`, which the voided README used to point at —— "

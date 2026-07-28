@@ -63,3 +63,43 @@
 ## 64. Thoughts
 - 64.1. The most useful thing in your message is 46.5.1's implication: I picked the glyph that would pass the check rather than the glyph that was true. A linter that can be satisfied by choosing a prefix trains exactly that. Your ownership rule closes it properly.
 - 64.2. Turn 10 is a fair criticism even though the outcome was good —— acting on an ambiguous nudge worked out, but "it worked out" is not the standard.
+
+## 65. Sprint Report (202607282242–202607282306) · ran `~`24m
+
+### 65.1. Done
+- 65.1.1. FOF: 7 SAs, 0 failures. All 10 regression suites green.
+- 65.1.2. clint glyph OWNERSHIP shipped —— each glyph now must satisfy its own declaration contract, not merely lead the line.
+- 65.1.3. `skill_guide.md` figures corrected to 30,000 characters only (no token-equivalent, no skill-count target), with the 1%-of-context relationship kept so a future window recomputes rather than trusting a stale constant.
+- 65.1.4. Backup made self-maintaining —— session-start diff + re-mirror, documented with commands; `ccsim/CLAUDE.md` points at it.
+- 65.1.5. `nscpt/` prose commented out —— 3 files touched; all now pass `bash -n`.
+- 65.1.6. `personal_bg.md` + `career_bg.md` restructured for section-scoped retrieval with a routing map on top.
+- 65.1.7. `ccsim/CLAUDE.md` gained the session-start backup check and the transferable lessons; FOF-vs-sprint contradiction logged to `backlog.md`.
+- 65.1.8. Side task: `glossary` skill created (its own QMM pair).
+
+### 65.2. ⚠️ re 58 —— I Was Wrong, and the Real Answer Matters More
+- 65.2.1. My ≤50w guess said "Auto gates push behind a classifier". The mechanism was right; the DIAGNOSIS was wrong, and so was the other session's.
+- 65.2.2. Evidence: 133 real push attempts across every transcript on this machine —— auto mode 21 SUCCEEDED, 2 denied; bypass 106 succeeded. Five auto-mode pushes to this exact repo/branch/remote read `main -> main`. So Auto does NOT block `git push`.
+- 65.2.3. The actual blocker was the COMMIT CONTENT: third-party personal data heading for a genuinely PUBLIC repo. The classifier denied on what was being pushed, not on the mode.
+- 65.2.4. ⚠️ So the answer to your real question is NO —— and switching to Bypass would be actively harmful: it would remove the check that correctly stopped PII reaching a public repo. Do NOT switch. §9.05 works fine in Auto.
+- 65.2.5. That also dissolves your puzzle: OTGC pushes succeed because nothing is wrong with Auto; that session hit a content judgement, not a mode limitation.
+- 65.2.6. Separately, I DID hit a genuine classifier OUTAGE mid-sprint ("temporarily unavailable, so auto mode cannot determine the safety of Bash"). Real, but a different and transient failure class —— retry, or work read-only meanwhile.
+
+### 65.3. Caught in Review (SAs reported green)
+- 65.3.1. Two suites were failing when I checked: clint 22/33 and the ccsim index.
+- 65.3.2. Neither was a regression —— both were STALE assertions. clint's log tags gained granular suffixes (`block:prose`), and the index test demanded the voided `❌_README.md` still exist after you deleted it in `0efbecb`.
+- 65.3.3. Fixed both to encode current intent: tag-FAMILY matching (an exact class can still be asserted), and the Void Rule's two-party sequence (CC renames, owner deletes —— so "gone" is a correct end-state, whilst a live `README.md` is still forbidden).
+- 65.3.4. Second time this pattern has bitten: a green SA report plus a red suite. Running the suites myself is now non-optional.
+
+### 65.4. Assumed
+- 65.4.1. ⚠️ `sic` implemented at the GLOSSARY's 10-word default, not your message's "≤5w" (QB1 in §61.2.6). Overturn if 5w was deliberate.
+- 65.4.2. The ⚠️ contract needed more than your three caps: `⚠️ Fleet running; awaiting reports.` is 4 words, 0 hyphens, 32 chars —— it passes all three. So a progress-phrase trap was added, rescued by genuine blocker language. Disclosed because it is a judgement layer you did not ask for.
+- 65.4.3. §45.2 (hyphen pcmd names) NOT done —— one real drawback, flagged in §60.1 for your ruling.
+
+### 65.5. Interruptions
+- 65.5.1. ONE: a live auto-mode classifier outage blocked Bash briefly (§65.2.6). No work lost; read-only tools stayed available and the sprint continued.
+
+### 65.6. Open
+- 65.6.1. 🟡 QB1 —— `sic` word cap: glossary's 10w (shipped) or your 5w?
+- 65.6.2. 🟡 §60.1 —— rename pcmds to hyphens anyway, or keep underscores as recommended?
+- 65.6.3. 🟡 `backlog.md` —— FOF vs `sprint.md` all-at-once contradiction awaits your ruling.
+- 65.6.4. 🟢 Turn 10 revert still on offer if you disagree with §57.4.
