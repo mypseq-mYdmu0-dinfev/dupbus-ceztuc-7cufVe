@@ -6,8 +6,8 @@
 - Special: an AR might be placed here w/ trial task received, even w/o interview scheduled
 - TS = upcoming/last interview time, NOT AR creation time
 - Original ARs remain in `AJAP_repo/gcl|ccl/` w/ creation TS
-- `int/g/` = general (non-consulting) roles, dup from `gcl/`
-- `int/c/`= consulting roles, dup from `ccl/`
+- `g_int/` = general (non-consulting) roles, dup from `gcl/`
+- `c_int/`= consulting roles, dup from `ccl/`
 
 ## Structure
 - Original AR's §1 ("Employer") expands into e.g. `1.1. Company Basics` `1.2. Scale & Footprint` `1.3. Leadership & People` `1.4. Interviewer` (not necessary to follow; adapt as needed)
