@@ -1,19 +1,19 @@
 #!/usr/bin/env python3
-"""PostToolUse hook —— numbering linter for `universal/numbered.md`. TWO
-INDEPENDENT advisory checks: a file may trip one, the other, both, or neither.
-Both only ever ADVISE; neither ever blocks.
+"""PostToolUse hook —— THREE INDEPENDENT checks: two ADVISORY ones enforcing
+`universal/numbered.md`, and one BLOCKING one enforcing `universal/glossary.md`'s
+question/blocker labelling rule. A file may trip any combination of the three.
 
 === NON-CCSIM —— start of all you need to RUN it ===
-* WHAT: a PostToolUse hook enforcing `universal/numbered.md`. TWO independent
-  ADVISORY checks; a file may trip either, both, or neither. Neither blocks nor
-  asserts a breach.
-* CHECK A —— TENTH SIBLING fires at a level's 10th item (`- [n].10.`), because
-  ⌘F `[n].1` then also hits `[n].10`, `[n].11`, ... FIX: SPLIT that level into
-  separate points (preferred), or renumber 2-digit (`[n].01`–`[n].09`). Any file
-  bar code/system types.
-* CHECK B —— NUMBERING RESET fires when a `response_` restarts top-level
-  numbering at pt 1 with no § Numbering Continuity excuse. FIX: continue the
-  count, or say why the reset is warranted.
+* WHAT: a PostToolUse hook, THREE independent checks, any combination. A/B
+  ADVISE (exit 0); C BLOCKS (exit 2) —— the write already happened, so C means:
+  EDIT that file.
+* A —— TENTH SIBLING (numbered.md): a level's 10th item (`- [n].10.`), since ⌘F
+  `[n].1` also hits it. FIX: SPLIT that level, or renumber `[n].01`–`[n].09`.
+  Any file bar code/system types.
+* B —— NUMBERING RESET (numbered.md): a `response_` restarting at pt 1 unexcused.
+  FIX: continue the count, or say why.
+* C —— QB LABEL (glossary.md): `QB1` or `QB:`, ANY file. FIX: relabel `Q[n]` /
+  `B[n]`; backtick a deliberate mention.
 === NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
@@ -22,13 +22,19 @@ plumbing serves only an editor). Run by the harness via `nlint_hook.sh`, the
 registered bash fast-path; registered PostToolUse (Edit|Write|MultiEdit) in the
 USER-level `~/.claude/settings.json` —— the Claude Desktop app executes
 user-level hooks and silently ignores project-level ones —— and it self-scopes,
-exiting 0 silently outside THIS repo. IN: PostToolUse JSON on stdin. OUT: on a
-flag, JSON on stdout carrying `hookSpecificOutput.additionalContext`, the one
-PostToolUse channel that reaches the model WITHOUT blocking; both checks share
-ONE payload, one line each. EXIT is ALWAYS 0 —— PostToolUse cannot block anyway,
-the write has already happened. FAIL-SAFE: any error, missing field,
-oversized/unreadable file, or an unresolvable/unreadable query -> exit 0, no
-output.
+exiting 0 silently outside THIS repo. IN: PostToolUse JSON on stdin. OUT:
+whichever tier fired. ADVISORY ONLY (A and/or B) -> exit 0 with JSON on stdout
+carrying `hookSpecificOutput.additionalContext`, the one PostToolUse channel
+that reaches the model WITHOUT blocking; both advisories share ONE payload, one
+line each. BLOCKING (C, alone or alongside A/B) -> exit 2 with the text on
+STDERR, because at exit 2 the harness ignores stdout and JSON ENTIRELY —— so any
+advisory that fired in the same run rides along on stderr rather than being
+silently discarded, which is why the two tiers are assembled separately and
+emitted once. Neither exit code undoes the write (PostToolUse never can); exit 2
+buys error framing and model attention, not a rollback. FAIL-SAFE: any error,
+missing field, oversized/unreadable file, or an unresolvable/unreadable query ->
+exit 0, no output —— a failure in any one check can never suppress another, and
+can never manufacture a block.
 
 EXACT SCOPES AND GATES. CHECK A covers ANY file, comms or not, EXCEPT the types
 numbered.md itself exempts (code/system extensions —— `_NUMBERING_EXEMPT_EXTS`),
@@ -40,7 +46,8 @@ and flags only when all three hold: (1) a level-1 reset appears outside fenced
 code (`## 1. `, `- 1.`, or a bare `1. `); (2) the file this response replies to
 reads as a reply itself (its first line contains `response_` or "reply"); (3)
 that query carries no same-line authorisation of a reset. Miss any one ->
-silent.
+silent. CHECK C covers LITERALLY every file, with no extension carve-out at all
+(see CHECK C —— WHY EVERY FILE).
 
 CHECK A —— WHY THIS EXACT SHAPE. numbered.md mandates a dot between number and
 text (`1.1. xxx`, never `1.1 xxx`), and THAT dot is what separates a numbered
@@ -73,12 +80,76 @@ So a sibling `- [n].0X.` anywhere in the same file suppresses the advisory for
 that `[n]`. Without it the hook would nag hardest at the file that already took
 its advice.
 
-CHECK A —— WHY THE SHIM HAD TO WIDEN. The `nlint_hook.sh` fast-path used to exit
-before Python unless the payload mentioned `response_`; that gate would have
-suppressed Check A on every non-response file. The gate now ALSO passes a
-payload whose written text carries a bullet-digit plus `.10` —— rationale for
-that specific pattern, and for gating on payload text rather than disk, lives in
-the shim itself.
+CHECKS A AND C —— WHY THE SHIM HAD TO WIDEN, TWICE. The `nlint_hook.sh`
+fast-path used to exit before Python unless the payload mentioned `response_`;
+that gate would have suppressed Check A on every non-response file, and Check C
+on nearly every file there is. The gate now ALSO passes a payload whose written
+text carries a bullet-digit plus `.10` (A), or a merged/unnumbered QB label (C)
+—— rationale for those specific patterns, and for gating on payload text rather
+than disk, lives in the shim itself.
+
+CHECK C —— WHAT IT ENFORCES. `universal/glossary.md` defines QB as
+"question/blocker" and mandates that any questions and blockers be raised
+SEPARATELY and numbered —— `Q1`, `Q2` for questions, `B1`, `B2` for blockers ——
+and NEVER merged into a single `QB1`/`QB2` label. Two shapes are therefore
+refused: `QB` immediately followed by a digit (the merged label the rule names
+outright), and `QB` immediately followed by a colon (worse still, since that one
+is not even numbered, so the reader cannot refer to an individual item at all).
+Two lookalikes are deliberately PERMITTED, because neither is a label: a bare
+`QB` with no digit and no colon (the abbreviation used as a noun, "confirmed no
+QB"), and `QBs:` (a plural heading introducing a properly-numbered enumeration,
+"Here are QBs: ..."). Matching is UPPERCASE-only: lowercase `qb` is the user's
+own shorthand for the CONCEPT (glossary usage, e.g. "[task], qb"), whilst the
+label form the rule forbids is always uppercase.
+
+CHECK C —— WHY IT BLOCKS WHERE A AND B ONLY ADVISE. A and B both hinge on
+information a stateless hook cannot fully see (session boundaries, whether a
+long level was deliberate), so asserting a breach there would sometimes be a
+lie. This rule has no such gap: the glossary states it absolutely, with no
+excusing condition anywhere, so a genuine `QB1`/`QB:` in a written file IS a
+breach and can be asserted as one. Exit 2 cannot un-write the file —— nothing on
+PostToolUse can —— so the message must not read as a veto; it names the file and
+tells the model to go and EDIT it, which is the only remedy that exists after
+the fact.
+
+CHECK C —— WHY EVERY FILE, INCLUDING CODE. Check A carves out code/system
+extensions because numbered.md's own § Format disclaims them. glossary.md
+carves out nothing: it governs how CC LABELS a question or blocker wherever one
+is raised, and a malformed label is just as unreadable in a `.txt` note, a
+`slog_`, a deliverable or a script comment as in a `response_`. Inheriting A's
+exemption list would therefore import an exemption this rule never granted. The
+cost is real and accepted: a `.py` fixture holding a literal merged label fires
+too, which is precisely why this file and its regression test either backtick
+such literals or assemble them from fragments.
+
+CHECK C —— FALSE POSITIVES, AND THE TWO ESCAPE HATCHES. The forbidden strings
+appear legitimately in the very files that DEFINE or discuss the rule ——
+glossary.md's own entry, its backups, and any response reasoning about it. A
+fence mask alone does not save them: those mentions sit in ordinary prose, not
+in code blocks. So two independent hatches apply, and either one alone clears a
+line:
+(1) MASKED MENTION —— fenced ```...``` blocks (already masked for A and B) plus
+    INLINE `` `...` `` spans are removed before the scan. A backticked token is
+    a mention, not a use; this is also the fix the block message offers, so the
+    remedy is always available and is correct Markdown besides.
+(2) RULE STATEMENT —— a line carrying a same-line PROHIBITION word (`never`,
+    `forbid`, `prohibit`, `disallow`, `banned`, `must not`, `do not`, `don't`,
+    `instead of`, `rather than`, `mislabel`, `malformed`) is stating the rule,
+    not breaching it: glossary.md's line reads "NEVER label as QB1, QB2". Same
+    same-line co-occurrence design as the § Sanctioned scan below, and for the
+    same reason —— a document-wide scan would let one distant "never" launder
+    every bad label in the file.
+Mined against this repo's whole history, that pair acquits every genuine
+rule-discussion line found and still fires on every genuine breach found (real
+ones include `QB:` alone on a line, `22. QB:`, `- 56.3. QB: pt 52.4 ——`, and
+`⚠️ QB1 ——`). Bare negators (`not`, `no`) are excluded from (2) on purpose:
+"..., not your message's ..." appears in a REAL breach line, and admitting them
+would have acquitted it. The residual gap is stated plainly rather than papered
+over —— a genuine bad label on a line that also happens to say "never" escapes.
+That direction is chosen deliberately: a missed label is a silent, recoverable
+imperfection, whereas a wrongly-blocked write of the glossary makes the rule
+itself unwritable and invites the model to mangle a protocol file to appease a
+lint.
 
 WHY ADVISORY, NEVER A HARD BLOCK —— a proven false positive on real data:
 numbered.md excuses a reset if ANY of (a) it is the session's 1st response, (b)
@@ -246,6 +317,32 @@ _RESET_WORD_RE = re.compile(
     re.IGNORECASE,
 )
 
+# CHECK C —— the malformed question/blocker label glossary.md forbids: `QB`
+# IMMEDIATELY followed by a digit (the merged label) or by a colon (the
+# unnumbered form). The word boundary stops a longer token (`SQB1`) matching,
+# and requiring the digit/colon to be IMMEDIATE is what keeps the permitted
+# lookalikes silent: bare `QB` (no digit, no colon) and `QBs:` both fail here,
+# since `s` is neither. Uppercase-only by design —— see CHECK C —— WHAT IT
+# ENFORCES in the docstring. The whole match is reported back, so the message
+# can name the exact token found.
+_QB_RE = re.compile(r"\bQB(?:\d+|:)")
+
+# CHECK C escape hatch (2) —— a same-line PROHIBITION word means the line is
+# STATING the rule, not breaching it (glossary.md: "NEVER label as ..."). Bare
+# negators (`not`, `no`) are deliberately absent: they are common enough inside
+# a real question/blocker body to acquit genuine breaches.
+_QB_RULE_WORD_RE = re.compile(
+    r"\bnever\b|\bforbid\w*|\bprohibit\w*|\bdisallow\w*|\bbanned\b|"
+    r"\bmust not\b|\bdo not\b|\bdon't\b|\binstead of\b|\brather than\b|"
+    r"\bmislabel\w*|\bmalformed\b",
+    re.IGNORECASE,
+)
+
+# CHECK C escape hatch (1), inline half —— a backticked span. Fenced blocks are
+# already masked for every check; this removes INLINE code too, but ONLY inside
+# the QB scan, so checks A and B keep their existing behaviour byte for byte.
+_INLINE_CODE_RE = re.compile(r"`[^`]*`")
+
 _TENTH_MSG_TEMPLATE = (
     "nlint: a numbered level has reached its 10th item ({snippet!r}) in "
     "`{base}`. numbered.md says AVOID 9⁺ items on a level, because searching "
@@ -265,6 +362,24 @@ _MSG_TEMPLATE = (
     "text. Confirm one genuinely applies (in which case no action is "
     "needed); if NOT, renumber this response to continue at n+1 from the "
     "prior response's last point."
+)
+
+# CHECK C's message. It is a BLOCK, so it must be unambiguous about the one
+# thing a PostToolUse hook cannot do: the file is already written. Hence it
+# names the file, quotes the offending line, gives the exact replacement
+# labelling, and offers the mention escape hatch, so a reader who was quoting
+# the rule on purpose has an immediate, correct remedy rather than a standoff.
+_QB_MSG_TEMPLATE = (
+    "nlint 🔴 BLOCK —— malformed question/blocker label {token!r} in "
+    "`{base}` ({snippet!r}). universal/glossary.md: QB = question/blocker, and "
+    "questions and blockers must be raised SEPARATELY and #numbered —— `Q1`, "
+    "`Q2` for questions, `B1`, `B2` for blockers —— NEVER merged into one "
+    "`QB[n]` label, and never an unnumbered `QB` + colon. This hook runs AFTER "
+    "the write, so the bad label is already on disk and nothing was undone: "
+    "EDIT `{base}` NOW and relabel each item `Q[n]` or `B[n]` before "
+    "continuing. If you were deliberately QUOTING the forbidden form (writing "
+    "about the rule rather than using it), wrap the mention in backticks or a "
+    "code fence —— a masked mention never fires."
 )
 
 
@@ -325,6 +440,37 @@ def _find_tenth(body):
     return None
 
 
+def _find_qb(body):
+    """CHECK C. Return `(line, token)` for the first fence-masked line carrying
+    a malformed question/blocker label, or None.
+
+    Two acquittals apply per line, either sufficient alone (docstring CHECK C
+    —— FALSE POSITIVES): a same-line prohibition word means the line STATES the
+    rule, and inline backticked spans are stripped before the scan so a quoted
+    mention is invisible to it. The prohibition test reads the RAW line, so a
+    prohibition word that itself sits in backticks still counts —— acquitting is
+    the safe direction here. One pass, first hit wins; the ORIGINAL line is
+    returned as the snippet so the reader sees what they actually wrote.
+
+    Lines carrying U+FFFD are skipped. `_read_lines` decodes with
+    `errors="replace"`, so that character means the bytes were never text, and
+    this check has NO extension carve-out to fall back on: sweeping the repo
+    showed every `.icns` application stub decoding to a literal QB-plus-digit,
+    purely by byte coincidence. Two other guards already make that unreachable
+    in practice (the shim gates on payload text, and no agent Writes a binary),
+    so this is defence in depth rather than the primary defence —— but a
+    BLOCKING check must not have any plausible route to blocking on noise."""
+    for ln in body:
+        if "�" in ln:
+            continue
+        if _QB_RULE_WORD_RE.search(ln):
+            continue
+        m = _QB_RE.search(_INLINE_CODE_RE.sub(" ", ln))
+        if m:
+            return ln, m.group(0)
+    return None
+
+
 def _reply_signal(first_line):
     """True if a query/first-line signals this turn REPLIES to a response."""
     low = first_line.lower()
@@ -373,6 +519,29 @@ def _emit_advisory(messages):
         },
     }
     print(json.dumps(payload))
+
+
+def _emit_block(blocking, advisories):
+    """Exit-2 channel for CHECK C. At exit 2 the harness ignores stdout and JSON
+    ENTIRELY, so everything the model must see goes to STDERR —— including any
+    ADVISORY that fired in the same run, which would otherwise be silently
+    dropped purely because a different check blocked. Blocking lines lead, since
+    they are the ones demanding an action.
+
+    Returns the exit code to use. If even the stderr write fails, the block is
+    abandoned rather than delivered blind: falling back to exit 0 keeps the
+    fail-safe contract (a broken hook must never break a turn) and still gets
+    the advisories out through their own channel."""
+    try:
+        sys.stderr.write("\n".join(blocking + advisories))
+    except Exception:
+        if advisories:
+            try:
+                _emit_advisory(advisories)
+            except Exception:
+                pass
+        return 0
+    return 2
 
 
 def _reset_message(fp, lines, body):
@@ -425,13 +594,16 @@ def main():
         return 0
     base = os.path.basename(fp)
 
-    # Per-check scope, evaluated independently so a file can trip one, the
-    # other, both, or neither. CHECK B: `response_` only (incl. CP-prefixed).
-    # CHECK A: any file bar the types numbered.md itself exempts.
+    # Per-check scope, evaluated independently so a file can trip any
+    # combination of the three. CHECK B: `response_` only (incl. CP-prefixed).
+    # CHECK A: any file bar the types numbered.md itself exempts. CHECK C has
+    # NO scope test —— it applies to every file (glossary.md grants no
+    # carve-out), which is why the "nothing to do, don't even open the file"
+    # early-out that used to sit here is gone: there is now always something to
+    # do. The cost is one extra read on a payload that passed the shim gate
+    # but interests neither numbering check; the shim is what keeps that rare.
     want_reset = bool(_RESPONSE_RE.match(base))
     want_tenth = os.path.splitext(base)[1].lower() not in _NUMBERING_EXEMPT_EXTS
-    if not (want_reset or want_tenth):
-        return 0  # nothing to do -> don't even open the file
 
     try:
         if os.path.getsize(fp) > _MAX_FILE_BYTES:
@@ -440,10 +612,11 @@ def main():
     except Exception:
         return 0
 
-    # Fence-mask ONCE: neither check may ever fire on code-block content.
+    # Fence-mask ONCE: NO check may ever fire on code-block content.
     body = list(_iter_unfenced(lines))
 
-    messages = []
+    messages = []   # ADVISORY tier (checks A and B) -> exit 0, stdout JSON
+    blocking = []   # BLOCKING tier (check C) -> exit 2, stderr
 
     if want_tenth:
         try:
@@ -453,7 +626,7 @@ def main():
                 messages.append(_TENTH_MSG_TEMPLATE.format(
                     snippet=_snippet(line), base=base, parent=parent))
         except Exception:
-            pass  # one check failing must never suppress the other
+            pass  # one check failing must never suppress the others
 
     if want_reset:
         try:
@@ -463,6 +636,18 @@ def main():
         except Exception:
             pass
 
+    try:                                  # CHECK C —— unconditional, see above
+        hit = _find_qb(body)
+        if hit:
+            line, token = hit
+            blocking.append(_QB_MSG_TEMPLATE.format(
+                token=token, base=base, snippet=_snippet(line)))
+    except Exception:
+        pass  # a failed block is a SILENT one —— never a false block, and never
+        # a reason to suppress the advisories already gathered above
+
+    if blocking:
+        return _emit_block(blocking, messages)
     if messages:
         _emit_advisory(messages)
     return 0

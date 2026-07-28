@@ -46,8 +46,8 @@
 
 | Event | Registered Command | Purpose |
 |---|---|---|
-| PreToolUse | `.sync/date_added.py hook-capture` | Capture file dates before a write |
-| PostToolUse | `.sync/date_added.py hook-restore` | Restore captured dates after a write |
+| PreToolUse | `cscpt/DADC.py hook-capture` | Capture Date Added + Date Created before a write |
+| PostToolUse | `cscpt/DADC.py hook-restore` | Restore Date Added + Date Created after a write |
 | PostToolUse | `cscpt/dlint_hook.sh` | Comms/deliverable prose lint (blocking on RED) |
 | PostToolUse | `cscpt/nlint_hook.sh` | Numbering-continuity lint (advisory) |
 | PostToolUse | `cscpt/tlint_hook.sh` | Timestamp-clash lint (warn-only) |

@@ -2,7 +2,15 @@
   "version": "0.1",
   "permissions": {
     "allow": [
-      "Bash(python3 .sync/sync.py:*)"
+      "Bash(python3 cscpt/otg_sync.py:*)",
+      "Bash(git push:*)",
+      "Bash(git commit:*)",
+      "Bash(git add:*)",
+      "Bash(git status:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git log:*)",
+      "Bash(git diff:*)",
+      "Bash(git mv:*)"
     ]
   }
 }

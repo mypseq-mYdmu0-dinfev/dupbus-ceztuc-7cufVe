@@ -6,5 +6,9 @@ __pycache__/
 # Private credentials —— never commit/sync (plaintext secrets)
 .claude/cic_login.local.md
 
-# Runtime hook log —— accretes local no-chat-text breach events; not source
+# Runtime hook log —— accretes local no-chat-text breach events; not source.
+# The .tmp* sibling is the atomic-rewrite staging file used when the log is
+# pruned; a hard crash mid-prune can leave one behind, and a stray temp must
+# never surface as an untracked change.
 cscpt/.clint.log
+cscpt/.clint.log.tmp*

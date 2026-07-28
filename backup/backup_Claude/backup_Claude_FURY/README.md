@@ -2,7 +2,7 @@
 
 ## What
 - This folder mirrors the handful of irreplaceable files in `/Volumes/FURY 2TB/.claude/` —— the folder `~/.claude` is a symlink to, and which no repo tracks
-- It re-checks and repairs itself at every CCSIM session start (see § Session-Start Check), rather than relying on anyone remembering to update it
+- It re-checks and repairs itself at every CCSIM session start, and again the moment CCSIM edits a live file (both triggers: see § Session-Start Check), rather than relying on anyone remembering to update it
 - Every mirrored copy carries a `backup_` prefix and ends in `.md`, so nothing in the harness can ever load or act on one by accident
 
 ### Naming Rule (exact, and the only rule there is)
@@ -57,6 +57,8 @@
 "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/backup/backup_Claude/backup_Claude_FURY/mirror.sh" sync
 ```
 
+- ALSO RE-MIRROR ON THE SPOT whenever CCSIM itself EDITS a file under `.claude/` —— same command, same turn as the edit. No diff sweep is needed to locate the drift: the agent that made the edit already knows which file it touched (`mirror.sh` has no per-file mode and needs none —— `sync` is idempotent and cheap)
+- The two triggers are complementary, not redundant: the targeted one covers CCSIM's OWN edits at the instant they happen; the session-start sweep still catches whatever anyone or anything ELSE changed
 - To inspect without changing anything (same report, no writes), drop the argument:
 
 ```bash
@@ -72,10 +74,10 @@
 - After changing `mirror.sh`, run `./mirror_test.sh` —— temp fixtures only, exit 0 means the checker still catches drift
 
 ## The Accepted Risk (stated plainly, not buried)
-- The check runs at SESSION START. A live file changed MID-session is therefore unprotected until the next session starts
+- The sweep runs at SESSION START. A live file changed MID-session by anything OTHER than CCSIM is therefore unprotected until the next one (CCSIM's own edits are already covered by the same-turn trigger)
 - If FURY dies inside that window, that one change is lost —— everything mirrored at the last session start survives
 - Per-turn mirroring was considered and REJECTED: it would spend tokens on every turn of every session to close a window measured in minutes, for files that change a few times a month. Disproportionate
-- The residual risk is narrowed, not eliminated, by one habit: after any turn that edits a live file —— above all `settings.json` —— run `mirror.sh sync` in that same turn. The session-start run is the safety net, not the only line of defence
+- The residual risk is narrowed, not eliminated, by the same-turn re-mirror trigger (§ Session-Start Check) —— which is precisely why that trigger exists. The session-start run is the safety net, not the only line of defence
 - The honest summary: this design accepts losing at most one session's worth of change to a rarely-changed file, in exchange for a check cheap enough that it actually gets run
 
 ## Restoring After a Total Loss

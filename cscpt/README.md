@@ -41,6 +41,7 @@ Several linters below are launched by the harness rather than by you. Registrati
 - `dlint.py` —— deterministic prose linter: auto-fixes quotes, then flags 🔴 RED / 🟡 YELLOW breaches of `universal/writing.md`. Full mode for deliverables, quick mode for comms.
 - `usage_pct.py` —— prints live Claude usage: current 5-hourly session % and weekly %. Drives the "Claude Web" app by keystroke, so leave the Mac alone whilst it runs.
 - `padv.py` —— `#replace #adv` helper: extracts a verbatim span from a `.pages.md` mirror and splits it into the break-free blocks a Pages find-and-replace can actually match.
+- `otg_sync.py` —— `#sync` runner: re-pins every file URL in an OTG index to its last-commit SHA, then commits + pushes only that index and its prefs file.
 
 **The harness runs these (the lints):**
 
@@ -50,6 +51,7 @@ Several linters below are launched by the harness rather than by you. Registrati
 - `tlint.py` —— PostToolUse. Warns when a written file's 12-digit timestamp clashes with a neighbour that is not its sanctioned pair. Warn-only.
 - `hlint.py` —— UserPromptSubmit. Spots `#trigger` tokens in the prompt (and in any `.md` it names) and reminds CC to read each matching trigger file. Never blocks.
 - `plint.py` —— PreToolUse. Before a script, pcmd or letter-like file is written, reminds CC to read the governing protocol first. Advisory; never gates the write.
+- `DADC.py` —— PreToolUse + PostToolUse. Preserves a file's macOS Date Added and Date Created across an agent's edit, everywhere (no folder scope). New files untouched; always exits 0.
 - `*_hook.sh` —— thin bash fast-path shims, one per lint that needs one. Each IS the registered hook, exiting instantly on irrelevant payloads before any Python spawns.
 
 **You read this one:**

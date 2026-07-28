@@ -246,7 +246,25 @@ that does NOT grow
 across real turns means the harness is not calling this hook at all —— the
 diagnostic the LOG EVERY STAGE rationale above exists to enable.
 `CLINT_LOG=<path>` redirects it, so a test run neither reads nor pollutes the
-real log. Nothing else is written anywhere.
+real log.
+
+LOG RETENTION: one line per invocation, forever, is unbounded growth in a file
+nobody deletes —— and the log's ONE question ("did this hook run for that turn,
+and why was it judged so?") is only ever asked about the current session or a
+very recent one, so old lines carry no value at all. It therefore SELF-PRUNES
+to a recent window: `_LOG_MAX_LINES` triggers, `_LOG_KEEP_LINES` survives, the
+newest lines always being the ones kept. Sizing is measured, not guessed ——
+the real log ran ~90 bytes per line and ~105 lines per day at the heaviest
+observed usage, so retaining 800 lines is over a week of THAT (and far longer
+at ordinary rates) inside ~70 KB. The gap between the two marks is deliberate
+hysteresis: it bounds the rewrite to at most one invocation in 200, so the
+common turn pays a single `os.stat` and nothing else. Mechanics and their
+guarantees (atomic rename, never truncate in place, order versus the append,
+fail-safety, the concurrency caveat) are in `_prune_log`'s own docstring, where
+an editor changing that code will actually be looking. The growth diagnostic
+above survives untouched: a pruned log still gains a line every turn, and its
+LAST line is always the newest. Nothing else is written anywhere, bar the
+short-lived `.tmp.<pid>` sibling a prune renames into place.
 """
 
 import sys
@@ -419,6 +437,22 @@ _DATS_MAX_WORDS = 10
 # Log path (overridable for tests via CLINT_LOG); default beside this script.
 _LOG = os.environ.get("CLINT_LOG") or os.path.join(
     os.path.dirname(os.path.abspath(__file__)), ".clint.log")
+
+# --- Log retention (see docstring LOG RETENTION) ---------------------------
+# The log grows one line per invocation forever. It answers exactly one
+# question —— "did this hook run for that turn, and why was it judged so?" ——
+# which is only ever asked about the current session or a very recent one, so a
+# RECENT WINDOW carries all of the value and the rest is dead weight.
+_LOG_MAX_LINES = 1000            # high-water: prune only once this is passed
+_LOG_KEEP_LINES = 800            # low-water: what survives a prune
+# Conservative floor on one record's byte length. A record is at minimum an
+# ISO timestamp (19) + the six `\tlabel=` skeletons and their shortest possible
+# values + a newline, which is ~73 bytes; 60 sits safely below that. It must
+# stay below the TRUE minimum, because the pre-gate uses it to prove a small
+# file cannot hold too many lines —— an over-estimate would skip prunes and let
+# the log grow unbounded again. Pinned by a regression test, not trusted.
+_LOG_MIN_BYTES_PER_LINE = 60
+_LOG_PRUNE_AT_BYTES = _LOG_MAX_LINES * _LOG_MIN_BYTES_PER_LINE
 
 
 def _split_glyph(s):
@@ -615,6 +649,68 @@ def _dats_exempt(offending):
             and len(offending[0].split()) <= _DATS_MAX_WORDS)
 
 
+def _prune_log():
+    """Bound `_LOG` to its recent window —— cheaply, atomically, fail-safely.
+
+    ORDER IS LOAD-BEARING: this runs AFTER the current line has been appended
+    and its handle closed. The line being written this invocation therefore
+    cannot be a casualty of its own prune —— it is already on disk, and it is
+    inside the tail that survives.
+
+    CHEAP: one `os.stat` on the overwhelming majority of invocations. The file
+    is READ only when it is large enough to possibly exceed the high-water
+    mark, and REWRITTEN only when it actually does. The 1000/800 hysteresis is
+    what makes that true: a prune can occur at most once per 200 invocations,
+    so the rewrite is amortised across ~0.5% of turns instead of every turn.
+
+    ATOMIC: the surviving tail is written to a sibling temp file and moved into
+    place with `os.replace`, a single atomic rename on POSIX. The live log is
+    NEVER truncated or rewritten in place, so a crash at any instant leaves
+    either the untouched original or the complete replacement —— never a half
+    file, never an empty one, never a wholesale loss. A crash between the write
+    and the rename leaves one inert `.tmp.<pid>` sibling; the `finally` clears
+    it on every non-crash path.
+
+    FAIL-SAFE: every failure is swallowed, leaving the log exactly as it was.
+    Pruning is housekeeping —— skipping it costs disk, whereas raising from here
+    would break a turn, which this file's whole contract forbids. That is also
+    why the write is guarded rather than the read: an unwritable directory
+    (the shape a permissions slip takes) must degrade to "log keeps growing",
+    not to "the hook fails".
+
+    CONCURRENCY, stated honestly rather than optimistically: two invocations
+    pruning in the same instant could read the same snapshot, and the later
+    rename would then drop whatever the other appended in between. The
+    pid-suffixed temp stops them corrupting each other's file; the hysteresis
+    makes the overlap window vanishingly small; and the worst case is a handful
+    of lost DIAGNOSTIC lines —— never corruption, and never enforcement, since
+    nothing reads this log back."""
+    tmp = None
+    try:
+        if os.stat(_LOG).st_size < _LOG_PRUNE_AT_BYTES:
+            return                       # provably under the cap -> no read
+        with open(_LOG, "r", encoding="utf-8", errors="replace") as fh:
+            lines = fh.read().splitlines()
+        if len(lines) <= _LOG_MAX_LINES:
+            return                       # long lines, not too many -> leave it
+        tmp = "%s.tmp.%d" % (_LOG, os.getpid())
+        with open(tmp, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines[-_LOG_KEEP_LINES:]) + "\n")
+            fh.flush()
+            os.fsync(fh.fileno())        # rare enough to afford; makes the
+            # rename swap in data that is really on disk, not just in cache
+        os.replace(tmp, _LOG)
+        tmp = None                       # ownership handed over; nothing to bin
+    except Exception:
+        pass
+    finally:
+        if tmp:
+            try:
+                os.unlink(tmp)
+            except Exception:
+                pass
+
+
 def _log_event(sid, action, lines=0, first="-", pid="-", mode="-"):
     """Append ONE terse diagnostic line for ANY hook invocation, breach or not
     (see docstring LOG EVERY STAGE).
@@ -636,6 +732,10 @@ def _log_event(sid, action, lines=0, first="-", pid="-", mode="-"):
                    str(first)[:200].replace("\t", " ").replace("\n", " ")))
     except Exception:
         pass
+    # AFTER the append, never before: the line just written must already be on
+    # disk (and inside the surviving tail) before anything trims the file.
+    # `_prune_log` never raises, so this cannot affect the verdict either way.
+    _prune_log()
 
 
 def _turn_id(data, objs):

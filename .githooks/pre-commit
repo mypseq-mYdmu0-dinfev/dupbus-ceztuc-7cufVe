@@ -1,6 +1,6 @@
 #!/bin/sh
 # #sync guard (fail-safe). Restricts commits ONLY while the SYNC_ACTIVE marker
-# exists (i.e. during `python3 .sync/sync.py`). Manual GH-Desktop commits have
+# exists (i.e. during `python3 cscpt/otg_sync.py`). Manual GH-Desktop commits have
 # no marker -> the allowlist block is skipped and the pairing check runs instead.
 MARKER="$(git rev-parse --git-dir)/SYNC_ACTIVE"
 if [ -f "$MARKER" ]; then

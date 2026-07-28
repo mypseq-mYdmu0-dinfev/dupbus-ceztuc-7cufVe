@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Regression test for cscpt/nlint.py —— BOTH of its independent advisories:
-§ Numbering Continuity (Tests 1-6) and the tenth-sibling reminder (A1-A12,
-in `section_tenth`, which carries its own rationale).
+"""Regression test for cscpt/nlint.py —— ALL THREE of its independent checks:
+§ Numbering Continuity (Tests 1-6), the tenth-sibling reminder (A1-A12, in
+`section_tenth`), and the BLOCKING question/blocker-label rule (C1-C22, in
+`section_qb`). Each section carries its own rationale.
 
 WHY this test exists (coding.md: "a fix without its test is unfinished"):
 a reported bug claimed nlint neither fired nor flagged on the response
@@ -72,30 +73,70 @@ REAL_NOT_A_REPLY_RESET_RESPONSE = os.path.join(
     REPO_ROOT, "sessions", "2026", "202607", "ccsim_response_202607250021.md"
 )
 
+# Real repo history for CHECK C (coding.md: "mine historical/real data for
+# fixtures"). Two genuine breaches CC actually wrote —— an unnumbered label and
+# a merged one —— and the file that DEFINES the rule, which must never fire.
+REAL_QB_COLON_BREACH = os.path.join(
+    REPO_ROOT, "sessions", "2026", "202607", "response_202607031822.md"
+)
+REAL_QB_MERGED_BREACH = os.path.join(
+    REPO_ROOT, "sessions", "2026", "202607", "ccsim_response_202607282237.md"
+)
+REAL_RULE_DEFINING_FILE = os.path.join(REPO_ROOT, "universal", "glossary.md")
 
-# nlint emits BOTH checks in a single `hookSpecificOutput.additionalContext`,
-# one line each, so a stable phrase from each message template tells the test
-# WHICH check fired. Asserting per-check (rather than "any output at all") is
-# load-bearing now that nlint runs two independent checks: a real response can
-# legitimately trip one and not the other, and a check-agnostic assertion would
-# then report a true positive from check A as a failure of check B. That is not
-# hypothetical —— it is exactly what the real fixture in Test 1 does.
+
+# The two ADVISORY checks emit into a single
+# `hookSpecificOutput.additionalContext`, one line each, so a stable phrase from
+# each message template tells the test WHICH check fired. Asserting per-check
+# (rather than "any output at all") is load-bearing now that nlint runs three
+# independent checks: a real response can legitimately trip one and not the
+# others, and a check-agnostic assertion would then report a true positive from
+# check A as a failure of check B. That is not hypothetical —— it is exactly
+# what the real fixture in Test 1 does.
 _RESET_SIG = "numbering reset detected"
 _TENTH_SIG = "reached its 10th item"
+_QB_SIG = "malformed question/blocker label"
 
 
 def _fired(r):
-    """Return `(reset_fired, tenth_fired)` for a completed hook run."""
-    out = r.stdout.strip()
-    if not out and r.returncode == 0:
-        return False, False
+    """Return `(reset, tenth, qb)` for a completed hook run.
+
+    The two tiers arrive by DIFFERENT channels, which this has to model
+    faithfully or it would test a fiction: advisories come back as exit-0 JSON
+    on stdout, whilst a block comes back as exit-2 text on STDERR —— and that
+    stderr also carries any advisory that fired in the same run, because the
+    harness discards stdout entirely at exit 2. Reading both is precisely what
+    lets C18 assert all three checks firing at once."""
+    if r.returncode == 2:
+        ctx = r.stderr
+    elif r.returncode != 0:
+        return True, True, True     # unexpected exit -> never a silent pass
+    else:
+        out = r.stdout.strip()
+        if not out:
+            return False, False, False
+        try:
+            ctx = json.loads(out)["hookSpecificOutput"]["additionalContext"]
+        except Exception:
+            # Unparseable output counts as ALL firing, so a malformed payload
+            # can never masquerade as a clean silent pass.
+            return True, True, True
+    return (_RESET_SIG in ctx), (_TENTH_SIG in ctx), (_QB_SIG in ctx)
+
+
+def _file_text(path):
+    """A real fixture's own text, used as the payload `content`.
+
+    Reading it rather than pasting it keeps two properties at once: the payload
+    stays realistic (a wholesale rewrite of that file), and the shim's text gate
+    is exercised with the exact bytes on disk —— so a fixture that is later
+    edited cannot silently stop reaching Python and turn a real assertion into a
+    vacuous pass."""
     try:
-        ctx = json.loads(out)["hookSpecificOutput"]["additionalContext"]
-    except Exception:
-        # Unparseable/non-zero output counts as BOTH firing, so a malformed
-        # payload can never masquerade as a clean silent pass.
-        return True, True
-    return (_RESET_SIG in ctx), (_TENTH_SIG in ctx)
+        with open(path, "r", encoding="utf-8", errors="replace") as fh:
+            return fh.read()
+    except OSError:
+        return ""
 
 
 def _run_hook(file_path, content=""):
@@ -122,26 +163,38 @@ def _run_hook(file_path, content=""):
 
 
 def _check(label, file_path, expect_reset=None, expect_tenth=None,
-           content="", required=True):
-    """Assert either check independently. `None` = not asserted here, so a case
-    written for one check never silently locks in the other's behaviour."""
+           expect_qb=None, expect_exit=None, content="", required=True):
+    """Assert any check independently. `None` = not asserted here, so a case
+    written for one check never silently locks in another's behaviour.
+
+    `expect_exit` is asserted separately from `expect_qb` on purpose: the EXIT
+    CODE is the whole difference between an advisory and a block, and a check
+    that only matched message text would pass just as happily if the blocking
+    tier silently degraded to exit 0."""
     if not os.path.isfile(file_path):
         msg = f"[{'FAIL' if required else 'SKIP'}] {label}: fixture missing -> {file_path}"
         print(msg)
         return False if required else None
     r = _run_hook(file_path, content=content)
-    reset, tenth = _fired(r)
+    reset, tenth, qb = _fired(r)
     ok = ((expect_reset is None or reset == expect_reset)
-          and (expect_tenth is None or tenth == expect_tenth))
+          and (expect_tenth is None or tenth == expect_tenth)
+          and (expect_qb is None or qb == expect_qb)
+          and (expect_exit is None or r.returncode == expect_exit))
     status = "PASS" if ok else "FAIL"
     want = []
     if expect_reset is not None:
         want.append(f"reset={'FLAG' if expect_reset else 'silent'}")
     if expect_tenth is not None:
         want.append(f"tenth={'FLAG' if expect_tenth else 'silent'}")
+    if expect_qb is not None:
+        want.append(f"qb={'BLOCK' if expect_qb else 'silent'}")
+    if expect_exit is not None:
+        want.append(f"exit={expect_exit}")
     print(f"[{status}] {label}: expected {', '.join(want)}, got "
           f"reset={'FLAG' if reset else 'silent'}, "
-          f"tenth={'FLAG' if tenth else 'silent'} (exit={r.returncode})")
+          f"tenth={'FLAG' if tenth else 'silent'}, "
+          f"qb={'BLOCK' if qb else 'silent'} (exit={r.returncode})")
     if not ok:
         print(f"        stdout={r.stdout!r}")
         print(f"        stderr={r.stderr!r}")
@@ -301,6 +354,232 @@ def section_tenth():
     return results
 
 
+# The forbidden literals are ASSEMBLED FROM FRAGMENTS deliberately. Check C has
+# no extension carve-out, so THIS FILE is linted by the very rule it tests: a
+# bare merged label anywhere in the source would block every future edit of the
+# test that pins it. Building the strings at run time keeps every fixture
+# byte-exact whilst leaving the source itself clean —— and the fact that the
+# workaround is needed at all is the plainest demonstration that the rule really
+# does reach `.py` files (which C13 then asserts outright).
+_QB = "Q" + "B"
+_MERGED = _QB + "1"       # the merged label glossary.md forbids outright
+_MERGED2 = _QB + "2"      # ... and its second index
+_COLON = _QB + ":"        # worse still: not even numbered
+_BARE = _QB               # PERMITTED —— no digit, no colon
+_PLURAL = _QB + "s:"      # PERMITTED —— a plural heading over numbered items
+
+
+def section_qb():
+    """Tests C1-C22 —— nlint's THIRD check, and its first BLOCKING one: the
+    malformed question/blocker label.
+
+    WHY these exist: `universal/glossary.md` defines QB as "question/blocker"
+    and mandates that questions and blockers be raised SEPARATELY and numbered
+    (`Q1`, `Q2`, `B1`, `B2`), never merged into `QB1`/`QB2` —— and an unnumbered
+    `QB` + colon is worse again, since nothing can then be referred to
+    individually. Unlike checks A and B this rule admits NO excusing condition,
+    which is why it may honestly block rather than merely advise.
+
+    The cases pin all four edges at once:
+    * BOTH blocked forms fire, in a `response_` AND in a non-`response_` file
+      (C1-C5). The non-response cases double as the proof that the shim's
+      fast-path gate was widened for this check —— the original filename-only
+      gate would have exited before Python ever ran, silently disarming the only
+      blocking check nlint has.
+    * BOTH permitted lookalikes stay silent, in both file types (C6-C9), since a
+      check that fires on "confirmed no QB" trains the reader to ignore it.
+    * The FALSE-POSITIVE decision is pinned from both directions (C10-C12,
+      C22): a fenced or inline-backticked mention is masked, a line that
+      FORBIDS the form is stating the rule rather than breaking it, and the
+      real `universal/glossary.md` —— which contains the forbidden strings in
+      plain prose because it is the file that defines them —— must never block.
+      That last one is the case a fence mask alone would have failed.
+    * The TIER boundary holds (C18-C19): a block is exit 2 with stderr, an
+      advisory is still exit 0 with JSON, and when both fire the advisories ride
+      along on stderr instead of being swallowed by the exit-2 stdout discard.
+    """
+    results = []
+    with tempfile.TemporaryDirectory() as td:
+
+        def write(name, text):
+            path = os.path.join(td, name)
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(text)
+            return path, text
+
+        # --- C1-C5: every blocked form, in both file types. -----------------
+        p, c = write("notes.md",
+                     "# Notes\n\n- 1.1. %s —— should I proceed?\n" % _MERGED)
+        results.append(_check(
+            "C1 (synthetic) — merged label in a NON-response_ .md — proves the "
+            "shim gate widening (filename gate alone would have skipped it)",
+            p, expect_qb=True, expect_exit=2, content=c))
+
+        p, c = write("qb_response_202501020000.md",
+                     "# Response to nothing.md\n\n- 9.1. %s —— confirm.\n"
+                     % _MERGED)
+        results.append(_check(
+            "C2 (synthetic) — merged label in a `response_`",
+            p, expect_qb=True, expect_exit=2, content=c))
+
+        p, c = write("colon.md",
+                     "# Notes\n\n%s pt 3 —— which option do you want?\n" % _COLON)
+        results.append(_check(
+            "C3 (synthetic) — unnumbered colon form in a NON-response_ .md",
+            p, expect_qb=True, expect_exit=2, content=c))
+
+        p, c = write("colon_response_202501030000.md",
+                     "# Response to nothing.md\n\n- 9.2. %s pt 3 —— confirm.\n"
+                     % _COLON)
+        results.append(_check(
+            "C4 (synthetic) — unnumbered colon form in a `response_`",
+            p, expect_qb=True, expect_exit=2, content=c))
+
+        p, c = write("second.md", "# Notes\n\n- 1.1. %s —— and the other one?\n"
+                                  % _MERGED2)
+        results.append(_check(
+            "C5 (synthetic) — the second index is refused too, not just the "
+            "first",
+            p, expect_qb=True, expect_exit=2, content=c))
+
+        # --- C6-C9: every permitted lookalike, in both file types. ----------
+        p, c = write("bare.md", "# Notes\n\n- 1.1. Confirmed no %s.\n" % _BARE)
+        results.append(_check(
+            "C6 (synthetic) — bare `QB` (no digit, no colon) in a plain .md",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        p, c = write("bare_response_202501040000.md",
+                     "# Response to nothing.md\n\n- 9.3. Confirmed no %s.\n"
+                     % _BARE)
+        results.append(_check(
+            "C7 (synthetic) — bare `QB` in a `response_`",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        p, c = write("plural.md",
+                     "# Notes\n\n- 1.1. Here are %s Q1 then B1.\n" % _PLURAL)
+        results.append(_check(
+            "C8 (synthetic) — `QBs:` introducing a properly-numbered list",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        p, c = write("plural_response_202501050000.md",
+                     "# Response to nothing.md\n\n- 9.4. Here are %s Q1, B1.\n"
+                     % _PLURAL)
+        results.append(_check(
+            "C9 (synthetic) — `QBs:` in a `response_`",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        # --- C10-C12: the false-positive decision, all three hatches. -------
+        p, c = write("fenced.md",
+                     "# Fenced\n\n```\n%s illustrative only\n```\n" % _COLON)
+        results.append(_check(
+            "C10 (synthetic) — a mention inside a ``` fence is masked, exactly "
+            "as it already is for checks A and B",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        p, c = write("inline.md",
+                     "# Doc\n\n- 1.1. The refused shapes are `%s` and `%s`.\n"
+                     % (_MERGED, _COLON))
+        results.append(_check(
+            "C11 (synthetic) — an INLINE backticked mention is masked too "
+            "(a mention is not a use; also the remedy the block message gives)",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        p, c = write("rule.md",
+                     "- %s = question/blocker; raise Q1, Q2 and B1, B2 "
+                     "separately; NEVER label as %s, %s\n"
+                     % (_BARE, _MERGED, _MERGED2))
+        results.append(_check(
+            "C12 (synthetic) — a line that FORBIDS the form is stating the "
+            "rule, not breaching it (same-line prohibition word)",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        # --- C13: no extension carve-out (contrast with A8). ----------------
+        # numbered.md exempts code, so check A stays silent on `.py`.
+        # glossary.md exempts nothing, so check C must NOT inherit that list.
+        p, c = write("script.py", "# %s —— a fixture, not a label\n" % _MERGED)
+        results.append(_check(
+            "C13 (synthetic) — `.py` still blocks: glossary.md grants no "
+            "extension carve-out, unlike numbered.md (cf. A8)",
+            p, expect_qb=True, expect_tenth=False, expect_exit=2, content=c))
+
+        # --- C14-C16: the near-misses the shape deliberately excludes. ------
+        p, c = write("lower.md", "# Notes\n\n- 1.1. qb1 and qb: lowercase.\n")
+        results.append(_check(
+            "C14 (synthetic) — lowercase `qb` is the user's own shorthand for "
+            "the concept, not the label form the rule names",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        p, c = write("token.md", "# Notes\n\n- 1.1. The value S%s is fine.\n"
+                                 % _MERGED)
+        results.append(_check(
+            "C15 (synthetic) — inside a longer token (word boundary required)",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        p, c = write("spaced.md", "# Notes\n\n- 1.1. See %s 1 below.\n" % _BARE)
+        results.append(_check(
+            "C16 (synthetic) — a SPACE before the digit: the digit must follow "
+            "immediately to be that label",
+            p, expect_qb=False, expect_exit=0, content=c))
+
+        # --- C17: the accepted gate gap, pinned so it stays deliberate. -----
+        # Same shape as A9: an unrelated later edit of a file that already
+        # holds the label carries neither trigger, so the shim exits before
+        # Python. Accepted —— the block lands on the write that INTRODUCES the
+        # label, which is the write whose author can still fix it cheaply.
+        p, _ = write("gap.md", "# Gap\n\n- 1.1. %s —— stale.\n" % _MERGED)
+        results.append(_check(
+            "C17 (synthetic) — accepted trade-off: a payload carrying neither "
+            "trigger nor `response_` is gated out, no re-block",
+            p, expect_qb=False, expect_exit=0, content="just an unrelated edit"))
+
+        # --- C18: all THREE checks at once, one file. -----------------------
+        # The blocking tier must not swallow the advisory tier: at exit 2 the
+        # harness discards stdout entirely, so an advisory emitted as JSON
+        # would vanish purely because a different check blocked.
+        write("c18_query.md", "# Reply to c18_response_202412310000.md\n\n"
+                              "## 9\nPlease continue.\n")
+        p, c = write("c18_response_202501060000.md",
+                     "# Response to c18_query.md\n\n"
+                     "## 1. Reset With No Excuse\n"
+                     "- 1.1. Nothing here authorises this reset.\n"
+                     "- 3.10. And a tenth sibling as well.\n"
+                     "- 1.2. %s —— and a merged label to finish.\n" % _MERGED)
+        results.append(_check(
+            "C18 (synthetic) — one file trips ALL THREE: blocks (exit 2) AND "
+            "both advisories still reach the model, on stderr",
+            p, expect_reset=True, expect_tenth=True, expect_qb=True,
+            expect_exit=2, content=c))
+
+        # --- C19: the advisory tier is unchanged by all of this. ------------
+        p, c = write("advisory_only.md",
+                     "# Notes\n\n- 3.9. Ninth.\n- 3.10. Tenth sibling.\n")
+        results.append(_check(
+            "C19 (synthetic) — advisory-only file still exits 0 with JSON: "
+            "adding a blocking path changed nothing for checks A and B",
+            p, expect_tenth=True, expect_qb=False, expect_exit=0, content=c))
+
+    # --- C20-C22: REAL repo history. ---------------------------------------
+    # coding.md: "mine historical/real data for fixtures". C20 and C21 are
+    # breaches CC genuinely wrote before this check existed; C22 is the file
+    # that DEFINES the rule and states the forbidden strings in plain prose,
+    # which is exactly why a code-fence mask alone could never have sufficed.
+    results.append(_check(
+        "C20 (REAL) — historical response containing an unnumbered `QB:` label",
+        REAL_QB_COLON_BREACH, expect_qb=True, expect_exit=2))
+
+    results.append(_check(
+        "C21 (REAL) — historical response containing a merged `QB1` label",
+        REAL_QB_MERGED_BREACH, expect_qb=True, expect_exit=2))
+
+    results.append(_check(
+        "C22 (REAL) — `universal/glossary.md`, the file that DEFINES the rule "
+        "in unfenced prose, must never be blocked by it",
+        REAL_RULE_DEFINING_FILE, expect_qb=False, expect_exit=0,
+        content=_file_text(REAL_RULE_DEFINING_FILE)))
+
+    return results
+
+
 def main():
     results = []
 
@@ -379,6 +658,7 @@ def main():
     ))
 
     results.extend(section_tenth())
+    results.extend(section_qb())
 
     results = [r for r in results if r is not None]
     passed = sum(1 for r in results if r)

@@ -71,3 +71,38 @@
 - 77.1. Three of my own errors in one turn (§68.5–68.6, §70.1, §71.2), and all three share a shape: I argued from a model of the system instead of measuring it. One `GetFileInfo` would have settled the DA/DC question before I pushed back on you.
 - 77.2. §70 is the one that stings —— I wrote a skill whose entire purpose is "read the sub-items too", then missed a sub-item.
 - 77.3. The push ruling is the right call and I should have reached it myself: a security judgement that ignores the owner's actual threat model is not caution, it is friction.
+
+## 78. Sprint Report (202607290430–202607290500) · ran `~`30m
+
+### 78.1. Done
+- 78.1.1. FOF: 6 SAs, 0 failures. 12 regression suites now green (was 10).
+- 78.1.2. `cscpt/DADC.py` built and LIVE —— preserves Date Added AND Date Created, everywhere, no scope. `date_added.py` voided.
+- 78.1.3. `otg_sync.py` moved to `cscpt/` and renamed; `.sync/` now holds only the voided predecessor and is retired.
+- 78.1.4. nlint gained the QB rule (its first BLOCKING check); clint's log now self-prunes.
+- 78.1.5. Reverts done (`personal_bg`/`career_bg`), backlog FOF entry cleared, `m2.md` tightened, targeted backup re-mirror documented.
+- 78.1.6. `queued_queries` file relocated under the Move Rule; §8.5 lesson encoded as an enforcement principle.
+
+### 78.2. ⚠️ A Live Breakage I Caused and Fixed
+- 78.2.1. Voiding `date_added.py` left the two hook registrations pointing at a missing file —— every Edit began failing with a hook error.
+- 78.2.2. Caught it the moment my next edit failed, re-pointed both to `DADC.py`, and verified live: `.gitignore` kept its true Date Created (25/07) through an edit today, which the OLD script could never have done outside `sessions/`.
+- 78.2.3. Also completed the SA's mandated follow-ups: the reference JSON, the backup snapshot, the `hook_guide` table, the README entry, and a `mirror.sh sync` (now reports in-sync).
+
+### 78.3. ⚠️ re 73 —— Push: My Framing Was Wrong Too
+- 78.3.1. I told you Auto was the gate. Measured reality: 111 raw `git push` calls, 105 succeeded. Only TWO were genuine classifier denials —— a 1.8% base rate.
+- 78.3.2. So §9.05 already worked `~`98% of the time. The two denials were content judgements, one naming your supervisor's real name and university email in a public-repo commit.
+- 78.3.3. Fix applied per your ruling: narrow allow-rules (`git push`, `commit`, `add`, `status`, and the read-only inspectors). Documentation is explicit that an allow-matched command resolves BEFORE the classifier is consulted.
+- 78.3.4. Deliberately NOT `Bash(git *)` —— git executes arbitrary code via aliases and hooks, and auto mode DROPS broad execution rules on entry, so a wide rule would be both unsafe and inert.
+- 78.3.5. Honest limit: verified from documentation and the 105/111 record, NOT by reproducing a content denial —— which would require actually pushing third-party personal data to a public repo. I will not engineer that test.
+
+### 78.4. Assumed
+- 78.4.1. ⚠️ Applied the permission change on the strength of your §65.2 instruction. The SA flagged that a permission-config change normally wants a fresh yes; I judged your ruling explicit enough. Overturn if you wanted a separate confirmation.
+- 78.4.2. Placed the allow-rules in the PROJECT settings, since permissions (unlike hooks) are honoured there —— the existing sync rule proves it.
+
+### 78.5. Interruptions
+- 78.5.1. ONE, and it was my fault. I judged an SA stalled and nudged it; it had not stalled, and the nudge spawned a DUPLICATE writer on the same files.
+- 78.5.2. No damage —— the resumed agent detected the second writer, refused to write, and reported instead. That refusal is the only reason there was nothing to reconcile.
+- 78.5.3. Lesson: I inferred "stalled" from a quiet transcript rather than measuring. Four minutes of silence is not evidence of death.
+
+### 78.6. Open
+- 78.6.1. 🟡 §78.4.1 —— confirm the permission change stands.
+- 78.6.2. 🟢 `.sync/` and the voided files await your deletion.

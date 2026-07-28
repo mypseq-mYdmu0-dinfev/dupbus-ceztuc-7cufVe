@@ -28,7 +28,15 @@ after a #close). This test pins:
      same line is clean in this repo; and sibling repos under `GitHub/` are NOT
      dragged into that rule;
   G. every fail-safe path still exits 0 (malformed payload, out-of-scope,
-     missing transcript).
+     missing transcript); and
+  H. the diagnostic log SELF-PRUNES -- it used to grow one line per invocation
+     forever, so it is now capped at a recent window. H pins all four things
+     that cap has to be at once: bounded (never past the high-water mark),
+     newest-first (the line written this very invocation is never the casualty
+     of its own prune), non-eager (a log under the mark is left alone), and
+     utterly fail-safe -- a prune that CANNOT run must leave the log intact and
+     the turn unaffected, which H6 proves by making the temp file
+     uncreatable and checking the appended line survives anyway.
 
 It drives the REAL registered command from ~/.claude/settings.json
 (`python3 .../cscpt/clint.py`, Stop hook) with synthesised payloads and
@@ -408,6 +416,147 @@ def section_failsafe(tmp):
     _check("empty stdin", _run(None, log, raw=""), 0, "no_stdin")
 
 
+# --- H. the diagnostic log self-prunes -------------------------------------
+
+def _prune_consts():
+    """The three retention numbers, read from clint.py itself.
+
+    Every OTHER assertion in this file goes through the real subprocess and
+    imports nothing, deliberately. These are the one exception, and only
+    because they are CONSTANTS, not behaviour: hard-coding 1000/800 here would
+    let the test and the script drift apart silently, so that a retuned cap
+    would still "pass" whilst asserting the wrong bound entirely."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("_clint_consts", CLINT)
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    return (mod._LOG_MAX_LINES, mod._LOG_KEEP_LINES,
+            mod._LOG_MIN_BYTES_PER_LINE)
+
+
+def _prefill(path, n):
+    """Write `n` realistic, already-aged records, each individually
+    identifiable so the test can prove WHICH ones survived a prune rather than
+    merely counting them."""
+    with open(path, "w", encoding="utf-8") as fh:
+        for i in range(n):
+            fh.write("2026-01-01T%02d:%02d:%02d\tsession=fill%04d\tpid=pid-FILL"
+                     "\tmode=repo\taction=clean\tlines=0\tfirst=filler-%06d\n"
+                     % (i // 3600 % 24, i // 60 % 60, i % 60, i % 10000, i))
+
+
+def section_prune(tmp):
+    print("\n--- H. log retention: bounded, newest kept, never fatal ---")
+    max_lines, keep_lines, min_bytes = _prune_consts()
+    tp = os.path.join(tmp, "H.jsonl")
+    # A clean turn: the prune must be exercised on the ordinary path, not only
+    # on a breach, since the ordinary path is what runs on almost every turn.
+    _write_transcript(tp, [_user("go"), _assistant("✅ `cscpt/clint.py`")])
+
+    # --- H1-H4: over the mark -> prune, keeping the NEWEST window. ----------
+    d1 = os.path.join(tmp, "H1")
+    os.makedirs(d1)
+    log = os.path.join(d1, "H1.log")
+    over = max_lines + 300
+    _prefill(log, over)
+    code, _, _ = _run(_payload(tp), log)
+    lines = _log_lines(log)
+    blob = "\n".join(lines)
+
+    _record("H1 bounded: %d pre-existing + 1 new -> %d lines (cap %d, keep %d)"
+            % (over, len(lines), max_lines, keep_lines),
+            code == 0 and len(lines) == keep_lines,
+            "exit=%s len=%d" % (code, len(lines)))
+    _record("H2 the line written THIS invocation is the last one, never a "
+            "casualty of its own prune",
+            bool(lines) and _action(lines[-1]) == "clean",
+            "last=%r" % (lines[-1] if lines else ""))
+    _record("H3 newest history kept, oldest dropped",
+            ("filler-%06d" % (over - 1)) in blob
+            and "filler-000000" not in blob,
+            "newest_present=%s oldest_present=%s"
+            % (("filler-%06d" % (over - 1)) in blob, "filler-000000" in blob))
+    _record("H4 no temp file left behind after a successful prune",
+            sorted(os.listdir(d1)) == ["H1.log"],
+            "dir=%r" % sorted(os.listdir(d1)))
+
+    # --- H5: under the mark -> left completely alone. -----------------------
+    # An eager prune would throw away history that is still inside the window,
+    # and would pay the rewrite on every turn instead of one in two hundred.
+    d2 = os.path.join(tmp, "H2")
+    os.makedirs(d2)
+    log2 = os.path.join(d2, "H2.log")
+    under = max_lines - 5
+    _prefill(log2, under)
+    _run(_payload(tp), log2)
+    lines2 = _log_lines(log2)
+    _record("H5 under the mark: %d + 1 -> %d lines, oldest still present"
+            % (under, len(lines2)),
+            len(lines2) == under + 1
+            and "filler-000000" in "\n".join(lines2),
+            "len=%d" % len(lines2))
+
+    # --- H6: repeated invocations stay bounded, run after run. --------------
+    d3 = os.path.join(tmp, "H3")
+    os.makedirs(d3)
+    log3 = os.path.join(d3, "H3.log")
+    _prefill(log3, over)
+    counts = []
+    for _ in range(4):
+        _run(_payload(tp), log3)
+        counts.append(len(_log_lines(log3)))
+    _record("H6 stays bounded across repeated turns: %s (all <= %d)"
+            % (counts, max_lines),
+            all(c <= max_lines for c in counts) and counts[0] == keep_lines,
+            "counts=%s" % counts)
+
+    # --- H7: the prune CANNOT run -> nothing breaks, nothing is lost. -------
+    # Simulated by making the log's directory unwritable: appending to an
+    # existing file still succeeds (that needs write permission on the FILE),
+    # whilst creating the sibling temp file fails outright. That is exactly the
+    # surgical failure to test -- the append must land, the prune must give up
+    # silently, and the turn's verdict must be completely unaffected.
+    d4 = os.path.join(tmp, "H4")
+    os.makedirs(d4)
+    log4 = os.path.join(d4, "H4.log")
+    _prefill(log4, over)
+    os.chmod(d4, 0o500)
+    try:
+        code4, _, _ = _run(_payload(tp), log4)
+        lines4 = _log_lines(log4)
+        entries4 = sorted(os.listdir(d4))
+    finally:
+        os.chmod(d4, 0o700)
+    _record("H7 prune failure is survivable: verdict still exit 0",
+            code4 == 0, "exit=%s" % code4)
+    _record("H8 prune failure loses nothing: %d + 1 -> %d lines, log intact"
+            % (over, len(lines4)),
+            len(lines4) == over + 1, "len=%d" % len(lines4))
+    _record("H9 prune failure still appended THIS turn's line",
+            bool(lines4) and _action(lines4[-1]) == "clean",
+            "last=%r" % (lines4[-1] if lines4 else ""))
+    _record("H10 a failed prune leaves no debris",
+            entries4 == ["H4.log"], "dir=%r" % entries4)
+
+    # --- H11: the cheap pre-gate's assumption, pinned. ----------------------
+    # The prune skips reading the file when its SIZE proves it cannot hold too
+    # many lines, which is only valid whilst every real record is at least
+    # `_LOG_MIN_BYTES_PER_LINE` long. If the record format ever shrinks below
+    # that floor, prunes would be skipped and the log would grow unbounded
+    # again -- silently. So the floor is measured against every line this suite
+    # actually made clint write, never assumed.
+    real = []
+    for name in sorted(os.listdir(tmp)):
+        if name.endswith(".log"):           # sections A-G only: clint-written
+            real.extend(_log_lines(os.path.join(tmp, name)))
+    shortest = min((len(ln.encode("utf-8")) + 1 for ln in real), default=0)
+    _record("H11 every real record is >= the %d-byte floor the pre-gate "
+            "assumes (shortest seen: %d bytes, over %d records)"
+            % (min_bytes, shortest, len(real)),
+            bool(real) and shortest >= min_bytes,
+            "shortest=%d records=%d" % (shortest, len(real)))
+
+
 def main():
     print("clint.py ALWAYS-RED regression test")
     print("target: %s" % CLINT)
@@ -419,6 +568,9 @@ def main():
         section_api_error(tmp)
         section_reader(tmp)
         section_failsafe(tmp)
+        # LAST on purpose: H11 measures the shortest record this suite made
+        # clint write, so every other section must have run first.
+        section_prune(tmp)
 
         print("\n--- resulting log lines (all sections, in order) ---")
         for name in sorted(os.listdir(tmp)):

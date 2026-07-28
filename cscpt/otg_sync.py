@@ -1,5 +1,45 @@
 #!/usr/bin/env python3
-# #sync — refresh OTG SHA-permalinks. See universal/sync.md. Rewrites a scope's index so every file URL is pinned to that file's last-commit SHA (immutable -> never served stale by CWI/CDN caches), then pins the index's own permalink inside the prefs file. Commits + pushes ONLY those two control files; content files must already be committed+pushed (else it aborts untouched). Reads the content of ONLY the 2 control files — every listed file uses git metadata only, never opened.
+"""
+otg_sync.py —— `#sync`: OTG index SHA-permalink refresher. RUN it, don't read it.
+
+=== NON-CCSIM —— start of all you need to RUN it ===
+WHAT: pins every raw-GitHub file URL in an OTG index to that file's last-commit
+SHA (immutable -> never stale), then pins the index's own permalink inside its
+prefs file. Commits + pushes ONLY those 2 control files.
+
+CLI   python3 cscpt/otg_sync.py           # all scopes
+      python3 cscpt/otg_sync.py <scope>   # e.g. cp/career
+
+* Aborts untouched if the index, prefs, or any listed file has uncommitted
+  changes, or names a path missing from the working tree.
+* Opens only the 2 control files; listed files use git metadata alone.
+* Cloud (Linux): pushes to `otg-sync`, not main.
+* Protocol: `universal/sync.md`.
+=== NON-CCSIM —— end of all you need to RUN it ===
+
+=== CCSIM —— only if you EDIT this file (NOT needed to run it) ===
+* WHY IT EXISTS: CWI/OTGC caches raw-GitHub URLs (web-fetch `~`15 min + GH CDN),
+  so a `/main/` URL gets served stale. A commit-SHA permalink is unique and
+  immutable, so it can never be. Per-file SHAs mean only files that actually
+  changed get a new URL —— minimal diff, minimal tokens.
+* WHY THE NAME AND THE FOLDER: it used to be `.sync/sync.py`. "sync" names no
+  job —— this one refreshes the ON-THE-GO index's commit-SHA permalinks, which
+  `otg_sync` says out loud. It also lived alone in a second, near-empty script
+  folder; every CC script now sits in `cscpt/`, so there is one place to look
+  and one README indexing it.
+* WHY ROOT IS ANCHORED TO `__file__`: see the comment at ROOT below. It is the
+  one assumption a future relocation of this file can break silently.
+* GUARDED PUSH, three independent layers (any one alone is not enough): the
+  permission rule auto-approves only `python3 cscpt/otg_sync.py`; the script
+  stages exactly the 2 control paths (never `git add -A`); and
+  `.githooks/pre-commit` rejects any other staged path whilst the
+  `.git/SYNC_ACTIVE` marker exists. The marker is removed in a `finally`, so a
+  crash mid-run cannot leave the repo in a commit-blocking state.
+* NEVER opens, edits, or `touch`es a listed content file's body or mtime.
+* Scopes are auto-discovered, never hard-coded —— adding a CP with a
+  `CP_index_otg.md` folds it in automatically (`cp/archive/` excluded: retired
+  CPs are not kept OTG-fresh).
+"""
 import sys, subprocess, os, re, platform
 
 # Cloud CC (Linux) can't push to main -> push to one fixed branch; SHA permalinks
@@ -14,8 +54,20 @@ PREFIX = f"https://raw.githubusercontent.com/{OWNER}/{REPO}/"
 # ref group is optional so bare URLs (no SHA/branch) are also caught and pinned
 URL_RE = re.compile(re.escape(PREFIX) + r"(?:([0-9a-fA-F]{7,40}|main)/)?(\S+)")
 
-ROOT = subprocess.run(["git", "rev-parse", "--show-toplevel"],
-                      capture_output=True, text=True).stdout.strip()
+# ROOT is anchored to THIS FILE, never to the caller's working directory. The
+# script lives at <repo>/cscpt/, so the repo root is its parent's parent, and
+# `realpath` first so invocation through a symlink still lands inside the repo.
+# A CWD-derived root (`git rev-parse --show-toplevel` with no cwd, which this
+# used to use) silently resolves to whatever repo the caller happens to be
+# standing in, or to "" outside one —— and this script COMMITS AND PUSHES, so a
+# wrong root is not a wrong answer, it is a wrong publish. The check below is
+# therefore load-bearing: move this file to another depth and it fails loudly
+# at once, instead of quietly operating on the wrong directory.
+ROOT = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
+if not os.path.exists(os.path.join(ROOT, ".git")):
+    sys.exit(f"ABORT: expected the repo root at '{ROOT}' (this script's parent "
+             f"directory), but there is no .git there. This script must live "
+             f"one level below the repo root. Nothing was changed.")
 
 
 def git_out(*a):

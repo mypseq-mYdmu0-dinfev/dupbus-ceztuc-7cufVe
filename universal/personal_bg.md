@@ -1,67 +1,35 @@
 # Personal Background —— Culous Yu
 
-## Which Section Do I Need?
-
-*Every section below stands alone —— read only the one that answers the question in front of you, not the whole file. The bold anchors are the opening words of the real headings, so they are directly searchable.*
-
-| If the Question in Front of You Is About… | Read |
-|---|---|
-| spelling, pronouncing, or mis-transcribing his name; his MBTI, birth year, or star sign; how tidy or climate-fussy he is | **Who He Is** |
-| where he lives, where he has lived, his visa, or how he gets anywhere | **Where He Lives** |
-| how to contact him, how to pitch an explanation, or how much coding to hand him | **Reaching Him** |
-| his house, its rooms, appliances, lighting, or any of his smart-home gear | **His Home** |
-| his desk, his monitors, or which screen he keeps a given thing on | **His Workstation** |
-| which Mac, phone, watch, or earbuds he is on, and their age or disk health | **Which Device He Is On** |
-| choosing an app, a file format, or a document type to give him | **Choosing Software** |
-| recommending a film, a genre, a car, an interest, or anything for leisure | **Recommending a Film** |
-| his investments, holdings, or broker | **His Investing** |
-| his qualifications, degrees, languages, or headline selling points | **His Professional Background** |
-| his past jobs, employers, titles, or dates | **His Employment History** |
-| his wife, parents, brother, or dog | **His Family** |
-
-Any shorthand you meet below (e.g. WS, WSM, OTGM, OTGD, TrV, i13m) is expanded in `universal/glossary.md` —— kept there rather than repeated here so there is one source of truth and nothing drifts.
-
----
-
-## Who He Is —— Name, Pronunciation, Particulars, and Standing Traits
+## Personal
 
 - First Name: Culous; Last Name: Yu; Nickname: Cuss
 - **Name pronunciation:** "KUH-luhz you"; similar to "Cullus"
 - **Voice transcription:** often incorrectly as Kudos, Kulios, Culios, Culius, Kulis, Kulos, Kujas, Curtis, etc.
 - INTJ/ENTJ-A, male, 1992, Libra, Year of Monkey
-- OCD-level neat freak
-- Very sensitive to temperature/humidity
-
----
-
-## Where He Lives, His Visa, and How He Gets Around
-
 - Lived in BHX/HKG; worked across Europe
 - In SYD since FEB 2023; now lives in Merrylands, NSW on SC485 visa
 - No public transport; drives white Camry SL Hybrid (2022)
-
----
-
-## Reaching Him, and How to Explain or Hand Over Work
-
-- Strongly avoids phone calls (meeting=acceptable but not preferred); prefers text/email
+- Rich bg in business, UI/UX, data analytics, marketing, multimedia, copywriting
+- Lamborghini die-hard fan, Ferrari hater, dislike Porsche/BMW/Honda
 - Enjoys programming but has limited knowledge in manual coding, with needs for your assistance
-- When learning, prefers analogies; only uses Mac so always refer to Mac version apps and consider features/limitations
+- Strongly avoids phone calls (meeting=acceptable but not preferred); prefers text/email
+- Investing mainly GLD, SPY, XOM, MSTR, Mag 7 with IBKR via TrV
+- Owns 100+ IoT across Mi Home, Grid Connect, SwitchBot, Tuya, Kogan; most centralised with Google Home and SmartThings
+- Daily use Mac Mini M2 Pro (WSM) & sometimes MacBook Air M1 (OTGM)
 
 ---
 
-## His Home —— Rooms, Appliances, and the Smart-Home Fleet
+## Home
 
 - Two-storey townhouse in strata with strict rules and annoying neighbours (frequent email complaints)
 - Ground Floor: small single garage with manual counterweight door, square living/dining room with 75" Samsung TV (TU8000), kitchen with 2 dishwashers (1 portable+1 built-in), laundry/toilet with 2-in-1 washer/dryer, small backyard
 - Upper Floor: bathroom with bath & shower tub, WS with massager, bedroom with queen bed
 - MagSafe chargers/stands everywhere: sofa, toilet, bathroom, WS, bedside
 - All lightings are Mi Home ceiling fixtures/bulbs, fully automated with 10+ motion sensors & iPhone GPS-powered home/away routines
-- Owns 100+ IoT across Mi Home, Grid Connect, SwitchBot, Tuya, Kogan; most centralised with Google Home and SmartThings
 
 ---
 
-## His Workstation (WS) —— Which of the Four Displays Does What
+## Workstation (WS)
 
 UPS-powered quad-display setup:
 
@@ -74,9 +42,8 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ---
 
-## Which Device He Is On —— Macs, Phone, Watch, and Earbuds
+## Devices
 
-- Daily use Mac Mini M2 Pro (WSM) & sometimes MacBook Air M1 (OTGM)
 - iPhone 13 mini (i13m/OTGD): daily since 20250303
 - Samsung Fold2 (1768*2208px): retired; occasionally use for business meetings/job interviews
 - Mi Watch S4 mini (41mm, silvery titanium bracelet): daily, mainly for notifications/workouts
@@ -92,10 +59,18 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ---
 
-## Choosing Software, File Formats, or Documents for Him
+## Preferences
 
+- OCD-level neat freak
+- Very sensitive to temperature/humidity
 - Strongly avoids MSFT products (e.g. use Numbers instead of Excel)
 - Hates physical books/papers; prefers digital format (PDF, Kindle)
+- Fav entertainment: film, racing, hypercar (e.g. Egoista, Speedtail)
+- Fav directors: Christopher Nolan & Wong Kar-wai
+- Fav genre (in order, w/examples): sci-fi esp. conceptual (Interstellar, Inception, Tenet, Dune, The Mandela Effect), racing (Rush 2013, Ford v Ferrari 2019, Gran Turismo 2023, F1 the Movie 2025), action (Deadpool, Jumanji, Mad Max, Bullet Train, Hobbs & Shaw, John Wick)
+- Interested in colossal mega(infra)structure/mega-scale projects (e.g. The Line of NEOM), space (e.g. black hole, multiverse, higher dimensions, NASA, SpaceX, Starlink, Boeing, Lockheed Martin)
+- Easily bored by "athletic" (in British sense) activities (e.g. workout, sports, except motorsports) and "poor" hobbies (what doesn't lead you to affluence, esp. toxic/addictive ones, like gaming, anime/cartoon, pop stars)
+- When learning, prefers analogies; only uses Mac so always refer to Mac version apps and consider features/limitations
 - Default macOS/iOS/iWork unless explicitly told `i'm suffering` (=using MSFT products)
   - ✅ .pages; ❌ .doc
   - ✅ .numbers; ❌ .xls
@@ -104,26 +79,8 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ---
 
-## Recommending a Film, a Car, an Interest, or Anything for Leisure
+## Profession
 
-- Lamborghini die-hard fan, Ferrari hater, dislike Porsche/BMW/Honda
-- Fav entertainment: film, racing, hypercar (e.g. Egoista, Speedtail)
-- Fav directors: Christopher Nolan & Wong Kar-wai
-- Fav genre (in order, w/examples): sci-fi esp. conceptual (Interstellar, Inception, Tenet, Dune, The Mandela Effect), racing (Rush 2013, Ford v Ferrari 2019, Gran Turismo 2023, F1 the Movie 2025), action (Deadpool, Jumanji, Mad Max, Bullet Train, Hobbs & Shaw, John Wick)
-- Interested in colossal mega(infra)structure/mega-scale projects (e.g. The Line of NEOM), space (e.g. black hole, multiverse, higher dimensions, NASA, SpaceX, Starlink, Boeing, Lockheed Martin)
-- Easily bored by "athletic" (in British sense) activities (e.g. workout, sports, except motorsports) and "poor" hobbies (what doesn't lead you to affluence, esp. toxic/addictive ones, like gaming, anime/cartoon, pop stars)
-
----
-
-## His Investing —— What He Holds and Where
-
-- Investing mainly GLD, SPY, XOM, MSTR, Mag 7 with IBKR via TrV
-
----
-
-## His Professional Background —— Experience, Degrees, and Selling Points
-
-- Rich bg in business, UI/UX, data analytics, marketing, multimedia, copywriting
 - 16⁺ yr (2010~) int'l exp in project & content mgt; 18⁺ yr (2008~) in paid writing
 - **Master of HCI** (aka IxD) with sub-major in Data Analytics at UTS —— Dean's List recipient, graduated with `GPA 6.63/7 (HD)`; ceremony 01/06/2026
 - **MBA at UoL** (online) —— final module due 23/11/2026 (UK time); free of all studies on 25/11/2026 (SYD time); ceremony TBC 2027
@@ -136,7 +93,7 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ---
 
-## His Employment History —— Employers, Titles, and Dates
+## Employment History
 
 **01/2025~now —— Board Member & Advisor (Strategy & Operations), KE**
 - Pro bono, remote
@@ -159,7 +116,7 @@ Desks arranged in L-shape (120×60cm sit-stand + 200×60cm normal).
 
 ---
 
-## His Family —— Wife, Parents, Brother, and Dog
+## Family
 
 - **Wife:** First Name: Ka Kei; Last Name: Hui; English/casual name: Cathy; Nickname (between us, usable by you): KK. INFJ/ISFJ, 1996, Gemini, Year of Rat. Pastry Chef since 2018, CDP since 2023. Speaks English, Cantonese, Mandarin, Japanese. In SYD since SEP 2024. On SC485 visa.
 - **Pet:** Luppy, female neutered Shiba, born 01/01/2019, bought 06/04/2019, in SYD since AUG 2024. Chipped ISO11784.
