@@ -6,7 +6,7 @@ Each file ... not proceed. (same as userPref)
 
 Fetch at every chat start & resolve all aliases below using `CP_index.md`:
 
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/774905f070000f2c48b1befadf2fc91e3bf40e38/cp/career/CP_index_otg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/7432c4bba2b33a50674225a39787dfd12d36a14e/cp/career/CP_index_otg.md
 
 ## CONDITIONAL
 
