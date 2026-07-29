@@ -420,7 +420,7 @@ _BREACH = {
                 "Avoid further prose. Do not drop what you meant to say —— "
                 "carry it into this turn's `response_` file."),
     MODE_READER: ("Chat-text breach (GitHub/ CLAUDE.md): this session must "
-                  "emit NO chat text at all. End the turn silently."),
+                  "emit NO chat text at all. Finish the turn silently."),
 }
 
 # Known system-injected wrapper tags Claude Code appends as `type: "user"`
