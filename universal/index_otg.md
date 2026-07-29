@@ -4,7 +4,7 @@
 ---
 
 glossary.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a17d1ce8d872a19a9a50788a1e278a30ca8dc4a3/universal/glossary.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/1f09243f924d6bc0b1add669e31ad51dc889e92f/universal/glossary.md
 
 rules.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a17d1ce8d872a19a9a50788a1e278a30ca8dc4a3/universal/rules_otg.md
@@ -13,7 +13,7 @@ google.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/02c6958a2f03b0fdbead506b9f464ce16ea0bbd7/universal/google.md
 
 personal_bg.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a17d1ce8d872a19a9a50788a1e278a30ca8dc4a3/universal/personal_bg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fc0e6976b212098c2efc46ec939cbcab21f63e8f/universal/personal_bg.md
 
 cic.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/8b88b2202d3c8a1782f79011ad6f0be7e67e15b4/universal/cic.md
@@ -28,13 +28,13 @@ replace.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a9c82b23675ac93069eaa17aff2270e15125d8c2/universal/replace.md
 
 numbered.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/c890afafa6016e0f9e696ef329570c010a63624f/universal/numbered.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/1f09243f924d6bc0b1add669e31ad51dc889e92f/universal/numbered.md
 
 plan.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/f8bfe18a1bd80cf795e6efb787fe5d1dfd2c3b29/universal/plan.md
 
 career_bg.md
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a17d1ce8d872a19a9a50788a1e278a30ca8dc4a3/cp/career/career_bg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/fc0e6976b212098c2efc46ec939cbcab21f63e8f/cp/career/career_bg.md
 
 traveller.md
 https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/a2584b9fb8ad9bf11b00e99dbe0b5e2ab36f805a/universal/traveller.md
