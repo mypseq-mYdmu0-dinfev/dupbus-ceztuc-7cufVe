@@ -30,7 +30,7 @@ Career background; read files below for details if needed.
 
 ---
 
-## Prompts
+## Protocols
 
 gcl.md
 `career/gcl.md`
@@ -128,3 +128,9 @@ Pre-AU career narrative, personal profile, and 3 key STAR incidents.
 "MBA Learnings"
 `career/MGTK737_Theories_Frameworks.txt`
 Essence of "Developing as a Manager and Leader" module (Grade A).
+
+---
+
+## Special
+
+My expected salary is fully codified in AJAP. To retrieve the latest numbers, extract the line containing `SALARY_STANDARD` + 2 lines above/below it in `AJAP_repo/scripts/config.py`.
