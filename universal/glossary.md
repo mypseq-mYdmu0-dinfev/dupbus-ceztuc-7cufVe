@@ -48,7 +48,7 @@
 - IB/IBKR = Interactive Brokers
 - KE = Karma Effect (Ltd.)
 - Mi = Xiaomi
-- VS/VSC = Visual Studio Code, my primary code editor with venv
+- VS/VSC = Visual Studio Code, my default
 - `<br>` = line break, NOT displayed text
 - Revert = edit a previous msg, usually practiced when we're processing super large files. e.g. when analysing multiple zoom transcripts, I prompt you on 1st one→create synthesis→save to CP→revert to handle 2nd one→loop in order to preserve chat capacity. Bottomline: When I said I reverted, something was done rear to that msg
 - CP = Claude Project; each CP may involve multiple projects and vice versa

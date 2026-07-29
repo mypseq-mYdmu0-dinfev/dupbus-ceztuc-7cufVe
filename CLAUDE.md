@@ -260,7 +260,7 @@
   - 8.3.3. `_otg` suffix: OTG variant; if no `_cc`/non-suffixed variant in same folder, it's OTG-only
   - 8.3.4. `CP_instr.md`: for OTG only
 - 8.4. Filename suffix usually indicates variant; e.g. `CP_index_cc.md` = for CC (you)
-- 8.5. Whenever accessing any folder (except `universal/` & `sessions/`), actively scan for:
+- 8.5. When accessing ANY folder, you MUST ACTIVELY scan for existence of:
   - 8.5.1. `README.md` —— read it (BEFORE its CLAUDE.md); alert if contradicting user instr
   - 8.5.2. `CP_index_cc.md` —— indicates CP (follow §6)
 - 8.6. Memory (`~/.claude/projects/*/memory/`):

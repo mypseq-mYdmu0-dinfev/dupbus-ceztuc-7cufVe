@@ -37,14 +37,14 @@ e.g. 4-level indentation (build up to 5 levels, but only if necessary):
   - If a sub-item would be alone, don't build that level —— include it in the parent instead
   - e.g. In above example, if 1.2.1.2 is not necessary (leaving 1.2.1.1 alone), don't build the 4th level —— just include 1.2.1.1 in 1.2.1
 - If a sub-item level is established, ensure its parent exists; e.g. 1.2.1.1 prereq = 1.2.1
-- If 2nd level (e.g. 1.1, 1.2, 2.1, 2.2) is established for a pt, its 1st level (e.g. 1, 2) becomes a mere heading & MUST be ≤10w; so I'd either reply the whole pt (e.g. "re 1: ...") OR particular sub-items (e.g. "re 1.1: ..."), never both (e.g. "re 1: ...; re 1.1: ...")
+- If 2nd level (e.g. 1.1, 1.2, 2.1, 2.2) is established for a pt, its 1st level (e.g. 1, 2) becomes a mere headline & MUST be ≤10w; so I'd either reply the whole pt (e.g. "re 1: ...") OR particular sub-items (e.g. "re 1.1: ..."), never both (e.g. "re 1: ...; re 1.1: ...")
 - MUST use **hardcoded manual numbering**, NEVER **markdown auto-numbering**
 - Strictly ensure NO sentence/bullet/line unnumbered e.g. `- xxx...`
 - Each number must have a dot `.` between it and the text; e.g. `1.1. xxx` instead of `1.1 xxx`
 - The dot is not needed when referring to it; e.g. "Item 1.1 detailed ..."
-- Labelling a section of pts w/ headings (`##`/`###`/etc.) is encouraged for readability
+- Labelling a group of pts w/ heading (`##`/`###`/etc.) is encouraged for readability
 - Heading may also be a numbered pt (e.g. § Example List's `1. xxx...` → `## 1. xxx...`), BUT:
-  - The heading (now the 1st level pt) MUST be ≤5w (due to larger font); AND
+  - The heading MUST be ≤5w & 1st level ONLY (✅ `## [N]. xxx...` | ❌ `## [N].[N]. xxx...`); AND
   - Its sub-pts (even 2nd level) MUST remain bulleted (e.g. § Example List's `- 1.1. xxx...` kept)
 - NEVER stripe sub-pts' bullets (e.g. `1.1. xxx...`), which renders them into long line (unreadable)
 - NEVER create `[N].0` (e.g. 1.0, 1.1.0), instead make it `[N].1` (e.g. 1.1, 1.1.1)
