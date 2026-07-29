@@ -51,3 +51,33 @@
 ## 88. Thoughts
 - 88.1. §85 is the one that matters. Reporting an intention in the past tense is a specific and corrosive failure —— it makes a gap invisible, because we both then believe it is closed.
 - 88.2. Your §69 catch is subtle and good: a linter that only says "stop" quietly trains me to discard the thing I was trying to tell you. Enforcement without a remedy destroys information.
+
+## 89. Side Task —— `~/Library/Mail` (⚠️ do NOT `rm -rf` it)
+- 89.1. Your instinct was right on three of four questions, but there is a real trap and it would have cost you data.
+- 89.2. Actual size is 7.0GB, not 10⁺. The System-Settings "Mail" row bundles other paths —— notably a separate 5.3GB Spotlight index that lives OUTSIDE this folder.
+- 89.3. What it is: 3.63GB cached attachments (the real bulk), 2.94GB cached message bodies, 336MB rebuildable index. So attachments are the problem, not the database.
+- 89.4. ⚠️ THE TRAP: one store (`D3622DCB`) is "On My Mac" —— **153 messages that exist on no server anywhere**. 147 Outbox messages spanning 2023–2026, 1 crash-recovered message, and 4 SCHEDULED Send-Later messages that would be silently cancelled.
+- 89.5. ⚠️ WORSE: `/Users/culous/Library` is in Time Machine's exclusion list, so `~/Library/Mail` is in NONE of your backups. The usual "restore from Time Machine" fallback does not exist here. That exclusion looks hand-added, not an Apple default —— worth checking whether you meant it.
+- 89.6. Your four answers: (a) yes, 6.8 of 7.0GB is pure cache and Gmail/Exchange keep the authoritative copy —— all 7 accounts verified IMAP or Exchange, NO POP; (b) yes, mail WOULD be lost —— those 153; (c) yes for the cached part, plus offline search breaks and Spotlight re-indexes for hours; (d) no, macOS never prunes this —— your doubt was correct.
+- 89.7. Recommended: export the "On My Mac" mailboxes first, take a manual copy (Time Machine will not), quit Mail fully, then reclaim. Never delete underneath a running Mail —— it holds the index open with a live write-ahead log.
+- 89.8. To stop regrowth: set Download Attachments to Recent or None per account. All 7 are currently at the unset default, which is why 2018 attachments are still cached. Without this, a rebuild just re-downloads the same 3.63GB.
+
+## 90. Sprint Report (202607291838–202607291855) · ran `~`17m
+- 90.1. FOF: 5 SAs, 0 failures. 12 suites green.
+- 90.2. plint gained the README-FIRST rule (§85) —— reminds once per directory per session; registered for `Read` and probed live.
+- 90.3. clint's block message now REDIRECTS rather than only forbidding (§82.4) —— the intended content must be carried into the `response_`.
+- 90.4. Root c.md gained the §67 boundary note; `otg_sync.py` verified working from its new home (§81) —— all 50 permalinks resolve.
+- 90.5. Caught another STALE suite: `dadc` asserted the voided predecessor still existed, which broke when you deleted it. Fixed to accept either end-state of the Void Rule, as with the two before it. Third time —— the pattern is now unmistakable, and the fix is to stop asserting the presence of a file whose deletion is the owner's half of a two-party rule.
+
+## 91. Minor Task —— Token Accounting (this turn)
+- 91.1. 6 agents (main + 5 SAs), all Opus 5, 72 API calls.
+- 91.2. Components, kept separate because they are not interchangeable: uncached input 134 · output 84,139 · cache-write 1,178,181 · cache-read 11,042,354.
+- 91.3. The figure I would use for your benchmark: **`~`1.26Mn newly-processed tokens** (input + output + cache-write). That is everything the model actually had to read or produce fresh.
+- 91.4. Raw sum of all four components is 12.3Mn, but that double-counts cache reads at full weight and would badly overstate a session limit.
+- 91.5. ⚠️ Honest limit: Anthropic's actual weighting for the 5-hour limit is NOT recorded in the transcripts. If it weights differently —— or counts requests rather than tokens —— the figure is wrong. Treat it as an order-of-magnitude anchor, and calibrate against the ses% you observe rather than trusting it.
+
+## 92. re FYI —— NOT Proceeding to #close
+- 92.1. Your condition was "only if this turn doesn't raise/find new issues". It did, so I am holding.
+- 92.2. The blocker: §89.4/89.5 —— 153 irreplaceable messages with no backup, plus a Time Machine exclusion you may not have intended. That needs your decision before I close a session over it.
+- 92.3. Also open: whether the plint Read-matcher change and the permission rules (§87) stand.
+- 92.4. Say the word and I `#close` next turn.

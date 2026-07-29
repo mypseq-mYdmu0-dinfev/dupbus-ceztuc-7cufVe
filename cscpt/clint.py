@@ -13,8 +13,8 @@ Two rules, picked by the session's working directory (see REPO SCOPE below):
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a Stop hook scanning the main agent's chat text at turn end, BLOCKING
   any impermissible line.
-* IF IT BLOCKS: one forced extra turn, terse reason on stderr. Recast or delete
-  the prose, then end again. EVERY breach blocks.
+* IF IT BLOCKS: one forced extra turn, terse reason on stderr. Recast or move
+  the prose into `response_`, then end again. EVERY breach blocks.
 * PERMITTED: blank lines; a `---`/`***`/`___` divider; each glyph ONLY in the
   declaration it owns —— the 3 I/O glyphs a backticked file list (notes in
   brackets/italics), the blocker glyph a real blocker in ≤5 words, the sentinel
@@ -181,6 +181,22 @@ would teach exactly which prefixes pass and invite gaming by bolting a glyph
 onto prose. For the same reason the message carries NO numeric limit and NO
 breach class: it says what is owed, never how close the last attempt came. The
 precise class is recorded in the log, which the model does not read.
+
+REDIRECT, NOT ONLY REFUSAL: enforcement without a remedy DESTROYS information.
+The agent had something to say, said it in the wrong channel, was told to stop
+—— and then simply swallows it, so a point that may have mattered is lost
+precisely BECAUSE this lint worked. The REPO message therefore also names where
+that content belongs. It costs nothing to obey: root CLAUDE.md §3.1 already
+requires every response to be written to a file, so the turn owes a `response_`
+regardless —— the sentence redirects the content rather than adding work. The
+prohibition is untouched and still stated FIRST; the remedy is appended, never a
+softening, and it stays one sentence because stderr on exit 2 is the ONLY
+channel reaching the model at Stop and a long message is a worse message. It
+adds no glyph, no number and no breach class, so every constraint above holds.
+The READER message deliberately gets NO remedy: that folder's CLAUDE.md forbids
+creating or editing ANY file as well as emitting chat text, so no `response_`
+exists to carry anything into and naming one would instruct a breach of the very
+rule being enforced. There, ending the turn silently IS the whole remedy.
 
 LOG EVERY STAGE: a breach-only log cannot tell "ran this turn and found
 nothing" apart from "the harness never invoked this command" —— an empty log fits
@@ -390,15 +406,19 @@ _BLOCKER_RE = re.compile(
 
 # Fixed, GLYPH-FREE breach messages fed to the model via stderr on exit 2 (see
 # docstring GLYPH-FREE STDERR —— must not name the glyphs, quote any numeric
-# limit, or name the breach class, or it teaches how to game the check). Terse
-# and terminal: tell the model to END the turn, not write more. One per mode,
-# because "emit ONLY the 5 permitted declarations" would be actively wrong
-# advice in a session that owes zero chat text.
+# limit, or name the breach class, or it teaches how to game the check). Terse,
+# and it REDIRECTS as well as forbids: an agent merely told to stop drops what
+# it meant to say, so the REPO message names the file that content belongs in
+# (docstring REDIRECT, NOT ONLY REFUSAL). One per mode, because "emit ONLY the
+# 5 permitted declarations" would be actively wrong advice in a session that
+# owes zero chat text —— and that same session may create no file at all, which
+# is why only the REPO message carries the redirect.
 _BREACH = {
     MODE_REPO: ("Chat-prose breach (root CLAUDE.md §3.2): each declaration "
                 "glyph is reserved for its own declaration type —— emit ONLY "
                 "correctly-formed declarations, never prose behind a glyph. "
-                "Avoid further prose."),
+                "Avoid further prose. Do not drop what you meant to say —— "
+                "carry it into this turn's `response_` file."),
     MODE_READER: ("Chat-text breach (GitHub/ CLAUDE.md): this session must "
                   "emit NO chat text at all. End the turn silently."),
 }

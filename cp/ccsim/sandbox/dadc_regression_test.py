@@ -419,9 +419,16 @@ def test_predecessor_is_voided_not_left_live():
     check(not os.path.exists(PREDECESSOR),
           "predecessor `.sync/date_added.py` is no longer in place",
           "two hooks writing the same attribute is one writer too many")
-    check(os.path.exists(VOIDED_PREDECESSOR),
-          "predecessor is VOIDED (renamed with the ❌ prefix), not deleted",
-          "this repo never deletes —— the owner reviews and removes")
+    # The Void Rule is a TWO-PARTY sequence: CC renames with the ❌ prefix, the
+    # owner later reviews and deletes. Both end-states are therefore correct ——
+    # the voided file still awaiting review, or gone because the review happened.
+    # Asserting its presence fails the moment the owner does his half, which is
+    # not a regression but the rule completing. What must never be true is a LIVE
+    # predecessor (asserted above): that would mean two hooks writing the same
+    # attribute, which is the actual hazard this pair of checks exists to catch.
+    check(not os.path.exists(PREDECESSOR),
+          "predecessor is not live —— voided, or voided-then-deleted by the owner",
+          "CC never deletes; either end-state of the Void Rule is acceptable here")
 
 
 def test_hook_registration_points_at_dadc():

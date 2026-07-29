@@ -1,7 +1,24 @@
 #!/usr/bin/env python3
-"""Regression test for cscpt/plint.py's DELIVERABLE marker list.
+"""Regression test for cscpt/plint.py —— DELIVERABLE marker list (P) and the
+README-first read reminder (R).
 
-WHY this test exists (coding.md: "pin EVERY fixed bug w/ a regression test
+WHY the README cases exist (R1-R11): the standing instruction "on accessing any
+folder, read its README FIRST" was already written down in prose and was still
+skipped —— a file inside a README-bearing folder was read and acted on, and the
+folder's documented procedure was missed. Prose that is not noticed cannot be
+repaired with more prose, so plint gained a read-time rule that names the
+README at the moment of the read. Its ONE load-bearing property is that it
+fires at most ONCE PER FOLDER PER SESSION: reads are the most frequent tool
+call there is, so a per-read reminder would be tuned out inside a single
+session and would take the other two rules' credibility with it. R2 pins that
+guard, R6 pins that a new session re-arms it, and the rest pin the silence
+cases (the README itself, an already-read README, no README, project roots,
+vendor folders) plus the tool-name split that keeps a bare Read from tripping
+the write rules (R11). Every R case runs against fixture folders under a
+private state dir (`PLINT_STATE_DIR`), so the test never reads or pollutes the
+real ledger and leaves nothing behind.
+
+WHY the P cases exist (coding.md: "pin EVERY fixed bug w/ a regression test
 encoding the exact failing scenario"): plint's DELIVERABLE rule reminds the
 writer to read `universal/writing.md` when the content being written looks
 like a letter. It detected that by matching greeting/sign-off markers, and one
@@ -34,8 +51,11 @@ a break is immediately diagnosable without re-running by hand).
 """
 import json
 import os
+import re
+import shutil
 import subprocess
 import sys
+import tempfile
 
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.abspath(os.path.join(_THIS_DIR, "..", "..", ".."))
@@ -101,6 +121,242 @@ def _check(label, content, expect_fire, expect_marker=None):
     return ok
 
 
+# --- README rule (R cases) --------------------------------------------------
+# Each rule is identified by a stable phrase from its own message, so the R
+# cases can tell WHICH rule fired rather than merely that something did.
+_README_SIG = "folder that has a `README.md`"
+_CODE_SIG = "is a script/pcmd"
+
+
+def _run_payload(payload):
+    """Drive plint end-to-end through its real stdin/stdout hook contract.
+    `payload` may be a str (deliberately malformed) or a dict."""
+    body = payload if isinstance(payload, str) else json.dumps(payload)
+    return subprocess.run(
+        ["python3", PLINT], input=body,
+        capture_output=True, text=True, timeout=30,
+    )
+
+
+def _read_payload(path, session_id="R-session-1"):
+    """A realistic PreToolUse payload for the Read tool (hook_guide § Verified
+    Payload Shapes: `session_id`, `transcript_path`, `cwd`, `tool_name`,
+    `tool_input`). `session_id` is what the once-per-session guard keys on."""
+    return {
+        "session_id": session_id,
+        "transcript_path": "/dev/null",
+        "cwd": REPO_ROOT,
+        "hook_event_name": "PreToolUse",
+        "tool_name": "Read",
+        "tool_input": {"file_path": path},
+    }
+
+
+def _context(r):
+    """The additionalContext block, or "" when the hook stayed silent."""
+    out = r.stdout.strip()
+    if not out:
+        return ""
+    try:
+        return json.loads(out)["hookSpecificOutput"]["additionalContext"]
+    except Exception:
+        # Unparseable output counts as output, so malformed JSON can never
+        # masquerade as a clean silent pass.
+        return out
+
+
+def _check_rule(label, payload, sig, expect_fire, expect_path=None):
+    """Assert whether the rule identified by `sig` fired, and (optionally) that
+    it named `expect_path`. Exit 0 is checked on EVERY case —— this hook may
+    never gate a tool call, whatever else it decides."""
+    r = _run_payload(payload)
+    ctx = _context(r)
+    hits = [l for l in ctx.splitlines() if sig in l]
+    fired = bool(hits)
+    ok = (fired == expect_fire) and r.returncode == 0
+    if ok and expect_path is not None:
+        ok = expect_path in hits[0]
+    status = "PASS" if ok else "FAIL"
+    print(f"[{status}] {label}: expected {'FIRE' if expect_fire else 'silent'}, "
+          f"got {'FIRE' if fired else 'silent'} (exit={r.returncode})")
+    if not ok:
+        print(f"        stdout={r.stdout!r}")
+        print(f"        stderr={r.stderr!r}")
+    return ok
+
+
+def _cap():
+    """plint's live `_MAX_DIRS_PER_SESSION`, read from the source rather than
+    copied. A hard-coded number here would keep "passing" while testing
+    nothing the day somebody moves the cap. Parsed textually (not imported) so
+    this test keeps driving plint ONLY through its real hook contract."""
+    src = open(PLINT, encoding="utf-8").read()
+    m = re.search(r"^_MAX_DIRS_PER_SESSION\s*=\s*(\d+)", src, re.M)
+    if not m:
+        raise SystemExit("plint._MAX_DIRS_PER_SESSION not found —— cap renamed?")
+    return int(m.group(1))
+
+
+def _mkfile(path, body="placeholder\n"):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(body)
+    return path
+
+
+def readme_cases(root):
+    """R1-R13. Fixtures are synthesised under `root` (a private temp dir) so no
+    repo file is touched and the real claim ledger is never involved."""
+    results = []
+
+    alpha = os.path.join(root, "alpha")          # ordinary folder + README
+    beta = os.path.join(root, "beta")            # a second one
+    delta = os.path.join(root, "delta")          # README read first
+    gamma = os.path.join(root, "gamma")          # no README at all
+    proj = os.path.join(root, "projroot")        # a project ROOT (has .git)
+    vend = os.path.join(root, "pkg", "node_modules", "left-pad")
+    eps = os.path.join(root, "epsilon")          # for the no-session case
+    zeta = os.path.join(root, "zeta")            # for the per-session cap
+    eta = os.path.join(root, "eta")              # ditto
+
+    for d in (alpha, beta, delta, proj, vend, eps, zeta, eta):
+        _mkfile(os.path.join(d, "README.md"), "# Folder procedure\n")
+    for d in (alpha, beta, delta, gamma, proj, vend, eps, zeta, eta):
+        _mkfile(os.path.join(d, "note.md"))
+    _mkfile(os.path.join(gamma, "script.py"), "print('x')\n")
+    _mkfile(os.path.join(alpha, "other.md"))
+    os.makedirs(os.path.join(proj, ".git"), exist_ok=True)
+
+    def readme_at(d):
+        return os.path.join(os.path.realpath(d), "README.md")
+
+    # R1: the core case —— a read from a folder that has a README.
+    results.append(_check_rule(
+        "R1 — read in a README-bearing folder fires, naming that README",
+        _read_payload(os.path.join(alpha, "note.md")),
+        _README_SIG, True, readme_at(alpha)))
+
+    # R2: THE load-bearing guard. A second read in the SAME folder in the SAME
+    # session must be silent —— a per-read reminder would be tuned out at once.
+    results.append(_check_rule(
+        "R2 — second read in the SAME folder, same session, is SILENT",
+        _read_payload(os.path.join(alpha, "other.md")),
+        _README_SIG, False))
+
+    # R3: the guard is per FOLDER, not per session —— a different README-bearing
+    # folder in the same session still gets its one reminder.
+    results.append(_check_rule(
+        "R3 — a DIFFERENT README-bearing folder still fires in that session",
+        _read_payload(os.path.join(beta, "note.md")),
+        _README_SIG, True, readme_at(beta)))
+
+    # R4/R5: reading the README itself is the behaviour the rule wants, so it
+    # is silent AND claims the folder —— no redundant reminder afterwards.
+    results.append(_check_rule(
+        "R4 — reading the README ITSELF is silent",
+        _read_payload(os.path.join(delta, "README.md")),
+        _README_SIG, False))
+    results.append(_check_rule(
+        "R5 — a sibling read AFTER that README was read stays silent",
+        _read_payload(os.path.join(delta, "note.md")),
+        _README_SIG, False))
+
+    # R6: no README, nothing to remind about.
+    results.append(_check_rule(
+        "R6 — folder with no README is silent",
+        _read_payload(os.path.join(gamma, "note.md")),
+        _README_SIG, False))
+
+    # R7: a NEW session re-arms the reminder for an already-claimed folder ——
+    # the guard is per session, not permanent.
+    results.append(_check_rule(
+        "R7 — a new session_id re-arms the reminder for the same folder",
+        _read_payload(os.path.join(alpha, "note.md"), "R-session-2"),
+        _README_SIG, True, readme_at(alpha)))
+
+    # R8/R9: noise exclusions. A project root's README is a front page, not a
+    # folder procedure; a vendored README documents somebody else's package.
+    results.append(_check_rule(
+        "R8 — a project ROOT (folder containing .git) is silent",
+        _read_payload(os.path.join(proj, "note.md")),
+        _README_SIG, False))
+    results.append(_check_rule(
+        "R9 — a vendored folder (node_modules/...) is silent",
+        _read_payload(os.path.join(vend, "note.md")),
+        _README_SIG, False))
+
+    # R10: the tool-name split. Widening the matcher to Read must NOT make the
+    # CODE rule fire on merely LOOKING at a script (it keys off file_path
+    # alone, so without this split every read of a .py or pcmd would nag).
+    results.append(_check_rule(
+        "R10 — CODE rule does NOT fire on a bare Read of a .py",
+        _read_payload(os.path.join(gamma, "script.py")),
+        _CODE_SIG, False))
+
+    # R11: ...and the write rules still work, so the split did not gut them.
+    results.append(_check_rule(
+        "R11 — CODE rule still fires on a Write of a .py",
+        {"session_id": "R-session-1", "cwd": REPO_ROOT,
+         "hook_event_name": "PreToolUse", "tool_name": "Write",
+         "tool_input": {"file_path": os.path.join(gamma, "script.py"),
+                        "content": "print('x')\n"}},
+        _CODE_SIG, True))
+
+    # R12: without a session_id the once-per-session contract cannot be
+    # honoured, so the rule declines to fire rather than fire unbounded.
+    results.append(_check_rule(
+        "R12 — a Read payload with no session_id is silent",
+        {"cwd": REPO_ROOT, "hook_event_name": "PreToolUse",
+         "tool_name": "Read",
+         "tool_input": {"file_path": os.path.join(eps, "note.md")}},
+        _README_SIG, False))
+
+    # R13: the ledger is SELF-LIMITING. Past `_MAX_DIRS_PER_SESSION` markers a
+    # session stops claiming folders and the rule simply goes quiet, so no
+    # session can grow the state without bound. Run against its own state root
+    # so the padding cannot disturb the cases above. The cap is imported
+    # (the one place this test looks inside plint) rather than hard-coded ——
+    # a hard-coded 200 would silently start testing nothing if the cap moved.
+    cap_state = os.path.join(root, "cap_state")
+    previous = os.environ.get("PLINT_STATE_DIR")
+    os.environ["PLINT_STATE_DIR"] = cap_state
+    try:
+        results.append(_check_rule(
+            "R13a — fresh session on a fresh ledger fires as normal",
+            _read_payload(os.path.join(zeta, "note.md"), "R-cap"),
+            _README_SIG, True))
+        sess_dirs = [os.path.join(cap_state, n) for n in os.listdir(cap_state)]
+        for i in range(_cap() + 5):
+            open(os.path.join(sess_dirs[0], "pad%04d" % i), "w").close()
+        results.append(_check_rule(
+            "R13b — past the per-session cap the rule goes quiet",
+            _read_payload(os.path.join(eta, "note.md"), "R-cap"),
+            _README_SIG, False))
+    finally:
+        if previous is None:
+            os.environ.pop("PLINT_STATE_DIR", None)
+        else:
+            os.environ["PLINT_STATE_DIR"] = previous
+
+    # R14: malformed payloads —— exit 0, no output, whatever the shape.
+    for i, bad in enumerate((
+            "{not json at all",
+            json.dumps({"tool_name": "Read", "tool_input": "not-a-dict"}),
+            json.dumps({"tool_name": "Read", "session_id": "R-session-1",
+                        "tool_input": {}}),
+            json.dumps([1, 2, 3]),
+            "")):
+        r = _run_payload(bad)
+        ok = (r.returncode == 0 and not r.stdout.strip())
+        print(f"[{'PASS' if ok else 'FAIL'}] R14.{i + 1} — malformed payload: "
+              f"exit 0 and silent (exit={r.returncode})")
+        if not ok:
+            print(f"        stdout={r.stdout!r}\n        stderr={r.stderr!r}")
+        results.append(ok)
+
+    return results
+
+
 def main():
     results = []
 
@@ -146,6 +402,22 @@ def main():
         "Regardless of the outcome, the dearth of data is the real issue.\n",
         False))
 
+    # --- R1-R13: the README-first read reminder. ---------------------------
+    # `PLINT_STATE_DIR` is exported BEFORE any child runs, so every plint
+    # subprocess claims folders inside this test's own throwaway ledger ——
+    # the real one is neither read nor written, and repeated runs of this test
+    # cannot poison each other. Removed in `finally`, so nothing is left on
+    # disk even if a case blows up mid-way.
+    root = tempfile.mkdtemp(prefix="plint_readme_regression_")
+    os.environ["PLINT_STATE_DIR"] = os.path.join(root, "state")
+    try:
+        print()
+        results.extend(readme_cases(root))
+    finally:
+        os.environ.pop("PLINT_STATE_DIR", None)
+        shutil.rmtree(root, ignore_errors=True)
+
+    print()
     passed = sum(1 for r in results if r)
     total = len(results)
     print(f"\n{passed}/{total} passed")
