@@ -14,7 +14,7 @@
 - 3.2. Stage 3 confirmed IN PERSON (Rydalmere) —— inverts the original Brief (Brief: S2 in-person/S3 virtual; reality: S2 ended up virtual, S3 in-person). No screen-share prep, casual dress (reconfirmed twice), no re-presenting the onboarding-plan deliverable.
 
 4. Holistic read —— the flattering framing shouldn't move the needle; decision-relevant facts are unchanged or worse:
-- 4.1. Compensation: still $75–85k p.a. ÷ 0.6 FTE ≈ $51k actual ceiling, already flagged pre-call as below your stated survival line —— nothing new offered today.
+- 4.1. Compensation: still $75–85k p.a. × 0.6 FTE ≈ $51k actual ceiling, already flagged pre-call as below your stated survival line —— nothing new offered today.
 - 4.2. Firm/industry read unchanged: small (soon 7 pax), regional, WOM-dependent, single-founder-dependent, bearish industry.
 - 4.3. New, and arguably worsens it: the hired candidate unravelled within ONE week. Two chaos events around this exact seat in two months reads as a mild pattern, not just Elena's individual messiness.
 - 4.4. Bias check: the entire "you were basically tied / mainly the reschedule" narrative is Elena's self-report of a decision Seb made, which Seb has never confirmed to you —— and Elena has both incentive (goodwill, her coffee ask) and form (messiness) that make a flattering-but-unverified account plausible. Treat it as a nice story, not a fact to lean on.
