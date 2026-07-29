@@ -40,3 +40,34 @@
 - 99.4. ⚠️ One item is NOT resolved and I am not pretending otherwise: the Mail attachment targets, the `Recent` reconciliation and the Time Machine recommendation are still with an SA. If it lands after this turn closes, that is the one thing to pick up next session —— nothing in the repo depends on it.
 - 99.5. ⚠️ Disclosure —— my closing commit used `git add -A` and so swept in one file I did not touch: `cp/career/int/g_int/AlltechAV_MarketingGrowthCoordinator_202607311000.md` (a renumbering, `7.20`→`7.21` and neighbours —— your numbered.md tidy-up, by the look of it). Root c.md §9.05.3 says to commit CC-touched files ONLY. Nothing is lost —— the change is committed and pushed intact —— but it is attributed to my commit rather than yours. Flagging rather than rewriting history; say the word if you want it split out.
 - 99.6. DATS —— fixed 3 files (the two `query_` stamps and this session's `close_`, all <0.2h drift). It also skipped 3 pre-existing offenders whose filename TS differs from their content range-end: `ccsim_close_202607250023.md` (session 05's, already noted then) and two AJAP-side `close_` files. All three predate this turn and none is mine to fix from here —— the AJAP pair needs an AJAP session.
+
+## 100. Mail —— SA Landed After the Close (the §99.4 item)
+- 100.1. It arrived just after `#close`, so it lands here rather than in the `close_`. Nothing else changes.
+
+## 101. Attachments —— Exact Targets
+- 101.1. Structure verified, not assumed: `Attachments/` and `Messages/` are sibling folders at every level, and ZERO `.emlx` files exist inside any `Attachments/` folder. So the separation is clean —— deleting attachments cannot touch a message body.
+- 101.2. Current totals, measured live: attachments 3.59GB across 709 folders; `.emlx` bodies 2.94GB; Envelope Index 333MB; whole folder 6.9GB. The four cross-check, so the split is trustworthy.
+- 101.3. DRY RUN first —— prints every folder and a grand total, changes nothing:
+```bash
+find "/Users/culous/Library/Mail" -type d -name "Attachments" -print0 | xargs -0 du -sh 2>/dev/null
+find "/Users/culous/Library/Mail" -type d -name "Attachments" -print0 | xargs -0 du -ck 2>/dev/null | tail -1 | awk '{printf "TOTAL: %.2f GB\n", $1/1024/1024}'
+```
+- 101.4. THEN the delete —— empties each `Attachments/` folder, leaves bodies and the index untouched:
+```bash
+find "/Users/culous/Library/Mail" -type d -name "Attachments" -print0 | xargs -0 -I{} find {} -mindepth 1 -delete
+```
+- 101.5. Afterwards: message text renders instantly (read straight from the `.emlx`); an attachment re-downloads on demand the first time you open it; nothing needs rebuilding, so search stays fast. Some attachments are stored INLINE in the `.emlx` and are unaffected either way.
+- 101.6. ⚠️ Correction to my earlier "quit Mail fully" advice —— that is not actually achievable. Even with the window closed, `maild` (the always-on sync daemon) and the Spotlight extension hold the Envelope Index open, and macOS restarts them regardless. It does not matter here: this delete never touches the index. Just avoid running it mid-sync.
+
+## 102. Why "Recent" Did Not Prevent This
+- 102.1. Your screenshot confirms `Recent` on the iCloud account. My "no value stored" observation was also correct —— and both are true at once: `Recent` IS the shipped default, and macOS only persists a key when you choose a NON-default value. Neither of us was wrong; nothing was ever explicitly chosen.
+- 102.2. The real answer, and it matters: `Recent` is a FORWARD-ONLY download gate (Apple: attachments received within the past 15 months), NOT a retention policy. Nothing ever evicts what has already been downloaded.
+- 102.3. So 2018 attachments persist because they were fetched when they were recent, or because you once opened that message. ⚠️ Consequence: this cleanup is NOT one-off —— expect to repeat it every 6–12 months, or set `None` and rely purely on on-demand fetch.
+
+## 103. Time Machine —— Two Corrections and an Inverted Plan
+- 103.1. ⚠️ `~/Library` is 69GB, not 444GB. Measured with `du` just now. The size argument for excluding it is therefore far weaker than either of us thought.
+- 103.2. ⚠️ VERIFIED: you CANNOT re-include a subfolder of an excluded parent. Time Machine's exclusion is a pure ancestor check with no override —— tested directly on your machine, plus the man page. So my instinct to "carve out Mail" was impossible.
+- 103.3. What you are actually losing right now: `Messages/` (50MB —— SMS history syncs nowhere), `Keychains/login.keychain-db` (43MB), Signal's local store (1.04GB —— Signal has no cloud backup by design), Notes group container (159MB), and a Photos library (236MB) sitting unusually in `~/Library`.
+- 103.4. Recommended, inverted: REMOVE the blanket `~/Library` exclusion, then exclude only the churn —— `Caches` (3.4GB), `Metadata` (5.3GB), `HTTPStorages`, `Biome`, `DuetExpertCenter`, `IntelligencePlatform`. Easiest via System Settings ▸ General ▸ Time Machine ▸ Options (it handles the privilege elevation); the CLI equivalents need sudo.
+- 103.5. Net: everything irreplaceable becomes backed up for the first time, whilst `~`9GB of pure churn stays out, so backup size and churn barely move.
+- 103.6. Unrelated bonus find: 7.4GB of stuck cache in `~/Library/Containers/com.apple.MobileSMS/Data/tmp/TemporaryItems` —— not message data, just litter. Worth a look whatever you decide.
