@@ -52,7 +52,7 @@
 - 5.5. "How much of the role is hands-on vs strategic, and how does that cadence look across the year?"
 
 ## 6. WIB — "What (do) I Bring (To The Table)"
-- 6.1. Status: the WIB lives as a per-role **text cue card** (the framework at 6.5), used verbally / glanced from a private screen; a polished **visual is optional and deferred** (background: `career_close_ 202606162244.md`). The text form IS the operative WIB.
+- 6.1. Status: the WIB lives as a per-role **text cue card** (the framework at 6.5), used verbally / glanced from a private screen; a polished **visual is optional and deferred** (background: `career_close_202606162244.md`). The text form IS the operative WIB.
 - 6.2. Display rule: SHOW the visual (once built) only for creative/design/marketing/growth roles; keep it a private cue-card for consulting/BA/IT/finance/government.
 - 6.3. Optionally customise per role with a special opening and a notes section, becoming an Interview cue card, which we'll call it "WIB" (since WIB Framework is always in it) for terseness
 - 6.4. WIB Framework:
