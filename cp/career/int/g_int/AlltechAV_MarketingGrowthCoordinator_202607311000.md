@@ -16,6 +16,8 @@
 
 > 🔄 **Re-evaluated 202606150713** (CIC + web_search validated, ahead of virtual interview Tue 16/06 3pm). Original AJAP §1 was a 6-line stub; expanded below into 1.1`~`1.8. Original score 89 retained for record; corrections noted inline (salary band, headcount, named leadership, Glassdoor mis-attribution risk).
 
+---
+
 ## 1. Employer
 
 ### 1.1. Company Basics
@@ -66,6 +68,8 @@
 - 1.8.2. Ambiguity: unclear whether $75–85k is the *actual* part-time pay or an *FTE-equivalent* (pro-rata to 0.6 FTE ≈ $45–51k actual). Resolve at interview
 - 1.8.3. 🚩 Culous' submitted expectation was **$60k** (§3 S6.2, already lodged via SEEK — unchanged). If $75–85k is the real part-time pay, $60k materially undersells; if FTE-equivalent, $60k sits above pro-rata. Either way, do NOT re-anchor downward verbally — let them frame the number, then position against the $75–85k band (see §5.4)
 
+---
+
 ## 2. Requirements
 
 - ✅ 3⁺ yrs marketing — 16⁺ yrs content/marketing/PM experience; 8 yrs in marketing/branding/PR
@@ -85,6 +89,8 @@
 - Part-time 24hr/wk; ad band **$75–85k** (see §1.8 — corrects earlier "FTE $80–90k" assumption); target salary ~$60k submitted (score 89 ≥ 85, hybrid)
 - ⚠️ Re-eval additions from live ad (not in original AR): EOS/"Rocks" operating system; HubSpot + Rentman + Teamwork integration (setup, not just use); WordPress CMS redesign ownership; AI tools (ChatGPT, Gemini, Veo) expected in workflow; on-site content capture at live events (physical presence) — overlaps the Rennly stamina/logistics caveat
 
+---
+
 ## 3. Application Tailoring
 
 - Open Para 1 with specific Alltech AV claim: first marketing hire building function from scratch; frame Culous' KE experience building marketing from ground up as direct parallel
@@ -103,9 +109,11 @@
 - Years experience as a Marketer → More than 5 years
 - Completed a qualification in marketing → Yes, Masters Degree
 
+---
+
 ## 5. Interview Prep (re-eval 202606150713)
 
-> ✅ **Stage 1 complete** (Wed 17/06/2026 — see §7 `1st Interview Notes`). §5 below is the pre-1st-interview prep, retained for record; most anticipations held (mentorship, priority lanes, P/T→F/T, on-site capture, AI). Stage-2/3 prep lives in the Task-2 sections at the AR foot.
+> ✅ **Stage 1 complete** (Wed 17/06/2026 — see §8.1). §5 below is the pre-1st-interview prep, retained for record; most anticipations held (mentorship, priority lanes, P/T→F/T, on-site capture, AI). Stage-2/3 prep lives in the Task-2 sections at the AR foot.
 
 ### 5.1. Anticipated Interviewer Questions
 - 5.1.1. "Tell me about yourself / why this role after senior/GM-level work?" (over-qualification, as at Rennly — own it: deliberate move towards hands-on building + local AU experience)
@@ -152,6 +160,8 @@
 - 5.5.3. Biggest win + how measured → KE first-year $1M⁺ revenue build (framed as marketing-infrastructure contribution); or a campaign with concrete engagement/lead metrics
 - 5.5.4. **"Why Alltech" + "one thing you'd fix about how AV/trades show up online":** they lead with *kit and specs* (the IG bio is literally a gear list) rather than *client outcomes and the human story behind the production*; no consistent case-study narrative; followers ≈ following (low authority). Fix = reposition from "what we own" to "what we make possible for clients", anchored on a repeatable case-study engine — exactly the role's mandate. This answer doubles as the strongest "why me" proof
 
+---
+
 ## 6. Cover Letter
 
 Dear Hiring Manager,
@@ -180,6 +190,8 @@ Yours Faithfully,
 Culous Yu
 
 P.S. I hold full work rights until 2031 and would never require visa sponsorship.
+
+---
 
 ## 7. Engagements
 
@@ -281,8 +293,6 @@ No problem at all. I understand that feeling. Let’s keep it tomorrow at 3pm, f
 Regards,
 Culous
 
-
-
 ### 7.09. Employer Invite
 
 On 17 Jun 2026, at 16:00, Elena Mel <elena@alltech.co> wrote:
@@ -319,8 +329,6 @@ I'm available for a 2nd Interview on:
 - Monday 22nd to Wednesday 24th - After 12pm 
 - Thursday 25th - 1:30pm
 
----
-
 Should you be successful in Stage 2, you’ll move onto Stage 3 where you will meet with myself and the company head - the director - virtually for a final interview. 
 
 Elena Melnykova
@@ -345,8 +353,6 @@ alltech.co
 - Marketing & Growth Coordinator | Onboarding Plan.docx
 - Marketing & Growth Coordinator | EOS Role Blueprint.docx
 
----
-
 ### 7.10. User Reply
 
 On 19 Jun 2026, at 04:54, c@culousyu.com wrote:
@@ -361,8 +367,6 @@ Thank you again for the opportunity. I look forward to seeing you again.
 
 Warm Regards,
 Culous
-
----
 
 ### 7.11. Employer Reply
 
@@ -380,8 +384,6 @@ Elena Melnykova
 Head of Strategic Operations & Growth
 Alltech
 
----
-
 ### 7.12. User Reply
 
 On 22 Jun 2026, at 16:31, c@culousyu.com wrote:
@@ -392,8 +394,6 @@ I just checked and can confirm my availability at 1:30pm on 26 June 2026. Please
 
 Regards,
 Culous
-
----
 
 ### 7.13. User Chase
 
@@ -406,8 +406,6 @@ Just received your Google Meet email but it says 12pm on Friday. Your last email
 Regards,
 Culous
 
----
-
 ### 7.14. User Chase
 
 On 25 Jun 2026, at 17:06, c@culousyu.com wrote:
@@ -418,8 +416,6 @@ Sorry for interrupting. Just wanna confirm the actual meeting time tomorrow. Tha
 
 Regards,
 Culous
-
----
 
 ### 7.15. Employer Reply
 
@@ -434,8 +430,6 @@ If that’s an issue let me know and we can figure something out.
 Elena Melnykova
 Head of Strategic Operations & Growth
 Alltech
-
----
 
 ### 7.16. User Reply
 
@@ -454,8 +448,6 @@ Whichever we settle on, could you please kindly confirm with me? Looking forward
 Warm Regards,
 Culous
 
----
-
 ### 7.17. User Reply
 
 On 26 Jun 2026, at 01:59, c@culousyu.com wrote:
@@ -471,8 +463,6 @@ Thank you again for a brief that was a pleasure to engage with. I look forward t
 Warm Regards,
 Culous
 
----
-
 ### 7.18. Employer Reply
 
 On 26 Jun 2026, at 08:32, Elena Mel <elena@alltech.co> wrote:
@@ -486,8 +476,6 @@ We can go through everything then and you can take me through your assignment.
 Elena Melnykova
 Head of Strategic Operations & Growth
 Alltech
-
----
 
 ### 7.19. Google Meet Notification
 
@@ -503,8 +491,6 @@ meet.google.com/ets-vfnf-rqx
 **When**
 Thursday 2 Jul 2026 ⋅ 12pm – 1pm (Australian Eastern Time - Sydney)
 
----
-
 ### 7.20. User Reply
 
 On 26 Jun 2026, at 09:31, c@culousyu.com wrote:
@@ -515,8 +501,6 @@ Thank you for telling in time. Let’s talk next week then. Wish you a nice week
 
 Regards,
 Culous
-
----
 
 ### 7.21. Employer Decision
 
@@ -538,8 +522,6 @@ Elena Melnykova
 Director of Business Operations
 Alltech
 
----
-
 ### 7.22. User Reply
 
 On 18 Jul 2026, at 19:35, c@culousyu.com wrote:
@@ -556,8 +538,6 @@ Thank you again for the experience, and for keeping in touch. I wish Alltech con
 
 Warm Regards,
 Culous
-
----
 
 ### 7.23. Revival Call
 
@@ -582,8 +562,6 @@ Give me a buzz this afternoon - any time after 1pm
 
 At 202607281629, user called Elena; see §8.6
 
----
-
 ### 7.28. Google Calendar Notification
 
 On 28 Jul 2026, at 16:41, Elena Mel <elena@alltech.co> wrote:
@@ -596,6 +574,11 @@ q/10-16 South St, Rydalmere NSW 2116, Australia
 Elena Mel- organiser
 culousyu@gmail.com
 Sebastian Hall
+
+### 7.29. User Text
+
+At 202607291742:
+Hello Elena, just a heads up I've already answered "Yes" to your calendar event. Once again thanks for the opportunity. Can't wait to see you & Seb on 31 July (Friday) at 10am. Enjoy the evening!
 
 ---
 
