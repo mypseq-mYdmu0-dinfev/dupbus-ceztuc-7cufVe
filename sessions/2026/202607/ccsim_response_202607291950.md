@@ -32,3 +32,9 @@
 - 98.2. Recording it in the `close_` as you asked, with the caveat that it is one measurement from one turn, so treat it as an anchor to calibrate against rather than a constant.
 - 98.3. On your Sonnet/Fable extrapolation —— plausible but unverified. Limits are usually weighted per model rather than being a flat token pool, so I would not assume a clean 2× or 0.5× until measured the same way.
 - 98.4. Agreed the Perplexity figure (`~`88k) is far off —— off by roughly two orders of magnitude against this measurement.
+
+## 99. Closing
+- 99.1. `#close` done —— `ccsim_close_202607291954.md` written; session span 202607250326–202607291954, 16 pairs plus 2 non-paired.
+- 99.2. The sesL benchmark is recorded in its § Remarks per your §91.3, with the caveat that it is one measurement.
+- 99.3. Two CCSIM backlog entries appended per `close.md`: the double-declaration reflex (§93) and the standing rule that a suite must never assert the presence of a voided file (your half of the Void Rule).
+- 99.4. ⚠️ One item is NOT resolved and I am not pretending otherwise: the Mail attachment targets, the `Recent` reconciliation and the Time Machine recommendation are still with an SA. If it lands after this turn closes, that is the one thing to pick up next session —— nothing in the repo depends on it.

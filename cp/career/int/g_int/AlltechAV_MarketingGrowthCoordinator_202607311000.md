@@ -518,7 +518,7 @@ Culous
 
 ---
 
-### 7.20. Employer Decision
+### 7.21. Employer Decision
 
 On 7 Jul 2026, at 22:31, Elena Mel <elena@alltech.co> wrote:
 
@@ -540,7 +540,7 @@ Alltech
 
 ---
 
-### 7.21. User Reply
+### 7.22. User Reply
 
 On 18 Jul 2026, at 19:35, c@culousyu.com wrote:
 
@@ -559,32 +559,32 @@ Culous
 
 ---
 
-### 7.22. Revival Call
+### 7.23. Revival Call
 
 At 202607271705, Elena directly called User by phone (first time ever; no. unsaved then).
 
-### 7.23. Employer Text
+### 7.24. Employer Text
 
 At 202607271706:
 Hi Culous, it’s Elena from Alltech. Can you give me a call back when you have some time?
 
-### 7.24. User Text
+### 7.25. User Text
 
 At 202607271731:
 Hello Elena, great to hear from you again. How’s it going? I’m in a meeting right now but I may read your iMsg. Alternatively I may call you tomorrow afternoon if that fits. Thanks!
 
-### 7.25. Employer Text
+### 7.26. Employer Text
 
 At 202607281147:
 Give me a buzz this afternoon - any time after 1pm
 
-### 7.26. User Call
+### 7.27. User Call
 
 At 202607281629, user called Elena; see §8.6
 
 ---
 
-### 7.27. Google Calendar Notification
+### 7.28. Google Calendar Notification
 
 On 28 Jul 2026, at 16:41, Elena Mel <elena@alltech.co> wrote:
 
