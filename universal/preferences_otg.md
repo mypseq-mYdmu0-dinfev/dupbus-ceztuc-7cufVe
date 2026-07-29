@@ -6,7 +6,7 @@ Each file (re-)fetched: MUST declare (per rules.md); STOP if failed, don't proce
 
 1. At every chat start, before generating anything (regardless of msg content; no exception), fetch & resolve all aliases below using `index.md`:
 
-https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/557e53e7683243e996d43543c95fbb546a9041cc/universal/index_otg.md
+https://raw.githubusercontent.com/mypseq-mYdmu0-dinfev/dupbus-ceztuc-7cufVe/790e3a7d3a90b0aa6ed2744b2befaecaf1961694/universal/index_otg.md
 
 2. Prerequisites of EVERY response before other `<thinking>` or anything else:
 2.1. Run PP1; if unrecognised/failed, fetch `index_otg.md` (userPref) AND `context.md`
