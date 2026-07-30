@@ -101,14 +101,17 @@
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
 ```
   - 3.1.7. Clarifications on §3.1.6.1–3:
-    - 3.1.7.1. All 3 TEAs are ONCE per turn; DON'T act prematurely nor repeatedly
+    - 3.1.7.1. All 3 TEAs are ONCE per practical turn; DON'T act prematurely nor repeatedly
     - 3.1.7.2. Order = **All Tasks** → **TEA1** → **TEA2** → **TEA3**
     - 3.1.7.3. Marker must immediately PRECEDE the batch, so clicking it lands on declarations
     - 3.1.7.4. `m2.md`'s mandate (pushing only `response_`) doesn't count as violation
     - 3.1.7.5. Absolutely nothing follows TEA3's batch (no exception)
+    - 3.1.7.6. 1 practical turn = FROM user msg (during your **idle state**) TO full completion
+      - 3.1.7.6.1. Mid-turn msgs don't count (still same turn AND same `response_`, not new)
+      - 3.1.7.6.2. Interruptions (e.g. user stop, sesL hit, network failure) also don't count
   - 3.1.8. Harness Nudge:
     - 3.1.8.1. If visible output required, make a harmless tool call & emit no chat text
-    - 3.1.8.2. If §3.1.8.1 doesn't suffice, emit a lone `.` (nothing else) & emit no chat prose
+    - 3.1.8.2. ONLY if §3.1.8.1 doesn't suffice, emit a lone `.` (nothing else) & emit no chat prose
 
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
