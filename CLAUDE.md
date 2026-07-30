@@ -76,13 +76,14 @@
 - 3.1. All responses must be written to file(s); **NEVER EMIT CHAT PROSE**
   - 3.1.1. IMPORTANT: Chat text is strictly restricted (§3.2), unless override (§9.1)
   - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, EXCEPT in `.claude/`
-  - 3.1.3. i.e. If a path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6.3)
+  - 3.1.3. i.e. If a path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6.4)
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
   - 3.1.5. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (see §3.1.6)
   - 3.1.6. I/O Declarations (§3.2.1–3): 
     - 3.1.6.1. Batched as the turn's FINAL output
-    - 3.1.6.2. NEVER repeat declaration after a Stop-hook
-    - 3.1.6.3. Output example (ONCE per turn; in order):
+    - 3.1.6.2. NEVER repeat declaration after a Stop-hook; emit a lone `.` instead (nothing else)
+    - 3.1.6.3. Whilst WAITING (e.g. SA/workflow in flight), make a tool call & emit NO chat text
+    - 3.1.6.4. Output example (ONCE per turn; in order):
 ```
 ✅ `career/CP_notes.md`, `cscpt/dlint.py`
 ⇠ `202605/career_query_202605300226.md`
