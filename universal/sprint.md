@@ -105,7 +105,7 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 
 So I can resume instantly, capture:
 
-- **Done** —— tasks completed, with the files produced.
+- **Done** —— tasks completed, with the files touched; do NOT include findings here (either append to existing pts or create new pts).
 - **Assumed** —— every working assumption made to push through (not only blockers cleared by prediction): each QB raised in `<thinking>` with my predicted answer, plus any interpretive / methodological / scope call (e.g. an assumed `#synthesise` objective), and what was built on each. Surface FIRST any assumption that would invalidate downstream work if wrong, so I can catch it at a glance.
 - **Interruptions** —— EVERY interruption experienced during the sprint: compactions, sesL/usage-limit hits (incl. each wake via the user's `continue`), SAs that died or returned compromised/partial results, crashes —— each w/ when + how recovery went + what scope was affected/redone. State the TOTAL COUNT and the times. Each is a risk that may have compromised work, including earlier tasks —— flag anything potentially affected; never silently omit one.
 - **Planned, not executed** —— critical/untracked tasks deferred per the caveat, with their plans.
