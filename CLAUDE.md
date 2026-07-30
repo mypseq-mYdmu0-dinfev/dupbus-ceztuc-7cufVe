@@ -106,6 +106,9 @@
     - 3.1.7.3. Marker must immediately PRECEDE the batch, so clicking it lands on declarations
     - 3.1.7.4. `m2.md`'s mandate (pushing only `response_`) doesn't count as violation
     - 3.1.7.5. Absolutely nothing follows TEA3's batch (no exception)
+  - 3.1.8. Harness Nudge:
+    - 3.1.8.1. If visible output required, make a harmless tool call & emit no chat text
+    - 3.1.8.2. If §3.1.8.1 doesn't suffice, emit a lone `.` (nothing else) & emit no chat prose
 
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
