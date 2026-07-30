@@ -76,14 +76,23 @@
 - 3.1. All responses must be written to file(s); **NEVER EMIT CHAT PROSE**
   - 3.1.1. IMPORTANT: Chat text is strictly restricted (§3.2), unless override (§9.1)
   - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, EXCEPT in `.claude/`
-  - 3.1.3. i.e. If a path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6.4)
+  - 3.1.3. i.e. If a path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6.3)
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
-  - 3.1.5. Urgent Declarations (§3.2.4–5): fired instantly at any time, unlike §3.2.1–3 (see §3.1.6)
-  - 3.1.6. I/O Declarations (§3.2.1–3): 
-    - 3.1.6.1. Batched as the turn's FINAL output
-    - 3.1.6.2. NEVER repeat declaration after a Stop-hook; emit a lone `.` instead (nothing else)
-    - 3.1.6.3. Whilst WAITING (e.g. SA/workflow in flight), make a tool call & emit NO chat text
-    - 3.1.6.4. Output example (ONCE per turn; in order):
+  - 3.1.5. Urgent Declarations (for §3.2.4–5): fired instantly at any time, unlike §3.1.6.3
+  - 3.1.6. After ALL tasks' completion (ensuring no SAs in-flight), do **Turn-End Actions** (TEAs):
+    - 3.1.6.1. TEA1 —— Commit & Push (**right before** TEA2):
+      - 3.1.6.1.1. Commit Name = ≤8w summary; Scope = all touched repo(s)
+      - 3.1.6.1.2. If ONLY this turn's CC changes (± this turn's `query_`) → commit + push
+      - 3.1.6.1.3. Ditto + user changes on OTHER files → commit + push CC-touched files only
+      - 3.1.6.1.4. User changes on CC-touched files (rare):
+        - 3.1.6.1.4.1. DON'T commit/push
+        - 3.1.6.1.4.2. Alert in chat (override)
+        - 3.1.6.1.4.3. Advise user NOT to save his manual works (risks clashing/corrupting the file)
+      - 3.1.6.1.5. ONE commit per turn (per touched repo): avoid interim commit(s), UNLESS nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
+    - 3.1.6.2. TEA2 —— Mark a chapter (**right before** TEA3):
+      - 3.1.6.2.1. Title: `Turn [N]` (session chapter tool, harness-permitting; N = the turn count)
+      - 3.1.6.2.2. Mark ONLY at the true turn end (can't be removed once made), never mid-turn
+    - 3.1.6.3. TEA3 —— I/O Declarations (for §3.2.1–3): batched IN ORDER (FINAL output); e.g.:
 ```
 ✅ `career/CP_notes.md`, `cscpt/dlint.py`
 ⇠ `202605/career_query_202605300226.md`
@@ -91,13 +100,12 @@
 ➡️ **`202605/career_response_202605300226.md`**
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
 ```
-  - 3.1.7. After ALL actions AND right BEFORE §3.1.6's batch, mark a chapter
-    - 3.1.7.1. Title: `Turn [N]` (session chapter tool, harness-permitting; N = the turn count)
-    - 3.1.7.2. Mark ONLY at the true turn end (can't be removed once made), never mid-turn
-    - 3.1.7.3. Clarifications on I/O Declarations & Chapter Marker:
-      - 3.1.7.3.1. Order = all actions → mark chapter → §3.1.6's batch
-      - 3.1.7.3.2. Marker immediately PRECEDES the batch, so clicking it lands on declarations
-      - 3.1.7.3.3. Nothing follows the batch, unless explicitly required
+  - 3.1.7. Clarifications on §3.1.6.1–3:
+    - 3.1.7.1. All 3 TEAs are ONCE per turn; DON'T act prematurely nor repeatedly
+    - 3.1.7.2. Order = **All Tasks** → **TEA1** → **TEA2** → **TEA3**
+    - 3.1.7.3. Marker must immediately PRECEDE the batch, so clicking it lands on declarations
+    - 3.1.7.4. `m2.md`'s mandate (pushing only `response_`) doesn't count as violation
+    - 3.1.7.5. Absolutely nothing follows TEA3's batch (no exception)
 
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
@@ -319,12 +327,6 @@
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working
   - 9.04.2. If it precedes .md: read via §8.8.3/5 → diff changes → confirm w/ user → update .md
-- 9.05. Turn-End Push:
-  - 9.05.1. Commit name: ≤8w summary; Scope: all touched repo(s)
-  - 9.05.2. ONLY this turn's CC changes (± this turn's `query_`) → commit + push
-  - 9.05.3. Ditto + user changes on OTHER files → commit + push CC-touched files only
-  - 9.05.4. User changes on CC-touched files (rare) → DON'T commit/push; alert in chat (override) & advise user NOT to save his manual works (risks clashing/corrupting the file)
-  - 9.05.5. ONE commit per turn (per touched repo): avoid interim commit(s), UNLESS nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
-- 9.06. `/loop` or timed wakes:
-  - 9.06.1. Use persistent Monitor sleep-loop (event line per interval, self-end on completion)
-  - 9.06.2. NEVER CronCreate, which fires only on an idle REPL, so busy sessions starve it silently 
+- 9.05. `/loop` or timed wakes:
+  - 9.05.1. Use persistent Monitor sleep-loop (event line per interval, self-end on completion)
+  - 9.05.2. NEVER CronCreate, which fires only on an idle REPL, so busy sessions starve it silently 
