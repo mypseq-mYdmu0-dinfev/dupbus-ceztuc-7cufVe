@@ -13,12 +13,13 @@ Two rules, picked by the session's working directory (see REPO SCOPE below):
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a Stop hook scanning the main agent's chat text at turn end, BLOCKING
   any impermissible line.
-* IF IT BLOCKS: one forced extra turn, terse reason on stderr. Recast or move
-  the prose into `response_`, then end again. EVERY breach blocks.
+* IF IT BLOCKS: one forced extra turn, terse reason on stderr. Recast the
+  prose into `response_`, or emit a lone `.` if nothing remains, then end
+  again. EVERY breach blocks.
 * PERMITTED: blank lines; a `---`/`***`/`___` divider; each glyph ONLY in the
   declaration it owns —— the 3 I/O glyphs a backticked file list (notes in
-  brackets/italics), the blocker glyph a real blocker in ≤5 words, the sentinel
-  its exact protocol wording. Parent `GitHub/` Reader folder: blank lines ONLY.
+  brackets/italics), the blocker glyph ≤5 words, the sentinel verbatim, a
+  lone `.`. Reader folder: blank lines ONLY.
 * Silent elsewhere; verdicts log to `cscpt/.clint.log`.
 === NON-CCSIM —— end of all you need to RUN it ===
 
@@ -150,6 +151,62 @@ Tested in order `override` → `yn` → `sic` → `DATS`, widest authorisation f
 so the log names the STRONGEST reason a turn was let through; where several
 apply the turn was authorised outright anyway.
 
+DOT ESCAPE: root CLAUDE.md §3.1.6.2 now reads "NEVER repeat declaration after
+a Stop-hook; emit a lone `.` instead (nothing else)" —— written in direct
+response to a deadlock this file's own ALWAYS RED policy creates. A block
+forces one more model turn, and the harness will not let that turn end
+without a content block; by then the agent has nothing NEW to declare (this
+turn's declarations already went out before the block landed) and is now
+forbidden from repeating them. Prose is forbidden, repeating the batch is
+forbidden, and a model that is not calling a tool cannot simply produce
+NOTHING —— so every compliant option was closed at once, and in practice the
+agent resolved it the only way left: by re-emitting the declaration batch,
+which is exactly the breach the new rule forbids. Not hypothetical —— the
+owner reports it has now happened three times in one turn, and to another
+session too. A sanctioned, information-free token the harness will still
+accept as content is the only way out, and this repo already has one:
+`universal/glossary.md` sanctions a lone `.` as the USER's way of asking for
+a content-free `.` reply. This exemption is that same token run the other
+way —— the agent's way of ending a blocked turn with nothing left to add.
+
+MATCHING RULE (`_lone_dot_turn`), deliberately narrow: every non-blank line
+the assistant produced since the triggering user message —— across every
+text block, not only the ones already flagged as breaches —— must total to
+EXACTLY one line, and that line must strip to EXACTLY one full stop.
+Consequences, each intended: `..`/`...` fail (not one full stop); `. ` plus
+more text on the same line fails (not exactly a full stop); and a `.`
+sharing the turn with ANY other non-blank line —— even a well-formed
+declaration that would pass fine on its own —— still fails, because checking
+only the already-flagged `offending` lines would let a real declaration
+batch ride alongside a decorative "." and pass; checking EVERY non-blank
+line closes that door. A bold-wrapped `**.**` fails too: §3.1.6's bold
+wrapper is tolerated for a GLYPH line elsewhere in this file, but the dot
+carries no glyph and the rule text says only "optionally surrounded by
+whitespace" —— widening tolerance further was never asked for and would only
+widen the token's shape, the opposite of what a minimal escape hatch should
+do.
+
+REPO ONLY, never READER: the Reader folder's CLAUDE.md forbids the agent
+from creating or editing ANY file, so the redirect that makes the REPO
+breach message safe to obey ("carry it into this turn's `response_` file")
+has nowhere to land over there —— the whole reason the dot costs REPO
+nothing (the real content already reached a file before the block) does not
+hold for a session that writes no files at all. More to the point, Reader
+does not face this deadlock in the first place: its own rule already
+tolerates a turn ending in genuinely BLANK content (proven by this suite's
+F3 case —— a whitespace-only assistant message is clean there today, no
+change needed), and a harness that accepts blank text as valid turn-ending
+content accepts it whichever mode is running. REPO cannot lean on that same
+blank-turn path for a DIFFERENT reason: nothing here ever stopped REPO
+treating blank output as clean either (an empty `offending` list was always
+clean) —— the deadlock was never that clint refuses blank output, it is that
+the MODEL, told to end a turn with "nothing", reliably does not produce
+nothing; it reaches for the one concrete thing still on hand, its own
+declaration batch. The sanctioned dot is the deliberately boring alternative
+concrete thing to reach for instead. So this is wired ONLY under `mode ==
+MODE_REPO`; a `.` in READER mode keeps blocking as ordinary chat text,
+exactly like any other non-blank line there.
+
 LOOP GUARD: exit 2 forces a continuation that ends in another Stop, so an
 unguarded block would loop forever. Two INDEPENDENT signals of the same fact
 ("we are already inside a block-forced continuation"), either sufficient alone:
@@ -247,9 +304,10 @@ own failure.
 LOG FORMAT: exactly ONE tab-delimited line per invocation whatever the verdict,
 each carrying `mode=` (which rule applied) and `pid=` (the prompt it belongs
 to), so one `grep` shows every invocation for a prompt and why it was judged so.
-Actions: `clean`; `out_of_scope`; `loop_guard`; `block_failed`; the parse stage
-reached; one `exempt:` per exemption (`exempt:override`, `exempt:yn`,
-`exempt:sic`, `exempt:dats`); and one `block:` per breach CLASS —— `block:prose`
+Actions: `clean` and its `clean:dot` variant (see docstring DOT ESCAPE);
+`out_of_scope`; `loop_guard`; `block_failed`; the parse stage reached; one
+`exempt:` per exemption (`exempt:override`, `exempt:yn`, `exempt:sic`,
+`exempt:dats`); and one `block:` per breach CLASS —— `block:prose`
 (no glyph at all), `block:io_shape` (an I/O glyph not carrying a file list),
 `block:sentinel` (compaction glyph, wrong wording), `block:warn_shape`
 (blocker glyph carrying another type's declaration), `block:warn_empty`,
@@ -420,7 +478,7 @@ _BREACH = {
                 "Avoid further prose. Do not drop what you meant to say —— "
                 "carry it into this turn's `response_` file."),
     MODE_READER: ("Chat-text breach (GitHub/ CLAUDE.md): this session must "
-                  "emit NO chat text at all. Finish the turn silently."),
+                  "emit NO chat text at all. End the turn silently."),
 }
 
 # Known system-injected wrapper tags Claude Code appends as `type: "user"`
@@ -669,6 +727,18 @@ def _dats_exempt(offending):
             and len(offending[0].split()) <= _DATS_MAX_WORDS)
 
 
+def _lone_dot_turn(all_lines):
+    """True if the WHOLE turn's non-blank content is a single line reading
+    exactly one full stop (whitespace-trimmed) —— root CLAUDE.md §3.1.6.2's
+    sanctioned no-op reply to a Stop-hook block, REPO mode only. See
+    docstring DOT ESCAPE for the deadlock this breaks and why the match is
+    this narrow. `all_lines` already holds every non-blank line stripped, so
+    plain equality enforces "exactly one full stop, optionally surrounded by
+    whitespace" and rejects `..`, `...`, `. text`, and a `.` sharing the turn
+    with any other line, declaration or not."""
+    return len(all_lines) == 1 and all_lines[0] == "."
+
+
 def _prune_log():
     """Bound `_LOG` to its recent window —— cheaply, atomically, fail-safely.
 
@@ -846,6 +916,8 @@ def main():
 
     offending = []
     classes = []
+    all_lines = []      # every non-blank line, breach or not -- feeds the
+                         # lone-dot escape below (see docstring DOT ESCAPE)
     for o in objs[start:]:
         if o.get("type") != "assistant":
             continue
@@ -856,6 +928,9 @@ def main():
             continue
         for text in _text_of(msg.get("content")):
             for ln in text.splitlines():
+                s = ln.strip()
+                if s:
+                    all_lines.append(s)
                 klass = _line_breach(ln, mode)
                 if klass:
                     offending.append(ln.strip())
@@ -864,6 +939,15 @@ def main():
     if not offending:
         # Clean turn -> proof-of-life, non-blocking.
         _log_event(sid, "clean", pid=plog, mode=mode)
+        return 0
+
+    # --- Lone full-stop escape (REPO mode only; see docstring DOT ESCAPE) ---
+    # Checked over ALL non-blank content, not just `offending`, so a dot
+    # sharing the turn with an otherwise-clean declaration still fails --
+    # "alongside other lines" disqualifies it even when those other lines are
+    # themselves permitted.
+    if mode == MODE_REPO and _lone_dot_turn(all_lines):
+        _log_event(sid, "clean:dot", pid=plog, mode=mode)
         return 0
 
     # Class of the FIRST offender, so the logged verdict and `first=` always

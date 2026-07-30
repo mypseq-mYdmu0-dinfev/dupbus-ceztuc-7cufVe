@@ -50,7 +50,21 @@ after a #close). This test pins:
      of its own prune), non-eager (a log under the mark is left alone), and
      utterly fail-safe -- a prune that CANNOT run must leave the log intact and
      the turn unaffected, which H6 proves by making the temp file
-     uncreatable and checking the appended line survives anyway.
+     uncreatable and checking the appended line survives anyway; and
+  J. the lone `.` escape (root CLAUDE.md §3.1.6.2, added to break a genuine
+     deadlock: a Stop-hook block forces one more turn, and by then the agent
+     has nothing new to declare and is forbidden from repeating what it
+     already said) -- a turn whose ONLY non-blank content, across every text
+     block, is a single line reading exactly one full stop is CLEAN in REPO
+     mode, under its own `clean:dot` tag kept distinct from plain `clean` so
+     the two stay separately auditable. Two dots, an ellipsis, trailing text
+     on the same line, a bold `**.**` wrapper, and a dot sharing the turn with
+     ANY other line -- even an otherwise well-formed declaration -- all stay
+     breaches: the escape is for a turn with nothing else to say, not a
+     vehicle for pairing a decorative dot with real content. REPO-only: it
+     still blocks in READER mode, which needs no such escape of its own (a
+     genuinely blank turn already clears there, per F3) and never writes a
+     `response_` for the dot's redirect to reach.
 
 It drives the REAL registered command from ~/.claude/settings.json
 (`python3 .../cscpt/clint.py`, Stop hook) with synthesised payloads and
