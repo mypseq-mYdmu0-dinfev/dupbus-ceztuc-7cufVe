@@ -15,7 +15,7 @@
 
 ## Consistency — say these, not the alternative
 - Crew-house year = **2017** (already told Elena; not 2015, regardless of memory).
-- Marketing career: adjacent since 2010, agency-side from 2018 — don't say "in marketing since 2010."
+- Marketing career: adjacent since 2010, agency-side from 2018 — don't say "in marketing since 2010".
 - "Other job" if asked again → "marketing, but B2C" → pivot to real HKEF story (B2C's not my lane).
 - KE = GM/Board Advisor only. NEVER founder, never ownership language.
   - If it gets close: "I've sat closer to founders than most, advising other people's businesses."
