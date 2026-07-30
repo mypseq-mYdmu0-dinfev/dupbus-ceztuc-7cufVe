@@ -25,7 +25,7 @@
 ## Why This Level, Why Alltech (If Asked Again)
 - Taking a local role after senior work is logic, not a step down. Marketing skill doesn’t fully transfer across markets.
 - Already did this exact move once, at HKEF whilst senior at KE and Backbone. The pitch has never been rejected mid-conversation, though it hasn’t won outright either.
-- Unlike a marketing agency, where anyone can register a company and start competing tomorrow, nobody’s buying millions of dollars in AV equipment overnight just to join this game. That new-entrant barrier is real protection Alltech already has.
+- Did genuine, independent analysis on why this industry is durably positioned against AI disruption, across four layers, and I’m convinced by it. Full reckoning is in Notes if it’s worth walking through.
 - Genuinely drawn to the ambitious, under-recognised angle here, though never say “underdog” since they’re 15 years established.
 
 ## If “Nurturing vs Acquisition” Comes Up
