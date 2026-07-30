@@ -1082,6 +1082,35 @@ format e.g.:
 - [09:59] **Elena**: I'll see you then. Bye.
 - [10:00] **User**: See you then. Bye.
 
+### 8.7. Stage 3 — Refined Strategy (202607301626)
+*Supersedes relevant parts of §8.5 on the points below; §8.5 kept intact for record.*
+
+#### 8.7.1. Market insight — the fuller competitive picture ("why this industry/firm")
+- 8.7.1.1. The user's own read (capital-intensive kit = high barrier to new entrants, unlike a marketing agency) is correct and worth voicing to Seb, plainly: "you can't just rock up with millions in gear."
+- 8.7.1.2. Fuller picture (background thinking, NOT to recite as "Porter's" — keep delivery as plain as 8.7.1.1): Alltech is structurally protected at the INDUSTRY level (new-entrant barrier) but structurally weak at the DEAL level — per-gig, they're a replaceable supplier to event-producing brands (low buyer power in their favour). Threat of substitutes is low on their top verticals (Corporate Conferences, Brand Activations — flagship credits like Stan/Red Bull prove genuine difficulty-of-imitation) but higher on commodity verticals (#4 LED sales/installs). Rivalry is concentrated amongst a small set of capital-holding incumbents, not diffuse.
+- 8.7.1.3. Net: the tension between "protected at the industry level, weak at the deal level" is arguably the sharper strategic story — a good background frame for how the user personally thinks about the market, not a script.
+
+#### 8.7.2. Why this level ("descending" from Board/GM/Advisor) — redo
+- 8.7.2.1. Winning angle: marketing is culturally/locally grounded (unlike more universal/technical fields) — expertise built in HK/UK/Europe markets doesn't fully transfer to reading an Australian audience, so a genuinely senior international marketer taking a hands-on LOCAL role is coherent professional logic, not a step down. Career-long marketing orientation traces to 2010 (adjacent/client-side exposure) formalising into agency-side from 2018 — precise framing matters (don't overclaim "in marketing since 2010").
+- 8.7.2.2. Proof, not just theory: the user has already made this exact move before — Assistant Marketing Manager at HKEF (Aug–Oct 2023), taken whilst senior at KE/Backbone, because the work (Asian Games, FEI World Challenge) was compelling. "Title height was never my filter, scope of challenge is" is provable from the résumé, not asserted.
+- 8.7.2.3. This pitch has a track record: used successfully once before, for a realty-firm marketing role. Alltech's case is stronger — B2B (his career-long orientation), event-driven (leverages real prior event exp), and a genuine marketing-titled role (the realty role sat under a marketing dept without the title itself).
+
+#### 8.7.3. Salary — simplified (supersedes 8.1.10.4's active-probe plan)
+- 8.7.3.1. Adversarially tested (dedicated SA red-team, 202607301626): the earlier "probe to $100k p.a." plan is unnecessary. FULL-TIME (40hr/wk) at the SAME rate structure already pays the full $75–85k p.a., not the ~$51k pro-rata figure — comfortably above the ~$60k take-home target, by arithmetic alone, no negotiation required.
+- 8.7.3.2. Revised plan: raise NOTHING proactively, ever, before or shortly after starting. Deliver quietly through one full review cycle; let Elena's own already-stated FT/Marketing-Manager path (she raised it unprompted) run its course. Requesting a dated commitment early was independently flagged as re-opening the exact contradiction/jeopardy risk (his own "fully comfortable" + "wife is a chef, comfortable" statements, both on record with Elena specifically) rather than resolving it.
+- 8.7.3.3. If any lower-risk lever is wanted later: a title bump (free to the employer, raises future market comps) or simply letting the routine review cadence carry the conversation — both lower-risk than a bespoke ask. Not yet decided; user's call.
+
+#### 8.7.4. Seb — founder-risk, corrected
+- 8.7.4.1. Correction to 8.1.14.2/§9's framing: Seb has no basis to fish for founder-related talk — he does not know the user was ever a founder, so he has no reason to probe there unprompted. The real risk is entirely the user's OWN control in a warm, founder-to-founder rapport moment (KE builder story), not Seb's questions.
+- 8.7.4.2. Ceiling on what Seb could plausibly know if he researched (e.g. LinkedIn): rich leadership/management experience, having worked with numerous founders/CEOs/C-suite/managers, evidenced by consulting work — NOT that the user founded anything himself.
+
+#### 8.7.5. "The other job" — refined handling
+- 8.7.5.1. Revised approach if it resurfaces: reveal it was "marketing, but B2C" (vague — invites little further follow-up), then immediately anchor to a REAL, verifiable fact — a past in-house stint (HKEF) already showed B2C isn't his lane, whole career otherwise B2B/agency-side. Pairs a small, low-follow-up detail with a true, checkable anchor — safer than either a bare "I can't tell" (reads evasive) or a more specific fabricated detail alone.
+
+#### 8.7.6. Minor flags
+- 8.7.6.1. Date discrepancy, unresolved: `career_bg.md` lists the crew-house stint as 2017; the user recalls 2015. Reconcile before relying on either in conversation.
+- 8.7.6.2. Banter: self-deprecation (the pharmacist-licence line) is the proven-working lane; lean on it over manufactured small talk.
+
 ---
 
 ## 9. Stakeholder Profiles (for future comms & decisions)
