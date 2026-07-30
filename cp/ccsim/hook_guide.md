@@ -52,7 +52,7 @@
 | PostToolUse | `cscpt/nlint_hook.sh` | Numbering-continuity lint (advisory) |
 | PostToolUse | `cscpt/tlint_hook.sh` | Timestamp-clash lint (warn-only) |
 | UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
-| Stop | `cscpt/clint.py` | No-chat-prose lint (block-once) |
+| Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
 | PostCompact | `.claude/post_compact.sh` | Inject the post-compaction protocol |
 
 - 3.1. Naming convention: a `*_hook.sh` IS the file the harness launches; the `.py` beside it is the lint body. Every `.sh` in `cscpt/` carries `_hook`, no `.py` does.
@@ -132,7 +132,9 @@
 - 6.1. On Stop, ONLY a non-zero exit's stderr reaches the model. An exit-0 `systemMessage` or stdout reaches the user alone.
 - 6.2. Consequence: a non-blocking Stop warning can NEVER make the agent self-correct —— its turn has already ended and it never sees the note.
 - 6.3. Cost of a Stop block: exactly ONE extra model turn —— a full round trip, billed and consuming context. Spend it deliberately, at most once per prompt.
-- 6.4. Hence clint's hybrid tiering: RED (first breach of a prompt) blocks once; later breaches under the same `prompt_id` are logged YELLOW and never block.
+- 6.4. clint is WARN-ONLY —— every verdict exits 0 and nothing blocks. It once blocked (first RED per prompt, later ones logged), but forcing an extra turn each time cascaded into worse turn-end behaviour than the breaches themselves, so the owner demoted it.
+- 6.4.1. ⚠️ The price, so nobody restores the block unaware: exit-0 output reaches ONLY the user, never the model. clint therefore cannot correct CC at all —— it is an audit trail, and enforcement rests on root `CLAUDE.md` §3.1.6's TEAs.
+- 6.4.2. Breach classes survive in the log with a `yellow:` prefix (`yellow:prose`, `yellow:reader`, …); a lone `.` is CLEAN in both modes (`clean:dot` / `clean:dot_reader`).
 - 6.5. On PostToolUse the structured `hookSpecificOutput.additionalContext` field is the one channel that is BOTH non-blocking AND model-visible —— use it for any advisory that must actually be read.
 - 6.6. On UserPromptSubmit, NEVER emit `decision:"block"` —— it ERASES the user's prompt.
 - 6.7. PostToolUse cannot undo the write regardless of exit code (the tool already ran); exit 2 there buys model visibility with error framing, not a rollback.

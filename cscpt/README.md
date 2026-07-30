@@ -45,7 +45,7 @@ Several linters below are launched by the harness rather than by you. Registrati
 
 **The harness runs these (the lints):**
 
-- `clint.py` —— Stop hook. Flags chat text that is not a permitted declaration line, blocking once per prompt so CC self-corrects. Breaches logged to `.clint.log`.
+- `clint.py` —— Stop hook. Warns when chat text is not a permitted declaration line. WARN-only: never blocks, and the warning reaches the user, not CC. Logged to `.clint.log`.
 - `dlint_quick.py` —— PostToolUse. On a CC-authored comms write, runs the quick lint and BLOCKS until 🔴 RED = 0. The only lint here that can block a write.
 - `nlint.py` —— PostToolUse. Two advisory checks against `universal/numbered.md`, neither blocking: a numbered level reaching its 10th item, and a response file resetting its top-level numbering with no excuse in evidence.
 - `tlint.py` —— PostToolUse. Warns when a written file's 12-digit timestamp clashes with a neighbour that is not its sanctioned pair. Warn-only.
