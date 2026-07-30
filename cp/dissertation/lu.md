@@ -554,7 +554,7 @@ You may now proceed to the Ethics application process. Please follow the steps b
 Kind regards,
 Management Dissertation Team
 
-#### Approval Letter
+#### Proposal Approval Letter
 
 *Saved at '/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/Official/MGTK751 Proposal Approval - 200051046.pdf'; no need to parse PDF; fully mirrored in pure text here*
 
@@ -668,6 +668,8 @@ Lu
 
 ### Log 28
 
+On 15 Jul 2026, at 19:19, Yu, Culous <Culous.Yu@liverpool.ac.uk> wrote:
+
 Hello Lu,
 
 Thank you again for reviewing and returning the forms. I have incorporated your edits throughout, together with a small number of purely cosmetic corrections, mainly spelling, punctuation, and quote-style consistency, to the Participant Information Sheet and the Consent Form. Nothing you wrote has been changed in meaning.
@@ -678,3 +680,165 @@ I look forward to your review and written approval, which I understand must be i
 
 Warm Regards,
 Culous
+
+### Log 29
+
+On 16 Jul 2026, at 02:22, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Well done, Culous. I will review the form shortly. Meanwhile, you can carry on working on the first three chapters by using the approved proposal. 
+
+Kind regards,
+Lu
+
+### Log 30
+
+On 19 Jul 2026, at 05:28, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Hi, Culous,
+I have finished reviewing your online form. I unlocked the form to make some changes. No, please resend it to me for me to sign. 
+
+Kind regards,
+Lu
+
+### Log 31
+
+On 19 Jul 2026, at 11:25, Yu, Culous <Culous.Yu@liverpool.ac.uk> wrote:
+
+Hello Lu,
+
+As revealed in my last email, the files are all in the shared drive ("Culous Yu's Ethics Docs/Submitted 202607151910/"). Is that what you meant by “No, please resend it to me for me to sign”? Please kindly enlighten me on what exactly I should provision. Thank you for your time!
+
+Warm Regards,
+Culous Yu
+
+### Log 32
+
+On 19 Jul 2026, at 12:03, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Sorry, typo, should be "now", just go to the online form, the last page, click "request signature". The form will be resent to me for me to sign. 
+
+Thanks
+
+### Log 33
+
+On 20 Jul 2026, at 20:36, Yu, Culous <Culous.Yu@liverpool.ac.uk> wrote:
+
+Hello Lu,
+
+Just done as you instructed. Please advise again when any actions needed from me on the ethics application. Thank you so much for your time!
+
+Regards,
+Culous
+
+### Log 34
+
+On 21 Jul 2026, at 00:54, Liu, Lu [luliu99] <Lu.Liu@liverpool.ac.uk> wrote:
+
+Thank you, Culous. I have signed the form
+Lu
+
+### Log 35
+
+*NOT FROM LU; Cc'd user*
+
+On 25 Jul 2026, at 01:36, donotreply@infonetica.net wrote:
+
+Dear Dr Liu,
+
+We are pleased to inform you that your application for research ethics approval has been successful. Please see the attached approval letter for full details.
+
+Please note
+
+You must be aware of the conditions of approval
+You must be aware of the expiry date of the approval
+You must inform the Committee of any amendments
+Kind regards,
+
+Liverpool Online Research Ethics Committee 
+
+Need help? Please refer to our User Guides
+
+<Letter.pdf>
+[INTERNAL see `#### Ethics Approval Letter`]
+
+#### Ethics Approval Letter
+
+*Saved at '/Volumes/FURY 2TB/IYM/Private/Academic/MBA/UoL Modules/MGTK751 MBA Project/Official/MGTK751 Ethics Approval Letter.pdf'; no need to parse PDF; fully mirrored in pure text here*
+
+UNIVERSITY OF LIVERPOOL
+Liverpool Online Research Ethics Committee
+
+24 July 2026
+
+Dear Dr Liu
+
+I am pleased to inform you that your application for research ethics approval has been approved. Application details and conditions of approval can be found below. Appendix A contains a list of documents approved by the Committee.
+
+##### Application Details
+
+<csv>
+Field,Details
+Reference:,18783
+Project Title:,Management - Investigating how working alongside a stand-out colleague affects teamwork and knowledge sharing at work
+Principal Investigator/Supervisor:,Dr Lu Liu
+Co-Investigator(s):,Mr Culous Yu
+Lead Student Investigator:,Mr Culous Yu
+Department:,Management School
+Approval Date:,24/07/2026
+Approval Expiry Date:,Five years from the approval date listed above
+</csv>
+
+The application was **APPROVED** subject to the following conditions:
+
+##### Conditions of approval
+
+- All adverse events must be reported to ethics@liverpool.ac.uk in accordance with the procedure for reporting adverse events.
+- If you wish to extend the duration of the study beyond the research ethics approval expiry date listed above, a new application should be submitted.
+- If you wish to make any changes to the study, please create and submit an amendment form using the research ethics system. If the named Principal Investigator or Supervisor changes, or leaves the employment of the University during the course of this approval, the approval will lapse. Therefore it will be necessary to create and submit an amendment form within the research ethics system.
+- It is the responsibility of the Principal Investigator/Supervisor to inform all the investigators of the terms of the approval.
+
+Kind regards,
+
+Liverpool Online Research Ethics Committee
+LOREC (academic@study-online.liverpool.ac.uk)
+
+---
+
+##### Appendix - Approved Documents
+(Relevant only to amendments involving changes to the study documentation)
+
+The final document set reviewed and approved by the committee is listed below:
+
+<csv>
+Document Type,File Name,Date,Version
+Study Proposal/Protocol,MGTK751_AIR_202606240727.pdf,15/07/2026,2
+Participant Information Sheet,Participant_Information_Sheet-example-qualitative (filled).pdf,15/07/2026,3
+Participant Consent Form,Participant Consent Form-example-qualitative (filled).pdf,15/07/2026,3
+Interview Schedule,Interview Guide A TPP.pdf,15/07/2026,1
+Interview Schedule,Interview Guide B TP.pdf,15/07/2026,1
+Interview Schedule,Interview Guide C Manager.pdf,15/07/2026,1
+Fieldwork Risk Assessment,Basic Risk assessment form-example (filled).pdf,15/07/2026,1
+Advertisement,MGTK751_ad.pdf,15/07/2026,1
+</csv>
+
+### Log 36
+
+*NOT FROM LU*
+
+On 25 Jul 2026, at 02:39, Sirisopha Thongmern (via VLE) <noreply@liverpool-online-study.com> wrote:
+
+MGTK751 March 2026 » Forums » Supervisor Discussion Forum » Ethical Approval
+ST	
+Ethical Approval
+by Sirisopha Thongmern - Friday, 24 July 2026, 4:38 PM
+ 	
+Hello Culous,
+ 
+We are pleased to confirm that your ethics application has been approved and the approval letter has been sent to your University email.
+ 
+You may now begin data collection for the project.
+ 
+We wish you the best with the remainder of your project.
+ 
+Kind regards,
+Management Dissertation Team
