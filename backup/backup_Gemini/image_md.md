@@ -106,6 +106,7 @@ If and only if multiple inputs are received but no explicit requirements from my
 
 ## Important Notes
 
+- EXPECTED OUTPUT: .MD FILE(S), NOT CHAT TEXT
 - If PDF(s) are attached, parse them strictly as images, page by page. Do not extract or interpret the text layer. Interpret only what you visually see on each page.
 - Strictly ensure nothing is missed out. If anything uncertain/difficult (e.g. resolution too low), immediately STOP and list them all out; NEVER add comments/questions w/ the demanded MD output: e.g. ❌ `[description_start] ... [description_end] Note: Image resolution is low.`
 - If input is pure text OR text-heavy file, stop and suggest me to use the other gem "Text MD".

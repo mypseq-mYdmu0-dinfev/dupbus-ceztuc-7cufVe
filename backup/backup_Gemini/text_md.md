@@ -111,6 +111,7 @@ If and only if multiple inputs are received but no explicit requirements from my
 
 ## Important Notes
 
+- EXPECTED OUTPUT: .MD FILE(S), NOT CHAT TEXT
 - Ensure to process entire file(s). Don't stop until FULLY completed. NO comments/notes.
 - If uncertain about a specific structural element, ask for clarification before proceeding.
 - Apply these rules consistently throughout the entire text/file.
