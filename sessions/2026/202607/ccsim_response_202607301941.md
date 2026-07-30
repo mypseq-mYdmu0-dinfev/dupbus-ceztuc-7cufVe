@@ -64,3 +64,4 @@
 - 128.3. `temp_mail_context_202607301941.md` written (1,503w / 2,704tk) and pointed at from `close_` §10, with ses07's instructions.
 - 128.4. `close_` updated —— end-range TS now 202607301951, plus §9 (post-close addendum: the turn-control failure, the TEAs, the clint demotion) and §10 (CCSIM07 handover).
 - 128.5. This turn is Turn 16, and it ends with exactly one commit, one chapter marker, one declaration batch —— in that order.
+- 128.6. ⚠️ One more instance of the same fault, disclosed: I ran TEA1 whilst the suite-realignment SA was still writing, so the commit caught a half-renamed function and the suite briefly errored. Re-verified after it settled —— 90/90 —— and the residual edit is in this turn's second commit. The rule I keep breaking is the one I wrote at §106.6: a dispatched SA is an open obligation.

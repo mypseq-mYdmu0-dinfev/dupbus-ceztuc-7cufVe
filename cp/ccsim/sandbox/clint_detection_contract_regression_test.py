@@ -266,7 +266,7 @@ def _check(label, got, want_exit, want_action):
 
 # --- A. the once-per-prompt ceiling is (still) gone ------------------------
 
-def section_always_red(tmp):
+def section_no_ceiling(tmp):
     print("\n--- A. no ceiling: 3 breaches, ONE promptId, each logs its own "
           "class, none block ---")
     log = os.path.join(tmp, "A.log")
@@ -880,7 +880,7 @@ def main():
     print("clint.py ALWAYS-YELLOW regression test")
     print("target: %s" % CLINT)
     with tempfile.TemporaryDirectory(prefix="clint-yellow-") as tmp:
-        section_always_red(tmp)
+        section_no_ceiling(tmp)
         section_loop_guard(tmp)
         section_yn(tmp)
         section_dats(tmp)
