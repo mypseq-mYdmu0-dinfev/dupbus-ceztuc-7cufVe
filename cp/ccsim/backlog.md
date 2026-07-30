@@ -46,3 +46,8 @@ Ref: `universal/glossary.md` § Terms (FOF entry); `universal/sprint.md` § `#sp
 - Problem: three suites failed this session not from regression but from asserting a voided `❌_` file still exists. The Void Rule is two-party (CC renames, owner deletes), so that assertion breaks whenever the owner does his half.
 - Suggestion: standing rule for future suites —— assert only that no LIVE copy exists; never assert the presence of a voided file.
 - Ref: `ccsim_close_202607291954.md` §8.4
+
+## `cscpt/clint.py` —— Reader's sanctioned `.` reply is blocked by clint
+- Problem: `universal/glossary.md` and the `GitHub/` CLAUDE.md both mandate that when the user's message is a lone `.`, the agent replies with `.` only in chat. But clint's READER mode blocks EVERY non-blank line (only `override` exempt), so a Reader session following its own documented convention gets Stop-blocked doing so.
+- Suggestion: decide whether that dot-echo convention should be clint-visible at all, or was always meant to rest on instruction-following like Reader's other rules. If it should be enforced, exempt a lone `.` in READER too —— but note this deliberately blurs it with the REPO deadlock-escape, which was kept OFF for Reader on purpose.
+- Ref: `ccsim_response_202607301737.md` §118

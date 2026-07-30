@@ -76,3 +76,10 @@
 - 117.1. Every compliant option is finally open: a tool call whilst working, a lone `.` when a block leaves nothing to say, the batch ONCE at true completion.
 - 117.2. So from here a breach is no longer a deadlock —— it is just a breach, and clint blocks it. That is the difference between this fix and the three resolutions before it.
 - 117.3. I am not claiming the behaviour is solved by my intent. The claim is narrower and checkable: the structural excuse is gone, and `.clint.log` will show whether it recurs.
+
+## 118. SA Returned —— One New Issue, Logged Not Fixed
+- 118.1. The dot-escape SA finished after my last push. Its full test section landed: the clint suite is now 88/88 (21 new assertions), header contract 62/62.
+- 118.2. ⚠️ It flagged a genuine contradiction I had not seen: `glossary.md` and the `GitHub/` CLAUDE.md both mandate that a lone `.` from you gets a lone `.` back in chat —— but clint's READER mode blocks EVERY non-blank line. So the Reader session would be Stop-blocked doing exactly what its own protocol mandates.
+- 118.3. NOT fixed unilaterally, and I agree with the SA's reasoning: exempting `.` in Reader would blur it with the REPO deadlock-escape, which was deliberately kept off there. It is also a design question —— whether that convention was ever meant to be machine-enforced or left to instruction-following, as Reader's other rules are.
+- 118.4. Logged to `backlog.md` for your ruling.
+- 118.5. Also noted: my last commit captured the SA's in-flight edits, because we share one working tree. Nothing was lost —— but this turn I staged explicitly rather than `git add -A`, so `cp/dissertation/lu.md` (yours, untouched by me) stayed out of my commit. That is the §9.05.3 slip from the close turn, not repeated.

@@ -603,6 +603,72 @@ def section_redirect(tmp):
                 "stderr=%r" % got[2])
 
 
+# --- J. the lone `.` escape (root CLAUDE.md §3.1.6.2, DOT ESCAPE) ----------
+
+def section_dot_escape(tmp):
+    print("\n--- J. lone `.`: sanctioned no-op reply to a Stop-hook block ---")
+    log = os.path.join(tmp, "J.log")
+
+    # J1-J2: the bare token, with and without incidental whitespace -> CLEAN,
+    # under its OWN tag (never the plain `clean` a declaration-only turn gets).
+    clean_cases = [
+        ("bare lone dot", "."),
+        ("dot padded with leading/trailing whitespace", "   .   "),
+    ]
+    for i, (label, text) in enumerate(clean_cases):
+        tp = os.path.join(tmp, "Jc%d.jsonl" % i)
+        _write_transcript(tp, [_user("do the thing"), _assistant(text)])
+        got = _run(_payload(tp), log)
+        _check("dot: %s" % label, got, 0, "clean:dot")
+        _record("dot: %s emits no stderr (nothing was blocked)" % label,
+                got[2] == "", "stderr=%r" % got[2])
+
+    # J3-J6: near misses, each failing the match for a NAMED reason -- every
+    # one must still block as ordinary prose (no separate carve-out earns a
+    # special tag; the strict shape either matches or it is just chat text).
+    block_cases = [
+        ("two dots is not ONE full stop", ".."),
+        ("an ellipsis is not ONE full stop", "..."),
+        ("more text after the dot, same line", ". hello"),
+        ("a bold-wrapped dot is not the bare token", "**.**"),
+    ]
+    for i, (label, text) in enumerate(block_cases):
+        tp = os.path.join(tmp, "Jb%d.jsonl" % i)
+        _write_transcript(tp, [_user("do the thing"), _assistant(text)])
+        _check("dot: %s" % label, _run(_payload(tp), log), 2, "block:prose")
+
+    # J7: a `.` sharing the turn with an otherwise well-formed declaration on
+    # a SEPARATE line must still block -- the escape is for a turn with
+    # NOTHING else to say, not a vehicle for pairing a decorative dot onto a
+    # real declaration batch. Checked over ALL non-blank lines, not only the
+    # ones already flagged, precisely so this case cannot slip through.
+    tp = os.path.join(tmp, "Jpair.jsonl")
+    _write_transcript(tp, [_user("do the thing"),
+                           _assistant(".\n✅ `cscpt/clint.py`")])
+    _check("dot: alongside an otherwise-clean declaration is NOT exempt",
+           _run(_payload(tp), log), 2, "block:prose")
+
+    # J8: REPO-only. The Reader session's own rule tolerates no chat text at
+    # all, the dot included -- it needs no escape of its own because a
+    # genuinely blank turn already clears there (see section F, case F3).
+    tp = os.path.join(tmp, "Jreader.jsonl")
+    _write_transcript(tp, [_user("ww it"), _assistant(".")])
+    _check("dot: still blocks in READER mode (no escape there)",
+           _run(_payload(tp, cwd=READER_CWD), log), 2, "block:reader")
+
+    # J9: an ORDINARY clean turn (declarations only, no dot in sight) must
+    # keep logging under the plain `clean` tag -- EXACTLY, not merely by
+    # family, since `clean:dot`'s family is also "clean" and would otherwise
+    # let this assertion pass even if `clean` had silently become an alias.
+    tp = os.path.join(tmp, "Jordinary.jsonl")
+    _write_transcript(tp, [_user("do the thing"),
+                           _assistant("✅ `cscpt/clint.py`")])
+    code, line, _ = _run(_payload(tp), log)
+    _record("an ordinary clean turn logs as exactly `clean`, never `clean:dot`",
+            code == 0 and _action(line) == "clean",
+            "got exit=%s action=%s" % (code, _action(line)))
+
+
 # --- H. the diagnostic log self-prunes -------------------------------------
 
 def _prune_consts():
@@ -756,6 +822,7 @@ def main():
         section_reader(tmp)
         section_failsafe(tmp)
         section_redirect(tmp)
+        section_dot_escape(tmp)
         # LAST on purpose: H11 measures the shortest record this suite made
         # clint write, so every other section must have run first.
         section_prune(tmp)
