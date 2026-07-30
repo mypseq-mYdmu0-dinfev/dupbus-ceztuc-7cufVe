@@ -1,26 +1,30 @@
 #!/usr/bin/env python3
-"""Stop hook —— enforces chat-text discipline when the MAIN agent ends a turn.
+"""Stop hook —— logs a chat-text-discipline WARNING when the MAIN agent ends a
+turn with an impermissible line. It NEVER blocks the turn (see ALWAYS RED ->
+ALWAYS YELLOW in the CCSIM section below for why, and the price of that
+choice).
 
 Two rules, picked by the session's working directory (see REPO SCOPE below):
 * REPO mode (this repo) —— root CLAUDE.md §3.2: the only chat text permitted is
   the 5 declaration lines, and each of the 5 glyphs is OWNED by its own
   declaration type (see DECLARATION CONTRACTS); any other non-blank line is a
-  breach. Four exemptions apply (`override`, `yn`, `sic`, `DATS`).
+  breach. Four exemptions apply (`override`, `yn`, `sic`, `DATS`), plus a lone
+  `.` (see DOT ESCAPE) which stays CLEAN rather than merely quieter.
 * READER mode (the parent `GitHub/` folder alone) —— that folder's own
   CLAUDE.md mandates ZERO chat text "NO MATTER WHAT", so there every non-blank
-  line is a breach, declaration glyphs included, and only `override` applies.
+  line is a breach, declaration glyphs included; only `override` and that same
+  lone `.` are exempt (see DOT ESCAPE for why the dot alone crossed over).
 
 === NON-CCSIM —— start of all you need to RUN it ===
-* WHAT: a Stop hook scanning the main agent's chat text at turn end, BLOCKING
-  any impermissible line.
-* IF IT BLOCKS: one forced extra turn, terse reason on stderr. Recast the
-  prose into `response_`, or emit a lone `.` if nothing remains, then end
-  again. EVERY breach blocks.
+* WHAT: a Stop hook scanning the agent's chat text at turn end. NEVER blocks ——
+  every verdict exits 0. A breach warns the USER and logs; it never reaches you.
 * PERMITTED: blank lines; a `---`/`***`/`___` divider; each glyph ONLY in the
-  declaration it owns —— the 3 I/O glyphs a backticked file list (notes in
-  brackets/italics), the blocker glyph ≤5 words, the sentinel verbatim, a
-  lone `.`. Reader folder: blank lines ONLY.
-* Silent elsewhere; verdicts log to `cscpt/.clint.log`.
+  declaration it owns —— the 3 I/O glyphs a backticked file list, the blocker
+  glyph ≤5 words, the sentinel verbatim; plus a lone `.` (both modes). Reader
+  folder: blank lines and that lone `.` only.
+* Comply regardless: root CLAUDE.md §3.2 mandates declarations-only chat,
+  whether or not this script enforces it.
+* Verdicts log to `cscpt/.clint.log`.
 === NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
@@ -56,8 +60,8 @@ satisfy THAT type's shape:
   net against the same class of evasion (any other joiner —— en dashes, slashes,
   underscores —— still grows the character count).
   `_WARN_MAX_CHARS = 68` is deliberately documented ONLY here, never in the
-  NON-CCSIM block, never in any guide, and never in the stderr message. A limit
-  an agent can SEE is a limit it will spend up to; 5 words should never come
+  NON-CCSIM block, never in any guide, and never in the user-facing message. A
+  limit an agent can SEE is a limit it will spend up to; 5 words should never come
   close to it, so it is contingency only and its value must stay invisible to
   stay effective. If you edit it, keep it out of every agent-readable surface.
 
@@ -103,13 +107,36 @@ comply (out of quota, or mid API failure). Live-verified: that flag is present
 on such lines and absent from genuine assistant messages, in this repo's own
 transcripts as well as the Reader's.
 
-ALWAYS RED: a Stop hook's exit-0 output (`systemMessage` included) reaches only
-the USER, never the model —— the turn has already ended —— so a non-blocking
-warning can NEVER make the agent self-correct. The one channel reaching the
-MODEL on Stop is a block: exit 2 feeds stderr back as an error and forces one
-more turn. A log-only tier is therefore worthless as a corrective, and every
-breach blocks. The cost is understood and accepted: a block ends that model
-turn before its chapter marker is written, which is the intended loudness.
+ALWAYS RED -> ALWAYS YELLOW (DEMOTION —— READ THIS BEFORE TOUCHING EXIT CODES):
+the always-RED policy that used to sit here worked EXACTLY as designed —— it
+fired correctly and repeatedly —— and that is precisely what forced its own
+reversal. Every fired block cost one extra model turn, and by the DOT ESCAPE
+deadlock (below) the agent regularly had nothing new left to say in that extra
+turn; in practice it reached for the one concrete thing still on hand, its own
+declaration batch, which is exactly the breach being enforced against. The
+observed result, repeatedly and across more than one session: repeated
+declaration batches, duplicate chapter markers, and increasingly erratic
+turn-end behaviour —— the enforcement was making the outcome MEASURABLY WORSE
+than the breach it existed to stop. The owner ordered the policy demoted:
+every RED block becomes a YELLOW warning, and this file's exit code is now
+UNCONDITIONALLY 0. It never blocks a turn again, for any reason.
+
+THE PRICE OF THIS, STATED AS PLAINLY AS POSSIBLE: a Stop hook's exit-0 output
+—— stdout, `systemMessage` included —— reaches ONLY THE USER, never the model
+(see `cp/ccsim/hook_guide.md` § Which Channel Reaches The Model). The one
+channel that ever reached the model at Stop was exit 2's stderr, and this
+file no longer uses it. CONSEQUENCE, UNDERLINED SO IT CANNOT BE MISSED: clint
+no longer corrects the agent AT ALL, in any circumstance, for any breach
+class. It is now a USER-FACING AUDIT TRAIL plus a LOG, nothing more. This is a
+DELIBERATE TRADE, not an oversight —— anyone tempted to "restore the block"
+later MUST read this paragraph first, because doing so unknowingly
+reintroduces the exact deadlock this demotion was ordered to end.
+
+WHAT SURVIVES, UNCHANGED: every detection rule below (glyph ownership, the
+caps, the sentinel, Reader mode) still runs in full, every exemption still
+exempts, and every breach still logs its own granular class (see LOG EVERY
+STAGE) —— the log is now the PRIMARY artefact, not a secondary trail behind a
+block, so it must lose none of the detail it already had.
 
 EXEMPTIONS. All read the USER'S TYPED MESSAGE —— the last GENUINE user line
 (`_is_real_user`, which already excludes tool_results and the system-injected
@@ -117,7 +144,10 @@ wrappers), never a `query_` file's contents: this script opens no file but the
 transcript, so an override token sitting inside a comms file can never arm one
 of these. `override` applies in BOTH modes; the other three are REPO mode only,
 because they come from THIS repo's protocols, which the Reader folder does not
-share, and the Reader's own rule admits no exception:
+share, and the Reader's own rule admits no exception (bar the lone `.`, a
+separate and earlier check —— see DOT ESCAPE —— which is not one of these four
+and which now crosses into READER mode too, for reasons that have nothing to
+do with any of the four below):
 * `override`/`overriding` —— the user explicitly suspending a rule for one turn
   (root §8.6.1 uses the same word for the same purpose). Disarms this lint
   ENTIRELY for that turn, in READER mode too: the folder protocol outranks the
@@ -130,9 +160,9 @@ share, and the Reader's own rule admits no exception:
   or `sicker` matching. The cap is measured over the OFFENDING lines only, not
   all chat text —— a turn may owe its normal declaration batch AND the sanctioned
   status line, and counting the declarations would blow any cap and make the
-  exemption unusable. Over-cap is NOT exempt and still blocks, logged distinctly
-  (`block:sic_overrun`) so an over-long "answer" is auditable rather than
-  indistinguishable from ordinary prose.
+  exemption unusable. Over-cap is NOT exempt and stays a breach, logged
+  distinctly (`yellow:sic_overrun`) so an over-long "answer" is auditable
+  rather than indistinguishable from ordinary prose.
 * `yn` —— when the triggering user message contains the literal ` yn` (leading
   space included), the user has invoked the project override meaning "answer in
   one word in chat", so chat text is AUTHORISED and the whole turn is exempt.
@@ -151,109 +181,121 @@ Tested in order `override` → `yn` → `sic` → `DATS`, widest authorisation f
 so the log names the STRONGEST reason a turn was let through; where several
 apply the turn was authorised outright anyway.
 
-DOT ESCAPE: root CLAUDE.md §3.1.6.2 now reads "NEVER repeat declaration after
-a Stop-hook; emit a lone `.` instead (nothing else)" —— written in direct
-response to a deadlock this file's own ALWAYS RED policy creates. A block
-forces one more model turn, and the harness will not let that turn end
-without a content block; by then the agent has nothing NEW to declare (this
-turn's declarations already went out before the block landed) and is now
-forbidden from repeating them. Prose is forbidden, repeating the batch is
-forbidden, and a model that is not calling a tool cannot simply produce
-NOTHING —— so every compliant option was closed at once, and in practice the
-agent resolved it the only way left: by re-emitting the declaration batch,
-which is exactly the breach the new rule forbids. Not hypothetical —— the
-owner reports it has now happened three times in one turn, and to another
-session too. A sanctioned, information-free token the harness will still
-accept as content is the only way out, and this repo already has one:
-`universal/glossary.md` sanctions a lone `.` as the USER's way of asking for
-a content-free `.` reply. This exemption is that same token run the other
-way —— the agent's way of ending a blocked turn with nothing left to add.
+DOT ESCAPE: root CLAUDE.md §3.1.6.2 reads "NEVER repeat declaration after a
+Stop-hook; emit a lone `.` instead (nothing else)" —— written in direct
+response to a deadlock the OLD always-RED policy created (see ALWAYS RED ->
+ALWAYS YELLOW above for the full history: a block forcing one more model turn
+with nothing new left to declare, resolved in practice by re-emitting the
+declaration batch —— exactly the breach being enforced against, observed three
+times in one turn and in another session too). Demotion removes clint's own
+half of that deadlock outright: a REPO turn is never blocked by this file
+again, so this file can no longer force the extra turn that had nothing left
+to say. This recognition logic is KEPT anyway, for two independent reasons:
 
-MATCHING RULE (`_lone_dot_turn`), deliberately narrow: every non-blank line
-the assistant produced since the triggering user message —— across every
-text block, not only the ones already flagged as breaches —— must total to
-EXACTLY one line, and that line must strip to EXACTLY one full stop.
-Consequences, each intended: `..`/`...` fail (not one full stop); `. ` plus
-more text on the same line fails (not exactly a full stop); and a `.`
-sharing the turn with ANY other non-blank line —— even a well-formed
-declaration that would pass fine on its own —— still fails, because checking
-only the already-flagged `offending` lines would let a real declaration
-batch ride alongside a decorative "." and pass; checking EVERY non-blank
-line closes that door. A bold-wrapped `**.**` fails too: §3.1.6's bold
-wrapper is tolerated for a GLYPH line elsewhere in this file, but the dot
+1. OTHER Stop hooks in this repo (present or future) may still block, and the
+   sanctioned reply protocol prescribes for THAT deadlock is this same lone
+   `.` —— clint must not itself misclassify that legitimate, protocol-mandated
+   reply as an ordinary prose breach. A wrong block is no longer the risk, but
+   a false `yellow:prose` still is: the log is the primary artefact now (see
+   LOG EVERY STAGE), and a polluted audit trail is a real cost, not a
+   cosmetic one.
+2. READER MODE, NEWLY (Change 2, unrelated to the deadlock entirely): the
+   owner has a standing, concrete need to send the Reader session a lone `.`
+   and have her reply in kind, purely to open a session-limit window —— no
+   work done, nothing read, nothing written. `universal/glossary.md` and the
+   `GitHub/` CLAUDE.md both already mandate exactly this reply as the
+   sanctioned response to a lone `.` from the user. Before this change, Reader
+   mode flagged EVERY non-blank line with no exception but `override`, so the
+   very reply that folder's OWN protocol requires was itself flagged —— that
+   was always a bug, not a feature: the strict zero-text rule was written to
+   catch UNSANCTIONED chat prose, never to make a protocol-SANCTIONED reply
+   impossible to give.
+
+MATCHING RULE (`_lone_dot_turn`), deliberately narrow and IDENTICAL in both
+modes: every non-blank line the assistant produced since the triggering user
+message —— across every text block, not only the ones already flagged as
+breaches —— must total to EXACTLY one line, and that line must strip to
+EXACTLY one full stop. Consequences, each intended: `..`/`...` fail (not one
+full stop); `. ` plus more text on the same line fails (not exactly a full
+stop); and a `.` sharing the turn with ANY other non-blank line —— even a
+well-formed declaration that would pass fine on its own —— still fails,
+because checking only the already-flagged `offending` lines would let a real
+declaration batch ride alongside a decorative "." and pass; checking EVERY
+non-blank line closes that door. A bold-wrapped `**.**` fails too: §3.1.6's
+bold wrapper is tolerated for a GLYPH line elsewhere in this file, but the dot
 carries no glyph and the rule text says only "optionally surrounded by
 whitespace" —— widening tolerance further was never asked for and would only
 widen the token's shape, the opposite of what a minimal escape hatch should
 do.
 
-REPO ONLY, never READER: the Reader folder's CLAUDE.md forbids the agent
-from creating or editing ANY file, so the redirect that makes the REPO
-breach message safe to obey ("carry it into this turn's `response_` file")
-has nowhere to land over there —— the whole reason the dot costs REPO
-nothing (the real content already reached a file before the block) does not
-hold for a session that writes no files at all. More to the point, Reader
-does not face this deadlock in the first place: its own rule already
-tolerates a turn ending in genuinely BLANK content (proven by this suite's
-F3 case —— a whitespace-only assistant message is clean there today, no
-change needed), and a harness that accepts blank text as valid turn-ending
-content accepts it whichever mode is running. REPO cannot lean on that same
-blank-turn path for a DIFFERENT reason: nothing here ever stopped REPO
-treating blank output as clean either (an empty `offending` list was always
-clean) —— the deadlock was never that clint refuses blank output, it is that
-the MODEL, told to end a turn with "nothing", reliably does not produce
-nothing; it reaches for the one concrete thing still on hand, its own
-declaration batch. The sanctioned dot is the deliberately boring alternative
-concrete thing to reach for instead. So this is wired ONLY under `mode ==
-MODE_REPO`; a `.` in READER mode keeps blocking as ordinary chat text,
-exactly like any other non-blank line there.
+BOTH MODES, NOW (Change 2 widened this from REPO-only): the reasoning that
+originally kept this REPO-only does not carry over, because READER's need for
+the escape is a DIFFERENT need entirely, not the deadlock's twin. REPO's dot
+used to cost nothing extra because the real content already reached a
+`response_` file before any block landed; that argument cannot apply to
+READER, which creates no files at all. But READER's lone-`.` requirement was
+never about salvaging swallowed content in the first place —— the user's lone
+`.` and the mandated `.` reply ARE the entire, complete, deliberate exchange;
+there is no other content being redirected anywhere. So "does this session
+have somewhere to put swallowed content?" was always the wrong question for
+READER's case, and answering it "no" was never a real reason to keep flagging
+a reply that protocol positively requires. The two modes log under DISTINCT
+tags precisely because the justification differs (`clean:dot` vs
+`clean:dot_reader`) even though the matching rule above is byte-for-byte
+identical —— see LOG EVERY STAGE.
 
-LOOP GUARD: exit 2 forces a continuation that ends in another Stop, so an
-unguarded block would loop forever. Two INDEPENDENT signals of the same fact
-("we are already inside a block-forced continuation"), either sufficient alone:
-(a) `stop_hook_active` in the payload, set by the harness; (b) the scan
-boundary itself being the harness's own injected feedback line —— live-verified
-as a `type:"user"`, `isMeta:true` line whose content starts with "Stop hook
-feedback:". Signal (b) needs no payload field and no successful log write,
-which is why the old promptId ledger (read back from this script's own log) was
-deleted rather than kept: a lost log write silently disarmed it, and it also
-capped enforcement at one block per prompt, which is exactly the ceiling this
-rewrite removes. A blocked continuation that itself emits prose is therefore
-logged (`loop_guard`) and never blocked again.
+LOOP GUARD —— REMOVED (justified, not merely deleted): the guard used to exist
+SOLELY to stop an infinite retry cascade that only exit 2 could cause —— a
+block forces one more model turn, that turn ends in another Stop, and an
+unguarded block-on-every-breach would fire again forever. Demotion (ALWAYS RED
+-> ALWAYS YELLOW, above) deletes the ROOT CAUSE outright: this file's exit
+code is now unconditionally 0, so it can never itself force a continuation,
+and a mechanism that exists only to stop a loop THIS FILE could cause is
+provably inert once this file can no longer cause that loop.
 
-Precisely how far that guarantee reaches, stated honestly rather than
-optimistically: (b) is absent in exactly two shapes —— no feedback line was
-injected at all, in which case no continuation was forced and there is no loop
-to run; or a LATER `type:"user"` line displaced the feedback line as the scan
-boundary. Only the second is a live risk, and it is why (a) is kept: the
-payload flag does not depend on transcript shape. A spiral thus needs BOTH to
-fail at once —— the harness omitting `stop_hook_active` AND appending an
-unrecognised user-wrapper after every block —— a combination never observed
-here. Should it ever appear, the repair is one line: add that wrapper's tag to
-`_SYSTEM_INJECTED_TAGS`, which restores (b) at once. A sticky per-prompt flag
-is deliberately NOT added as a third guard —— that IS the ledger, ceiling and
-all, which the owner ruled out.
+Kept-vs-removed was a real decision, not a default: an argument FOR keeping it
+existed —— some OTHER Stop hook in this repo might still block, and the
+resulting forced continuation could in principle carry fresh clint-detectable
+prose that the old guard would have suppressed under an opaque `loop_guard`
+tag. REMOVED anyway, because that suppression was never a benefit on its own
+terms: under ALWAYS YELLOW every breach is meant to log its true granular
+class (the log is the primary artefact now —— see LOG EVERY STAGE), and hiding
+a real breach behind `loop_guard` —— for a loop this file cannot itself cause
+any more —— would only make that audit trail LESS informative for zero safety
+benefit. Simpler code, a more honest log, nothing left uncovered: removing it
+is the correct call, not merely the convenient one.
 
-GLYPH-FREE STDERR: neither breach message names any of the 5 glyphs. Naming them
-would teach exactly which prefixes pass and invite gaming by bolting a glyph
-onto prose. For the same reason the message carries NO numeric limit and NO
-breach class: it says what is owed, never how close the last attempt came. The
-precise class is recorded in the log, which the model does not read.
+`_is_stop_feedback`, `_STOP_FEEDBACK_PREFIX`, and the `stop_hook_active`
+payload field are gone from this file along with it. The SCAN BOUNDARY
+behaviour that used to share context with the guard —— treating a
+harness-injected "Stop hook feedback:" line as a genuine boundary-mover —— is
+UNCHANGED and never depended on the guard's existence; see `_is_real_user`'s
+docstring.
 
-REDIRECT, NOT ONLY REFUSAL: enforcement without a remedy DESTROYS information.
-The agent had something to say, said it in the wrong channel, was told to stop
-—— and then simply swallows it, so a point that may have mattered is lost
-precisely BECAUSE this lint worked. The REPO message therefore also names where
-that content belongs. It costs nothing to obey: root CLAUDE.md §3.1 already
-requires every response to be written to a file, so the turn owes a `response_`
-regardless —— the sentence redirects the content rather than adding work. The
-prohibition is untouched and still stated FIRST; the remedy is appended, never a
-softening, and it stays one sentence because stderr on exit 2 is the ONLY
-channel reaching the model at Stop and a long message is a worse message. It
-adds no glyph, no number and no breach class, so every constraint above holds.
-The READER message deliberately gets NO remedy: that folder's CLAUDE.md forbids
-creating or editing ANY file as well as emitting chat text, so no `response_`
-exists to carry anything into and naming one would instruct a breach of the very
-rule being enforced. There, ending the turn silently IS the whole remedy.
+GLYPH-FREE, CLASS-FREE, NUMBER-FREE MESSAGE (was GLYPH-FREE STDERR): under the
+retired RED policy this message reached the MODEL via stderr, so naming a
+glyph, a breach class, or a numeric limit would have taught the agent exactly
+which prefixes/shapes pass and invited gaming. Under ALWAYS YELLOW the message
+reaches ONLY the user (see ALWAYS RED -> ALWAYS YELLOW), so that specific
+hazard is gone —— but the constraint is KEPT anyway, unchanged, as cheap
+insurance: it costs nothing to keep the user-facing text free of exploitable
+detail, and it stays correct automatically if this channel's model-isolation
+is ever wrong, or if this code is ever copied into a hook shape where exit-0
+output is NOT model-isolated. The precise class stays recorded in the log,
+which is where granular detail belongs either way.
+
+AUDIT NOTE, NOT A CORRECTION (was REDIRECT, NOT ONLY REFUSAL): under the
+retired RED policy a hard block risked swallowing content the agent meant to
+say —— it was told to stop, and did, without ever getting the point out, so the
+REPO message named where that content belonged (`response_`) as a genuine
+remedy the agent could act on before ending its turn. That corrective value is
+gone now that this message reaches only the user: the agent never reads it and
+cannot act on it (see ALWAYS RED -> ALWAYS YELLOW). What survives is a
+courtesy to the HUMAN reading it afterwards —— a hint of where to look if
+something seems to have gone missing. The REPO message keeps that hint; the
+READER message does not, because that session creates no files at all, so
+there is nothing for even a human to go check —— there, the message's whole
+job is to say plainly that a rule was broken and nothing more.
 
 LOG EVERY STAGE: a breach-only log cannot tell "ran this turn and found
 nothing" apart from "the harness never invoked this command" —— an empty log fits
@@ -264,8 +306,9 @@ stage logs no user content at all. The logged text may itself carry a glyph in
 EITHER mode —— in READER mode a declaration line is the breach, and under glyph
 ownership a REPO breach is often a MISUSED glyph (this was untrue of the older
 prefix-only check, which could only ever log glyph-free lines). That is fine:
-the log is read by a human, and it is the stderr message reaching the MODEL
-that stays glyph-free.
+the log is read by a human, and it is the exit-0 `systemMessage` reaching the
+USER that stays glyph-free (kept as cheap insurance now that the model never
+reads any of this either —— see GLYPH-FREE, CLASS-FREE, NUMBER-FREE MESSAGE).
 
 REPO SCOPE (`_mode`): user-level registration reaches every project and this
 lint BLOCKS, so it must not police repos that never agreed to either rule.
@@ -288,39 +331,48 @@ transcript field exposes additionally-added directories, so the check can only
 approximate it with an exact `cwd` match. A session rooted at `GitHub/` that
 ALSO added another repo would be held to the zero-text rule it no longer owes.
 Accepted because that project slug has, in practice, only ever hosted the
-Reader; delete the two READER branches to revert to repo-only policing.
+Reader; delete the two READER branches to revert to repo-only policing. One
+deliberate, narrow exception to READER's zero-text rule exists on top of this:
+the lone-`.` reply (see DOT ESCAPE), carved in for a real, unrelated business
+need and logged under its own `clean:dot_reader` tag rather than silently
+folded into READER's ordinary silence.
 
 WIRING (kept here, not in NON-CCSIM: a caller never invokes this file, so the
 plumbing is dead weight to everyone but an editor). Registered as a `Stop` hook
 in the USER-level `~/.claude/settings.json` —— the Claude Desktop app executes
 user-level hooks and silently ignores project-level ones —— hence it fires in
 every project and must self-scope. IN: Stop-hook JSON on stdin
-(`transcript_path`, `cwd`, `session_id`, `stop_hook_active`); OUT: nothing at
-all on a clean turn. EXIT 0 = clean, exempt, out-of-scope, loop-guarded, or ANY
-failure; EXIT 2 = breach. FAIL-SAFE: a bad payload, an unreadable transcript or
-a failed stderr/log write all exit 0, so the hook can never break a turn on its
-own failure.
+(`transcript_path`, `cwd`, `session_id`); OUT: nothing at all on a clean turn,
+or `{"systemMessage": "..."}` JSON on stdout for a demoted breach (reaches the
+USER only —— see ALWAYS RED -> ALWAYS YELLOW). EXIT is UNCONDITIONALLY 0 ——
+clean, exempt, out-of-scope, a demoted breach, or ANY failure, all alike; this
+file never again returns 2 for any reason. FAIL-SAFE: a bad payload, an
+unreadable transcript, or a failed message/log write all exit 0 regardless, so
+the hook can never break a turn on its own failure —— true before this change
+and mechanically guaranteed now.
 
 LOG FORMAT: exactly ONE tab-delimited line per invocation whatever the verdict,
 each carrying `mode=` (which rule applied) and `pid=` (the prompt it belongs
 to), so one `grep` shows every invocation for a prompt and why it was judged so.
-Actions: `clean` and its `clean:dot` variant (see docstring DOT ESCAPE);
-`out_of_scope`; `loop_guard`; `block_failed`; the parse stage reached; one
-`exempt:` per exemption (`exempt:override`, `exempt:yn`, `exempt:sic`,
-`exempt:dats`); and one `block:` per breach CLASS —— `block:prose`
-(no glyph at all), `block:io_shape` (an I/O glyph not carrying a file list),
-`block:sentinel` (compaction glyph, wrong wording), `block:warn_shape`
-(blocker glyph carrying another type's declaration), `block:warn_empty`,
-`block:warn_words`, `block:warn_hyphens`, `block:warn_chars`,
-`block:warn_progress` (a progress note wearing the blocker glyph),
-`block:reader` (any chat text in Reader mode), plus `block:sic_overrun` (a `sic`
-answer past its cap). The class is that of the FIRST offending line, matching
-the `first=` field, so record and class always describe the same text. A log
-that does NOT grow
-across real turns means the harness is not calling this hook at all —— the
-diagnostic the LOG EVERY STAGE rationale above exists to enable.
-`CLINT_LOG=<path>` redirects it, so a test run neither reads nor pollutes the
-real log.
+Actions: `clean` and its `clean:dot`/`clean:dot_reader` variants (see docstring
+DOT ESCAPE); `out_of_scope`; `message_failed` (the exit-0 warning write itself
+failed); the parse stage reached; one `exempt:` per exemption
+(`exempt:override`, `exempt:yn`, `exempt:sic`, `exempt:dats`); and one
+`yellow:` per breach CLASS —— `yellow:prose` (no glyph at all),
+`yellow:io_shape` (an I/O glyph not carrying a file list), `yellow:sentinel`
+(compaction glyph, wrong wording), `yellow:warn_shape` (blocker glyph carrying
+another type's declaration), `yellow:warn_empty`, `yellow:warn_words`,
+`yellow:warn_hyphens`, `yellow:warn_chars`, `yellow:warn_progress` (a progress
+note wearing the blocker glyph), `yellow:reader` (any chat text in Reader
+mode), plus `yellow:sic_overrun` (a `sic` answer past its cap). The class is
+that of the FIRST offending line, matching the `first=` field, so record and
+class always describe the same text —— this naming and granularity are
+UNCHANGED from the retired RED policy (only the `block:` prefix became
+`yellow:`), because the log is now the PRIMARY artefact and must lose none of
+the detail it already had. A log that does NOT grow across real turns means
+the harness is not calling this hook at all —— the diagnostic the LOG EVERY
+STAGE rationale above exists to enable. `CLINT_LOG=<path>` redirects it, so a
+test run neither reads nor pollutes the real log.
 
 LOG RETENTION: one line per invocation, forever, is unbounded growth in a file
 nobody deletes —— and the log's ONE question ("did this hook run for that turn,
@@ -438,8 +490,8 @@ _IO_RESIDUE_RE = re.compile(r"^[\s,;:.*_~×0-9+\-–—…]*$")
 _WARN_MAX_WORDS = 5              # §3.2.4's own "≤5w"
 _WARN_MAX_HYPHENS = 3            # hyphens can skewer words past a WORD count
 # Final safety net against the same evasion. Its VALUE is documented in the
-# CCSIM block only, never in NON-CCSIM, any guide, or the stderr message: a
-# limit an agent can see is a limit it will spend up to.
+# CCSIM block only, never in NON-CCSIM, any guide, or the user-facing message:
+# a limit an agent can see is a limit it will spend up to.
 _WARN_MAX_CHARS = 68
 
 # Continuation/status vocabulary —— a progress note, not a blocker (word-boundary,
@@ -462,23 +514,26 @@ _BLOCKER_RE = re.compile(
     r"|unclear|404|403|500|limit|limits|died|dead|risk\w*|unsafe|wrong"
     r"|incorrect|stale|desync\w*|lost|clobber\w*|overwrit\w*)\b", re.I)
 
-# Fixed, GLYPH-FREE breach messages fed to the model via stderr on exit 2 (see
-# docstring GLYPH-FREE STDERR —— must not name the glyphs, quote any numeric
-# limit, or name the breach class, or it teaches how to game the check). Terse,
-# and it REDIRECTS as well as forbids: an agent merely told to stop drops what
-# it meant to say, so the REPO message names the file that content belongs in
-# (docstring REDIRECT, NOT ONLY REFUSAL). One per mode, because "emit ONLY the
-# 5 permitted declarations" would be actively wrong advice in a session that
-# owes zero chat text —— and that same session may create no file at all, which
-# is why only the REPO message carries the redirect.
+# Fixed, GLYPH-FREE WARNING messages shown to the USER ONLY via an exit-0
+# `systemMessage` (see docstring GLYPH-FREE, CLASS-FREE, NUMBER-FREE MESSAGE ——
+# must not name the glyphs, quote any numeric limit, or name the breach class).
+# These NEVER reach the model (ALWAYS RED -> ALWAYS YELLOW), so they read as a
+# WARNING about what already happened, never as an instruction telling the
+# (absent) recipient what to do next. One per mode, because "this session owes
+# ZERO chat text" would be actively wrong framing for the other mode, and only
+# the REPO message keeps the courtesy hint of where lost content might belong
+# (docstring AUDIT NOTE, NOT A CORRECTION) —— READER creates no files, so it
+# has nothing to hint at.
 _BREACH = {
-    MODE_REPO: ("Chat-prose breach (root CLAUDE.md §3.2): each declaration "
-                "glyph is reserved for its own declaration type —— emit ONLY "
-                "correctly-formed declarations, never prose behind a glyph. "
-                "Avoid further prose. Do not drop what you meant to say —— "
-                "carry it into this turn's `response_` file."),
-    MODE_READER: ("Chat-text breach (GitHub/ CLAUDE.md): this session must "
-                  "emit NO chat text at all. End the turn silently."),
+    MODE_REPO: ("WARNING (root CLAUDE.md §3.2): this turn's chat text was not "
+                "a clean declaration batch —— either prose with no declaration "
+                "glyph, or a glyph carrying content outside its own type. "
+                "Logged only; clint no longer blocks the turn or reaches the "
+                "agent. If real content was lost, it may still need to land "
+                "in this turn's `response_` file."),
+    MODE_READER: ("WARNING (GitHub/ CLAUDE.md): this session emitted chat "
+                  "text where the rule is ZERO, always. Logged only; clint "
+                  "no longer blocks the turn or reaches the agent."),
 }
 
 # Known system-injected wrapper tags Claude Code appends as `type: "user"`
@@ -489,11 +544,6 @@ _SYSTEM_INJECTED_TAGS = (
     "<task-notification>", "<local-command-caveat>",
     "<local-command-stdout>", "<command-name>", "<command-message>",
     "<command-args>")
-
-# The harness's own injected continuation line after a Stop hook blocks —— a
-# `type:"user"`, `isMeta:true` line beginning with this exact prefix. Used as
-# loop-guard signal (b); see docstring LOOP GUARD.
-_STOP_FEEDBACK_PREFIX = "Stop hook feedback:"
 
 # The `yn` override token (see docstring EXEMPTIONS). The leading space is
 # load-bearing —— without it `Brooklyn` and `synergy` would match.
@@ -652,7 +702,11 @@ def _is_real_user(obj):
     The harness's `Stop hook feedback:` line is deliberately NOT excluded: it
     genuinely opens a new turn, so it SHOULD move the boundary (a re-stop then
     reports fresh prose from the continuation, never the original breach
-    twice). It is recognised separately by `_is_stop_feedback`."""
+    twice). This repo used to also recognise that exact line separately, as
+    loop-guard signal (b); that guard is gone (see docstring LOOP GUARD ——
+    REMOVED) because nothing this file does can force a continuation any
+    more, but the boundary point made here stands regardless of that
+    history."""
     if obj.get("type") != "user":
         return False
     content = (obj.get("message") or {}).get("content")
@@ -663,21 +717,6 @@ def _is_real_user(obj):
         return any(isinstance(b, dict) and b.get("type") != "tool_result"
                    for b in content)
     return False
-
-
-def _is_stop_feedback(obj):
-    """True if `obj` is the harness's own post-block continuation line ——
-    loop-guard signal (b), see docstring LOOP GUARD. Both conditions are
-    required (`isMeta` true AND the exact text prefix) so no human message can
-    impersonate it by quoting the phrase."""
-    try:
-        if not isinstance(obj, dict) or obj.get("isMeta") is not True:
-            return False
-        content = (obj.get("message") or {}).get("content")
-        return (isinstance(content, str)
-                and content.lstrip().startswith(_STOP_FEEDBACK_PREFIX))
-    except Exception:
-        return False
 
 
 def _trigger_text(obj):
@@ -730,12 +769,14 @@ def _dats_exempt(offending):
 def _lone_dot_turn(all_lines):
     """True if the WHOLE turn's non-blank content is a single line reading
     exactly one full stop (whitespace-trimmed) —— root CLAUDE.md §3.1.6.2's
-    sanctioned no-op reply to a Stop-hook block, REPO mode only. See
-    docstring DOT ESCAPE for the deadlock this breaks and why the match is
-    this narrow. `all_lines` already holds every non-blank line stripped, so
-    plain equality enforces "exactly one full stop, optionally surrounded by
-    whitespace" and rejects `..`, `...`, `. text`, and a `.` sharing the turn
-    with any other line, declaration or not."""
+    sanctioned no-op reply, recognised in BOTH REPO and READER mode (see
+    docstring DOT ESCAPE for the two independent reasons why, and for why the
+    match is this narrow). `all_lines` already holds every non-blank line
+    stripped, so plain equality enforces "exactly one full stop, optionally
+    surrounded by whitespace" and rejects `..`, `...`, `. text`, and a `.`
+    sharing the turn with any other line, declaration or not. The CALLER
+    still tags the two modes distinctly (`clean:dot` vs `clean:dot_reader`);
+    this function only answers the shape question."""
     return len(all_lines) == 1 and all_lines[0] == "."
 
 
@@ -905,8 +946,9 @@ def main():
     plog = turn or "-"
 
     # Boundary: everything after the last GENUINE user message = the final turn.
-    # That same message is kept, because it decides the `yn` exemption and,
-    # when it is the harness's own post-block injection, loop-guard signal (b).
+    # That same message is kept, because it decides the `yn` exemption (and,
+    # historically, loop-guard signal (b) —— removed, see docstring LOOP GUARD
+    # —— REMOVED; the boundary logic itself needed no change).
     start = 0
     trigger = None
     for i, o in enumerate(objs):
@@ -941,18 +983,21 @@ def main():
         _log_event(sid, "clean", pid=plog, mode=mode)
         return 0
 
-    # --- Lone full-stop escape (REPO mode only; see docstring DOT ESCAPE) ---
+    # --- Lone full-stop escape (BOTH modes; see docstring DOT ESCAPE) -------
     # Checked over ALL non-blank content, not just `offending`, so a dot
     # sharing the turn with an otherwise-clean declaration still fails --
     # "alongside other lines" disqualifies it even when those other lines are
-    # themselves permitted.
-    if mode == MODE_REPO and _lone_dot_turn(all_lines):
-        _log_event(sid, "clean:dot", pid=plog, mode=mode)
+    # themselves permitted. Tagged distinctly per mode so the log alone shows
+    # which rule sanctioned the exchange, without needing the separate
+    # `mode=` field.
+    if _lone_dot_turn(all_lines):
+        dot_tag = "clean:dot" if mode == MODE_REPO else "clean:dot_reader"
+        _log_event(sid, dot_tag, pid=plog, mode=mode)
         return 0
 
     # Class of the FIRST offender, so the logged verdict and `first=` always
     # describe the same line. `sic` may override it below.
-    verdict = "block:" + classes[0]
+    verdict = "yellow:" + classes[0]
 
     # --- Exemptions (see docstring EXEMPTIONS) -------------------------------
     # Order = widest authorisation first, so the log names the strongest reason.
@@ -978,34 +1023,28 @@ def main():
                 _log_event(sid, "exempt:sic", len(offending), offending[0],
                            pid=plog, mode=mode)
                 return 0
-            verdict = "block:sic_overrun"
+            verdict = "yellow:sic_overrun"
         if _dats_exempt(offending):
             # The single close-protocol status line -> sanctioned chat text.
             _log_event(sid, "exempt:dats", len(offending), offending[0],
                        pid=plog, mode=mode)
             return 0
 
-    # --- Loop guard (see docstring LOOP GUARD) ------------------------------
-    # Either signal alone withholds the block; both are checked because (a) can
-    # be absent from a payload and (b) needs no payload at all.
-    if bool(data.get("stop_hook_active")) or _is_stop_feedback(trigger):
-        _log_event(sid, "loop_guard", len(offending), offending[0],
-                   pid=plog, mode=mode)
-        return 0
-
-    # --- RED —— block and feed the model the reason via stderr ---------------
-    # On exit 2 the harness ignores stdout/JSON, so write to STDERR. Every
-    # breach reaching here blocks: there is no ceiling and no ledger. The log
-    # line is written only AFTER the stderr write succeeds, so the record
-    # always reflects a block actually delivered.
+    # --- YELLOW —— demoted: never blocks, still logged + shown to the USER --
+    # On exit 0 a Stop hook's stdout `systemMessage` JSON reaches the USER
+    # only, never the model (see docstring ALWAYS RED -> ALWAYS YELLOW). Every
+    # breach reaching here is a WARNING: there is no ceiling and no ledger,
+    # and (unlike the retired RED policy) the exit code never varies. The log
+    # line is written only AFTER the message write succeeds, so the record
+    # always reflects a warning actually delivered.
     try:
-        sys.stderr.write(_BREACH[mode])
+        sys.stdout.write(json.dumps({"systemMessage": _BREACH[mode]}))
     except Exception:
-        _log_event(sid, "block_failed", len(offending), offending[0],
+        _log_event(sid, "message_failed", len(offending), offending[0],
                    pid=plog, mode=mode)
         return 0                          # fail-safe: never break the turn
     _log_event(sid, verdict, len(offending), offending[0], pid=plog, mode=mode)
-    return 2                              # blocks the stop; stderr reaches Claude
+    return 0                              # NEVER 2 —— see ALWAYS RED -> ALWAYS YELLOW
 
 
 if __name__ == "__main__":

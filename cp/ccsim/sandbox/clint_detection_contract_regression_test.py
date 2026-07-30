@@ -1,70 +1,79 @@
 #!/usr/bin/env python3
-"""Regression test for cscpt/clint.py's ALWAYS-RED rewrite.
+"""Regression test for cscpt/clint.py's ALWAYS-YELLOW demotion.
+
+RENAMED from `clint_always_red_regression_test.py`: that name pinned clint's
+PRIOR rewrite (the always-blocking "ALWAYS RED" policy); this file now pins
+the policy's own successor, the ALWAYS-YELLOW demotion, so the old name had
+stopped describing what the suite actually tests. Whoever commits this
+should still keep the rename and the content rewrite in SEPARATE commits
+where practical (coding.md § Git Discipline: a rename plus a heavy edit in
+one commit permanently severs the file's history, since git re-detects
+renames by content similarity rather than storing them).
 
 WHY this test exists (coding.md: "a fix without its test is unfinished").
-clint.py used to tier its verdicts: the FIRST chat-prose breach under a given
-user prompt blocked (exit 2), every later breach under that same prompt was
-downgraded to a log-only "yellow" by a ledger read back from clint's own log.
-The owner reversed that: EVERY breach must block, the ledger and the yellow
-tier are gone, and two narrow exemptions were added (the `yn` one-word-answer
-override, and the single `DATS` status line that `universal/close.md` mandates
-after a #close). This test pins:
+clint.py used to BLOCK (exit 2) on every chat-prose breach -- the "ALWAYS RED"
+policy this file once pinned. That policy fired exactly as designed and was
+reversed BECAUSE it worked: every block forced one more model turn, and once
+nothing new was left to declare in that extra turn, the agent resolved the
+deadlock by re-emitting its declaration batch -- exactly the breach being
+enforced against. Observed repeatedly, across sessions, as duplicate chapter
+markers and increasingly erratic turn-end behaviour. The owner ordered every
+RED block DEMOTED to a YELLOW warning: clint's exit code is now
+UNCONDITIONALLY 0, and a breach is an exit-0 `{"systemMessage": ...}` JSON on
+stdout shown to the USER plus a log line -- never anything the model sees or
+can react to (a Stop hook's exit-0 output never reaches the model; see
+`cp/ccsim/hook_guide.md` § Which Channel Reaches The Model). This test pins:
 
-  A. the ceiling is really gone -- three successive breaches under ONE promptId
-     all exit 2 (under the old ledger, breaches 2 and 3 exited 0);
-  B. the loop is still impossible -- a continuation that was itself forced by a
-     block never blocks again, via EITHER guard independently, so the two
-     guards are proven to work alone and not merely together;
-  C. the `yn` exemption, using the three REAL prompts mined from this Mac's own
-     transcripts (coding.md: "mine historical/real data for fixtures") --
-     including one where ` yn` sits mid-message, not at the end, which is why
-     the check is a plain substring and not a trailing match;
-  D. the `DATS` exemption's exact boundaries -- the sanctioned one-liner is
-     exempt, a 2-line block is not, an 11-word line is not;
-  E. harness-authored assistant text (`isApiErrorMessage`) never triggers a
-     block, since the model did not write it;
-  F. READER mode -- a session whose cwd is exactly the parent `GitHub/` folder
-     owes ZERO chat text, so even a declaration glyph blocks there, whilst the
-     same line is clean in this repo; and sibling repos under `GitHub/` are NOT
-     dragged into that rule;
+  A. NO CEILING, STILL -- three successive breaches under ONE promptId each
+     get their own log line and their own exit 0; nothing suppresses the 2nd
+     or 3rd (the old ledger this once guarded against is still gone).
+  B. THE RETIRED LOOP GUARD IS INERT, AND HARMLESSLY SO -- `stop_hook_active`
+     and an injected "Stop hook feedback:" continuation line USED TO withhold
+     the block entirely (tagged `loop_guard`); now that nothing blocks, both
+     signals are simply ignored and a breach in that situation logs its
+     ordinary granular `yellow:` class like any other turn. The SCAN BOUNDARY
+     behaviour the guard used to share context with (a feedback line still
+     opens a fresh boundary, so only text AFTER it is in scope) is separately
+     pinned here too.
+  C. the `yn` exemption, using the three REAL prompts mined from this Mac's
+     own transcripts (coding.md: "mine historical/real data for fixtures") --
+     unchanged by the demotion (it was never a "block", just a skip), so
+     still exempt outright and still exit 0.
+  D. the `DATS` exemption's exact boundaries -- unchanged in shape; the
+     negative cases (too many words, a 2nd line) now exit 0 like everything
+     else, but MUST still log their own `yellow:` class rather than being
+     silently swallowed as if exempt.
+  E. harness-authored assistant text (`isApiErrorMessage`) never counts as a
+     breach, since the model did not write it -- unaffected by the demotion.
+  F. READER mode -- a session whose cwd is exactly the parent `GitHub/`
+     folder still owes ZERO chat text, so a declaration glyph there still
+     logs a breach (now `yellow:reader`, exit 0, never a block); sibling
+     repos under `GitHub/` still are NOT dragged into that rule.
   G. every fail-safe path still exits 0 (malformed payload, out-of-scope,
-     missing transcript);
-  I. the breach message REDIRECTS instead of only forbidding -- a block used to
-     tell the agent to stop and nothing else, so an agent that had something
-     worth saying said it in the wrong channel, was told to stop, and then
-     SWALLOWED it: the point died precisely BECAUSE the lint worked. The REPO
-     message now also names where that content belongs (`response_`), and I
-     pins all six things that remedy must be at once: present, delivered on
-     EVERY breach class identically, prohibition-preserving (the original
-     wording still there verbatim, so this is an addition and never a
-     softening), glyph-free, digit-free bar a protocol section reference (a
-     number in the message would tell the agent how close it came to a
-     threshold), class-free, and REPO-ONLY -- the Reader session may create no
-     file at all, so telling it to write one would instruct a breach of the
-     rule being enforced. It also pins that an exempt or loop-guarded turn
-     still emits NOTHING, so the remedy can never fire where no block did; and
-  H. the diagnostic log SELF-PRUNES -- it used to grow one line per invocation
-     forever, so it is now capped at a recent window. H pins all four things
-     that cap has to be at once: bounded (never past the high-water mark),
-     newest-first (the line written this very invocation is never the casualty
-     of its own prune), non-eager (a log under the mark is left alone), and
-     utterly fail-safe -- a prune that CANNOT run must leave the log intact and
-     the turn unaffected, which H6 proves by making the temp file
-     uncreatable and checking the appended line survives anyway; and
-  J. the lone `.` escape (root CLAUDE.md §3.1.6.2, added to break a genuine
-     deadlock: a Stop-hook block forces one more turn, and by then the agent
-     has nothing new to declare and is forbidden from repeating what it
-     already said) -- a turn whose ONLY non-blank content, across every text
-     block, is a single line reading exactly one full stop is CLEAN in REPO
-     mode, under its own `clean:dot` tag kept distinct from plain `clean` so
-     the two stay separately auditable. Two dots, an ellipsis, trailing text
-     on the same line, a bold `**.**` wrapper, and a dot sharing the turn with
-     ANY other line -- even an otherwise well-formed declaration -- all stay
-     breaches: the escape is for a turn with nothing else to say, not a
-     vehicle for pairing a decorative dot with real content. REPO-only: it
-     still blocks in READER mode, which needs no such escape of its own (a
-     genuinely blank turn already clears there, per F3) and never writes a
-     `response_` for the dot's redirect to reach.
+     missing transcript) -- unaffected; these never blocked in the first
+     place.
+  I. the WARNING message -- delivered via an exit-0 `{"systemMessage": ...}`
+     JSON on STDOUT (never stderr, never exit 2), reaches the user in BOTH
+     modes, and pins: present, delivered on EVERY breach class identically,
+     REPO's message still names `response_` as a courtesy hint (now for the
+     human reading it afterwards, not a remedy the agent could act on -- the
+     agent never reads this message at all), glyph-free, digit-free bar a
+     protocol section reference, class-free, REPO vs READER differ
+     appropriately, and an exempt turn still emits NOTHING (the retired
+     `loop_guard` silence has no successor case -- that state no longer
+     exists, see B).
+  H. the diagnostic log SELF-PRUNES -- unaffected by the demotion; still
+     capped at a recent window, still newest-first, still fail-safe.
+  J. the lone `.` escape (root CLAUDE.md §3.1.6.2) -- CLEAN under its own
+     `clean:dot` tag in REPO, UNCHANGED. NEWLY (Change 2, unrelated to the
+     demotion): the SAME escape is now ALSO clean in READER mode, under its
+     own `clean:dot_reader` tag, because the owner has a standing need to
+     send/receive a lone `.` there purely to open a session-limit window --
+     `universal/glossary.md` and the `GitHub/` CLAUDE.md both already mandate
+     that exact reply. The matching rule stays byte-for-byte identical in
+     both modes: `..`, `...`, trailing text, a bold `**.**`, and a dot
+     sharing the turn with any other line all still flag -- in REPO as
+     `yellow:prose`, in READER as `yellow:reader`.
 
 It drives the REAL registered command from ~/.claude/settings.json
 (`python3 .../cscpt/clint.py`, Stop hook) with synthesised payloads and
@@ -76,7 +85,7 @@ Self-contained: every transcript is written into a throwaway tempdir at run
 time and CLINT_LOG is redirected there, so the real cscpt/.clint.log is
 neither read nor polluted. Run directly:
 
-    python3 "cp/ccsim/sandbox/clint_always_red_regression_test.py"
+    python3 "cp/ccsim/sandbox/clint_detection_contract_regression_test.py"
 
 Exits 0 if every case matches its expected verdict, 1 otherwise (per-case
 PASS/FAIL on stdout, full diagnostics on any FAIL, and the resulting log lines
@@ -102,7 +111,7 @@ SIBLING_CWD = os.path.join(READER_CWD, "AJAP_repo")
 # The 5 declaration glyphs, base codepoints (the emoji variation selector is
 # irrelevant to a substring search). Kept in ONE place so section A and section
 # I can never drift into checking different sets: naming any of these in the
-# stderr the model receives would teach exactly which prefixes pass.
+# message the user reads would teach exactly which prefixes pass.
 GLYPHS = ("✅", "⇠", "➡", "⚠", "\U0001f6a8")
 
 # A protocol section reference such as `§3.2`. Its digits are an ADDRESS, not a
@@ -110,12 +119,18 @@ GLYPHS = ("✅", "⇠", "➡", "⚠", "\U0001f6a8")
 # see section I for why any surviving digit is the actual hazard.
 SECTION_REF_RE = re.compile(r"§\d+(?:\.\d+)*")
 
-# clint's own log tags. None may appear in the stderr the model reads: the class
-# is a diagnostic for the human reading the log, and telling the agent WHICH
-# check caught it is telling it what to file the next attempt under.
+# clint's own log tags. None may appear in the message the user reads: the
+# class is a diagnostic for the human reading the LOG, and telling the reader
+# WHICH check caught it is telling them what to file the next attempt under
+# (moot for the agent now -- it never reads this message at all -- but the
+# constraint is kept as cheap insurance; see clint.py docstring GLYPH-FREE,
+# CLASS-FREE, NUMBER-FREE MESSAGE). `block:` and `loop_guard` are RETIRED tags
+# (the always-RED policy and its loop guard are both gone) and are
+# deliberately absent here -- they can no longer leak because they no longer
+# exist.
 CLASS_TOKENS = ("io_shape", "sentinel", "warn_empty", "warn_shape",
                 "warn_words", "warn_hyphens", "warn_chars", "warn_progress",
-                "sic_overrun", "reader", "block:", "exempt:", "loop_guard")
+                "sic_overrun", "reader", "yellow:", "exempt:")
 
 _RESULTS = []
 
@@ -140,7 +155,10 @@ def _user(text, pid="pid-A"):
 
 
 def _stop_feedback(pid="pid-A"):
-    """The harness's own continuation line after a Stop hook blocked."""
+    """The harness's own continuation line after a Stop hook blocked. Kept as
+    a fixture even though clint no longer blocks: OTHER Stop hooks in this
+    repo can still force this exact shape, and the SCAN BOUNDARY must still
+    treat it as a genuine boundary-mover (see section B)."""
     return {"type": "user", "isSidechain": False, "promptId": pid,
             "isMeta": True,
             "message": {"role": "user", "content":
@@ -165,15 +183,35 @@ def _write_transcript(path, objs):
 
 def _payload(transcript_path, cwd=REPO_ROOT, stop_hook_active=False,
              sid="clinttest"):
-    """Exact Stop-payload key set as captured live this session."""
+    """Exact Stop-payload key set as captured live this session.
+    `stop_hook_active` is still accepted (the real harness still sends it),
+    but clint no longer reads it -- see section B."""
     return {"session_id": sid, "transcript_path": transcript_path,
             "prompt_id": "pid-A", "permission_mode": "default",
             "hook_event_name": "Stop", "stop_hook_active": stop_hook_active,
             "cwd": cwd}
 
 
+def _extract_message(stdout_text):
+    """The `systemMessage` string clint writes as exit-0 JSON on stdout for a
+    demoted breach (see clint.py docstring ALWAYS RED -> ALWAYS YELLOW), or
+    "" if there was none or it did not parse -- exactly the shape a clean,
+    exempt, or out-of-scope turn produces (no stdout at all)."""
+    try:
+        obj = json.loads(stdout_text)
+        if isinstance(obj, dict):
+            m = obj.get("systemMessage")
+            if isinstance(m, str):
+                return m
+    except Exception:
+        pass
+    return ""
+
+
 def _run(payload, log_path, raw=None):
-    """Invoke clint exactly as settings.json does; return (exit, last_log)."""
+    """Invoke clint exactly as settings.json does; return (exit, last_log,
+    message). `message` is the user-facing warning text (see
+    `_extract_message`) -- empty for any turn that did not warn."""
     before = _log_lines(log_path)
     stdin = raw if raw is not None else json.dumps(payload)
     r = subprocess.run([sys.executable, CLINT], input=stdin,
@@ -181,7 +219,7 @@ def _run(payload, log_path, raw=None):
                        env=dict(os.environ, CLINT_LOG=log_path))
     after = _log_lines(log_path)
     new = after[len(before):]
-    return r.returncode, (new[-1] if new else ""), r.stderr
+    return r.returncode, (new[-1] if new else ""), _extract_message(r.stdout)
 
 
 def _log_lines(path):
@@ -202,12 +240,13 @@ def _action(log_line):
 def _family(action):
     """Tag family —— the part before the ':' qualifier.
 
-    clint's log tags carry a granular class suffix (`block:prose`,
-    `block:warn_words`, `exempt:sic`, ...) so a breach can be audited by REASON.
-    A test that asserts the family (`block`) stays correct as new classes are
-    added; a test that needs one specific class simply passes the full tag and
-    still gets exact matching. Comparing families never blurs the outcomes that
-    matter —— `block`, `exempt`, `clean` and `out_of_scope` remain distinct.
+    clint's log tags carry a granular class suffix (`yellow:prose`,
+    `yellow:warn_words`, `exempt:sic`, ...) so a breach can be audited by
+    REASON. A test that asserts the family (`yellow`) stays correct as new
+    classes are added; a test that needs one specific class simply passes the
+    full tag and still gets exact matching. Comparing families never blurs
+    the outcomes that matter —— `yellow`, `exempt`, `clean` and `out_of_scope`
+    remain distinct.
     """
     return action.split(":", 1)[0]
 
@@ -225,80 +264,85 @@ def _check(label, got, want_exit, want_action):
                    % (code, got_action, line))
 
 
-# --- A. the once-per-prompt ceiling is gone --------------------------------
+# --- A. the once-per-prompt ceiling is (still) gone ------------------------
 
 def section_always_red(tmp):
-    print("\n--- A. RED always: 3 breaches, ONE promptId, all must block ---")
+    print("\n--- A. no ceiling: 3 breaches, ONE promptId, each logs its own "
+          "class, none block ---")
     log = os.path.join(tmp, "A.log")
     tp = os.path.join(tmp, "A.jsonl")
     objs = [_user("do the thing", pid="pid-SAME")]
     for n in (1, 2, 3):
         objs.append(_assistant("Breach %d: unauthorised chat prose." % n))
         _write_transcript(tp, objs)
-        _check("breach %d (same pid, ledger would have downgraded 2 and 3)" % n,
-               _run(_payload(tp), log), 2, "block")
-    # And the stderr the model actually receives must never name a glyph:
-    _, _, err = _run(_payload(tp), log)
-    _record("stderr stays glyph-free (cannot teach which prefixes pass)",
-            err.strip() != "" and not any(g in err for g in GLYPHS),
-            "stderr=%r" % err)
+        _check("breach %d (same pid, an old ledger would have downgraded "
+               "2 and 3)" % n, _run(_payload(tp), log), 0, "yellow")
+    # And the message the user actually receives must never name a glyph:
+    _, _, msg = _run(_payload(tp), log)
+    _record("message stays glyph-free (cannot teach which prefixes pass)",
+            msg.strip() != "" and not any(g in msg for g in GLYPHS),
+            "message=%r" % msg)
 
 
-# --- B. the loop is still impossible ---------------------------------------
+# --- B. the retired loop guard is inert -------------------------------------
 
 def section_loop_guard(tmp):
-    print("\n--- B. loop guard: each signal must withhold the block ALONE ---")
+    print("\n--- B. retired loop guard: now inert; a forced continuation is "
+          "an ordinary turn ---")
     log = os.path.join(tmp, "B.log")
 
-    # (a) payload flag alone: no feedback line in the transcript at all.
+    # (a) payload flag alone: used to withhold the block outright (guard
+    # signal (a)). Demotion made the whole guard moot -- this now just logs
+    # its ordinary granular class like any other breach.
     tp = os.path.join(tmp, "B1.jsonl")
     _write_transcript(tp, [_user("go"), _assistant("More prose in the retry.")])
-    _check("guard (a) stop_hook_active alone",
-           _run(_payload(tp, stop_hook_active=True), log), 0, "loop_guard")
+    _check("stop_hook_active is now IGNORED (was guard signal (a))",
+           _run(_payload(tp, stop_hook_active=True), log), 0, "yellow:prose")
 
-    # (b) transcript marker alone: stop_hook_active FALSE, as it would be if
-    # the harness ever omitted the field -- the case that used to rely purely
-    # on the deleted ledger.
+    # (b) injected feedback line alone: used to withhold the block (flag
+    # false, the case that once relied purely on the deleted ledger). Now
+    # inert too -- same ordinary outcome.
     tp2 = os.path.join(tmp, "B2.jsonl")
     _write_transcript(tp2, [_user("go"), _assistant("First breach."),
                             _stop_feedback(),
                             _assistant("Still prose after being blocked.")])
-    _check("guard (b) injected feedback line alone (flag false)",
-           _run(_payload(tp2, stop_hook_active=False), log), 0, "loop_guard")
+    _check("injected feedback line is now IGNORED (was guard signal (b))",
+           _run(_payload(tp2, stop_hook_active=False), log), 0, "yellow:prose")
 
-    # A human merely QUOTING the phrase must not be able to buy immunity.
+    # A human merely QUOTING the phrase was never a real continuation either
+    # way -- the SCAN BOUNDARY treats it as ordinary prose, not a marker.
     tp3 = os.path.join(tmp, "B3.jsonl")
     _write_transcript(tp3, [_user("Stop hook feedback: is what I want to discuss"),
                             _assistant("Sure, here is prose about it.")])
-    _check("a human message quoting the marker is NOT a continuation",
-           _run(_payload(tp3), log), 2, "block")
+    _check("a human message quoting the marker is ordinary prose",
+           _run(_payload(tp3), log), 0, "yellow:prose")
 
-    # (b)'s one real gap, named in the docstring: a system wrapper appended
-    # AFTER the feedback line displaces it as the scan boundary. Guard (a)
-    # must still hold, which is why both guards are kept.
+    # SCAN BOUNDARY, still pinned even without the guard: only text AFTER the
+    # feedback line is in scope. A DIFFERENT breach class sits before it and a
+    # distinctive one sits after; `first=` must report the AFTER text only --
+    # proof the boundary still moves correctly now that nothing depends on it
+    # to stop a loop.
     tp4 = os.path.join(tmp, "B4.jsonl")
-    _write_transcript(tp4, [_user("go"), _assistant("First breach."),
+    _write_transcript(tp4, [_user("go"),
+                            _assistant("⚠️ `cscpt/clint.py`"),   # warn_shape, BEFORE
                             _stop_feedback(),
-                            {"type": "user", "isSidechain": False,
-                             "promptId": "pid-A",
-                             "message": {"role": "user",
-                                         "content": "<task-notification>done"}},
-                            _assistant("Prose after the wrapper.")])
-    _check("known wrapper after the feedback line: (b) still holds",
-           _run(_payload(tp4, stop_hook_active=False), log), 0, "loop_guard")
-    _check("UNKNOWN wrapper displaces (b) -- guard (a) must cover it",
-           _run(_payload(tp4, stop_hook_active=True), log), 0, "loop_guard")
+                            _assistant("Prose after the boundary line.")])  # AFTER
+    code, line, _ = _run(_payload(tp4, stop_hook_active=False), log)
+    _record("scan boundary still moves past the feedback line (reports the "
+            "AFTER text, not the before text)",
+            code == 0 and _action(line) == "yellow:prose"
+            and "after the boundary" in line,
+            "action=%s line=%r" % (_action(line), line))
 
-    # A NEW human prompt re-arms the block: the guard is per continuation
-    # chain, never a per-prompt ceiling (that ledger is gone).
+    # A NEW human prompt still starts a fresh scan, exactly as before.
     tp5 = os.path.join(tmp, "B5.jsonl")
     _write_transcript(tp5, [_user("go", pid="pid-1"),
                             _assistant("First breach."), _stop_feedback("pid-1"),
-                            _assistant("Second breach, guarded."),
+                            _assistant("Second breach."),
                             _user("next thing please", pid="pid-2"),
                             _assistant("Fresh prose under a new prompt.")])
-    _check("a new human prompt re-arms the block",
-           _run(_payload(tp5, stop_hook_active=False), log), 2, "block")
+    _check("a new human prompt still starts a fresh scan",
+           _run(_payload(tp5, stop_hook_active=False), log), 0, "yellow:prose")
 
 
 # --- C. the `yn` exemption, on real mined prompts ---------------------------
@@ -321,18 +365,18 @@ def section_yn(tmp):
     ]
     for i, (label, prompt) in enumerate(real):
         tp = os.path.join(tmp, "C%d.jsonl" % i)
-        # "Yes" is the exact one-word reply the log shows really being blocked
+        # "Yes" is the exact one-word reply the log shows really being flagged
         # before this exemption existed.
         _write_transcript(tp, [_user(prompt), _assistant("Yes")])
         _check("yn: %s" % label, _run(_payload(tp), log), 0, "exempt:yn")
 
     # The leading space is load-bearing: a word merely ENDING in "yn" is not
-    # the override and must still be policed.
+    # the override and must still be policed (now: still logged, never blocks).
     tp = os.path.join(tmp, "Cneg.jsonl")
     _write_transcript(tp, [_user("Tell me about Brooklyn and synergy"),
                            _assistant("Brooklyn is a borough of New York.")])
     _check("`Brooklyn`/`synergy` do NOT count as the override",
-           _run(_payload(tp), log), 2, "block")
+           _run(_payload(tp), log), 0, "yellow:prose")
 
 
 # --- D. the `DATS` exemption's exact boundaries ----------------------------
@@ -349,7 +393,7 @@ def section_dats(tmp):
          0, "exempt:dats"),
         ("11 words -- one over the ceiling, no longer that protocol line",
          "DATS incomplete. One two three four five six seven eight nine.",
-         2, "block"),
+         0, "yellow:prose"),
     ]
     for i, (label, text, want_exit, want_action) in enumerate(cases):
         tp = os.path.join(tmp, "D%d.jsonl" % i)
@@ -363,7 +407,7 @@ def section_dats(tmp):
                            _assistant("DATS done. Fixed 3 file(s).\n"
                                       "DATS also stamped the close file.")])
     _check("DATS: 2-line block is NOT exempt", _run(_payload(tp), log),
-           2, "block")
+           0, "yellow:prose")
 
     # A declaration batch AROUND the DATS line must not defeat the exemption:
     # glyph lines and blanks never enter the offending set in the first place.
@@ -388,7 +432,7 @@ def section_api_error(tmp):
         _assistant("✅ `cscpt/clint.py`"),
         _assistant("You've hit your session limit · resets 11:40am "
                    "(Australia/Sydney)", api_error=True)])
-    _check("usage-limit line does not block the model for text it never wrote",
+    _check("usage-limit line does not warn about text the model never wrote",
            _run(_payload(tp), log), 0, "clean")
 
 
@@ -404,8 +448,8 @@ def section_reader(tmp):
         _user("response_202607092157.md"),
         _assistant("✅ `dupbus-ceztuc-7cufVe/universal/ww.md`\n"
                    "⇠ `202607/response_202607092157.md`")])
-    _check("declaration glyphs block in the Reader session",
-           _run(_payload(tp, cwd=READER_CWD), log), 2, "block")
+    _check("declaration glyphs are a breach in the Reader session",
+           _run(_payload(tp, cwd=READER_CWD), log), 0, "yellow:reader")
     _check("the very same lines are clean in THIS repo",
            _run(_payload(tp, cwd=REPO_ROOT), log), 0, "clean")
 
@@ -413,8 +457,8 @@ def section_reader(tmp):
     tp2 = os.path.join(tmp, "F2.jsonl")
     _write_transcript(tp2, [_user("ww it"),
                             _assistant("Reading instructions for #ww workflow.")])
-    _check("Reader prose blocks", _run(_payload(tp2, cwd=READER_CWD), log),
-           2, "block")
+    _check("Reader prose is a breach", _run(_payload(tp2, cwd=READER_CWD), log),
+           0, "yellow:reader")
 
     # A genuinely silent Reader turn (tool calls only, no text block).
     tp3 = os.path.join(tmp, "F3.jsonl")
@@ -426,7 +470,7 @@ def section_reader(tmp):
     tp4 = os.path.join(tmp, "F4.jsonl")
     _write_transcript(tp4, [_user("did you read it yn"), _assistant("Yes")])
     _check("`yn` does NOT exempt the Reader",
-           _run(_payload(tp4, cwd=READER_CWD), log), 2, "block")
+           _run(_payload(tp4, cwd=READER_CWD), log), 0, "yellow:reader")
 
     # Sub-path of the Reader folder that is a DIFFERENT repo -> not policed.
     _check("a sibling repo under GitHub/ is out of scope, not Reader-policed",
@@ -461,7 +505,7 @@ def section_failsafe(tmp):
     _check("empty stdin", _run(None, log, raw=""), 0, "no_stdin")
 
 
-# --- I. the breach message redirects, and destroys nothing ------------------
+# --- I. the WARNING message: present, safe, never a block -------------------
 
 # One fixture per REPO breach CLASS, so the message is proven identical on all
 # of them rather than on plain prose alone. Each `text` is a line clint really
@@ -489,128 +533,129 @@ _CLASS_FIXTURES = (
 
 
 def section_redirect(tmp):
-    print("\n--- I. breach message REDIRECTS the content, never buries it ---")
+    print("\n--- I. WARNING message: present, safe, delivered, NEVER blocks ---")
     log = os.path.join(tmp, "I.log")
 
-    # Everything below is asserted against the bytes the model REALLY receives
-    # from the registered command, never an imported constant: the message is
-    # the entire payload of a block, so a test that trusts the source rather
-    # than the stderr proves nothing about what the agent was told.
+    # Everything below is asserted against the bytes the model's USER really
+    # receives from the registered command (the exit-0 `systemMessage` JSON on
+    # stdout), never an imported constant: the message is the entire payload
+    # of a warning, so a test that trusts the source rather than the real
+    # stdout proves nothing about what actually gets shown.
     tp = os.path.join(tmp, "I0.jsonl")
     _write_transcript(tp, [_user("do the thing"),
                            _assistant("The fleet finished; three agents "
                                       "reported clean.")])
     repo = _run(_payload(tp), log)
     reader = _run(_payload(tp, cwd=READER_CWD), log)
-    repo_err, reader_err = repo[2], reader[2]
+    repo_msg, reader_msg = repo[2], reader[2]
 
-    print("    REPO stderr:   %s" % repo_err)
-    print("    READER stderr: %s" % reader_err)
+    print("    REPO message:   %s" % repo_msg)
+    print("    READER message: %s" % reader_msg)
 
-    _check("a REPO breach still blocks", repo, 2, "block:prose")
-    _check("a READER breach still blocks", reader, 2, "block:reader")
+    _check("a REPO breach still logs, but NEVER blocks", repo, 0, "yellow:prose")
+    _check("a READER breach still logs, but NEVER blocks", reader, 0, "yellow:reader")
 
-    # I1. THE REMEDY EXISTS. Without it the agent is told to stop and nothing
-    # else, so the content it meant to deliver is simply dropped.
-    _record("I1 REPO message names where the content must go (`response_`)",
-            "response_" in repo_err, "stderr=%r" % repo_err)
+    # I1. THE COURTESY HINT SURVIVES. It no longer corrects the agent (the
+    # agent never reads this message at all -- see ALWAYS RED -> ALWAYS
+    # YELLOW), but it still tells the HUMAN reading it where to look.
+    _record("I1 REPO message names where lost content might belong (`response_`)",
+            "response_" in repo_msg, "message=%r" % repo_msg)
 
-    # I2. THE PROHIBITION IS UNTOUCHED. The remedy is an ADDITION; if any of
-    # these clauses ever go missing the message has been softened, not extended.
-    kept = ("Chat-prose breach (root CLAUDE.md §3.2)", "emit ONLY",
-            "never prose behind a glyph", "Avoid further prose.")
-    missing = [k for k in kept if k not in repo_err]
-    _record("I2 the original prohibition survives verbatim (%d clauses)"
-            % len(kept), not missing, "missing=%r" % missing)
+    # I2. THE WARNING FRAMING IS UNMISTAKABLE. These clauses must be present so
+    # the message reads as a fact about what already happened, never as an
+    # instruction telling an (absent) reader what to do next.
+    kept = ("WARNING (root CLAUDE.md §3.2)", "Logged only",
+            "no longer blocks the turn or reaches the agent")
+    missing = [k for k in kept if k not in repo_msg]
+    _record("I2 the WARNING framing survives intact (%d clauses)" % len(kept),
+            not missing, "missing=%r" % missing)
 
-    # I3. GLYPH-FREE, both modes. Naming a permitted prefix teaches the agent
-    # which one to bolt onto prose next time.
-    for label, err in (("REPO", repo_err), ("READER", reader_err)):
-        hit = [g for g in GLYPHS if g in err]
+    # I3. GLYPH-FREE, both modes. Naming a permitted prefix would teach which
+    # one to bolt onto prose next time -- moot for the agent (it never reads
+    # this), kept as insurance regardless (see clint.py docstring GLYPH-FREE,
+    # CLASS-FREE, NUMBER-FREE MESSAGE).
+    for label, msg in (("REPO", repo_msg), ("READER", reader_msg)):
+        hit = [g for g in GLYPHS if g in msg]
         _record("I3 %s message names no declaration glyph" % label,
-                err.strip() != "" and not hit, "found=%r in %r" % (hit, err))
+                msg.strip() != "" and not hit, "found=%r in %r" % (hit, msg))
 
     # I4. NO NUMBER LEAKS. `§3.2` is an address and is stripped first; any
-    # digit surviving that is a threshold the agent could spend up to, which is
-    # exactly why the character cap lives only in the script's CCSIM block.
-    for label, err in (("REPO", repo_err), ("READER", reader_err)):
-        bare = SECTION_REF_RE.sub("", err)
+    # digit surviving that is a threshold, exactly why the character cap
+    # lives only in the script's CCSIM block.
+    for label, msg in (("REPO", repo_msg), ("READER", reader_msg)):
+        bare = SECTION_REF_RE.sub("", msg)
         digits = [c for c in bare if c.isdigit()]
         _record("I4 %s message carries no digit outside a section reference"
                 % label, not digits, "digits=%r in %r" % (digits, bare))
 
-    # I5. NO BREACH CLASS LEAKS. The class is the log's business. ("prose" is
-    # deliberately absent from CLASS_TOKENS: it is ordinary English in the
-    # prohibition sentence and predates the tag of the same name -- what must
-    # never appear is the TAG, `block:prose`, which `block:` covers.)
-    for label, err in (("REPO", repo_err), ("READER", reader_err)):
-        hit = [t for t in CLASS_TOKENS if t in err]
+    # I5. NO BREACH CLASS OR LOG TAG LEAKS. ("prose" is deliberately absent
+    # from CLASS_TOKENS: it is ordinary English in the WARNING sentence and
+    # predates the tag of the same name -- what must never appear is the TAG,
+    # `yellow:prose`, which `yellow:` covers.)
+    for label, msg in (("REPO", repo_msg), ("READER", reader_msg)):
+        hit = [t for t in CLASS_TOKENS if t in msg]
         _record("I5 %s message names no breach class or log tag" % label,
-                not hit, "found=%r in %r" % (hit, err))
+                not hit, "found=%r in %r" % (hit, msg))
 
-    # I6. REPO-ONLY. The Reader folder's CLAUDE.md forbids creating or editing
-    # ANY file, so it writes no `response_` at all: a redirect there would
-    # order a breach of the very rule being enforced, and its whole remedy is
-    # to end silently.
-    _record("I6 READER message gets NO redirect (that session creates no file)",
-            "response_" not in reader_err, "stderr=%r" % reader_err)
-    _record("I6b READER message keeps its own terminal instruction",
-            "NO chat text at all" in reader_err
-            and "End the turn silently" in reader_err,
-            "stderr=%r" % reader_err)
+    # I6. REPO-ONLY HINT. READER creates no files at all, so a hint of where
+    # to look would point nowhere; its whole message is just the fact itself.
+    _record("I6 READER message gets NO `response_` hint (creates no files)",
+            "response_" not in reader_msg, "message=%r" % reader_msg)
+    _record("I6b READER message still states plainly that nothing was fixed",
+            "no longer blocks the turn or reaches the agent" in reader_msg,
+            "message=%r" % reader_msg)
 
-    # I7. SHORT. The one channel reaching the model at Stop is this string, and
-    # a long message is a worse message -- the cap is a ratchet against the
-    # accretion that makes it skimmable-past.
-    for label, err in (("REPO", repo_err), ("READER", reader_err)):
+    # I7. SHORT. A long message is a worse message even read by a human alone.
+    for label, msg in (("REPO", repo_msg), ("READER", reader_msg)):
         _record("I7 %s message stays short (%d chars, cap 400)"
-                % (label, len(err)), len(err) <= 400, "stderr=%r" % err)
+                % (label, len(msg)), len(msg) <= 400, "message=%r" % msg)
 
-    # I8. DELIVERED ON EVERY CLASS, IDENTICALLY. The remedy must not depend on
-    # which check caught the line -- and the per-class log tags must still be
-    # distinct, so the human diagnostic keeps the detail the model is denied.
+    # I8. DELIVERED ON EVERY CLASS, IDENTICALLY, AND NEVER BLOCKING. The
+    # per-class log tags stay distinct (now `yellow:`, not `block:`) so the
+    # human diagnostic keeps the detail the message itself does not carry.
     seen = {}
     for i, (klass, prompt, text) in enumerate(_CLASS_FIXTURES):
         tpc = os.path.join(tmp, "I%d.jsonl" % (i + 1))
         _write_transcript(tpc, [_user(prompt), _assistant(text)])
         got = _run(_payload(tpc), log)
-        _check("I8 %s still exits 2 under its own log tag" % klass,
-               got, 2, "block:" + klass)
+        _check("I8 %s still logs its own class and never blocks" % klass,
+               got, 0, "yellow:" + klass)
         seen[klass] = got[2]
-    same = [k for k, v in seen.items() if v != repo_err]
+    same = [k for k, v in seen.items() if v != repo_msg]
     _record("I8b every REPO breach class receives the SAME message (%d classes)"
             % len(seen), not same, "differing=%r" % same)
 
-    # I9. NOTHING IS SAID WHERE NOTHING WAS BLOCKED. An exempt or loop-guarded
-    # turn must stay silent: the remedy is part of a block, never advice
-    # volunteered to a turn that was let through.
+    # I9. NOTHING IS SAID WHERE NOTHING BREACHED. An exempt turn stays silent
+    # -- the message belongs to a logged breach, never advice volunteered to a
+    # turn that was let through. (The old `loop_guard` silence has no
+    # successor case here: that state no longer exists -- see section B,
+    # where the same shapes now log an ordinary `yellow:` class instead.)
     quiet = (
-        ("exempt:override", _user("override, just tell me in chat"), False),
-        ("exempt:yn", _user("did it work yn"), False),
-        ("exempt:dats", _user("#close"), False),
-        ("loop_guard", _user("go"), True),
+        ("exempt:override", _user("override, just tell me in chat")),
+        ("exempt:yn", _user("did it work yn")),
+        ("exempt:dats", _user("#close")),
     )
     texts = {"exempt:override": "Here is the answer in plain chat prose.",
              "exempt:yn": "Yes",
-             "exempt:dats": "DATS done. Fixed 3 file(s).",
-             "loop_guard": "Prose in the forced continuation."}
-    for j, (tag, trigger, flag) in enumerate(quiet):
+             "exempt:dats": "DATS done. Fixed 3 file(s)."}
+    for j, (tag, trigger) in enumerate(quiet):
         tpq = os.path.join(tmp, "Iq%d.jsonl" % j)
         _write_transcript(tpq, [trigger, _assistant(texts[tag])])
-        got = _run(_payload(tpq, stop_hook_active=flag), log)
+        got = _run(_payload(tpq), log)
         _check("I9 %s still passes" % tag, got, 0, tag)
         _record("I9 %s emits no message at all" % tag, got[2] == "",
-                "stderr=%r" % got[2])
+                "message=%r" % got[2])
 
 
 # --- J. the lone `.` escape (root CLAUDE.md §3.1.6.2, DOT ESCAPE) ----------
 
 def section_dot_escape(tmp):
-    print("\n--- J. lone `.`: sanctioned no-op reply to a Stop-hook block ---")
+    print("\n--- J. lone `.`: sanctioned no-op reply, BOTH modes now ---")
     log = os.path.join(tmp, "J.log")
 
-    # J1-J2: the bare token, with and without incidental whitespace -> CLEAN,
-    # under its OWN tag (never the plain `clean` a declaration-only turn gets).
+    # J1-J2: the bare token, with and without incidental whitespace -> CLEAN
+    # in REPO, under its OWN tag (never the plain `clean` a declaration-only
+    # turn gets), and NEVER a warning message.
     clean_cases = [
         ("bare lone dot", "."),
         ("dot padded with leading/trailing whitespace", "   .   "),
@@ -619,13 +664,28 @@ def section_dot_escape(tmp):
         tp = os.path.join(tmp, "Jc%d.jsonl" % i)
         _write_transcript(tp, [_user("do the thing"), _assistant(text)])
         got = _run(_payload(tp), log)
-        _check("dot: %s" % label, got, 0, "clean:dot")
-        _record("dot: %s emits no stderr (nothing was blocked)" % label,
-                got[2] == "", "stderr=%r" % got[2])
+        _check("dot (REPO): %s" % label, got, 0, "clean:dot")
+        _record("dot (REPO): %s emits no message (nothing breached)" % label,
+                got[2] == "", "message=%r" % got[2])
+
+    # J1r-J2r: CHANGE 2 -- the SAME shapes are now ALSO clean in READER mode,
+    # under the distinct `clean:dot_reader` tag, for a reason that has nothing
+    # to do with REPO's deadlock history (see clint.py docstring DOT ESCAPE):
+    # the owner sends/receives this exact exchange purely to open a
+    # session-limit window, and `universal/glossary.md` / the `GitHub/`
+    # CLAUDE.md both already mandate that reply.
+    for i, (label, text) in enumerate(clean_cases):
+        tp = os.path.join(tmp, "Jr%d.jsonl" % i)
+        _write_transcript(tp, [_user("."), _assistant(text)])
+        got = _run(_payload(tp, cwd=READER_CWD), log)
+        _check("dot (READER, Change 2): %s" % label, got, 0, "clean:dot_reader")
+        _record("dot (READER): %s emits no message (nothing breached)" % label,
+                got[2] == "", "message=%r" % got[2])
 
     # J3-J6: near misses, each failing the match for a NAMED reason -- every
-    # one must still block as ordinary prose (no separate carve-out earns a
-    # special tag; the strict shape either matches or it is just chat text).
+    # one must still flag as an ordinary breach in REPO (no separate
+    # carve-out earns a special tag; the strict shape either matches or it is
+    # just chat text), and NEVER block regardless.
     block_cases = [
         ("two dots is not ONE full stop", ".."),
         ("an ellipsis is not ONE full stop", "..."),
@@ -635,26 +695,32 @@ def section_dot_escape(tmp):
     for i, (label, text) in enumerate(block_cases):
         tp = os.path.join(tmp, "Jb%d.jsonl" % i)
         _write_transcript(tp, [_user("do the thing"), _assistant(text)])
-        _check("dot: %s" % label, _run(_payload(tp), log), 2, "block:prose")
+        _check("dot (REPO): %s" % label, _run(_payload(tp), log),
+               0, "yellow:prose")
+
+    # J3r: the same near-miss shape ALSO still flags in READER mode -- Change
+    # 2 widened only the one EXACT lone dot, never these near misses.
+    tp = os.path.join(tmp, "Jbr.jsonl")
+    _write_transcript(tp, [_user("."), _assistant("..")])
+    _check("dot (READER): near-miss still flags, not widened by Change 2",
+           _run(_payload(tp, cwd=READER_CWD), log), 0, "yellow:reader")
 
     # J7: a `.` sharing the turn with an otherwise well-formed declaration on
-    # a SEPARATE line must still block -- the escape is for a turn with
+    # a SEPARATE line must still flag in REPO -- the escape is for a turn with
     # NOTHING else to say, not a vehicle for pairing a decorative dot onto a
     # real declaration batch. Checked over ALL non-blank lines, not only the
     # ones already flagged, precisely so this case cannot slip through.
     tp = os.path.join(tmp, "Jpair.jsonl")
     _write_transcript(tp, [_user("do the thing"),
                            _assistant(".\n✅ `cscpt/clint.py`")])
-    _check("dot: alongside an otherwise-clean declaration is NOT exempt",
-           _run(_payload(tp), log), 2, "block:prose")
+    _check("dot (REPO): alongside an otherwise-clean declaration is NOT exempt",
+           _run(_payload(tp), log), 0, "yellow:prose")
 
-    # J8: REPO-only. The Reader session's own rule tolerates no chat text at
-    # all, the dot included -- it needs no escape of its own because a
-    # genuinely blank turn already clears there (see section F, case F3).
-    tp = os.path.join(tmp, "Jreader.jsonl")
-    _write_transcript(tp, [_user("ww it"), _assistant(".")])
-    _check("dot: still blocks in READER mode (no escape there)",
-           _run(_payload(tp, cwd=READER_CWD), log), 2, "block:reader")
+    # J7r: the same pairing in READER mode -- also NOT exempt there either.
+    tp = os.path.join(tmp, "Jpairr.jsonl")
+    _write_transcript(tp, [_user("."), _assistant(".\nsomething else")])
+    _check("dot (READER): alongside another line is NOT exempt",
+           _run(_payload(tp, cwd=READER_CWD), log), 0, "yellow:reader")
 
     # J9: an ORDINARY clean turn (declarations only, no dot in sight) must
     # keep logging under the plain `clean` tag -- EXACTLY, not merely by
@@ -811,9 +877,9 @@ def section_prune(tmp):
 
 
 def main():
-    print("clint.py ALWAYS-RED regression test")
+    print("clint.py ALWAYS-YELLOW regression test")
     print("target: %s" % CLINT)
-    with tempfile.TemporaryDirectory(prefix="clint-red-") as tmp:
+    with tempfile.TemporaryDirectory(prefix="clint-yellow-") as tmp:
         section_always_red(tmp)
         section_loop_guard(tmp)
         section_yn(tmp)

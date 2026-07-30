@@ -233,12 +233,22 @@ def section_clint():
     with tempfile.TemporaryDirectory() as td:
         transcript = _make_breach_transcript(td)
 
-        # A1: in-scope (cwd = repo root) -> block, EXACTLY as pre-guard.
+        # A1: in-scope (cwd = repo root) -> the breach is still DETECTED and
+        # LOGGED under its granular class, exactly as pre-guard -- but never
+        # blocks any more (clint.py was demoted from ALWAYS-RED to ALWAYS-
+        # YELLOW: exit is now unconditionally 0, and the warning travels as
+        # an exit-0 `{"systemMessage": ...}` JSON on stdout, never stderr;
+        # see `clint_detection_contract_regression_test.py` for full
+        # coverage of that contract). The scope guard's own job -- did THIS
+        # invocation get policed at all -- is unaffected by that demotion,
+        # so the assertion here narrows to exactly that: detection fired,
+        # under the right tag, exit 0.
         log1 = os.path.join(td, "log1.log")
         payload = _stop_payload(transcript, cwd=REPO_ROOT)
         r, log = _run_clint(payload, log1)
-        _record("A1 in-scope cwd=repo root -> still BLOCKS (exit 2), breach unchanged",
-                 r.returncode == 2 and "prose" in r.stderr.lower() and "action=block" in log,
+        _record("A1 in-scope cwd=repo root -> still WARNS (exit 0), breach still logged",
+                 r.returncode == 0 and "prose" in r.stdout.lower()
+                 and "action=yellow:prose" in log,
                  r)
 
         # A2: out-of-scope via cwd -> silent, logged distinctly.
@@ -269,12 +279,13 @@ def section_clint():
                  r.returncode == 0 and "action=no_transcript" in log and "out_of_scope" not in log,
                  r)
 
-        # A5 (nuance): a sub-directory of the repo root is still in-scope.
+        # A5 (nuance): a sub-directory of the repo root is still in-scope --
+        # still detected and logged (never blocks; see A1's rationale above).
         log5 = os.path.join(td, "log5.log")
         payload = _stop_payload(transcript, cwd=SUBDIR_CWD)
         r, log = _run_clint(payload, log5)
-        _record("A5 in-scope cwd = repo SUB-DIRECTORY -> still BLOCKS (exit 2)",
-                 r.returncode == 2 and "action=block" in log,
+        _record("A5 in-scope cwd = repo SUB-DIRECTORY -> still WARNS (exit 0), logged",
+                 r.returncode == 0 and "action=yellow:prose" in log,
                  r)
 
         # A6 (nuance): a same-PREFIX sibling (no separator) must NOT match.
