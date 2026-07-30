@@ -81,7 +81,7 @@
   - 3.1.5. Urgent Declarations (for §3.2.4–5): fired instantly at any time, unlike §3.1.6.3
   - 3.1.6. After ALL tasks' completion (ensuring no SAs in-flight), do **Turn-End Actions** (TEAs):
     - 3.1.6.1. TEA1 —— Commit & Push (**right before** TEA2):
-      - 3.1.6.1.1. Commit Name = ≤8w summary; Scope = all touched repo(s)
+      - 3.1.6.1.1. Commit Name = `[CP_name]: [≤8w_summary]`; Scope = all touched repo(s)
       - 3.1.6.1.2. If ONLY this turn's CC changes (± this turn's `query_`) → commit + push
       - 3.1.6.1.3. Ditto + user changes on OTHER files → commit + push CC-touched files only
       - 3.1.6.1.4. User changes on CC-touched files (rare):
@@ -212,21 +212,19 @@
 
 ## 6. Claude Project (CP)
 
-- 6.1. A CP is any folder directly under `cp/`
-  - 6.1.1. EXCEPT `cp/archive/`, whose OWN children are CPs too but retired/legacy (not actively used; still workable in the rare case one is needed)
-  - 6.1.2. No marker file required: presence in `cp/` alone makes a folder a CP (a simple CP may hold neither `CP_index_cc.md` nor `CLAUDE.md`)
+- 6.1. CP Definitions:
+  - 6.1.1. A CP is any folder directly under `cp/`, EXCEPT `cp/archive/`, whose OWN children are CPs too but retired/legacy (not actively used; still workable in the rare case one is needed)
+  - 6.1.2. [CP_folder] = filename of its folder; e.g. `ccsim` `career`
+  - 6.1.3. [CP_name] = per its CLAUDE.md/CP_notes.md; e.g. `CCSIM` `Career`
 - 6.2. Identify as a CP session when any of the following applies:
-  - 6.2.1. The `query_` file has a CP folder name as prefix (e.g. `career_query_[TS].md`)
+  - 6.2.1. The `query_` file is [CP_folder]-prefixed (e.g. `career_query_[TS].md`)
   - 6.2.2. User declares it; or CC suggests & user confirms
-  - 6.2.3. User added CP folder to the session
+  - 6.2.3. User added CP as working dir of the session
 - 6.3. Once identified as a CP chat:
-  - 6.3.1. All files (incl. `query_`) use the CP prefix, except special output (§3.7)
+  - 6.3.1. All comms files (incl. `query_`) must be [CP_folder]-prefixed, exc. special output (§3.7)
   - 6.3.2. If any files since (not just after) `query_` triggering CP not prefixed: rename → declare
-  - 6.3.3. Immediately read the CP's `CP_index_cc.md` (and any unconditional files it directs) IF PRESENT (a simple CP may have none) & not already read this session; include them in either §5.3/§5.4 list after post-compaction
+  - 6.3.3. Immediately read the CP's `CP_index_cc.md` (+ Unconditionals directed) IF PRESENT & if not already read this session; include them in either §5.3/§5.4 list after post-compaction
   - 6.3.4. Reminder: when prompted `#close` (i.e. saw close.md), mind the additional file
-- 6.4. A CP folder MAY have a `CLAUDE.md`; when present it mandates (at minimum):
-  - 6.4.1. Read the root CLAUDE.md (this file)
-  - 6.4.2. Read the CP's `CP_index_cc.md` (if any) via local path (never via GH)
 
 ---
 
