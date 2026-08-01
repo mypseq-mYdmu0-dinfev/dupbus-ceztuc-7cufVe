@@ -69,7 +69,7 @@ Format: all #numbered; reference last month's `wrap_` (if applicable) to avoid r
 
 ## Wrap Rules
 
-- #sprint with fully fan-out SA fleet; start w/ Sonnet, then escalate to Opus if needed
+- #sprint with fullest FOF; start w/ Sonnet, then escalate to Opus if needed
 - #SA read ALL `close_` files (incl. CP-prefixed) in the target month's folder
   - DON'T miss any, even if TS ≠ target month
   - i.e. Encompassing all sessions STARTED in target month (per root c.md §3.4.5)
