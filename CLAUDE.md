@@ -17,15 +17,6 @@
   - 1.4.1. Check current month's folder (`sessions/[YYYY]/[YYYYMM]/`) has ≥5 files
   - 1.4.2. ONLY if §1.4.1 = no → Check last month's folder has a `wrap_` file
   - 1.4.3. ONLY if §1.4.2 = no → Remind user in 1st `response_`
-- 1.5. If user's 1st msg contains `ready`
-  - 1.5.1. Read Unconditionals of all working dirs
-  - 1.5.2. No `response_` for this turn (one-off)
-  - 1.5.3. No chat text except TEA3
-  - 1.5.4. If `ready + [filename(s)]`
-    - 1.5.4.1. Read the additional files after Unconditionals
-    - 1.5.4.2. If any directed readings, read them as well
-    - 1.5.4.3. No actions exc. readings; do nothing else
-  - 1.5.5. FYI: User's actual `query_` in next turn
 
 ---
 
