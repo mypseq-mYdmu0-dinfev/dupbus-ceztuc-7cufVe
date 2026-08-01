@@ -96,4 +96,78 @@ printf '%s\n' "$staged" | while IFS= read -r f; do
   echo "  staged or tracked — if the user's query file exists, remember to push it too."
   echo "  (Non-blocking: this commit proceeds.)"
 done
+
+# --- REVERSE PAIRING ARM: a query_ with no response_ -----------------------
+# The arm above checks ONE direction only — that a response_ has a query_. The
+# reverse went unchecked for months, so an ORPHANED QUERY committed silently.
+# That is the more expensive gap: root CLAUDE.md §3.5.3 makes a response_ carry
+# its QUERY's timestamp, and the failure it permits is a new query answered by
+# APPENDING to the previous turn's response_ — one file grows, no new file is
+# created, and nothing anywhere complains. It happened live (a new query landed
+# in the same commit as 83 appended lines on the prior turn's response_), and
+# was caught by the user's eye, not by any check.
+#
+# ADDS ONLY (--diff-filter=A): a query_ is added once, and the ADD is the moment
+# the obligation appears. Re-firing on every later MODIFY would nag over the
+# ~30 historical orphans in this repo, which is how a reminder gets tuned out.
+#
+# NON-BLOCKING, exactly like the forward arm above, and for a stronger reason:
+# a query legitimately answered inside ANOTHER response_ is a real, sanctioned
+# case (a mid-turn follow-up per root CLAUDE.md §3.1.7.6.1, or a Move-Rule
+# relocation into the comms tree), and NOTHING a script can read distinguishes
+# it from the breach — the two produce byte-identical file operations, and the
+# only difference is whether the agent was idle when the message arrived.
+# Blocking would also deadlock a legitimate mid-turn checkpoint commit
+# (§3.1.6.1.5), which lands a query_ before its response_ exists. The forward
+# arm was itself demoted from block to reminder for the same class of reason;
+# a reverse arm that blocked would be stricter than the direction with the
+# HIGHER false-positive rate (74 unpaired responses on disk against ~33
+# unpaired queries), which nothing could justify.
+#
+# NOT the real fix, deliberately recorded as such: by commit time the wrong file
+# has already been written and the turn is over. The check that reaches the
+# decision is `cscpt/hlint.py`'s prompt-time pairing reminder, which names the
+# owed response_ before the turn's first write. This is the net beneath it, for
+# whatever escapes — including any file created outside the harness's tools.
+#
+# `sessions/queued_queries/` is EXCLUDED: those queries deliberately await a
+# future session (see that folder's README), so an unpaired one there is
+# correct, never a defect. The blank `*_query_.md` TEMPLATES at the root of
+# `sessions/` carry no 12-digit TS, so the pattern below never matches them.
+git diff --cached --name-only --diff-filter=A | while IFS= read -r f; do
+  [ -n "$f" ] || continue
+  case "$f" in
+    queued_queries/*|*/queued_queries/*) continue ;;
+  esac
+  base="${f##*/}"
+  dir="${f%/*}"
+  [ "$dir" = "$f" ] && dir="."
+  # A VOIDED file (root CLAUDE.md §8.2) is awaiting the user's manual delete, so
+  # it owes nothing. `.*_` below would otherwise swallow the `❌_` prefix and
+  # read it as a live query. `cscpt/hlint.py`'s twin check needs no such guard —
+  # its prefix class is `[A-Za-z0-9-]+_`, which cannot match `❌_` at all.
+  case "$base" in
+    ❌_*) continue ;;
+  esac
+  # Match: optional CP prefix + query_ + 12-digit TS + .md
+  ts="$(printf '%s\n' "$base" | sed -n 's/^\(.*_\)\{0,1\}query_\([0-9]\{12\}\)\.md$/\2/p')"
+  [ -n "$ts" ] || continue
+  prefix="$(printf '%s\n' "$base" | sed -n 's/^\(\(.*_\)\{0,1\}\)query_[0-9]\{12\}\.md$/\1/p')"
+  sibbase="${prefix}response_${ts}.md"
+  sibling="${dir}/${sibbase}"
+  # PASS if the response is staged in this commit...
+  if printf '%s\n' "$staged" | grep -qxF "$sibling"; then
+    continue
+  fi
+  # ...or already tracked.
+  if git ls-files --error-unmatch "$sibling" >/dev/null 2>&1; then
+    continue
+  fi
+  echo "pre-commit reminder: query '$base' has no sibling response '$sibbase'"
+  echo "  staged or tracked (root CLAUDE.md §3.5.3: a response_ carries its query's TS)."
+  echo "  EXPECTED if this is a mid-turn checkpoint, or if that query was deliberately"
+  echo "  answered inside another response_. A BREACH if a new turn's reply was appended"
+  echo "  to an earlier response_ instead of getting its own file."
+  echo "  (Non-blocking: this commit proceeds.)"
+done
 exit 0

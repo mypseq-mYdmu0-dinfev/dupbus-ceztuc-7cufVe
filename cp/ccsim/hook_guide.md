@@ -54,7 +54,7 @@
 | PostToolUse | `cscpt/dlint_hook.sh` | Prose lint on every `.md` + deliverable gate (blocking) |
 | PostToolUse | `cscpt/nlint_hook.sh` | Numbering-continuity lint (advisory) |
 | PostToolUse | `cscpt/tlint_hook.sh` | Timestamp-clash lint (warn-only) |
-| UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
+| UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder + query/response pairing reminder (advisory) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
 | PostCompact | `.claude/post_compact.sh` | Inject the post-compaction protocol |
 
@@ -180,6 +180,7 @@
 | PreToolUse | Write `cp/ccsim/sandbox/flintprobe_ 202608011299.md` | The write is BLOCKED, stderr naming `flintprobe_202608011299.md` |
 | Stop | End a turn, then check `cscpt/.clint.log` | A new line appended for that turn |
 | UserPromptSubmit | Submit a prompt containing a real `#trigger` | Reminder line appears in context |
+| UserPromptSubmit | Submit a prompt naming `ccsim_query_209912312359.md` (bare) | A `Query/response pairing` reminder names the response it owes |
 | PostCompact | Occurs naturally on compaction | The `🚨` banner is injected |
 
 - 7.4. The manual pipe test —— useful, but know exactly what it proves:
@@ -257,6 +258,7 @@ for ev,groups in d.items():
   - 9.3.5.1. This checklist covers the BLOCKING hooks only —— a silent break in one of those is felt as a stuck repo or an escaped deliverable. The advisory lints have suites too (`cp/ccsim/sandbox/`), worth running but not recovery-critical.
   - 9.3.8. Run `cp/ccsim/sandbox/dlint_gate_regression_test.py` —— it pins the only lint that blocks on content, and the deliverable gate folded into it.
   - 9.3.9. Run `cp/ccsim/sandbox/flint_filename_gate_regression_test.py` —— it pins the filename gate, and its live-repo sweep fails if the detection rule ever broadens.
+  - 9.3.10. Run `cp/ccsim/sandbox/pairing_lint_regression_test.py` —— it pins both arms of the query/response pairing enforcement (root `CLAUDE.md` §3.5.3).
 - 9.4. Keep the reference file in step with the live file whenever a hook is added, renamed, or re-pointed —— a stale reference is a recovery that silently restores dead wiring.
 - 9.5. The reference file is documentation, so it may legitimately run AHEAD of the live file during a change; whichever is ahead, close the gap before the turn ends.
 
