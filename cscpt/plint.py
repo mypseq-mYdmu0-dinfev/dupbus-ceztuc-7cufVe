@@ -4,16 +4,17 @@ it looks at what is about to happen and injects a NON-BLOCKING reminder to read
 the governing file FIRST.
 
 === NON-CCSIM —— start of all you need to RUN it ===
-* WHAT: a PreToolUse hook —— before a write or read lands, it reminds you to
-  read the governing file FIRST.
+* WHAT: a PreToolUse hook that reminds you to read a governing file FIRST,
+  before a write or read.
 * THREE RULES: script/pcmd write -> `universal/coding.md`; greeting/sign-off
-  content -> `universal/writing.md` (incl. `## Stylisation`); reading from a
-  folder with a `README.md` -> that README, once per folder per session.
+  content -> `universal/writing.md` (incl. `## Stylisation`); reading a file
+  under a README-bearing folder OR ancestor (up to the repo root) -> that
+  README, once per README per session.
 * IF IT FIRES: read the named file, or ignore it if already read —— ADVISORY,
-  it can NEVER gate a call.
+  never gates a call.
 * KNOWN LIMITS: the deliverable rule is a heuristic (`hello` in a script trips
-  it); a comms-named pcmd is skipped; project-root/vendor folders get no README
-  reminder.
+  it); a comms-named pcmd is skipped; project-root/vendor READMEs are
+  excluded.
 === NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
@@ -52,9 +53,11 @@ DELIVERABLE (heuristic, uncertain) —— the written CONTENT carries a
 greeting/sign-off marker: `hello`, `dear`, `greetings`, `regards`, `sincerely`,
 `best wishes`, `yours sincerely`, `yours faithfully`, ... —— the live list is
 `_MARKERS` below, which is the spec; this is a map of it. README (mechanical,
-certain) —— the READ target's own directory contains a `README.md`, the target
-is not itself that README, the directory is not excluded as noise, and this
-directory has not already been reminded in this session.
+certain) —— walk from the READ target's own directory up through EVERY
+ancestor to the repo root (docstring: ANCESTOR WALK below); for each ancestor
+that carries a `README.md` and is not excluded as noise, remind ONCE for that
+specific README (never repeated this session) unless the target IS that
+README, in which case reading it silently claims it instead.
 
 WHY IT EXISTS (self-contained —— no conversation or comms file explains or
 overrides anything here): these protocol reads get SILENTLY SKIPPED, and the cost
@@ -76,16 +79,38 @@ changes nothing. The enforcement has to arrive at the MOMENT OF THE ACT, which
 is what this rule does: the reminder lands on the read itself, naming the exact
 README by absolute path so following it costs one open.
 
-WHY ONCE PER DIRECTORY PER SESSION (the load-bearing constraint, not an
-optimisation): reads are the single most frequent tool call, and a reminder on
-every read inside a README-bearing folder would fire many times per turn. It
-would be tuned out within one session and would take the other two rules'
-credibility with it —— the same failure the DELIVERABLE rule's word boundaries
-exist to prevent. One reminder per folder is also all
-the rule can honestly claim: after it, the reader either opened the README or
-consciously chose not to, and repeating it adds no information. Reading the
-README ITSELF also claims the folder, so the reminder never appears for a
-folder whose README is already open.
+ANCESTOR WALK (root CLAUDE.md §8.5.1 —— extended from the immediate folder to
+EVERY ancestor up to the repo root): the original, immediate-folder-only rule
+was itself skipped on exactly this account —— a file was read several levels
+under a folder whose OWN `README.md` governs the whole tree (e.g. a generic
+`temp/` folder's README, several levels above the specific dated sub-folder a
+session actually touched), and because the rule only ever looked at the
+target's own directory, that governing README was never named. `_ancestor_dirs`
+climbs from the target's directory through successive parents, stopping AFTER
+the first one that is itself a project root (contains `.git`) —— walking
+further would leave the project and start surfacing READMEs that govern
+something else entirely. `_MAX_ANCESTORS` backstops a chain with no `.git`
+anywhere (so the climb cannot run unbounded to `/`), and
+`_MAX_README_LINES_PER_CALL` separately bounds how many reminder LINES one
+read may ever emit, independent of how many ancestors were examined —— a
+deeply-nested, README-at-every-level tree is legal but should not dump a dozen
+lines into one turn.
+
+WHY ONCE PER README PER SESSION (the load-bearing constraint, not an
+optimisation; extended from once-per-DIRECTORY to once-per-README when the
+rule started walking ancestors —— see ANCESTOR WALK): reads are the single
+most frequent tool call, and a reminder on every read under a README-bearing
+folder would fire many times per turn. It would be tuned out within one
+session and would take the other two rules' credibility with it —— the same
+failure the DELIVERABLE rule's word boundaries exist to prevent. One reminder
+per README is also all the rule can honestly claim: after it, the reader
+either opened that README or consciously chose not to, and repeating it adds
+no information. Each ancestor README earns its OWN slot, independently claimed
+—— reading a child folder's file says nothing about whether a GRANDPARENT's
+README was ever read, so silencing one must never silence the other. Reading
+a README ITSELF also claims its own folder's slot, so the reminder never
+appears for a folder whose README is already open (but ancestors ABOVE it are
+still checked and may still fire).
 
 STATE (where and why): the claim ledger lives OUTSIDE any repo —— under the OS
 temp dir (`tempfile.gettempdir()`), overridable via `PLINT_STATE_DIR` for
@@ -98,15 +123,18 @@ state cannot live in one repo anyway. The temp dir is outside every working
 tree by construction, self-cleaning at the OS level, and losing it costs
 exactly one duplicate reminder.
 
-STATE SHAPE AND BOUNDS: one empty marker file per (session, directory), under a
-per-session sub-folder keyed by a hash of `session_id`; the marker name is a
-hash of the resolved directory path, so no real path is written anywhere. The
-claim is `os.open(..., O_CREAT|O_EXCL)` —— atomic, so the two or three PARALLEL
-reads a single assistant turn issues cannot all decide they are the first.
-Bounds are three: `_MAX_DIRS_PER_SESSION` caps one session's markers (past it,
-the rule simply goes quiet), `_STATE_TTL_S` sweeps stale session folders, and
-the sweep runs ONLY when a session folder is first created and scans at most
-`_MAX_SWEEP` entries, so it can never turn a read into a directory walk.
+STATE SHAPE AND BOUNDS: one empty marker file per (session, README) —— keyed
+on the README's own path, not its directory, since ANCESTOR WALK gave the
+immediate folder's README and each ancestor's README their own independent
+slot — under a per-session sub-folder keyed by a hash of `session_id`; the
+marker name is a hash of the resolved README path, so no real path is written
+anywhere. The claim is `os.open(..., O_CREAT|O_EXCL)` —— atomic, so the two or
+three PARALLEL reads a single assistant turn issues cannot all decide they are
+the first. Bounds are five: `_MAX_DIRS_PER_SESSION` caps one session's markers
+(past it, the rule simply goes quiet), `_STATE_TTL_S` sweeps stale session
+folders, `_MAX_SWEEP` bounds one sweep so it can never turn a read into a
+directory walk, `_MAX_ANCESTORS` bounds the upward climb itself, and
+`_MAX_README_LINES_PER_CALL` bounds reminder lines from one call.
 
 FAIL DIRECTION —— CLAIM FIRST, THEN REMIND: the reminder is emitted ONLY if the
 claim succeeded. If the state dir is unwritable, the rule therefore goes
@@ -118,19 +146,24 @@ one property that makes it worth having. A hook that cries wolf is worse than
 no hook. The claim is made only after every other gate has passed, so a
 suppressed reminder can never be claimed away. One residual window is accepted
 and named rather than hidden: if the final stdout write itself fails, the
-folder is already claimed and that one reminder is lost —— a missed reminder,
+README is already claimed and that one reminder is lost —— a missed reminder,
 the harmless direction, and the same failure the other two rules already have.
 
 README-RULE NOISE EXCLUSIONS (judgement calls, stated so they can be argued
-with): (1) a PROJECT ROOT —— a directory containing `.git`. A root README is
-the project's front page, not a folder-level procedure, and nearly every
-session reads something from the root, so it would burn the reminder on the
-least specific README available. (2) DEPENDENCY / GENERATED folders
-(`node_modules`, `site-packages`, `vendor`, `build`, `dist`, `.git` internals,
-...) —— their READMEs belong to third-party code and say nothing about how the
-reader should behave. (3) `$HOME` and `/` —— neither is a working folder.
-Everything else fires, INCLUDING outside this repo: "read the folder's README
-before working in it" is generically true, exactly like the CODE rule.
+with; applied to EVERY ancestor `_ancestor_dirs` visits, not just the
+immediate folder): (1) a PROJECT ROOT —— a directory containing `.git`. A root
+README is the project's front page, not a folder-level procedure, and nearly
+every session reads something from the root, so it would burn the reminder on
+the least specific README available —— this is also WHY the ancestor climb
+stops there (see ANCESTOR WALK): it is the natural, already-argued boundary of
+"a folder governing this project", so walking past it would start admitting
+READMEs that belong to something else entirely. (2) DEPENDENCY / GENERATED
+folders (`node_modules`, `site-packages`, `vendor`, `build`, `dist`, `.git`
+internals, ...) —— their READMEs belong to third-party code and say nothing
+about how the reader should behave. (3) `$HOME` and `/` —— neither is a
+working folder. Everything else fires, INCLUDING outside this repo: "read the
+folder's README before working in it" is generically true, exactly like the
+CODE rule.
 
 WHY COMMS FILES ARE EXCLUDED FROM THE CODE RULE: a `response_` can legitimately
 live beside pcmd (or embed a code snippet), but writing one is a COMMS act, not

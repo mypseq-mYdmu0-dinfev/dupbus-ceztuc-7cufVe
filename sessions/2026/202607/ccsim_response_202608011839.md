@@ -46,6 +46,13 @@
 - 138.4. All 13 suites green.
 
 ## 139. Two Things NOT Done, Deliberately
-- 139.1. Root c.md §8.5.1's ancestor clause is NOT added. You have an uncommitted edit in that file (§9.06, the `SendUserFile` ban), and §3.1.6.1.4 says not to touch a CC-touched file carrying your changes. The plint half already enforces the behaviour; the prose clause is queued for CCSIM07.
+- 139.1. ~Root c.md §8.5.1's ancestor clause is NOT added.~ CORRECTION: the SA HAD added it —— I checked before its report landed and read a stale state. The clause is in §8.5.1 now.
 - 139.2. Your `CLAUDE.md`, `backup/backup_Gemini/transcription.md` and the `gscpt/ajap_logs_*` files are yours and stay OUT of my commit.
 - 139.3. Noted §9.06 —— no `SendUserFile`.
+
+## 140. Final State
+- 140.1. plint suite grew to 34/34 (8 new ancestor cases: two-levels-up fires, sibling stays silent, walk stops at the first `.git`, per-README once-per-session, line cap).
+- 140.2. Added the `MultiEdit(cp/ccsim/sandbox/**)` rule the SA spotted missing —— without it, MultiEdit calls in the sandbox would still have prompted.
+- 140.3. All 13 suites green.
+- 140.4. ⚠️ `CLAUDE.md` NOT committed —— it now carries BOTH your uncommitted §9.06 edit and the SA's §8.5.1 clause. §3.1.6.1.4 says don't commit a CC-touched file bearing your changes, so it stays in the working tree for you. Please don't re-save it from an editor before committing, or the two changes could clash.
+- 140.5. ⚠️ Also a fresh instance of the thing I keep doing: §139.1 stated a fact I had checked BEFORE the SA finished. Corrected above rather than quietly amended.

@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
-"""Regression test for cscpt/plint.py —— DELIVERABLE marker list (P) and the
-README-first read reminder (R).
+"""Regression test for cscpt/plint.py —— DELIVERABLE marker list (P), the
+README-first read reminder (R), and its ANCESTOR WALK extension (A).
 
-WHY the README cases exist (R1-R11): the standing instruction "on accessing any
+WHY the README cases exist (R1-R14): the standing instruction "on accessing any
 folder, read its README FIRST" was already written down in prose and was still
 skipped —— a file inside a README-bearing folder was read and acted on, and the
 folder's documented procedure was missed. Prose that is not noticed cannot be
 repaired with more prose, so plint gained a read-time rule that names the
 README at the moment of the read. Its ONE load-bearing property is that it
-fires at most ONCE PER FOLDER PER SESSION: reads are the most frequent tool
+fires at most ONCE PER README PER SESSION: reads are the most frequent tool
 call there is, so a per-read reminder would be tuned out inside a single
 session and would take the other two rules' credibility with it. R2 pins that
 guard, R6 pins that a new session re-arms it, and the rest pin the silence
@@ -17,6 +17,27 @@ vendor folders) plus the tool-name split that keeps a bare Read from tripping
 the write rules (R11). Every R case runs against fixture folders under a
 private state dir (`PLINT_STATE_DIR`), so the test never reads or pollutes the
 real ledger and leaves nothing behind.
+
+WHY the ANCESTOR cases exist (A1-A8, root CLAUDE.md §8.5.1): the R-rule above
+checked only the read target's OWN directory, and that narrower rule was
+itself skipped on exactly this account —— a file was read several levels
+under a folder whose own `README.md` governs the whole tree (a generic
+`temp/` folder, several levels above one dated run's specific output
+sub-folder), and because the rule never looked past the immediate directory,
+that governing README was never surfaced. The fix walks from the target's
+directory up through EVERY ancestor to the repo root. A1/A3 pin that an
+ancestor README fires and re-arms exactly like the immediate-folder case; A2
+pins the same once-per-README guard across a DIFFERENT folder under an
+already-claimed ancestor; A4 pins that reading the ancestor README itself
+still claims it; A5 pins total silence with no README anywhere in the chain
+(bounded by `_MAX_ANCESTORS` so the climb cannot run away up the real
+filesystem); A6 pins that the immediate folder's own README and a different
+ancestor's README are independent and both fire, nearest first, in ONE call;
+A7 pins the load-bearing boundary —— the walk STOPS at the first ancestor
+that is itself a project root (`.git`), so a README ABOVE that boundary,
+belonging to something else entirely, is never reached; A8 pins
+`_MAX_README_LINES_PER_CALL` bounding one call's line count even when more
+ancestor READMEs exist than the cap.
 
 WHY the P cases exist (coding.md: "pin EVERY fixed bug w/ a regression test
 encoding the exact failing scenario"): plint's DELIVERABLE rule reminds the
@@ -197,6 +218,31 @@ def _cap():
     return int(m.group(1))
 
 
+def _read_int_const(name):
+    """Any other integer module-level constant from plint's own source, same
+    reasoning as `_cap()` above —— generalised so the ANCESTOR WALK cases
+    (A8) can pin `_MAX_README_LINES_PER_CALL` without copying its value."""
+    src = open(PLINT, encoding="utf-8").read()
+    m = re.search(r"^%s\s*=\s*(\d+)" % re.escape(name), src, re.M)
+    if not m:
+        raise SystemExit("plint.%s not found —— renamed?" % name)
+    return int(m.group(1))
+
+
+def _report(label, ok, r, results):
+    """Shared PASS/FAIL printer for the ancestor cases below, whose
+    assertions inspect MULTIPLE reminder lines at once (unlike `_check_rule`,
+    which pins a single rule's fire/silent verdict)."""
+    status = "PASS" if ok else "FAIL"
+    print(f"[{status}] {label}")
+    if not ok:
+        print(f"        exit={r.returncode}")
+        print(f"        stdout={r.stdout!r}")
+        print(f"        stderr={r.stderr!r}")
+    results.append(ok)
+    return ok
+
+
 def _mkfile(path, body="placeholder\n"):
     os.makedirs(os.path.dirname(path), exist_ok=True)
     with open(path, "w", encoding="utf-8") as fh:
@@ -357,6 +403,130 @@ def readme_cases(root):
     return results
 
 
+def ancestor_readme_cases(root):
+    """A1-A8. Pins the ANCESTOR WALK extension (root CLAUDE.md §8.5.1): the
+    README-first reminder used to check ONLY the read target's own directory,
+    so a file read several levels under a folder whose OWN `README.md`
+    governs the whole tree (e.g. a generic `temp/` folder) never got that
+    reminder —— exactly the real failure the extension fixes. These cases
+    walk from the target's directory up through every ancestor to the repo
+    root: an ancestor README fires from ANY depth, several independent
+    ancestor READMEs each get their own slot, the walk stops at the first
+    ancestor that is itself a project root (`.git`), and both new bounds
+    (`_MAX_README_LINES_PER_CALL`) hold. Fixtures live under `root` (the same
+    private temp dir `readme_cases` uses), so no repo file is touched and the
+    real ledger is never involved.
+    """
+    results = []
+
+    def readme_at(d):
+        return os.path.join(os.path.realpath(d), "README.md")
+
+    def sig_lines(ctx):
+        return [l for l in ctx.splitlines() if _README_SIG in l]
+
+    # A1: the core case —— a README TWO LEVELS above the read target fires,
+    # naming that ancestor's README (the target's own directory has none).
+    outer = os.path.join(root, "anc_outer")
+    mid = os.path.join(outer, "mid")
+    deep = os.path.join(mid, "deep")
+    _mkfile(readme_at(outer), "# Tree-wide procedure\n")
+    _mkfile(os.path.join(deep, "note.md"))
+    r = _run_payload(_read_payload(os.path.join(deep, "note.md"), "A-session-1"))
+    hits = sig_lines(_context(r))
+    _report("A1 — a README two levels up fires, naming that ancestor's README",
+            r.returncode == 0 and len(hits) == 1 and readme_at(outer) in hits[0],
+            r, results)
+
+    # A2: a DIFFERENT folder under the SAME already-claimed ancestor, same
+    # session, stays silent —— the guard is keyed on the README, not on
+    # matching the exact same immediate directory as A1.
+    sibling_deep = os.path.join(mid, "deep2")
+    _mkfile(os.path.join(sibling_deep, "other.md"))
+    r = _run_payload(_read_payload(os.path.join(sibling_deep, "other.md"),
+                                    "A-session-1"))
+    _report("A2 — a different folder under the SAME claimed ancestor is silent",
+            r.returncode == 0 and not sig_lines(_context(r)), r, results)
+
+    # A3: a NEW session re-arms the same ancestor README —— the guard is per
+    # session, not permanent (mirrors R7 for the immediate-folder case).
+    r = _run_payload(_read_payload(os.path.join(deep, "note.md"), "A-session-2"))
+    hits = sig_lines(_context(r))
+    _report("A3 — a new session re-arms the same ancestor README",
+            r.returncode == 0 and len(hits) == 1 and readme_at(outer) in hits[0],
+            r, results)
+
+    # A4: reading the ancestor README directly is silent AND claims it, so a
+    # later read of a child file in the SAME session stays silent too.
+    r = _run_payload(_read_payload(readme_at(outer), "A-session-3"))
+    ok4a = r.returncode == 0 and not sig_lines(_context(r))
+    r2 = _run_payload(_read_payload(os.path.join(deep, "note.md"), "A-session-3"))
+    ok4b = r2.returncode == 0 and not sig_lines(_context(r2))
+    _report("A4 — reading the ancestor README directly is silent and claims it",
+            ok4a and ok4b, r2, results)
+
+    # A5: no README anywhere in the chain —— the rule stays silent end to end
+    # (bounded by `_MAX_ANCESTORS`, never runs away up the real filesystem).
+    lonely = os.path.join(root, "anc_lonely", "a", "b", "c")
+    _mkfile(os.path.join(lonely, "note.md"))
+    r = _run_payload(_read_payload(os.path.join(lonely, "note.md"), "A-session-4"))
+    _report("A5 — no ancestor README anywhere stays silent",
+            r.returncode == 0 and not sig_lines(_context(r)), r, results)
+
+    # A6: the IMMEDIATE folder's own README and a DIFFERENT ancestor's README
+    # both exist —— ONE read fires BOTH, nearest folder first, each naming
+    # its own correct README (the pre-existing immediate-folder behaviour and
+    # the new ancestor behaviour are independent and compose in one call).
+    combo_outer = os.path.join(root, "anc_combo")
+    combo_inner = os.path.join(combo_outer, "inner")
+    _mkfile(readme_at(combo_outer), "# Outer procedure\n")
+    _mkfile(readme_at(combo_inner), "# Inner procedure\n")
+    _mkfile(os.path.join(combo_inner, "other.md"))
+    r = _run_payload(_read_payload(os.path.join(combo_inner, "other.md"),
+                                    "A-session-5"))
+    hits = sig_lines(_context(r))
+    ok6 = (r.returncode == 0 and len(hits) == 2
+           and readme_at(combo_inner) in hits[0]
+           and readme_at(combo_outer) in hits[1])
+    _report("A6 — immediate folder's README + a different ancestor's README "
+            "both fire in one call, nearest first", ok6, r, results)
+
+    # A7: the walk STOPS at the first ancestor that is itself a project root
+    # (contains `.git`) —— a README ABOVE that boundary must never be reached,
+    # exactly the "don't leave the project" rule ANCESTOR WALK states.
+    beyond = os.path.join(root, "anc_beyond")          # has a README
+    fake_repo = os.path.join(beyond, "fakerepo")        # contains .git
+    inner_repo = os.path.join(fake_repo, "inner")       # no README of its own
+    _mkfile(readme_at(beyond), "# Outside-the-project procedure\n")
+    os.makedirs(os.path.join(fake_repo, ".git"), exist_ok=True)
+    _mkfile(os.path.join(inner_repo, "note.md"))
+    r = _run_payload(_read_payload(os.path.join(inner_repo, "note.md"),
+                                    "A-session-6"))
+    _report("A7 — walk stops at the first `.git` ancestor; a README above it "
+            "is never reached", r.returncode == 0 and not sig_lines(_context(r)),
+            r, results)
+
+    # A8: `_MAX_README_LINES_PER_CALL` bounds one call's reminder lines, even
+    # when more ancestor READMEs exist than the cap —— read live from the
+    # source (never copied) so a moved cap cannot silently stop being tested.
+    line_cap = _read_int_const("_MAX_README_LINES_PER_CALL")
+    levels = [os.path.join(root, "anc_flood")]
+    for i in range(line_cap + 3):
+        levels.append(os.path.join(levels[-1], "L%d" % i))
+    for d in levels[:-1]:
+        _mkfile(readme_at(d), "# level procedure\n")
+    _mkfile(os.path.join(levels[-1], "note.md"))
+    r = _run_payload(_read_payload(os.path.join(levels[-1], "note.md"),
+                                    "A-session-7"))
+    hits = sig_lines(_context(r))
+    _report("A8 — `_MAX_README_LINES_PER_CALL` (%d) bounds one call's "
+            "reminder lines even with more ancestor READMEs available"
+            % line_cap,
+            r.returncode == 0 and len(hits) == line_cap, r, results)
+
+    return results
+
+
 def main():
     results = []
 
@@ -413,6 +583,8 @@ def main():
     try:
         print()
         results.extend(readme_cases(root))
+        print()
+        results.extend(ancestor_readme_cases(root))
     finally:
         os.environ.pop("PLINT_STATE_DIR", None)
         shutil.rmtree(root, ignore_errors=True)

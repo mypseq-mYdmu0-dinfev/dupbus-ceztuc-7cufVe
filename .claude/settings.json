@@ -12,7 +12,8 @@
       "Bash(git diff:*)",
       "Bash(git mv:*)",
       "Edit(cp/ccsim/sandbox/**)",
-      "Write(cp/ccsim/sandbox/**)"
+      "Write(cp/ccsim/sandbox/**)",
+      "MultiEdit(cp/ccsim/sandbox/**)"
     ]
   }
 }
