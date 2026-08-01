@@ -1,5 +1,7 @@
 # Backup FURY
 
+*Overrides `backup/README.md`'s no-edit rule.*
+
 ## What
 - This folder mirrors the handful of irreplaceable files in `/Volumes/FURY 2TB/.claude/` —— the folder `~/.claude` is a symlink to, and which no repo tracks
 - It re-checks and repairs itself at every CCSIM session start, and again the moment CCSIM edits a live file (both triggers: see § Session-Start Check), rather than relying on anyone remembering to update it
