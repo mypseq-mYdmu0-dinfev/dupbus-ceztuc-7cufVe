@@ -255,10 +255,26 @@ _SKIP_SEGMENTS = {
 _STATE_ROOT = (os.environ.get("PLINT_STATE_DIR")
                or os.path.join(tempfile.gettempdir(), "plint_readme_seen"))
 
-# Self-limiting bounds (docstring: STATE SHAPE AND BOUNDS).
+# Self-limiting bounds (docstring: STATE SHAPE AND BOUNDS). Now one marker per
+# (session, README) rather than (session, directory) —— see ANCESTOR WALK: a
+# single read can claim several ancestor READMEs at once, so this is the cap
+# on distinct READMEs a session may ever claim, not on reads or directories.
 _MAX_DIRS_PER_SESSION = 200      # past this, the rule goes quiet for that session
 _STATE_TTL_S = 3 * 24 * 3600     # stale session folders swept after 3 days
 _MAX_SWEEP = 200                 # entries a single sweep may look at
+
+# Bounds the UPWARD ancestor walk itself (docstring: ANCESTOR WALK) —— a
+# backstop against a pathological chain (symlink loop, or a filesystem with no
+# `.git` anywhere so the walk would otherwise run to `/`), never hit for a
+# real repo. Kept separate from `_MAX_README_LINES_PER_CALL` below: this one
+# bounds how far up the FILESYSTEM is examined, that one bounds how many
+# reminder LINES a single call may emit.
+_MAX_ANCESTORS = 25
+
+# Bounds reminder LINES the README rule emits from ONE read call, independent
+# of `_MAX_ANCESTORS` above —— a deeply-nested tree with a README at every
+# level is legal but should not dump two dozen lines into one turn.
+_MAX_README_LINES_PER_CALL = 5
 
 # Safety caps (backstops; neither is hit in normal use). Bounding the scanned
 # content keeps a pathologically large write from delaying the tool call, and
@@ -342,6 +358,31 @@ def _target_dir(fp, cwd):
     return os.path.realpath(os.path.dirname(os.path.abspath(fp)))
 
 
+def _ancestor_dirs(d):
+    """`d` itself, then each parent upward, stopping AFTER the first ancestor
+    that is itself a project root (contains `.git`) —— walking any further
+    would leave the project entirely, picking up READMEs that govern
+    something else (docstring: ANCESTOR WALK). `d` is already realpath'd by
+    the caller, so `os.path.dirname` climbing it stays real too.
+
+    Bounded by `_MAX_ANCESTORS` as a backstop for a chain with no `.git`
+    anywhere (e.g. a scratch folder outside any repo) so the walk cannot run
+    unbounded to `/` —— it still terminates there via `parent == cur`, this
+    is only insurance against a pathological symlink loop.
+    """
+    dirs = []
+    cur = d
+    for _ in range(_MAX_ANCESTORS):
+        dirs.append(cur)
+        if os.path.exists(os.path.join(cur, ".git")):
+            break  # project root reached; its own README is noise (below)
+        parent = os.path.dirname(cur)
+        if parent == cur:
+            break  # filesystem root
+        cur = parent
+    return dirs
+
+
 def _is_readme(base):
     """True if this basename IS a README. Deliberately generous (`README`,
     `readme.md`, `README.txt`, ...): being wrong here only ever SUPPRESSES a
@@ -393,8 +434,11 @@ def _sweep_state(keep):
             pass
 
 
-def _claim_dir(session_id, d):
-    """Atomically record (session, directory) as reminded.
+def _claim_readme(session_id, readme_path):
+    """Atomically record (session, README) as reminded —— once-per-README,
+    extended from the original once-per-DIRECTORY (same mechanism, keyed on
+    the README's own path instead of its directory, so an ancestor's README
+    and the immediate folder's README each get their own independent slot).
 
     True  -> this is the FIRST claim, so the caller may remind.
     False -> already claimed, session cap reached, or the state is unusable.
@@ -413,7 +457,8 @@ def _claim_dir(session_id, d):
         elif len(os.listdir(sdir)) >= _MAX_DIRS_PER_SESSION:
             return False
         marker = os.path.join(
-            sdir, hashlib.sha1(d.encode("utf-8", "replace")).hexdigest()[:20])
+            sdir,
+            hashlib.sha1(readme_path.encode("utf-8", "replace")).hexdigest()[:20])
         fd = os.open(marker, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o600)
         os.close(fd)
         return True
@@ -421,36 +466,48 @@ def _claim_dir(session_id, d):
         return False
 
 
-def _readme_line(data, tool_input):
-    """The README rule. Returns the reminder line, or None to stay silent.
+def _readme_lines(data, tool_input):
+    """The README rule. Returns a list of reminder lines (possibly empty) ——
+    one per NEWLY-claimed README found by walking from the read target's own
+    directory up through its ancestors to the repo root (docstring: ANCESTOR
+    WALK), nearest folder first.
 
-    Gate order is deliberate: every cheap, purely-local test runs BEFORE the
+    Gate order is deliberate: every cheap, purely-local test runs BEFORE a
     claim, so a read that was never going to be reminded about cannot consume
-    the folder's one slot (coding.md: claim shared state only after every gate
-    that could still abort)."""
+    that README's one slot (coding.md: claim shared state only after every
+    gate that could still abort)."""
     fp = tool_input.get("file_path")
     sid = data.get("session_id")
     # No session id -> the "once per session" contract cannot be honoured, and
     # the payload is malformed anyway. Silence is the only honest answer.
     if not (isinstance(fp, str) and fp
             and isinstance(sid, str) and sid.strip()):
-        return None
+        return []
     d = _target_dir(fp, data.get("cwd"))
-    readme = os.path.join(d, _README_NAME)
-    if not os.path.isfile(readme) or _readme_is_noise(d):
-        return None
-    base = os.path.basename(fp.replace("\\", "/").rstrip("/"))
-    if _is_readme(base):
-        # Reading the README IS the behaviour the rule wants —— claim the
-        # folder so no later read in it produces a redundant reminder.
-        _claim_dir(sid, d)
-        return None
-    if not _claim_dir(sid, d):
-        return None  # already reminded this session, or state unusable
-    return ("Read target sits in a folder that has a `README.md` —— read `%s` "
-            "FIRST (folder-level conventions/procedures live there, not in the "
-            "file you opened). Shown once per folder per session."
+    read_base = os.path.basename(fp.replace("\\", "/").rstrip("/"))
+    lines = []
+    for anc in _ancestor_dirs(d):
+        readme = os.path.join(anc, _README_NAME)
+        if not os.path.isfile(readme) or _readme_is_noise(anc):
+            continue
+        if anc == d and _is_readme(read_base):
+            # Reading THIS README (the immediate folder's own) IS the
+            # behaviour the rule wants —— claim it so no later read in the
+            # same folder produces a redundant reminder. Ancestors further up
+            # are still checked below; reading a child folder's file says
+            # nothing about whether a GRANDPARENT's README was ever read.
+            _claim_readme(sid, readme)
+            continue
+        if not _claim_readme(sid, readme):
+            continue  # already reminded this session, or state unusable
+        lines.append(
+            "Read target sits under a folder that has a `README.md` —— read "
+            "`%s` FIRST (folder-level conventions/procedures live there, not "
+            "in the file you opened). Shown once per README per session."
             % readme)
+        if len(lines) >= _MAX_README_LINES_PER_CALL:
+            break
+    return lines
 
 
 def main():
@@ -510,9 +567,7 @@ def main():
     # --- README rule (mechanical, read-time) --------------------------------
     try:
         if is_read:
-            line = _readme_line(data, tool_input)
-            if line:
-                lines.append(line)
+            lines.extend(_readme_lines(data, tool_input))
     except Exception:
         pass  # each rule is isolated; one failing never suppresses another
 

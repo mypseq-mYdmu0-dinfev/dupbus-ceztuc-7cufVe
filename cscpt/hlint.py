@@ -7,14 +7,14 @@ resolved by reading its file, never guessed).
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a UserPromptSubmit hook. It spots `#[trigger]` tokens in the prompt (and
-  in any one `.md` it names) and prepends one line per trigger naming its
-  protocol file —— root CLAUDE.md §7.3.1: a trigger MUST be resolved by reading
-  its file, never guessed.
-* IF IT FIRES: read the named file, or state why not. ADVISORY —— it never
-  blocks —— so a trigger already handled or deferred is fine.
-* ITS BLIND SPOT: a trigger resolves only under `universal/`, `cp/`,
-  `AJAP_repo/protocols/` and `AJAP_repo/inv/inveng.md`. Silence is NOT proof no
-  protocol governs it —— look yourself.
+  in any one `.md` it names) and prepends a line per trigger naming its protocol
+  file —— root CLAUDE.md §7.3.1: resolve a trigger by READING its file, never by
+  guessing.
+* IF IT FIRES: read that file, or state why not. ADVISORY —— never blocks.
+* BACKTICKED TRIGGERS DON'T FIRE: `` `#close` `` or one inside a fenced block is
+  DISCUSSED, not invoked. Only a bare `#name` fires.
+* BLIND SPOT: resolves only under `universal/`, `cp/`, `AJAP_repo/protocols/`
+  and `AJAP_repo/inv/inveng.md`. Silence is not proof —— look yourself.
 === NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
@@ -85,6 +85,35 @@ markdown heading (`# Heading`) has a space after `#` so never matches either.
 `_MD_TOKEN_RE` stops at whitespace and common quoting/bracket chars, so trailing
 punctuation is not swallowed. Names are deduped case-insensitively (`#close` x10
 -> one reminder), first-seen casing kept.
+
+BACKTICK / FENCE EXEMPTION: a `#name` enclosed in single backticks
+(`` `#close` ``) or sitting inside a ``` fenced ``` block is SKIPPED, never
+treated as a live trigger. Two reasons, both named by the owner: (1) it lets a
+`#trigger` be DISCUSSED ("what does `#close` do?") without being INVOKED —
+right now those are indistinguishable and the hook cannot tell intent from a
+bare token; (2) it stops premature reads fired by a trigger merely quoted
+inside an EXAMPLE — root CLAUDE.md itself carries several (`` `#replace` ``,
+`` `#debate` ``) precisely as illustrations, and every one of them used to
+misfire when that file was read in as referenced content. Fenced blocks get
+the SAME exemption as inline backticks, deliberately, not by omission: a
+```` ``` ````-fenced example is quoting for exactly the same reason a
+single-backtick one is (a shown command, a pasted transcript, a doc excerpt),
+and treating the two fence styles differently would be an arbitrary line with
+no principled basis — a user who wraps the same example in triple backticks
+instead of one would otherwise get a different, surprising result. Mechanics:
+`_quoted_spans()` first finds every fenced span on the RAW text (so its
+coordinates are exact), then masks those characters out (spaces, newlines
+kept) before scanning for inline single-backtick spans — the mask stops a
+fence's own ``` delimiters, or a stray backtick used INSIDE example code, from
+pairing with a backtick outside the fence and wrongly swallowing real prompt
+text as "quoted". A trigger match is exempted when its `#` falls inside any
+span. This scan runs PER SOURCE (the prompt, then each referenced file, never
+a joined blob), so a fence or backtick span can never straddle the boundary
+between the prompt and a file it names. An unterminated fence (no closing
+```` ``` ````) matches nothing and is therefore NOT exempted — fail-open, the
+same direction as every other lint in this repo: a rare unclosed-fence corner
+case firing an extra (harmless, advisory) reminder is preferable to a fence
+that never closes silently blanking out the rest of the prompt.
 
 PERFORMANCE: a canonical `universal/[name].md` is a single stat —— no index at
 all. Otherwise the scope index is built LAZILY and at most ONCE per run, over a
@@ -157,6 +186,16 @@ _EXCLUDED_DIR_NAMES = {"sessions"}
 # a standalone `#close` or `## 1.`-free hashtag still does; a markdown heading
 # `# Heading` has a space after `#` and so never matches either).
 _TRIGGER_RE = re.compile(r"(?<![A-Za-z0-9_])#([A-Za-z0-9_-]+)")
+
+# A fenced code block: ``` ... ``` (DOTALL so the fence can span lines). Found
+# on the RAW text first (see `_quoted_spans`), so its span coordinates are
+# exact positions in the original string, before anything is masked.
+_FENCE_RE = re.compile(r"```.*?```", re.DOTALL)
+
+# An inline single-backtick span: `...`, never crossing a newline —— mirrors
+# how markdown itself never lets an inline code span cross a paragraph break,
+# so a stray backtick earlier in the same prompt cannot pair across it.
+_INLINE_BACKTICK_RE = re.compile(r"`[^`\n]*`")
 
 # An `*.md` filename/path token in the prompt (stops at whitespace or common
 # quoting/bracket chars so trailing punctuation is not swallowed).
@@ -314,6 +353,48 @@ def _read_referenced(prompt):
     return parts
 
 
+def _quoted_spans(text):
+    """(start, end) spans in `text` where a `#trigger` is being DISCUSSED, not
+    invoked: inside a fenced code block or an inline single-backtick span.
+    Rationale in the module docstring (BACKTICK / FENCE EXEMPTION).
+
+    Fenced spans are found FIRST, on the untouched `text`, so their
+    coordinates are exact. The inline-backtick scan then runs over a MASKED
+    copy —— fenced-block characters overwritten with spaces, newlines kept so
+    `[^`\\n]` still behaves —— so a fence's own ``` delimiters, or a stray
+    backtick used INSIDE example code, can never pair with a backtick outside
+    the fence and wrongly swallow real prompt text as "quoted".
+    """
+    spans = [m.span() for m in _FENCE_RE.finditer(text)]
+    if spans:
+        chars = list(text)
+        for start, end in spans:
+            for i in range(start, end):
+                if chars[i] != "\n":
+                    chars[i] = " "
+        masked = "".join(chars)
+    else:
+        masked = text
+    spans.extend(m.span() for m in _INLINE_BACKTICK_RE.finditer(masked))
+    return spans
+
+
+def _is_quoted(pos, spans):
+    """True if `pos` (the trigger's `#`) falls inside any quoted span."""
+    return any(start <= pos < end for start, end in spans)
+
+
+def _extract_triggers(text):
+    """Names of `#trigger` tokens in `text`, in first-appearance order,
+    SKIPPING any match sitting inside a quoted span (see `_quoted_spans`) ——
+    a backticked or fenced `#name` is discussed, not invoked, and never
+    reaches the caller. Run PER SOURCE (never on a joined blob) so a fence or
+    backtick span can never straddle the boundary between two sources."""
+    spans = _quoted_spans(text)
+    return [m.group(1) for m in _TRIGGER_RE.finditer(text)
+            if not _is_quoted(m.start(), spans)]
+
+
 def _resolve_trigger(name):
     """Display path of `[name].md` within the search scope, or None.
 
@@ -344,15 +425,24 @@ def main():
         return 0
 
     try:
-        corpus = "\n".join([prompt] + _read_referenced(prompt))
+        referenced = _read_referenced(prompt)
     except Exception:
-        corpus = prompt
+        referenced = []
 
     # Unique trigger names, case-insensitively deduped, first-seen casing kept.
+    # Scanned PER SOURCE —— the prompt, then each referenced file in turn,
+    # never a joined blob —— so a fence/backtick span can never straddle the
+    # boundary between the prompt and a file it names (module docstring:
+    # BACKTICK / FENCE EXEMPTION). The prompt goes first, so a name's first
+    # appearance there always wins its displayed casing over a later file.
     seen = {}
-    for m in _TRIGGER_RE.finditer(corpus):
-        raw = m.group(1)
-        seen.setdefault(raw.lower(), raw)
+    for text in [prompt] + referenced:
+        try:
+            names = _extract_triggers(text)
+        except Exception:
+            names = []
+        for raw in names:
+            seen.setdefault(raw.lower(), raw)
 
     lines = []
     for raw in seen.values():
