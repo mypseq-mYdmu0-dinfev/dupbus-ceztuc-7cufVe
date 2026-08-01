@@ -5,15 +5,15 @@ mirror) may carry the SAME 12-digit TS (YYYYMMDDHHmm), EXCEPT a sanctioned pair.
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a PostToolUse hook guarding the filename-TS invariant —— no two files in
-  one comms folder (nor across the dupbus/AJAP comms mirror) may share a 12-digit
-  TS, bar two sanctioned pairs.
-* SANCTIONED: `query_`+`response_` and `close_`+`artefact_`. Anything else
-  sharing a TS is flagged.
-* IF IT WARNS: one stderr line naming the clashing files, then EXIT 0 —— always.
-  It never blocks and never alters a write, so the fix is yours: re-stamp
-  whichever file took the wrong TS.
-* MIND THE CHANNEL: that line reaches the user, NOT the model —— do not rely on
-  seeing it.
+  one comms folder (nor across the dupbus/AJAP mirror) may share a 12-digit TS.
+* SANCTIONED: `query_`+`response_`, `close_`+`artefact_`. Any other sharing is
+  flagged.
+* IT ALSO FLAGS a folder-mate whose name has a stray space before its TS
+  (`close_ 202606142239.md`) —— alert the user; never go hunting for more.
+* IT NEVER BLOCKS: always exit 0, the write untouched. Fix it yourself ——
+  re-stamp, or `git mv` the stray space out.
+* CHANNELS: the TS-clash line reaches the user only; the stray-space note
+  reaches the model.
 === NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
@@ -54,6 +54,27 @@ filenames and writing two that share one) costs one line of text; the guard it
 replaces cost total blindness everywhere but here. Intentional asymmetry —— do
 not "restore consistency" by adding a guard.
 
+STRAY-SPACE SWEEP (the second, independent check): a comms filename must be
+`[prefix]_[TS].md` with NO whitespace (root CLAUDE.md §3.3), yet four have been
+written with a space wedged in —— `close_ 202606142239.md` and kin —— each caught
+by eye, months later. PREVENTION lives in `flint.py`, a PreToolUse gate that
+blocks the write; a PostToolUse hook cannot undo one. What lives HERE is the
+other half of that requirement: surfacing an offender that ALREADY exists,
+WITHOUT anyone going looking for it. This hook already lists the written file's
+own folder (and its cross-repo mirror) for the TS check, so re-reading that same
+listing for the defect costs no extra I/O and no extra token —— it fires only as
+a by-product of a write CC was making anyway, which is exactly what "alert on
+encounter, never hunt" has to mean for it to be free. The detection rule and its
+false-positive calibration are stated once, in `flint.py`; do not fork them.
+It is emitted as `additionalContext` (model-visible, non-blocking —— hook_guide
+§6.5) rather than on stderr beside the TS-clash line, because the model is who
+must raise the `⚠️`; nothing is done to the file.
+  NO DE-DUPLICATION LEDGER, deliberately: repeat writes into a folder that holds
+an offender will re-fire. That nagging IS the forcing function, it self-
+extinguishes the moment the file is renamed, and with `flint.py` gating creation
+the only offenders left are historical. A per-session ledger would buy quiet at
+the cost of another state file and another failure mode.
+
 CROSS-REPO MIRROR: dupbus `sessions/` and AJAP `inv/` hold one comms stream, so
 TS uniqueness must hold across both. `_mirror_dir` maps one to the other for the
 SAME year-month only —— narrow by design, keeping the check to two listings
@@ -88,6 +109,12 @@ _TS_RE = re.compile(r"(?<!\d)(20\d{10})(?!\d)")
 #   {query, response} —— root CLAUDE.md §3.5.3 / §3.6.2 (response inherits query TS)
 #   {close, artefact}  —— root CLAUDE.md §3.3.5 (artefact_[close_TS] shares its close's TS)
 _CLEAN_ROLE_SETS = (frozenset({"query", "response"}), frozenset({"close", "artefact"}))
+
+# The stray-space defect: from the START of a basename, a whitespace-FREE run
+# ending in `_`, then whitespace, then a bounded 12-digit TS. Kept byte-identical
+# to `flint.py`'s `_DEFECT_RE` —— that file states the rule and its
+# false-positive calibration in full; this is the same rule, not a variant.
+_STRAY_RE = re.compile(r"^\S*_\s+(?=20\d{10}(?!\d))")
 
 
 def _find_ts(base):
@@ -144,6 +171,28 @@ def _mirror_dir(dirpath):
     return cand if os.path.isdir(cand) else None
 
 
+def _advise_stray(paths):
+    """Report stray-space filenames on the ONE PostToolUse channel that is both
+    non-blocking and model-visible (hook_guide.md §6.5). The model is the
+    audience on purpose: it is the party that must raise the `⚠️` to the user,
+    which an exit-0 stderr line —— user-only —— could never make it do."""
+    listing = "; ".join("`" + p + "`" for p in paths)
+    sys.stdout.write(json.dumps({
+        "hookSpecificOutput": {
+            "hookEventName": "PostToolUse",
+            "additionalContext": (
+                "[tlint] Stray-space filename(s) in a folder you just wrote to: "
+                + listing + ". Root CLAUDE.md §3.3 names comms files "
+                "`[prefix]_[TS].md`, with no space before the 12 digits. ALERT "
+                "THE USER (a `⚠️` declaration) —— this surfaced on its own, "
+                "so do NOT go hunting for others. Rename only on his say-so, with "
+                "`git mv` in a move-only commit (universal/coding.md § Git "
+                "Discipline)."
+            ),
+        }
+    }) + "\n")
+
+
 def main():
     try:
         data = json.load(sys.stdin)
@@ -169,19 +218,41 @@ def main():
 
     dirpath = os.path.dirname(fp) or "."
 
-    def _hits(d):
+    def _entries(d):
+        """One listing per folder, reused by BOTH checks below. Splitting this
+        out is the whole reason the stray-space sweep is free: it reads nothing
+        the TS check was not already reading."""
         try:
-            return [e for e in os.listdir(d)
-                    if _has_ts(e, ts) and os.path.isfile(os.path.join(d, e))]
+            return os.listdir(d)
         except Exception:
             return []
 
-    # Same-TS files in the written file's OWN folder (incl. itself), plus any in
-    # the cross-repo mirror folder (dupbus sessions <-> AJAP inv, same year-month).
-    own = _hits(dirpath)
-    own_others = [e for e in own if e != w_base]
+    def _ts_hits(d, entries):
+        return [e for e in entries
+                if _has_ts(e, ts) and os.path.isfile(os.path.join(d, e))]
+
+    own_entries = _entries(dirpath)
     mdir = _mirror_dir(dirpath)
-    mirror_others = _hits(mdir) if mdir else []
+    mirror_entries = _entries(mdir) if mdir else []
+
+    # --- CHECK 2 —— STRAY-SPACE SWEEP. Independent of the TS check and reported
+    # even when the timestamps are clean, so it must run BEFORE that check's
+    # early return. Scans names only: a stat would buy nothing, since a
+    # directory carrying the defect is just as wrong as a file.
+    stray = [os.path.join(dirpath, e) for e in sorted(own_entries)
+             if _STRAY_RE.search(e)]
+    if mdir:
+        stray += [os.path.join(mdir, e) for e in sorted(mirror_entries)
+                  if _STRAY_RE.search(e)]
+    if stray:
+        _advise_stray(stray)
+
+    # --- CHECK 1 —— TS CLASH. Same-TS files in the written file's OWN folder
+    # (incl. itself), plus any in the cross-repo mirror folder (dupbus sessions
+    # <-> AJAP inv, same year-month).
+    own = _ts_hits(dirpath, own_entries)
+    own_others = [e for e in own if e != w_base]
+    mirror_others = _ts_hits(mdir, mirror_entries) if mdir else []
 
     if not own_others and not mirror_others:
         return 0  # lone TS -> silent

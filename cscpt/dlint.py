@@ -22,10 +22,15 @@ WHAT: the deterministic prose linter for `universal/writing.md`.
 * WHAT EACH TIER HOLDS (moved out of NON-CCSIM —— a caller reads the terminal
   output, which names the rule that fired, so the enumeration only serves an
   editor). RED: exact Americanisms, `vs.` with period, em dash, mid-sentence
-  colon, a comma as the last char inside a closing quote, `hi` as a greeting.
-  YELLOW: en dash, bare `+`, hyphen used as a dash/non-#numbered bullet,
-  `-ize`/`-isation`, sentence-initial `Where`, a lone period inside a closing
-  quote, GenAI/cliche words and phrases, weak words (want/something/big).
+  colon, a comma OR a period as the last char inside a closing quote, `hi` as a
+  greeting. YELLOW: en dash, bare `+`, hyphen used as a dash/non-#numbered
+  bullet, `-ize`/`-isation`, sentence-initial `Where`, GenAI/cliche words and
+  phrases, weak words (want/something/big), plus the period-in-quote class once
+  one file carries more than `HART_PERIOD_RED_MAX` of them.
+* `."` HAS NO EXEMPTION —— see `_hart`. It is RED even when the full stop is
+  original to the quoted sentence, because the rule exists for the reader's
+  comfort rather than for grammatical truth. The ONLY relief is the per-file
+  count threshold, and that demotes rather than silences.
 * `--quick` keeps ONLY the register-independent rules —— Americanisms, Hart's
   quotation, `-ize`, hyphen/#numbered, `hi` greeting —— and never rewrites,
   because comms and code may hold intentional straight quotes.
@@ -49,13 +54,13 @@ WHAT: the deterministic prose linter for `universal/writing.md`.
   latest GenAI/cliche terms (per `writing.md`) and extend GENAI_WORDS / PHRASES.
 * RECEIPTS: every FULL-mode FILE lint appends one line to
   `cscpt/.dlint_receipts.jsonl` —— realpath, SHA-256 of the text as it stands
-  on disk AFTER the quote auto-fix, and the RED count. `cscpt/elint.py` reads
+  on disk AFTER the quote auto-fix, and the RED count. `cscpt/dlint_quick.py` reads
   it to decide whether a deliverable has actually been linted, so a deliverable
   drafted on Monday and delivered on Friday stays covered, and an edit AFTER a
   clean lint correctly lapses the receipt because the hash moves. `--quick` and
   `--text` write NOTHING, which is what makes a receipt's mere existence proof
-  that FULL mode ran. This file is the SOLE writer of that ledger (elint only
-  reads it), so no lock is needed; appends are line-atomic and pruning happens
+  that FULL mode ran. This file is the SOLE writer of that ledger (the hook
+  only reads it), so no lock is needed; appends are line-atomic and pruning happens
   here alone. It is best-effort throughout —— it can never raise, never change
   an exit code, and never alter printed output.
 """
@@ -69,7 +74,7 @@ import hashlib
 from pathlib import Path
 
 # Receipt ledger —— anchored on THIS file's own location, never on cwd, so it
-# resolves identically from `elint.py` (which computes the same expression
+# resolves identically from `dlint_quick.py` (which computes the same expression
 # from its own `__file__` in the same folder) and survives a repo move.
 RECEIPTS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                         ".dlint_receipts.jsonl")
@@ -268,13 +273,39 @@ def _vs(lines, orig, red):
             red.append((ln, f"`vs.` with period —— use bare `vs`: {_snip(orig[ln - 1])}"))
 
 
+# Above this many lone-period-inside-quote hits in ONE file, the whole class
+# demotes from RED to YELLOW for that file. RATIONALE, baked in so nobody
+# "restores consistency" later: the owner wants `."` gone unconditionally for
+# READING COMFORT, not because it is always wrong, and at a handful of hits the
+# fix is a couple of clicks. Past this count it stops being a couple of clicks,
+# and a hard block on a long quotation-heavy document would buy tidiness at the
+# price of wedging real work —— so the flag stays visible and the judgement
+# returns to the author.
+HART_PERIOD_RED_MAX = 5
+
+
 def _hart(lines, orig, red, yellow):
     """Hart's logical quotation (root §2.1.4): punctuation belongs inside a quote
     only if original to it. Flag ONLY the char IMMEDIATELY before a closing quote:
-      - a comma             -> RED    (essentially never original; e.g. `test,"`)
-      - a LONE period `.`   -> YELLOW (might end a fully-quoted sentence; `test."`)
-    An ellipsis (`..`/`...`) immediately before the quote is EXEMPT (not a lone
-    dot), e.g. `test..."` and `test, still..."` are both fine."""
+      - a comma             -> RED, always (`test,"`)
+      - a LONE period `.`   -> RED, always, up to HART_PERIOD_RED_MAX hits in one
+                               file; past that the whole class demotes to YELLOW
+                               for that file (see the constant for why)
+    NO "it might be original to the quote" exemption exists for the period. The
+    owner's rule is `".` no matter what, INCLUDING when the full stop genuinely
+    belongs to the quoted sentence —— it is a reading-comfort rule, and moving
+    the stop outside costs two clicks. Anything reading this as a mis-fire is
+    mistaken; do not reinstate a conditional.
+
+    An ellipsis (`..`/`...`) immediately before the quote is NOT a full stop and
+    stays exempt, e.g. `test..."` and `test, still..."` are both fine.
+
+    The two classes are counted SEPARATELY and the threshold applies to the
+    PERIOD class alone: the comma rule was never relaxed, so a comma-heavy file
+    must not be able to soften the period rule (or the reverse), and the
+    owner's arithmetic —— "more than 5 means more than 10 clicks" —— is about
+    `."` and nothing else."""
+    periods = []
     for ln, line in enumerate(lines, 1):
         for i, ch in enumerate(line):
             if ch not in CLOSING_QUOTES or i == 0:
@@ -283,7 +314,16 @@ def _hart(lines, orig, red, yellow):
             if prev == ",":
                 red.append((ln, f"comma immediately inside closing quote `,{ch}` —— Hart: move it OUTSIDE: {_snip(orig[ln - 1])}"))
             elif prev == "." and not (i >= 2 and line[i - 2] == "."):   # exempt `..`/`...`
-                yellow.append((ln, f"lone period inside closing quote `.{ch}` —— OK only if it ends the quoted sentence, else move it out: {_snip(orig[ln - 1])}"))
+                periods.append((ln, ch))
+
+    if not periods:
+        return
+    if len(periods) <= HART_PERIOD_RED_MAX:
+        for ln, ch in periods:
+            red.append((ln, f"period inside closing quote `.{ch}` —— ALWAYS move it OUTSIDE, even if the stop is original to the quote: {_snip(orig[ln - 1])}"))
+    else:
+        for ln, ch in periods:
+            yellow.append((ln, f"period inside closing quote `.{ch}` —— {len(periods)} in this file (over {HART_PERIOD_RED_MAX}), so demoted from RED; does the stop truly belong INSIDE the quote? Move it out unless quoting verbatim: {_snip(orig[ln - 1])}"))
 
 
 def _em_dash(lines, orig, red):
@@ -452,8 +492,9 @@ def report(label, red, yellow, qnote):
 
 def _write_receipt(path, text, red_count):
     """Record that FULL mode linted EXACTLY this content, and with what
-    result. Read by `cscpt/elint.py`, which enforces root CLAUDE.md §3.7.3 on
-    deliverables no other lint covers (rationale: RECEIPTS in the CCSIM header).
+    result. Read by `cscpt/dlint_quick.py`, whose gate enforces root CLAUDE.md
+    §3.7.3 on deliverables no other check covers (rationale: RECEIPTS in the
+    CCSIM header).
 
     Best-effort by contract: every failure is swallowed, because a linter that
     dies over its own bookkeeping is worse than one with a gap in it. The RED
@@ -476,7 +517,7 @@ def _write_receipt(path, text, red_count):
 def _prune_receipts():
     """Keep the ledger bounded. Safe without a lock because this module is its
     ONLY writer; the rewrite is atomic via `os.replace`, so a concurrent
-    READER (elint) sees either the old file or the new one, never a partial."""
+    READER (the hook) sees either the old file or the new one, never a partial."""
     try:
         with open(RECEIPTS, "r", encoding="utf-8", errors="replace") as fh:
             lines = fh.readlines()
@@ -509,10 +550,10 @@ def lint_file(path: Path, quick=False):
     red, yellow = run_checks(text, quick)
     n_red = report(path.name, red, yellow, qnote)
     if not quick:
-        # FULL mode only —— a receipt's existence is elint's proof that FULL
+        # FULL mode only —— a receipt's existence is the gate's proof that FULL
         # mode ran, so --quick must never leave one. `text` is what is on disk
         # (the auto-fix already wrote it if it differed), so the hash matches
-        # what elint will compute.
+        # what the gate will compute.
         _write_receipt(path, text, n_red)
     return n_red
 

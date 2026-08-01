@@ -47,25 +47,23 @@
 | Event | Registered Command | Purpose |
 |---|---|---|
 | PreToolUse | `cscpt/DADC.py hook-capture` | Capture Date Added + Date Created before a write |
-| PreToolUse | `cscpt/alint_hook.sh` | TEA1 in-flight gate (BLOCKS a commit/push whilst an SA runs) |
+| PreToolUse | `cscpt/alint_hook.sh` | TEA1 in-flight gate (BLOCKS a commit/push whilst an SA or workflow runs) |
+| PreToolUse | `cscpt/flint_hook.sh` | Filename gate (BLOCKS a stray-space comms filename) |
 | PreToolUse | `cscpt/plint.py` | Protocol-read reminder before a write/read (advisory) |
 | PostToolUse | `cscpt/DADC.py hook-restore` | Restore Date Added + Date Created after a write |
-| PostToolUse | `cscpt/dlint_hook.sh` | Comms/deliverable prose lint (blocking on RED) |
+| PostToolUse | `cscpt/dlint_hook.sh` | Prose lint on every `.md` + deliverable gate (blocking) |
 | PostToolUse | `cscpt/nlint_hook.sh` | Numbering-continuity lint (advisory) |
 | PostToolUse | `cscpt/tlint_hook.sh` | Timestamp-clash lint (warn-only) |
-| PostToolUse | `cscpt/elint_hook.sh` | Deliverable-escape gate (BLOCKS a comms write whilst a deliverable is un-linted) |
 | UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
-| Stop | `cscpt/elint.py stop` | Deliverable-escape audit net (exit 0 always; user-visible + logged) |
 | PostCompact | `.claude/post_compact.sh` | Inject the post-compaction protocol |
 
 - 3.1. Naming convention: a `*_hook.sh` IS the file the harness launches; the `.py` beside it is the lint body. Every `.sh` in `cscpt/` carries `_hook`, no `.py` does.
 - 3.2. A lint gets a `.sh` gate exactly when its EVENT is high-frequency: the PostToolUse lints fire on every Edit/Write, and `alint` fires on every Bash call, so each shim spares a needless Python spawn on the overwhelmingly common irrelevant payload.
 - 3.3. `clint.py` (Stop) and `hlint.py` (UserPromptSubmit) fire once per turn/prompt, so they are registered directly and correctly have no `.sh`. `plint.py` fires on writes and reads without one —— it needs the payload parsed either way, so a shim would buy nothing.
-  - 3.3.1. `elint.py` is registered on TWO events and selects its tier from `argv` (`post` via `elint_hook.sh`, `stop` directly). `hook_event_name` is a fallback only, so NEVER drop the ` stop` argument when re-registering.
-  - 3.3.2. Its PostToolUse entry is deliberately LAST in that array: nothing in elint depends on the others, but `DADC.py hook-restore` has a filesystem side effect, and were the harness ever to short-circuit a chain on a non-zero exit, elint exiting 2 ahead of DADC would skip the Finder-date restore.
 - 3.4. Registration entry shape matters: an event's array holds `{"matcher": …, "hooks": [{"type":"command","command":…}]}` objects. A bare `{"type":"command", …}` placed directly in the event array is the wrong shape —— check it against the live file before trusting any hand-written entry.
 - 3.5. Matchers are TOOL-NAME only —— there is no path filter, which is precisely why each PostToolUse lint must do its own file-path check.
+- 3.6. Every addition to this table costs latency on its event —— estimate it against §12 before registering, and alert the user if that event's worst case would exceed 1 s.
 
 ---
 
@@ -87,11 +85,12 @@
 |---|---|---|
 | alint | Repo-scoped | BLOCKS a commit/push; enforces this repo's own TEA ordering |
 | clint | Repo-scoped | Blocks a Stop; enforces this repo's bespoke no-chat-prose rule |
-| dlint | Repo-scoped | Blocks on RED; enforces this repo's prose/style guide |
-| elint | Repo-scoped | Blocks a comms write; enforces this repo's deliverable rule and its territory map |
+| dlint | Repo-scoped | Blocks on RED and blocks a comms write; enforces this repo's prose guide, deliverable rule and territory map |
+| flint | Repo-scoped | BLOCKS a write; out of scope it downgrades to an advisory rather than going quiet |
 | nlint | Repo-scoped | Enforces this repo's numbering-continuity convention |
 | hlint | GLOBAL | Advisory-only; a missed `#trigger` has already cost real work elsewhere |
 | tlint | GLOBAL | Warn-only, always exit 0; a missed TS clash is silent and expensive |
+| plint | GLOBAL | Advisory-only; always exits 0 and can never gate a write |
 
 - 4.7. The asymmetry is intentional, not an oversight —— the test rule is: a lint that can BLOCK must be repo-scoped, a lint that can only advise may be global.
   - 4.7.1. Never "tidy" a scope guard onto hlint or tlint.
@@ -124,7 +123,8 @@
 - 5.6.1. SUB-AGENT vs MAIN AGENT (PreToolUse, live-captured across 8 real payloads from two concurrent SAs and the main agent): a SUB-agent's payload carries `agent_id` and `agent_type`; the main agent's carries neither. That pair is the ONLY reliable discriminator.
 - 5.6.2. It is NOT the transcript path, however plausible that looks. A sub-agent's transcript RECORDS do live in `<session>/subagents/agent-<id>.jsonl` and never appear in the main session file —— yet its PAYLOAD still hands over the MAIN session `transcript_path`. Anything scoping on the path alone will read every sub-agent as the main agent.
 - 5.6.3. AGENT DISPATCH IS NOT AGENT COMPLETION, and this trap sinks the obvious design for anything that waits on an SA. The Agent tool's `tool_result` lands within ~200ms of the call saying `toolUseResult.status: "async_launched"` —— it is an ACK. Completion arrives later and separately, as a `<task-notification>` carrying `<task-id>` and `<status>` (completed | killed | failed). Measured across 368 historical dispatches: every one acked instantly; 363 later notified.
-- 5.6.4. That notification appears in THREE record shapes (`attachment`, `queue-operation`, `user` —— 233/431/270 historically), so match the RAW `<task-notification>` substring, never one named field. A dispatched agent is identified by `toolUseResult.isAsync` + `agentId`; background bash (`backgroundTaskId`) and workflows (`taskId` + `taskType`) are different shapes and must not be confused with it. `cscpt/alint.py` is the worked implementation.
+- 5.6.4. That notification appears in THREE record shapes (`attachment`, `queue-operation`, `user` —— 233/431/270 historically), so match the RAW `<task-notification>` substring, never one named field. A WORKFLOW rests by the very same notification, carrying its `taskId` as the `<task-id>`, so one parser serves both. `cscpt/alint.py` is the worked implementation.
+- 5.6.5. THREE async shapes, and the boundaries are measured, not assumed: an AGENT is `toolUseResult.isAsync` + `agentId` (368 records); a WORKFLOW is `taskId` + `taskType`, with `transcriptDir` and NO `isAsync`/`agentId` (40 records); BACKGROUND BASH is `backgroundTaskId`. Agents AND workflows are gated; background bash is excluded on purpose (root `CLAUDE.md` §9.05's Monitor loop would block every commit). ⚠️ `taskType` is MANDATORY when matching a workflow —— a bare `taskId` also appears on 110 TodoWrite ticks and on the Monitor loop's own record, so keying on it alone bricks every commit. A workflow must be gated in its own right: its child agents do NOT appear in the main transcript at all (0 of 14 on the verified run), so nothing else covers them. It ages by the newest mtime across its `transcriptDir` AND that directory's entries —— entries because appending to a file never touches its parent's mtime.
 - 5.7. Never assume a key exists. Every lint must parse defensively and exit 0 on any missing field.
 - 5.8. Payload shapes are harness-owned and can change without notice —— re-verify from a captured payload rather than from memory of this table.
 
@@ -169,16 +169,16 @@
   - 7.2.2. It deliberately contains RED flags (5 Americanisms on one line).
   - 7.2.3. BLOCKED with a dlint RED report → hooks are ALIVE.
   - 7.2.4. Write succeeds SILENTLY → hooks are DEAD. There is no third outcome.
-  - 7.2.5. The `response_` in the probe's filename is load-bearing —— `dlint_hook.sh` only spawns Python when the payload mentions `response_`/`close_`/`wrap_`, so a probe without it would prove nothing.
+  - 7.2.5. The `response_` in the probe's filename is still load-bearing, for a NARROWER reason than before. `dlint_hook.sh` now spawns Python on any `.md`, so the name no longer decides whether the lint RUNS —— it decides whether the WHOLE FILE is judged. Off the comms names a verdict is scoped to the text the write produced, so an Edit whose new text is clean would pass and the probe would prove nothing. Keep the name.
 - 7.3. Per-event liveness test:
 
 | Event | Live Test | Alive Looks Like |
 |---|---|---|
 | PostToolUse | Edit the probe file (§7.2) | Edit blocked, RED report returned |
-| PostToolUse | Edit `cp/ccsim/sandbox/elint_probe_deliverable.md` | An `[elint]` advisory naming that file in context; a new `post:advise` line in `cscpt/.elint.log` |
+| PostToolUse | End a turn, then check `cscpt/.dlint.log` | A new line per `.md` write that turn |
 | PreToolUse | Run `echo ALINT_PROBE` through the Bash tool | An `alint` ALIVE note comes back; a new `action=probe` line in `cscpt/.alint.log` |
+| PreToolUse | Write `cp/ccsim/sandbox/flintprobe_ 202608011299.md` | The write is BLOCKED, stderr naming `flintprobe_202608011299.md` |
 | Stop | End a turn, then check `cscpt/.clint.log` | A new line appended for that turn |
-| Stop | End a turn, then check `cscpt/.elint.log` | A new `stop:` line for that turn |
 | UserPromptSubmit | Submit a prompt containing a real `#trigger` | Reminder line appears in context |
 | PostCompact | Occurs naturally on compaction | The `🚨` banner is injected |
 
@@ -211,7 +211,7 @@ for ev,groups in d.items():
   - 7.7.1. A log written only on a breach cannot tell those two apart —— an empty log is consistent with BOTH, which is exactly how the dead wiring survived so long.
   - 7.7.2. clint therefore logs EVERY invocation to `cscpt/.clint.log` (git-ignored), tagged by the stage reached: `no_stdin`, `out_of_scope`, `no_transcript`, `unreadable_transcript`, `empty_transcript`, `clean`, `block`, `block_failed`, `yellow:spent`, `yellow:active`.
   - 7.7.3. A non-growing clint log across real turns is now UNAMBIGUOUS: the harness is not calling that command.
-  - 7.7.4. The other four lints keep no log —— for them, the live probe (§7.2/§7.3) is the only liveness evidence. Adding a stage log to any of them is a cheap, worthwhile upgrade.
+  - 7.7.4. clint, alint and dlint_quick each keep a stage log. flint, DADC, plint, nlint and tlint keep NEITHER a log nor a §7.3 probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
 - 7.8. After ANY change to a hook script, its filename, its path, or the settings file:
   - 7.8.1. Run the resolvability audit (§7.6) —— the cheapest guard against §8.6.2, and the check whose absence lets a renamed lint sit dead and unnoticed.
   - 7.8.2. Re-run the live probe (§7.2). A passing unit test is not a substitute.
@@ -254,6 +254,9 @@ for ev,groups in d.items():
   - 9.3.5. Run the live probe (§7.2); a blocked edit is the acceptance criterion.
   - 9.3.6. Run `cp/ccsim/sandbox/repo_scope_guard_regression_test.py` to confirm the scope guards still behave (in-scope, out-of-scope, and fail-open branches).
   - 9.3.7. Run `cp/ccsim/sandbox/alint_regression_test.py` —— it pins the TEA1 gate, which is the only hook here that can block a COMMIT, so a silent break there is felt as either a lost turn-end discipline or an unexplainably stuck repo.
+  - 9.3.5.1. This checklist covers the BLOCKING hooks only —— a silent break in one of those is felt as a stuck repo or an escaped deliverable. The advisory lints have suites too (`cp/ccsim/sandbox/`), worth running but not recovery-critical.
+  - 9.3.8. Run `cp/ccsim/sandbox/dlint_gate_regression_test.py` —— it pins the only lint that blocks on content, and the deliverable gate folded into it.
+  - 9.3.9. Run `cp/ccsim/sandbox/flint_filename_gate_regression_test.py` —— it pins the filename gate, and its live-repo sweep fails if the detection rule ever broadens.
 - 9.4. Keep the reference file in step with the live file whenever a hook is added, renamed, or re-pointed —— a stale reference is a recovery that silently restores dead wiring.
 - 9.5. The reference file is documentation, so it may legitimately run AHEAD of the live file during a change; whichever is ahead, close the gap before the turn ends.
 
@@ -299,3 +302,34 @@ for ev,groups in d.items():
 - 11.3. Adding anything new to the backup folder: apply its README's selection test —— IRREPLACEABLE and UNTRACKED and SMALL, all three —— then add it to the `MAP` block in `mirror.sh` AND that README. Bulk transcripts, caches, `session-env/`, and server-pushed files fail the test and stay out. Credentials are barred outright regardless of the test, because that folder is pushed to GitHub.
 - 11.4. THE NET EFFECT, stated plainly: if FURY is lost, restore the repo from GitHub FIRST (the backups live inside it), then copy these files into the new `~/.claude/`. `mirror.sh restore-plan` prints the exact `mkdir -p` + `cp` commands and writes nothing, so it reverses the naming rule for you rather than leaving it to be fumbled by hand. Without this folder, a clean GitHub restore brings back every lint SCRIPT and registers NONE of them, and the auto-memory is simply gone —— §5's failure signature, from a standing start.
 - 11.5. If FURY is merely UNMOUNTED rather than lost, nothing here applies —— do NOT restore anything on top of an intact drive. Run `nscpt/fury_unmounted.sh`, which diagnoses the link, repairs it by renaming any stray aside (never deleting), and verifies every registered hook path still resolves.
+
+---
+
+## 12. Runtime Budget —— Worst-Case Latency
+
+*Hooks sit between the user's action and the response, so their cost is felt directly. This § exists so the roster cannot grow into a perceptible delay one harmless-looking addition at a time.*
+
+- 12.1. THE MANDATE: before registering ANY new hook, estimate the worst-case latency it adds to its EVENT, not to itself. Count every hook already on that event (§3, grouped by event) —— they all fire on the same trigger, so a hook is never billed alone.
+- 12.2. WORST CASE means the payload that defeats every fast path: a RELEVANT file or command that makes each `*_hook.sh` shim spawn its Python and each lint do real work. The cheap path is the common case; it is never the budget.
+- 12.3. Hooks on the SAME event run in PARALLEL, so an event costs the MAX of its hooks, not the SUM. Measured, not assumed —— two independent methods:
+  - 12.3.1. WIRING: sampling `ps -axo pid=,ppid=,args=` at `~`12 ms whilst a real Edit fired the chain caught ALL the PostToolUse hooks alive in ONE frame —— consecutive PIDs, one child Python already spawned under each, all parented to the same harness process. The PreToolUse hooks on a write, and the Stop hooks, behaved identically.
+  - 12.3.2. WALL-CLOCK: the same set driven concurrently by hand measured `~`75 ms, against a SUM of `~`226 ms and a MAX of `~`71 ms. The observation tracks the MAX.
+  - 12.3.3. Parallelism is HARNESS-OWNED and can change without notice, exactly as §5.8 says of payload shapes. Re-establish it after a harness update rather than trusting this line —— a switch to sequential multiplies every figure below.
+- 12.4. ALERT THE USER whenever an event's estimated worst case exceeds **1 SECOND**. Above that the delay is perceptible, and a hook the user can feel is a hook they will ask to remove. Name the event, the figure, and which hook dominates it.
+- 12.5. The design rule parallelism implies: a new hook is effectively FREE unless it is SLOWER than the worst hook already on its event. The ceiling is therefore per-hook —— keep every single hook well under 1 s and no event can breach it. A tenth cheap lint costs nothing; one slow lint costs everything.
+- 12.5.1. flint is the worked example: added to PreToolUse at `~`44 ms, it raised that event's worst case by ZERO, because DADC capture (`~`47 ms) already sat above it. A hook cheaper than the incumbent worst is genuinely free.
+- 12.6. Baseline, re-measured 202608020004 (median of 9 runs, worst-case payloads):
+
+| Event | Dominant Hook | Event Worst Case |
+|---|---|---|
+| PreToolUse (Edit/Write) | DADC capture `~`47 ms | `~`47 ms |
+| PreToolUse (Read) | plint `~`43 ms | `~`43 ms |
+| PreToolUse (Bash) | alint `~`41 ms —— `~`150 ms on the largest transcript on disk (53 MB) | `~`150 ms |
+| PostToolUse | dlint `~`346 ms on the repo's largest `.md` (331 KB) | `~`346 ms |
+| UserPromptSubmit | hlint `~`26 ms | `~`26 ms |
+| Stop | clint `~`41 ms —— `~`165 ms on the largest transcript on disk (53 MB) | `~`165 ms |
+| PostCompact | `~`31 ms | `~`31 ms |
+
+- 12.7. The worst event now spends `~`35% of the budget, up from `~`7% —— dlint alone accounts for the rise. TWO hooks are no longer FIXED costs and must be re-estimated against their INPUT, not against this table: dlint is `~`1 ms per KB of `.md` text judged atop a `~`30 ms floor (so `~`1 MB in a single write would breach 1 s; the repo's largest `.md` is 331 KB), and alint/clint scale with transcript size (`~`41 ms at 2.7 MB, `~`150/165 ms at 53 MB —— clint parses every line unbounded, alint pre-filters and caps at 64 MB). The floor is process spawn —— `~`26 ms for any Python hook, `~`5 ms for a shim that exits inside bash. That floor is why the shims exist (§3.2), and why a lint's own logic is almost never what costs.
+- 12.8. To re-measure: pipe a worst-case payload (§5's shapes) into each command on the event, time it, and take the MAX. That times the SCRIPTS (§7.1.1); confirming the harness still runs them in parallel needs the `ps` sample of §12.3.1 (§7.1.2). Neither substitutes for the other.
+- 12.9. File mtimes are useless for this on FURY —— it is HFS+, so `st_mtime` has 1-SECOND resolution and every sub-second interval reads as zero. Time the processes, never the files they touch.

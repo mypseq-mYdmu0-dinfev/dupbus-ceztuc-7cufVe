@@ -4,16 +4,68 @@
 # no marker -> the allowlist block is skipped and the pairing check runs instead.
 MARKER="$(git rev-parse --git-dir)/SYNC_ACTIVE"
 if [ -f "$MARKER" ]; then
-  staged="$(git diff --cached --name-only)"
-  for f in $staged; do
-    if ! grep -qxF "$f" "$MARKER"; then
-      echo "pre-commit: #sync blocked — '$f' is not in the allowlist:"
-      cat "$MARKER"
-      exit 1
-    fi
-  done
-  exit 0
+  # `while read` rather than `for f in $staged`: git does NOT quote a path
+  # merely because it contains a space, so word-splitting tore such a path into
+  # fragments that could never match the allowlist —— an allowlisted file was
+  # refused, and the message named half a filename. Line-wise reading is the
+  # only form that survives a space; the same fix is applied to every loop below.
+  if git diff --cached --name-only | while IFS= read -r f; do
+      [ -n "$f" ] || continue
+      if ! grep -qxF "$f" "$MARKER"; then
+        echo "pre-commit: #sync blocked — '$f' is not in the allowlist:"
+        cat "$MARKER"
+        exit 9
+      fi
+    done
+  then
+    exit 0
+  else
+    exit 1
+  fi
 fi
+
+# --- STRAY-SPACE FILENAME NET ---------------------------------------------
+# Root CLAUDE.md §3.3 names comms files `[prefix]_[TS].md`, no space. At least
+# four have been committed with a space wedged between the prefix underscore and
+# the 12 digits (`close_ 202606142239.md`), each found by eye months later.
+# The PRIMARY guard is `cscpt/flint.py`, a PreToolUse hook that blocks the
+# offending Write outright. This is the SECOND net, and it exists because that
+# one has a hole it cannot close: a PreToolUse hook only ever sees the harness's
+# file tools, so a file created by Bash (`cp`, `touch`, a script) or by the user
+# in Finder walks straight past it. Everything, however created, passes through
+# here on its way into history.
+#
+# The rule is the one stated and calibrated in `cscpt/flint.py` (which also
+# records why the broader "any whitespace" form was rejected): from the start of
+# the BASENAME, a whitespace-free run ending `_`, then whitespace, then a
+# 12-digit timestamp starting "20". ERE has no lookahead, so the trailing
+# `([^0-9]|$)` stands in for the "not inside a longer digit run" boundary.
+#
+# BLOCK on an ADD, WARN on a MODIFY —— deliberately asymmetric. An ADD is the
+# defect being introduced, which is the thing to make impossible. A MODIFY is a
+# file that already exists: blocking it would deadlock any commit that touches a
+# known offender (two are in the repo now, awaiting a sequenced rename), and the
+# rename itself is a delete+add or an R, so a good new name is never caught.
+# `while read` rather than `for f in $staged`: git does NOT quote a path merely
+# because it contains a space, so word-splitting would tear the very filenames
+# this check is about into two useless fragments.
+stray_re='^[^[:space:]]*_[[:space:]]+20[0-9]{10}([^0-9]|$)'
+git diff --cached --name-only --diff-filter=A | while IFS= read -r f; do
+  base="${f##*/}"
+  printf '%s\n' "$base" | grep -qE "$stray_re" || continue
+  echo "pre-commit BLOCKED — '$f' has a stray space before its timestamp."
+  echo "  Root CLAUDE.md §3.3: comms files are '[prefix]_[TS].md', with no space."
+  echo "  Rename it first (move-only commit), e.g.:  git mv \"$f\" \"<no-space name>\""
+  exit 9
+done || exit 1
+
+git diff --cached --name-only --diff-filter=M | while IFS= read -r f; do
+  base="${f##*/}"
+  printf '%s\n' "$base" | grep -qE "$stray_re" || continue
+  echo "pre-commit reminder: '$f' has a stray space before its timestamp"
+  echo "  (root CLAUDE.md §3.3). Rename it with 'git mv' in a move-only commit."
+  echo "  (Non-blocking: this commit proceeds.)"
+done
 
 # No #sync marker: WARN (non-blocking) on an orphaned response_ so the committer is
 # reminded to also push its query_ sibling if that file exists. This must NEVER block:
@@ -21,7 +73,8 @@ fi
 # response_ itself), so an exit 1 here would wrongly refuse a valid commit. Mirror
 # dlint's yellow flag (remind), not its red flag (block).
 staged="$(git diff --cached --name-only --diff-filter=AM)"
-for f in $staged; do
+printf '%s\n' "$staged" | while IFS= read -r f; do
+  [ -n "$f" ] || continue
   base="${f##*/}"
   dir="${f%/*}"
   [ "$dir" = "$f" ] && dir="."

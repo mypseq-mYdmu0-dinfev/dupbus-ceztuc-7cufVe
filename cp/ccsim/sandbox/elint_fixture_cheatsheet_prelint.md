@@ -1,6 +1,6 @@
 <!-- FIXTURE, not a live deliverable. Verbatim pre-lint text of the real
      interview cheat sheet whose un-linted delivery is the defect
-     cscpt/elint.py exists to prevent. Kept as a file rather than a string
+     cscpt/elint.py used to exist to prevent. Kept as a file rather than a string
      literal so the suite stays readable, and in cp/ccsim/sandbox/ so it is
      itself territory-excluded and can never be mistaken for live output.
      FULL dlint.py on this text yields 18 RED and 22 YELLOW. -->

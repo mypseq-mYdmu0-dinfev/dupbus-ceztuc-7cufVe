@@ -32,6 +32,15 @@
             "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/alint_hook.sh'"
           }
         ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit|NotebookEdit|Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/flint_hook.sh'"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -70,15 +79,6 @@
             "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/tlint_hook.sh'"
           }
         ]
-      },
-      {
-        "matcher": "Edit|Write|MultiEdit",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/elint_hook.sh'"
-          }
-        ]
       }
     ],
     "UserPromptSubmit": [
@@ -97,14 +97,6 @@
           {
             "type": "command",
             "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/clint.py'"
-          }
-        ]
-      },
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/elint.py' stop"
           }
         ]
       }

@@ -13,20 +13,27 @@ __pycache__/
 cscpt/.clint.log
 cscpt/.clint.log.tmp*
 
-# elint runtime state —— local, machine-specific, never source.
+# dlint runtime state —— local, machine-specific, never source.
 #   .dlint_receipts.jsonl : which files FULL dlint has linted, and at what
 #                           content hash. Written by dlint.py, read by
-#                           elint.py. Machine-local by nature (absolute
-#                           paths), and a stale copy from another machine
-#                           would silently vouch for a file never linted here.
-#   .elint.log            : per-invocation trace, so "the hook never fired"
+#                           dlint_quick.py's deliverable gate. Machine-local by
+#                           nature (absolute paths), and a stale copy from
+#                           another machine would silently vouch for a file
+#                           never linted here.
+#   .dlint.log            : per-invocation trace, so "the hook never fired"
 #                           stays distinguishable from "it fired and found
 #                           nothing" (cp/ccsim/hook_guide.md §7.7).
-#   .elint_state/         : per-session pending-deliverable markers.
+#   .dlint_state/         : per-session markers —— which deliverables still owe
+#                           a FULL lint, and which files have been reminded.
 # The .tmp* siblings are atomic-rewrite staging files; a hard crash mid-prune
 # can leave one behind, and a stray temp must never surface as untracked.
+# The `.elint*` names are the retired spelling of the same three, kept ignored
+# so a machine still carrying them does not surface them as untracked.
 cscpt/.dlint_receipts.jsonl
 cscpt/.dlint_receipts.jsonl.tmp*
+cscpt/.dlint.log
+cscpt/.dlint.log.tmp*
+cscpt/.dlint_state/
 cscpt/.elint.log
 cscpt/.elint.log.tmp*
 cscpt/.elint_state/

@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
-"""PreToolUse hook —— "agent-in-flight linter", the TEA1 IN-FLIGHT GATE. It BLOCKS `git commit` / `git
-push` whilst any sub-agent dispatched by this session is still running, so root
-CLAUDE.md §3.1.6's precondition ("After ALL tasks' completion, ensuring no SAs
-in-flight, do Turn-End Actions") stops being a judgement call and becomes a
-mechanical one.
+"""PreToolUse hook —— "agent-in-flight linter", the TEA1 IN-FLIGHT GATE. It
+BLOCKS `git commit` / `git push` whilst any sub-agent OR workflow dispatched by
+this session is still running, so root CLAUDE.md §3.1.6's precondition ("After
+ALL tasks' completion, ensuring no SAs in-flight, do Turn-End Actions") stops
+being a judgement call and becomes a mechanical one.
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a PreToolUse hook on `Bash`. It blocks a commit/push whilst a
-  dispatched agent has not yet reported back; every other Bash call passes.
-* IF IT BLOCKS: you have an agent still running. WAIT for its completion
-  notification, or `TaskStop` it if it is genuinely stuck —— then commit.
-  The block names each outstanding agent and how long it has been quiet.
+  dispatched agent or workflow has not yet reported back; every other Bash
+  call passes.
+* IF IT BLOCKS: something is still running. WAIT for its completion
+  notification, or `TaskStop` the id the message prints. The block names each
+  outstanding one, its kind, and how long it has been quiet.
 * IT NEVER BLOCKS: a sub-agent's own commits, another repo, or any non-git
-  command. It warns instead of blocking whenever it cannot read the evidence.
+  command. It warns instead of blocking when it cannot read the evidence.
 * Verdicts log to `cscpt/.alint.log`, one line per invocation.
 === NON-CCSIM —— end of all you need to RUN it ===
 
@@ -29,7 +30,8 @@ bolding or relocating the rule therefore cannot help; only removing the
 judgement can. Hence a mechanical gate at the MOMENT OF THE ACT.
 
 THE SIGNAL, AND HOW IT WAS ESTABLISHED (all of it verified against this Mac's
-real transcripts —— 368 historical agent dispatches —— not inferred):
+real transcripts —— 368 historical agent dispatches and 40 workflow launches ——
+not inferred):
 * A dispatched agent's tool_result arrives WITHIN MILLISECONDS of dispatch and
   says `status: async_launched`. It is an ACKNOWLEDGEMENT, not a completion.
   Measured: every one of 368 dispatches had its tool_result inside ~200 ms of
@@ -60,22 +62,45 @@ test for `<task-notification>` on the line, then a regex for `<task-id>` ——
 deliberately not a walk into one named field, which would have missed two
 shapes out of three and silently under-reported completions.
 
-WHAT COUNTS AS AN AGENT, AND WHAT DELIBERATELY DOES NOT: an agent dispatch is
-exactly `toolUseResult.isAsync == true` carrying an `agentId`. Verified
-exclusive —— all 368 such records are Agent-tool dispatches, and the two
-neighbouring async things use different shapes: a BACKGROUND BASH command uses
-`backgroundTaskId` and no `isAsync`, and a WORKFLOW uses `taskId` +
-`taskType` and no `agentId`.
-* Background bash is EXCLUDED ON PURPOSE, and this is load-bearing rather than
-  an oversight: root CLAUDE.md §9.05 mandates a persistent Monitor sleep-loop
-  for timed wakes, which is a background bash command that stays alive by
-  design for the whole session. Gating on it would block every commit of every
-  session that used one —— the gate would be uninstalled within a day.
-* Workflows are excluded too, but only for want of evidence: they notify by the
-  same mechanism, yet their launch record exposes a `transcriptDir` rather than
-  a single file, so the staleness release below has nothing to age them by. A
-  workflow in flight is a REAL residual hole; it is named here and in
-  `cp/ccsim/hook_guide.md` rather than papered over.
+WHAT COUNTS, AND WHAT DELIBERATELY DOES NOT. Two shapes are gated and one is
+not, and each boundary was measured rather than assumed:
+* An AGENT dispatch is exactly `toolUseResult.isAsync == true` carrying an
+  `agentId`. Verified exclusive —— all 368 such records are Agent-tool
+  dispatches.
+* A WORKFLOW launch carries `taskId` AND `taskType` (plus `workflowName`,
+  `runId`, `summary`, `transcriptDir`, `scriptPath`) and has NEITHER `isAsync`
+  NOR `agentId`. All 40 historical launches carry exactly those eight keys.
+  That absence is why the agent test could not see one.
+* BOTH FIELDS ARE REQUIRED, and this is the trap in the obvious design: a bare
+  `taskId` with no `taskType` appears on 111 further records —— 110 TodoWrite
+  status changes (`taskId` is just `"2"`, `"3"`) and the Monitor sleep-loop's
+  own timeout record. Keying on `taskId` alone would have made every todo tick
+  an in-flight workflow and blocked every commit forever. Pinned by a test.
+* BACKGROUND BASH uses `backgroundTaskId` and no `isAsync`, and is EXCLUDED ON
+  PURPOSE —— load-bearing rather than an oversight: root CLAUDE.md §9.05
+  mandates a persistent Monitor sleep-loop for timed wakes, which is a
+  background bash command that stays alive by design for the whole session.
+  Gating on it would block every commit of every session that used one —— the
+  gate would be uninstalled within a day.
+
+WHY A WORKFLOW MUST BE GATED SEPARATELY, rather than being covered by its
+children: a workflow's child agents do NOT appear in the main session
+transcript at all. Measured on run `wf_9704e270-7d9` (a 14-agent fan-out):
+0 of its 14 children appear there as `isAsync` dispatches, and none of their
+ids appears as a notification task-id —— they live only under the workflow's
+own `transcriptDir`. So there is no double-counting to worry about, and more
+importantly nothing else was ever watching them. Before this, a 14-agent
+workflow in flight was worth exactly nothing to the gate and a TEA1 fired
+mid-run sailed straight through.
+
+A WORKFLOW RESTS BY THE SAME MECHANISM, which is what makes the gate one
+mechanism and not two: its completion arrives as the very same
+`<task-notification>`, carrying its `taskId` as the `<task-id>`. So the same
+"launched at a later line than it last rested" rule decides it, and agents and
+workflows share one `last_live`/`last_rest` pair. Their id namespaces are
+disjoint in shape (`a` + 16 hex vs a short token like `wmi909npt`), so sharing
+is correct rather than merely convenient. Historically 40 of 40 workflow
+launches have a later notification —— a better rate than agents' 363 of 368.
 
 RESUMPTION: `SendMessage` to a rested agent restarts it ("had no active task;
 resumed from transcript in the background"), and it will notify again. Any
@@ -92,10 +117,29 @@ defect than the one being fixed. So a launch whose output file has not been
 touched for `_STALE_S` is RELEASED: the gate passes, but says so loudly in a
 model-visible note naming the agent. Release is never silent, because a silent
 release is indistinguishable from a gate that never ran.
-* The threshold is generous on purpose. The FAST path out of a stuck agent is
-  `TaskStop`, which emits a `killed` notification and clears the gate at once
-  —— the block message says so. Staleness is only the last-resort automatic
-  release for the case where nobody is watching.
+* THE WORKFLOW CLOCK IS A DIRECTORY, not a file, and that is what kept this
+  case unsolved when the gate was first built: a workflow launch exposes a
+  `transcriptDir` and no `outputFile`, so there is no single mtime to read.
+  The answer is the NEWEST mtime across that directory AND its entries. It is
+  a sound liveness signal —— arguably sounder than the agent case, because it
+  aggregates `journal.jsonl` (a line as each child starts and as each returns)
+  with every child's own `agent-*.jsonl` (a write on every tool call any child
+  makes), so any activity anywhere in the fleet advances it, whereas an agent
+  rests on one file alone.
+* Reading the ENTRIES rather than the directory alone is load-bearing, not
+  belt-and-braces: appending to a file does NOT update its parent directory's
+  mtime, so a directory-only clock would have called a furiously busy 14-agent
+  workflow stale and released it. A test pins exactly that (a 3-hour-old
+  directory with fresh children must stay LIVE).
+* Honest limit: the scan is ONE level deep, which matched the real layout
+  exactly (29 entries, no subdirectories). A future harness that nested deeper
+  would age a workflow optimistically —— i.e. release it early, with the loud
+  notice, never block it silently. That is the recoverable direction.
+* The threshold is generous on purpose. The FAST path out of a stuck agent or
+  workflow is `TaskStop`, which emits a `killed` notification and clears the
+  gate at once —— the block message says so, and for a workflow the id to pass
+  is its task id. Staleness is only the last-resort automatic release for the
+  case where nobody is watching.
 * An agent killed by a usage limit SHOULD block: root CLAUDE.md §9.02.4 is
   explicit that its task is not done and must be re-dispatched or redone. The
   gate holding the commit in that case is correct behaviour, not a false
@@ -212,6 +256,12 @@ LOG EVERY STAGE (hook_guide § 7.7): one tab-delimited line per invocation to
 everything else), `out_of_scope`, `subagent`, `disabled`, `no_transcript`,
 `unreadable_transcript`, `clear`, `stale_release`, `block`. `ALINT_LOG=<path>`
 redirects it so a test neither reads nor pollutes the real log.
+The `note=` field tags each named item by kind: a bare id is an AGENT, `wf:<id>`
+a workflow, and `wf?:<id>` a workflow whose `transcriptDir` could not be read at
+all. `wf?` is the named stage for that one new unreadable path —— such a
+workflow is held LIVE on NO liveness evidence (the conservative per-item
+direction, matching an agent with no output file), and without its own tag it
+would be indistinguishable in the log from one held live on good evidence.
 
 LIVE TEST (hook_guide § 7.3's row for this hook): run `echo ALINT_PROBE`
 through the real Bash tool. A reply saying the gate is ALIVE, plus a new
@@ -266,6 +316,10 @@ _PROBE_TOKEN = "ALINT_PROBE"
 # Bound the transcript read. A session file runs to a few MB; this is a
 # backstop against a pathological one turning a Bash call into a long pause.
 _MAX_TRANSCRIPT_BYTES = 64 * 1024 * 1024
+
+# Bound the workflow-directory scan. A real `transcriptDir` held 29 entries
+# (`journal.jsonl` plus two files per child agent); this is a backstop only.
+_MAX_DIR_ENTRIES = 2000
 
 # Git global options that may sit between `git` and its subcommand. Ones that
 # take a SEPARATE value argument are listed apart, so the value is skipped too
@@ -415,21 +469,63 @@ def _is_tea1(command):
     return False
 
 
+def _dir_quiet_seconds(dir_path):
+    """Seconds since ANYTHING in a workflow's `transcriptDir` was last touched,
+    or None when that cannot be read.
+
+    This is the workflow counterpart of `_quiet_seconds`, and it must look at
+    the ENTRIES, not just the directory: appending to a file does not update
+    its parent directory's mtime, so a directory-only clock would read a
+    furiously busy 14-agent workflow as untouched and release it. The entries
+    are what move —— `journal.jsonl` gains a line as each child starts and
+    returns, and every child's own `agent-*.jsonl` grows on every tool call it
+    makes.
+
+    Scanned one level deep, which matched the real layout exactly (29 entries,
+    no subdirectories). A subdirectory's own mtime is still included, so deeper
+    nesting introduced by a future harness would age OPTIMISTICALLY —— it could
+    release early, which is the loud, recoverable direction, never a silent
+    block. None means "cannot age this one", and the caller then treats the
+    workflow as LIVE (docstring: STALENESS RELEASE). Never raises."""
+    try:
+        if not dir_path:
+            return None
+        newest = os.path.getmtime(dir_path)
+        with os.scandir(dir_path) as entries:
+            for n, entry in enumerate(entries):
+                if n >= _MAX_DIR_ENTRIES:
+                    break
+                try:
+                    mtime = entry.stat(follow_symlinks=False).st_mtime
+                except OSError:
+                    continue
+                if mtime > newest:
+                    newest = mtime
+        return max(0.0, time.time() - newest)
+    except Exception:
+        return None
+
+
 def _scan_transcript(path):
     """Walk the MAIN session transcript once and return
-    `(launches, last_live, last_rest)`.
+    `(launches, last_live, last_rest, workflows)`.
 
     * `launches[agent_id]` -> `{"desc":…, "out":…}` from the dispatch record.
-    * `last_live[agent_id]` -> line index of its most recent dispatch OR
-      resume.
-    * `last_rest[agent_id]` -> line index of its most recent completion
-      notification.
+    * `workflows[task_id]` -> `{"desc":…, "dir":…}` from the workflow launch.
+    * `last_live[id]` -> line index of its most recent dispatch OR resume.
+    * `last_rest[id]` -> line index of its most recent completion notification.
+
+    Agents and workflows SHARE `last_live`/`last_rest` because the harness
+    already shares the notification: a workflow rests via the very same
+    `<task-notification>`, carrying its `taskId` as the `<task-id>`. Their id
+    namespaces are disjoint in shape (`a` + 16 hex vs a short token), so one
+    pair of dicts is correct rather than merely convenient.
 
     Ordering is by LINE INDEX, never by timestamp (docstring: ORDERING IS BY
     LINE POSITION). Sub-agent lines are skipped so an agent's own internal
     chatter can never be mistaken for a main-session event. Raises only on an
     unreadable file; malformed individual lines are skipped."""
-    launches, last_live, last_rest = {}, {}, {}
+    launches, last_live, last_rest, workflows = {}, {}, {}, {}
     with open(path, "r", encoding="utf-8", errors="replace") as fh:
         read = 0
         for idx, raw in enumerate(fh):
@@ -466,6 +562,23 @@ def _scan_transcript(path):
                 }
                 last_live[aid] = idx
                 continue
+            # WORKFLOW launch. BOTH `taskId` and `taskType` are required, and
+            # that pairing is the whole discriminator: a bare `taskId` also
+            # appears on every TodoWrite status change and on the Monitor
+            # sleep-loop's own record (111 such records historically, none of
+            # them a workflow), so keying on it alone would block every commit
+            # of every session that ticked a todo.
+            tid = tur.get("taskId")
+            if (isinstance(tid, str) and tid and tur.get("taskType")
+                    and not tur.get("isAsync")):
+                tdir = tur.get("transcriptDir")
+                workflows[tid] = {
+                    "desc": str(tur.get("workflowName")
+                                or tur.get("summary") or "")[:70],
+                    "dir": tdir if isinstance(tdir, str) else None,
+                }
+                last_live[tid] = idx
+                continue
             # RESUMPTION: a successful tool result naming a known agent id
             # restarts it (docstring: RESUMPTION). Deliberately generous.
             if tur.get("success") is True:
@@ -473,7 +586,7 @@ def _scan_transcript(path):
                 for found in set(_AGENT_ID_RE.findall(blob)):
                     if found in launches:
                         last_live[found] = idx
-    return launches, last_live, last_rest
+    return launches, last_live, last_rest, workflows
 
 
 def _quiet_seconds(out_path):
@@ -543,6 +656,20 @@ def _log(sid, action, live=0, sub="-", note="-"):
     except Exception:
         pass
     _prune_log()
+
+
+def _tag(entry):
+    """One log token for a live/released item: a bare agent id, `wf:<id>` for a
+    workflow, or `wf?:<id>` for a workflow whose transcript directory could not
+    be aged at all. The `wf?` form is the named stage for that unreadable path
+    —— without it a workflow held live on NO liveness evidence would look
+    identical in the log to one held live on good evidence, which is exactly
+    the "ran and found nothing" vs "went dark" confusion hook_guide § 7.7
+    exists to prevent."""
+    kind, key, _desc, quiet = entry
+    if kind != "workflow":
+        return key
+    return ("wf?:%s" % key) if quiet is None else ("wf:%s" % key)
 
 
 def _advise(text):
@@ -620,7 +747,7 @@ def main():
         return 0
 
     try:
-        launches, last_live, last_rest = _scan_transcript(tp)
+        launches, last_live, last_rest, workflows = _scan_transcript(tp)
     except Exception as exc:
         _log(sid, "unreadable_transcript", sub=sub, note=type(exc).__name__)
         _advise("[alint] TEA1 in-flight gate could NOT run: the session "
@@ -629,55 +756,66 @@ def main():
                 "applies —— confirm by hand before committing.")
         return 0
 
+    # Agents and workflows are judged by the SAME rule —— launched at a later
+    # line than it last rested —— and differ only in what can be aged: an agent
+    # by its single output file, a workflow by its whole transcript directory.
     live, released = [], []
-    for aid, info in launches.items():
-        if last_live.get(aid, -1) <= last_rest.get(aid, -1):
-            continue                              # rested after its last start
-        quiet = _quiet_seconds(info.get("out"))
-        if quiet is not None and quiet > _STALE_S:
-            released.append((aid, info.get("desc"), quiet))
-        else:
-            live.append((aid, info.get("desc"), quiet))
+    for kind, items in (("agent", launches), ("workflow", workflows)):
+        for key, info in items.items():
+            if last_live.get(key, -1) <= last_rest.get(key, -1):
+                continue                          # rested after its last start
+            quiet = (_quiet_seconds(info.get("out")) if kind == "agent"
+                     else _dir_quiet_seconds(info.get("dir")))
+            entry = (kind, key, info.get("desc"), quiet)
+            if quiet is not None and quiet > _STALE_S:
+                released.append(entry)
+            else:
+                live.append(entry)
 
     if not live:
         if released:
             _log(sid, "stale_release", live=0, sub=sub,
-                 note=";".join(a for a, _, _ in released))
+                 note=";".join(_tag(e) for e in released))
             _advise(
                 "[alint] TEA1 in-flight gate PASSED, but %d dispatched "
-                "agent(s) never reported back and were released as stale "
-                "(quiet for over %d minutes): %s. They may hold unfinished "
-                "work —— root CLAUDE.md §9.02.4 treats a died agent's task as "
-                "NOT done. Re-dispatch or redo that scope if it matters."
+                "agent(s)/workflow(s) never reported back and were released "
+                "as stale (quiet for over %d minutes): %s. They may hold "
+                "unfinished work —— root CLAUDE.md §9.02.4 treats a died "
+                "agent's task as NOT done. Re-dispatch or redo that scope if "
+                "it matters."
                 % (len(released), _STALE_S // 60,
-                   "; ".join("%s (%s)" % (a, d or "?")
-                             for a, d, _ in released)))
+                   "; ".join("%s %s (%s)" % (k, i, d or "?")
+                             for k, i, d, _ in released)))
         else:
             _log(sid, "clear", live=0, sub=sub)
         return 0
 
     lines = []
-    for aid, desc, quiet in sorted(live, key=lambda x: x[0]):
+    for kind, key, desc, quiet in sorted(live, key=lambda x: (x[0], x[1])):
         age = ("quiet %dm" % int(quiet // 60)) if quiet is not None \
             else "activity unknown"
-        lines.append("  - %s — %s (%s)" % (aid, desc or "(no description)", age))
+        lines.append("  - %s %s — %s (%s)"
+                     % (kind, key, desc or "(no description)", age))
 
     # Exit 2 + STDERR is the only PreToolUse channel that both reaches the
     # model and stops the call (hook_guide § 6). At exit 2 the harness ignores
     # stdout entirely, so nothing may be written there.
     sys.stderr.write(
         "BLOCKED by alint —— root CLAUDE.md §3.1.6: Turn-End Actions require "
-        "that NO sub-agent is in flight, and %d still %s:\n%s\n"
+        "that NO sub-agent or workflow is in flight, and %d still %s:\n%s\n"
         "This is a mechanical gate, not a judgement call: the precondition "
         "was consciously overridden four times before it existed. Do ONE of:\n"
-        "  1. WAIT for each agent's completion notification, then commit.\n"
-        "  2. `TaskStop` an agent that is genuinely stuck —— that emits a "
-        "killed notification and clears this gate at once.\n"
+        "  1. WAIT for each one's completion notification, then commit.\n"
+        "  2. `TaskStop` one that is genuinely stuck, passing the id shown "
+        "above (a workflow's id is its task id) —— that emits a killed "
+        "notification and clears this gate at once.\n"
         "Note that a killed or limit-hit agent's task is NOT done "
-        "(root CLAUDE.md §9.02.4): re-dispatch or redo that scope.\n"
+        "(root CLAUDE.md §9.02.4): re-dispatch or redo that scope. A workflow "
+        "counts for its WHOLE fleet —— its child agents never appear in this "
+        "transcript, so nothing else is watching them.\n"
         % (len(live), "is" if len(live) == 1 else "are", "\n".join(lines)))
     _log(sid, "block", live=len(live), sub=sub,
-         note=";".join(a for a, _, _ in live))
+         note=";".join(_tag(e) for e in live))
     return 2
 
 

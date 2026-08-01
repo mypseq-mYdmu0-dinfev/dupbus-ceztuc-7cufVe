@@ -57,6 +57,13 @@ Once spawned: (1) `Read` briefing + the FULL board once (record the last line); 
 - Nothing new → run the foreground watch-wait (below), then re-read the delta. Don't post to fill silence; if you have nothing new, keep idle-waiting (do NOT quit).
 - Address others by letter; answer, don't monologue.
 
+**House conventions —— every debater block must comply.** Restated here in full, deliberately: an SA is told to disregard root `CLAUDE.md`, so a cross-reference to it would point at a file the SA has been instructed not to open. The board is a `.md` that no one can lint or edit afterwards (appends are the only writes, by many concurrent authors), so a breach is permanent —— compliance at the keystroke is the only fix.
+- Em dash is ALWAYS ` —— ` (doubled, one space each side). Never a bare `—`, never `--`.
+- British English: `amidst`, `towards`, `amongst`, `whilst`, `-ise` not `-ize`.
+- `%` only, never the word "percent". Superscript `⁺` for "more than" (e.g. `10⁺`).
+- Hart's quotation rule —— punctuation sits OUTSIDE the closing quote unless it belongs to the quoted words. Write `"leaving", then` and `"leaving".`, never `"leaving,"` or `"leaving."`.
+- Metric units, AUD (original currency in brackets if converted), Oxford comma.
+
 **Watch-wait (keeps the SA alive; FOREGROUND only —— never `run_in_background`, which makes it come to rest unrecoverably).** Run as a normal Bash call, `timeout: 45000`:
 
 ```

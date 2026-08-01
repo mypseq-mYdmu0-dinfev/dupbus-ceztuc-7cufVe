@@ -68,6 +68,7 @@
 
 ## Scripts & pcmd (protocol/context .md files; e.g. this file)
 - Avoid mentioning specific comms files (`*_[TS].md`) or hard-coding; alert if any exist or slip in
+- ROOT SCOPE, decided at creation: any script or hook that RESOLVES REPO PATHS carries a `Root scope:` line in its header naming every repo root it walks and why the others are excluded. Costs a sentence now; a later audit costs a session —— the same single-root defect was found, fixed, and rebuilt three times in five weeks because each new tool re-made it. Anchor on the script's own `__file__`, never the process cwd (a global hook routinely runs from another repo)
 - If apt, actively point to an existing script/pcmd instead of repeating its content (e.g. "read `[name].md` first") —— one source of truth, no drift
 - When measuring/reporting a pcmd's size or a trim's savings, count TOKENS (`token-count --text` / `token-count --file`), not words —— word count doesn't gate context budget, tokens do
 - After editing pcmd, review its "skill" (if exists); e.g. edited this file → read `.claude/skills/coding/SKILL.md` → adjust if needed

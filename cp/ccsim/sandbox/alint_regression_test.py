@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Regression test for cscpt/alint.py + cscpt/alint_hook.sh —— the TEA1
 IN-FLIGHT GATE that blocks `git commit` / `git push` whilst a dispatched
-sub-agent is still running.
+sub-agent or workflow is still running.
 
 WHY this test exists (coding.md: "a fix without its test is unfinished"):
 root CLAUDE.md §3.1.6 requires that Turn-End Actions happen only once no
@@ -20,11 +20,21 @@ feeds the same transcript plus the later completion notification and asserts
 it clears. Together they encode the precise failing scenario the gate exists
 to survive.
 
+THE SECOND ONE THAT MATTERS is W1, the WORKFLOW HOLE. The gate originally saw
+agents only, and a workflow's launch record carries neither `isAsync` nor
+`agentId` —— nor do its child agents appear in the main transcript at all —— so
+a 14-agent workflow in flight was worth nothing to it and a TEA1 fired mid-run
+passed straight through. W1 encodes that scenario; W12 encodes the trap that
+makes the naive fix worse than the bug (a bare `taskId` also marks every
+TodoWrite tick and the Monitor sleep-loop, so keying on it would brick commits).
+
 Fixtures are mined from this Mac's REAL transcripts (coding.md: "Mine
 historical/real data for fixtures") —— the record shapes below are the ones
-observed across 368 historical dispatches, including all THREE record shapes a
-completion notification arrives in (`attachment`, `queue-operation`, `user`),
-which a single-shape parser would silently under-read.
+observed across 368 historical agent dispatches and 40 workflow launches,
+including all THREE record shapes a completion notification arrives in
+(`attachment`, `queue-operation`, `user`), which a single-shape parser would
+silently under-read. The workflow launch is the genuine record from run
+`wf_9704e270-7d9`, field for field.
 
 Self-contained: every transcript, output file and payload is synthesised at run
 time in a throwaway tempdir, removed afterwards; no repo file is read or
@@ -59,6 +69,12 @@ ALINT_HOOK = os.path.join(REPO_ROOT, "cscpt", "alint_hook.sh")
 # dispatches). Two distinct ones so multi-agent cases are unambiguous.
 AGENT_A = "a3e737d9dc757e1ca"
 AGENT_B = "a96d2e762fbd7e054"
+
+# Real workflow task ids. `WORKFLOW_A` is the genuine one from run
+# `wf_9704e270-7d9` —— a 14-agent FOF fan-out that ran whilst this gate was
+# being built, and that the agent-only gate could not see at all.
+WORKFLOW_A = "wmi909npt"
+WORKFLOW_B = "wn9svy9x9"
 
 _TMP = None          # per-run scratch dir, torn down in main()
 _LOG = None          # redirected ALINT_LOG inside _TMP
@@ -144,16 +160,52 @@ def rec_background_bash():
                               "isImage": False, "noOutputExpected": True}}
 
 
-def rec_workflow_launch():
-    """A WORKFLOW launch —— `taskId` + `taskType`, no `agentId`. Out of scope
-    for this gate (documented gap), so it must not be counted as an agent."""
-    return {"type": "user", "isSidechain": False,
+def rec_workflow_launch(task_id=WORKFLOW_A, transcript_dir="/tmp/nowhere",
+                        name="wrap-202607", sidechain=False):
+    """A WORKFLOW launch, field-for-field as the harness really writes it ——
+    captured from run `wf_9704e270-7d9`, task id `wmi909npt`. All 40 workflow
+    launches in this Mac's history carry exactly these eight keys.
+
+    The load-bearing detail is what is ABSENT: no `isAsync` and no `agentId`,
+    which is precisely why the agent half of the gate was blind to it."""
+    return {"type": "user", "isSidechain": sidechain,
             "timestamp": "2026-08-01T10:16:00.000Z",
             "message": {"role": "user", "content": []},
-            "toolUseResult": {"status": "async_launched", "taskId": "wn9svy9x9",
-                              "taskType": "local_workflow",
-                              "workflowName": "kickoff",
-                              "transcriptDir": "/tmp/nowhere"}}
+            "toolUseResult": {
+                "status": "async_launched",
+                "taskId": task_id,
+                "taskType": "local_workflow",
+                "workflowName": name,
+                "runId": "wf_9704e270-7d9",
+                "summary": "FOF fan-out over every 202607 close_ file",
+                "transcriptDir": transcript_dir,
+                "scriptPath": "/tmp/scripts/%s-wf.js" % name}}
+
+
+def rec_todo_task_update(task_id="2"):
+    """A TodoWrite-style status change —— a bare `taskId` and nothing that
+    marks a workflow. 110 of the 111 non-workflow `taskId` records in this
+    Mac's history are this shape, so a gate keyed on `taskId` ALONE would read
+    every todo tick as an in-flight workflow and block every commit forever."""
+    return {"type": "user", "isSidechain": False,
+            "timestamp": "2026-08-01T10:17:00.000Z",
+            "message": {"role": "user", "content": []},
+            "toolUseResult": {"success": True, "taskId": task_id,
+                              "updatedFields": ["status"],
+                              "statusChange": {"from": "pending",
+                                               "to": "in_progress"}}}
+
+
+def rec_bg_task_timeout():
+    """The Monitor sleep-loop's own record —— `taskId` + `timeoutMs`, and no
+    `taskType`. The 111th. Root CLAUDE.md §9.05 MANDATES that loop, so reading
+    a bare `taskId` as a workflow would block every commit of every session
+    that used one —— the exact failure the background-bash exclusion avoids."""
+    return {"type": "user", "isSidechain": False,
+            "timestamp": "2026-08-01T10:18:00.000Z",
+            "message": {"role": "user", "content": []},
+            "toolUseResult": {"taskId": "beee1p48l", "timeoutMs": 3600000,
+                              "persistent": False}}
 
 
 def rec_noise():
@@ -180,6 +232,35 @@ def agent_output(agent_id, age_s=0.0):
     path = os.path.join(_TMP, "out_%s" % agent_id)
     with open(path, "w", encoding="utf-8") as fh:
         fh.write("x")
+    if age_s:
+        old = time.time() - age_s
+        os.utime(path, (old, old))
+    return path
+
+
+def workflow_dir(task_id, age_s=0.0, child_age_s=None):
+    """A stand-in for a workflow's `transcriptDir` —— the DIRECTORY whose newest
+    mtime is the gate's liveness clock. A real one holds `journal.jsonl` plus
+    one `agent-*.jsonl` per child agent (29 entries, no subdirectories, in the
+    captured run).
+
+    `age_s` back-dates the directory itself and `child_age_s` back-dates its
+    contents SEPARATELY, so a case can prove the clock reads the CHILDREN too.
+    That distinction is the whole design: appending to an existing file does
+    NOT touch its parent directory's mtime, so a dir-only clock would call a
+    furiously busy 14-agent workflow stale and release it."""
+    path = os.path.join(_TMP, "wfdir_%s" % task_id)
+    os.makedirs(path, exist_ok=True)
+    kids = []
+    for name in ("journal.jsonl", "agent-%s.jsonl" % AGENT_A):
+        kid = os.path.join(path, name)
+        with open(kid, "w", encoding="utf-8") as fh:
+            fh.write("x")
+        kids.append(kid)
+    if child_age_s is not None:                  # children first ——
+        old = time.time() - child_age_s          # writing one bumps the dir
+        for kid in kids:
+            os.utime(kid, (old, old))
     if age_s:
         old = time.time() - age_s
         os.utime(path, (old, old))
@@ -316,11 +397,15 @@ def _run_all():
     r = run(payload("git commit -m x", t_resume_done))
     check("C2 — resume then rest again: ALLOWED", r.returncode == 0, r)
 
-    # === D. Only Agent dispatches count ====================================
-    t_bg = write_transcript("bg.jsonl",
-                            [rec_background_bash(), rec_workflow_launch()])
+    # === D. Only real in-flight work counts ================================
+    # NOTE: this case once also asserted that a WORKFLOW launch was ignored.
+    # That was true of the agent-only gate and is deliberately no longer true
+    # —— workflows are gated now, so the workflow half moved to section W and
+    # asserts the opposite verdict there. Background bash stays excluded.
+    t_bg = write_transcript("bg.jsonl", [rec_background_bash()])
     r = run(payload("git commit -m x", t_bg))
-    check("D1 — background bash + workflow launches are NOT agents: ALLOWED",
+    check("D1 — a background bash launch is NOT an agent: ALLOWED "
+          "(root CLAUDE.md §9.05's Monitor loop must never block a commit)",
           r.returncode == 0, r)
 
     out_b = agent_output(AGENT_B)
@@ -334,6 +419,99 @@ def _run_all():
     check("D2 — one of two agents rested: still BLOCKED, names only the live one",
           r.returncode == 2 and AGENT_B in r.stderr and AGENT_A not in r.stderr,
           r)
+
+    # === W. WORKFLOW gating (the hole the agent-only gate left open) =======
+    # WHY THIS SECTION EXISTS: a workflow's launch record carries no `isAsync`
+    # and no `agentId`, so the agent half of the gate could not see one at all
+    # —— and its child agents never surface in the main transcript either
+    # (verified: 0 of run `wf_9704e270-7d9`'s 14 children appear there, so
+    # nothing else covered for it). A 14-agent workflow was therefore worth
+    # exactly nothing to the gate, and a TEA1 fired mid-run sailed straight
+    # through. W1 is that exact failing scenario.
+    wdir_a = workflow_dir(WORKFLOW_A)
+    t_wf = write_transcript("wf.jsonl", [
+        rec_noise(), rec_workflow_launch(WORKFLOW_A, wdir_a), rec_noise()])
+    r = run(payload("git commit -m x", t_wf))
+    check("W1 — a workflow in flight BLOCKS the commit and names it",
+          r.returncode == 2 and WORKFLOW_A in r.stderr, r)
+    check("W2 — ...and calls it a workflow, so the escape is actionable",
+          "workflow" in r.stderr.lower(), r)
+
+    for shape in ("user", "attachment", "queue-operation"):
+        t = write_transcript("wf_done_%s.jsonl" % shape, [
+            rec_workflow_launch(WORKFLOW_A, wdir_a),
+            rec_notification(WORKFLOW_A, shape)])
+        r = run(payload("git push", t))
+        check("W3 — a workflow rests by the SAME notification, shape %r" % shape,
+              r.returncode == 0, r)
+
+    # W4 pins the DIRECTORY clock, which is the whole reason this gap stayed
+    # open: appending to a child file does not touch the parent directory's
+    # mtime, so ageing by the directory alone would release a busy workflow.
+    wdir_busy = workflow_dir("wbusy", age_s=60 * 60 * 3)
+    t_busy = write_transcript("wf_busy.jsonl", [
+        rec_workflow_launch("wbusy", wdir_busy)])
+    r = run(payload("git commit -m x", t_busy))
+    check("W4 — a 3h-old DIRECTORY with fresh children is LIVE: BLOCKED",
+          r.returncode == 2 and "wbusy" in r.stderr, r)
+
+    wdir_stale = workflow_dir("wstale", age_s=60 * 60 * 3,
+                              child_age_s=60 * 60 * 3)
+    t_wstale = write_transcript("wf_stale.jsonl", [
+        rec_workflow_launch("wstale", wdir_stale)])
+    r = run(payload("git commit -m x", t_wstale))
+    check("W5 — a workflow quiet across its WHOLE dir is RELEASED: ALLOWED",
+          r.returncode == 0, r)
+    check("W6 — ...and the release is announced, never silent",
+          "stale" in advice(r).lower() and "wstale" in advice(r), r)
+    check("W7 — ...and logged as action=stale_release naming it",
+          any("action=stale_release" in l and "wstale" in l
+              for l in log_lines()))
+
+    t_nodir = write_transcript("wf_nodir.jsonl", [
+        rec_workflow_launch("wnodir", os.path.join(_TMP, "never_made"))])
+    r = run(payload("git commit -m x", t_nodir))
+    check("W8 — an un-ageable workflow dir stays LIVE (conservative per item)",
+          r.returncode == 2 and "wnodir" in r.stderr, r)
+    check("W9 — ...and the block admits the activity is unknown",
+          "unknown" in r.stderr.lower(), r)
+    check("W10 — ...and the log tags that stage distinctly (`wf?:`)",
+          any("wf?:wnodir" in l for l in log_lines()))
+
+    t_both = write_transcript("wf_both.jsonl", [
+        rec_agent_dispatch_ack(AGENT_A, "agent side", out_a),
+        rec_workflow_launch(WORKFLOW_A, wdir_a)])
+    r = run(payload("git commit -m x", t_both))
+    check("W11 — an agent AND a workflow in flight: both named, counted as 2",
+          r.returncode == 2 and AGENT_A in r.stderr
+          and WORKFLOW_A in r.stderr and "2 still are" in r.stderr, r)
+
+    # W12 is the false-positive trap that would have bricked every commit had
+    # the gate keyed on `taskId` alone: 110 todo ticks plus the Monitor loop's
+    # own record all carry one, and NONE of them is a workflow.
+    t_todo = write_transcript("todo.jsonl", [
+        rec_todo_task_update("2"), rec_todo_task_update("3"),
+        rec_bg_task_timeout(), rec_background_bash()])
+    r = run(payload("git commit -m x", t_todo))
+    check("W12 — `taskId` WITHOUT `taskType` is NOT a workflow: ALLOWED",
+          r.returncode == 0 and not r.stderr.strip(), r)
+
+    t_wfside = write_transcript("wf_side.jsonl", [
+        rec_workflow_launch(WORKFLOW_B, wdir_a, sidechain=True)])
+    r = run(payload("git commit -m x", t_wfside))
+    check("W13 — an isSidechain workflow launch is ignored: ALLOWED",
+          r.returncode == 0, r)
+
+    # Every escape must reach workflows too, or the gate becomes the brick it
+    # was designed never to be.
+    r = run(payload("git commit -m x", t_wf), env_extra={"ALINT_OFF": "1"})
+    check("W14 — ALINT_OFF releases a workflow block too", r.returncode == 0, r)
+    r = run(payload("git commit -m x", t_wf, agent_id=AGENT_B))
+    check("W15 — a sub-agent's own commit stays exempt whilst a workflow runs",
+          r.returncode == 0, r)
+    r = run(payload("git commit -m x", t_wf))
+    check("W16 — the block names TaskStop and the id to pass it",
+          "TaskStop" in r.stderr and WORKFLOW_A in r.stderr, r)
 
     # === E. Sub-agent lines never count as main-session events =============
     t_side = write_transcript("side.jsonl", [

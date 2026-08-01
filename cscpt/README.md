@@ -33,24 +33,25 @@ You are a client whose context is precious. The goal is to succeed having read a
 
 Several linters below are launched by the harness rather than by you. Registration, payload shapes, which channel reaches the model, self-scoping, verification and recovery live in `cp/ccsim/hook_guide.md` —— read it only when working ON the hooks; running anything here needs none of it.
 
-## Scripts
+## Scripts —— ≤30 Words Each Description
 
 **You run these:**
 
 - `set_dates.py` —— macOS Finder-date setter: stamps Created / Modified / Added / Last Opened on a file or a whole tree to a given Sydney timestamp.
-- `dlint.py` —— deterministic prose linter: auto-fixes quotes, then flags 🔴 RED / 🟡 YELLOW breaches of `universal/writing.md`. Full mode for deliverables, quick mode for comms. Every FULL run leaves a content-addressed receipt that `elint.py` reads as proof the file was linted.
+- `dlint.py` —— deterministic prose linter: auto-fixes quotes, flags 🔴 RED / 🟡 YELLOW breaches of `universal/writing.md`. FULL for deliverables, quick elsewhere; every FULL run leaves a receipt.
+- `pending.py` —— prints the two queues only the USER can clear: voided `❌_` files (flagged ≥7 days) and queued queries awaiting a dedicated session. Read-only.
 - `usage_pct.py` —— prints live Claude usage: current 5-hourly session % and weekly %. Drives the "Claude Web" app by keystroke, so leave the Mac alone whilst it runs.
 - `padv.py` —— `#replace #adv` helper: extracts a verbatim span from a `.pages.md` mirror and splits it into the break-free blocks a Pages find-and-replace can actually match.
 - `otg_sync.py` —— `#sync` runner: re-pins every file URL in an OTG index to its last-commit SHA, then commits + pushes only that index and its prefs file.
 
 **The harness runs these (the lints):**
 
-- `alint.py` —— PreToolUse. BLOCKS a `git commit`/`git push` whilst any sub-agent dispatched by this session is still running, so root `CLAUDE.md` §3.1.6's "no SAs in-flight" precondition is mechanical rather than a judgement call. Wait for the agent, or `TaskStop` it. Exempts sub-agents' own commits; warns instead of blocking whenever it cannot read the evidence. Logged to `.alint.log`.
+- `alint.py` —— PreToolUse. BLOCKS a `git commit`/`git push` whilst any sub-agent OR workflow this session dispatched is still running. Wait for it, or `TaskStop` the id it prints.
 - `clint.py` —— Stop hook. Warns when chat text is not a permitted declaration line. WARN-only: never blocks, and the warning reaches the user, not CC. Logged to `.clint.log`.
-- `dlint_quick.py` —— PostToolUse. On a CC-authored comms write, runs the quick lint and BLOCKS until 🔴 RED = 0.
-- `elint.py` —— PostToolUse + Stop. Enforces root `CLAUDE.md` §3.7.3 where no other lint reaches: a deliverable-shaped file must pass FULL `dlint.py` before it goes out. Advises at the deliverable's own write, BLOCKS a comms write whilst a lint is still owed, and warns the user at Stop. Wrongly flagged? Put `<!-- dlint: internal -->` in that file, once —— never rewrite an internal file to satisfy it. Logged to `.elint.log`.
+- `dlint_quick.py` —— PostToolUse. The only lint that blocks on CONTENT. Quick-lints EVERY `.md`, and blocks a comms write whilst a deliverable still owes a FULL `dlint.py` run.
+- `flint.py` —— PreToolUse. BLOCKS a filename that wedges a space before its 12-digit timestamp. The refusal names the name you meant; a corrective `git mv` is never gated.
 - `nlint.py` —— PostToolUse. Two advisory checks against `universal/numbered.md`, neither blocking: a numbered level reaching its 10th item, and a response file resetting its top-level numbering with no excuse in evidence.
-- `tlint.py` —— PostToolUse. Warns when a written file's 12-digit timestamp clashes with a neighbour that is not its sanctioned pair. Warn-only.
+- `tlint.py` —— PostToolUse. Warns on a timestamp clash with a non-paired neighbour, and on any stray-space filename already in that folder. Warn-only; never go hunting for more.
 - `hlint.py` —— UserPromptSubmit. Spots `#trigger` tokens in the prompt (and in any `.md` it names) and reminds CC to read each matching trigger file. Never blocks.
 - `plint.py` —— PreToolUse. Before a script, pcmd or letter-like file is written, reminds CC to read the governing protocol first. Advisory; never gates the write.
 - `DADC.py` —— PreToolUse + PostToolUse. Preserves a file's macOS Date Added and Date Created across an agent's edit, everywhere (no folder scope). New files untouched; always exits 0.
