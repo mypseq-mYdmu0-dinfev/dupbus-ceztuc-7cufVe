@@ -20,3 +20,8 @@ Only if speakers are confirmed being only 1 male + 1 female:
 - [00:00:03] **User**: Hello? {tentative}
 - [00:00:05] **Male 1**: Hello! {passionate}
 ```
+
+## Important Notes
+
+- EXPECTED OUTPUT: .MD FILE(S), NOT CHAT TEXT
+- Strictly ensure nothing is missed out. If anything uncertain/difficult (e.g. voice unclear), immediately STOP and list them all out; NEVER add comments/questions w/ the demanded MD output: e.g. ❌ `[description_start] ... [description_end] Note: Voice unclear.`
