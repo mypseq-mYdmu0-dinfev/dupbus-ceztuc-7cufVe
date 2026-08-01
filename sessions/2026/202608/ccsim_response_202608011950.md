@@ -201,3 +201,86 @@
 - 21.5. **risk-if-pushed** —— exempting too broadly would let a real deliverable through. Scoped to `cp/ccsim/sandbox/` exactly, and pinned by a test asserting a `sessions/` file is still owed.
 - 21.6. **outcome** —— FIXED. Scratch is now Tier-A-visible but never Tier-B owed, so the probe still proves the wiring. Suite 112 → 115.
 - 21.7. Worth stating plainly: no SA found this and no test found it. It surfaced because the hook was actually wired and fired on real work within two minutes. That is the §8.5 lesson arriving as evidence rather than as a maxim.
+
+---
+*Reply to `ccsim_query_202608012325.md` begins.*
+---
+
+## 22. re 2 & 3 —— Both SLIPS, and No m2 Fix Warranted
+
+- 22.1. Verdict: slips, not structural gaps. Both rules ALREADY exist in `m2.md` and I did not follow them.
+- 22.2. re 2 —— "Crossing out if results contradict" covers it exactly. You told me you had fixed it, which contradicted my proposal, so §2.5 should have been struck. I instead noted it at §12.5, which is the very mislead you describe.
+- 22.3. re 3 —— "Appending sub-pts under existing pts each finding ANSWERS (default)" is the DEFAULT, and creating new pts is "only if necessary". §13 was not necessary; a sub-pt under §3 plus a pointer was.
+- 22.4. So the honest answer to "does this warrant a fix in `m2.md`" is NO for both, and I am refusing the token spend rather than performing a fix.
+- 22.5. Per CCSIM §8.7 this is the NOT-NOTICED class —— I did not see the rule at the moment of writing. Adding prose to a file whose prose was already skipped changes nothing whilst feeling like a fix.
+- 22.6. Nor is it mechanically catchable: no lint can tell that a new §13 answers an old §3. So I state plainly —— the miss stays possible, and the guard is that you catch it as you just did.
+
+## 23. re 11/12 —— Your Changes, and the One Line I Want Back
+
+- 23.1. Identified, four changes: you restored "Don't proceed further until the above two steps are delivered" and nested the "Delivered =" clarifier directly under it; you nested the whole block under the commit+push+declare bullet; you generalised "interim declaration" to "interim actions", which correctly covers the push too; and you DELETED my HOW line.
+- 23.2. The first three are all improvements. Putting the clarifier under the sentence that caused the ambiguity is better placement than mine.
+- 23.3. ⚠️ The deletion is the one I would argue with, because it removed the MECHANISM whilst keeping the intent.
+- 23.4. Intent alone does not survive the harness: chat text with no following tool call ENDS the turn, whatever CC intends. A CC that emits the declaration as its last content stops there even whilst believing it should not.
+- 23.5. That is why two different CCs hit this. Neither wanted to stop; both were ended by the harness.
+- 23.6. Proposed restoration, compressed to fit your budget —— one sub-bullet under "Delivered": "Emit it with your next tool call in ONE message —— text alone ends the turn."
+- 23.7. Cost measured, not estimated: `m2.md` is 346 tokens; that line is `~`17, i.e. `~`4.9%. Inside your 5% cap, but only just.
+- 23.8. So: still effective without it? Mostly —— but the failure it prevents is the exact one that has now happened twice. My recommendation is to take it. Your call.
+- 23.9. If you take it, the issue IS closed and nothing is owed from you.
+
+## 24. re 4 —— `ready.md` Assessed
+
+- 24.1. Your §3.1.6.1.2 ("no file changes → skip TEA1 only; TEA2 & TEA3 still needed") is effective and closes exactly the gap I flagged at §4.4. A read-only turn now has an unambiguous, complete answer.
+- 24.2. `#ready` is wired, though only implicitly —— nothing points at `ready.md`; it works purely through §7.3.1's general `#[trigger]` rule plus hlint. That is consistent with the other triggers, so I read it as intended rather than as an omission.
+- 24.3. ⚠️ One real gap: `ready.md` does not say whether CP session-start duties still run. CCSIM §2 mandates a mirror sync, an SSD check, and a stale-session sweep at every session start, and the mirror sync WRITES.
+- 24.4. That collides head-on with `ready.md` §4.3's "No actions exc. readings; do nothing else". A CCSIM `#ready` currently has two defensible readings.
+- 24.5. My recommendation —— let the CP session-start duties run. They are the reason a CCSIM session is safe to start at all, and the mirror sync is precisely the thing that must not wait a turn. One clause would settle it.
+- 24.6. Second, smaller gap: §1.4.3 says remind you "in 1st `response_`", but `ready.md` §2 forbids a `response_` this turn. So a monthly reminder falling on a `#ready` turn has nowhere to go and must defer.
+- 24.7. Otherwise gap-free. §3's "No chat text except TEA3" plus your new §3.1.6.1.2 together make the turn's ending unambiguous, which is what was missing when I skipped the marker.
+
+## 25. re 5 —— Directory Order: the Answer Is C
+
+- 25.1. Neither A nor B. The rule is not "1st directory" —— it is the PRIMARY working directory AND ITS ANCESTORS.
+- 25.2. Evidence from THIS session, not from memory: `GitHub/CLAUDE.md` was auto-injected alongside the root's. `GitHub/` is not a working directory at all —— it is the root's PARENT. Only an ancestor rule explains that.
+- 25.3. Second piece of evidence: `cp/ccsim/CLAUDE.md` was NOT auto-injected despite being an added directory. I read it with the Read tool. So an ADDED directory does not get its `CLAUDE.md` injected.
+- 25.4. Therefore, if you flip: `ccsim/` becomes primary, so `ccsim/CLAUDE.md` is injected as the cwd's own file, AND root c.md is injected as its ancestor, AND `GitHub/CLAUDE.md` too.
+- 25.5. So BOTH arrive automatically, nothing needs active reading, and consequently NEITHER is declared.
+- 25.6. Net effect of flipping —— it would SAVE the active read, not move it. That is a real if small gain, and the flip has no downside I can see.
+- 25.7. Caveat stated honestly: this is inference from two observed facts in one session, not a documented guarantee. If you flip it, the first session will confirm or refute it in one line.
+
+## 26. re 7 —— Agreed, With One Correction
+
+- 26.1. Agreed on expanding `dlint_quick.py` to ANY `.md` create/edit. Your CIIW is right —— nothing but code should be exempt from `--quick`, and the current `response_`/`close_`/`wrap_` scope is the arbitrary part.
+- 26.2. Agreed on the "does this warrant FULL?" reminder, including your extraction case (a file mixing internal notes with deliverable prose gets the deliverable part extracted and FULL-linted).
+- 26.3. ⚠️ The one correction: that reminder is an ADVISORY, and an advisory is the exact class of thing that already failed. §3.7.3 was clear, sat in a guaranteed-read file, and was still skipped.
+- 26.4. So §7 is a big coverage win but not an enforcement one. Something must still BLOCK, which is the whole of my answer to §14 below.
+- 26.5. Agreed on the Hart's rule change —— `."` always RED with no exemption, demoting to YELLOW past 5 occurrences so a legitimately quote-heavy file is not an unclearable wall. I will not argue the misfire case; your two-clicks reasoning settles it.
+
+## 27. re 14 & 21 —— elint Survives, but Shrinks to a Third of Itself
+
+- 27.1. **what** —— your §7 makes `dlint --quick` fire on every `.md`, which genuinely obsoletes TWO of elint's three tiers.
+- 27.2. **if-unfixed** —— keeping all three leaves three lints doing overlapping work, which is the messiness you are reacting to and a real maintenance tax.
+- 27.3. **pre-fix-question** —— none; you have already stated the direction.
+- 27.4. **risk-if-pushed** —— deleting elint entirely trades an enforced gate for a reminder, and returns us precisely to the `CHEATSHEET_Stage3` state.
+- 27.5. **outcome** —— FOLDING, not deleting. Tier A (advise at the deliverable's write) is now redundant, because your expanded `dlint_quick` fires on that same write with the same reminder. Tier C (Stop) reaches only you and duplicates what Tier B already blocked. Both go. Tier B survives and moves INTO the dlint family.
+- 27.6. Tier B is the irreducible part, and it is small: "a comms file is being written whilst a deliverable is still un-linted → block". It cannot be a reminder, because reminders are what failed.
+- 27.7. Net on your clutter concern, which I take seriously: the hook roster goes from 7 lints back to 6, and elint's two registrations collapse to zero —— its surviving logic rides inside `dlint_quick.py`, which you are already expanding.
+- 27.8. So §21's defect report stands as history, but the probe and its scratch exemption disappear with Tier A.
+- 27.9. Answering §20.2 whilst it is still live: with `cp/` no longer special-cased, your CV and dissertation files fall under `--quick` like everything else, so the opt-in-marker question dissolves. I will flag it again only if it survives.
+
+## 28. re 20.3 —— Debate Boards
+
+- 28.1. Agreed it is a real gap, and your instinct is the better fix.
+- 28.2. Rather than exempting the board format from linting, `debate.md` should tell debater SAs to comply in the first place —— then the board needs no exemption.
+- 28.3. Correcting your CIIW: it is not just §2. An SA is told to disregard root c.md entirely, so a pointer to "§2" would be read by an agent that has been instructed not to open that file.
+- 28.4. So the conventions the board needs must be RESTATED in `debate.md` itself, not cross-referenced. That is also `coding.md`'s self-contained rule.
+- 28.5. Scope: the em dash form, British English, `%` not "percent", and the quotation rule —— the four that actually bite in debate prose.
+
+## 29. re 6, 13, 16, 18, 20.1 —— Dispatched or Doing
+
+- 29.1. §6 —— an SA makes the stray-space defect mechanically impossible at creation and mechanically ALERTED on encounter, plus a second SA hunting existing offenders across `GitHub/`.
+- 29.2. §13 —— an SA recovers the description word/token mandate from the permanent files or comms; if genuinely absent it averages the existing entries and I will take your correction.
+- 29.3. §13 second part —— an SA writes the hook-runtime budget rule (worst-case concurrent firing, alert past 1 second) into `ccsim/` and then measures the existing hooks against it.
+- 29.4. §13.8 —— the Workflow gap in `alint` closes this turn, as instructed. It is the right call: I used a Workflow this very turn, so the hole is not theoretical.
+- 29.5. §20.1 —— running the push-classifier reproduction myself, now that Bypass mode clears it.
+- 29.6. §16 and §18 —— answered below after the sprint, not now, because half of it depends on what the SAs return.
+- 29.7. §16.9 —— enumerating the voided files, deleting them, and pushing them as their OWN commit so you can review that commit alone.
