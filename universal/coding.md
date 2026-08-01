@@ -2,10 +2,12 @@
 
 *Loaded when creating/editing any script/pcmd (root §7). Self-contained —— every rule carries its own rationale; no conversation/comms file explains or overrides anything here.*
 
-## Layout
+## Layout *(code/config only —— NEVER .md)*
 - If possible, keep each line ≤90chars
 - Otherwise (longer line), ensure no word-wrapping
 - Rationale: user's VSC already does that; CC naturally doesn't need that; net advantage = none
+- EXEMPTION, stated explicitly per § Prompted Components: ANY `.md` is governed SOLELY by § Markdown Hygiene below, never by this section —— a hard-wrapped .md is a defect at any line length
+- Why this bullet exists: added 202607, this section read as a positive instruction to wrap and sat 19 lines ABOVE § Markdown Hygiene's "NEVER hard word-wrap user-facing .md", with no cross-reference —— exactly the unstated conflict § Prompted Components calls a coin-flip at runtime, and it duly landed wrapped-side-up on nine files
 
 ## Issue Reporting Format
 - Report EVERY code problem/fix as one compact block: **what / if-unfixed / pre-fix-question / risk-if-pushed —— then outcome**
