@@ -18,9 +18,9 @@
   - 1.4.2. ONLY if §1.4.1 = no → Check last month's folder has a `wrap_` file
   - 1.4.3. ONLY if §1.4.2 = no → Remind user in 1st `response_`
 - 1.5. If user's 1st msg contains `ready`
-  - 1.5.1. Read Unconditionals as usual
-  - 1.5.2. No chat text except declarations (as always)
-  - 1.5.3. No `response_` for this turn (one-off)
+  - 1.5.1. Read Unconditionals of all working dirs
+  - 1.5.2. No `response_` for this turn (one-off)
+  - 1.5.3. No chat text except TEA3
 
 ---
 
