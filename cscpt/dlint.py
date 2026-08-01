@@ -47,11 +47,33 @@ WHAT: the deterministic prose linter for `universal/writing.md`.
 * POLISH NOTE: the word/spelling lists are seeded from `writing.md` + root
   `CLAUDE.md` and are NOT exhaustive —— on each polish, briefly web_search the
   latest GenAI/cliche terms (per `writing.md`) and extend GENAI_WORDS / PHRASES.
+* RECEIPTS: every FULL-mode FILE lint appends one line to
+  `cscpt/.dlint_receipts.jsonl` —— realpath, SHA-256 of the text as it stands
+  on disk AFTER the quote auto-fix, and the RED count. `cscpt/elint.py` reads
+  it to decide whether a deliverable has actually been linted, so a deliverable
+  drafted on Monday and delivered on Friday stays covered, and an edit AFTER a
+  clean lint correctly lapses the receipt because the hash moves. `--quick` and
+  `--text` write NOTHING, which is what makes a receipt's mere existence proof
+  that FULL mode ran. This file is the SOLE writer of that ledger (elint only
+  reads it), so no lock is needed; appends are line-atomic and pruning happens
+  here alone. It is best-effort throughout —— it can never raise, never change
+  an exit code, and never alter printed output.
 """
 
+import os
 import re
 import sys
+import json
+import time
+import hashlib
 from pathlib import Path
+
+# Receipt ledger —— anchored on THIS file's own location, never on cwd, so it
+# resolves identically from `elint.py` (which computes the same expression
+# from its own `__file__` in the same folder) and survives a repo move.
+RECEIPTS = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        ".dlint_receipts.jsonl")
+RECEIPT_MAX_LINES = 4000        # past this, the oldest half is dropped
 
 # =========================================================
 # QUOTE CONVERSION (inherited from gscpt/quote_fix.py)
@@ -428,6 +450,46 @@ def report(label, red, yellow, qnote):
     return len(red)
 
 
+def _write_receipt(path, text, red_count):
+    """Record that FULL mode linted EXACTLY this content, and with what
+    result. Read by `cscpt/elint.py`, which enforces root CLAUDE.md §3.7.3 on
+    deliverables no other lint covers (rationale: RECEIPTS in the CCSIM header).
+
+    Best-effort by contract: every failure is swallowed, because a linter that
+    dies over its own bookkeeping is worse than one with a gap in it. The RED
+    count is stored rather than a pass/fail flag so a lint that ENDED with RED
+    flags can never be mistaken for a clean one."""
+    try:
+        line = json.dumps({
+            "p": os.path.realpath(str(path)),
+            "h": hashlib.sha256(text.encode("utf-8", "replace")).hexdigest(),
+            "r": int(red_count),
+            "t": int(time.time()),
+        }, ensure_ascii=True)
+        with open(RECEIPTS, "a", encoding="utf-8") as fh:
+            fh.write(line + "\n")
+        _prune_receipts()
+    except Exception:                                           # noqa: BLE001
+        pass
+
+
+def _prune_receipts():
+    """Keep the ledger bounded. Safe without a lock because this module is its
+    ONLY writer; the rewrite is atomic via `os.replace`, so a concurrent
+    READER (elint) sees either the old file or the new one, never a partial."""
+    try:
+        with open(RECEIPTS, "r", encoding="utf-8", errors="replace") as fh:
+            lines = fh.readlines()
+        if len(lines) <= RECEIPT_MAX_LINES:
+            return
+        tmp = RECEIPTS + ".tmp%d" % os.getpid()
+        with open(tmp, "w", encoding="utf-8") as fh:
+            fh.writelines(lines[-(RECEIPT_MAX_LINES // 2):])
+        os.replace(tmp, RECEIPTS)
+    except Exception:                                           # noqa: BLE001
+        pass
+
+
 def lint_file(path: Path, quick=False):
     try:
         original = path.read_text(encoding="utf-8")
@@ -445,7 +507,14 @@ def lint_file(path: Path, quick=False):
             path.write_text(text, encoding="utf-8")
         qnote = f"Quotes: {qn} straight quote(s) converted in place." if qn else "Quotes: none to convert."
     red, yellow = run_checks(text, quick)
-    return report(path.name, red, yellow, qnote)
+    n_red = report(path.name, red, yellow, qnote)
+    if not quick:
+        # FULL mode only —— a receipt's existence is elint's proof that FULL
+        # mode ran, so --quick must never leave one. `text` is what is on disk
+        # (the auto-fix already wrote it if it differed), so the hash matches
+        # what elint will compute.
+        _write_receipt(path, text, n_red)
+    return n_red
 
 
 def lint_text(text, quick=False):

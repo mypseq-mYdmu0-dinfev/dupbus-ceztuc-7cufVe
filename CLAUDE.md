@@ -74,7 +74,7 @@
 ## 3. Comms
 
 - 3.1. All responses must be written to file(s); **NEVER EMIT CHAT PROSE**
-  - 3.1.1. IMPORTANT: Chat text is strictly restricted (§3.2), unless override (§9.1)
+  - 3.1.1. IMPORTANT: Chat text is strictly restricted (§3.2), unless override (see `glossary.md`)
   - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, EXCEPT in `.claude/`
   - 3.1.3. i.e. If a path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6.3)
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
@@ -206,7 +206,7 @@
 - 5.5. DON'T re-read/re-fetch anything (incl. CP's CLAUDE.md); root CLAUDE.md is already re-read via the PostCompact hook (as you're reading this)
 - 5.6. DON'T continue any task; await user's instruction
 - 5.7. The 2 lists in §5.3 & §5.4 shall advise user what to re-provide in current/new session
-- 5.8. If an `slog_*.md` sits amongst the 5 most-recently-modified files (`ls -t`, NOT a full listing per §9.2) of the current month's `sessions/` folder (where `response_` files go; CP-prefixed if CP), `#sprint` was in flight at compaction:
+- 5.8. If an `slog_*.md` sits amongst the 5 most-recently-modified files (`ls -t`, NOT a full listing per §9.01) of the current month's `sessions/` folder (where `response_` files go; CP-prefixed if CP), `#sprint` was in flight at compaction:
   - 5.8.1. If exactly 1 `slog_` found, that's it; follow §5.8.3
   - 5.8.2. If multiple, use the (compacted) context window + a selective content read to identify the right one to continue; follow §5.8.3
   - 5.8.3. Fully read the identified slog + sprint.md → carefully analyse to restore context → resume directly from its latest block, instead of §5.6's "await user's instr"

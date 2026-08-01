@@ -12,3 +12,28 @@ __pycache__/
 # never surface as an untracked change.
 cscpt/.clint.log
 cscpt/.clint.log.tmp*
+
+# elint runtime state —— local, machine-specific, never source.
+#   .dlint_receipts.jsonl : which files FULL dlint has linted, and at what
+#                           content hash. Written by dlint.py, read by
+#                           elint.py. Machine-local by nature (absolute
+#                           paths), and a stale copy from another machine
+#                           would silently vouch for a file never linted here.
+#   .elint.log            : per-invocation trace, so "the hook never fired"
+#                           stays distinguishable from "it fired and found
+#                           nothing" (cp/ccsim/hook_guide.md §7.7).
+#   .elint_state/         : per-session pending-deliverable markers.
+# The .tmp* siblings are atomic-rewrite staging files; a hard crash mid-prune
+# can leave one behind, and a stray temp must never surface as untracked.
+cscpt/.dlint_receipts.jsonl
+cscpt/.dlint_receipts.jsonl.tmp*
+cscpt/.elint.log
+cscpt/.elint.log.tmp*
+cscpt/.elint_state/
+
+# alint runtime log —— one line per invocation of the TEA1 in-flight gate, so
+# "the hook never fired" stays distinguishable from "it fired and found
+# nothing" (cp/ccsim/hook_guide.md §7.7). Local trace, never source; the .tmp*
+# sibling is the atomic-rewrite staging file a prune may leave behind.
+cscpt/.alint.log
+cscpt/.alint.log.tmp*

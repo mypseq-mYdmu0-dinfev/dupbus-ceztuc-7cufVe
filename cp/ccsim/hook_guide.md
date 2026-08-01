@@ -47,17 +47,23 @@
 | Event | Registered Command | Purpose |
 |---|---|---|
 | PreToolUse | `cscpt/DADC.py hook-capture` | Capture Date Added + Date Created before a write |
+| PreToolUse | `cscpt/alint_hook.sh` | TEA1 in-flight gate (BLOCKS a commit/push whilst an SA runs) |
+| PreToolUse | `cscpt/plint.py` | Protocol-read reminder before a write/read (advisory) |
 | PostToolUse | `cscpt/DADC.py hook-restore` | Restore Date Added + Date Created after a write |
 | PostToolUse | `cscpt/dlint_hook.sh` | Comms/deliverable prose lint (blocking on RED) |
 | PostToolUse | `cscpt/nlint_hook.sh` | Numbering-continuity lint (advisory) |
 | PostToolUse | `cscpt/tlint_hook.sh` | Timestamp-clash lint (warn-only) |
+| PostToolUse | `cscpt/elint_hook.sh` | Deliverable-escape gate (BLOCKS a comms write whilst a deliverable is un-linted) |
 | UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
+| Stop | `cscpt/elint.py stop` | Deliverable-escape audit net (exit 0 always; user-visible + logged) |
 | PostCompact | `.claude/post_compact.sh` | Inject the post-compaction protocol |
 
 - 3.1. Naming convention: a `*_hook.sh` IS the file the harness launches; the `.py` beside it is the lint body. Every `.sh` in `cscpt/` carries `_hook`, no `.py` does.
-- 3.2. Only the three PostToolUse lints have a `.sh` gate —— they fire on EVERY Edit/Write, so the shim spares a needless Python spawn.
-- 3.3. `clint.py` (Stop) and `hlint.py` (UserPromptSubmit) fire once per turn/prompt, so they are registered directly and correctly have no `.sh`.
+- 3.2. A lint gets a `.sh` gate exactly when its EVENT is high-frequency: the PostToolUse lints fire on every Edit/Write, and `alint` fires on every Bash call, so each shim spares a needless Python spawn on the overwhelmingly common irrelevant payload.
+- 3.3. `clint.py` (Stop) and `hlint.py` (UserPromptSubmit) fire once per turn/prompt, so they are registered directly and correctly have no `.sh`. `plint.py` fires on writes and reads without one —— it needs the payload parsed either way, so a shim would buy nothing.
+  - 3.3.1. `elint.py` is registered on TWO events and selects its tier from `argv` (`post` via `elint_hook.sh`, `stop` directly). `hook_event_name` is a fallback only, so NEVER drop the ` stop` argument when re-registering.
+  - 3.3.2. Its PostToolUse entry is deliberately LAST in that array: nothing in elint depends on the others, but `DADC.py hook-restore` has a filesystem side effect, and were the harness ever to short-circuit a chain on a non-zero exit, elint exiting 2 ahead of DADC would skip the Finder-date restore.
 - 3.4. Registration entry shape matters: an event's array holds `{"matcher": …, "hooks": [{"type":"command","command":…}]}` objects. A bare `{"type":"command", …}` placed directly in the event array is the wrong shape —— check it against the live file before trusting any hand-written entry.
 - 3.5. Matchers are TOOL-NAME only —— there is no path filter, which is precisely why each PostToolUse lint must do its own file-path check.
 
@@ -79,8 +85,10 @@
 
 | Lint | Reach | Rationale |
 |---|---|---|
+| alint | Repo-scoped | BLOCKS a commit/push; enforces this repo's own TEA ordering |
 | clint | Repo-scoped | Blocks a Stop; enforces this repo's bespoke no-chat-prose rule |
 | dlint | Repo-scoped | Blocks on RED; enforces this repo's prose/style guide |
+| elint | Repo-scoped | Blocks a comms write; enforces this repo's deliverable rule and its territory map |
 | nlint | Repo-scoped | Enforces this repo's numbering-continuity convention |
 | hlint | GLOBAL | Advisory-only; a missed `#trigger` has already cost real work elsewhere |
 | tlint | GLOBAL | Warn-only, always exit 0; a missed TS clash is silent and expensive |
@@ -113,6 +121,10 @@
 | `last_assistant_message` | Stop | Convenience copy of the turn's final text |
 
 - 5.6. `tool_response.filePath` mirrors `tool_input.file_path`, but prefer `tool_input` —— it is present on every tool variant.
+- 5.6.1. SUB-AGENT vs MAIN AGENT (PreToolUse, live-captured across 8 real payloads from two concurrent SAs and the main agent): a SUB-agent's payload carries `agent_id` and `agent_type`; the main agent's carries neither. That pair is the ONLY reliable discriminator.
+- 5.6.2. It is NOT the transcript path, however plausible that looks. A sub-agent's transcript RECORDS do live in `<session>/subagents/agent-<id>.jsonl` and never appear in the main session file —— yet its PAYLOAD still hands over the MAIN session `transcript_path`. Anything scoping on the path alone will read every sub-agent as the main agent.
+- 5.6.3. AGENT DISPATCH IS NOT AGENT COMPLETION, and this trap sinks the obvious design for anything that waits on an SA. The Agent tool's `tool_result` lands within ~200ms of the call saying `toolUseResult.status: "async_launched"` —— it is an ACK. Completion arrives later and separately, as a `<task-notification>` carrying `<task-id>` and `<status>` (completed | killed | failed). Measured across 368 historical dispatches: every one acked instantly; 363 later notified.
+- 5.6.4. That notification appears in THREE record shapes (`attachment`, `queue-operation`, `user` —— 233/431/270 historically), so match the RAW `<task-notification>` substring, never one named field. A dispatched agent is identified by `toolUseResult.isAsync` + `agentId`; background bash (`backgroundTaskId`) and workflows (`taskId` + `taskType`) are different shapes and must not be confused with it. `cscpt/alint.py` is the worked implementation.
 - 5.7. Never assume a key exists. Every lint must parse defensively and exit 0 on any missing field.
 - 5.8. Payload shapes are harness-owned and can change without notice —— re-verify from a captured payload rather than from memory of this table.
 
@@ -163,7 +175,10 @@
 | Event | Live Test | Alive Looks Like |
 |---|---|---|
 | PostToolUse | Edit the probe file (§7.2) | Edit blocked, RED report returned |
+| PostToolUse | Edit `cp/ccsim/sandbox/elint_probe_deliverable.md` | An `[elint]` advisory naming that file in context; a new `post:advise` line in `cscpt/.elint.log` |
+| PreToolUse | Run `echo ALINT_PROBE` through the Bash tool | An `alint` ALIVE note comes back; a new `action=probe` line in `cscpt/.alint.log` |
 | Stop | End a turn, then check `cscpt/.clint.log` | A new line appended for that turn |
+| Stop | End a turn, then check `cscpt/.elint.log` | A new `stop:` line for that turn |
 | UserPromptSubmit | Submit a prompt containing a real `#trigger` | Reminder line appears in context |
 | PostCompact | Occurs naturally on compaction | The `🚨` banner is injected |
 
@@ -201,6 +216,10 @@ for ev,groups in d.items():
   - 7.8.1. Run the resolvability audit (§7.6) —— the cheapest guard against §8.6.2, and the check whose absence lets a renamed lint sit dead and unnoticed.
   - 7.8.2. Re-run the live probe (§7.2). A passing unit test is not a substitute.
   - 7.8.3. Do both in the SAME turn as the change —— a wiring break has no diff and no error message, so it will not resurface on its own.
+- 7.9. ⚠️ A REGISTRATION CHANGE TAKES MINUTES TO GO LIVE, so an early probe LIES. Measured: a newly-added entry did not fire when tested twice within a few minutes, then fired unaided ~15 minutes later, in the SAME session, whilst every other hook ran normally throughout.
+  - 7.9.1. The app therefore DOES re-read `~/.claude/settings.json` without a restart —— it is simply not prompt about it. Nothing here needs an app restart to take effect; it needs patience.
+  - 7.9.2. Consequence for §8's failure signature: "the new hook did not fire" is NOT evidence of dead wiring until the delay has passed. Retest before concluding, or a correct registration gets "fixed" into a broken one.
+  - 7.9.3. Consequence for a REMOVAL: the stale registration keeps running for those same minutes, which is why §8.6.2's delete-order rule exists.
 
 ---
 
@@ -215,7 +234,7 @@ for ev,groups in d.items():
 - 8.5. The combination of 8.1–8.4 is diagnostic: the scripts are fine and the WIRING is dead. Go straight to `~/.claude/settings.json`.
 - 8.6. Near-miss variants that produce the same silence:
   - 8.6.1. Hooks registered project-level (§1) —— the original defect.
-  - 8.6.2. A registered path that no longer exists after a rename or move —— the command exits 127 and the harness carries on silently.
+  - 8.6.2. A registered path that no longer exists after a rename or move. NOT always silent, and the difference matters: at PostToolUse the command fails and the harness carries on, but at PreToolUse the harness reports a hook error and BLOCKS the tool call. Observed live —— deleting a still-registered script made every Bash call fail until the file was put back. So delete the FILE only after the live settings stop naming it, never the other way round.
   - 8.6.3. An absolute path stale after the repo was relocated.
   - 8.6.4. A wrongly-shaped registration entry (§3.4).
   - 8.6.5. A scope guard that fails CLOSED on an unreadable payload —— never write one.
@@ -234,6 +253,7 @@ for ev,groups in d.items():
   - 9.3.4. Confirm each command resolves (§7.6) —— no exit 127.
   - 9.3.5. Run the live probe (§7.2); a blocked edit is the acceptance criterion.
   - 9.3.6. Run `cp/ccsim/sandbox/repo_scope_guard_regression_test.py` to confirm the scope guards still behave (in-scope, out-of-scope, and fail-open branches).
+  - 9.3.7. Run `cp/ccsim/sandbox/alint_regression_test.py` —— it pins the TEA1 gate, which is the only hook here that can block a COMMIT, so a silent break there is felt as either a lost turn-end discipline or an unexplainably stuck repo.
 - 9.4. Keep the reference file in step with the live file whenever a hook is added, renamed, or re-pointed —— a stale reference is a recovery that silently restores dead wiring.
 - 9.5. The reference file is documentation, so it may legitimately run AHEAD of the live file during a change; whichever is ahead, close the gap before the turn ends.
 
