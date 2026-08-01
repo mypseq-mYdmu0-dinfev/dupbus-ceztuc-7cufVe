@@ -277,7 +277,7 @@
   - 8.3.4. `CP_instr.md`: for OTG only
 - 8.4. Filename suffix usually indicates variant; e.g. `CP_index_cc.md` = for CC (you)
 - 8.5. When accessing ANY folder, you MUST ACTIVELY scan for existence of:
-  - 8.5.1. `README.md` —— read it (BEFORE its CLAUDE.md); alert if contradicting user instr
+  - 8.5.1. `README.md` —— read it (BEFORE its CLAUDE.md); alert if contradicting user instr; ditto for any ANCESTOR folder's README, up to repo root
   - 8.5.2. `CP_index_cc.md` —— indicates CP (follow §6)
 - 8.6. Config dir (`~/.claude` → `/Volumes/FURY 2TB/.claude/`):
   - 8.6.1. Non-CCSIM sessions AVOID (not banned) touching it, EXCEPT memory (§8.6.3)
@@ -334,3 +334,4 @@
 - 9.05. `/loop` or timed wakes:
   - 9.05.1. Use persistent Monitor sleep-loop (event line per interval, self-end on completion)
   - 9.05.2. NEVER CronCreate, which fires only on an idle REPL, so busy sessions starve it silently 
+- 9.06. NEVER use `SendUserFile` (file-attachment cards)
