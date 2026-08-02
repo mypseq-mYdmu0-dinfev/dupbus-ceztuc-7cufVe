@@ -77,13 +77,16 @@
   - 3.1.5. Urgent Declarations (for §3.2.4–5): fired instantly at any time, unlike §3.1.6.3
   - 3.1.6. After ALL tasks' completion (ensuring no SAs in-flight), do **Turn-End Actions** (TEAs):
     - 3.1.6.1. TEA1 —— Commit & Push (**right before** TEA2):
-      - 3.1.6.1.1. Commit Name = `[CP_name]: [≤8w_summary]`; Scope = all touched repo(s)
+      - 3.1.6.1.1. Commit Specs:
+        - 3.1.6.1.1.1. Summary = `[CP_name]: [≤8w_summary]`
+        - 3.1.6.1.1.2. Description = optional; concise if writing
+        - 3.1.6.1.1.3. Scope = all touched file(s) in all touched repo(s)
       - 3.1.6.1.2. If no file changes → skip TEA1 only; TEA2 & TEA3 still needed
       - 3.1.6.1.3. If ONLY this turn's CC changes (± this turn's `query_`) → commit + push
       - 3.1.6.1.4. Ditto + user changes on OTHER files → commit + push CC-touched files only
       - 3.1.6.1.5. User changes on CC-touched files (rare):
         - 3.1.6.1.5.1. DON'T commit/push
-        - 3.1.6.1.5.2. Alert in chat (override)
+        - 3.1.6.1.5.2. Alert in chat as a blocker (§3.2.4)
         - 3.1.6.1.5.3. Advise user NOT to save his manual works (risks clashing/corrupting the file)
       - 3.1.6.1.6. ONE commit per turn (per touched repo): avoid interim commit(s), UNLESS nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
     - 3.1.6.2. TEA2 —— Mark a chapter (**right before** TEA3):
