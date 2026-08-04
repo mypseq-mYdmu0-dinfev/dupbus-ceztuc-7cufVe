@@ -646,6 +646,14 @@ eSignature signed
 
 Sebastian Hall (sebastian@alltech.co) has completed the eSignature request on this document
 
+### 7.34. User Text
+
+At 202608050337:
+
+Hello Elena, thank you again for sending everything through. I really appreciate your prep and Seb having already signed that. Given how substantial the 5 documents are (I'm still digesting), would it be possible for us to extend a few days past 5 August (say this Friday) so I can review them properly?
+
+Separately, since the Contract references meeting agreed targets, could you please let me know roughly when the onboarding or Rocks plan will be shared? Could be a rough draft so I may feel the scope of changes. If convenient to you, would you mind sending that through email? Thank you!
+
 ---
 
 ## 8. Interviews
