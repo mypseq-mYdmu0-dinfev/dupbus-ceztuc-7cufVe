@@ -580,6 +580,72 @@ Sebastian Hall
 At 202607291742:
 Hello Elena, just a heads up I've already answered "Yes" to your calendar event. Once again thanks for the opportunity. Can't wait to see you & Seb on 31 July (Friday) at 10am. Enjoy the evening!
 
+### 7.30. Employer Email on Handbook
+
+*Email Title: eSignature request for "Culous - Employee Handbook - 03/08/2026, 21:28"*
+
+On 3 Aug 2026, at 21:30, Elena Mel (via Google Workspace eSignatures) <esignature-noreply@google.com> wrote:
+
+New eSignature request
+
+Elena Mel (elena@alltech.co) has requested your eSignature on a document
+
+### 7.31. Employer Email on Contract
+
+*Email Title: eSignature request for "Culous - Part Time (Award) Employment Contract.docx - 03/08/2026, 20:47"*
+
+On 3 Aug 2026, at 21:30, Elena Mel (via Google Workspace eSignatures) <esignature-noreply@google.com> wrote:
+
+New eSignature request
+
+Elena Mel (elena@alltech.co) has requested your eSignature on a document
+
+### 7.32. Employer Email on Congratulations
+
+*Email Title: Congratulations On Your New Role! Marketing & Growth Coordinator*
+
+On 3 Aug 2026, at 21:31, Elena Mel <elena@alltech.co> wrote:
+
+Hi Culous,
+
+🎉 Congratulations! 🎉 
+
+We're excited and delighted to hear that you've accepted the role.
+Now comes the slightly less exciting (but very important) part… paperwork 😅
+
+You’ll find here:
+• Letter of Offer
+• Alltech Benefits & Perks
+• Fair Work Information Statement
+
+I've also requested e-signatures in separate emails for the Employment Contract and Employee Handbook. 
+
+Please return a signed copy of the Employment Contract and Employee Handbook (at the end of each document). That will make everything beautifully official.
+
+As mentioned in the Offer Letter please have these back to me before 5th August 2026.
+
+I will share with you the EOS Role Blueprint for your role and your Onboarding Plan with you during your onboarding to review.
+
+If you have any questions at all - big, small, or “this might be silly but…” - please just reach out. I’m always happy to chat. My details are in my signature below if you don't already have them.
+
+Elena Melnykova
+Director of Business Operations
+Alltech
+elena@alltech.co
+
+<Fair-Work-Information-Statement.docx> <Alltech_AV_Employee_Benefits_and_Perks.docx> <Letter Of Offer - Culous Yu - Marketing & Growth Coordinator.pdf>
+[INTERNAL: alongside the 2 files from §7.30/§7.31, all saved & converted to .md at '/Volumes/FURY 2TB/IYM/Private/Profession/Credential/Work/Alltech AV/MD']
+
+### 7.33. CEO Signature Notification Email
+
+*Email Title: eSignature request for "Culous - Part Time (Award) Employment Contract.docx - 03/08/2026, 20:47"*
+
+On 3 Aug 2026, at 22:11, Sebastian Hall (via Google Workspace eSignatures) <esignature-noreply@google.com> wrote:
+
+eSignature signed
+
+Sebastian Hall (sebastian@alltech.co) has completed the eSignature request on this document
+
 ---
 
 ## 8. Interviews
