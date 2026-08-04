@@ -1137,339 +1137,339 @@ format e.g.:
 
 #### 8.8.2. Transcript
 
-**Seb**: Hi, how are you man? I think Elena is just at the coffee shop.
-**User**: Oh, okay.
-**Seb**: How have you been? 
-**User**: Yeah, I've been around for like an hour. Just walking around. 
-**Seb**: Have you seen the warehouse? 
-**User**: I saw it, I just had a peek just now.
-**Seb**: I'll give you a tour. This is the pantry...
-**User**: I've just been in there, like half an hour ago.
-**Seb**: You know this space already.
-**User**: No, no, no. I kind of got lost when I got out of the toilet.
-**Seb**: Do you know much background about the business?
-**User**: I know, I know. I saw the website, the materials Elena gave me and everything. But, you know, not really that much.
-**Seb**: Yeah, yeah, yeah. ... So, we're currently mid-prep for a few big jobs over the next couple of weeks. We've got a big thing going into the hall that we've been in this weekend. And then next week we're working with an EV car brand. It's called Geely.
-**User**: Yeah, I know that. Chinese brand, right?
-**Seb**: Yeah, so we're doing an EX2 launch for Australia next week.
-**User**: Wow. For the whole Australia? Or just Sydney?
-**Seb**: All of Australia, yeah.
-**User**: That's cool. ... Is this warehouse, like, kind of shared with the NW Group? [INTERNAL: Despite Alltech has the address Unit Q, user found upon arrival that the building reads NW Group; Elena told by text that Alltech is just next door within the same building; at this moment, user realised the warehouse of Alltech is actually through to that of NW Group, with just some scaffolding separating instead of a concrete wall; implication: Alltech & NW Group are close]
-**Seb**: Yeah, correct. So, they used to have the whole space. But then they downsized. And moved a lot of their stuff from Sydney over to, I think, Brisbane and Melbourne. Because cost of doing business in Sydney is fucking expensive.
-**User**: Yeah, I know. Really.
-**Seb**: And then, yeah, we do a lot of work with Norwest. So, we do a lot of LED screen...
-**User**: Norwood?
-**Seb**: Norwest.
-**User**: Okay, Norwest. That's the full name? The NW Group? 
-**Seb**: NW Group is built up of a whole bunch of different companies. But it's Norwest Productions, Oceana, Spyglass and Acom. So they...
-**User**: What do they actually do? [INTERNAL: deliberately cut through to show interest]
-**Seb**: They're like large-scale production.
-**User**: Oh... {admire}
-**Seb**: Like, full turkey service. But they mainly do, like, big audio. Like, for festivals and stuff.
-**User**: Okay.
-**Seb**: But they do everything. They're a full production company. Similar to us.
-**User**: Do we collaborate? [INTERNAL: "we" = Alltech; deliberately used "we" to show intimacy]
-**Seb**: Yeah, all the time.
-**User**: Oh, cool.
-**Seb**: Yeah, so we do a lot of their LED screen work. Because they don't have LED screens, but we do. 
-**User**: So they focus on audio. I see.
-**Seb**: Correct, yeah. And then, the good thing with audio is it's all the same brand. So, we work quite well. [INTERNAL: possibly meaning Alltech & NW Group both use same brand so they can mix & match or something]
-**User**: What brand is that?
-**Seb**: Electrusics. Yeah, all French. All French made, yeah. Good stuff.
-**User**: Hi!
-**Elena**: Hello.
-**User**: How are you?
-**Seb**: Good, how are you?
-**Seb**: I was like ... you're not here. So, I thought I'd give him the tour in the interim.
-**Elena**: Nice.
-**User**: Is that from the cafe? Sal's Place?
-**Elena**: Yeah.
-**User**: I like their logo. It looks cute.
-**Seb**: He's a nice guy. Yeah, we do a lot of collaboration with them [INTERNAL: talking about NW Group again], which is good. And that's why we decided to move in here. [INTERNAL: important point, this shows how close Alltech & NW Group are]
-**Elena**: Norwest?
-**Seb**: Yeah, while we're here. He was just asking about sharing the space. But yes, we're very friendly with them. We're always in and out of their office and they are with us as well. They're asking us for shit, we're asking them for shit.
-**User**: That's great. {laughters} That's great. I truly appreciate that. Like the long-term partner client thing.
-**Seb**: They're definitely a good client to us as well. We do a lot of things with them. And then we've just recently sent a whole bunch of equipment up to their Brisbane office. On a proper chair agreement, so we do long-term rentals. And then we do some big gigs. We've got some tours at the end of the year with them on a cruise ship. We do some cool stuff.
-**User**: How long have we been here? [INTERNAL: again, "we" = Alltech; deliberately say again in front of Elena]
-**Seb**: Just over a year now. In Rydalmere.
-**User**: So they literally just downsized a year ago?
-**Seb**: Yeah. They were like, we don't need this space. It's costing so much money. The whole building is something ridiculous. Like 1 or 1.2 million dollars a year in rent.
-**User**: Oh, they rented it? So they don't actually own the place?
-**Seb**: No way. Buying an establishment or a complex like this would be like 70, 80 million dollars. Easy. Big money. Yeah. When we looked into it, I was like, I'd love to buy a warehouse. And when I looked into the financials, I was like, I'll be saving for the next 400 years. {all laughters}
-**User**: Wow.
-**Seb**: So expensive.
-**User**: That's how it is.
-**Seb**: But yeah, it's an organised mess at the moment.
-**User**: Organised mess. Haha, I like how you put it.
-**Seb**: Yeah. There's a lot of shit though that's happening. Especially this week, that's why there's so much going on.
-**Elena**: Some many big jobs coming up.
-**Seb**: Great.
+- **Seb**: Hi, how are you man? I think Elena is just at the coffee shop.
+- **User**: Oh, okay.
+- **Seb**: How have you been? 
+- **User**: Yeah, I've been around for like an hour. Just walking around. 
+- **Seb**: Have you seen the warehouse? 
+- **User**: I saw it, I just had a peek just now.
+- **Seb**: I'll give you a tour. This is the pantry...
+- **User**: I've just been in there, like half an hour ago.
+- **Seb**: You know this space already.
+- **User**: No, no, no. I kind of got lost when I got out of the toilet.
+- **Seb**: Do you know much background about the business?
+- **User**: I know, I know. I saw the website, the materials Elena gave me and everything. But, you know, not really that much.
+- **Seb**: Yeah, yeah, yeah. ... So, we're currently mid-prep for a few big jobs over the next couple of weeks. We've got a big thing going into the hall that we've been in this weekend. And then next week we're working with an EV car brand. It's called Geely.
+- **User**: Yeah, I know that. Chinese brand, right?
+- **Seb**: Yeah, so we're doing an EX2 launch for Australia next week.
+- **User**: Wow. For the whole Australia? Or just Sydney?
+- **Seb**: All of Australia, yeah.
+- **User**: That's cool. ... Is this warehouse, like, kind of shared with the NW Group? [INTERNAL: Despite Alltech has the address Unit Q, user found upon arrival that the building reads NW Group; Elena told by text that Alltech is just next door within the same building; at this moment, user realised the warehouse of Alltech is actually through to that of NW Group, with just some scaffolding separating instead of a concrete wall; implication: Alltech & NW Group are close]
+- **Seb**: Yeah, correct. So, they used to have the whole space. But then they downsized. And moved a lot of their stuff from Sydney over to, I think, Brisbane and Melbourne. Because cost of doing business in Sydney is fucking expensive.
+- **User**: Yeah, I know. Really.
+- **Seb**: And then, yeah, we do a lot of work with Norwest. So, we do a lot of LED screen...
+- **User**: Norwood?
+- **Seb**: Norwest.
+- **User**: Okay, Norwest. That's the full name? The NW Group? 
+- **Seb**: NW Group is built up of a whole bunch of different companies. But it's Norwest Productions, Oceana, Spyglass and Acom. So they...
+- **User**: What do they actually do? [INTERNAL: deliberately cut through to show interest]
+- **Seb**: They're like large-scale production.
+- **User**: Oh... {admire}
+- **Seb**: Like, full turkey service. But they mainly do, like, big audio. Like, for festivals and stuff.
+- **User**: Okay.
+- **Seb**: But they do everything. They're a full production company. Similar to us.
+- **User**: Do we collaborate? [INTERNAL: "we" = Alltech; deliberately used "we" to show intimacy]
+- **Seb**: Yeah, all the time.
+- **User**: Oh, cool.
+- **Seb**: Yeah, so we do a lot of their LED screen work. Because they don't have LED screens, but we do. 
+- **User**: So they focus on audio. I see.
+- **Seb**: Correct, yeah. And then, the good thing with audio is it's all the same brand. So, we work quite well. [INTERNAL: possibly meaning Alltech & NW Group both use same brand so they can mix & match or something]
+- **User**: What brand is that?
+- **Seb**: Electrusics. Yeah, all French. All French made, yeah. Good stuff.
+- **User**: Hi!
+- **Elena**: Hello.
+- **User**: How are you?
+- **Seb**: Good, how are you?
+- **Seb**: I was like ... you're not here. So, I thought I'd give him the tour in the interim.
+- **Elena**: Nice.
+- **User**: Is that from the cafe? Sal's Place?
+- **Elena**: Yeah.
+- **User**: I like their logo. It looks cute.
+- **Seb**: He's a nice guy. Yeah, we do a lot of collaboration with them [INTERNAL: talking about NW Group again], which is good. And that's why we decided to move in here. [INTERNAL: important point, this shows how close Alltech & NW Group are]
+- **Elena**: Norwest?
+- **Seb**: Yeah, while we're here. He was just asking about sharing the space. But yes, we're very friendly with them. We're always in and out of their office and they are with us as well. They're asking us for shit, we're asking them for shit.
+- **User**: That's great. {laughters} That's great. I truly appreciate that. Like the long-term partner client thing.
+- **Seb**: They're definitely a good client to us as well. We do a lot of things with them. And then we've just recently sent a whole bunch of equipment up to their Brisbane office. On a proper chair agreement, so we do long-term rentals. And then we do some big gigs. We've got some tours at the end of the year with them on a cruise ship. We do some cool stuff.
+- **User**: How long have we been here? [INTERNAL: again, "we" = Alltech; deliberately say again in front of Elena]
+- **Seb**: Just over a year now. In Rydalmere.
+- **User**: So they literally just downsized a year ago?
+- **Seb**: Yeah. They were like, we don't need this space. It's costing so much money. The whole building is something ridiculous. Like 1 or 1.2 million dollars a year in rent.
+- **User**: Oh, they rented it? So they don't actually own the place?
+- **Seb**: No way. Buying an establishment or a complex like this would be like 70, 80 million dollars. Easy. Big money. Yeah. When we looked into it, I was like, I'd love to buy a warehouse. And when I looked into the financials, I was like, I'll be saving for the next 400 years. {all laughters}
+- **User**: Wow.
+- **Seb**: So expensive.
+- **User**: That's how it is.
+- **Seb**: But yeah, it's an organised mess at the moment.
+- **User**: Organised mess. Haha, I like how you put it.
+- **Seb**: Yeah. There's a lot of shit though that's happening. Especially this week, that's why there's so much going on.
+- **Elena**: Some many big jobs coming up.
+- **Seb**: Great.
 {Everyone moved into office then the meeting room}
-**Elena**: I'll just go get my laptop.
-**Seb**: Do you live locally?
-**User**: Yeah, near Parramatta.
-**Seb**: Oh.
-**User**: Probably just 12 minutes to be here.
-**Seb**: Very close.
-**User**: Yeah. I literally just sent my wife to Meadowbank for the ... you know, maintenance. {laughters} [INTERNAL: meaning facial treatment, etc.] Those kind of things.
-**Seb**: Haha... Yeah, then it went for a day and ...
-**User**: Yeah, exactly. Just nearby, Meadowbank. You know, five minutes away.
+- **Elena**: I'll just go get my laptop.
+- **Seb**: Do you live locally?
+- **User**: Yeah, near Parramatta.
+- **Seb**: Oh.
+- **User**: Probably just 12 minutes to be here.
+- **Seb**: Very close.
+- **User**: Yeah. I literally just sent my wife to Meadowbank for the ... you know, maintenance. {laughters} [INTERNAL: meaning facial treatment, etc.] Those kind of things.
+- **Seb**: Haha... Yeah, then it went for a day and ...
+- **User**: Yeah, exactly. Just nearby, Meadowbank. You know, five minutes away.
 {Elena comes in}
-**Elena**: This is the one time I've come into this office and then realised that it's actually toasty.
-**Seb**: It is very cold today.
-**User**: Yeah, it's like 5 this morning when I woke up. or 6 or 7. [INTERNAL: degree celsius]
-**Seb**: My coffee is sometimes really good and then my coffee is sometimes not very good.
-**User**: I don't have a very high bar for coffee. {laughters}
-**Seb**: Oh, I don't either.
-**Elena**: This is the place that is right next to us, like literally a two minute walk from where we live. They have such good coffee that they've spoilt us now.
-**Seb**: Yeah, we're privileged.
-**User**: I'm kind of just used to the instant coffee thing. Just pour hot water and that's it. I'm good with anything.
-**Seb**: I used to be used to that. That morning ritual. And then I realised I just kept adding more and more, like spoons of coffee. I think it was like four or five heaps of coffee. {laughters}
-**Elena**: So, obviously, this is mainly for Seb to meet you and get to know you. I think you've done really well on the assessment.
-**User**: Thank you.
-**Elena**: And I already caught you off as to the reason we went with another candidate. Originally. So sorry. Something in my throat. But I guess first things first is you've had a pretty big career. I think the main question on Seb's mind would be, like, with so many different projects, so many different clients, like advisory board seats, all the masters you finished on paper, you're obviously very overqualified.
-**User**: On paper. {everyone laughters} On paper. Leave it.
-**Elena**: So I guess help explain to Seb, like, why this role? Why now? Why us?
-**User**: I've actually, you know, the evening or the afternoon that you called me, I actually did a kind of analysis or self-reflection as in why Alltech is the best opportunity alongside other opportunities that I was, you know, I was granted, because of the resilience against AI. Not gonna lie, the other offers I got were marketing roles, but mostly for... well, one is like property firm, like realty. One is like another brand, consumer brand, but I... first I don't like B2C, so that consumer brand was gone. And then for realty, I don't think it's resilient. Not even AI. Realty itself is, let's just put it this way. I'm very bearish on realty, because I do think housing is a staple, right? It's like a necessity of human beings. So sooner or later, it's gonna drop. So I'm not very, you know, bullish on that market. But that kinda explains why I did not choose those two offers. But the reason why I chose Alltech, or this industry, and the positioning of Alltech is very resilient, not just against the economy, but also against AI. Everyone's talking about how AI is gonna replace everyone. But Alltech has a very special positioning versus the industry. The event space is very... How should I put it? It's messy. {all laughters} It's hard to be automated, right? So it will be... Because I just happened to do an IT master last year, so I know programming, those kind of things. And if you ask me to programme an AI or a robot to do event stuff, it will be a hell, right? You know, every event is a different story, different audience. Everything is different. It's not a process. It's never a process. So not like manufacturing, legal, accounting, those kind of things. It's always a project.
-**Seb**: The biggest thing I've had explaining to other people... They're like... "Oh, it should be so easy. It's the same thing. It's rinse and repeat." I'm like, there is no such thing as rinse and repeat in my game. Every single person wants the same thing, but in a different way. They want it done to their particular standards or they want their touch on it. There is never the same thing ever. So it always has to be an open-minded approach or a creative approach, which is exhausting.
-**User**: Yeah, yeah. But I enjoy it. I myself, I did some events before. I think the biggest one I did is for Ferrari. Ferrari Superfast 812. That was 11 years ago. But I enjoyed it. But that's not the only one, but that's the one I'm most proud of. Although I'm not a fan. I'm not a fan. {laughters} But that is to say, I do believe in event production or event management, event planning, or however you put it, there's always something to learn. And always, you know, every day is a learning opportunity. And this is why it's extremely hard to be programmed for automation, unlike other businesses like manufacturing and accounting, as I said. So the way I see it is this industry itself is very resilient. And why Alltech is especially resilient? It's about the positioning. Because, you know, obviously the whole warehouse of equipment is not easy for a new entrant to just, you know, sign up a company and compete in the game, right? So that's an entirely different story. Because I came from a consulting background. Basically, anyone, if you feel like you're talented, you can just register a company and go doing... you know, open the doors to clients and do a quote, whatever. But for event production, you can't do that. So it's very... How should I put it? It's a market that is quite hard to enter. But once you entered it, it's kind of a moat, you know, not everyone can compete. You can't just overnight create a company and say we're doing that. It's not possible. So these are some of the reasons. I got more in my notes. I can't remember everything. {laughters} But these are the key reasons why I'm a... By the way, I didn't do that with AI at all. I just, you know, I just think about myself and kind of debate with myself why this opportunity is so particularly... you know, that I should cherish. So that's pretty much it.
-**Elena**: Cool. Do you have any specific questions that you want to ask?
-**Seb**: On the AI front. Obviously, like a part of what we're looking at doing now is using HubSpot and AI and building agents and everything to assist with the backend workload. Is that something that, obviously, like you said, if there's a challenge, especially for a company like ours, is that challenge something that you seek out because you want to do it because it is like a rewarding challenge as well? If you think it's like creative, would you actually see that being a challenge for what we're trying to do? I don't know how much Elena told you about what we're doing exactly, so I don't understand that context. But is that like a good challenge to you or do you think that it will be a genuine challenge?
-**User**: It's a very good challenge for me. As I put it, the event space is highly, you know, variable. Or, shall I put it, it's very messy. So it's very hard to programme everything. And this is the challenge. So the way I see it, this job is like making the impossible possible. So that's what fascinates me. And I do enjoy, you know. I just will put it as, you know, prompt engineering, context engineering, those kinds of things, but it's quite programming. Everything is programming. So I do enjoy programming all these kind of things to not work against us but work for our goal. That can streamline everything and facilitate the work, make it easier for the possibly two-person team [INTERNAL: meaning Elena & User] to, like, make it competent with the larger size teams. So that's what fascinates me.
-**Elena**: How experienced are you with Claude?
-**User**: I was in the beta. So I was using Claude since day one.
-**Elena**: Oh. Okay. {seems very surprised & impressed}
-**User**: So, yeah. Because I... how should I put it? My last company, Karma Effect, was a consulting firm. So obviously, basically we just sell answers. So our whole business... {everyone laughters} was kind of superseded by AI because, you know, obviously, ChatGPT, back in the day, it was like 3.5. It didn't actually beat us, but it's free, right? So back in the day, it was free. So people, you know, they just asked what they were trying to ask us, and ChatGPT could provide the answer, although most of them are wrong, but, you know, it's free. So that kind of threatened me. I see the disadvantage of AI, but I also see the potential of AI and how it could, you know, basically destroy humanity. {everyone laughters} I was trying to pull out how to use AI in a smart way or in a wise way. So it's about the accuracy of things. So when Claude came out, it becomes... To me, it's a very different model. It's not, well, if you still remember, when it first came out, it can't even browse the web. So it's all internal knowledge, or we call it... I forgot the term. [INTERNAL: User was trying to talk about RAG] Basically, you give it a database of knowledge, and Claude can look it up, back in the days. But now... I forgot the exact term, like the abbreviation. Anyway, so, yeah, so that's what drew my attention to Claude, and I kinda paid it since day one after the beta usage. Actually my brother brought me in. So he got a beta of it. That's why I got invited to use Claude since day one. I think that was like early 2023. And I kept trying different models and stuff, but after 3 years, I'm still using Claude. So I think it's safe to say...
-**Elena**: Do you use Claude Code?
-**User**: I use Claude Code all the time. There is a time I try to use between Claude Chat, Claude Cowork, and Claude Code. I call it CC. And then at the end, I found out I basically just use CC for everything. And currently, I'm at the harness engineering stage. So I've made it give me no prose at all. Okay, by the way, I never send an actual message to Claude Code anymore. I send a file. I send a whole prompt. So I just... because it's local. So it can access any files on my Mac. So I just send the file name, and that's my prompt. And Claude sends me back a file name. That's the response. There is nothing in the chat record at all. So that's how I made it. So it's extremely efficient. So that's why currently I'm using the Max 5x plan. So it's highly efficient in my own way. So yeah, but anyway, in conclusion, I'm very confident with Claude Code. And basically, I engineered the whole system.
-**Elena**: I'm so glad I don't have to teach myself to do the Claude Code and teach everyone else then. [INTERNAL: meaning she entrusts User to do that instead]
-**User**: The problem was that because after a long chat, like a million context window, you can't easily find back a previous query-response pair. So that's why I spent a lot of time engineering the harness to make it emit no chat text at all. So only file exchange. So I can easily swipe back, like a catalog, like a menu, to the previous response pair. More importantly, I think you might have come across the idea of the memory thing. Like, Claude in the chat can access what was available from another chat. But the problem is... 
-**Elena**: It doesn't cross projects.
-**User**: No, no, it doesn't come back to the instance in verbatim. It's always truncated or compromised, summarised, whatever. But because of how I use it, because how I talk with Claude, it's all file-based. The intact messages are all kept in the directory. So it's always fully 100% retrievable. That's how I use it.
-**Elena**: Yes. I think last time I spoke to you, I hadn't finalised the HubSpot side of things in terms of, like, if we're going to get an agency or not. We already have signed up with an agency called Red Pandas. They're a Diamond HubSpot partner. And they're going to be onboarding us onto HubSpot. And they're going to also work on a consulting basis with one of the guys that work here. His name's Ryan, who's going to build the code for an email enquiry section, essentially automating any emails that come in to Seb's inbox or one of the other guys if it's forwarded to enquiries app, which will be linked to HubSpot. It can read the email using Claude.
-**User**: MCP?
-**Seb**: Yeah.
-**Elena**: And pretty much fill out the necessary information and help us essentially figure out which track to put the client down. And then he'll also be doing a two-way sync between HubSpot and ...
-**Seb**: A native API link as well. So the idea is an enquiry comes into email, Claude dissects. We obviously have very strict prompting and instructions [INTERNAL: IMPORTANT pt; this is where User shines —— we can propose for them to consider Agent SDK instead, just like how we developed AJAP, which warrants much greater compliance, reliability, and stability for Alltech] in that Claude hub, like whether we call it a project, whatever it is. Very strict instructions on the things to look out for, how to assess, how to build, how to pull apart an enquiry, which then will automatically take that, read the enquiry, dissect it, throw it directly into our rental system as well.
-**Elena**: And create a rental request.
-**Seb**: Yes, and it basically builds our quotes as much as possible without us even lifting a finger. And we've watched it work in real time as well. We've watched, especially like... The software is called Rentman. And we've had numerous meetings with them and we've watched it in real time go directly from Claude using an MVP link [INTERNAL: Seb indeed said "MVP" but User guesses he might be talking about "MCP"; not sure] and it just goes and it instantly just throws it directly into your account in Rentman. Like near-perfect accuracy on very easy prompts. So I'm sure if we spent a lot of time on those prompts and instructions, it could do a lot of really cool things. And then the HubSpot end is CRM purposes, like actually checking our response times, our sales funnels, like our win-loss rates, all that kind of stuff. All that information that we had minorly but not very well, it'll be like... this is the high bar.
-**Elena**: HubSpot is essentially like all communications.
-**User**: CRM.
-**Seb**: Yeah.
-**Elena**: All communication side of things. And then Rentman is for jobs. RMS, yeah. For rental management systems.
-**Seb**: And the RMS is like the bread and butter of everything we do here. So as long as that piece is accurate as best as possible, everything else follows. It can't be like the other way around, unfortunately, because we have a rental management system. We are a rental company. Nothing else happens. So we're going to run it in tandem for a 3-month period with the software that we're currently running because it is working and doing everything it needs to do. So we don't want to change it until we know that the new system is fully automated and ready to go.
-**User**: How is the cost of Rentman & HubSpot? How does it charge? I've no idea.
-**Seb**: It's all monthly subscriptions.
-**Elena**: Monthly, yeah. HubSpot, we need to have Marketing Hub Pro because of all the code and automations because we need to be able to custom code workflows in HubSpot. And then also Sales Pro seats.
-**Seb**: So a mix of the two. And then everything is user account-based as well. So we'll end up probably spending like $1,000 a month on HubSpot and we'll end up spending about $300 to $400 a month on Rentman. Might even be more, to be honest. [INTERNAL: User believes this sounds quite a lot, which the actual works they deliver could be done by Agent-SDK-based programmes + occasional manual CC queries; however it is understood that the interface might matter to them more so they might prefer the ready-made SaaS platforms]
-**Elena**: And then Claude around $300.
-**Seb**: Yeah. So it's not the cheapest thing in terms of a subscription package, but it is a necessary tools list that we need to do properly. Yeah. [INTERNAL: Seb looks serious at that moment; User's take: he'd rather pay more to get it well done than having it just done, meaning he has a high appetite for output quality AND input cost]
-**Elena**: It will save us more time and money. The opportunity cost of paying for those things and setting them up correctly will enable us to get through this next ceiling of growth and also account for the things that we couldn't... we didn't have the capacity to take on over the last year as well. {long pause} The onboarding plan. I've rejigged it a little bit, but it's actually quite similar still to what you did for your assignment. It's still essentially assisting with the HubSpot stuff. I have done it in a way with Red Pandas because I didn't want it just to be done for us and then like we do nothing of the HubSpot stuff. We just go into a system. Yes, we'll get trained on it, but then if something happens, it's like we haven't been in there enough. [INTERNAL: User's read: she wants Alltech, possibly User as the representative, to stay in the know, hence not like Red Pandas doing everything and Alltech in the black box] So I've done essentially... a done for us and done by us scenario. So this role would be essentially probably 1 of the 3 working days, maybe half of that day is spent assisting with the HubSpot stuff, and then the rest would be the rest of the priorities. Case studies are still in there. It will really depend on, I guess, how much information we can pull from these guys because they're going into peak season now, which is obviously why I wanted to fill the role earlier. But we can get a lot of the information out and get them started. I don't think we'll have the finished products of case studies that we want to until they have a bit more capacity on their hands, because obviously they'll need to actually give a lot of the information. But instead of that, there's a big focus on sales enablement material. So we have a new person that's coming in. His name is Eugene. His role is essentially Project Specialist, but his background was essentially being a promoter in the industry as well. [INTERNAL: seems Eugene's role is basically salesman]
-**Seb**: And a promoter and a manager as well. He's got an MBA. He's got something in ... {long pause} production. I can't remember. Anyway, he's got some other title, but he's obviously very capable of what he does. And then he also owns a couple of brands as well. There's a big car show. It's like Hot Imports Night. They're doing it at Sydney Showgrounds every single year. That's actually his brand. He's working on a few other cool things like e-gaming, festivals and conferences and competitions. Also nightclub scenes, parties, K-pop shows. Yeah, I think a big portion of it is getting a lot of materials for him to go out and sell and win these jobs, which we don't currently have a lot of sales materials. This is huge priority. As in getting those materials ready so people can go and sell jobs.
-**Elena**: Yeah, so essentially case studies was like they're still in there, but it's like if we can get it done more so than like a priority sales enablement has now come in as the priority under HubSpot and then essentially helping me build out Claude. Like I'm essentially a newbie trying to learn and teach them at the same time because I literally jumped onto Claude probably...
-**User**: Have you created a GitHub yet?
-**Elena**: No.
-**User**: Oh no. That's the first step. Because the... how should I put it, the later you got on GitHub, the harder it is. So the other way to put it is the sooner you get on it, the easy it is.
-**Elena**: My buckets have been so filled, that's why I needed someone else to come in and take a lot of my load off. And that's why Eugene and Brian have come in to take a lot of his [INTERNAL: meaning Seb] load off. So yeah, I literally used it probably two months ago for the first time, maybe less.
-**Seb**: Two or three months ago.
-**Elena**: Yeah, I literally used it as a trial thing to do like one document and then I was like...
-**Seb**: Game changer.
-**User**: Allow me to explain a little bit more. Without GitHub, it's not safe. You don't actually know what Claude has done in your computer or in your system. Because with GitHub, what happens is every single change, not even a character will be missed out. So everything changed by Claude is shown in the GitHub app. So it doesn't actually materialise until you push it. So that push is like applying the change to the cloud server. So for example, I have 10 files. I asked Claude to use file 1 and 2 and 7 to edit file 4 and 6. And then after, if you don't have GitHub, after it's done, it just tells you "I'm done". But you never know actually what was edited. Of course, it kinda reports, but it was translated. It's not the exact change and you can't log them. You can't see the change log. And that's what will matter.
-**Elena**: You're gonna have to teach me ... {everyone laughters}
-**User**: It's very easy because I'm not a typical GitHub user because usually people use GitHub for coding stuff, like scripting, coding, HTML, Python, those kind of things. But no, I use it for MD. Wait, you know MD, right? Markdown?
-**Elena**: {shaking head}
-**User**: So basically, Markdown is like .doc but for AI. So it's specifically for AI. But anyway, so I use it for just document stuff. I don't actually use it for coding, but it's very good because of the GitHub thing. It's very clear that every single change made by Claude will be under my oversight. So I can monitor the change before it actually materialises and gets shared with the third party. So without GitHub, I would just put it this way: It's very unsafe to use Claude or any AI agent.
-**Elena**: Understood! {happy & impressed}
-**User**: I know you've got Google Drive, Google Cloud, those kind of things, but it's not safe. Because Google Drive, I mainly use Google Drive for media files. And GitHub, because GitHub is very... it's basically for pure text or coding stuff. So if you put a video... how should I put it? GitHub only has like 500 megabytes, which is ridiculous, right? But for pure text, that is half a billion of pure text. So for pure text, like documents and plans and database, those kind of things, it's very sufficient. So that's why I use GitHub for documents and then use Google Drive for media files, like pictures, videos, things like this. So none of them is fully superseding the other. We have to use both.
-**Elena**: You're talking a bit alien language to me, {all laughters} 
-**User**: You just have to understand GitHub is for safety, because most people would tell you GitHub is for collaboration. No, it's not true. It's not just for collaboration. I use it for my private repo. Repo is like a drive. So I use it just by my own. But why do I still use it? Because it's safe. Because of the accountability of Claude.
-**Elena**: Anything else you want to know?
-**Seb**: Yeah, I feel like there's a lot of things that we initially had conversations with Jay in terms of the raw marketing aspects and components, capture, content, all that kind of stuff. How in-depth are those conversations going? In terms of what we do, how we do it, when we do it, the audiences that we're talking to. Obviously, the role is marketing and growth. I understand that there's a lot of growth and enablement stuff to get marketing into a place which is good. But on the flip side, on the marketing front, I don't know your background fully.
-**User**: You want my full background?
-**Elena**: I haven't had a chance to give him a rundown and background of you.
-**User**: I started working in marketing things since 2010. So it's been 16 years now. But I started off... 
-**Seb**: With your background, how do you see yourself slotting into a production company in a marketing role? Do you see there being challenges? Do you think it's exciting? Do you think that there are potential growth factors for in terms of being in a marketing position within a company like ours as well?
-**User**: It's exciting and it's challenging because typically, I do marketing for brands, not B2B, but it's full adaptable, transferable. This is what's actually challenging to me because doing B2B marketing is kinda different. But basically, it's based on the same skill set, same theory, similar ideology, but the scale is different and the audience and the manner of delivery is different. So that's what I strive to and am very excited to explore. So that's pretty much it. Back on my background, so I started off with content marketing and then I did digital marketing. Whilst I was doing digital marketing, I naturally touched on growth marketing. So growth marketing is actually one kind of marketing. But I didn't touch the growth hacking stuff. That's too complicated. And event marketing, so that's why I touched on events before. And creative marketing. Creative marketing is also kind of an arm of the marketing domains that I touched on and I enjoyed it. So that's pretty much it.
-**Seb**: When it comes to, especially being in a coordinated position and then potentially looking at transitioning into a manager, financials, budget awareness, setting goals, KPIs, having certain financial expectations of yourself being an asset for the company, where is your thought path and your skillset on that front?
-**User**: Let's start with coordination. My personal record was an event hired by the government back in Hong Kong, where I come from. I coordinated 50 parties. So not 50 people, but 50 parties. So each party was like 10, 5 or 10 people. So it's like hundreds of people and it's international because basically we're doing an exhibition of a furniture design exhibition in Hong Kong and in Milan. So I have to handle the logistics and everything and different personnel, different parties across the two continents. So that's my personal record in coordination. But of course, that's not the maximum. I could do even more, but that's the personal record. And that's sort of the financial side. I've always been... I don't want to boast it that way, but back in 2018, I was working in a marketing agency. I should've have put it in my resume, it's called Backbone. It's a business development & marketing agency. I was known for resource management, aka the financial side of the projects. So I am pretty confident with budgeting, resource management, scheduling, time management, timekeeping, etc.. The 3 resources, I mean it's Manpower, Project, Time. These are 3 pillars in resource management. So that's what I've been fascinated with.
-**Seb**: My main thing is definitely that we're not in the game of hiring people that we have to train up. We're very much looking for key individuals where we can onboard them in a prompt timeframe and hit the ground running and collaborate, work together, brainstorm, have new ideas, new growth patterns that actually have people with actual knowledge, not like an ordinary situation.
-**Elena**: Drive an initiative to actually implement it without having their hand held too much. Obviously everyone needs to learn a new company, that's a given, right? We need to know what we're like, we need to know our clients, we need to actually get to know the business, and that definitely will be taught. But in terms of growth and training, we just don't have the capacity anymore. We have some individuals that do definitely need that, but in terms of new seats, we just need people to take the load to pop us and not have to be chased to get things done.
-**Seb**: Yep. I think that pretty much ticks everything in my book. {long pause} I can think of my timeframe on a weekly basis as well. You're looking for something part-time to have more time outside of work for other things in life, or you would eventually move into something full-time, or where are you at in life?
-**User**: I would eventually hope it can turn into full-time, and actually timeframe-wise it's exactly like a fit for me, because as you know, I'm currently doing a couple of advisory roles, so I need time to phase out, and this timeframe could, with me pulling some strings, it could eventually fit perfectly. I'm not sure when I will be eligible to become a full-time staff. But let's say...
-**Elena**: We have essentially a 3-month checkpoint, and then a 6-month probation period. I would like someone to move from the coordinator role into a manager role within the 6 months.
-**User**: Yep, that is exactly the timeframe that I'm looking for to phase out from the other committees. So that's why it just, in my angle, from my perspective, it just fits perfectly. Because it's basically year-end, right? End of year. About that. Or maybe like Q4-ish.
-**Elena**: Plus part of the next year, essentially. And Culous already had the pay conversation, and he said that he was happy with the starting rate, and then we can move it.
-**Seb**: Yeah, we do. It's not like we don't reward people. We want to make sure that we don't outweigh too much. Obviously, we want to check and vet the people, that we make sure that they're good, we actually work well with them. And then as we grow progressively as a team, so does everything else surrounding us as well.
-**Elena**: Usually, we don't have employees coming to us asking for raises. We're the ones that are going to them, because we have the paths that we want to go down. We have certain things that they need to, milestones they get through. And once they get through them, it's a no-brainer for us. If they're adding value to the whole team, they're helping, we can see that the business is growing and the value that they bring. {long pause} Any questions from you?
-**Seb**: Don't hold back.
-**User**: No, I'm not holding back. The problem is, you told me don't prepare anything. I believe I've asked questions last time in the second interview, but did I get them all answered? I kinda forgot.
-**Elena**: I believe so. I think there was maybe one that I was like, that's a set question.
-**User**: Yeah, because actually when I was writing that page, that last page, it was intended for Seb. But I kind of forgot that.
-**Elena**: I can get it up for you.
-**User**: Yeah, that would be good. I don't have any new questions.
-**Elena**: And in terms of your timeframe for starting... Remind me, I can't remember when.
-**User**: I didn't tell. {laughter} I still have to check, but I think it's just like maybe a couple of weeks, if that's okay. Just don't make it next week. {all laughters} It's too much of a shock to me. I need some time to adapt.
+- **Elena**: This is the one time I've come into this office and then realised that it's actually toasty.
+- **Seb**: It is very cold today.
+- **User**: Yeah, it's like 5 this morning when I woke up. or 6 or 7. [INTERNAL: degree celsius]
+- **Seb**: My coffee is sometimes really good and then my coffee is sometimes not very good.
+- **User**: I don't have a very high bar for coffee. {laughters}
+- **Seb**: Oh, I don't either.
+- **Elena**: This is the place that is right next to us, like literally a two minute walk from where we live. They have such good coffee that they've spoilt us now.
+- **Seb**: Yeah, we're privileged.
+- **User**: I'm kind of just used to the instant coffee thing. Just pour hot water and that's it. I'm good with anything.
+- **Seb**: I used to be used to that. That morning ritual. And then I realised I just kept adding more and more, like spoons of coffee. I think it was like four or five heaps of coffee. {laughters}
+- **Elena**: So, obviously, this is mainly for Seb to meet you and get to know you. I think you've done really well on the assessment.
+- **User**: Thank you.
+- **Elena**: And I already caught you off as to the reason we went with another candidate. Originally. So sorry. Something in my throat. But I guess first things first is you've had a pretty big career. I think the main question on Seb's mind would be, like, with so many different projects, so many different clients, like advisory board seats, all the masters you finished on paper, you're obviously very overqualified.
+- **User**: On paper. {everyone laughters} On paper. Leave it.
+- **Elena**: So I guess help explain to Seb, like, why this role? Why now? Why us?
+- **User**: I've actually, you know, the evening or the afternoon that you called me, I actually did a kind of analysis or self-reflection as in why Alltech is the best opportunity alongside other opportunities that I was, you know, I was granted, because of the resilience against AI. Not gonna lie, the other offers I got were marketing roles, but mostly for... well, one is like property firm, like realty. One is like another brand, consumer brand, but I... first I don't like B2C, so that consumer brand was gone. And then for realty, I don't think it's resilient. Not even AI. Realty itself is, let's just put it this way. I'm very bearish on realty, because I do think housing is a staple, right? It's like a necessity of human beings. So sooner or later, it's gonna drop. So I'm not very, you know, bullish on that market. But that kinda explains why I did not choose those two offers. But the reason why I chose Alltech, or this industry, and the positioning of Alltech is very resilient, not just against the economy, but also against AI. Everyone's talking about how AI is gonna replace everyone. But Alltech has a very special positioning versus the industry. The event space is very... How should I put it? It's messy. {all laughters} It's hard to be automated, right? So it will be... Because I just happened to do an IT master last year, so I know programming, those kind of things. And if you ask me to programme an AI or a robot to do event stuff, it will be a hell, right? You know, every event is a different story, different audience. Everything is different. It's not a process. It's never a process. So not like manufacturing, legal, accounting, those kind of things. It's always a project.
+- **Seb**: The biggest thing I've had explaining to other people... They're like... "Oh, it should be so easy. It's the same thing. It's rinse and repeat." I'm like, there is no such thing as rinse and repeat in my game. Every single person wants the same thing, but in a different way. They want it done to their particular standards or they want their touch on it. There is never the same thing ever. So it always has to be an open-minded approach or a creative approach, which is exhausting.
+- **User**: Yeah, yeah. But I enjoy it. I myself, I did some events before. I think the biggest one I did is for Ferrari. Ferrari Superfast 812. That was 11 years ago. But I enjoyed it. But that's not the only one, but that's the one I'm most proud of. Although I'm not a fan. I'm not a fan. {laughters} But that is to say, I do believe in event production or event management, event planning, or however you put it, there's always something to learn. And always, you know, every day is a learning opportunity. And this is why it's extremely hard to be programmed for automation, unlike other businesses like manufacturing and accounting, as I said. So the way I see it is this industry itself is very resilient. And why Alltech is especially resilient? It's about the positioning. Because, you know, obviously the whole warehouse of equipment is not easy for a new entrant to just, you know, sign up a company and compete in the game, right? So that's an entirely different story. Because I came from a consulting background. Basically, anyone, if you feel like you're talented, you can just register a company and go doing... you know, open the doors to clients and do a quote, whatever. But for event production, you can't do that. So it's very... How should I put it? It's a market that is quite hard to enter. But once you entered it, it's kind of a moat, you know, not everyone can compete. You can't just overnight create a company and say we're doing that. It's not possible. So these are some of the reasons. I got more in my notes. I can't remember everything. {laughters} But these are the key reasons why I'm a... By the way, I didn't do that with AI at all. I just, you know, I just think about myself and kind of debate with myself why this opportunity is so particularly... you know, that I should cherish. So that's pretty much it.
+- **Elena**: Cool. Do you have any specific questions that you want to ask?
+- **Seb**: On the AI front. Obviously, like a part of what we're looking at doing now is using HubSpot and AI and building agents and everything to assist with the backend workload. Is that something that, obviously, like you said, if there's a challenge, especially for a company like ours, is that challenge something that you seek out because you want to do it because it is like a rewarding challenge as well? If you think it's like creative, would you actually see that being a challenge for what we're trying to do? I don't know how much Elena told you about what we're doing exactly, so I don't understand that context. But is that like a good challenge to you or do you think that it will be a genuine challenge?
+- **User**: It's a very good challenge for me. As I put it, the event space is highly, you know, variable. Or, shall I put it, it's very messy. So it's very hard to programme everything. And this is the challenge. So the way I see it, this job is like making the impossible possible. So that's what fascinates me. And I do enjoy, you know. I just will put it as, you know, prompt engineering, context engineering, those kinds of things, but it's quite programming. Everything is programming. So I do enjoy programming all these kind of things to not work against us but work for our goal. That can streamline everything and facilitate the work, make it easier for the possibly two-person team [INTERNAL: meaning Elena & User] to, like, make it competent with the larger size teams. So that's what fascinates me.
+- **Elena**: How experienced are you with Claude?
+- **User**: I was in the beta. So I was using Claude since day one.
+- **Elena**: Oh. Okay. {seems very surprised & impressed}
+- **User**: So, yeah. Because I... how should I put it? My last company, Karma Effect, was a consulting firm. So obviously, basically we just sell answers. So our whole business... {everyone laughters} was kind of superseded by AI because, you know, obviously, ChatGPT, back in the day, it was like 3.5. It didn't actually beat us, but it's free, right? So back in the day, it was free. So people, you know, they just asked what they were trying to ask us, and ChatGPT could provide the answer, although most of them are wrong, but, you know, it's free. So that kind of threatened me. I see the disadvantage of AI, but I also see the potential of AI and how it could, you know, basically destroy humanity. {everyone laughters} I was trying to pull out how to use AI in a smart way or in a wise way. So it's about the accuracy of things. So when Claude came out, it becomes... To me, it's a very different model. It's not, well, if you still remember, when it first came out, it can't even browse the web. So it's all internal knowledge, or we call it... I forgot the term. [INTERNAL: User was trying to talk about RAG] Basically, you give it a database of knowledge, and Claude can look it up, back in the days. But now... I forgot the exact term, like the abbreviation. Anyway, so, yeah, so that's what drew my attention to Claude, and I kinda paid it since day one after the beta usage. Actually my brother brought me in. So he got a beta of it. That's why I got invited to use Claude since day one. I think that was like early 2023. And I kept trying different models and stuff, but after 3 years, I'm still using Claude. So I think it's safe to say...
+- **Elena**: Do you use Claude Code?
+- **User**: I use Claude Code all the time. There is a time I try to use between Claude Chat, Claude Cowork, and Claude Code. I call it CC. And then at the end, I found out I basically just use CC for everything. And currently, I'm at the harness engineering stage. So I've made it give me no prose at all. Okay, by the way, I never send an actual message to Claude Code anymore. I send a file. I send a whole prompt. So I just... because it's local. So it can access any files on my Mac. So I just send the file name, and that's my prompt. And Claude sends me back a file name. That's the response. There is nothing in the chat record at all. So that's how I made it. So it's extremely efficient. So that's why currently I'm using the Max 5x plan. So it's highly efficient in my own way. So yeah, but anyway, in conclusion, I'm very confident with Claude Code. And basically, I engineered the whole system.
+- **Elena**: I'm so glad I don't have to teach myself to do the Claude Code and teach everyone else then. [INTERNAL: meaning she entrusts User to do that instead]
+- **User**: The problem was that because after a long chat, like a million context window, you can't easily find back a previous query-response pair. So that's why I spent a lot of time engineering the harness to make it emit no chat text at all. So only file exchange. So I can easily swipe back, like a catalog, like a menu, to the previous response pair. More importantly, I think you might have come across the idea of the memory thing. Like, Claude in the chat can access what was available from another chat. But the problem is... 
+- **Elena**: It doesn't cross projects.
+- **User**: No, no, it doesn't come back to the instance in verbatim. It's always truncated or compromised, summarised, whatever. But because of how I use it, because how I talk with Claude, it's all file-based. The intact messages are all kept in the directory. So it's always fully 100% retrievable. That's how I use it.
+- **Elena**: Yes. I think last time I spoke to you, I hadn't finalised the HubSpot side of things in terms of, like, if we're going to get an agency or not. We already have signed up with an agency called Red Pandas. They're a Diamond HubSpot partner. And they're going to be onboarding us onto HubSpot. And they're going to also work on a consulting basis with one of the guys that work here. His name's Ryan, who's going to build the code for an email enquiry section, essentially automating any emails that come in to Seb's inbox or one of the other guys if it's forwarded to enquiries app, which will be linked to HubSpot. It can read the email using Claude.
+- **User**: MCP?
+- **Seb**: Yeah.
+- **Elena**: And pretty much fill out the necessary information and help us essentially figure out which track to put the client down. And then he'll also be doing a two-way sync between HubSpot and ...
+- **Seb**: A native API link as well. So the idea is an enquiry comes into email, Claude dissects. We obviously have very strict prompting and instructions [INTERNAL: IMPORTANT pt; this is where User shines —— we can propose for them to consider Agent SDK instead, just like how we developed AJAP, which warrants much greater compliance, reliability, and stability for Alltech] in that Claude hub, like whether we call it a project, whatever it is. Very strict instructions on the things to look out for, how to assess, how to build, how to pull apart an enquiry, which then will automatically take that, read the enquiry, dissect it, throw it directly into our rental system as well.
+- **Elena**: And create a rental request.
+- **Seb**: Yes, and it basically builds our quotes as much as possible without us even lifting a finger. And we've watched it work in real time as well. We've watched, especially like... The software is called Rentman. And we've had numerous meetings with them and we've watched it in real time go directly from Claude using an MVP link [INTERNAL: Seb indeed said "MVP" but User guesses he might be talking about "MCP"; not sure] and it just goes and it instantly just throws it directly into your account in Rentman. Like near-perfect accuracy on very easy prompts. So I'm sure if we spent a lot of time on those prompts and instructions, it could do a lot of really cool things. And then the HubSpot end is CRM purposes, like actually checking our response times, our sales funnels, like our win-loss rates, all that kind of stuff. All that information that we had minorly but not very well, it'll be like... this is the high bar.
+- **Elena**: HubSpot is essentially like all communications.
+- **User**: CRM.
+- **Seb**: Yeah.
+- **Elena**: All communication side of things. And then Rentman is for jobs. RMS, yeah. For rental management systems.
+- **Seb**: And the RMS is like the bread and butter of everything we do here. So as long as that piece is accurate as best as possible, everything else follows. It can't be like the other way around, unfortunately, because we have a rental management system. We are a rental company. Nothing else happens. So we're going to run it in tandem for a 3-month period with the software that we're currently running because it is working and doing everything it needs to do. So we don't want to change it until we know that the new system is fully automated and ready to go.
+- **User**: How is the cost of Rentman & HubSpot? How does it charge? I've no idea.
+- **Seb**: It's all monthly subscriptions.
+- **Elena**: Monthly, yeah. HubSpot, we need to have Marketing Hub Pro because of all the code and automations because we need to be able to custom code workflows in HubSpot. And then also Sales Pro seats.
+- **Seb**: So a mix of the two. And then everything is user account-based as well. So we'll end up probably spending like $1,000 a month on HubSpot and we'll end up spending about $300 to $400 a month on Rentman. Might even be more, to be honest. [INTERNAL: User believes this sounds quite a lot, which the actual works they deliver could be done by Agent-SDK-based programmes + occasional manual CC queries; however it is understood that the interface might matter to them more so they might prefer the ready-made SaaS platforms]
+- **Elena**: And then Claude around $300.
+- **Seb**: Yeah. So it's not the cheapest thing in terms of a subscription package, but it is a necessary tools list that we need to do properly. Yeah. [INTERNAL: Seb looks serious at that moment; User's take: he'd rather pay more to get it well done than having it just done, meaning he has a high appetite for output quality AND input cost]
+- **Elena**: It will save us more time and money. The opportunity cost of paying for those things and setting them up correctly will enable us to get through this next ceiling of growth and also account for the things that we couldn't... we didn't have the capacity to take on over the last year as well. {long pause} The onboarding plan. I've rejigged it a little bit, but it's actually quite similar still to what you did for your assignment. It's still essentially assisting with the HubSpot stuff. I have done it in a way with Red Pandas because I didn't want it just to be done for us and then like we do nothing of the HubSpot stuff. We just go into a system. Yes, we'll get trained on it, but then if something happens, it's like we haven't been in there enough. [INTERNAL: User's read: she wants Alltech, possibly User as the representative, to stay in the know, hence not like Red Pandas doing everything and Alltech in the black box] So I've done essentially... a done for us and done by us scenario. So this role would be essentially probably 1 of the 3 working days, maybe half of that day is spent assisting with the HubSpot stuff, and then the rest would be the rest of the priorities. Case studies are still in there. It will really depend on, I guess, how much information we can pull from these guys because they're going into peak season now, which is obviously why I wanted to fill the role earlier. But we can get a lot of the information out and get them started. I don't think we'll have the finished products of case studies that we want to until they have a bit more capacity on their hands, because obviously they'll need to actually give a lot of the information. But instead of that, there's a big focus on sales enablement material. So we have a new person that's coming in. His name is Eugene. His role is essentially Project Specialist, but his background was essentially being a promoter in the industry as well. [INTERNAL: seems Eugene's role is basically salesman]
+- **Seb**: And a promoter and a manager as well. He's got an MBA. He's got something in ... {long pause} production. I can't remember. Anyway, he's got some other title, but he's obviously very capable of what he does. And then he also owns a couple of brands as well. There's a big car show. It's like Hot Imports Night. They're doing it at Sydney Showgrounds every single year. That's actually his brand. He's working on a few other cool things like e-gaming, festivals and conferences and competitions. Also nightclub scenes, parties, K-pop shows. Yeah, I think a big portion of it is getting a lot of materials for him to go out and sell and win these jobs, which we don't currently have a lot of sales materials. This is huge priority. As in getting those materials ready so people can go and sell jobs.
+- **Elena**: Yeah, so essentially case studies was like they're still in there, but it's like if we can get it done more so than like a priority sales enablement has now come in as the priority under HubSpot and then essentially helping me build out Claude. Like I'm essentially a newbie trying to learn and teach them at the same time because I literally jumped onto Claude probably...
+- **User**: Have you created a GitHub yet?
+- **Elena**: No.
+- **User**: Oh no. That's the first step. Because the... how should I put it, the later you got on GitHub, the harder it is. So the other way to put it is the sooner you get on it, the easy it is.
+- **Elena**: My buckets have been so filled, that's why I needed someone else to come in and take a lot of my load off. And that's why Eugene and Brian have come in to take a lot of his [INTERNAL: meaning Seb] load off. So yeah, I literally used it probably two months ago for the first time, maybe less.
+- **Seb**: Two or three months ago.
+- **Elena**: Yeah, I literally used it as a trial thing to do like one document and then I was like...
+- **Seb**: Game changer.
+- **User**: Allow me to explain a little bit more. Without GitHub, it's not safe. You don't actually know what Claude has done in your computer or in your system. Because with GitHub, what happens is every single change, not even a character will be missed out. So everything changed by Claude is shown in the GitHub app. So it doesn't actually materialise until you push it. So that push is like applying the change to the cloud server. So for example, I have 10 files. I asked Claude to use file 1 and 2 and 7 to edit file 4 and 6. And then after, if you don't have GitHub, after it's done, it just tells you "I'm done". But you never know actually what was edited. Of course, it kinda reports, but it was translated. It's not the exact change and you can't log them. You can't see the change log. And that's what will matter.
+- **Elena**: You're gonna have to teach me ... {everyone laughters}
+- **User**: It's very easy because I'm not a typical GitHub user because usually people use GitHub for coding stuff, like scripting, coding, HTML, Python, those kind of things. But no, I use it for MD. Wait, you know MD, right? Markdown?
+- **Elena**: {shaking head}
+- **User**: So basically, Markdown is like .doc but for AI. So it's specifically for AI. But anyway, so I use it for just document stuff. I don't actually use it for coding, but it's very good because of the GitHub thing. It's very clear that every single change made by Claude will be under my oversight. So I can monitor the change before it actually materialises and gets shared with the third party. So without GitHub, I would just put it this way: It's very unsafe to use Claude or any AI agent.
+- **Elena**: Understood! {happy & impressed}
+- **User**: I know you've got Google Drive, Google Cloud, those kind of things, but it's not safe. Because Google Drive, I mainly use Google Drive for media files. And GitHub, because GitHub is very... it's basically for pure text or coding stuff. So if you put a video... how should I put it? GitHub only has like 500 megabytes, which is ridiculous, right? But for pure text, that is half a billion of pure text. So for pure text, like documents and plans and database, those kind of things, it's very sufficient. So that's why I use GitHub for documents and then use Google Drive for media files, like pictures, videos, things like this. So none of them is fully superseding the other. We have to use both.
+- **Elena**: You're talking a bit alien language to me, {all laughters} 
+- **User**: You just have to understand GitHub is for safety, because most people would tell you GitHub is for collaboration. No, it's not true. It's not just for collaboration. I use it for my private repo. Repo is like a drive. So I use it just by my own. But why do I still use it? Because it's safe. Because of the accountability of Claude.
+- **Elena**: Anything else you want to know?
+- **Seb**: Yeah, I feel like there's a lot of things that we initially had conversations with Jay in terms of the raw marketing aspects and components, capture, content, all that kind of stuff. How in-depth are those conversations going? In terms of what we do, how we do it, when we do it, the audiences that we're talking to. Obviously, the role is marketing and growth. I understand that there's a lot of growth and enablement stuff to get marketing into a place which is good. But on the flip side, on the marketing front, I don't know your background fully.
+- **User**: You want my full background?
+- **Elena**: I haven't had a chance to give him a rundown and background of you.
+- **User**: I started working in marketing things since 2010. So it's been 16 years now. But I started off... 
+- **Seb**: With your background, how do you see yourself slotting into a production company in a marketing role? Do you see there being challenges? Do you think it's exciting? Do you think that there are potential growth factors for in terms of being in a marketing position within a company like ours as well?
+- **User**: It's exciting and it's challenging because typically, I do marketing for brands, not B2B, but it's full adaptable, transferable. This is what's actually challenging to me because doing B2B marketing is kinda different. But basically, it's based on the same skill set, same theory, similar ideology, but the scale is different and the audience and the manner of delivery is different. So that's what I strive to and am very excited to explore. So that's pretty much it. Back on my background, so I started off with content marketing and then I did digital marketing. Whilst I was doing digital marketing, I naturally touched on growth marketing. So growth marketing is actually one kind of marketing. But I didn't touch the growth hacking stuff. That's too complicated. And event marketing, so that's why I touched on events before. And creative marketing. Creative marketing is also kind of an arm of the marketing domains that I touched on and I enjoyed it. So that's pretty much it.
+- **Seb**: When it comes to, especially being in a coordinated position and then potentially looking at transitioning into a manager, financials, budget awareness, setting goals, KPIs, having certain financial expectations of yourself being an asset for the company, where is your thought path and your skillset on that front?
+- **User**: Let's start with coordination. My personal record was an event hired by the government back in Hong Kong, where I come from. I coordinated 50 parties. So not 50 people, but 50 parties. So each party was like 10, 5 or 10 people. So it's like hundreds of people and it's international because basically we're doing an exhibition of a furniture design exhibition in Hong Kong and in Milan. So I have to handle the logistics and everything and different personnel, different parties across the two continents. So that's my personal record in coordination. But of course, that's not the maximum. I could do even more, but that's the personal record. And that's sort of the financial side. I've always been... I don't want to boast it that way, but back in 2018, I was working in a marketing agency. I should've have put it in my resume, it's called Backbone. It's a business development & marketing agency. I was known for resource management, aka the financial side of the projects. So I am pretty confident with budgeting, resource management, scheduling, time management, timekeeping, etc.. The 3 resources, I mean it's Manpower, Project, Time. These are 3 pillars in resource management. So that's what I've been fascinated with.
+- **Seb**: My main thing is definitely that we're not in the game of hiring people that we have to train up. We're very much looking for key individuals where we can onboard them in a prompt timeframe and hit the ground running and collaborate, work together, brainstorm, have new ideas, new growth patterns that actually have people with actual knowledge, not like an ordinary situation.
+- **Elena**: Drive an initiative to actually implement it without having their hand held too much. Obviously everyone needs to learn a new company, that's a given, right? We need to know what we're like, we need to know our clients, we need to actually get to know the business, and that definitely will be taught. But in terms of growth and training, we just don't have the capacity anymore. We have some individuals that do definitely need that, but in terms of new seats, we just need people to take the load to pop us and not have to be chased to get things done.
+- **Seb**: Yep. I think that pretty much ticks everything in my book. {long pause} I can think of my timeframe on a weekly basis as well. You're looking for something part-time to have more time outside of work for other things in life, or you would eventually move into something full-time, or where are you at in life?
+- **User**: I would eventually hope it can turn into full-time, and actually timeframe-wise it's exactly like a fit for me, because as you know, I'm currently doing a couple of advisory roles, so I need time to phase out, and this timeframe could, with me pulling some strings, it could eventually fit perfectly. I'm not sure when I will be eligible to become a full-time staff. But let's say...
+- **Elena**: We have essentially a 3-month checkpoint, and then a 6-month probation period. I would like someone to move from the coordinator role into a manager role within the 6 months.
+- **User**: Yep, that is exactly the timeframe that I'm looking for to phase out from the other committees. So that's why it just, in my angle, from my perspective, it just fits perfectly. Because it's basically year-end, right? End of year. About that. Or maybe like Q4-ish.
+- **Elena**: Plus part of the next year, essentially. And Culous already had the pay conversation, and he said that he was happy with the starting rate, and then we can move it.
+- **Seb**: Yeah, we do. It's not like we don't reward people. We want to make sure that we don't outweigh too much. Obviously, we want to check and vet the people, that we make sure that they're good, we actually work well with them. And then as we grow progressively as a team, so does everything else surrounding us as well.
+- **Elena**: Usually, we don't have employees coming to us asking for raises. We're the ones that are going to them, because we have the paths that we want to go down. We have certain things that they need to, milestones they get through. And once they get through them, it's a no-brainer for us. If they're adding value to the whole team, they're helping, we can see that the business is growing and the value that they bring. {long pause} Any questions from you?
+- **Seb**: Don't hold back.
+- **User**: No, I'm not holding back. The problem is, you told me don't prepare anything. I believe I've asked questions last time in the second interview, but did I get them all answered? I kinda forgot.
+- **Elena**: I believe so. I think there was maybe one that I was like, that's a set question.
+- **User**: Yeah, because actually when I was writing that page, that last page, it was intended for Seb. But I kind of forgot that.
+- **Elena**: I can get it up for you.
+- **User**: Yeah, that would be good. I don't have any new questions.
+- **Elena**: And in terms of your timeframe for starting... Remind me, I can't remember when.
+- **User**: I didn't tell. {laughter} I still have to check, but I think it's just like maybe a couple of weeks, if that's okay. Just don't make it next week. {all laughters} It's too much of a shock to me. I need some time to adapt.
 {Seb on phone call; everyone paused for long}
-**User**: I found it. It's basically just 1 question about the AI thing. So you told me we're currently on Claude Team, right? Is it Standard or Premium?
-**Elena**: Standard.
-**User**: Right. If needed, if I can prove it's needed, would you consider to upgrade to Premium?
-**Seb**: Sure. If it's genuinely necessary and it works... One thing you'll learn very quickly with me is if you make my life easier and you allow me to get my shit done in a more efficient way, which means I get my time back when making money, when essentially costing less at the end of the day, green light.
-**User**: That's exactly how I talk. {passionately shake hands with Seb}
-**Seb**: Yeah.
-**User**: That's exactly how I talk.
-**Seb**: I am actually a shitless fucking creature, if you make my life easier, and you can prove to me that like what we're doing and it is actually working. We're fucking getting fast making money. You don't need to ask me for anything. I'll reward you as much as you fucking want. So simple. Everyone else knows it as well. They just shut up and they get on with it and they do it and it's really well and they're proving like, and it works and there are systems. I'll fund it. I'll make it happen, whatever it is. Like green light, it's the only way I like doing business because if you think about it and this and that, no, no, no. Do the work, make it happen. If it's successful, great, keep going. It's as simple as that.
-**User**: Okay. For Elena, I can tell you a little bit more. The reason why I asked that is that, you know, obviously we have 4 models, technically 5 models now, but you know, Mythos is not available. So just 4 models. Each model is for different use cases. So like Haiku basically for reception, those kind of things. And then Sonnet is best for document.
-**Elena**: Yep.
-**User**: So like if nothing's technical, just decision-making strategies, this kind of thing...
-**Seb**: I've been using recently Sonnet.
-**User**: Yeah, because Sonnet is cheap. And basically if you're on a Claude Team Standard, you can basically afford to use Sonnet only. But if we're actually trying to automate things, like build systems that can, as I put it, make our lives simpler, easier, we need Opus and even Fable. And they are very hungry. {everyone laughters} And this is why. Opus is for building. Fable is only for reviewing. So like the best thing, the best combo I use is I talk with Fable. But Fable only reviews the current code base or problem and plan how to do it, but never do it herself. I call it her. And then Fable, have you tried to use sub agent?
-**Elena**: Um, no, not at the moment.
-**User**: All right. So basically a model can dispatch the work for another model to work for it. So it won't run out of context. And oh, yeah, by the way, this is one of the reasons why I use Claude Code, because you see the content window. So Fable will dispatch Opus to build things and then for Sonnet to write things and then everything comes together.
-**Seb**: It's like a team collaboration.
-**User**: Exactly. We call it a fleet of agents. But the cost is very high. But if we're not just trying to, you know, draft emails, reply messages, those kind of things, if we're trying to actually make things happen, build things, we need a bigger subscription plan. But we'll see. I'll prove it to you. I'll justify why we need it.
-**Seb**: Yeah. Definitely looking at, especially systems in place. Like if we have a trial and error base of like...
-**User**: Exactly, yeah.
-**Seb**: We always start with the basics and see what it can and can't do. And then we build and then we build and then we build and we trial things. And if it genuinely proves to be successful and it can do the things and analyse better or build projects or codes for us more constructively. Absolutely. I'd say yes to it.
-**Elena**: That's why we moved from ... [unintelligible name] to Rentman. Yeah. That's why we're making sure there's HubSpot. That's why I moved from Teamwork to ClickUp. Like the agents in ClickUp compared to what Teamwork can do.
-**Seb**: Oh my God.
-**Elena**: It's like night and day. I mean, it's kind of like ChatGPT and Claude, right?
-**User**: Yeah.
-**Elena**: Night and day.
-**User**: Yeah.
-**Elena**: Yes.
-**User**: GPT lately got pretty good. {everyone laughters}
-**Elena**: I know. I tried using it that way. I was like, why was this... what was I supposed to call it?
-**User**: But it's actually different. Like the way I put it is GPT is good for anything don't necessarily have to be right.
-**Seb**: Personal.
-**User**: No, it's like creative or like, for example, if I need a definite answer, if I need an accurate answer or accurate document, I'll use Claude. If I need something open-ended, like idea generation, GPT is good. So it's actually a mix of it, but personally, if I have to just pay for one, I'll go for Claude. {laughters}
-**Seb**: ChatGPT has been better for me on a collaborative case. Like it is better at idea building and being creative, especially for like image creation. Like I can turn a brain bubble conversation and be like just an idea for a show on how we reveal the car. And I put the exact same prompt into both of them, and ChatGPT shat on Claude on the image that it produced. And I was like, whoa, that makes sense. Like it's very different thinking patterns. Yeah.
-**User**: So actually the best combo is use GPT to create and then use Claude to audit and implement. But that is provided that you're paying for both. 
-**Seb**: {showing his phone, displaying a GPT-generated car show event mockup image} They are creative concepts that we do for shows for the Geely the next week. But that was all in ChatGPT.
-**Elena**: I haven't even seen this yet. {looking tgt}
-**User**: It's cool.
-**User**: Is that the latest GPT model? GPT Image 2, right?
-**Seb**: Yes.
-**User**: Yeah, because the thing is that, you know, the video generation model, I forgot about its name, you know, it's the cloud thing. The teenagers... They love it. Anyway, GPT used to have a video generation model that is free for everyone to use. And everyone is using that... I forgot the name of it. But everyone is using that. And then they kinda got bankrupt because of that. That division got bankrupt because of people using the video generation model. And then they just cut the whole department. And then put it all into GPT Image 2. That's why it's so good. They got all the resources focused on the image. Because before GPT Image 2, the best model was actually Gemini Nano Banana. That was like half a year ago.
-**Elena**: I'm so glad... {impressed by User}
-**User**: But anyway, it's cool. It's cool. It can get on some serious work now. As you can see.
-**Seb**: Any more questions?
-**Elena**: In terms of start date, you said a few weeks.
-**User**: Couple weeks. So like, I've got to check. So I think I'll get back to you. But definitely not next week. Please. I need time to set up.
-**Elena**: I have a lot of things to finalise. After this week. Yeah. I think it's the 17th of August.
-**User**: I think both of us will have time to get on.
-**Elena**: Like, I could onboard you on the week of the 10th, while they're not here.
-**Seb**: Potentially, yeah.
-**Elena**: Because you'll be sitting down, like reading material, just catching up with me, getting a better understanding before they come back. But if you need a couple of weeks, like 17th works for us as well.
-**User**: Yep.
-**Elena**: So think about it.
-**User**: Yep.
-**Elena**: Let me know. We'll have a chat to see if any tweaks can be made. And I'll come back to you.
-**User**: If possible, can you send me the agreement thing...
-**Elena**: Yes.
-**User**: So I can review that.
-**Elena**: Yes. We'll chat...
-**User**: Okay. Let's assume the 17th for now.
-**Elena**: Okay.
-**User**: I'll let you know if I can make it earlier.
-**Seb**: Even if you start the last 3 days of the week... Instead of like starting at the beginning of the week, you could do like the 12th onwards or something. But potentially that week. Because we will be out on job sites working from the Thursday onwards.
-**User**: The Geely thing?
-**Seb**: No, it's Fidel. [INTERNAL: unknown brand; unsure if spelt correctly] It's a big Fidel activation at the Sydney Opera House.
-**User**: It's very cool. [INTERNAL: trying to pretend knowing that brand]
-**Seb**: I should definitely be taking a whole bunch of photos of that. That's for sure. But yeah, and it'll be there installed and running for four days. So I think it's like, I don't know what it is. Anyway, they've got all these huge brands.
-**User**: Do you typically stay there for like days?
-**Seb**: Depends on the gig. Honestly, it just depends on the job.
-**Elena**: It makes it really hard to create sales enablement material. Because it's literally like 1 day... 14 days a month. Like it's just so different. And all the screens are different. Like there might be screens on it. There might be not screens. There might be audio. There might be not. Like it's just there's so many different variables for every job. That there's not like a... I mean, we're going to have to figure out how to make packages. But it's going to be very difficult.
-**Seb**: I think it'll be okay. But yeah, it's not a walk in the park, as I would say. Yeah, we've got people like The Inspired Unemployed. I don't know if you know who those guys are. They've got a huge social media. MailJour, like very, very funny. So they're coming. We've got a Waterdrop Wellness. I don't know what that is. La Roche. We've got Gucci and Fidel doing a session as well. All these big like tournaments and like big names. But the biggest one is Gucci and Fidel activation. And that's on Thursday, Friday, Saturday, Sunday. Week following. Unfortunately Ryan is gonna be there all day every day as well. And Ryan is probably one of the people you need to talk to in the office as well. So, yeah, until the 17th he won't be back in the office, he'll be out on site.
-**Elena**: But onboarding itself, since I've already put the last person through it and I'm putting Eugene through it now, it does take a few days, so it should be even out if you do start not on the 17th to give them time to come back.
-**User**: If you don't mind, may I ask, what did the last person do in the week?
-**Elena**: They only just finished the onboarding.
-**User**: So no actual progress?
-**Seb**: He was only in for a week and then had some family emergencies and scenarios which pretty much stopped him from doing anything.
-**Elena**: Yeah, he's taking a couple months off working entirely.
-**User**: Yes, you told me that. 6 weeks right?
-**Elena**: More. He doesn't know when he's going to be ready to come back to work. He's had some very serious family things happened.
-**Seb**: Family death, other things.
-**User**: Oh, like literally?
-**Elena**: Like family death, then an illness, then a suicide attempt with three different people. So he's going to need some time to take off. We didn't fire him, he didn't quit. It was more of a mutual decision that he needed to take some time to...
-**User**: Recover.
-**Elena**: Yes. Recover. He's not even sure when he's going to...
-**User**: What was his or her background? You don't mind me asking?
-**Elena**: His background is Indian.
-**Seb**: No, no. {everyone laughters}
-**User**: No. Oh God, Jesus. Gosh.
-**Elena**: Usually when people ask me what my background is, it's usually that question.
-**User**: It's usually put that as colour.
-**Elena**: His background is marketing and AI as well. He had quite a similar background to you actually, which is why you guys were like tied for me. Both of you didn't have much experience with HubSpot. So it was very, very close. But yeah. Marketing background, a lot of hands-on and management positions also.
-**User**: By the way, one more reason why I'm so fascinated by this job. My degree, my last degree, was actually Human-Computer Introduction. It's about optimising computer, including AI, for humans. Just now you mentioned what I talked about was like alien. My goal, that challenged me, is to make it not alien to you guys. In couple months.
-**Elena**: Sounds great.
-**User**: Yeah, that's what I do.
-**Elena**: All right. Well, I'll be in touch with you shortly. Let me know about the dates and I'll have the rest of the things over to you. If not today, Monday.
-**User**: Oh yeah, by the way, can I just ask a quick question? For parking...
-**Seb**: Heaps.
-**User**: Do we just park around anywhere?
-**Seb**: I'll show you the spots.
-**User**: Because I just put it right outside NW group.
-**Seb**: So if it's an NW sign, you can park there.
-**User**: Okay, right.
-**Seb**: When we walk out, I'll show you.
-**User**: That means a lot to me.
-**Elena**: In terms of a device, do you have a preference? Or do you need us to provide a device? Or do you wanna use your own?
-**User**: If I can, I'd prefer to use my own.
-Seb & **Elena**: Everyone says the exact same thing.
-**Elena**: I prefer using my own.
-**User**: We call it technical hygiene. {everyone laughters}
-**Elena**: Every laptop allows for a secondary user to be creative.
-**User**: The problem is it takes up a lot of space. So my device is huge enough.
+- **User**: I found it. It's basically just 1 question about the AI thing. So you told me we're currently on Claude Team, right? Is it Standard or Premium?
+- **Elena**: Standard.
+- **User**: Right. If needed, if I can prove it's needed, would you consider to upgrade to Premium?
+- **Seb**: Sure. If it's genuinely necessary and it works... One thing you'll learn very quickly with me is if you make my life easier and you allow me to get my shit done in a more efficient way, which means I get my time back when making money, when essentially costing less at the end of the day, green light.
+- **User**: That's exactly how I talk. {passionately shake hands with Seb}
+- **Seb**: Yeah.
+- **User**: That's exactly how I talk.
+- **Seb**: I am actually a shitless fucking creature, if you make my life easier, and you can prove to me that like what we're doing and it is actually working. We're fucking getting fast making money. You don't need to ask me for anything. I'll reward you as much as you fucking want. So simple. Everyone else knows it as well. They just shut up and they get on with it and they do it and it's really well and they're proving like, and it works and there are systems. I'll fund it. I'll make it happen, whatever it is. Like green light, it's the only way I like doing business because if you think about it and this and that, no, no, no. Do the work, make it happen. If it's successful, great, keep going. It's as simple as that.
+- **User**: Okay. For Elena, I can tell you a little bit more. The reason why I asked that is that, you know, obviously we have 4 models, technically 5 models now, but you know, Mythos is not available. So just 4 models. Each model is for different use cases. So like Haiku basically for reception, those kind of things. And then Sonnet is best for document.
+- **Elena**: Yep.
+- **User**: So like if nothing's technical, just decision-making strategies, this kind of thing...
+- **Seb**: I've been using recently Sonnet.
+- **User**: Yeah, because Sonnet is cheap. And basically if you're on a Claude Team Standard, you can basically afford to use Sonnet only. But if we're actually trying to automate things, like build systems that can, as I put it, make our lives simpler, easier, we need Opus and even Fable. And they are very hungry. {everyone laughters} And this is why. Opus is for building. Fable is only for reviewing. So like the best thing, the best combo I use is I talk with Fable. But Fable only reviews the current code base or problem and plan how to do it, but never do it herself. I call it her. And then Fable, have you tried to use sub agent?
+- **Elena**: Um, no, not at the moment.
+- **User**: All right. So basically a model can dispatch the work for another model to work for it. So it won't run out of context. And oh, yeah, by the way, this is one of the reasons why I use Claude Code, because you see the content window. So Fable will dispatch Opus to build things and then for Sonnet to write things and then everything comes together.
+- **Seb**: It's like a team collaboration.
+- **User**: Exactly. We call it a fleet of agents. But the cost is very high. But if we're not just trying to, you know, draft emails, reply messages, those kind of things, if we're trying to actually make things happen, build things, we need a bigger subscription plan. But we'll see. I'll prove it to you. I'll justify why we need it.
+- **Seb**: Yeah. Definitely looking at, especially systems in place. Like if we have a trial and error base of like...
+- **User**: Exactly, yeah.
+- **Seb**: We always start with the basics and see what it can and can't do. And then we build and then we build and then we build and we trial things. And if it genuinely proves to be successful and it can do the things and analyse better or build projects or codes for us more constructively. Absolutely. I'd say yes to it.
+- **Elena**: That's why we moved from ... [unintelligible name] to Rentman. Yeah. That's why we're making sure there's HubSpot. That's why I moved from Teamwork to ClickUp. Like the agents in ClickUp compared to what Teamwork can do.
+- **Seb**: Oh my God.
+- **Elena**: It's like night and day. I mean, it's kind of like ChatGPT and Claude, right?
+- **User**: Yeah.
+- **Elena**: Night and day.
+- **User**: Yeah.
+- **Elena**: Yes.
+- **User**: GPT lately got pretty good. {everyone laughters}
+- **Elena**: I know. I tried using it that way. I was like, why was this... what was I supposed to call it?
+- **User**: But it's actually different. Like the way I put it is GPT is good for anything don't necessarily have to be right.
+- **Seb**: Personal.
+- **User**: No, it's like creative or like, for example, if I need a definite answer, if I need an accurate answer or accurate document, I'll use Claude. If I need something open-ended, like idea generation, GPT is good. So it's actually a mix of it, but personally, if I have to just pay for one, I'll go for Claude. {laughters}
+- **Seb**: ChatGPT has been better for me on a collaborative case. Like it is better at idea building and being creative, especially for like image creation. Like I can turn a brain bubble conversation and be like just an idea for a show on how we reveal the car. And I put the exact same prompt into both of them, and ChatGPT shat on Claude on the image that it produced. And I was like, whoa, that makes sense. Like it's very different thinking patterns. Yeah.
+- **User**: So actually the best combo is use GPT to create and then use Claude to audit and implement. But that is provided that you're paying for both. 
+- **Seb**: {showing his phone, displaying a GPT-generated car show event mockup image} They are creative concepts that we do for shows for the Geely the next week. But that was all in ChatGPT.
+- **Elena**: I haven't even seen this yet. {looking together}
+- **User**: It's cool.
+- **User**: Is that the latest GPT model? GPT Image 2, right?
+- **Seb**: Yes.
+- **User**: Yeah, because the thing is that, you know, the video generation model, I forgot about its name, you know, it's the cloud thing. The teenagers... They love it. Anyway, GPT used to have a video generation model that is free for everyone to use. And everyone is using that... I forgot the name of it. But everyone is using that. And then they kinda got bankrupt because of that. That division got bankrupt because of people using the video generation model. And then they just cut the whole department. And then put it all into GPT Image 2. That's why it's so good. They got all the resources focused on the image. Because before GPT Image 2, the best model was actually Gemini Nano Banana. That was like half a year ago.
+- **Elena**: I'm so glad... {impressed by User}
+- **User**: But anyway, it's cool. It's cool. It can get on some serious work now. As you can see.
+- **Seb**: Any more questions?
+- **Elena**: In terms of start date, you said a few weeks.
+- **User**: Couple weeks. So like, I've got to check. So I think I'll get back to you. But definitely not next week. Please. I need time to set up.
+- **Elena**: I have a lot of things to finalise. After this week. Yeah. I think it's the 17th of August.
+- **User**: I think both of us will have time to get on.
+- **Elena**: Like, I could onboard you on the week of the 10th, while they're not here.
+- **Seb**: Potentially, yeah.
+- **Elena**: Because you'll be sitting down, like reading material, just catching up with me, getting a better understanding before they come back. But if you need a couple of weeks, like 17th works for us as well.
+- **User**: Yep.
+- **Elena**: So think about it.
+- **User**: Yep.
+- **Elena**: Let me know. We'll have a chat to see if any tweaks can be made. And I'll come back to you.
+- **User**: If possible, can you send me the agreement thing...
+- **Elena**: Yes.
+- **User**: So I can review that.
+- **Elena**: Yes. We'll chat...
+- **User**: Okay. Let's assume the 17th for now.
+- **Elena**: Okay.
+- **User**: I'll let you know if I can make it earlier.
+- **Seb**: Even if you start the last 3 days of the week... Instead of like starting at the beginning of the week, you could do like the 12th onwards or something. But potentially that week. Because we will be out on job sites working from the Thursday onwards.
+- **User**: The Geely thing?
+- **Seb**: No, it's Fidel. [INTERNAL: unknown brand; unsure if spelt correctly] It's a big Fidel activation at the Sydney Opera House.
+- **User**: It's very cool. [INTERNAL: trying to pretend knowing that brand]
+- **Seb**: I should definitely be taking a whole bunch of photos of that. That's for sure. But yeah, and it'll be there installed and running for four days. So I think it's like, I don't know what it is. Anyway, they've got all these huge brands.
+- **User**: Do you typically stay there for like days?
+- **Seb**: Depends on the gig. Honestly, it just depends on the job.
+- **Elena**: It makes it really hard to create sales enablement material. Because it's literally like 1 day... 14 days a month. Like it's just so different. And all the screens are different. Like there might be screens on it. There might be not screens. There might be audio. There might be not. Like it's just there's so many different variables for every job. That there's not like a... I mean, we're going to have to figure out how to make packages. But it's going to be very difficult.
+- **Seb**: I think it'll be okay. But yeah, it's not a walk in the park, as I would say. Yeah, we've got people like The Inspired Unemployed. I don't know if you know who those guys are. They've got a huge social media. MailJour, like very, very funny. So they're coming. We've got a Waterdrop Wellness. I don't know what that is. La Roche. We've got Gucci and Fidel doing a session as well. All these big like tournaments and like big names. But the biggest one is Gucci and Fidel activation. And that's on Thursday, Friday, Saturday, Sunday. Week following. Unfortunately Ryan is gonna be there all day every day as well. And Ryan is probably one of the people you need to talk to in the office as well. So, yeah, until the 17th he won't be back in the office, he'll be out on site.
+- **Elena**: But onboarding itself, since I've already put the last person through it and I'm putting Eugene through it now, it does take a few days, so it should be even out if you do start not on the 17th to give them time to come back.
+- **User**: If you don't mind, may I ask, what did the last person do in the week?
+- **Elena**: They only just finished the onboarding.
+- **User**: So no actual progress?
+- **Seb**: He was only in for a week and then had some family emergencies and scenarios which pretty much stopped him from doing anything.
+- **Elena**: Yeah, he's taking a couple months off working entirely.
+- **User**: Yes, you told me that. 6 weeks right?
+- **Elena**: More. He doesn't know when he's going to be ready to come back to work. He's had some very serious family things happened.
+- **Seb**: Family death, other things.
+- **User**: Oh, like literally?
+- **Elena**: Like family death, then an illness, then a suicide attempt with three different people. So he's going to need some time to take off. We didn't fire him, he didn't quit. It was more of a mutual decision that he needed to take some time to...
+- **User**: Recover.
+- **Elena**: Yes. Recover. He's not even sure when he's going to...
+- **User**: What was his or her background? You don't mind me asking?
+- **Elena**: His background is Indian.
+- **Seb**: No, no. {everyone laughters}
+- **User**: No. Oh God, Jesus. Gosh.
+- **Elena**: Usually when people ask me what my background is, it's usually that question.
+- **User**: It's usually put that as colour.
+- **Elena**: His background is marketing and AI as well. He had quite a similar background to you actually, which is why you guys were like tied for me. Both of you didn't have much experience with HubSpot. So it was very, very close. But yeah. Marketing background, a lot of hands-on and management positions also.
+- **User**: By the way, one more reason why I'm so fascinated by this job. My degree, my last degree, was actually Human-Computer Introduction. It's about optimising computer, including AI, for humans. Just now you mentioned what I talked about was like alien. My goal, that challenged me, is to make it not alien to you guys. In couple months.
+- **Elena**: Sounds great.
+- **User**: Yeah, that's what I do.
+- **Elena**: All right. Well, I'll be in touch with you shortly. Let me know about the dates and I'll have the rest of the things over to you. If not today, Monday.
+- **User**: Oh yeah, by the way, can I just ask a quick question? For parking...
+- **Seb**: Heaps.
+- **User**: Do we just park around anywhere?
+- **Seb**: I'll show you the spots.
+- **User**: Because I just put it right outside NW group.
+- **Seb**: So if it's an NW sign, you can park there.
+- **User**: Okay, right.
+- **Seb**: When we walk out, I'll show you.
+- **User**: That means a lot to me.
+- **Elena**: In terms of a device, do you have a preference? Or do you need us to provide a device? Or do you wanna use your own?
+- **User**: If I can, I'd prefer to use my own.
+**Seb & Elena**: Everyone says the exact same thing.
+- **Elena**: I prefer using my own.
+- **User**: We call it technical hygiene. {everyone laughters}
+- **Elena**: Every laptop allows for a secondary user to be creative.
+- **User**: The problem is it takes up a lot of space. So my device is huge enough.
 {everyone went outside to see the numerous parking bays}
-**Seb**: Outside of the fence, obviously. We have these spots at the front. But we have our trucks. So you can see one truck's currently inside, the bigger truck's here. So they usually always sit at the front, if not in the warehouse. We say don't park here. You can hire a stretch here. All of these spots, this entire row. I think the first 5 or 6 spots are ICR. Now ICR, just so you know, is the company that takes the top floor of the building that we're in. And when you were in the warehouse, you would have seen to the right, that right roller door is all fenced off in there. That's a little bit of subspace storage that they have. So they're like an air conditioning company. So they keep, I think, 150 square meters worth of shit. We don't actually know. Tools and hardware. But they take the entire top floor of the office. So then they have these first 6 spots here. And you can see...
-**User**: Yeah, I saw the sign.
-**Seb**: From here onwards, it's all us.
-**User**: So basically anything untagged is available.
-**Seb**: Correct. And anything with an NW sign. We were at one point considering being mean and rude and actually putting our Alltech sign on them. And making it abundantly clear that these are our 4 spots. Don't fucking park here. But at the end of the day, we don't really care. It's easy. There's always a spot.
-**User**: Haha. Just print it.
-**Seb**: Yeah, we were thinking it.
-**User**: Do you guys drive?
-**Seb**: Yes, very much so. These are all our spots.
-**Elena**: He lives in the car park for half a year.
-**User**: Oh really?
-**Seb**: I'm always driving.
-**Elena**: He's always driving. Plan meetings, projects.
-**Seb**: Always, always driving. And then if these spots are also taken, where that black ute is at the top, and that whole row up there is also our parking as well.
-**User**: Oh really?
-**Seb**: So there's heaps of parking here.
-**User**: So all the way inside there.
-**Seb**: Yes.
-**User**: So how about that way?
-**Seb**: So not out the front of the NW side of it. Because they very much have big trucks, and they're relying on having that. Especially when we get big semi-trailers in. But from where that black ute is, that whole wall up the top there, is also parking. So yeah, if this is awful, then we can also park up there.
-**User**: So am I in the right... Am I in the wrong spot right now? That's my car.
-**Seb**: Ah, that's the wrong spot. But that's okay. That's alright.
-**User**: I saw people looking at me just now. Like earlier. But how about those spots down there? I saw numerous. Like 20 there.
-**Seb**: I don't actually know. I've never really walked down there.
-**User**: Oh really? I walked around the whole facility.
-**Seb**: It's a great complex.
-**Elena**: I mean if it doesn't have a sign on it...
-**Seb**: Just park there. Yeah. One of the guys that works for us, he parks here on the wall all the time, and it's not even our spot. But like, people are pretty chill.
-**User**: Okay.
-**Elena**: No one's gonna queue up for anything.
-**Seb**: Aim for here.
-**User**: Because some facilities, they're very sensitive.
-**Seb**: I don't give a shit. And if someone wants to have a...
-**Elena**: The only time you'll have a problem, is if you park in that, in this area.
-**User**: That's exactly what I was talking about. I'll be going as soon as possible then. Yeah.
-**Elena**: If they have a truck coming in, like, someone's gonna be pissed.
-**Seb**: And same goes, we don't park in our driveway either. Yeah. Unless we're like doing quick drop-offs and things like that, or... Yeah, that's about it.
-**User**: Yeah.
-**Seb**: Food is great, most of the time from Sal's. But like, the actual good spot is definitely Cherry Bean, which is down the road. It's the best place to go to.
-**User**: What's it called?
-Seb & **Elena**: Cherry Bean.
-**Seb**: Amazing... 
-**Elena**: Wagyu tacos.
-**Seb**: Yeah, wagyu tacos. Cool. I have a lot of work to do. Thank you.
-**User**: Thank you so much.
-**Seb**: Thank you. Lovely to meet you.
-**User**: Likewise.
-**Seb**: Awesome.
-**Elena**: Thank you very much. Bye.
+- **Seb**: Outside of the fence, obviously. We have these spots at the front. But we have our trucks. So you can see one truck's currently inside, the bigger truck's here. So they usually always sit at the front, if not in the warehouse. We say don't park here. You can hire a stretch here. All of these spots, this entire row. I think the first 5 or 6 spots are ICR. Now ICR, just so you know, is the company that takes the top floor of the building that we're in. And when you were in the warehouse, you would have seen to the right, that right roller door is all fenced off in there. That's a little bit of subspace storage that they have. So they're like an air conditioning company. So they keep, I think, 150 square meters worth of shit. We don't actually know. Tools and hardware. But they take the entire top floor of the office. So then they have these first 6 spots here. And you can see...
+- **User**: Yeah, I saw the sign.
+- **Seb**: From here onwards, it's all us.
+- **User**: So basically anything untagged is available.
+- **Seb**: Correct. And anything with an NW sign. We were at one point considering being mean and rude and actually putting our Alltech sign on them. And making it abundantly clear that these are our 4 spots. Don't fucking park here. But at the end of the day, we don't really care. It's easy. There's always a spot.
+- **User**: Haha. Just print it.
+- **Seb**: Yeah, we were thinking it.
+- **User**: Do you guys drive?
+- **Seb**: Yes, very much so. These are all our spots.
+- **Elena**: He lives in the car park for half a year.
+- **User**: Oh really?
+- **Seb**: I'm always driving.
+- **Elena**: He's always driving. Plan meetings, projects.
+- **Seb**: Always, always driving. And then if these spots are also taken, where that black ute is at the top, and that whole row up there is also our parking as well.
+- **User**: Oh really?
+- **Seb**: So there's heaps of parking here.
+- **User**: So all the way inside there.
+- **Seb**: Yes.
+- **User**: So how about that way?
+- **Seb**: So not out the front of the NW side of it. Because they very much have big trucks, and they're relying on having that. Especially when we get big semi-trailers in. But from where that black ute is, that whole wall up the top there, is also parking. So yeah, if this is awful, then we can also park up there.
+- **User**: So am I in the right... Am I in the wrong spot right now? That's my car.
+- **Seb**: Ah, that's the wrong spot. But that's okay. That's alright.
+- **User**: I saw people looking at me just now. Like earlier. But how about those spots down there? I saw numerous. Like 20 there.
+- **Seb**: I don't actually know. I've never really walked down there.
+- **User**: Oh really? I walked around the whole facility.
+- **Seb**: It's a great complex.
+- **Elena**: I mean if it doesn't have a sign on it...
+- **Seb**: Just park there. Yeah. One of the guys that works for us, he parks here on the wall all the time, and it's not even our spot. But like, people are pretty chill.
+- **User**: Okay.
+- **Elena**: No one's gonna queue up for anything.
+- **Seb**: Aim for here.
+- **User**: Because some facilities, they're very sensitive.
+- **Seb**: I don't give a shit. And if someone wants to have a...
+- **Elena**: The only time you'll have a problem, is if you park in that, in this area.
+- **User**: That's exactly what I was talking about. I'll be going as soon as possible then. Yeah.
+- **Elena**: If they have a truck coming in, like, someone's gonna be pissed.
+- **Seb**: And same goes, we don't park in our driveway either. Yeah. Unless we're like doing quick drop-offs and things like that, or... Yeah, that's about it.
+- **User**: Yeah.
+- **Seb**: Food is great, most of the time from Sal's. But like, the actual good spot is definitely Cherry Bean, which is down the road. It's the best place to go to.
+- **User**: What's it called?
+- **Seb & Elena**: Cherry Bean.
+- **Seb**: Amazing... 
+- **Elena**: Wagyu tacos.
+- **Seb**: Yeah, wagyu tacos. Cool. I have a lot of work to do. Thank you.
+- **User**: Thank you so much.
+- **Seb**: Thank you. Lovely to meet you.
+- **User**: Likewise.
+- **Seb**: Awesome.
+- **Elena**: Thank you very much. Bye.
 
 ---
 
