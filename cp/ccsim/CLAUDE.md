@@ -24,6 +24,7 @@
   - 2.6.4. Before proposing ANY dir, check `<dir>/memory/` —— a populated one holds persistent auto-memory that no repo can restore; exclude it from the proposal.
 - 2.7. Pending queues (also every session start): run `python3 cscpt/pending.py` and surface anything it prints in the 1st `response_`. It lists the two queues only the USER can clear —— voided `❌_` files awaiting his manual delete (root §8.2.4 mandates the ≥7-day reminder yet forbids actively searching, so nothing could ever fire it) and `sessions/queued_queries/` items awaiting a dedicated session. It PRINTS; never delete or send on his behalf.
 - 2.8. `~/.claude` backup mirror (also every session start): diff every backed-up copy against its live counterpart and re-mirror any that drifted —— those files sit OUTSIDE git, so a stale snapshot silently loses the hook registrations everything else depends on. The mapping, the one command, and its exit codes live in `backup/backup_Claude/backup_Claude_FURY/README.md` § Session-Start Check —— read it there, never duplicate it here.
+- 2.9. A `#ready` turn does NOT discharge any of the above. `#ready` is PRE-CONDITIONING (read cheaply now, work on a stronger model next), not a session start —— so every §2 duty stays owed to the first real `response_`, wherever that lands. `ready.md` deliberately says nothing about this: these duties are CCSIM's alone, and every other CC would be paying tokens to read about them.
 
 ## 3. backlog.md —— Append-Only Log
 - 3.1. Collects CC's own system-improvement items (from `close_`/`wrap_` scans or ad-hoc).

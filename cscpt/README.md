@@ -48,11 +48,12 @@ Several linters below are launched by the harness rather than by you. Registrati
 
 - `alint.py` —— PreToolUse. BLOCKS a `git commit`/`git push` whilst any sub-agent OR workflow this session dispatched is still running. Wait for it, or `TaskStop` the id it prints.
 - `clint.py` —— Stop hook. Warns when chat text is not a permitted declaration line. WARN-only: never blocks, and the warning reaches the user, not CC. Logged to `.clint.log`.
+- `mlint.py` —— Stop hook. BLOCKS one turn-end when an `#m2` turn stops at its interim declaration and no `#sprint` ran. Continue the sprint; a lone `.` clears a false alarm.
 - `dlint_quick.py` —— PostToolUse. The only lint that blocks on CONTENT. Quick-lints EVERY `.md`, and blocks a comms write whilst a deliverable still owes a FULL `dlint.py` run.
 - `flint.py` —— PreToolUse. BLOCKS a filename that wedges a space before its 12-digit timestamp. The refusal names the name you meant; a corrective `git mv` is never gated.
 - `nlint.py` —— PostToolUse. Two advisory checks against `universal/numbered.md`, neither blocking: a numbered level reaching its 10th item, and a response file resetting its top-level numbering with no excuse in evidence.
 - `tlint.py` —— PostToolUse. Warns on a timestamp clash with a non-paired neighbour, and on any stray-space filename already in that folder. Warn-only; never go hunting for more.
-- `hlint.py` —— UserPromptSubmit. Reminds CC to read each `#trigger` file the prompt names, and to create the `response_[TS]` any named `query_[TS]` still owes. Never blocks.
+- `hlint.py` —— UserPromptSubmit. Reminds CC to read each `#trigger` file the prompt names, and to create the `response_[TS]` any named `query_[TS]` owes. Logged to `.hlint.log`.
 - `plint.py` —— PreToolUse. Before a script, pcmd or letter-like file is written, reminds CC to read the governing protocol first. Advisory; never gates the write.
 - `DADC.py` —— PreToolUse + PostToolUse. Preserves a file's macOS Date Added and Date Created across an agent's edit, everywhere (no folder scope). New files untouched; always exits 0.
 - `*_hook.sh` —— thin bash fast-path shims, one per lint that needs one. Each IS the registered hook, exiting instantly on irrelevant payloads before any Python spawns.

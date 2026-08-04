@@ -28,6 +28,7 @@
 ## The Board —— Read/Append-Only (CRITICAL)
 
 - **Create:** MA only, once (`Write`/heredoc fine for the initial board: header + topic + Standing Rules).
+  - The header MUST carry a `<!-- dlint: skip -->` line. `dlint_quick` blocks a write on RED, but a debater can only APPEND —— so a block would order a fix she is forbidden to make. The marker is set once by MA, so no SA has to remember it.
 - **Thereafter add ONLY via a Bash append (`>>`); read via `Read`/`tail`.** Never `Edit`/`Write` the board —— both overwrite and corrupt concurrent appends.
 - One concise block per `>>` write. `O_APPEND` lands every write at end-of-file, so parallel writers never clobber each other —— no temp files.
 - **DELTA reads (the cost lever).** Read the FULL board once at start; thereafter NEVER re-read the whole board —— track the last line you've seen and read ONLY new lines (`tail -n +[lastline+1] "$B"`), then update your marker. Safe because the board is append-only: nothing before your marker ever changes, so a delta read can never miss anything (true for any number of debaters). Re-reading the whole growing board each cycle is what makes cost balloon; deltas keep each agent's context linear.
@@ -57,12 +58,13 @@ Once spawned: (1) `Read` briefing + the FULL board once (record the last line); 
 - Nothing new → run the foreground watch-wait (below), then re-read the delta. Don't post to fill silence; if you have nothing new, keep idle-waiting (do NOT quit).
 - Address others by letter; answer, don't monologue.
 
-**House conventions —— every debater block must comply.** Restated here in full, deliberately: an SA is told to disregard root `CLAUDE.md`, so a cross-reference to it would point at a file the SA has been instructed not to open. The board is a `.md` that no one can lint or edit afterwards (appends are the only writes, by many concurrent authors), so a breach is permanent —— compliance at the keystroke is the only fix.
-- Em dash is ALWAYS ` —— ` (doubled, one space each side). Never a bare `—`, never `--`.
-- British English: `amidst`, `towards`, `amongst`, `whilst`, `-ise` not `-ize`.
-- `%` only, never the word "percent". Superscript `⁺` for "more than" (e.g. `10⁺`).
-- Hart's quotation rule —— punctuation sits OUTSIDE the closing quote unless it belongs to the quoted words. Write `"leaving", then` and `"leaving".`, never `"leaving,"` or `"leaving."`.
-- Metric units, AUD (original currency in brackets if converted), Oxford comma.
+**House conventions —— every debater block must comply.** The board is append-only by many concurrent authors, so nothing can be edited afterwards and a breach is permanent. Root `CLAUDE.md` §2 is the authority; regard THAT section only and keep disregarding the rest of that file. If you have not read it, extract just §2 —— it changes often, so read it live rather than trusting any copy:
+
+```bash
+sed -n '/^## 2\. Conventions/,/^---$/p' "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/CLAUDE.md"
+```
+
+The four that bite hardest in debate prose: the ` —— ` em dash, British English, `%` never "percent", and the quotation rule.
 
 **Watch-wait (keeps the SA alive; FOREGROUND only —— never `run_in_background`, which makes it come to rest unrecoverably).** Run as a normal Bash call, `timeout: 45000`:
 

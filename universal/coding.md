@@ -8,15 +8,24 @@
 - EXEMPTION, stated explicitly per § Prompted Components: ANY `.md` is governed SOLELY by § Markdown Hygiene below, never by this section —— a hard-wrapped .md is a defect at any line length
 - Why this bullet exists: added 202607, this section read as a positive instruction to wrap and sat 19 lines ABOVE § Markdown Hygiene's "NEVER hard word-wrap user-facing .md", with no cross-reference —— exactly the unstated conflict § Prompted Components calls a coin-flip at runtime, and it duly landed wrapped-side-up on nine files
 
-## Issue Reporting Format
-- Report EVERY code problem/fix as one compact block: **what / if-unfixed / pre-fix-question / risk-if-pushed —— then outcome**
-  - **what** —— the defect, one plain sentence
-  - **if-unfixed** —— the concrete consequence of leaving it
-  - **pre-fix-question** —— the question the user would want answered BEFORE any fix ("none" if genuinely none)
-  - **risk-if-pushed** —— what a unilateral fix could break or foreclose
-  - **outcome** —— the actual end-state: FIXED + how, DEFERRED + why, or question queued
-- Tiny example: *what* —— `'Sydney'` substring-matches brand `'ey'` → wrong flag; *if-unfixed* —— any value containing a brand substring misroutes; *pre-fix-question* —— none; *risk-if-pushed* —— a word-boundary regex could miss hyphenated brand names —— *outcome*: FIXED w/ word-boundary match + regression test
-- Order issues by severity; never bury a defect inside prose
+## `#rephrase` —— How to Report a Code Problem
+
+- Triggered by: `#rephrase` —— a MODIFIER, like `#style`; never look for a `rephrase.md`
+  - If this file isn't read yet, the user prompts `#coding #rephrase`
+  - Once it is, `#rephrase` alone re-triggers this section, any time, on anything
+- Use it for EVERY code problem or fix, prompted or not
+- Answer these five in order, in plain words —— no field names, no jargon:
+  - What broke? One sentence
+  - What happens if nobody fixes it? The real consequence, not the theory
+  - What would the user want to know BEFORE you touch it? Say "nothing" if nothing
+  - What could your fix break or rule out? The honest downside
+  - Where did it end up? Fixed and how, deferred and why, or waiting on an answer
+- Worst problem first; never bury a defect inside a paragraph
+- Worked example, and this is the register to match:
+  - `'Sydney'` matched the brand `'ey'` sitting inside it, so the flag went to the wrong
+    place. Left alone, any value containing a brand name as a substring misroutes. Nothing
+    to ask first. A word-boundary match could miss hyphenated brands. Fixed with word
+    boundaries, plus a test pinning that exact case.
 
 ## Self-Contained Permanence
 - Permanent files (code, configs, protocols, docs) must be SELF-CONTAINED —— bake the rationale in; NEVER cite a conversation/comms file as the explanation, since comms move/archive and the reference rots

@@ -119,12 +119,49 @@ same direction as every other lint in this repo: a rare unclosed-fence corner
 case firing an extra (harmless, advisory) reminder is preferable to a fence
 that never closes silently blanking out the rest of the prompt.
 
+WHY THE REMINDER READS AS A MANDATE, NOT A SUGGESTION —— the wording is the
+enforcement, so it is specified here rather than left to whoever edits the
+f-string next. The line used to end "unless already read or INTENTIONALLY
+DEFERRED", and that clause was itself the defect. On a live prompt this hook
+worked perfectly: it read the named comms file, found a bare `#cic` inside it,
+and injected TWO reminders on one line —— that trigger and a second one. The
+agent read the SECOND file, silently self-certified the first as "intentionally
+deferred", answered from a web search instead of the mandated route, and
+shipped. The owner's reasonable conclusion was that the hook had never fired.
+It had; only its wording failed. Three lessons are baked into the current text:
+(1) an advisory that ships its own escape hatch WILL be escaped, so the hedge is
+gone; (2) it now cites root CLAUDE.md §7.3.1–2 by number, because a reminder
+that reads as a suggestion loses to whatever the agent already planned to do,
+whilst one that names the rule it is enforcing does not; (3) reaching a similar
+answer by some OTHER route is stated NOT to discharge the read —— that was the
+exact substitution made, and nothing in the old line forbade it. A deferral is
+still permitted, but must be DECLARED: a visible deferral the user can overrule
+is categorically better than an invisible one he discovers in the output.
+RESIDUAL, stated rather than papered over: UserPromptSubmit must never block
+(see below and `cp/ccsim/hook_guide.md` §6.6 —— `decision:"block"` here ERASES
+the user's prompt), so WORDING is the only lever this hook has and compliance
+remains the model's choice. Anyone wanting a guarantee must add enforcement at
+a channel that can gate the act, not strengthen this sentence again.
+
+WHY IT LOGS EVERY INVOCATION: the incident above cost a forensic dig through
+session transcripts to establish something the hook itself should have been
+able to answer —— "did you fire, and what did you say?". A log written only on a
+match cannot tell "never ran" apart from "ran and found nothing"
+(`cp/ccsim/hook_guide.md` §7.7), and that ambiguity is precisely what let the
+blame land on the hook. One TAB-separated line per invocation goes to
+`cscpt/.hlint.log` (git-ignored), tagged by the stage reached: `no_stdin`,
+`not_dict`, `no_prompt`, `silent`, `fired`. A `fired` line carries the trigger
+names, so a later "you never told me" is settled by one `grep`. Logging is
+housekeeping —— every failure is swallowed, exactly as in `clint.py`, because a
+logging error must never break a prompt.
+
 PERFORMANCE: a canonical `universal/[name].md` is a single stat —— no index at
 all. Otherwise the scope index is built LAZILY and at most ONCE per run, over a
 few hundred files instead of the whole repo, pruning `.git`, `node_modules`,
 `.venv` and friends. Caps (never hit in normal use) bound the index, the
 referenced-file count/bytes and the reminder count, so neither a huge file nor a
-trigger-stuffed prompt can stall a turn.
+trigger-stuffed prompt can stall a turn. The log append is one `open`+`write`
+on a small file, with the prune amortised across ~0.5% of invocations.
 
 === CHECK 2 —— QUERY/RESPONSE PAIRING REMINDER ===
 
@@ -195,6 +232,7 @@ import sys
 import os
 import re
 import json
+from datetime import datetime
 
 # Repo root = parent of this script's `cscpt/` dir (deterministic anchor; never
 # relies on cwd, which may be a sub-folder for a given session).
@@ -296,6 +334,71 @@ _MAX_REMINDERS = 15         # max reminder lines injected (avoid a flood)
 
 _HEADER = ("[hlint hook] Possible hashtag-trigger(s) detected —— non-blocking "
            "reminder(s):")
+
+# Per-invocation stage log (git-ignored). Overridable via `HLINT_LOG` so a
+# regression test never writes to the live file. Rationale: docstring, WHY IT
+# LOGS EVERY INVOCATION —— a log written only on a match cannot distinguish
+# "never ran" from "ran and found nothing".
+_LOG = os.environ.get("HLINT_LOG") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), ".hlint.log")
+
+# Prune hysteresis, mirroring `clint.py`: read the file only once it could
+# possibly exceed the cap, rewrite only when it actually does. The 1000/800 gap
+# means a rewrite happens at most once per 200 invocations.
+_LOG_PRUNE_AT_BYTES = 400 * 1024
+_LOG_MAX_LINES = 1000
+_LOG_KEEP_LINES = 800
+
+
+def _prune_log():
+    """Bound `_LOG` to its recent window —— cheap, atomic, fail-safe.
+
+    Runs AFTER the current line is on disk, so this invocation's own line can
+    never be a casualty of its own prune. The surviving tail is staged in a
+    pid-suffixed sibling and moved in with `os.replace` (one atomic rename), so
+    a crash leaves either the untouched original or the complete replacement,
+    never a half file. Every failure is swallowed: pruning is housekeeping, and
+    an unwritable directory must degrade to "the log keeps growing", never to
+    "the hook fails"."""
+    tmp = None
+    try:
+        if os.stat(_LOG).st_size < _LOG_PRUNE_AT_BYTES:
+            return
+        with open(_LOG, "r", encoding="utf-8", errors="replace") as fh:
+            lines = fh.read().splitlines()
+        if len(lines) <= _LOG_MAX_LINES:
+            return
+        tmp = "%s.tmp.%d" % (_LOG, os.getpid())
+        with open(tmp, "w", encoding="utf-8") as fh:
+            fh.write("\n".join(lines[-_LOG_KEEP_LINES:]) + "\n")
+        os.replace(tmp, _LOG)
+        tmp = None
+    except Exception:
+        pass
+    finally:
+        if tmp:
+            try:
+                os.unlink(tmp)
+            except Exception:
+                pass
+
+
+def _log_event(stage, sid="-", triggers="-", pairs=0):
+    """Append ONE terse line for ANY invocation —— match or not.
+
+    TAB-separated, `triggers=` last because it alone carries free text (tabs and
+    newlines are flattened, so a record is always exactly one line). FAIL-SAFE:
+    all errors swallowed —— nothing reads this log back, so a lost write costs
+    diagnostics only, never the reminder itself."""
+    try:
+        with open(_LOG, "a", encoding="utf-8") as lf:
+            lf.write("%s\tsession=%s\tstage=%s\tpairs=%d\ttriggers=%s\n"
+                     % (datetime.now().isoformat(timespec="seconds"), sid,
+                        stage, pairs,
+                        str(triggers)[:300].replace("\t", " ").replace("\n", " ")))
+    except Exception:
+        pass
+    _prune_log()
 
 # Lazily-built {basename_lower: [(scope_rank, absolute path), ...]} index of the
 # search scope. None until first needed; built at most once per run.
@@ -563,13 +666,18 @@ def main():
     try:
         data = json.load(sys.stdin)
     except Exception:
+        _log_event("no_stdin")
         return 0
 
     if not isinstance(data, dict):
+        _log_event("not_dict")
         return 0
+
+    sid = data.get("session_id") or "-"
 
     prompt = data.get("prompt")
     if not isinstance(prompt, str) or not prompt:
+        _log_event("no_prompt", sid)
         return 0
 
     try:
@@ -593,15 +701,26 @@ def main():
             seen.setdefault(raw.lower(), raw)
 
     lines = []
+    fired_names = []          # names that actually produced a reminder (logged)
     for raw in seen.values():
         try:
             path = _resolve_trigger(raw)
         except Exception:
             path = None
         if path:
+            # Wording is the enforcement here —— see the docstring section WHY
+            # THE REMINDER READS AS A MANDATE before softening any of it. The
+            # removed hedge ("unless ... intentionally deferred") was the
+            # defect: it licensed a silent, self-certified skip.
             lines.append(
-                "`#%s` detected; read `%s` unless already read or intentionally deferred."
+                "`#%s` detected —— READ `%s` (root CLAUDE.md §7.3.1–2: a "
+                "trigger's protocol file MUST be read, never guessed; reaching "
+                "a similar answer by another route does NOT discharge it). "
+                "Skip only if already read THIS session. Deferring is allowed "
+                "but must be DECLARED in the response, with the reason —— "
+                "never taken silently."
                 % (raw, path))
+            fired_names.append(raw)
         if len(lines) >= _MAX_REMINDERS:
             break
 
@@ -613,7 +732,13 @@ def main():
         pair_lines = []
 
     if not lines and not pair_lines:
-        return 0  # nothing matched -> silent, non-blocking
+        # SILENT is a real outcome, not an absence —— logging it is the whole
+        # point of §7.7: without this line, "hlint never ran" and "hlint ran and
+        # matched nothing" are indistinguishable after the fact.
+        _log_event("silent", sid)
+        return 0
+
+    _log_event("fired", sid, ",".join(fired_names) or "-", len(pair_lines))
 
     blocks = []
     if lines:

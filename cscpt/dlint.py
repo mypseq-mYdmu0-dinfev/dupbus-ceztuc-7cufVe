@@ -434,6 +434,29 @@ def _genai_phrases(masked_text, yellow):
             yellow.append((ln, f"GenAI/cliche phrase `{ph}`"))
 
 
+# QUICK-ONLY —— the `#r` tense check. `glossary.md` reserves `#r` for the
+# past/perfect tense of "read", so that "I #r A and will read B" stays
+# unambiguous. A bare "read" is correct for present/future and WRONG for past,
+# and only a human (or CC re-reading its own sentence) can tell which is which
+# —— so this advises, never asserts.
+#
+# QUICK ONLY, and that exclusion is load-bearing: `#r` is house shorthand.
+# FULL mode lints DELIVERABLES, which go to third parties who have never seen
+# this glossary, so a deliverable must spell "read" out in full. Firing there
+# would push house abbreviations into outgoing work —— the opposite of the rule.
+_READ_RE = re.compile(r"\b[Rr]ead\b")
+
+
+def _read_tense(lines, orig, yellow):
+    for ln, line in enumerate(lines, 1):
+        for m in _READ_RE.finditer(line):
+            words = line.split()
+            hit = len(line[:m.start()].split())
+            ctx = " ".join(words[max(0, hit - 5):hit + 6])
+            yellow.append((ln, f'"{ctx}": Read or #r? (per `glossary.md`) '
+                               f"**Silently** fix if past tense. No explanation to user."))
+
+
 def run_checks(text, quick=False):
     """Return (red, yellow). Fenced code blocks AND inline `code` spans are masked
     first so prose rules never fire inside code (embedded deliverables are linted
@@ -451,6 +474,10 @@ def run_checks(text, quick=False):
     _ize(lines, orig, yellow)
     _hyphen_bullet(lines, orig, yellow)       # dash substitute + #numbered compliance
     _greeting_hi(lines, orig, red)            # `hi` banned everywhere, incl. --quick
+
+    if quick:
+        # QUICK ONLY —— house shorthand must never be pushed into a deliverable
+        _read_tense(lines, orig, yellow)
 
     if not quick:
         # deliverable-only rules (em dash / colons are fine in internal comms)

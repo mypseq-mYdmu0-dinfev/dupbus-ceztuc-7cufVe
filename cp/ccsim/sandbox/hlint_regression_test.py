@@ -64,13 +64,20 @@ def _payload(prompt, session_id="hlint-regression", cwd=REPO_ROOT):
     }
 
 
-def _run(payload):
+def _run(payload, log_path=None):
     """Drive hlint end-to-end through its real stdin/stdout hook contract.
-    `payload` may be a str (deliberately malformed) or a dict."""
+    `payload` may be a str (deliberately malformed) or a dict.
+
+    `log_path` redirects hlint's per-invocation log via `HLINT_LOG`, so these
+    cases never append to the live `cscpt/.hlint.log`. A test that polluted the
+    real diagnostic trail would corrupt the very evidence the log exists to
+    provide."""
     body = payload if isinstance(payload, str) else json.dumps(payload)
+    env = dict(os.environ)
+    env["HLINT_LOG"] = log_path or os.devnull
     return subprocess.run(
         [sys.executable, HLINT], input=body,
-        capture_output=True, text=True, timeout=30, cwd=REPO_ROOT,
+        capture_output=True, text=True, timeout=30, cwd=REPO_ROOT, env=env,
     )
 
 
@@ -95,6 +102,21 @@ def _fired_for(ctx, name):
     """True if the reminder for `#name` specifically is present."""
     tag = "`#%s`" % name
     return any(line.startswith(tag) for line in _reminder_lines(ctx))
+
+
+def _verdict(label, ok, r, extra=None):
+    """Report an already-computed boolean, for cases whose fixture setup makes
+    `_check`'s one-shot run unsuitable. On FAIL it dumps the raw process output
+    (and any `extra` the caller judged diagnostic, e.g. the offending line), so
+    a break is readable without re-running anything by hand."""
+    print("[%s] %s" % ("PASS" if ok else "FAIL", label))
+    if not ok:
+        print("        exit=%s" % r.returncode)
+        print("        stdout=%r" % r.stdout)
+        print("        stderr=%r" % r.stderr)
+        if extra is not None:
+            print("        extra=%r" % extra)
+    return ok
 
 
 def _check(label, prompt_or_payload, expect):
@@ -243,6 +265,73 @@ def main():
             print("        stdout=%r" % r.stdout)
             print("        stderr=%r" % r.stderr)
         results.append(ok)
+
+    # --- H12–H15: THE MANDATE WORDING, and the log that makes firing provable.
+    #
+    # THE INCIDENT THESE PIN (hlint.py docstring, WHY THE REMINDER READS AS A
+    # MANDATE): a live prompt named a comms file; that file carried a BARE
+    # `#cic` mid-sentence; hlint read it, resolved it, and injected reminders
+    # for `#cic` AND a second trigger on one line. The agent read the second
+    # file, silently treated `#cic` as "intentionally deferred" —— the escape
+    # the old wording itself offered —— answered from a web search instead of
+    # the mandated route, and shipped. Detection was never the problem, so a
+    # test that only asserts "it fires" would have passed throughout the
+    # failure and proved nothing. H13/H14 therefore assert the WORDING, which
+    # is the part that actually failed, and H15 asserts the invocation log,
+    # without which "it never fired" stayed unfalsifiable after the fact.
+    #
+    # The fixture reproduces the REAL token's character context verbatim
+    # (coding.md § Testing: mine real inputs) —— bare `#cic`, mid-sentence, no
+    # backticks, inside a REFERENCED `.md` rather than the prompt. The comms
+    # file it came from is deliberately NOT named: coding.md § Scripts & pcmd
+    # forbids a permanent file depending on a `*_[TS].md`, and it is the token's
+    # SHAPE that was load-bearing, never that file's identity.
+    tmp = tempfile.mkdtemp(prefix="hlint_mandate_")
+    try:
+        fixture = os.path.join(tmp, "referenced_note.md")
+        with open(fixture, "w", encoding="utf-8") as fh:
+            fh.write("dynamics workflow to solve the problems which the SAs "
+                     "shall actively #cic so latest info (e.g. whether a "
+                     "vendor fixed the problem)\nwhen confident\n")
+        prompt = "%s" % fixture
+        logf = os.path.join(tmp, "hlint.log")
+        r = _run(_payload(prompt), log_path=logf)
+        ctx = _context(r)
+
+        results.append(_verdict(
+            "H12 — the exact failing input: a bare mid-sentence `#cic` in a "
+            "referenced .md still fires",
+            _fired_for(ctx, "cic") and r.returncode == 0, r))
+
+        cic_line = next((l for l in _reminder_lines(ctx)
+                         if l.startswith("`#cic`")), "")
+        results.append(_verdict(
+            "H13 — reminder is a MANDATE: cites root CLAUDE.md §7.3.1–2 and "
+            "drops the self-certifying 'intentionally deferred' escape",
+            ("7.3.1" in cic_line and "MUST be read" in cic_line
+             and "intentionally deferred" not in cic_line), r,
+            extra=cic_line))
+
+        results.append(_verdict(
+            "H14 — reminder forbids the substitution actually made: another "
+            "route does NOT discharge the read, and a deferral must be DECLARED",
+            ("does NOT discharge" in cic_line and "DECLARED" in cic_line), r,
+            extra=cic_line))
+
+        # H15: the log. A `fired` line naming the trigger is what turns "did
+        # the hook say anything?" into one grep instead of a transcript dig.
+        logged = open(logf, encoding="utf-8").read() if os.path.isfile(logf) else ""
+        r2 = _run(_payload("nothing of interest here at all"), log_path=logf)
+        logged2 = open(logf, encoding="utf-8").read() if os.path.isfile(logf) else ""
+        results.append(_verdict(
+            "H15 — every invocation is logged: `fired` names the trigger, and a "
+            "no-match prompt still logs `silent` (never an absent line)",
+            ("stage=fired" in logged and "cic" in logged
+             and "stage=silent" in logged2 and not _context(r2)
+             and r2.returncode == 0), r2,
+            extra=logged2.strip().replace("\n", " | ")))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
 
     print()
     passed = sum(1 for r in results if r)

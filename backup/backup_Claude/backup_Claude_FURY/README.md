@@ -34,7 +34,7 @@
 | Backup File(s) | Source Under `.claude/` | Why It Qualifies |
 |---|---|---|
 | `backup_settings.json.md` | `settings.json` | The ONLY live registration of every hook. Registered at USER level because the Claude Desktop app silently ignores project-level hooks, so no repo holds it and a clone restores none of it |
-| `backup_memory_dupbus_*.md` (8) | `projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/` | Persistent auto-memory —— corrections CC carries across sessions. Written locally only; not cloud-synced, not in git |
+| `backup_memory_dupbus_*.md` (9) | `projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/` | Persistent auto-memory —— corrections CC carries across sessions. Written locally only; not cloud-synced, not in git |
 | `backup_memory_ajap_*.md` (3) | `projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-AJAP-repo/memory/` | Same, for the AJAP project |
 | `backup_scheduled-tasks_ajap-auto-resume_SKILL.md` | `scheduled-tasks/ajap-auto-resume/SKILL.md` | Hand-written Routine logic (the guard that stops a second AJAP MA starting); exists nowhere else |
 

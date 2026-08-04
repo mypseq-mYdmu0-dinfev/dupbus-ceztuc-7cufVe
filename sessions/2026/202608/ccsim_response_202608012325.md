@@ -1,6 +1,8 @@
 # Response to ccsim_query_202608012325.md
 *Two gates proven live; elint folded; roster audited*
 
+> **Reading guide (added later).** Read §40.1, §41.4`~`41.8, and §47. Superseded: §32`~`33, §45. Record-only: §34`~`39, §42`~`44, §46, §48, §56`~`58. Still needs you: §49.2, §49.3, §49.5. Full triage in `ccsim_response_202608042135.md` §70.
+
 ## 22. re 2 & 3 —— Both SLIPS, and No m2 Fix Warranted
 
 - 22.1. Verdict: slips, not structural gaps. Both rules ALREADY exist in `m2.md` and I did not follow them.
@@ -72,13 +74,15 @@
 
 ## 29. re 6, 13, 16, 18, 20.1 —— Dispatched or Doing
 
-- 29.1. §6 —— an SA makes the stray-space defect mechanically impossible at creation and mechanically ALERTED on encounter, plus a second SA hunting existing offenders across `GitHub/`.
-- 29.2. §13 —— an SA recovers the description word/token mandate from the permanent files or comms; if genuinely absent it averages the existing entries and I will take your correction.
-- 29.3. §13 second part —— an SA writes the hook-runtime budget rule (worst-case concurrent firing, alert past 1 second) into `ccsim/` and then measures the existing hooks against it.
-- 29.4. §13.8 —— the Workflow gap in `alint` closes this turn, as instructed. It is the right call: I used a Workflow this very turn, so the hole is not theoretical.
-- 29.5. §20.1 —— running the push-classifier reproduction myself, now that Bypass mode clears it.
-- 29.6. §16 and §18 —— answered below after the sprint, not now, because half of it depends on what the SAs return.
-- 29.7. §16.9 —— enumerating the voided files, deleting them, and pushing them as their OWN commit so you can review that commit alone.
+*Superseded —— every item below landed; struck rather than deleted so no section shifts.*
+
+- 29.1 ~§6 —— an SA makes the stray-space defect mechanically impossible at creation and mechanically ALERTED on encounter, plus a second SA hunting existing offenders across `GitHub/`.~
+- 29.2 ~§13 —— an SA recovers the description word/token mandate from the permanent files or comms; if genuinely absent it averages the existing entries and I will take your correction.~
+- 29.3 ~§13 second part —— an SA writes the hook-runtime budget rule (worst-case concurrent firing, alert past 1 second) into `ccsim/` and then measures the existing hooks against it.~
+- 29.4 ~§13.8 —— the Workflow gap in `alint` closes this turn, as instructed. It is the right call: I used a Workflow this very turn, so the hole is not theoretical.~
+- 29.5 ~§20.1 —— running the push-classifier reproduction myself, now that Bypass mode clears it.~
+- 29.6 ~§16 and §18 —— answered below after the sprint, not now, because half of it depends on what the SAs return.~
+- 29.7 ~§16.9 —— enumerating the voided files, deleting them, and pushing them as their OWN commit so you can review that commit alone.~
 
 ## 30. re 16.9 —— Enumerated and Deleted
 

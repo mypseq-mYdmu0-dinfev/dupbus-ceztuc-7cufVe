@@ -876,8 +876,47 @@ def test_fold():
         FAIL.append("K/live settings missing: %s" % live)
 
 
+
+def test_read_tense_quick_only():
+    """REGRESSION —— the `#r` tense advisory must fire in QUICK and NEVER in FULL.
+
+    `glossary.md` reserves `#r` for the past tense of "read". The advisory is
+    house shorthand, so pushing it into FULL mode would nudge deliverables —— read
+    by third parties who have never seen this glossary —— towards an abbreviation
+    they cannot parse. The quick/full split IS the rule, not an implementation
+    detail, so it is pinned in both directions."""
+    sys.path.insert(0, CSCPT)
+    try:
+        import dlint
+        sample = "Having already read A, I also read B and will read C."
+        qr, qy = dlint.run_checks(sample, quick=True)
+        fr, fy = dlint.run_checks(sample, quick=False)
+    finally:
+        sys.path.remove(CSCPT)
+
+    qhits = [m for _, m in qy if "Read or #r?" in m]
+    fhits = [m for _, m in fy if "Read or #r?" in m]
+    check("M/quick mode flags every `read` occurrence", len(qhits) == 3, len(qhits))
+    check("M/FULL mode never flags it", not fhits, fhits[:1])
+    check("M/the advisory names glossary.md",
+          qhits and "glossary.md" in qhits[0], qhits[:1])
+    check("M/and tells CC to fix silently",
+          qhits and "Silently" in qhits[0], qhits[:1])
+    check("M/context window is quoted for locating the instance",
+          qhits and qhits[0].startswith('"'), qhits[:1])
+    # a line with no `read` must stay silent —— guards against a runaway matcher
+    sys.path.insert(0, CSCPT)
+    try:
+        import dlint
+        _r, y = dlint.run_checks("Nothing here mentions it at all.", quick=True)
+    finally:
+        sys.path.remove(CSCPT)
+    check("M/silent when the word is absent",
+          not [m for _, m in y if "Read or #r?" in m])
+
+
 def main():
-    for fn in (test_hart, test_scope, test_reminder, test_classifier,
+    for fn in (test_read_tense_quick_only, test_hart, test_scope, test_reminder, test_classifier,
                test_gate, test_guards, test_replay, test_fold):
         try:
             fn()

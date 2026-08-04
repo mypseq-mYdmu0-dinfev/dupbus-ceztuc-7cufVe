@@ -56,11 +56,12 @@
 | PostToolUse | `cscpt/tlint_hook.sh` | Timestamp-clash lint (warn-only) |
 | UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder + query/response pairing reminder (advisory) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
+| Stop | `cscpt/mlint.py` | `#m2` sprint gate (BLOCKS a turn-end that stopped at the interim declaration) |
 | PostCompact | `.claude/post_compact.sh` | Inject the post-compaction protocol |
 
 - 3.1. Naming convention: a `*_hook.sh` IS the file the harness launches; the `.py` beside it is the lint body. Every `.sh` in `cscpt/` carries `_hook`, no `.py` does.
 - 3.2. A lint gets a `.sh` gate exactly when its EVENT is high-frequency: the PostToolUse lints fire on every Edit/Write, and `alint` fires on every Bash call, so each shim spares a needless Python spawn on the overwhelmingly common irrelevant payload.
-- 3.3. `clint.py` (Stop) and `hlint.py` (UserPromptSubmit) fire once per turn/prompt, so they are registered directly and correctly have no `.sh`. `plint.py` fires on writes and reads without one —— it needs the payload parsed either way, so a shim would buy nothing.
+- 3.3. `clint.py` + `mlint.py` (Stop) and `hlint.py` (UserPromptSubmit) fire once per turn/prompt, so they are registered directly and correctly have no `.sh`. `plint.py` fires on writes and reads without one —— it needs the payload parsed either way, so a shim would buy nothing.
 - 3.4. Registration entry shape matters: an event's array holds `{"matcher": …, "hooks": [{"type":"command","command":…}]}` objects. A bare `{"type":"command", …}` placed directly in the event array is the wrong shape —— check it against the live file before trusting any hand-written entry.
 - 3.5. Matchers are TOOL-NAME only —— there is no path filter, which is precisely why each PostToolUse lint must do its own file-path check.
 - 3.6. Every addition to this table costs latency on its event —— estimate it against §12 before registering, and alert the user if that event's worst case would exceed 1 s.
@@ -91,6 +92,7 @@
 | hlint | GLOBAL | Advisory-only; a missed `#trigger` has already cost real work elsewhere |
 | tlint | GLOBAL | Warn-only, always exit 0; a missed TS clash is silent and expensive |
 | plint | GLOBAL | Advisory-only; always exits 0 and can never gate a write |
+| mlint | Repo-scoped | BLOCKS a Stop; enforces this repo's `#m2` sequence |
 
 - 4.7. The asymmetry is intentional, not an oversight —— the test rule is: a lint that can BLOCK must be repo-scoped, a lint that can only advise may be global.
   - 4.7.1. Never "tidy" a scope guard onto hlint or tlint.
@@ -147,6 +149,7 @@
 - 6.4. clint is WARN-ONLY —— every verdict exits 0 and nothing blocks. It once blocked (first RED per prompt, later ones logged), but forcing an extra turn each time cascaded into worse turn-end behaviour than the breaches themselves, so the owner demoted it.
 - 6.4.1. ⚠️ The price, so nobody restores the block unaware: exit-0 output reaches ONLY the user, never the model. clint therefore cannot correct CC at all —— it is an audit trail, and enforcement rests on root `CLAUDE.md` §3.1.6's TEAs.
 - 6.4.2. Breach classes survive in the log with a `yellow:` prefix (`yellow:prose`, `yellow:reader`, …); a lone `.` is CLEAN in both modes (`clean:dot` / `clean:dot_reader`).
+  - 6.4.3. clint is not the only Stop hook: `mlint.py` DOES block, and the two are not in tension. clint enforces chat SHAPE, where a block forces a turn with nothing left to do —— the deadlock that got it demoted. mlint enforces `#m2` COMPLETION, where the forced turn IS the missing sprint, so the vacuum that produced the cascade cannot form. The test that separates them: does the blocked agent have real work to spend the extra turn on? Only block when the answer is yes, at most once per prompt, and name the escape (a lone `.`) inside the message.
 - 6.5. On PostToolUse the structured `hookSpecificOutput.additionalContext` field is the one channel that is BOTH non-blocking AND model-visible —— use it for any advisory that must actually be read.
 - 6.6. On UserPromptSubmit, NEVER emit `decision:"block"` —— it ERASES the user's prompt.
 - 6.7. PostToolUse cannot undo the write regardless of exit code (the tool already ran); exit 2 there buys model visibility with error framing, not a rollback.
@@ -181,6 +184,8 @@
 | Stop | End a turn, then check `cscpt/.clint.log` | A new line appended for that turn |
 | UserPromptSubmit | Submit a prompt containing a real `#trigger` | Reminder line appears in context |
 | UserPromptSubmit | Submit a prompt naming `ccsim_query_209912312359.md` (bare) | A `Query/response pairing` reminder names the response it owes |
+| UserPromptSubmit | End a turn, then check `cscpt/.hlint.log` | A new line per prompt: `fired` with trigger names, or `silent` |
+| Stop | End an `#m2` turn on the interim declaration alone | The stop is BLOCKED, stderr naming the unrun sprint; a `block` line in `cscpt/.mlint.log` |
 | PostCompact | Occurs naturally on compaction | The `🚨` banner is injected |
 
 - 7.4. The manual pipe test —— useful, but know exactly what it proves:
@@ -212,7 +217,7 @@ for ev,groups in d.items():
   - 7.7.1. A log written only on a breach cannot tell those two apart —— an empty log is consistent with BOTH, which is exactly how the dead wiring survived so long.
   - 7.7.2. clint therefore logs EVERY invocation to `cscpt/.clint.log` (git-ignored), tagged by the stage reached: `no_stdin`, `out_of_scope`, `no_transcript`, `unreadable_transcript`, `empty_transcript`, `clean`, `block`, `block_failed`, `yellow:spent`, `yellow:active`.
   - 7.7.3. A non-growing clint log across real turns is now UNAMBIGUOUS: the harness is not calling that command.
-  - 7.7.4. clint, alint and dlint_quick each keep a stage log. flint, DADC, plint, nlint and tlint keep NEITHER a log nor a §7.3 probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
+  - 7.7.4. clint, alint, dlint_quick and hlint each keep a stage log. flint, DADC, plint, nlint and tlint keep NEITHER a log nor a §7.3 probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
 - 7.8. After ANY change to a hook script, its filename, its path, or the settings file:
   - 7.8.1. Run the resolvability audit (§7.6) —— the cheapest guard against §8.6.2, and the check whose absence lets a renamed lint sit dead and unnoticed.
   - 7.8.2. Re-run the live probe (§7.2). A passing unit test is not a substitute.
@@ -258,6 +263,7 @@ for ev,groups in d.items():
   - 9.3.5.1. This checklist covers the BLOCKING hooks only —— a silent break in one of those is felt as a stuck repo or an escaped deliverable. The advisory lints have suites too (`cp/ccsim/sandbox/`), worth running but not recovery-critical.
   - 9.3.8. Run `cp/ccsim/sandbox/dlint_gate_regression_test.py` —— it pins the only lint that blocks on content, and the deliverable gate folded into it.
   - 9.3.9. Run `cp/ccsim/sandbox/flint_filename_gate_regression_test.py` —— it pins the filename gate, and its live-repo sweep fails if the detection rule ever broadens.
+  - 9.3.11. Run `cp/ccsim/sandbox/mlint_m2_sprint_gate_regression_test.py` —— it pins the only Stop hook that can BLOCK, replaying the real stall from a transcript fixture; its last check reads the LIVE settings file, so an unregistered hook fails the suite rather than sitting silent.
   - 9.3.10. Run `cp/ccsim/sandbox/pairing_lint_regression_test.py` —— it pins both arms of the query/response pairing enforcement (root `CLAUDE.md` §3.5.3).
 - 9.4. Keep the reference file in step with the live file whenever a hook is added, renamed, or re-pointed —— a stale reference is a recovery that silently restores dead wiring.
 - 9.5. The reference file is documentation, so it may legitimately run AHEAD of the live file during a change; whichever is ahead, close the gap before the turn ends.
@@ -329,9 +335,9 @@ for ev,groups in d.items():
 | PreToolUse (Bash) | alint `~`41 ms —— `~`150 ms on the largest transcript on disk (53 MB) | `~`150 ms |
 | PostToolUse | dlint `~`346 ms on the repo's largest `.md` (331 KB) | `~`346 ms |
 | UserPromptSubmit | hlint `~`26 ms | `~`26 ms |
-| Stop | clint `~`41 ms —— `~`165 ms on the largest transcript on disk (53 MB) | `~`165 ms |
+| Stop | clint `~`41 ms —— `~`184 ms on the largest transcript on disk (51 MB) | `~`184 ms |
 | PostCompact | `~`31 ms | `~`31 ms |
 
-- 12.7. The worst event now spends `~`35% of the budget, up from `~`7% —— dlint alone accounts for the rise. TWO hooks are no longer FIXED costs and must be re-estimated against their INPUT, not against this table: dlint is `~`1 ms per KB of `.md` text judged atop a `~`30 ms floor (so `~`1 MB in a single write would breach 1 s; the repo's largest `.md` is 331 KB), and alint/clint scale with transcript size (`~`41 ms at 2.7 MB, `~`150/165 ms at 53 MB —— clint parses every line unbounded, alint pre-filters and caps at 64 MB). The floor is process spawn —— `~`26 ms for any Python hook, `~`5 ms for a shim that exits inside bash. That floor is why the shims exist (§3.2), and why a lint's own logic is almost never what costs.
+- 12.7. The worst event now spends `~`35% of the budget, up from `~`7% —— dlint alone accounts for the rise. TWO hooks are no longer FIXED costs and must be re-estimated against their INPUT, not against this table: dlint is `~`1 ms per KB of `.md` text judged atop a `~`30 ms floor (so `~`1 MB in a single write would breach 1 s; the repo's largest `.md` is 331 KB), and alint/clint scale with transcript size (`~`41 ms at 2.7 MB, `~`150/165 ms at 53 MB —— clint parses every line unbounded, alint pre-filters and caps at 64 MB). The floor is process spawn —— `~`26 ms for any Python hook, `~`5 ms for a shim that exits inside bash. That floor is why the shims exist (§3.2), and why a lint's own logic is almost never what costs. `mlint` joins Stop at `~`78 ms on that same 51 MB transcript —— it tail-reads a bounded 8 MB window instead of parsing unbounded, so it costs a FLAT amount where clint scales, and adds ZERO to the event (§12.5).
 - 12.8. To re-measure: pipe a worst-case payload (§5's shapes) into each command on the event, time it, and take the MAX. That times the SCRIPTS (§7.1.1); confirming the harness still runs them in parallel needs the `ps` sample of §12.3.1 (§7.1.2). Neither substitutes for the other.
 - 12.9. File mtimes are useless for this on FURY —— it is HFS+, so `st_mtime` has 1-SECOND resolution and every sub-second interval reads as zero. Time the processes, never the files they touch.

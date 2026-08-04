@@ -339,10 +339,18 @@ def test_sync_allowlist_intact():
 # ---------------------------------------------------------------------------
 
 def hlint(prompt):
-    """Run the real hook with a real UserPromptSubmit payload."""
+    """Run the real hook with a real UserPromptSubmit payload.
+
+    `HLINT_LOG` is redirected to /dev/null so this suite never appends to the
+    live `cscpt/.hlint.log`. That log is diagnostic evidence —— it exists so
+    "the hook never fired" stays distinguishable from "it fired and found
+    nothing" —— and a test run injecting dozens of synthetic `fired` lines
+    would corrupt exactly the record someone later reaches for."""
+    env = dict(os.environ)
+    env["HLINT_LOG"] = os.devnull
     res = subprocess.run([sys.executable, HLINT],
                          input=json.dumps({"prompt": prompt}),
-                         capture_output=True, text=True)
+                         capture_output=True, text=True, env=env)
     if not res.stdout.strip():
         return res.returncode, ""
     try:
@@ -465,10 +473,12 @@ def test_hlint_live_probe_file():
 
 
 def test_hlint_fail_safe():
+    env = dict(os.environ)
+    env["HLINT_LOG"] = os.devnull   # never pollute the live diagnostic log
     for payload in ('', 'not json', '[]', '{}', '{"prompt": null}',
                     '{"prompt": ""}', '{"prompt": 42}'):
         res = subprocess.run([sys.executable, HLINT], input=payload,
-                             capture_output=True, text=True)
+                             capture_output=True, text=True, env=env)
         check(res.returncode == 0 and not res.stdout.strip(),
               "H-P12 — degenerate payload %r: exit 0 and silent" % payload[:20],
               "rc=%s out=%r" % (res.returncode, res.stdout[:200]))

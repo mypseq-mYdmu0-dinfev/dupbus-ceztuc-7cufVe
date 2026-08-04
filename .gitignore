@@ -44,3 +44,20 @@ cscpt/.elint_state/
 # sibling is the atomic-rewrite staging file a prune may leave behind.
 cscpt/.alint.log
 cscpt/.alint.log.tmp*
+
+# hlint runtime log —— one line per UserPromptSubmit invocation (stage +
+# trigger names), for the same §7.7 reason as the two above. Added after a
+# missed `#trigger` was blamed on the hook never firing, when in fact it had
+# fired and named the right file; the log makes that answerable by `grep`
+# instead of by excavating session transcripts.
+cscpt/.hlint.log
+cscpt/.hlint.log.tmp*
+
+# mlint runtime log —— one line per Stop invocation of the `#m2` sprint gate.
+# Same §7.7 reason as the three above, PLUS one this file alone has: the log is
+# also mlint's per-prompt LEDGER, the guard that stops a blocking Stop hook
+# firing twice for the same prompt. Deleting it therefore re-arms one block per
+# prompt already blocked —— harmless, but not merely a lost trace. The .tmp*
+# sibling is the atomic-rewrite staging file a prune may leave behind.
+cscpt/.mlint.log
+cscpt/.mlint.log.tmp*

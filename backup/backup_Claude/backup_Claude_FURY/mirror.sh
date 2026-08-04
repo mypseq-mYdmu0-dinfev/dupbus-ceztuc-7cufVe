@@ -58,6 +58,7 @@ scheduled-tasks/ajap-auto-resume/SKILL.md|backup_scheduled-tasks_ajap-auto-resum
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/MEMORY.md|backup_memory_dupbus_MEMORY.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_ajap_display_n.md|backup_memory_dupbus_feedback_ajap_display_n.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_application_email.md|backup_memory_dupbus_feedback_application_email.md
+projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_cic_mandate_on_trigger.md|backup_memory_dupbus_feedback_cic_mandate_on_trigger.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_declare_mahb_reread.md|backup_memory_dupbus_feedback_declare_mahb_reread.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_hb_reread_mahb.md|backup_memory_dupbus_feedback_hb_reread_mahb.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_no_chat_text.md|backup_memory_dupbus_feedback_no_chat_text.md
