@@ -99,6 +99,7 @@
 - FOF = fan-out (SA) fleet; if apt, use Workflow tool w/ all-at-once fleet
   - This overrides "NEVER one all-at-once..." of `sprint.md` (don't read this file unless #sprint)
   - Usually means ses% = 0, hence sesL is unlikely to kill SAs mid-flight
+- CCSIM = Claude Code System Improvement & Maintenance, a harness engineering CP
 
 ---
 
