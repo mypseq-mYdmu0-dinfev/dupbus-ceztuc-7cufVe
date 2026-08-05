@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stop hook —— BLOCKS one turn-end when an `#m2` sequence stopped dead at its
+"""Stop hook —— Mission Linter; BLOCKS one turn-end when an `#m2` sequence stopped dead at its
 INTERIM declaration and its `#sprint` never ran.
 
 Root scope: THIS repo only (`dupbus-ceztuc-7cufVe`), anchored on this file's own
