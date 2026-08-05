@@ -112,9 +112,9 @@
       - 3.1.7.6.1. Mid-turn msgs don't count (still same turn AND same `response_`, not new)
       - 3.1.7.6.2. Interruptions (e.g. user stop, sesL hit, network failure) also don't count
     - 3.1.7.7. ONE `query_` → ONE `response_`, unless user/pcmd instructs otherwise:
-      - 3.1.7.7.1. Never FEWER —— a NEW `query_` gets its OWN `response_[TS]`
+      - 3.1.7.7.1. Never FEWER —— a NEW `query_` (or post-TEA msg) gets its OWN `response_`
       - 3.1.7.7.2. NEVER append a new turn's reply to a previous turn's `response_`
-      - 3.1.7.7.3. Never MORE —— mid-turn msgs stay in the current one (§3.1.7.6.1)
+      - 3.1.7.7.3. Never MORE —— mid-turn msgs stay in the current one (per §3.1.7.6.1)
       - 3.1.7.7.4. `#close` lists comms as PAIRS, so an orphan corrupts its inventory
   - 3.1.8. Harness Nudge:
     - 3.1.8.1. If visible output required, make a harmless tool call & emit no chat text
