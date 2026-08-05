@@ -9,4 +9,5 @@ If user msg contains `#ready`, pre-condition the session by ONLY doing below, so
 - 4.1. Read the additional files after Unconditionals (`find` is allowed)
 - 4.2. If any directed readings exist, read them as well
 - 4.3. No actions exc. readings; do nothing else
-5. FYI: User's actual `query_` in next turn
+5. Note: Don't declare `memory/MEMORY.md`
+6. FYI: User's actual `query_` in next turn
