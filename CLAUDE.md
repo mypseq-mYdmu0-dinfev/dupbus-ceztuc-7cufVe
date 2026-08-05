@@ -316,11 +316,11 @@
     - 8.8.5.1. If user didn't say he'll read it AND editing it is not expected, use `textutil`; if output unintelligible OR complex formatting (table, etc.) suspected (i.e. unintelligible), follow §8.8.5.2
     - 8.8.5.2. Otherwise, read it by §8.8.3 (also works for MS) via Quick Mode (see README.md in that folder), which displays formatting & better syncs your view w/ user's view in MS apps
     - 8.8.5.3. Only if fully identical view needed (e.g. page no. match for many pages) AND `#sprint` NOT prompted, suggest user to manually run Full Mode (avoid if possible; inefficient)
-  - 8.8.6. PDF → `.md` needs TWO independent extraction methods, cross-checked:
+  - 8.8.6. Reading/MD-converting PDF = TWO independent extraction methods, cross-checked:
     - 8.8.6.1. Method 1 —— page-by-page text extraction (the Read tool's text layer)
     - 8.8.6.2. Method 2 —— render pages via `pdftoppm`, then READ the images visually
     - 8.8.6.3. `tesseract` is NOT installed; a visual read IS the second method, not OCR
-    - 8.8.6.4. Reconcile both before treating the `.md` as complete; report any divergence
+    - 8.8.6.4. Reconcile both before treating `.md` conversion as complete; report any divergence
     - 8.8.6.5. Why: a method cannot see its own blind spot
     - 8.8.6.6. A careful re-run of ONE method still dropped a clause from a live contract
 - 8.9. Self-initiated scripts (not asked by user):
