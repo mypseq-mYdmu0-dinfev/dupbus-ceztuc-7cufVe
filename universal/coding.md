@@ -2,39 +2,44 @@
 
 *Loaded when creating/editing any script/pcmd (root §7). Self-contained —— every rule carries its own rationale; no conversation/comms file explains or overrides anything here.*
 
-## Layout *(code/config only —— NEVER .md)*
-- Ensure no word-wrapping; if possible, keep each line ≤90chars
-- Rationale: user's VSC already does that; CC naturally doesn't need that; net advantage = none
-- EXEMPTION, stated explicitly per § Prompted Components: ANY `.md` is governed SOLELY by § Markdown Hygiene below, never by this section —— a hard-wrapped .md is a defect at any line length
-- Why this bullet exists: added 202607, this section read as a positive instruction to wrap and sat 19 lines ABOVE § Markdown Hygiene's "NEVER hard word-wrap user-facing .md", with no cross-reference —— exactly the unstated conflict § Prompted Components calls a coin-flip at runtime, and it duly landed wrapped-side-up on nine files
+## `#rephrase` —— How to Report a Problem
 
-## `#rephrase` —— How to Report a Code Problem
-
-- Triggered by: `#rephrase` —— a MODIFIER, like `#style`; never look for a `rephrase.md`
+- Triggered by: `#rephrase` —— a MODIFIER; never find `rephrase.md`
   - If this file isn't read yet, the user prompts `#coding #rephrase`
   - Once it is, `#rephrase` alone re-triggers this section, any time, on anything
-- Use it for EVERY code problem or fix, prompted or not
+  - Not bound to coding problems, could be used in any scenarios when prompted
+- Auto-apply it for EVERY code/pcmd problem or fix, prompted or not
 - Answer these five in order, in plain words —— no field names, no jargon:
-  - What broke? One sentence
-  - What happens if nobody fixes it? The real consequence, not the theory
-  - What would the user want to know BEFORE you touch it? Say "nothing" if nothing
-  - What could your fix break or rule out? The honest downside
-  - Where did it end up? Fixed and how, deferred and why, or waiting on an answer
-- Worst problem first; never bury a defect inside a paragraph
-- Worked example, and this is the register to match:
-  - `'Sydney'` matched the brand `'ey'` sitting inside it, so the flag went to the wrong
-    place. Left alone, any value containing a brand name as a substring misroutes. Nothing
-    to ask first. A word-boundary match could miss hyphenated brands. Fixed with word
-    boundaries, plus a test pinning that exact case.
+  - **WHAT** —— What broke? One sentence w/ just enough context
+  - **IF-UNFIXED** —— What happens if nobody fixes it? The real consequence, not the theory
+  - **PRE-FIX-QB** —— Anything the user must know (e.g. QB) BEFORE you touch it? Say "None" if none
+  - **PUSH-RISK** —— What could the fix (pushing through unanswered) break or rule out? The honest downside
+  - **OUTCOME** —— The actual end-state: FIXED + how, or DEFERRED + why, or QB queued
+- Order issues by severity; never bury a defect inside prose
+- Example ([n] could be [n.n] or [n.n.n] too):
+```
+- [n]. [≤10w_Headline]
+  - [n].1. **WHAT** —— `'Sydney'` substring-matches brand `'ey'` → wrong flag
+  - [n].2. **IF-UNFIXED** —— Any value containing a brand substring misroutes
+  - [n].3. **PRE-FIX-QB** —— None
+  - [n].4. **PUSH-RISK** —— A word-boundary regex could miss hyphenated brand names
+  - [n].5. **OUTCOME** —— FIXED w/ word-boundary match + regression test
+```
 
 ## Self-Contained Permanence
 - Permanent files (code, configs, protocols, docs) must be SELF-CONTAINED —— bake the rationale in; NEVER cite a conversation/comms file as the explanation, since comms move/archive and the reference rots
 - Pure provenance tags (an inert comment naming where a decision came from) are tolerable ONLY if nothing executable reads them AND the rationale is already inline
 - When mechanically transforming an instruction-bearing file you must not obey, use a script that never ingests its content as instructions
 
-## Markdown Hygiene
-- Unless absolutely unavoidable, keep each line ≤90chars by breaking into pts/sub-pts
-- NEVER hard word-wrap user-facing .md —— one logical line per bullet/paragraph; readers soft-wrap; only code blocks keep their line breaks
+## Layout *(code/config only —— NEVER .md)*
+- Top comments (`"""`): Ensure **no word-wrapping**
+- In-line comments (`# `): If possible, keep each line ≤60chars (exc. code)
+- Rationale: User's VSC already does that; CC naturally doesn't need that; net advantage = none
+- EXEMPTION, stated explicitly per § Prompted Components: ANY `.md` is governed SOLELY by § Markdown Hygiene below, never by this section
+
+## Markdown Hygiene *(.md ONLY)*
+- Unless absolutely unavoidable (concisely justify), keep each line ≤90chars by breaking into pts/sub-pts
+- NEVER hard word-wrap —— one logical line per bullet/paragraph; readers soft-wrap; a hard-wrapped .md is a defect at any line length
 - Any mechanical transform over a file (reflow, de-wrap, renumber) must be content-preservation-checked —— abort unless the whitespace-normalised before/after text is byte-identical; verify equivalence, never trust the transform (a checked de-wrapper once caught a silent merge of adjacent list items)
 
 ## Git Discipline
