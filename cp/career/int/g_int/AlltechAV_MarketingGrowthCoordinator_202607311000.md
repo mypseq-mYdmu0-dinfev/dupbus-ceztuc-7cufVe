@@ -685,13 +685,15 @@ Dear Elena,
 
 Thank you again for the warm welcome and for sending through the Letter of Offer, Benefits & Perks, Fair Work Information Statement, Employment Contract, and Employee Handbook. I have gone through everything carefully and have a short list of questions before returning the signed Contract and Handbook.
 
-1. Regarding secondary employment, I hold a small number of ongoing advisory commitments, in Sydney and in Hong Kong, that predate this role and that I have already mentioned to you. Could we record in writing that these remain acknowledged and permitted under the Handbook's secondary employment policy, so everything sits cleanly on file?
+1. Regarding secondary employment, I hold a small number of ongoing advisory commitments, in Sydney and in Hong Kong, that predate this role and that I have already mentioned to you. Since the Contract states it is the entire agreement, would you be comfortable adding a short line to the Schedule so it is properly on record, something like: "Approved Secondary Engagements: the Employee's existing unpaid advisory commitments in Sydney and Hong Kong, disclosed to the Employer prior to signing, are acknowledged and permitted under Handbook clause 09 (Secondary Employment)". If that wording works for you, it would sit naturally alongside the other Schedule fields on page 10.
 
 2. Is the stated business hours window, 8:30am to 5pm, meant as fixed clock-in and clock-out times, or is there some flexibility in practice? I noticed a little flexibility around the Stage 3 meeting and am keen to understand the norm rather than assume either way.
 
 3. The role is set at 8 hours a day, and 8:30 to 5:00 comes to 8.5 hours. Is the additional half hour a lunch break?
 
-4. My understanding is that the hourly rate is intended to cover any Award-mandated overtime or penalty rates, so there is no separate loading for evening or weekend work. Could you confirm this is correct?
+4. Does the hourly rate include any additional pay for evening or weekend event work, or is a separate loading or allowance applied in those cases?
+
+5. (Optional, drop if unnecessary) Since the Onboarding Plan and EOS Blueprint you sent are explicitly not final and will be tweaked together once I start, could we agree that whatever version we settle on together will also be shared and kept in writing, so we are both working from the same final copy?
 
 I am genuinely looking forward to starting and to building the marketing function together with you and Seb. Thank you for your patience with the questions.
 
