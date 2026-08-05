@@ -33,8 +33,10 @@ existing HTML/Code one):
 USAGE (DXMF-style activation)
 -----------------------------
 1. Place an instruction file with a .txt or .md extension beside this script
-   (any name except `temp.txt`/`blank.md`/`README.md` or a `❌_`-prefixed
-   name; `parked/` is ignored). EACH non-empty, non-`#` line = one target
+   (any name except `temp.txt`/`blank.md`/`README.md`, a `❌_`-prefixed name,
+   or a generated artefact —— `ghist_*`, `git_history_*`, `DATS_*`, `ajap_*`,
+   and quote_fix.py's `*_processed`; `parked/` is ignored). Both extensions
+   have always been accepted. EACH non-empty, non-`#` line = one target
    file path (macOS "copy file path" absolute form; surrounding quotes
    tolerated) → one output .html. A single-path file still yields one page.
 2. Run:  python3 git_history.py
@@ -83,8 +85,14 @@ def _instruction_targets() -> list[Path]:
         if not p.is_file() or p.suffix.lower() not in (".txt", ".md"):
             continue
         # blank.md is the renamed temp.txt; ❌_ marks a file parked in place.
+        # The prefixes are artefacts other gscpt scripts DROP in this folder ——
+        # DATS_<ts>.txt is a list of file PATHS, so without it a leftover DATS
+        # confirmation file reads as a perfectly valid instruction file here.
+        # quote_fix.py's `<stem>_processed.md`/`.txt` needs a STEM check, not a
+        # prefix one. Kept in step with DAMF.py/DXMF.py, which share this folder.
         if p.name.lower() in ("temp.txt", "blank.md", "readme.md") or p.name.startswith(
-                ("ghist_", "git_history_", "ajap_logs_", "ajap_runtime_log", "❌_")):
+                ("ghist_", "git_history_", "DATS_", "ajap_logs_",
+                 "ajap_runtime_log", "❌_")) or p.stem.endswith("_processed"):
             continue
         targets = _lines_to_targets(
             p.read_text(encoding="utf-8", errors="replace"))

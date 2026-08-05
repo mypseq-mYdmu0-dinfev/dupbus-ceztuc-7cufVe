@@ -2,16 +2,22 @@
 """
 Shopping Records Processor
 
-Process all *.txt receipt files (except temp.txt) into standardised csv files.
+Process all *.txt / *.md receipt files into standardised csv files.
 Input:  this script's own directory (inside the repo)
-Output: this script's own directory (inputs are .txt, outputs are .csv — no clash)
+Output: this script's own directory (inputs are .txt/.md, outputs .csv — no clash)
 No external libraries required.
+
+.md is accepted alongside .txt because a receipt is plain text and the user no
+longer saves anything as .txt —— a .txt-only scan would silently process
+nothing. The artefact exclusions below are what stop that widened net from
+treating another gscpt script's output as a receipt.
 
 USAGE
 -----
-1. In THIS script's own directory, place one or more receipt .txt files (any
-   name except `temp.txt`/`blank.md`/`README.md` or a `❌_`-prefixed name;
-   the parked/ subfolder is never scanned). Each file is a raw receipt: description lines
+1. In THIS script's own directory, place one or more receipt .txt or .md files
+   (any name except `temp.txt`/`blank.md`/`README.md`, a `❌_`-prefixed name,
+   or a generated artefact —— `DATS_*`, `ajap_*`, and quote_fix.py's
+   `*_processed`; the parked/ subfolder is never scanned). Each file is a raw receipt: description lines
    accumulate until a standalone price line (e.g. `5.47`) closes a record;
    prices glued onto the end of a line are split automatically.
 2. Run:  python3 shopping_records.py
@@ -29,9 +35,13 @@ import glob
 
 INPUT_DIR = os.path.dirname(os.path.abspath(__file__))
 OUTPUT_DIR = INPUT_DIR
+INPUT_EXTS     = ('.txt', '.md')  # see the header: .txt alone finds nothing now
 # Never treat these as input (blank.md is the renamed temp.txt); compared lowercase.
 EXCLUDE        = {'temp.txt', 'blank.md', 'readme.md'}
-EXCLUDE_PREFIX = '❌_'  # parked-in-place marker —— such files never activate
+# ❌_ parks a file in place; the rest are other gscpt scripts' OUTPUT, which
+# accepting .md would otherwise pull in as if it were a receipt.
+EXCLUDE_PREFIXES     = ('❌_', 'DATS_', 'ajap_logs_', 'ajap_runtime_log')
+EXCLUDE_STEM_SUFFIXES = ('_processed',)  # quote_fix.py's output
 
 
 # ── Text Transformations ──────────────────────────────────────────────────────
@@ -267,9 +277,12 @@ def to_csv(records):
 
 def main():
     files = sorted(  # top level only —— parked/ never matches
-        f for f in glob.glob(os.path.join(INPUT_DIR, '*.txt'))
+        f for ext in INPUT_EXTS
+        for f in glob.glob(os.path.join(INPUT_DIR, f'*{ext}'))
         if os.path.basename(f).lower() not in EXCLUDE
-        and not os.path.basename(f).startswith(EXCLUDE_PREFIX)
+        and not os.path.basename(f).startswith(EXCLUDE_PREFIXES)
+        and not os.path.splitext(os.path.basename(f))[0].endswith(
+            EXCLUDE_STEM_SUFFIXES)
     )
     multi = len(files) > 1
 

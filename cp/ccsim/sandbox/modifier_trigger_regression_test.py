@@ -10,8 +10,8 @@ injecting "READ `<path>`" for every `#name` whose file it can find. Three
 triggers deliberately have NO file of their own —— they are MODIFIERS defined
 inside a section of a larger protocol file:
 
-    #bite      -> universal/numbered.md  § `#bite` —— Bite-size
-    #opt       -> universal/numbered.md  § `#opt` —— Optional-Reading Offload
+    #bite      -> universal/numbered.md  § Bite-size —— `#bite`
+    #opt       -> universal/numbered.md  § Optional-Reading Offload —— `#opt`
     #rephrase  -> universal/coding.md    § `#rephrase` —— How to Report a Problem
 
 That arrangement is only safe while BOTH halves hold:
@@ -174,6 +174,66 @@ def test_selector_ruling_is_stated():
         failures.append(
             "universal/numbered.md must state that `#opt` modifies BOTH tags "
             "(so it is never read as a selector suspending one of them)")
+    # TWO TAGS, TWO TARGETS, ONE SENTENCE. The selector above is per-TARGET,
+    # not per-output: "ensure X #numbered & Y #bite" names both tags yet means
+    # neither is a reminder —— each binds to its own target and suspends the
+    # other THERE. Read per-OUTPUT instead, that sentence collapses to
+    # "NEITHER or BOTH = the default", i.e. both tags on everything, which is
+    # the opposite of what was asked. The two rules only coexist because the
+    # scope is stated; drop the scope and they contradict.
+    if not re.search(r"SELECTOR, scoped to its named TARGET", text):
+        failures.append(
+            "universal/numbered.md must scope the selector to the tag's named "
+            "TARGET —— unscoped, `ensure X #numbered & Y #bite` reads as the "
+            "both-tags default and each target's deselection is lost")
+    if not re.search(r"DIFFERENT targets\s+——.*suspending the other", text):
+        failures.append(
+            "universal/numbered.md must state that BOTH tags on DIFFERENT "
+            "targets each govern their own & suspend the other there")
+
+
+def test_opt_placement_rule_is_stated():
+    """`#opt` must keep its three-case placement rule.
+
+    The user does NOT read below the `#opt` separator —— by his own account he
+    treats it as a record for future CC. So anything needing his input placed
+    there is not merely deprioritised, it is never seen: three real misses in
+    one session (an unanswered question, a requested edit, a "worth your eye"
+    finding) all traced to that single mistake. The rule is graded, not a ban,
+    which is exactly why it must stay written down: case 1 is absolute, cases
+    2 and 3 are judgement, and a session that remembers only "use #opt when
+    long" will re-make the miss."""
+    text = _read("universal/numbered.md")
+    if not re.search(r"input/decision/action.*NEVER below", text):
+        failures.append(
+            "universal/numbered.md must state that anything needing the "
+            "user's input/decision/action NEVER goes below the `#opt` line")
+    if not re.search(r"future CC benefits.*lean below", text):
+        failures.append(
+            "universal/numbered.md must keep the middle `#opt` case (no input "
+            "needed BUT future CC benefits -> judge, lean below), else the "
+            "rule reads as a binary and the record-keeping half is lost")
+
+
+def test_sequential_reply_rule_is_stated():
+    """Reply order must track the query's order, with BOTH exemptions.
+
+    He reads `query_` and `response_` side by side from the top, so answering
+    his pt 8 before his pt 1 scrambles the thread. Model output order is not
+    harness-enforceable —— no lint can see intent —— so the instruction IS the
+    only control, and it must carry its two exemptions or it will be
+    over-applied: GROUPING (one pt answering several of his) saves him reading
+    and is wanted; an `#opt` offload necessarily sits at the bottom."""
+    text = _read("universal/numbered.md")
+    if not re.search(r"Sequential Reply\s+——", text):
+        failures.append(
+            "universal/numbered.md § Optimise for Reply must carry the "
+            "Sequential Reply rule (answer his pts in HIS order)")
+    if len(re.findall(r"- EXEMPT: ", text)) < 2:
+        failures.append(
+            "universal/numbered.md must state BOTH Sequential Reply "
+            "exemptions (grouping, and pts offloaded to `#opt`) —— with "
+            "either missing, the rule gets over-applied")
 
 
 def selftest():
@@ -186,6 +246,17 @@ def selftest():
                      "- Triggered by: `#bite` —— never find `bite.md` (this "
                      "§ governs)"):
         bad.append("selftest: declaration matcher misses the real clause")
+    # The three newer matchers must reject the PRIOR wording, else they would
+    # pass on a file that has silently reverted to it.
+    if re.search(r"SELECTOR, scoped to its named TARGET",
+                 "- Tag(s) in a query that ALSO carries content = a SELECTOR:"):
+        bad.append("selftest: target-scope matcher passes the unscoped form")
+    if re.search(r"input/decision/action.*NEVER below",
+                 "- `[optional_reading]` = still #numbered, CC-facing appendix"):
+        bad.append("selftest: `#opt` placement matcher is too loose")
+    if re.search(r"Sequential Reply\s+——",
+                 "- Numbering Continuity —— DEFAULT is to CONTINUE at n+1"):
+        bad.append("selftest: sequential-reply matcher is too loose")
     return bad
 
 
@@ -195,6 +266,8 @@ def main():
     test_hlint_stays_silent_on_each_modifier()
     test_each_modifier_is_declared_file_less()
     test_selector_ruling_is_stated()
+    test_opt_placement_rule_is_stated()
+    test_sequential_reply_rule_is_stated()
 
     if failures:
         print("FAIL —— %d problem(s):" % len(failures))
@@ -202,7 +275,8 @@ def main():
             print("  - %s" % f)
         return 1
     print("PASS —— #bite/#opt/#rephrase stay file-less, hlint stays silent on "
-          "each, every owning file declares it, selector ruling intact.")
+          "each, every owning file declares it; selector (incl. per-target "
+          "scope), `#opt` placement, and sequential-reply rulings intact.")
     return 0
 
 

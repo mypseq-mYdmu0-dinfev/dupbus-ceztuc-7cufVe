@@ -24,10 +24,10 @@ USAGE
 -----
 1. In THIS script's own directory, leave exactly one instruction file, `.txt`
    or `.md` (any name except `temp.txt`/`blank.md`/`README.md`, a `❌_`-prefixed
-   name, or a generated artefact such as `DATS_*`; anything inside `parked/`
-   is ignored), containing:
-       Line 1: the ABSOLUTE path of the target —— a FILE or a FOLDER.
-               Finder: right-click → hold ⌥ → "Copy as Pathname", then paste.
+   name, or a generated artefact —— `DATS_*`, `ajap_*`, and quote_fix.py's
+   `*_processed.txt`/`.md`; anything inside `parked/` is ignored), containing:
+       Line 1: the ABSOLUTE path of the target —— a FILE or a FOLDER, anywhere
+               on this Mac. Finder: select it, press ⌘⌥C ("Copy as Pathname").
                Surrounding quotes, backslash-escaped spaces and a leading `~`
                are all tolerated; `#`-leading and blank lines are skipped.
        Line 2: the desired Date Added timestamp in YYYYMMDDHHmm (Sydney time)
@@ -61,22 +61,35 @@ was resolved against the process cwd, so one instruction file hit different
 targets depending on which directory the script happened to be run from. An
 absolute path has exactly one meaning from anywhere.
 
-Root scope: no root is searched or walked to FIND anything —— Line 1 names its
-own. The only root that matters is the safety fence ALLOWED_ROOTS: the target
-must sit under `.../Fury Documents/GitHub/`, derived from this script's own
-`__file__` (never the process cwd, which a caller can point anywhere). That one
-root covers every repo kept there —— dupbus-ceztuc-7cufVe, AJAP_repo, and any
-sibling —— which is why no repo is named in code and why "should this also
-search AJAP_repo?" no longer has anything to decide. Everything else on this
-Mac is excluded on purpose: this script rewrites Finder metadata irreversibly
-and recursively, so a single mistyped path outside the repos would quietly
-rewrite the dates the user sorts and searches by, with no undo. Widen
-ALLOWED_ROOTS deliberately if that ever needs to change.
+Root scope: NONE, and that is DELIBERATE. No repo root is resolved, searched or
+walked —— not this one, not AJAP_repo, not any sibling —— because Line 1 names
+its own absolute target. An earlier version fenced targets to
+`.../Fury Documents/GitHub/`; that fence was REMOVED because it broke the main
+use case. Most runs are on files OUTSIDE the repos (re-dating a deliverable so
+it reads as touched earlier or later), so a fence refusing the common case is a
+regression, not a safeguard. The target may now live anywhere on this Mac.
+
+What replaces the fence does not restrict WHERE, only what cannot be a target
+at all. The list is deliberately SHORT —— each entry is a shape that an
+over-trimmed or mistyped path actually lands on, not an invented hazard:
+  - any MOUNT POINT, i.e. `/` and every volume root such as
+    `/Volumes/FURY 2TB` —— detected structurally via os.path.ismount, so no
+    volume is ever named in code and a newly attached disk is covered for free.
+    Dropping the last components of a copied path lands here first.
+  - `/Users` and `/Volumes` —— the containers one level above every home and
+    every disk; the same over-trim lands here, and neither is ever a target.
+  - the HOME folder itself —— enormous (Library, caches, every document), and
+    short enough to be typed by hand.
+Both the path AND what it points at are checked, so a symlink cannot be a door
+to any of them. System paths (`/usr`, `/System`, `/Applications`) are NOT
+listed on purpose: a Finder "Copy as Pathname" value cannot be truncated into
+them, so listing them would be protection against a scenario that never occurs,
+and the 50-item confirmation below still covers them.
 
 It STOPS with an alert if: 0 or >1 instruction files exist; the instruction
 file is malformed; the timestamp is invalid; Line 1 is not an absolute path;
-the path does not exist; the path is outside ALLOWED_ROOTS (or IS one of those
-roots); or the folder is empty.
+the path does not exist; the path (or its symlink target) is a mount point,
+`/Users`, `/Volumes`, or the home folder; or the folder is empty.
 """
 
 import ctypes
@@ -91,9 +104,6 @@ from zoneinfo import ZoneInfo
 
 # ---------------------------------------------------------------- configuration
 SCRIPT_DIR = Path(__file__).resolve().parent          # .../<repo>/gscpt
-REPO_ROOT = SCRIPT_DIR.parent                         # .../<repo>
-# Safety fence, anchored on __file__ (never cwd). See "Root scope" above.
-ALLOWED_ROOTS = (REPO_ROOT.parent,)                   # .../GitHub —— all repos
 SYDNEY = ZoneInfo("Australia/Sydney")
 INSTRUCTION_SUFFIXES = (".txt", ".md")
 # Never treat these as the instruction file (blank.md is the renamed temp.txt).
@@ -101,7 +111,14 @@ EXCLUDED_NAMES = {"temp.txt", "blank.md", "readme.md"}  # compared lowercase
 # Parked-in-place marker, plus artefacts other gscpt scripts DROP in this folder
 # (DATS writes DATS_<ts>.txt here) —— those are output, never instructions.
 EXCLUDED_PREFIXES = ("❌_", "DATS_", "ajap_logs_", "ajap_runtime_log")
+# quote_fix.py writes `<stem>_processed.md`/`.txt` into this same folder ——
+# same extensions as an instruction file, so it is excluded by STEM, not prefix.
+EXCLUDED_STEM_SUFFIXES = ("_processed",)
 CONFIRM_THRESHOLD = 50  # a tree this size is a decision, not a typo's collateral
+# Shapes that are never a target, only a mistyped one. Short on purpose; the
+# reasoning for each (and for what is NOT here) is in "Root scope" above.
+# Mount points are caught structurally, so no volume is named.
+NEVER_TARGET = ("/Users", "/Volumes")
 
 # catalog attribute bits (sys/attr.h)
 ATTR_BIT_MAP_COUNT = 5
@@ -155,11 +172,13 @@ def find_instruction_file() -> Path:
         if p.is_file() and p.suffix.lower() in INSTRUCTION_SUFFIXES
         and p.name.lower() not in EXCLUDED_NAMES
         and not p.name.startswith(EXCLUDED_PREFIXES)
+        and not p.stem.endswith(EXCLUDED_STEM_SUFFIXES)
     ]  # top-level only: anything inside parked/ (or any subfolder) never matches
     if not candidates:
         die(f"no instruction .txt/.md found in {SCRIPT_DIR} "
-            f"(excluding {sorted(EXCLUDED_NAMES)} and "
-            f"{'/'.join(EXCLUDED_PREFIXES)}* names).")
+            f"(excluding {sorted(EXCLUDED_NAMES)}, "
+            f"{'/'.join(EXCLUDED_PREFIXES)}* and *{'/*'.join(EXCLUDED_STEM_SUFFIXES)} "
+            f"names).")
     if len(candidates) > 1:
         names = ", ".join(p.name for p in candidates)
         die(f"multiple instruction files found ({names}); leave exactly one.\n"
@@ -219,51 +238,63 @@ def path_variants(token: str) -> list[str]:
 
 
 def _not_absolute_help(given: str) -> str:
-    example = ALLOWED_ROOTS[0] / REPO_ROOT.name / "sessions/2026/202607/notes.md"
+    """Fix FIRST, reason last: mid-error is the wrong moment for a history
+    lesson, and the user only needs to know what to paste."""
+    example = Path.home() / "Downloads" / "Some Deliverable.pages"
     return (
-        f"Line 1 must be an ABSOLUTE path, but it reads: {given}\n"
-        f"   Bare filenames are no longer searched for —— a search that found "
-        f"the wrong\n"
-        f"   single match rewrote the wrong file's dates silently, and a "
-        f"relative path\n"
-        f"   meant different files depending on where the script was run from.\n"
-        f"   Type the full path instead. In Finder: right-click the file or "
-        f"folder →\n"
-        f"   hold ⌥ → \"Copy as Pathname\", then paste it as Line 1. It must "
-        f"start with\n"
-        f"   a '/', and it may name a FILE or a whole FOLDER, e.g.\n"
+        f"Line 1 must be an ABSOLUTE path —— it has to start with \"/\".\n"
+        f"   You gave: {given}\n"
+        f"   Nothing was changed.\n"
+        f"\n"
+        f"   FIX: in Finder, select the file or folder and press ⌘⌥C (\"Copy "
+        f"as Pathname\"),\n"
+        f"   then paste that as Line 1. It may name a FILE or a whole FOLDER, "
+        f"and it may\n"
+        f"   live ANYWHERE on this Mac —— inside a repo or not. For example:\n"
         f"     {example}\n"
-        f"   Line 2 stays the 12-digit YYYYMMDDHHmm timestamp."
+        f"   Line 2 stays the 12-digit YYYYMMDDHHmm timestamp.\n"
+        f"\n"
+        f"   (Why not just the filename? Nothing is searched for. A search "
+        f"returning one\n"
+        f"   match is not the same as returning the RIGHT one, and a relative "
+        f"path meant\n"
+        f"   a different file depending on where the script was run from.)"
     )
 
 
-def _outside_help(p: Path) -> str:
-    roots = "\n     ".join(str(r) for r in ALLOWED_ROOTS)
+def _never_target_reason(p: Path) -> str:
+    """'' if p is a plausible target, else why it can only be a mistyped one.
+    Kept short on purpose —— see "Root scope" in the header for each entry."""
+    if os.path.ismount(str(p)):
+        return ("it is a volume root (a mount point), so this would rewrite "
+                "every file on that disk")
+    if str(p) in NEVER_TARGET:
+        return ("it is the folder holding every user/every disk, not anything "
+                "inside one")
+    if p in (Path.home(), Path(os.path.realpath(Path.home()))):
+        return ("it is the home folder itself —— every document, Library and "
+                "cache beneath it")
+    return ""
+
+
+def _never_target_help(p: Path, why: str) -> str:
     return (
-        f"target is outside the roots this script may touch: {p}\n"
-        f"   Nothing was changed. Allowed:\n     {roots}\n"
-        f"   That fence exists because this script rewrites Finder dates "
-        f"recursively\n"
-        f"   and irreversibly. If the path really is intentional, add its root "
-        f"to\n"
-        f"   ALLOWED_ROOTS at the top of this script —— deliberately, not in "
-        f"passing."
+        f"refusing {p} —— {why}.\n"
+        f"   Nothing was changed. Only a handful of shapes are refused (volume "
+        f"roots,\n"
+        f"   /Users, /Volumes, the home folder); they are what a path trimmed "
+        f"one\n"
+        f"   component too far lands on. Everywhere ELSE on this Mac is allowed "
+        f"on\n"
+        f"   purpose. Name the file or folder you actually meant, one or more "
+        f"levels in."
     )
-
-
-def _inside_allowed(real: Path) -> bool:
-    for root in ALLOWED_ROOTS:
-        try:
-            real.relative_to(root)
-        except ValueError:
-            continue
-        return True
-    return False
 
 
 def resolve_target(token: str) -> Path:
-    """Line 1 -> an existing absolute path inside ALLOWED_ROOTS. No search, no
-    guessing: every failure mode below stops the run instead of picking one."""
+    """Line 1 -> an existing absolute path, ANYWHERE on this Mac. No search, no
+    guessing, and no root restriction (see "Root scope"): every failure mode
+    below stops the run instead of picking something."""
     variants = [Path(v).expanduser() for v in path_variants(token)]
     absolute = [v for v in variants if v.is_absolute()]
     if not absolute:
@@ -275,15 +306,13 @@ def resolve_target(token: str) -> Path:
         p = Path(os.path.normpath(str(v)))
         if not p.exists() and not p.is_symlink():
             continue
+        # Check the link AND what it points at, so an innocently named symlink
+        # cannot be a door to a volume root or the home folder.
         real = Path(os.path.realpath(p))
-        # Fence-check the REAL path: a symlink inside the roots that points out
-        # of them must not become a way through the fence.
-        if real in ALLOWED_ROOTS or p in ALLOWED_ROOTS:
-            die(f"target IS one of the allowed roots ({p}) —— that would stamp "
-                f"every repo inside it.\n"
-                f"   Name a repo, a folder, or a file within it instead.")
-        if not _inside_allowed(real):
-            die(_outside_help(p))
+        for candidate in (p, real):
+            why = _never_target_reason(candidate)
+            if why:
+                die(_never_target_help(candidate, why))
         return p
 
     die(f"path does not exist: {absolute[0]}\n"

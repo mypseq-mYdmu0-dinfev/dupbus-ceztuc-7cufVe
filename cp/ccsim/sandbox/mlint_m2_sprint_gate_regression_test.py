@@ -731,9 +731,16 @@ def test_every_run_logs_exactly_one_line():
 # ---------------------------------------------------------------------------
 
 def test_m2_md_carries_the_same_message_rule():
+    """⚠️ PIN THE RULE, NOT THE OWNER'S PHRASING. These assertions read literal
+    strings out of a file the owner edits BY HAND, and both of them broke that
+    way: commit `d51f0004` tightened "SAME message" to "SAME msg" and swapped
+    the nesting example's numbers, leaving every rule intact whilst turning the
+    suite red. A pin that fails on a synonym is not testing the invariant, it is
+    testing the wording —— so each check below accepts the family of phrasings
+    that mean the same act, and fails only when the ACT itself goes missing."""
     text = open(M2_MD, encoding="utf-8").read()
     lowered = text.lower()
-    check("same message" in lowered,
+    check("same message" in lowered or "same msg" in lowered,
           "m2.md tells CC to emit the interim declaration in the SAME message",
           "the instruction half of the fix is missing —— it was deleted once "
           "before and the stalls continued")
@@ -743,6 +750,17 @@ def test_m2_md_carries_the_same_message_rule():
     check(text.count("\n") < 40,
           "m2.md stays terse (<40 lines)",
           "the owner watches this file's growth; %d lines" % text.count("\n"))
+    # The sequencing strengthener the owner asked for: "sequentially" alone left
+    # step 3 startable on a half-done step 2. It must read as a COMPLETENESS
+    # test, never as a wait —— the removed "Don't proceed..." line was itself
+    # diagnosed as a cause of CC stalling after step 2.
+    check(re.search(r"1\s*&\s*2\s+both\s+DONE\s+before\s+3", text) is not None,
+          "m2.md requires steps 1 & 2 both DONE before 3",
+          "the sequencing rule rests on the word 'sequentially' alone")
+    check(re.search(r"never pause, never await", text, re.I) is not None,
+          "the sequencing rule is paired with an explicit NO-WAIT clause",
+          "a completeness check with no no-wait clause reads as a barrier, "
+          "which is the exact failure the removed line caused")
 
 
 def test_m2_md_carries_the_reading_load_rule():
@@ -763,9 +781,14 @@ def test_m2_md_carries_the_reading_load_rule():
           "m2.md forbids striking a HEADING",
           "a struck heading reads as its whole section being gone, which makes "
           "every later section appear to shift")
-    check(re.search(r"11\.4\.1", text) is not None,
+    # SHAPE, not specific numbers —— see the phrasing warning above. Any worked
+    # example of sub-points nesting under their parent satisfies this
+    # (`11.4.1/11.4.2/11.4.3` and `2.1/2.2/2.3` are the same lesson); what must
+    # never happen is the anti-pattern being shown with no correct form beside it.
+    check(re.search(r"\d+\.\d+/\d+\.\d+", text) is not None
+          or re.search(r"\d+\.\d+\.\d+/", text) is not None,
           "m2.md shows the CORRECT nesting shape, not only the anti-pattern",
-          "answers to a plan point must nest under it (11.4.1, 11.4.2, …); the "
+          "answers to a plan point must nest under it (e.g. 2.1/2.2/2.3); the "
           "rule was misapplied once because only the anti-pattern was worked")
 
 

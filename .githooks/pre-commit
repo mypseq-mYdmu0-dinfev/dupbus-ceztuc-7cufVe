@@ -125,15 +125,14 @@ done
 # unpaired queries), which nothing could justify.
 #
 # NOT the real fix, deliberately recorded as such: by commit time the wrong file
-# has already been written and the turn is over. The check that reaches the
-# decision is `cscpt/hlint.py`'s prompt-time pairing reminder, which names the
-# owed response_ before the turn's first write. This is the net beneath it, for
-# whatever escapes — including any file created outside the harness's tools.
-#
-# `sessions/queued_queries/` is EXCLUDED: those queries deliberately await a
-# future session (see that folder's README), so an unpaired one there is
-# correct, never a defect. The blank `*_query_.md` TEMPLATES at the root of
-# `sessions/` carry no 12-digit TS, so the pattern below never matches them.
+# has already been written and the turn is over. This is now the ONLY automated
+# pairing check —— `cscpt/hlint.py` briefly carried a prompt-time twin that named
+# the owed response_ BEFORE the turn's first write, but it was purged: a new
+# query_ has no response_ by construction, so it fired identically on compliant
+# turns and on the breach. Nothing therefore fires at the moment of the write.
+# That gap is real; the rebuild target is `cscpt/flint.py`'s PreToolUse half (see
+# the retirement note in `cscpt/hlint.py`). This arm also catches files created
+# outside the harness's tools, which no PreToolUse hook can ever see.
 git diff --cached --name-only --diff-filter=A | while IFS= read -r f; do
   [ -n "$f" ] || continue
   case "$f" in

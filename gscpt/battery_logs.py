@@ -1,13 +1,19 @@
 """
 Battery Logs Processor
 
-Reads .txt files in this directory (except temp.txt/blank.md/README.md and
-❌_-prefixed names; the parked/ subfolder is never scanned) and consolidates
-them into one timestamped CSV (columns: HH, mm, %, Remarks).
+Reads .txt AND .md files in this directory (except temp.txt/blank.md/README.md,
+❌_-prefixed names, and the artefacts other gscpt scripts drop here —— DATS_*,
+ajap_*, and quote_fix.py's *_processed; the parked/ subfolder is never scanned)
+and consolidates them into one timestamped CSV (columns: HH, mm, %, Remarks).
+
+.md counts because the readings are plain text and the user no longer saves
+anything as .txt —— a .txt-only scan would silently find nothing and write an
+empty CSV rather than say why. The artefact exclusions above are what stop the
+widened net from swallowing another script's output as if it were readings.
 
 USAGE
 -----
-1. In THIS script's own directory, place one or more .txt files.
+1. In THIS script's own directory, place one or more .txt or .md files.
    Each file holds lines of battery readings; a line of exactly 8 digits is
    kept verbatim as a date marker, blank lines are preserved, and a `%` on a
    line separates the numeric reading from an optional remark.
@@ -22,16 +28,20 @@ import os
 import re
 from datetime import datetime
 
+INPUT_EXTS = (".txt", ".md")  # see the header: .txt alone finds nothing now
 # Never treat these as input (blank.md is the renamed temp.txt); compared lowercase.
 IGNORED_NAMES = {"temp.txt", "blank.md", "readme.md"}
-IGNORED_PREFIX = "❌_"  # parked-in-place marker —— such files never activate
+# ❌_ parks a file in place; the rest are other gscpt scripts' OUTPUT, which
+# accepting .md would otherwise pull in as if it were battery readings.
+IGNORED_PREFIXES = ("❌_", "DATS_", "ajap_logs_", "ajap_runtime_log")
+IGNORED_STEM_SUFFIXES = ("_processed",)  # quote_fix.py's output
 
 def process_and_export_files(directory_path):
     """
-    Finds all .txt files in a directory, processes them, and exports to a single .csv.
+    Finds all .txt/.md inputs in a directory, processes them, exports one .csv.
 
     Args:
-        directory_path (str): The absolute path to the directory containing .txt files.
+        directory_path (str): Absolute path of the directory holding the inputs.
     """
     # Check if the provided path is a valid directory
     if not os.path.isdir(directory_path):
@@ -55,10 +65,12 @@ def process_and_export_files(directory_path):
             # Iterate over all files in the specified directory
             # (top level only —— parked/ and other subfolders never match)
             for filename in os.listdir(directory_path):
-                # Process only eligible files with a .txt extension
-                if (filename.endswith(".txt")
+                # Process only eligible .txt/.md inputs
+                stem, ext = os.path.splitext(filename)
+                if (ext.lower() in INPUT_EXTS
                         and filename.lower() not in IGNORED_NAMES
-                        and not filename.startswith(IGNORED_PREFIX)):
+                        and not filename.startswith(IGNORED_PREFIXES)
+                        and not stem.endswith(IGNORED_STEM_SUFFIXES)):
                     input_filepath = os.path.join(directory_path, filename)
                     
                     print(f"Processing '{input_filepath}'...")
@@ -147,7 +159,7 @@ def process_and_export_files(directory_path):
         else:
             # If no data was processed, remove the empty output file
             os.remove(output_filepath)
-            print(f"No numerical data found in any .txt files. No output file was created.")
+            print(f"No numerical data found in any .txt/.md input. No output file was created.")
 
     except Exception as e:
         print(f"An unexpected error occurred while creating or writing to the output file: {e}")

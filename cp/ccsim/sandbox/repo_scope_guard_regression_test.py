@@ -376,7 +376,7 @@ def section_nlint():
                 flagged(r), r)
 
 
-def section_tlint():
+def section_flint_post():
     print("\n--- flint.py post (PostToolUse hook, invoked via flint_hook.sh post, as settings.json does) ---")
     with tempfile.TemporaryDirectory() as td:
         written = _make_tlint_fixture(td)
@@ -394,7 +394,7 @@ def section_tlint():
         # cross-repo mirror check exists to catch. It still exits 0 either way.
         payload = _post_tool_use_payload(written, cwd=OUT_OF_SCOPE_CWD)
         r = _run_shim("flint_hook.sh", payload, "post")
-        _record("D2 foreign cwd -> tlint STILL flags TS clash (deliberately global)",
+        _record("D2 foreign cwd -> flint post STILL flags TS clash (deliberately global)",
                 r.returncode == 0 and r.stderr.strip() != "", r)
 
         payload = _post_tool_use_payload(written, transcript_path=OOS_TP, cwd=None)
@@ -449,7 +449,7 @@ def main():
     section_clint()
     section_hlint()
     section_nlint()
-    section_tlint()
+    section_flint_post()
     section_dlint_quick()
 
     passed = sum(1 for r in _RESULTS if r)

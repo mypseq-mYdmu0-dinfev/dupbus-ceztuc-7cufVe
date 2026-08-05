@@ -1,22 +1,16 @@
 #!/usr/bin/env python3
 """Hashtag/Trigger Linter (UserPromptSubmit hook)
 
-Prompt-time protocol reminders. Two independent, NON-BLOCKING checks over a
-submitted prompt: (1) "hashtag/trigger linter" —— `#[trigger]` tokens in the
-prompt (and in any comms file it names) that resolve to a `[trigger].md` in
-the SEARCH SCOPE below get a reminder to READ that file
-(root CLAUDE.md §7.3.1: a `#[trigger]` MUST be resolved by reading its file,
-never guessed); (2) "pairing reminder" —— a `*_query_[TS].md` the prompt names
-that has no `*_response_[TS].md` beside it gets a reminder naming the response
-that query OWES (root CLAUDE.md §3.5.3).
+ONE job, named by the file: `#[trigger]` tokens in the prompt (and in any comms
+file it names) that resolve to a `[trigger].md` in the SEARCH SCOPE below get a
+NON-BLOCKING reminder to READ that file (root CLAUDE.md §7.3.1: a `#[trigger]`
+MUST be resolved by reading its file, never guessed).
 
 === NON-CCSIM —— start of all you need to RUN it ===
-* WHAT: a UserPromptSubmit hook, ADVISORY —— never blocks. Two reminders: (1)
-  each `#[trigger]` gets a line naming its protocol file (root CLAUDE.md §7.3.1
-  —— READ it, never guess); (2) a `*_query_[TS].md` the prompt names with no
-  `*_response_[TS].md` beside it gets a line naming the response it owes
-  (§3.5.3).
-* IF IT FIRES: read that file / write that response, or say why not.
+* WHAT: a UserPromptSubmit hook, ADVISORY —— never blocks. Each `#[trigger]`
+  gets a line naming its protocol file (root CLAUDE.md §7.3.1 —— READ it, never
+  guess).
+* IF IT FIRES: read that file, or declare why not.
 * BACKTICKED NAMES DON'T FIRE: a `#name`, fence or filename in backticks is
   DISCUSSED, not invoked. Only a bare token fires.
 * BLIND SPOT: triggers resolve only under `universal/`, `cp/`,
@@ -165,69 +159,38 @@ referenced-file count/bytes and the reminder count, so neither a huge file nor a
 trigger-stuffed prompt can stall a turn. The log append is one `open`+`write`
 on a small file, with the prune amortised across ~0.5% of invocations.
 
-=== CHECK 2 —— QUERY/RESPONSE PAIRING REMINDER ===
+=== RETIRED: THE QUERY/RESPONSE PAIRING REMINDER (do not re-add here) ===
 
-WHAT IT ENFORCES: root CLAUDE.md §3.5.3 —— a `response_` carries the TS of the
-`query_` it answers. One query owes exactly ONE response: nothing less (a NEW
-query must get its OWN `response_[TS]`, never extra sections appended to a
-previous turn's file) and nothing more (a mid-turn message stays inside the
-current turn's response —— root CLAUDE.md §3.1.7.6.1).
+This file briefly also carried a second check —— a `*_query_[TS].md` named in the
+prompt with no `*_response_[TS].md` beside it drew a reminder naming the response
+it owed (root CLAUDE.md §3.5.3). It was REMOVED, and the reasoning is kept here
+so it is not rebuilt from scratch by whoever next reads §3.5.3 and reaches for a
+hook.
 
-WHY A HOOK AND NOT PROSE: §3.5.3 already said this and was skipped anyway. The
-live failure: a long multi-turn `#m2` sprint was running, a new `query_` arrived,
-and thirty sections were appended to the PREVIOUS turn's `response_`. Nothing
-was misunderstood —— the rule was simply never brought to mind at the moment of
-the act, because `universal/m2.md` says "update this turn's `response_`" and,
-mid-sprint, "this turn's" reads as "the file I have been appending to". That is
-an ENFORCEMENT gap (`cp/ccsim/CLAUDE.md` §8.7), and re-wording a rule that was
-never consulted cannot repair it. This check names the owed filename at prompt
-submit —— before the first write of the turn, when the choice is still open.
+WHY IT WENT: at prompt-submit time it had NO discriminating power. A brand-new
+`query_` has no `response_` yet BY CONSTRUCTION, so the check fired identically
+on a perfectly compliant turn and on the breach —— a metronome, not a detector.
+Measured over the live `.hlint.log`: 5 fires in 29 real invocations, i.e. once
+for essentially every turn opened by a query file, at ~124 tokens a fire. The
+token bill was small; the PRECISION was the defect, and a reminder that fires on
+every correct turn is how a check earns being tuned out.
 
-WHY HERE AND NOT IN A NEW HOOK: this file already parses the prompt for `*.md`
-tokens and already computes a comms file's `sessions/[YYYY]/[YYYYMM]/` folder
-from its own TS, so the check is a dozen lines on machinery that exists. A
-separate hook would duplicate that parse, need its own USER-level registration
-(which takes minutes to go live and must then be mirrored into
-`.claude/hooks_user_settings.reference.json` AND the backup copy), and add a row
-to five tables in `hook_guide.md`/`cscpt/README.md`. The cost paid instead is
-honest and worth naming: this file's remit widens from "hashtag linter" to
-"prompt-time protocol reminders", which is why the module title now says so.
+WHAT NOW COVERS IT: `.githooks/pre-commit`'s REVERSE PAIRING ARM (non-blocking,
+adds-only) at commit time, and root CLAUDE.md §3.1.7.7 in prose. Both are
+POST-HOC —— by the time either speaks, the wrong file has already been written.
+That gap is real and is recorded as such rather than papered over.
 
-WHY NOT AT WRITE TIME (`tlint.py`, PostToolUse) —— considered and REJECTED: it
-could flag "you are editing an older turn's `response_` whilst a newer `query_`
-has none", and would catch the act itself rather than merely forewarning it. But
-tlint keeps no per-prompt ledger by design, so during the SANCTIONED case (a
-mid-turn follow-up query answered inside the current response) it would re-fire
-on every single edit of a long sprint —— dozens of identical warnings on a
-correct turn, which is precisely how a check earns being tuned out. Recorded
-because the residual gap is real: a prompt-time reminder can fade from attention
-over a long turn, and nothing here fires at the moment of the write.
-
-SUPPRESSION RULES, and why each one exists:
-  1. The prompt ONLY —— never a file it names. The obligation is created by what
-     the USER just sent; a query filename quoted inside a referenced document is
-     discussion, not a new turn.
-  2. BACKTICKED / FENCED names are skipped, exactly as `#triggers` are. Measured
-     over 10 real transcripts: 78 bare mentions against 1 backticked, so the
-     convention already matches how the user actually sends a query.
-  3. The query file must EXIST. A name that resolves to nothing is a typo or a
-     plan, not an outstanding obligation.
-  4. It must be the NEWEST same-prefix `query_` in its folder. Without this, any
-     prompt that merely REFERS to an old, legitimately non-paired query would
-     fire. Same-PREFIX (not folder-wide) is deliberate: a CP session's files are
-     the only ones it may pair against (root CLAUDE.md §4.3.2), and the looser
-     folder-wide form would suppress a real miss in a folder several CPs share.
-  5. Nothing fires once the sibling `response_` exists —— which is the steady
-     state, so the check is silent for the whole of a turn after its first
-     prompt, and costs one extra `stat` when it is.
-
-ACCEPTED FALSE POSITIVE, stated rather than engineered around: a legitimate
-mid-turn follow-up query (root CLAUDE.md §3.6.2 creates one with its OWN TS,
-whilst §3.1.7.6.1 keeps it in the SAME response) will fire once. No script can
-tell it apart from the breach —— the two produce identical files, and the only
-difference is whether the agent was IDLE when the message arrived. The reminder
-therefore states that test instead of asserting a verdict, and this is why the
-check advises and can never block.
+WHERE IT BELONGS IF REBUILT: `cscpt/flint.py`, which already owns comms
+FILENAMES and already models the `{query, response}` same-TS role pair. Its
+PreToolUse half fires at the MOMENT OF THE WRITE (`cp/ccsim/CLAUDE.md` §8.7),
+where the check regains its precision: it can compare the `response_` being
+written against the NEWEST unpaired `query_` in that folder and stay silent
+unless they disagree —— which on a compliant turn they never do. ⚠️ It needs a
+per-`prompt_id` ledger there, or the sanctioned mid-turn case (a follow-up query
+answered inside the CURRENT response, root §3.1.7.6.1) re-fires on every edit of
+a long sprint. That accepted false positive is irreducible: no script can tell it
+from the breach, since the two produce identical file operations and differ only
+in whether the agent was IDLE when the message arrived.
 """
 
 import sys
@@ -314,20 +277,6 @@ _MD_TOKEN_RE = re.compile(r"([^\s\"'`()<>|,;]+\.md)", re.IGNORECASE)
 # file can still be read for corpus expansion without walking `sessions/`.
 _COMMS_TS_RE = re.compile(r"(\d{4})(\d{2})\d{6}\.md$", re.IGNORECASE)
 
-# A `query_` comms filename, split into its optional CP prefix and its 12-digit
-# TS: `ccsim_query_202608012325.md` -> ("ccsim_", "202608012325"). Anchored at
-# both ends, so the blank `*_query_.md` TEMPLATES at the root of `sessions/`
-# (root `sessions/README.md`: never touch them) carry no TS and never match.
-_QUERY_FILE_RE = re.compile(r"^((?:[A-Za-z0-9-]+_)*)query_(\d{12})\.md$",
-                            re.IGNORECASE)
-
-# Max pairing reminders injected. A prompt naming several unanswered queries is
-# already an anomaly; one or two lines say it, twenty would just be noise.
-_MAX_PAIR_REMINDERS = 3
-
-_PAIR_HEADER = ("[hlint hook] Query/response pairing —— non-blocking "
-                "reminder(s):")
-
 # Safety caps (backstops; none is hit in normal use).
 _MAX_INDEX = 60000          # max .md files indexed before giving up the walk
 _MAX_REF_FILES = 10         # max distinct referenced files read from a prompt
@@ -385,18 +334,20 @@ def _prune_log():
                 pass
 
 
-def _log_event(stage, sid="-", triggers="-", pairs=0):
+def _log_event(stage, sid="-", triggers="-"):
     """Append ONE terse line for ANY invocation —— match or not.
 
     TAB-separated, `triggers=` last because it alone carries free text (tabs and
     newlines are flattened, so a record is always exactly one line). FAIL-SAFE:
     all errors swallowed —— nothing reads this log back, so a lost write costs
-    diagnostics only, never the reminder itself."""
+    diagnostics only, never the reminder itself. (Historic lines carry a
+    `pairs=N` field from the retired pairing check; nothing parses this log, so
+    the older shape is inert rather than a compatibility burden.)"""
     try:
         with open(_LOG, "a", encoding="utf-8") as lf:
-            lf.write("%s\tsession=%s\tstage=%s\tpairs=%d\ttriggers=%s\n"
+            lf.write("%s\tsession=%s\tstage=%s\ttriggers=%s\n"
                      % (datetime.now().isoformat(timespec="seconds"), sid,
-                        stage, pairs,
+                        stage,
                         str(triggers)[:300].replace("\t", " ").replace("\n", " ")))
     except Exception:
         pass
@@ -582,72 +533,6 @@ def _extract_triggers(text):
             if not _is_quoted(m.start(), spans)]
 
 
-def _newest_query_ts(dirpath, prefix):
-    """Largest TS amongst `[prefix]query_[TS].md` files in `dirpath`, or ''.
-
-    Lexicographic max is correct here: a TS is a fixed-width `YYYYMMDDHHmm`, so
-    string order IS chronological order. One `listdir` of a comms folder (a few
-    hundred names); reached only when the sibling response is already known to
-    be missing, so a normal paired prompt never pays for it.
-    """
-    best = ""
-    try:
-        entries = os.listdir(dirpath)
-    except Exception:
-        return ""
-    for entry in entries:
-        m = _QUERY_FILE_RE.match(entry)
-        if m and m.group(1).lower() == prefix.lower() and m.group(2) > best:
-            best = m.group(2)
-    return best
-
-
-def _pairing_reminders(prompt):
-    """Lines for each `*_query_[TS].md` the PROMPT names that owes a response.
-
-    Root CLAUDE.md §3.5.3: a `response_` carries its query's TS. Full rationale,
-    including every suppression below and the one accepted false positive, is in
-    the CCSIM section of the module docstring (CHECK 2).
-    """
-    lines = []
-    seen = set()
-    spans = _quoted_spans(prompt)
-    for m in _MD_TOKEN_RE.finditer(prompt):
-        token = m.group(1)
-        base = os.path.basename(token)
-        qm = _QUERY_FILE_RE.match(base)
-        if not qm:
-            continue
-        # A backticked or fenced filename is being DISCUSSED, not sent —— the
-        # same exemption `#triggers` get, for the same reason.
-        if _is_quoted(m.start(), spans):
-            continue
-        if base.lower() in seen:
-            continue
-        seen.add(base.lower())
-        full = _locate(token)
-        if not full:
-            continue  # names nothing on disk -> no obligation to remind about
-        prefix, ts = qm.group(1), qm.group(2)
-        dirpath = os.path.dirname(full) or "."
-        sibling = prefix + "response_" + ts + ".md"
-        if os.path.isfile(os.path.join(dirpath, sibling)):
-            continue  # already paired -> silent, the steady state
-        # Only the NEWEST same-prefix query can be the one being answered now;
-        # an older unpaired query merely referred to is not this turn's business.
-        if _newest_query_ts(dirpath, prefix) != ts:
-            continue
-        lines.append(
-            "`%s` has no `%s` yet —— root CLAUDE.md §3.5.3: a `response_` takes "
-            "its QUERY's TS. If you were IDLE when this arrived it is a NEW turn, "
-            "so create `%s`; NEVER append to a previous turn's `response_`. A "
-            "mid-turn message (§3.1.7.6.1) stays in the current one."
-            % (base, sibling, sibling))
-        if len(lines) >= _MAX_PAIR_REMINDERS:
-            break
-    return lines
-
-
 def _resolve_trigger(name):
     """Display path of `[name].md` within the search scope, or None.
 
@@ -726,28 +611,16 @@ def main():
         if len(lines) >= _MAX_REMINDERS:
             break
 
-    # CHECK 2 —— pairing. Independent of the trigger scan and reported even when
-    # no `#trigger` matched, so it must be built before that check's early exit.
-    try:
-        pair_lines = _pairing_reminders(prompt)
-    except Exception:
-        pair_lines = []
-
-    if not lines and not pair_lines:
+    if not lines:
         # SILENT is a real outcome, not an absence —— logging it is the whole
         # point of §7.7: without this line, "hlint never ran" and "hlint ran and
         # matched nothing" are indistinguishable after the fact.
         _log_event("silent", sid)
         return 0
 
-    _log_event("fired", sid, ",".join(fired_names) or "-", len(pair_lines))
+    _log_event("fired", sid, ",".join(fired_names) or "-")
 
-    blocks = []
-    if lines:
-        blocks.append(_HEADER + "\n" + "\n".join(lines))
-    if pair_lines:
-        blocks.append(_PAIR_HEADER + "\n" + "\n".join(pair_lines))
-    context = "\n".join(blocks)
+    context = _HEADER + "\n" + "\n".join(lines)
     try:
         sys.stdout.write(json.dumps({
             "hookSpecificOutput": {

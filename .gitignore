@@ -61,3 +61,12 @@ cscpt/.hlint.log.tmp*
 # sibling is the atomic-rewrite staging file a prune may leave behind.
 cscpt/.mlint.log
 cscpt/.mlint.log.tmp*
+
+# tlint runtime log —— one line per invocation of the time-integrity lint, on
+# BOTH its events. Same §7.7 reason as the four above: a lint that logs only
+# breaches leaves an empty file, and an empty file is equally consistent with
+# "clean session" and "the harness never called it". This one is pure trace ——
+# nothing reads it back —— so deleting it costs only history. The .tmp* sibling
+# is the atomic-rewrite staging file a prune may leave behind.
+cscpt/.tlint.log
+cscpt/.tlint.log.tmp*

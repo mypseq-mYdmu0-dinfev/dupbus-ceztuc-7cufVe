@@ -1,5 +1,5 @@
 {
-  "_README": "INERT reference copy of this repo's hook registrations \u2014\u2014 nothing loads this file; it is documentation. The live registrations are in ~/.claude/settings.json (USER level), NOT in this folder's settings.json (project level), because the Claude Desktop app executes user-level hooks but silently ignores project-level ones. Each script self-scopes to this repo via the payload cwd, so global registration is safe. It lives in .claude/ rather than cscpt/ because cscpt/ holds runnable scripts only. To restore on a new machine: merge the \"hooks\" object below into ~/.claude/settings.json and fix the absolute paths. Note the naming convention: the registered PostToolUse entries are the *_hook.sh bash fast-paths, each of which spawns its same-named .py lint only when the payload is relevant.",
+  "_README": "INERT reference copy of this repo's hook registrations —— nothing loads this file; it is documentation. The live registrations are in ~/.claude/settings.json (USER level), NOT in this folder's settings.json (project level), because the Claude Desktop app executes user-level hooks but silently ignores project-level ones. Each script self-scopes to this repo via the payload cwd, so global registration is safe. It lives in .claude/ rather than cscpt/ because cscpt/ holds runnable scripts only. To restore on a new machine: merge the \"hooks\" object below into ~/.claude/settings.json and fix the absolute paths. Note the naming convention: the registered PostToolUse entries are the *_hook.sh bash fast-paths, each of which spawns its same-named .py lint only when the payload is relevant.",
   "hooks": {
     "PreToolUse": [
       {
@@ -26,6 +26,15 @@
           {
             "type": "command",
             "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/alint_hook.sh'"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/tlint_hook.sh' pre"
           }
         ]
       },
@@ -73,6 +82,15 @@
           {
             "type": "command",
             "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/flint_hook.sh' post"
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/tlint_hook.sh' post"
           }
         ]
       }

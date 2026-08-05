@@ -63,13 +63,15 @@
 |---|---|---|
 | PreToolUse | `cscpt/DADC.py hook-capture` | Capture Date Added + Date Created before a write |
 | PreToolUse | `cscpt/alint_hook.sh` | TEA1 in-flight gate (BLOCKS a commit/push whilst an SA or workflow runs) |
+| PreToolUse | `cscpt/tlint_hook.sh` pre | Time-integrity: clock read without `TZ='Australia/Sydney'` (advisory) |
 | PreToolUse | `cscpt/flint_hook.sh` pre | Filename gate (BLOCKS a stray-space comms filename) |
 | PreToolUse | `cscpt/plint.py` | Protocol-read reminder before a write/read (advisory) |
 | PostToolUse | `cscpt/DADC.py hook-restore` | Restore Date Added + Date Created after a write |
 | PostToolUse | `cscpt/dlint_hook.sh` | Prose lint on every `.md` + deliverable gate (blocking) |
 | PostToolUse | `cscpt/nlint_hook.sh` | Numbering-continuity lint (advisory) |
 | PostToolUse | `cscpt/flint_hook.sh` post | Filename lint: timestamp clash + stray-space alert (warn-only) |
-| UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder + query/response pairing reminder (advisory) |
+| PostToolUse | `cscpt/tlint_hook.sh` post | Time-integrity: drifted/unclocked comms timestamp + US dates (advisory) |
+| UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
 | Stop | `cscpt/mlint.py` | `#m2` declaration gate (BLOCKS a turn-end that stopped AT, or never emitted, the interim declaration) |
 | PostCompact | `.claude/post_compact.sh` | Inject the post-compaction protocol |
@@ -106,6 +108,7 @@
 | nlint | Repo-scoped | Enforces this repo's numbering-continuity convention |
 | hlint | GLOBAL | Advisory-only; a missed `#trigger` has already cost real work elsewhere |
 | plint | GLOBAL | Advisory-only; always exits 0 and can never gate a write |
+| tlint | GLOBAL | Advisory-only, never exits 2. Its drift checks are STRUCTURALLY scoped (they fire only inside dupbus `sessions/` or AJAP `inv/`); the clock-read and US-date checks are global on purpose, because root §2.1.7's Sydney mandate is a USER-level convention |
 | mlint | Repo-scoped | BLOCKS a Stop; enforces this repo's `#m2` sequence |
 
 - 4.7. The asymmetry is intentional, not an oversight —— the test rule is: a lint that can BLOCK must be repo-scoped, a lint that can only advise may be global.
@@ -194,12 +197,12 @@
 |---|---|---|
 | PostToolUse | Edit the probe file (§7.2) | Edit blocked, RED report returned |
 | PostToolUse | End a turn, then check `cscpt/.dlint.log` | A new line per `.md` write that turn |
+| PreToolUse | Run `date +%Y%m%d%H%M` through the Bash tool (no TZ prefix) | A `[tlint] Clock read without a timezone` note; a `clock_warn` line in `cscpt/.tlint.log` |
 | PreToolUse | Run `echo ALINT_PROBE` through the Bash tool | An `alint` ALIVE note comes back; a new `action=probe` line in `cscpt/.alint.log` |
 | PreToolUse | Write `cp/ccsim/sandbox/flintprobe_ 202608011299.md` | The write is BLOCKED, stderr naming `flintprobe_202608011299.md` |
 | PostToolUse | Bash-`touch` a `probe_close_ 202608011299.md` in `sandbox/`, then Write `probe_202608011298.md` beside it | A `[flint] Stray-space filename(s)` note comes back as context |
 | Stop | End a turn, then check `cscpt/.clint.log` | A new line appended for that turn |
 | UserPromptSubmit | Submit a prompt containing a real `#trigger` | Reminder line appears in context |
-| UserPromptSubmit | Submit a prompt naming `ccsim_query_209912312359.md` (bare) | A `Query/response pairing` reminder names the response it owes |
 | UserPromptSubmit | End a turn, then check `cscpt/.hlint.log` | A new line per prompt: `fired` with trigger names, or `silent` |
 | Stop | End an `#m2` turn on the interim declaration alone | The stop is BLOCKED, stderr naming the unrun sprint; a `block` line in `cscpt/.mlint.log` |
 | Stop | End an `#m2` turn having written a `response_` and declared nothing | The stop is BLOCKED, stderr naming the missing `➡️`; a `block_nodeclare` line in `cscpt/.mlint.log` |
@@ -281,6 +284,7 @@ for ev,groups in d.items():
   - 9.3.8. Run `cp/ccsim/sandbox/dlint_gate_regression_test.py` —— it pins the only lint that blocks on content, and the deliverable gate folded into it.
   - 9.3.9. Run `cp/ccsim/sandbox/flint_filename_gate_regression_test.py` —— it pins the filename gate, and its live-repo sweep fails if the detection rule ever broadens.
   - 9.3.11. Run `cp/ccsim/sandbox/mlint_m2_sprint_gate_regression_test.py` —— it pins the only Stop hook that can BLOCK, replaying the real stall from a transcript fixture; its last check reads the LIVE settings file, so an unregistered hook fails the suite rather than sitting silent.
+  - 9.3.12. Run `cp/ccsim/sandbox/tlint_time_integrity_regression_test.py` —— its last two checks read the LIVE settings file, so an unregistered tlint fails the suite rather than sitting silent.
   - 9.3.10. Run `cp/ccsim/sandbox/pairing_lint_regression_test.py` —— it pins both arms of the query/response pairing enforcement (root `CLAUDE.md` §3.5.3).
 - 9.4. Keep the reference file in step with the live file whenever a hook is added, renamed, or re-pointed —— a stale reference is a recovery that silently restores dead wiring.
 - 9.5. The reference file is documentation, so it may legitimately run AHEAD of the live file during a change; whichever is ahead, close the gap before the turn ends.

@@ -38,17 +38,35 @@ WHAT CHANGED, AND WHY EACH FAILURE MODE IS PINNED HERE:
    symlink-recursion behaviour differs between Python versions; the tests here
    check the behaviour, not the implementation.
 
-5. A SAFETY FENCE (ALLOWED_ROOTS) confines targets to the GitHub/ folder that
-   holds every repo. It is derived from each script's own __file__, never the
-   cwd —— which is what lets this suite copy the REAL scripts into a throwaway
-   GitHub-shaped tree and exercise the genuine code end-to-end, instead of
-   re-implementing it (coding.md: "'exists + unit-tested' != done").
+5. A SAFETY FENCE (ALLOWED_ROOTS) once confined targets to the GitHub/ folder
+   holding every repo. It was REMOVED: most real runs are on files OUTSIDE the
+   repos (re-dating a deliverable), so the fence refused the common case ——
+   a regression, not a safeguard. test_outside_any_repo_is_stamped pins the
+   case he actually uses, and it is the one test whose failure means the tools
+   are useless to him rather than merely unsafe.
+
+6. WHAT REPLACES THE FENCE restricts nothing by location, only by SHAPE: a
+   mount point (`/` and every volume root), `/Users`, `/Volumes`, or the home
+   folder itself is refused, on either the path or its symlink target. Those
+   are what a copied path trimmed one component too far lands on, and each
+   would rewrite hundreds of thousands of items with no undo. System paths
+   (`/usr`, `/System`) are deliberately absent —— unreachable by truncating a
+   Finder "Copy as Pathname" value —— so a test asserting they are refused
+   would be pinning protection that does not, and should not, exist.
 
 EVERY CASE RUNS ON TEMP FIXTURES. These scripts mutate real file metadata, so a
 test that pointed at a repo file would corrupt the very thing it protects.
 Nothing here reads, writes, or even names a real repo path except to COPY the
 two scripts out of `gscpt/` and to grep them and `gscpt/README.md` for the
 documentation contract.
+
+THE THREE CASES THAT MUST NAME A REAL SYSTEM PATH (`/`, `/Users`, `/Volumes`)
+cannot be faked —— os.path.ismount has no sandbox equivalent, and a refusal
+proven only against a stand-in proves nothing about the real one. They are run
+with --dry-run AND a subprocess timeout, so a broken refusal fails the test
+(and is killed mid-walk) instead of writing anything: dry-run returns before
+the write loop is even reached. The home-folder case needs neither, because
+Path.home() follows $HOME and is injected into the sandbox.
 
 RUN:
     cd "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
@@ -139,10 +157,13 @@ EPOCH = expected_epoch(TS)
 def make_sandbox():
     """A throwaway GitHub/-shaped tree holding COPIES of the real scripts.
 
-    Layout (realpath'd so /var -> /private/var can never confuse the fence):
-        <tmp>/GitHub/testrepo/gscpt/{DAMF,DXMF}.py   <- ALLOWED_ROOTS = <tmp>/GitHub
-        <tmp>/GitHub/testrepo/sessions/...           <- in-fence fixtures
-        <tmp>/outside/...                            <- out-of-fence fixtures
+    Layout (realpath'd so /var -> /private/var can never confuse a comparison):
+        <tmp>/GitHub/testrepo/gscpt/{DAMF,DXMF}.py   <- the scripts under test
+        <tmp>/GitHub/testrepo/sessions/...           <- inside-a-repo fixtures
+        <tmp>/outside/...                            <- outside-any-repo fixtures,
+                                                        i.e. his ACTUAL main case
+    The repo shape is kept even though no fence reads it: it is what proves the
+    scripts treat in-repo and out-of-repo targets identically.
     """
     tmp = os.path.realpath(tempfile.mkdtemp(prefix="gscpt_pathtarget_"))
     github = os.path.join(tmp, "GitHub")
@@ -171,16 +192,26 @@ def write_instruction(sb, line1, ts=TS, name="inst.txt", header=None):
         fh.write(body)
 
 
-def run(sb, script, args=(), env_extra=None):
+def run(sb, script, args=(), env_extra=None, timeout=None):
     """Run the copied script from a cwd that is NOT the repo, with stdin piped
-    (so it is never a tty —— the confirmation gate must not be able to block)."""
+    (so it is never a tty —— the confirmation gate must not be able to block).
+    `timeout` is used only by the cases that name a real system path: if the
+    refusal ever breaks, the run is killed mid-walk instead of grinding."""
     env = dict(os.environ)
     if env_extra:
         env.update(env_extra)
-    return subprocess.run(
-        [sys.executable, os.path.join(sb["gscpt"], script), *args],
-        capture_output=True, text=True, input="", cwd=sb["tmp"], env=env,
-    )
+    try:
+        return subprocess.run(
+            [sys.executable, os.path.join(sb["gscpt"], script), *args],
+            capture_output=True, text=True, input="", cwd=sb["tmp"], env=env,
+            timeout=timeout,
+        )
+    except subprocess.TimeoutExpired:
+        return subprocess.CompletedProcess(
+            args=script, returncode=124,
+            stdout="", stderr=f"TIMED OUT after {timeout}s —— it started "
+                              f"walking instead of refusing.",
+        )
 
 
 def touch(path, content="x"):
@@ -276,15 +307,23 @@ def test_bare_filename_is_refused_and_tells_him_what_to_type():
             decoy = touch(os.path.join(sb["sessions"], "findme.md"))
             before = date_added(decoy)
             write_instruction(sb, "findme.md")
-            p = run(sb, script)
+            fake_home = os.path.join(sb["tmp"], "home")
+            os.makedirs(fake_home, exist_ok=True)
+            p = run(sb, script, env_extra={"HOME": fake_home})
             text = out_of(p)
             check(p.returncode == 1, f"{script}: bare filename must fail —— {text}")
             check("ABSOLUTE path" in text,
                   f"{script}: error must say an absolute path is required —— {text}")
-            check("Copy as Pathname" in text,
-                  f"{script}: error must say HOW to get the path —— {text}")
-            example = os.path.join(sb["github"], "testrepo",
-                                   "sessions/2026/202607/notes.md")
+            check("⌘⌥C" in text and "Copy as Pathname" in text,
+                  f"{script}: error must give the exact keystroke, not a menu "
+                  f"path he does not use —— {text}")
+            check(text.index("FIX:") < text.index("Why not just the filename?"),
+                  f"{script}: the fix must come BEFORE the rationale —— an error "
+                  f"that opens with history buries the one actionable line: {text}")
+            check("ANYWHERE on this Mac" in text,
+                  f"{script}: the example must not imply targets are repo-only "
+                  f"—— they are not, and a repo-shaped hint would mislead: {text}")
+            example = os.path.join(fake_home, "Downloads", "Some Deliverable.pages")
             check(example in text,
                   f"{script}: error must show a concrete full-path example —— {text}")
             check(date_added(decoy) == before,
@@ -336,54 +375,128 @@ def test_empty_folder_fails_loud():
             shutil.rmtree(sb["tmp"], ignore_errors=True)
 
 
-def test_outside_the_fence_is_refused():
-    """A real, existing path that simply is not in a repo."""
+def test_outside_any_repo_is_stamped():
+    """HIS MAIN CASE, and the reason the old fence was removed: most runs
+    re-date a deliverable that lives nowhere near a repo. A file and a folder,
+    both outside every GitHub/ tree, must be stamped exactly like an in-repo
+    one —— if this fails the tools do not do the job he uses them for."""
     for script in SCRIPTS:
         sb = make_sandbox()
         try:
-            stranger = touch(os.path.join(sb["outside"], "stranger.md"))
-            before = date_added(stranger)
-            write_instruction(sb, stranger)
+            lone = touch(os.path.join(sb["outside"], "Deliverable.pages"))
+            write_instruction(sb, lone)
             p = run(sb, script)
-            check(p.returncode == 1, f"{script}: out-of-fence path must fail")
-            check("outside the roots" in out_of(p),
-                  f"{script}: fence error must name the fence —— {out_of(p)}")
-            check(date_added(stranger) == before,
-                  f"{script}: refused out-of-fence target was still stamped")
+            check(p.returncode == 0,
+                  f"{script}: outside-any-repo file must be stamped —— {out_of(p)}")
+            check(date_added(lone) == EPOCH,
+                  f"{script}: outside-any-repo file not stamped")
+
+            folder = os.path.join(sb["outside"], "Client Pack")
+            os.makedirs(folder)
+            member = touch(os.path.join(folder, "brief.md"))
+            write_instruction(sb, folder)
+            p = run(sb, script)
+            check(p.returncode == 0,
+                  f"{script}: outside-any-repo folder must be stamped —— {out_of(p)}")
+            check(date_added(folder) == EPOCH and date_added(member) == EPOCH,
+                  f"{script}: outside-any-repo folder not stamped recursively")
         finally:
             shutil.rmtree(sb["tmp"], ignore_errors=True)
 
 
-def test_symlink_out_of_the_fence_cannot_be_used_as_a_door():
-    """A symlink that LIVES in the fence but POINTS out of it is still out."""
+def test_a_symlink_is_stamped_but_never_its_target():
+    """With no fence, a symlink target elsewhere is legitimate —— so the
+    guarantee is NOFOLLOW, not refusal: the link's own dates move and the file
+    it points at is left completely alone."""
     for script in SCRIPTS:
         sb = make_sandbox()
         try:
             stranger = touch(os.path.join(sb["outside"], "stranger.md"))
-            before = mtime(stranger)
-            door = os.path.join(sb["sessions"], "door.md")
-            os.symlink(stranger, door)
+            before_m, before_a = mtime(stranger), date_added(stranger)
+            link = os.path.join(sb["sessions"], "link.md")
+            os.symlink(stranger, link)
+            write_instruction(sb, link)
+            p = run(sb, script)
+            check(p.returncode == 0, f"{script}: symlink target —— {out_of(p)}")
+            check(date_added(link) == EPOCH,
+                  f"{script}: the symlink itself was not stamped")
+            check(mtime(stranger) == before_m and date_added(stranger) == before_a,
+                  f"{script}: the symlink's TARGET was written (NOFOLLOW broken)")
+        finally:
+            shutil.rmtree(sb["tmp"], ignore_errors=True)
+
+
+def test_the_home_folder_itself_is_refused():
+    """Path.home() follows $HOME, so this one runs entirely in the sandbox ——
+    no real home directory is ever named, and the write path is exercised for
+    real (no --dry-run) because nothing outside the sandbox can be reached."""
+    for script in SCRIPTS:
+        sb = make_sandbox()
+        try:
+            fake_home = os.path.join(sb["tmp"], "home")
+            os.makedirs(fake_home)
+            victim = touch(os.path.join(fake_home, "doc.md"))
+            before = date_added(victim)
+            write_instruction(sb, fake_home)
+            p = run(sb, script, env_extra={"HOME": fake_home})
+            check(p.returncode == 1,
+                  f"{script}: the home folder itself must be refused —— {out_of(p)}")
+            check("home folder itself" in out_of(p),
+                  f"{script}: home refusal must say what it refused —— {out_of(p)}")
+            check(date_added(victim) == before,
+                  f"{script}: refused home target still had contents stamped")
+        finally:
+            shutil.rmtree(sb["tmp"], ignore_errors=True)
+
+
+def test_real_catastrophic_targets_are_refused():
+    """`/` (a mount point), `/Users` and `/Volumes` cannot be simulated ——
+    os.path.ismount has no sandbox equivalent, and the whole point is that the
+    REAL ones stop. Run with --dry-run so no write path exists at all even if
+    the refusal is broken, plus a timeout so a broken refusal is killed
+    mid-walk and reported rather than grinding for minutes."""
+    # The volume the repo itself sits on: the single most dangerous plausible
+    # truncation (`/Volumes/FURY 2TB/Fury Documents/...` trimmed back to the
+    # drive). Derived, never hard-coded, and skipped where it is not a mount ——
+    # a suite that only proved `/` would be claiming more than it tested.
+    extra = []
+    probe = os.path.abspath(REPO)
+    while probe != os.path.dirname(probe):
+        if os.path.ismount(probe) and probe != "/":
+            extra.append((probe, "volume root"))
+            break
+        probe = os.path.dirname(probe)
+
+    for script in SCRIPTS:
+        sb = make_sandbox()
+        try:
+            for target, phrase in [("/", "volume root"),
+                                   ("/Users", "every user"),
+                                   ("/Volumes", "every user")] + extra:
+                write_instruction(sb, target)
+                p = run(sb, script, args=("--dry-run",), timeout=25)
+                check(p.returncode == 1,
+                      f"{script}: {target} must be refused —— {out_of(p)}")
+                check(phrase in out_of(p),
+                      f"{script}: {target} refusal must say why —— {out_of(p)}")
+        finally:
+            shutil.rmtree(sb["tmp"], ignore_errors=True)
+
+
+def test_a_symlink_cannot_be_a_door_to_a_catastrophic_target():
+    """The refusal reads the link AND what it points at, so an innocent name
+    in a normal folder cannot smuggle in a volume root."""
+    for script in SCRIPTS:
+        sb = make_sandbox()
+        try:
+            door = os.path.join(sb["sessions"], "backup.md")
+            os.symlink("/Volumes", door)
             write_instruction(sb, door)
-            p = run(sb, script)
-            check(p.returncode == 1, f"{script}: symlink out of the fence must fail")
-            check("outside the roots" in out_of(p),
-                  f"{script}: symlink-door error must name the fence —— {out_of(p)}")
-            check(mtime(stranger) == before,
-                  f"{script}: symlink door let the outside file be written")
-        finally:
-            shutil.rmtree(sb["tmp"], ignore_errors=True)
-
-
-def test_the_fence_root_itself_is_refused():
-    for script in SCRIPTS:
-        sb = make_sandbox()
-        try:
-            touch(os.path.join(sb["sessions"], "x.md"))
-            write_instruction(sb, sb["github"])
-            p = run(sb, script)
-            check(p.returncode == 1, f"{script}: the fence root itself must fail")
-            check("allowed roots" in out_of(p),
-                  f"{script}: root-target error must explain —— {out_of(p)}")
+            p = run(sb, script, args=("--dry-run",), timeout=25)
+            check(p.returncode == 1,
+                  f"{script}: a symlink to /Volumes must be refused —— {out_of(p)}")
+            check("every user" in out_of(p),
+                  f"{script}: symlink-door refusal must say why —— {out_of(p)}")
         finally:
             shutil.rmtree(sb["tmp"], ignore_errors=True)
 
@@ -476,8 +589,12 @@ def test_instruction_file_may_be_md_with_a_heading():
 
 
 def test_generated_artefacts_are_not_mistaken_for_instructions():
-    """DATS drops DATS_<ts>.txt into gscpt/. It is output, not an instruction ——
-    and once .md counts, so are the ajap_logs_ inputs."""
+    """Every gscpt script DROPS its output in this same folder, and accepting
+    .md widens what can be mistaken for an instruction. The exclusions must
+    cover the artefacts that really land here —— DATS_<ts>.txt (a list of file
+    PATHS, so it reads as a valid instruction file), ajap_* inputs, and
+    quote_fix.py's <stem>_processed.md/.txt, which needs a STEM check because
+    it is a suffix, not a prefix."""
     for script in SCRIPTS:
         sb = make_sandbox()
         try:
@@ -485,6 +602,8 @@ def test_generated_artefacts_are_not_mistaken_for_instructions():
             write_instruction(sb, target)
             touch(os.path.join(sb["gscpt"], "DATS_202607091852.txt"), "junk\n")
             touch(os.path.join(sb["gscpt"], "ajap_logs_input_202607091852.md"), "junk\n")
+            touch(os.path.join(sb["gscpt"], "receipt_processed.md"), "junk\n")
+            touch(os.path.join(sb["gscpt"], "notes_processed.txt"), "junk\n")
             touch(os.path.join(sb["gscpt"], "blank.md"), "")
             touch(os.path.join(sb["gscpt"], "README.md"), "docs\n")
             p = run(sb, script)
@@ -537,7 +656,9 @@ def test_bad_timestamp_stops():
 # --------------------------------------------------- documentation contract
 def test_scripts_carry_a_root_scope_line():
     """coding.md: any script that resolves repo paths names its roots in its
-    header. With absolute targets the fence IS the root statement."""
+    header. These resolve NONE —— so the line must say that outright, and say
+    it is deliberate. An unrestricted target that merely LOOKS unrestricted is
+    indistinguishable from a fence someone deleted by accident."""
     for script in SCRIPTS:
         src = open(os.path.join(REAL_GSCPT, script), encoding="utf-8").read()
         head = src.split('"""')[1] if src.count('"""') >= 2 else ""
@@ -545,6 +666,12 @@ def test_scripts_carry_a_root_scope_line():
               f"{script}: header is missing its `Root scope:` line")
         check("AJAP_repo" in head,
               f"{script}: `Root scope:` must settle the AJAP_repo question")
+        check("DELIBERATE" in head,
+              f"{script}: `Root scope:` must state that having no root "
+              f"restriction is deliberate, not an oversight")
+        for shape in ("ismount", "/Users", "/Volumes", "HOME folder"):
+            check(shape in head,
+                  f"{script}: `Root scope:` must name what IS refused ({shape})")
 
 
 def test_no_search_code_survives():
@@ -563,7 +690,7 @@ def test_the_two_scripts_have_not_drifted():
     """They are deliberately standalone (no shared import), so the contract they
     share is checked instead of trusted."""
     keys = ("INSTRUCTION_SUFFIXES", "EXCLUDED_NAMES", "EXCLUDED_PREFIXES",
-            "CONFIRM_THRESHOLD", "ALLOWED_ROOTS")
+            "EXCLUDED_STEM_SUFFIXES", "CONFIRM_THRESHOLD", "NEVER_TARGET")
     seen = {}
     for script in SCRIPTS:
         src = open(os.path.join(REAL_GSCPT, script), encoding="utf-8").read()
@@ -591,6 +718,68 @@ def test_readme_documents_the_new_contract():
                   f"README line must say a folder is accepted: {line}")
     check("DAMF.py" in readme and "DXMF.py" in readme,
           "README no longer lists both scripts")
+    check("Anywhere on this Mac" in readme,
+          "README still implies targets are confined to a root")
+    check("ALLOWED_ROOTS" not in readme,
+          "README still tells him to widen ALLOWED_ROOTS, which no longer exists")
+    check("⌘⌥C" in readme,
+          "README must name the keystroke he actually uses to copy a path")
+
+
+# --------------------------------------------------- .md across the folder
+# Which gscpt scripts take a TEXT input file at all. The others are excluded on
+# purpose and the reason is recorded here so the audit is not re-run blind:
+#   DATS.py            —— no input file; it scans SCAN_DIRS
+#   ocr_reads.py       —— inputs are .jpg/.png/.pdf; .md is meaningless
+#   trade_records.py   —— input is an IBKR .csv statement
+#   transport_records.py —— input is an Opal .csv statement
+#   ajap_logs_legacy.py —— FROZEN backup, not to be run or edited (and it
+#                          already accepts both extensions)
+TEXT_INPUT_SCRIPTS = ("DAMF.py", "DXMF.py", "git_history.py", "quote_fix.py",
+                      "battery_logs.py", "shopping_records.py")
+
+
+def test_every_text_input_script_declares_md():
+    """He no longer saves anything as .txt, so a .txt-only scan finds nothing
+    and says nothing. Source-level guard: each script's input-extension
+    declaration must contain '.md'. Weaker than an end-to-end run, and named
+    as such —— the two scripts that were actually CHANGED are exercised for
+    real below."""
+    for script in TEXT_INPUT_SCRIPTS:
+        src = open(os.path.join(REAL_GSCPT, script), encoding="utf-8").read()
+        decl = re.findall(r"^[A-Z_]*(?:EXTS|SUFFIXES|EXTENSIONS) *= *\(?\{?(.+)$",
+                          src, re.M)
+        inline = re.findall(r'suffix\.lower\(\) (?:not )?in \((.+?)\)', src)
+        blob = " ".join(decl + inline)
+        check('".md"' in blob or "'.md'" in blob,
+              f"{script}: takes a text input but does not declare .md ({blob!r})")
+
+
+def test_battery_and_shopping_actually_read_an_md_input():
+    """The two scripts the .md change touched, run for real on a .md input in
+    a throwaway folder —— 'declares .md' is not 'reads .md'."""
+    cases = (
+        ("battery_logs.py", "2130\n86%\n2200\n83% charging\n", "Battery Logs "),
+        ("shopping_records.py", "Milk\n5.47\nBread\n3.20\n", "Shopping Records "),
+    )
+    for script, body, out_prefix in cases:
+        tmp = os.path.realpath(tempfile.mkdtemp(prefix="gscpt_mdinput_"))
+        try:
+            shutil.copy2(os.path.join(REAL_GSCPT, script),
+                         os.path.join(tmp, script))
+            touch(os.path.join(tmp, "readings.md"), body)
+            # An artefact that .md acceptance newly exposes: it must be skipped.
+            touch(os.path.join(tmp, "stale_processed.md"), "junk\n")
+            p = subprocess.run([sys.executable, os.path.join(tmp, script)],
+                               capture_output=True, text=True, cwd=tmp)
+            check(p.returncode == 0, f"{script}: .md input run failed —— {out_of(p)}")
+            outs = [f for f in os.listdir(tmp) if f.endswith(".csv")]
+            check(any(f.startswith(out_prefix) for f in outs),
+                  f"{script}: no CSV produced from a .md input —— {outs} {out_of(p)}")
+            check(not any("stale_processed" in f for f in outs),
+                  f"{script}: consumed quote_fix.py's *_processed output —— {outs}")
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
 
 
 def main():
@@ -601,9 +790,11 @@ def main():
     test_relative_path_is_refused()
     test_missing_path_fails_loud()
     test_empty_folder_fails_loud()
-    test_outside_the_fence_is_refused()
-    test_symlink_out_of_the_fence_cannot_be_used_as_a_door()
-    test_the_fence_root_itself_is_refused()
+    test_outside_any_repo_is_stamped()
+    test_a_symlink_is_stamped_but_never_its_target()
+    test_the_home_folder_itself_is_refused()
+    test_real_catastrophic_targets_are_refused()
+    test_a_symlink_cannot_be_a_door_to_a_catastrophic_target()
     test_symlinks_inside_a_scrubbed_tree_are_never_followed()
     test_large_tree_needs_confirmation()
     test_dry_run_changes_nothing()
@@ -615,14 +806,17 @@ def main():
     test_no_search_code_survives()
     test_the_two_scripts_have_not_drifted()
     test_readme_documents_the_new_contract()
+    test_every_text_input_script_declares_md()
+    test_battery_and_shopping_actually_read_an_md_input()
 
     if failures:
         print("FAIL —— %d of %d check(s) failed:" % (len(failures), checks))
         for f in failures:
             print("  - %s" % f)
         return 1
-    print("PASS —— %d checks: absolute-path targets, recursive folders, "
-          "symlink containment, fence, and every stop condition." % checks)
+    print("PASS —— %d checks: absolute-path targets anywhere on this Mac, "
+          "recursive folders, symlink containment, catastrophic-target "
+          "refusals, .md inputs, and every stop condition." % checks)
     return 0
 
 

@@ -16,10 +16,25 @@ complained, because `.githooks/pre-commit` checked only that a response_ has a
 query_ —— never the reverse. Filenames below are the real ones, per
 `universal/coding.md` § Testing ("mine historical/real data for fixtures").
 
-TWO MECHANISMS, TESTED SEPARATELY, because they act at different moments:
-  * `cscpt/hlint.py` (UserPromptSubmit) —— names the owed response BEFORE the
-    turn's first write. This is the one that reaches the decision.
-  * `.githooks/pre-commit` reverse arm —— the net beneath it, at commit time.
+ONE MECHANISM NOW, and the suite says so loudly rather than quietly covering
+less than its name promises:
+  * `.githooks/pre-commit` reverse arm —— non-blocking, adds-only, at COMMIT
+    time. It is the only automated pairing check that remains.
+  * `cscpt/hlint.py` (UserPromptSubmit) carried a prompt-time twin that named
+    the owed response BEFORE the turn's first write. It was PURGED: a brand-new
+    `query_` has no `response_` by construction, so it fired identically on a
+    compliant turn and on the breach —— no discriminating power, one fire per
+    turn (measured: 5 of 29 real invocations, ~124 tokens each). Its former
+    checks below are RETAINED as fixtures and INVERTED: each now pins that
+    hlint is silent, so a re-add is a deliberate act with a failing suite
+    behind it, never a quiet drift back.
+
+⚠️ THE COVER THAT WAS LOST, recorded so nobody reads this suite's green as
+"pairing is protected": nothing now fires before the wrong write. By the time
+the pre-commit arm speaks, the appended content already exists and the repair
+costs a turn. Root CLAUDE.md §3.1.7.7 states the rule in prose, which is not
+enforcement (`cp/ccsim/CLAUDE.md` §8.7). The rebuild target named in
+`cscpt/hlint.py`'s retirement note is `cscpt/flint.py`'s PreToolUse half.
 
 BEFORE/AFTER PROOF (test P0): the suite synthesises the PRE-CHANGE hook by
 deleting the reverse arm from the live file (everything from its banner comment
@@ -335,7 +350,11 @@ def test_sync_allowlist_intact():
 
 
 # ---------------------------------------------------------------------------
-# hlint arm —— prompt-time reminder
+# hlint arm —— PURGED. Every check below is the INVERSE of what it once was:
+# the same fixtures, now pinning silence. Kept rather than deleted because a
+# deleted test is a coverage claim nobody can audit, and because these are the
+# exact inputs that would fire again the moment someone re-adds the check to
+# the wrong file (see the module docstring for where it belongs instead).
 # ---------------------------------------------------------------------------
 
 def hlint(prompt):
@@ -372,16 +391,31 @@ def comms_dir(names):
     return d
 
 
-def test_hlint_fires_on_the_real_scenario():
+PAIR_TEXT = "Query/response pairing"
+
+
+def test_hlint_no_longer_pairs_on_the_real_scenario():
+    """THE PURGE, pinned on the exact fixture that once justified the check ——
+    the real R1 filenames. If this ever fires again, the reminder is back in the
+    wrong file and its precision problem is back with it."""
     d = comms_dir(["ccsim_query_202608011950.md",
                    "ccsim_response_202608011950.md",
                    "ccsim_query_202608012325.md"])
     rc, ctx = hlint(os.path.join(d, "ccsim_query_202608012325.md"))
-    check(rc == 0 and "ccsim_response_202608012325.md" in ctx,
-          "H-P1 — hlint names the owed response_ for the real failing query",
+    check(rc == 0 and ctx == "",
+          "H-P1 — hlint is SILENT on the real failing query (pairing purged)",
           "rc=%s ctx=%r" % (rc, ctx[:300]))
-    check("NEVER append to a previous turn" in ctx,
-          "H-P2 — the reminder states the breach it is preventing", ctx[:300])
+    # Source-level, because a behavioural silence could also mean a broken
+    # lookup. This proves the machinery is GONE, not merely quiet —— and with
+    # it, that `.githooks/pre-commit` is now the only automated pairing check.
+    src = open(HLINT, encoding="utf-8").read()
+    dead = [n for n in ("_pairing_reminders", "_PAIR_HEADER",
+                        "_MAX_PAIR_REMINDERS", "_newest_query_ts",
+                        "_QUERY_FILE_RE", 'has no `%s` yet')
+            if n in src]
+    check(not dead,
+          "H-P2 — the pairing machinery is REMOVED from hlint.py, not just idle",
+          "still present: %s" % ", ".join(dead))
     check(rc == 0, "H-P3 — advisory: exit 0 always (never blocks a prompt)", str(rc))
 
 
@@ -390,13 +424,14 @@ def test_hlint_silent_when_paired():
                    "ccsim_response_202608012325.md"])
     rc, ctx = hlint(os.path.join(d, "ccsim_query_202608012325.md"))
     check(rc == 0 and ctx == "",
-          "H-P4 — silent once the owed response_ exists (the steady state)",
+          "H-P4 — a paired query+response prompt stays silent",
           "ctx=%r" % ctx[:300])
 
 
 def test_hlint_ignores_older_query():
     # The four non-paired queries recorded in `ccsim_close_202607291954.md`
-    # §6.19 are legitimate. Referring to one must not fire.
+    # §6.19 are legitimate. Referring to one must not fire —— and now nothing
+    # can, from either direction.
     d = comms_dir(["ccsim_query_202607301737.md",
                    "ccsim_response_202607301737.md",
                    "ccsim_query_202607301742.md",
@@ -412,15 +447,17 @@ def test_hlint_backticked_is_discussion():
     rc, ctx = hlint("what was in `%s` again?"
                     % os.path.join(d, "ccsim_query_202608012325.md"))
     check(rc == 0 and ctx == "",
-          "H-P6 — a backticked filename is DISCUSSED, not sent -> silent",
+          "H-P6 — a backticked comms filename produces nothing",
           "ctx=%r" % ctx[:300])
 
 
 def test_hlint_cp_prefix():
+    """The CP-prefix rule (root CLAUDE.md §3.3.6) is NOT gone —— it moved to the
+    commit-time arm alone, which R6 above pins. Here it must be silent."""
     d = comms_dir(["career_query_202607181948.md", "response_202607181948.md"])
     rc, ctx = hlint(os.path.join(d, "career_query_202607181948.md"))
-    check(rc == 0 and "career_response_202607181948.md" in ctx,
-          "H-P7 — a CP query owes a CP-prefixed response, not a bare one",
+    check(rc == 0 and ctx == "",
+          "H-P7 — a CP query with only a bare response is silent (R6 owns it now)",
           "ctx=%r" % ctx[:300])
 
 
@@ -430,9 +467,6 @@ def test_hlint_templates_and_missing_files():
     check(rc == 0 and ctx == "",
           "H-P8 — a blank `*_query_.md` template (no TS) never fires",
           "ctx=%r" % ctx[:300])
-    # NOT `209912312359` —— that TS belongs to the standing probe file below,
-    # which deliberately DOES resolve. Using it here made this check pass only
-    # until the probe existed, then fail; a fixture must not collide with one.
     rc, ctx = hlint(os.path.join(d, "ccsim_query_209812312359.md"))
     check(rc == 0 and ctx == "",
           "H-P9 — a query filename that resolves to nothing never fires",
@@ -440,35 +474,41 @@ def test_hlint_templates_and_missing_files():
 
 
 def test_hlint_triggers_unaffected():
+    """The whole point of the purge: hlint's remit is `#triggers`, and the
+    purge must not have cost that. The second check is the discriminating one
+    —— a prompt carrying BOTH a trigger and a query filename must report the
+    trigger and nothing else."""
     rc, ctx = hlint("#close")
     check(rc == 0 and "universal/close.md" in ctx,
-          "H-P10 — the `#trigger` check is unchanged by the new arm",
+          "H-P10 — the `#trigger` check survives the purge intact",
           "ctx=%r" % ctx[:300])
     d = comms_dir(["ccsim_query_202608012325.md"])
     rc, ctx = hlint("#close " + os.path.join(d, "ccsim_query_202608012325.md"))
     check(rc == 0 and "universal/close.md" in ctx
-          and "ccsim_response_202608012325.md" in ctx,
-          "H-P11 — both checks can report in one payload",
+          and PAIR_TEXT not in ctx
+          and "ccsim_response_202608012325.md" not in ctx,
+          "H-P11 — trigger + query filename in one prompt reports the TRIGGER ONLY",
           "ctx=%r" % ctx[:400])
 
 
-def test_hlint_live_probe_file():
-    """Pins the standing liveness probe. It is the ONLY way to test this arm
-    through the REAL path (`cp/ccsim/hook_guide.md` §7.1: piping a payload tests
-    the SCRIPT, never the WIRING), and a sub-agent cannot submit a user prompt.
-    Resolution here goes through the live tree by BARE BASENAME —— exactly how
-    the user names a query —— so this also pins `_locate`'s index lookup."""
+def test_probe_file_is_retired():
+    """The standing liveness probe existed ONLY for the purged arm. It is kept
+    (sandbox scratch, harmless) but must no longer read as live wiring evidence
+    —— a probe that documents a check which does not exist is worse than no
+    probe, because `hook_guide.md` §7.3's liveness table is where someone goes
+    when they suspect the hooks are dead."""
     probe = "ccsim_query_209912312359.md"
-    check(os.path.isfile(os.path.join(SANDBOX, probe)),
-          "H-P13 — the pairing probe file exists in cp/ccsim/sandbox/",
+    path = os.path.join(SANDBOX, probe)
+    check(os.path.isfile(path),
+          "H-P13 — the retired probe file is still present in cp/ccsim/sandbox/",
           "missing %s" % probe)
-    owed = os.path.join(SANDBOX, "ccsim_response_209912312359.md")
-    check(not os.path.exists(owed),
-          "H-P14 — the probe has NO sibling response (which would silence it)",
-          "%s exists" % owed)
+    text = open(path, encoding="utf-8").read() if os.path.isfile(path) else ""
+    check("RETIRED" in text,
+          "H-P14 — the probe file DECLARES itself retired, not live",
+          "no RETIRED marker; it still reads as a working liveness probe")
     rc, ctx = hlint(probe)
-    check(rc == 0 and "ccsim_response_209912312359.md" in ctx,
-          "H-P15 — the probe fires from a bare basename against the live tree",
+    check(rc == 0 and ctx == "",
+          "H-P15 — naming the probe against the LIVE tree now produces nothing",
           "rc=%s ctx=%r" % (rc, ctx[:300]))
 
 
@@ -498,14 +538,14 @@ def main():
                test_forward_arm_intact,
                test_stray_space_block_intact,
                test_sync_allowlist_intact,
-               test_hlint_fires_on_the_real_scenario,
+               test_hlint_no_longer_pairs_on_the_real_scenario,
                test_hlint_silent_when_paired,
                test_hlint_ignores_older_query,
                test_hlint_backticked_is_discussion,
                test_hlint_cp_prefix,
                test_hlint_templates_and_missing_files,
                test_hlint_triggers_unaffected,
-               test_hlint_live_probe_file,
+               test_probe_file_is_retired,
                test_hlint_fail_safe):
         fn()
     print()
@@ -513,7 +553,11 @@ def main():
         print("%d/%d passed —— FAILURES: %s"
               % (checks - len(failures), checks, ", ".join(failures)))
         return 1
-    print("%d/%d passed —— query/response pairing intact." % (checks, checks))
+    # Deliberately NOT "pairing intact" —— it is not. Green here means the
+    # commit-time arm works and the purged prompt-time arm has stayed purged.
+    # Nothing in this suite covers the moment of the WRITE (module docstring).
+    print("%d/%d passed —— commit-time arm live; prompt-time arm purged, "
+          "no pre-write cover." % (checks, checks))
     return 0
 
 
