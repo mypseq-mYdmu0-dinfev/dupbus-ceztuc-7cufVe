@@ -2,7 +2,7 @@
 
 **If you're a sub-agent (SA), disregard this file.**
 
-*Root: `/dupbus-ceztuc-7cufVe/`; governs all CC (Claude Code) sessions started from OR added this root (strictly comply), unless another added folder's CLAUDE.md overrides specific lines.*
+*Root: `/dupbus-ceztuc-7cufVe/`; governs all CC (Claude Code) sessions w/ root as working dir OR directed to read this file, unless another added dir's CLAUDE.md overrides specific lines.*
 
 ---
 
@@ -99,6 +99,7 @@
 ⇠ `202605/close_202605300023.md`
 ➡️ **`202605/career_response_202605300226.md`**
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
+➡️ `97ae25ba` `470481d8`
 ```
   - 3.1.7. Clarifications on §3.1.6.1–3:
     - 3.1.7.1. All 3 TEAs are ONCE per practical turn; DON'T act prematurely nor repeatedly
@@ -130,6 +131,7 @@
     - 3.2.3.1. ANY files created/edited, incl. both comms & non-comms; not always .md
     - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING, unlike `✅` (per §3.2.1.3)
     - 3.2.3.3. Per §3.1.6, bold the main `response_` (better visibility; ONLY for `➡️`; ≤1 per turn)
+    - 3.2.3.4. Per §3.1.6, last line is ALWAYS this turn's SHA(s) (abbrev.; NEVER full), not filename
   - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.5. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
 - 3.3. Comms File Naming:
