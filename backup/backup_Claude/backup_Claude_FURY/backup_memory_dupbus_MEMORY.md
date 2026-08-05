@@ -7,3 +7,4 @@
 - [Chameleon veteran positioning](user_chameleon_veteran.md) — Culous' cross-domain self-positioning + humble-by-default interview posture; cards in career close_
 - [Front-load SA briefs w/ protocol mandate](feedback_sa_brief_frontload_mandate.md) — quote the governing file's rule into the SA prompt, don't just name the tool
 - [#cic mandate on trigger](feedback_cic_mandate_on_trigger.md) — #cic requires reading cic.md + live CCIC reads; web_search/WebFetch is triage only, never a substitute
+- [Spaced filenames are the user's own](feedback_spaced_filenames.md) — a space (or ` _ `) in a filename = his file or an export, not a defect; only flag comms files

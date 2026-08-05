@@ -109,6 +109,11 @@
     - 3.1.7.6. 1 practical turn = FROM user msg (during your **idle state**) TO full completion
       - 3.1.7.6.1. Mid-turn msgs don't count (still same turn AND same `response_`, not new)
       - 3.1.7.6.2. Interruptions (e.g. user stop, sesL hit, network failure) also don't count
+    - 3.1.7.7. ONE `query_` → ONE `response_`, unless user/pcmd instructs otherwise:
+      - 3.1.7.7.1. Never FEWER —— a NEW `query_` gets its OWN `response_[TS]`
+      - 3.1.7.7.2. NEVER append a new turn's reply to a previous turn's `response_`
+      - 3.1.7.7.3. Never MORE —— mid-turn msgs stay in the current one (§3.1.7.6.1)
+      - 3.1.7.7.4. `#close` lists comms as PAIRS, so an orphan corrupts its inventory
   - 3.1.8. Harness Nudge:
     - 3.1.8.1. If visible output required, make a harmless tool call & emit no chat text
     - 3.1.8.2. ONLY if §3.1.8.1 doesn't suffice, emit a lone `.` (nothing else) & emit no chat prose
@@ -159,7 +164,6 @@
   - 3.5.1. Line 1: `# Response to [query_filename]`
   - 3.5.2. Line 2 (optional): `*Heading max. 8w*`
   - 3.5.3. [TS] matches the corresponding `query_` filename, NOT current time
-    - 3.5.3.1. Exactly ONE `response_` per `query_`, unless user/pcmd says otherwise: never fewer (a NEW `query_` gets its OWN `response_[TS]`; NEVER append to a previous turn's) nor more (mid-turn msgs stay in the current one, per §3.1.7.6.1)
   - 3.5.4. Place in the same folder as the `query_` file
   - 3.5.5. After writing/editing ANY `response_`, run `cscpt/dlint.py --quick` on it
   - 3.5.6. Loop-fix all 🔴 RED to 0 (also enforced by PostToolUse hook)
@@ -309,6 +313,13 @@
     - 8.8.5.1. If user didn't say he'll read it AND editing it is not expected, use `textutil`; if output unintelligible OR complex formatting (table, etc.) suspected (i.e. unintelligible), follow §8.8.5.2
     - 8.8.5.2. Otherwise, read it by §8.8.3 (also works for MS) via Quick Mode (see README.md in that folder), which displays formatting & better syncs your view w/ user's view in MS apps
     - 8.8.5.3. Only if fully identical view needed (e.g. page no. match for many pages) AND `#sprint` NOT prompted, suggest user to manually run Full Mode (avoid if possible; inefficient)
+  - 8.8.6. PDF → `.md` needs TWO independent extraction methods, cross-checked:
+    - 8.8.6.1. Method 1 —— page-by-page text extraction (the Read tool's text layer)
+    - 8.8.6.2. Method 2 —— render pages via `pdftoppm`, then READ the images visually
+    - 8.8.6.3. `tesseract` is NOT installed; a visual read IS the second method, not OCR
+    - 8.8.6.4. Reconcile both before treating the `.md` as complete; report any divergence
+    - 8.8.6.5. Why: a method cannot see its own blind spot
+    - 8.8.6.6. A careful re-run of ONE method still dropped a clause from a live contract
 - 8.9. Self-initiated scripts (not asked by user):
   - 8.9.1. NEVER create anything in root (`/dupbus-ceztuc-7cufVe/`) unless explicitly told
   - 8.9.2. Temp/throwaway (to be voided): create beside the `response_` so user sees & deletes

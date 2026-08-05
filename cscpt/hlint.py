@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
-"""UserPromptSubmit hook —— prompt-time protocol reminders. Two independent,
-NON-BLOCKING checks over a submitted prompt: (1) "hashtag/trigger linter" ——
-`#[trigger]` tokens in the prompt (and in any comms file it names) that resolve
-to a `[trigger].md` in the SEARCH SCOPE below get a reminder to READ that file
+"""Hashtag/Trigger Linter (UserPromptSubmit hook)
+
+Prompt-time protocol reminders. Two independent, NON-BLOCKING checks over a
+submitted prompt: (1) "hashtag/trigger linter" —— `#[trigger]` tokens in the
+prompt (and in any comms file it names) that resolve to a `[trigger].md` in
+the SEARCH SCOPE below get a reminder to READ that file
 (root CLAUDE.md §7.3.1: a `#[trigger]` MUST be resolved by reading its file,
 never guessed); (2) "pairing reminder" —— a `*_query_[TS].md` the prompt names
 that has no `*_response_[TS].md` beside it gets a reminder naming the response

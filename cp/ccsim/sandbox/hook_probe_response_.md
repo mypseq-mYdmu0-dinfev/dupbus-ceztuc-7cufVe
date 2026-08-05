@@ -6,7 +6,7 @@
 
 Editing this file with the Write/Edit tool is a one-step test of whether PostToolUse hooks are actually being executed by the harness:
 
-- Hooks LIVE → the write is blocked immediately with a dlint RED report (5 Americanisms on the probe line below).
+- Hooks LIVE → the write is blocked immediately with a dlint RED report (6 Americanisms on the probe line below).
 - Hooks DEAD → the write succeeds silently.
 
 This distinguishes "the script is broken" from "the harness never invoked the script" —— a distinction that cost a whole session's confusion once, because every lint script passed when piped a payload by hand whilst none of them had ever actually run live.

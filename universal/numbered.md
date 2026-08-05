@@ -1,20 +1,28 @@
 # Numbered Lists
 
-## Trigger
-- This file is an Unconditional, so you must follow even not triggered
-- If `#numbered` in query, take it as a reminder/confirmation (e.g. "[content] is also #numbered")
-- If `#numbered` alone received as chat msg, audit your last output files then update as needed
-  - e.g. You might have reset pt no. in prohibited conditions (see below); renumber accordingly
-  - e.g. You might have failed to comply with §Bite-size (see below); restructure pts accordingly
-  - As a nudge (not `query_`), no `response_`/chat text (exc. declaration of updated files) needed
+## Triggers
 
-## Definition
-- 1st level = `[N]. [content]`, 2nd level = `[N].[N]. [content]`, etc.
-- i.e. Qty of `[N]` = Order of Level
+- Unconditional file —— `#numbered` AND `#bite` BOTH apply by default, unprompted
+- `#numbered` = § Format through § Optimise for Reply; `#bite` = § Bite-size
+- Tag(s) in a query that ALSO carries content = a SELECTOR:
+  - NEITHER or BOTH —— the default, i.e. both; a pair is mere reminder/confirmation
+  - `#numbered` only —— numbering applies, bite-size SUSPENDED for that output
+  - `#bite` only —— bite-size applies, numbering SUSPENDED (e.g. `coding.md`'s form)
+  - Rationale: naming ONE deliberately DESELECTS the other
+- Tag(s) as the WHOLE msg (no content) = a NUDGE, never a selector:
+  - Audit last output files against the named part(s) & update as needed
+  - e.g. `#numbered`: pt no. may have reset in prohibited conditions —— renumber
+  - e.g. `#bite`: paragraph-bullets may have crept in —— restructure pts
+  - No `response_`/chat text needed (exc. declaration of updated files)
 
 ## Format
 
-Number every single item as below especially but not limited to when prompted `#numbered`. As shown, sub-items (2nd level onwards; e.g. `- 1.1. xxx...`) MUST follow bullets to prevent line break failure (displaying as single line; `1. xxx... 1.1. xxx...`). This file applies to ALL outputs EXCEPT deliverables, codes (.py/.sh/etc.), and system files (.json/etc.).
+- Level = qty of `[N]`: 1st = `[N]. [content]`, 2nd = `[N].[N]. [content]`, etc.
+- Number every single item, as § Example List shows
+- Sub-items (2nd level onwards; e.g. `- 1.1. xxx...`) MUST follow bullets
+- Unbulleted, the line break fails, rendering as one line: `1. xxx... 1.1. xxx...`
+- Applies to ALL outputs, EXCEPT the exempt types below
+- EXEMPT —— deliverables, codes (.py/.sh/etc.), and system files (.json/etc.)
 
 ## Example List
 
@@ -77,9 +85,10 @@ e.g. 4-level indentation (build up to 5 levels, but only if necessary):
 ...
 ```
 
-## Bite-size
+## `#bite` —— Bite-size
 
-DEFAULT bite-size short lines (NOT only when `#numbered` is prompted):
+- Triggered by: `#bite` —— a **modifier**; never find `bite.md` (this § governs)
+- DEFAULT-ON short lines, per § Triggers; `#numbered` not being prompted is no excuse
 - Intent: Apart from easier reading, this allows even more precise, targeted reply
 - One point per line —— each bullet states ONE claim/action/caveat; if it holds ≥2, split into sibling/sub-bullets, NEVER merge into a paragraph
 - Verdict-first —— lead w/ the conclusion/directive (e.g. "Confirm alignment"); if reasoning exceeds one short clause, demote it to sub-bullets
@@ -92,7 +101,8 @@ DEFAULT bite-size short lines (NOT only when `#numbered` is prompted):
 
 ## `#opt` —— Optional-Reading Offload
 
-- Triggered by: `#opt` —— a **modifier** of `#numbered`; never find `opt.md` (this § governs)
+- Triggered by: `#opt` —— **modifier** of BOTH tags; never find `opt.md` (this § governs)
+- Presumes both & suspends neither —— § Triggers' selector never applies to `#opt`
 - Purpose: when response is already concise AND bite-size but still heavy (extended, appendix-worthy), split it so user reads only what matters NOW, whilst nothing is lost for future sessions
 - NEVER write-long-then-offload —— always attempt the most concise yet understandable response first (bite-size); `#opt` fires ONLY when, despite that, content is still unavoidably long
 - Activation:

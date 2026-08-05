@@ -22,7 +22,11 @@
   - 2.6.2. PROPOSE deletion with sizes; NEVER delete without approval.
   - 2.6.3. ALWAYS EXEMPT `-Volumes-FURY-2TB-Fury-Documents-GitHub` —— the Reader session, kept alive indefinitely by reverting; age is meaningless for it.
   - 2.6.4. Before proposing ANY dir, check `<dir>/memory/` —— a populated one holds persistent auto-memory that no repo can restore; exclude it from the proposal.
-- 2.7. Pending queues (also every session start): run `python3 cscpt/pending.py` and surface anything it prints in the 1st `response_`. It lists the two queues only the USER can clear —— voided `❌_` files awaiting his manual delete (root §8.2.4 mandates the ≥7-day reminder yet forbids actively searching, so nothing could ever fire it) and `sessions/queued_queries/` items awaiting a dedicated session. It PRINTS; never delete or send on his behalf.
+- 2.7. Housekeeping (also every session start): `python3 cscpt/ccsim_housekeeping.py`.
+  - 2.7.1. Surface whatever it prints in the 1st `response_`.
+  - 2.7.2. Three queues: voided `❌_`, queued queries, and stray-space filenames.
+  - 2.7.3. Each needs a decision only HE can make —— it PRINTS, CC never acts.
+  - 2.7.4. CCSIM-only: elsewhere the output is noise nobody may act on.
 - 2.8. `~/.claude` backup mirror (also every session start): diff every backed-up copy against its live counterpart and re-mirror any that drifted —— those files sit OUTSIDE git, so a stale snapshot silently loses the hook registrations everything else depends on. The mapping, the one command, and its exit codes live in `backup/backup_Claude/backup_Claude_FURY/README.md` § Session-Start Check —— read it there, never duplicate it here.
 - 2.9. A `#ready` turn does NOT discharge any of the above. `#ready` is PRE-CONDITIONING (read cheaply now, work on a stronger model next), not a session start —— so every §2 duty stays owed to the first real `response_`, wherever that lands. `ready.md` deliberately says nothing about this: these duties are CCSIM's alone, and every other CC would be paying tokens to read about them.
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Regression test for the REPO-SCOPE GUARD added to all 5 cscpt/ hook
-scripts (clint.py, hlint.py, nlint.py, tlint.py, dlint_quick.py).
+scripts (clint.py, hlint.py, nlint.py, flint.py post, dlint_quick.py).
 
 WHY this test exists (coding.md: "a fix without its test is unfinished"):
 all 5 hooks moved from a PROJECT-level settings.json registration (which
@@ -165,8 +165,11 @@ def _run_direct(script, payload, env_overrides=None):
     return _run([sys.executable, os.path.join(CSCPT, script)], payload, env_overrides)
 
 
-def _run_shim(shim, payload):
-    return _run(["bash", os.path.join(CSCPT, shim)], payload)
+def _run_shim(shim, payload, arg=None):
+    cmd = ["bash", os.path.join(CSCPT, shim)]
+    if arg:
+        cmd.append(arg)
+    return _run(cmd, payload)
 
 
 def _run_clint(payload, log_path):
@@ -374,13 +377,13 @@ def section_nlint():
 
 
 def section_tlint():
-    print("\n--- tlint.py (PostToolUse hook, invoked via tlint_hook.sh, as settings.json does) ---")
+    print("\n--- flint.py post (PostToolUse hook, invoked via flint_hook.sh post, as settings.json does) ---")
     with tempfile.TemporaryDirectory() as td:
         written = _make_tlint_fixture(td)
 
         # D1: in-scope -> still flags the TS clash (stderr non-empty).
         payload = _post_tool_use_payload(written, cwd=REPO_ROOT)
-        r = _run_shim("tlint_hook.sh", payload)
+        r = _run_shim("flint_hook.sh", payload, "post")
         _record("D1 in-scope cwd=repo root -> still flags TS clash (stderr)",
                 r.returncode == 0 and r.stderr.strip() != "", r)
 
@@ -390,18 +393,18 @@ def section_tlint():
         # timestamp clash in the sibling investigation repo is exactly the case the
         # cross-repo mirror check exists to catch. It still exits 0 either way.
         payload = _post_tool_use_payload(written, cwd=OUT_OF_SCOPE_CWD)
-        r = _run_shim("tlint_hook.sh", payload)
+        r = _run_shim("flint_hook.sh", payload, "post")
         _record("D2 foreign cwd -> tlint STILL flags TS clash (deliberately global)",
                 r.returncode == 0 and r.stderr.strip() != "", r)
 
         payload = _post_tool_use_payload(written, transcript_path=OOS_TP, cwd=None)
-        r = _run_shim("tlint_hook.sh", payload)
+        r = _run_shim("flint_hook.sh", payload, "post")
         _record("D3 foreign transcript slug -> tlint STILL flags (deliberately global)",
                 r.returncode == 0 and r.stderr.strip() != "", r)
 
         # D4: fail-open -- neither field usable -> still flags.
         payload = _post_tool_use_payload(written, transcript_path="", cwd=None)
-        r = _run_shim("tlint_hook.sh", payload)
+        r = _run_shim("flint_hook.sh", payload, "post")
         _record("D4 fail-open (neither field) -> STILL flags TS clash",
                 r.returncode == 0 and r.stderr.strip() != "", r)
 

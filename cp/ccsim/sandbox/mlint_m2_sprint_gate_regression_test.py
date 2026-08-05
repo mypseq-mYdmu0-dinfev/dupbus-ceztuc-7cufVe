@@ -56,8 +56,19 @@ SETTINGS = os.path.expanduser("~/.claude/settings.json")
 # Real paths from the incident, reused so the fixtures stay faithful.
 Q_REAL = os.path.join(REPO, "sessions", "2026", "202608",
                       "career_query_202608041846.md")
-Q_DISCUSSION = os.path.join(REPO, "sessions", "queued_queries",
-                            "ccsim_query_202608042035.md")
+# The DISCUSSION case is generated, never borrowed from `sessions/`. It used to
+# point at a real incident write-up; that file was later voided (`❌_` prefix)
+# and the test went on PASSING —— vacuously, because a missing file yields no
+# evidence, which is the fail-open direction. A regression test that passes for
+# the wrong reason is worse than none, and `universal/coding.md` forbids a
+# script depending on a specific comms file precisely because they move.
+Q_DISCUSSION_TEXT = (
+    "# Incident write-up\n\n"
+    "- The session invoked `#m2` and stalled at the interim declaration.\n"
+    "- Every mention of `#m2` in this file is inline and backticked.\n"
+    "- A fenced example follows:\n\n"
+    "```\n#m2 expect 2\n```\n\n"
+    "- Nothing here invokes `#m2`.\n")
 SPRINT_MD = os.path.join(REPO, "universal", "sprint.md")
 M2_READ = {"file_path": M2_MD}
 
@@ -251,6 +262,21 @@ def test_agent_dispatch_lets_it_pass():
           "exit=%d action=%s" % (code, action_of(lines)))
 
 
+def test_workflow_dispatch_lets_it_pass():
+    """LIVE NEAR-MISS, 202608050209: that turn ran its entire sprint through a
+    `Workflow` script and no `Agent` call at all, so the original
+    `Agent`/`Task`-only set recorded it as sprint=none (confirmed in the real
+    `.mlint.log` line for that turn). Had it declared correctly and ended on the
+    declaration, this hook would have blocked a turn whose sprint was already
+    running —— a WRONG block."""
+    recs = insert_before_final_text(fixture_records(), [
+        assistant_tool("Workflow", {"script": "export const meta = {}"})])
+    code, _, lines = run(recs)
+    check(code == 0 and action_of(lines) == "sprint_ran",
+          "a Workflow dispatch lets the turn end",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
 def test_taskupdate_is_not_a_dispatch():
     """THE TRAP: `TaskUpdate` is a TODO tool that appears all over ordinary
     turns —— matching it by prefix would disarm this hook almost everywhere.
@@ -259,6 +285,20 @@ def test_taskupdate_is_not_a_dispatch():
         assistant_tool("TaskUpdate", {"taskId": "x"})])
     code, _, lines = run(recs)
     check(code == 2, "TaskUpdate is NOT sprint evidence —— still blocked",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_taskcreate_is_not_a_dispatch():
+    """THE SAME TRAP, one letter away, and the reason `Workflow` was added by
+    NAME rather than by widening the match: `TaskCreate` takes
+    `{subject, description, activeForm}` —— a to-do entry —— and its text merely
+    NARRATES a dispatch ("Dispatch SA(s) to …") whilst dispatching nothing."""
+    recs = insert_before_final_text(fixture_records(), [
+        assistant_tool("TaskCreate", {"subject": "Dispatch SA(s) to convert",
+                                      "description": "Dispatch SA(s) to …",
+                                      "activeForm": "Dispatching"})])
+    code, _, lines = run(recs)
+    check(code == 2, "TaskCreate is NOT sprint evidence —— still blocked",
           "exit=%d action=%s" % (code, action_of(lines)))
 
 
@@ -278,17 +318,27 @@ def test_slog_beats_other_signals():
 # ---------------------------------------------------------------------------
 
 def test_backticked_m2_is_not_an_invocation():
-    """The real incident WRITE-UP (`queued_queries/ccsim_query_202608042035.md`)
-    is itself a `query_[TS].md` file that mentions `#m2` four times —— every one
-    backticked and inline. A CCSIM session reading it must not be blocked."""
-    recs = fixture_records()
-    recs = [r for r in recs if not _reads(r, Q_REAL)]
-    recs = insert_before_final_text(recs, [
-        assistant_tool("Read", {"file_path": Q_DISCUSSION})])
-    code, _, lines = run(recs)
-    check(code == 0 and action_of(lines) == "no_m2",
-          "backticked #m2 in a query file is NOT an invocation",
-          "exit=%d action=%s" % (code, action_of(lines)))
+    """An incident WRITE-UP is itself a `query_[TS].md` file that mentions `#m2`
+    repeatedly —— every one backticked or fenced. A CCSIM session reading one
+    must not be blocked. The file is WRITTEN HERE so the check cannot rot into a
+    vacuous pass when a real write-up is archived (see Q_DISCUSSION_TEXT)."""
+    tmpdir = tempfile.mkdtemp(prefix="mlint_discussion_")
+    try:
+        path = os.path.join(tmpdir, "ccsim_query_209912312359.md")
+        with open(path, "w", encoding="utf-8") as fh:
+            fh.write(Q_DISCUSSION_TEXT)
+        check(os.path.isfile(path),
+              "the discussion fixture exists (guards a vacuous pass)", path)
+        recs = fixture_records()
+        recs = [r for r in recs if not _reads(r, Q_REAL)]
+        recs = insert_before_final_text(recs, [
+            assistant_tool("Read", {"file_path": path})])
+        code, _, lines = run(recs)
+        check(code == 0 and action_of(lines) == "no_m2",
+              "backticked/fenced #m2 in a query file is NOT an invocation",
+              "exit=%d action=%s" % (code, action_of(lines)))
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
 
 
 def test_reading_m2_md_is_not_an_invocation():
@@ -354,12 +404,154 @@ def test_sentinel_end_is_left_alone():
           "exit=%d action=%s" % (code, action_of(lines)))
 
 
-def test_lone_dot_end_is_left_alone():
-    recs = replace_final_text(fixture_records(), ".")
+def test_lone_dot_end_after_declaring_is_left_alone():
+    """Root §3.1.8.2's sanctioned no-op reply, and this hook's OWN escape hatch
+    for a wrong verdict —— so it must never be held open once the interim
+    declaration has actually landed."""
+    recs = insert_before_final_text(fixture_records(), [
+        assistant_text("➡️ **`202608/career_response_202608041846.md`**")])
+    recs = replace_final_text(recs, ".")
     code, _, lines = run(recs)
     check(code == 0 and action_of(lines) == "not_declaration_end",
-          "a turn ending on the sanctioned lone dot is NOT held open",
+          "a lone dot AFTER the declaration landed is NOT held open",
           "exit=%d action=%s" % (code, action_of(lines)))
+
+
+# ---------------------------------------------------------------------------
+# 4b. SHAPE B —— the declaration that was never emitted at all
+# ---------------------------------------------------------------------------
+
+def _strip_response_writes(records):
+    out = []
+    for r in records:
+        try:
+            blocks = (r.get("message") or {}).get("content") or []
+            if any(isinstance(b, dict) and b.get("type") == "tool_use"
+                   and "response_" in str((b.get("input") or {}).get(
+                       "file_path", "")) for b in blocks):
+                continue
+        except Exception:
+            pass
+        out.append(r)
+    return out
+
+
+def test_missing_declaration_is_blocked():
+    """THE 202608050209 SHAPE, replayed: the `response_` was written, committed
+    and PUSHED, then the next message carried only tool calls and the `➡️` line
+    was never typed. The turn ended on a sanctioned lone `.` after dispatching
+    its sprint —— an entirely ordinary ENDING, which is why shape A cannot see
+    it. Only the ABSENCE of the declaration anywhere in the turn identifies it.
+    From the owner's screen a silent push is indistinguishable from a failed
+    one, and the file he is meant to click is not clickable."""
+    recs = replace_final_text(fixture_records(), ".")
+    code, err, lines = run(recs)
+    check(code == 2, "a turn that NEVER declared its response_ is BLOCKED",
+          "exit=%d action=%s" % (code, action_of(lines)))
+    check(action_of(lines) == "block_nodeclare",
+          "the missing-declaration block is logged under its own action",
+          action_of(lines))
+    check("➡️" in err and "alone" in err.lower(),
+          "the message asks for the one missing line and nothing else",
+          repr(err[:160]))
+    check("lone `.`" in err, "it still names the escape for a wrong verdict",
+          repr(err[:200]))
+
+
+def test_missing_declaration_blocks_even_when_the_sprint_ran():
+    """Shape B is INDIFFERENT to sprint evidence —— the real turn dispatched its
+    whole sprint and still owed the line. Shape A's `sprint_ran` exit must not
+    swallow it, which is why shape B is tested FIRST."""
+    recs = replace_final_text(fixture_records(), ".")
+    recs = insert_before_final_text(recs, [
+        assistant_tool("Workflow", {"script": "export const meta = {}"})])
+    code, _, lines = run(recs)
+    check(code == 2 and action_of(lines) == "block_nodeclare",
+          "a running sprint does not excuse the missing declaration",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_no_response_write_means_no_nodeclare_block():
+    """The declaration is owed only once the file exists. A turn that wrote no
+    `response_` has nothing to declare, so shape B must stay silent."""
+    recs = _strip_response_writes(fixture_records())
+    recs = replace_final_text(recs, ".")
+    code, _, lines = run(recs)
+    check(code == 0 and action_of(lines) == "not_declaration_end",
+          "no response_ write means no missing-declaration block",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_reading_a_response_is_not_writing_one():
+    """Root §4 retrospection opens old `response_` files routinely. A READ must
+    never put a turn on the hook —— only a Write/Edit does."""
+    recs = _strip_response_writes(fixture_records())
+    recs = insert_before_final_text(recs, [
+        assistant_tool("Read", {"file_path": os.path.join(
+            REPO, "sessions", "2026", "202608",
+            "career_response_202608041846.md")})])
+    recs = replace_final_text(recs, ".")
+    code, _, lines = run(recs)
+    check(code == 0 and action_of(lines) == "not_declaration_end",
+          "reading an old response_ is not writing one",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_read_declaration_glyph_does_not_satisfy_shape_b():
+    """A `✅` read-list is not the owed artefact. The owner cannot click it to
+    reach the `response_`, so it must not suppress the block."""
+    recs = insert_before_final_text(fixture_records(), [
+        assistant_text("✅ `universal/m2.md`, `universal/sprint.md`")])
+    recs = replace_final_text(recs, ".")
+    code, _, lines = run(recs)
+    check(code == 2 and action_of(lines) == "block_nodeclare",
+          "a ✅ reads-line does not stand in for the ➡️ declaration",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_harness_terminated_turn_is_not_blocked():
+    """A session/usage limit ends the turn FOR the model. Blocking there spends
+    the one allowed forced turn on an agent that cannot act —— the `clint.py`
+    empty-turn failure in its purest form."""
+    recs = replace_final_text(fixture_records(), ".")
+    recs = recs + [assistant_text("You've hit your session limit · resets 8:30pm",
+                                  api_error=True)]
+    code, _, lines = run(recs)
+    check(code == 0 and action_of(lines) == "not_declaration_end",
+          "a harness-terminated turn is never held open for a declaration",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_urgent_stop_is_not_blocked_for_a_missing_declaration():
+    """A `⚠️` blocker (§3.2.4) and the `🚨` sentinel (§3.2.5) are deliberate
+    early stops. Holding a blocker open delays exactly the message the user most
+    needs to see."""
+    for label, text in (("⚠️ blocker", "⚠️ Contract PDF unreadable"),
+                        ("🚨 sentinel",
+                         "🚨 Compaction Detected —— stopped all tasks.")):
+        recs = replace_final_text(fixture_records(), text)
+        code, _, lines = run(recs)
+        check(code == 0 and action_of(lines) == "not_declaration_end",
+              "shape B leaves a %s ending alone" % label,
+              "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_one_forced_turn_per_prompt_across_both_shapes():
+    """`hook_guide.md` §6.3 budgets ONE extra round trip per prompt. Two shapes
+    must share that budget, not have one each."""
+    tmpdir = tempfile.mkdtemp(prefix="mlint_shared_")
+    try:
+        log = os.path.join(tmpdir, "mlint.log")
+        first, _, _ = run(replace_final_text(fixture_records(), "."), log=log)
+        second, _, lines = run(fixture_records(), log=log)
+        check(first == 2 and second == 0,
+              "a shape-B block spends the same budget as a shape-A one",
+              "first=%d second=%d action=%s" % (first, second,
+                                                action_of(lines)))
+        check(action_of(lines) == "already_blocked",
+              "the second shape logs already_blocked", action_of(lines))
+    finally:
+        shutil.rmtree(tmpdir, ignore_errors=True)
 
 
 def test_api_error_line_is_not_the_turns_last_word():
@@ -571,6 +763,43 @@ def test_m2_md_carries_the_reading_load_rule():
           "m2.md forbids striking a HEADING",
           "a struck heading reads as its whole section being gone, which makes "
           "every later section appear to shift")
+    check(re.search(r"11\.4\.1", text) is not None,
+          "m2.md shows the CORRECT nesting shape, not only the anti-pattern",
+          "answers to a plan point must nest under it (11.4.1, 11.4.2, …); the "
+          "rule was misapplied once because only the anti-pattern was worked")
+
+
+def test_m2_md_snippet_is_numbered_and_acts_only():
+    """THE RESTRUCTURE, pinned. Step 2 failed twice whilst its ACT sat buried
+    among four explanations of WHY. The snippet now carries acts under hardcoded
+    manual numbering (`universal/numbered.md`), and the reasoning lives in a
+    Clarifications section BELOW it that refers to point numbers instead of
+    restating them —— so nothing was deleted, only moved out of the path CC
+    executes."""
+    text = open(M2_MD, encoding="utf-8").read()
+    snippets = re.findall(r"```(.*?)```", text, re.DOTALL)
+    check(len(snippets) == 1, "m2.md holds exactly one fenced snippet",
+          "found %d" % len(snippets))
+    body = snippets[0] if snippets else ""
+    check(re.search(r"^2\. ", body, re.M) is not None
+          and re.search(r"^- 2\.1\. ", body, re.M) is not None,
+          "the snippet is hardcoded-numbered with bulleted sub-items",
+          "numbered.md: sub-items MUST follow bullets, top level must not")
+    check(re.search(r"^\s*[-*] (?![0-9])", body, re.M) is None,
+          "no unnumbered bullet survives inside the snippet",
+          "numbered.md: no line may be unnumbered")
+    check(re.search(r"\[?N?\]?\d+\.0\.", body) is None,
+          "no `[N].0` numbering", "numbered.md forbids it")
+    check("Clarifications" in text and text.index("Clarifications")
+          > text.rindex("```"),
+          "a Clarifications section sits BELOW the snippet",
+          "the reasoning must not sit in the sequence CC executes")
+    for ln in text.splitlines():
+        if len(ln) > 90:
+            check(False, "every m2.md line is =<90 chars",
+                  "%d chars: %s" % (len(ln), ln[:60]))
+            return
+    check(True, "every m2.md line is =<90 chars")
 
 
 # ---------------------------------------------------------------------------
@@ -621,6 +850,7 @@ def main():
         test_preconditions()
         test_m2_md_carries_the_same_message_rule()
         test_m2_md_carries_the_reading_load_rule()
+        test_m2_md_snippet_is_numbered_and_acts_only()
     else:
         for fn in (test_preconditions,
                    test_real_incident_is_blocked,
@@ -628,7 +858,9 @@ def main():
                    test_slog_write_lets_it_pass,
                    test_sprint_md_read_lets_it_pass,
                    test_agent_dispatch_lets_it_pass,
+                   test_workflow_dispatch_lets_it_pass,
                    test_taskupdate_is_not_a_dispatch,
+                   test_taskcreate_is_not_a_dispatch,
                    test_slog_beats_other_signals,
                    test_backticked_m2_is_not_an_invocation,
                    test_reading_m2_md_is_not_an_invocation,
@@ -636,7 +868,15 @@ def main():
                    test_midline_m2_is_not_an_invocation,
                    test_blocker_declaration_end_is_left_alone,
                    test_sentinel_end_is_left_alone,
-                   test_lone_dot_end_is_left_alone,
+                   test_lone_dot_end_after_declaring_is_left_alone,
+                   test_missing_declaration_is_blocked,
+                   test_missing_declaration_blocks_even_when_the_sprint_ran,
+                   test_no_response_write_means_no_nodeclare_block,
+                   test_reading_a_response_is_not_writing_one,
+                   test_read_declaration_glyph_does_not_satisfy_shape_b,
+                   test_harness_terminated_turn_is_not_blocked,
+                   test_urgent_stop_is_not_blocked_for_a_missing_declaration,
+                   test_one_forced_turn_per_prompt_across_both_shapes,
                    test_api_error_line_is_not_the_turns_last_word,
                    test_bold_wrapped_declaration_is_recognised,
                    test_stop_hook_active_disarms,
@@ -654,6 +894,7 @@ def main():
                    test_every_run_logs_exactly_one_line,
                    test_m2_md_carries_the_same_message_rule,
                    test_m2_md_carries_the_reading_load_rule,
+                   test_m2_md_snippet_is_numbered_and_acts_only,
                    test_header_contract,
                    test_registered_live):
             fn()

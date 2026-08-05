@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""PostToolUse hook —— THREE INDEPENDENT checks: two ADVISORY ones enforcing
-`universal/numbered.md`, and one BLOCKING one enforcing `universal/glossary.md`'s
-question/blocker labelling rule. A file may trip any combination of the three.
+"""Numbering Linter (PostToolUse hook)
+
+THREE INDEPENDENT checks: two ADVISORY ones enforcing `universal/numbered.md`,
+and one BLOCKING one enforcing `universal/glossary.md`'s question/blocker
+labelling rule. A file may trip any combination of the three.
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a PostToolUse hook, THREE independent checks, any combination. A/B

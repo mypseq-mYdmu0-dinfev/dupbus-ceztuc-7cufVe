@@ -43,6 +43,14 @@ code is exempt from `--quick`. Role and extension alone decide scope; there are
 no per-folder carve-outs, and an earlier one was removed rather than repointed
 once its target retired. Resist adding another.
 
+WHAT "SCOPE" DOES AND DOES NOT MEAN, because the paragraph above reads wider
+than the behaviour. This hook judges ONE file per invocation: the `file_path`
+the harness just handed it. It never walks the repo, never opens a second `.md`,
+and cannot fail a write because some OTHER file is non-compliant. Any count of
+how many files in the repo would fail if they were linted (they are not) is a
+BLAST-RADIUS estimate for a hypothetical sweep, and never describes a write.
+Within that one file, carve-out 2 narrows further still.
+
 THE THREE CARVE-OUTS, NAMED AS CARVE-OUTS RATHER THAN BURIED.
   1. `query_` files are SKIPPED ENTIRELY. Pre-existing and preserved: a
      `query_` carries the USER's words verbatim (root §3.6.2 has CC transcribe
@@ -50,8 +58,9 @@ THE THREE CARVE-OUTS, NAMED AS CARVE-OUTS RATHER THAN BURIED.
      CC either to falsify the record or to mark it, and neither is a service.
   2. On any file that is NOT comms, the verdict is scoped to THE TEXT THIS
      WRITE PRODUCED (`Write` content, `Edit`/`MultiEdit` new_string), not the
-     whole file. Measured before shipping: widening to every `.md` put 84 of
-     521 recently-touched files into hard-block range, and the overwhelming
+     whole file. Measured before shipping: widening to every `.md` would put 84
+     of 521 recently-touched files into hard-block range IF each were rewritten
+     wholesale (none is linted until it is written), and the overwhelming
      majority were captured third-party text —— lecture transcripts, zoom
      recordings, official course files, job descriptions —— where the only
      "fix" is to rewrite somebody else's words. CC is accountable for the prose
@@ -68,6 +77,15 @@ COMMS FILES (`response_`/`close_`/`wrap_`, substring match, CP prefixes and the
 3: whole file, every time, no escape. CC authored the whole thing, so the whole
 thing is hers. That is exactly the behaviour this file had before, so the
 change is purely additive.
+  WHOLE-FILE ON COMMS IS MANDATED, not a preference this file is free to relax:
+  root `CLAUDE.md` §3.5.5 requires a `--quick` run after writing or editing ANY
+  `response_`, and §3.5.6 requires every 🔴 RED in it driven to zero, naming
+  this hook as the enforcement. Scoping a comms verdict to the edited fragment
+  would let a `response_` end a turn with RED still in it, which is the one
+  outcome §3.5.6 forbids. The residual, stated rather than fixed: editing a
+  comms file written in an EARLIER session re-judges that session's text too.
+  It is rare, it is still CC's own prose, and narrowing it would cost the §3.5.6
+  guarantee on every ordinary turn to buy relief on an unusual one.
 
 THE REMINDER. Every non-blocking run emits ONE line of
 `hookSpecificOutput.additionalContext` —— the only PostToolUse channel that is
@@ -577,7 +595,7 @@ def _sweep_state(keep):
 
 
 def marker_put(session_id, path, digest=None, owed=None, reminded=None,
-               blocked=None):
+               blocked=None, rt=None):
     """Create or update this (session, file) marker. Returns the stored dict,
     or None if the state is unusable —— in which case the caller loses a
     reminder or a gate hold, the harmless direction."""
@@ -605,7 +623,7 @@ def marker_put(session_id, path, digest=None, owed=None, reminded=None,
         cur["h"] = digest or ""
         cur["t"] = int(time.time())
         for k, v in (("owed", owed), ("reminded", reminded),
-                     ("blocked", blocked)):
+                     ("blocked", blocked), ("rt", rt)):
             if v is not None:
                 cur[k] = int(v)
             cur.setdefault(k, 0)
@@ -731,29 +749,30 @@ def _written_text(tool_name, tool_input):
     return None
 
 
-def _run_dlint(args):
+def _run_dlint(args, rt_quiet=False):
     """`dlint.py --quick <args>`; None on any failure so the caller exits 0."""
     if not os.path.isfile(_DLINT):
         return None
+    flags = ["--quick"] + (["--rt-quiet"] if rt_quiet else [])
     try:
         return subprocess.run(
-            [sys.executable, _DLINT, "--quick"] + list(args),
+            [sys.executable, _DLINT] + flags + list(args),
             capture_output=True, text=True, timeout=_DLINT_TIMEOUT_S)
     except Exception:
         return None
 
 
-def _quick_verdict(path, is_comms, tool_name, tool_input):
+def _quick_verdict(path, is_comms, tool_name, tool_input, rt_quiet=False):
     """(blocked, report, mode). `blocked` is True only when dlint exits 1."""
     if not is_comms:
         new = _written_text(tool_name, tool_input)
         if new is not None and len(new) <= _MAX_ARG_TEXT:
             if not new.strip():
                 return False, "", "empty"
-            r = _run_dlint(["--text", new])
+            r = _run_dlint(["--text", new], rt_quiet)
             return (bool(r and r.returncode == 1),
                     (r.stdout if r else ""), "written")
-    r = _run_dlint([path])
+    r = _run_dlint([path], rt_quiet)
     return bool(r and r.returncode == 1), (r.stdout if r else ""), "file"
 
 
@@ -822,7 +841,17 @@ def main():
         marker_put(sid, fp, digest_of(fp, text), owed=1)
 
     # --- QUICK LINT ---------------------------------------------------------
-    blocked, report, mode = _quick_verdict(fp, is_comms, tool_name, tool_input)
+    # ONCE PER (SESSION, FILE) FOR THE `read`/`#r` ADVISORY. The whole dlint
+    # report reaches CC only on a BLOCK (exit 2 stderr), and a RED loop
+    # re-blocks the same file several times in one turn —— so without this the
+    # same advisory is re-served on every pass of a loop CC is already in the
+    # middle of. Told once is told; repeating it is the noise, not the rule.
+    # Reuses the pending-marker directory rather than inventing state: same
+    # (session, file) key, same TTL sweep, same harmless failure direction (a
+    # lost marker costs one repeated advisory, never a missed RED).
+    rt_seen = bool((marker_get(sid, fp) or {}).get("rt")) if sid else False
+    blocked, report, mode = _quick_verdict(fp, is_comms, tool_name, tool_input,
+                                           rt_quiet=rt_seen)
     if blocked:
         where = ("this comms file" if is_comms else
                  "the text this write introduced into `%s`" % base)
@@ -831,6 +860,11 @@ def main():
             "dlint --quick found RED flag(s) in %s —— fix them (British "
             "spelling / Hart's quotation / #numbered), they then clear:\n%s%s\n"
             % (where, report, tail))
+        # Recorded only on a BLOCK, because only a block actually delivered the
+        # report. Marking it on a clean run would silence an advisory CC was
+        # never shown.
+        if sid and not rt_seen and 'bare "read"' in report:
+            marker_put(sid, fp, digest_of(fp, text), rt=1)
         log("red:%s" % mode, base)
         return 2
 

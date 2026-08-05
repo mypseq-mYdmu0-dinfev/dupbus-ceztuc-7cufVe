@@ -8,8 +8,8 @@
 
 ## Why This Is Being Raised Now
 - Root `CLAUDE.md` §8.2.4 says to remind the owner of any voided file whose mod time is ≥7 days. These are far older than that and nothing has ever surfaced them.
-- The default repo now has `cscpt/pending.py`, which prints exactly this queue —— but it is deliberately scoped to `dupbus-ceztuc-7cufVe/` ONLY, precisely because a blanket `❌_` sweep across `GitHub/` would drown in these 792 and invite a catastrophic mass-delete on the prefix alone.
-- ⚠️ That scoping decision means NOTHING currently watches AJAP's voided queue. That is the gap this query exists to close.
+- The default repo now has `cscpt/ccsim_housekeeping.py`, which prints exactly this queue. It walks EVERY sibling repo under `GitHub/` and prunes `AJAP_repo/` alone —— precisely because a blanket `❌_` sweep would drown in these 792 and invite a catastrophic mass-delete on the prefix. That exclusion is load-bearing and documented in the script.
+- ⚠️ That exclusion means NOTHING watches AJAP's voided queue, and nothing will. That is the gap this query exists to close, and it is now the ONLY reason the exclusion exists —— so answering it either retires the exclusion or confirms it permanently.
 
 ## What Is Being Asked (#SA)
 - Dispatch a sub-agent to investigate BRIEFLY —— this is a triage, not an audit. Sample rather than enumerate all 792.

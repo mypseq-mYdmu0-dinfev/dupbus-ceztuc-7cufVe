@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""PreToolUse hook —— "protocol-read linter". BEFORE a file is written (or read),
-it looks at what is about to happen and injects a NON-BLOCKING reminder to read
-the governing file FIRST.
+"""Protocol-Read Linter (PreToolUse hook)
+
+BEFORE a file is written (or read), it looks at what is about to happen and
+injects a NON-BLOCKING reminder to read the governing file FIRST.
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a PreToolUse hook that reminds you to read a governing file FIRST,

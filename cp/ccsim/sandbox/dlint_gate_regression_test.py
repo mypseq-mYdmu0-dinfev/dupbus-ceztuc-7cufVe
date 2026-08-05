@@ -10,10 +10,11 @@ than as a restatement of the fix:
      full stop might be original to the quote. The owner's ruling is that it is
      RED regardless, because the rule serves the reader's comfort and moving
      the stop out costs two clicks —— with ONE relief valve: past
-     `HART_PERIOD_RED_MAX` hits in a single file the class demotes to YELLOW,
-     since at that point it is no longer two clicks. The threshold counts the
-     PERIOD class alone; the comma class was never relaxed and must not be able
-     to soften it.
+     `HART_RED_MAX` hits in a single file the class demotes to YELLOW, since at
+     that point it is no longer two clicks. The owner LATER extended the same
+     treatment to `,"`, so both classes now carry the relief valve —— but with
+     INDEPENDENT counters, so neither class can soften the other on evidence
+     drawn from the other. Both directions of that are pinned below.
 
   2. `dlint_quick.py` COVERS EVERY `.md`, not three filename roles. Anything CC
      wrote outside `response_`/`close_`/`wrap_` was mechanically unchecked. The
@@ -216,34 +217,57 @@ def test_hart():
           len(hart_msgs(red)) == 1 and not hart_msgs(yellow),
           "red=%s yellow=%s" % (red, yellow))
     check("A/and the flag says to move it out ALWAYS",
-          red and "even if the stop is original" in red[0][1], red)
+          red and "even if the mark is original" in red[0][1], red)
 
     five = " ".join('X "q%d."' % i for i in range(5))
     red, yellow = quick(five)
-    check("A/exactly %d hits stay RED" % dlint.HART_PERIOD_RED_MAX,
+    check("A/exactly %d hits stay RED" % dlint.HART_RED_MAX,
           len(hart_msgs(red)) == 5 and not hart_msgs(yellow),
           "red=%d yellow=%d" % (len(red), len(yellow)))
 
     six = " ".join('X "q%d."' % i for i in range(6))
     red, yellow = quick(six)
     check("A/more than %d demotes the WHOLE class to YELLOW"
-          % dlint.HART_PERIOD_RED_MAX,
+          % dlint.HART_RED_MAX,
           not hart_msgs(red) and len(hart_msgs(yellow)) == 6,
           "red=%d yellow=%d" % (len(red), len(yellow)))
     check("A/the demotion warns rather than silently passing",
-          yellow and "does the stop truly belong INSIDE" in yellow[0][1],
+          yellow and "does the mark truly belong INSIDE" in yellow[0][1],
           yellow[:1])
 
-    # THE CROSS-CONTAMINATION GUARD. The threshold is the owner's arithmetic
-    # about `."` and nothing else; a comma-heavy file must not soften the
-    # period rule, nor a period-heavy file the comma rule.
+    # THE COMMA CLASS NOW GETS THE SAME TREATMENT, and nothing less: a single
+    # `,"` is RED with no exemption, exactly as `."` is.
+    red, yellow = quick('He said "I am leaving," then left.')
+    check("A/a single `,”` is RED, with no exemption",
+          len(hart_msgs(red)) == 1 and not hart_msgs(yellow),
+          "red=%s yellow=%s" % (red, yellow))
+    check("A/and the comma flag says to move it out ALWAYS",
+          red and "even if the mark is original" in red[0][1], red)
+
+    five_c = " ".join('X "c%d,"' % i for i in range(5))
+    red, yellow = quick(five_c)
+    check("A/exactly %d commas stay RED" % dlint.HART_RED_MAX,
+          len(hart_msgs(red)) == 5 and not hart_msgs(yellow),
+          "red=%d yellow=%d" % (len(red), len(yellow)))
+
+    six_c = " ".join('X "c%d,"' % i for i in range(6))
+    red, yellow = quick(six_c)
+    check("A/more than %d commas demote the comma class to YELLOW"
+          % dlint.HART_RED_MAX,
+          not hart_msgs(red) and len(hart_msgs(yellow)) == 6,
+          "red=%d yellow=%d" % (len(red), len(yellow)))
+
+    # THE CROSS-CONTAMINATION GUARD, and the reason the counters are INDEPENDENT
+    # rather than shared. Clearing six commas is not clearing the one period, so
+    # a comma-heavy file must not buy the period rule out (nor the reverse).
     red, yellow = quick(" ".join('X "c%d,"' % i for i in range(6))
                         + ' and Y "p."')
-    check("A/6 commas do NOT demote a lone period", len(red) == 7 and not yellow,
-          "red=%d yellow=%d" % (len(red), len(yellow)))
+    check("A/6 commas demote themselves but NOT a lone period",
+          len(red) == 1 and "period" in red[0][1] and len(yellow) == 6,
+          "red=%s yellow=%d" % (red, len(yellow)))
     red, yellow = quick(" ".join('X "p%d."' % i for i in range(6))
                         + ' and Y "c,"')
-    check("A/6 periods do NOT demote the comma",
+    check("A/6 periods demote themselves but NOT a lone comma",
           len(red) == 1 and "comma" in red[0][1] and len(yellow) == 6,
           "red=%s yellow=%d" % (red, len(yellow)))
 
@@ -877,46 +901,307 @@ def test_fold():
 
 
 
+def _dlint():
+    sys.path.insert(0, CSCPT)
+    try:
+        import dlint
+        return dlint
+    finally:
+        sys.path.remove(CSCPT)
+
+
+def _rt(dlint, text):
+    """The `read`/`#r` advisory messages produced by QUICK mode on `text`."""
+    _r, y = dlint.run_checks(text, quick=True)
+    return [m for _, m in y if 'bare "read"' in m]
+
+
 def test_read_tense_quick_only():
     """REGRESSION —— the `#r` tense advisory must fire in QUICK and NEVER in FULL.
 
     `glossary.md` reserves `#r` for the past tense of "read". The advisory is
-    house shorthand, so pushing it into FULL mode would nudge deliverables —— read
-    by third parties who have never seen this glossary —— towards an abbreviation
-    they cannot parse. The quick/full split IS the rule, not an implementation
-    detail, so it is pinned in both directions."""
-    sys.path.insert(0, CSCPT)
-    try:
-        import dlint
-        sample = "Having already read A, I also read B and will read C."
-        qr, qy = dlint.run_checks(sample, quick=True)
-        fr, fy = dlint.run_checks(sample, quick=False)
-    finally:
-        sys.path.remove(CSCPT)
+    house shorthand, so pushing it into FULL mode would nudge deliverables ——
+    sent to third parties who have never seen this glossary —— towards an
+    abbreviation they cannot parse. The quick/full split IS the rule, not an
+    implementation detail, so it is pinned in both directions."""
+    dlint = _dlint()
+    sample = "Having already read A, I also read B and will read C."
+    qhits = _rt(dlint, sample)
+    _fr, fy = dlint.run_checks(sample, quick=False)
+    fhits = [m for _, m in fy if 'bare "read"' in m]
 
-    qhits = [m for _, m in qy if "Read or #r?" in m]
-    fhits = [m for _, m in fy if "Read or #r?" in m]
-    check("M/quick mode flags every `read` occurrence", len(qhits) == 3, len(qhits))
-    check("M/FULL mode never flags it", not fhits, fhits[:1])
+    check("M/quick mode raises the advisory", len(qhits) == 1, len(qhits))
+    check("M/FULL mode never raises it", not fhits, fhits[:1])
     check("M/the advisory names glossary.md",
           qhits and "glossary.md" in qhits[0], qhits[:1])
     check("M/and tells CC to fix silently",
           qhits and "Silently" in qhits[0], qhits[:1])
-    check("M/context window is quoted for locating the instance",
-          qhits and qhits[0].startswith('"'), qhits[:1])
-    # a line with no `read` must stay silent —— guards against a runaway matcher
-    sys.path.insert(0, CSCPT)
-    try:
-        import dlint
-        _r, y = dlint.run_checks("Nothing here mentions it at all.", quick=True)
-    finally:
-        sys.path.remove(CSCPT)
+    check("M/a context window is quoted for locating the instance",
+          qhits and 'first is "' in qhits[0], qhits[:1])
+    check("M/`will read` is excluded, so only 2 candidates survive",
+          qhits and qhits[0].startswith("2 bare"), qhits[:1])
     check("M/silent when the word is absent",
-          not [m for _, m in y if "Read or #r?" in m])
+          not _rt(dlint, "Nothing here mentions it at all."))
+
+
+def test_read_tense_noise():
+    """REGRESSION —— the advisory must not fire on correct writing.
+
+    THE FAILING SCENARIO, measured rather than asserted: `\\b[Rr]ead\\b` over one
+    real `response_` produced 21 flags, of which one was an actual past tense.
+    The owner's expectation is that a correctly-written file fires ZERO times.
+    That is not reachable by tense detection —— "you read it" is past or present
+    and only a reader can say —— so what IS pinned here is the four mechanical
+    classes that were never tense errors at all, plus the one-flag-per-file
+    reporting that stops a genuine ambiguity being served twenty times over.
+
+    The residual is pinned too, deliberately: a bare "You read X" STILL fires,
+    and a test asserting otherwise would be encoding a promise the check cannot
+    keep."""
+    dlint = _dlint()
+
+    silent = [
+        ("re-read the file", "class 1: hyphenated compound"),
+        ("read-only mode", "class 1: hyphenated compound"),
+        ("another read-reminder fired", "class 1: hyphenated compound"),
+        ("she over-read the situation", "class 1: hyphenated compound"),
+        ("a must-read guide", "class 1: hyphenated compound"),
+        ("edit it with the Read tool", "class 2: the tool name"),
+        ("Read/Write payloads", "class 2: the tool name"),
+        ("the miss was not a missing read.", "class 3: a noun"),
+        ("this does not discharge the read", "class 3: a noun"),
+        ("a read via Bash is invisible", "class 3: a noun"),
+        ("you had to read past it", "class 4: infinitive"),
+        ("it will read as questions", "class 4: future"),
+        ("the file is only read when editing", "class 4: present passive"),
+        ("the file is not yet read", "class 4: present passive"),
+        ("CC must read it first", "class 4: modal"),
+        ("reading the file", "never matched: not the whole word"),
+        ("`#r` and #r are shorthand", "never matched: not the word"),
+    ]
+    for text, why in silent:
+        check("N/silent on %r (%s)" % (text, why), not _rt(dlint, text),
+              _rt(dlint, text)[:1])
+
+    fires = [
+        "You read the originals, then discovered they had moved.",
+        "The files were already read this session.",
+    ]
+    for text in fires:
+        check("N/still fires on %r" % text, _rt(dlint, text), "a real past "
+              "tense must survive the narrowing —— hiding it is worse than "
+              "the noise")
+
+    # ONE FLAG PER FILE. Twenty repetitions of one reminder is the noise; the
+    # line numbers carry the same information at a twentieth of the volume.
+    many = "\n".join("You read item %d there." % i for i in range(20))
+    hits = _rt(dlint, many)
+    check("N/twenty candidates produce ONE flag", len(hits) == 1, len(hits))
+    check("N/and that flag reports the count", hits and "20 bare" in hits[0],
+          hits[:1])
+    check("N/and names line numbers to jump to",
+          hits and "L1, L2" in hits[0], hits[:1])
+
+    # `--rt-quiet` suppresses THIS advisory and nothing else. `dlint_quick.py`
+    # passes it once a (session, file) has already been shown the report.
+    red, yellow = dlint.run_checks("You read it. The colors are wrong.",
+                                   quick=True, rt_quiet=True)
+    check("N/--rt-quiet silences the advisory",
+          not [m for _, m in yellow if 'bare "read"' in m], yellow[:1])
+    check("N/but never silences a RED", len(red) == 1, red)
+
+
+def test_americanisms():
+    """REGRESSION —— the `-our`/`-or` class, and the words that only LOOK like it.
+
+    THE FAILING SCENARIO: a `response_` shipped the word `rigor` after a clean
+    `--quick` run. The check itself was sound (RED, quick-mode, word-boundary,
+    code-masked); `rigor` was simply not in the list, and neither was the whole
+    `-our` class around it.
+
+    The other half of the fix matters just as much and is pinned harder: an
+    ending-based rule would have caught `rigor` and ALSO fired on `tremor`,
+    `error`, `senator`, `separator`, `junior` and `rigorous` —— ordinary correct
+    English —— and a RED that cries wolf gets switched off. Every one of those
+    is asserted SILENT below, so nobody can "simplify" the word list into a
+    pattern without this suite going red."""
+    dlint = _dlint()
+
+    def red_words(text):
+        red, _y = dlint.run_checks(text, quick=True)
+        return [m.split("`")[1] for _ln, m in red if m.startswith("Americanism")]
+
+    check("L/`rigor` is RED (the exact miss that motivated this)",
+          red_words("This deserves the same rigor.") == ["rigor"],
+          red_words("This deserves the same rigor."))
+
+    for w in ("ardor", "armor", "candor", "clamor", "demeanor", "endeavor",
+              "fervor", "glamor", "harbor", "humor", "odor", "rancor", "rigor",
+              "rumor", "savior", "savor", "splendor", "succor", "tumor",
+              "valor", "vapor", "vigor", "misdemeanor", "behavioral",
+              "neighborhood", "favorable", "honorable", "humorless",
+              "colorful", "laborer"):
+        check("L/`%s` is RED" % w, red_words("A sentence with %s in it." % w),
+              "the -our class must be covered, not just the seed words")
+
+    # THE MISFIRE CLASS. Correct English that an `-or` pattern would destroy.
+    for w in ("tremor", "error", "mirror", "horror", "terror", "major",
+              "minor", "donor", "motor", "doctor", "senator", "metaphor",
+              "anchor", "pallor", "junior", "senior", "superior", "separator",
+              "elevator", "translator", "animator", "devour", "contour",
+              "flour", "hour", "paramour", "tour", "velour"):
+        check("L/`%s` is NOT flagged" % w,
+              not red_words("A sentence with %s in it." % w),
+              "%s is correct in British English; an ending rule would fire"
+              % w)
+
+    # BRITISH DERIVATIVES LEGITIMATELY DROP THE `u`, and word-boundary matching
+    # is what spares them —— `\\brigor\\b` cannot reach inside `rigorous`.
+    for w in ("rigorous", "vigorous", "humorous", "laborious", "honorary",
+              "honorific", "humorist", "glamorous", "invigorate",
+              "thermometer", "kilometre", "colouration"):
+        check("L/`%s` is NOT flagged" % w,
+              not red_words("A sentence with %s in it." % w),
+              "British drops the u before these Latin suffixes")
+
+    # THE CONTEXT EXEMPTIONS, each a place the listed spelling is correct.
+    for text, w in (("rigor mortis had set in", "rigor"),
+                    ("the Australian Labor Party won", "labor"),
+                    ("a Labor MP said so", "labor"),
+                    ("Pearl Harbor was bombed", "harbor"),
+                    ("a parking meter costs money", "meter"),
+                    ("the meter reading was wrong", "meter")):
+        check("L/%r does not fire" % text, not red_words(text),
+              "a source-named correct usage must not be a hard block")
+    # …and the exemption is offset-precise: the same word elsewhere still fires.
+    check("L/the exemption does not cover the whole line",
+          red_words("rigor mortis, and the rigor of the argument")
+          == ["rigor"],
+          red_words("rigor mortis, and the rigor of the argument"))
+
+    # OTHER CLASSES AUDITED IN THE SAME PASS (each Wiktionary-confirmed).
+    for w in ("analyze", "specter", "maneuver", "pretense", "traveler",
+              "counselor", "modeled", "signaled", "enrollment", "skillful",
+              "willful", "installment", "aluminum", "pajamas", "skeptic",
+              "mold", "jewelry", "plow", "mustache", "esthetic"):
+        check("L/`%s` is RED" % w, red_words("A sentence with %s in it." % w),
+              "audited gap outside the -our class")
+
+    # `#distil`/`#distill` are interchangeable TRIGGER names in
+    # `universal/shrink.md`, so the American-looking one must not hard-block a
+    # house command.
+    check("L/`distill` is NOT flagged (it is a house trigger alias)",
+          not red_words("Use #distill on that file."), "shrink.md names it")
+
+    # And it still never fires inside code —— the masking predates this change
+    # and must survive it.
+    red, _y = dlint.run_checks("Use `color` here.\n```\nrigor = 1\n```\n",
+                               quick=True)
+    check("L/masked code is still exempt",
+          not [m for _ln, m in red if m.startswith("Americanism")], red[:1])
+
+    # THE FAST PATH IS THE SAME VERDICT. Growing the list past ~200 words made
+    # one-regex-per-word-per-line cost `~`1.5 s on the repo's largest `.md`,
+    # over hook_guide §12.4's 1 s ceiling for a hook that fires on every write,
+    # so the lookup became a `\\w+` tokenise plus a set intersection. A rewrite
+    # for speed is only safe if it is verifiably the SAME rule (coding.md:
+    # verify equivalence, never trust the transform), so pin that here rather
+    # than trusting the reasoning about `\\b`.
+    probe = [
+        "color's edge", "colorful", "color2 rows", "re-color it",
+        "COLOR and Color and color", "rigor.", "rigorous", "a meter,",
+        "thermometer", "kilometer", "(honor)", "honor-bound", "x=color",
+        "no americanism at all here",
+    ]
+    keys = set(dlint.AMERICANISMS)
+    for line in probe:
+        low = line.lower()
+        slow = {w for w in keys if re.search(r"\b%s\b" % re.escape(w), low)}
+        fast = set(dlint._WORD_RE.findall(low)) & keys
+        check("L/fast lookup equals the word-boundary regex on %r" % line,
+              slow == fast, "differ by %s" % (slow ^ fast))
+
+
+def test_write_scope_is_one_file():
+    """REGRESSION —— a write is judged on ITSELF, never on the repo's history.
+
+    The owner's objection, verbatim in intent: the lint should apply to the file
+    being created or edited, not to historic ones. This pins that the hook opens
+    exactly the file the payload names —— a repo full of RED-laden `.md` cannot
+    make a clean write fail, and an Edit to a non-comms file is judged on the
+    text it introduced rather than on prose it merely sat next to."""
+    rt = Repo()
+    try:
+        legacy = "# Old\n\nThe colors are wrong, the center is off.\n" + FILLER
+        for rel in ("temp/temp_misc/old/a.md", "temp/temp_misc/old/b.md",
+                    "sessions/2026/202601/response_202601010101.md"):
+            rt.write(rel, legacy)
+
+        clean = rt.write("temp/temp_misc/new/fresh.md", "# New\n\n" + FILLER)
+        r = rt.post("HIST", clean, tool="Write",
+                    ti_extra={"content": "# New\n\n" + FILLER})
+        check("O/a clean write passes with 3 RED files sitting in the repo",
+              r.returncode == 0, r.stderr[:200])
+        check("O/and no other file is ever named", "a.md" not in r.stderr
+              and "b.md" not in r.stderr, r.stderr[:200])
+
+        # Even a comms write, which IS whole-file, only ever sees its own file.
+        # A FRESH session id, deliberately: the gate is a separate mechanism and
+        # `fresh.md` above is deliverable-shaped, so reusing "HIST" would fail
+        # this for a reason that has nothing to do with historic linting.
+        resp = rt.write("sessions/2026/202608/response_202608012100.md",
+                        "# Response\n\n" + FILLER)
+        r = rt.post("HIST_COMMS", resp)
+        check("O/a clean comms write is not held to account for older comms",
+              r.returncode == 0, r.stderr[:200])
+
+        # The one-line edit to a captured transcript: judged on the line.
+        big = rt.write("temp/temp_misc/lectures/transcript.md", legacy)
+        r = rt.post("HIST", big, tool="Edit",
+                    ti_extra={"old_string": "x",
+                              "new_string": "One ordinary British sentence."})
+        check("O/an edit is judged on its own new text", r.returncode == 0,
+              "history CC did not touch must not block her edit")
+    finally:
+        rt.close()
+
+
+def test_read_tense_once_per_session():
+    """REGRESSION —— told once is told.
+
+    The whole dlint report reaches CC only on a BLOCK, so a RED loop re-serves
+    the same `read`/`#r` advisory on every pass. The owner's second sentence was
+    that it must not repeat within a session once CC has been told. Reuses the
+    existing (session, file) marker directory rather than a second mechanism."""
+    rt = Repo()
+    try:
+        body = ("# Response\n\nYou read the originals yesterday.\n"
+                "The colors are wrong.\n" + FILLER)
+        p = rt.write("sessions/2026/202608/response_202608019999.md", body)
+
+        r = rt.post("RT1", p)
+        check("P/the first block carries the advisory",
+              r.returncode == 2 and 'bare "read"' in r.stderr, r.stderr[:300])
+
+        r = rt.post("RT1", p)
+        check("P/the second block in the SAME session does not repeat it",
+              r.returncode == 2 and 'bare "read"' not in r.stderr,
+              r.stderr[:300])
+        check("P/but the RED itself is still reported",
+              "Americanism" in r.stderr, r.stderr[:300])
+
+        r = rt.post("RT2", p)
+        check("P/a NEW session is told once of its own",
+              r.returncode == 2 and 'bare "read"' in r.stderr, r.stderr[:300])
+    finally:
+        rt.close()
 
 
 def main():
-    for fn in (test_read_tense_quick_only, test_hart, test_scope, test_reminder, test_classifier,
+    for fn in (test_read_tense_quick_only, test_read_tense_noise,
+               test_americanisms, test_write_scope_is_one_file,
+               test_read_tense_once_per_session,
+               test_hart, test_scope, test_reminder, test_classifier,
                test_gate, test_guards, test_replay, test_fold):
         try:
             fn()

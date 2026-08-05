@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""PreToolUse hook —— "agent-in-flight linter", the TEA1 IN-FLIGHT GATE. It
-BLOCKS `git commit` / `git push` whilst any sub-agent OR workflow dispatched by
-this session is still running, so root CLAUDE.md §3.1.6's precondition ("After
-ALL tasks' completion, ensuring no SAs in-flight, do Turn-End Actions") stops
-being a judgement call and becomes a mechanical one.
+"""Agent-In-Flight Linter (PreToolUse hook)
+
+The TEA1 IN-FLIGHT GATE. It BLOCKS `git commit` / `git push` whilst any
+sub-agent OR workflow dispatched by this session is still running, so root
+CLAUDE.md §3.1.6's precondition ("After ALL tasks' completion, ensuring no SAs
+in-flight, do Turn-End Actions") stops being a judgement call and becomes a
+mechanical one.
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a PreToolUse hook on `Bash`. It blocks a commit/push whilst a

@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Stop hook —— logs a chat-text-discipline WARNING when the MAIN agent ends a
-turn with an impermissible line. It NEVER blocks the turn (see ALWAYS RED ->
-ALWAYS YELLOW in the CCSIM section below for why, and the price of that
-choice).
+"""Chat-Text Linter (Stop hook)
+
+Logs a chat-text-discipline WARNING when the MAIN agent ends a turn with an
+impermissible line. It NEVER blocks the turn (see ALWAYS RED -> ALWAYS YELLOW
+in the CCSIM section below for why, and the price of that choice).
 
 Two rules, picked by the session's working directory (see REPO SCOPE below):
 * REPO mode (this repo) —— root CLAUDE.md §3.2: the only chat text permitted is

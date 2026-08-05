@@ -8,10 +8,9 @@ WHAT: the deterministic prose linter for `universal/writing.md`.
     python3 cscpt/dlint.py [--quick] <path>...
     python3 cscpt/dlint.py [--quick] --text "…"
 
-* `--quick` must come FIRST.
-* FULL mode REWRITES THE FILE IN PLACE (quote conversion only) and applies the
-  deliverable-only rules; `--text` prints instead. `--quick` does neither, so it
-  is safe over comms.
+* `--quick` must come FIRST (before any path or `--text`).
+* FULL REWRITES THE FILE IN PLACE (quotes only) + deliverable rules; `--text`
+  prints instead. `--quick` does neither, so it is safe over comms.
 * 🔴 RED = hard breach, ZERO TOLERANCE, loop until 0. 🟡 YELLOW = conditional;
   judge each, justify any you accept. Flags print, never auto-apply.
 * EXIT: 0 = no RED | 1 = RED | 2 = usage error.
@@ -25,15 +24,19 @@ WHAT: the deterministic prose linter for `universal/writing.md`.
   colon, a comma OR a period as the last char inside a closing quote, `hi` as a
   greeting. YELLOW: en dash, bare `+`, hyphen used as a dash/non-#numbered
   bullet, `-ize`/`-isation`, sentence-initial `Where`, GenAI/cliche words and
-  phrases, weak words (want/something/big), plus the period-in-quote class once
-  one file carries more than `HART_PERIOD_RED_MAX` of them.
-* `."` HAS NO EXEMPTION —— see `_hart`. It is RED even when the full stop is
-  original to the quoted sentence, because the rule exists for the reader's
-  comfort rather than for grammatical truth. The ONLY relief is the per-file
-  count threshold, and that demotes rather than silences.
+  phrases, weak words (want/something/big), plus either in-quote punctuation
+  class once one file carries more than `HART_RED_MAX` of THAT class.
+* NEITHER `."` NOR `,"` HAS AN EXEMPTION —— see `_hart`. Both are RED even when
+  the mark is original to the quoted sentence, because the rule exists for the
+  reader's comfort rather than for grammatical truth. The ONLY relief is the
+  per-file count threshold, it demotes rather than silences, and the two
+  classes count INDEPENDENTLY so neither can soften the other.
 * `--quick` keeps ONLY the register-independent rules —— Americanisms, Hart's
   quotation, `-ize`, hyphen/#numbered, `hi` greeting —— and never rewrites,
-  because comms and code may hold intentional straight quotes.
+  because comms and code may hold intentional straight quotes. It ALSO adds one
+  quick-only advisory, the `read`/`#r` tense check, which FULL must never carry
+  (house shorthand has no place in a deliverable) —— `--rt-quiet` suppresses
+  that one advisory and nothing else, and only `dlint_quick.py` passes it.
 * AUTO-FIX (full mode only) converts straight quotes/apostrophes to typographic,
   chosen by context, and is idempotent —— already-typographic quotes are left
   alone.
@@ -140,23 +143,192 @@ def convert_quotes(text):
 # auto-applied (dlint flags, you rewrite). Generalised `-ize`/`-isation` lives in
 # YELLOW instead, because exact rules must be unconditional and `-ize` has Oxford-
 # acceptable exceptions.
+#
+# AN EXPLICIT WORD LIST, NEVER AN ENDING PATTERN. The tempting repair after a
+# miss is a rule on the ENDING (`-or` -> suggest `-our`). It cannot work, because
+# the same ending is FOUR different things and only a lexicon separates them:
+#   1. the American form of a British `-our` word —— rigor, vigor, valor, candor;
+#   2. a Latin AGENT suffix identical in both —— separator, elevator, translator;
+#   3. a Latin comparative identical in both —— junior, senior, superior;
+#   4. words Johnson once spelled `-our` and nobody has since —— error, horror,
+#      mirror, terror, tremor, pallor, doctor, senator, metaphor, anchor, major,
+#      minor, donor, motor.
+# An `-or` rule fires on every word in 2/3/4, i.e. on ordinary correct English,
+# and a RED that cries wolf is switched off in a day. It would ALSO fire on the
+# British derivatives that legitimately DROP the u —— rigorous, vigorous,
+# humorous, laborious, honorary, glamorous —— though word-boundary matching
+# already spares those here (`\brigor\b` cannot match `rigorous`).
+#
+# SOURCE. The `-our`/`-or`, `-re`/`-er` and doubled-`l` sets below were taken
+# from Wikipedia's "American and British English spelling differences" (which
+# cites Webster's Third p.24a, the OED, and Peters, "The Cambridge Guide to
+# English Usage"), then each individual word was checked against its own
+# Wiktionary entry for an explicit American/US-spelling label. Anything the
+# check did not confirm was left OUT rather than guessed —— see the KNOWN GAPS
+# note under AMERICANISM_OK_HERE.
 AMERICANISMS = {
     "learned": "learnt", "while": "whilst", "amid": "amidst",
     "toward": "towards", "among": "amongst",
-    "color": "colour", "colors": "colours", "colored": "coloured",
-    "favorite": "favourite", "favorites": "favourites",
+    # -our / -or
+    "ardor": "ardour",
+    "armor": "armour", "armors": "armours", "armored": "armoured",
+    "armory": "armoury", "armories": "armouries",
     "behavior": "behaviour", "behaviors": "behaviours",
+    "behavioral": "behavioural", "behaviorally": "behaviourally",
+    "candor": "candour",
+    "clamor": "clamour", "clamors": "clamours", "clamored": "clamoured",
+    "clamoring": "clamouring",
+    "color": "colour", "colors": "colours", "colored": "coloured",
+    "coloring": "colouring", "colorful": "colourful",
+    "colorless": "colourless",
+    "demeanor": "demeanour",
+    "dishonor": "dishonour", "dishonored": "dishonoured",
+    "enamor": "enamour", "enamored": "enamoured",
+    "endeavor": "endeavour", "endeavors": "endeavours",
+    "endeavored": "endeavoured", "endeavoring": "endeavouring",
+    "favor": "favour", "favors": "favours", "favored": "favoured",
+    "favoring": "favouring", "favorable": "favourable",
+    "favorably": "favourably", "unfavorable": "unfavourable",
+    "favorite": "favourite", "favorites": "favourites",
+    "fervor": "fervour",
+    "flavor": "flavour", "flavors": "flavours", "flavored": "flavoured",
+    "flavoring": "flavouring", "flavorful": "flavourful",
+    "glamor": "glamour",
+    "harbor": "harbour", "harbors": "harbours", "harbored": "harboured",
+    "harboring": "harbouring",
+    "honor": "honour", "honors": "honours", "honored": "honoured",
+    "honoring": "honouring", "honorable": "honourable",
+    "honorably": "honourably",
+    "humor": "humour", "humors": "humours", "humored": "humoured",
+    "humorless": "humourless",
+    "labor": "labour", "labors": "labours", "labored": "laboured",
+    "laboring": "labouring", "laborer": "labourer", "laborers": "labourers",
+    "misdemeanor": "misdemeanour", "misdemeanors": "misdemeanours",
     "neighbor": "neighbour", "neighbors": "neighbours",
-    "honor": "honour", "honors": "honours",
-    "labor": "labour", "favor": "favour", "flavor": "flavour",
-    "center": "centre", "centers": "centres",
-    "theater": "theatre", "meter": "metre", "liter": "litre",
-    "defense": "defence", "offense": "offence",
+    "neighborhood": "neighbourhood", "neighborhoods": "neighbourhoods",
+    "odor": "odour", "odors": "odours",
+    "rancor": "rancour",
+    "rigor": "rigour", "rigors": "rigours",
+    "rumor": "rumour", "rumors": "rumours", "rumored": "rumoured",
+    "savior": "saviour", "saviors": "saviours",
+    "savor": "savour", "savors": "savours", "savored": "savoured",
+    "savoring": "savouring", "savory": "savoury",
+    "splendor": "splendour",
+    "succor": "succour",
+    "tumor": "tumour", "tumors": "tumours",
+    "valor": "valour",
+    "vapor": "vapour", "vapors": "vapours",
+    "vigor": "vigour",
+    # -re / -er
+    "center": "centre", "centers": "centres", "centered": "centred",
+    "centering": "centring",
+    "theater": "theatre", "theaters": "theatres",
+    "meter": "metre", "meters": "metres",
+    "liter": "litre", "liters": "litres",
+    "fiber": "fibre", "fibers": "fibres",
+    "luster": "lustre", "maneuver": "manoeuvre", "maneuvers": "manoeuvres",
+    "maneuvered": "manoeuvred", "maneuvering": "manoeuvring",
+    "ocher": "ochre", "saber": "sabre", "sabers": "sabres",
+    "scepter": "sceptre", "somber": "sombre",
+    "specter": "spectre", "specters": "spectres",
+    # -ce / -se
+    "defense": "defence", "defenses": "defences",
+    "offense": "offence", "offenses": "offences",
+    "pretense": "pretence", "pretenses": "pretences",
+    "practiced": "practised", "practicing": "practising",
+    # -yse / -yze (NOT reachable by the -ize rule: the stem is `analys-`, so
+    # Oxford `-ize` never licensed `analyze`)
+    "analyze": "analyse", "analyzes": "analyses", "analyzed": "analysed",
+    "analyzing": "analysing",
+    # doubled `l`: British doubles a final unstressed -l before a suffix
+    "canceled": "cancelled", "canceling": "cancelling",
+    "counselor": "counsellor", "counselors": "counsellors",
+    "counseled": "counselled", "counseling": "counselling",
+    "cruelest": "cruellest",
+    "dialed": "dialled", "dialing": "dialling",
+    "equaling": "equalling", "initialed": "initialled",
+    "fueled": "fuelled", "fueling": "fuelling",
+    "labeled": "labelled", "labeling": "labelling",
+    "leveled": "levelled", "leveling": "levelling",
+    "libelous": "libellous",
+    "marveled": "marvelled", "marveling": "marvelling",
+    "marvelous": "marvellous", "marvelously": "marvellously",
+    "modeled": "modelled", "modeling": "modelling",
+    "quarreled": "quarrelled", "quarreling": "quarrelling",
+    "rivaled": "rivalled",
+    "signaled": "signalled", "signaling": "signalling",
+    "totaled": "totalled", "totaling": "totalling",
     "traveled": "travelled", "traveling": "travelling",
-    "canceled": "cancelled", "modeling": "modelling", "labeled": "labelled",
-    "fulfill": "fulfil", "catalog": "catalogue", "dialog": "dialogue",
-    "gray": "grey", "fiber": "fibre", "practiced": "practised",
+    "traveler": "traveller", "travelers": "travellers",
+    "woolen": "woollen",
+    # single `l` where American doubles it. `distill` is deliberately ABSENT:
+    # `universal/shrink.md` documents `#distil`/`#distill` as interchangeable
+    # TRIGGER names, so a hard block would fire on a house command rather than
+    # on a spelling error.
+    "appall": "appal", "enroll": "enrol",
+    "enrollment": "enrolment", "enthrall": "enthral",
+    "fulfill": "fulfil", "fulfillment": "fulfilment",
+    "installment": "instalment", "installments": "instalments",
+    "instill": "instil", "skillful": "skilful", "skillfully": "skilfully",
+    "willful": "wilful", "willfully": "wilfully",
+    # miscellaneous, each Wiktionary-confirmed as the American form
+    "aluminum": "aluminium", "archeology": "archaeology",
+    "catalog": "catalogue", "dialog": "dialogue",
+    "esthetic": "aesthetic", "esthetics": "aesthetics",
+    "gray": "grey", "jewelry": "jewellery",
+    "mold": "mould", "molds": "moulds", "molded": "moulded",
+    "molding": "moulding",
+    "mustache": "moustache", "pajamas": "pyjamas",
+    "plow": "plough", "plowed": "ploughed",
+    "skeptic": "sceptic", "skeptics": "sceptics",
+    "skeptical": "sceptical", "skepticism": "scepticism",
+    "smolder": "smoulder",
 }
+
+# THE SHORT LIST OF PLACES A LISTED WORD IS ACTUALLY CORRECT. Each entry is a
+# regex over the LOWERCASED line whose `hit` group must cover the flagged word;
+# a match at that exact offset suppresses that one hit and nothing else, so the
+# same word elsewhere on the same line still fires.
+#
+# Kept deliberately tiny. Every entry is named by the source above as genuinely
+# correct British usage, NOT as a judgement call:
+#   * `rigor mortis` is Latin and carries no `u` in any variety.
+#   * `Labor` is the registered spelling of the Australian Labor Party (adopted
+#     1912) —— a Sydney-based author writes it constantly and a RED there would
+#     be simply wrong.
+#   * proper-noun harbours keep their native spelling (Pearl Harbor, and the
+#     South Australian Victor/Franklin/Outer Harbor).
+#   * British distinguishes a `meter` (a device that measures) from a `metre`
+#     (the unit), so a parking meter is correct as spelled.
+AMERICANISM_OK_HERE = {
+    "rigor": [re.compile(r"\b(?P<hit>rigor)\s+mortis\b")],
+    "labor": [re.compile(r"\b(?P<hit>labor)\s+(?:party|mp|mps|government|"
+                         r"caucus|leader|senator|premier|voter|voters)\b"),
+              re.compile(r"\baustralian\s+(?P<hit>labor)\b")],
+    "harbor": [re.compile(r"\b(?:pearl|victor|franklin|outer|coffs|darling|"
+                          r"bar)\s+(?P<hit>harbor)\b")],
+    "meter": [re.compile(r"\b(?:parking|gas|water|electric|electricity|smart|"
+                         r"power|utility|taxi|postage|light)\s+(?P<hit>meter)\b"),
+              re.compile(r"\b(?P<hit>meter)\s+(?:reading|readings|box|maid|"
+                         r"maids)\b")],
+    "meters": [re.compile(r"\b(?:parking|gas|water|electric|electricity|smart|"
+                          r"power|utility|taxi|postage|light)\s+"
+                          r"(?P<hit>meters)\b")],
+}
+
+_AMERICANISM_KEYS = frozenset(AMERICANISMS)
+
+# KNOWN GAPS, so nobody reads this list as exhaustive:
+#   * `paralyze`/`catalyze` are left OUT —— unambiguously `-yse` in British, but
+#     the per-word check returned no explicit American label, and the rule here
+#     is confirmed-or-omitted rather than confirmed-or-guessed.
+#   * `parlor`, `caliber` and `arbor` are out for the same reason; `pallor` is
+#     out because it is `-or` in British too.
+#   * The list flags a SPELLING, so a proper noun spelled the American way
+#     (`Honor Oak`, a US place or company name) still fires. That is the same
+#     precision trade-off `hi` already carries; judgement governs the edge case.
+#   * `savory` is listed for the adjective; the HERB savory is spelled thus
+#     everywhere, so that one genuine sense mis-fires.
 
 # YELLOW —— `-ize`/`-ise` family. Words matching the pattern but in this set are
 # legitimate (the `iz` is part of the root), so they are NOT flagged.
@@ -256,12 +428,43 @@ def _mask_code(text):
 # Each check scans the MASKED lines/text for matches, but shows the ORIGINAL
 # line in its message (via orig[ln-1]) so flags stay readable.
 
+# TOKENISE-THEN-LOOK-UP, not one regex per listed word per line. The naive loop
+# is O(lines x words), and growing the list from 36 words to ~200 took a
+# `--quick` pass over the repo's largest `.md` (322 KB) from `~`350 ms to
+# `~`1,555 ms —— past the 1 s per-event ceiling `cp/ccsim/hook_guide.md` §12.4
+# sets for PostToolUse, on a hook that fires on every write. One `\w+` findall
+# per line plus a set intersection is the same verdict at a fraction of the
+# cost, and leaves headroom for the list to keep growing.
+#
+# `\w+` over the LOWERCASED line reproduces `\b<word>\b` exactly: `color's`
+# yields `color`, matching `\bcolor\b`, whilst `color2` and `colorful` yield a
+# single token that does not, matching `\b` refusing those too.
+_WORD_RE = re.compile(r"\w+", re.UNICODE)
+
+
 def _americanisms(lines, orig, red):
+    """Flag each listed American spelling, once per (line, word).
+
+    Word-boundary semantics throughout, so `rigorous` can never be caught by
+    `rigor` nor `thermometer` by `meter`. A hit is dropped only when an
+    AMERICANISM_OK_HERE pattern covers that exact offset —— the handful of
+    contexts where the listed spelling is the correct one. The offset work runs
+    ONLY for the few words that carry an exemption."""
     for ln, line in enumerate(lines, 1):
         low = line.lower()
-        for w, brit in AMERICANISMS.items():
-            if re.search(rf"\b{re.escape(w)}\b", low):
-                red.append((ln, f"Americanism `{w}` -> use `{brit}`: {_snip(orig[ln - 1])}"))
+        for w in sorted(set(_WORD_RE.findall(low)) & _AMERICANISM_KEYS):
+            pats = AMERICANISM_OK_HERE.get(w)
+            if pats:
+                hits = [m.start()
+                        for m in re.finditer(rf"\b{re.escape(w)}\b", low)]
+                ok = set()
+                for pat in pats:
+                    for m in pat.finditer(low):
+                        ok.add(m.start("hit"))
+                if not [i for i in hits if i not in ok]:
+                    continue
+            red.append((ln, f"Americanism `{w}` -> use `{AMERICANISMS[w]}`: "
+                            f"{_snip(orig[ln - 1])}"))
 
 
 def _vs(lines, orig, red):
@@ -273,57 +476,62 @@ def _vs(lines, orig, red):
             red.append((ln, f"`vs.` with period —— use bare `vs`: {_snip(orig[ln - 1])}"))
 
 
-# Above this many lone-period-inside-quote hits in ONE file, the whole class
-# demotes from RED to YELLOW for that file. RATIONALE, baked in so nobody
-# "restores consistency" later: the owner wants `."` gone unconditionally for
-# READING COMFORT, not because it is always wrong, and at a handful of hits the
-# fix is a couple of clicks. Past this count it stops being a couple of clicks,
-# and a hard block on a long quotation-heavy document would buy tidiness at the
-# price of wedging real work —— so the flag stays visible and the judgement
-# returns to the author.
-HART_PERIOD_RED_MAX = 5
+# Above this many hits of ONE punctuation class inside a closing quote in ONE
+# file, that class demotes from RED to YELLOW for that file. RATIONALE, baked in
+# so nobody "restores consistency" later: the owner wants `."` and `,"` gone
+# unconditionally for READING COMFORT, not because either is always wrong, and
+# at a handful of hits the fix is a couple of clicks. Past this count it stops
+# being a couple of clicks, and a hard block on a long quotation-heavy document
+# would buy tidiness at the price of wedging real work —— so the flag stays
+# visible and the judgement returns to the author.
+HART_RED_MAX = 5
 
 
 def _hart(lines, orig, red, yellow):
     """Hart's logical quotation (root §2.1.4): punctuation belongs inside a quote
-    only if original to it. Flag ONLY the char IMMEDIATELY before a closing quote:
-      - a comma             -> RED, always (`test,"`)
-      - a LONE period `.`   -> RED, always, up to HART_PERIOD_RED_MAX hits in one
-                               file; past that the whole class demotes to YELLOW
-                               for that file (see the constant for why)
-    NO "it might be original to the quote" exemption exists for the period. The
-    owner's rule is `".` no matter what, INCLUDING when the full stop genuinely
-    belongs to the quoted sentence —— it is a reading-comfort rule, and moving
-    the stop outside costs two clicks. Anything reading this as a mis-fire is
-    mistaken; do not reinstate a conditional.
+    only if original to it. Flag ONLY the char IMMEDIATELY before a closing
+    quote, and treat the two classes IDENTICALLY:
+      - a comma           `,"` -> RED, no exemption, up to HART_RED_MAX hits
+      - a LONE period     `."` -> RED, no exemption, up to HART_RED_MAX hits
+    Past that count the OFFENDING CLASS (only) demotes to YELLOW for that file.
+
+    NO "it might be original to the quote" exemption exists for either. The
+    owner's rule is `".`/`",` no matter what, INCLUDING when the punctuation
+    genuinely belongs to the quoted sentence —— it is a reading-comfort rule,
+    and moving the mark outside costs two clicks. Anything reading this as a
+    mis-fire is mistaken; do not reinstate a conditional.
 
     An ellipsis (`..`/`...`) immediately before the quote is NOT a full stop and
     stays exempt, e.g. `test..."` and `test, still..."` are both fine.
 
-    The two classes are counted SEPARATELY and the threshold applies to the
-    PERIOD class alone: the comma rule was never relaxed, so a comma-heavy file
-    must not be able to soften the period rule (or the reverse), and the
-    owner's arithmetic —— "more than 5 means more than 10 clicks" —— is about
-    `."` and nothing else."""
-    periods = []
+    THE COUNTERS ARE INDEPENDENT, one per class, and that is a decision rather
+    than an accident. The threshold expresses "how many clicks does clearing
+    this cost", and clearing a comma is not clearing a period —— so a file with
+    six commas and one period owes one click for the period, which is squarely
+    inside the reason RED exists. Sharing a counter would let a comma-heavy file
+    soften the period rule (and the reverse), i.e. relax a class nobody named,
+    on evidence drawn from a different class."""
+    buckets = {",": [], ".": []}
     for ln, line in enumerate(lines, 1):
         for i, ch in enumerate(line):
             if ch not in CLOSING_QUOTES or i == 0:
                 continue
             prev = line[i - 1]
             if prev == ",":
-                red.append((ln, f"comma immediately inside closing quote `,{ch}` —— Hart: move it OUTSIDE: {_snip(orig[ln - 1])}"))
+                buckets[","].append((ln, ch))
             elif prev == "." and not (i >= 2 and line[i - 2] == "."):   # exempt `..`/`...`
-                periods.append((ln, ch))
+                buckets["."].append((ln, ch))
 
-    if not periods:
-        return
-    if len(periods) <= HART_PERIOD_RED_MAX:
-        for ln, ch in periods:
-            red.append((ln, f"period inside closing quote `.{ch}` —— ALWAYS move it OUTSIDE, even if the stop is original to the quote: {_snip(orig[ln - 1])}"))
-    else:
-        for ln, ch in periods:
-            yellow.append((ln, f"period inside closing quote `.{ch}` —— {len(periods)} in this file (over {HART_PERIOD_RED_MAX}), so demoted from RED; does the stop truly belong INSIDE the quote? Move it out unless quoting verbatim: {_snip(orig[ln - 1])}"))
+    for mark, hits in buckets.items():
+        if not hits:
+            continue
+        name = "comma" if mark == "," else "period"
+        if len(hits) <= HART_RED_MAX:
+            for ln, ch in hits:
+                red.append((ln, f"{name} inside closing quote `{mark}{ch}` —— ALWAYS move it OUTSIDE, even if the mark is original to the quote: {_snip(orig[ln - 1])}"))
+        else:
+            for ln, ch in hits:
+                yellow.append((ln, f"{name} inside closing quote `{mark}{ch}` —— {len(hits)} in this file (over {HART_RED_MAX}), so demoted from RED; does the mark truly belong INSIDE the quote? Move it out unless quoting verbatim: {_snip(orig[ln - 1])}"))
 
 
 def _em_dash(lines, orig, red):
@@ -444,24 +652,111 @@ def _genai_phrases(masked_text, yellow):
 # FULL mode lints DELIVERABLES, which go to third parties who have never seen
 # this glossary, so a deliverable must spell "read" out in full. Firing there
 # would push house abbreviations into outgoing work —— the opposite of the rule.
-_READ_RE = re.compile(r"\b[Rr]ead\b")
+#
+# WHY THE MATCHER IS NOT JUST `\b[Rr]ead\b`, measured rather than assumed. That
+# bare pattern produced 21 flags on one real `response_`, of which ONE was an
+# actual past tense. Every other hit fell into four mechanical classes that no
+# reader would call a tense error, and each is now excluded:
+#   1. HYPHENATED COMPOUNDS —— `re-read`, `read-only`, `read-reminder`,
+#      `must-read`, `over-read`. A hyphen IS a word boundary, so the bare
+#      pattern matched all of them. Six of the 21.
+#   2. THE TOOL NAME —— "the Read tool", "Read/Write". A proper noun.
+#   3. THE NOUN —— "a missing read", "discharge the read", "a read via Bash".
+#      Detected by a determiner or possessive immediately before it.
+#   4. AN EXPLICITLY NON-PAST GOVERNOR —— "to read", "will read", "can read",
+#      "is read", "should read". These cannot be past, whatever follows.
+# What survives is genuinely ambiguous: a bare "you read X" is past or present
+# and nothing short of a reader can tell. That residual is REAL and is stated in
+# the flag, not hidden —— see `_read_tense`.
+_READ_RE = re.compile(r"[A-Za-z0-9_#-]*\b([Rr]ead)\b[A-Za-z0-9_-]*")
+
+# A determiner/possessive immediately before "read" makes it a noun.
+_READ_NOUN_BEFORE = frozenset("""
+a an the this that these those each every another one no its his her their
+your my our first second last single extra further failed missed
+""".split())
+
+# Words that cannot be followed by a PAST "read". Modals and infinitive `to`
+# force the bare stem; the `be` forms make a present passive ("is read when…").
+_READ_NONPAST_BEFORE = frozenset("""
+to will can cannot could may might must shall should would do does let please
+is are be being am ll wont dont doesnt cant couldnt shouldnt wouldnt
+""".split())
+
+# Adverbs allowed to sit between the governor and the verb ("is only read",
+# "is not yet read"). `already` is deliberately ABSENT —— "already read" is a
+# perfect, i.e. exactly the case this check exists to catch.
+_READ_ADVERBS = frozenset("""
+not yet only also just still never always often usually rarely generally
+typically normally merely simply then again freely fully partly carefully
+silently actually directly ever
+""".split())
+
+_READ_TOKEN_RE = re.compile(r"[A-Za-z']+")
 
 
 def _read_tense(lines, orig, yellow):
+    """ONE yellow per file, never one per occurrence.
+
+    Reporting per occurrence is what made this feel like noise: the same
+    reminder repeated 21 times says nothing the first one did not, and a flag
+    nobody finishes reading is a flag nobody acts on. One entry carrying every
+    candidate's line number is the same information at a twentieth of the
+    volume, and it still lets CC jump straight to each instance."""
+    hits = []
     for ln, line in enumerate(lines, 1):
         for m in _READ_RE.finditer(line):
+            if m.group(0) != m.group(1):
+                continue                      # class 1: hyphenated compound
+            before = line[:m.start(1)]
+            after = line[m.end(1):]
+            if m.group(1) == "Read" and (
+                    re.match(r"\s*(?:tool|/|\bor\b|,\s*Write)", after)
+                    or before.endswith("/")):
+                continue                      # class 2: the Read tool
+            prev = _READ_TOKEN_RE.findall(before)
+            # class 3, second form: a determiner a word or two back AND a clause
+            # break straight after ("a missing read.", "one further read;").
+            # Nothing can follow a VERB'S "read" there, so it is a noun.
+            if after[:1] in (".", ",", ";", ":", ")") and (
+                    set(t.lower() for t in prev[-3:]) & _READ_NOUN_BEFORE):
+                continue
+            skip = False
+            for tok in reversed(prev[-3:]):
+                low = tok.lower().replace("'", "")
+                if low in _READ_ADVERBS:
+                    continue                  # step over an adverb and re-test
+                if low in _READ_NOUN_BEFORE or low in _READ_NONPAST_BEFORE:
+                    skip = True               # class 3/4
+                break
+            if skip:
+                continue
             words = line.split()
-            hit = len(line[:m.start()].split())
-            ctx = " ".join(words[max(0, hit - 5):hit + 6])
-            yellow.append((ln, f'"{ctx}": Read or #r? (per `glossary.md`) '
-                               f"**Silently** fix if past tense. No explanation to user."))
+            pos = len(before.split())
+            hits.append((ln, " ".join(words[max(0, pos - 5):pos + 6])))
+
+    if not hits:
+        return
+    shown = ", ".join("L%d" % ln for ln, _ in hits[:8])
+    if len(hits) > 8:
+        shown += ", …"
+    yellow.append((hits[0][0],
+                   f'{len(hits)} bare "read" left to judge ({shown}); first is '
+                   f'"{hits[0][1]}". Past tense -> `#r` (per `glossary.md`); '
+                   f"present/future is already correct. **Silently** fix, no "
+                   f"explanation to user."))
 
 
-def run_checks(text, quick=False):
+def run_checks(text, quick=False, rt_quiet=False):
     """Return (red, yellow). Fenced code blocks AND inline `code` spans are masked
     first so prose rules never fire inside code (embedded deliverables are linted
     separately via FULL `--text`); detection runs on the masked text, snippets are
-    shown from the original."""
+    shown from the original.
+
+    `rt_quiet` suppresses the `read`/`#r` advisory ONLY. The caller that sets it
+    is `dlint_quick.py`, which has already shown it once for this (session,
+    file); repeating a reminder CC has been given is the noise this whole check
+    was narrowed to remove. It can never suppress a RED."""
     orig = text.splitlines()
     masked_text = _mask_code(text)
     lines = masked_text.splitlines()
@@ -475,7 +770,7 @@ def run_checks(text, quick=False):
     _hyphen_bullet(lines, orig, yellow)       # dash substitute + #numbered compliance
     _greeting_hi(lines, orig, red)            # `hi` banned everywhere, incl. --quick
 
-    if quick:
+    if quick and not rt_quiet:
         # QUICK ONLY —— house shorthand must never be pushed into a deliverable
         _read_tense(lines, orig, yellow)
 
@@ -558,7 +853,7 @@ def _prune_receipts():
         pass
 
 
-def lint_file(path: Path, quick=False):
+def lint_file(path: Path, quick=False, rt_quiet=False):
     try:
         original = path.read_text(encoding="utf-8")
     except Exception as e:  # noqa: BLE001
@@ -574,7 +869,7 @@ def lint_file(path: Path, quick=False):
         if text != original:
             path.write_text(text, encoding="utf-8")
         qnote = f"Quotes: {qn} straight quote(s) converted in place." if qn else "Quotes: none to convert."
-    red, yellow = run_checks(text, quick)
+    red, yellow = run_checks(text, quick, rt_quiet)
     n_red = report(path.name, red, yellow, qnote)
     if not quick:
         # FULL mode only —— a receipt's existence is the gate's proof that FULL
@@ -585,7 +880,7 @@ def lint_file(path: Path, quick=False):
     return n_red
 
 
-def lint_text(text, quick=False):
+def lint_text(text, quick=False, rt_quiet=False):
     if quick:
         qnote = "Quotes: untouched (--quick)."
         checked = text
@@ -598,15 +893,21 @@ def lint_text(text, quick=False):
             qnote = f"Quotes: {qn} straight quote(s) converted (see fixed text above)."
         else:
             qnote = "Quotes: none to convert."
-    red, yellow = run_checks(checked, quick)
+    red, yellow = run_checks(checked, quick, rt_quiet)
     return report("--text", red, yellow, qnote)
 
 
 def main(argv):
     args = argv[1:]
-    quick = False
-    if args and args[0] == "--quick":
-        quick = True
+    quick = rt_quiet = False
+    # Leading flags in any order. `--rt-quiet` is set by `dlint_quick.py` alone
+    # (once this (session, file) has already been told); a human running dlint
+    # by hand never passes it and always sees the advisory.
+    while args and args[0] in ("--quick", "--rt-quiet"):
+        if args[0] == "--quick":
+            quick = True
+        else:
+            rt_quiet = True
         args = args[1:]
 
     if not args:
@@ -616,7 +917,7 @@ def main(argv):
 
     if args[0] == "--text":
         text = args[1] if len(args) > 1 else ""
-        r = lint_text(text, quick)
+        r = lint_text(text, quick, rt_quiet)
         print("")
         print("RESULT: 🔴 BLOCKED —— rectify RED flags and rerun." if r else
               "RESULT: ✅ PASS (RED=0). Justify any YELLOW flags in response_.")
@@ -629,7 +930,7 @@ def main(argv):
             print(f"❌ {arg}: file not found")
             any_error = True
             continue
-        r = lint_file(p, quick)
+        r = lint_file(p, quick, rt_quiet)
         if r is None:
             any_error = True
         elif r > 0:

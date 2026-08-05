@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Stop hook —— Mission Linter; BLOCKS one turn-end when an `#m2` sequence stopped dead at its
-INTERIM declaration and its `#sprint` never ran.
+"""Stop hook —— Mission Linter; BLOCKS one turn-end when an `#m2` sequence failed to deliver its
+INTERIM declaration —— either by stopping dead ON it, or by never emitting it at all.
 
 Root scope: THIS repo only (`dupbus-ceztuc-7cufVe`), anchored on this file's own
 `__file__` and never on the process cwd. `#m2` is defined by `universal/m2.md`,
@@ -10,12 +10,13 @@ breach, and a hook that can BLOCK must not police a repo that never agreed to
 the rule (`cp/ccsim/hook_guide.md` § Global Reach & Self-Scoping).
 
 === NON-CCSIM —— start of all you need to RUN it ===
-* WHAT: a Stop hook. It blocks ONE turn-end when this turn invoked `#m2`, ended
-  on the interim declaration, and shows no sign the `#sprint` ever started.
-* IF IT FIRES: do NOT re-emit the declaration. Run m2 step 3 now —— `#sprint` the
-  instructed actions, update this query's `response_`, then declare the real TEA3.
+* WHAT: a Stop hook. It blocks ONE turn-end on an `#m2` turn that either (A)
+  ended ON the interim declaration with no sign the `#sprint` started, or (B)
+  wrote a `response_` but never declared it.
+* IF IT FIRES: do the ONE thing its message names —— (A) run the `#sprint`;
+  (B) emit the missing `➡️` line. Never merely re-emit a declaration batch.
 * FALSE ALARM: reply with a lone `.` and nothing else. It never fires twice for
-  the same prompt, and the word `override` in the prompt disarms it outright.
+  the same prompt, and `override` in the prompt disarms it outright.
 * Verdicts log to `cscpt/.mlint.log`, one line per invocation.
 === NON-CCSIM —— end of all you need to RUN it ===
 
@@ -25,9 +26,21 @@ THE DEFECT THIS EXISTS FOR, stated once and precisely. `universal/m2.md` orders:
 (1) write a `response_` of initial thoughts; (2) commit + push + declare THAT
 FILE ALONE in chat; (3) `#sprint` the real work; (4) update the `response_`;
 (5) declare again as the real TEA3. Step 2's declaration is explicitly NOT a
-TEA3 and m2.md says so in as many words —— yet agents repeatedly emitted it as
-the last content of a message and stopped there, across at least three separate
-sessions, each costing the owner a manual `continue`.
+TEA3 and m2.md says so in as many words —— yet step 2 has failed TWO ways:
+* SHAPE A (`block`): the declaration was emitted as the last content of a
+  message and the turn stopped there, across at least three separate sessions,
+  each costing the owner a manual `continue`.
+* SHAPE B (`block_nodeclare`): the declaration was never emitted AT ALL. Live
+  case 202608050209 —— the agent wrote the `response_`, committed, pushed, then
+  produced a message carrying only tool calls. Its own reasoning that same
+  moment read "I need to emit the declaration text in the same message as my
+  tool calls", and the text simply never got typed. From the owner's side a
+  successful push with no declaration is indistinguishable from a failed one,
+  and the file he is meant to click is not clickable.
+Shape B is why this hook cannot key on the turn's ENDING alone: that turn ended
+on a sanctioned lone `.` after dispatching its sprint, which is an ordinary,
+correct shape. Only the ABSENCE of the `➡️` line anywhere in the turn
+distinguishes it —— so shape B is detected by absence, shape A by position.
 
 WHY PROSE COULD NOT FIX IT: a message whose final content is chat text ENDS the
 assistant's turn. That is harness behaviour, not a choice —— an agent that emits
@@ -65,17 +78,32 @@ names the lone-`.` escape (root `CLAUDE.md` §3.1.8.2's sanctioned no-op reply,
 which `clint.py` recognises as CLEAN in both modes) and why every detection
 signal below is biased towards NOT firing.
 
-THE FOUR CONDITIONS —— all must hold, and every one fails OPEN:
-1. M2 EVIDENCE —— the turn was an `#m2` turn (see M2 EVIDENCE below).
-2. NO SPRINT EVIDENCE —— nothing in the turn says a sprint began (see SPRINT
-   EVIDENCE).
-3. DECLARATION END —— the turn's LAST non-blank chat line is an I/O declaration
-   (`✅`/`⇠`/`➡️`, root §3.2.1–3), i.e. the observed failure shape. A turn ending
-   on a `⚠️` blocker (§3.2.4), the `🚨` sentinel (§3.2.5), a lone `.`, plain
-   prose, a harness-authored API-error line, or nothing at all is left alone ——
-   those are other situations, and one of them (the blocker) is a legitimate,
-   urgent early stop that must never be held open.
-4. NOT ALREADY FIRED —— see LOOP GUARD.
+THE CONDITIONS —— every one fails OPEN. Condition 1 and the loop guard are
+shared; the two shapes then diverge, and SHAPE B is tested FIRST because a turn
+that never declared cannot also have ended on a declaration.
+1. M2 EVIDENCE —— the turn was an `#m2` turn (see M2 EVIDENCE below). Shared.
+SHAPE B —— `block_nodeclare`, all must hold:
+2b. RESPONSE WRITTEN —— a `[prefix_]response_[TS].md` was touched by
+    `file_path` in this turn, i.e. the declaration was actually owed.
+3b. NOTHING DECLARED —— no assistant chat line in the turn starts with `➡️`
+    (bold wrapper tolerated). A `✅`/`⇠` line does NOT satisfy this: the owed
+    artefact is the OUTPUT declaration, the clickable one.
+4b. NOT HARNESS-TERMINATED —— the turn did not end on a `⚠️` blocker, the `🚨`
+    sentinel, or an `isApiErrorMessage` line. The first two are legitimate
+    urgent stops; the third means the model was cut off and cannot comply, so
+    blocking would burn the one allowed turn against a wall.
+SHAPE A —— `block`, all must hold (unchanged behaviour):
+2a. NO SPRINT EVIDENCE —— nothing in the turn says a sprint began (see SPRINT
+    EVIDENCE).
+3a. DECLARATION END —— the turn's LAST non-blank chat line is an I/O declaration
+    (`✅`/`⇠`/`➡️`, root §3.2.1–3), i.e. the observed failure shape. A turn ending
+    on a `⚠️` blocker (§3.2.4), the `🚨` sentinel (§3.2.5), a lone `.`, plain
+    prose, a harness-authored API-error line, or nothing at all is left alone ——
+    those are other situations, and one of them (the blocker) is a legitimate,
+    urgent early stop that must never be held open.
+SHARED: NOT ALREADY FIRED —— see LOOP GUARD. The ledger spans BOTH shapes, so a
+prompt gets ONE forced turn in total, never one per shape (`hook_guide.md` §6.3
+budgets exactly one extra round trip per prompt).
 Plus: `override` in the typed message disarms everything, matching the house
 exemption in `clint.py`.
 
@@ -115,13 +143,24 @@ SPRINT EVIDENCE —— any ONE of these means the sprint began, so no block:
     on `#sprint`. Weaker than it looks: a `#trigger` file is read ONCE per
     session, so a second `#m2` later in the same session shows no re-read. It
     can only ever cause a missed block, never a wrong one, so it stays;
-(c) an `Agent`/`Task` dispatch —— m2 step 3's stated vehicle ("use SA(s) if
-    apt"). ⚠️ `TaskUpdate` is a TODO-list tool, NOT a dispatch, and appears all
-    over ordinary turns —— matching it would disarm this hook almost everywhere.
-    The match is therefore an EXACT tool-name set, never a prefix.
+(c) an `Agent`/`Task`/`Workflow` dispatch —— m2 step 3's stated vehicle ("use
+    SA(s) if apt"). `Workflow` was ADDED after a live near-miss: the
+    202608050209 turn ran its whole sprint through a `Workflow` script, so the
+    original `Agent`/`Task`-only set read that turn as sprint=none. Had that
+    agent declared correctly and ended on the declaration, shape A would have
+    blocked a turn whose sprint was already running —— a WRONG block, the one
+    outcome this file spends its whole design budget avoiding.
+⚠️ `TaskUpdate` and `TaskCreate` are TODO-list tools, NOT dispatches, and appear
+all over ordinary turns —— matching either would disarm this hook almost
+everywhere. Checked, not assumed: `TaskCreate`'s input is
+`{subject, description, activeForm}`, the shape of a to-do entry, and its text
+merely NARRATES a plan ("Dispatch SA(s) to …") whilst dispatching nothing.
+`Workflow`'s input is `{script}` —— an executable fleet definition, so it always
+IS a dispatch. The match is therefore an EXACT tool-name set, never a prefix.
 Verified against the real incident: its window held Bash/Read/Write only —— no
-slog, no sprint.md, no Agent —— whilst the legitimate post-sprint turn from the
-same session held an `Agent` dispatch AND a `career_slog_202608042032.md` edit.
+slog, no sprint.md, no dispatch —— whilst the legitimate post-sprint turn from
+the same session held an `Agent` dispatch AND a `career_slog_202608042032.md`
+edit.
 
 TURN WINDOW: records after the LAST genuine user message, the same boundary
 `clint.py` uses, with the same `_is_real_user` exclusions (tool_result-only
@@ -144,8 +183,12 @@ retries forever:
    continuing from a prior Stop block. Documented in
    `cp/ccsim/hook_guide.md` §5.5.
 2. A per-prompt ledger read back out of this hook's OWN log: a previous
-   `action=block` line carrying the same `pid=` means this prompt has had its
-   one turn and must never be blocked again. The prompt id comes from the
+   `action=block` OR `action=block_nodeclare` line carrying the same `pid=`
+   means this prompt has had its one turn and must never be blocked again ——
+   BOTH shapes share the one budget, so the ledger matches both names
+   explicitly rather than by prefix (a prefix would also swallow
+   `block_unlogged`, which is precisely the case where NO block was issued and
+   a later one must stay possible). The prompt id comes from the
    transcript's last main-agent `user` line, which STAYS CONSTANT across a
    block-forced continuation and changes on every new genuine user message ——
    precisely the key this needs.
@@ -160,7 +203,7 @@ evidence exits 0 and logs the stage it died at (`no_stdin`, `out_of_scope`,
 `no_transcript`, `unreadable_transcript`, `oversize_transcript`,
 `empty_transcript`, `no_boundary`, `no_m2`, `sprint_ran`,
 `not_declaration_end`, `exempt:override`, `loop_guard`, `already_blocked`,
-`block_unlogged`, `block`). A breach-only log cannot tell "ran and found
+`block_unlogged`, `block`, `block_nodeclare`). A breach-only log cannot tell "ran and found
 nothing" from "the harness never called this command" —— that ambiguity is
 exactly how dead hook wiring survived unnoticed here for weeks, so EVERY
 invocation writes a line (`hook_guide.md` §7.7).
@@ -199,6 +242,7 @@ _SPRINT_MD_REAL = os.path.join(_REPO_ROOT_REAL, "universal", "sprint.md")
 # --- Filename shapes (root CLAUDE.md §3.3; `[CP_]name_[TS].md`) ------------
 _QUERY_FILE_RE = re.compile(r"^(?:[A-Za-z0-9-]+_)*query_\d{12}\.md$", re.I)
 _SLOG_FILE_RE = re.compile(r"^(?:[A-Za-z0-9-]+_)*slog_\d{12}\.md$", re.I)
+_RESPONSE_FILE_RE = re.compile(r"^(?:[A-Za-z0-9-]+_)*response_\d{12}\.md$", re.I)
 
 # --- `#m2` invocation shape (see docstring M2 EVIDENCE) --------------------
 # Line-start only. `\b` after the token so `#m2x` never matches whilst
@@ -221,9 +265,15 @@ _SYSTEM_INJECTED_TAGS = (
     "<local-command-stdout>", "<command-name>", "<command-message>",
     "<command-args>")
 
-# EXACT tool names that mean "a sub-agent was dispatched". `TaskUpdate` is a
-# TODO tool and must NEVER be matched here —— see docstring SPRINT EVIDENCE.
-_DISPATCH_TOOLS = frozenset(("Agent", "Task"))
+# EXACT tool names that mean "a sub-agent was dispatched". `TaskUpdate` and
+# `TaskCreate` are TODO tools and must NEVER be matched here —— see docstring
+# SPRINT EVIDENCE.
+_DISPATCH_TOOLS = frozenset(("Agent", "Task", "Workflow"))
+
+# EXACT tool names that CHANGE a file. Only these make a `response_` count as
+# WRITTEN, hence its declaration OWED —— merely READING an old `response_` (a
+# routine retrospection act, root §4) must never put a turn on the hook.
+_WRITE_TOOLS = frozenset(("Write", "Edit", "MultiEdit", "NotebookEdit"))
 
 # Safety caps. None is reached in normal use; each bounds a pathological input.
 _MAX_TRANSCRIPT_BYTES = 8 * 1024 * 1024   # tail-read past this
@@ -253,6 +303,21 @@ _BLOCK_MSG = (
     "Do NOT simply re-emit the declaration batch. If a sprint is genuinely "
     "not owed here, reply with a lone `.` and nothing else. This fires at "
     "most once per prompt.")
+
+# The SHAPE B message. Deliberately narrower than `_BLOCK_MSG`: it names ONE
+# line of output and forbids everything else, because the failure it repairs is
+# one missing line and a padded reply is how `clint.py`'s blocking era went
+# wrong (`hook_guide.md` §6.4).
+_NODECLARE_MSG = (
+    "[mlint] `#m2` DECLARATION MISSING —— this turn invoked `#m2` and wrote a "
+    "`response_`, but no `➡️` declaration was emitted anywhere in it. A "
+    "successful push with no declaration looks, from the user's screen, "
+    "exactly like a failed one, and he cannot click the file.\n"
+    "EMIT IT NOW: the `➡️` line for that `response_`, alone —— nothing else, no "
+    "summary, no re-run of finished work. If further work remains, put the "
+    "line in the SAME message as your next tool call.\n"
+    "If the declaration genuinely was not owed, reply with a lone `.` and "
+    "nothing else. This fires at most once per prompt.")
 
 
 def _in_scope(data):
@@ -390,6 +455,61 @@ def _last_chat_line(window):
     return last
 
 
+def _has_output_declaration(window):
+    """True if ANY assistant chat line in the turn is an OUTPUT declaration
+    (`➡️`, root §3.2.3), bold wrapper tolerated. Deliberately NOT satisfied by a
+    `✅` read-list or a `⇠` comms-read line: those are not the artefact m2 step 2
+    owes, which is the clickable pointer to the `response_` just written.
+    Harness-authored lines are skipped for the same reason as in
+    `_last_chat_line`. Presence SUPPRESSES a block, so every ambiguity here ——
+    including a `➡️` that happens to sit inside quoted text —— resolves in the
+    fail-open direction. Never raises."""
+    for o in window:
+        try:
+            if o.get("type") != "assistant" or o.get("isApiErrorMessage") is True:
+                continue
+            if (o.get("message") or {}).get("role") != "assistant":
+                continue
+            for ln in _message_text(o).splitlines():
+                t = ln.strip()
+                if t.startswith("**"):
+                    t = t[2:].strip()
+                if t.replace(_VS16, "").startswith("➡"):
+                    return True
+        except Exception:
+            continue
+    return False
+
+
+def _ended_on_api_error(window):
+    """True if the turn's LAST assistant record is harness-authored (e.g. "You've
+    hit your session limit"). Such a turn was terminated FOR the model, so a
+    block would spend the one allowed forced turn on an agent that cannot act.
+    Only the final assistant record is consulted —— an error earlier in a turn
+    that later recovered is not a termination. Never raises."""
+    for o in reversed(window):
+        try:
+            if o.get("type") != "assistant":
+                continue
+            if (o.get("message") or {}).get("role") != "assistant":
+                continue
+            return o.get("isApiErrorMessage") is True
+        except Exception:
+            return False
+    return False
+
+
+def _is_urgent_stop(line):
+    """True if `line` is a `⚠️` blocker (root §3.2.4) or the `🚨` post-compaction
+    sentinel (§3.2.5). Both are legitimate, deliberate early stops that must
+    never be held open —— the blocker especially, since holding one open delays
+    exactly the message the user most needs to see."""
+    t = line.strip()
+    if t.startswith("**"):
+        t = t[2:].strip()
+    return t.replace(_VS16, "").startswith(("⚠", "🚨"))
+
+
 def _is_io_declaration(line):
     """True if `line` is an I/O declaration (root §3.2.1–3), tolerating the
     `**…**` bold wrapper §3.1.6 puts round one and the emoji variation
@@ -487,7 +607,8 @@ def _already_blocked(pid):
     except Exception:
         return True
     needle_pid = "\tpid=%s\t" % pid
-    return any("\taction=block\t" in ln and needle_pid in ln for ln in tail)
+    return any(("\taction=block\t" in ln or "\taction=block_nodeclare\t" in ln)
+               and needle_pid in ln for ln in tail)
 
 
 def _load_records(path):
@@ -600,6 +721,7 @@ def main():
     # --- Gather evidence in ONE pass over the window -----------------------
     query_paths = []
     sprint_why = ""
+    response_written = False
     for o in window:
         for name, inp in _tool_uses(o):
             if name in _DISPATCH_TOOLS and not sprint_why:
@@ -610,6 +732,8 @@ def main():
             base = os.path.basename(fp)
             if _SLOG_FILE_RE.match(base):
                 sprint_why = "slog"          # strongest —— always wins
+            elif _RESPONSE_FILE_RE.match(base) and name in _WRITE_TOOLS:
+                response_written = True      # the declaration is now OWED
             elif not sprint_why and os.path.realpath(fp) == _SPRINT_MD_REAL:
                 sprint_why = "sprint_md"
             elif _QUERY_FILE_RE.match(base) and fp not in query_paths:
@@ -628,6 +752,36 @@ def main():
     if not m2_why:
         _log_event(sid, "no_m2", pid=pid, sprint=sprint_why or "-")
         return 0
+
+    def _issue(action, msg):
+        """Loop-guard, record, then block. ORDER IS LOAD-BEARING: the ledger
+        line is written BEFORE the block is issued, because a block whose record
+        did not land is a block that can repeat."""
+        if _already_blocked(pid):
+            _log_event(sid, "already_blocked", pid=pid, m2=m2_why,
+                       sprint=sprint_why or "none", first=last_line)
+            return 0
+        if not _log_event(sid, action, pid=pid, m2=m2_why,
+                          sprint=sprint_why or "none", first=last_line):
+            _log_event(sid, "block_unlogged", pid=pid, m2=m2_why,
+                       first=last_line)
+            return 0
+        # Exit 2 + STDERR is the ONLY Stop channel that reaches the model and
+        # blocks the stop (`hook_guide.md` §6). At exit 2 the harness ignores
+        # stdout entirely, so nothing may be written there.
+        sys.stderr.write(msg)
+        return 2
+
+    # SHAPE B first —— a turn that never declared cannot also have ended ON a
+    # declaration, and unlike shape A it is INDIFFERENT to whether the sprint
+    # ran: the 202608050209 turn dispatched its whole sprint and still never
+    # emitted the line the owner needed to click.
+    if (response_written and not _has_output_declaration(window)
+            and not _is_io_declaration(last_line)
+            and not _ended_on_api_error(window)
+            and not _is_urgent_stop(last_line)):
+        return _issue("block_nodeclare", _NODECLARE_MSG)
+
     if sprint_why:
         _log_event(sid, "sprint_ran", pid=pid, m2=m2_why, sprint=sprint_why)
         return 0
@@ -638,23 +792,7 @@ def main():
                    first=last_line)
         return 0
 
-    # Loop guard 2 —— once per prompt, read back out of this hook's own log.
-    if _already_blocked(pid):
-        _log_event(sid, "already_blocked", pid=pid, m2=m2_why, first=last_line)
-        return 0
-
-    # ORDER IS LOAD-BEARING: record the block BEFORE issuing it. If the ledger
-    # write fails there is no guard, so do not block at all.
-    if not _log_event(sid, "block", pid=pid, m2=m2_why, sprint="none",
-                      first=last_line):
-        _log_event(sid, "block_unlogged", pid=pid, m2=m2_why, first=last_line)
-        return 0
-
-    # Exit 2 + STDERR is the ONLY Stop channel that reaches the model and
-    # blocks the stop (`hook_guide.md` §6). At exit 2 the harness ignores
-    # stdout entirely, so nothing may be written there.
-    sys.stderr.write(_BLOCK_MSG)
-    return 2
+    return _issue("block", _BLOCK_MSG)
 
 
 if __name__ == "__main__":

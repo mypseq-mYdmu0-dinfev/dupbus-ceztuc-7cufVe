@@ -74,6 +74,5 @@ Format: all #numbered; reference last month's `wrap_` (if applicable) to avoid r
   - DON'T miss any, even if TS ≠ target month
   - i.e. Encompassing all sessions STARTED in target month (per root c.md §3.4.5)
 - You or SAs may individually consider escalating to read non-`close_` comms files if valuable
-- Run `python3 cscpt/pending.py` and fold whatever it prints into § Issues —— the two queues only the user can clear (voided `❌_` files ≥7 days old, and `sessions/queued_queries/` items). They age invisibly otherwise, because no single session ever sees the queue
 - Synthesise —— don't just copy; `wrap_` must be easier to read than all `close_` files combined
 - If a `wrap_` already exists for the target month, STOP & alert user
