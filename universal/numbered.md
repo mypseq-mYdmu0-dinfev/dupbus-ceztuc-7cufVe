@@ -7,7 +7,7 @@
 - Tag(s) in a query that ALSO carries content = a SELECTOR:
   - NEITHER or BOTH —— the default, i.e. both; a pair is mere reminder/confirmation
   - `#numbered` only —— numbering applies, bite-size SUSPENDED for that output
-  - `#bite` only —— bite-size applies, numbering SUSPENDED (e.g. `coding.md`'s form)
+  - `#bite` only —— bite-size applies, numbering SUSPENDED
   - Rationale: naming ONE deliberately DESELECTS the other
 - Tag(s) as the WHOLE msg (no content) = a NUDGE, never a selector:
   - Audit last output files against the named part(s) & update as needed
@@ -20,9 +20,8 @@
 - Level = qty of `[N]`: 1st = `[N]. [content]`, 2nd = `[N].[N]. [content]`, etc.
 - Number every single item, as § Example List shows
 - Sub-items (2nd level onwards; e.g. `- 1.1. xxx...`) MUST follow bullets
-- Unbulleted, the line break fails, rendering as one line: `1. xxx... 1.1. xxx...`
-- Applies to ALL outputs, EXCEPT the exempt types below
-- EXEMPT —— deliverables, codes (.py/.sh/etc.), and system files (.json/etc.)
+- Unbulleted = line break fails, rendering as one line: `1. xxx... 1.1. xxx...`
+- Applies to ALL outputs, EXCEPT deliverables, codes (.py/.sh/etc.), and system files (.json/etc.)
 
 ## Example List
 
@@ -85,7 +84,7 @@ e.g. 4-level indentation (build up to 5 levels, but only if necessary):
 ...
 ```
 
-## `#bite` —— Bite-size
+## Bite-size —— `#bite`
 
 - Triggered by: `#bite` —— a **modifier**; never find `bite.md` (this § governs)
 - DEFAULT-ON short lines, per § Triggers; `#numbered` not being prompted is no excuse
@@ -99,7 +98,7 @@ e.g. 4-level indentation (build up to 5 levels, but only if necessary):
 - LOSSLESS —— never DROP content for brevity; trim prose, not substance
 - If even bite-size still runs very long, consider `#opt` rather than omitting valuable details
 
-## `#opt` —— Optional-Reading Offload
+## Optional-Reading Offload —— `#opt`
 
 - Triggered by: `#opt` —— **modifier** of BOTH tags; never find `opt.md` (this § governs)
 - Presumes both & suspends neither —— § Triggers' selector never applies to `#opt`
