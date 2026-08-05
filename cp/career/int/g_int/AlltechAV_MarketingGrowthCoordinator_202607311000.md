@@ -677,6 +677,28 @@ Please note, these are not final documents. We’ll sit down together when you s
 
 Any questions, as I mentioned, please feel free to give me a call (preference) or shoot them through on email (will be a very delayed response).
 
+### 7.37. User Email
+
+*DRAFTED; NOT YET SENT*
+
+Dear Elena,
+
+Thank you again for the warm welcome and for sending through the Letter of Offer, Benefits & Perks, Fair Work Information Statement, Employment Contract, and Employee Handbook. I have gone through everything carefully and have a short list of questions before returning the signed Contract and Handbook.
+
+1. Regarding secondary employment, I hold a small number of ongoing pro bono advisory commitments, in Sydney and in Hong Kong, that predate this role and that I have already mentioned to you. Could we record in writing that these remain acknowledged and permitted under the Handbook's secondary employment policy, so everything sits cleanly on file?
+
+2. Could you confirm which classification under the Live Performance Award 2020 applies to this role, and that the hourly rate clears its minimum for that classification?
+
+3. Is the stated business hours window, 8:30am to 5pm, meant as fixed clock-in and clock-out times, or is there some natural flexibility in practice? I noticed a little flexibility around the Stage 3 meeting and am keen to understand the norm rather than assume either way.
+
+4. The role is set at 8 hours a day, and 8:30 to 5:00 comes to 8.5 hours. Is the additional half hour a lunch break?
+
+5. My understanding is that the hourly rate is intended to cover any Award-mandated overtime or penalty rates, so there is no separate loading for evening or weekend work. Could you confirm this is correct?
+
+I am genuinely looking forward to starting and to building the marketing function together with you and Seb. Thank you for your patience with the questions.
+
+Warm Regards,
+Culous
 
 ---
 
