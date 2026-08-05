@@ -107,6 +107,7 @@
     - 3.1.7.3. Marker must immediately PRECEDE the batch, so clicking it lands on declarations
     - 3.1.7.4. `m2.md`'s mandate (pushing only `response_`) doesn't count as violation
     - 3.1.7.5. Absolutely nothing follows TEA3's batch (no exception)
+      - 3.1.7.5.1. CRITICAL: m2.md's Step 2 lone declaration is NOT TEA3 (the turn hasn't ended)
     - 3.1.7.6. 1 practical turn = FROM user msg (during your **idle state**) TO full completion
       - 3.1.7.6.1. Mid-turn msgs don't count (still same turn AND same `response_`, not new)
       - 3.1.7.6.2. Interruptions (e.g. user stop, sesL hit, network failure) also don't count
