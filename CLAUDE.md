@@ -159,6 +159,7 @@
   - 3.5.1. Line 1: `# Response to [query_filename]`
   - 3.5.2. Line 2 (optional): `*Heading max. 8w*`
   - 3.5.3. [TS] matches the corresponding `query_` filename, NOT current time
+    - 3.5.3.1. Exactly ONE `response_` per `query_`, unless user/pcmd says otherwise: never fewer (a NEW `query_` gets its OWN `response_[TS]`; NEVER append to a previous turn's) nor more (mid-turn msgs stay in the current one, per §3.1.7.6.1)
   - 3.5.4. Place in the same folder as the `query_` file
   - 3.5.5. After writing/editing ANY `response_`, run `cscpt/dlint.py --quick` on it
   - 3.5.6. Loop-fix all 🔴 RED to 0 (also enforced by PostToolUse hook)
