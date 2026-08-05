@@ -654,6 +654,30 @@ Hello Elena, thank you again for sending everything through. I really appreciate
 
 Separately, since the Contract references meeting agreed targets, could you please let me know roughly when the onboarding or Rocks plan will be shared? Could be a rough draft so I may feel the scope of changes. If convenient to you, would you mind sending that through email? Thank you!
 
+### 7.35. Employer Text
+
+At 202608050805:
+
+Hey Culous, of course. No worries. 
+
+I’ve shared this with you - usually I share those during the onboarding and induction on your first day - this is nothing to stress about because if there is anything that you and I need to adjust we can do that together once you start!
+
+### 7.36. Employer Email
+
+On 5 Aug 2026, at 07:29, Elena Mel <elena@alltech.co> wrote:
+
+Hey Culous,
+
+Please find the requested Onboarding Plan & EOS Blueprint here:
+Marketing & Growth Coordinator - EOS Role Blueprint.pdf
+Culous Yu - 90-Day Onboarding Plan.pdf
+[INTERNAL: both saved & converted to .md at '/Volumes/FURY 2TB/IYM/Private/Profession/Credential/Work/Alltech AV/MD']
+
+Please note, these are not final documents. We’ll sit down together when you start and tweak/iron it out if needed with your input. We don't believe in that documents and plans like this can be created in a silo without the actual person that will be sitting in the role to provide feedback and alterations before a final agreement from all parties involved and signing.
+
+Any questions, as I mentioned, please feel free to give me a call (preference) or shoot them through on email (will be a very delayed response).
+
+
 ---
 
 ## 8. Interviews
