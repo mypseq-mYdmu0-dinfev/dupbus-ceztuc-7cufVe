@@ -130,3 +130,23 @@ Ref: `career_close_202608041700.md` §6.1
 - Ref: `close_202608041735.md` §3.6 (this session's own discovery, 0 chapter marks across 25 comms pairs until now)
 → ⚠️ PARTIALLY REVERSED 202608052350 —— the `cscpt/hlint.py` prompt-time half was PURGED on the owner's ruling: at prompt-submit a new `query_` has no `response_` BY CONSTRUCTION, so it fired identically on compliant and breaching turns (measured 5 of 29 real invocations, `~`124 tokens each) with no discriminating power, and the remit belonged to a hashtag linter. `.githooks/pre-commit`'s reverse arm survives as the only automated check, and root `CLAUDE.md` §3.1.7.7 states the rule in prose. OPEN GAP: nothing fires before the wrong write. Proposed rebuild in `cscpt/flint.py`'s PreToolUse half (tested prototype, 12/12) —— it compares the `response_` being written against the newest unpaired query NEWER than it, which is silent on a compliant turn; it needs a per-`prompt_id` ledger, which contradicts that file's standing "no de-duplication ledger" note and therefore needs the owner's call.
 
+
+## A "do not read me" mandate cannot live inside the expensive file
+- Problem: To stop a live cockpit burning context on a 46 KB question backlog, a rule was printed as a banner INSIDE that file. It is only read AFTER the cost it exists to prevent. The user caught it and called it foolish, correctly. The same shape recurs whenever a guard is placed in the artefact it guards.
+- Suggestion: For any read-cost rule, split the artefact —— a small INDEX carrying the rule plus a live count, and the payload in a separate file no doctrine names as readable. The guard then holds BY CONSTRUCTION rather than by compliance, because the file everyone is pointed at is cheap. Generalise: a rule about reading cost belongs in the cheap file, never the expensive one.
+- Ref: AJAP_repo/inv/2026/202608/response_202608012000.md §76
+
+## Tests silently wrote three classes of the user's live state
+- Problem: Across one session, tests were found writing the REAL `usage.jsonl` (503 scripted rows, still growing), the REAL `questions_open.md` (leaving a published count reading 1 instead of 219), and —— via a monkeypatched module attribute that only exists once the submodule is imported —— passing in the suite whilst failing alone. Each was found by a different accident, none by the suite.
+- Suggestion: Make "no test may write live state" an autouse opt-OUT fixture in `conftest.py` covering every append-only sink and every path a helper writes, rather than per-file opt-in patches; and add a guard that runs each test file in isolation, so collection-order coupling fails loudly instead of hiding.
+- Ref: AJAP_repo/inv/2026/202608/response_202608012000.md §37, §76.4; slog_202608020018.md [202608021145]
+
+## A fan-out stage whose width the data chooses will lose to the session limit
+- Problem: A 59-agent workflow lost 44 agents to the 5-hour limit because its refutation stage fanned out per-finding —— a width decided at runtime by the previous stage's output, not stateable before launch. Every later wave in the same session used a fixed width and lost none.
+- Suggestion: Treat "can I state this stage's agent count before launching it?" as a precondition for fan-out. If the width depends on upstream results, cap it explicitly and `log()` what the cap dropped, so silent truncation never reads as full coverage.
+- Ref: AJAP_repo/inv/2026/202608/response_202608012000.md §17, §56.1
+
+## A destructive restore wiped finished work and the commit message lied about it
+- Problem: `git checkout HEAD -- .` was used to undo a deliberate earlier checkout of one directory. It reverted the WHOLE tree, silently discarding an uncommitted, completed and lint-passed section of a comms file; the next commit was then titled as containing it. Found only because a later structural check compared numbered points against section headings.
+- Suggestion: Scope a restore to the paths actually disturbed (`git checkout HEAD -- scripts/`), never `-- .`; and commit comms files BEFORE running anything destructive. Worth a line in `coding.md` § Git Discipline alongside the move-only-commit rule.
+- Ref: AJAP_repo/inv/2026/202608/response_202608012000.md §55; slog_202608020018.md [202608021215]
