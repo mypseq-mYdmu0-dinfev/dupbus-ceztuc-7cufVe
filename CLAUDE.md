@@ -130,7 +130,7 @@
     - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md) or anything under `/sessions/`
   - 3.2.3. `➡️ `enclosing_folder/file.md``
     - 3.2.3.1. ANY files created/edited, incl. both comms & non-comms; not always .md
-    - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING, unlike `✅` (per §3.2.1.3)
+    - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING (exc. SHAs), unlike `✅` (per §3.2.1.3)
     - 3.2.3.3. Per §3.1.6, bold the main `response_` (better visibility; ONLY for `➡️`; ≤1 per turn)
     - 3.2.3.4. Per §3.1.6, last line is ALWAYS this turn's SHA(s) (abbrev.; NEVER full), not filename
   - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
