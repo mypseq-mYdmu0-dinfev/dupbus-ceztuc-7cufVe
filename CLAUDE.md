@@ -82,12 +82,13 @@
         - 3.1.6.1.1.2. Description = optional; concise if opted
         - 3.1.6.1.1.3. Scope = all touched file(s) in all touched repo(s)
       - 3.1.6.1.2. If no file changes → skip TEA1 only; TEA2 & TEA3 still needed
-      - 3.1.6.1.3. If ONLY this turn's CC changes (± this turn's `query_`) → commit + push
-      - 3.1.6.1.4. Ditto + user changes on OTHER files → commit + push CC-touched files only
-      - 3.1.6.1.5. User changes on CC-touched files (rare):
+      - 3.1.6.1.3. If ONLY your changes this turn (± this turn's `query_`) → commit + push
+      - 3.1.6.1.4. Ditto + user/other CC changes on OTHER files → commit + push ONLY files touched by you this turn
+      - 3.1.6.1.5. User/other CC changes on files touched by you this turn:
         - 3.1.6.1.5.1. DON'T commit/push
         - 3.1.6.1.5.2. Alert in chat as a blocker (§3.2.5)
-        - 3.1.6.1.5.3. Advise user NOT to save his manual works (risks clashing/corrupting the file)
+        - 3.1.6.1.5.3. Advise user NOT to save his concurrent works (risks clashing/corrupting the file)
+        - 3.1.6.1.5.4. #SA examine 3 latest `response_` files (across repos; not 3 each) for traces of parallel CC sessions
       - 3.1.6.1.6. ONE commit per turn (per touched repo)
         - 3.1.6.1.6.1. Avoid interim commit(s), UNLESS:
         - 3.1.6.1.6.2. Instructed by pcmd or user (e.g. 1 per i[NN])
@@ -95,7 +96,7 @@
     - 3.1.6.2. TEA2 —— Mark a chapter (**right before** TEA3):
       - 3.1.6.2.1. Title: `Turn [N]` (session chapter tool, harness-permitting; N = the turn count)
       - 3.1.6.2.2. Mark ONLY at the true turn end (can't be removed once made), never mid-turn
-    - 3.1.6.3. TEA3 —— I/O Declarations (for §3.2.1–3): batched IN ORDER (FINAL output); e.g.:
+    - 3.1.6.3. TEA3 —— I/O Declarations (for §3.2.1–4): batched IN ORDER (FINAL output); e.g.:
 ```
 ✅ `career/CP_notes.md`, `cscpt/dlint.py`
 ⇠ `202605/career_query_202605300226.md`
