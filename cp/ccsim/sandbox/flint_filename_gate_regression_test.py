@@ -1,16 +1,25 @@
 #!/usr/bin/env python3
-"""Regression test —— the STRAY-SPACE FILENAME defect must stay mechanically
-impossible to create, and mechanically impossible to walk past.
+"""Regression test —— the two MALFORMED COMMS FILENAME defects must stay
+mechanically impossible to create, and mechanically impossible to walk past.
 
 WHY THIS EXISTS (self-contained; no conversation or comms file explains it):
 
-Root CLAUDE.md §3.3 names comms files `[prefix]_[TS].md`. At least four were
-nonetheless written with a space wedged between the prefix underscore and the
-12 digits —— `close_ 202606142239.md` and kin —— across two months. Every one was
-spotted by eye, months later, and hand-renamed. Prose said the right thing and
-was skipped four times, so prose was never going to fix it (`cp/ccsim/CLAUDE.md`
-§8.7: not-noticed is an enforcement gap, and the prose that failed cannot repair
-it). Three mechanisms replaced it, and this file pins all three:
+Root CLAUDE.md §3.3 names comms files `[prefix]_[TS].md`. Two different ways of
+breaking that shape have both shipped repeatedly:
+
+* THE STRAY SPACE, wedged between the prefix underscore and the 12 digits ——
+  `close_ 202606142239.md` and kin, at least four across two months.
+* THE TRAILING TAIL, appended after the 12 digits —— `ccsim_query_202608060423a`
+  and `…0423b`, two files minted in one minute and disambiguated with letters
+  instead of taking consecutive minutes. Four such files were live when this
+  half was written, and earlier ones had already been hand-renamed.
+
+Every instance of both was spotted by eye, months later, and hand-renamed. Prose
+said the right thing and was skipped every time, so prose was never going to fix
+it (`cp/ccsim/CLAUDE.md` §8.7: not-noticed is an enforcement gap, and the prose
+that failed cannot repair it). Three mechanisms replaced it, and this file pins
+all three (the git hook covers the stray space only —— see KNOWN GAPS in
+`flint.py`):
 
 * `cscpt/flint.py pre` —— PreToolUse. BLOCKS the write. This is the only one
   that can prevent creation at all: a PostToolUse hook cannot undo a write.
@@ -99,13 +108,52 @@ REAL_LEGITIMATE = (
 
 # Legitimate shapes root CLAUDE.md itself mandates —— §8.1.2's `_moved_` suffix
 # and §8.2's `❌_` void prefix. A positive-form "must match the canonical name
-# exactly" check would have broken both, which is why the rule is negative-form.
+# exactly" check would have broken both, which is why rule 1 is negative-form and
+# rule 2 carries an explicit exemption list instead.
 REAL_CONVENTIONS = (
     "close_202606142239.md",
     "ccsim_response_202608011839.md",
     "❌_push_classifier_query_202607282109_moved_202607.md",
     "backup_❌_SEEKLimited_OperationsSquadLead_202606142148.md_moved_skipped",
     "slog_202607311200.md",
+    # The Move Rule applied to a plainly comms-shaped name —— the shape rule 2
+    # would break if its exemption were ever dropped. No live instance exists
+    # today, which is exactly why it needs a fixture: the day one is created is
+    # the day a missing exemption would block root §8.1.2 itself.
+    "query_202607282109_moved_202607.md",
+    "ccsim_close_202607282109.md_moved_skipped",
+    # Multi-part extension.
+    "response_202606231628.pages.md",
+)
+
+# THE TRAILING-TAIL DEFECT (rule 2). The first two are the exact filenames the
+# owner rejected; the rest are real live siblings of the same class. `_r2` is a
+# SECOND response to one query —— deliberately NOT exempted, because `_r2` and
+# `a` differ only in spelling, so an exemption for one re-opens the other.
+REAL_TAIL_DEFECTS = (
+    "ccsim_query_202608060423a.md",
+    "ccsim_query_202608060423b.md",
+    "ccsim_query_202608052118a.md",
+    "ccsim_query_202608052118b.md",
+    "response_202607072124_r2.md",
+)
+
+# Real TS-bearing repo filenames that DO carry something after the timestamp and
+# are entirely innocent, because none of them is comms-shaped. Rule 2 must not
+# reach a single one. Mined from both comms repos (11,589 files; 10,706 carry a
+# bounded 12-digit TS; 1,344 are comms-shaped).
+REAL_NON_COMMS_TAILS = (
+    "backup_❌_⏳_DXCTechnology_ChangeAnalyst_202606182347_moved_pending.md",
+    "backup_TheOnset_LeadDeliveryManager_202607050002_reapplied.md",
+    "backup_❌_⚠️_SelectServicePartner_CommercialMarketingManagerANZ"
+    "_202606210220_stale.md",
+    "test_live_202607190438_fixes.py",
+    "MGTK746_A2_202603270408_notes.txt",
+    "cowork_202604120846_report.md",
+    "Alltech_interview_transcript_202607021219_fixed.md",
+    "git_history_response_202607161603_202607171243.html",
+    "chrome_disable_ondevice_model_202607251750.mobileconfig",
+    "document.wflow.bak_202607230551",
 )
 
 results = []
@@ -335,6 +383,158 @@ def test_flint_hook_shim_is_the_wiring():
            "rc=%s out=%r" % (r.returncode, r.stdout))
 
 
+# ---------------------------------------------------------------------------
+# RULE 2 —— nothing may follow the timestamp
+# ---------------------------------------------------------------------------
+
+def test_flint_blocks_the_letter_suffix_defect():
+    """THE case the owner rejected, verbatim. `a`/`b` on one minute is not a
+    disambiguator —— the second file takes the next MINUTE."""
+    tmp = tempfile.mkdtemp(prefix="flint-reg-tail-")
+    try:
+        a = os.path.join(tmp, "ccsim_query_202608060423a.md")
+        r = _run(PRE, _pre_payload(a))
+        ok = (r.returncode == 2 and "BLOCKED" in r.stderr
+              and "ccsim_query_202608060423.md" in r.stderr)
+        _check("F19a — `…0423a.md` BLOCKED, and the FREE minute 0423 offered",
+               ok, "rc=%s stderr=%r" % (r.returncode, r.stderr))
+
+        _check("F19b — the block names the remedy (next minute, not a suffix)",
+               "NEXT minute" in r.stderr or "consecutive MINUTES" in r.stderr,
+               "stderr=%r" % r.stderr)
+
+        # With 0423 genuinely taken, the suggestion must ADVANCE, not collide.
+        open(os.path.join(tmp, "ccsim_query_202608060423.md"), "w").close()
+        r = _run(PRE, _pre_payload(os.path.join(
+            tmp, "ccsim_query_202608060423b.md")))
+        ok = (r.returncode == 2
+              and "ccsim_query_202608060424.md" in r.stderr)
+        _check("F19c — `…0423b.md` with 0423 taken -> offered 0424", ok,
+               "rc=%s stderr=%r" % (r.returncode, r.stderr))
+
+        # And it keeps walking rather than offering an occupied minute twice.
+        open(os.path.join(tmp, "ccsim_query_202608060424.md"), "w").close()
+        r = _run(PRE, _pre_payload(os.path.join(
+            tmp, "ccsim_query_202608060423b.md")))
+        _check("F19d — 0423 and 0424 both taken -> offered 0425",
+               "ccsim_query_202608060425.md" in r.stderr,
+               "stderr=%r" % r.stderr)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_flint_blocks_every_real_tail_defect():
+    for i, name in enumerate(REAL_TAIL_DEFECTS, 1):
+        p = os.path.join(REPO_ROOT, "sessions", "2026", "202608", name)
+        r = _run(PRE, _pre_payload(p))
+        _check("F20.%d — real tail defect `%s` BLOCKED" % (i, name),
+               r.returncode == 2 and "BLOCKED" in r.stderr,
+               "rc=%s stderr=%r" % (r.returncode, r.stderr))
+
+
+def test_flint_tail_rule_spares_every_sanctioned_shape():
+    """The exemptions, each one a shape root CLAUDE.md itself mandates or a real
+    repo file that is simply not comms. A rule that blocked §8.1.2's Move Rule
+    would be worse than the defect it fixes."""
+    for name in REAL_NON_COMMS_TAILS:
+        p = os.path.join(REPO_ROOT, "sessions", "2026", "202608", name)
+        r = _run(PRE, _pre_payload(p))
+        ok = r.returncode == 0 and not r.stdout.strip() and not r.stderr.strip()
+        _check("F21 — non-comms tail `%s` untouched" % name, ok,
+               "rc=%s out=%r err=%r" % (r.returncode, r.stdout, r.stderr))
+
+
+def test_flint_tail_rule_minute_rollover_and_pairing():
+    tmp = tempfile.mkdtemp(prefix="flint-reg-tail2-")
+    try:
+        # A sanctioned same-TS sibling (§3.5.3) must NOT make the minute look
+        # occupied —— a query_ and its response_ share one by design.
+        open(os.path.join(tmp, "response_202608060423.md"), "w").close()
+        r = _run(PRE, _pre_payload(os.path.join(tmp, "query_202608060423a.md")))
+        _check("F22a — a sanctioned query_/response_ TS is not 'occupied'",
+               "query_202608060423.md" in r.stderr, "stderr=%r" % r.stderr)
+
+        # Midnight rollover: 2359 + 1 minute is the NEXT DAY, not 2360.
+        open(os.path.join(tmp, "close_202608062359.md"), "w").close()
+        r = _run(PRE, _pre_payload(os.path.join(tmp, "close_202608062359a.md")))
+        _check("F22b — 2359 rolls to 202608070000, never 2360",
+               "close_202608070000.md" in r.stderr, "stderr=%r" % r.stderr)
+
+        # A `response_` may not simply re-stamp (§3.5.3), so the block says so
+        # instead of silently instructing a different breach.
+        r = _run(PRE, _pre_payload(os.path.join(tmp, "response_202607072124_r2.md")))
+        _check("F22c — a response_ block cites §3.5.3 rather than just bumping",
+               r.returncode == 2 and "3.5.3" in r.stderr,
+               "rc=%s stderr=%r" % (r.returncode, r.stderr))
+
+        # A 12-digit run that is not a real calendar time must not raise —— and
+        # the clean name is pre-created so the BUMP path (which is what parses
+        # the date) is genuinely exercised rather than short-circuited.
+        open(os.path.join(tmp, "close_209913991399.md"), "w").close()
+        r = _run(PRE, _pre_payload(os.path.join(tmp, "close_209913991399a.md")))
+        _check("F22d — an impossible date still blocks, never a traceback",
+               r.returncode == 2 and "Traceback" not in r.stderr,
+               "rc=%s stderr=%r" % (r.returncode, r.stderr))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_flint_tail_rule_advises_on_read_and_out_of_scope():
+    """Same reach contract as rule 1 (hook_guide.md §4.7): the BLOCK is
+    repo-scoped, and everything outside it downgrades to an advisory rather than
+    going quiet (§4.4)."""
+    p = os.path.join(REPO_ROOT, "sessions", "2026", "202608",
+                     "ccsim_query_202608060423a.md")
+    r = _run(PRE, _pre_payload(p, tool="Read"))
+    adv = _advice(r)
+    ok = (r.returncode == 0 and "[flint]" in adv and "ALERT THE USER" in adv
+          and "ccsim_query_202608060423.md" in adv)
+    _check("F23a — a READ of a tail offender advises, never blocks", ok,
+           "rc=%s out=%r" % (r.returncode, r.stdout))
+
+    other = "/Users/culous/some-other-project"
+    r = _run(PRE, _pre_payload(os.path.join(other, "close_202608011234a.md"),
+                               cwd=other))
+    _check("F23b — out-of-repo cwd: advises, does NOT block",
+           r.returncode == 0 and "[flint]" in _advice(r),
+           "rc=%s out=%r err=%r" % (r.returncode, r.stdout, r.stderr))
+
+    r = _run(["sh", FLINT_HOOK, "pre"], _pre_payload(p))
+    _check("F23c — the shim propagates the rule-2 exit 2 too",
+           r.returncode == 2 and "BLOCKED" in r.stderr,
+           "rc=%s err=%r" % (r.returncode, r.stderr))
+
+
+def test_tail_rule_against_the_whole_live_repo():
+    """Re-derive rule 2's calibration on every run, exactly as F18 does for rule
+    1: over every real basename in this repo the rule must hit the known
+    offenders and NOTHING else. Missing hits are fine (they mean a rename
+    happened); an UNEXPECTED hit is a broadened rule and fails here rather than
+    in someone's commit."""
+    comms = re.compile(r"^(?:❌_)?(?:[A-Za-z0-9][A-Za-z0-9-]*_)?"
+                       r"(?:query|response|close|wrap|slog|artefact)_", re.I)
+    ts_re = re.compile(r"(?<!\d)(20\d{10})(?!\d)")
+    ok_tail = re.compile(r"^(?:\.[A-Za-z0-9]+)*$")
+    moved = re.compile(r"^(?:\.[A-Za-z0-9]+)*_moved_")
+    hits = []
+    for dp, dns, fns in os.walk(REPO_ROOT):
+        dns[:] = [d for d in dns if d not in (".git", "__pycache__", ".venv")]
+        for f in fns:
+            if not comms.match(f):
+                continue
+            m = ts_re.search(f)
+            if not m:
+                continue
+            tail = f[m.end():]
+            if ok_tail.match(tail) or moved.match(tail):
+                continue
+            hits.append(os.path.relpath(os.path.join(dp, f), REPO_ROOT))
+    unexpected = [h for h in hits
+                  if os.path.basename(h) not in REAL_TAIL_DEFECTS]
+    _check("F24 — live repo sweep: %d tail hit(s), all of them known defects"
+           % len(hits), not unexpected, "unexpected=%r" % unexpected)
+
+
 def test_rule_against_the_whole_live_repo():
     """Re-derive the calibration on every run: over every real basename in this
     repo, the rule must hit the known offenders and NOTHING else. A future edit
@@ -433,6 +633,54 @@ def test_post_ts_clash_behaviour_is_unchanged():
                r.returncode == 0 and "TS clash" in r.stderr
                and "[flint]" in _advice(r),
                "rc=%s out=%r err=%r" % (r.returncode, r.stdout, r.stderr))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+
+def test_post_sweep_covers_the_tail_defect_too():
+    """The sweep borrows a listing it was taking anyway, so covering the second
+    defect class there is free. Both classes must arrive in ONE advisory —— a
+    second `_advise()` call would put a second JSON object on stdout and the
+    harness would parse neither."""
+    tmp = tempfile.mkdtemp(prefix="flint-reg-post-tail-")
+    try:
+        tail_off = os.path.join(tmp, "ccsim_query_202608060423a.md")
+        space_off = os.path.join(tmp, "close_ 202606142239.md")
+        for p in (tail_off, space_off):
+            open(p, "w").close()
+        clean = os.path.join(tmp, "response_202608011234.md")
+        open(clean, "w").close()
+
+        r = _run(POST, _post_payload(clean))
+        adv = _advice(r)
+        _check("T11a — a tail offender beside a write is reported",
+               r.returncode == 0 and tail_off in adv,
+               "rc=%s out=%r" % (r.returncode, r.stdout))
+        _check("T11b — both defect classes arrive in ONE advisory",
+               space_off in adv and tail_off in adv
+               and r.stdout.strip().count("hookSpecificOutput") == 1,
+               "out=%r" % r.stdout)
+        _check("T11c — the sweep still never blocks",
+               r.returncode == 0 and "BLOCKED" not in r.stderr,
+               "rc=%s err=%r" % (r.returncode, r.stderr))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # And a folder of sanctioned shapes stays silent, so the sweep cannot start
+    # nagging about `_moved_` files root §8.1.2 requires.
+    tmp = tempfile.mkdtemp(prefix="flint-reg-post-tail2-")
+    try:
+        for n in ("query_202607282109_moved_202607.md",
+                  "ccsim_close_202607282109.md_moved_skipped",
+                  "response_202606231628.pages.md",
+                  "test_live_202607190438_fixes.py"):
+            open(os.path.join(tmp, n), "w").close()
+        clean = os.path.join(tmp, "response_202608011234.md")
+        open(clean, "w").close()
+        r = _run(POST, _post_payload(clean))
+        _check("T11d — sanctioned tails are NOT swept up",
+               r.returncode == 0 and not r.stdout.strip(),
+               "rc=%s out=%r" % (r.returncode, r.stdout))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
@@ -772,9 +1020,16 @@ def main():
         test_flint_fail_safe_on_malformed_payloads,
         test_flint_hook_shim_is_the_wiring,
         test_rule_against_the_whole_live_repo,
+        test_flint_blocks_the_letter_suffix_defect,
+        test_flint_blocks_every_real_tail_defect,
+        test_flint_tail_rule_spares_every_sanctioned_shape,
+        test_flint_tail_rule_minute_rollover_and_pairing,
+        test_flint_tail_rule_advises_on_read_and_out_of_scope,
+        test_tail_rule_against_the_whole_live_repo,
         test_post_sweeps_the_folder_it_already_lists,
         test_post_silent_when_the_folder_is_clean,
         test_post_ts_clash_behaviour_is_unchanged,
+        test_post_sweep_covers_the_tail_defect_too,
         test_post_ignores_a_tsless_write,
         test_post_half_stays_global_after_the_merge,
         test_post_half_never_blocks,

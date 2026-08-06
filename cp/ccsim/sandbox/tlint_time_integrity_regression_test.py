@@ -36,6 +36,14 @@ Dependency-free by design (PyYAML is not installed system-wide on this Mac).
 
 import json
 import os
+from datetime import datetime as _dt
+from zoneinfo import ZoneInfo as _Z
+
+# DERIVED, never hard-coded: a literal TS here goes stale within a day and
+# tlint's own drift check then swallows every assertion below it (observed
+# live: 70/79 with a 1-day-old fixture). Always mint it from the clock.
+_NOW_TS = _dt.now(_Z("Australia/Sydney")).strftime("%Y%m%d%H%M")
+
 import re
 import subprocess
 import sys
@@ -372,7 +380,7 @@ def test_check_c_unclocked_mint():
 
 def test_check_d_us_date_format():
     print("\n--- CHECK D: US-format dates in written text ---")
-    target = os.path.join(SESSIONS, "2026", "202608", "response_202608052335.md")
+    target = os.path.join(SESSIONS, "2026", "202608", "response_" + _NOW_TS + ".md")
 
     warn = [
         ("D1 `August 5, 2026`", "Submitted on August 5, 2026 to the panel."),
@@ -468,7 +476,7 @@ def test_stdout_is_always_one_json_object():
 
     # J3: every warning case in this suite must produce parseable stdout, not
     # merely the one combination above.
-    target = os.path.join(SESSIONS, "2026", "202608", "response_202608052335.md")
+    target = os.path.join(SESSIONS, "2026", "202608", "response_" + _NOW_TS + ".md")
     bad = []
     for arg, payload in (
             ("pre", pre_payload("date +%Y%m%d%H%M")),
@@ -494,7 +502,7 @@ def test_fail_open_and_never_blocks():
         ("F3 valid JSON that is not an object", '["date 20260805"]'),
         ("F4 object with no tool_input", '{"tool_name":"Bash","x":"date"}'),
         ("F5 tool_input of the wrong type",
-         '{"tool_name":"Bash","tool_input":"date 202608052335"}'),
+         '{"tool_name":"Bash","tool_input":"date ' + _NOW_TS + '"}'),
     ]
     for arg in ("pre", "post"):
         for label, raw in cases:
@@ -601,7 +609,7 @@ def test_shim_gate_drops_nothing_the_lint_would_flag():
     print("\n--- shim gate vs the lint itself ---")
     ym = datetime.now(SYD).strftime("%Y/%Y%m")
     folder = os.path.join(SESSIONS, ym)
-    target = os.path.join(SESSIONS, "2026", "202608", "response_202608052335.md")
+    target = os.path.join(SESSIONS, "2026", "202608", "response_" + _NOW_TS + ".md")
     cases = [
         ("pre", pre_payload("date +%Y%m%d%H%M")),
         ("pre", pre_payload("TZ=UTC date")),

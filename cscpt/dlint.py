@@ -35,8 +35,12 @@ WHAT: the deterministic prose linter for `universal/writing.md`.
   quotation, `-ize`, hyphen/#numbered, `hi` greeting —— and never rewrites,
   because comms and code may hold intentional straight quotes. It ALSO adds one
   quick-only advisory, the `read`/`#r` tense check, which FULL must never carry
-  (house shorthand has no place in a deliverable) —— `--rt-quiet` suppresses
-  that one advisory and nothing else, and only `dlint_quick.py` passes it.
+  (house shorthand has no place in a deliverable). That advisory has NO
+  suppression switch and no per-session memory —— a `--rt-quiet` flag existed
+  and was removed, because a reminder withheld on the grounds that CC was told
+  once is a detected instance turned into a hidden one, and the owner's
+  standing ruling is that a false positive costs ~10 tokens whilst a false
+  negative "could be highly misleading". Do not reintroduce it.
 * AUTO-FIX (full mode only) converts straight quotes/apostrophes to typographic,
   chosen by context, and is idempotent —— already-typographic quotes are left
   alone.
@@ -654,33 +658,53 @@ def _genai_phrases(masked_text, yellow):
 # would push house abbreviations into outgoing work —— the opposite of the rule.
 #
 # WHY THE MATCHER IS NOT JUST `\b[Rr]ead\b`, measured rather than assumed. That
-# bare pattern produced 21 flags on one real `response_`, of which ONE was an
-# actual past tense. Every other hit fell into four mechanical classes that no
-# reader would call a tense error, and each is now excluded:
+# bare pattern fires on 63% of this repo's 492 `response_` files, 970 hits in
+# all, and most of those are not tense errors at all. Only TWO classes are
+# excluded, and the test for inclusion is severe: an exclusion is allowed ONLY
+# where `#r` could not be the right word under ANY reading, because the owner's
+# standing ruling is that a false positive costs ~10 wasted tokens whilst a
+# false negative "could be highly misleading". So:
 #   1. HYPHENATED COMPOUNDS —— `re-read`, `read-only`, `read-reminder`,
 #      `must-read`, `over-read`. A hyphen IS a word boundary, so the bare
-#      pattern matched all of them. Six of the 21.
-#   2. THE TOOL NAME —— "the Read tool", "Read/Write". A proper noun.
-#   3. THE NOUN —— "a missing read", "discharge the read", "a read via Bash".
-#      Detected by a determiner or possessive immediately before it.
-#   4. AN EXPLICITLY NON-PAST GOVERNOR —— "to read", "will read", "can read",
-#      "is read", "should read". These cannot be past, whatever follows.
-# What survives is genuinely ambiguous: a bare "you read X" is past or present
-# and nothing short of a reader can tell. That residual is REAL and is stated in
-# the flag, not hidden —— see `_read_tense`.
+#      pattern matched all of them. `#r` cannot substitute inside a compound;
+#      there is no `re-#r`.
+#   2. THE TOOL NAME —— "the Read tool", "Read/Write". A proper noun, and
+#      abbreviating a tool's name would be simply wrong.
+# EVERYTHING ELSE FIRES, including cases a tense-aware reader would call
+# correct. That is the point: the flag asks CC to JUDGE, and a judgement baked
+# into the matcher is a judgement CC never gets to make.
+#
+# WHAT WAS REMOVED AND WHY, so it is not helpfully restored:
+#   * THE `be`-PASSIVE ("that file is read only at `#close`", "is not yet
+#     read"). This was excluded as "present passive, cannot be past" —— but a
+#     passive `read` is the PARTICIPLE, pronounced /rɛd/, which is exactly the
+#     form `#r` exists to disambiguate. It was the real miss that prompted this
+#     narrowing being narrowed back: a live `response_` shipped "that file is
+#     read only at" and the advisory never mentioned it.
+#   * A DETERMINER A WORD OR TWO BACK PLUS A CLAUSE BREAK ("a missing read.").
+#     It swallowed "the file you read." —— a plain past tense —— because `the`
+#     sat within three tokens. It bought silence on a noun and paid for it with
+#     a genuine miss.
+#   * DISTRIBUTIVE AND DEMONSTRATIVE DETERMINERS (`this that these those each
+#     every another one no`). Every one of them doubles as a PRONOUN that can
+#     head a past clause: "That read as an oversight", "Each read the brief".
+# The residual is REAL and stated in the flag, not hidden —— see `_read_tense`.
 _READ_RE = re.compile(r"[A-Za-z0-9_#-]*\b([Rr]ead)\b[A-Za-z0-9_-]*")
 
-# A determiner/possessive immediately before "read" makes it a noun.
+# An article or possessive IMMEDIATELY before "read" makes it a noun ("a read
+# via Bash", "discharge the read"). Only forms that cannot themselves be the
+# SUBJECT of a past-tense clause survive here —— see WHAT WAS REMOVED above.
 _READ_NOUN_BEFORE = frozenset("""
-a an the this that these those each every another one no its his her their
-your my our first second last single extra further failed missed
+a an the its his her their your my our first second last single extra further
+failed missed
 """.split())
 
-# Words that cannot be followed by a PAST "read". Modals and infinitive `to`
-# force the bare stem; the `be` forms make a present passive ("is read when…").
+# Words that cannot be followed by a PAST "read": modals and infinitive `to`
+# force the bare stem. The `be` forms are deliberately ABSENT —— "is read" is a
+# passive participle, i.e. `#r` territory.
 _READ_NONPAST_BEFORE = frozenset("""
 to will can cannot could may might must shall should would do does let please
-is are be being am ll wont dont doesnt cant couldnt shouldnt wouldnt
+ll wont dont doesnt cant couldnt shouldnt wouldnt
 """.split())
 
 # Adverbs allowed to sit between the governor and the verb ("is only read",
@@ -696,13 +720,21 @@ _READ_TOKEN_RE = re.compile(r"[A-Za-z']+")
 
 
 def _read_tense(lines, orig, yellow):
-    """ONE yellow per file, never one per occurrence.
+    """ONE yellow per file, never one per occurrence —— but EVERY line number in
+    it, never a truncated list.
 
     Reporting per occurrence is what made this feel like noise: the same
-    reminder repeated 21 times says nothing the first one did not, and a flag
-    nobody finishes reading is a flag nobody acts on. One entry carrying every
-    candidate's line number is the same information at a twentieth of the
-    volume, and it still lets CC jump straight to each instance."""
+    reminder repeated twenty times says nothing the first one did not, and a
+    flag nobody finishes reading is a flag nobody acts on. One entry carrying
+    every candidate's line number is the same information at a twentieth of the
+    volume, and it still lets CC jump straight to each instance.
+
+    THE LINE LIST IS NOT CAPPED, and that is the one thing here that is not a
+    presentation choice. It used to show the first eight and elide the rest,
+    which meant a genuine past tense on line nine was DETECTED and then hidden
+    —— a false negative manufactured by the report rather than by the matcher,
+    which is the failure mode the owner ranks worst. A long list is ~1 token
+    per entry; a hidden instance is a wrong sentence shipped."""
     hits = []
     for ln, line in enumerate(lines, 1):
         for m in _READ_RE.finditer(line):
@@ -715,19 +747,13 @@ def _read_tense(lines, orig, yellow):
                     or before.endswith("/")):
                 continue                      # class 2: the Read tool
             prev = _READ_TOKEN_RE.findall(before)
-            # class 3, second form: a determiner a word or two back AND a clause
-            # break straight after ("a missing read.", "one further read;").
-            # Nothing can follow a VERB'S "read" there, so it is a noun.
-            if after[:1] in (".", ",", ";", ":", ")") and (
-                    set(t.lower() for t in prev[-3:]) & _READ_NOUN_BEFORE):
-                continue
             skip = False
             for tok in reversed(prev[-3:]):
                 low = tok.lower().replace("'", "")
                 if low in _READ_ADVERBS:
                     continue                  # step over an adverb and re-test
                 if low in _READ_NOUN_BEFORE or low in _READ_NONPAST_BEFORE:
-                    skip = True               # class 3/4
+                    skip = True               # a noun, or a bare-stem governor
                 break
             if skip:
                 continue
@@ -737,26 +763,26 @@ def _read_tense(lines, orig, yellow):
 
     if not hits:
         return
-    shown = ", ".join("L%d" % ln for ln, _ in hits[:8])
-    if len(hits) > 8:
-        shown += ", …"
+    shown = ", ".join("L%d" % ln for ln, _ in hits)
     yellow.append((hits[0][0],
                    f'{len(hits)} bare "read" left to judge ({shown}); first is '
-                   f'"{hits[0][1]}". Past tense -> `#r` (per `glossary.md`); '
-                   f"present/future is already correct. **Silently** fix, no "
-                   f"explanation to user."))
+                   f'"{hits[0][1]}". Past/perfect (incl. a passive "is read") '
+                   f'-> `#r` (per `glossary.md`); present/future/imperative is '
+                   f"already correct. **Silently** fix, no explanation to "
+                   f"user."))
 
 
-def run_checks(text, quick=False, rt_quiet=False):
+def run_checks(text, quick=False):
     """Return (red, yellow). Fenced code blocks AND inline `code` spans are masked
     first so prose rules never fire inside code (embedded deliverables are linted
     separately via FULL `--text`); detection runs on the masked text, snippets are
     shown from the original.
 
-    `rt_quiet` suppresses the `read`/`#r` advisory ONLY. The caller that sets it
-    is `dlint_quick.py`, which has already shown it once for this (session,
-    file); repeating a reminder CC has been given is the noise this whole check
-    was narrowed to remove. It can never suppress a RED."""
+    There is no per-caller suppression parameter. `--rt-quiet` used to let
+    `dlint_quick.py` silence the `read`/`#r` advisory once a (session, file) had
+    seen it; it was removed because a withheld reminder is a detected instance
+    made invisible, and the whole point of the advisory is that only a reader
+    can settle the tense."""
     orig = text.splitlines()
     masked_text = _mask_code(text)
     lines = masked_text.splitlines()
@@ -770,7 +796,7 @@ def run_checks(text, quick=False, rt_quiet=False):
     _hyphen_bullet(lines, orig, yellow)       # dash substitute + #numbered compliance
     _greeting_hi(lines, orig, red)            # `hi` banned everywhere, incl. --quick
 
-    if quick and not rt_quiet:
+    if quick:
         # QUICK ONLY —— house shorthand must never be pushed into a deliverable
         _read_tense(lines, orig, yellow)
 
@@ -853,7 +879,7 @@ def _prune_receipts():
         pass
 
 
-def lint_file(path: Path, quick=False, rt_quiet=False):
+def lint_file(path: Path, quick=False):
     try:
         original = path.read_text(encoding="utf-8")
     except Exception as e:  # noqa: BLE001
@@ -869,7 +895,7 @@ def lint_file(path: Path, quick=False, rt_quiet=False):
         if text != original:
             path.write_text(text, encoding="utf-8")
         qnote = f"Quotes: {qn} straight quote(s) converted in place." if qn else "Quotes: none to convert."
-    red, yellow = run_checks(text, quick, rt_quiet)
+    red, yellow = run_checks(text, quick)
     n_red = report(path.name, red, yellow, qnote)
     if not quick:
         # FULL mode only —— a receipt's existence is the gate's proof that FULL
@@ -880,7 +906,7 @@ def lint_file(path: Path, quick=False, rt_quiet=False):
     return n_red
 
 
-def lint_text(text, quick=False, rt_quiet=False):
+def lint_text(text, quick=False):
     if quick:
         qnote = "Quotes: untouched (--quick)."
         checked = text
@@ -893,21 +919,20 @@ def lint_text(text, quick=False, rt_quiet=False):
             qnote = f"Quotes: {qn} straight quote(s) converted (see fixed text above)."
         else:
             qnote = "Quotes: none to convert."
-    red, yellow = run_checks(checked, quick, rt_quiet)
+    red, yellow = run_checks(checked, quick)
     return report("--text", red, yellow, qnote)
 
 
 def main(argv):
     args = argv[1:]
-    quick = rt_quiet = False
-    # Leading flags in any order. `--rt-quiet` is set by `dlint_quick.py` alone
-    # (once this (session, file) has already been told); a human running dlint
-    # by hand never passes it and always sees the advisory.
+    quick = False
+    # `--rt-quiet` is still SWALLOWED, never honoured: the flag is gone but a
+    # stale caller (an old shim, a copied command line) must not be handed a
+    # usage error and silently stop linting. Accepting and ignoring it is the
+    # fail-safe direction —— the lint still runs, in its stricter form.
     while args and args[0] in ("--quick", "--rt-quiet"):
         if args[0] == "--quick":
             quick = True
-        else:
-            rt_quiet = True
         args = args[1:]
 
     if not args:
@@ -917,7 +942,7 @@ def main(argv):
 
     if args[0] == "--text":
         text = args[1] if len(args) > 1 else ""
-        r = lint_text(text, quick, rt_quiet)
+        r = lint_text(text, quick)
         print("")
         print("RESULT: 🔴 BLOCKED —— rectify RED flags and rerun." if r else
               "RESULT: ✅ PASS (RED=0). Justify any YELLOW flags in response_.")
@@ -930,7 +955,7 @@ def main(argv):
             print(f"❌ {arg}: file not found")
             any_error = True
             continue
-        r = lint_file(p, quick, rt_quiet)
+        r = lint_file(p, quick)
         if r is None:
             any_error = True
         elif r > 0:

@@ -522,8 +522,49 @@ def test_harness_terminated_turn_is_not_blocked():
           "exit=%d action=%s" % (code, action_of(lines)))
 
 
+def test_sha_declaration_end_is_a_declaration_end():
+    """SHAPE A must still fire when the batch ends on the SIXTH declaration
+    class, `🦈` (root §3.2.4 —— the turn's commit SHAs, split out of `➡️`).
+
+    THE DEFECT THIS PINS, because it was live: `_is_declaration_end` knew only
+    the three I/O glyphs, and §3.1.6.3's batch now ordinarily FINISHES on a
+    `🦈` line. So the protocol change silently defeated shape A —— an `#m2`
+    turn that wrote its `response_`, declared it, committed, declared the SHA
+    and never sprinted logged `not_declaration_end` and was waved through.
+    Measured against the real hook: `not_declaration_end` before the fix,
+    `block` after. Both the bare and the §3.2.4.5 multi-repo forms are tested,
+    since the label form is the one a naive glyph check is likeliest to miss.
+    """
+    for label, text in (
+            ("`🦈` alone", "🦈 `97ae25ba`"),
+            ("batch ending on `🦈`",
+             "➡️ **`202608/career_response_202608041846.md`**\n🦈 `97ae25ba`"),
+            ("multi-repo `🦈` (§3.2.4.5)",
+             "➡️ **`202608/career_response_202608041846.md`**\n"
+             "🦈 Default: `97ae25ba`\n🦈 AJAP: `470481d8`")):
+        recs = replace_final_text(fixture_records(), text)
+        code, _, lines = run(recs)
+        check(code == 2 and action_of(lines) in ("block", "block_nodeclare"),
+              "an m2 stall ending on %s is still caught" % label,
+              "exit=%d action=%s" % (code, action_of(lines)))
+
+
+def test_sha_declaration_alone_does_not_suppress_shape_b():
+    """`_is_io_declaration` must NOT learn `🦈`, though `_is_declaration_end`
+    did. Its only caller is SHAPE B, where a hit SUPPRESSES the block —— and a
+    turn that pushed, declared its SHAs and never declared the `response_` is
+    precisely shape B's failure ("a successful push with no declaration looks,
+    from the user's screen, exactly like a failed one"). Widening that set
+    would delete coverage of the case the new glyph makes MORE likely."""
+    recs = replace_final_text(fixture_records(), "🦈 `97ae25ba`")
+    code, _, lines = run(recs)
+    check(code == 2 and action_of(lines) == "block_nodeclare",
+          "a SHA declaration alone does not stand in for the ➡️ declaration",
+          "exit=%d action=%s" % (code, action_of(lines)))
+
+
 def test_urgent_stop_is_not_blocked_for_a_missing_declaration():
-    """A `⚠️` blocker (§3.2.4) and the `🚨` sentinel (§3.2.5) are deliberate
+    """A `⚠️` blocker (§3.2.5) and the `🚨` sentinel (§3.2.6) are deliberate
     early stops. Holding a blocker open delays exactly the message the user most
     needs to see."""
     for label, text in (("⚠️ blocker", "⚠️ Contract PDF unreadable"),
@@ -899,6 +940,8 @@ def main():
                    test_read_declaration_glyph_does_not_satisfy_shape_b,
                    test_harness_terminated_turn_is_not_blocked,
                    test_urgent_stop_is_not_blocked_for_a_missing_declaration,
+                   test_sha_declaration_end_is_a_declaration_end,
+                   test_sha_declaration_alone_does_not_suppress_shape_b,
                    test_one_forced_turn_per_prompt_across_both_shapes,
                    test_api_error_line_is_not_the_turns_last_word,
                    test_bold_wrapped_declaration_is_recognised,

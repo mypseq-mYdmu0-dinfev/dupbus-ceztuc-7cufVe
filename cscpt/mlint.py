@@ -95,9 +95,11 @@ SHAPE B —— `block_nodeclare`, all must hold:
 SHAPE A —— `block`, all must hold (unchanged behaviour):
 2a. NO SPRINT EVIDENCE —— nothing in the turn says a sprint began (see SPRINT
     EVIDENCE).
-3a. DECLARATION END —— the turn's LAST non-blank chat line is an I/O declaration
-    (`✅`/`⇠`/`➡️`, root §3.2.1–3), i.e. the observed failure shape. A turn ending
-    on a `⚠️` blocker (§3.2.4), the `🚨` sentinel (§3.2.5), a lone `.`, plain
+3a. DECLARATION END —— the turn's LAST non-blank chat line is a declaration the
+    batch can END on: an I/O declaration (`✅`/`⇠`/`➡️`, root §3.2.1–3) or the SHA
+    declaration (`🦈`, §3.2.4 —— the sixth class, and the line §3.1.6.3's batch
+    now ordinarily finishes with). That is the observed failure shape. A turn ending
+    on a `⚠️` blocker (§3.2.5), the `🚨` sentinel (§3.2.6), a lone `.`, plain
     prose, a harness-authored API-error line, or nothing at all is left alone ——
     those are other situations, and one of them (the blocker) is a legitimate,
     urgent early stop that must never be held open.
@@ -254,6 +256,12 @@ _INLINE_BACKTICK_RE = re.compile(r"`[^`\n]*`")
 # --- Declaration glyphs (root CLAUDE.md §3.2) ------------------------------
 _VS16 = "️"                       # emoji variation selector
 _IO_GLYPHS = ("✅", "⇠", "➡")     # ✅ ⇠ ➡ —— §3.2.1–3
+# `🦈` (§3.2.4) is the turn's commit SHAs —— a SIXTH declaration class the owner
+# split out of `➡️`. It is part of the TEA3 batch (§3.1.6.3's example ends on
+# it), so it is now the LAST line a batch-ending turn shows. Added to the
+# BATCH-END set only, never to `_IO_GLYPHS`: see `_is_declaration_end`.
+_G_SHA = "\U0001f988"
+_BATCH_END_GLYPHS = _IO_GLYPHS + (_G_SHA,)
 
 # `override` in the typed message disarms this hook, exactly as in `clint.py`.
 _OVERRIDE_RE = re.compile(r"\boverrid(?:e|ing)\b", re.I)
@@ -500,8 +508,8 @@ def _ended_on_api_error(window):
 
 
 def _is_urgent_stop(line):
-    """True if `line` is a `⚠️` blocker (root §3.2.4) or the `🚨` post-compaction
-    sentinel (§3.2.5). Both are legitimate, deliberate early stops that must
+    """True if `line` is a `⚠️` blocker (root §3.2.5) or the `🚨` post-compaction
+    sentinel (§3.2.6). Both are legitimate, deliberate early stops that must
     never be held open —— the blocker especially, since holding one open delays
     exactly the message the user most needs to see."""
     t = line.strip()
@@ -515,11 +523,36 @@ def _is_io_declaration(line):
     `**…**` bold wrapper §3.1.6 puts round one and the emoji variation
     selector. Only the GLYPH is tested, not the file-list shape: `clint.py`
     already owns declaration shape, and a malformed declaration is still the
-    turn-ending-on-a-declare situation this hook is looking for."""
+    turn-ending-on-a-declare situation this hook is looking for.
+
+    Deliberately EXCLUDES `🦈` (§3.2.4), unlike `_is_declaration_end`. This
+    function's only caller is SHAPE B, where a hit SUPPRESSES the block —— and a
+    turn that pushed, declared its SHAs, and never declared the `response_` is
+    PRECISELY shape B's failure ("a successful push with no declaration looks,
+    from the user's screen, exactly like a failed one"). Widening this set
+    would therefore delete coverage of the case the new glyph makes MORE
+    likely, not less."""
     t = line.strip()
     if t.startswith("**"):
         t = t[2:].strip()
     return t.replace(_VS16, "").startswith(_IO_GLYPHS)
+
+
+def _is_declaration_end(line):
+    """True if `line` is the last line a DECLARATION BATCH ends on —— any I/O
+    glyph (§3.2.1–3) or the SHA glyph `🦈` (§3.2.4).
+
+    SHAPE A's whole signal is "the turn stopped ON its declaration batch". When
+    the SHA declaration was split out of `➡️` into its own class, `🦈` became the
+    line a batch ordinarily ENDS on (root §3.1.6.3's example), so a batch-end
+    test that knew only the I/O glyphs was silently defeated by the protocol
+    change: an m2 turn that committed, declared, and never sprinted logged
+    `not_declaration_end` and was let through. Verified against the live hook
+    before and after this line existed."""
+    t = line.strip()
+    if t.startswith("**"):
+        t = t[2:].strip()
+    return t.replace(_VS16, "").startswith(_BATCH_END_GLYPHS)
 
 
 def _read_query_text(path):
@@ -785,7 +818,7 @@ def main():
     if sprint_why:
         _log_event(sid, "sprint_ran", pid=pid, m2=m2_why, sprint=sprint_why)
         return 0
-    if not _is_io_declaration(last_line):
+    if not _is_declaration_end(last_line):
         # Ended on a blocker/sentinel/prose/lone-dot/nothing —— a different
         # situation, and one of those is a legitimate urgent stop.
         _log_event(sid, "not_declaration_end", pid=pid, m2=m2_why,

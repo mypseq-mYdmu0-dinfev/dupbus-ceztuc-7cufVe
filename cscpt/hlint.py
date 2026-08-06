@@ -70,7 +70,7 @@ Pure latency for zero benefit. The exclusion is structural (`sessions/` is simpl
 not a search root) AND defended by `_EXCLUDED_DIR_NAMES`, so a later widening of
 the scope cannot silently re-admit it. Corpus expansion still READS a named comms
 file, but by computing its folder from the `[TS]` in its own filename (root
-CLAUDE.md §3.4.8.1–2: start-month, else one month back) —— two direct stats, no
+CLAUDE.md §3.4.9.1–2: start-month, else one month back) —— two direct stats, no
 walk.
 
 WHY SIBLING-RELATIVE, NOT HOME-RELATIVE: `AJAP_repo` is located as a sibling of
@@ -429,7 +429,7 @@ def _comms_candidates(base):
 
     A comms filename carries its own `YYYYMMDDHHmm`, and comms files live in the
     folder of the session's START month, so the folder is computable: try the
-    TS's own month, then one month back (root CLAUDE.md §3.4.8.1–2, which covers
+    TS's own month, then one month back (root CLAUDE.md §3.4.9.1–2, which covers
     a session that ran past a month boundary). Two stats, versus a walk of ~1k
     files —— and it keeps `sessions/` out of the trigger search entirely.
     """

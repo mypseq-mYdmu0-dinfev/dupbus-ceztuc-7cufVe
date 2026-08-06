@@ -74,6 +74,16 @@ can react to (a Stop hook's exit-0 output never reaches the model; see
      both modes: `..`, `...`, trailing text, a bold `**.**`, and a dot
      sharing the turn with any other line all still flag -- in REPO as
      `yellow:prose`, in READER as `yellow:reader`.
+  K. the SIXTH declaration class, `🦈` (root CLAUDE.md §3.2.4) -- the turn's
+     commit SHAs, which the owner split out of `➡️` into a class of their own.
+     Because clint's design is GLYPH OWNERSHIP, a glyph it does not know is
+     not "unrecognised" but PROSE: before this was taught, every COMPLIANT
+     batch under the new protocol logged `yellow:prose`, so the log -- clint's
+     PRIMARY artefact since the demotion -- recorded correct behaviour as a
+     breach. Pins that the new class is clean alone and inside a real batch,
+     that a malformed one still flags under its own `sha_shape` class, that
+     the cross-type test is symmetric, that the other five are untouched, and
+     that READER mode is NOT widened by it.
 
 It drives the REAL registered command from ~/.claude/settings.json
 (`python3 .../cscpt/clint.py`, Stop hook) with synthesised payloads and
@@ -108,11 +118,13 @@ READER_CWD = os.path.dirname(REPO_ROOT)
 # A sibling repo under the same parent -- must NOT inherit the Reader rule.
 SIBLING_CWD = os.path.join(READER_CWD, "AJAP_repo")
 
-# The 5 declaration glyphs, base codepoints (the emoji variation selector is
+# The 6 declaration glyphs, base codepoints (the emoji variation selector is
 # irrelevant to a substring search). Kept in ONE place so section A and section
 # I can never drift into checking different sets: naming any of these in the
-# message the user reads would teach exactly which prefixes pass.
-GLYPHS = ("✅", "⇠", "➡", "⚠", "\U0001f6a8")
+# message the user reads would teach exactly which prefixes pass. `🦈` (§3.2.4,
+# the turn's commit SHAs) joined the set when the owner split the SHA line out
+# of `➡️` into a class of its own —— see section K.
+GLYPHS = ("✅", "⇠", "➡", "\U0001f988", "⚠", "\U0001f6a8")
 
 # A protocol section reference such as `§3.2`. Its digits are an ADDRESS, not a
 # threshold, so they are stripped before the message is checked for digits --
@@ -128,9 +140,10 @@ SECTION_REF_RE = re.compile(r"§\d+(?:\.\d+)*")
 # (the always-RED policy and its loop guard are both gone) and are
 # deliberately absent here -- they can no longer leak because they no longer
 # exist.
-CLASS_TOKENS = ("io_shape", "sentinel", "warn_empty", "warn_shape",
-                "warn_words", "warn_hyphens", "warn_chars", "warn_progress",
-                "sic_overrun", "reader", "yellow:", "exempt:")
+CLASS_TOKENS = ("io_shape", "sha_shape", "sentinel", "warn_empty",
+                "warn_shape", "warn_words", "warn_hyphens", "warn_chars",
+                "warn_progress", "sic_overrun", "reader", "yellow:",
+                "exempt:")
 
 _RESULTS = []
 
@@ -515,6 +528,8 @@ _CLASS_FIXTURES = (
      "The fleet finished; three agents reported clean."),
     ("io_shape", "do the thing",
      "✅ Read the plan and then carried on working."),
+    ("sha_shape", "do the thing",
+     "🦈 `97ae25ba` committed and pushed everything cleanly."),
     ("sentinel", "do the thing",
      "**🚨 Compaction Detected —— stopped all tasks.**"),
     ("warn_progress", "do the thing", "⚠️ Fleet running; awaiting reports."),
@@ -876,6 +891,116 @@ def section_prune(tmp):
             "shortest=%d records=%d" % (shortest, len(real)))
 
 
+# --- K. the SIXTH declaration class, `🦈` (root CLAUDE.md §3.2.4) -----------
+
+def section_sha_declaration(tmp):
+    """Pins the glyph added when the owner split the turn's commit SHAs out of
+    `➡️` into a declaration class of their own.
+
+    WHY THIS SECTION EXISTS, stated as the defect it pins: clint's whole design
+    is GLYPH OWNERSHIP, so a glyph it does not know about is not "unrecognised",
+    it is PROSE. Before the fix, the real registered command logged
+    `yellow:prose` for every one of the compliant batches below —— i.e. every
+    turn that obeyed the new protocol was recorded as a breach, and the log is
+    now clint's PRIMARY artefact. Measured through the real command, not
+    reasoned about: `🦈 `abc12345`` returned `yellow:prose` before and returns
+    `clean` after.
+
+    K1 the new declaration alone is CLEAN, in each sanctioned shape;
+    K2 it is CLEAN in combination with the other five;
+    K3 a malformed one is STILL flagged, under its own `sha_shape` class ——
+       so the class was taught, not merely whitelisted;
+    K4 the existing five are UNCHANGED by its arrival.
+    """
+    print("\n--- K. `🦈` SHA declaration (§3.2.4): the sixth class ---")
+    log = os.path.join(tmp, "K.log")
+
+    def run(name, text, want_action, cwd=REPO_ROOT):
+        tp = os.path.join(tmp, "K%s.jsonl" % re.sub(r"\W+", "_", name)[:40])
+        _write_transcript(tp, [_user("do the thing"), _assistant(text)])
+        return _check(name, _run(_payload(tp, cwd=cwd), log), 0, want_action)
+
+    # K1. CLEAN ALONE. Every shape §3.2.4 sanctions. The LENGTH rule is
+    # asymmetric on purpose and both ends are pinned here: §3.2.4.3's 8 is a
+    # FLOOR (shorter is a real breach, K3e), whilst anything longer stays clean
+    # because `git rev-parse --short=8` LENGTHENS its own output on an
+    # ambiguous prefix -- flagging that would punish the agent for running the
+    # exact command §3.2.4.3 prescribes.
+    run("K1a single SHA", "🦈 `97ae25ba`", "clean")
+    run("K1b two SHAs, one line (§3.2.4.4)", "🦈 `97ae25ba`, `470481d8`", "clean")
+    run("K1c multi-repo shorthands (§3.2.4.5)",
+        "🦈 Default: `97ae25ba`, `470481d8`\n🦈 AJAP: `1a2b3c4d`", "clean")
+    run("K1d 9-char, git lengthening an ambiguous prefix", "🦈 `97ae25ba4`",
+        "clean")
+    run("K1e full 40-char SHA", "🦈 `%s`" % ("97ae25ba470481d8" + "0" * 24), "clean")
+    run("K1f bold wrapper tolerated, as elsewhere", "**🦈 `97ae25ba`**", "clean")
+    # K1g. THE PROTOCOL'S OWN EXAMPLE. Root §3.1.6.3 prints a worked batch; if
+    # clint rejected the very lines CC is shown to copy, the example would
+    # teach a breach. Pinned verbatim so a future edit to either side is caught
+    # by whichever is edited second.
+    run("K1g root §3.1.6.3's own worked example",
+        "🦈 Default: `deadbeef`, `cafef00d`\n🦈 AJAP: `0ddba115`, `feedface`",
+        "clean")
+
+    # K2. CLEAN IN COMPANY. The real artefact is a BATCH: §3.1.6.3 ends its
+    # example on the `🦈` lines, so the mixed case is the one that actually
+    # ships and a per-line rule that only works in isolation is worthless.
+    run("K2a full TEA3 batch, `🦈` last",
+        "✅ `career/CP_notes.md`, `cscpt/dlint.py`\n"
+        "⇠ `202605/query_202605300226.md`\n"
+        "➡️ **`202605/response_202605300226.md`**\n"
+        "🦈 `97ae25ba`, `470481d8`", "clean")
+    run("K2b alongside the blocker and the sentinel",
+        "🦈 `97ae25ba`\n⚠️ Push denied; auth failed\n"
+        "🚨 Compaction Detected —— stopped all tasks.", "clean")
+
+    # K3. STILL FLAGGED WHEN MALFORMED, under its OWN class. The prose tail is
+    # the smuggling vector the whole ownership design exists to block; the
+    # non-hex case is what stops a sentence being backticked into place.
+    run("K3a prose tail after the SHA",
+        "🦈 `97ae25ba` committed and pushed everything", "yellow:sha_shape")
+    run("K3b bare glyph declaring nothing", "🦈", "yellow:sha_shape")
+    run("K3c SHA not backticked", "🦈 97ae25ba", "yellow:sha_shape")
+    run("K3d non-hex token wearing the glyph", "🦈 `xyz67890`", "yellow:sha_shape")
+    run("K3e too short to be an abbrev", "🦈 `97ae2`", "yellow:sha_shape")
+    run("K3e2 7 chars: under §3.2.4.3's floor of 8", "🦈 `97ae25b`",
+        "yellow:sha_shape")
+    run("K3f label is a phrase, not a shorthand",
+        "🦈 Default repo here: `97ae25ba`", "yellow:sha_shape")
+    run("K3g a file path is not a SHA", "🦈 `cscpt/clint.py`", "yellow:sha_shape")
+    run("K3h a paragraph in backticks is still a paragraph",
+        "🦈 `the fleet finished and every agent reported clean`",
+        "yellow:sha_shape")
+
+    # K3i. CROSS-TYPE, both directions —— the ownership rule is symmetric or it
+    # is not a rule. A SHA list wearing the blocker glyph is another type's
+    # declaration; a file list wearing the SHA glyph is likewise.
+    run("K3i SHA list wearing the blocker glyph",
+        "⚠️ Default: `97ae25ba`, `470481d8`", "yellow:warn_shape")
+    run("K3j file list wearing the SHA glyph",
+        "🦈 `cscpt/clint.py`, `cscpt/mlint.py`", "yellow:sha_shape")
+
+    # K4. THE OTHER FIVE ARE UNCHANGED. Re-asserted HERE, not merely elsewhere
+    # in the suite, because the failure this guards against is a shared
+    # constant (`_GLYPHS`) being edited to add one glyph and quietly losing
+    # another —— which only a check that names all six can catch.
+    run("K4a `✅` file list still clean", "✅ `cscpt/clint.py`", "clean")
+    run("K4b `⇠` comms read still clean", "⇠ `202605/query_202605300226.md`", "clean")
+    run("K4c `➡️` write still clean", "➡️ **`202605/response_202605300226.md`**",
+        "clean")
+    run("K4d `⚠️` blocker still clean", "⚠️ Push denied; auth failed", "clean")
+    run("K4e `🚨` sentinel still clean",
+        "🚨 Compaction Detected —— stopped all tasks.", "clean")
+    run("K4f prose still `prose`, not the new class",
+        "The fleet finished; three agents reported clean.", "yellow:prose")
+
+    # K5. READER MODE IS NOT WIDENED. That folder owes ZERO chat text, so the
+    # new glyph is a breach there exactly like the other five —— a new
+    # declaration class is a REPO concept and must not leak across.
+    run("K5 `🦈` is still a breach in READER mode", "🦈 `97ae25ba`",
+        "yellow:reader", cwd=READER_CWD)
+
+
 def main():
     print("clint.py ALWAYS-YELLOW regression test")
     print("target: %s" % CLINT)
@@ -889,6 +1014,7 @@ def main():
         section_failsafe(tmp)
         section_redirect(tmp)
         section_dot_escape(tmp)
+        section_sha_declaration(tmp)
         # LAST on purpose: H11 measures the shortest record this suite made
         # clint write, so every other section must have run first.
         section_prune(tmp)

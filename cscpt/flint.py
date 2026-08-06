@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """PreToolUse + PostToolUse hook —— "filename linter". ONE lint owning comms
-FILENAMES (root CLAUDE.md §3.3, `[prefix]_[12-digit TS].md`), on both halves of
-that shape: the stray space wedged before the timestamp, and the timestamp
-itself clashing with a neighbour. A TS is part of a filename, so one script.
+FILENAMES (root CLAUDE.md §3.3, `[prefix]_[12-digit TS].md`), on every part of
+that shape: the stray space wedged before the timestamp, anything trailing
+AFTER the timestamp, and the timestamp itself clashing with a neighbour. A TS
+is part of a filename, so one script.
 
 Root scope: walks TWO repo roots —— `dupbus-ceztuc-7cufVe/sessions/` and
 `AJAP_repo/inv/` —— and only their matching `YYYY/YYYYMM` sub-folders, because
@@ -13,15 +14,16 @@ AJAP root from the written path itself, never from the process cwd —— a
 user-level hook routinely runs from another repo.
 
 === NON-CCSIM —— start of all you need to RUN it ===
-* WHAT: the comms-filename gate (root CLAUDE.md §3.3, `[prefix]_[TS].md`).
-* IT BLOCKS a write whose basename has a space before the 12 digits
-  (`close_ 202606142239.md`); re-issue with the space-free name it gives.
-* IT WARNS when a write's timestamp clashes with a neighbour in its folder or
-  the AJAP mirror; only `query_`+`response_` and `close_`+`artefact_` may share
-  one, so re-stamp the odd one out.
-* IT ALERTS on any offender already beside a file you wrote: raise a `⚠️`,
-  never hunt. Fixing one is `git mv`, never gated.
-* Only the block stops a call. Anything else -> exit 0, silent.
+* WHAT: the comms-filename gate (root §3.3, `[prefix]_[TS].md`).
+* IT BLOCKS a comms name with a space before the 12 digits (`close_ 2026…`)
+  or ANYTHING after them (`query_…0423a.md`); re-issue with the name it gives
+  —— two files in one minute take consecutive minutes, never `a`/`b`.
+  `_moved_[dir]` (§8.1.2) is exempt.
+* IT WARNS on a TS clash there or in the AJAP mirror; only
+  `query_`+`response_` and `close_`+`artefact_` may share one.
+* IT ALERTS on an offender beside a file you wrote: raise a `⚠️`, never hunt.
+  Fix with `git mv`.
+* Only the block stops a call; else exit 0, silent.
 === NON-CCSIM —— end of all you need to RUN it ===
 
 === CCSIM —— only if you EDIT this file (NOT needed to run it) ===
@@ -85,12 +87,70 @@ else:
     `cp/ccsim/sandbox/flint_filename_gate_regression_test.py` exist to fail
     the moment anyone does.
 
-DETECTION RULE, stated exactly: the basename must match
+DETECTION RULE 1 (STRAY SPACE), stated exactly: the basename must match
 `^\\S*_\\s+(?=20\\d{10}(?!\\d))` —— from the START of the name, a whitespace-FREE
 run ending in `_`, then one or more whitespace characters, then a 12-digit TS
 beginning `20` and not sitting inside a longer digit run. Stated ONCE here and
 used by both modes; the duplicate copy that used to live in `tlint.py` is
 exactly the drift hazard this merge removes.
+
+DETECTION RULE 2 (TRAILING TAIL), stated exactly: for a basename that is
+COMMS-SHAPED (`_COMMS_NAME_RE`: an optional `❌_` void prefix, at most ONE CP
+prefix segment, then one of the six roots of root §3.3 —— query, response,
+close, wrap, slog, artefact), everything after the first bounded 12-digit TS
+must be extension-only (`^(?:\\.[A-Za-z0-9]+)*$`) or a sanctioned `_moved_`
+suffix. Anything else is the defect.
+
+WHY RULE 2 EXISTS: two comms files genuinely minted in the same minute were
+disambiguated with letter suffixes —— `ccsim_query_202608060423a.md` and
+`…0423b.md`. Root §3.3 gives a comms filename exactly one variable part, the
+12-digit TS, and every consumer of that name (the `#ww` reader, `close.md`'s
+pairing, this file's own TS-clash check, `dlint_quick.py`'s `_TS_SUFFIX_RE`)
+parses it positionally. A suffix silently breaks that parse whilst still LOOKING
+like a comms file, and the collision it was invented to solve already has a
+sanctioned answer: the SECOND file takes the next free MINUTE. So the block
+names that minute rather than merely refusing the suffix —— a gate that says
+"no" without saying "then what" is re-litigated every time it fires.
+
+WHY THE SUGGESTED NAME IS COMPUTED, NOT JUST "+1 MINUTE": the first offender's
+own minute is usually still free (the `a`/`b` pair should have been `0423` and
+`0424`, not `0424` and `0425`), so the suggestion tries the CLEAN name first and
+only bumps when that TS is actually occupied —— skipping over a sanctioned
+`query_`/`response_` or `close_`/`artefact_` sibling, which may share a TS by
+design. That listing is the folder `_post()` already reads, so it costs nothing
+new. A `response_` gets an extra clause instead of a bare bump: root §3.5.3
+BINDS its TS to its `query_`, so telling it to advance a minute would trade one
+breach for another.
+
+RULE 2's EXEMPTIONS, each verified against the live tree rather than imagined:
+* EXTENSION ONLY —— `.md`, and multi-part forms like `.pages.md`.
+* `_moved_[directory]` (root §8.1.2's Move Rule) and its post-extension form
+  (`…202606142148.md_moved_skipped`, 2 real files). MANDATED by the root
+  protocol: a rule that blocked the Move Rule would be worse than the defect it
+  fixes, since the Move Rule is how every rename is recorded.
+* `❌_` (root §8.2) is a PREFIX, so it never reaches this test —— but it is in
+  `_COMMS_NAME_RE` so a voided comms file is still judged on its tail.
+* NOT comms-shaped -> out of scope entirely. This is what spares
+  `gscpt/parked/AJAP Logs 202607182259.csv`,
+  `chrome_disable_ondevice_model_202607251750.mobileconfig`,
+  `temp/…/Alltech_interview_transcript_202607021219_fixed.md`,
+  `tests/test_live_202607190438_fixes.py`, the whole `backup_gcl/`
+  `…_moved_pending.md` / `_reapplied.md` / `_stale.md` family, and
+  `gscpt/parked/git_history_response_202607161603_202607171243.html` (two prefix
+  segments before the role, so ONE-prefix matching correctly declines it).
+  Calibrated over both comms repos: of 11,589 files, 10,706 carry a bounded
+  12-digit TS and 1,344 are comms-shaped; only 10 of those 1,344 carry a tail,
+  and every one of the other 24 tail shapes in the tree belongs to a file that
+  is not comms-shaped. That 10 is 4 `a`/`b` queued queries plus 6 `_r2`.
+
+`_r2` IS DELIBERATELY NOT EXEMPT, and the cost is stated rather than hidden.
+`response_202607072124_r2.md` (1 here, 5 in AJAP `inv/`) is a SECOND response to
+one query —— a shape §3.5.3 leaves no clean way to name, since a response may not
+re-stamp. Exempting it would carve a hole the `a`/`b` defect fits through
+unchanged (`_r2` and `a` differ only in spelling), so the rule stays absolute and
+those six files must be renamed or the exemption added deliberately. Until then,
+an EDIT of one is blocked and the fix is a `git mv`, which this gate never
+touches.
 
 WHY THAT SHAPE AND NOT "a TS-bearing name containing any whitespace", which was
 the obvious first draft: calibrated against every basename in this repo (5331
@@ -115,7 +175,9 @@ the exact replacement, so the cost of the theoretical case is one re-issued tool
 call. Note also what is NOT flagged and why it must not be —— `_moved_[dir]`
 suffixes (root §8.1.2) and `❌_` prefixes (§8.2) are legitimate and carry no
 whitespace, so a positive-form "must match the canonical shape exactly" check
-was rejected: it would have broken both.
+was rejected: it would have broken both. Rule 2 is the one place a positive
+form IS used, which is precisely why its exemption list is explicit and pinned
+by tests rather than left to the shape of a regex.
 
 WHY THE TS CHECK EXISTS: a comms TS is the join key between a turn's files, and
 root CLAUDE.md sanctions only two many-to-one cases —— `query_`+`response_`
@@ -129,10 +191,12 @@ WHY THE TS CHECK ONLY WARNS, NEVER REDS: a clash is a smell, not a correctness
 bug the harness can auto-resolve —— the fix ("re-stamp which file?") is human
 judgement, and blocking a write over a filename smell harms more than the smell.
 
-THE STRAY-SPACE SWEEP IS FREE, and that is the whole reason it sits in the POST
-half rather than anywhere else: `_post()` already lists the written file's own
-folder (and its mirror) for the TS check, so re-reading that same listing for
-the defect costs no extra I/O and no extra token. It fires only as a by-product
+THE MALFORMED-NAME SWEEP IS FREE, and that is the whole reason it sits in the
+POST half rather than anywhere else: `_post()` already lists the written file's
+own folder (and its mirror) for the TS check, so re-reading that same listing
+for BOTH defects costs no extra I/O and no extra token. Both classes report in
+ONE advisory, never two: stdout carries a single JSON object, so a second
+`_advise()` call would emit a second one and risk the harness parsing neither. It fires only as a by-product
 of a write CC was making anyway, which is exactly what "alert on encounter,
 never hunt" has to mean for it to be free. It is emitted as `additionalContext`
 (model-visible, non-blocking —— `hook_guide.md` §6.5) rather than on stderr
@@ -155,6 +219,13 @@ KNOWN GAPS, so nobody mistakes this for total cover:
   a script) or by the user in Finder never reaches a PreToolUse hook —— that is
   exactly the hole `.githooks/pre-commit` closes, blocking a staged ADD of an
   offending path on the way into history.
+* `.githooks/pre-commit` covers the STRAY SPACE only, not the trailing tail, so
+  a tail-defective name created outside the harness still reaches history. The
+  PreToolUse gate is the only thing rule 2 has; teaching the git hook the same
+  rule is the obvious next step and is deliberately not smuggled in here.
+* Rule 2 sees COMMS-shaped names only. A tail on anything else is out of scope
+  by design —— `_fixed`, `_reapplied` and `_notes` suffixes are ordinary naming
+  everywhere else in the tree, and flagging them would be noise, not a lint.
 
 SHAPE GUARDS: `_TS_RE`/`_has_ts` require the 12 digits not to sit inside a
 longer run, so a 13+-digit id never reads as a TS nor matches one by substring.
@@ -166,6 +237,7 @@ promise —— which matters all the more because a user-level registration mean
 any project's payload can arrive here.
 """
 
+import datetime
 import json
 import os
 import re
@@ -194,6 +266,36 @@ _TS_RE = re.compile(r"(?<!\d)(20\d{10})(?!\d)")
 #   {close, artefact} —— root CLAUDE.md §3.3.5
 _CLEAN_ROLE_SETS = (frozenset({"query", "response"}),
                     frozenset({"close", "artefact"}))
+
+# THE TRAILING-TAIL DEFECT (rule 2). See DETECTION RULE 2 in the docstring.
+#
+# A COMMS-SHAPED basename: optional `❌_` void prefix (root §8.2), at most ONE
+# CP-folder prefix (root §3.3.6 permits exactly one), then one of the six comms
+# roots of root §3.3. ONE prefix, never two —— `git_history_response_<TS>_<TS>`
+# is a generated artefact, not comms, and two-segment matching would swallow it.
+_COMMS_NAME_RE = re.compile(
+    r"^(?:❌_)?(?:[A-Za-z0-9][A-Za-z0-9-]*_)?"
+    r"(?:query|response|close|wrap|slog|artefact)_", re.IGNORECASE)
+
+# What may follow the TS: nothing, or one or more dot-extensions (`.pages.md`).
+_TAIL_OK_RE = re.compile(r"^(?:\.[A-Za-z0-9]+)*$")
+
+# ...plus the Move Rule's `_moved_[directory]` (root §8.1.2), in BOTH observed
+# positions —— before the extension (`_moved_202607.md`) and after it
+# (`…202606142148.md_moved_skipped`). Exempting this is not a nicety: the Move
+# Rule is the protocol's own way of recording every rename, so blocking it would
+# make the gate fight the fix.
+_MOVED_TAIL_RE = re.compile(r"^(?:\.[A-Za-z0-9]+)*_moved_")
+
+# The trailing extension run of a tail, used to rebuild the corrected name.
+# One-or-more (not zero-or-more): a `*` here would match empty at offset 0 and
+# `search` would return that, silently dropping every extension.
+_EXT_TAIL_RE = re.compile(r"(?:\.[A-Za-z0-9]+)+$")
+
+# How many minutes forward the suggestion may walk before giving up. 60 is an
+# hour of consecutive occupied minutes —— far past anything real; the cap exists
+# only so a pathological folder cannot spin a PreToolUse hook.
+_MAX_MINUTE_BUMP = 60
 
 # Tools that CREATE or REWRITE a file at the given path —— the only ones whose
 # call is worth blocking. Everything else (Read chief among them) can at most be
@@ -272,6 +374,98 @@ def _clean_name(base):
     return _DEFECT_RE.sub(lambda m: m.group(0).rstrip(), base, count=1)
 
 
+def _tail_defect(base):
+    """The offending tail of a comms basename (everything after its 12-digit TS
+    that is neither an extension nor a sanctioned `_moved_` suffix), or '' if
+    the name is clean —— or is not comms-shaped at all, in which case this rule
+    has no opinion about it. Name-only: no filesystem access, so it is equally
+    usable by the PRE gate and by the POST folder sweep."""
+    if not _COMMS_NAME_RE.match(base):
+        return ""
+    m = _TS_RE.search(base)
+    if not m:
+        return ""
+    tail = base[m.end():]
+    if _TAIL_OK_RE.match(tail) or _MOVED_TAIL_RE.match(tail):
+        return ""
+    return tail
+
+
+def _bump_ts(ts, minutes):
+    """`ts` advanced by `minutes`, still as YYYYMMDDHHmm. '' if `ts` is not a
+    real calendar time —— `_TS_RE` matches 12 digits, not a valid date, so
+    `20261399xxxx` reaches here and must not raise inside a hook."""
+    try:
+        t = datetime.datetime.strptime(ts, "%Y%m%d%H%M")
+        return (t + datetime.timedelta(minutes=minutes)).strftime("%Y%m%d%H%M")
+    except Exception:
+        return ""
+
+
+def _ts_available(dirpath, ts, cand_base, offender):
+    """True if `cand_base` may take `ts` in `dirpath`. Occupied means some OTHER
+    file there already carries that TS —— except the offending file itself (it is
+    being renamed away) and except a sibling that forms a SANCTIONED same-TS pair
+    with the candidate (`query_`/`response_`, `close_`/`artefact_`), which is
+    exactly the case root §3.5.3/§3.3.5 require to share one. An unreadable
+    folder yields an empty listing, i.e. "available", which errs towards
+    suggesting the minute the caller already chose."""
+    for e in _entries(dirpath):
+        if e == offender or not _has_ts(e, ts):
+            continue
+        if e == cand_base:
+            return False                    # that exact name is already on disk
+        if _is_clean_pair(cand_base, e, ts):
+            continue
+        return False
+    return True
+
+
+def _suggest_name(fp, base, tail):
+    """The name the caller should have used: the tail dropped, keeping the TS if
+    that minute is free and otherwise walking forward to the first free one.
+    Trying the CLEAN name FIRST is what makes an `a`/`b` pair land on
+    `…0423`/`…0424` rather than `…0424`/`…0425`."""
+    m = _TS_RE.search(base)
+    if not m:
+        return base
+    ts, head = m.group(1), base[:m.start()]
+    em = _EXT_TAIL_RE.search(tail)
+    ext = em.group(0) if em else ""
+    dirpath = os.path.dirname(fp) or "."
+    cand = head + ts + ext
+    if _ts_available(dirpath, ts, cand, base):
+        return cand
+    for k in range(1, _MAX_MINUTE_BUMP + 1):
+        nts = _bump_ts(ts, k)
+        if not nts:
+            break
+        cand = head + nts + ext
+        if _ts_available(dirpath, nts, cand, base):
+            return cand
+    return head + (_bump_ts(ts, 1) or ts) + ext
+
+
+def _tail_block_msg(base, tail, fixed):
+    """The BLOCK text. It names the FIX, not merely the fault —— a gate that
+    refuses without saying "then what" is re-argued every time it fires."""
+    extra = ""
+    _p, role = _prefix_role(base, _find_ts(base))
+    if role.lower() == "response":
+        extra = (" NOTE: a `response_` must keep its `query_`'s TS (§3.5.3), so "
+                 "if this is a second response to one query, raise it rather "
+                 "than re-stamping.")
+    return (
+        "flint: BLOCKED —— `" + base + "` has `" + tail + "` after its 12-digit "
+        "timestamp. Root CLAUDE.md §3.3 ends a comms filename AT the timestamp; "
+        "two files minted in one minute take consecutive MINUTES, never an "
+        "`a`/`b`/`_r2` suffix. Re-issue this call as `" + fixed + "`." + extra
+        + " (The one sanctioned suffix is §8.1.2's `_moved_[directory]`; "
+        "renaming a file that already carries the defect is `git mv`, which "
+        "this gate never touches.)\n"
+    )
+
+
 def _advise(event, text):
     """Emit on the ONE channel that is BOTH non-blocking and model-visible
     (hook_guide.md §6.5). `event` must match the firing event or the harness
@@ -294,33 +488,48 @@ def _pre(data):
     if not fp:
         return 0
     base = os.path.basename(fp)
-    if not _DEFECT_RE.search(base):
-        return 0
+
+    # BOTH defect classes, stray space FIRST —— a name carrying both is a
+    # whitespace bug foremost, and its message already names the whole fix.
+    if _DEFECT_RE.search(base):
+        fixed = _clean_name(base)
+        block = (
+            "flint: BLOCKED —— `" + base + "` has whitespace between the prefix "
+            "and its 12-digit timestamp. Root CLAUDE.md §3.3 names comms files "
+            "`[prefix]_[TS].md`, with no space. Re-issue this call as `" + fixed
+            + "`. (Renaming a file that already carries the defect is `git mv`, "
+            "which this gate never touches.)\n")
+        advise = (
+            "[flint] Stray-space filename encountered: `" + fp + "`. Root "
+            "CLAUDE.md §3.3 names comms files `[prefix]_[TS].md`, with no "
+            "space before the 12 digits; this one should be `" + fixed + "`.")
+    else:
+        tail = _tail_defect(base)
+        if not tail:
+            return 0
+        fixed = _suggest_name(fp, base, tail)
+        block = _tail_block_msg(base, tail, fixed)
+        advise = (
+            "[flint] Malformed comms filename encountered: `" + fp + "` carries "
+            "`" + tail + "` after its 12-digit timestamp. Root CLAUDE.md §3.3 "
+            "ends a comms filename AT the timestamp (a second file in the same "
+            "minute takes the NEXT minute, never an `a`/`b` suffix); this one "
+            "should be `" + fixed + "`.")
 
     tool = data.get("tool_name")
     tool = tool if isinstance(tool, str) else ""
-    fixed = _clean_name(base)
 
     # ⚠️ THE ONE SCOPE-GUARDED DECISION IN THIS FILE (hook_guide.md §4.7).
     if tool in _WRITE_TOOLS and _in_scope(data):
         # PreToolUse + exit 2 == the tool call is BLOCKED and the message
         # reaches the model. At exit 2 the harness ignores stdout and JSON
         # entirely, so this MUST go to stderr (hook_guide.md §6.8.2).
-        sys.stderr.write(
-            "flint: BLOCKED —— `" + base + "` has whitespace between the prefix "
-            "and its 12-digit timestamp. Root CLAUDE.md §3.3 names comms files "
-            "`[prefix]_[TS].md`, with no space. Re-issue this call as `" + fixed
-            + "`. (Renaming a file that already carries the defect is `git mv`, "
-            "which this gate never touches.)\n"
-        )
+        sys.stderr.write(block)
         return 2
 
     # Not a write, or not this repo -> advise, never block.
-    _advise("PreToolUse", (
-        "[flint] Stray-space filename encountered: `" + fp + "`. Root "
-        "CLAUDE.md §3.3 names comms files `[prefix]_[TS].md`, with no "
-        "space before the 12 digits; this one should be `" + fixed
-        + "`. ALERT THE USER (a `⚠️` declaration) —— do not go hunting "
+    _advise("PreToolUse", advise + (
+        " ALERT THE USER (a `⚠️` declaration) —— do not go hunting "
         "for others. Rename only on his say-so, with `git mv` in a "
         "move-only commit (universal/coding.md § Git Discipline)."
     ))
@@ -422,21 +631,27 @@ def _post(data):
     mdir = _mirror_dir(dirpath)
     mirror_entries = _entries(mdir) if mdir else []
 
-    # --- CHECK 2 —— STRAY-SPACE SWEEP. Independent of the TS check and reported
-    # even when the timestamps are clean, so it must run BEFORE that check's
-    # early return. Scans names only: a stat would buy nothing, since a
-    # directory carrying the defect is just as wrong as a file.
-    stray = [os.path.join(dirpath, e) for e in sorted(own_entries)
-             if _DEFECT_RE.search(e)]
+    # --- CHECK 2 —— MALFORMED-NAME SWEEP, both defect classes. Independent of
+    # the TS check and reported even when the timestamps are clean, so it must
+    # run BEFORE that check's early return. Scans names only: a stat would buy
+    # nothing, since a directory carrying the defect is just as wrong as a file.
+    def _bad(e):
+        return bool(_DEFECT_RE.search(e)) or bool(_tail_defect(e))
+
+    stray = [os.path.join(dirpath, e) for e in sorted(own_entries) if _bad(e)]
     if mdir:
         stray += [os.path.join(mdir, e) for e in sorted(mirror_entries)
-                  if _DEFECT_RE.search(e)]
+                  if _bad(e)]
     if stray:
+        # ONE advisory for BOTH classes —— stdout carries a single JSON object,
+        # so a second `_advise()` call would emit a second one.
         _advise("PostToolUse", (
-            "[flint] Stray-space filename(s) in a folder you just wrote to: "
+            "[flint] Malformed comms filename(s) in a folder you just wrote to: "
             + "; ".join("`" + p + "`" for p in stray)
-            + ". Root CLAUDE.md §3.3 names comms files `[prefix]_[TS].md`, "
-            "with no space before the 12 digits. ALERT THE USER (a `⚠️` "
+            + ". Root CLAUDE.md §3.3 names comms files `[prefix]_[TS].md` —— no "
+            "space before the 12 digits, and nothing after them (a second file "
+            "in the same minute takes the NEXT minute, never an `a`/`b` "
+            "suffix). ALERT THE USER (a `⚠️` "
             "declaration) —— this surfaced on its own, so do NOT go hunting "
             "for others. Rename only on his say-so, with `git mv` in a "
             "move-only commit (universal/coding.md § Git Discipline)."

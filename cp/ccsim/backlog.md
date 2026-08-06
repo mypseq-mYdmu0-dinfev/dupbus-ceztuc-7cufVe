@@ -150,3 +150,14 @@ Ref: `career_close_202608041700.md` §6.1
 - Problem: `git checkout HEAD -- .` was used to undo a deliberate earlier checkout of one directory. It reverted the WHOLE tree, silently discarding an uncommitted, completed and lint-passed section of a comms file; the next commit was then titled as containing it. Found only because a later structural check compared numbered points against section headings.
 - Suggestion: Scope a restore to the paths actually disturbed (`git checkout HEAD -- scripts/`), never `-- .`; and commit comms files BEFORE running anything destructive. Worth a line in `coding.md` § Git Discipline alongside the move-only-commit rule.
 - Ref: AJAP_repo/inv/2026/202608/response_202608012000.md §55; slog_202608020018.md [202608021215]
+
+## A protocol edit can silently disarm a blocking hook
+- Problem: the user added a 6th declaration class (`🦈`, root `CLAUDE.md` §3.2.4). That silently defeated `cscpt/mlint.py`'s SHAPE A —— its "did the turn stop on a declaration batch?" test knew only `✅`/`⇠`/`➡️`, and a batch now ENDS on `🦈`. Measured: `not_declaration_end` (no block) before the fix, `block` after. `cscpt/clint.py` was also logging every compliant `🦈` turn as `yellow:prose` AND firing a user-facing warning. Neither surfaced an error; both were found only because a sweep was explicitly commissioned.
+- Suggestion: any change to root `CLAUDE.md` §3.2's declaration set must be swept against `clint.py` and `mlint.py` in the SAME turn —— they are the two scripts that pattern-match glyphs. Cheaper still: a regression check asserting that the glyph set each script knows equals the set §3.2 defines, so the two cannot drift silently. Both suites now pin §3.1.6.3's example verbatim, which catches whichever side moves second, but that is a partial guard rather than the general one.
+- Ref: `cp/ccsim/sandbox/clint_detection_contract_regression_test.py` (118/118); `…/mlint_m2_sprint_gate_regression_test.py` (80/80)
+
+## Time-bomb fixtures —— a hard-coded TS rots within a day
+- Problem: `cp/ccsim/sandbox/tlint_time_integrity_regression_test.py` hard-coded `202608052335` in three places. Within `~`27 hours that TS drifted past the very threshold the lint under test enforces, so `tlint`'s own drift check fired on the fixtures and swallowed nine assertions —— the suite reported 70/79 with no defect present. A suite that fails for a reason unrelated to the code is a suite that gets ignored.
+- Suggestion: DONE for this suite —— the TS is now derived from the Sydney clock at run time, with the rationale written inline so it cannot recur here. The general rule is worth stating in `universal/coding.md` § Testing: a fixture for a time-sensitive check must be MINTED at run time, never written as a literal. Worth a sweep for other literal TSs in `cp/ccsim/sandbox/`.
+- Ref: `cp/ccsim/sandbox/tlint_time_integrity_regression_test.py` (79/79 after)
+

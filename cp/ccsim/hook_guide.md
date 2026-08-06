@@ -235,7 +235,7 @@ for ev,groups in d.items():
 
 - 7.7. Per-invocation LOGGING is what makes "never fired" distinguishable from "fired and found nothing":
   - 7.7.1. A log written only on a breach cannot tell those two apart —— an empty log is consistent with BOTH, which is exactly how the dead wiring survived so long.
-  - 7.7.2. clint therefore logs EVERY invocation to `cscpt/.clint.log` (git-ignored), tagged by the stage reached: `no_stdin`, `out_of_scope`, `no_transcript`, `unreadable_transcript`, `empty_transcript`, `clean`, `block`, `block_failed`, `yellow:spent`, `yellow:active`.
+  - 7.7.2. clint therefore logs EVERY invocation to `cscpt/.clint.log` (git-ignored), tagged by the stage reached: `no_stdin`, `out_of_scope`, `no_transcript`, `unreadable_transcript`, `empty_transcript`, `clean` (+ `clean:dot`/`clean:dot_reader`), `message_failed`, one `exempt:` per exemption, and one `yellow:` per breach class (`prose`, `io_shape`, `sha_shape`, `sentinel`, `warn_*`, `sic_overrun`, `reader`). The retired always-RED tags (`block`, `block_failed`, `yellow:spent`, `yellow:active`) no longer exist —— §6.4.
   - 7.7.3. A non-growing clint log across real turns is now UNAMBIGUOUS: the harness is not calling that command.
   - 7.7.4. clint, alint, dlint_quick and hlint each keep a stage log. flint now has §7.3 probe rows on BOTH its events but still no stage log; DADC, plint and nlint keep NEITHER a log nor a probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
 - 7.8. After ANY change to a hook script, its filename, its path, or the settings file:

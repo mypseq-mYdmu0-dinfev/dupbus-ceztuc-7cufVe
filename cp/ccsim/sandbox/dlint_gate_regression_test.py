@@ -945,37 +945,40 @@ def test_read_tense_quick_only():
 
 
 def test_read_tense_noise():
-    """REGRESSION —— the advisory must not fire on correct writing.
+    """REGRESSION —— what the advisory may and may NOT stay quiet about.
 
-    THE FAILING SCENARIO, measured rather than asserted: `\\b[Rr]ead\\b` over one
-    real `response_` produced 21 flags, of which one was an actual past tense.
-    The owner's expectation is that a correctly-written file fires ZERO times.
-    That is not reachable by tense detection —— "you read it" is past or present
-    and only a reader can say —— so what IS pinned here is the four mechanical
-    classes that were never tense errors at all, plus the one-flag-per-file
-    reporting that stops a genuine ambiguity being served twenty times over.
+    THE FAILING SCENARIO, twice over and in opposite directions.
+    FIRST: `\\b[Rr]ead\\b` fires on 63% of this repo's 492 `response_` files
+    (970 hits), most of them not tense errors, so four exclusion classes were
+    added and the noise fell 94%.
+    THEN: a live `response_` shipped "that file is read only at `#close`" and
+    the advisory said nothing —— the `be`-passive had been excluded as
+    "cannot be past", but a passive `read` is the PARTICIPLE, pronounced
+    /rɛd/, which is precisely what `#r` disambiguates. The owner then ruled the
+    trade-off explicitly: a false positive costs ~10 wasted tokens, a false
+    negative "could be highly misleading". Two of the four classes were
+    therefore removed, taking the count from 522 hits over 247 files to 578
+    over 256 —— +11% noise to close the miss, against a 970-hit ceiling if
+    every exclusion went.
 
-    The residual is pinned too, deliberately: a bare "You read X" STILL fires,
-    and a test asserting otherwise would be encoding a promise the check cannot
-    keep."""
+    So the SILENT list below is now only what `#r` could never replace, and
+    every entry that reads as a "correct" usage in the FIRES list is an
+    ACCEPTED false positive, priced at ten tokens and kept deliberately."""
     dlint = _dlint()
 
     silent = [
-        ("re-read the file", "class 1: hyphenated compound"),
+        ("re-read the file", "class 1: hyphenated compound; no `re-#r` exists"),
         ("read-only mode", "class 1: hyphenated compound"),
         ("another read-reminder fired", "class 1: hyphenated compound"),
         ("she over-read the situation", "class 1: hyphenated compound"),
         ("a must-read guide", "class 1: hyphenated compound"),
         ("edit it with the Read tool", "class 2: the tool name"),
         ("Read/Write payloads", "class 2: the tool name"),
-        ("the miss was not a missing read.", "class 3: a noun"),
-        ("this does not discharge the read", "class 3: a noun"),
-        ("a read via Bash is invisible", "class 3: a noun"),
-        ("you had to read past it", "class 4: infinitive"),
-        ("it will read as questions", "class 4: future"),
-        ("the file is only read when editing", "class 4: present passive"),
-        ("the file is not yet read", "class 4: present passive"),
-        ("CC must read it first", "class 4: modal"),
+        ("this does not discharge the read", "an article: a noun"),
+        ("a read via Bash is invisible", "an article: a noun"),
+        ("you had to read past it", "infinitive: forces the bare stem"),
+        ("it will read as questions", "future: forces the bare stem"),
+        ("CC must read it first", "modal: forces the bare stem"),
         ("reading the file", "never matched: not the whole word"),
         ("`#r` and #r are shorthand", "never matched: not the word"),
     ]
@@ -984,13 +987,26 @@ def test_read_tense_noise():
               _rt(dlint, text)[:1])
 
     fires = [
-        "You read the originals, then discovered they had moved.",
-        "The files were already read this session.",
+        # THE EXACT MISS. A live `response_` shipped this sentence and the
+        # advisory never mentioned it.
+        ("that file is read only at `#close`", "the `be`-passive is /rɛd/"),
+        ("the file is not yet read", "same, with an adverb in between"),
+        ("the brief is read by every SA", "same, plain present passive"),
+        ("You read the originals, then discovered they had moved.", "past"),
+        ("The files were already read this session.", "perfect"),
+        # Removed with the determiner-plus-clause-break heuristic, which
+        # swallowed this genuine past tense because `the` sat three tokens back.
+        ("the file you read.", "past tense, previously hidden by a determiner"),
+        # Pronominal determiners: each of these can head a past clause.
+        ("That read as an oversight.", "demonstrative as subject"),
+        ("Each read the brief before starting.", "distributive as subject"),
+        # ACCEPTED FALSE POSITIVE, named as one rather than quietly excluded:
+        # this really is a noun, and firing on it costs ten tokens.
+        ("the miss was not a missing read.", "accepted false positive"),
     ]
-    for text in fires:
-        check("N/still fires on %r" % text, _rt(dlint, text), "a real past "
-              "tense must survive the narrowing —— hiding it is worse than "
-              "the noise")
+    for text, why in fires:
+        check("N/fires on %r (%s)" % (text, why), _rt(dlint, text),
+              "a false negative here is the failure the owner ranks worst")
 
     # ONE FLAG PER FILE. Twenty repetitions of one reminder is the noise; the
     # line numbers carry the same information at a twentieth of the volume.
@@ -1001,14 +1017,21 @@ def test_read_tense_noise():
           hits[:1])
     check("N/and names line numbers to jump to",
           hits and "L1, L2" in hits[0], hits[:1])
+    # AND NAMES ALL OF THEM. The list used to stop at eight and elide the rest,
+    # so a genuine past tense on line nine was detected and then hidden —— a
+    # false negative manufactured by the report itself.
+    check("N/every line number is listed, never truncated at eight",
+          hits and "L20" in hits[0] and "…" not in hits[0], hits[:1])
 
-    # `--rt-quiet` suppresses THIS advisory and nothing else. `dlint_quick.py`
-    # passes it once a (session, file) has already been shown the report.
+    # `--rt-quiet` is gone. A stale caller must still lint rather than die.
     red, yellow = dlint.run_checks("You read it. The colors are wrong.",
-                                   quick=True, rt_quiet=True)
-    check("N/--rt-quiet silences the advisory",
-          not [m for _, m in yellow if 'bare "read"' in m], yellow[:1])
-    check("N/but never silences a RED", len(red) == 1, red)
+                                   quick=True)
+    check("N/the advisory is no longer suppressible",
+          [m for _, m in yellow if 'bare "read"' in m], yellow[:1])
+    check("N/and the RED is unaffected", len(red) == 1, red)
+    check("N/a stale `--rt-quiet` argument is swallowed, not an error",
+          dlint.main(["dlint.py", "--quick", "--rt-quiet", "--text",
+                      "Nothing to see."]) == 0)
 
 
 def test_americanisms():
@@ -1166,33 +1189,58 @@ def test_write_scope_is_one_file():
         rt.close()
 
 
-def test_read_tense_once_per_session():
-    """REGRESSION —— told once is told.
+def test_read_tense_reaches_cc_on_every_run():
+    """REGRESSION —— the advisory must reach CC, not merely be computed.
 
-    The whole dlint report reaches CC only on a BLOCK, so a RED loop re-serves
-    the same `read`/`#r` advisory on every pass. The owner's second sentence was
-    that it must not repeat within a session once CC has been told. Reuses the
-    existing (session, file) marker directory rather than a second mechanism."""
+    TWO false negatives, both of which looked like reasonable noise control:
+      1. A clean `--quick` run DISCARDED the whole report, so the advisory
+         reached CC only when a RED happened to co-occur —— i.e. never, on the
+         majority of writes.
+      2. It was then shown at most once per (session, file), so a NEW bare
+         `read` introduced by a later write to the same file was never
+         mentioned.
+    The owner ruled the trade-off: a false positive costs ~10 tokens, a false
+    negative "could be highly misleading". Both suppressions are therefore gone,
+    and this pins their absence from the OUTSIDE, through the hook's real
+    stdout/stderr contract —— running the linter by hand would prove the
+    matcher and nothing about whether CC is ever told (`cp/ccsim/CLAUDE.md`
+    §8.5)."""
     rt = Repo()
     try:
+        # (1) A CLEAN file —— no RED anywhere —— must still deliver it.
+        clean = ("# Response\n\nThat file is read only at `#close`.\n"
+                 + FILLER)
+        p = rt.write("sessions/2026/202608/response_202608019998.md", clean)
+        r = rt.post("RT0", p)
+        adv = ctx(r)
+        check("P/a clean run still delivers the advisory",
+              r.returncode == 0 and 'bare "read"' in adv,
+              "rc=%s out=%s" % (r.returncode, r.stdout[:300]))
+        check("P/the `be`-passive that was missed is the one it names",
+              "L3" in adv, adv[:300])
+        check("P/and stdout is still ONE JSON object",
+              r.stdout.strip().count("hookSpecificOutput") == 1,
+              r.stdout[:300])
+
+        r = rt.post("RT0", p)
+        check("P/a SECOND write in the same session repeats it",
+              'bare "read"' in ctx(r), r.stdout[:300])
+
+        # (2) A file that also carries a RED: the block must still carry it.
         body = ("# Response\n\nYou read the originals yesterday.\n"
                 "The colors are wrong.\n" + FILLER)
         p = rt.write("sessions/2026/202608/response_202608019999.md", body)
 
         r = rt.post("RT1", p)
-        check("P/the first block carries the advisory",
+        check("P/a blocking run carries the advisory on stderr",
               r.returncode == 2 and 'bare "read"' in r.stderr, r.stderr[:300])
 
         r = rt.post("RT1", p)
-        check("P/the second block in the SAME session does not repeat it",
-              r.returncode == 2 and 'bare "read"' not in r.stderr,
+        check("P/the second block in the SAME session repeats it too",
+              r.returncode == 2 and 'bare "read"' in r.stderr,
               r.stderr[:300])
-        check("P/but the RED itself is still reported",
+        check("P/and the RED itself is still reported",
               "Americanism" in r.stderr, r.stderr[:300])
-
-        r = rt.post("RT2", p)
-        check("P/a NEW session is told once of its own",
-              r.returncode == 2 and 'bare "read"' in r.stderr, r.stderr[:300])
     finally:
         rt.close()
 
@@ -1200,7 +1248,7 @@ def test_read_tense_once_per_session():
 def main():
     for fn in (test_read_tense_quick_only, test_read_tense_noise,
                test_americanisms, test_write_scope_is_one_file,
-               test_read_tense_once_per_session,
+               test_read_tense_reaches_cc_on_every_run,
                test_hart, test_scope, test_reminder, test_classifier,
                test_gate, test_guards, test_replay, test_fold):
         try:

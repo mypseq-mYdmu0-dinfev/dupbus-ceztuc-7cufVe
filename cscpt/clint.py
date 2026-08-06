@@ -7,7 +7,7 @@ in the CCSIM section below for why, and the price of that choice).
 
 Two rules, picked by the session's working directory (see REPO SCOPE below):
 * REPO mode (this repo) —— root CLAUDE.md §3.2: the only chat text permitted is
-  the 5 declaration lines, and each of the 5 glyphs is OWNED by its own
+  the 6 declaration lines, and each of the 6 glyphs is OWNED by its own
   declaration type (see DECLARATION CONTRACTS); any other non-blank line is a
   breach. Four exemptions apply (`override`, `yn`, `sic`, `DATS`), plus a lone
   `.` (see DOT ESCAPE) which stays CLEAN rather than merely quieter.
@@ -20,11 +20,10 @@ Two rules, picked by the session's working directory (see REPO SCOPE below):
 * WHAT: a Stop hook scanning the agent's chat text at turn end. NEVER blocks ——
   every verdict exits 0. A breach warns the USER and logs; it never reaches you.
 * PERMITTED: blank lines; a `---`/`***`/`___` divider; each glyph ONLY in the
-  declaration it owns —— the 3 I/O glyphs a backticked file list, the blocker
-  glyph ≤5 words, the sentinel verbatim; plus a lone `.` (both modes). Reader
-  folder: blank lines and that lone `.` only.
-* Comply regardless: root CLAUDE.md §3.2 mandates declarations-only chat,
-  whether or not this script enforces it.
+  declaration it owns —— the 3 I/O glyphs a backticked file list, the SHA glyph
+  backticked hashes, the blocker glyph ≤5 words, the sentinel verbatim; plus a
+  lone `.` (both modes). Reader folder: blank lines and that lone `.` only.
+* Comply regardless: root CLAUDE.md §3.2 mandates declarations-only chat.
 * Verdicts log to `cscpt/.clint.log`.
 === NON-CCSIM —— end of all you need to RUN it ===
 
@@ -37,7 +36,7 @@ was gameable. The agent could satisfy it by CHOOSING A PREFIX rather than by
 telling the truth —— real observed abuse: `⚠️ Fleet running; awaiting reports.`,
 a progress note wearing the blocker glyph, and `✅ **Hooks are now live** —— dlint
 fired and blocked that edit. Reverting the probe…`, a paragraph wearing the
-read-declaration glyph. So each of the 5 glyphs is now OWNED by the ONE
+read-declaration glyph. So each of the 6 glyphs is now OWNED by the ONE
 declaration type root CLAUDE.md §3.2 assigns it, and a line bearing a glyph must
 satisfy THAT type's shape:
 * `✅`/`⇠`/`➡️` (§3.2.1–3, I/O) —— a FILE LIST. Strip bracketed `(...)` notes and
@@ -49,12 +48,35 @@ satisfy THAT type's shape:
   established real-world convention, so it is permitted deliberately —— the
   smuggling vector is the BARE prose tail, and that is what this blocks. An
   agent needing an annotation brackets it; nothing truthful is lost.
-* `🚨` (§3.2.5) —— the post-compaction sentinel, EXACT wording only, taken
-  verbatim from §3.2.5 (`_SENTINEL_CANON`). No bold wrapper, no paraphrase: the
+* `🦈` (§3.2.4, ADDED when the owner split the turn's commit SHAs out of `➡️`
+  into a SIXTH declaration class) —— a COMMIT-HASH LIST: an optional single-word
+  repo shorthand (`Default:`, `AJAP:`, §3.2.4.5.2) followed by backticked
+  abbreviated SHAs, separators only in between. Deliberately NOT folded into the
+  I/O shape above, for a reason the I/O rule itself creates: `_io_ok` permits an
+  un-backticked tail only inside brackets, so the §3.2.4.5 multi-repo form
+  `🦈 Default: `…`` would be judged a prose tail and flagged on every compliant
+  multi-repo turn. Two independent tests are applied to each hash, and each pays
+  for itself: HEX (`_SHA_TOKEN_RE`), because a git SHA is hex by construction and
+  nothing else this glyph may carry is —— that single test is what stops a
+  sentence being backticked into place, which is the whole smuggling vector; and
+  a LENGTH FLOOR of §3.2.4.3's 8, so a SHORTER abbreviation is flagged. The
+  ceiling is deliberately not 8 but a full 40, and that asymmetry is the whole
+  point: `git rev-parse --short=8` LENGTHENS its own output when 8 chars are
+  ambiguous in that repo, so a hard 8 would flag the correct command's own
+  result —— punishing obedience. Short is a real breach and is caught; long is
+  git being careful and is not.
+  DELIBERATE NON-GOAL, stated rather than half-built: §3.2.4.4's "one line
+  unless multiple repos" is a CROSS-LINE rule, and `_line_breach` judges one
+  line at a time with no turn context. Threading that state through solely to
+  catch a redundant second `🦈` line would buy a cosmetic verdict at the cost of
+  the per-line design every other contract here relies on. The shape of each
+  line is enforced; their COUNT is not.
+* `🚨` (§3.2.6) —— the post-compaction sentinel, EXACT wording only, taken
+  verbatim from §3.2.6 (`_SENTINEL_CANON`). No bold wrapper, no paraphrase: the
   whole value of a sentinel is that it cannot be approximated, and any other
   text carrying it is by definition not that sentinel.
-* `⚠️` (§3.2.4) —— a genuine BLOCKER, "stop & alert", capped three ways:
-  `_WARN_MAX_WORDS` (§3.2.4's own ≤5w), `_WARN_MAX_HYPHENS`, `_WARN_MAX_CHARS`,
+* `⚠️` (§3.2.5) —— a genuine BLOCKER, "stop & alert", capped three ways:
+  `_WARN_MAX_WORDS` (§3.2.5's own ≤5w), `_WARN_MAX_HYPHENS`, `_WARN_MAX_CHARS`,
   tested in that order so the first limit breached is the one reported. The
   hyphen cap exists because words can be skewered together with hyphens to
   smuggle long prose past a WORD count; the character cap is the final safety
@@ -182,8 +204,10 @@ Tested in order `override` → `yn` → `sic` → `DATS`, widest authorisation f
 so the log names the STRONGEST reason a turn was let through; where several
 apply the turn was authorised outright anyway.
 
-DOT ESCAPE: root CLAUDE.md §3.1.6.2 reads "NEVER repeat declaration after a
-Stop-hook; emit a lone `.` instead (nothing else)" —— written in direct
+DOT ESCAPE: root CLAUDE.md §3.1.8.2 (the Harness Nudge; it was §3.1.6.2 when
+this paragraph was written, and the section has since been renumbered TWICE ——
+§3.1.6.2 is now TEA2, chapter marking, so the old pointer sent a reader to
+entirely the wrong rule) sanctions a lone `.` and nothing else —— written in direct
 response to a deadlock the OLD always-RED policy created (see ALWAYS RED ->
 ALWAYS YELLOW above for the full history: a block forcing one more model turn
 with nothing new left to declare, resolved in practice by re-emitting the
@@ -360,7 +384,9 @@ DOT ESCAPE); `out_of_scope`; `message_failed` (the exit-0 warning write itself
 failed); the parse stage reached; one `exempt:` per exemption
 (`exempt:override`, `exempt:yn`, `exempt:sic`, `exempt:dats`); and one
 `yellow:` per breach CLASS —— `yellow:prose` (no glyph at all),
-`yellow:io_shape` (an I/O glyph not carrying a file list), `yellow:sentinel`
+`yellow:io_shape` (an I/O glyph not carrying a file list), `yellow:sha_shape`
+(the SHA glyph not carrying a backticked hex commit-hash list),
+`yellow:sentinel`
 (compaction glyph, wrong wording), `yellow:warn_shape` (blocker glyph carrying
 another type's declaration), `yellow:warn_empty`, `yellow:warn_words`,
 `yellow:warn_hyphens`, `yellow:warn_chars`, `yellow:warn_progress` (a progress
@@ -459,17 +485,18 @@ def _mode(data):
 
 
 # Base glyph codepoints (variation selectors ignored, so `➡️` and `➡` both pass).
-_GLYPHS = ("✅", "⇠", "➡", "⚠", "\U0001f6a8")  # ✅ ⇠ ➡ ⚠ 🚨
+_GLYPHS = ("✅", "⇠", "➡", "\U0001f988", "⚠", "\U0001f6a8")  # ✅ ⇠ ➡ 🦈 ⚠ 🚨
 _VS16 = "️"                 # the emoji variation selector, stripped before matching
 
 # Each glyph's OWNER declaration type (root CLAUDE.md §3.2; see docstring
 # DECLARATION CONTRACTS). `_IO_GLYPHS` = the three I/O declarations §3.2.1–3,
 # which share one shape: a list of backticked file paths.
 _IO_GLYPHS = ("✅", "⇠", "➡")
-_G_WARN = "⚠"                    # §3.2.4 blocker
-_G_SENTINEL = "\U0001f6a8"       # §3.2.5 post-compaction sentinel
+_G_SHA = "\U0001f988"            # §3.2.4 commit-SHA declaration
+_G_WARN = "⚠"                    # §3.2.5 blocker
+_G_SENTINEL = "\U0001f6a8"       # §3.2.6 post-compaction sentinel
 
-# §3.2.5's wording, copied VERBATIM from root CLAUDE.md —— a sentinel that may be
+# §3.2.6's wording, copied VERBATIM from root CLAUDE.md —— a sentinel that may be
 # paraphrased is not a sentinel. Compared against the whole stripped line.
 _SENTINEL_CANON = "🚨 Compaction Detected —— stopped all tasks.".replace(_VS16, "")
 _SENTINEL_BODY = _SENTINEL_CANON.split(" ", 1)[1]
@@ -487,8 +514,22 @@ _TICKED_RE = re.compile(r"`[^`]*`")
 # vector by which a paragraph used to ride behind a declaration glyph.
 _IO_RESIDUE_RE = re.compile(r"^[\s,;:.*_~×0-9+\-–—…]*$")
 
-# --- Blocker declaration caps (§3.2.4) ------------------------------------
-_WARN_MAX_WORDS = 5              # §3.2.4's own "≤5w"
+# --- SHA declaration shape (§3.2.4) ---------------------------------------
+# An optional repo shorthand opening the line: `Default:` / `AJAP:`
+# (§3.2.4.5.2). ONE word, so it cannot become a sentence; the colon and the
+# following space are what mark it as a label rather than a stray hash.
+_SHA_LABEL_RE = re.compile(r"^[A-Za-z][A-Za-z0-9_-]{0,23}:\s+")
+# One abbreviated commit hash. HEX is the load-bearing half —— it is what stops
+# prose being backticked into place. The FLOOR is §3.2.4.3's 8; the CEILING is
+# open to a full 40 because `git rev-parse --short=8` lengthens its OWN output
+# on an ambiguous prefix, and flagging a correct command's result would be the
+# worse error (see docstring DECLARATION CONTRACTS).
+_SHA_TOKEN_RE = re.compile(r"^[0-9a-fA-F]{8,40}$")
+# What may remain between the hashes: separators only, exactly as for I/O.
+_SHA_RESIDUE_RE = re.compile(r"^[\s,;·|&+]*$")
+
+# --- Blocker declaration caps (§3.2.5) ------------------------------------
+_WARN_MAX_WORDS = 5              # §3.2.5's own "≤5w"
 _WARN_MAX_HYPHENS = 3            # hyphens can skewer words past a WORD count
 # Final safety net against the same evasion. Its VALUE is documented in the
 # CCSIM block only, never in NON-CCSIM, any guide, or the user-facing message:
@@ -626,13 +667,39 @@ def _io_ok(rest):
     return bool(_IO_RESIDUE_RE.match(body))
 
 
+def _sha_ok(rest):
+    """True if `rest` is a well-formed SHA declaration body (§3.2.4): an
+    optional one-word repo shorthand, then backticked abbreviated commit
+    hashes separated by punctuation and nothing else.
+
+    Method: drop the label if present, then require at least one backticked
+    span, every span to be a hex hash of git-abbreviation length, and whatever
+    sits between them to be separators only. Kept SEPARATE from `_io_ok`
+    because that function would reject the §3.2.4.5 multi-repo form's label as
+    an un-bracketed prose tail —— see docstring DECLARATION CONTRACTS for why
+    the hex test, not the length, is what does the real work here."""
+    if not rest:
+        return False
+    body = _SHA_LABEL_RE.sub("", rest, count=1)
+    spans = _TICKED_RE.findall(body)
+    if not spans:
+        return False
+    for span in spans:
+        if not _SHA_TOKEN_RE.match(span[1:-1].strip()):
+            return False
+    residue = _TICKED_RE.sub(" ", body)
+    if "`" in residue:                   # unbalanced backtick -> not a clean list
+        return False
+    return bool(_SHA_RESIDUE_RE.match(residue))
+
+
 def _warn_breach(rest):
     """Breach class for a `⚠️` line's body, or None if it is a permitted
-    blocker declaration (§3.2.4). Caps are tested words -> hyphens -> chars so
+    blocker declaration (§3.2.5). Caps are tested words -> hyphens -> chars so
     the FIRST limit breached is the one recorded."""
     if not rest:
         return "warn_empty"              # a glyph declaring nothing
-    if _io_ok(rest) or rest == _SENTINEL_BODY:
+    if _io_ok(rest) or _sha_ok(rest) or rest == _SENTINEL_BODY:
         return "warn_shape"              # another type's declaration, wrong glyph
     if len(rest.split()) > _WARN_MAX_WORDS:
         return "warn_words"
@@ -668,8 +735,10 @@ def _line_breach(line, mode):
         return "prose"                   # no declaration glyph at all
     if g in _IO_GLYPHS:
         return None if _io_ok(rest) else "io_shape"
+    if g == _G_SHA:
+        return None if _sha_ok(rest) else "sha_shape"
     if g == _G_SENTINEL:
-        # EXACT §3.2.5 wording only, measured on the raw line: not even a bold
+        # EXACT §3.2.6 wording only, measured on the raw line: not even a bold
         # wrapper, because an approximable sentinel is worthless.
         return None if s.replace(_VS16, "") == _SENTINEL_CANON else "sentinel"
     return _warn_breach(rest)            # g == _G_WARN
@@ -769,7 +838,7 @@ def _dats_exempt(offending):
 
 def _lone_dot_turn(all_lines):
     """True if the WHOLE turn's non-blank content is a single line reading
-    exactly one full stop (whitespace-trimmed) —— root CLAUDE.md §3.1.6.2's
+    exactly one full stop (whitespace-trimmed) —— root CLAUDE.md §3.1.8.2's
     sanctioned no-op reply, recognised in BOTH REPO and READER mode (see
     docstring DOT ESCAPE for the two independent reasons why, and for why the
     match is this narrow). `all_lines` already holds every non-blank line

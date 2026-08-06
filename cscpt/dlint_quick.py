@@ -97,6 +97,23 @@ un-linted; the answer there is to EXTRACT that half and run FULL mode on the
 extract (`writing.md` § Deliverable Lint). Emitted once per (session, file), so
 redrafting is never nagged.
 
+THE READ ADVISORY RIDES THE SAME CHANNEL, and unlike the reminder it fires
+EVERY time. `--quick`'s one judgement-requiring YELLOW ("N bare `read` left to
+judge" —— past/perfect wants `#r`, per `glossary.md`) used to reach CC on ONE
+path only: the exit-2 stderr write a RED triggers. A clean run discarded the
+whole report, so on the majority of writes the advisory was raised by the
+linter and seen by nobody. `_read_note` lifts that one line out and forwards
+it, and there is no per-session memory of having done so —— the owner's ruling
+is that a false positive costs ~10 tokens whilst a false negative "could be
+highly misleading", and both suppressions this file used to apply were
+false-negative machines. It shares the ONE `_emit_context` call with the
+reminder: stdout carries a single JSON object, so two calls would emit two and
+the harness would parse neither.
+  NO OTHER YELLOW IS FORWARDED. The rest are stylistic and already covered by
+root §3.5.5's own `--quick` run over every `response_`. This one is the only
+quick rule whose verdict a machine cannot reach, which is exactly why losing it
+matters and why forwarding it is not the thin end of a wedge.
+
 THE GATE (formerly `elint.py`'s Tier B, folded in here). A deliverable-shaped
 file that has never passed FULL `dlint.py` BLOCKS the comms write that would
 hand it over. This is the only actual enforcement of root §3.7.3 outside comms,
@@ -595,7 +612,7 @@ def _sweep_state(keep):
 
 
 def marker_put(session_id, path, digest=None, owed=None, reminded=None,
-               blocked=None, rt=None):
+               blocked=None):
     """Create or update this (session, file) marker. Returns the stored dict,
     or None if the state is unusable —— in which case the caller loses a
     reminder or a gate hold, the harmless direction."""
@@ -623,7 +640,7 @@ def marker_put(session_id, path, digest=None, owed=None, reminded=None,
         cur["h"] = digest or ""
         cur["t"] = int(time.time())
         for k, v in (("owed", owed), ("reminded", reminded),
-                     ("blocked", blocked), ("rt", rt)):
+                     ("blocked", blocked)):
             if v is not None:
                 cur[k] = int(v)
             cur.setdefault(k, 0)
@@ -749,31 +766,60 @@ def _written_text(tool_name, tool_input):
     return None
 
 
-def _run_dlint(args, rt_quiet=False):
+def _run_dlint(args):
     """`dlint.py --quick <args>`; None on any failure so the caller exits 0."""
     if not os.path.isfile(_DLINT):
         return None
-    flags = ["--quick"] + (["--rt-quiet"] if rt_quiet else [])
     try:
         return subprocess.run(
-            [sys.executable, _DLINT] + flags + list(args),
+            [sys.executable, _DLINT, "--quick"] + list(args),
             capture_output=True, text=True, timeout=_DLINT_TIMEOUT_S)
     except Exception:
         return None
 
 
-def _quick_verdict(path, is_comms, tool_name, tool_input, rt_quiet=False):
+def _quick_verdict(path, is_comms, tool_name, tool_input):
     """(blocked, report, mode). `blocked` is True only when dlint exits 1."""
     if not is_comms:
         new = _written_text(tool_name, tool_input)
         if new is not None and len(new) <= _MAX_ARG_TEXT:
             if not new.strip():
                 return False, "", "empty"
-            r = _run_dlint(["--text", new], rt_quiet)
+            r = _run_dlint(["--text", new])
             return (bool(r and r.returncode == 1),
                     (r.stdout if r else ""), "written")
-    r = _run_dlint([path], rt_quiet)
+    r = _run_dlint([path])
     return bool(r and r.returncode == 1), (r.stdout if r else ""), "file"
+
+
+def _read_note(report, mode, base):
+    """The `read`/`#r` advisory line lifted out of a dlint report, or '' if it
+    did not fire.
+
+    WHY THIS EXISTS AT ALL. `--quick`'s full report reaches CC on ONE path only
+    —— the exit-2 stderr write that a RED triggers. On a clean run the report
+    was simply discarded, so a YELLOW could be raised by the linter and seen by
+    nobody: the advisory "fired" in every sense except the one that matters.
+    That is a false negative manufactured by the plumbing, and the owner ranks a
+    false negative ("could be highly misleading") far above the ~10 tokens a
+    false positive costs. So the one YELLOW that asks CC to make a judgement is
+    forwarded on every run, blocking or not.
+
+    ONLY THIS YELLOW. The others (`-ize`, hyphen/#numbered, demoted Hart hits)
+    are stylistic and already carried by root §3.5.5's own `--quick` run over
+    every `response_`; forwarding all of them would put a report on every write
+    in the repo. This one is different in kind —— it is the only quick rule
+    whose verdict a machine cannot reach."""
+    for line in (report or "").splitlines():
+        if 'bare "read"' not in line:
+            continue
+        body = line.strip()
+        body = body.split(": ", 1)[1] if body.startswith("L") and ": " in body \
+            else body
+        where = ("in the text this write introduced into `%s`" % base
+                 if mode == "written" else "in `%s`" % base)
+        return "[dlint] " + body + " (%s)" % where
+    return ""
 
 
 # ---------------------------------------------------------------------------
@@ -841,17 +887,16 @@ def main():
         marker_put(sid, fp, digest_of(fp, text), owed=1)
 
     # --- QUICK LINT ---------------------------------------------------------
-    # ONCE PER (SESSION, FILE) FOR THE `read`/`#r` ADVISORY. The whole dlint
-    # report reaches CC only on a BLOCK (exit 2 stderr), and a RED loop
-    # re-blocks the same file several times in one turn —— so without this the
-    # same advisory is re-served on every pass of a loop CC is already in the
-    # middle of. Told once is told; repeating it is the noise, not the rule.
-    # Reuses the pending-marker directory rather than inventing state: same
-    # (session, file) key, same TTL sweep, same harmless failure direction (a
-    # lost marker costs one repeated advisory, never a missed RED).
-    rt_seen = bool((marker_get(sid, fp) or {}).get("rt")) if sid else False
-    blocked, report, mode = _quick_verdict(fp, is_comms, tool_name, tool_input,
-                                           rt_quiet=rt_seen)
+    # THE `read`/`#r` ADVISORY IS NEVER SUPPRESSED, in either of the two ways it
+    # once was. It used to be shown at most once per (session, file), on the
+    # theory that told-once-is-told; and even that reached CC only when a RED
+    # happened to co-occur, because a clean run threw the report away. Both are
+    # false negatives: the second one hid the advisory on the majority of writes
+    # (a `response_` with no RED in it), and the first hid a NEW instance
+    # introduced by a later write to the same file. `_read_note` therefore
+    # forwards it on every run, blocking or not.
+    blocked, report, mode = _quick_verdict(fp, is_comms, tool_name, tool_input)
+    rt_note = _read_note(report, mode, base)
     if blocked:
         where = ("this comms file" if is_comms else
                  "the text this write introduced into `%s`" % base)
@@ -860,13 +905,8 @@ def main():
             "dlint --quick found RED flag(s) in %s —— fix them (British "
             "spelling / Hart's quotation / #numbered), they then clear:\n%s%s\n"
             % (where, report, tail))
-        # Recorded only on a BLOCK, because only a block actually delivered the
-        # report. Marking it on a clean run would silence an advisory CC was
-        # never shown.
-        if sid and not rt_seen and 'bare "read"' in report:
-            marker_put(sid, fp, digest_of(fp, text), rt=1)
         log("red:%s" % mode, base)
-        return 2
+        return 2                       # the report already carried `rt_note`
 
     # --- GATE —— a delivery is being written; is anything still owed? --------
     if sid and _DELIVERY_RE.match(base):
@@ -884,27 +924,37 @@ def main():
                 marker_put(sid, r["p"], r.get("h"), owed=1,
                            blocked=int(r.get("blocked") or 0) + 1)
             if spent == 0:
-                sys.stderr.write(body + "\n")
+                # The read advisory rides along rather than being lost to the
+                # early return —— a gate block is still a write CC just made.
+                sys.stderr.write(body + (" " + rt_note if rt_note else "")
+                                 + "\n")
                 log("gate:block", os.path.basename(first["p"]))
                 return 2
             # Already blocked once this session for this file —— degrade to an
             # advisory so a legitimate post-lint edit cannot wedge the turn.
-            _emit_context(body)
+            _emit_context(body + (" " + rt_note if rt_note else ""))
             log("gate:spent", os.path.basename(first["p"]))
             return 0
         log("gate:clear", base)
 
-    # --- REMINDER —— once per (session, file) --------------------------------
+    # --- CONTEXT —— the read advisory EVERY time, the FULL-mode reminder once
+    # per (session, file). ONE `_emit_context` call for both: stdout carries a
+    # single JSON object, so a second call would emit a second one and the
+    # harness would parse neither.
+    notes = [rt_note] if rt_note else []
+    remind = True
     if sid:
         prev = marker_get(sid, fp)
         if prev and int(prev.get("reminded") or 0):
-            log("clean:reminded", base)
-            return 0
-        if marker_put(sid, fp, digest_of(fp, text), reminded=1) is None:
-            log("clean:nostate", base)
-            return 0
-    _emit_context(_REMIND % (base, _REMIND_DELIV if is_deliverable else ""))
-    log("clean:remind", "%s %s" % (reason, base))
+            remind = False
+        elif marker_put(sid, fp, digest_of(fp, text), reminded=1) is None:
+            remind = False
+    if remind:
+        notes.append(_REMIND % (base, _REMIND_DELIV if is_deliverable else ""))
+    if notes:
+        _emit_context(" ".join(notes))
+    log("clean:%s%s" % ("remind" if remind else "reminded",
+                        "+rt" if rt_note else ""), "%s %s" % (reason, base))
     return 0
 
 

@@ -74,7 +74,7 @@
   - 3.1.2. `enclosing_folder` = immediate ONE parent only for clickability, EXCEPT in `.claude/`
   - 3.1.3. i.e. If a path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6.3)
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
-  - 3.1.5. Urgent Declarations (for §3.2.4–5): fired instantly at any time, unlike §3.1.6.3
+  - 3.1.5. Urgent Declarations (for §3.2.5–6): fired instantly at any time, unlike §3.1.6.3
   - 3.1.6. After ALL tasks' completion (ensuring no in-flight SAs), do **Turn-End Actions** (TEAs):
     - 3.1.6.1. TEA1 —— Commit & Push (**right before** TEA2):
       - 3.1.6.1.1. Commit Specs:
@@ -86,7 +86,7 @@
       - 3.1.6.1.4. Ditto + user changes on OTHER files → commit + push CC-touched files only
       - 3.1.6.1.5. User changes on CC-touched files (rare):
         - 3.1.6.1.5.1. DON'T commit/push
-        - 3.1.6.1.5.2. Alert in chat as a blocker (§3.2.4)
+        - 3.1.6.1.5.2. Alert in chat as a blocker (§3.2.5)
         - 3.1.6.1.5.3. Advise user NOT to save his manual works (risks clashing/corrupting the file)
       - 3.1.6.1.6. ONE commit per turn (per touched repo)
         - 3.1.6.1.6.1. Avoid interim commit(s), UNLESS:
@@ -102,8 +102,8 @@
 ⇠ `202605/close_202605300023.md`
 ➡️ **`202605/career_response_202605300226.md`**
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
-🦈 Default: `abc123456`, `xyz67890`
-🦈 AJAP: `123456abc`, `67890xyz`
+🦈 Default: `deadbeef`, `cafef00d`
+🦈 AJAP: `0ddba115`, `feedface`
 ```
   - 3.1.7. Clarifications on §3.1.6.1–3:
     - 3.1.7.1. All 3 TEAs are ONCE per practical turn; DON'T act prematurely nor repeatedly
@@ -138,7 +138,7 @@
   - 3.2.4. `🦈 `SHA1`, `SHA2`, ...`
     - 3.2.4.1. ANY commits/pushs during this turn
     - 3.2.4.2. Typically one SHA (per §3.1.6.1.6)
-    - 3.2.4.3. 8-char abbrev. (NEVER full): obtain via `git rev-parse --short=8 HEAD` per repo
+    - 3.2.4.3. 8 chars exactly, NEVER full: `git rev-parse --short=8 HEAD` (prints 1 SHA)
     - 3.2.4.4. Group all SHAs into 1 line (exc. §3.2.4.5), just like `✅` (unlike `⇠` & `➡️`)
     - 3.2.4.5. ONLY if multiple repos touched:
       - 3.2.4.5.1. Emit multiple lines & incl. shorthands (per §3.1.6)
@@ -224,7 +224,7 @@
 
 ## 5. Post-Compaction (`🚨`)
 
-- 5.1. When the PostCompact hook fires, immediately output exact wording as §3.2.5
+- 5.1. When the PostCompact hook fires, immediately output exact wording as §3.2.6
 - 5.2. Halt all fore/background tasks w/o exception
 - 5.3. In chat, non-#numbered list out previously-read/fetched files/content (incl. tool results like web_search) still deemed useful for the current task (e.g. `- `enclosing_folder/file.md``)
 - 5.4. Separately list (identically as §5.3) the remainder (not useful)

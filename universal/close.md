@@ -26,6 +26,8 @@
   - Shift its § no. if sections were added before it (never after it)
   - NEVER one bullet per SHA (that is the vertical space this saves)
   - `[SHA_enumeration]` = all SHAs (8-char; per root CLAUDE.md §3.2.4.3) of whole session
+  - Obtain via `git log --pretty=%h --abbrev=8 [1st_session_SHA]^..HEAD` (per repo)
+    - Caveat: can't exclude a parallel session's commits; cross-check own `🦈` lines
   - Only emit multiple lines if multiple repos touched (per root CLAUDE.md §3.2.4.4/5)
 
 
