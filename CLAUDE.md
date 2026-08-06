@@ -75,7 +75,7 @@
   - 3.1.3. i.e. If a path doesn't contain `.claude/`, it MUST contain ONLY 1 slash `/` (see §3.1.6.3)
   - 3.1.4. Root files MUST incl. root as parent (e.g. §1.2.1), otherwise unclickable
   - 3.1.5. Urgent Declarations (for §3.2.4–5): fired instantly at any time, unlike §3.1.6.3
-  - 3.1.6. After ALL tasks' completion (ensuring no SAs in-flight), do **Turn-End Actions** (TEAs):
+  - 3.1.6. After ALL tasks' completion (ensuring no in-flight SAs), do **Turn-End Actions** (TEAs):
     - 3.1.6.1. TEA1 —— Commit & Push (**right before** TEA2):
       - 3.1.6.1.1. Commit Specs:
         - 3.1.6.1.1.1. Summary = `[CP_name]: [≤8w_summary]`; inc. `[CP_name]: ` ONLY if in a CP
