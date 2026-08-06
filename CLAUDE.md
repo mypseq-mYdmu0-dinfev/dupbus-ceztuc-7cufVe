@@ -88,7 +88,10 @@
         - 3.1.6.1.5.1. DON'T commit/push
         - 3.1.6.1.5.2. Alert in chat as a blocker (§3.2.4)
         - 3.1.6.1.5.3. Advise user NOT to save his manual works (risks clashing/corrupting the file)
-      - 3.1.6.1.6. ONE commit per turn (per touched repo): avoid interim commit(s), UNLESS nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
+      - 3.1.6.1.6. ONE commit per turn (per touched repo)
+        - 3.1.6.1.6.1. Avoid interim commit(s), UNLESS:
+        - 3.1.6.1.6.2. Instructed by pcmd or user (e.g. 1 per i[NN])
+        - 3.1.6.1.6.3. Nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
     - 3.1.6.2. TEA2 —— Mark a chapter (**right before** TEA3):
       - 3.1.6.2.1. Title: `Turn [N]` (session chapter tool, harness-permitting; N = the turn count)
       - 3.1.6.2.2. Mark ONLY at the true turn end (can't be removed once made), never mid-turn
@@ -99,7 +102,8 @@
 ⇠ `202605/close_202605300023.md`
 ➡️ **`202605/career_response_202605300226.md`**
 ➡️ `dupbus-ceztuc-7cufVe/.claude/settings.json`
-➡️ `97ae25ba` `470481d8`
+🦈 Default: `abc123456`, `xyz67890`
+🦈 AJAP: `123456abc`, `67890xyz`
 ```
   - 3.1.7. Clarifications on §3.1.6.1–3:
     - 3.1.7.1. All 3 TEAs are ONCE per practical turn; DON'T act prematurely nor repeatedly
@@ -119,8 +123,7 @@
   - 3.1.8. Harness Nudge:
     - 3.1.8.1. If visible output required, make a harmless tool call & emit no chat text
     - 3.1.8.2. ONLY if §3.1.8.1 doesn't suffice, emit a lone `.` (nothing else) & emit no chat prose
-
-- 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 5 declarations only):
+- 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 6 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
     - 3.2.1.1. All **non-comms** file(s) read, incl. passively via system file-change notifications
     - 3.2.1.2. NEVER incl. comms files (the 5 types in §3.3; belong to §3.2.2); not always .md
@@ -130,11 +133,18 @@
     - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md) or anything under `/sessions/`
   - 3.2.3. `➡️ `enclosing_folder/file.md``
     - 3.2.3.1. ANY files created/edited, incl. both comms & non-comms; not always .md
-    - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING (exc. SHAs), unlike `✅` (per §3.2.1.3)
+    - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING, unlike `✅` & `🦈`
     - 3.2.3.3. Per §3.1.6, bold the main `response_` (better visibility; ONLY for `➡️`; ≤1 per turn)
-    - 3.2.3.4. Per §3.1.6, last line is ALWAYS this turn's SHA(s) (abbrev.; NEVER full), not filename
-  - 3.2.4. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
-  - 3.2.5. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
+  - 3.2.4. `🦈 `SHA1`, `SHA2`, ...`
+    - 3.2.4.1. ANY commits/pushs during this turn
+    - 3.2.4.2. Typically one SHA (per §3.1.6.1.6)
+    - 3.2.4.3. 8-char abbrev. (NEVER full): obtain via `git rev-parse --short=8 HEAD` per repo
+    - 3.2.4.4. Group all SHAs into 1 line (exc. §3.2.4.5), just like `✅` (unlike `⇠` & `➡️`)
+    - 3.2.4.5. ONLY if multiple repos touched:
+      - 3.2.4.5.1. Emit multiple lines & incl. shorthands (per §3.1.6)
+      - 3.2.4.5.2. This repo = `Default`; `[name]_repo` = `[name]`
+  - 3.2.5. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
+  - 3.2.6. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
 - 3.3. Comms File Naming:
   - 3.3.1. Type 1: `query_[TS].md` —— user msg/reply
   - 3.3.2. Type 2: `response_[TS].md` —— CC MD output
@@ -159,10 +169,17 @@
   - 3.4.7. If currently reading `query_` is 1st of session AND is not in current year/month folder:
     - 3.4.7.1. Confirm w/ user before moving to rectify
     - 3.4.7.2. May be intentional (e.g. continuing a prior period's session to be incl. in its #wrap)
-  - 3.4.8. Finding `*_[TS].md` w/o path, attempt in order:
-    - 3.4.8.1. By session's start-month: `sessions/[YYYY]/[YYYYMM]/[filename].md`
-    - 3.4.8.2. By 1 last month (MM - 1)
-    - 3.4.8.3. `find` as usual
+  - 3.4.8. If currently reading `[CP_folder]_query_` but:
+    - 3.4.8.1. Not currently a CP ses → identify as CP (per §6.2.1)
+    - 3.4.8.2. [CP_folder] ≠ current CP (if already)
+      - 3.4.8.2.1. DON'T switch to [CP_folder]'s CP
+      - 3.4.8.2.2. Rename `[CP_folder]_query_` as current CP's [CP_folder]
+      - 3.4.8.2.2. Concisely alert user on such fix at top of `response_`
+      - 3.4.8.2.4. Rule: Once identified as CP, a session cannot switch
+  - 3.4.9. Finding `*_[TS].md` w/o path, attempt in order:
+    - 3.4.9.1. By session's start-month: `sessions/[YYYY]/[YYYYMM]/[filename].md`
+    - 3.4.9.2. By 1 last month (MM - 1)
+    - 3.4.9.3. `find` as usual
 - 3.5. `response_` File Rules:
   - 3.5.1. Line 1: `# Response to [query_filename]`
   - 3.5.2. Line 2 (optional): `*Heading max. 8w*`
