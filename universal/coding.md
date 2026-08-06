@@ -1,4 +1,4 @@
-# Coding Rules
+# Coding Rules (##SA; always consider SA use to preserve context)
 
 *Loaded when creating/editing any script/pcmd (root §7). Self-contained —— every rule carries its own rationale; no conversation/comms file explains or overrides anything here.*
 
