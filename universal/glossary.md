@@ -101,6 +101,7 @@
   - Usually means ses% = 0, hence sesL is unlikely to kill SAs mid-flight
 - CCSIM = Claude Code System Improvement & Maintenance, a harness engineering CP
 - QR (pair) = `query_`-`response_` (pair), sharing identical TS to indicate a pair
+- MT = user's manual touch (on files)
 
 ---
 
