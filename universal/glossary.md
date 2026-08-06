@@ -102,11 +102,11 @@
 - CCSIM = Claude Code System Improvement & Maintenance, a harness engineering CP
 - QR (pair) = `query_`-`response_` (pair), sharing identical TS to indicate a pair
 - MT = user's manual touch (on files)
-- i[nn] = issue no.; e.g. i01, i02
-  - Always 2-digit (accommodates 9⁺); never `I[nn]` (visually undistinguishable)
+- i[NN] = issue no.; e.g. i01, i02
+  - Always 2-digit (accommodates 9⁺); never `I[NN]` (visually undistinguishable)
   - Deliberately use "issue" over "task" because:
-    - `T[n]` belongs to `slog_` (avoiding term clash)
-    - Each i[nn] might be broken down into multiple tasks
+    - `T[NN]` belongs to `slog_` (avoiding term clash)
+    - Each i[NN] might be broken down into multiple tasks
 
 ---
 
