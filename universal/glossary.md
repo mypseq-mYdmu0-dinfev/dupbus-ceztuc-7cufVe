@@ -107,6 +107,9 @@
   - Deliberately use "issue" over "task" because:
     - `T[NN]` belongs to `slog_` (avoiding term clash)
     - Each i[NN] might be broken down into multiple tasks
+- 🦀 = default root c.md (section)
+  - "🦀 governs" = `dupbus-ceztuc-7cufVe/CLAUDE.md` governs
+  - "per 🦀1.1" = per `dupbus-ceztuc-7cufVe/CLAUDE.md`'s §1.1" (`§` omitted)
 
 ---
 
