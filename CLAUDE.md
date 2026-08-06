@@ -140,6 +140,9 @@
     - 3.2.4.1. ANY commits/pushs during this turn
     - 3.2.4.2. Typically one SHA (per §3.1.6.1.6)
     - 3.2.4.3. 8 chars exactly, NEVER full: `git rev-parse --short=8 HEAD`
+      - 3.2.4.3.1. Run it RIGHT AFTER EACH commit & carry the SHA forward to TEA3
+      - 3.2.4.3.2. Why: run once at TEA3 it yields HEAD ALONE, silently dropping interims
+      - 3.2.4.3.3. Missed one? Recover per `close.md` §SHA cmd + caveat; base = prior `🦈`
     - 3.2.4.4. Group all SHAs into 1 line (exc. §3.2.4.5), just like `✅` (unlike `⇠` & `➡️`)
     - 3.2.4.5. ONLY if multiple repos touched:
       - 3.2.4.5.1. Emit multiple lines & incl. shorthands (per §3.1.6)

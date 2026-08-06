@@ -658,18 +658,41 @@ def _genai_phrases(masked_text, yellow):
 # would push house abbreviations into outgoing work —— the opposite of the rule.
 #
 # WHY THE MATCHER IS NOT JUST `\b[Rr]ead\b`, measured rather than assumed. That
-# bare pattern fires on 63% of this repo's 492 `response_` files, 970 hits in
+# bare pattern fires on 63% of this repo's 494 `response_` files, 974 hits in
 # all, and most of those are not tense errors at all. Only TWO classes are
 # excluded, and the test for inclusion is severe: an exclusion is allowed ONLY
 # where `#r` could not be the right word under ANY reading, because the owner's
 # standing ruling is that a false positive costs ~10 wasted tokens whilst a
 # false negative "could be highly misleading". So:
-#   1. HYPHENATED COMPOUNDS —— `re-read`, `read-only`, `read-reminder`,
+#   1. HYPHENATED COMPOUNDS —— `re-read`, `read-only`, `conditional-read`,
 #      `must-read`, `over-read`. A hyphen IS a word boundary, so the bare
 #      pattern matched all of them. `#r` cannot substitute inside a compound;
-#      there is no `re-#r`.
+#      there is no `re-#r`, and `glossary.md` defines `#r` for the WORD "read".
 #   2. THE TOOL NAME —— "the Read tool", "Read/Write". A proper noun, and
 #      abbreviating a tool's name would be simply wrong.
+#
+# BOTH WERE RE-EXAMINED AGAINST THAT RULING AND DELIBERATELY KEPT, on a census
+# of the corpus rather than on the assertion above —— "there is no `re-#r`" is
+# the WEAK form of the argument and covers only one form. The strong form is
+# that most of what they exclude is not a verb at all:
+#   * Class 1 = 222 occurrences, 52 distinct forms. 122 are TENSELESS ——
+#     `read-only` (41), `run-not-read`, `live-read`, `delta-read`,
+#     `conditional-read`, `auto-read`, `machine-read`, `read-path`: compound
+#     adjectives and noun modifiers with no tense for anyone to judge. The
+#     other 100 are the `re-read` family —— a real verb with a real past
+#     tense, and no available substitution.
+#   * Class 2 = 13 occurrences, all 13 the tool's proper noun. Zero verbs.
+# So the owner's trade-off does not REACH either class. It prices a false
+# positive against a false negative, and here there is no false negative to
+# buy: nothing excluded is a bare past-tense "read" that `#r` would fix. A
+# flag on `read-only` is not a ten-token false positive with a fix attached ——
+# it is a demand to judge the tense of a word that has none, forever.
+# The cost of dropping both anyway was measured, since the decision turns on
+# it: 581 hits / 257 files (52%) now, against 791 / 283 (57%) —— +210 hits,
+# every one unactionable. That is NOT the 974 above, which additionally needs
+# the noun and bare-stem filters dropped; conflating the two overstates the
+# price of this particular choice by roughly twofold.
+#
 # EVERYTHING ELSE FIRES, including cases a tense-aware reader would call
 # correct. That is the point: the flag asks CC to JUDGE, and a judgement baked
 # into the matcher is a judgement CC never gets to make.

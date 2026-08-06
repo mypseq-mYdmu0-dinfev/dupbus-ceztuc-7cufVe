@@ -963,12 +963,31 @@ def test_read_tense_noise():
 
     So the SILENT list below is now only what `#r` could never replace, and
     every entry that reads as a "correct" usage in the FIRES list is an
-    ACCEPTED false positive, priced at ten tokens and kept deliberately."""
+    ACCEPTED false positive, priced at ten tokens and kept deliberately.
+
+    THE TWO SURVIVING EXCLUSIONS WERE THEN RE-EXAMINED against that same
+    ruling and KEPT, which is why the tenseless-modifier fixtures below exist.
+    A census of the corpus, not an assertion: class 1 is 222 occurrences over
+    52 distinct forms, of which 122 are compound ADJECTIVES and noun modifiers
+    (`read-only` alone is 41) carrying no tense to judge, the other 100 being
+    the `re-read` family, which has a past tense but no substitution; class 2
+    is 13 occurrences, all 13 the tool's proper noun, zero verbs. The owner's
+    false-positive ruling therefore does not reach either class —— it trades a
+    false positive against a false NEGATIVE, and neither class hides a bare
+    past-tense "read" that `#r` would fix. Dropping both was costed anyway,
+    since the decision turns on the number: 581 hits / 257 files to 791 / 283,
+    +210 unactionable flags. Restoring a bare `\\b[Rr]ead\\b` here is not a
+    tightening —— it asks CC to judge the tense of `read-only`."""
     dlint = _dlint()
 
     silent = [
         ("re-read the file", "class 1: hyphenated compound; no `re-#r` exists"),
-        ("read-only mode", "class 1: hyphenated compound"),
+        ("read-only mode", "class 1: tenseless modifier, 41 in corpus"),
+        ("the conditional-read system", "class 1: tenseless modifier"),
+        ("run-not-read, per the README", "class 1: tenseless modifier"),
+        ("a delta-read of the index", "class 1: tenseless modifier"),
+        ("machine-read output", "class 1: tenseless modifier"),
+        ("the auto-read of CLAUDE.md", "class 1: tenseless modifier"),
         ("another read-reminder fired", "class 1: hyphenated compound"),
         ("she over-read the situation", "class 1: hyphenated compound"),
         ("a must-read guide", "class 1: hyphenated compound"),
