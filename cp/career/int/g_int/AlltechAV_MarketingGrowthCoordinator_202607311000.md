@@ -677,6 +677,8 @@ Please note, these are not final documents. We’ll sit down together when you s
 
 Any questions, as I mentioned, please feel free to give me a call (preference) or shoot them through on email (will be a very delayed response).
 
+Elena Melnykova
+
 ### 7.37. User Email
 
 On 6 Aug 2026, at 18:05, Culous Yu <culousyu@gmail.com> wrote:
@@ -706,6 +708,57 @@ Culous
 
 At 202608061809:
 Hey Elena, sorry for reaching you late. I've just emailed you a few questions. Everything's cool. Just some minor ones. Please don't hesitate to lemme know if anything's not cool. Thank you and have a nice evening!
+
+### 7.39. Employer Email
+
+On 6 Aug 2026, at 20:57, Elena Mel <elena@alltech.co> wrote:
+
+Hey Culous,
+
+Great questions! It’s great to see you reviewing everything so thoroughly, and I love that you noticed our culture. We really pride ourselves on a massive "give-and-take" culture here, and we always make sure the team is looked after where it's due
+
+To give you total clarity on how this functions practically at Alltech, here are the answers to your points:
+
+**Q1. Existing Commitments**
+I completely remember our conversation regarding your advisory commitments in Sydney and Hong Kong. Because this is our standard part-time contract template, we prefer to keep the core document text uniform rather than altering Section 27.However, to give you complete peace of mind and put it formally on the record: **please consider this email response as the Employer’s official written acknowledgment and consent for those specific, pre-disclosed advisory commitments**, in accordance with Page 19 (Secondary Employment) of the Alltech Employee Handbook. As long as these commitments do not conflict with our operations and are handled outside your rostered Alltech hours, you are 100% clear!
+
+If you feel there's any conflict there - let me know and we can chat through that.
+
+**Q2. Flexibility & Q3. Lunch Break**
+Spot on regarding the timing. The extra half-hour accounts for your daily 30-minute unpaid lunch break. For a standard office shift layout, the daily breakdown is exactly 8 hours of paid work and a 30-minute lunch break.
+
+We absolutely value flexibility here. The 8:30 AM to 5:00 PM window represents our core office layout. Because this is a key marketing function rather than a moving on-site production role, we do want to anchor to those hours for the first few months while we build our initial rhythm and map out the function. So the agreed regular rostered pattern should align with standard office hours, inclusive of a 30-minute unpaid meal break, 3 days a week to be confirmed between you & I at any given time.
+
+As you'll notice in Clause 8.2 of the Contract, these ordinary hours of work may be varied from week to week by mutual agreement in writing (including via email or SMS text exchange) before the start of the varied shift. Moving forward, we practice open communication grace - if you ever need to slide hours, handle a personal commitment, or look at a hybrid model post-probation, we are completely open to it as long as the work is running smoothly!
+
+**Q4. Additional Work & Pay**
+We have a very transparent approach to extra hours based on open communication and approval:
+
+- **Unapproved Hours:** If you choose to stay back an hour or two on your own accord to tidy up some files or finish a personal project, that is your choice and doesn't trigger extra pay.
+
+- **Approved Extra Hours / Gigs:** If we mutually agree in advance that you are going to scale up your hours for a busy week or head out to a weekend gig to capture content, every single one of those scheduled ordinary hours is paid at your full agreed flat rate of $43.00/hr, right up until you cross the 38-hour full-time threshold in a week.
+
+- **The Hours Buffer & Multipliers:** Because our industry naturally involves occasional out-of-hours coordination or weekend events, we purposely set our base rate significantly higher than the standard award minimums. Your $43.00/hr flat rate is an all-inclusive rate designed to comfortably absorb standard weekend hours as part of your ordinary routine. In the event that a massive production crunch requires you to work approved hours *beyond* 38 total hours in a single week, any additional hours (including Sundays) will shift to an extended loading rate of 1.25x your base pay.
+
+To give you a quick feel for how this plays out in real life:
+
+- **Scenario A (Optional Learning):** If we offer for you to casually drop by an iconic gig just to see our production crew in action and understand our tech, this is entirely optional as a job perk to check it out if you want, and isn't counted as rostered work.
+
+- **Scenario B (Operational Assignments):** If we ask you to attend a gig on a Saturday to capture marketing content, we simply agree on the shift beforehand via email or text, log those hours at your standard $43/hr rate, and fully reimburse you for any operational expenses like event parking!
+
+I hope this gives you a great picture of how we balance true compliance with real-world flexibility here! Let me know if this all makes sense, and we look forward to receiving the signed copy whenever you're ready.
+
+Elena Melnykova
+
+### 7.40. Employer Text
+
+At 202608062057:
+I’ve replied now, let me know if there are any other questions 
+
+### 7.41. User Text
+
+At 202608062207:
+Amazing, thank you! 🙏🏻 
 
 ---
 
