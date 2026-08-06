@@ -71,7 +71,7 @@ e.g. 4-level indentation (build up to 5 levels, but only if necessary):
   - Instead of `re "xxx..."`, user can refer by `re 1.2.1` or just `1.2.1:`
   - Caveat: You MUST ALWAYS add `re` to separate current pt & the pt you're replying to
     - e.g. ❌ `3. 1.2.1: ...` (reads like `3.1.2.1`) | ✅ `3. re 1.2.1: ...` (pt 3 clearly replying 1.2.1)
-- Sequential Reply —— answer his pts in HIS order: your 1st new pt takes his 1st, & so on
+- Sequential Reply —— answer user's pts in HIS order: your 1st new pt takes his 1st, & so on
   - Rationale: he reads both files side by side, top-down; out-of-order scrambles it
   - EXEMPT: grouping (one pt answering several of his) —— it cuts his reading load
   - EXEMPT: a pt offloaded to `#opt` —— it sits below the line by design
@@ -111,8 +111,8 @@ e.g. 4-level indentation (build up to 5 levels, but only if necessary):
 - Activation —— **auto-consider** when content is (or will be) long AND already atomised
   - NO word threshold (active counting won't reliably fire); judge by feel
   - Or user activates explicitly by prompting `#opt`
-- WHAT GOES BELOW THE LINE —— by default he does NOT read it; it is future CC's record:
-  - Needs his input/decision/action (Q, QB, greenlight, "worth your eye") —— NEVER below
+- WHAT GOES BELOW THE LINE —— by default user does NOT read it; it is future CC's record:
+  - Needs user's input/decision/action (QB, greenlight, "worth your eye") —— NEVER below
   - Rationale: a Q placed below the line is a Q never asked —— he will not see it
   - No input needed BUT future CC benefits (problem/issue closed) —— judge; lean below
   - No input needed AND no future value —— below, and keep it concise
