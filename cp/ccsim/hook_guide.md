@@ -74,7 +74,7 @@
 | UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
 | Stop | `cscpt/mlint.py` | `#m2` declaration gate (BLOCKS a turn-end that stopped AT, or never emitted, the interim declaration) |
-| PostCompact | `.claude/post_compact.sh` | Inject the post-compaction protocol |
+| PostCompact | `.claude/post_compact.sh` | Alert the USER that a compaction happened (it CANNOT reach the model —— §6.9) |
 
 - 3.1. Naming convention: a `*_hook.sh` IS the file the harness launches; the `.py` beside it is the lint body. Every `.sh` in `cscpt/` carries `_hook`, no `.py` does.
 - 3.2. A lint gets a `.sh` gate exactly when its EVENT is high-frequency: the PostToolUse lints fire on every Edit/Write, and `alint` fires on every Bash call, so each shim spares a needless Python spawn on the overwhelmingly common irrelevant payload.
@@ -160,6 +160,7 @@
 | PreToolUse | User only | Reaches the MODEL, no block | Reaches the MODEL and BLOCKS the tool call |
 | UserPromptSubmit | Added to context | Reaches the MODEL, no block | Reaches the MODEL; avoid —— see 6.6 |
 | Stop | User only | Not a supported channel | Reaches the MODEL and BLOCKS the stop |
+| PostCompact | User only | Not a supported channel | User only —— NOTHING reaches the model |
 
 - 6.1. On Stop, ONLY a non-zero exit's stderr reaches the model. An exit-0 `systemMessage` or stdout reaches the user alone.
 - 6.2. Consequence: a non-blocking Stop warning can NEVER make the agent self-correct —— its turn has already ended and it never sees the note.
@@ -174,6 +175,15 @@
 - 6.8. Output mechanics:
   - 6.8.1. At exit 0, emit `{"hookSpecificOutput": {"hookEventName": "<Event>", "additionalContext": "<text>"}}` on stdout.
   - 6.8.2. At exit 2 the harness ignores stdout and JSON entirely —— write to STDERR or the message is lost.
+- 6.9. PostCompact has NO model channel at all —— the costliest lesson in this file:
+  - 6.9.1. Its dispatch returns a user-display string only; no `additionalContext`, no yield
+  - 6.9.2. Contrast `Setup` ("JSON additionalContext shown to Claude") and `PostToolBatch`
+  - 6.9.3. So a compaction protocol CANNOT be delivered by this hook. It never once was
+  - 6.9.4. It ran dead 70 days: project-level (silent no-op) 29/05–25/07, then channel-blind
+  - 6.9.5. Nothing observable changed at the 25/07 fix, so the second defect looked like success
+  - 6.9.6. The protocol lives in root `CLAUDE.md` §5, which the harness re-injects itself
+  - 6.9.7. Pinned by `sandbox/post_compact_regression_test.py`, which asserts the channel
+  - 6.9.8. That test FAILS if the event ever gains a model channel —— an alarm to act on
 
 ---
 
@@ -206,7 +216,7 @@
 | UserPromptSubmit | End a turn, then check `cscpt/.hlint.log` | A new line per prompt: `fired` with trigger names, or `silent` |
 | Stop | End an `#m2` turn on the interim declaration alone | The stop is BLOCKED, stderr naming the unrun sprint; a `block` line in `cscpt/.mlint.log` |
 | Stop | End an `#m2` turn having written a `response_` and declared nothing | The stop is BLOCKED, stderr naming the missing `➡️`; a `block_nodeclare` line in `cscpt/.mlint.log` |
-| PostCompact | Occurs naturally on compaction | The `🚨` banner is injected |
+| PostCompact | Occurs naturally on compaction | A new line in `cscpt/.post_compact.log` (the banner reaches the USER, never the model —— §6.9) |
 
 - 7.4. The manual pipe test —— useful, but know exactly what it proves:
 
@@ -237,7 +247,7 @@ for ev,groups in d.items():
   - 7.7.1. A log written only on a breach cannot tell those two apart —— an empty log is consistent with BOTH, which is exactly how the dead wiring survived so long.
   - 7.7.2. clint therefore logs EVERY invocation to `cscpt/.clint.log` (git-ignored), tagged by the stage reached: `no_stdin`, `out_of_scope`, `no_transcript`, `unreadable_transcript`, `empty_transcript`, `clean` (+ `clean:dot`/`clean:dot_reader`), `message_failed`, one `exempt:` per exemption, and one `yellow:` per breach class (`prose`, `io_shape`, `sha_shape`, `sentinel`, `warn_*`, `sic_overrun`, `reader`). The retired always-RED tags (`block`, `block_failed`, `yellow:spent`, `yellow:active`) no longer exist —— §6.4.
   - 7.7.3. A non-growing clint log across real turns is now UNAMBIGUOUS: the harness is not calling that command.
-  - 7.7.4. clint, alint, dlint_quick and hlint each keep a stage log. flint now has §7.3 probe rows on BOTH its events but still no stage log; DADC, plint and nlint keep NEITHER a log nor a probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
+  - 7.7.4. clint, alint, dlint_quick, hlint and post_compact each keep a stage log. flint now has §7.3 probe rows on BOTH its events but still no stage log; DADC, plint and nlint keep NEITHER a log nor a probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
 - 7.8. After ANY change to a hook script, its filename, its path, or the settings file:
   - 7.8.1. Run the resolvability audit (§7.6) —— the cheapest guard against §8.6.2, and the check whose absence lets a renamed lint sit dead and unnoticed.
   - 7.8.2. Re-run the live probe (§7.2). A passing unit test is not a substitute.

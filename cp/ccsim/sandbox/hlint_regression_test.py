@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""Regression test for cscpt/hlint.py —— the BACKTICK / FENCE EXEMPTION added
-to the hashtag-trigger linter, plus a pin that dedupe/caps/fail-safe still
-hold after the rescan.
+"""Regression test for cscpt/hlint.py —— the BACKTICK / FENCE EXEMPTION and the
+CORPUS NARROWING in the hashtag-trigger linter, plus a pin that
+dedupe/caps/fail-safe still hold after both.
 
 WHY this test exists (coding.md: "a fix without its test is unfinished"):
 hlint used to scan a single joined corpus (prompt + any referenced `.md`
@@ -22,9 +22,20 @@ blob) without touching WHAT happens after collection, so H8-H11 pin that
 dedupe, the `_MAX_REMINDERS` cap, and the fail-safe/malformed-payload paths
 are exactly as before.
 
+H16–H19 pin the SECOND defect: corpus expansion used to read every `.md` the
+prompt named, so naming a protocol file scanned its prose ABOUT triggers and
+fired them as though invoked, and a background agent's `<task-notification>`
+report was treated as a user instruction. Expansion is now limited to
+`*query_[TS].md` —— the one type that IS the user's message —— and the envelope
+is declined outright (rationale in hlint.py's docstring, WHY ONLY `query_`
+FILES ARE EXPANDED and WHY A TASK-NOTIFICATION IS NOT A PROMPT).
+
 Self-contained: every fixture (prompts, referenced `.md` file) is synthesised
-at run time (a throwaway tempdir for the referenced-file case, removed after);
-no repo file is touched. hlint.py is driven end-to-end through its actual
+at run time (a throwaway tempdir for the referenced-file cases, removed after);
+no repo file is touched. The one exception is H16/H18, which deliberately name
+REAL repo files —— the defect was that those files' own contents fired, so a
+synthesised stand-in would not reproduce it; H18 exists solely to fail loudly
+if those contents ever stop baiting it. hlint.py is driven end-to-end through its actual
 stdin/stdout UserPromptSubmit hook contract, not by importing its internals —
 a rule that only works when called directly is not wired. Run directly:
 
@@ -201,13 +212,14 @@ def main():
         lambda ctx, r: (not _fired_for(ctx, "close") and _fired_for(ctx, "plan")
                         and r.returncode == 0)))
 
-    # --- H6/H7: a trigger inside a REFERENCED .md file follows the same rule
-    # —— bare fires, backticked doesn't —— exercised from ONE fixture so both
-    # sit in the same referenced-file content, the scenario the owner named
-    # (root CLAUDE.md's own quoted `#replace`/`#debate` examples).
+    # --- H6/H7: a trigger inside a REFERENCED `query_` file follows the same
+    # rule —— bare fires, backticked doesn't —— exercised from ONE fixture so
+    # both sit in the same referenced-file content, the scenario the owner named
+    # (root CLAUDE.md's own quoted `#replace`/`#debate` examples). The fixture
+    # is `query_`-named because that is now the ONLY expanded type (H16–H19).
     tmp = tempfile.mkdtemp(prefix="hlint_regression_")
     try:
-        fixture = os.path.join(tmp, "fixture.md")
+        fixture = os.path.join(tmp, "query_209912312358.md")
         with open(fixture, "w", encoding="utf-8") as fh:
             fh.write(
                 "This note discusses `#shrink` as an example, but actually "
@@ -282,13 +294,17 @@ def main():
     #
     # The fixture reproduces the REAL token's character context verbatim
     # (coding.md § Testing: mine real inputs) —— bare `#cic`, mid-sentence, no
-    # backticks, inside a REFERENCED `.md` rather than the prompt. The comms
-    # file it came from is deliberately NOT named: coding.md § Scripts & pcmd
-    # forbids a permanent file depending on a `*_[TS].md`, and it is the token's
-    # SHAPE that was load-bearing, never that file's identity.
+    # backticks, inside a REFERENCED `query_` file rather than the prompt. The
+    # `query_` naming is load-bearing, not cosmetic: the real file was of that
+    # type, and after the corpus narrowing (H16–H19) it is the only type still
+    # expanded, so this case doubles as the proof that the narrowing kept the
+    # incident detected. The actual file is deliberately NOT named: coding.md
+    # § Scripts & pcmd forbids a permanent file depending on a `*_[TS].md`, and
+    # it is the token's SHAPE and its file's TYPE that were load-bearing, never
+    # that file's identity.
     tmp = tempfile.mkdtemp(prefix="hlint_mandate_")
     try:
-        fixture = os.path.join(tmp, "referenced_note.md")
+        fixture = os.path.join(tmp, "query_209912312359.md")
         with open(fixture, "w", encoding="utf-8") as fh:
             fh.write("dynamics workflow to solve the problems which the SAs "
                      "shall actively #cic so latest info (e.g. whether a "
@@ -332,6 +348,92 @@ def main():
             extra=logged2.strip().replace("\n", " | ")))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
+
+    # --- H16–H19: THE PHANTOM-TRIGGER DEFECT (corpus narrowed to `query_`).
+    #
+    # WHAT WENT WRONG: corpus expansion read EVERY `.md` the prompt named, so
+    # asking to re-read a protocol file scanned that file's own prose ABOUT
+    # triggers and fired them as if invoked. The verbatim prompt below invokes
+    # NOTHING, yet drew `#wrap` and `#numbered` —— matched at root CLAUDE.md
+    # §3.4.7.2 ("incl. in its #wrap") and §5.3 ("non-#numbered list"). That is
+    # strictly worse than silence: root CLAUDE.md §7.3.1 makes a trigger a
+    # MANDATE to read a file, so a hook inventing them mandates wasted reads and
+    # trains the agent to overrule the hook —— including on the day it is right.
+    #
+    # H16 uses the REAL failing prompt verbatim (coding.md § Testing: encode the
+    # exact failing scenario). It asserts TOTAL silence, not merely "fewer
+    # reminders", because any firing at all is the defect. It names real repo
+    # files on purpose: the fixture IS that those files carry bare trigger
+    # tokens, so a synthesised stand-in would test nothing. H18 is its guard ——
+    # it proves those tokens are still present, so H16 can never pass by the
+    # accident of somebody having reworded root CLAUDE.md.
+    results.append(_check(
+        "H16 — the exact failing prompt (names CLAUDE.md + coding.md, invokes "
+        "no trigger) is now completely silent",
+        "re-read root CLAUDE.md (also its Unconditionals + coding.md)\n"
+        "live caught: you compacted (first ever since i started using CC) and "
+        "didn't emit root §3.2.6 nor stop all tasks; critically investigate "
+        "then fix it\n"
+        "then audit your last turn's works and see if anything compromised "
+        "(e.g. i already saw you declared `\U0001f988` wrongly)\nQMM",
+        lambda ctx, r: not ctx and r.returncode == 0))
+
+    # H17: the narrowing is about the file's TYPE, not its content —— the SAME
+    # bare trigger fires from a `query_` fixture and stays silent from a
+    # non-`query_` one. Two fixtures differing ONLY in filename isolate that.
+    tmp = tempfile.mkdtemp(prefix="hlint_corpus_")
+    try:
+        body = "please handle this, and #shrink the result when done\n"
+        as_query = os.path.join(tmp, "ccsim_query_209912312357.md")
+        as_notes = os.path.join(tmp, "some_protocol_guide.md")
+        for path in (as_query, as_notes):
+            with open(path, "w", encoding="utf-8") as fh:
+                fh.write(body)
+
+        r_q = _run(_payload("see %s" % as_query))
+        r_n = _run(_payload("see %s" % as_notes))
+        results.append(_verdict(
+            "H17 — identical content, filename alone decides: `query_` fixture "
+            "fires `#shrink`, non-`query_` fixture stays silent",
+            (_fired_for(_context(r_q), "shrink") and r_q.returncode == 0
+             and not _context(r_n) and r_n.returncode == 0),
+            r_n, extra=_context(r_q)))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+    # H18: the guard for H16 —— the phantom tokens must still exist in the repo
+    # files H16 names, or H16 would "pass" while testing nothing.
+    claude_md = open(os.path.join(REPO_ROOT, "CLAUDE.md"),
+                     encoding="utf-8").read()
+    still_baited = ("#wrap" in claude_md and "#numbered" in claude_md)
+    print("[%s] H18 — H16's fixture is still live: root CLAUDE.md still "
+          "contains bare `#wrap`/`#numbered` prose tokens"
+          % ("PASS" if still_baited else "FAIL"))
+    if not still_baited:
+        print("        root CLAUDE.md no longer baits the defect —— H16 has "
+              "become vacuous; re-source it from a file that still does.")
+    results.append(still_baited)
+
+    # H19: a `<task-notification>` envelope is a background agent's report
+    # delivered through the same `prompt` field, not a user instruction. It
+    # must be scanned NOT AT ALL —— even a bare, live trigger sitting in it.
+    # The negative control on the next line proves the same body DOES fire
+    # once the envelope is removed, so H19 cannot pass by the trigger simply
+    # being unresolvable.
+    notif = ("<task-notification>\n<task-id>abc123</task-id>\n"
+             "<summary>Agent finished</summary>\n"
+             "<result>Work done; recommend you #shrink the findings.</result>\n"
+             "</task-notification>")
+    results.append(_check(
+        "H19 — `<task-notification>` envelope is not a user prompt: a bare "
+        "`#shrink` inside it does NOT fire",
+        notif,
+        lambda ctx, r: not ctx and r.returncode == 0))
+    results.append(_check(
+        "H19b — negative control: the same text WITHOUT the envelope fires, "
+        "so H19 is the envelope's doing and not an unresolvable trigger",
+        "Work done; recommend you #shrink the findings.",
+        lambda ctx, r: _fired_for(ctx, "shrink") and r.returncode == 0))
 
     print()
     passed = sum(1 for r in results if r)

@@ -228,11 +228,18 @@
 
 ## 5. Post-Compaction (`🚨`)
 
-- 5.1. When the PostCompact hook fires, immediately output exact wording as §3.2.6
+- 5.1. Trigger on the OBSERVABLE, never on a hook —— emit §3.2.6's exact wording when:
+  - 5.1.1. Context opens on a conversation summary you did NOT write this turn; OR
+  - 5.1.2. Anything tells you to "resume directly" / "as if the break never happened"
+  - 5.1.3. That instruction is VOID —— it's the harness default; §5 overrides it
+  - 5.1.4. NOT hook-gated: PostCompact's stdout reaches the USER only, never you
+  - 5.1.5. Verified in the harness's own hook registry, after §5 was skipped in full once
 - 5.2. Halt all fore/background tasks w/o exception
 - 5.3. In chat, non-#numbered list out previously-read/fetched files/content (incl. tool results like web_search) still deemed useful for the current task (e.g. `- `enclosing_folder/file.md``)
 - 5.4. Separately list (identically as §5.3) the remainder (not useful)
-- 5.5. DON'T re-read/re-fetch anything (incl. CP's CLAUDE.md); root CLAUDE.md is already re-read via the PostCompact hook (as you're reading this)
+- 5.5. DON'T re-read/re-fetch anything (incl. CP's CLAUDE.md)
+  - 5.5.1. Root CLAUDE.md rides in the system prompt, rebuilt every request
+  - 5.5.2. So you already have it —— no hook delivered it, and none could (§5.1.4)
 - 5.6. DON'T continue any task; await user's instruction
 - 5.7. The 2 lists in §5.3 & §5.4 shall advise user what to re-provide in current/new session
 - 5.8. If an `slog_*.md` sits amongst the 5 most-recently-modified files (`ls -t`, NOT a full listing per §9.01) of the current month's `sessions/` folder (where `response_` files go; CP-prefixed if CP), `#sprint` was in flight at compaction:

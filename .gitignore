@@ -53,6 +53,14 @@ cscpt/.alint.log.tmp*
 cscpt/.hlint.log
 cscpt/.hlint.log.tmp*
 
+# post_compact runtime log —— one line per PostCompact invocation. This one is
+# not merely useful, it is the ONLY evidence the hook exists: PostCompact's
+# output reaches the user and never the model or the transcript, so before this
+# log existed "did it fire?" was unanswerable, and the hook sat dead for 70 days
+# whilst looking registered and healthy. See `cp/ccsim/hook_guide.md` §6.9.
+cscpt/.post_compact.log
+cscpt/.post_compact.log.tmp*
+
 # mlint runtime log —— one line per Stop invocation of the `#m2` sprint gate.
 # Same §7.7 reason as the three above, PLUS one this file alone has: the log is
 # also mlint's per-prompt LEDGER, the guard that stops a blocking Stop hook

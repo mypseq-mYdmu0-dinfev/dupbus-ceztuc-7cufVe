@@ -13,6 +13,8 @@ MUST be resolved by reading its file, never guessed).
 * IF IT FIRES: read that file, or declare why not.
 * BACKTICKED NAMES DON'T FIRE: a `#name`, fence or filename in backticks is
   DISCUSSED, not invoked. Only a bare token fires.
+* ONLY YOUR WORDS FIRE: scanned = the prompt plus any `*query_[TS].md` it
+  names. Anything else named —— protocol, guide, `response_` —— is NOT scanned.
 * BLIND SPOT: triggers resolve only under `universal/`, `cp/`,
   `AJAP_repo/protocols/`, `AJAP_repo/inv/inveng.md`. Silence is not proof.
 === NON-CCSIM —— end of all you need to RUN it ===
@@ -26,8 +28,11 @@ ones. IN: UserPromptSubmit JSON on stdin (field `prompt`). OUT: on a match, JSON
 on stdout carrying `hookSpecificOutput.additionalContext`, one line per matched
 trigger; no match -> no output. EXIT is ALWAYS 0, and it never emits
 `decision:"block"` —— for UserPromptSubmit that would ERASE the user's prompt.
-SCAN CORPUS: the prompt text PLUS the content of any `*.md` file it names,
-exactly ONE level deep, never recursive. SEARCH SCOPE, in priority order:
+SCAN CORPUS: the prompt text PLUS the content of any `*query_[TS].md` file it
+names, exactly ONE level deep, never recursive (see WHY ONLY `query_` FILES ARE
+EXPANDED). A prompt whose envelope is `<task-notification>` is not a user
+message and is not scanned at all (see WHY A TASK-NOTIFICATION IS NOT A
+PROMPT). SEARCH SCOPE, in priority order:
 `universal/` (canonical home of most triggers), `cp/` (recursive, CP-local),
 `AJAP_repo/protocols/` (recursive), then `AJAP_repo/inv/inveng.md` alone ——
 `inv/` is NEVER walked. Anything else, notably `sessions/`, is out of scope.
@@ -115,6 +120,54 @@ same direction as every other lint in this repo: a rare unclosed-fence corner
 case firing an extra (harmless, advisory) reminder is preferable to a fence
 that never closes silently blanking out the rest of the prompt.
 
+WHY ONLY `query_` FILES ARE EXPANDED —— the fix for the worst misfire this hook
+has had, and the reason a wider corpus must never be restored. Corpus expansion
+once read EVERY `*.md` the prompt named. That conflated two opposite things: a
+file whose content IS the user's instruction, and a file the user merely asked
+to have READ. Protocol and doc files are the second kind, and they are full of
+bare `#name` tokens because their JOB is to describe triggers. Measured on the
+live repo, the prompt "re-read root CLAUDE.md (also its Unconditionals +
+coding.md)" —— which invokes no trigger whatsoever —— drew reminders for `#wrap`
+and `#numbered`, matched at root `CLAUDE.md` §3.4.7.2 ("incl. in its #wrap") and
+§5.3 ("non-#numbered list"). Both are prose ABOUT a trigger. `universal/close.md`
+and `universal/m2.md` carry the same shape, as does `cp/ccsim/backlog.md`, so
+naming any of them fired the same phantom set.
+
+WHY THAT IS WORSE THAN SILENCE, which is the whole reason it is fixed rather
+than tolerated: root CLAUDE.md §7.3.1 makes a `#[trigger]` a MANDATE to read a
+protocol file. A hook that invents triggers therefore mandates reads nobody
+asked for, and the agent that complies burns context on an irrelevant protocol
+whilst the agent that does not is being trained to overrule this hook on
+judgement. Either way the reminder stops being evidence. The day it is RIGHT it
+will be ignored along with the noise —— which is precisely the `#cic` incident
+recorded below, arriving by a different door.
+
+THE LINE DRAWN, and why here: only `*query_[TS].md` is expanded. Root CLAUDE.md
+§3.3.1 defines that type as the user's own message, and §3.6.2 writes a long
+chat message into one on the user's behalf —— so a `query_` file IS the prompt,
+merely delivered as a file, and a bare `#name` in it is a real invocation. Every
+other type is somebody DESCRIBING a trigger: `response_`/`close_`/`wrap_` are
+this agent's own past output (a `close_` that records "the user sent #close"
+must not re-mandate `close.md`), and a protocol/guide/backlog is documentation.
+This costs the win NOTHING: the `#cic` incident below turned on a bare `#cic`
+inside a `query_` file, which is exactly the case still expanded. Anyone tempted
+to widen this again should first note that ~27% of `response_` files and ~49% of
+`close_` files in this repo contain a bare, resolving trigger token —— the wider
+corpus is not a slightly noisier signal, it is mostly noise.
+
+WHY A TASK-NOTIFICATION IS NOT A PROMPT: when a background agent finishes, the
+harness delivers its report through the SAME `prompt` field a human types into,
+wrapped in a `<task-notification>` envelope. Nothing in that payload is the
+user's; it is a sub-agent's prose, which the harness itself flags as untrusted
+observed content. Firing a protocol MANDATE off it is wrong twice over —— it
+mid-turn re-mandates reads for a turn already underway, and it lets any text a
+sub-agent happens to emit direct this agent's reading. A prompt whose stripped
+text starts with that envelope is logged `not_user_prompt` and scanned no
+further. The check is deliberately a prefix test on the exact envelope tag, not
+a fuzzy "looks automated" heuristic: a false NEGATIVE here costs one advisory
+line, whilst a false positive would silence a real user prompt that merely
+quoted the tag.
+
 WHY THE REMINDER READS AS A MANDATE, NOT A SUGGESTION —— the wording is the
 enforcement, so it is specified here rather than left to whoever edits the
 f-string next. The line used to end "unless already read or INTENTIONALLY
@@ -146,8 +199,9 @@ match cannot tell "never ran" apart from "ran and found nothing"
 (`cp/ccsim/hook_guide.md` §7.7), and that ambiguity is precisely what let the
 blame land on the hook. One TAB-separated line per invocation goes to
 `cscpt/.hlint.log` (git-ignored), tagged by the stage reached: `no_stdin`,
-`not_dict`, `no_prompt`, `silent`, `fired`. A `fired` line carries the trigger
-names, so a later "you never told me" is settled by one `grep`. Logging is
+`not_dict`, `no_prompt`, `not_user_prompt`, `silent`, `fired`. A `fired` line
+carries the trigger names, so a later "you never told me" is settled by one
+`grep`. Logging is
 housekeeping —— every failure is swallowed, exactly as in `clint.py`, because a
 logging error must never break a prompt.
 
@@ -276,6 +330,19 @@ _MD_TOKEN_RE = re.compile(r"([^\s\"'`()<>|,;]+\.md)", re.IGNORECASE)
 # Its `sessions/[YYYY]/[YYYYMM]/` folder is COMPUTED from this, so a named comms
 # file can still be read for corpus expansion without walking `sessions/`.
 _COMMS_TS_RE = re.compile(r"(\d{4})(\d{2})\d{6}\.md$", re.IGNORECASE)
+
+# The ONLY filenames whose CONTENT is expanded into the scan corpus: a
+# `query_[TS].md`, optionally CP-prefixed per root CLAUDE.md §3.3.6
+# (`career_query_…`, `ccsim_query_…`). Rationale: docstring, WHY ONLY `query_`
+# FILES ARE EXPANDED —— that type alone IS the user's message (§3.3.1/§3.6.2);
+# every other `.md` describes triggers instead of invoking them.
+_USER_QUERY_RE = re.compile(r"(?:^|_)query_\d{12}\.md$", re.IGNORECASE)
+
+# The harness delivers a finished background agent's report through the same
+# `prompt` field a human types into, inside this envelope. It is a sub-agent's
+# prose, not the user's instruction —— see docstring, WHY A TASK-NOTIFICATION IS
+# NOT A PROMPT. Matched as an exact leading tag, never a fuzzy heuristic.
+_TASK_NOTIFICATION_TAG = "<task-notification>"
 
 # Safety caps (backstops; none is hit in normal use).
 _MAX_INDEX = 60000          # max .md files indexed before giving up the walk
@@ -469,13 +536,22 @@ def _locate(token):
 
 
 def _read_referenced(prompt):
-    """Return concatenated content of `*.md` files the prompt names (bounded)."""
+    """Content of the `*query_[TS].md` files the prompt names (bounded).
+
+    ONLY that type is expanded —— it IS the user's message delivered as a file
+    (root CLAUDE.md §3.3.1/§3.6.2), so a bare `#name` inside it is a genuine
+    invocation. Every other `.md` a prompt names is a protocol, guide, or this
+    agent's own past output, all of which DESCRIBE triggers in prose; scanning
+    them manufactured mandates for triggers nobody invoked. Full reasoning:
+    docstring, WHY ONLY `query_` FILES ARE EXPANDED. The gate sits BEFORE
+    `_locate`, so a non-query name costs nothing —— not even the index build.
+    """
     parts = []
     seen = set()
     for m in _MD_TOKEN_RE.finditer(prompt):
         token = m.group(1)
         base = os.path.basename(token).lower()
-        if base in seen:
+        if base in seen or not _USER_QUERY_RE.search(base):
             continue
         seen.add(base)
         full = _locate(token)
@@ -565,6 +641,15 @@ def main():
     prompt = data.get("prompt")
     if not isinstance(prompt, str) or not prompt:
         _log_event("no_prompt", sid)
+        return 0
+
+    # A finished background agent's report arrives through this same field. It
+    # is not the user's instruction, so no `#name` inside it may mandate a read
+    # (docstring: WHY A TASK-NOTIFICATION IS NOT A PROMPT). Logged as its own
+    # stage so "hlint saw this and declined" stays distinguishable from
+    # "hlint found nothing".
+    if prompt.lstrip().startswith(_TASK_NOTIFICATION_TAG):
+        _log_event("not_user_prompt", sid)
         return 0
 
     try:
