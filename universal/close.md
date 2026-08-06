@@ -22,7 +22,12 @@
 - The DATS override does NOT replace root c.md §3.1.6.3's batch declaration (right after DATS)
 - Non-paired comms (applicable to both `## 4. Comms Files` & `- AD[XX].4. Comms Files`):
   - If not a clean pair (e.g. a lone comms file, or extra comms file(s) from one turn), provide FULL filename(s) (w/o path) on its own line, e.g. `[CP_]close_[TS].md`: descr.
-- §SHA must be final section of a `close_` for all CC ses; shift its § no. accordingly
+- §SHA MUST be the FINAL section of every `close_` (DevPlan or not)
+  - Shift its § no. if sections were added before it (never after it)
+  - NEVER one bullet per SHA (that is the vertical space this saves)
+  - `[SHA_enumeration]` = all SHAs (8-char; per root CLAUDE.md §3.2.4.3) of whole session
+  - Only emit multiple lines if multiple repos touched (per root CLAUDE.md §3.2.4.4/5)
+
 
 ---
 
@@ -97,8 +102,7 @@ Location: same folder as the session's query_/response_ files
 - 6.2. ...
 
 ## 7. SHA
-> [enumerate all SHAs (8char each; per root §3.2.4.3) of whole session on single line]
-> [only emit multiple lines if multiple repos touched; follow root CLAUDE.md §3.2.4.5]
+> [SHA_enumeration]
 ```
 
 ---
@@ -152,8 +156,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 [If none, input `N/A`]
 
 ## 5. SHA
-> [enumerate all SHAs (8char each; per root §3.2.4.3) of whole session on single line]
-> [only emit multiple lines if multiple repos touched; follow root CLAUDE.md §3.2.4.5]
+> [SHA_enumeration]
 ```
 
 ### Handoff Rules
