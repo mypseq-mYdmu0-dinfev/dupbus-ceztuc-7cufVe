@@ -37,7 +37,7 @@
 - Rationale: User's VSC already does that; CC naturally doesn't need that; net advantage = 0
 - EXEMPTION, stated explicitly per § Prompted Components: ANY `.md` is governed SOLELY by § Markdown Hygiene below, never by this section
 
-## Markdown Hygiene *(.md ONLY)*
+## Markdown Hygiene *(pcmd ONLY)*
 - Unless absolutely unavoidable (concisely justify), keep each line ≤90chars (inc. space) by breaking into pts/sub-pts
 - NEVER hard word-wrap —— one logical line per bullet/paragraph; readers soft-wrap; a hard-wrapped .md is a defect at any line length
 - Any mechanical transform over a file (reflow, de-wrap, renumber) must be content-preservation-checked —— abort unless the whitespace-normalised before/after text is byte-identical; verify equivalence, never trust the transform (a checked de-wrapper once caught a silent merge of adjacent list items)
