@@ -175,7 +175,7 @@
     - 3.4.8.2. [CP_folder] ≠ current CP (if already)
       - 3.4.8.2.1. DON'T switch to [CP_folder]'s CP
       - 3.4.8.2.2. Rename `[CP_folder]_query_` as current CP's [CP_folder]
-      - 3.4.8.2.2. Concisely alert user on such fix at top of `response_`
+      - 3.4.8.2.3. Concisely alert user on such fix at top of `response_`
       - 3.4.8.2.4. Rule: Once identified as CP, a session cannot switch
   - 3.4.9. Finding `*_[TS].md` w/o path, attempt in order:
     - 3.4.9.1. By session's start-month: `sessions/[YYYY]/[YYYYMM]/[filename].md`
