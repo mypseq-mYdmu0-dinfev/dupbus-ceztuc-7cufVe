@@ -679,20 +679,20 @@ Any questions, as I mentioned, please feel free to give me a call (preference) o
 
 ### 7.37. User Email
 
-*DRAFTED; NOT YET SENT*
+On 6 Aug 2026, at 18:05, Culous Yu <culousyu@gmail.com> wrote:
 
-Dear Elena,
+Hey Elena,
 
 Thank you again for the warm welcome and for sending through the Letter of Offer, Benefits & Perks, Fair Work Information Statement, Employment Contract, and Employee Handbook, as well as the latest state of 90-Day Onboarding Plan and EOS Blueprint. I have a few questions before returning the signed Contract and Handbook.
 
-**Q1. Ongoing Engagement**
-Regarding Secondary Employment (Handbook P.19), I hold a small number of ongoing advisory commitments, in Sydney and in Hong Kong, that predate this role and that I have already mentioned to you. Since the Contract states it is the "entire agreement", would you be comfortable adding a short line to the Contract's §27 (as point 27.2) or where appropriate so it is properly on record, something like: "Approved Secondary Engagements: the Employee's existing advisory commitments, disclosed to the Employer prior to signing, are acknowledged and permitted under Handbook clause 09 (Secondary Employment)".
+**Q1. Existing Commitments**
+Regarding Secondary Employment (Handbook P.19), I hold a small number of existing advisory commitments, in Sydney and in Hong Kong, as I have already mentioned to you. Since the Contract states it is the "entire agreement", would you be comfortable adding a short line to the Contract's §27 (as point 27.2) or where appropriate so it is properly on record, something like: "Approved Secondary Engagements: the Employee's existing advisory commitments, disclosed to the Employer prior to signing, are acknowledged and permitted under Handbook clause 09 (Secondary Employment)".
 
 **Q2. Flexibility**
 Is the stated business hours window, 8:30am to 5pm, meant as fixed clock-in and clock-out times, or is there some flexibility in practice? I noticed a little flexibility on the Stage 3 meeting day and am keen to understand the norm rather than assume either way.
 
-**Q3. Discrepancy**
-The role is set at 8 hours a day, and 8:30 to 5:00 comes to 8.5 hours. Is the additional half hour a lunch break?
+**Q3. Lunch Break**
+The role is set at 8 hours a day, and 8:30am to 5:00pm comes to 8.5 hours. Is the additional half hour a lunch break?
 
 **Q4. Additional Work**
 Is there any additional pay in play for overtime or weekend work, or is a separate loading or allowance applied in those cases?
@@ -701,6 +701,11 @@ I am genuinely looking forward to starting and to building the marketing functio
 
 Warm Regards,
 Culous
+
+### 7.38. User Text
+
+At 202608061809:
+Hey Elena, sorry for reaching you late. I've just emailed you a few questions. Everything's cool. Just some minor ones. Please don't hesitate to lemme know if anything's not cool. Thank you and have a nice evening!
 
 ---
 
