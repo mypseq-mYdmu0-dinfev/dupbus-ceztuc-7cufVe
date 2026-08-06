@@ -23,6 +23,7 @@
 - Non-paired comms (applicable to both `## 4. Comms Files` & `- AD[XX].4. Comms Files`):
   - If not a clean pair (e.g. a lone comms file, or extra comms file(s) from one turn), provide FULL filename(s) (w/o path) on its own line, e.g. `[CP_]close_[TS].md`: descr.
 - §SHA must be final section of a `close_` for all CC ses; shift its § no. accordingly
+  - Always 8char eac (placeholder); never print full SHAs
 
 ---
 
@@ -97,7 +98,7 @@ Location: same folder as the session's query_/response_ files
 - 6.2. ...
 
 ## 7. SHA
-> [enumerate all abbrev. SHAs of whole ses; never list; never full SHAs]
+> [enumerate all SHAs of whole ses on single line]
 ```
 
 ---
@@ -151,7 +152,7 @@ Usage: to be deleted after user appended it to DevPlan (actively read by ALL fut
 [If none, input `N/A`]
 
 ## 5. SHA
-> [enumerate all abbrev. SHAs of whole ses; never list; never full SHAs]
+> [enumerate all SHAs of whole ses on single line]
 ```
 
 ### Handoff Rules
