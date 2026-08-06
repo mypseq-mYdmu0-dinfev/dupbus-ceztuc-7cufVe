@@ -22,7 +22,7 @@
 - The DATS override does NOT replace root c.md §3.1.6.3's batch declaration (right after DATS)
 - Non-paired comms (applicable to both `## 4. Comms Files` & `- AD[XX].4. Comms Files`):
   - If not a clean pair (e.g. a lone comms file, or extra comms file(s) from one turn), provide FULL filename(s) (w/o path) on its own line, e.g. `[CP_]close_[TS].md`: descr.
-- §SHA must be final section of a `close_` for both all CC ses; shift its § no. accordingly
+- §SHA must be final section of a `close_` for all CC ses; shift its § no. accordingly
 
 ---
 
