@@ -146,7 +146,7 @@
       - 3.2.4.3.3. Missed one? Recover per `close.md` §SHA cmd + caveat; base = prior `🦈`
     - 3.2.4.4. Group all SHAs into 1 line (exc. §3.2.4.5), just like `✅` (unlike `⇠` & `➡️`)
     - 3.2.4.5. ONLY if multiple repos touched:
-      - 3.2.4.5.1. Emit multiple lines & incl. shorthands (per §3.1.6)
+      - 3.2.4.5.1. Emit multiple lines AND incl. shorthands (per §3.1.6)
       - 3.2.4.5.2. This repo = `Default`; `[name]_repo` = `[name]`
   - 3.2.5. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.6. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
