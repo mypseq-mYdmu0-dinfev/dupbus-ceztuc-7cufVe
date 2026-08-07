@@ -90,9 +90,10 @@
         - 3.1.6.1.5.3. Advise user NOT to save his concurrent works (risks clashing/corrupting the file)
         - 3.1.6.1.5.4. #SA examine 3 latest `response_` files (across repos; not 3 each) for traces of parallel CC sessions
       - 3.1.6.1.6. ONE commit per turn (per touched repo)
-        - 3.1.6.1.6.1. Avoid interim commit(s), UNLESS:
+        - 3.1.6.1.6.1. Avoid separate or interim commit(s), UNLESS:
         - 3.1.6.1.6.2. Instructed by pcmd or user (e.g. 1 per i[NN])
-        - 3.1.6.1.6.3. Nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
+        - 3.1.6.1.6.3. ≥10 files changed in the turn → commit separately (e.g. 1 for batch move; 1 for the rest)
+        - 3.1.6.1.6.4. Nearing compaction (user told NN% full) → mid-turn checkpoint commits to protect work
     - 3.1.6.2. TEA2 —— Mark a chapter (**right before** TEA3):
       - 3.1.6.2.1. Title: `Turn [N]` (session chapter tool, harness-permitting; N = the turn count)
       - 3.1.6.2.2. Mark ONLY at the true turn end (can't be removed once made), never mid-turn
