@@ -127,12 +127,12 @@
     - 3.1.8.2. ONLY if §3.1.8.1 doesn't suffice, emit a lone `.` (nothing else) & emit no chat prose
 - 3.2. Chat Interface (if applicable; NO CHAT TEXT except these 6 declarations only):
   - 3.2.1. `✅ `enclosing_folder/file1.md`, `enclosing_folder/file2.md`, ...`
-    - 3.2.1.1. All **non-comms** file(s) read, incl. passively via system file-change notifications
+    - 3.2.1.1. ANY **non-comms** file(s) read, incl. passively via system file-change notifications
     - 3.2.1.2. NEVER incl. comms files (the 5 types in §3.3; belong to §3.2.2); not always .md
     - 3.2.1.3. Group all reads into 1 line, unlike `⇠` & `➡️` (per §3.2.3.2)
   - 3.2.2. `⇠ `enclosing_folder/file.md``
-    - 3.2.2.1. All **comms** file(s) read (not just `query_`, if applicable); .md only
-    - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md) or anything under `/sessions/`
+    - 3.2.2.1. ANY **comms** file(s) read (per §3.3); .md only
+    - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md, pcmds, scripts)
   - 3.2.3. `➡️ `enclosing_folder/file.md``
     - 3.2.3.1. ANY files created/edited, incl. both comms & non-comms; not always .md
     - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING, unlike `✅` & `🦈`
@@ -151,7 +151,7 @@
   - 3.2.5. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.6. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
 - 3.3. Comms File Naming:
-  - 3.3.1. Type 1: `query_[TS].md` —— user msg/reply
+  - 3.3.1. Type 1: `query_[TS].md` —— user msg/reply, incl. `queued_queries/*_query_[TS].md`
   - 3.3.2. Type 2: `response_[TS].md` —— CC MD output
   - 3.3.3. Type 3: `close_[current_TS].md` —— session summary; triggered by `#close` (§7.3)
   - 3.3.4. Type 4: `wrap_[current_TS].md` —— monthly summary; triggered by `#wrap` (§7.3)
