@@ -34,9 +34,6 @@ cscpt/.dlint_receipts.jsonl.tmp*
 cscpt/.dlint.log
 cscpt/.dlint.log.tmp*
 cscpt/.dlint_state/
-cscpt/.elint.log
-cscpt/.elint.log.tmp*
-cscpt/.elint_state/
 
 # alint runtime log —— one line per invocation of the TEA1 in-flight gate, so
 # "the hook never fired" stays distinguishable from "it fired and found
@@ -91,12 +88,3 @@ cscpt/.mlint.log.tmp*
 # is the atomic-rewrite staging file a prune may leave behind.
 cscpt/.tlint.log
 cscpt/.tlint.log.tmp*
-
-# Voided litter —— root CLAUDE.md §8.2 makes a `❌_` file the USER's to delete, never CC's to
-# commit. On 07/08/2026 a TEA1 `git add -A` swept 88 voided files (13,190 lines, 74% of that
-# commit) onto a PUBLIC repo minutes after CC had voided them. This stanza makes that class of
-# accident mechanically impossible rather than something to remember.
-# NOTE, verified rather than assumed: `git mv tracked.md ❌_tracked.md` still STAGES the rename
-# even when the target name is ignored, so deliberately voiding a TRACKED file keeps working and
-# its history is preserved. Only untracked litter is now unsweepable.
-❌_*
