@@ -127,6 +127,16 @@
         ]
       }
     ],
+    "PreCompact": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/.claude/pre_compact.sh'"
+          }
+        ]
+      }
+    ],
     "PostCompact": [
       {
         "hooks": [

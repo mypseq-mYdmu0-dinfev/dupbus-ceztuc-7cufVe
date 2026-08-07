@@ -83,6 +83,7 @@ A terse, **append-only** self-log (BOTH modes) so a mid-sprint compaction never 
 - **Recovery**: right after each compaction, reading it still requires a one-off `✅` declaration (root CLAUDE.md §3.2.1) —— a proof of context recovery
 - **Interruptions are blocks too**: EVERY interruption —— a sesL/usage-limit hit (log on the wake, e.g. the user's `continue`), a compaction, an SA/Workflow batch dying or returning compromised —— gets its own `[TS]` block when detected, naming the affected scope and the recovery/redo action; the Sprint Report's Interruptions tally is drafted from these blocks.
 - **Append-only, NEVER overwrite** —— every write adds a new `[TS]`-headed block (one TS per block, not per line). The growing stack of blocks IS the log; appending (vs overwriting) avoids clobbering earlier state and preserves the timeline.
+- **Terminal block** —— at sprint end (see § Remarks), append one FINAL block headlined `SPRINT END`: root CLAUDE.md §5.8 treats any slog WITHOUT that tail as still in flight, so omitting it leaves a dead sprint looking live and a later post-compaction session would wrongly resume it —— autonomously, whilst the user is away, which is the one situation where a wrong resume is least likely to be caught.
 - **TS** = `TZ='Australia/Sydney' date +"%Y%m%d%H%M"` —— TS deltas reveal how long each action took (retrospective value).
 - **Static header** (top of file, written once): `Sprint Log [start_TS]` (append ` #quick` only if that mode was prompted), then `GOAL: <one-liner>` and `TASKS: T01, T02, … Tnn` (a one-liner key each) —— these rarely change, so don't repeat them in blocks unless necessary.
 - **Each block** (append on every meaningful state change —— task start/finish, each assumption, before/after an SA dispatch, immediately before any boundary):
@@ -126,4 +127,4 @@ So I can resume instantly, capture:
 ## Remarks
 
 - If SA(s) spawned for research, ensure she validates via #cic (not just web_search)
-- **Sprint End:** after #sprint started, if the tasks are fully finished AND the user directly sends a `query_` (not just msg text; not `QMM`), consider the #sprint as ended & stop editing `slog_`
+- **Sprint End:** after #sprint started, if the tasks are fully finished AND the user directly sends a `query_` (not just msg text; not `QMM`), consider the #sprint as ended → append the `SPRINT END` block (the slog's one final edit) → stop editing `slog_`

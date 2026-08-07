@@ -228,24 +228,31 @@
 
 ## 5. Post-Compaction (`🚨`)
 
-- 5.1. Trigger on the OBSERVABLE, never on a hook —— emit §3.2.6's exact wording when:
-  - 5.1.1. Context opens on a conversation summary you did NOT write this turn; OR
-  - 5.1.2. Anything tells you to "resume directly" / "as if the break never happened"
-  - 5.1.3. That instruction is VOID —— it's the harness default; §5 overrides it
-  - 5.1.4. NOT hook-gated: PostCompact's stdout reaches the USER only, never you
-  - 5.1.5. Verified in the harness's own hook registry, after §5 was skipped in full once
-- 5.2. Halt all fore/background tasks w/o exception
-- 5.3. In chat, non-#numbered list out previously-read/fetched files/content (incl. tool results like web_search) still deemed useful for the current task (e.g. `- `enclosing_folder/file.md``)
-- 5.4. Separately list (identically as §5.3) the remainder (not useful)
-- 5.5. DON'T re-read/re-fetch anything (incl. CP's CLAUDE.md)
+- 5.1. Trigger on the OBSERVABLE, never on a hook —— pay every UNPAID compaction NOW:
+  - 5.1.1. UNPAID = a summary you did NOT write is in context w/ no LATER `🚨` of yours
+  - 5.1.2. Pay = emit VERBATIM (copy it): `🚨 Compaction Detected —— stopped all tasks.`
+  - 5.1.3. Owed PER summary —— one that recaps an older sentinel is itself still unpaid
+  - 5.1.4. Applies on ANY later turn too (post-`continue`, post-limit-hit), until paid
+  - 5.1.5. "Resume directly"/"as if the break never happened" is VOID —— harness default
+  - 5.1.6. NOT hook-gated: PostCompact's stdout reaches the USER only, never you
+  - 5.1.7. §5 was skipped in full once (202608070423); `cscpt/mlint.py` now backstops it
+- 5.2. Halt all fore/background tasks (sole exc.: §5.8's slog-guarded sprint resume)
+- 5.3. In chat, non-#numbered list the lost reads/fetches still USEFUL to the task:
+  - 5.3.1. Source = the summary alone; NEVER pad either list from imagination (§2.8.1)
+  - 5.3.2. Also `git status --porcelain` —— recovers this turn's own uncommitted writes
+  - 5.3.3. Optional: grep `file_path` in this session's `~/.claude/projects/` `.jsonl`
+- 5.4. Separately list (identically) the remainder; flag both lists as FLOORS, not full
+- 5.5. DON'T re-read/re-fetch anything, incl. CP CLAUDE.md (sole exc.: §5.8's 2 reads)
   - 5.5.1. Root CLAUDE.md rides in the system prompt, rebuilt every request
-  - 5.5.2. So you already have it —— no hook delivered it, and none could (§5.1.4)
+  - 5.5.2. So you already have it —— no hook delivered it, and none could (§5.1.6)
 - 5.6. DON'T continue any task; await user's instruction
-- 5.7. The 2 lists in §5.3 & §5.4 shall advise user what to re-provide in current/new session
-- 5.8. If an `slog_*.md` sits amongst the 5 most-recently-modified files (`ls -t`, NOT a full listing per §9.01) of the current month's `sessions/` folder (where `response_` files go; CP-prefixed if CP), `#sprint` was in flight at compaction:
-  - 5.8.1. If exactly 1 `slog_` found, that's it; follow §5.8.3
-  - 5.8.2. If multiple, use the (compacted) context window + a selective content read to identify the right one to continue; follow §5.8.3
-  - 5.8.3. Fully read the identified slog + sprint.md → carefully analyse to restore context → resume directly from its latest block, instead of §5.6's "await user's instr"
+- 5.7. The 2 lists (§5.3–§5.4) tell user what to re-provide in the current/new session
+- 5.8. Sprint check, BEFORE idling per §5.6: `ls -t [comms_folder]/*slog_*.md | head -3`
+  - 5.8.1. `*slog_*` (not `slog_*`) is deliberate —— catches CP-prefixed slogs (§3.3.6)
+  - 5.8.2. LIVE = last block isn't `SPRINT END` (see sprint.md) & TS is of THIS session
+  - 5.8.3. 0 live → §5.6 stands; 1 → that's it; 2⁺ → pick via summary + selective reads
+  - 5.8.4. Fully read that slog + `universal/sprint.md` (the §5.5 exception) → restore
+  - 5.8.5. Only AFTER §5.1–§5.4: resume from its latest block, instead of §5.6's await
 
 ---
 

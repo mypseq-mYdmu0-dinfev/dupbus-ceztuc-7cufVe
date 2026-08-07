@@ -61,6 +61,19 @@ cscpt/.hlint.log.tmp*
 cscpt/.post_compact.log
 cscpt/.post_compact.log.tmp*
 
+# pre_compact runtime log —— one line per PreCompact invocation, for the same
+# §7.7 reason as the logs above: an empty file is equally consistent with "clean
+# session" and "the harness never called it". Overridable via
+# CCSIM_PRE_COMPACT_LOG. Local trace, never a source of truth; the .tmp* sibling
+# is the atomic-rewrite staging file a prune may leave behind.
+# NOT here on purpose: `cscpt/.plint_state/`. plint's state is tempdir-based BY
+# DESIGN —— its own docstring says a dot-file beside the script "would show up in
+# git status … and eventually be committed or tidied away". A stanza would hide
+# the very drift that directory's existence is meant to reveal, so if it appears
+# again, VOID it and find what set PLINT_STATE_DIR to a repo path.
+cscpt/.pre_compact.log
+cscpt/.pre_compact.log.tmp*
+
 # mlint runtime log —— one line per Stop invocation of the `#m2` sprint gate.
 # Same §7.7 reason as the three above, PLUS one this file alone has: the log is
 # also mlint's per-prompt LEDGER, the guard that stops a blocking Stop hook

@@ -103,6 +103,8 @@ import datetime
 import hashlib
 import json
 import os
+import select
+import stat
 import struct
 import sys
 import tempfile
@@ -174,12 +176,70 @@ def set_created(path, epoch):
     _set_time(path, ATTR_CMN_CRTIME, epoch)
 
 
-def _payload():
-    """The hook JSON on stdin, or {} for anything unreadable or unexpected."""
+# `isatty()` alone was NOT enough, which is why a bounded wait sits beside it: a
+# caller holding an empty pipe open (a background runner, an agent shell) is not
+# a terminal, so the old guard waved it through to a `read()` that never
+# returned —— one such process was found still alive ten minutes on. Two seconds
+# is far longer than a local payload write and far shorter than a lost session.
+#
+# AND READINESS IS NOT ARRIVAL. `/dev/null`, a closed descriptor and a pipe
+# already at EOF are all READY —— a read on them returns at once, with nothing
+# —— so a readiness-only test passes them straight through to a parse that
+# fails, and the mode then does nothing in complete silence. An agent shell
+# hands its children `/dev/null`, which is precisely where a hand invocation
+# comes from, so that was the common case, not the exotic one. The emptiness of
+# what actually arrived is therefore checked too, not merely whether something
+# could be read.
+_STDIN_WAIT_S = 2.0
+
+
+def _no_payload():
+    """The loud refusal. Exit status stays 0 by the header's FAIL-SAFE rule, so
+    the MESSAGE is the only signal there is —— it must deny the pass outright."""
+    mode = sys.argv[1] if len(sys.argv) > 1 else "hook-capture"
+    sys.stderr.write(
+        "DADC: no hook payload arrived on stdin, so NOTHING was preserved.\n"
+        "`%s` is a hook mode driven by the harness, not a command you run by "
+        "hand.\nFor a hand restamp use: %s\n" % (mode, USAGE))
+    return {}
+
+
+def _stdin_is_pipe():
+    """True when stdin is the pipe or socket a harness hands a hook body.
+
+    An EMPTY payload means opposite things on either side of this line. Over a
+    PIPE it is the harness sending nothing, which must stay a silent no-op ——
+    the FAIL-SAFE rule in the header allows no exception. Over `/dev/null`, a
+    closed descriptor, a terminal or a plain file no payload was ever coming,
+    which is a hand invocation and must be told so. An unknowable shape counts
+    as a pipe, so an odd environment can only ever fail towards silence.
+    """
     try:
-        if sys.stdin.isatty():
-            return {}  # invoked by hand: never sit blocking on a terminal
-        data = json.loads(sys.stdin.read())
+        mode = os.fstat(sys.stdin.fileno()).st_mode
+        return stat.S_ISFIFO(mode) or stat.S_ISSOCK(mode)
+    except Exception:
+        return True
+
+
+def _payload():
+    """The hook JSON on stdin, or {} for anything unreadable or unexpected.
+
+    A hand invocation now gets a LOUD refusal where it used to get a silent
+    `{}`. Doing nothing quietly looks exactly like having preserved the dates,
+    and that ambiguity is what makes a missing payload dangerous rather than
+    merely useless —— the same confusion that let a sibling hook's hang be
+    filed as a clean pass. The exit status stays 0 (the header's FAIL-SAFE rule
+    has no exception), so the MESSAGE, not the status, carries the warning.
+    """
+    try:
+        if sys.stdin is None or sys.stdin.isatty() or not select.select(
+                [sys.stdin], [], [], _STDIN_WAIT_S)[0]:
+            return _no_payload()
+        piped = _stdin_is_pipe()
+        raw = sys.stdin.read()
+        if not raw.strip():
+            return {} if piped else _no_payload()
+        data = json.loads(raw)
     except Exception:
         return {}
     return data if isinstance(data, dict) else {}

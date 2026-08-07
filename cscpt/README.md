@@ -33,6 +33,8 @@ You are a client whose context is precious. The goal is to succeed having read a
 
 Several linters below are launched by the harness rather than by you. Registration, payload shapes, which channel reaches the model, self-scoping, verification and recovery live in `cp/ccsim/hook_guide.md` —— read it only when working ON the hooks; running anything here needs none of it.
 
+**A hook body is not a CLI, and will now say so.** It reads its JSON payload on stdin and ignores its arguments, so `python3 cscpt/nlint.py some_file.md` checks nothing. It used to sit there blocking instead of saying that, and because a hang prints exactly as much as a pass does —— nothing —— a file once got recorded as lint-clean on the strength of a command that never ran a lint and never finished. Every hook body except `mlint.py` now refuses within two seconds, on stderr, non-zero, printing the payload-piping recipe that does work; to lint prose by hand you want `python3 cscpt/dlint.py --quick <file>`, which is a real CLI. Two things trigger the refusal, and it takes both: an argument that NAMES A FILE (no hook event ever passes one), and stdin that is not the pipe a harness gives —— a terminal, `/dev/null`, a closed descriptor, a plain file. Testing only whether stdin was READY was not enough and shipped the defect twice: `/dev/null` is ready and empty, an agent shell hands every command it runs exactly that, and the hook then exited 0 in silence, which is the same false pass as the hang by a shorter route. An EMPTY PIPE is deliberately left alone —— that is the harness sending nothing, and every lint here fails open on it. `mlint.py` still carries the readiness-only guard and still exits 0 in silence on `/dev/null`; the suite below names those six checks until it is brought into line. Machine-checked by `python3 cp/ccsim/sandbox/hook_stdin_guard_regression_test.py`, which also executes each printed recipe, so a recipe that stops working fails the test rather than a caller.
+
 ## Scripts —— ≤30 Words Each Description
 
 **You run these:**
@@ -48,7 +50,7 @@ Several linters below are launched by the harness rather than by you. Registrati
 
 - `alint.py` —— PreToolUse. BLOCKS a `git commit`/`git push` whilst any sub-agent OR workflow this session dispatched is still running. Wait for it, or `TaskStop` the id it prints.
 - `clint.py` —— Stop hook. Warns when chat text is not a permitted declaration line. WARN-only: never blocks, and the warning reaches the user, not CC. Logged to `.clint.log`.
-- `mlint.py` —— Stop hook. BLOCKS one turn-end when an `#m2` turn stops at its interim declaration with no `#sprint`, or writes a `response_` and never declares it.
+- `mlint.py` —— Stop hook. BLOCKS one turn-end when an `#m2` turn stops at its interim declaration with no `#sprint`, or writes a `response_` and never declares it, or a compaction-opened turn never emits root §5's `🚨` sentinel.
 - `dlint_quick.py` —— PostToolUse. The only lint that blocks on CONTENT. Quick-lints EVERY `.md`, and blocks a comms write whilst a deliverable still owes a FULL `dlint.py` run.
 - `flint.py` —— PreToolUse + PostToolUse. Owns comms filenames: BLOCKS a name wedging a space before its 12-digit timestamp, and warns on a timestamp clash or a stray-space name already in that folder.
 - `tlint.py` —— PreToolUse + PostToolUse. Advisory only: flags a clock read missing `TZ='Australia/Sydney'`, a new comms timestamp 6 h+ from real Sydney time, and US-format dates in text.

@@ -216,6 +216,9 @@ accidental half-edit.)
 """
 
 import sys
+import io
+import select
+import stat
 import os
 import re
 import json
@@ -544,7 +547,139 @@ def _readme_lines(data, tool_input):
     return lines
 
 
+# ---------------------------------------------------------------------------
+# HOOK-BODY STDIN GUARD
+# ---------------------------------------------------------------------------
+# This file is a HOOK BODY, not a command-line tool: the harness pipes its JSON
+# payload on stdin and closes it, and argv carries a mode word at most, never a
+# file to check. Run by hand as `python3 <this> some_file.md`, the payload read
+# in main() used to block FOREVER —— on a terminal, and equally on any pipe a
+# caller holds open without writing (a background runner, an agent shell). That
+# is far worse than merely slow: silence from a hang is indistinguishable from
+# silence from a clean pass, so the hand run gets filed as a verification that
+# never happened. It has already cost this repo one file recorded as
+# "lint clean" when nothing had run at all.
+#
+# So refuse: fast, on stderr, non-zero, naming the correct incantation. A quiet
+# `exit 0` would trade the hang for that same false pass in a new hat, which is
+# why this path must never return success.
+#
+# Under the harness the payload is written and stdin closed before this runs,
+# so `select` reports it readable at once and the guard costs nothing on the
+# real path. The wait exists only for the caller holding an empty pipe open ——
+# far longer than a local payload write, far shorter than a lost session.
+#
+# READINESS IS NOT ARRIVAL, and getting that wrong recreated the whole defect.
+# `/dev/null`, a closed descriptor and a pipe already at EOF are all READY: a
+# read on them returns immediately, with nothing. An agent shell hands its
+# children `/dev/null`, so `python3 <this> some_file.md` there sailed past a
+# readiness-only guard, read zero bytes, failed to parse them, and exited 0 in
+# silence —— the SAME false pass as the hang, reached by a shorter route. So
+# three things are checked, not one: argv that no hook ever passes, stdin that
+# never becomes readable, and stdin that is readable but delivers nothing.
+#
+# RESIDUAL, stated rather than papered over: a caller that writes a PARTIAL
+# payload and then holds the pipe open still blocks in the read below, exactly
+# as it did before any of this existed. Closing that needs a deadline around
+# the read, which buys nothing on the harness path (it always closes stdin)
+# and adds moving parts to a gate that BLOCKS writes.
+_HOOK_STDIN_WAIT_S = 2.0
+
+# Extensions a caller reaches for when treating this file as a CLI. A hook mode
+# word never carries one, so this cannot collide with `pre`/`post`, nor with
+# the junk argv flint deliberately tolerates (pinned by its own suite, M5).
+_HOOK_FILEY_EXTS = frozenset((".md", ".py", ".sh", ".json", ".jsonl", ".txt",
+                              ".html", ".yml", ".yaml", ".csv"))
+
+
+def _argv_names_a_file(arg):
+    """True when this argument is a caller handing over a file to check."""
+    return ("/" in arg or "\\" in arg
+            or os.path.splitext(arg)[1].lower() in _HOOK_FILEY_EXTS)
+
+
+def _hook_stdin_is_pipe():
+    """True when stdin is the pipe or socket a harness hands a hook body.
+
+    An EMPTY payload means opposite things on either side of this line. Over a
+    PIPE it means the harness sent nothing, and every lint here fails OPEN on
+    that by a contract its own suite pins —— a lint may never break a turn.
+    Over `/dev/null`, a closed descriptor, a terminal or a plain file it means
+    no payload was ever coming, which is a hand invocation and must never be
+    allowed to read as a pass. Unknowable shapes count as a pipe, so an odd
+    environment can only ever fail towards leaving the lint armed.
+    """
+    try:
+        mode = os.fstat(sys.stdin.fileno()).st_mode
+        return stat.S_ISFIFO(mode) or stat.S_ISSOCK(mode)
+    except Exception:
+        return True
+
+
+_HOOK_STDIN_HOWTO = (
+    '  printf \'%s\' \'{"hook_event_name":"PreToolUse",'
+    '"tool_name":"Read",'
+    '"tool_input":{"file_path":"/abs/file.py"}}\' \\\n'
+    '    | python3 cscpt/plint.py\n'
+)
+
+
+def _hook_refusal(reason):
+    """Say outright that nothing ran, then leave non-zero. NEVER exit 0 here:
+    a silent success is the very thing this guard exists to prevent."""
+    sys.stderr.write(
+        "%s is a hook body, not a command-line tool. It reads its JSON hook\n"
+        "payload on stdin and ignores its arguments, so NOTHING WAS CHECKED ——\n"
+        "do not read this silence as a pass.\n"
+        "Cause: %s.\n"
+        "Run it by hand from the repo root with:\n%s\n"
+        % (os.path.basename(__file__), reason, _HOOK_STDIN_HOWTO))
+    # Exit 3, never 2: on Pre/PostToolUse a 2 BLOCKS the tool call,
+    # and a hand invocation must not be able to block anything. Every other
+    # non-zero code merely shows this message; none of them blocks.
+    sys.exit(3)
+
+
+def _require_hook_payload(argv=()):
+    """Return only if a real hook payload arrived; else explain and exit 3.
+
+    On success `sys.stdin` is re-seated on the text already consumed, so the
+    caller's `json.load(sys.stdin)` reads exactly what the harness sent and
+    needs no change. `sys.exit` raises SystemExit, which is NOT an Exception,
+    so the fail-open handlers below cannot swallow a refusal.
+    """
+    stray = [a for a in argv if _argv_names_a_file(a)]
+    if stray:
+        _hook_refusal(
+            "argv names the file %r, and no hook event ever passes one —— the "
+            "file to check arrives in the payload, never on the command line"
+            % stray[0])
+    try:
+        if sys.stdin is None:
+            _hook_refusal("this process has no stdin at all (descriptor 0 closed)")
+        if sys.stdin.isatty():
+            _hook_refusal("stdin is a terminal, so no payload can ever arrive")
+        piped = _hook_stdin_is_pipe()
+        ready = select.select([sys.stdin], [], [], _HOOK_STDIN_WAIT_S)[0]
+    except Exception:
+        return  # an unselectable stdin must never disarm the lint
+    if not ready:
+        _hook_refusal("nothing reached stdin within %gs" % _HOOK_STDIN_WAIT_S)
+    try:
+        raw = sys.stdin.read()
+    except Exception:
+        return  # an unreadable stdin must never disarm the lint
+    if not raw.strip() and not piped:
+        _hook_refusal(
+            "stdin delivered nothing and is not a pipe —— `/dev/null`, a closed "
+            "descriptor or a plain file, which is what a shell hands a command "
+            "run by hand. An EMPTY PIPE is left alone on purpose: that is the "
+            "harness sending nothing, and every lint here fails open on it")
+    sys.stdin = io.StringIO(raw)
+
+
 def main():
+    _require_hook_payload(sys.argv[1:])
     try:
         data = json.load(sys.stdin)
     except Exception:

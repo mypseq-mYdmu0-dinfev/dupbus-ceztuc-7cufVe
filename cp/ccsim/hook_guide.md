@@ -2,15 +2,18 @@
 
 ## 0. Preamble
 
-- 0.1. WSM worst-case hook latency: **`~`0.49 s** per interactive round trip.
-  - 0.1.1. Re-measured 202608052110 after the dlint rework; per-event detail in §12.
-  - 0.1.2. Basis = largest `.md` in `sessions/` (112 KB) + largest transcript (53 MB).
+- 0.1. WSM worst-case hook latency: **`~`0.39 s** per interactive round trip.
+  - 0.1.1. Re-measured 202608071235 after the stdin guards, mlint SHAPE C and PreCompact.
+  - 0.1.2. Basis = largest `.md` in `sessions/` (109 KB) + largest transcript (50 MB).
   - 0.1.3. Round trip = one prompt, one `.md` write, one Bash call, one turn-end.
-  - 0.1.4. Per event: Stop 165 ms · PreToolUse-Bash 159 ms · PostToolUse 102 ms.
-  - 0.1.5. Each EXTRA `.md` write adds `~`0.10 s; each extra Bash call `~`0.16 s.
-  - 0.1.6. Comfortably inside the 1 s budget (§12.4) —— `~`49%, with dlint no longer dominant.
+  - 0.1.4. Per event: Stop 184 ms · PostToolUse 106 ms · PreToolUse-write 45 ms ·
+    PreToolUse-Bash 33 ms · UserPromptSubmit 27 ms. Medians of 5, worst-case payloads.
+  - 0.1.5. Each EXTRA `.md` write adds `~`0.11 s; each extra Bash call `~`0.03 s.
+  - 0.1.6. Comfortably inside the 1 s budget (§12.4) —— `~`39%, with Stop now dominant.
   - 0.1.7. WSM only, interactive only —— SA/background work and OTGM are not counted.
-  - 0.1.8. Re-measure and rewrite 0.1 EVERY time a hook is added, edited, or removed.
+  - 0.1.8. PreCompact + PostCompact are EXCLUDED: neither fires on an interactive round
+    trip, so neither can be felt as response delay. Both are compaction-time only.
+  - 0.1.9. Re-measure and rewrite 0.1 EVERY time a hook is added, edited, or removed.
 - 0.2. This file is the definitive, self-contained reference for CC hooks in this repo.
 - 0.3. Read it BEFORE creating, editing, registering, debugging, or trusting any hook.
 - 0.4. Everything needed is here —— no conversation or comms file is required or cited.
@@ -73,7 +76,8 @@
 | PostToolUse | `cscpt/tlint_hook.sh` post | Time-integrity: drifted/unclocked comms timestamp + US dates (advisory) |
 | UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
-| Stop | `cscpt/mlint.py` | `#m2` declaration gate (BLOCKS a turn-end that stopped AT, or never emitted, the interim declaration) |
+| Stop | `cscpt/mlint.py` | Owed-output gate (BLOCKS): the `#m2` interim declaration stopped AT or never emitted, or a compaction-opened turn missing root §5's `🚨` sentinel |
+| PreCompact | `.claude/pre_compact.sh` | Plant root §5's sentinel demand INSIDE the summary being written (§13) |
 | PostCompact | `.claude/post_compact.sh` | Alert the USER that a compaction happened (it CANNOT reach the model —— §6.9) |
 
 - 3.1. Naming convention: a `*_hook.sh` IS the file the harness launches; the `.py` beside it is the lint body. Every `.sh` in `cscpt/` carries `_hook`, no `.py` does.
@@ -109,7 +113,7 @@
 | hlint | GLOBAL | Advisory-only; a missed `#trigger` has already cost real work elsewhere |
 | plint | GLOBAL | Advisory-only; always exits 0 and can never gate a write |
 | tlint | GLOBAL | Advisory-only, never exits 2. Its drift checks are STRUCTURALLY scoped (they fire only inside dupbus `sessions/` or AJAP `inv/`); the clock-read and US-date checks are global on purpose, because root §2.1.7's Sydney mandate is a USER-level convention |
-| mlint | Repo-scoped | BLOCKS a Stop; enforces this repo's `#m2` sequence |
+| mlint | Repo-scoped | BLOCKS a Stop; enforces this repo's `#m2` sequence and root §5's post-compaction sentinel |
 
 - 4.7. The asymmetry is intentional, not an oversight —— the test rule is: a lint that can BLOCK must be repo-scoped, a lint that can only advise may be global.
   - 4.7.1. Never "tidy" a scope guard onto hlint, plint, or flint's PostToolUse half.
@@ -161,6 +165,7 @@
 | UserPromptSubmit | Added to context | Reaches the MODEL, no block | Reaches the MODEL; avoid —— see 6.6 |
 | Stop | User only | Not a supported channel | Reaches the MODEL and BLOCKS the stop |
 | PostCompact | User only | Not a supported channel | User only —— NOTHING reaches the model |
+| PreCompact | Appended to the SUMMARISER's prompt (§13) | Not a supported channel | Exit 2 BLOCKS compaction —— never use |
 
 - 6.1. On Stop, ONLY a non-zero exit's stderr reaches the model. An exit-0 `systemMessage` or stdout reaches the user alone.
 - 6.2. Consequence: a non-blocking Stop warning can NEVER make the agent self-correct —— its turn has already ended and it never sees the note.
@@ -168,7 +173,7 @@
 - 6.4. clint is WARN-ONLY —— every verdict exits 0 and nothing blocks. It once blocked (first RED per prompt, later ones logged), but forcing an extra turn each time cascaded into worse turn-end behaviour than the breaches themselves, so the owner demoted it.
 - 6.4.1. ⚠️ The price, so nobody restores the block unaware: exit-0 output reaches ONLY the user, never the model. clint therefore cannot correct CC at all —— it is an audit trail, and enforcement rests on root `CLAUDE.md` §3.1.6's TEAs.
 - 6.4.2. Breach classes survive in the log with a `yellow:` prefix (`yellow:prose`, `yellow:reader`, …); a lone `.` is CLEAN in both modes (`clean:dot` / `clean:dot_reader`).
-  - 6.4.3. clint is not the only Stop hook: `mlint.py` DOES block, and the two are not in tension. clint enforces chat SHAPE, where a block forces a turn with nothing left to do —— the deadlock that got it demoted. mlint enforces `#m2` COMPLETION, where the forced turn IS the missing sprint, so the vacuum that produced the cascade cannot form. The test that separates them: does the blocked agent have real work to spend the extra turn on? Only block when the answer is yes, at most once per prompt, and name the escape (a lone `.`) inside the message. mlint blocks in TWO shapes. For the missing declaration the forced turn is ONE line —— small, but not empty in clint's sense: clint's content had already reached the `response_`, whereas this line reached nowhere. The test still holds —— block only when the forced turn delivers something the user does not otherwise get.
+  - 6.4.3. clint is not the only Stop hook: `mlint.py` DOES block, and the two are not in tension. clint enforces chat SHAPE, where a block forces a turn with nothing left to do —— the deadlock that got it demoted. mlint enforces `#m2` COMPLETION, where the forced turn IS the missing sprint, so the vacuum that produced the cascade cannot form. The test that separates them: does the blocked agent have real work to spend the extra turn on? Only block when the answer is yes, at most once per prompt, and name the escape (a lone `.`) inside the message. mlint blocks in THREE shapes. For the missing declaration the forced turn is ONE line —— small, but not empty in clint's sense: clint's content had already reached the `response_`, whereas this line reached nowhere. For the missing post-compaction sentinel (root §5) the forced turn carries the sentinel, the halt, and both §5.3/§5.4 lists —— the only record the user ever gets of what his session lost, and one that lands in no file later. The test still holds —— block only when the forced turn delivers something the user does not otherwise get.
 - 6.5. On PostToolUse the structured `hookSpecificOutput.additionalContext` field is the one channel that is BOTH non-blocking AND model-visible —— use it for any advisory that must actually be read.
 - 6.6. On UserPromptSubmit, NEVER emit `decision:"block"` —— it ERASES the user's prompt.
 - 6.7. PostToolUse cannot undo the write regardless of exit code (the tool already ran); exit 2 there buys model visibility with error framing, not a rollback.
@@ -184,6 +189,7 @@
   - 6.9.6. The protocol lives in root `CLAUDE.md` §5, which the harness re-injects itself
   - 6.9.7. Pinned by `sandbox/post_compact_regression_test.py`, which asserts the channel
   - 6.9.8. That test FAILS if the event ever gains a model channel —— an alarm to act on
+  - 6.9.9. §5 was still skipped in full on 202608070423 —— the summary's own "resume directly, do not acknowledge" sits in the prompt, beating prose from turns earlier. ENFORCEMENT therefore moved to a Stop hook (`mlint.py` SHAPE C, §6.4.3): the only event that can force the owed output back into the same turn. PostCompact remains a user-facing banner and nothing more
 
 ---
 
@@ -216,6 +222,7 @@
 | UserPromptSubmit | End a turn, then check `cscpt/.hlint.log` | A new line per prompt: `fired` with trigger names, or `silent` |
 | Stop | End an `#m2` turn on the interim declaration alone | The stop is BLOCKED, stderr naming the unrun sprint; a `block` line in `cscpt/.mlint.log` |
 | Stop | End an `#m2` turn having written a `response_` and declared nothing | The stop is BLOCKED, stderr naming the missing `➡️`; a `block_nodeclare` line in `cscpt/.mlint.log` |
+| Stop | End a compaction-opened turn without root §5's `🚨` sentinel (cannot be staged on demand —— wait for a real compaction, or read the `compact=` field on any `.mlint.log` line) | The stop is BLOCKED, stderr naming the sentinel, the halt, and the §5.3/§5.4 lists; a `block_nosentinel` line in `cscpt/.mlint.log` |
 | PostCompact | Occurs naturally on compaction | A new line in `cscpt/.post_compact.log` (the banner reaches the USER, never the model —— §6.9) |
 
 - 7.4. The manual pipe test —— useful, but know exactly what it proves:
@@ -372,3 +379,25 @@ for ev,groups in d.items():
 - 12.7. The worst event now spends `~`35% of the budget, up from `~`7% —— dlint alone accounts for the rise. TWO hooks are no longer FIXED costs and must be re-estimated against their INPUT, not against this table: dlint is `~`0.3 ms per KB of `.md` text judged atop a `~`30 ms floor (so `~`3 MB in a single write would breach 1 s; the repo's largest `.md` is 322 KB) —— it was `~`1 ms/KB until the Americanism lookup became a tokenise-and-intersect instead of one regex per listed word per line, and alint/clint scale with transcript size (`~`41 ms at 2.7 MB, `~`150/165 ms at 53 MB —— clint parses every line unbounded, alint pre-filters and caps at 64 MB). The floor is process spawn —— `~`26 ms for any Python hook, `~`5 ms for a shim that exits inside bash. That floor is why the shims exist (§3.2), and why a lint's own logic is almost never what costs. `mlint` joins Stop at `~`78 ms on that same 51 MB transcript —— it tail-reads a bounded 8 MB window instead of parsing unbounded, so it costs a FLAT amount where clint scales, and adds ZERO to the event (§12.5).
 - 12.8. To re-measure: pipe a worst-case payload (§5's shapes) into each command on the event, time it, and take the MAX. That times the SCRIPTS (§7.1.1); confirming the harness still runs them in parallel needs the `ps` sample of §12.3.1 (§7.1.2). Neither substitutes for the other.
 - 12.9. File mtimes are useless for this on FURY —— it is HFS+, so `st_mtime` has 1-SECOND resolution and every sub-second interval reads as zero. Time the processes, never the files they touch.
+
+---
+
+## 13. PreCompact —— the Only Hook That Reaches the Model
+
+*Appended as a new § so nothing above renumbers. Reached from §3's roster row and §6's channel table.*
+
+- 13.1. Registry, verbatim: exit 0 = "stdout appended as custom compact instructions".
+- 13.2. Exit 2 = BLOCK compaction. NEVER exit 2 —— on `auto` that strands the session at the ceiling.
+- 13.3. Extracted from the binary, not from docs: exit-0 stdout of every non-blocked PreCompact hook is trimmed, multi-hook outputs joined by blank lines, returned as `newCustomInstructions`.
+- 13.4. Merged AFTER any user `/compact` text, then appended to the summariser prompt under the literal heading `Additional Instructions:`. It never REPLACES the summary spec.
+- 13.5. Fires on BOTH triggers, incl. the background precompute path —— where the hook runs at PRECOMPUTE time and its result is reused at swap, so a log time can precede the visible compaction.
+- 13.6. ⚠️ ADVISORY TWICE OVER, never a guarantee:
+  - 13.6.1. It instructs the SUMMARISER, which may comply, paraphrase, or drop the ask.
+  - 13.6.2. The fresh context ALWAYS ends with the hardcoded harness tail "Resume directly ... as if the break never happened" —— `suppressFollowUpQuestions`, hardcoded true on the reactive path.
+  - 13.6.3. So the conflict with root `CLAUDE.md` §5 is STRUCTURAL and permanent, not incidental.
+- 13.7. Root §5 therefore stays PRIMARY. This is the in-band second cue, and §5 must never be rewritten to lean on it.
+- 13.8. Script rules for `.claude/pre_compact.sh`:
+  - 13.8.1. stdout must never START with `{` —— it would parse as hook JSON, and a schema failure discards the instructions entirely.
+  - 13.8.2. Target the ask INSIDE `<summary>`; `<analysis>` is stripped before the summary reaches the fresh context.
+  - 13.8.3. No harness truncation on this path (the 10k cap belongs to the REPL pipeline); default hook timeout 600 s.
+- 13.9. Pinned by `sandbox/pre_compact_regression_test.py`, which re-verifies the channel against the installed binary on every run and alarms if PostCompact ever gains a direct model channel —— which would supersede this two-hop design.
