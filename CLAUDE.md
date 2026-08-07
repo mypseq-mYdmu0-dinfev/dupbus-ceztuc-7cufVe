@@ -130,6 +130,8 @@
     - 3.2.1.1. ANY **non-comms** file(s) read, incl. passively via system file-change notifications
     - 3.2.1.2. NEVER incl. comms files (the 5 types in §3.3; belong to §3.2.2); not always .md
     - 3.2.1.3. Group all reads into 1 line, unlike `⇠` & `➡️` (per §3.2.3.2)
+    - 3.2.1.4. YOUR reads only —— an SA's go in the `response_` under `#opt`, never here
+    - 3.2.1.5. Why: 1 query in, 1 response out; 100 SA reads would drown the batch
   - 3.2.2. `⇠ `enclosing_folder/file.md``
     - 3.2.2.1. ANY **comms** file(s) read (per §3.3); .md only
     - 3.2.2.2. NEVER incl. non-comms files (e.g. CLAUDE.md, pcmds, scripts)
@@ -137,6 +139,7 @@
     - 3.2.3.1. ANY files created/edited, incl. both comms & non-comms; not always .md
     - 3.2.3.2. BOTH `⇠` & `➡️` must be **1 line each**; NO GROUPING, unlike `✅` & `🦈`
     - 3.2.3.3. Per §3.1.6, bold the main `response_` (better visibility; ONLY for `➡️`; ≤1 per turn)
+    - 3.2.3.4. #r AND edited → BOTH glyphs; e.g. an edited `close_` is `⇠` AND `➡️`
   - 3.2.4. `🦈 `SHA1`, `SHA2`, ...`
     - 3.2.4.1. ANY commits/pushs during this turn
     - 3.2.4.2. Typically one SHA (per §3.1.6.1.6)
@@ -148,6 +151,8 @@
     - 3.2.4.5. ONLY if multiple repos touched:
       - 3.2.4.5.1. Emit multiple lines AND incl. shorthands (per §3.1.6)
       - 3.2.4.5.2. This repo = `Default`; `[name]_repo` = `[name]`
+    - 3.2.4.6. SINGLE repo → NO `:`, NO shorthand, bare SHAs —— binds EVERY repo's CC
+      - 3.2.4.6.1. e.g. an AJAP-only turn emits `🦈 `abc12345``, never `🦈 AJAP: …`
   - 3.2.5. `⚠️ [≤5w]` —— blocker detected: stop & alert; if >5w needed, create `response_` file
   - 3.2.6. `🚨 Compaction Detected —— stopped all tasks.` —— post-compaction sentinel (§5)
 - 3.3. Comms File Naming:

@@ -61,6 +61,7 @@ projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/fee
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_cic_mandate_on_trigger.md|backup_memory_dupbus_feedback_cic_mandate_on_trigger.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_declare_mahb_reread.md|backup_memory_dupbus_feedback_declare_mahb_reread.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_hb_reread_mahb.md|backup_memory_dupbus_feedback_hb_reread_mahb.md
+projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_never_gitignore_voided.md|backup_memory_dupbus_feedback_never_gitignore_voided.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_no_chat_prose.md|backup_memory_dupbus_feedback_no_chat_prose.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_sa_brief_frontload_mandate.md|backup_memory_dupbus_feedback_sa_brief_frontload_mandate.md
 projects/-Volumes-FURY-2TB-Fury-Documents-GitHub-dupbus-ceztuc-7cufVe/memory/feedback_spaced_filenames.md|backup_memory_dupbus_feedback_spaced_filenames.md

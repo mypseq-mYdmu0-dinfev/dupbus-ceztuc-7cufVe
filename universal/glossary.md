@@ -50,7 +50,7 @@
 - Mi = Xiaomi
 - VS/VSC = Visual Studio Code, my default
 - `<br>` = line break, NOT displayed text
-- Revert = edit a previous msg, usually practiced when we're processing super large files. e.g. when analysing multiple zoom transcripts, I prompt you on 1st one→create synthesis→save to CP→revert to handle 2nd one→loop in order to preserve chat capacity. Bottomline: When I said I reverted, something was done rear to that msg
+- Revert = edit a previous msg, usually practised when we're processing super large files. e.g. when analysing multiple zoom transcripts, I prompt you on 1st one→create synthesis→save to CP→revert to handle 2nd one→loop in order to preserve chat capacity. Bottomline: When I said I reverted, something was done rear to that msg
 - CP = Claude Project; each CP may involve multiple projects and vice versa
 - CIC = Claude in Chrome (MCP)
 - CC = Claude Code; "Code" tab of CAI (not terminal); addressed as `she/her`
@@ -67,7 +67,8 @@
 - root = assume default repo unless mentioned as "AJAP root"
 - default repo = `/dupbus-ceztuc-7cufVe/`
 - AJAP repo = `/AJAP_repo/` (isolated to avoid its instances reading default repo's root c.md)
-- #r = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D." (perfect/past/future/present)
+- #r = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D". (perfect/past/future/present)
+- re-#r = past/perfect tense of "re-read"; only present/future "re-read" stays as words
 - directory.md = legacy file; immediately alert when any are seen/mentioned
 - I/O = input/output
 - SR = `<system-reminder>` (injected file-change notice); e.g. "Note: `<path>` was modified, ..."

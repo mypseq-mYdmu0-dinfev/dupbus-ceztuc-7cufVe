@@ -814,7 +814,7 @@ def _read_note(report, mode, base):
     in the repo. This one is different in kind —— it is the only quick rule
     whose verdict a machine cannot reach."""
     for line in (report or "").splitlines():
-        if 'bare "read"' not in line:
+        if 'unmarked "read"' not in line:
             continue
         body = line.strip()
         body = body.split(": ", 1)[1] if body.startswith("L") and ": " in body \

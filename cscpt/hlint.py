@@ -1,20 +1,29 @@
 #!/usr/bin/env python3
-"""Hashtag/Trigger Linter (UserPromptSubmit hook)
+"""Hashtag/Trigger Linter + Chat-Discipline Tally (UserPromptSubmit hook)
 
-ONE job, named by the file: `#[trigger]` tokens in the prompt (and in any comms
-file it names) that resolve to a `[trigger].md` in the SEARCH SCOPE below get a
-NON-BLOCKING reminder to READ that file (root CLAUDE.md §7.3.1: a `#[trigger]`
-MUST be resolved by reading its file, never guessed).
+TWO jobs now, both advisory, sharing the one prompt-time channel PROVEN to
+reach the model without waking it or costing an extra turn:
+1. TRIGGERS (global; the job the filename names): `#[trigger]` tokens in the
+   prompt (and in any comms file it names) that resolve to a `[trigger].md` in
+   the SEARCH SCOPE below get a NON-BLOCKING reminder to READ that file (root
+   CLAUDE.md §7.3.1: a `#[trigger]` MUST be resolved by reading its file,
+   never guessed).
+2. CHAT-DISCIPLINE TALLY (this repo only): when the PREVIOUS turn's chat text
+   drew a breach verdict from `cscpt/clint.py` (the Stop-side chat linter,
+   root CLAUDE.md §3.2), ONE line names the count and breach class so the new
+   turn starts corrected instead of repeating it. Design and deliberate
+   limits: CHAT-DISCIPLINE TALLY in the CCSIM section.
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a UserPromptSubmit hook, ADVISORY —— never blocks. Each `#[trigger]`
-  gets a line naming its protocol file (root CLAUDE.md §7.3.1 —— READ it, never
-  guess).
-* IF IT FIRES: read that file, or declare why not.
-* BACKTICKED NAMES DON'T FIRE: a `#name`, fence or filename in backticks is
-  DISCUSSED, not invoked. Only a bare token fires.
-* ONLY YOUR WORDS FIRE: scanned = the prompt plus any `*query_[TS].md` it
-  names. Anything else named —— protocol, guide, `response_` —— is NOT scanned.
+  draws a line naming its protocol file (root CLAUDE.md §7.3.1). IF IT FIRES:
+  read that file, or declare why not.
+* TALLY (this repo only): one line counts the PREVIOUS turn's chat breaches
+  (root §3.2). IF IT FIRES: declarations-only chat; never apologise in chat.
+* BACKTICKED/FENCED `#name`s are DISCUSSED, not invoked —— only a bare token
+  fires.
+* ONLY YOUR WORDS FIRE: scanned = the prompt + any `*query_[TS].md` it names;
+  nothing else.
 * BLIND SPOT: triggers resolve only under `universal/`, `cp/`,
   `AJAP_repo/protocols/`, `AJAP_repo/inv/inveng.md`. Silence is not proof.
 === NON-CCSIM —— end of all you need to RUN it ===
@@ -24,9 +33,11 @@ WIRING (kept here, not in NON-CCSIM: a caller never invokes this file, so the
 plumbing is dead weight to everyone but an editor). Registered as a
 `UserPromptSubmit` hook in the USER-level `~/.claude/settings.json` —— the
 Claude Desktop app executes user-level hooks and silently ignores project-level
-ones. IN: UserPromptSubmit JSON on stdin (field `prompt`). OUT: on a match, JSON
-on stdout carrying `hookSpecificOutput.additionalContext`, one line per matched
-trigger; no match -> no output. EXIT is ALWAYS 0, and it never emits
+ones. IN: UserPromptSubmit JSON on stdin (fields `prompt`, `session_id`, `cwd`).
+OUT: on a match, JSON on stdout carrying
+`hookSpecificOutput.additionalContext` —— the chat-discipline tally line first
+when it is due (CHAT-DISCIPLINE TALLY below), then one line per matched
+trigger; nothing due -> no output. EXIT is ALWAYS 0, and it never emits
 `decision:"block"` —— for UserPromptSubmit that would ERASE the user's prompt.
 SCAN CORPUS: the prompt text PLUS the content of any `*query_[TS].md` file it
 names, exactly ONE level deep, never recursive (see WHY ONLY `query_` FILES ARE
@@ -49,7 +60,10 @@ agreed to this repo's conventions is a genuine hazard. This one is purely
 ADVISORY —— one appended line of context, exit always 0 —— so its worst misfire
 elsewhere is a single ignorable line, set against the far larger cost of a MISSED
 `#[trigger]` (guessing a protocol instead of reading it). Intentional asymmetry
-—— do not "restore consistency" with a guard.
+—— do not "restore consistency" with a guard. THE TALLY HALF IS THE ONE
+EXCEPTION: it IS cwd-gated, for its own reasons (see CHAT-DISCIPLINE TALLY ——
+chat discipline is this repo's rule, and a foreign cockpit must not be nagged
+about it); that asymmetry is equally deliberate, in the opposite direction.
 
 CONSEQUENCE FOR PATHS: because invocations routinely arrive from OTHER repos,
 `#[name]` must still resolve against THIS repo's `universal/`. Every path is
@@ -83,6 +97,99 @@ this repo via `_PARENT`, never via `$HOME`/`~`. This checkout lives on an
 external volume (`~/.claude` is itself a symlink onto it) and has been relocated
 before; a home-anchored constant would resolve to nothing after the next move and
 the hook would go quietly silent —— the exact failure mode described above.
+
+=== CHAT-DISCIPLINE TALLY (the second job) ===
+
+WHY IT LIVES HERE, OF ALL PLACES: root CLAUDE.md §3.1 forbids chat prose
+absolutely; `cscpt/clint.py` (Stop) detects breaches; and clint was demoted to
+warn-only. But at Stop there is NO channel that reaches the model without
+waking it, BY CONSTRUCTION —— the model has stopped, so reaching it means
+starting it again. Verified against the Desktop harness binary itself: Stop
+exit-0 plain stdout goes nowhere; exit-0 `systemMessage` becomes an attachment
+whose model mapping is empty and which the Desktop surface never renders (142
+sat unseen in this project's transcripts); exit-0 `additionalContext` at Stop
+DOES reach the model but RE-INVOKES it on the same continuation path as a
+block —— a block wearing a softer name, the exact deadlock clint's demotion
+was ordered to end (clint's ALWAYS RED -> ALWAYS YELLOW section). hook_guide
+§6.4.1 names the channels that reach the model WITHOUT waking it, and this
+hook already owns one: UserPromptSubmit `additionalContext` —— model-visible
+at the next turn's opening, zero extra turns, zero chapter-marker risk. The
+price is stated, not hidden: correction arrives at the NEXT prompt, never
+mid-turn. The owner accepted this explicitly as better than nothing, whilst
+mandating that CCSIM keep looking for a genuinely live channel.
+
+WHAT COUNTS AS "THE PREVIOUS TURN" —— the LAST clint log entry for this
+session, and ONLY that entry, never a sum. clint logs one verdict PER STOP,
+and a turn can Stop several times: every background task-notification wake
+re-Stops and re-scans the SAME window (clint's boundary is the last GENUINE
+user line, which a wake is not), so a single breach window was observed
+logging SEVEN growing `yellow:prose` entries —— under fresh promptIds each
+time, which also defeats any per-promptId ledger. The final Stop's scan
+covers the whole window and supersedes every earlier partial scan, so its
+`lines=` field IS the turn's defensible count: reported verbatim. If that
+field will not parse as an integer, the line reports NO number at all ——
+never a number that cannot be defended. Entries are matched on `session=`
+(clint stores the id's first 8 chars), so parallel sessions sharing one log
+can never cross-report; `exempt:*`/`clean:*` verdicts carry no breach and
+`message_failed` lost its class, so only `yellow:*` fires.
+
+WHY IT NEVER BECOMES WALLPAPER (three layers): (1) silent at zero —— a
+reminder firing every turn is one nobody reads; (2) each clint verdict entry
+is reported ONCE —— a ledger mark (sha1 of the raw entry, first 12 hex) rides
+in this hook's own `tally=fired:` log line and is checked on the next prompt,
+so the log doubles as the dedup ledger, the precedent mlint set (its log is
+its per-prompt block ledger); no second state file exists to drift, leak into
+`git status`, or need its own pruning, and `_prune_log`'s 800-line window
+comfortably outlives any gap between two prompts of one session. A LOST
+ledger line (log writes are swallowed on failure) costs one duplicate
+advisory, never a loop. (3) The line names the concrete class and count,
+which change with each real breach —— not a fixed sermon that fades.
+
+WHY THE TALLY IS CWD-GATED whilst the trigger half is deliberately global:
+one edge each way, both intentional. A missed `#trigger` ANYWHERE is the
+expensive failure (a protocol guessed instead of read), so that half runs
+everywhere and fails open. Chat discipline is THIS repo's rule: injecting
+"you breached §3.2" into a project that never adopted §3.2 —— an AJAP `#seek`
+cockpit, any foreign repo —— is noise at best and bait for phantom compliance
+at worst. So the tally requires the payload `cwd` to resolve (realpath)
+inside this repo and stays silent otherwise, INCLUDING when `cwd` is absent:
+for this sub-feature silence is the conservative direction, and nothing is
+lost —— the ledger only advances on a fire, so the next in-repo prompt still
+reports the same entry. Do not "restore consistency" in either direction.
+Root scope note: the tally reads `cscpt/.clint.log` and `cscpt/.hlint.log`
+beside this file only —— anchored on `__file__`, never the cwd it gates on.
+
+WHAT THE LINE SAYS, and what it deliberately does not: count + clint's own
+class tag + a one-clause gloss + the rule + the correction, in ONE line ——
+actionable without being a lecture. The first offender is quoted only as an
+IDENTIFYING STUB: hard-capped at `_TALLY_EXCERPT_CHARS`, wrapped in backticks
+(this file's own convention —— backticked = discussed, never live), and
+dropped entirely when it carries a backtick of its own rather than escaped.
+The full offending text stays in clint's log for a human audit; re-injecting
+a paragraph of the very prose being suppressed, for the model to echo back,
+would be self-defeating —— that trade was weighed, not defaulted. The gloss
+map never quotes a hidden numeric cap (clint documents why its char cap must
+stay invisible to agents). The line also pre-empts the one reflex that turns
+a correction into a fresh breach: it forbids apologising IN CHAT.
+
+TALLY FAIL-OPEN + STAGE LOG: the whole computation is wrapped so ANY failure
+degrades to "no tally line" with stage `error` —— never a broken, delayed,
+or (worst of all) erased prompt. Stages, one per invocation in the `tally=`
+log field: `off_scope` (cwd absent/foreign), `no_sid` (unusable session id),
+`no_log` (clint log missing/unreadable), `no_entry` (no line for this
+session), `clean` (last verdict not `yellow:*`), `dup` (already reported),
+`fired:<class>:<count>@<mark>`, `error`; `-` on invocations that never reach
+the tally (bad payload, task-notification). Logged because a missing log
+line is how a hook stays dead unnoticed —— this repo paid 70 days for that
+lesson once. A wake NEVER fires the tally: the computation sits AFTER the
+`<task-notification>` gate, so a wake is logged `not_user_prompt` and the
+tally is not even attempted —— a wake is not a new turn, and correcting one
+mid-turn is the re-invocation trap this design exists to avoid. COST,
+measured end-to-end on this Mac against live-sized logs (40-run medians,
+pre-change vs post-change, same payload/env): 26.4 ms -> 30.0 ms, i.e. ≈4 ms
+added to a ~27 ms event inside a ~0.39 s round trip against a 1 s budget
+(p90 was unchanged, 35.5 -> 35.9 ms); both log reads are bounded by the two
+files' own prune ceilings.
 
 REGEX PRECISION: `_TRIGGER_RE` requires the `#` NOT to follow a word char, so a
 URL fragment (`file#L10`) never matches whilst a standalone `#close` does, and a
@@ -254,11 +361,18 @@ import stat
 import os
 import re
 import json
+import hashlib
 from datetime import datetime
 
 # Repo root = parent of this script's `cscpt/` dir (deterministic anchor; never
 # relies on cwd, which may be a sub-folder for a given session).
 _ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+# Realpathed twin of `_ROOT`, for the tally's cwd gate:
+# a payload cwd may arrive through a symlink (`~/.claude`
+# itself is one on this Mac), and comparing realpaths is
+# what keeps the gate honest across such aliases.
+_ROOT_REAL = os.path.realpath(_ROOT)
 
 # The directory that holds this repo. Sibling repos are derived from here rather
 # than from `$HOME`, because this checkout sits on an external volume and has
@@ -370,6 +484,40 @@ _LOG_PRUNE_AT_BYTES = 400 * 1024
 _LOG_MAX_LINES = 1000
 _LOG_KEEP_LINES = 800
 
+# --- CHAT-DISCIPLINE TALLY (rationale: docstring section of that name) ------
+# clint's Stop-side verdict log, READ here at the next
+# prompt. Same env knob clint itself WRITES under, so the
+# pair can never point at different files —— a test that
+# redirects clint's writes redirects this read with it.
+_CLINT_LOG = os.environ.get("CLINT_LOG") or os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), ".clint.log")
+
+# Identifying stub of the first offending line: hard cap,
+# shown backticked, dropped if it carries its own backtick
+# (docstring: WHAT THE LINE SAYS).
+_TALLY_EXCERPT_CHARS = 40
+
+# clint breach class -> one-clause gloss. Never quotes a
+# hidden numeric cap (clint keeps its char cap invisible
+# to agents on purpose). An unknown class falls back to a
+# generic clause —— clint may grow classes before this map
+# learns them, and that must not cost the report.
+_TALLY_GLOSS = {
+    "prose": "chat prose bearing no declaration glyph",
+    "io_shape": "an I/O declaration glyph carrying non-file-list text",
+    "sha_shape": "the commit-SHA glyph carrying a non-hash body",
+    "sentinel": "a compaction sentinel not matching §3.2.6's exact wording",
+    "warn_empty": "a blocker glyph declaring nothing",
+    "warn_words": "a blocker line past §3.2.5's ≤5w cap",
+    "warn_hyphens": "a blocker line evading the word cap with joiners",
+    "warn_chars": "an over-long blocker line",
+    "warn_shape": "another declaration type wearing the blocker glyph",
+    "warn_progress": "a progress note wearing the blocker glyph",
+    "sic_overrun": "a `sic` status answer past its authorised word cap",
+    "reader": "chat text in the zero-text Reader folder",
+}
+_TALLY_GLOSS_FALLBACK = "an impermissible chat line"
+
 
 def _prune_log():
     """Bound `_LOG` to its recent window —— cheap, atomic, fail-safe.
@@ -404,20 +552,26 @@ def _prune_log():
                 pass
 
 
-def _log_event(stage, sid="-", triggers="-"):
+def _log_event(stage, sid="-", triggers="-", tally="-"):
     """Append ONE terse line for ANY invocation —— match or not.
 
     TAB-separated, `triggers=` last because it alone carries free text (tabs and
-    newlines are flattened, so a record is always exactly one line). FAIL-SAFE:
-    all errors swallowed —— nothing reads this log back, so a lost write costs
-    diagnostics only, never the reminder itself. (Historic lines carry a
-    `pairs=N` field from the retired pairing check; nothing parses this log, so
-    the older shape is inert rather than a compatibility burden.)"""
+    newlines are flattened, so a record is always exactly one line). `tally=`
+    names what the chat-discipline tally did this invocation (docstring: TALLY
+    FAIL-OPEN + STAGE LOG); its `fired:` form doubles as the tally's dedup
+    LEDGER, read back by `_tally_reported` —— the one part of this log that IS
+    parsed, so a lost `fired:` line costs one duplicate advisory. FAIL-SAFE:
+    all errors swallowed —— everything else here is diagnostics only, never the
+    reminder itself. (Historic lines carry a `pairs=N` field from the retired
+    pairing check, or no `tally=` field at all from before the tally existed;
+    `_tally_reported` matches on the field marker, so both older shapes are
+    inert rather than a compatibility burden.)"""
     try:
         with open(_LOG, "a", encoding="utf-8") as lf:
-            lf.write("%s\tsession=%s\tstage=%s\ttriggers=%s\n"
+            lf.write("%s\tsession=%s\tstage=%s\ttally=%s\ttriggers=%s\n"
                      % (datetime.now().isoformat(timespec="seconds"), sid,
                         stage,
+                        str(tally)[:120].replace("\t", " ").replace("\n", " "),
                         str(triggers)[:300].replace("\t", " ").replace("\n", " ")))
     except Exception:
         pass
@@ -629,6 +783,131 @@ def _resolve_trigger(name):
 
 
 # ---------------------------------------------------------------------------
+# CHAT-DISCIPLINE TALLY —— the second job. Full rationale in the docstring
+# section of that name; the comments here cover mechanics only.
+# ---------------------------------------------------------------------------
+
+def _tally_in_scope(data):
+    """True only when the payload `cwd` resolves inside THIS repo.
+
+    Chat discipline is this repo's rule, so an absent or foreign cwd means
+    SILENCE —— the conservative direction for this sub-feature, and the
+    OPPOSITE of the trigger half's global fail-open (docstring: WHY THE TALLY
+    IS CWD-GATED). Nothing is lost by the silence: the ledger only advances
+    on a fire, so the next in-repo prompt still reports the same entry."""
+    cwd = data.get("cwd")
+    if not (isinstance(cwd, str) and cwd):
+        return False
+    real = os.path.realpath(cwd)
+    return real == _ROOT_REAL or real.startswith(_ROOT_REAL + os.sep)
+
+
+def _last_clint_entry(sid8):
+    """The NEWEST clint log line for this session, or None. May raise OSError
+    (caller maps it to stage `no_log`).
+
+    Newest-first is the whole design: every earlier entry for the session is
+    either a partial re-scan of the same window (a task-notification wake) or
+    an older turn already reported/superseded —— docstring, WHAT COUNTS AS
+    "THE PREVIOUS TURN". The full file is read rather than a tail-seek:
+    clint's own prune bounds it (~70 KB steady state), and a seek that could
+    silently miss a quiet session's last entry under another session's
+    traffic would be a correctness bug bought for under a millisecond."""
+    with open(_CLINT_LOG, "r", encoding="utf-8", errors="replace") as fh:
+        text = fh.read()
+    needle = "\tsession=%s\t" % sid8
+    for line in reversed(text.splitlines()):
+        if needle in line:
+            return line
+    return None
+
+
+def _tally_reported(sid, mark):
+    """True if `mark` (this clint entry's ledger id) was already reported for
+    this session —— checked against the NEWEST `tally=fired:` line for `sid`
+    in this hook's OWN log, which doubles as the ledger (mlint precedent;
+    docstring: WHY IT NEVER BECOMES WALLPAPER). Only the newest marker can
+    match: clint's log is append-only and prune keeps the newest tail, so a
+    candidate entry can never be OLDER than the last one reported. Unreadable
+    ledger -> False: a duplicate advisory beats a silently lost one."""
+    try:
+        with open(_LOG, "r", encoding="utf-8", errors="replace") as fh:
+            text = fh.read()
+    except Exception:
+        return False
+    needle = "\tsession=%s\t" % sid
+    for line in reversed(text.splitlines()):
+        if needle in line and "\ttally=fired:" in line:
+            return ("@%s\t" % mark) in line
+    return False
+
+
+def _tally_message(cls, count, excerpt):
+    """The ONE injected line: count + class + gloss + rule + correction
+    (docstring: WHAT THE LINE SAYS). `count` may be None —— then no number is
+    claimed at all, because a number that cannot be defended teaches the
+    reader to distrust the defensible ones."""
+    if count is None:
+        head = ("[hlint hook] Chat-discipline tally: the PREVIOUS turn's chat "
+                "text drew a breach verdict from clint")
+    else:
+        head = ("[hlint hook] Chat-discipline tally: the PREVIOUS turn ended "
+                "with %d impermissible chat line%s"
+                % (count, "" if count == 1 else "s"))
+    stub = "; first offender: `%s`" % excerpt if excerpt else ""
+    return (head + " —— clint class `%s` (%s)%s. Root CLAUDE.md §3.1–§3.2: "
+            "chat carries the six declaration lines ONLY; substantive content "
+            "belongs in this turn's `response_` file. Comply THIS turn, and "
+            "do NOT apologise in chat —— that would itself be a breach."
+            % (cls, _TALLY_GLOSS.get(cls, _TALLY_GLOSS_FALLBACK), stub))
+
+
+def _chat_tally(data, sid):
+    """(injected line or None, tally stage) —— never raises past its caller's
+    wrapper, and every exit names its stage so a dead tally is visible in the
+    log rather than indistinguishable from a clean one (docstring: TALLY
+    FAIL-OPEN + STAGE LOG)."""
+    if not isinstance(sid, str) or not sid or sid == "-":
+        return None, "no_sid"
+    if not _tally_in_scope(data):
+        return None, "off_scope"
+    sid8 = sid[:8]
+    try:
+        entry = _last_clint_entry(sid8)
+    except Exception:
+        return None, "no_log"
+    if entry is None:
+        return None, "no_entry"
+    fields = {}
+    for part in entry.split("\t")[1:]:
+        key, _, val = part.partition("=")
+        fields.setdefault(key, val)
+    action = fields.get("action", "")
+    if not action.startswith("yellow:"):
+        # `exempt:*`/`clean:*` carry no breach; `message_failed`
+        # lost its class, and reporting it would mean inventing
+        # one (docstring: WHAT COUNTS AS "THE PREVIOUS TURN").
+        return None, "clean"
+    mark = hashlib.sha1(entry.encode("utf-8", "replace")).hexdigest()[:12]
+    if _tally_reported(sid, mark):
+        return None, "dup"
+    cls = action[len("yellow:"):] or "unknown"
+    try:
+        count = int(fields.get("lines", ""))
+    except (TypeError, ValueError):
+        count = None                 # never claim an indefensible number
+    excerpt = (fields.get("first") or "").strip()
+    if excerpt in ("", "-") or "`" in excerpt:
+        excerpt = ""                 # no stub beats a broken/quoting one
+    elif len(excerpt) > _TALLY_EXCERPT_CHARS:
+        excerpt = excerpt[:_TALLY_EXCERPT_CHARS].rstrip() + "…"
+    stage = ("fired:%s:%s@%s"
+             % (cls, "?" if count is None else count, mark))
+    stage = stage.replace("\t", " ").replace("\n", " ")
+    return _tally_message(cls, count, excerpt), stage
+
+
+# ---------------------------------------------------------------------------
 # HOOK-BODY STDIN GUARD
 # ---------------------------------------------------------------------------
 # This file is a HOOK BODY, not a command-line tool: the harness pipes its JSON
@@ -786,6 +1065,15 @@ def main():
         _log_event("not_user_prompt", sid)
         return 0
 
+    # SECOND JOB —— chat-discipline tally. Deliberately AFTER
+    # the task-notification gate above (a wake is not a new
+    # turn and must never draw a tally) and wrapped so no
+    # failure here can break, delay, or erase a prompt.
+    try:
+        tally_line, tally_stage = _chat_tally(data, sid)
+    except Exception:
+        tally_line, tally_stage = None, "error"
+
     try:
         referenced = _read_referenced(prompt)
     except Exception:
@@ -830,16 +1118,29 @@ def main():
         if len(lines) >= _MAX_REMINDERS:
             break
 
-    if not lines:
+    if not lines and not tally_line:
         # SILENT is a real outcome, not an absence —— logging it is the whole
         # point of §7.7: without this line, "hlint never ran" and "hlint ran and
         # matched nothing" are indistinguishable after the fact.
-        _log_event("silent", sid)
+        _log_event("silent", sid, tally=tally_stage)
         return 0
 
-    _log_event("fired", sid, ",".join(fired_names) or "-")
+    # `stage=` keeps naming the TRIGGER half's outcome alone
+    # (existing vocabulary, pinned by tests); the tally's own
+    # outcome always rides in `tally=`. A `fired:` value here
+    # is also the dedup ledger entry —— it must be on disk
+    # BEFORE stdout is written, so a crash between the two
+    # sides errs towards a suppressed duplicate, never a
+    # re-nag loop.
+    _log_event("fired" if lines else "silent", sid,
+               ",".join(fired_names) or "-", tally=tally_stage)
 
-    context = _HEADER + "\n" + "\n".join(lines)
+    parts = []
+    if tally_line:
+        parts.append(tally_line)     # discipline first, then reminders
+    if lines:
+        parts.append(_HEADER + "\n" + "\n".join(lines))
+    context = "\n".join(parts)
     try:
         sys.stdout.write(json.dumps({
             "hookSpecificOutput": {

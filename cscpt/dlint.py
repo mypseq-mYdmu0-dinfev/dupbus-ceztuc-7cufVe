@@ -647,51 +647,62 @@ def _genai_phrases(masked_text, yellow):
 
 
 # QUICK-ONLY —— the `#r` tense check. `glossary.md` reserves `#r` for the
-# past/perfect tense of "read", so that "I #r A and will read B" stays
-# unambiguous. A bare "read" is correct for present/future and WRONG for past,
-# and only a human (or CC re-reading its own sentence) can tell which is which
-# —— so this advises, never asserts.
+# past/perfect tense of "read" (and `re-#r` for a past "re-read"), so that
+# "I #r A and will read B" stays unambiguous. An unmarked "read" is correct for
+# present/future and WRONG for past, and only a human (or CC re-reading its
+# own sentence) can tell which is which —— so this advises, never asserts.
 #
 # QUICK ONLY, and that exclusion is load-bearing: `#r` is house shorthand.
 # FULL mode lints DELIVERABLES, which go to third parties who have never seen
 # this glossary, so a deliverable must spell "read" out in full. Firing there
 # would push house abbreviations into outgoing work —— the opposite of the rule.
 #
-# WHY THE MATCHER IS NOT JUST `\b[Rr]ead\b`, measured rather than assumed. That
-# bare pattern fires on 63% of this repo's 494 `response_` files, 974 hits in
-# all, and most of those are not tense errors at all. Only TWO classes are
-# excluded, and the test for inclusion is severe: an exclusion is allowed ONLY
-# where `#r` could not be the right word under ANY reading, because the owner's
-# standing ruling is that a false positive costs ~10 wasted tokens whilst a
-# false negative "could be highly misleading". So:
-#   1. HYPHENATED COMPOUNDS —— `re-read`, `read-only`, `conditional-read`,
-#      `must-read`, `over-read`. A hyphen IS a word boundary, so the bare
-#      pattern matched all of them. `#r` cannot substitute inside a compound;
-#      there is no `re-#r`, and `glossary.md` defines `#r` for the WORD "read".
-#   2. THE TOOL NAME —— "the Read tool", "Read/Write". A proper noun, and
-#      abbreviating a tool's name would be simply wrong.
+# THE MATCHER FIRES ON THE WORD-FINAL "read" MORPHEME, whole word or not. An
+# earlier version excluded hyphenated compounds (`re-read`, `read-only`,
+# `must-read`) and defended that with a corpus census ("most are tenseless
+# modifiers; there is no `re-#r`"). The owner OVERRULED it, twice, and his
+# reasoning decides the design: comms are TEXT-ONLY, so he can never HEAR
+# whether a written "read" is /riːd/ or /rɛd/ —— anything /rɛd/ must carry the
+# marker (a past "re-read" is `re-#r`, now minted in `glossary.md`), and the
+# linter "must fire on any `read`/`Read`, no matter it's whole or part of a
+# word". Do not re-narrow this on a new census: the census argument was made,
+# measured, and rejected. (Class 2, the tool name, was NOT overruled and
+# survives —— see the exclusion test below, which it still passes.)
 #
-# BOTH WERE RE-EXAMINED AGAINST THAT RULING AND DELIBERATELY KEPT, on a census
-# of the corpus rather than on the assertion above —— "there is no `re-#r`" is
-# the WEAK form of the argument and covers only one form. The strong form is
-# that most of what they exclude is not a verb at all:
-#   * Class 1 = 222 occurrences, 52 distinct forms. 122 are TENSELESS ——
-#     `read-only` (41), `run-not-read`, `live-read`, `delta-read`,
-#     `conditional-read`, `auto-read`, `machine-read`, `read-path`: compound
-#     adjectives and noun modifiers with no tense for anyone to judge. The
-#     other 100 are the `re-read` family —— a real verb with a real past
-#     tense, and no available substitution.
-#   * Class 2 = 13 occurrences, all 13 the tool's proper noun. Zero verbs.
-# So the owner's trade-off does not REACH either class. It prices a false
-# positive against a false negative, and here there is no false negative to
-# buy: nothing excluded is a bare past-tense "read" that `#r` would fix. A
-# flag on `read-only` is not a ten-token false positive with a fix attached ——
-# it is a demand to judge the tense of a word that has none, forever.
-# The cost of dropping both anyway was measured, since the decision turns on
-# it: 581 hits / 257 files (52%) now, against 791 / 283 (57%) —— +210 hits,
-# every one unactionable. That is NOT the 974 above, which additionally needs
-# the noun and bare-stem filters dropped; conflating the two overstates the
-# price of this particular choice by roughly twofold.
+# "PART OF A WORD" MEANS THE MORPHEME, NOT THE LETTER SEQUENCE. The rule
+# exists solely for the /riːd/-vs-/rɛd/ ambiguity, and that ambiguity lives
+# only where the word "read" itself is being said:
+#   * "read" followed by another LETTER is a different word with one fixed
+#     pronunciation —— reading, reads, reader, readme, ready, readily,
+#     breadth, spreadsheet. Never flagged: there is nothing to disambiguate,
+#     and flagging these would bury the real hits in noise a substring hunt
+#     for `bread` deserves and a tense marker does not.
+#   * "read" ENDING a longer unbroken word is the verb inflecting at its head
+#     —— reread, misread, proofread, unread; a past "misread" IS /mɪsˈrɛd/.
+#     Flagged, EXCEPT the five stems whose `read` is no morpheme at all:
+#     bread, dread, tread, spread, thread (endswith covers their own
+#     compounds too —— gingerbread, widespread, retread). Known edge:
+#     "speedread" ends in "dread" and is wrongly spared; the usual spelling
+#     "speed-read" fires via the hyphen rule.
+#   * HYPHEN-ADJACENT "read" always fires —— re-read, already-read,
+#     well-read, read-only, must-read, machine-read, read-reminder.
+#
+# COMPOUNDS TAKE NO CONTEXT EXCLUSIONS. For the STANDALONE word, three narrow
+# exclusions survive below, each passing the severe test that `#r` could not
+# be the right word under ANY reading (`to read`/`will read` force the bare
+# stem /riːd/; "a read" is the noun /riːd/; the Read tool is a proper noun).
+# No compound passes it: "already-read" is /rɛd/ outright, a past "re-read"
+# is now `re-#r`, and testing a governor ACROSS a hyphen would misread a
+# compound's own member as one ("must-read" is not "must" governing "read").
+# So every compound hit goes straight to judgement —— waving `read-only`
+# (/riːd/) through costs the ~10 tokens the owner priced a false positive at,
+# whilst a false negative "could be highly misleading".
+#
+# MEASURED COST, so the next census starts honest: over the 500 `response_`
+# files under `sessions/` this widening moves the advisory from 593 hits /
+# 262 files (52%) to 848 hits / 294 files (59%) —— +255 hits, still ONE
+# aggregated flag per file. That increase is the owner's explicit purchase,
+# not drift.
 #
 # EVERYTHING ELSE FIRES, including cases a tense-aware reader would call
 # correct. That is the point: the flag asks CC to JUDGE, and a judgement baked
@@ -711,8 +722,17 @@ def _genai_phrases(masked_text, yellow):
 #   * DISTRIBUTIVE AND DEMONSTRATIVE DETERMINERS (`this that these those each
 #     every another one no`). Every one of them doubles as a PRONOUN that can
 #     head a past clause: "That read as an oversight", "Each read the brief".
+#   * HYPHENATED COMPOUNDS (class 1 above) —— the owner's overruling.
 # The residual is REAL and stated in the flag, not hidden —— see `_read_tense`.
-_READ_RE = re.compile(r"[A-Za-z0-9_#-]*\b([Rr]ead)\b[A-Za-z0-9_-]*")
+
+# A candidate is the exact letters `read`/`Read` NOT followed by a letter —— a
+# following letter (reads, reading, ready, readme…) fixes the pronunciation
+# and with it ends the ambiguity this check exists for.
+_READ_CAND_RE = re.compile(r"[Rr]ead(?![A-Za-z])")
+
+# Word-final `read` where the letters are NOT the verb morpheme. Everything
+# else ending in `read` is the verb and fires.
+_READ_NON_MORPHEME = ("bread", "dread", "tread", "spread", "thread")
 
 # An article or possessive IMMEDIATELY before "read" makes it a noun ("a read
 # via Bash", "discharge the read"). Only forms that cannot themselves be the
@@ -760,39 +780,56 @@ def _read_tense(lines, orig, yellow):
     per entry; a hidden instance is a wrong sentence shipped."""
     hits = []
     for ln, line in enumerate(lines, 1):
-        for m in _READ_RE.finditer(line):
-            if m.group(0) != m.group(1):
-                continue                      # class 1: hyphenated compound
-            before = line[:m.start(1)]
-            after = line[m.end(1):]
-            if m.group(1) == "Read" and (
-                    re.match(r"\s*(?:tool|/|\bor\b|,\s*Write)", after)
-                    or before.endswith("/")):
-                continue                      # class 2: the Read tool
-            prev = _READ_TOKEN_RE.findall(before)
-            skip = False
-            for tok in reversed(prev[-3:]):
-                low = tok.lower().replace("'", "")
-                if low in _READ_ADVERBS:
-                    continue                  # step over an adverb and re-test
-                if low in _READ_NOUN_BEFORE or low in _READ_NONPAST_BEFORE:
-                    skip = True               # a noun, or a bare-stem governor
-                break
-            if skip:
-                continue
+        for m in _READ_CAND_RE.finditer(line):
+            i, j = m.start(), m.end()
+            before_ch = line[i - 1] if i else ""
+            after_ch = line[j] if j < len(line) else ""
+            if before_ch.isalpha():
+                # SOLID COMPOUND (misread, reread, proofread): the verb
+                # inflects at its head, so the tail can be /rɛd/ —— fire
+                # unless the word ends in a non-morpheme stem (bread family).
+                k = i
+                while k and line[k - 1].isalpha():
+                    k -= 1
+                if line[k:j].lower().endswith(_READ_NON_MORPHEME):
+                    continue
+            elif before_ch != "-" and after_ch != "-":
+                # STANDALONE word —— the only form with context exclusions
+                # (a HYPHEN-ADJACENT hit falls straight through instead: no
+                # exclusion passes the severe test there —— see header note).
+                before, after = line[:i], line[j:]
+                if m.group(0) == "Read" and (
+                        re.match(r"\s*(?:tool|/|\bor\b|,\s*Write)", after)
+                        or before.endswith("/")):
+                    continue                  # the Read tool: a proper noun
+                prev = _READ_TOKEN_RE.findall(before)
+                skip = False
+                for tok in reversed(prev[-3:]):
+                    low = tok.lower().replace("'", "")
+                    if low in _READ_ADVERBS:
+                        continue              # step over an adverb; re-test
+                    if (low in _READ_NOUN_BEFORE
+                            or low in _READ_NONPAST_BEFORE):
+                        skip = True           # a noun, or bare-stem governor
+                    break
+                if skip:
+                    continue
             words = line.split()
-            pos = len(before.split())
+            pos = len(line[:i].split())
+            if i and not line[i - 1].isspace():
+                pos -= 1                      # `read` sits INSIDE this token
             hits.append((ln, " ".join(words[max(0, pos - 5):pos + 6])))
 
     if not hits:
         return
     shown = ", ".join("L%d" % ln for ln, _ in hits)
     yellow.append((hits[0][0],
-                   f'{len(hits)} bare "read" left to judge ({shown}); first is '
-                   f'"{hits[0][1]}". Past/perfect (incl. a passive "is read") '
-                   f'-> `#r` (per `glossary.md`); present/future/imperative is '
-                   f"already correct. **Silently** fix, no explanation to "
-                   f"user."))
+                   f'{len(hits)} unmarked "read" left to judge ({shown}); '
+                   f'first is "{hits[0][1]}". Past/perfect -> `#r`, incl. a '
+                   f'passive "is read" and compounds —— a past "re-read" -> '
+                   f'`re-#r` (per `glossary.md`); present/future/imperative '
+                   f'(and /riːd/ compounds like "read-only") stay as words. '
+                   f"**Silently** fix, no explanation to user."))
 
 
 def run_checks(text, quick=False):

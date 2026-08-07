@@ -913,7 +913,7 @@ def _dlint():
 def _rt(dlint, text):
     """The `read`/`#r` advisory messages produced by QUICK mode on `text`."""
     _r, y = dlint.run_checks(text, quick=True)
-    return [m for _, m in y if 'bare "read"' in m]
+    return [m for _, m in y if 'unmarked "read"' in m]
 
 
 def test_read_tense_quick_only():
@@ -928,18 +928,20 @@ def test_read_tense_quick_only():
     sample = "Having already read A, I also read B and will read C."
     qhits = _rt(dlint, sample)
     _fr, fy = dlint.run_checks(sample, quick=False)
-    fhits = [m for _, m in fy if 'bare "read"' in m]
+    fhits = [m for _, m in fy if 'unmarked "read"' in m]
 
     check("M/quick mode raises the advisory", len(qhits) == 1, len(qhits))
     check("M/FULL mode never raises it", not fhits, fhits[:1])
     check("M/the advisory names glossary.md",
           qhits and "glossary.md" in qhits[0], qhits[:1])
+    check("M/and teaches the `re-#r` house form for a past `re-read`",
+          qhits and "re-#r" in qhits[0], qhits[:1])
     check("M/and tells CC to fix silently",
           qhits and "Silently" in qhits[0], qhits[:1])
     check("M/a context window is quoted for locating the instance",
           qhits and 'first is "' in qhits[0], qhits[:1])
     check("M/`will read` is excluded, so only 2 candidates survive",
-          qhits and qhits[0].startswith("2 bare"), qhits[:1])
+          qhits and qhits[0].startswith("2 unmarked"), qhits[:1])
     check("M/silent when the word is absent",
           not _rt(dlint, "Nothing here mentions it at all."))
 
@@ -947,50 +949,43 @@ def test_read_tense_quick_only():
 def test_read_tense_noise():
     """REGRESSION —— what the advisory may and may NOT stay quiet about.
 
-    THE FAILING SCENARIO, twice over and in opposite directions.
-    FIRST: `\\b[Rr]ead\\b` fires on 63% of this repo's 492 `response_` files
-    (970 hits), most of them not tense errors, so four exclusion classes were
-    added and the noise fell 94%.
+    THE FAILING SCENARIO, three times over.
+    FIRST: `\\b[Rr]ead\\b` fires on 63% of the `response_` corpus (970 hits),
+    most of them not tense errors, so four exclusion classes were added and
+    the noise fell 94%.
     THEN: a live `response_` shipped "that file is read only at `#close`" and
     the advisory said nothing —— the `be`-passive had been excluded as
     "cannot be past", but a passive `read` is the PARTICIPLE, pronounced
-    /rɛd/, which is precisely what `#r` disambiguates. The owner then ruled the
-    trade-off explicitly: a false positive costs ~10 wasted tokens, a false
-    negative "could be highly misleading". Two of the four classes were
-    therefore removed, taking the count from 522 hits over 247 files to 578
-    over 256 —— +11% noise to close the miss, against a 970-hit ceiling if
-    every exclusion went.
+    /rɛd/, which is precisely what `#r` disambiguates. The owner then ruled
+    the trade-off explicitly: a false positive costs ~10 wasted tokens, a
+    false negative "could be highly misleading".
+    THEN AGAIN: the hyphenated-compound exclusion (`re-read`, `read-only`,
+    `must-read`) was defended on a census —— most are tenseless modifiers, and
+    "there is no `re-#r`". The owner OVERRULED it, twice: comms are TEXT-ONLY,
+    so he can never HEAR /riːd/ vs /rɛd/; anything /rɛd/ must carry the marker
+    (a past "re-read" is `re-#r`, minted in `glossary.md`); and the linter
+    "must fire on any `read`/`Read`, no matter it's whole or part of a word".
+    Measured cost of honouring that: 593 hits / 262 files to 848 / 294 over
+    the 500-file corpus —— his explicit purchase.
 
-    So the SILENT list below is now only what `#r` could never replace, and
-    every entry that reads as a "correct" usage in the FIRES list is an
-    ACCEPTED false positive, priced at ten tokens and kept deliberately.
+    "PART OF A WORD" MEANS THE READ MORPHEME, NOT THE LETTER SEQUENCE: the
+    rule serves the /riːd/-vs-/rɛd/ ambiguity, which cannot exist where a
+    letter FOLLOWS (`reading`, `readme`, `spreadsheet` —— one pronunciation
+    each) nor where the letters are no morpheme (`bread`, `thread`). It DOES
+    exist at the END of a solid verb compound (a past `misread` IS /rɛd/), so
+    those now fire too. The SILENT list below is only what `#r` could never
+    replace; every "correct"-reading entry in FIRES is an ACCEPTED false
+    positive, priced at ten tokens and kept deliberately.
 
-    THE TWO SURVIVING EXCLUSIONS WERE THEN RE-EXAMINED against that same
-    ruling and KEPT, which is why the tenseless-modifier fixtures below exist.
-    A census of the corpus, not an assertion: class 1 is 222 occurrences over
-    52 distinct forms, of which 122 are compound ADJECTIVES and noun modifiers
-    (`read-only` alone is 41) carrying no tense to judge, the other 100 being
-    the `re-read` family, which has a past tense but no substitution; class 2
-    is 13 occurrences, all 13 the tool's proper noun, zero verbs. The owner's
-    false-positive ruling therefore does not reach either class —— it trades a
-    false positive against a false NEGATIVE, and neither class hides a bare
-    past-tense "read" that `#r` would fix. Dropping both was costed anyway,
-    since the decision turns on the number: 581 hits / 257 files to 791 / 283,
-    +210 unactionable flags. Restoring a bare `\\b[Rr]ead\\b` here is not a
-    tightening —— it asks CC to judge the tense of `read-only`."""
+    THE SOLE SURVIVING WORD-FORM EXCLUSIONS: the Read tool (a proper noun ——
+    13 corpus occurrences, zero verbs, `#r` never right), and the standalone
+    noun/bare-stem-governor contexts, which force /riːd/ grammatically.
+    COMPOUNDS GET NO CONTEXT EXCLUSIONS AT ALL: a governor tested across a
+    hyphen would misread a compound's own member as one (`must-read` is not
+    "must" governing "read"), so every compound goes straight to judgement."""
     dlint = _dlint()
 
     silent = [
-        ("re-read the file", "class 1: hyphenated compound; no `re-#r` exists"),
-        ("read-only mode", "class 1: tenseless modifier, 41 in corpus"),
-        ("the conditional-read system", "class 1: tenseless modifier"),
-        ("run-not-read, per the README", "class 1: tenseless modifier"),
-        ("a delta-read of the index", "class 1: tenseless modifier"),
-        ("machine-read output", "class 1: tenseless modifier"),
-        ("the auto-read of CLAUDE.md", "class 1: tenseless modifier"),
-        ("another read-reminder fired", "class 1: hyphenated compound"),
-        ("she over-read the situation", "class 1: hyphenated compound"),
-        ("a must-read guide", "class 1: hyphenated compound"),
         ("edit it with the Read tool", "class 2: the tool name"),
         ("Read/Write payloads", "class 2: the tool name"),
         ("this does not discharge the read", "an article: a noun"),
@@ -998,8 +993,19 @@ def test_read_tense_noise():
         ("you had to read past it", "infinitive: forces the bare stem"),
         ("it will read as questions", "future: forces the bare stem"),
         ("CC must read it first", "modal: forces the bare stem"),
-        ("reading the file", "never matched: not the whole word"),
+        ("reading the file", "a letter follows: /riːdɪŋ/, unambiguous"),
+        ("she reads everything", "a letter follows: /riːdz/"),
+        ("a reader of long standing", "a letter follows: a different word"),
+        ("see the readme first", "a letter follows: a different word"),
+        ("re-reading it now", "a letter follows, even after a hyphen"),
+        ("ready and readily available", "not the morpheme"),
+        ("the breadth of the spreadsheet", "not the morpheme"),
+        ("bread and thread and dread", "the five non-morpheme stems"),
+        ("do not tread on the spread", "the five non-morpheme stems"),
+        ("gingerbread is widespread", "endswith covers stem compounds"),
+        ("a retread tyre", "ends in `tread`, not the verb"),
         ("`#r` and #r are shorthand", "never matched: not the word"),
+        ("we re-#r the file", "the FIXED form must never re-flag"),
     ]
     for text, why in silent:
         check("N/silent on %r (%s)" % (text, why), not _rt(dlint, text),
@@ -1022,18 +1028,50 @@ def test_read_tense_noise():
         # ACCEPTED FALSE POSITIVE, named as one rather than quietly excluded:
         # this really is a noun, and firing on it costs ten tokens.
         ("the miss was not a missing read.", "accepted false positive"),
+        # THE OVERRULED CLASS —— hyphenated compounds, previously all silent.
+        # Some are genuinely /rɛd/, some /riːd/; ALL fire, CC judges.
+        ("I re-read the originals afterwards", "past `re-read` -> `re-#r`"),
+        ("already-read files", "/rɛd/ outright"),
+        ("a well-read colleague", "/rɛd/ outright"),
+        ("she over-read the situation", "past compound verb"),
+        ("machine-read output", "compound: mandate says fire"),
+        ("read-only mode", "compound: /riːd/, an accepted false positive"),
+        ("a must-read guide", "compound fires even after an article"),
+        ("worth a re-read", "no noun exclusion for compounds either"),
+        ("CC must re-read it first", "no governor reaches across a hyphen"),
+        ("the conditional-read system", "compound: mandate says fire"),
+        ("run-not-read, per the README", "compound: mandate says fire"),
+        ("a delta-read of the index", "compound: mandate says fire"),
+        ("the auto-read of CLAUDE.md", "compound: mandate says fire"),
+        ("another read-reminder fired", "`read-` opening a compound"),
+        # SOLID VERB COMPOUNDS —— "part of a word" honoured literally where
+        # the ambiguity is real: these inflect at the head, past IS /rɛd/.
+        ("you misread the brief", "past `misread` is /mɪsˈrɛd/"),
+        ("I reread it twice", "solid `reread`, same ambiguity"),
+        ("proofread copy arrived", "solid compound verb"),
+        ("unread emails piled up", "/rɛd/ always"),
     ]
     for text, why in fires:
         check("N/fires on %r (%s)" % (text, why), _rt(dlint, text),
               "a false negative here is the failure the owner ranks worst")
+
+    # BOTH DIRECTIONS OF THE WIDENING. Every newly-caught form must ALSO leave
+    # FULL mode silent: FULL lints deliverables, which go to third parties who
+    # have never seen the glossary, and nudging one towards `re-#r` is the
+    # exact failure the quick-only split exists to prevent.
+    for text, why in fires:
+        _fr, fy = dlint.run_checks(text, quick=False)
+        check("N/FULL stays silent on %r" % text,
+              not [m for _, m in fy if 'unmarked "read"' in m],
+              "house shorthand nudged towards a deliverable")
 
     # ONE FLAG PER FILE. Twenty repetitions of one reminder is the noise; the
     # line numbers carry the same information at a twentieth of the volume.
     many = "\n".join("You read item %d there." % i for i in range(20))
     hits = _rt(dlint, many)
     check("N/twenty candidates produce ONE flag", len(hits) == 1, len(hits))
-    check("N/and that flag reports the count", hits and "20 bare" in hits[0],
-          hits[:1])
+    check("N/and that flag reports the count",
+          hits and "20 unmarked" in hits[0], hits[:1])
     check("N/and names line numbers to jump to",
           hits and "L1, L2" in hits[0], hits[:1])
     # AND NAMES ALL OF THEM. The list used to stop at eight and elide the rest,
@@ -1046,7 +1084,7 @@ def test_read_tense_noise():
     red, yellow = dlint.run_checks("You read it. The colors are wrong.",
                                    quick=True)
     check("N/the advisory is no longer suppressible",
-          [m for _, m in yellow if 'bare "read"' in m], yellow[:1])
+          [m for _, m in yellow if 'unmarked "read"' in m], yellow[:1])
     check("N/and the RED is unaffected", len(red) == 1, red)
     check("N/a stale `--rt-quiet` argument is swallowed, not an error",
           dlint.main(["dlint.py", "--quick", "--rt-quiet", "--text",
@@ -1233,7 +1271,7 @@ def test_read_tense_reaches_cc_on_every_run():
         r = rt.post("RT0", p)
         adv = ctx(r)
         check("P/a clean run still delivers the advisory",
-              r.returncode == 0 and 'bare "read"' in adv,
+              r.returncode == 0 and 'unmarked "read"' in adv,
               "rc=%s out=%s" % (r.returncode, r.stdout[:300]))
         check("P/the `be`-passive that was missed is the one it names",
               "L3" in adv, adv[:300])
@@ -1243,7 +1281,7 @@ def test_read_tense_reaches_cc_on_every_run():
 
         r = rt.post("RT0", p)
         check("P/a SECOND write in the same session repeats it",
-              'bare "read"' in ctx(r), r.stdout[:300])
+              'unmarked "read"' in ctx(r), r.stdout[:300])
 
         # (2) A file that also carries a RED: the block must still carry it.
         body = ("# Response\n\nYou read the originals yesterday.\n"
@@ -1252,11 +1290,11 @@ def test_read_tense_reaches_cc_on_every_run():
 
         r = rt.post("RT1", p)
         check("P/a blocking run carries the advisory on stderr",
-              r.returncode == 2 and 'bare "read"' in r.stderr, r.stderr[:300])
+              r.returncode == 2 and 'unmarked "read"' in r.stderr, r.stderr[:300])
 
         r = rt.post("RT1", p)
         check("P/the second block in the SAME session repeats it too",
-              r.returncode == 2 and 'bare "read"' in r.stderr,
+              r.returncode == 2 and 'unmarked "read"' in r.stderr,
               r.stderr[:300])
         check("P/and the RED itself is still reported",
               "Americanism" in r.stderr, r.stderr[:300])

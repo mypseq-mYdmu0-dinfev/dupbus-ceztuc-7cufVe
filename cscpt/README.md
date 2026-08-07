@@ -55,7 +55,7 @@ Several linters below are launched by the harness rather than by you. Registrati
 - `flint.py` —— PreToolUse + PostToolUse. Owns comms filenames: BLOCKS a name wedging a space before its 12-digit timestamp, and warns on a timestamp clash or a stray-space name already in that folder.
 - `tlint.py` —— PreToolUse + PostToolUse. Advisory only: flags a clock read missing `TZ='Australia/Sydney'`, a new comms timestamp 6 h+ from real Sydney time, and US-format dates in text.
 - `nlint.py` —— PostToolUse. Two advisory checks against `universal/numbered.md`, neither blocking: a numbered level reaching its 10th item, and a response file resetting its top-level numbering with no excuse in evidence.
-- `hlint.py` —— UserPromptSubmit. Reminds CC to read each `#trigger` file the prompt names. Logged to `.hlint.log`.
+- `hlint.py` —— UserPromptSubmit. Reminds CC to read each `#trigger` file the prompt names. Logged to `.hlint.log`; in-repo, also tallies the previous turn's `clint` chat-discipline breaches into the next prompt.
 - `plint.py` —— PreToolUse. Before a script, pcmd or letter-like file is written, reminds CC to read the governing protocol first. Advisory; never gates the write.
 - `DADC.py` —— PreToolUse + PostToolUse. Preserves a file's macOS Date Added and Date Created across an agent's edit, everywhere (no folder scope). New files untouched; always exits 0.
 - `*_hook.sh` —— thin bash fast-path shims, one per lint that needs one. Each IS the registered hook, exiting instantly on irrelevant payloads before any Python spawns.

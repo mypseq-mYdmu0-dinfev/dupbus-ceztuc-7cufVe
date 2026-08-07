@@ -8,3 +8,4 @@
 - [Front-load SA briefs w/ protocol mandate](feedback_sa_brief_frontload_mandate.md) — quote the governing file's rule into the SA prompt, don't just name the tool
 - [#cic mandate on trigger](feedback_cic_mandate_on_trigger.md) — #cic requires reading cic.md + live CCIC reads; web_search/WebFetch is triage only, never a substitute
 - [Spaced filenames are the user's own](feedback_spaced_filenames.md) — a space (or ` _ `) in a filename = his file or an export, not a defect; only flag comms files
+- [Never gitignore voided files](feedback_never_gitignore_voided.md) — `❌_` files stay TRACKED; untracking removes the user's only window onto what CC voided
