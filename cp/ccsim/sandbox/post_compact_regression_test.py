@@ -236,14 +236,14 @@ def test_postcompact_channel_is_still_user_only():
     Name validation passes clean today and would have passed on the day of the
     incident —— `PostCompact` was always a real event. What failed is that its
     dispatch returns a user-display string and nothing else, so the hook's
-    output is architecturally unable to reach the model. Root CLAUDE.md §5.1.4
+    output is architecturally unable to reach the model. Root CLAUDE.md §5.1.6
     now states that as fact, and §5.1 is written to work without the hook.
 
     Pinning the harness VERSION would fail on every routine update and be muted
     within a fortnight. So this pins the BEHAVIOUR instead: assert the known
     state directly out of the running binary. If the day comes that PostCompact
     gains a model-facing channel, this fails —— which is the correct alarm, in
-    the useful direction: it means §5.1.4 has gone stale and the hook can be
+    the useful direction: it means §5.1.6 has gone stale and the hook can be
     re-armed to carry the protocol itself.
     """
     _, binary = harness_event_names()
@@ -266,8 +266,8 @@ def test_postcompact_channel_is_still_user_only():
           "stdout shown to user" in entry, entry[:200])
     check("PostCompact now names a model-facing channel —— GOOD NEWS, act on it",
           "additionalContext" not in entry and "shown to Claude" not in entry,
-          "root CLAUDE.md §5.1.4 says this event cannot reach the model. If "
-          "that is no longer true, update §5.1.4 and consider letting the hook "
+          "root CLAUDE.md §5.1.6 says this event cannot reach the model. If "
+          "that is no longer true, update §5.1.6 and consider letting the hook "
           "carry the protocol again. Entry: " + entry[:200])
     # Contrast anchors —— if these two stop naming a model channel, the
     # extraction is matching the wrong thing rather than the world changing.

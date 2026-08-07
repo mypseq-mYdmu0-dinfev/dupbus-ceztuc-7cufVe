@@ -574,10 +574,10 @@ _NOSENTINEL_MSG = (
     "(§5.2); (3) list the previously-read files/content still USEFUL to the "
     "task (§5.3), then SEPARATELY the remainder (§5.4) —— those two lists are "
     "the only record the user gets of what the session lost; (4) re-read and "
-    "resume NOTHING —— await the user's instruction (§5.5–5.7). Sole "
-    "exception: if an "
-    "`slog_` sits amongst this month's 5 most recent session files, §5.8 says "
-    "resume from it —— AFTER the sentinel and both lists, never instead.\n"
+    "resume NOTHING —— await the user's instruction (§5.5–5.7). "
+    "Sole exception: if §5.8's `*slog_*` glob finds a LIVE slog (no `SPRINT END` "
+    "tail, TS of this session), resume from it —— AFTER the sentinel and both "
+    "lists, never instead.\n"
     "If this turn genuinely was not opened by a compaction, reply with a lone "
     "`.` and nothing else. This fires at most once per prompt.")
 

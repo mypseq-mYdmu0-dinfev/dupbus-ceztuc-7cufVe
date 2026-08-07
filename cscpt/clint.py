@@ -18,7 +18,7 @@ Two rules, picked by the session's working directory (see REPO SCOPE below):
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a Stop hook scanning the agent's chat text at turn end. NEVER blocks ——
-  every verdict exits 0. A breach warns the USER and logs; it never reaches you.
+  every verdict exits 0. A breach is recorded and logged; it never reaches you.
 * PERMITTED: blank lines; a `---`/`***`/`___` divider; each glyph ONLY in the
   declaration it owns —— the 3 I/O glyphs a backticked file list, the SHA glyph
   backticked hashes, the blocker glyph ≤5 words, the sentinel verbatim; plus a
@@ -144,16 +144,36 @@ than the breach it existed to stop. The owner ordered the policy demoted:
 every RED block becomes a YELLOW warning, and this file's exit code is now
 UNCONDITIONALLY 0. It never blocks a turn again, for any reason.
 
-THE PRICE OF THIS, STATED AS PLAINLY AS POSSIBLE: a Stop hook's exit-0 output
-—— stdout, `systemMessage` included —— reaches ONLY THE USER, never the model
-(see `cp/ccsim/hook_guide.md` § Which Channel Reaches The Model). The one
-channel that ever reached the model at Stop was exit 2's stderr, and this
-file no longer uses it. CONSEQUENCE, UNDERLINED SO IT CANNOT BE MISSED: clint
-no longer corrects the agent AT ALL, in any circumstance, for any breach
-class. It is now a USER-FACING AUDIT TRAIL plus a LOG, nothing more. This is a
-DELIBERATE TRADE, not an oversight —— anyone tempted to "restore the block"
-later MUST read this paragraph first, because doing so unknowingly
-reintroduces the exact deadlock this demotion was ordered to end.
+THE PRICE OF THIS, STATED AS PLAINLY AS POSSIBLE —— and CORRECTED (2026-08-07)
+against the Desktop harness binary (2.1.221) itself plus this Mac's own
+transcripts: a Stop hook's exit-0 `systemMessage` never reaches the model
+(the harness converts it to a `hook_system_message` attachment whose
+model-message mapping is EMPTY), and in practice it does not reach the OWNER
+either —— it lands in the transcript record and in the harness's terminal
+renderer, but the Claude Desktop surface this repo's sessions actually run in
+renders no such attachment (none exists in its local resources), and the
+owner confirms never seeing one (142 recorded across this project's
+transcripts by the audit date, none ever seen). So the warning is an AUDIT
+TRAIL —— transcript record plus log —— not a live user alert. Model-reaching
+channels at Stop, verified in that same binary: exit 2's stderr (which this
+file no longer uses), and —— contrary to hook_guide's channel table —— an
+exit-0 `hookSpecificOutput.additionalContext`, which the harness injects as a
+"Stop hook additional context" meta message and then RE-INVOKES the model
+(the same `stop_hook_blocking` continuation a block uses, capped by
+CLAUDE_CODE_STOP_HOOK_BLOCK_CAP, default 8). There is NO channel that reaches
+the model at Stop without waking it for another turn —— by construction: the
+model has already stopped. additionalContext is deliberately NOT used here:
+the injected context is persisted as an ATTACHMENT, never as a `type:"user"`
+transcript line, so the SCAN BOUNDARY would not move, and each further Stop
+of the same window (task-notification wakes carry FRESH promptIds, defeating
+any per-prompt ledger) would find the same breach and re-inject —— the
+demotion's deadlock reborn under a friendlier name. CONSEQUENCE, UNDERLINED
+SO IT CANNOT BE MISSED: clint corrects the agent NOWHERE, in any
+circumstance, for any breach class; enforcement rests on root CLAUDE.md
+§3.1.6's TEAs. This is a DELIBERATE TRADE, not an oversight —— anyone tempted
+to "restore the block", or to reach the model via additionalContext instead,
+MUST read this paragraph first, because either unknowingly reintroduces the
+exact deadlock this demotion was ordered to end.
 
 WHAT SURVIVES, UNCHANGED: every detection rule below (glyph ownership, the
 caps, the sentinel, Reader mode) still runs in full, every exemption still
@@ -269,6 +289,34 @@ tags precisely because the justification differs (`clean:dot` vs
 `clean:dot_reader`) even though the matching rule above is byte-for-byte
 identical —— see LOG EVERY STAGE.
 
+SENTINEL LISTS (root §5.3–§5.4; REPO mode only): a turn carrying the EXACT
+§3.2.6 sentinel owes the user two further chat artefacts by that same root
+protocol —— §5.3's "non-#numbered list" of still-useful reads and §5.4's list
+of the remainder, bullet lines per §5.3's own example. mlint (SHAPE C ——
+hook_guide §6.9.9) BLOCKS the turn until precisely this output exists, so
+before this escape the suite mandated and forbade the SAME lines: every real
+compaction logged a false `yellow:prose` (live: a fully §5-compliant response
+logged 17 offending lines), polluting the log —— the PRIMARY artefact ——
+exactly as the DOT ESCAPE's first rationale warns against. So, when the scan
+window CONTAINS the exact canon (deliberately not "starts with": a §3.1.8 dot
+reply from an earlier wake legitimately precedes it in a multi-notification
+window), two shapes are re-sanctioned, and ONLY out of the `prose` class:
+* a line starting `- ` —— a §5.3-shape list item;
+* a line ending `:` whose NEXT non-blank line is such an item —— the header
+  that makes §5.3's list tellable from §5.4's.
+Everything else keeps its verdict: glyph misuse stays its own class, a free
+paragraph still flags, and READER mode is untouched (its class is `reader`,
+never `prose`, and §5 is this repo's protocol, not that folder's). If nothing
+else offends, the turn logs `clean:compaction` —— its own tag, so a genuine
+compaction stays auditable rather than silent. TRUST MODEL, STATED HONESTLY
+—— weaker than the dot's: the sentinel is AGENT-authored, so an agent could
+forge one and bullet-ify prose beneath it. Accepted, for two reasons: the
+forgery is the loudest possible lie (a "Compaction Detected" banner the user
+falsifies at a glance), whereas the alternative is a GUARANTEED false breach
+on every genuine compaction; and a linter cannot verify a claim, only its
+form —— the same trade the ⚠️ IS NOT A PROGRESS NOTE paragraph already
+documents.
+
 LOOP GUARD —— REMOVED (justified, not merely deleted): the guard used to exist
 SOLELY to stop an infinite retry cascade that only exit 2 could cause —— a
 block forces one more model turn, that turn ends in another Stop, and an
@@ -301,7 +349,8 @@ GLYPH-FREE, CLASS-FREE, NUMBER-FREE MESSAGE (was GLYPH-FREE STDERR): under the
 retired RED policy this message reached the MODEL via stderr, so naming a
 glyph, a breach class, or a numeric limit would have taught the agent exactly
 which prefixes/shapes pass and invited gaming. Under ALWAYS YELLOW the message
-reaches ONLY the user (see ALWAYS RED -> ALWAYS YELLOW), so that specific
+reaches only user-side surfaces —— and on the owner's actual Desktop surface,
+none render it (see THE PRICE OF THIS) —— so that specific
 hazard is gone —— but the constraint is KEPT anyway, unchanged, as cheap
 insurance: it costs nothing to keep the user-facing text free of exploitable
 detail, and it stays correct automatically if this channel's model-isolation
@@ -368,8 +417,8 @@ in the USER-level `~/.claude/settings.json` —— the Claude Desktop app execut
 user-level hooks and silently ignores project-level ones —— hence it fires in
 every project and must self-scope. IN: Stop-hook JSON on stdin
 (`transcript_path`, `cwd`, `session_id`); OUT: nothing at all on a clean turn,
-or `{"systemMessage": "..."}` JSON on stdout for a demoted breach (reaches the
-USER only —— see ALWAYS RED -> ALWAYS YELLOW). EXIT is UNCONDITIONALLY 0 ——
+or `{"systemMessage": "..."}` JSON on stdout for a demoted breach (a user-side
+record only, never the model —— see THE PRICE OF THIS). EXIT is UNCONDITIONALLY 0 ——
 clean, exempt, out-of-scope, a demoted breach, or ANY failure, all alike; this
 file never again returns 2 for any reason. FAIL-SAFE: a bad payload, an
 unreadable transcript, or a failed message/log write all exit 0 regardless, so
@@ -380,7 +429,8 @@ LOG FORMAT: exactly ONE tab-delimited line per invocation whatever the verdict,
 each carrying `mode=` (which rule applied) and `pid=` (the prompt it belongs
 to), so one `grep` shows every invocation for a prompt and why it was judged so.
 Actions: `clean` and its `clean:dot`/`clean:dot_reader` variants (see docstring
-DOT ESCAPE); `out_of_scope`; `message_failed` (the exit-0 warning write itself
+DOT ESCAPE) plus `clean:compaction` (see SENTINEL LISTS); `out_of_scope`;
+`message_failed` (the exit-0 warning write itself
 failed); the parse stage reached; one `exempt:` per exemption
 (`exempt:override`, `exempt:yn`, `exempt:sic`, `exempt:dats`); and one
 `yellow:` per breach CLASS —— `yellow:prose` (no glyph at all),
@@ -853,6 +903,20 @@ def _lone_dot_turn(all_lines):
     return len(all_lines) == 1 and all_lines[0] == "."
 
 
+def _sentinel_list_line(judged, i):
+    """True if judged[i] is one of the two §5.3–§5.4 shapes the SENTINEL
+    LISTS escape re-sanctions (see docstring): a `- `-led list item, or a
+    `:`-terminated header whose NEXT non-blank line is such an item. The
+    CALLER guarantees the window carries the exact sentinel and that
+    judged[i] is class `prose`; adjacency works on `judged` itself because
+    blank lines were never admitted into it."""
+    s = judged[i][0]
+    if s.startswith("- "):
+        return True
+    return (s.endswith(":") and i + 1 < len(judged)
+            and judged[i + 1][0].startswith("- "))
+
+
 def _prune_log():
     """Bound `_LOG` to its recent window —— cheaply, atomically, fail-safely.
 
@@ -1160,10 +1224,11 @@ def main():
             start = i + 1
             trigger = o
 
-    offending = []
-    classes = []
-    all_lines = []      # every non-blank line, breach or not -- feeds the
-                         # lone-dot escape below (see docstring DOT ESCAPE)
+    judged = []   # (stripped line, breach class or None) per NON-BLANK line,
+                  # in order -- feeds the lone-dot escape AND the sentinel-
+                  # lists escape below (docstrings DOT ESCAPE and SENTINEL
+                  # LISTS); blanks stay out so header/item adjacency
+                  # survives the blank separators between §5's two lists.
     for o in objs[start:]:
         if o.get("type") != "assistant":
             continue
@@ -1176,11 +1241,10 @@ def main():
             for ln in text.splitlines():
                 s = ln.strip()
                 if s:
-                    all_lines.append(s)
-                klass = _line_breach(ln, mode)
-                if klass:
-                    offending.append(ln.strip())
-                    classes.append(klass)
+                    judged.append((s, _line_breach(ln, mode)))
+    all_lines = [s for s, _ in judged]
+    offending = [s for s, k in judged if k]
+    classes = [k for s, k in judged if k]
 
     if not offending:
         # Clean turn -> proof-of-life, non-blocking.
@@ -1198,6 +1262,22 @@ def main():
         dot_tag = "clean:dot" if mode == MODE_REPO else "clean:dot_reader"
         _log_event(sid, dot_tag, pid=plog, mode=mode)
         return 0
+
+    # --- Sentinel-lists escape (root §5.3–§5.4; REPO only; see docstring
+    # SENTINEL LISTS) -- the exact §3.2.6 canon anywhere in the window
+    # re-sanctions the two §5 list shapes, and ONLY out of class `prose`;
+    # every other class keeps its verdict, and READER is never touched
+    # (its class is `reader`). Runs BEFORE the verdict is drawn so `first=`
+    # and `lines=` describe the lines that actually remain in breach.
+    if mode == MODE_REPO and any(
+            s.replace(_VS16, "") == _SENTINEL_CANON for s in all_lines):
+        kept = [(s, k) for i, (s, k) in enumerate(judged)
+                if k and not (k == "prose" and _sentinel_list_line(judged, i))]
+        if not kept:
+            _log_event(sid, "clean:compaction", pid=plog, mode=mode)
+            return 0
+        offending = [s for s, k in kept]
+        classes = [k for s, k in kept]
 
     # Class of the FIRST offender, so the logged verdict and `first=` always
     # describe the same line. `sic` may override it below.

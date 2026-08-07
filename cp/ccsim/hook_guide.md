@@ -6,13 +6,15 @@
   - 0.1.1. Re-measured 202608071235 after the stdin guards, mlint SHAPE C and PreCompact.
   - 0.1.2. Basis = largest `.md` in `sessions/` (109 KB) + largest transcript (50 MB).
   - 0.1.3. Round trip = one prompt, one `.md` write, one Bash call, one turn-end.
-  - 0.1.4. Per event: Stop 184 ms · PostToolUse 106 ms · PreToolUse-write 45 ms ·
-    PreToolUse-Bash 33 ms · UserPromptSubmit 27 ms. Medians of 5, worst-case payloads.
-  - 0.1.5. Each EXTRA `.md` write adds `~`0.11 s; each extra Bash call `~`0.03 s.
+  - 0.1.4. Per event, medians of 5 on worst-case payloads:
+    - 0.1.4.1. Stop 184 ms · PostToolUse 106 ms · PreToolUse-write 45 ms
+    - 0.1.4.2. PreToolUse-Bash 33 ms · UserPromptSubmit 27 ms
+  - 0.1.5. Each EXTRA `.md` write adds `~`0.15 s (45 + 106 per §0.1.4):
+    - 0.1.5.1. An earlier `~`0.11 s counted PostToolUse alone and never reconciled
+    - 0.1.5.2. Each extra Bash call adds `~`0.03 s
   - 0.1.6. Comfortably inside the 1 s budget (§12.4) —— `~`39%, with Stop now dominant.
   - 0.1.7. WSM only, interactive only —— SA/background work and OTGM are not counted.
-  - 0.1.8. PreCompact + PostCompact are EXCLUDED: neither fires on an interactive round
-    trip, so neither can be felt as response delay. Both are compaction-time only.
+  - 0.1.8. PreCompact + PostCompact EXCLUDED —— neither fires on an interactive round trip
   - 0.1.9. Re-measure and rewrite 0.1 EVERY time a hook is added, edited, or removed.
 - 0.2. This file is the definitive, self-contained reference for CC hooks in this repo.
 - 0.3. Read it BEFORE creating, editing, registering, debugging, or trusting any hook.
@@ -163,15 +165,19 @@
 | PostToolUse | User only | Reaches the MODEL, no block | Reaches the MODEL as an error; write is NOT undone |
 | PreToolUse | User only | Reaches the MODEL, no block | Reaches the MODEL and BLOCKS the tool call |
 | UserPromptSubmit | Added to context | Reaches the MODEL, no block | Reaches the MODEL; avoid —— see 6.6 |
-| Stop | User only | Not a supported channel | Reaches the MODEL and BLOCKS the stop |
+| Stop | NOWHERE (see §6.1) | Reaches the MODEL —— but WAKES it (§6.1.3) | Reaches the MODEL and BLOCKS the stop |
 | PostCompact | User only | Not a supported channel | User only —— NOTHING reaches the model |
 | PreCompact | Appended to the SUMMARISER's prompt (§13) | Not a supported channel | Exit 2 BLOCKS compaction —— never use |
 
-- 6.1. On Stop, ONLY a non-zero exit's stderr reaches the model. An exit-0 `systemMessage` or stdout reaches the user alone.
+- 6.1. ⚠️ CORRECTED 202608071530 —— the previous wording here was wrong in BOTH directions:
+  - 6.1.1. Exit-0 plain stdout goes NOWHERE. The registry says "stdout/stderr not shown".
+  - 6.1.2. Exit-0 `systemMessage` becomes a `hook_system_message` attachment: written to the transcript, mapped to the model as `()=>[]` (never seen), and rendered ONLY by the terminal UI —— the Desktop app carries no renderer for it, so in CCD it reaches NOBODY. 142 such records carrying clint's warnings sit unseen in this project's transcripts.
+  - 6.1.3. Exit-0 `hookSpecificOutput.additionalContext` IS supported at Stop and DOES reach the model —— but it RE-INVOKES the model on the same continuation path as a block, capped by `CLAUDE_CODE_STOP_HOOK_BLOCK_CAP` (default 8). It is a block wearing a softer name.
+  - 6.1.4. NET: at Stop there is no non-waking model channel, BY CONSTRUCTION —— the model has stopped, so reaching it means starting it again.
 - 6.2. Consequence: a non-blocking Stop warning can NEVER make the agent self-correct —— its turn has already ended and it never sees the note.
 - 6.3. Cost of a Stop block: exactly ONE extra model turn —— a full round trip, billed and consuming context. Spend it deliberately, at most once per prompt.
 - 6.4. clint is WARN-ONLY —— every verdict exits 0 and nothing blocks. It once blocked (first RED per prompt, later ones logged), but forcing an extra turn each time cascaded into worse turn-end behaviour than the breaches themselves, so the owner demoted it.
-- 6.4.1. ⚠️ The price, so nobody restores the block unaware: exit-0 output reaches ONLY the user, never the model. clint therefore cannot correct CC at all —— it is an audit trail, and enforcement rests on root `CLAUDE.md` §3.1.6's TEAs.
+- 6.4.1. ⚠️ The price, and it is worse than first recorded: a warn-only Stop hook reaches NEITHER the model NOR the user in CCD (§6.1.2). clint is a LOG and an invisible transcript record —— nothing more. Enforcement rests entirely on root `CLAUDE.md` §3.1.6's TEAs. To make a chat-discipline lint actually correct CC without forcing a turn, the channel must move OFF Stop —— UserPromptSubmit (next turn's opening context) or PostToolBatch (mid-turn, non-blocking) are the two that reach the model without waking it.
 - 6.4.2. Breach classes survive in the log with a `yellow:` prefix (`yellow:prose`, `yellow:reader`, …); a lone `.` is CLEAN in both modes (`clean:dot` / `clean:dot_reader`).
   - 6.4.3. clint is not the only Stop hook: `mlint.py` DOES block, and the two are not in tension. clint enforces chat SHAPE, where a block forces a turn with nothing left to do —— the deadlock that got it demoted. mlint enforces `#m2` COMPLETION, where the forced turn IS the missing sprint, so the vacuum that produced the cascade cannot form. The test that separates them: does the blocked agent have real work to spend the extra turn on? Only block when the answer is yes, at most once per prompt, and name the escape (a lone `.`) inside the message. mlint blocks in THREE shapes. For the missing declaration the forced turn is ONE line —— small, but not empty in clint's sense: clint's content had already reached the `response_`, whereas this line reached nowhere. For the missing post-compaction sentinel (root §5) the forced turn carries the sentinel, the halt, and both §5.3/§5.4 lists —— the only record the user ever gets of what his session lost, and one that lands in no file later. The test still holds —— block only when the forced turn delivers something the user does not otherwise get.
 - 6.5. On PostToolUse the structured `hookSpecificOutput.additionalContext` field is the one channel that is BOTH non-blocking AND model-visible —— use it for any advisory that must actually be read.
@@ -254,7 +260,7 @@ for ev,groups in d.items():
   - 7.7.1. A log written only on a breach cannot tell those two apart —— an empty log is consistent with BOTH, which is exactly how the dead wiring survived so long.
   - 7.7.2. clint therefore logs EVERY invocation to `cscpt/.clint.log` (git-ignored), tagged by the stage reached: `no_stdin`, `out_of_scope`, `no_transcript`, `unreadable_transcript`, `empty_transcript`, `clean` (+ `clean:dot`/`clean:dot_reader`), `message_failed`, one `exempt:` per exemption, and one `yellow:` per breach class (`prose`, `io_shape`, `sha_shape`, `sentinel`, `warn_*`, `sic_overrun`, `reader`). The retired always-RED tags (`block`, `block_failed`, `yellow:spent`, `yellow:active`) no longer exist —— §6.4.
   - 7.7.3. A non-growing clint log across real turns is now UNAMBIGUOUS: the harness is not calling that command.
-  - 7.7.4. clint, alint, dlint_quick, hlint and post_compact each keep a stage log. flint now has §7.3 probe rows on BOTH its events but still no stage log; DADC, plint and nlint keep NEITHER a log nor a probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
+  - 7.7.4. clint, alint, dlint_quick, hlint, tlint, post_compact and pre_compact each keep a stage log. flint now has §7.3 probe rows on BOTH its events but still no stage log; DADC, plint and nlint keep NEITHER a log nor a probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
 - 7.8. After ANY change to a hook script, its filename, its path, or the settings file:
   - 7.8.1. Run the resolvability audit (§7.6) —— the cheapest guard against §8.6.2, and the check whose absence lets a renamed lint sit dead and unnoticed.
   - 7.8.2. Re-run the live probe (§7.2). A passing unit test is not a substitute.
@@ -376,7 +382,7 @@ for ev,groups in d.items():
 | Stop | clint `~`41 ms —— `~`184 ms on the largest transcript on disk (51 MB) | `~`184 ms |
 | PostCompact | `~`31 ms | `~`31 ms |
 
-- 12.7. The worst event now spends `~`35% of the budget, up from `~`7% —— dlint alone accounts for the rise. TWO hooks are no longer FIXED costs and must be re-estimated against their INPUT, not against this table: dlint is `~`0.3 ms per KB of `.md` text judged atop a `~`30 ms floor (so `~`3 MB in a single write would breach 1 s; the repo's largest `.md` is 322 KB) —— it was `~`1 ms/KB until the Americanism lookup became a tokenise-and-intersect instead of one regex per listed word per line, and alint/clint scale with transcript size (`~`41 ms at 2.7 MB, `~`150/165 ms at 53 MB —— clint parses every line unbounded, alint pre-filters and caps at 64 MB). The floor is process spawn —— `~`26 ms for any Python hook, `~`5 ms for a shim that exits inside bash. That floor is why the shims exist (§3.2), and why a lint's own logic is almost never what costs. `mlint` joins Stop at `~`78 ms on that same 51 MB transcript —— it tail-reads a bounded 8 MB window instead of parsing unbounded, so it costs a FLAT amount where clint scales, and adds ZERO to the event (§12.5).
+- 12.7. ⚠️ SUPERSEDED by §0.1 (re-measured 202608071235: Stop dominant at 184 ms, round trip `~`0.39 s). The narrative below is the dlint-dominant era and is kept only for the per-hook scaling laws, which still hold. The worst event then spent `~`35% of the budget, up from `~`7% —— dlint alone accounts for the rise. TWO hooks are no longer FIXED costs and must be re-estimated against their INPUT, not against this table: dlint is `~`0.3 ms per KB of `.md` text judged atop a `~`30 ms floor (so `~`3 MB in a single write would breach 1 s; the repo's largest `.md` is 322 KB) —— it was `~`1 ms/KB until the Americanism lookup became a tokenise-and-intersect instead of one regex per listed word per line, and alint/clint scale with transcript size (`~`41 ms at 2.7 MB, `~`150/165 ms at 53 MB —— clint parses every line unbounded, alint pre-filters and caps at 64 MB). The floor is process spawn —— `~`26 ms for any Python hook, `~`5 ms for a shim that exits inside bash. That floor is why the shims exist (§3.2), and why a lint's own logic is almost never what costs. `mlint` joins Stop at `~`78 ms on that same 51 MB transcript —— it tail-reads a bounded 8 MB window instead of parsing unbounded, so it costs a FLAT amount where clint scales, and adds ZERO to the event (§12.5).
 - 12.8. To re-measure: pipe a worst-case payload (§5's shapes) into each command on the event, time it, and take the MAX. That times the SCRIPTS (§7.1.1); confirming the harness still runs them in parallel needs the `ps` sample of §12.3.1 (§7.1.2). Neither substitutes for the other.
 - 12.9. File mtimes are useless for this on FURY —— it is HFS+, so `st_mtime` has 1-SECOND resolution and every sub-second interval reads as zero. Time the processes, never the files they touch.
 

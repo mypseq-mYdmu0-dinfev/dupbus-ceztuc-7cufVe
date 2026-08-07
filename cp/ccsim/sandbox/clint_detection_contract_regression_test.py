@@ -84,6 +84,18 @@ can react to (a Stop hook's exit-0 output never reaches the model; see
      that a malformed one still flags under its own `sha_shape` class, that
      the cross-type test is symmetric, that the other five are untouched, and
      that READER mode is NOT widened by it.
+  L. SENTINEL LISTS (root CLAUDE.md §5.3–§5.4) -- a post-compaction turn OWES
+     the user chat lists by root §5, and mlint (SHAPE C, hook_guide §6.9.9)
+     BLOCKS the turn until they exist, so before the fix every genuine
+     compaction logged `yellow:prose` -- two Stop hooks of the same suite
+     mandating and forbidding the SAME lines, and the log (clint's PRIMARY
+     artefact) recording compliant behaviour as a breach. Pins: the mandated
+     shape is clean under its own `clean:compaction` tag; the escape arms
+     ONLY on the exact §3.2.6 canon; it sanctions ONLY the two §5 list
+     shapes, and only out of class `prose`; every other class, the
+     no-sentinel case, and READER mode are untouched; and the real
+     multi-wake window (mined from this Mac's own transcript) keeps flagging
+     its stray dots whilst the mandated lists walk free.
 
 It drives the REAL registered command from ~/.claude/settings.json
 (`python3 .../cscpt/clint.py`, Stop hook) with synthesised payloads and
@@ -1001,6 +1013,125 @@ def section_sha_declaration(tmp):
         "yellow:reader", cwd=READER_CWD)
 
 
+# --- L. SENTINEL LISTS: root §5's mandated compaction output is not a breach
+
+# The §3.2.6 canon, copied VERBATIM (clint compares the whole stripped line).
+SENTINEL = "🚨 Compaction Detected —— stopped all tasks."
+
+# The §5.3/§5.4 shape as the protocol's own example draws it: a `:`-headed
+# list of still-useful reads, then a second such list of the remainder.
+S5_LISTS = ("Previously read —— likely still needed:\n"
+            "- `dupbus-ceztuc-7cufVe/CLAUDE.md`\n"
+            "- `universal/glossary.md`\n\n"
+            "Not useful any more:\n"
+            "- `temp/scratch_202608.md`")
+
+
+def section_sentinel_lists(tmp):
+    """L. SENTINEL LISTS (root CLAUDE.md §5.3–§5.4).
+
+    WHY THIS SECTION EXISTS, stated as the defect it pins: root §5.2–§5.4
+    MANDATE chat output after a compaction —— the exact §3.2.6 sentinel plus
+    two non-numbered lists of what was read —— and mlint (SHAPE C, hook_guide
+    §6.9.9) BLOCKS the turn until that output exists. clint then flagged those
+    very lines as `yellow:prose`: one suite mandating and forbidding the SAME
+    output, and the log —— clint's PRIMARY artefact since the demotion ——
+    recording every genuine compaction as a breach. Measured through the real
+    registered command, not reasoned about: the L1 fixture returned
+    `yellow:prose lines=5` before the fix and `clean:compaction` after; the
+    L7 fixture (mined from this Mac's own transcript, session 0b6a0a90,
+    2026-08-07, which logged `yellow:prose lines=17`) now flags ONLY its two
+    stray dots.
+
+    L1 the mandated shape is CLEAN, under its own `clean:compaction` tag;
+    L2 the SAME lists without the sentinel are STILL prose —— the escape
+       arms on the canon, never on bullets alone;
+    L3 a free paragraph inside a sentinel window STILL flags —— only the two
+       §5 list shapes are sanctioned, and the residue count proves the lists
+       themselves walked free;
+    L4 a `:`-header NOT followed by a list item is STILL prose —— the header
+       shape is adjacency, not punctuation;
+    L5 a paraphrased or bold-wrapped sentinel does NOT arm the escape ——
+       an approximable sentinel is worthless, so both stay `yellow:sentinel`;
+    L6 READER mode is NOT widened —— §5 is this repo's protocol;
+    L7 the real multi-wake window: dot wakes + sentinel + lists +
+       declaration batch -> only the dots remain in breach;
+    L8 a glyph-misuse line inside a sentinel window keeps its OWN class ——
+       the escape only ever touches class `prose`.
+    """
+    print("\n--- L. sentinel lists (root §5.3–§5.4): mandated compaction "
+          "output is not a breach ---")
+    log = os.path.join(tmp, "L.log")
+
+    def run(name, blocks, want_action, cwd=REPO_ROOT):
+        tp = os.path.join(tmp, "L%s.jsonl" % re.sub(r"\W+", "_", name)[:40])
+        objs = [_user("do the thing")] + [_assistant(b) for b in blocks]
+        _write_transcript(tp, objs)
+        got = _run(_payload(tp, cwd=cwd), log)
+        _check(name, got, 0, want_action)
+        return got
+
+    # L1. The mandated shape, exactly as §5 draws it, logs its OWN clean tag
+    # (never bare `clean`: a genuine compaction must stay auditable).
+    run("L1 sentinel + both §5 lists -> clean:compaction",
+        [SENTINEL + "\n\n" + S5_LISTS], "clean:compaction")
+
+    # L2. TRIGGER PINNED: the very same lists WITHOUT the canon are ordinary
+    # prose. Bullets alone must never become a licence.
+    run("L2 same lists, no sentinel -> still prose",
+        [S5_LISTS], "yellow:prose")
+
+    # L3. Only the two list shapes are sanctioned: a free paragraph in the
+    # same window keeps flagging, and it flags ALONE -- lines=1 proves the
+    # mandated lists were excused whilst the paragraph was not.
+    _, line3, _ = run("L3 free paragraph beside the lists -> still prose",
+                      [SENTINEL + "\n\n" + S5_LISTS +
+                       "\nResuming the sprint from its latest block now."],
+                      "yellow:prose")
+    _record("L3b residue is the paragraph alone (lines=1)",
+            "\tlines=1\t" in line3, "line=%r" % line3)
+
+    # L4. The header shape is ADJACENCY (next non-blank line is a `- ` item),
+    # not merely ending in `:` -- otherwise any sentence could dress as one.
+    run("L4 `:`-line not followed by a list item -> still prose",
+        [SENTINEL + "\nEverything below is fine and settled:\nno list here"],
+        "yellow:prose")
+
+    # L5. EXACT CANON ONLY, same standard as the sentinel's own pass rule:
+    # a paraphrase (or a bold wrapper) is class `sentinel`, and it must not
+    # arm the escape for the bullets riding under it either.
+    run("L5a paraphrased sentinel does not arm the escape",
+        ["🚨 Compaction detected —— all tasks stopped.\n- `a.md`"],
+        "yellow:sentinel")
+    run("L5b bold-wrapped sentinel does not arm the escape",
+        ["**" + SENTINEL + "**\n- `a.md`"], "yellow:sentinel")
+
+    # L6. READER owes ZERO chat text and owns no §5 protocol; the whole
+    # compaction package stays a breach there.
+    run("L6 sentinel + lists in READER mode -> still reader",
+        [SENTINEL + "\n\n" + S5_LISTS], "yellow:reader", cwd=READER_CWD)
+
+    # L7. THE REAL WINDOW, mined not synthesised: task-notification wakes do
+    # not move the scan boundary, so the live shape is dot wakes AND the §5
+    # package AND the declaration batch in ONE window. The dots stay flagged
+    # (a lone `.` is only sanctioned alone -- see section J), the mandated
+    # lists and the batch walk free, and the count says exactly that.
+    _, line7, _ = run("L7 live multi-wake window -> only the dots flag",
+                      [".", SENTINEL + "\n\n" + S5_LISTS, ".",
+                       "✅ `universal/qq.md`, `cscpt/clint.py`\n"
+                       "➡️ **`202608/ccsim_response_202608070502.md`**"],
+                      "yellow:prose")
+    _record("L7b residue is the two dots (lines=2, first=.)",
+            "\tlines=2\t" in line7 and line7.rstrip().endswith("first=."),
+            "line=%r" % line7)
+
+    # L8. NON-PROSE CLASSES ARE NEVER TOUCHED: a glyph carrying the wrong
+    # body keeps its own granular class even inside a sentinel window.
+    run("L8 glyph misuse beside the lists keeps its own class",
+        [SENTINEL + "\n\n" + S5_LISTS + "\n✅ read everything important"],
+        "yellow:io_shape")
+
+
 def main():
     print("clint.py ALWAYS-YELLOW regression test")
     print("target: %s" % CLINT)
@@ -1015,6 +1146,7 @@ def main():
         section_redirect(tmp)
         section_dot_escape(tmp)
         section_sha_declaration(tmp)
+        section_sentinel_lists(tmp)
         # LAST on purpose: H11 measures the shortest record this suite made
         # clint write, so every other section must have run first.
         section_prune(tmp)

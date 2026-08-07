@@ -136,15 +136,37 @@ def test_silent_in_other_projects():
               "stood down' look identical")
 
 
-def test_fails_open_never_silently():
+def test_unreadable_cwd_logs_but_stays_silent():
+    """The fail-open rule SPLITS here, and the asymmetry is the point.
+
+    Every other hook in this repo fails OPEN on an unparseable payload, because a
+    lint that breaks a turn is worse than a lint that misses one. This hook is
+    the exception: its output reaches a MODEL —— the summariser —— so failing
+    open means injecting a HALT-and-await mandate into whatever project happens
+    to be compacting. One of those is an unattended `#seek` cockpit in another
+    repo whose paramount rule is never to stall.
+
+    So: LOG on every branch (that is what makes "did it fire?" answerable, and
+    its absence is how the PostCompact hook stayed dead 70 days unnoticed), but
+    emit the PAYLOAD only when the cwd is PROVEN to be this repo. An absent or
+    unparseable cwd is not evidence that this is our compaction.
+
+    Cost of this choice, stated rather than hidden: a malformed payload during a
+    genuine compaction HERE loses this hook's cue for that compaction. Root
+    CLAUDE.md §5 and mlint's Stop gate both still apply, so the protection is
+    degraded, not removed.
+    """
     with tempfile.TemporaryDirectory() as td:
         log = os.path.join(td, "pc.log")
         for payload in ('{"session_id":"pc-test-noCwd"}', "not json at all", ""):
             p = run_hook(payload, log)
-            check("stayed silent on an unreadable payload",
-                  p.stdout.strip() != "", repr(payload[:30]))
+            check("injected into a compaction whose cwd it could not read",
+                  p.stdout.strip() == "", repr(payload[:30]))
+            check("bad exit on an unreadable payload", p.returncode == 0)
         body = open(log).read() if os.path.exists(log) else ""
-        check("fail-open path not logged", body.count("stage=fired_no_cwd") >= 3)
+        check("stood down without logging —— the one thing it must never do",
+              body.count("stage=no_cwd_stood_down") >= 3,
+              "silence plus no log is indistinguishable from never having run")
 
 
 def test_never_exits_2_the_compaction_blocker():
@@ -389,7 +411,7 @@ def main():
     test_script_present_and_executable()
     test_fires_in_repo_on_both_triggers_including_spaced_paths()
     test_silent_in_other_projects()
-    test_fails_open_never_silently()
+    test_unreadable_cwd_logs_but_stays_silent()
     test_never_exits_2_the_compaction_blocker()
     test_stdout_is_plain_text_never_json_shaped()
     test_instruction_content_carries_the_protocol()
@@ -407,7 +429,8 @@ def main():
             print("  - %s" % f)
         return 1
     print("PASS —— %d passed. Hook fires in-repo on both triggers (spaced "
-          "paths intact), stays silent elsewhere, fails open, never exits 2, "
+          "paths intact), stays silent elsewhere AND on an unreadable cwd "
+          "(logging either way), never exits 2, "
           "logs every invocation; stdout is plain text carrying the exact "
           "sentinel and the §5.1.3 void; channel re-verified against the "
           "installed binary; §5 remains observable-keyed and hook-independent."

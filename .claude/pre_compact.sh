@@ -83,9 +83,18 @@ log_line() {
     "$session_val" "$hook_cwd" >>"$LOG" 2>/dev/null
 }
 
+# SPLIT fail-open, and the asymmetry is deliberate —— this is the ONE hook here whose output
+# reaches a model, so the usual "fail open" is not safe as a blanket rule:
+#   LOG  -> always, on every branch. That is what makes "did it fire?" answerable at all, and a
+#           missing log entry is how the PostCompact hook stayed dead for 70 days unnoticed.
+#   PAYLOAD -> only when the cwd is PROVEN to be this repo. An unparseable or absent cwd is not
+#           evidence that this is our compaction, and injecting a HALT-and-await mandate into
+#           another project's summary could stall a session whose paramount rule is never to
+#           stall (the AJAP `#seek` cockpit runs unattended for hours). Silence there costs one
+#           compaction's worth of protection here; a wrong injection costs someone else's run.
 case "$hook_cwd" in
-  "-") log_line "fired_no_cwd" ;;          # fail open —— run as normal
   "$REPO"|"$REPO"/*) log_line "fired_in_repo" ;;
+  "-") log_line "no_cwd_stood_down"; exit 0 ;;
   *) log_line "skipped_other_repo"; exit 0 ;;
 esac
 
