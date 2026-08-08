@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
-"""padv.py —— `#replace #adv` helper (RUN, don't read). Extracts a verbatim span
-from a `<name>.pages.md` mirror and splits it into break-free blocks ready to
-paste into a Pages find-and-replace.
+"""Pages Advanced-Replace Helper (`#replace #adv` trigger; RUN, don't read)
 
 === NON-CCSIM —— start of all you need to RUN it ===
 WHAT: `#replace #adv` helper —— extracts a verbatim span from a `.pages.md`

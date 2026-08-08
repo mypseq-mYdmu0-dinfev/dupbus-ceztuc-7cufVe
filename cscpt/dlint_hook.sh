@@ -1,5 +1,5 @@
 #!/bin/bash
-# PostToolUse fast-path wrapper for dlint_quick.py.
+# dlint_quick.py Fast-Path Wrapper (PostToolUse hook)
 #
 # === NON-CCSIM —— start of all you need to RUN it ===
 # WHAT: the registered PostToolUse hook fronting `dlint_quick.py` —— the harness

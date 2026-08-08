@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""PreToolUse + PostToolUse hook —— "filename linter". ONE lint owning comms
-FILENAMES (root CLAUDE.md §3.3, `[prefix]_[12-digit TS].md`), on every part of
-that shape: the stray space wedged before the timestamp, anything trailing
-AFTER the timestamp, and the timestamp itself clashing with a neighbour. A TS
-is part of a filename, so one script.
+"""Filename Linter (PreToolUse + PostToolUse hook)
+
+ONE lint owning comms FILENAMES (root CLAUDE.md §3.3, `[prefix]_[12-digit TS].md`), on every part
+of that shape: the stray space wedged before the timestamp, anything trailing AFTER the timestamp,
+and the timestamp itself clashing with a neighbour. A TS is part of a filename, so one script.
 
 Root scope: walks TWO repo roots —— `dupbus-ceztuc-7cufVe/sessions/` and
 `AJAP_repo/inv/` —— and only their matching `YYYY/YYYYMM` sub-folders, because

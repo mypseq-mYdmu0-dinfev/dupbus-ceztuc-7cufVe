@@ -1,6 +1,5 @@
 #!/bin/sh
-# PreToolUse + PostToolUse fast-path wrapper for tlint.py (the time-integrity
-# linter).
+# tlint.py Fast-Path Wrapper —— the time-integrity linter (PreToolUse + PostToolUse hook)
 #
 # === NON-CCSIM —— start of all you need to RUN it ===
 # WHAT: the registered hook fronting `tlint.py` —— the harness invokes THIS

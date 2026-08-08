@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-dlint.py —— deterministic DELIVERABLE linter (CC-only; lives in /cscpt/).
+"""Deliverable Linter (CC-run CLI; PostToolUse path = dlint_quick.py)
 
 === NON-CCSIM —— start of all you need to RUN it ===
 WHAT: the deterministic prose linter for `universal/writing.md`.

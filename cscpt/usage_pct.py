@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Live Claude usage reader — ses% & wk% from the "Claude Web" usage panel.
+"""Live Claude Usage Reader —— ses% & wk% via "Claude Web" (RUN, don't read)
 
 === NON-CCSIM —— start of all you need to RUN it ===
 WHAT: prints live Claude usage —— the 5-hourly session % (`ses%`) and weekly

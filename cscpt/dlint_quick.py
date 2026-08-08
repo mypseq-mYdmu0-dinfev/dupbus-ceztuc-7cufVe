@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""`dlint.py --quick` runner + deliverable-escape gate for the PostToolUse chain.
+"""dlint `--quick` Runner + Deliverable-Escape Gate (PostToolUse hook)
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: the ONLY lint that can BLOCK. It fires on EVERY `.md` write here, runs

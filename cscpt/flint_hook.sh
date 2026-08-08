@@ -1,5 +1,5 @@
 #!/bin/sh
-# PreToolUse + PostToolUse fast-path wrapper for flint.py (the filename linter).
+# flint.py Fast-Path Wrapper —— the filename linter (PreToolUse + PostToolUse hook)
 #
 # === NON-CCSIM —— start of all you need to RUN it ===
 # WHAT: the registered hook fronting `flint.py` —— the harness invokes THIS

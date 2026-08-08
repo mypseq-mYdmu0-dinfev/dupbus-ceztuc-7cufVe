@@ -38,6 +38,19 @@ runs the literal `sed` command README.md publishes and checks its real output.
 That is the difference between "the markers exist" and "the documented workflow
 works".
 
+4. THE FILE MUST OPEN WITH A TITLE. Line 2 —— the first practical line, since
+   line 1 is the shebang —— is the top rung of the OWNER's quick-peek funnel
+   (headline → NON-CCSIM → CCSIM → full code) and its ONLY job is to say WHICH
+   script a new feature belongs in. So it is ONE line: the script's full name
+   first (spelling out what the filename's letters stand for), the trigger
+   context in trailing parentheses, a blank line straight after. The failure
+   shape this pins down was live once —— an opener of the form
+   `\"\"\"Stop hook —— Mission Linter; BLOCKS one turn-end when...` leads with
+   the EVENT (which several scripts share, so it distinguishes nothing),
+   buries the name mid-line, and runs on into behaviour for three lines. It
+   was hand-fixed once and drifted straight back, because every new script
+   copies the nearest old one; only a check stops the copying.
+
 RUN:
     cd "/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe"
     python3 cp/ccsim/sandbox/cscpt_header_contract_regression_test.py
@@ -67,6 +80,18 @@ CCSIM_RE = re.compile(r"(?<!NON-)CCSIM\b")
 # Order. Kept here verbatim so a silent edit to either side breaks this test
 # rather than a caller's context budget.
 RECIPE = r"sed -n '/NON-CCSIM.*start/,/NON-CCSIM.*end/p' {path}"
+
+# Invariant 4 patterns. Wiring words a headline may not OPEN with: several
+# scripts share each event, so an event-first title distinguishes nothing ——
+# the event belongs in trailing parentheses after the name.
+EVENT_FIRST_RE = re.compile(
+    r"^(?:(?:Pre|Post)ToolUse|Stop|UserPromptSubmit|SessionStart|SessionEnd|"
+    r"SubagentStop|PreCompact|PostToolBatch|Notification|[Hh]ook)\b"
+)
+# A lone em dash. House style (universal/coding.md repo-wide) doubles it; a
+# single one in the headline is the drift this repo's own files keep making.
+LONE_DASH_RE = re.compile(r"(?<!—)—(?!—)")
+HEADLINE_CHAR_CAP = 130  # coding.md Layout cap for top-comment lines
 
 failures = []
 checks = 0
@@ -170,6 +195,54 @@ def test_documented_recipe_extracts_exactly_the_block():
         )
 
 
+def test_headline_is_a_one_line_title():
+    """Invariant 4. Line 2 of every script is a ONE-line title —— full name
+    first, trigger context in trailing parentheses —— followed by a blank
+    line so it can never run on into behaviour prose. One aggregate check
+    per script so a drift names every broken facet at once."""
+    for name in scripts():
+        lines = open(os.path.join(CSCPT, name), encoding="utf-8").read().splitlines()
+        problems = []
+        content = ""
+        if len(lines) < 3:
+            check(False, f"{name}: Line 2 is a one-line title", "file has fewer than 3 lines")
+            continue
+        line2, line3 = lines[1], lines[2].strip()
+        if name.endswith(".py"):
+            if line2.startswith('"""') and len(line2.strip()) > 3:
+                content = line2[3:].strip()
+            else:
+                problems.append('Line 2 must fuse """ with the title —— a bare """ wastes the headline slot')
+            if line3 != "":
+                problems.append("Line 3 must be blank (the mandated skip-line; a title never runs on)")
+        else:
+            m = re.match(r"#\s?(.*\S)", line2)
+            if m:
+                content = m.group(1)
+            else:
+                problems.append("Line 2 must be `# <title>`")
+            if line3 not in ("#", ""):
+                problems.append("Line 3 must be a bare `#` (the mandated skip-line; a title never runs on)")
+        if content:
+            stem = name.rsplit(".", 1)[0].lower()
+            bare = content.lstrip("`").lower()
+            if EVENT_FIRST_RE.match(content):
+                problems.append("opens with the hook event —— name first, event in trailing parentheses")
+            if bare.startswith(stem) or bare.startswith(name.lower()):
+                problems.append("opens with its own filename —— spell the full name out instead")
+            if len(line2) > HEADLINE_CHAR_CAP:
+                problems.append(f"{len(line2)} chars (cap {HEADLINE_CHAR_CAP})")
+            if content.rstrip("`\"'").endswith("."):
+                problems.append("ends with a full stop —— it is a title, not a sentence")
+            if LONE_DASH_RE.search(content):
+                problems.append("lone — (house em dash is ——)")
+        check(
+            not problems,
+            f"{name}: Line 2 is a one-line title",
+            "; ".join(problems),
+        )
+
+
 def test_readme_publishes_the_recipe():
     """The recipe must be IN the README, not merely known to work —— a caller
     who never sees it opens the whole file instead."""
@@ -184,6 +257,12 @@ def test_readme_publishes_the_recipe():
         f"README.md states the {WORD_CAP}-word cap",
         "an unstated cap is an uncheckable one for the next editor",
     )
+    check(
+        "headline" in text.lower(),
+        "README.md records the headline rung of the in-file funnel",
+        "the owner's quick-peek order (headline → NON-CCSIM → CCSIM → full code) "
+        "was undocumented once already —— it lives here or nowhere",
+    )
 
 
 def main():
@@ -191,6 +270,7 @@ def main():
     test_marker_pair_is_exactly_one_each()
     test_block_within_word_cap()
     test_ccsim_block_survives()
+    test_headline_is_a_one_line_title()
     test_documented_recipe_extracts_exactly_the_block()
     test_readme_publishes_the_recipe()
     print()

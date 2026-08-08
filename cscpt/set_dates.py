@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-set_dates.py —— CC's macOS date setter (terminal-driven). RUN it, don't read it.
+"""macOS Finder-Date Setter (terminal-driven; RUN, don't read)
 
 === NON-CCSIM —— start of all you need to RUN it ===
 WHAT: sets a file/folder's Finder-visible dates.

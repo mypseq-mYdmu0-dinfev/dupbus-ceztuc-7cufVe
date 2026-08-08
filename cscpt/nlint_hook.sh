@@ -1,5 +1,5 @@
 #!/bin/bash
-# PostToolUse fast-path wrapper for nlint.py.
+# nlint.py Fast-Path Wrapper (PostToolUse hook)
 #
 # === NON-CCSIM —— start of all you need to RUN it ===
 # WHAT: the registered PostToolUse hook fronting `nlint.py` —— the harness

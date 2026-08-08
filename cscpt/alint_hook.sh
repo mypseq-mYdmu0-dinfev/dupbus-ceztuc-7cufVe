@@ -1,5 +1,5 @@
 #!/bin/bash
-# PreToolUse fast-path wrapper for alint.py —— the TEA1 in-flight gate.
+# alint.py Fast-Path Wrapper —— the TEA1 in-flight gate (PreToolUse hook)
 #
 # === NON-CCSIM —— start of all you need to RUN it ===
 # WHAT: the registered PreToolUse hook fronting `alint.py` —— the harness

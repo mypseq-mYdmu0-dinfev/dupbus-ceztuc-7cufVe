@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-otg_sync.py —— `#sync`: OTG index SHA-permalink refresher. RUN it, don't read it.
+"""OTG Index Sync —— SHA-permalink refresher (`#sync` trigger; RUN, don't read)
 
 === NON-CCSIM —— start of all you need to RUN it ===
 WHAT: pins every raw-GitHub file URL in an OTG index to that file's last-commit

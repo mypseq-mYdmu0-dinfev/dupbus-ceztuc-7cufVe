@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""PreToolUse + PostToolUse hook —— "time-integrity linter". ONE lint owning the
-question root CLAUDE.md §2.1.7 answers by mandate: is the time CC is using a
-REAL Sydney clock reading, or something recalled, guessed, or taken from a
-US-formatted source? Four checks, all ADVISORY, all about the same defect.
+"""Time-Integrity Linter (PreToolUse + PostToolUse hook)
+
+ONE lint owning the question root CLAUDE.md §2.1.7 answers by mandate: is the time CC is using a
+REAL Sydney clock reading, or something recalled, guessed, or taken from a US-formatted source?
+Four checks, all ADVISORY, all about the same defect.
 
 Root scope: resolves paths in TWO repo roots —— `dupbus-ceztuc-7cufVe/sessions/`
 and `AJAP_repo/inv/` —— because those two hold ONE comms stream stamped in one

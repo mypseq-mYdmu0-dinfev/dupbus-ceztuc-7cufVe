@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
-"""
-DADC.py —— Date Added + Date Created preserver (hook-driven). RUN it, don't read it.
+"""Date Added & Date Created Preserver (PreToolUse + PostToolUse hook)
 
 === NON-CCSIM —— start of all you need to RUN it ===
 WHAT: keeps a file's macOS Date Added and Date Created intact across an agent's
