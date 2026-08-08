@@ -67,9 +67,8 @@
 - root = assume default repo unless mentioned as "AJAP root"
 - default repo = `/dupbus-ceztuc-7cufVe/`
 - AJAP repo = `/AJAP_repo/` (isolated to avoid its instances reading default repo's root c.md)
-- #r = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D". (perfect/past/future/present)
+- #r = /rɛd/ = past/perfect tense of "read"; MUST use to distinguish from its present/future tense; e.g. "Having already #r A, I also #r B and will read C when I read D". (perfect/past/future/present)
 - re-#r = past/perfect tense of "re-read"; only present/future "re-read" stays as words
-- directory.md = legacy file; immediately alert when any are seen/mentioned
 - I/O = input/output
 - SR = `<system-reminder>` (injected file-change notice); e.g. "Note: `<path>` was modified, ..."
 - QMM = `query_` my msg; follow root CLAUDE.md §3.6, but REGARDLESS of msg word count
