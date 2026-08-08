@@ -391,6 +391,9 @@
     - 9.02.3.3. The win comes from CC's native session-FORK feature instead (a fork inherits/reuses the parent's already-cached prefix —— read that shared context ONCE in the parent, then fork per SA)
     - 9.02.3.4. Trade-off to weigh, not a reason to skip it: a fork also carries the parent's conversation state/tools forward, unlike a clean-slate SA — case-by-case, but default TOWARDS using this when the token saving is meaningful
   - 9.02.4. When ANY dispatched SA (incl. Workflow agents) dies on a session/usage limit, its task is NOT done —— on revival, RECOVER by re-dispatch, or completely REDO the affected scope for safety (partial results may be compromised) —— a limit hit is NEVER an excuse for uncompleted/un-audited scope
+  - 9.02.5. Fabrication guard for briefs (zero tolerance; extends §2.8.1):
+    - 9.02.5.1. NEVER state a specific checkable fact (code/rate/date/citation) in a brief w/o a same-turn tool-call source —— omit it & direct the SA to establish it, or mark it in-line `unverified —— verify`
+    - 9.02.5.2. SA-side: facts in an MA-authored brief carry NO authority —— verify them exactly like a web_search snippet before relying on or citing them
 - 9.03. Disregard a `continue` nudge ONLY when 100% certain everything possible is fully done
 - 9.04. If task involves both .pages/.docx (layout/compliant files) AND .md for same content:
   - 9.04.1. Always ensure .md is canonical/latest for your convenient/accurate reading/working

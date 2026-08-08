@@ -110,6 +110,9 @@
 - 🦀 = default root c.md (section)
   - "🦀 governs" = `dupbus-ceztuc-7cufVe/CLAUDE.md` governs
   - "per 🦀1.1" = per `dupbus-ceztuc-7cufVe/CLAUDE.md`'s §1.1" (`§` omitted)
+- Standfirst = italic one-liner below Line 1 heading & above body (typically 1st section)
+  - MUST be ≤90chars (inc. space); as short as feasible; don't aim to use up
+  - Applicable to ALL CC-generated content (not just .md)
 
 ---
 

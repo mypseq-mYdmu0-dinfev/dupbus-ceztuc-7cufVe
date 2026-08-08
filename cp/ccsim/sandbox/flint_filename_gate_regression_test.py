@@ -136,6 +136,17 @@ REAL_TAIL_DEFECTS = (
     "ccsim_query_202608052118a.md",
     "ccsim_query_202608052118b.md",
     "response_202607072124_r2.md",
+    # The SAME four files after the Move Rule (root §8.1.2) ran on them: the
+    # queued-query sweep copied each into `sessions/2026/202608/` and voided the
+    # original in place, which by mandate produces `❌_<name>_moved_<dir>.md`.
+    # They are listed rather than pattern-matched so that a NEW tail defect can
+    # never hide behind a `_moved_` suffix. The defect itself is unchanged and
+    # still awaits the owner's rename ruling —— a suite that went red the moment
+    # a MANDATED rename ran would be punishing compliance with the Move Rule.
+    "❌_ccsim_query_202608060423a_moved_2026-202608.md",
+    "❌_ccsim_query_202608060423b_moved_2026-202608.md",
+    "❌_ccsim_query_202608052118a_moved_2026-202608.md",
+    "❌_ccsim_query_202608052118b_moved_2026-202608.md",
 )
 
 # Real TS-bearing repo filenames that DO carry something after the timestamp and
@@ -487,8 +498,15 @@ def test_flint_tail_rule_advises_on_read_and_out_of_scope():
                      "ccsim_query_202608060423a.md")
     r = _run(PRE, _pre_payload(p, tool="Read"))
     adv = _advice(r)
+    # Assert the SHAPE of the correction, never a specific minute. flint offers
+    # the next minute NOT already taken by a sanctioned sibling, so the exact
+    # figure legitimately moves as the folder's contents change —— and it did:
+    # the queued-query sweep copied this very offender into `202608/`, which
+    # made `…0423` occupied and shifted the offer to `…0424`. Pinning the digits
+    # made this check a hostage to unrelated file moves; pinning the shape keeps
+    # it testing what the rule actually promises.
     ok = (r.returncode == 0 and "[flint]" in adv and "ALERT THE USER" in adv
-          and "ccsim_query_202608060423.md" in adv)
+          and re.search(r"`ccsim_query_20\d{10}\.md`", adv) is not None)
     _check("F23a — a READ of a tail offender advises, never blocks", ok,
            "rc=%s out=%r" % (r.returncode, r.stdout))
 

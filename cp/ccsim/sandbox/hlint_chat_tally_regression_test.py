@@ -21,6 +21,18 @@ the final scan covers the whole window —— and never sums entries. A suite th
 let a sum through would ship a reminder whose number nobody can defend, which
 is how a reminder earns being ignored.
 
+ALSO PINNED HERE, because the WORDING is the deliverable (T17): the
+`sha_nolabel` rule clause must carry its CONDITION —— labels only because
+THAT turn was multi-repo; a single-repo turn must NOT add one —— since this
+correction lands on a turn whose repo count is usually the opposite of the
+offending one, and an unconditional "label your SHA lines" would convert the
+breach into its mirror (`sha_label`) on every following single-repo turn.
+And the LINT-BYPASS ADVISORY (hlint's third job, T18–T22): clint's `bashw=`
+log field —— a comms file the previous turn wrote VIA BASH, dodging every
+PostToolUse lint —— must draw one advisory naming the file and the Write-tool
+remedy, deduped and cwd-gated exactly like the tally, firing on chat-CLEAN
+entries too (the real bypass incident's turn was chat-clean).
+
 BASELINE OVERRIDE: `HLINT_UNDER_TEST=<path>` points the whole suite at another
 copy of hlint.py —— used to demonstrate each NEW case failing against the
 pre-change file (CCSIM CLAUDE.md §4.4's baseline pattern), so "the fix exists"
@@ -54,9 +66,19 @@ _TALLY_SIG = "Chat-discipline tally"
 _TRIGGER_SIG = "[hlint hook] Possible hashtag-trigger(s)"
 
 # One clint log line, byte-shaped exactly like clint._log_event's live format
-# (timestamp, then TAB-separated key=value fields, `first=` last).
+# (timestamp, then TAB-separated key=value fields, `first=` last). This older
+# shape -- NO `bashw=` field -- is kept deliberately for most cases: it is
+# what the log's historic tail really holds, so it doubles as the
+# backwards-compatibility fixture (T19 pins that explicitly).
 _CLINT_LINE = ("2026-08-07T15:26:25\tsession=%s\tpid=%s\tmode=repo\t"
                "action=%s\tlines=%s\tfirst=%s")
+
+# The current shape: `bashw=` (the BASH-WRITE CATCH field, clint.py docstring
+# section of that name) between `lines=` and `first=`.
+_CLINT_LINE_BW = ("2026-08-07T15:26:25\tsession=%s\tpid=%s\tmode=repo\t"
+                  "action=%s\tlines=%s\tbashw=%s\tfirst=%s")
+
+_BYPASS_SIG = "Lint-bypass notice"
 
 # The session id every case uses unless it is testing session isolation.
 # clint stores only the first 8 chars, so fixtures write `tallyses`.
@@ -404,6 +426,146 @@ def main():
              and "six declaration lines ONLY" in ctx
              and "§3.2.4.5" not in ctx
              and "drop the label" not in ctx), r, extra=ctx))
+
+        # --- T17: THE PANIC-PROOF WORDING PIN (`sha_nolabel`, the solo-label
+        # check's mirror). This correction lands at the NEXT turn's start,
+        # and that turn is usually SINGLE-repo -- where adding a label is the
+        # OPPOSITE breach (`sha_label`). Observed hazard the owner named
+        # outright: turn 1 touches 2 repos, emits 2 bare SHA lines; turn 2
+        # reads "your SHA lines need labels", touches ONE repo, and labels
+        # its lone line anyway -- the advisory manufacturing the next breach.
+        # So the clause must carry the CONDITION, both branches, and an
+        # explicit do-NOT for the single-repo case; these fragments are the
+        # deliverable, and a rewording that drops any of them is the bug.
+        clog = _clint_log(tmp, [
+            _CLINT_LINE % (SID8, "aaa", "yellow:sha_nolabel", "2", "-")],
+            "t17.clint.log")
+        hlog = os.path.join(tmp, "t17.hlint.log")
+        r = _run(_payload(), clog, hlog)
+        ctx = _context(r)
+        results.append(_verdict(
+            "T17 — sha_nolabel fires its OWN clause CARRYING THE CONDITION: "
+            "labels only because THAT turn was multi-repo; single-repo says "
+            "do NOT add one",
+            (r.returncode == 0 and _TALLY_SIG in ctx
+             and "`sha_nolabel`" in ctx
+             and "§3.2.4.5" in ctx
+             and "MULTIPLE repos" in ctx
+             and "CONDITIONAL, never standing" in ctx
+             and "ONLY if THIS turn again touches multiple repos" in ctx
+             and "do NOT add a label on account of this notice" in ctx
+             and "six declaration lines ONLY" not in ctx
+             and "drop the label" not in ctx      # the MIRROR class's fix
+             and "do NOT apologise in chat" in ctx), r, extra=ctx))
+
+        # --- T18: LINT-BYPASS ADVISORY, the core case -- a chat-CLEAN entry
+        # whose `bashw=` names a file fires ONE advisory (the real incident's
+        # turn was chat-clean, so firing must not depend on a breach), the
+        # file is named backticked, the ledger carries bashw=fired:, and the
+        # second prompt is silent with bashw=dup.
+        clog = _clint_log(tmp, [
+            _CLINT_LINE_BW % (SID8, "aaa", "clean", "0",
+                              "ccsim_response_202608081357.md", "-")],
+            "t18.clint.log")
+        hlog = os.path.join(tmp, "t18.hlint.log")
+        r1 = _run(_payload(), clog, hlog)
+        r2 = _run(_payload(), clog, hlog)
+        ctx = _context(r1)
+        logged = open(hlog, encoding="utf-8").read()
+        results.append(_verdict(
+            "T18 — bashw on a chat-clean entry: one advisory naming the "
+            "file, Write-tool remedy, dedup on the second prompt",
+            (r1.returncode == 0 and r2.returncode == 0
+             and _BYPASS_SIG in ctx
+             and "`ccsim_response_202608081357.md`" in ctx
+             and "Write tool" in ctx
+             and _TALLY_SIG not in ctx          # clean verdict -> no tally
+             and not _context(r2)
+             and "\tbashw=dup\t" in logged
+             and logged.count("bashw=fired:") == 1), r1, extra=ctx))
+
+        # --- T19: BOTH lines in ONE valid JSON injection when a breach and a
+        # bypass share the entry -- tally FIRST (discipline, then coverage),
+        # and never a `decision` key (T14's guard re-proven on the new line).
+        clog = _clint_log(tmp, [
+            _CLINT_LINE_BW % (SID8, "aaa", "yellow:prose", "2",
+                              "ccsim_response_202608081357.md",
+                              "sounds good!")], "t19.clint.log")
+        hlog = os.path.join(tmp, "t19.hlint.log")
+        r = _run(_payload(), clog, hlog)
+        ctx = _context(r)
+        try:
+            doc = json.loads(r.stdout)
+        except Exception:
+            doc = {}
+        results.append(_verdict(
+            "T19 — breach + bypass in one entry: tally first, advisory "
+            "second, one JSON, no decision key",
+            (r.returncode == 0 and _TALLY_SIG in ctx and _BYPASS_SIG in ctx
+             and ctx.index(_TALLY_SIG) < ctx.index(_BYPASS_SIG)
+             and doc and "decision" not in doc
+             and "decision" not in doc.get("hookSpecificOutput", {})),
+            r, extra=ctx))
+
+        # --- T20: BACKWARDS COMPATIBILITY -- the log's historic tail holds
+        # lines with NO bashw field at all, and current clean lines hold
+        # `bashw=-`; neither may fire or crash (stage `none` for both).
+        clog = _clint_log(tmp, [
+            _CLINT_LINE % (SID8, "aaa", "clean", "0", "-")],
+            "t20a.clint.log")
+        hlog = os.path.join(tmp, "t20a.hlint.log")
+        ra = _run(_payload(), clog, hlog)
+        la = open(hlog, encoding="utf-8").read()
+        clog = _clint_log(tmp, [
+            _CLINT_LINE_BW % (SID8, "aaa", "clean", "0", "-", "-")],
+            "t20b.clint.log")
+        hlog = os.path.join(tmp, "t20b.hlint.log")
+        rb = _run(_payload(), clog, hlog)
+        lb = open(hlog, encoding="utf-8").read()
+        results.append(_verdict(
+            "T20 — pre-field historic lines and `bashw=-` both stay silent "
+            "(stage none)",
+            (ra.returncode == 0 and rb.returncode == 0
+             and not _context(ra) and not _context(rb)
+             and "\tbashw=none\t" in la and "\tbashw=none\t" in lb),
+            ra, extra=(la, lb)))
+
+        # --- T21: the advisory shares the tally's cwd gate -- chat and lint
+        # conventions are this repo's; a foreign cockpit gets neither, whilst
+        # the trigger half stays global (T7's asymmetry re-proven here).
+        clog = _clint_log(tmp, [
+            _CLINT_LINE_BW % (SID8, "aaa", "clean", "0",
+                              "ccsim_response_202608081357.md", "-")],
+            "t21.clint.log")
+        hlog = os.path.join(tmp, "t21.hlint.log")
+        r = _run(_payload(prompt="#close please", cwd="/tmp"), clog, hlog)
+        ctx = _context(r)
+        results.append(_verdict(
+            "T21 — foreign cwd: trigger reminder fires, bypass advisory "
+            "does NOT (bashw=off_scope)",
+            (r.returncode == 0 and _TRIGGER_SIG in ctx
+             and _BYPASS_SIG not in ctx
+             and "\tbashw=off_scope\t"
+             in open(hlog, encoding="utf-8").read()), r, extra=ctx))
+
+        # --- T22: the multi-file rendering -- clint caps its field at three
+        # basenames plus a `+N` overflow marker, and the advisory must render
+        # every named file backticked and the remainder as a count.
+        clog = _clint_log(tmp, [
+            _CLINT_LINE_BW % (SID8, "aaa", "clean", "0",
+                              "a_response_202608081111.md,"
+                              "b_close_202608082222.md,+2", "-")],
+            "t22.clint.log")
+        hlog = os.path.join(tmp, "t22.hlint.log")
+        r = _run(_payload(), clog, hlog)
+        ctx = _context(r)
+        results.append(_verdict(
+            "T22 — multi-file field renders each name backticked plus the "
+            "overflow count",
+            (r.returncode == 0 and _BYPASS_SIG in ctx
+             and "`a_response_202608081111.md`" in ctx
+             and "`b_close_202608082222.md`" in ctx
+             and "(+2 more)" in ctx), r, extra=ctx))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

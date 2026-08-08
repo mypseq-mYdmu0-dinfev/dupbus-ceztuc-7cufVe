@@ -18,12 +18,14 @@ Two rules, picked by the session's working directory (see REPO SCOPE below):
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a Stop hook scanning the agent's chat text at turn end. NEVER blocks ——
-  every verdict exits 0. A breach is recorded and logged; it never reaches you.
-* PERMITTED: blank lines; a `---`/`***`/`___` divider; each glyph ONLY in the
-  declaration it owns —— the 3 I/O glyphs a backticked file list, the SHA glyph
-  backticked hashes, the blocker glyph ≤5 words, the sentinel verbatim; plus a
-  lone `.` (both modes). Reader folder: blank lines and that lone `.` only.
+  every verdict exits 0; breaches are logged, never shown.
+* PERMITTED: blank lines; a `---`/`***`/`___` divider; each glyph ONLY in its
+  own declaration —— I/O glyphs a backticked file list, SHA glyph backticked
+  hashes, blocker ≤5 words, sentinel verbatim; plus a lone `.` (both modes).
+  Reader folder: blank lines and that lone `.` only.
 * Comply regardless: root CLAUDE.md §3.2 mandates declarations-only chat.
+* Also RECORDS comms files written via Bash (a PostToolUse-lint bypass);
+  hlint advises next prompt.
 * Verdicts log to `cscpt/.clint.log`.
 === NON-CCSIM —— end of all you need to RUN it ===
 
@@ -81,10 +83,34 @@ satisfy THAT type's shape:
   the wrong fix. Precedence, each edge deliberate: a lone line already in
   breach keeps `sha_shape` (the label rides a body that is not a SHA list at
   all, and one line gets one class —— the coarser, truer verdict); 2+ `🦈`
-  lines are the legal multi-repo form and are never touched, even when a
-  sibling line is separately in breach; REPO mode only (§3.2.4 is this repo's
-  protocol, and in READER any chat text is class `reader` anyway).
-  DELIBERATE NON-GOAL, narrowed by the check above but kept honest: a
+  lines are the legal multi-repo form and are never label-FLAGGED by this
+  check, even when a sibling line is separately in breach; REPO mode only
+  (§3.2.4 is this repo's protocol, and in READER any chat text is class
+  `reader` anyway).
+  MISSING-LABEL CHECK (`sha_nolabel`) —— the solo check's exact MIRROR, added
+  when the owner ordered the scan reversed: §3.2.4.5.1 mandates that when a
+  turn's window carries MULTIPLE `🦈` lines (the multi-repo form —— m2.md's
+  mid-turn push declares no `🦈` of its own, its SHA waits for TEA3, so no
+  same-repo turn legitimately emits two), EVERY one of them must open with
+  its repo shorthand —— a bare line there leaves the reader unable to tell
+  WHICH repo a hash belongs to, which is the whole point of the labels. So
+  with 2+ `🦈` lines in the window, `_flag_unlabelled_multi_sha` reclassifies
+  every bare, otherwise shape-valid one from clean to `sha_nolabel`. Same
+  precedence spine as the solo check, count-gated the opposite way: a line
+  already in breach keeps its own class (`sha_shape` is the truer verdict);
+  0–1 lines are the solo check's territory and this one never runs; REPO
+  mode only. Its OWN class for the same reason `sha_label` has one: hlint's
+  next-prompt tally names the class, and "add the labels" is a different
+  correction from "drop the label" or "that is not a SHA list". THE PANIC
+  HAZARD, named so nobody re-words the tally casually: that correction
+  arrives at the NEXT turn's start, describing the PREVIOUS turn —— and the
+  next turn is usually SINGLE-repo, where adding a label is itself the
+  `sha_label` breach. A correction worded as a standing order would convert
+  one breach into its mirror image, forever. hlint's `sha_nolabel` rule
+  clause therefore carries the CONDITION (labels ONLY on a multi-repo
+  turn), and its own suite pins that wording —— see `_TALLY_RULE` there
+  before touching either side.
+  DELIBERATE NON-GOAL, narrowed by the checks above but kept honest: a
   REDUNDANT second `🦈` line —— the same repo declared twice, e.g. one
   shorthand on two lines —— is still not caught, because two labelled lines
   are byte-identical to the legal §3.2.4.5 form and only the turn's actual
@@ -336,6 +362,70 @@ on every genuine compaction; and a linter cannot verify a claim, only its
 form —— the same trade the ⚠️ IS NOT A PROGRESS NOTE paragraph already
 documents.
 
+BASH-WRITE CATCH (`bashw=`; REPO mode only) —— a SECOND job this Stop scan
+performs on the window it already parsed, closing a hole the PostToolUse
+suite structurally cannot: every content lint (nlint, dlint's gate, flint,
+tlint) is registered on Write|Edit|MultiEdit, so a comms file written or
+edited THROUGH A BASH COMMAND —— a `python3` heredoc, a `>` redirect, `tee`,
+`sed -i` —— is never seen by any of them. Not theory: a real turn appended
+eleven numbered sub-points to a live `response_` via a `python3 - <<'PY'`
+heredoc (`open(path, "w")`), sailed past nlint's tenth-sibling rule, and the
+breach surfaced only when the OWNER read the file —— he then blamed nlint,
+whose rule was in fact correct and fires when shown the file; the lint was
+bypassed, not broken. A NOT-NOTICED failure is an enforcement gap prose
+cannot repair, so the catch is mechanical:
+* WHERE IT LIVES, weighed not defaulted: a PreToolUse(Bash) guard was the
+  alternative, and it loses on every axis —— it needs NEW settings wiring
+  (this file is already a registered Stop hook), it taxes EVERY Bash call
+  with a subprocess spawn to protect the rare offender, and at pre-time the
+  write has not happened yet, so it can only guess intent from command text;
+  at Stop the file's own mtime can CONFIRM a modification actually landed.
+* DETECTION, two independent gates so legitimate Bash never fires it:
+  (1) TEXT —— the window's Bash `tool_use` commands are scanned for `.md`
+  tokens that live under `sessions/` (or carry a comms basename, resolved to
+  its TS-derived month folder exactly as root §3.4.9.1–2 prescribes) AND a
+  write signal in the same command: a `>`/`>>` redirect aimed at that token,
+  `tee`, `sed`/`perl` in-place, a write/append-mode `open(`, or
+  `write_text(`. Plain reads (`cat`, `grep`), `git` operations, and lint
+  invocations carry no such signal and never reach gate 2. `mv`/`cp`/`touch`
+  are EXCLUDED deliberately: the Move/Void Rules (root §8.1–8.2) and
+  `set_dates.py` make those routine, legitimate comms-file Bash uses, and
+  their content was already linted when first written —— flagging them would
+  make the catch wallpaper. (2) MTIME —— the named file must exist and have
+  been modified since the turn's triggering user message (the transcript
+  line's own `timestamp`, minus a small clock-skew slack); a command that
+  merely MENTIONS a write shape but changed nothing (failed assert, dry run)
+  is suppressed, as is a token whose file cannot be found. When the trigger
+  timestamp itself is unreadable the text verdict stands alone —— the armed
+  direction, same as every other fail-open here.
+* DELIVERY, and why this file writes NO message for it: at Stop nothing
+  reaches the model without waking it (THE PRICE OF THIS, above), so the
+  catch only RECORDS —— the log line's `bashw=` field carries the offending
+  basename(s), and hlint's UserPromptSubmit half reads it at the NEXT prompt
+  and injects the advisory exactly as its chat-discipline tally does,
+  dedup-ledgered the same way. The field rides EVERY post-scan verdict ——
+  clean, exempt, yellow alike —— because the bypass is orthogonal to chat
+  discipline: a chat-exempt turn (`override`, `yn`) can still have written
+  an unlinted comms file, and the exemptions govern CHAT text, not lint
+  coverage. ADVISORY ONLY, by construction: this file's exit code stays
+  unconditionally 0 and the field changes no verdict.
+* RESIDUALS, stated rather than papered over: a sub-agent's Bash writes ride
+  sidechain lines this scan already excludes (the SA's own hooks saw its
+  tool calls); content smuggled through `cp`/`mv` from outside `sessions/`
+  is unseen (excluded above, trade accepted); a write whose file is MOVED
+  later in the same turn stats stale and is suppressed. Each is the quiet
+  direction on purpose —— this catch must never fire on legitimate Bash use,
+  and a rare miss still beats the guaranteed miss that existed before it.
+* Root scope: resolves `sessions/`-relative and bare comms basenames against
+  THIS repo's root alone (derived from `__file__`, never cwd) —— the only
+  tree whose comms conventions these lints police; other repos' files never
+  resolve and so never fire.
+* COST, measured end-to-end on this Mac (40-run medians, same fixture both
+  sides: a 60-message transcript carrying 20 Bash tool_use blocks, live-sized
+  log): 28.7 ms -> 30.8 ms, i.e. ≈2 ms on a Stop event against a 1 s budget
+  (p90 29.8 -> 31.7 ms); the scan is bounded by `_BASHW_MAX_CMDS`/`_TOKENS`
+  and stats at most a handful of paths.
+
 LOOP GUARD —— REMOVED (justified, not merely deleted): the guard used to exist
 SOLELY to stop an infinite retry cascade that only exit 2 could cause —— a
 block forces one more model turn, that turn ends in another Stop, and an
@@ -457,12 +547,19 @@ failed); the parse stage reached; one `exempt:` per exemption
 (the SHA glyph not carrying a backticked hex commit-hash list),
 `yellow:sha_label` (the window's LONE SHA line wearing a repo shorthand ——
 one `🦈` line means one repo, so the label is unearned; see SOLO-LABEL
-CHECK), `yellow:sentinel`
+CHECK), `yellow:sha_nolabel` (a bare SHA line amongst the window's MULTIPLE
+`🦈` lines —— the multi-repo form owes every line its shorthand; see
+MISSING-LABEL CHECK), `yellow:sentinel`
 (compaction glyph, wrong wording), `yellow:warn_shape` (blocker glyph carrying
 another type's declaration), `yellow:warn_empty`, `yellow:warn_words`,
 `yellow:warn_hyphens`, `yellow:warn_chars`, `yellow:warn_progress` (a progress
 note wearing the blocker glyph), `yellow:reader` (any chat text in Reader
-mode), plus `yellow:sic_overrun` (a `sic` answer past its cap). The class is
+mode), plus `yellow:sic_overrun` (a `sic` answer past its cap). Every
+post-scan record additionally carries `bashw=` —— `-` normally, else the
+basename(s) of comms files this turn wrote via Bash (see BASH-WRITE CATCH);
+it rides clean and exempt verdicts too, because the bypass it records is
+orthogonal to the chat verdict, and hlint reads it at the next prompt. The
+field sits BEFORE `first=` so that free-text field stays last. The class is
 that of the FIRST offending line, matching the `first=` field, so record and
 class always describe the same text —— this naming and granularity are
 UNCHANGED from the retired RED policy (only the `block:` prefix became
@@ -797,6 +894,33 @@ def _flag_solo_sha_label(judged):
         judged[idx[0]] = (s, "sha_label")
 
 
+def _flag_unlabelled_multi_sha(judged):
+    """Reclassify every BARE, otherwise shape-valid `🦈` line from clean to
+    `sha_nolabel`, in place, when the window carries TWO OR MORE `🦈` lines.
+    No-op with 0–1 lines —— that territory belongs to `_flag_solo_sha_label`.
+
+    The solo check's exact mirror (see docstring MISSING-LABEL CHECK): root
+    §3.2.4.5.1 makes multiple `🦈` lines the multi-repo form, and there EVERY
+    line owes its repo shorthand —— a bare line leaves its hashes un-owned.
+    Same precedence spine, count-gated the other way: a line already in
+    breach keeps its own class (the coarser, truer verdict —— one line, one
+    class), and only shape-valid bare lines are touched, so the legal fully
+    labelled form passes through untouched even when a sibling line is
+    separately in breach. The CALLER gates on REPO mode, exactly as for the
+    solo check."""
+    idx = [i for i, (s, k) in enumerate(judged)
+           if _split_glyph(s)[0] == _G_SHA]
+    if len(idx) < 2:
+        return
+    for i in idx:
+        s, k = judged[i]
+        if k is not None:
+            continue                     # own breach class already stands
+        _, rest = _split_glyph(s)
+        if not _SHA_LABEL_RE.match(rest):
+            judged[i] = (s, "sha_nolabel")
+
+
 def _warn_breach(rest):
     """Breach class for a `⚠️` line's body, or None if it is a permitted
     blocker declaration (§3.2.5). Caps are tested words -> hyphens -> chars so
@@ -968,6 +1092,141 @@ def _sentinel_list_line(judged, i):
             and judged[i + 1][0].startswith("- "))
 
 
+# --- BASH-WRITE CATCH (docstring section of that name) ---------------------
+# A quoted `.md` path (may carry spaces —— this repo's own absolute prefix
+# does) and a bare whitespace-free `.md` token, hlint's own token convention.
+_BASHW_MD_QUOTED_RE = re.compile(r"[\"']([^\"'\n]*?\.md)[\"']")
+_BASHW_MD_TOKEN_RE = re.compile(r"[^\s\"'`()<>|,;=]+\.md")
+# A comms basename (root §3.3.1–7): optional prefix segments, a known comms
+# type, a 12-digit TS, an optional disambiguating letter. Matched on the
+# BASENAME so `sessions/`-external mentions resolve (and mostly stat-fail).
+_BASHW_COMMS_NAME_RE = re.compile(
+    r"(?:^|_)(?:query|response|close|wrap|artefact|slog)_\d{12}[a-z]?\.md$",
+    re.I)
+# The TS's year+month —— the file's §3.4.9.1–2 folder is COMPUTED from it,
+# exactly as hlint's corpus expansion does, so no `sessions/` walk ever runs.
+_BASHW_TS_RE = re.compile(r"_(\d{4})(\d{2})\d{6}[a-z]?\.md$", re.I)
+# Command-wide write signals. `tee` (word, not `.tee`), `sed`/`perl` wearing
+# an in-place flag, a write/append/update-mode `open(`, or `write_text(`.
+# Bare `.write(` is NOT a signal on its own —— `sys.stdout.write` rides many
+# read-only verification heredocs —— and `mv`/`cp`/`touch` are excluded
+# outright (Move/Void Rules + `set_dates.py`; see docstring, DETECTION).
+_BASHW_TEE_RE = re.compile(r"(?<![\w.])tee(?:\s|$)")
+# `-i` may ride a cluster (`perl -pi`, `sed -Ei`), so up to two flag letters
+# may precede the `i`; the trailing \b keeps `-in`/`--include` unmatched;
+# and the scan stops at a pipe so `sed … | grep -i` cannot borrow grep's
+# flag and read as an in-place edit.
+_BASHW_INPLACE_RE = re.compile(
+    r"\b(?:sed|perl)\b[^\n|]{0,120}?\s-[A-Za-z]{0,2}i\b")
+_BASHW_PYWRITE_RE = re.compile(
+    r"\bopen\s*\([^)\n]*[\"'](?:[wax]|[rwa]\+|[wa][bt])[\"']"
+    r"|\.write_text\s*\(")
+_BASHW_SLACK_S = 120                 # clock-skew slack on the mtime gate
+_BASHW_MAX_NAMES = 3                 # basenames named in the log field
+_BASHW_MAX_CMDS = 200                # bound the scan on a pathological turn
+_BASHW_MAX_TOKENS = 20               # ditto per command
+
+
+def _redirected_into(cmd, tok):
+    """True when some occurrence of `tok` in `cmd` sits directly after a
+    shell redirect —— `> tok`, `>> tok`, `>"tok"` —— skipping only quotes and
+    whitespace on the way back, so `2>&1` or a redirect aimed elsewhere in
+    the same command never counts for this token."""
+    for m in re.finditer(re.escape(tok), cmd):
+        k = m.start() - 1
+        while k >= 0 and cmd[k] in " \t\"'":
+            k -= 1
+        if k >= 0 and cmd[k] == ">":
+            return True
+    return False
+
+
+def _bashw_resolve(tok):
+    """Candidate absolute path(s) for a `.md` token found in a Bash command:
+    an absolute token as-is; a token carrying a `sessions/` component
+    re-anchored on THIS repo's root at that component (which also repairs a
+    token truncated at the space inside this repo's own absolute prefix); a
+    bare comms basename mapped to its TS-derived month folder, then one
+    month back (root §3.4.9.1–2) —— two stats, never a walk. Anything else
+    resolves to nothing and so can never fire."""
+    if os.path.isabs(tok):
+        return [tok]
+    i = tok.find("sessions/")
+    if i != -1:
+        return [os.path.join(_REPO_ROOT_REAL, tok[i:])]
+    base = os.path.basename(tok)
+    m = _BASHW_TS_RE.search(base)
+    if not m:
+        return []
+    y, mo = int(m.group(1)), int(m.group(2))
+    if not 1 <= mo <= 12:
+        return []
+    py, pm = (y, mo - 1) if mo > 1 else (y - 1, 12)
+    return [os.path.join(_REPO_ROOT_REAL, "sessions", "%04d" % yy,
+                         "%04d%02d" % (yy, mm), base)
+            for yy, mm in ((y, mo), (py, pm))]
+
+
+def _bashw_epoch(trigger):
+    """The turn-opening user line's timestamp as an epoch float, or None when
+    unreadable —— the mtime gate then stands down and the text verdict rules
+    alone (the armed direction; see docstring, DETECTION gate 2)."""
+    try:
+        ts = (trigger or {}).get("timestamp")
+        if not isinstance(ts, str) or not ts:
+            return None
+        return datetime.fromisoformat(ts.replace("Z", "+00:00")).timestamp()
+    except Exception:
+        return None
+
+
+def _bash_comms_writes(cmds, trigger):
+    """The `bashw=` log-field value —— comma-joined basenames of comms files
+    the window's Bash commands wrote (capped, `,+N` for overflow) —— or None
+    when nothing fired. Both detection gates and every deliberate exclusion
+    are specified in the docstring's BASH-WRITE CATCH section; this body is
+    mechanics only. Never raises: the catch is a recorder, and a failure in
+    it must cost a diagnostic, never a verdict or the turn."""
+    try:
+        start = _bashw_epoch(trigger)
+        names = []
+        for cmd in cmds[:_BASHW_MAX_CMDS]:
+            toks = set(_BASHW_MD_QUOTED_RE.findall(cmd))
+            toks.update(_BASHW_MD_TOKEN_RE.findall(cmd))
+            cands = sorted(
+                t for t in toks
+                if "sessions/" in t
+                or _BASHW_COMMS_NAME_RE.search(os.path.basename(t)))
+            if not cands:
+                continue
+            wide = (_BASHW_TEE_RE.search(cmd)
+                    or _BASHW_INPLACE_RE.search(cmd)
+                    or _BASHW_PYWRITE_RE.search(cmd))
+            for tok in cands[:_BASHW_MAX_TOKENS]:
+                if not wide and not _redirected_into(cmd, tok):
+                    continue
+                for path in _bashw_resolve(tok):
+                    try:
+                        st = os.stat(path)
+                    except OSError:
+                        continue         # absent/moved -> quiet direction
+                    if (start is not None
+                            and st.st_mtime < start - _BASHW_SLACK_S):
+                        continue         # untouched this turn -> mentioned only
+                    base = os.path.basename(path)
+                    if base not in names:
+                        names.append(base)
+                    break
+        if not names:
+            return None
+        shown = ",".join(names[:_BASHW_MAX_NAMES])
+        if len(names) > _BASHW_MAX_NAMES:
+            shown += ",+%d" % (len(names) - _BASHW_MAX_NAMES)
+        return shown
+    except Exception:
+        return None
+
+
 def _prune_log():
     """Bound `_LOG` to its recent window —— cheaply, atomically, fail-safely.
 
@@ -1030,24 +1289,30 @@ def _prune_log():
                 pass
 
 
-def _log_event(sid, action, lines=0, first="-", pid="-", mode="-"):
+def _log_event(sid, action, lines=0, first="-", pid="-", mode="-", bashw="-"):
     """Append ONE terse diagnostic line for ANY hook invocation, breach or not
     (see docstring LOG EVERY STAGE).
 
     Fields are TAB-separated and `first=` stays LAST because it alone may carry
     free text (tabs/newlines in it are flattened, so a record is always exactly
     one line). `mode=` records which rule applied, so a `reader:`-policed block
-    is never mistaken for a repo one when auditing.
+    is never mistaken for a repo one when auditing. `bashw=` (BASH-WRITE
+    CATCH) sits just before `first=` and is flattened the same way —— hlint
+    parses it back at the next prompt, the one field here that anything
+    machine-reads.
 
     FAIL-SAFE: swallow all errors -- a logging failure must never break a turn
-    (same contract as the rest of this file). Nothing reads this log back, so a
-    lost write costs diagnostics only, never enforcement."""
+    (same contract as the rest of this file). Nothing else reads this log
+    back, so a lost write costs diagnostics only, never enforcement (a lost
+    `bashw=` value costs one missed advisory, the same quiet direction)."""
     try:
         with open(_LOG, "a", encoding="utf-8") as lf:
             lf.write(
-                "%s\tsession=%s\tpid=%s\tmode=%s\taction=%s\tlines=%d\tfirst=%s\n"
+                "%s\tsession=%s\tpid=%s\tmode=%s\taction=%s\tlines=%d"
+                "\tbashw=%s\tfirst=%s\n"
                 % (datetime.now().isoformat(timespec="seconds"),
                    sid, pid, mode, action, lines,
+                   str(bashw)[:200].replace("\t", " ").replace("\n", " "),
                    str(first)[:200].replace("\t", " ").replace("\n", " ")))
     except Exception:
         pass
@@ -1280,6 +1545,8 @@ def main():
                   # lists escape below (docstrings DOT ESCAPE and SENTINEL
                   # LISTS); blanks stay out so header/item adjacency
                   # survives the blank separators between §5's two lists.
+    bash_cmds = []  # the window's Bash tool_use commands, for the
+                    # BASH-WRITE CATCH (docstring section of that name)
     for o in objs[start:]:
         if o.get("type") != "assistant":
             continue
@@ -1288,18 +1555,34 @@ def main():
         msg = o.get("message") or {}
         if msg.get("role") != "assistant":
             continue
-        for text in _text_of(msg.get("content")):
+        content = msg.get("content")
+        if isinstance(content, list):
+            for blk in content:
+                if (isinstance(blk, dict)
+                        and blk.get("type") == "tool_use"
+                        and blk.get("name") == "Bash"):
+                    cmd = (blk.get("input") or {}).get("command")
+                    if isinstance(cmd, str) and cmd:
+                        bash_cmds.append(cmd)
+        for text in _text_of(content):
             for ln in text.splitlines():
                 s = ln.strip()
                 if s:
                     judged.append((s, _line_breach(ln, mode)))
 
-    # Solo-label check (§3.2.4.5; REPO only): the one contract needing a
-    # window-wide fact —— the `🦈`-line count —— so it runs here, after the
+    # Label checks (§3.2.4.5; REPO only): the two contracts needing a
+    # window-wide fact —— the `🦈`-line count —— so they run here, after the
     # per-line verdicts and before they are split into offending/classes.
-    # Full precedence rules in `_flag_solo_sha_label`'s own docstring.
+    # Count-gated mirrors: exactly one line arms the solo check, 2+ arm the
+    # missing-label check; full precedence in each function's own docstring.
+    # The BASH-WRITE CATCH is likewise REPO-only (comms conventions are this
+    # repo's) and rides every later log call as the `bashw=` field.
+    bashw = "-"
     if mode == MODE_REPO:
         _flag_solo_sha_label(judged)
+        _flag_unlabelled_multi_sha(judged)
+        if bash_cmds:
+            bashw = _bash_comms_writes(bash_cmds, trigger) or "-"
 
     all_lines = [s for s, _ in judged]
     offending = [s for s, k in judged if k]
@@ -1307,7 +1590,7 @@ def main():
 
     if not offending:
         # Clean turn -> proof-of-life, non-blocking.
-        _log_event(sid, "clean", pid=plog, mode=mode)
+        _log_event(sid, "clean", pid=plog, mode=mode, bashw=bashw)
         return 0
 
     # --- Lone full-stop escape (BOTH modes; see docstring DOT ESCAPE) -------
@@ -1319,7 +1602,7 @@ def main():
     # `mode=` field.
     if _lone_dot_turn(all_lines):
         dot_tag = "clean:dot" if mode == MODE_REPO else "clean:dot_reader"
-        _log_event(sid, dot_tag, pid=plog, mode=mode)
+        _log_event(sid, dot_tag, pid=plog, mode=mode, bashw=bashw)
         return 0
 
     # --- Sentinel-lists escape (root §5.3–§5.4; REPO only; see docstring
@@ -1333,7 +1616,8 @@ def main():
         kept = [(s, k) for i, (s, k) in enumerate(judged)
                 if k and not (k == "prose" and _sentinel_list_line(judged, i))]
         if not kept:
-            _log_event(sid, "clean:compaction", pid=plog, mode=mode)
+            _log_event(sid, "clean:compaction", pid=plog, mode=mode,
+                       bashw=bashw)
             return 0
         offending = [s for s, k in kept]
         classes = [k for s, k in kept]
@@ -1347,15 +1631,17 @@ def main():
     typed = _trigger_text(trigger)
     if _OVERRIDE_RE.search(typed):
         # The user suspended the rule for this turn —— disarmed in BOTH modes.
+        # `bashw=` still rides the record: the exemptions govern CHAT text,
+        # never lint coverage (docstring BASH-WRITE CATCH, DELIVERY).
         _log_event(sid, "exempt:override", len(offending), offending[0],
-                   pid=plog, mode=mode)
+                   pid=plog, mode=mode, bashw=bashw)
         return 0
 
     if mode == MODE_REPO:
         if _YN_TOKEN in typed:
             # The user authorised a one-word chat answer -> nothing to enforce.
             _log_event(sid, "exempt:yn", len(offending), offending[0],
-                       pid=plog, mode=mode)
+                       pid=plog, mode=mode, bashw=bashw)
             return 0
         cap = _sic_cap(typed)
         if cap is not None:
@@ -1364,13 +1650,13 @@ def main():
             # are separately permitted and would blow any cap).
             if len(" ".join(offending).split()) <= cap:
                 _log_event(sid, "exempt:sic", len(offending), offending[0],
-                           pid=plog, mode=mode)
+                           pid=plog, mode=mode, bashw=bashw)
                 return 0
             verdict = "yellow:sic_overrun"
         if _dats_exempt(offending):
             # The single close-protocol status line -> sanctioned chat text.
             _log_event(sid, "exempt:dats", len(offending), offending[0],
-                       pid=plog, mode=mode)
+                       pid=plog, mode=mode, bashw=bashw)
             return 0
 
     # --- YELLOW —— demoted: never blocks, still logged + shown to the USER --
@@ -1384,9 +1670,10 @@ def main():
         sys.stdout.write(json.dumps({"systemMessage": _BREACH[mode]}))
     except Exception:
         _log_event(sid, "message_failed", len(offending), offending[0],
-                   pid=plog, mode=mode)
+                   pid=plog, mode=mode, bashw=bashw)
         return 0                          # fail-safe: never break the turn
-    _log_event(sid, verdict, len(offending), offending[0], pid=plog, mode=mode)
+    _log_event(sid, verdict, len(offending), offending[0], pid=plog,
+               mode=mode, bashw=bashw)
     return 0                              # NEVER 2 —— see ALWAYS RED -> ALWAYS YELLOW
 
 

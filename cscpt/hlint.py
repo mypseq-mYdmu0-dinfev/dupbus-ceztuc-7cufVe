@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Hashtag/Trigger Linter + Chat-Discipline Tally (UserPromptSubmit hook)
 
-TWO jobs now, both advisory, sharing the one prompt-time channel PROVEN to
+THREE jobs now, all advisory, sharing the one prompt-time channel PROVEN to
 reach the model without waking it or costing an extra turn:
 1. TRIGGERS (global; the job the filename names): `#[trigger]` tokens in the
    prompt (and in any comms file it names) that resolve to a `[trigger].md` in
@@ -13,17 +13,22 @@ reach the model without waking it or costing an extra turn:
    root CLAUDE.md §3.2), ONE line names the count and breach class so the new
    turn starts corrected instead of repeating it. Design and deliberate
    limits: CHAT-DISCIPLINE TALLY in the CCSIM section.
+3. LINT-BYPASS ADVISORY (this repo only): when clint's Stop-side scan
+   recorded that the PREVIOUS turn wrote a comms file VIA BASH (its log
+   line's `bashw=` field —— clint.py, BASH-WRITE CATCH), ONE line names the
+   file and the remedy, because a Bash-mediated write fires NO PostToolUse
+   lint at all. Same gating, ledger, and fail-open as job 2: LINT-BYPASS
+   ADVISORY in the CCSIM section.
 
 === NON-CCSIM —— start of all you need to RUN it ===
 * WHAT: a UserPromptSubmit hook, ADVISORY —— never blocks. Each `#[trigger]`
-  draws a line naming its protocol file (root CLAUDE.md §7.3.1). IF IT FIRES:
-  read that file, or declare why not.
-* TALLY (this repo only): one line counts the PREVIOUS turn's chat breaches
-  (root §3.2). IF IT FIRES: declarations-only chat; never apologise in chat.
-* BACKTICKED/FENCED `#name`s are DISCUSSED, not invoked —— only a bare token
-  fires.
-* ONLY YOUR WORDS FIRE: scanned = the prompt + any `*query_[TS].md` it names;
-  nothing else.
+  names its protocol file (root §7.3.1): READ it, or declare why not.
+* TALLY (this repo only): counts the PREVIOUS turn's chat breaches (root
+  §3.2); declarations-only chat; never apologise in chat.
+* LINT-BYPASS (this repo only): names a comms file the PREVIOUS turn wrote
+  via Bash, unlinted —— follow its remedy.
+* BACKTICKED/FENCED `#name`s are DISCUSSED —— only a bare token fires.
+* ONLY YOUR WORDS FIRE: the prompt + any `*query_[TS].md` named.
 * BLIND SPOT: triggers resolve only under `universal/`, `cp/`,
   `AJAP_repo/protocols/`, `AJAP_repo/inv/inveng.md`. Silence is not proof.
 === NON-CCSIM —— end of all you need to RUN it ===
@@ -196,6 +201,62 @@ pre-change vs post-change, same payload/env): 26.4 ms -> 30.0 ms, i.e. ≈4 ms
 added to a ~27 ms event inside a ~0.39 s round trip against a 1 s budget
 (p90 was unchanged, 35.5 -> 35.9 ms); both log reads are bounded by the two
 files' own prune ceilings.
+
+THE `sha_nolabel` RULE CLAUSE IS PANIC-PROOFED —— read this before rewording
+`_TALLY_RULE`. Two of clint's classes are MIRRORS: `sha_label` (a label on a
+single-repo turn's lone SHA line) and `sha_nolabel` (a bare line amongst a
+multi-repo turn's several SHA lines). Both corrections arrive HERE, at the
+NEXT turn's start, describing the PREVIOUS turn —— and the next turn usually
+has the OPPOSITE repo count. Observed hazard, the reason the owner ordered
+the wording pinned: turn 1 touches two repos and emits two bare SHA lines;
+this advisory fires at turn 2's start; turn 2 touches ONE repo, and a
+correction worded as a standing order ("label your SHA lines") makes the
+agent label its lone line —— converting the `sha_nolabel` breach into a
+fresh `sha_label` breach, potentially forever, each advisory manufacturing
+the next turn's breach. So the `sha_nolabel` clause must carry the
+CONDITION, not just the correction: labels ONLY when THIS turn again
+touches multiple repos, and an explicit "do NOT add a label" for the
+single-repo branch. The suite pins those exact fragments; a rewording that
+drops the condition is the bug described above, not a style choice.
+(`sha_label`'s clause needs no mirror warning: "drop the label" on a bare
+line is a no-op, so over-application cannot manufacture a breach.)
+
+=== LINT-BYPASS ADVISORY (the third job) ===
+
+WHY: every content lint on comms files (nlint's numbering checks, dlint's
+gate, flint, tlint) is a PostToolUse hook on Write|Edit|MultiEdit, so a
+comms file written through a BASH command —— `python3` heredoc, `>`
+redirect, `tee`, `sed -i` —— is seen by NONE of them. Real incident: eleven
+numbered sub-points appended to a live `response_` via a heredoc sailed
+past nlint's tenth-sibling rule, and the miss was read as "nlint is
+broken" when nlint had simply never been shown the write. clint's Stop
+scan now detects such writes (clint.py, BASH-WRITE CATCH —— two gates,
+command text plus the file's own mtime) and records the basenames in its
+log line's `bashw=` field; THIS hook reads that field at the next prompt
+and injects ONE line naming the file(s) and the remedy (re-save via the
+Write tool —— an unchanged re-save re-fires the lints —— or lint by hand).
+Split this way because at Stop nothing reaches the model without waking
+it, the same constraint that shaped the tally; detection lives where the
+window is already parsed, delivery lives where the model already listens.
+
+SAME SPINE AS THE TALLY, deliberately: cwd-gated to this repo (comms
+conventions are this repo's; a foreign cockpit must not be nagged), fires
+off the LAST clint entry only, deduped through this log's own
+`bashw=fired:` lines by the same sha1 ledger mark, fail-open to silence
+with its own stage per invocation (`-` not attempted, `off_scope`,
+`no_sid`, `no_log`, `no_entry`, `none` —— entry carries no bashw value ——
+`dup`, `fired:<n>@<mark>`, `error`). INDEPENDENT of the tally's outcome:
+a chat-clean turn can still have bypassed the lints (the real incident's
+turn was exactly that), so this fires on `clean` entries too, and both
+lines may ride one injection —— tally first, then this, then triggers.
+The advisory ends by releasing the agent when the file was already
+re-linted or no longer exists: an advisory that cannot be discharged
+becomes wallpaper, the failure the tally's own design warns against.
+COST, measured end-to-end on this Mac exactly as the tally's own note
+above (40-run medians, same payload/env/fixture both sides): 29.1 ms ->
+30.7 ms, i.e. ≈1.6 ms for the second bounded clint-log read plus the
+ledger check (p90 30.2 -> 32.1 ms); both reads stay under the two logs'
+own prune ceilings.
 
 REGEX PRECISION: `_TRIGGER_RE` requires the `#` NOT to follow a word char, so a
 URL fragment (`file#L10`) never matches whilst a standalone `#close` does, and a
@@ -513,6 +574,8 @@ _TALLY_GLOSS = {
     "io_shape": "an I/O declaration glyph carrying non-file-list text",
     "sha_shape": "the commit-SHA glyph carrying a non-hash body",
     "sha_label": "a repo shorthand on a single-repo turn's lone SHA line",
+    "sha_nolabel": "a bare SHA line amongst a multi-repo turn's several "
+                   "SHA lines",
     "sentinel": "a compaction sentinel not matching §3.2.6's exact wording",
     "warn_empty": "a blocker glyph declaring nothing",
     "warn_words": "a blocker line past §3.2.5's ≤5w cap",
@@ -534,18 +597,49 @@ _TALLY_GLOSS_FALLBACK = "an impermissible chat line"
 # carries declarations only" corrects nothing —— the one
 # act that fixes it is dropping the repo label, and the
 # clause must say so (root §3.2.4.5: shorthands only when
-# multiple repos were touched). Keep this map minimal: a
-# per-class sermon for every class is wallpaper by another
-# route.
+# multiple repos were touched). `sha_nolabel` is its exact
+# mirror AND carries a further duty: its clause must state
+# the CONDITION, not just the correction, because this
+# advisory lands on a turn whose repo count is usually the
+# OPPOSITE of the offending one —— see the docstring's
+# PANIC-PROOFED section before rewording one word of it.
+# Keep this map minimal: a per-class sermon for every
+# class is wallpaper by another route.
 _TALLY_RULE = {
     "sha_label": ("Root CLAUDE.md §3.2.4.5: repo shorthands belong ONLY on "
                   "a multi-repo turn's multiple SHA lines —— a single-repo "
                   "turn's SHA declaration is the glyph plus backticked SHAs "
                   "alone, so drop the label and its colon."),
+    "sha_nolabel": ("Root CLAUDE.md §3.2.4.5: BECAUSE that turn pushed to "
+                    "MULTIPLE repos, EVERY one of its SHA lines needed its "
+                    "repo shorthand (`Default:` / `AJAP:` / the sibling's "
+                    "name). That rule is CONDITIONAL, never standing: a "
+                    "single-repo turn's lone SHA line must stay label-free "
+                    "—— labelling it is itself a breach. So add shorthands "
+                    "ONLY if THIS turn again touches multiple repos; if it "
+                    "touches one repo, emit one unlabelled SHA line and do "
+                    "NOT add a label on account of this notice."),
 }
 _TALLY_RULE_DEFAULT = ("Root CLAUDE.md §3.1–§3.2: chat carries the six "
                        "declaration lines ONLY; substantive content belongs "
                        "in this turn's `response_` file.")
+
+# --- LINT-BYPASS ADVISORY (rationale: docstring section of that name) -------
+# The one injected line, %s = the backticked basename(s)
+# from clint's `bashw=` field. It names the hole (hooks
+# fire on Write|Edit|MultiEdit only), the remedy the agent
+# can perform THIS turn, the standing preference, and the
+# release condition —— an advisory that cannot be
+# discharged becomes wallpaper.
+_BASHW_MSG = ("[hlint hook] Lint-bypass notice: the PREVIOUS turn wrote or "
+              "edited %s via a Bash command (redirect/heredoc/in-place "
+              "edit). PostToolUse lints hook Write|Edit|MultiEdit ONLY, so "
+              "nlint, dlint's gate, flint, and tlint never saw that write. "
+              "THIS turn: re-save the file's CURRENT content with the Write "
+              "tool (an unchanged re-save re-fires those lints), or lint it "
+              "by hand —— and prefer Write/Edit over Bash for comms files. "
+              "If it was already re-linted, or no longer exists, nothing "
+              "further is owed.")
 
 
 def _prune_log():
@@ -581,26 +675,33 @@ def _prune_log():
                 pass
 
 
-def _log_event(stage, sid="-", triggers="-", tally="-"):
+def _log_event(stage, sid="-", triggers="-", tally="-", bashw="-"):
     """Append ONE terse line for ANY invocation —— match or not.
 
     TAB-separated, `triggers=` last because it alone carries free text (tabs and
     newlines are flattened, so a record is always exactly one line). `tally=`
     names what the chat-discipline tally did this invocation (docstring: TALLY
     FAIL-OPEN + STAGE LOG); its `fired:` form doubles as the tally's dedup
-    LEDGER, read back by `_tally_reported` —— the one part of this log that IS
-    parsed, so a lost `fired:` line costs one duplicate advisory. FAIL-SAFE:
-    all errors swallowed —— everything else here is diagnostics only, never the
-    reminder itself. (Historic lines carry a `pairs=N` field from the retired
-    pairing check, or no `tally=` field at all from before the tally existed;
-    `_tally_reported` matches on the field marker, so both older shapes are
-    inert rather than a compatibility burden.)"""
+    LEDGER, read back by `_tally_reported`. `bashw=` does the same for the
+    lint-bypass advisory (read back by `_bashw_reported`) and sits BEFORE
+    `triggers=` on purpose: both ledger checks match on `@<mark>` plus a
+    trailing TAB, so every `fired:` field must keep a field after it. These
+    are the only parts of this log that ARE parsed; a lost `fired:` line
+    costs one duplicate advisory. FAIL-SAFE: all errors swallowed ——
+    everything else here is diagnostics only, never the reminder itself.
+    (Historic lines carry a `pairs=N` field from the retired pairing check,
+    no `tally=` field from before the tally existed, or no `bashw=` field
+    from before the bypass advisory; every reader matches on its own field
+    marker, so all older shapes are inert rather than a compatibility
+    burden.)"""
     try:
         with open(_LOG, "a", encoding="utf-8") as lf:
-            lf.write("%s\tsession=%s\tstage=%s\ttally=%s\ttriggers=%s\n"
+            lf.write("%s\tsession=%s\tstage=%s\ttally=%s\tbashw=%s"
+                     "\ttriggers=%s\n"
                      % (datetime.now().isoformat(timespec="seconds"), sid,
                         stage,
                         str(tally)[:120].replace("\t", " ").replace("\n", " "),
+                        str(bashw)[:120].replace("\t", " ").replace("\n", " "),
                         str(triggers)[:300].replace("\t", " ").replace("\n", " ")))
     except Exception:
         pass
@@ -936,6 +1037,91 @@ def _chat_tally(data, sid):
 
 
 # ---------------------------------------------------------------------------
+# LINT-BYPASS ADVISORY —— the third job. Full rationale in the docstring
+# section of that name; the comments here cover mechanics only. Kept as the
+# tally's structural twin ON PURPOSE (own entry fetch, own ledger, own
+# stages) rather than threaded through `_chat_tally`: the two must be able
+# to fire, dedup, and fail independently —— the real incident's turn was
+# chat-CLEAN, a state the tally never reports on at all.
+# ---------------------------------------------------------------------------
+
+def _bashw_reported(sid, mark):
+    """True if `mark` was already reported for this session's lint-bypass
+    advisory —— checked against the NEWEST `bashw=fired:` line for `sid` in
+    this hook's own log, exactly as `_tally_reported` does for the tally
+    (same ledger file, own field marker, so neither can consume the
+    other's marks). Unreadable ledger -> False: a duplicate advisory beats
+    a silently lost one."""
+    try:
+        with open(_LOG, "r", encoding="utf-8", errors="replace") as fh:
+            text = fh.read()
+    except Exception:
+        return False
+    needle = "\tsession=%s\t" % sid
+    for line in reversed(text.splitlines()):
+        if needle in line and "\tbashw=fired:" in line:
+            return ("@%s\t" % mark) in line
+    return False
+
+
+def _bashw_names(raw):
+    """The advisory's file list, rendered from clint's comma-joined `bashw=`
+    field value: each basename backticked (this file's convention ——
+    backticked = discussed, never live), a `+N` overflow marker rendered as
+    a count, and any name carrying its own backtick DROPPED rather than
+    allowed to break the line's quoting (the excerpt rule's precedent).
+    Returns "" when nothing survives."""
+    shown, extra = [], 0
+    for part in raw.split(","):
+        part = part.strip()
+        if not part or "`" in part:
+            continue
+        if part.startswith("+") and part[1:].isdigit():
+            extra = int(part[1:])
+            continue
+        shown.append("`%s`" % part)
+    txt = ", ".join(shown)
+    if txt and extra:
+        txt += " (+%d more)" % extra
+    return txt
+
+
+def _bashw_report(data, sid):
+    """(injected advisory line or None, `bashw=` stage) —— the lint-bypass
+    advisory's twin of `_chat_tally`, sharing its cwd gate, its last-entry
+    rule, and its fail-open shape (docstring: LINT-BYPASS ADVISORY). Fires
+    off the `bashw=` FIELD alone, whatever the entry's verdict —— a
+    chat-clean turn can still have bypassed the lints."""
+    if not isinstance(sid, str) or not sid or sid == "-":
+        return None, "no_sid"
+    if not _tally_in_scope(data):
+        return None, "off_scope"
+    try:
+        entry = _last_clint_entry(sid[:8])
+    except Exception:
+        return None, "no_log"
+    if entry is None:
+        return None, "no_entry"
+    fields = {}
+    for part in entry.split("\t")[1:]:
+        key, _, val = part.partition("=")
+        fields.setdefault(key, val)
+    raw = (fields.get("bashw") or "").strip()
+    if raw in ("", "-"):
+        return None, "none"           # incl. pre-field historic lines
+    names = _bashw_names(raw)
+    if not names:
+        return None, "none"
+    mark = hashlib.sha1(entry.encode("utf-8", "replace")).hexdigest()[:12]
+    if _bashw_reported(sid, mark):
+        return None, "dup"
+    n = sum(1 for p in raw.split(",")
+            if p.strip() and not p.strip().startswith("+"))
+    stage = ("fired:%d@%s" % (n, mark)).replace("\t", " ").replace("\n", " ")
+    return _BASHW_MSG % names, stage
+
+
+# ---------------------------------------------------------------------------
 # HOOK-BODY STDIN GUARD
 # ---------------------------------------------------------------------------
 # This file is a HOOK BODY, not a command-line tool: the harness pipes its JSON
@@ -1102,6 +1288,14 @@ def main():
     except Exception:
         tally_line, tally_stage = None, "error"
 
+    # THIRD JOB —— lint-bypass advisory. Same gate position,
+    # same wrapping, independent outcome (a failure in one
+    # must never cost the other its line).
+    try:
+        bashw_line, bashw_stage = _bashw_report(data, sid)
+    except Exception:
+        bashw_line, bashw_stage = None, "error"
+
     try:
         referenced = _read_referenced(prompt)
     except Exception:
@@ -1146,26 +1340,30 @@ def main():
         if len(lines) >= _MAX_REMINDERS:
             break
 
-    if not lines and not tally_line:
+    if not lines and not tally_line and not bashw_line:
         # SILENT is a real outcome, not an absence —— logging it is the whole
         # point of §7.7: without this line, "hlint never ran" and "hlint ran and
         # matched nothing" are indistinguishable after the fact.
-        _log_event("silent", sid, tally=tally_stage)
+        _log_event("silent", sid, tally=tally_stage, bashw=bashw_stage)
         return 0
 
     # `stage=` keeps naming the TRIGGER half's outcome alone
     # (existing vocabulary, pinned by tests); the tally's own
-    # outcome always rides in `tally=`. A `fired:` value here
-    # is also the dedup ledger entry —— it must be on disk
-    # BEFORE stdout is written, so a crash between the two
-    # sides errs towards a suppressed duplicate, never a
-    # re-nag loop.
+    # outcome always rides in `tally=`, the bypass advisory's
+    # in `bashw=`. A `fired:` value in either is also that
+    # job's dedup ledger entry —— it must be on disk BEFORE
+    # stdout is written, so a crash between the two sides
+    # errs towards a suppressed duplicate, never a re-nag
+    # loop.
     _log_event("fired" if lines else "silent", sid,
-               ",".join(fired_names) or "-", tally=tally_stage)
+               ",".join(fired_names) or "-", tally=tally_stage,
+               bashw=bashw_stage)
 
     parts = []
     if tally_line:
-        parts.append(tally_line)     # discipline first, then reminders
+        parts.append(tally_line)     # discipline first, then coverage,
+    if bashw_line:
+        parts.append(bashw_line)     # then reminders
     if lines:
         parts.append(_HEADER + "\n" + "\n".join(lines))
     context = "\n".join(parts)

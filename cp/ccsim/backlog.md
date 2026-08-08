@@ -161,3 +161,13 @@ Ref: `career_close_202608041700.md` §6.1
 - Suggestion: DONE for this suite —— the TS is now derived from the Sydney clock at run time, with the rationale written inline so it cannot recur here. The general rule is worth stating in `universal/coding.md` § Testing: a fixture for a time-sensitive check must be MINTED at run time, never written as a literal. Worth a sweep for other literal TSs in `cp/ccsim/sandbox/`.
 - Ref: `cp/ccsim/sandbox/tlint_time_integrity_regression_test.py` (79/79 after)
 
+
+## `nlint` lacks a heading-vs-first-child number consistency check
+- Problem: An `Edit` inserting new `## 33.`/`## 34.` sections before an existing `## 35.` heading matched only the heading line and did not re-include it, silently orphaning `35.1`–`35.4` under `## 34.`. Caught by the user's eye, not a lint. `cscpt/nlint.py`'s current checks (tenth-sibling, level-1 reset, sanction tokens) do not cover this shape, which recurs any time a numbered section is inserted before an existing heading via a minimal-anchor `Edit`.
+- Suggestion: CHECK D —— for every `#{2,6} N.`-form heading, the FIRST numbered bullet before the next heading must begin `N.1` (or `N.01` two-digit fallback); flag `M ≠ N`. Deterministic whole-file scan, same class as the existing checks, fence-masked like them. NOT built in the 202608 QQ sweep that dispositioned this query —— `cscpt/nlint.py` was held by a parallel SA that turn; whoever builds it must pin it w/ a regression test per `universal/coding.md` § Testing.
+- Ref: `sessions/2026/202608/ccsim_query_202608052118a.md`
+
+## Advisory lint for unverified code-shaped tokens in MA-authored briefs
+- Problem: CC fabricated award code `MA000105` (real code: `MA000081`) inside an SA brief, stated as plain fact w/ no lookup; caught only because the SA independently verified via CIC. User rates fabrication zero-tolerance. Root `CLAUDE.md` §9.02.5 (added in the same QQ sweep) now formalises the rule —— no unverified specifics in briefs; SA-side re-verification of MA-supplied facts —— but no mechanical layer exists.
+- Suggestion: The query's candidate fix 2 —— an advisory (plint-like) nudge when CC-authored text carries a code/citation-shaped token (`MA0000\d\d`, ABN, statute section) w/ no same-turn tool-call source. High false-positive risk, so advisory only, never blocking. Weigh whether it earns its keep at all —— §9.02.5 plus the SA posture may suffice; full elimination is not promisable for a language model, so the honest target is rate + catch-rate.
+- Ref: `sessions/2026/202608/ccsim_query_202608052118b.md`; root `CLAUDE.md` §9.02.5

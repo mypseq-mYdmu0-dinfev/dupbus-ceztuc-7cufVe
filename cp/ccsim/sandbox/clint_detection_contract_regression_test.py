@@ -109,6 +109,19 @@ can react to (a Stop hook's exit-0 output never reaches the model; see
      no-sentinel case, and READER mode are untouched; and the real
      multi-wake window (mined from this Mac's own transcript) keeps flagging
      its stray dots whilst the mandated lists walk free.
+  N. the MISSING-LABEL check, `sha_nolabel` (root CLAUDE.md §3.2.4.5) -- the
+     solo-label check's exact mirror, added when the owner ordered the scan
+     reversed: with 2+ `🦈` lines in the window (the multi-repo form), EVERY
+     line owes its repo shorthand, so a bare one flags under its OWN class.
+     The panic-proof CONDITIONAL wording of its next-prompt correction is
+     pinned in the tally suite, where that wording lives.
+  W. the BASH-WRITE CATCH (`bashw=` log field) -- a comms file written via a
+     Bash command (heredoc, redirect, tee, in-place edit) fires NO
+     PostToolUse lint, so clint records it at Stop for hlint to advise on at
+     the next prompt. Pins the real bypass incident replayed verbatim, the
+     legitimate-Bash silences (reads, git, hand-run lints, the Move Rule's
+     `mv`), the mtime gate, and the field's independence from the chat
+     verdict and its exemptions.
 
 It drives the REAL registered command from ~/.claude/settings.json
 (`python3 .../cscpt/clint.py`, Stop hook) with synthesised payloads and
@@ -1161,6 +1174,340 @@ def section_sha_label(tmp):
         prompt="override, labels are fine today")
 
 
+def section_sha_nolabel(tmp):
+    """N. `sha_nolabel` (root CLAUDE.md §3.2.4.5): a BARE SHA line amongst a
+    multi-repo turn's multiple `🦈` lines is a breach —— the solo-label
+    check's exact MIRROR, added when the owner ordered the scan reversed.
+
+    WHY THIS SECTION EXISTS, stated as the defect it pins: `_sha_ok` accepts
+    a label-free body because §3.2.4.4's single-repo one-liner is legal, so
+    a bare `🦈` line beside a labelled one passed as clean -- yet with 2+
+    `🦈` lines the window IS the multi-repo form (m2.md's mid-turn push
+    declares no `🦈` of its own, its SHA waits for TEA3, so no same-repo
+    turn legitimately emits two), and §3.2.4.5.1 makes the shorthand
+    mandatory on EVERY line there: a bare line's hashes belong to no repo
+    the reader can name. Baseline-proven per coding.md: run with
+    `CLINT_UNDER_TEST` at a pre-change copy and N1/N2/N5/N6/N9 fail (clean
+    where the breach stands) and N8 with them (an exemption can only be
+    LOGGED once a breach exists to exempt); the boundaries N3/N4/N7 pass
+    either side, pinning that the mirror widened NOTHING it should not.
+
+    THE PANIC HALF LIVES IN HLINT'S SUITE, said here so nobody hunts for it
+    in this file: this class's correction reaches the model at the NEXT
+    turn's start, and that turn is usually SINGLE-repo, where adding a
+    label is the OPPOSITE breach (`sha_label`). The conditional wording
+    that stops the advisory converting one breach into its mirror is
+    pinned by `hlint_chat_tally_regression_test.py`.
+
+    N1 two bare lines flag; a bare line beside a labelled one flags ALONE;
+    N2 it flags inside a full, otherwise-clean TEA3 batch;
+    N3 the fully labelled multi-repo form stays clean through the new check;
+    N4 the lone bare line stays clean -- 0-1 lines are the solo check's;
+    N5 the bold wrapper hides nothing;
+    N6 precedence both ways: a malformed sibling keeps `sha_shape`, a bare
+       one still draws `sha_nolabel`, one class per line, both counted;
+    N7 READER mode is unchanged;
+    N8 `override` still exempts;
+    N9 three lines, two bare -> both flagged (lines=2).
+    """
+    print("\n--- N. `🦈` missing-label check (§3.2.4.5): 2+ lines, every "
+          "line owes its shorthand ---")
+    log = os.path.join(tmp, "N.log")
+
+    def run(name, text, want_action, cwd=REPO_ROOT, prompt="do the thing"):
+        tp = os.path.join(tmp, "N%s.jsonl" % re.sub(r"\W+", "_", name)[:40])
+        _write_transcript(tp, [_user(prompt), _assistant(text)])
+        got = _run(_payload(tp, cwd=cwd), log)
+        _check(name, got, 0, want_action)
+        return got
+
+    # N1. THE BREACH, both populations. SHAs are real ones mined from this
+    # repo's own `🦈` history (root §3.1.6.3's example set).
+    _, l1a, _ = run("N1a two bare lines both flag",
+                    "🦈 `deadbeef`, `cafef00d`\n🦈 `0ddba115`",
+                    "yellow:sha_nolabel")
+    _record("N1a residue counts BOTH bare lines (lines=2)",
+            "\tlines=2\t" in l1a, "line=%r" % l1a)
+    _, l1b, _ = run("N1b bare line beside a labelled one flags alone",
+                    "🦈 Default: `deadbeef`\n🦈 `0ddba115`",
+                    "yellow:sha_nolabel")
+    _record("N1b labelled sibling walks free (lines=1, first= the bare line)",
+            "\tlines=1\t" in l1b and "first=🦈 `0ddba115`" in l1b,
+            "line=%r" % l1b)
+
+    # N2. INSIDE THE REAL ARTEFACT -- the multi-repo TEA3 batch root
+    # §3.1.6.3's own example draws, with one label dropped.
+    tp = os.path.join(tmp, "N2.jsonl")
+    _write_transcript(tp, [_user("do the thing"),
+                           _assistant("✅ `universal/coding.md`\n"
+                                      "⇠ `202608/query_202608080100.md`\n"
+                                      "➡️ **`202608/response_202608080100.md`**\n"
+                                      "🦈 `deadbeef`, `cafef00d`\n"
+                                      "🦈 AJAP: `0ddba115`")])
+    code2, line2, _ = _run(_payload(tp), log)
+    _record("N2 bare line flags inside an otherwise-clean multi-repo batch "
+            "(lines=1)",
+            code2 == 0 and _action(line2) == "yellow:sha_nolabel"
+            and "\tlines=1\t" in line2,
+            "got exit=%s action=%s line=%r" % (code2, _action(line2), line2))
+
+    # N3/N4. THE BOUNDARIES, pinned from the new check's side: the legal
+    # fully labelled form (M4's twin) and the solo check's own territory.
+    run("N3 fully labelled multi-repo form stays clean",
+        "🦈 Default: `deadbeef`, `cafef00d`\n🦈 AJAP: `0ddba115`", "clean")
+    run("N4 lone bare line stays clean (0-1 lines are solo territory)",
+        "🦈 `deadbeef`", "clean")
+
+    # N5. The §3.1.6 bold wrapper must not hide bareness from the check.
+    run("N5 bold-wrapped bare line amongst 2 still flags",
+        "**🦈 `deadbeef`**\n🦈 AJAP: `0ddba115`", "yellow:sha_nolabel")
+
+    # N6. PRECEDENCE under fire, both orders: the malformed line keeps its
+    # own coarser class, the bare sibling still draws the new one, and
+    # lines=2 proves both were counted (M8's labelled sibling gave lines=1).
+    tp6 = os.path.join(tmp, "N6a.jsonl")
+    _write_transcript(tp6, [_user("do the thing"),
+                            _assistant("🦈 AJAP: not backticked here\n"
+                                       "🦈 `deadbeef`")])
+    code6, line6, _ = _run(_payload(tp6), log)
+    _record("N6a malformed first: verdict sha_shape, bare sibling still "
+            "counted (lines=2)",
+            code6 == 0 and _action(line6) == "yellow:sha_shape"
+            and "\tlines=2\t" in line6,
+            "got exit=%s action=%s line=%r" % (code6, _action(line6), line6))
+    tp6b = os.path.join(tmp, "N6b.jsonl")
+    _write_transcript(tp6b, [_user("do the thing"),
+                             _assistant("🦈 `deadbeef`\n"
+                                        "🦈 AJAP: not backticked here")])
+    code6b, line6b, _ = _run(_payload(tp6b), log)
+    _record("N6b bare first: verdict sha_nolabel, malformed keeps its class "
+            "in the count (lines=2)",
+            code6b == 0 and _action(line6b) == "yellow:sha_nolabel"
+            and "\tlines=2\t" in line6b,
+            "got exit=%s action=%s line=%r"
+            % (code6b, _action(line6b), line6b))
+
+    # N7/N8. READER owes zero chat text regardless, and the exemption
+    # ladder still outranks the new class.
+    run("N7 READER mode is unchanged by the missing-label check",
+        "🦈 `deadbeef`\n🦈 AJAP: `0ddba115`", "yellow:reader",
+        cwd=READER_CWD)
+    run("N8 `override` still exempts a missing-label breach",
+        "🦈 `deadbeef`\n🦈 `0ddba115`", "exempt:override",
+        prompt="override, no labels today")
+
+    # N9. Three lines, two bare: every bare line is reclassified, not just
+    # the first found.
+    _, l9, _ = run("N9 three lines, two bare -> both flagged",
+                   "🦈 Default: `deadbeef`\n🦈 `cafef00d`\n🦈 `0ddba115`",
+                   "yellow:sha_nolabel")
+    _record("N9 residue is the two bare lines (lines=2)",
+            "\tlines=2\t" in l9, "line=%r" % l9)
+
+
+# --- W. BASH-WRITE CATCH: comms writes that dodge every PostToolUse lint ---
+
+# The real bypassed file (mined fixture, used READ-ONLY -- the suite never
+# writes to the live sessions/ tree; the same precedent nlint's suite set).
+# If this file is ever archived/moved, W0 fails NAMING that cause -- update
+# the constant to any committed comms .md rather than weakening the section.
+INCIDENT_REL = "sessions/2026/202608/ccsim_response_202608081357.md"
+INCIDENT_ABS = os.path.join(REPO_ROOT, INCIDENT_REL)
+INCIDENT_BASE = os.path.basename(INCIDENT_REL)
+
+# A replica of the incident's own command shape: a `python3` heredoc that
+# read the file, transformed the text, and wrote it back with mode "w" --
+# the exact write no PostToolUse hook ever saw.
+INCIDENT_CMD = ('cd "%s" && python3 - <<\'PYEOF\'\n'
+                'p="%s"; s=open(p,encoding="utf-8").read()\n'
+                's=s.replace("a","a")\n'
+                'open(p,"w",encoding="utf-8").write(s); print("updated")\n'
+                'PYEOF' % (REPO_ROOT, INCIDENT_REL))
+
+# Trigger timestamps for the mtime gate: PAST accepts any existing file's
+# mtime as "modified this turn"; FUTURE proves a mere MENTION of a write
+# shape is suppressed when the file demonstrably did not change.
+TS_PAST = "2020-01-01T00:00:00.000Z"
+TS_FUTURE = "2099-01-01T00:00:00.000Z"
+
+
+def _user_ts(text, ts, pid="pid-W"):
+    o = _user(text, pid)
+    o["timestamp"] = ts
+    return o
+
+
+def _assistant_bash(cmd, text=None):
+    """An assistant message carrying a Bash tool_use block (the shape the
+    live transcript stores) and, optionally, a text block too."""
+    blocks = [{"type": "tool_use", "name": "Bash", "input": {"command": cmd}}]
+    if text is not None:
+        blocks.append({"type": "text", "text": text})
+    return {"type": "assistant", "isSidechain": False,
+            "message": {"role": "assistant", "content": blocks}}
+
+
+def _field(log_line, key):
+    for f in log_line.split("\t"):
+        if f.startswith(key + "="):
+            return f[len(key) + 1:]
+    return "<none>"
+
+
+def section_bash_write(tmp):
+    """W. BASH-WRITE CATCH (`bashw=` log field; clint.py docstring section
+    of that name): a comms file written or edited THROUGH A BASH COMMAND is
+    seen by NO PostToolUse lint -- they all register on Write|Edit|MultiEdit
+    -- so clint's Stop scan, which already parses the turn's window, records
+    the write in its log line's `bashw=` field for hlint to advise on at the
+    next prompt (that delivery half is pinned by the tally suite).
+
+    WHY THIS SECTION EXISTS, stated as the incident it pins: a real turn
+    appended eleven numbered sub-points to a live `response_` via a
+    `python3 - <<'PY'` heredoc (`open(path, "w")`); nlint's tenth-sibling
+    rule fires when SHOWN that file -- proven by hand against the real
+    hook -- but no PostToolUse hook ever ran, the breach shipped, and the
+    owner read the miss as "nlint is not working". The lint was bypassed,
+    not broken; this section pins the mechanical catch for the bypass.
+    Baseline-proven per coding.md: against a pre-change copy
+    (`CLINT_UNDER_TEST`) EVERY W case bar the W0 preflight fails, the
+    silences included -- the `bashw=` field does not exist there at all,
+    so even "stays `-`" is unmeetable. That totality is the point: the
+    whole field, not merely its firing rule, is what this change adds.
+
+    W0 the mined fixture file still exists where this suite pins it;
+    W1 THE INCIDENT REPLICA: heredoc write -> chat-clean turn, `bashw=`
+       carries the basename;
+    W2 legitimate Bash never fires it: reads, greps, `git`, a hand-run
+       dlint, and the Move Rule's `mv` all leave `bashw=-`;
+    W3 the other write shapes fire too: `>` redirect and `tee`;
+    W4 the MTIME GATE: a write-shaped command whose file did not change
+       this turn (future trigger timestamp) is suppressed;
+    W5 a write aimed at an absent comms file is suppressed (nothing
+       unlinted exists);
+    W6 READER mode records nothing -- comms conventions are this repo's;
+    W7 `override` exempts the CHAT verdict but the field still records --
+       exemptions govern chat text, never lint coverage;
+    W8 the field rides a breach verdict unchanged.
+    """
+    print("\n--- W. BASH-WRITE CATCH: comms writes that dodge every "
+          "PostToolUse lint ---")
+    log = os.path.join(tmp, "W.log")
+
+    def run_bash(name, cmd, ts=TS_PAST, text="✅ `universal/coding.md`",
+                 cwd=REPO_ROOT, prompt="do the thing"):
+        tp = os.path.join(tmp, "W%s.jsonl" % re.sub(r"\W+", "_", name)[:40])
+        _write_transcript(tp, [_user_ts(prompt, ts),
+                               _assistant_bash(cmd, text)])
+        return _run(_payload(tp, cwd=cwd), log)
+
+    # W0. PREFLIGHT on the mined fixture, so a future archival of the real
+    # file fails loudly HERE instead of as a mystery in W1.
+    _record("W0 mined fixture file still present: %s" % INCIDENT_REL,
+            os.path.isfile(INCIDENT_ABS),
+            "move/archive detected -- repoint INCIDENT_REL at a committed "
+            "comms .md")
+
+    # W1. THE INCIDENT REPLICA. The turn's chat is clean; the write must be
+    # recorded all the same -- the real incident's turn was exactly that,
+    # which is why a chat-only lint never saw it.
+    code1, line1, _ = run_bash("1 incident heredoc", INCIDENT_CMD)
+    _record("W1 heredoc write -> action=clean, bashw= names the file",
+            code1 == 0 and _action(line1) == "clean"
+            and _field(line1, "bashw") == INCIDENT_BASE,
+            "got exit=%s action=%s bashw=%r line=%r"
+            % (code1, _action(line1), _field(line1, "bashw"), line1))
+
+    # W2. LEGITIMATE BASH, the false-positive population that would turn
+    # this catch into wallpaper: reads, searches, git plumbing, the
+    # §3.5.5-mandated hand run of dlint, and the Move Rule's `mv`.
+    for tag, cmd in (
+            ("cat", 'cat "%s"' % INCIDENT_ABS),
+            ("grep", 'grep -n "199.4" "%s" | head -5' % INCIDENT_ABS),
+            ("git", 'cd "%s" && git add "%s" && git commit -m "x"'
+             % (REPO_ROOT, INCIDENT_REL)),
+            ("dlint", 'cd "%s" && python3 cscpt/dlint.py --quick %s'
+             % (REPO_ROOT, INCIDENT_REL)),
+            ("mv", 'cd "%s" && mv "%s" "sessions/2026/202608/❌_%s"'
+             % (REPO_ROOT, INCIDENT_REL, INCIDENT_BASE))):
+        code2, line2, _ = run_bash("2 legit %s" % tag, cmd)
+        _record("W2 legitimate `%s` stays bashw=-" % tag,
+                code2 == 0 and _field(line2, "bashw") == "-",
+                "got bashw=%r line=%r" % (_field(line2, "bashw"), line2))
+
+    # W3. THE OTHER WRITE SHAPES. A `>` redirect aimed at the comms file,
+    # and a `tee` carrying it.
+    code3, line3, _ = run_bash(
+        "3 redirect", 'cd "%s" && printf \'%%s\' "x" > %s'
+        % (REPO_ROOT, INCIDENT_REL))
+    _record("W3a `>` redirect into the comms file fires",
+            code3 == 0 and _field(line3, "bashw") == INCIDENT_BASE,
+            "got bashw=%r line=%r" % (_field(line3, "bashw"), line3))
+    code3b, line3b, _ = run_bash(
+        "3b tee", 'echo "x" | tee "%s" >/dev/null' % INCIDENT_ABS)
+    _record("W3b `tee` into the comms file fires",
+            code3b == 0 and _field(line3b, "bashw") == INCIDENT_BASE,
+            "got bashw=%r line=%r" % (_field(line3b, "bashw"), line3b))
+    for tag, flag in (("sed -i", "sed -i ''"), ("perl -pi", "perl -pi")):
+        code3c, line3c, _ = run_bash(
+            "3c %s" % tag, "%s -e 's/x/y/' \"%s\"" % (flag, INCIDENT_ABS))
+        _record("W3c in-place `%s` fires (clustered flag included)" % tag,
+                code3c == 0 and _field(line3c, "bashw") == INCIDENT_BASE,
+                "got bashw=%r line=%r" % (_field(line3c, "bashw"), line3c))
+    code3d, line3d, _ = run_bash(
+        "3d piped grep -i", 'sed \'s/a/b/\' "%s" | grep -i foo'
+        % INCIDENT_ABS)
+    _record("W3d `sed … | grep -i` does NOT read as in-place (pipe stops "
+            "the flag scan)",
+            code3d == 0 and _field(line3d, "bashw") == "-",
+            "got bashw=%r line=%r" % (_field(line3d, "bashw"), line3d))
+
+    # W4. THE MTIME GATE. Same heredoc, but the trigger timestamp is later
+    # than the file's mtime -> the file provably did not change this turn,
+    # so a command that merely LOOKS like a write is suppressed.
+    code4, line4, _ = run_bash("4 mtime gate", INCIDENT_CMD, ts=TS_FUTURE)
+    _record("W4 write-shaped command, file untouched this turn -> bashw=-",
+            code4 == 0 and _field(line4, "bashw") == "-",
+            "got bashw=%r line=%r" % (_field(line4, "bashw"), line4))
+
+    # W5. ABSENT TARGET. A failed or fictitious write leaves nothing
+    # unlinted on disk -> quiet.
+    code5, line5, _ = run_bash(
+        "5 absent", 'echo "x" > sessions/2026/202608/'
+        'ccsim_response_209912312358.md')
+    _record("W5 write aimed at an absent comms file -> bashw=-",
+            code5 == 0 and _field(line5, "bashw") == "-",
+            "got bashw=%r line=%r" % (_field(line5, "bashw"), line5))
+
+    # W6. READER MODE. Comms conventions are this repo's; the Reader
+    # session records nothing (no text block, so its zero-text rule has
+    # nothing to flag either).
+    code6, line6, _ = run_bash("6 reader", INCIDENT_CMD, cwd=READER_CWD,
+                               text=None)
+    _record("W6 READER mode: no catch (bashw=-)",
+            code6 == 0 and _field(line6, "bashw") == "-",
+            "got bashw=%r line=%r" % (_field(line6, "bashw"), line6))
+
+    # W7/W8. ORTHOGONALITY. The exemptions govern CHAT text, never lint
+    # coverage, so the field rides an exempt verdict; and a breach verdict
+    # carries it unchanged.
+    code7, line7, _ = run_bash("7 override", INCIDENT_CMD,
+                               text="chatting away regardless",
+                               prompt="override, prose is fine today")
+    _record("W7 `override` turn: exempt verdict, bashw still recorded",
+            code7 == 0 and _action(line7) == "exempt:override"
+            and _field(line7, "bashw") == INCIDENT_BASE,
+            "got action=%s bashw=%r line=%r"
+            % (_action(line7), _field(line7, "bashw"), line7))
+    code8, line8, _ = run_bash("8 breach", INCIDENT_CMD,
+                               text="free prose, no glyph")
+    _record("W8 breach turn: yellow verdict, bashw recorded alongside",
+            code8 == 0 and _action(line8) == "yellow:prose"
+            and _field(line8, "bashw") == INCIDENT_BASE,
+            "got action=%s bashw=%r line=%r"
+            % (_action(line8), _field(line8, "bashw"), line8))
+
+
 # --- L. SENTINEL LISTS: root §5's mandated compaction output is not a breach
 
 # The §3.2.6 canon, copied VERBATIM (clint compares the whole stripped line).
@@ -1295,6 +1642,8 @@ def main():
         section_dot_escape(tmp)
         section_sha_declaration(tmp)
         section_sha_label(tmp)
+        section_sha_nolabel(tmp)
+        section_bash_write(tmp)
         section_sentinel_lists(tmp)
         # LAST on purpose: H11 measures the shortest record this suite made
         # clint write, so every other section must have run first.
