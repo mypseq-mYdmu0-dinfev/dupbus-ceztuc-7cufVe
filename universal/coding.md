@@ -9,12 +9,13 @@
   - Once it is, `#rephrase` alone re-triggers this section, any time, on anything
   - Not bound to coding problems, could be used in any scenarios when prompted
 - Auto-apply it for EVERY code/pcmd problem or fix, prompted or not
-- Answer these five in order, in plain words —— no field names, no jargon:
+- Answer these 5 in order, in plain words —— no field names, no jargon:
   - **WHAT** —— What broke? One sentence w/ just enough context
   - **IF-UNFIXED** —— What happens if nobody fixes it? The real consequence, not the theory
   - **PRE-FIX-QB** —— Anything the user must know (e.g. QB) BEFORE you touch it? Say "None" if none
   - **PUSH-RISK** —— What could the fix (pushing through unanswered) break or rule out? The honest downside
   - **OUTCOME** —— The actual end-state: FIXED + how, or DEFERRED + why, or QB queued
+- These 5 MUST be separate sub-pts (per example below), NEVER one single line
 - Order issues by severity; never bury a defect inside prose
 - Example ([n] could be [n.n] or [n.n.n] too):
 ```
