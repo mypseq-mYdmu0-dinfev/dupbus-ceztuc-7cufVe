@@ -168,6 +168,8 @@
 | Stop | NOWHERE (see §6.1) | Reaches the MODEL —— but WAKES it (§6.1.3) | Reaches the MODEL and BLOCKS the stop |
 | PostCompact | User only | Not a supported channel | User only —— NOTHING reaches the model |
 | PreCompact | Appended to the SUMMARISER's prompt (§13) | Not a supported channel | Exit 2 BLOCKS compaction —— never use |
+| PostToolBatch | User only | Reaches the MODEL, NO extra invocation (§6.11) | Exit 2 KILLS the agentic loop —— never use |
+| MessageDisplay | Replaces the DISPLAYED text (§6.12) | Not a supported channel | User only |
 
 - 6.1. ⚠️ CORRECTED 202608071530 —— the previous wording here was wrong in BOTH directions:
   - 6.1.1. Exit-0 plain stdout goes NOWHERE. The registry says "stdout/stderr not shown".
@@ -196,6 +198,23 @@
   - 6.9.7. Pinned by `sandbox/post_compact_regression_test.py`, which asserts the channel
   - 6.9.8. That test FAILS if the event ever gains a model channel —— an alarm to act on
   - 6.9.9. §5 was still skipped in full on 202608070423 —— the summary's own "resume directly, do not acknowledge" sits in the prompt, beating prose from turns earlier. ENFORCEMENT therefore moved to a Stop hook (`mlint.py` SHAPE C, §6.4.3): the only event that can force the owed output back into the same turn. PostCompact remains a user-facing banner and nothing more
+
+- 6.11. PostToolBatch —— the only MID-TURN model channel that costs NOTHING:
+  - 6.11.1. Fires once after every tool call in a batch resolves, BEFORE the next model request
+  - 6.11.2. Its `additionalContext` rides that ALREADY-SCHEDULED request —— zero extra turns
+  - 6.11.3. ⚠️ NEVER exit 2: it STOPS the agentic loop, stderr to the USER only —— the turn dies
+  - 6.11.4. Payload carries tool calls only, NOT assistant text —— but it does carry `transcript_path`
+  - 6.11.5. Reading the transcript tail mid-turn is proven here: `alint` has done it for weeks
+  - 6.11.6. BLIND SPOT: a turn's FINAL message is followed by Stop, not a batch —— never seen here
+- 6.12. MessageDisplay —— the only event whose payload IS the assistant's prose:
+  - 6.12.1. Payload `delta` carries the text; returning `displayContent` REPLACES what is rendered
+  - 6.12.2. Display-only by construction —— the transcript and the model's context keep the original
+  - 6.12.3. So it can alert the USER instantly, and can never correct the model
+  - 6.12.4. This is the channel that restores what clint's demotion lost (§6.4.1)
+- 6.13. ⚠️ `mcp__ccd_session__mark_chapter` IS hook-gatable —— MCP tools are never hook-exempt:
+  - 6.13.1. A PreToolUse hook can DENY a second call, making a duplicate marker IMPOSSIBLE
+  - 6.13.2. That, not the channel, was what blocked every instant-correction option since 30/07
+  - 6.13.3. Arm/disarm by `session_id`, never `prompt_id` —— notification wakes mint fresh ones
 
 ---
 

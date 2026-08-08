@@ -84,6 +84,19 @@ can react to (a Stop hook's exit-0 output never reaches the model; see
      that a malformed one still flags under its own `sha_shape` class, that
      the cross-type test is symmetric, that the other five are untouched, and
      that READER mode is NOT widened by it.
+  M. the SOLO-LABEL check, `sha_label` (root CLAUDE.md §3.2.4.4–5) -- a repo
+     shorthand (`Default:`) is sanctioned ONLY on the multi-repo form's
+     multiple `🦈` lines, so a window holding exactly ONE `🦈` line declared
+     one repo by construction and ANY label on it is a breach. The owner's
+     own insight closed the old "one line at a time" objection: no per-line
+     context is needed, only the window's `🦈`-line COUNT, which clint
+     already has where the verdicts are gathered. Pins: the lone labelled
+     line flags under its OWN class (never folded into `sha_shape` -- the
+     next-prompt tally names the class, and "drop the label" is a different
+     correction from "that is not a SHA list"); the bare lone line stays
+     clean; the 2+-line multi-repo form is NEVER touched; a malformed lone
+     line keeps `sha_shape` (the coarser defect subsumes the label); READER
+     and the exemptions are unchanged.
   L. SENTINEL LISTS (root CLAUDE.md §5.3–§5.4) -- a post-compaction turn OWES
      the user chat lists by root §5, and mlint (SHAPE C, hook_guide §6.9.9)
      BLOCKS the turn until they exist, so before the fix every genuine
@@ -122,7 +135,17 @@ import tempfile
 
 _THIS_DIR = os.path.dirname(os.path.abspath(__file__))
 REPO_ROOT = os.path.realpath(os.path.join(_THIS_DIR, "..", "..", ".."))
-CLINT = os.path.join(REPO_ROOT, "cscpt", "clint.py")
+# BASELINE OVERRIDE, mirroring the tally suite's documented pattern:
+# `CLINT_UNDER_TEST=<path>` points the whole suite at another copy of
+# clint.py -- used to demonstrate each NEW case failing against the
+# pre-change file (CCSIM CLAUDE.md §4.4), so "the fix exists" and "the fix
+# is what makes these pass" stay two separately proven claims. CAVEAT the
+# hlint suite shares: clint derives its repo root from its OWN location, so
+# a baseline copy must sit under a directory tree whose root matches the
+# payload `cwd`s this suite sends (REPO_ROOT) -- a git worktree checked out
+# elsewhere, with THIS file copied in and run from there, satisfies both.
+CLINT = (os.environ.get("CLINT_UNDER_TEST")
+         or os.path.join(REPO_ROOT, "cscpt", "clint.py"))
 
 # The Reader session's working directory: this repo's immediate parent. Its own
 # CLAUDE.md mandates zero chat text, hence clint's stricter second rule.
@@ -152,10 +175,10 @@ SECTION_REF_RE = re.compile(r"§\d+(?:\.\d+)*")
 # (the always-RED policy and its loop guard are both gone) and are
 # deliberately absent here -- they can no longer leak because they no longer
 # exist.
-CLASS_TOKENS = ("io_shape", "sha_shape", "sentinel", "warn_empty",
-                "warn_shape", "warn_words", "warn_hyphens", "warn_chars",
-                "warn_progress", "sic_overrun", "reader", "yellow:",
-                "exempt:")
+CLASS_TOKENS = ("io_shape", "sha_shape", "sha_label", "sentinel",
+                "warn_empty", "warn_shape", "warn_words", "warn_hyphens",
+                "warn_chars", "warn_progress", "sic_overrun", "reader",
+                "yellow:", "exempt:")
 
 _RESULTS = []
 
@@ -556,6 +579,10 @@ _CLASS_FIXTURES = (
     ("sic_overrun", "sic what did you find",
      "I found eleven separate issues across the four scripts and fixed "
      "every single one of them today."),
+    # The solo-label breach (section M): a lone, labelled, otherwise
+    # shape-valid SHA line -- must draw the SAME message as every other
+    # class, so it rides this list like the rest.
+    ("sha_label", "do the thing", "🦈 Default: `302d7d8c`"),
 )
 
 
@@ -1013,6 +1040,127 @@ def section_sha_declaration(tmp):
         "yellow:reader", cwd=READER_CWD)
 
 
+# --- M. the SOLO-LABEL check: one `🦈` line, one repo, so no label ----------
+
+def section_sha_label(tmp):
+    """M. `sha_label` (root CLAUDE.md §3.2.4.4–5): a repo shorthand on a
+    single-repo turn's lone SHA line is a breach.
+
+    WHY THIS SECTION EXISTS, stated as the defect it pins: `_sha_ok` accepts
+    an optional one-word label because the §3.2.4.5 multi-repo form is legal,
+    so `🦈 Default: `302d7d8c`` on a SINGLE-repo turn passed as clean -- a
+    per-line rule cannot see that the label's precondition (multiple repos,
+    hence multiple `🦈` lines) is absent. The owner's insight closed that gap
+    without breaking the per-line design: exactly ONE `🦈` line in the window
+    means one repo by construction, so ANY label on it is wrong, and the
+    window-wide count is already available where the verdicts are gathered.
+    Measured through the real registered command, not reasoned about: the M1
+    fixture returned `clean` before the fix and returns `yellow:sha_label`
+    after.
+
+    M1 the lone labelled line flags, under its OWN class (both live
+       shorthands, and the multi-SHA body §3.1.6.3's example draws);
+    M2 it flags inside a full, otherwise-clean TEA3 batch -- the real
+       artefact -- and the residue count proves the batch walked free;
+    M3 the lone BARE line stays clean -- the check reclassifies labels,
+       never the sanctioned §3.2.4.4 shape;
+    M4 the 2+-line multi-repo form is NEVER touched, labels and all;
+    M5 the bold wrapper changes nothing, as everywhere else;
+    M6 a malformed lone line keeps `sha_shape` -- the coarser defect
+       subsumes the label, one class per line;
+    M7 READER mode is unchanged -- §3.2.4 is this repo's protocol;
+    M8 with 2 `🦈` lines a malformed one keeps its own class and the
+       labelled one is NOT flagged -- the count gate reads 2, so labels
+       are legal even while a sibling line is in breach;
+    M9 the `override` exemption still outranks the new class.
+    """
+    print("\n--- M. `🦈` solo-label check (§3.2.4.4–5): one line, one repo, "
+          "no label ---")
+    log = os.path.join(tmp, "M.log")
+
+    def run(name, text, want_action, cwd=REPO_ROOT, prompt="do the thing"):
+        tp = os.path.join(tmp, "M%s.jsonl" % re.sub(r"\W+", "_", name)[:40])
+        _write_transcript(tp, [_user(prompt), _assistant(text)])
+        got = _run(_payload(tp, cwd=cwd), log)
+        _check(name, got, 0, want_action)
+        return got
+
+    # M1. THE BREACH. Real shapes: both shorthands root §3.1.6.3's own
+    # example prints, and real SHAs mined from this repo's log -- each on a
+    # turn whose window holds no other `🦈` line.
+    run("M1a lone `Default:`-labelled SHA line", "🦈 Default: `302d7d8c`",
+        "yellow:sha_label")
+    run("M1b lone `AJAP:`-labelled SHA line", "🦈 AJAP: `0ddba115`",
+        "yellow:sha_label")
+    run("M1c label + several SHAs is still one repo",
+        "🦈 Default: `302d7d8c`, `0896f26c`", "yellow:sha_label")
+
+    # M2. INSIDE THE REAL ARTEFACT. The batch's other declarations stay
+    # clean; lines=1 and first= prove the ONE reclassified line is the whole
+    # residue, so the check cannot have bled onto its neighbours.
+    tp = os.path.join(tmp, "M2.jsonl")
+    _write_transcript(tp, [_user("do the thing"),
+                           _assistant("✅ `universal/coding.md`\n"
+                                      "⇠ `202608/query_202608080100.md`\n"
+                                      "➡️ **`202608/response_202608080100.md`**\n"
+                                      "🦈 Default: `302d7d8c`")])
+    code2, line2, _ = _run(_payload(tp), log)
+    _record("M2 lone labelled line flags inside a clean TEA3 batch",
+            code2 == 0 and _action(line2) == "yellow:sha_label",
+            "got exit=%s action=%s" % (code2, _action(line2)))
+    _record("M2b residue is that line alone (lines=1, first= the SHA line)",
+            "\tlines=1\t" in line2 and "first=🦈 Default:" in line2,
+            "line=%r" % line2)
+
+    # M3. THE SANCTIONED SHAPE. §3.2.4.4's bare one-liner must stay clean --
+    # the check may only ever reclassify a LABELLED line.
+    run("M3 lone bare SHA line stays clean", "🦈 `302d7d8c`", "clean")
+
+    # M4. THE LEGAL MULTI-REPO FORM, NEVER TOUCHED. Both directions of the
+    # rule pinned: with 2+ lines the labels are the mandated §3.2.4.5 shape
+    # (K1c/K1g pin the same from the ownership side; this pins it against
+    # the new count gate specifically).
+    run("M4 two labelled lines are the legal §3.2.4.5 form",
+        "🦈 Default: `deadbeef`, `cafef00d`\n🦈 AJAP: `0ddba115`", "clean")
+
+    # M5. The §3.1.6 bold wrapper is tolerated everywhere else, so it must
+    # neither hide a label from this check nor break the glyph count.
+    run("M5 bold-wrapped lone labelled line still flags",
+        "**🦈 Default: `302d7d8c`**", "yellow:sha_label")
+
+    # M6. PRECEDENCE. A lone line already in breach keeps `sha_shape`: the
+    # label rides a body that is not a SHA list at all, and one line gets
+    # one class -- the truer, coarser verdict.
+    run("M6a lone labelled line with a non-hex token keeps sha_shape",
+        "🦈 Default: `xyz67890`", "yellow:sha_shape")
+    run("M6b lone labelled line with a prose tail keeps sha_shape",
+        "🦈 Default: `302d7d8c` pushed cleanly", "yellow:sha_shape")
+
+    # M7. READER owes zero chat text; the new class must not leak there.
+    run("M7 READER mode is unchanged by the solo-label check",
+        "🦈 Default: `302d7d8c`", "yellow:reader", cwd=READER_CWD)
+
+    # M8. COUNT GATE UNDER FIRE: two `🦈` lines, one malformed. The count is
+    # 2, so the labelled line is legal; only the malformed one flags, under
+    # its own class, and lines=1 proves the labelled line walked free.
+    tp8 = os.path.join(tmp, "M8.jsonl")
+    _write_transcript(tp8, [_user("do the thing"),
+                            _assistant("🦈 Default: `302d7d8c`\n"
+                                       "🦈 AJAP: not backticked here")])
+    code8, line8, _ = _run(_payload(tp8), log)
+    _record("M8 2 lines: malformed keeps sha_shape, labelled walks free "
+            "(lines=1)",
+            code8 == 0 and _action(line8) == "yellow:sha_shape"
+            and "\tlines=1\t" in line8,
+            "got exit=%s action=%s line=%r" % (code8, _action(line8), line8))
+
+    # M9. The exemption ladder still outranks the new class: a user typing
+    # `override` disarms the whole lint, this check included.
+    run("M9 `override` still exempts a solo-label breach",
+        "🦈 Default: `302d7d8c`", "exempt:override",
+        prompt="override, labels are fine today")
+
+
 # --- L. SENTINEL LISTS: root §5's mandated compaction output is not a breach
 
 # The §3.2.6 canon, copied VERBATIM (clint compares the whole stripped line).
@@ -1146,6 +1294,7 @@ def main():
         section_redirect(tmp)
         section_dot_escape(tmp)
         section_sha_declaration(tmp)
+        section_sha_label(tmp)
         section_sentinel_lists(tmp)
         # LAST on purpose: H11 measures the shortest record this suite made
         # clint write, so every other section must have run first.

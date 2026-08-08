@@ -358,6 +358,52 @@ def main():
             (r.returncode == 0 and doc
              and "decision" not in doc
              and "decision" not in doc.get("hookSpecificOutput", {})), r))
+
+        # --- T15: the `sha_label` class (clint's solo-label check, root
+        # CLAUDE.md §3.2.4.4–5) surfaces with a correction the model can ACT
+        # on in one line. The generic "declarations only" clause would teach
+        # the WRONG fix here —— the offending line WAS a declaration; the fix
+        # is dropping the repo label —— so this class carries its own rule
+        # clause naming §3.2.4.5 and the concrete act. Anti-wallpaper stack
+        # re-proven on the new class end-to-end: one report per verdict
+        # (second prompt silent, stage dup), and the anti-apology tail stays.
+        clog = _clint_log(tmp, [
+            _CLINT_LINE % (SID8, "aaa", "yellow:sha_label", "1",
+                           "🦈 Default: `302d7d8c`")], "t15.clint.log")
+        hlog = os.path.join(tmp, "t15.hlint.log")
+        r1 = _run(_payload(), clog, hlog)
+        r2 = _run(_payload(), clog, hlog)
+        ctx = _context(r1)
+        logged = open(hlog, encoding="utf-8").read()
+        results.append(_verdict(
+            "T15 — sha_label fires its OWN actionable correction "
+            "(§3.2.4.5, drop the label), not the generic clause; "
+            "dedup and the no-apology tail hold",
+            (r1.returncode == 0 and r2.returncode == 0
+             and _TALLY_SIG in ctx and "`sha_label`" in ctx
+             and "§3.2.4.5" in ctx and "drop the label" in ctx
+             and "six declaration lines ONLY" not in ctx
+             and "do NOT apologise in chat" in ctx
+             and not _context(r2)
+             and "\ttally=dup\t" in logged
+             and logged.count("tally=fired:") == 1), r1, extra=ctx))
+
+        # --- T16: the guard the rule map needs —— every OTHER class keeps
+        # the generic §3.1–§3.2 clause, so the per-class override can never
+        # silently leak beyond the one class that earned it.
+        clog = _clint_log(tmp, [
+            _CLINT_LINE % (SID8, "aaa", "yellow:prose", "2", "sounds good!")],
+            "t16.clint.log")
+        hlog = os.path.join(tmp, "t16.hlint.log")
+        r = _run(_payload(), clog, hlog)
+        ctx = _context(r)
+        results.append(_verdict(
+            "T16 — other classes keep the generic rule clause, never "
+            "sha_label's",
+            (r.returncode == 0 and _TALLY_SIG in ctx
+             and "six declaration lines ONLY" in ctx
+             and "§3.2.4.5" not in ctx
+             and "drop the label" not in ctx), r, extra=ctx))
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 

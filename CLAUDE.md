@@ -122,6 +122,10 @@
       - 3.1.7.7.2. NEVER append a new turn's reply to a previous turn's `response_`
       - 3.1.7.7.3. Never MORE —— mid-turn msgs stay in the current one (per §3.1.7.6.1)
       - 3.1.7.7.4. `#close` lists comms as PAIRS, so an orphan corrupts its inventory
+    - 3.1.7.8. EVERY turn, right BEFORE TEA1: update this session's `close_`
+      - 3.1.7.8.1. Skip ONLY if compacted (§5 owns that turn) or no `close_` exists yet
+      - 3.1.7.8.2. Why: a `close_` written once at `#close` is stale by the very next turn
+      - 3.1.7.8.3. UPDATE it —— new pairs, resolved issues, new SHAs; never a rewrite
   - 3.1.8. Harness Nudge:
     - 3.1.8.1. If visible output required, make a harmless tool call & emit no chat text
     - 3.1.8.2. ONLY if §3.1.8.1 doesn't suffice, emit a lone `.` (nothing else) & emit no chat prose

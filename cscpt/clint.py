@@ -65,12 +65,31 @@ satisfy THAT type's shape:
   ambiguous in that repo, so a hard 8 would flag the correct command's own
   result —— punishing obedience. Short is a real breach and is caught; long is
   git being careful and is not.
-  DELIBERATE NON-GOAL, stated rather than half-built: §3.2.4.4's "one line
-  unless multiple repos" is a CROSS-LINE rule, and `_line_breach` judges one
-  line at a time with no turn context. Threading that state through solely to
-  catch a redundant second `🦈` line would buy a cosmetic verdict at the cost of
-  the per-line design every other contract here relies on. The shape of each
-  line is enforced; their COUNT is not.
+  SOLO-LABEL CHECK (`sha_label`) —— the owner's own answer to the cross-line
+  objection recorded in the non-goal below, which used to keep this whole rule
+  out of reach: §3.2.4.5 sanctions the repo shorthand ONLY when MULTIPLE repos
+  were touched, and when the scan window carries exactly ONE `🦈` line then one
+  repo was declared BY CONSTRUCTION —— so ANY label on that line is a breach,
+  and proving it needs no per-line context at all, only the window's
+  `🦈`-line COUNT, which is already in hand where the verdicts are gathered.
+  `_flag_solo_sha_label` therefore RECLASSIFIES the window's lone, labelled,
+  otherwise shape-valid `🦈` line from clean to `sha_label`, and
+  `_line_breach` stays one-line-at-a-time, untouched. Its OWN class,
+  deliberately never folded into `sha_shape`: hlint's next-prompt tally names
+  the class to the model, and "drop the label" is a different correction from
+  "that is not a SHA list" —— one tag per correction, or the tally teaches
+  the wrong fix. Precedence, each edge deliberate: a lone line already in
+  breach keeps `sha_shape` (the label rides a body that is not a SHA list at
+  all, and one line gets one class —— the coarser, truer verdict); 2+ `🦈`
+  lines are the legal multi-repo form and are never touched, even when a
+  sibling line is separately in breach; REPO mode only (§3.2.4 is this repo's
+  protocol, and in READER any chat text is class `reader` anyway).
+  DELIBERATE NON-GOAL, narrowed by the check above but kept honest: a
+  REDUNDANT second `🦈` line —— the same repo declared twice, e.g. one
+  shorthand on two lines —— is still not caught, because two labelled lines
+  are byte-identical to the legal §3.2.4.5 form and only the turn's actual
+  pushes, which no transcript line records, could tell the two apart. The
+  solo case IS caught precisely because it needs no such knowledge.
 * `🚨` (§3.2.6) —— the post-compaction sentinel, EXACT wording only, taken
   verbatim from §3.2.6 (`_SENTINEL_CANON`). No bold wrapper, no paraphrase: the
   whole value of a sentinel is that it cannot be approximated, and any other
@@ -436,7 +455,9 @@ failed); the parse stage reached; one `exempt:` per exemption
 `yellow:` per breach CLASS —— `yellow:prose` (no glyph at all),
 `yellow:io_shape` (an I/O glyph not carrying a file list), `yellow:sha_shape`
 (the SHA glyph not carrying a backticked hex commit-hash list),
-`yellow:sentinel`
+`yellow:sha_label` (the window's LONE SHA line wearing a repo shorthand ——
+one `🦈` line means one repo, so the label is unearned; see SOLO-LABEL
+CHECK), `yellow:sentinel`
 (compaction glyph, wrong wording), `yellow:warn_shape` (blocker glyph carrying
 another type's declaration), `yellow:warn_empty`, `yellow:warn_words`,
 `yellow:warn_hyphens`, `yellow:warn_chars`, `yellow:warn_progress` (a progress
@@ -744,6 +765,36 @@ def _sha_ok(rest):
     if "`" in residue:                   # unbalanced backtick -> not a clean list
         return False
     return bool(_SHA_RESIDUE_RE.match(residue))
+
+
+def _flag_solo_sha_label(judged):
+    """Reclassify the window's LONE, labelled, otherwise shape-valid `🦈`
+    line from clean to `sha_label`, in place. No-op in every other case.
+
+    Root §3.2.4.5 sanctions the repo shorthand ONLY when multiple repos were
+    touched —— and that form is multiple `🦈` lines, one per repo. So exactly
+    ONE `🦈` line in the window means one repo BY CONSTRUCTION, and any label
+    on it is a breach. This is the owner's answer to the old cross-line
+    objection (see docstring SOLO-LABEL CHECK): nothing is threaded through
+    `_line_breach`, which stays one-line-at-a-time; the ONLY turn-level fact
+    used is the `🦈`-line count, read here where the window's verdicts
+    already sit. Precedence: a line already in breach keeps its own class
+    (`sha_shape` is the truer verdict when the body is not a SHA list at
+    all); 2+ lines are the legal multi-repo form and are never touched, even
+    when a sibling line is separately in breach. The CALLER gates on REPO
+    mode —— §3.2.4 is this repo's protocol, and READER flags all chat text
+    as `reader` regardless. Runs BEFORE the offending/classes split so the
+    verdict, `lines=` and `first=` all describe the reclassified line."""
+    idx = [i for i, (s, k) in enumerate(judged)
+           if _split_glyph(s)[0] == _G_SHA]
+    if len(idx) != 1:
+        return
+    s, k = judged[idx[0]]
+    if k is not None:
+        return                           # own breach class already stands
+    _, rest = _split_glyph(s)
+    if _SHA_LABEL_RE.match(rest):
+        judged[idx[0]] = (s, "sha_label")
 
 
 def _warn_breach(rest):
@@ -1242,6 +1293,14 @@ def main():
                 s = ln.strip()
                 if s:
                     judged.append((s, _line_breach(ln, mode)))
+
+    # Solo-label check (§3.2.4.5; REPO only): the one contract needing a
+    # window-wide fact —— the `🦈`-line count —— so it runs here, after the
+    # per-line verdicts and before they are split into offending/classes.
+    # Full precedence rules in `_flag_solo_sha_label`'s own docstring.
+    if mode == MODE_REPO:
+        _flag_solo_sha_label(judged)
+
     all_lines = [s for s, _ in judged]
     offending = [s for s, k in judged if k]
     classes = [k for s, k in judged if k]

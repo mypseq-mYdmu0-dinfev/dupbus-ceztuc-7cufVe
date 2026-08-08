@@ -161,7 +161,13 @@ beside this file only —— anchored on `__file__`, never the cwd it gates on.
 
 WHAT THE LINE SAYS, and what it deliberately does not: count + clint's own
 class tag + a one-clause gloss + the rule + the correction, in ONE line ——
-actionable without being a lecture. The first offender is quoted only as an
+actionable without being a lecture. The rule clause is per-class where it
+must be (`_TALLY_RULE`): the generic "declarations only" correction is
+actively WRONG for a class like `sha_label`, whose offending line already
+was a declaration —— there the clause names the one act that fixes it (drop
+the repo label; root §3.2.4.5). Every class without an entry keeps the
+generic clause, and the map stays minimal on purpose —— a bespoke sermon per
+class is wallpaper by another route. The first offender is quoted only as an
 IDENTIFYING STUB: hard-capped at `_TALLY_EXCERPT_CHARS`, wrapped in backticks
 (this file's own convention —— backticked = discussed, never live), and
 dropped entirely when it carries a backtick of its own rather than escaped.
@@ -506,6 +512,7 @@ _TALLY_GLOSS = {
     "prose": "chat prose bearing no declaration glyph",
     "io_shape": "an I/O declaration glyph carrying non-file-list text",
     "sha_shape": "the commit-SHA glyph carrying a non-hash body",
+    "sha_label": "a repo shorthand on a single-repo turn's lone SHA line",
     "sentinel": "a compaction sentinel not matching §3.2.6's exact wording",
     "warn_empty": "a blocker glyph declaring nothing",
     "warn_words": "a blocker line past §3.2.5's ≤5w cap",
@@ -517,6 +524,28 @@ _TALLY_GLOSS = {
     "reader": "chat text in the zero-text Reader folder",
 }
 _TALLY_GLOSS_FALLBACK = "an impermissible chat line"
+
+# clint breach class -> the rule + correction clause of the
+# injected line. Nearly every class shares the generic
+# §3.1–§3.2 clause below; a class earns its OWN entry ONLY
+# when the generic correction would teach the WRONG fix.
+# `sha_label` (clint's solo-label check) is exactly that:
+# its offending line already WAS a declaration, so "chat
+# carries declarations only" corrects nothing —— the one
+# act that fixes it is dropping the repo label, and the
+# clause must say so (root §3.2.4.5: shorthands only when
+# multiple repos were touched). Keep this map minimal: a
+# per-class sermon for every class is wallpaper by another
+# route.
+_TALLY_RULE = {
+    "sha_label": ("Root CLAUDE.md §3.2.4.5: repo shorthands belong ONLY on "
+                  "a multi-repo turn's multiple SHA lines —— a single-repo "
+                  "turn's SHA declaration is the glyph plus backticked SHAs "
+                  "alone, so drop the label and its colon."),
+}
+_TALLY_RULE_DEFAULT = ("Root CLAUDE.md §3.1–§3.2: chat carries the six "
+                       "declaration lines ONLY; substantive content belongs "
+                       "in this turn's `response_` file.")
 
 
 def _prune_log():
@@ -855,11 +884,10 @@ def _tally_message(cls, count, excerpt):
                 "with %d impermissible chat line%s"
                 % (count, "" if count == 1 else "s"))
     stub = "; first offender: `%s`" % excerpt if excerpt else ""
-    return (head + " —— clint class `%s` (%s)%s. Root CLAUDE.md §3.1–§3.2: "
-            "chat carries the six declaration lines ONLY; substantive content "
-            "belongs in this turn's `response_` file. Comply THIS turn, and "
+    return (head + " —— clint class `%s` (%s)%s. %s Comply THIS turn, and "
             "do NOT apologise in chat —— that would itself be a breach."
-            % (cls, _TALLY_GLOSS.get(cls, _TALLY_GLOSS_FALLBACK), stub))
+            % (cls, _TALLY_GLOSS.get(cls, _TALLY_GLOSS_FALLBACK), stub,
+               _TALLY_RULE.get(cls, _TALLY_RULE_DEFAULT)))
 
 
 def _chat_tally(data, sid):
