@@ -2,17 +2,18 @@
 
 ## 0. Preamble
 
-- 0.1. WSM worst-case hook latency: **`~`0.39 s** per interactive round trip.
-  - 0.1.1. Re-measured 202608071235 after the stdin guards, mlint SHAPE C and PreCompact.
-  - 0.1.2. Basis = largest `.md` in `sessions/` (109 KB) + largest transcript (50 MB).
-  - 0.1.3. Round trip = one prompt, one `.md` write, one Bash call, one turn-end.
+- 0.1. WSM worst-case hook latency: **`~`0.53 s** per interactive round trip.
+  - 0.1.1. Re-measured 202608081658 after blint's FOUR registrations (PostToolBatch corrector + marker guard).
+  - 0.1.2. Basis = largest `.md` in `sessions/` (112 KB) + largest transcript (51 MB).
+  - 0.1.3. Round trip = one prompt, one `.md` write, one Bash call, one turn-end —— and that now fires PostToolBatch TWICE, once per tool batch, which is where most of the rise from 0.39 s lives.
   - 0.1.4. Per event, medians of 5 on worst-case payloads:
-    - 0.1.4.1. Stop 184 ms · PostToolUse 106 ms · PreToolUse-write 45 ms
-    - 0.1.4.2. PreToolUse-Bash 33 ms · UserPromptSubmit 27 ms
-  - 0.1.5. Each EXTRA `.md` write adds `~`0.15 s (45 + 106 per §0.1.4):
-    - 0.1.5.1. An earlier `~`0.11 s counted PostToolUse alone and never reconciled
-    - 0.1.5.2. Each extra Bash call adds `~`0.03 s
-  - 0.1.6. Comfortably inside the 1 s budget (§12.4) —— `~`39%, with Stop now dominant.
+    - 0.1.4.1. Stop 179 ms · PostToolUse 106 ms · PreToolUse-write 59 ms
+    - 0.1.4.2. PostToolBatch 55 ms (`~`32 ms on a typical small transcript —— the Python spawn floor) · PreToolUse-Bash 43 ms · UserPromptSubmit 31 ms (blint's reset edged past hlint by `~`1 ms; effectively free, §12.5)
+    - 0.1.4.3. Marker stages bill at most once per turn: marker-post 56 ms · marker-pre 52 ms on the armed path (ledger + anchor check)
+  - 0.1.5. Each EXTRA `.md` write adds `~`0.22 s (59 + 106 + 55 —— its own batch now bills too):
+    - 0.1.5.1. Each extra Bash call adds `~`0.10 s (43 + 55) —— was `~`0.03 s before PostToolBatch carried a hook
+    - 0.1.5.2. Batch-heavy turns pay `~`55 ms per batch; a 100-batch turn spends `~`5.5 s SPREAD across the whole turn, never in one visible stall
+  - 0.1.6. Inside the 1 s budget (§12.4) —— `~`53%, Stop still dominant.
   - 0.1.7. WSM only, interactive only —— SA/background work and OTGM are not counted.
   - 0.1.8. PreCompact + PostCompact EXCLUDED —— neither fires on an interactive round trip
   - 0.1.9. Re-measure and rewrite 0.1 EVERY time a hook is added, edited, or removed.
@@ -71,12 +72,16 @@
 | PreToolUse | `cscpt/tlint_hook.sh` pre | Time-integrity: clock read without `TZ='Australia/Sydney'` (advisory) |
 | PreToolUse | `cscpt/flint_hook.sh` pre | Filename gate (BLOCKS a stray-space comms filename) |
 | PreToolUse | `cscpt/plint.py` | Protocol-read reminder before a write/read (advisory) |
+| PreToolUse | `cscpt/blint.py` marker-pre | mark_chapter guard (DENIES a second chapter marker per turn —— root §3.1.6.2) |
 | PostToolUse | `cscpt/DADC.py hook-restore` | Restore Date Added + Date Created after a write |
 | PostToolUse | `cscpt/dlint_hook.sh` | Prose lint on every `.md` + deliverable gate (blocking) |
 | PostToolUse | `cscpt/nlint_hook.sh` | Numbering-continuity lint (advisory) |
 | PostToolUse | `cscpt/flint_hook.sh` post | Filename lint: timestamp clash + stray-space alert (warn-only) |
 | PostToolUse | `cscpt/tlint_hook.sh` post | Time-integrity: drifted/unclocked comms timestamp + US dates (advisory) |
+| PostToolUse | `cscpt/blint.py` marker-post | mark_chapter recorder —— arms the guard above once a marker EXISTS |
 | UserPromptSubmit | `cscpt/hlint.py` | `#trigger` read-reminder (advisory) |
+| UserPromptSubmit | `cscpt/blint.py` prompt | Marker-guard reset —— the genuine-prompt path only (wakes ignored) |
+| PostToolBatch | `cscpt/blint.py` batch | MID-TURN chat-discipline corrector: injects a §3.2 correction the model sees before its NEXT request (never blocks —— §6.11) |
 | Stop | `cscpt/clint.py` | No-chat-prose lint (WARN-only; never blocks) |
 | Stop | `cscpt/mlint.py` | Owed-output gate (BLOCKS): the `#m2` interim declaration stopped AT or never emitted, or a compaction-opened turn missing root §5's `🚨` sentinel |
 | PreCompact | `.claude/pre_compact.sh` | Plant root §5's sentinel demand INSIDE the summary being written (§13) |
@@ -116,6 +121,7 @@
 | plint | GLOBAL | Advisory-only; always exits 0 and can never gate a write |
 | tlint | GLOBAL | Advisory-only, never exits 2. Its drift checks are STRUCTURALLY scoped (they fire only inside dupbus `sessions/` or AJAP `inv/`); the clock-read and US-date checks are global on purpose, because root §2.1.7's Sydney mandate is a USER-level convention |
 | mlint | Repo-scoped | BLOCKS a Stop; enforces this repo's `#m2` sequence and root §5's post-compaction sentinel |
+| blint | Repo + Reader, CONSERVATIVE | Inverts clint's fail-open on purpose: unusable scope signals mean SILENT/ALLOW, never "run anyway". Its batch stage INJECTS model-visible text (nagging a foreign cockpit about §3.2 is noise and phantom-compliance bait —— the hlint-tally precedent), and its marker-pre stage can DENY a tool call, so §4.7's block-must-be-scoped rule binds it twice over |
 
 - 4.7. The asymmetry is intentional, not an oversight —— the test rule is: a lint that can BLOCK must be repo-scoped, a lint that can only advise may be global.
   - 4.7.1. Never "tidy" a scope guard onto hlint, plint, or flint's PostToolUse half.
@@ -206,6 +212,7 @@
   - 6.11.4. Payload carries tool calls only, NOT assistant text —— but it does carry `transcript_path`
   - 6.11.5. Reading the transcript tail mid-turn is proven here: `alint` has done it for weeks
   - 6.11.6. BLIND SPOT: a turn's FINAL message is followed by Stop, not a batch —— never seen here
+  - 6.11.7. IN USE since 202608081658: `cscpt/blint.py batch` rides this channel as the mid-turn §3.2 corrector (dedup by content hash; hlint's next-prompt tally remains the net under §6.11.6's gap)
 - 6.12. MessageDisplay —— the only event whose payload IS the assistant's prose:
   - 6.12.1. Payload `delta` carries the text; returning `displayContent` REPLACES what is rendered
   - 6.12.2. Display-only by construction —— the transcript and the model's context keep the original
@@ -215,6 +222,7 @@
   - 6.13.1. A PreToolUse hook can DENY a second call, making a duplicate marker IMPOSSIBLE
   - 6.13.2. That, not the channel, was what blocked every instant-correction option since 30/07
   - 6.13.3. Arm/disarm by `session_id`, never `prompt_id` —— notification wakes mint fresh ones
+  - 6.13.4. BUILT 202608081658 as `cscpt/blint.py` marker-pre/marker-post/prompt: PostToolUse arms once a marker EXISTS, UserPromptSubmit disarms on the genuine-prompt path only, and the deny carries a transcript-anchor second belt so a dead reset path can never deny past its own turn. Fails OPEN everywhere —— a lost ledger merely restores the pre-guard status quo
 
 ---
 
@@ -249,6 +257,9 @@
 | Stop | End an `#m2` turn having written a `response_` and declared nothing | The stop is BLOCKED, stderr naming the missing `➡️`; a `block_nodeclare` line in `cscpt/.mlint.log` |
 | Stop | End a compaction-opened turn without root §5's `🚨` sentinel (cannot be staged on demand —— wait for a real compaction, or read the `compact=` field on any `.mlint.log` line) | The stop is BLOCKED, stderr naming the sentinel, the halt, and the §5.3/§5.4 lists; a `block_nosentinel` line in `cscpt/.mlint.log` |
 | PostCompact | Occurs naturally on compaction | A new line in `cscpt/.post_compact.log` (the banner reaches the USER, never the model —— §6.9) |
+| PostToolBatch | End any multi-tool turn in this repo, then check `cscpt/.blint.log` | One stage line per batch (`clean`, `corrected:*`, `subagent`, …) —— a frozen log across real turns means the wiring is dead |
+| PreToolUse | Let a turn's TEA2 run `mark_chapter` once, then check `cscpt/.blint.log` | An `mk_allow` line, then a `marker_recorded` line; a SECOND call the same turn is DENIED with stderr naming TEA2 and an `mk_deny` line |
+| UserPromptSubmit | Submit any genuine prompt in this repo | A `prompt_reset` line in `cscpt/.blint.log` (a `<task-notification>` wake logs `p_wake_ignored` instead) |
 
 - 7.4. The manual pipe test —— useful, but know exactly what it proves:
 
@@ -279,7 +290,7 @@ for ev,groups in d.items():
   - 7.7.1. A log written only on a breach cannot tell those two apart —— an empty log is consistent with BOTH, which is exactly how the dead wiring survived so long.
   - 7.7.2. clint therefore logs EVERY invocation to `cscpt/.clint.log` (git-ignored), tagged by the stage reached: `no_stdin`, `out_of_scope`, `no_transcript`, `unreadable_transcript`, `empty_transcript`, `clean` (+ `clean:dot`/`clean:dot_reader`), `message_failed`, one `exempt:` per exemption, and one `yellow:` per breach class (`prose`, `io_shape`, `sha_shape`, `sentinel`, `warn_*`, `sic_overrun`, `reader`). The retired always-RED tags (`block`, `block_failed`, `yellow:spent`, `yellow:active`) no longer exist —— §6.4.
   - 7.7.3. A non-growing clint log across real turns is now UNAMBIGUOUS: the harness is not calling that command.
-  - 7.7.4. clint, alint, dlint_quick, hlint, tlint, post_compact and pre_compact each keep a stage log. flint now has §7.3 probe rows on BOTH its events but still no stage log; DADC, plint and nlint keep NEITHER a log nor a probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
+  - 7.7.4. clint, alint, blint, dlint_quick, hlint, tlint, post_compact and pre_compact each keep a stage log. flint now has §7.3 probe rows on BOTH its events but still no stage log; DADC, plint and nlint keep NEITHER a log nor a probe row —— so for those five there is currently no liveness evidence at all, which is a real gap, not an omission from this sentence. A stage log is the cheap fix; a probe row is the cheaper one.
 - 7.8. After ANY change to a hook script, its filename, its path, or the settings file:
   - 7.8.1. Run the resolvability audit (§7.6) —— the cheapest guard against §8.6.2, and the check whose absence lets a renamed lint sit dead and unnoticed.
   - 7.8.2. Re-run the live probe (§7.2). A passing unit test is not a substitute.

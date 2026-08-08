@@ -88,3 +88,16 @@ cscpt/.mlint.log.tmp*
 # is the atomic-rewrite staging file a prune may leave behind.
 cscpt/.tlint.log
 cscpt/.tlint.log.tmp*
+# blint runtime log —— one line per invocation across its FOUR stages
+# (PostToolBatch corrector, mark_chapter guard pre/post, prompt reset), for
+# the same hook_guide §7.7 reason as the logs above: a hook that leaves no
+# trace is how PostCompact sat dead 70 days. This one is ALSO two ledgers in
+# one —— the `corrected:*@hash` lines are the mid-turn corrector's dedup
+# ledger, and `marker_recorded`/`prompt_reset` are the marker guard's state.
+# Deleting it costs one duplicate advisory and disarms the marker guard until
+# the next marker (fail-open by design) —— never a loop, never a false deny.
+# The .tmp* sibling is the atomic-rewrite staging file a prune may leave
+# behind. (Voided `❌_` files are NEVER gitignored —— user ruling; nothing in
+# this stanza touches that.)
+cscpt/.blint.log
+cscpt/.blint.log.tmp*

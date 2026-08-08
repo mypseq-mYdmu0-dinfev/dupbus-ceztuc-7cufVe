@@ -50,6 +50,15 @@
             "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/flint_hook.sh' pre"
           }
         ]
+      },
+      {
+        "matcher": "mcp__ccd_session__mark_chapter",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/blint.py' marker-pre"
+          }
+        ]
       }
     ],
     "PostToolUse": [
@@ -97,6 +106,15 @@
             "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/tlint_hook.sh' post"
           }
         ]
+      },
+      {
+        "matcher": "mcp__ccd_session__mark_chapter",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/blint.py' marker-post"
+          }
+        ]
       }
     ],
     "UserPromptSubmit": [
@@ -105,6 +123,14 @@
           {
             "type": "command",
             "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/hlint.py'"
+          }
+        ]
+      },
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/blint.py' prompt"
           }
         ]
       }
@@ -143,6 +169,16 @@
           {
             "type": "command",
             "command": "bash '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/.claude/post_compact.sh'"
+          }
+        ]
+      }
+    ],
+    "PostToolBatch": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 '/Volumes/FURY 2TB/Fury Documents/GitHub/dupbus-ceztuc-7cufVe/cscpt/blint.py' batch"
           }
         ]
       }
