@@ -824,6 +824,67 @@ def _require_hook_payload(argv=()):
     sys.stdin = io.StringIO(raw)
 
 
+_STAGE_ALL_RE = re.compile(
+    r"""(?:^|[;&|]|\n)\s*                      # COMMAND POSITION only —— see below
+        (?:cd\s+(?:'[^']*'|"[^"]*"|\S+)\s*&&\s*)*   # tolerate a leading `cd … &&`
+        git\b(?:\s+-C\s+\S+|\s+--\w[\w-]*(?:=\S+)?)*\s+
+        (?:
+            add\s+(?:-[A-Za-z]*A|--all|\.(?=\s|$))
+          | commit\b(?=(?:\s+\S+)*\s+(?:-[A-Za-z]*a[A-Za-z]*|--all)\b)
+        )""",
+    re.X)
+
+
+def _strip_quoted(cmd):
+    """Remove quoted segments so a command MESSAGE never reads as a command.
+
+    `git commit -m "... git add -A ..."` must not trip the gate —— the offending
+    text is content, not an instruction. Quotes are stripped rather than parsed
+    because a real shell parse is far more machinery than the job needs, and the
+    failure direction of over-stripping is a MISSED block, never a wrong one.
+    """
+    return re.sub(r"'[^']*'|\"[^\"]*\"", " ", cmd or "")
+
+
+def _indiscriminate_stage(cmd):
+    """Return the offending fragment when `cmd` stages the whole tree, else None.
+
+    WHY THIS GATE EXISTS —— it has cost real damage twice, both times because
+    TEA1 reached for `git add -A` instead of naming its own paths:
+      * 07/08/2026 —— 88 voided files, 13,190 lines, pushed to a PUBLIC repo.
+        Voided files are the USER's to delete (root CLAUDE.md §8.2), never CC's
+        to commit.
+      * 08/08/2026 —— the user's half-written edit to `universal/glossary.md`
+        was swept into a CCSIM commit whilst he was still typing it, which is
+        exactly what §3.1.6.1.4 and §3.1.6.1.5 forbid.
+    Prose failed after the first one, so this is a gate. It is deliberately
+    narrow: it judges the STAGING SHAPE alone and never what is in the tree, so
+    it cannot be defeated by the tree happening to look clean at that moment.
+
+    RULINGS on the routes that could misfire, each decided rather than left open:
+      * A message body carrying the text —— stripped first, so never a match.
+      * `git add .` —— blocked; it is `-A` scoped to the cwd and stages exactly
+        the same foreign edits when run from the repo root.
+      * `git -C <other-repo> add -A` —— still blocked. The `cwd` guard already
+        confines this hook to this repo, and a scratch repo inside it is not a
+        reason to relax the shape; explicit paths cost one extra word.
+      * `git commit -am`/`-a` —— blocked; it stages every tracked modification,
+        which is the same defect wearing a shorter flag.
+      * `git add path/to/file` —— never matches, which is the whole point.
+      * TEXT that merely MENTIONS the shape —— a heredoc, a `-c` script, a doc
+        string, this very docstring. The first draft matched anywhere in the
+        command and blocked its own unit test within a minute of going live.
+        Fixed by anchoring at COMMAND POSITION: the match must begin at the
+        start of the command or straight after `;`, `&&`, `||`, `|` or a
+        newline, optionally behind a `cd … &&`. A mention buried in an argument
+        or a heredoc body is no longer in command position and cannot fire.
+        That first misfire is kept in the record because it is the honest
+        argument for the anchor: a gate that cries wolf gets switched off.
+    """
+    m = _STAGE_ALL_RE.search(_strip_quoted(cmd))
+    return m.group(0).strip() if m else None
+
+
 def main():
     _require_hook_payload(sys.argv[1:])
     try:
@@ -852,6 +913,29 @@ def main():
                 "invocation came from the harness. Sub-agent verdict for this "
                 "call: sub=%s." % sub)
         return 0
+
+    # INDISCRIMINATE-STAGING GATE. Runs BEFORE the in-flight test because it is
+    # about WHAT is staged, not about who is running —— and it must catch a
+    # sub-agent too, since an SA staging the whole tree is the same damage.
+    if _in_scope(data):
+        bad = _indiscriminate_stage(command)
+        if bad:
+            sys.stderr.write(
+                "BLOCKED by alint —— `%s` stages the WHOLE tree.\n"
+                "Root CLAUDE.md §3.1.6.1.4: commit ONLY the files YOU touched "
+                "this turn. §3.1.6.1.5: if the user's own edits sit on a file "
+                "you touched, do NOT commit at all —— raise a `⚠️` blocker.\n"
+                "This gate exists because indiscriminate staging has done real "
+                "damage TWICE: it published 88 voided files (13,190 lines) to a "
+                "public repo on 07/08/2026, and on 08/08 it swept up the user's "
+                "half-finished edit to `universal/glossary.md` whilst he was "
+                "still typing it.\n"
+                "DO THIS INSTEAD: run `git status --porcelain`, decide which "
+                "paths are yours, and stage them by name —— `git add <path> "
+                "<path>`. If that list is long, that is the signal to split the "
+                "commit (§3.1.6.1.6.3), not to reach for `-A`.\n" % bad)
+            _log(sid, "block_stage_all", sub=sub, note=bad)
+            return 2
 
     if not _is_tea1(command):
         _log(sid, "not_git", sub=sub)
