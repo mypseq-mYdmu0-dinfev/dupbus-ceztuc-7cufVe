@@ -17,6 +17,11 @@
   - 1.4.1. Check current month's folder (`sessions/[YYYY]/[YYYYMM]/`) has ≥5 files
   - 1.4.2. ONLY if §1.4.1 = no → Check last month's folder has a `wrap_` file
   - 1.4.3. ONLY if §1.4.2 = no → Remind user in 1st `response_`
+- 1.5. If a `close_` was supplied or #r by you in first 3 turns:
+  - 1.5.1. This ses might be in a series (e.g. CCSIM is always serial)
+  - 1.5.2. If more context needed (e.g. the `close_` doesn't suffice)
+    - 1.5.2.1. #SA read comms, slog, HEAD, SHA, etc.
+    - 1.5.2.2. If more needed, `#qq` last/previous ses; user will relay to her
 
 ---
 
