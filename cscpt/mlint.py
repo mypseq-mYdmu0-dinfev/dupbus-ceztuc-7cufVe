@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
-"""Stop hook —— Mission Linter; BLOCKS one turn-end when a mandated, USER-FACING line was owed and
-never emitted: an `#m2` INTERIM declaration (stopped dead ON it, or never emitted at all), or the
-`🚨` post-compaction sentinel root `CLAUDE.md` §5 owes on a compaction-triggered turn.
+"""Mission Linter (Stop hook)
+
+BLOCKS one turn-end when a mandated, USER-FACING line was owed and never emitted: an `#m2` INTERIM
+declaration (stopped dead ON it, or never emitted at all), or the `🚨` post-compaction sentinel
+root `CLAUDE.md` §5 owes on a compaction-triggered turn.
 
 Root scope: THIS repo only (`dupbus-ceztuc-7cufVe`), anchored on this file's own
 `__file__` and never on the process cwd. `#m2` is defined by `universal/m2.md`,
@@ -27,7 +29,7 @@ carve-out, which this hook's message would actively contradict.
   `response_` and never declared it; or (C) an UNPAID compaction —— a summary
   you did not write, no later `🚨` (root §5).
 * IF IT FIRES: do the ONE thing named: (A) the `#sprint`; (B) the `➡️` line;
-  (C) §5: sentinel, halt, both lists. Never re-emit a batch.
+  (C) §5: halt, sentinel, both lists. Never re-emit a batch.
 * FALSE ALARM: reply a lone `.`, nothing else. Once per prompt; `override`
   disarms A/B only.
 * Verdicts log to `cscpt/.mlint.log`, one per run.
@@ -175,47 +177,74 @@ SHAPE C —— `block_nosentinel`, all must hold:
       The ceiling is not 1 —— 1 would re-create the hole, since the first block
       is routinely spent on a turn that cannot comply (a limit death, a lone
       `.`) —— but past a few refusals a further block only burns turns.
-2c. NO SENTINEL ANYWHERE —— no assistant chat line in the turn starts with `🚨`
-    (bold wrapper and the emoji variation selector tolerated).
+2c. NO VERBATIM SENTINEL ANYWHERE —— no assistant chat line in the turn IS the
+    §3.2.6 sentinel byte-for-byte (`_is_sentinel_line`; only line-edge
+    whitespace and the invisible emoji variation selector are forgiven).
 3c. THE TURN ACTUALLY SPOKE —— at least one assistant record in the window. An
     empty window is far more likely a parse that fell short than an agent that
     genuinely produced nothing.
-4c. NOT HARNESS-TERMINATED and NOT AN URGENT STOP —— same exclusions as 4b, plus
-    a `⚠️` blocker ending (§3.2.5), which is a deliberate early stop that must
-    never be held open even to collect the sentinel.
+4c. NOT HARNESS-TERMINATED and NOT A `⚠️` BLOCKER STOP —— the api-error
+    exclusion as in 4b, plus a `⚠️` blocker ending (§3.2.5), a deliberate early
+    stop that must never be held open even to collect the sentinel. UNLIKE 4b
+    this does NOT excuse a `🚨`-opening ending (`_is_blocker_stop`, never
+    `_is_urgent_stop`): an exact sentinel ending never reaches this test (2c
+    already paid), so a `🚨` ending seen here is a NEAR-MISS —— excusing it
+    would defer the correction a prompt, and a session ending EVERY turn on a
+    near-miss would dodge the block forever.
 * Why ANYWHERE rather than FIRST, though §5.1 owes it immediately: presence
   suppresses, so scanning the whole turn is the fail-open direction. A sentinel
   emitted late is a §5 ordering fault, not the total omission this exists for,
   and it is not worth a wrong block. Ordering has no mechanical enforcement here
   —— stated plainly per `cp/ccsim/CLAUDE.md` §8.7 rather than implied away.
-* Why the GLYPH and not the exact 33-character wording —— RULED ON, not left to
-  taste, because owed-until-paid raises the stakes. A sentinel typed with one em
-  dash instead of two, in the wrong case, or with the full stop missing, PAYS
-  the debt and does NOT block. `🚨` has exactly one sanctioned use in this
-  protocol (§3.2.6), so the glyph alone identifies it. Under the OLD
-  trigger-coupled arming a strict wording test would merely have cost one wrong
-  block; under owed-until-paid it would leave the debt permanently unpaid and
-  re-arm on every later turn, so a cosmetic typo would become a recurring block.
-  Verbatim wording is §5.1.2's job and stays a matter for review, never for this
-  hook. Same fail-open bias as `_is_io_declaration` ("only the GLYPH is tested,
-  not the file-list shape").
-* Why LINE-START and not anywhere-in-the-line: that is the one line that
-  separates EMITTING the sentinel from DISCUSSING it, and this repo's sessions
-  discuss it constantly —— including in the very files that maintain this hook.
-  A backticked or mid-sentence `🚨` therefore does not pay. The converse is
-  accepted: a line that genuinely opens with the glyph pays even if it is prose
-  ABOUT the sentinel. That direction only ever suppresses a block, which is the
-  cheap failure.
-* ACCEPTED MISS —— a FENCED example pays. `_has_sentinel` splits on lines and
-  does NOT mask code fences, so a ```-fenced specimen of the sentinel discharges
+* Why EXACT VERBATIM WORDING and no longer the glyph alone —— RULED ON TWICE;
+  the second ruling is the OWNER'S and supersedes the first. The original test
+  paid on any line OPENING with `🚨`, reasoning that under owed-until-paid a
+  strict test would turn one cosmetic typo into a block re-arming on every
+  later prompt. The per-compaction ceiling (`_MAX_SENTINEL_BLOCKS`, added in
+  the same build) voided that objection —— a typo now costs at most three
+  forced turns, never an unbounded loop —— and the owner then ruled the loose
+  test itself the defect: §5.1.2 orders the sentinel emitted "VERBATIM (copy
+  it)", §3.2.6 fixes the wording, and a sentinel that can be approximated is
+  not a sentinel —— any loose emission is exactly the compromise the block
+  exists to catch. `clint.py` had already reached the same rule independently
+  (`_SENTINEL_CANON`, "not even a bold wrapper"), so the loose test also had
+  the two hooks CONTRADICTING each other: mlint settled a §5 debt on the very
+  line clint flags as a `yellow:sentinel` breach.
+* THE EXACTNESS RULINGS (`_is_sentinel_line`), each explicit:
+  - line-edge whitespace: FORGIVEN (`strip()`) —— it carries nothing, and
+    every line test in this file strips identically;
+  - the emoji variation selector: FORGIVEN (stripped before compare) —— it is
+    INVISIBLE, so right and wrong would render identically on screen and a
+    block over it could never be diagnosed from what the user sees;
+  - everything else: BYTE-EXACT. These all fail to pay: a bold wrapper
+    (§3.2.6 shows none; the wrapped line is already clint's breach), a leading
+    bullet or any other leading text, trailing text on the line, one em dash
+    for two, missing spaces round them, wrong case, a dropped full stop, a
+    backticked copy;
+  - a MULTI-LINE message may carry the sentinel on a line of its OWN: §5.1–5.4
+    demand the sentinel plus two lists in the same turn, so the compliant
+    message is necessarily longer than one line. The test stays per-line,
+    which also keeps —— and hardens —— the old EMITTING/DISCUSSING split this
+    repo depends on (its sessions discuss the sentinel constantly): a
+    backticked or mid-sentence `🚨` still never pays, and prose can no longer
+    pay by merely OPENING with the glyph.
+  - HOW A BLOCKED TURN COMPLIES: `_NOSENTINEL_MSG` interpolates
+    `_SENTINEL_CANON` itself, BARE on a line of its own, so complying is a
+    COPY, never a recollection, and the quoted guidance can never drift a
+    byte from the test enforcing it. A CC that still cannot reproduce the
+    line replies the lone `.` the message names; the debt then stands and
+    costs at most the ceiling, never a loop.
+* ACCEPTED MISS —— a FENCED, byte-exact specimen pays. `_has_sentinel` splits on
+  lines and does NOT mask code fences, so a ```-fenced exact copy discharges
   a real debt. Deliberate, not an oversight: masking fences in ASSISTANT output
   would let one unbalanced backtick anywhere in a turn hide a genuine sentinel
   and produce a WRONG BLOCK. `_invokes_m2` masks fences because there a fence
   match CAUSES firing; here it PREVENTS it, so the same technique would push the
   risk the wrong way. RESIDUAL RISK, stated rather than implied away
   (`cp/ccsim/CLAUDE.md` §8.7): a CCSIM session that compacts whilst documenting
-  the sentinel can discharge its own §5 debt with an example. Nothing mechanical
-  catches that; review must.
+  the sentinel can still discharge its own §5 debt with a byte-exact example
+  (a near-miss specimen no longer can). Nothing mechanical catches that;
+  review must.
 1. M2 EVIDENCE —— the turn was an `#m2` turn (see M2 EVIDENCE below). Shared.
 SHAPE B —— `block_nodeclare`, all must hold:
 2b. RESPONSE WRITTEN —— a `[prefix_]response_[TS].md` was touched by
@@ -415,7 +444,11 @@ a hook no slower than the incumbent worst still adds ZERO to the event —— ml
 remains the cheaper of the two. NOTE the earlier claim that mlint does "strictly
 less work than clint" was written before this scan existed; it is now true only
 in the end-to-end sense measured above, not structurally, and is restated that
-way rather than left to rot.
+way rather than left to rot. The VERBATIM upgrade was re-measured on the same
+51 MB file: whole-run medians 73–94 ms across samples against 81 ms before it
+—— machine noise, no real delta, because the per-line equality compare rejects
+a wrong-length line in constant time, cheaper than the prefix test it
+replaced. The budget above still holds.
 
 LOG FORMAT: one tab-delimited line per invocation —— timestamp, `session=`,
 `pid=`, `action=`, `m2=`, `sprint=`, `compact=`, `cid=`, `first=` (the turn's
@@ -471,9 +504,19 @@ _IO_GLYPHS = ("✅", "⇠", "➡")     # ✅ ⇠ ➡ —— §3.2.1–3
 _G_SHA = "\U0001f988"
 _BATCH_END_GLYPHS = _IO_GLYPHS + (_G_SHA,)
 
-# `🚨` —— the post-compaction sentinel (root §3.2.6/§5.1). SHAPE C tests the
-# glyph alone, deliberately, for the reasons in THE CONDITIONS above.
+# `🚨` —— the post-compaction sentinel glyph (root §3.2.6/§5.1). The GLYPH
+# alone is all the m2 shapes' urgent-stop test accepts; SHAPE C's PAYMENT
+# test is the whole verbatim line —— `_SENTINEL_CANON` below, per THE
+# CONDITIONS above.
 _G_SENTINEL = "\U0001f6a8"
+
+# §3.2.6's wording, VERBATIM —— same constant name and same whole-stripped-line
+# comparison as `clint.py`'s, so the two hooks can never again disagree about
+# what the sentinel IS. Built from escapes so no editor, font substitution, or
+# copy-paste can silently swap the glyph or the two U+2014 em dashes;
+# renders as: 🚨 Compaction Detected —— stopped all tasks.
+_SENTINEL_CANON = ("\U0001f6a8 Compaction Detected "
+                   "\U00002014\U00002014 stopped all tasks.")
 
 # The harness's compaction summary opens with this sentence, verbatim, in every
 # real occurrence on disk. Used ONLY as the second half of a structural test ——
@@ -563,23 +606,37 @@ _NODECLARE_MSG = (
 # "resume directly, do not acknowledge" is the harness default, and §5 overrides
 # it —— so the message says that outright rather than merely asking for output
 # the visible prompt appears to forbid.
+# ORDER, the owner's ruling: HALT FIRST, sentinel second, lists third ——
+# halting limits further damage, and the record can be written after. And the
+# sentinel is quoted whole, BARE on a line of its own, interpolated from
+# `_SENTINEL_CANON` itself —— complying is a COPY, never a recollection, and
+# the quoted guidance can never drift a byte from the test that enforces it.
 _NOSENTINEL_MSG = (
-    "[mlint] POST-COMPACTION §5 NOT DELIVERED —— this turn was opened by the "
-    "harness's compaction summary, and no `🚨` sentinel appears anywhere in it. "
-    "That summary's closing \"resume directly —— do not acknowledge\" line is "
+    "[mlint] POST-COMPACTION §5 NOT DELIVERED —— an unpaid compaction summary "
+    "is in context and no VERBATIM `🚨` sentinel has been emitted since. The "
+    "summary's closing \"resume directly —— do not acknowledge\" line is "
     "the harness default; root `CLAUDE.md` §5 OVERRIDES it and is the rule you "
     "are held to. §5 was skipped in full once already, on 202608070423.\n"
-    "DO NOW, in this order and nothing else: (1) emit exactly `🚨 Compaction "
-    "Detected —— stopped all tasks.`; (2) halt every fore/background task "
-    "(§5.2); (3) list the previously-read files/content still USEFUL to the "
+    "DO NOW, in this order and nothing else:\n"
+    "(1) HALT every fore/background task (§5.2) —— halt FIRST to limit "
+    "further damage; the record can be written after;\n"
+    "(2) emit the sentinel —— copy the next line EXACTLY, on a line of its "
+    "own: no bold, no bullet, no backticks, nothing added before or after on "
+    "that line;\n"
+    "%s\n"
+    "(3) list the previously-read files/content still USEFUL to the "
     "task (§5.3), then SEPARATELY the remainder (§5.4) —— those two lists are "
-    "the only record the user gets of what the session lost; (4) re-read and "
+    "the only record the user gets of what the session lost;\n"
+    "(4) re-read and "
     "resume NOTHING —— await the user's instruction (§5.5–5.7). "
     "Sole exception: if §5.8's `*slog_*` glob finds a LIVE slog (no `SPRINT END` "
-    "tail, TS of this session), resume from it —— AFTER the sentinel and both "
-    "lists, never instead.\n"
-    "If this turn genuinely was not opened by a compaction, reply with a lone "
-    "`.` and nothing else. This fires at most once per prompt.")
+    "tail, TS of this session), resume from it —— AFTER the halt, the sentinel, "
+    "and both lists, never instead.\n"
+    "Only that exact line pays the debt; any variation blocks again (at most "
+    "%d blocks per compaction). If you cannot reproduce it exactly, or this "
+    "turn genuinely carries no unpaid compaction, reply with a lone "
+    "`.` and nothing else. This fires at most once per prompt."
+    % (_SENTINEL_CANON, _MAX_SENTINEL_BLOCKS))
 
 
 def _in_scope(data):
@@ -812,13 +869,24 @@ def _last_compaction(objs):
     return idx, _compaction_id(objs[idx])
 
 
+def _is_sentinel_line(line):
+    """True if `line` IS root §3.2.6's sentinel, byte-for-byte
+    (`_SENTINEL_CANON`). Exactly two forgivenesses, both ruled on in THE
+    CONDITIONS: line-edge whitespace (stripped, as every line test here
+    strips) and the invisible emoji variation selector (a mismatch nobody can
+    SEE on screen must never decide a block). Everything else is exact —— no
+    bold wrapper, no bullet, no backticks, no trailing text, both em dashes,
+    the case, the full stop. Never raises."""
+    return line.strip().replace(_VS16, "") == _SENTINEL_CANON
+
+
 def _has_sentinel(window):
-    """True if ANY assistant chat line in the turn opens with the `🚨` sentinel
-    glyph (root §3.2.6), bold wrapper and variation selector tolerated.
-    Harness-authored lines are skipped, as everywhere else here. Presence
-    SUPPRESSES the block, so scanning the WHOLE window —— not just the turn's
-    first line, though §5.1 owes it immediately —— is the fail-open choice: a
-    late sentinel is an ordering fault, not the total omission this catches.
+    """True if ANY assistant chat line in the turn IS the verbatim `🚨`
+    sentinel (root §3.2.6/§5.1.2; `_is_sentinel_line`). Harness-authored
+    lines are skipped, as everywhere else here. Presence SUPPRESSES the
+    block, so scanning the WHOLE window —— not just the turn's first line,
+    though §5.1 owes it immediately —— is the fail-open choice: a late
+    sentinel is an ordering fault, not the total omission this catches.
     Never raises."""
     for o in window:
         try:
@@ -827,10 +895,7 @@ def _has_sentinel(window):
             if (o.get("message") or {}).get("role") != "assistant":
                 continue
             for ln in _message_text(o).splitlines():
-                t = ln.strip()
-                if t.startswith("**"):
-                    t = t[2:].strip()
-                if t.replace(_VS16, "").startswith(_G_SENTINEL):
+                if _is_sentinel_line(ln):
                     return True
         except Exception:
             continue
@@ -869,14 +934,32 @@ def _ended_on_api_error(window):
 
 
 def _is_urgent_stop(line):
-    """True if `line` is a `⚠️` blocker (root §3.2.5) or the `🚨` post-compaction
-    sentinel (§3.2.6). Both are legitimate, deliberate early stops that must
-    never be held open —— the blocker especially, since holding one open delays
-    exactly the message the user most needs to see."""
+    """True if `line` OPENS as a `⚠️` blocker (root §3.2.5) or with the `🚨`
+    glyph (§3.2.6). Callers: the M2 SHAPES only, where both are treated as
+    deliberate early stops never to be held open —— the glyph loosely, since a
+    near-miss sentinel is still an urgent stop as far as `#m2` is concerned,
+    and looseness here only ever suppresses those shapes (fail-open). SHAPE C
+    judges the same line with `_is_blocker_stop` instead: there a near-miss
+    `🚨` is the very defect being policed, never an excuse."""
     t = line.strip()
     if t.startswith("**"):
         t = t[2:].strip()
-    return t.replace(_VS16, "").startswith(("⚠", "🚨"))
+    return t.replace(_VS16, "").startswith(("⚠", _G_SENTINEL))
+
+
+def _is_blocker_stop(line):
+    """SHAPE C's urgent-stop test: a `⚠️` blocker (root §3.2.5) ONLY. The `🚨`
+    half that `_is_urgent_stop` accepts is deliberately ABSENT here: an EXACT
+    sentinel ending never reaches this test (`_has_sentinel` has already set
+    `compact=ok`), so any `🚨`-opening ending seen here is a NEAR-MISS.
+    Excusing it as `urgent` would defer the correction to the next prompt
+    and, worse, let a session end EVERY turn on a near-miss and never be
+    corrected at all —— the block, whose message carries the exact line to
+    copy, IS the correction such a turn needs."""
+    t = line.strip()
+    if t.startswith("**"):
+        t = t[2:].strip()
+    return t.replace(_VS16, "").startswith("⚠")
 
 
 def _is_io_declaration(line):
@@ -1455,7 +1538,9 @@ def main():
             compact = "no_output"
         elif _ended_on_api_error(window):
             compact = "api_error"
-        elif _is_urgent_stop(last_line):
+        elif _is_blocker_stop(last_line):
+            # `⚠️` only —— a `🚨`-opening ending here is a NEAR-MISS (an exact
+            # one already paid) and is blocked, never excused.
             compact = "urgent"
         elif _sentinel_budget_spent(compact_cid):
             # This compaction has had its allowance. Owed-until-paid would

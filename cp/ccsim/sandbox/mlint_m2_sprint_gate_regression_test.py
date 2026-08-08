@@ -126,6 +126,11 @@ M2_READ = {"file_path": M2_MD}
 # thereby deleted the incidental word "override" it contains, which is exactly
 # the hazard the fixture must reproduce (see the override test below).
 COMPACT_FIXTURE = os.path.join(HERE, "mlint_compaction_fixture.jsonl")
+# Root §3.2.6's sentinel. EXACTNESS IS THE CONTRACT since the owner's verbatim
+# ruling: this constant must stay byte-identical to the backticked string on
+# root CLAUDE.md's §3.2.6 line, and
+# `test_sentinel_canon_is_byte_identical_to_root_claude_md` enforces that by
+# re-reading it from the file —— never trust a retyping, including this one.
 SENTINEL = "\U0001f6a8 Compaction Detected —— stopped all tasks."
 
 failures = []
@@ -932,12 +937,19 @@ def test_sentinel_anywhere_in_the_turn_suppresses_the_block():
               % (code, action_of(lines), compact_of(lines)))
 
 
-def test_bold_wrapped_sentinel_is_recognised():
+def test_bold_wrapped_sentinel_no_longer_pays():
+    """REVERSED under the owner's verbatim ruling —— this suite once pinned the
+    bold-wrapped sentinel as PAYING (the glyph era tolerated `**` for parity
+    with the declaration tests). §3.2.6 shows no wrapper, §5.1.2 says "VERBATIM
+    (copy it)", and `clint.py` already flags the wrapped line as a
+    `yellow:sentinel` breach —— paying on it had the two hooks disagreeing
+    about what the sentinel IS. Proven failing against the pre-change hook
+    (`git show HEAD:cscpt/mlint.py` logs compact=ok on this turn)."""
     base = compaction_records()
     recs = base[:2] + [assistant_text("**%s**" % SENTINEL)] + base[2:]
     code, _, lines = run(recs)
-    check(code == 0 and compact_of(lines) == "ok",
-          "a bold-wrapped sentinel is still a sentinel",
+    check(code == 2 and action_of(lines) == "block_nosentinel",
+          "a bold-wrapped sentinel is a NEAR-MISS and no longer pays",
           "exit=%d compact=%s" % (code, compact_of(lines)))
 
 
@@ -1555,33 +1567,159 @@ def test_no_shape_ever_blocks_outside_this_repo():
         shutil.rmtree(d, ignore_errors=True)
 
 
-def test_an_inexactly_typed_sentinel_still_pays():
-    """RULED ON, not left to taste. A sentinel with one em dash, the wrong case,
-    or no full stop PAYS the debt and does not block.
-    Under the old trigger-coupled arming a strict wording test would have cost
-    one wrong block; under owed-until-paid it would leave the debt permanently
-    unpaid and re-arm on EVERY later turn, turning a cosmetic typo into a
-    recurring block. Verbatim wording is root §5.1.2's business and a matter for
-    review —— never for a hook that can stall a session."""
+def test_a_near_miss_sentinel_no_longer_pays():
+    """THE OWNER'S VERBATIM RULING, superseding the ruling this test used to
+    pin (the inverse of it lived here: "an inexact sentinel still PAYS"). The
+    glyph-only test was ruled when a strict test under owed-until-paid risked
+    an unbounded recurring block; the per-compaction ceiling (3, same build)
+    voided that objection, and the owner then ruled the loose test itself the
+    defect —— §5.1.2 orders the sentinel emitted "VERBATIM (copy it)", so a
+    sentinel that can be approximated is not a sentinel and any loose emission
+    is the compromise the block exists to catch.
+
+    PROVEN FAILING against `git show HEAD:cscpt/mlint.py` before the change:
+    the first seven variants all logged compact=ok (paid) there. The last two
+    (leading bullet, backticked line) already blocked under HEAD's line-START
+    rule and are kept as pins so the boundary never loosens."""
     variants = (
         ("single em dash", "\U0001f6a8 Compaction Detected — stopped all tasks."),
-        ("wrong case", "\U0001f6a8 COMPACTION DETECTED —— STOPPED ALL TASKS."),
+        ("ascii dashes", "\U0001f6a8 Compaction Detected -- stopped all tasks."),
+        ("wrong case", "\U0001f6a8 compaction detected —— stopped all tasks."),
         ("no full stop", "\U0001f6a8 Compaction Detected —— stopped all tasks"),
         ("glyph alone", "\U0001f6a8"),
-        ("trailing detail", "%s Context lost below." % SENTINEL))
+        ("trailing detail", "%s Context lost below." % SENTINEL),
+        ("bold wrapper", "**%s**" % SENTINEL),
+        ("leading bullet", "- %s" % SENTINEL),
+        ("backticked line", "`%s`" % SENTINEL))
     base = compaction_records()
     for label, text in variants:
         code, _, lines = run(base[:2] + [assistant_text(text)] + base[2:])
+        check(code == 2 and action_of(lines) == "block_nosentinel",
+              "a near-miss sentinel (%s) does NOT pay —— the block fires" % label,
+              "exit=%d action=%s compact=%s"
+              % (code, action_of(lines), compact_of(lines)))
+
+
+def test_exact_sentinel_still_pays_inside_a_longer_message():
+    """THE PERMITTED ROUTES, weighed deliberately against the stricter test so
+    no compliant turn is ever blocked. (1) §5.1–5.4 demand the sentinel PLUS
+    two lists in the same turn, so the compliant message is necessarily longer
+    than one line —— the test is per LINE, and the sentinel on a line of its
+    own inside any message pays. (2) Line-edge whitespace carries nothing and
+    is stripped. (3) The emoji variation selector is INVISIBLE —— right and
+    wrong would render identically on the user's screen, so a block over it
+    could never be diagnosed from what he sees; it is stripped before the
+    byte-exact compare."""
+    base = compaction_records()
+    for label, text in (
+            ("own line amid prose",
+             "Halting all tasks now.\n%s\nUseful reads lost: none." % SENTINEL),
+            ("line-edge whitespace", "   %s   " % SENTINEL),
+            ("VS16 after the glyph",
+             "\U0001f6a8️ Compaction Detected —— stopped all tasks.")):
+        code, _, lines = run(base[:2] + [assistant_text(text)] + base[2:])
         check(code == 0 and compact_of(lines) == "ok",
-              "an inexact sentinel (%s) still PAYS the debt" % label,
+              "the exact sentinel (%s) still PAYS" % label,
               "exit=%d compact=%s" % (code, compact_of(lines)))
 
 
+def test_a_near_miss_ending_the_turn_is_blocked_not_excused():
+    """THE DODGE THE VERBATIM RULING EXPOSED, closed with it. SHAPE C's
+    urgent-stop exemption once excused any `🚨`-opening final line —— harmless
+    while the glyph alone also PAID, fatal under exact wording: a near-miss as
+    the turn's last line would log compact=urgent, the debt would survive
+    unpaid, and a session could end EVERY turn on a near-miss and never be
+    corrected at all. SHAPE C now treats only a `⚠️` blocker as an urgent stop
+    (`_is_blocker_stop`): an exact sentinel ending never reaches that test (it
+    already paid), so a `🚨` ending seen there is a near-miss, and the block ——
+    whose message carries the exact line to copy —— IS the correction it
+    needs. Proven failing against the pre-change hook: HEAD logs compact=ok
+    on this turn."""
+    recs = compaction_records() + [assistant_text(
+        "\U0001f6a8 Compaction detected —— stopped all tasks.")]
+    code, _, lines = run(recs)
+    check(code == 2 and action_of(lines) == "block_nosentinel",
+          "a near-miss sentinel ENDING the turn is blocked, not excused",
+          "exit=%d action=%s compact=%s"
+          % (code, action_of(lines), compact_of(lines)))
+    recs = compaction_records() + [assistant_text("⚠️ FURY unmounted mid-turn")]
+    code, _, lines = run(recs)
+    check(code == 0 and compact_of(lines) == "urgent",
+          "NEGATIVE CONTROL: a `⚠️` blocker ending is still an urgent stop",
+          "exit=%d compact=%s" % (code, compact_of(lines)))
+
+
+def test_a_near_miss_never_settles_the_debt_for_later_turns():
+    """Owed-until-paid composes with exactness: a near-miss in an EARLIER turn
+    leaves the debt standing, so a later worked turn is still blocked. Against
+    the pre-change hook this logged compact=paid and exited 0 —— the near-miss
+    would have settled the debt for the rest of the session."""
+    recs = (compaction_records()
+            + [assistant_text(SENTINEL[:-1])]        # full stop dropped
+            + [user_msg("carry on", pid="near-miss-paid")] + _worked_turn())
+    code, _, lines = run(recs)
+    check(code == 2 and action_of(lines) == "block_nosentinel",
+          "a near-miss in an earlier turn leaves the debt OWED",
+          "exit=%d action=%s compact=%s"
+          % (code, action_of(lines), compact_of(lines)))
+
+
+def _sentinel_from_root_claude_md():
+    """§3.2.6's backticked string, read from root CLAUDE.md itself rather than
+    retyped —— the one canonical the hook, this suite, and the block message
+    must all match byte-for-byte."""
+    with open(os.path.join(REPO, "CLAUDE.md"), encoding="utf-8") as fh:
+        for ln in fh:
+            if "3.2.6." in ln and "\U0001f6a8" in ln:
+                m = re.search(r"`(\U0001f6a8[^`]*)`", ln)
+                if m:
+                    return m.group(1)
+    return ""
+
+
+def test_sentinel_canon_is_byte_identical_to_root_claude_md():
+    """MISMATCHED GUIDANCE WOULD BE WORSE THAN THE LOOSE TEST IT REPLACED: if
+    the string the block message tells a CC to copy drifted one byte from
+    §3.2.6's, the message itself would MANUFACTURE near-misses and the block
+    would re-fire on turns that obeyed it. So the canonical is re-read from
+    root CLAUDE.md here and checked end to end through the real subprocess:
+    it must appear in the live block stderr BARE on a line of its own —— a
+    copyable line, not a backticked quote (the pre-change message quoted it
+    backticked mid-sentence, so a faithful copy carried the backticks and
+    would not have paid)."""
+    canon = _sentinel_from_root_claude_md()
+    check(canon == SENTINEL,
+          "root CLAUDE.md §3.2.6 matches this suite's SENTINEL byte-for-byte",
+          repr(canon))
+    code, err, _ = run(compaction_records())
+    check(code == 2 and ("\n%s\n" % canon) in err,
+          "the block message quotes the canonical BARE on its own line",
+          repr(err[:400]))
+
+
+def test_block_message_demands_the_halt_before_the_sentinel():
+    """THE OWNER'S ORDERING, pinned: HALT FIRST (§5.2 —— halting limits further
+    damage), the sentinel second (the record can be written after), the lists
+    third (§5.3/§5.4). The pre-change message demanded the sentinel first. The
+    message must also say what a CC that cannot reproduce the exact line does
+    (the lone-`.` escape) and what the worst case costs (the 3-block
+    per-compaction ceiling), so a blocked turn is never cornered."""
+    _, err, _ = run(compaction_records())
+    i_halt, i_sent, i_lists = (err.find("§5.2"), err.find(SENTINEL),
+                               err.find("§5.3"))
+    check(0 <= i_halt < i_sent < i_lists,
+          "block message orders: halt (§5.2) -> sentinel -> lists (§5.3)",
+          "halt@%d sentinel@%d lists@%d" % (i_halt, i_sent, i_lists))
+    check("lone `.`" in err and "at most 3 blocks" in err,
+          "the message names the lone-`.` escape and the 3-block ceiling",
+          repr(err[-320:]))
+
+
 def test_merely_discussing_the_sentinel_does_not_pay():
-    """The line-start anchor is what separates EMITTING from DISCUSSING, and
-    this repo's sessions discuss the sentinel constantly —— including in the
-    files that maintain this hook. A backticked or mid-sentence `🚨` must not
-    discharge a real debt."""
+    """The line-exact test separates EMITTING from DISCUSSING even harder than
+    the old line-start anchor did, and this repo's sessions discuss the
+    sentinel constantly —— including in the files that maintain this hook. A
+    backticked or mid-sentence `🚨` must not discharge a real debt."""
     base = compaction_records()
     for label, text in (
             ("backticked", "The rule is `\U0001f6a8 Compaction Detected` "
@@ -1598,8 +1736,10 @@ def test_merely_discussing_the_sentinel_does_not_pay():
 def test_a_fenced_sentinel_example_DOES_pay_and_that_is_accepted():
     """AN ACCEPTED MISS, pinned so it is a decision on the record rather than a
     surprise. `_has_sentinel` splits on lines and does not mask code fences, so
-    a fenced EXAMPLE of the sentinel —— which the files maintaining this hook
-    write constantly —— discharges a real debt.
+    a fenced BYTE-EXACT specimen of the sentinel —— which the files maintaining
+    this hook write —— discharges a real debt. The verbatim ruling NARROWED
+    this miss (a fenced near-miss specimen no longer pays) but did not close
+    it, for the fail-open reason below.
 
     WHY IT IS NOT FIXED. Masking fences in ASSISTANT output would let one
     unbalanced backtick anywhere in a turn hide a genuine sentinel and produce a
@@ -2004,7 +2144,7 @@ def main():
                    test_override_never_exempts_shape_c,
                    test_summarys_own_sentinel_glyph_does_not_count,
                    test_sentinel_anywhere_in_the_turn_suppresses_the_block,
-                   test_bold_wrapped_sentinel_is_recognised,
+                   test_bold_wrapped_sentinel_no_longer_pays,
                    test_no_compaction_means_no_sentinel_block,
                    test_wording_alone_never_arms_the_block,
                    test_boundary_plus_wording_without_the_flag_is_still_caught,
@@ -2043,7 +2183,12 @@ def main():
                    test_an_assistant_quoting_the_summary_never_arms,
                    test_an_old_comms_file_saying_resume_directly_is_inert,
                    test_no_shape_ever_blocks_outside_this_repo,
-                   test_an_inexactly_typed_sentinel_still_pays,
+                   test_a_near_miss_sentinel_no_longer_pays,
+                   test_exact_sentinel_still_pays_inside_a_longer_message,
+                   test_a_near_miss_ending_the_turn_is_blocked_not_excused,
+                   test_a_near_miss_never_settles_the_debt_for_later_turns,
+                   test_sentinel_canon_is_byte_identical_to_root_claude_md,
+                   test_block_message_demands_the_halt_before_the_sentinel,
                    test_merely_discussing_the_sentinel_does_not_pay,
                    test_a_fenced_sentinel_example_DOES_pay_and_that_is_accepted,
                    test_a_sidechain_sentinel_does_not_pay,

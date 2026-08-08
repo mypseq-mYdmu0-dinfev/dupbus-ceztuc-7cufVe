@@ -1,7 +1,11 @@
 # Glossary
 
-*Non-case-sensitive unless specified*
-*MUST follow instr (if any); e.g. "deliverable"→writing.md*
+## Preamble
+- All non-case-sensitive unless specified
+- MUST follow instr (if any); e.g. "deliverable" → writing.md
+- Use actively for savings; e.g.:
+  - "dupbus-ceztuc-7cufVe/CLAUDE.md section" = 16tk
+  - "🦀" = 3tk = 5.33× less tk consumed (81.25% reduction)
 
 ---
 

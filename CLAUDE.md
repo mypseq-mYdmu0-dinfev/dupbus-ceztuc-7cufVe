@@ -252,11 +252,16 @@
   - 5.3.2. Also `git status --porcelain` —— recovers this turn's own uncommitted writes
   - 5.3.3. Optional: grep `file_path` in this session's `~/.claude/projects/` `.jsonl`
 - 5.4. Separately list (identically) the remainder; flag both lists as FLOORS, not full
-- 5.5. DON'T re-read/re-fetch anything, incl. CP CLAUDE.md (sole exc.: §5.8's 2 reads)
+- 5.5. DON'T re-read/re-fetch anything (exc.: §5.5.5 and §5.8's 2 reads)
   - 5.5.1. Root CLAUDE.md rides in the system prompt ONLY when cwd is this repo (or a child)
   - 5.5.2. So you already have it —— no hook delivered it, and none could (§5.1.6)
   - 5.5.3. cwd ELSEWHERE (repo merely ADDED) → NOT injected; harness walks cwd + ancestors
   - 5.5.4. In that case root CLAUDE.md was a one-off read, and compaction evicts those —— re-read it
+  - 5.5.5. EXCEPTION —— a CP's own `CLAUDE.md`/`CP_index_cc.md`: RE-READ before resuming
+    - 5.5.5.1. Injected ONLY when cwd is inside the CP folder; otherwise a one-off read
+    - 5.5.5.2. So compaction evicts it —— whilst it carries STANDING per-turn duties
+    - 5.5.5.3. Skipping it drops those duties silently for the REST of the session
+    - 5.5.5.4. CCSIM has no `CP_index_cc.md`, so §6.3.3's net never covered its own file
 - 5.6. DON'T continue any task; await user's instruction
 - 5.7. The 2 lists (§5.3–§5.4) tell user what to re-provide in the current/new session
 - 5.8. Sprint check, BEFORE idling per §5.6: `ls -t [comms_folder]/*slog_*.md | head -3`
